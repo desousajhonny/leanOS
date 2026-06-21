@@ -1,7 +1,8 @@
 import { confirm, groupMultiselect, isCancel, note, select, text } from "@clack/prompts";
-import type { OperatingMode, ProductStage, ProductStatus, ProductType, Subarea, WorkspaceAnswers } from "../templates/workspace-template.js";
+import type { DetectedProject, OperatingMode, ProductStage, ProductStatus, ProductType, Subarea, WorkspaceAnswers, WorkspaceMode } from "../templates/workspace-template.js";
 import { getAllSubareas } from "../templates/workspace-template.js";
 import { keyValue, stepLabel, ui } from "../ui/theme.js";
+import { detectProject, hasExistingProjectSignals } from "../utils/project-detector.js";
 
 type CancelledResult = {
   status: "cancelled";
@@ -91,11 +92,14 @@ const subareaHints: Record<Subarea, string> = {
 const defaultSubareas: Subarea[] = getAllSubareas();
 
 export async function runAiPrompts(): Promise<AiPromptResult> {
+  const detectedProject = await detectProject(process.cwd());
+  const hasExistingSignals = hasExistingProjectSignals(detectedProject);
+
   const action = await select({
     message: "What do you want to do?",
     options: [
-      { value: "create", label: "Create a new LeanOS workspace" },
-      { value: "connect", label: "Connect LeanOS to an existing project" },
+      { value: "create", label: "Create a new LeanOS workspace", hint: "For a new idea or product before app/code bootstrap" },
+      { value: "connect", label: "Connect LeanOS to an existing project", hint: "Install LeanOS as an operating layer in this repo" },
       { value: "install-agent", label: "Install LeanOS Agent files in this repo" },
       { value: "exit", label: "Exit" }
     ]
@@ -103,10 +107,40 @@ export async function runAiPrompts(): Promise<AiPromptResult> {
 
   if (isCancel(action)) return { status: "cancelled" };
   if (action === "exit") return { status: "exit" };
-  if (action === "connect") return { status: "coming-soon", label: "Connect LeanOS to an existing project" };
   if (action === "install-agent") return { status: "coming-soon", label: "Install LeanOS Agent files in this repo" };
 
-  note("Tell LeanOS what you are building. Keep it simple; the agent will refine this later.", stepLabel(1, 5, "Product profile"));
+  const workspaceMode: WorkspaceMode = action === "connect" ? "existing-product-repo" : "new-product-workspace";
+
+  if (workspaceMode === "new-product-workspace" && hasExistingSignals) {
+    note(
+      [
+        "This folder already looks like a project.",
+        detectedProjectSummary(detectedProject),
+        "LeanOS can still create a new workspace here, but existing files will be checked before writing."
+      ].join("\n"),
+      "Detected project"
+    );
+  }
+
+  if (workspaceMode === "existing-product-repo") {
+    note(
+      [
+        hasExistingSignals
+          ? "LeanOS will install an operating layer over this existing product repository."
+          : "This folder does not look like an existing repo yet. LeanOS can still prepare the operating layer here.",
+        detectedProjectSummary(detectedProject),
+        "Product code, package files and deployment config will not be created or changed by this setup."
+      ].join("\n"),
+      "Existing product mode"
+    );
+  }
+
+  note(
+    workspaceMode === "existing-product-repo"
+      ? "Tell LeanOS what this existing product is. Keep it simple; the agent will organize the current context later."
+      : "Tell LeanOS what you are building. Keep it simple; the agent will refine this later.",
+    stepLabel(1, 5, "Product profile")
+  );
 
   const companyName = await text({
     message: "Company or startup name",
@@ -122,7 +156,8 @@ export async function runAiPrompts(): Promise<AiPromptResult> {
 
   const productStatus = await select({
     message: "New product or existing product?",
-    options: toOptions(productStatusLabels)
+    options: toOptions(productStatusLabels),
+    initialValue: workspaceMode === "existing-product-repo" ? "existing-product" : "new-product"
   });
   if (isCancel(productStatus)) return { status: "cancelled" };
 
@@ -171,7 +206,16 @@ export async function runAiPrompts(): Promise<AiPromptResult> {
   });
   if (isCancel(subareas)) return { status: "cancelled" };
 
+  const prepareGithubManagement = await confirm({
+    message: "Do you want LeanOS to prepare GitHub project management?",
+    initialValue: workspaceMode === "existing-product-repo" && detectedProject.hasGit
+  });
+  if (isCancel(prepareGithubManagement)) return { status: "cancelled" };
+
   const answers: WorkspaceAnswers = {
+    workspaceMode,
+    detectedProject,
+    prepareGithubManagement: Boolean(prepareGithubManagement),
     companyName: String(companyName).trim(),
     productName: String(productNameInput).trim() || String(companyName).trim(),
     productStatus: productStatus as ProductStatus,
@@ -233,11 +277,13 @@ function formatSummary(answers: WorkspaceAnswers): string {
   return [
     ui.title("LeanOS workspace summary"),
     "",
+    keyValue("Workspace mode", answers.workspaceMode),
     keyValue("Company", answers.companyName),
     keyValue("Product", answers.productName),
     keyValue("Type", productTypeLabels[answers.productType]),
     keyValue("Stage", stageLabels[answers.stage]),
     keyValue("Mode", modeLabels[answers.mode]),
+    keyValue("GitHub management", answers.prepareGithubManagement ? "Prepared" : "Not now"),
     keyValue("Areas", answers.subareas.map((subarea) => subareaLabels[subarea]).join(", "))
   ].join("\n");
 }
@@ -248,4 +294,17 @@ function toOptionsForSubareas(subareas: Subarea[]): Array<{ value: Subarea; labe
     label: subareaLabels[subarea],
     hint: subareaHints[subarea]
   }));
+}
+
+function detectedProjectSummary(project: DetectedProject): string {
+  const signals = [
+    project.hasGit ? ".git" : "",
+    project.hasPackageJson ? "package.json" : "",
+    project.hasSourceDir ? "src/app/pages" : "",
+    project.hasGithubDir ? ".github" : "",
+    project.hasVercelConfig ? "Vercel config" : "",
+    project.gitRemoteOrigin ? `origin: ${project.gitRemoteOrigin}` : ""
+  ].filter(Boolean);
+
+  return signals.length > 0 ? `Detected: ${signals.join(", ")}` : "Detected: no existing project signals.";
 }

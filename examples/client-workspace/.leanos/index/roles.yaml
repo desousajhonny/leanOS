@@ -32,6 +32,9 @@ roles:
   - key: devops-engineer
     area: operations.devops
     path: ../../operations/devops/roles/devops-engineer.role.md
+  - key: github-devops
+    area: operations.devops
+    path: ../../operations/devops/roles/github-devops.role.md
   - key: security-reviewer
     area: operations.security
     path: ../../operations/security/roles/security-reviewer.role.md

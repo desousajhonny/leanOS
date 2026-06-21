@@ -18,10 +18,12 @@ client-workspace/
 |   |   `-- validation.yml
 |   |-- leanos/
 |   |   |-- branch-rules.md
+|   |   |-- github-settings.example.json
 |   |   |-- labels.yaml
 |   |   |-- pr-validation-rules.md
 |   |   |-- project-sync.yaml
-|   |   `-- README.md
+|   |   |-- README.md
+|   |   `-- sync-state.yaml
 |   |-- prompts/
 |   |   |-- leanos-init.prompt.md
 |   |   `-- start-leanos.prompt.md
@@ -247,6 +249,7 @@ client-workspace/
 |   |-- devops/
 |   |   |-- playbooks/
 |   |   |   |-- configure-environments.playbook.md
+|   |   |   |-- configure-github-project.playbook.md
 |   |   |   |-- define-observability.playbook.md
 |   |   |   |-- plan-deployment.playbook.md
 |   |   |   |-- README.md
@@ -254,8 +257,10 @@ client-workspace/
 |   |   |   `-- setup-ci-cd.playbook.md
 |   |   |-- roles/
 |   |   |   |-- devops-engineer.role.md
+|   |   |   |-- github-devops.role.md
 |   |   |   `-- README.md
 |   |   |-- skills/
+|   |   |   |-- configure-github-project.skill.md
 |   |   |   |-- define-observability.skill.md
 |   |   |   |-- plan-deployment.skill.md
 |   |   |   |-- README.md
@@ -393,6 +398,9 @@ client-workspace/
 |   |-- AGENT.md
 |   |-- department.yaml
 |   `-- README.md
+|-- .env.example
+|-- .env.local
+|-- .gitignore
 |-- AGENT.md
 |-- leanos.yaml
 `-- README.md

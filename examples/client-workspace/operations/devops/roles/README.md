@@ -15,6 +15,7 @@ Use after the area README selects a role.
 ## Files
 
 - `devops-engineer.role.md`
+- `github-devops.role.md`
 
 ## Related Folders
 

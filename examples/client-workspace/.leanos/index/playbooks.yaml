@@ -35,6 +35,9 @@ playbooks:
   - key: plan-deployment
     area: operations.devops
     path: ../../operations/devops/playbooks/plan-deployment.playbook.md
+  - key: configure-github-project
+    area: operations.devops
+    path: ../../operations/devops/playbooks/configure-github-project.playbook.md
   - key: configure-environments
     area: operations.devops
     path: ../../operations/devops/playbooks/configure-environments.playbook.md

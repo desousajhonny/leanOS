@@ -18,6 +18,7 @@ On `/start-leanos`, load:
 
 - [AGENT.md](../../AGENT.md)
 - [leanos.yaml](../../leanos.yaml)
+- [.leanos/commands/start-leanos.md](../../.leanos/commands/start-leanos.md)
 - [.leanos/context/workspace-summary.md](../../.leanos/context/workspace-summary.md)
 - [.leanos/context/current-focus.md](../../.leanos/context/current-focus.md)
 - [.leanos/context/next-actions.md](../../.leanos/context/next-actions.md)

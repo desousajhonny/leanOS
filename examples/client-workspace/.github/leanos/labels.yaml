@@ -2,6 +2,12 @@ labels:
   - name: leanos
     color: "5319e7"
     description: LeanOS managed work
+  - name: epic
+    color: "7057ff"
+    description: Roadmap epic
+  - name: sub-issue
+    color: "bfd4f2"
+    description: Child issue created from an epic
   - name: validation
     color: "0e8a16"
     description: Validation or learning task
@@ -11,3 +17,12 @@ labels:
   - name: strategy
     color: "fbca04"
     description: Strategy or product definition
+  - name: design
+    color: "c5def5"
+    description: UX or interface work
+  - name: security
+    color: "d73a4a"
+    description: Security, privacy or access control work
+  - name: devops
+    color: "5319e7"
+    description: Delivery, environment or GitHub operations work

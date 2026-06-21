@@ -77,6 +77,9 @@ skills:
   - key: plan-deployment
     area: operations.devops
     path: ../../operations/devops/skills/plan-deployment.skill.md
+  - key: configure-github-project
+    area: operations.devops
+    path: ../../operations/devops/skills/configure-github-project.skill.md
   - key: define-observability
     area: operations.devops
     path: ../../operations/devops/skills/define-observability.skill.md

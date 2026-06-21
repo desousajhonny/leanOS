@@ -1,6 +1,16 @@
 leanos:
   version: 0.1.0
   workspace_type: startup
+workspace:
+  mode: new-product-workspace
+  product_code_policy: do_not_create_app_code_during_initial_setup
+  detected_project:
+    has_git: false
+    has_package_json: false
+    has_source_dir: false
+    has_github_dir: false
+    has_vercel_config: false
+    git_remote_origin: null
 company:
   name: LeanOS Example Company
   stage: idea
@@ -89,6 +99,7 @@ roles:
       - pr-reviewer
     operations.devops:
       - devops-engineer
+      - github-devops
     operations.security:
       - security-reviewer
     growth.customer-experience:
@@ -134,6 +145,7 @@ skills:
     operations.devops:
       - setup-ci
       - plan-deployment
+      - configure-github-project
       - define-observability
     operations.security:
       - threat-model
@@ -171,6 +183,7 @@ playbooks:
     operations.devops:
       - setup-ci-cd
       - plan-deployment
+      - configure-github-project
       - configure-environments
       - define-observability
       - release-operations
@@ -194,4 +207,6 @@ ai_standard:
   checklists: ai-standard/checklists
   instructions: ai-standard/instructions
 github:
-  status: not_configured
+  status: pending_user_token
+  project_management: prepared
+  token_source: env:LEANOS_GITHUB_TOKEN

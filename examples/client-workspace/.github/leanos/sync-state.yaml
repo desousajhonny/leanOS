@@ -1,0 +1,12 @@
+github_sync_state:
+  status: not_configured
+  last_checked_at: null
+  last_synced_at: null
+  repository: null
+  project_number: null
+  milestones: {}
+  epics: {}
+  sub_issues: {}
+  notes:
+    - This file may store GitHub IDs, issue numbers and sync metadata.
+    - This file must never store tokens, secrets or personal credentials.

@@ -371,25 +371,35 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         name: "DevOps",
         path: "operations/devops",
         routingKey: "devops",
-        requestTypes: "deployment, environments, CI, observability or operations runbooks",
-        purpose: "Own delivery infrastructure, environments, deployment and observability notes.",
-        whenToUse: ["plan deployment", "configure CI", "document environments", "define observability"],
+        requestTypes: "deployment, environments, CI, observability, GitHub Projects or operations runbooks",
+        purpose: "Own delivery infrastructure, environments, deployment, GitHub workflow setup and observability notes.",
+        whenToUse: ["plan deployment", "configure CI", "configure GitHub Projects", "document environments", "define observability"],
         sourceOfTruth: [],
         files: [],
         roles: [
           {
             slug: "devops-engineer",
             title: "DevOps Engineer",
-            purpose: "Prepare release, environment and observability practices.",
-            useWhen: ["deployment or CI is involved", "runtime operations need documentation", "environment risk exists"],
-            beforeActing: ["../README.md", "../area.yaml"],
-            skills: ["setup-ci", "plan-deployment", "define-observability"],
-            playbooks: ["setup-ci-cd", "plan-deployment", "configure-environments", "define-observability", "release-operations"]
+            purpose: "Prepare release, environment, GitHub workflow and observability practices.",
+            useWhen: ["deployment or CI is involved", "GitHub Project setup is needed", "runtime operations need documentation", "environment risk exists"],
+            beforeActing: ["../README.md", "../area.yaml", "../../../.github/leanos/project-sync.yaml", "../../../.github/leanos/github-settings.example.json"],
+            skills: ["setup-ci", "plan-deployment", "configure-github-project", "define-observability"],
+            playbooks: ["setup-ci-cd", "plan-deployment", "configure-github-project", "configure-environments", "define-observability", "release-operations"]
+          },
+          {
+            slug: "github-devops",
+            title: "GitHub DevOps",
+            purpose: "Guide safe GitHub repository, Project, labels and sync configuration without storing secrets.",
+            useWhen: ["the founder wants to connect GitHub", "roadmap sync needs setup", "GitHub Project fields or labels need validation"],
+            beforeActing: ["../../../.github/leanos/github-settings.example.json", "../../../.github/leanos/project-sync.yaml", "../../../.github/leanos/sync-state.yaml", "../../../.github/leanos/labels.yaml"],
+            skills: ["configure-github-project"],
+            playbooks: ["configure-github-project"]
           }
         ],
         skills: [
           { slug: "setup-ci", title: "Setup CI", purpose: "Define build, test and validation automation." },
           { slug: "plan-deployment", title: "Plan Deployment", purpose: "Plan safe release and rollback flow." },
+          { slug: "configure-github-project", title: "Configure GitHub Project", purpose: "Guide GitHub repository, Project fields, labels and token source setup without storing secrets." },
           { slug: "define-observability", title: "Define Observability", purpose: "Define runtime visibility for the product." }
         ],
         playbooks: [
@@ -410,6 +420,15 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             steps: ["Identify target environment", "Confirm required validation gates", "Define deployment steps", "Define rollback path", "Define post-deploy checks"],
             outputs: ["Deployment readiness", "Deployment steps", "Risks", "Rollback notes", "Next action"],
             filesToUpdate: ["Update relevant DevOps notes or release records if the workspace has them."]
+          },
+          {
+            slug: "configure-github-project",
+            title: "Configure GitHub Project",
+            purpose: "Prepare GitHub settings for roadmap sync without calling the API directly from the model.",
+            inputs: ["Founder GitHub owner or organization", "Repository name", "GitHub Project URL or number", "Desired project fields", "Token source from environment, secure prompt or keychain", "Deployment target such as Vercel when known"],
+            steps: ["Read `.github/leanos/github-settings.example.json`", "Review `.github/leanos/project-sync.yaml`", "Ask for missing owner, repository, project and field mapping", "Confirm token source without asking the user to paste secrets into files", "Document Vercel readiness as guidance only; do not create `.vercel/`, run `vercel link` or add `vercel.json` until a real app/framework needs it", "Propose the project-sync update before writing", "Validate that sync-state remains secret-free"],
+            outputs: ["GitHub readiness summary", "Missing configuration", "Proposed project-sync.yaml updates", "Token-source guidance", "Vercel readiness notes", "Next action for roadmap sync"],
+            filesToUpdate: ["Update `../../../.github/leanos/project-sync.yaml` only after explicit confirmation.", "Update `../../../.github/leanos/sync-state.yaml` only with non-secret sync metadata."]
           },
           {
             slug: "configure-environments",
@@ -440,6 +459,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           }
         ],
         commonPaths: [
+          "GitHub setup request: role `roles/github-devops.role.md` -> skill `skills/configure-github-project.skill.md` -> playbook `playbooks/configure-github-project.playbook.md`.",
           "Deployment request: role `roles/devops-engineer.role.md` -> skill `skills/plan-deployment.skill.md` -> playbook `playbooks/plan-deployment.playbook.md`.",
           "CI request: role `roles/devops-engineer.role.md` -> skill `skills/setup-ci.skill.md` -> playbook `playbooks/setup-ci-cd.playbook.md`.",
           "Observability request: role `roles/devops-engineer.role.md` -> skill `skills/define-observability.skill.md` -> playbook `playbooks/define-observability.playbook.md`."

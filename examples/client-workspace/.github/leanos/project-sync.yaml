@@ -1,3 +1,30 @@
 github:
-  status: not_configured
-  project_sync: disabled
+  status: pending_user_token
+  token_source: env:LEANOS_GITHUB_TOKEN
+  owner: TODO
+  repository: TODO
+  project:
+    type: organization
+    number: TODO
+    url: TODO
+  fields:
+    status: Status
+    priority: Priority
+    size: Size
+    area: Area
+    roadmap_item: Roadmap Item
+    epic: Epic
+  project_sync:
+    status: pending_configuration
+    enabled: false
+    source:
+      roadmap: ../../strategy/roadmap/roadmap.md
+      milestones: ../../strategy/roadmap/milestones.md
+      current_cycle: ../../strategy/roadmap/current-cycle.md
+      mvp_scope: ../../operations/core/mvp/scope.md
+      acceptance_criteria: ../../operations/core/mvp/acceptance-criteria.md
+  rules:
+    never_store_token: true
+    dry_run_before_remote_write: true
+    require_confirmation_before_api_write: true
+    no_duplicate_epics_without_review: true

@@ -28,6 +28,15 @@ export type OperatingMode =
   | "internal-innovation-team";
 export type RootDepartment = "strategy" | "operations" | "growth";
 export type Department = RootDepartment;
+export type WorkspaceMode = "new-product-workspace" | "existing-product-repo";
+export type DetectedProject = {
+  hasGit: boolean;
+  hasPackageJson: boolean;
+  hasSourceDir: boolean;
+  hasGithubDir: boolean;
+  hasVercelConfig: boolean;
+  gitRemoteOrigin?: string;
+};
 export type Subarea =
   | "strategy.company"
   | "strategy.product"
@@ -43,6 +52,9 @@ export type Subarea =
   | "growth.finance";
 
 export type WorkspaceAnswers = {
+  workspaceMode: WorkspaceMode;
+  detectedProject?: DetectedProject;
+  prepareGithubManagement: boolean;
   companyName: string;
   productName: string;
   productStatus: ProductStatus;

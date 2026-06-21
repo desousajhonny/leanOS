@@ -8,6 +8,23 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
       version: "0.1.0",
       workspace_type: "startup"
     },
+    workspace: {
+      mode: answers.workspaceMode,
+      product_code_policy:
+        answers.workspaceMode === "existing-product-repo"
+          ? "preserve_existing_product_code"
+          : "do_not_create_app_code_during_initial_setup",
+      detected_project: answers.detectedProject
+        ? {
+            has_git: answers.detectedProject.hasGit,
+            has_package_json: answers.detectedProject.hasPackageJson,
+            has_source_dir: answers.detectedProject.hasSourceDir,
+            has_github_dir: answers.detectedProject.hasGithubDir,
+            has_vercel_config: answers.detectedProject.hasVercelConfig,
+            git_remote_origin: answers.detectedProject.gitRemoteOrigin ?? null
+          }
+        : null
+    },
     company: {
       name: answers.companyName,
       stage: answers.stage,
@@ -64,7 +81,9 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
       instructions: "ai-standard/instructions"
     },
     github: {
-      status: "not_configured"
+      status: answers.prepareGithubManagement ? "pending_user_token" : "not_configured",
+      project_management: answers.prepareGithubManagement ? "prepared" : "not_requested",
+      token_source: "env:LEANOS_GITHUB_TOKEN"
     }
   });
 }

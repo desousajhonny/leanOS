@@ -69,7 +69,7 @@ export async function runAiCommand(): Promise<void> {
         { value: "missing", label: "Create only missing files" },
         { value: "overwrite", label: "Overwrite existing files" }
       ],
-      initialValue: "cancel"
+      initialValue: promptResult.answers.workspaceMode === "existing-product-repo" ? "missing" : "cancel"
     });
 
     if (isCancel(conflictAction)) {

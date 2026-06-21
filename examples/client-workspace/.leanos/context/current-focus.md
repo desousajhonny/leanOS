@@ -1,5 +1,7 @@
 # Current Focus
 
+LeanOS is preparing strategy and operations before app/code bootstrap. Do not create product source code during initial setup.
+
 Operate only through active workspace areas:
 
 - strategy.company: `strategy/company/README.md`

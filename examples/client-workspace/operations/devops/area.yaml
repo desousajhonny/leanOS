@@ -4,13 +4,16 @@ area:
   path: operations/devops
   roles:
     - devops-engineer
+    - github-devops
   skills:
     - setup-ci
     - plan-deployment
+    - configure-github-project
     - define-observability
   playbooks:
     - setup-ci-cd
     - plan-deployment
+    - configure-github-project
     - configure-environments
     - define-observability
     - release-operations

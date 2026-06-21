@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { constants } from "node:fs";
-import { access, mkdtemp, readdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, mkdtemp, readdir, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -32,6 +32,15 @@ const allSubareas = [
 ];
 
 const answers = {
+  workspaceMode: "new-product-workspace",
+  detectedProject: {
+    hasGit: false,
+    hasPackageJson: false,
+    hasSourceDir: false,
+    hasGithubDir: false,
+    hasVercelConfig: false
+  },
+  prepareGithubManagement: true,
   companyName: "Acme AI",
   productName: "Clinic Assistant AI",
   productStatus: "new-product",
@@ -55,7 +64,23 @@ const engineeringOnlyAnswers = {
 
 const growthValidationAnswers = {
   ...answers,
+  prepareGithubManagement: false,
   subareas: ["growth.marketing", "strategy.validation"]
+};
+
+const existingProductRepoAnswers = {
+  ...answers,
+  workspaceMode: "existing-product-repo",
+  productStatus: "existing-product",
+  stage: "existing-product-with-users",
+  detectedProject: {
+    hasGit: true,
+    hasPackageJson: true,
+    hasSourceDir: true,
+    hasGithubDir: true,
+    hasVercelConfig: true,
+    gitRemoteOrigin: "git@github.com:example-org/example-repo.git"
+  }
 };
 
 await validateWorkspaceFiles();
@@ -63,6 +88,7 @@ await validateClientWorkspaceFixture();
 await validatePartialAreaSelection();
 await validateEngineeringOnlyContext();
 await validateGrowthValidationContext();
+await validateExistingProductRepoMode();
 await validateWriterSkipsExistingFiles();
 await validateWriterOverwritesWhenAllowed();
 
@@ -74,6 +100,9 @@ async function validateWorkspaceFiles() {
 
   for (const expectedPath of [
     "AGENT.md",
+    ".env.example",
+    ".env.local",
+    ".gitignore",
     "leanos.yaml",
     "ai-standard/README.md",
     "ai-standard/navigation-chain.md",
@@ -89,12 +118,19 @@ async function validateWorkspaceFiles() {
     "operations/engineering/playbooks/test-planning.playbook.md",
     "operations/devops/playbooks/setup-ci-cd.playbook.md",
     "operations/devops/playbooks/plan-deployment.playbook.md",
+    "operations/devops/roles/github-devops.role.md",
+    "operations/devops/skills/configure-github-project.skill.md",
+    "operations/devops/playbooks/configure-github-project.playbook.md",
     "operations/devops/playbooks/configure-environments.playbook.md",
     "operations/devops/playbooks/define-observability.playbook.md",
     "operations/devops/playbooks/release-operations.playbook.md",
     "operations/security/playbooks/security-checklist.playbook.md",
     "growth/marketing/playbooks/mvp-launch.playbook.md",
     ".github/leanos/README.md",
+    ".github/leanos/github-settings.example.json",
+    ".github/leanos/project-sync.yaml",
+    ".github/leanos/sync-state.yaml",
+    ".github/leanos/labels.yaml",
     ".github/agents/leanos-chief.agent.md",
     ".github/prompts/start-leanos.prompt.md",
     ".github/prompts/leanos-init.prompt.md",
@@ -105,6 +141,11 @@ async function validateWorkspaceFiles() {
   }
 
   for (const forbiddenPath of [
+    "src",
+    "app",
+    "pages",
+    "package.json",
+    "vercel.json",
     ".leanos/departments/README.md",
     ".leanos/ai-standard/README.md",
     "strategy/roles/README.md",
@@ -128,6 +169,9 @@ async function validateWorkspaceFiles() {
   assert.equal(result.skippedPaths.length, 0, "Fresh generation should not skip files");
 
   await assertExists(join(rootDir, "AGENT.md"));
+  await assertExists(join(rootDir, ".env.example"));
+  await assertExists(join(rootDir, ".env.local"));
+  await assertExists(join(rootDir, ".gitignore"));
   await assertExists(join(rootDir, "leanos.yaml"));
   await assertExists(join(rootDir, "ai-standard", "README.md"));
   await assertExists(join(rootDir, "strategy", "AGENT.md"));
@@ -140,11 +184,17 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "operations", "engineering", "playbooks", "test-planning.playbook.md"));
   await assertExists(join(rootDir, "operations", "devops", "playbooks", "setup-ci-cd.playbook.md"));
   await assertExists(join(rootDir, "operations", "devops", "playbooks", "plan-deployment.playbook.md"));
+  await assertExists(join(rootDir, "operations", "devops", "roles", "github-devops.role.md"));
+  await assertExists(join(rootDir, "operations", "devops", "skills", "configure-github-project.skill.md"));
+  await assertExists(join(rootDir, "operations", "devops", "playbooks", "configure-github-project.playbook.md"));
   await assertExists(join(rootDir, "operations", "devops", "playbooks", "configure-environments.playbook.md"));
   await assertExists(join(rootDir, "operations", "devops", "playbooks", "define-observability.playbook.md"));
   await assertExists(join(rootDir, "operations", "security", "playbooks", "security-checklist.playbook.md"));
   await assertExists(join(rootDir, "growth", "marketing", "skills", "create-launch-plan.skill.md"));
   await assertExists(join(rootDir, ".github", "agents", "leanos-chief.agent.md"));
+  await assertExists(join(rootDir, ".github", "leanos", "github-settings.example.json"));
+  await assertExists(join(rootDir, ".github", "leanos", "project-sync.yaml"));
+  await assertExists(join(rootDir, ".github", "leanos", "sync-state.yaml"));
   await assertExists(join(rootDir, ".github", "prompts", "start-leanos.prompt.md"));
   await assertExists(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"));
   await assertExists(join(rootDir, ".leanos", "commands", "start-leanos.md"));
@@ -154,8 +204,10 @@ async function validateWorkspaceFiles() {
   assert(result.createdGroups.includes("strategy/"), "Expected created groups to mention Strategy");
   assert(result.createdGroups.includes("operations/"), "Expected created groups to mention Operations");
   assert(result.createdGroups.includes("growth/"), "Expected created groups to mention Growth");
+  assert(result.createdGroups.includes(".github/leanos"), "Expected created groups to mention GitHub LeanOS support files");
 
   await assertVsCodeIntegration(rootDir);
+  await assertGitHubReadiness(rootDir);
   await assertInitCommandRules(rootDir);
   await assertRootAgentMutationRules(rootDir);
   await assertOperationalPlaybookSections(rootDir);
@@ -163,6 +215,11 @@ async function validateWorkspaceFiles() {
 
   for (const forbiddenPath of [
     ".leanos/departments",
+    "src",
+    "app",
+    "pages",
+    "package.json",
+    "vercel.json",
     ".leanos/ai-standard",
     "strategy/roles",
     "strategy/skills",
@@ -187,6 +244,10 @@ async function validateWorkspaceFiles() {
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
   assert.equal(yaml.agent.entrypoint, "AGENT.md");
   assert.equal(yaml.agent.navigation_chain.enabled, true);
+  assert.equal(yaml.workspace.mode, "new-product-workspace");
+  assert.equal(yaml.workspace.product_code_policy, "do_not_create_app_code_during_initial_setup");
+  assert.equal(yaml.github.status, "pending_user_token");
+  assert.equal(yaml.github.project_management, "prepared");
   assert.equal(yaml.agent.navigation_chain.doc, "ai-standard/navigation-chain.md");
   assert.equal(yaml.ai_standard.path, "ai-standard/README.md");
   assert.equal(yaml.roles.ownership, "area-first");
@@ -205,6 +266,9 @@ async function validateWorkspaceFiles() {
 async function validateClientWorkspaceFixture() {
   const requiredPaths = [
     "AGENT.md",
+    ".env.example",
+    ".env.local",
+    ".gitignore",
     "leanos.yaml",
     "ai-standard/README.md",
     "strategy/product/README.md",
@@ -212,11 +276,17 @@ async function validateClientWorkspaceFixture() {
     "operations/design/roles/README.md",
     "operations/devops/playbooks/setup-ci-cd.playbook.md",
     "operations/devops/playbooks/plan-deployment.playbook.md",
+    "operations/devops/roles/github-devops.role.md",
+    "operations/devops/skills/configure-github-project.skill.md",
+    "operations/devops/playbooks/configure-github-project.playbook.md",
     "operations/devops/playbooks/configure-environments.playbook.md",
     "operations/devops/playbooks/define-observability.playbook.md",
     "operations/security/playbooks/security-checklist.playbook.md",
     "operations/engineering/playbooks/test-planning.playbook.md",
     ".leanos/index/routing-map.yaml",
+    ".github/leanos/github-settings.example.json",
+    ".github/leanos/project-sync.yaml",
+    ".github/leanos/sync-state.yaml",
     ".github/agents/leanos-chief.agent.md",
     ".github/prompts/start-leanos.prompt.md",
     ".github/prompts/leanos-init.prompt.md",
@@ -232,6 +302,11 @@ async function validateClientWorkspaceFixture() {
 
   for (const forbiddenPath of [
     ".leanos/departments",
+    "src",
+    "app",
+    "pages",
+    "package.json",
+    "vercel.json",
     ".leanos/ai-standard",
     "operations/devops/environments.md",
     "operations/devops/deployment.md",
@@ -390,8 +465,50 @@ async function validateGrowthValidationContext() {
   assert.equal(routingMap.routing.areas.validation, "../../strategy/validation/README.md");
   assert.equal(routingMap.routing.areas.product, undefined);
   assert.equal(routingMap.routing.areas.engineering, undefined);
+  assert.equal(await exists(join(rootDir, ".env.local")), false, "Workspace should not generate .env.local when GitHub management was not requested");
 
   await assertInitialContextCoherence(rootDir, growthValidationAnswers.subareas);
+}
+
+async function validateExistingProductRepoMode() {
+  const rootDir = await mkdtemp(join(tmpdir(), "leanos-existing-product-"));
+  await mkdir(join(rootDir, "src"), { recursive: true });
+  await mkdir(join(rootDir, ".github", "workflows"), { recursive: true });
+  await writeFile(join(rootDir, "README.md"), "Existing product README\n", "utf8");
+  await writeFile(join(rootDir, "package.json"), "{\"name\":\"existing-product\"}\n", "utf8");
+  await writeFile(join(rootDir, "src", "index.ts"), "export const existing = true;\n", "utf8");
+  await writeFile(join(rootDir, "vercel.json"), "{\"framework\":\"nextjs\"}\n", "utf8");
+  await writeFile(join(rootDir, ".github", "workflows", "existing.yml"), "name: Existing\n", "utf8");
+
+  const result = await generateWorkspace(rootDir, existingProductRepoAnswers, {
+    overwriteExisting: false,
+    mode: "missing-only"
+  });
+
+  assert(result.skippedPaths.includes("README.md"), "Existing README should be skipped in missing-only mode");
+  assert.equal(await readFile(join(rootDir, "README.md"), "utf8"), "Existing product README\n", "Existing README should be preserved");
+  assert.equal(await readFile(join(rootDir, "package.json"), "utf8"), "{\"name\":\"existing-product\"}\n", "Existing package.json should be preserved");
+  assert.equal(await readFile(join(rootDir, "src", "index.ts"), "utf8"), "export const existing = true;\n", "Existing source code should be preserved");
+  assert.equal(await readFile(join(rootDir, "vercel.json"), "utf8"), "{\"framework\":\"nextjs\"}\n", "Existing Vercel config should be preserved");
+  assert.equal(await readFile(join(rootDir, ".github", "workflows", "existing.yml"), "utf8"), "name: Existing\n", "Existing GitHub workflow should be preserved");
+
+  const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
+  const workspaceSummary = await readFile(join(rootDir, ".leanos", "context", "workspace-summary.md"), "utf8");
+  const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
+  const projectSync = parse(await readFile(join(rootDir, ".github", "leanos", "project-sync.yaml"), "utf8"));
+
+  assert.equal(yaml.workspace.mode, "existing-product-repo");
+  assert.equal(yaml.workspace.product_code_policy, "preserve_existing_product_code");
+  assert.equal(yaml.workspace.detected_project.has_git, true);
+  assert.equal(yaml.workspace.detected_project.has_package_json, true);
+  assert.equal(yaml.workspace.detected_project.has_source_dir, true);
+  assert.equal(yaml.workspace.detected_project.has_github_dir, true);
+  assert.equal(yaml.workspace.detected_project.has_vercel_config, true);
+  assert.equal(projectSync.github.owner, "example-org");
+  assert.equal(projectSync.github.repository, "example-repo");
+  assert.equal(await exists(join(rootDir, ".env.local")), true, "Existing repo should generate .env.local when GitHub management is requested and the file is missing");
+  assert(workspaceSummary.includes("LeanOS is installed as an operating layer over an existing product repository"), "Existing repo summary should describe LeanOS as an operating layer");
+  assert(nextActions.includes("capture current product and codebase context"), "Existing repo next actions should start with product/codebase context intake");
 }
 
 async function assertVsCodeIntegration(rootDir) {
@@ -412,6 +529,7 @@ async function assertVsCodeIntegration(rootDir) {
   for (const expectedLink of [
     "../../AGENT.md",
     "../../leanos.yaml",
+    "../../.leanos/commands/start-leanos.md",
     "../../.leanos/context/workspace-summary.md",
     "../../.leanos/context/current-focus.md",
     "../../.leanos/context/next-actions.md",
@@ -423,6 +541,8 @@ async function assertVsCodeIntegration(rootDir) {
 
   assert(startPromptFile.includes("name: start-leanos"), "LeanOS start prompt should use the primary slash command name");
   assert(startPromptFile.includes("agent: 'LeanOS Chief'"), "LeanOS start prompt should target LeanOS Chief");
+  assert(startPromptFile.includes("Then follow `.leanos/commands/start-leanos.md`"), "LeanOS start prompt should defer to the command file");
+  assert(startPromptFile.includes("Ask the Required Founder Interview questions only when the loaded context does not already answer them"), "LeanOS start prompt should avoid duplicate founder questions");
   assert(startPromptFile.includes("Use propose-first mode"), "LeanOS start prompt should use propose-first mode");
   assert(startPromptFile.includes("Write only after explicit user confirmation"), "LeanOS start prompt should require confirmation before writes");
   assert(startPromptFile.includes("Do not modify roles, skills, playbooks, workflows, commands, `ai-standard/`, `.github/`"), "LeanOS start prompt should protect operating assets");
@@ -434,9 +554,68 @@ async function assertVsCodeIntegration(rootDir) {
   assert.equal(await exists(join(rootDir, ".vscode", "settings.json")), false, "Generator should not write VS Code workspace settings");
 }
 
+async function assertGitHubReadiness(rootDir) {
+  const envExample = await readFile(join(rootDir, ".env.example"), "utf8");
+  const envLocal = await readFile(join(rootDir, ".env.local"), "utf8");
+  const gitignore = await readFile(join(rootDir, ".gitignore"), "utf8");
+  const settingsExample = await readFile(join(rootDir, ".github", "leanos", "github-settings.example.json"), "utf8");
+  const projectSync = await readFile(join(rootDir, ".github", "leanos", "project-sync.yaml"), "utf8");
+  const syncState = await readFile(join(rootDir, ".github", "leanos", "sync-state.yaml"), "utf8");
+  const labels = await readFile(join(rootDir, ".github", "leanos", "labels.yaml"), "utf8");
+  const githubReadme = await readFile(join(rootDir, ".github", "leanos", "README.md"), "utf8");
+  const githubRole = await readFile(join(rootDir, "operations", "devops", "roles", "github-devops.role.md"), "utf8");
+  const githubSkill = await readFile(join(rootDir, "operations", "devops", "skills", "configure-github-project.skill.md"), "utf8");
+  const githubPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "configure-github-project.playbook.md"), "utf8");
+  const settings = JSON.parse(settingsExample);
+  const projectSyncYaml = parse(projectSync);
+
+  assert(envExample.includes("LEANOS_GITHUB_TOKEN="), ".env.example should expose LEANOS_GITHUB_TOKEN placeholder");
+  assert(envExample.includes("Optional. LeanOS does not need this for /start-leanos"), ".env.example should explain that GitHub token setup is optional");
+  assert(envExample.includes("Do not commit real tokens"), ".env.example should warn against committing tokens");
+  assert(envLocal.includes("Local only. Do not commit."), ".env.local should be clearly local-only");
+  assert(envLocal.includes("LEANOS_GITHUB_TOKEN="), ".env.local should include LEANOS_GITHUB_TOKEN placeholder");
+  assert(envLocal.includes("GITHUB_TOKEN="), ".env.local should include GITHUB_TOKEN placeholder");
+  assert(gitignore.includes(".env"), ".gitignore should ignore .env");
+  assert(gitignore.includes(".env.local"), ".gitignore should ignore .env.local");
+  assert(gitignore.includes(".env.*.local"), ".gitignore should ignore local env variants");
+  assert(gitignore.includes(".vercel/"), ".gitignore should ignore Vercel local metadata");
+  assert.equal(settings.security.store_token_in_workspace, false, "GitHub settings example should forbid token storage");
+  assert.equal(settingsExample.includes('"token":'), false, "GitHub settings example should not include a token value field");
+  assert(settingsExample.includes("env:LEANOS_GITHUB_TOKEN"), "GitHub settings example should document LEANOS_GITHUB_TOKEN as a token source");
+  assert.equal(projectSyncYaml.github.status, "pending_user_token", "GitHub project sync should wait for a user token when management is prepared");
+  assert.equal(projectSyncYaml.github.project_sync.status, "pending_configuration", "GitHub project sync should record pending configuration when management is prepared");
+  assert.equal(projectSyncYaml.github.project_sync.enabled, false, "GitHub project sync should start disabled");
+  assert.equal(projectSyncYaml.github.rules.never_store_token, true, "GitHub project sync should forbid token storage");
+  assert.equal(projectSyncYaml.github.rules.dry_run_before_remote_write, true, "GitHub project sync should require dry-run before remote writes");
+  assert.equal(projectSyncYaml.github.rules.require_confirmation_before_api_write, true, "GitHub project sync should require confirmation before API writes");
+  assert(syncState.includes("must never store tokens"), "GitHub sync state should warn against storing tokens");
+  assert(labels.includes("name: epic"), "GitHub labels should include epic");
+  assert(labels.includes("name: sub-issue"), "GitHub labels should include sub-issue");
+  assert(githubReadme.includes("Route GitHub setup through `../../operations/devops/README.md`"), "GitHub README should route setup through DevOps when active");
+  assert(githubReadme.includes("Vercel readiness is guidance-only"), "GitHub README should document Vercel readiness without execution");
+  assert(githubRole.includes("Guide safe GitHub repository, Project, labels and sync configuration"), "GitHub DevOps role should describe GitHub setup ownership");
+  assert(githubSkill.includes("without storing secrets"), "GitHub setup skill should protect secrets");
+  assert(githubPlaybook.includes("Confirm token source without asking the user to paste secrets into files"), "GitHub setup playbook should protect token handling");
+  assert(githubPlaybook.includes("Propose the project-sync update before writing"), "GitHub setup playbook should require propose-first updates");
+  assert(githubPlaybook.includes("do not create `.vercel/`, run `vercel link` or add `vercel.json`"), "GitHub setup playbook should keep Vercel readiness guidance-only");
+}
+
 async function assertInitCommandRules(rootDir) {
   const startCommand = await readFile(join(rootDir, ".leanos", "commands", "start-leanos.md"), "utf8");
-  const requiredSections = ["## Purpose", "## Load First", "## What To Do", "## Allowed Updates", "## Forbidden Updates", "## Confirmation Rule", "## Output"];
+  const requiredSections = [
+    "## Purpose",
+    "## Load First",
+    "## What To Do",
+    "## Required Founder Interview",
+    "## Optional Founder Interview",
+    "## Response Mapping",
+    "## Fact and Uncertainty Rules",
+    "## Write Protocol",
+    "## Allowed Updates",
+    "## Forbidden Updates",
+    "## Confirmation Rule",
+    "## Output"
+  ];
   const forbiddenTargets = ["`roles/`", "`skills/`", "`playbooks/`", "`workflows/`", "`../../ai-standard/`", "`../commands/`", "`../../.github/`"];
   const strategyTargets = [
     "../../strategy/company/profile.md",
@@ -458,6 +637,12 @@ async function assertInitCommandRules(rootDir) {
   }
 
   assert(startCommand.includes("# /start-leanos"), "start-leanos.md should document the primary command");
+  assert(startCommand.includes("Ask only what is missing"), "start-leanos.md should avoid asking already-known founder questions");
+  assert(startCommand.includes("What is the riskiest assumption right now?"), "start-leanos.md should include validation-oriented founder interview questions");
+  assert(startCommand.includes("Map founder responses to source-of-truth files only when the matching area is active"), "start-leanos.md should map answers only to active areas");
+  assert(startCommand.includes("Do not turn assumptions into source-of-truth facts"), "start-leanos.md should protect facts from assumptions");
+  assert(startCommand.includes("Put unknowns into `## Open Questions`"), "start-leanos.md should preserve unknowns as open questions");
+  assert(startCommand.includes("Before writing, show a proposed change plan"), "start-leanos.md should require a pre-write change plan");
   assert(startCommand.includes("Never write files during init until the user explicitly confirms"), "start-leanos.md should require explicit confirmation before writes");
   assert(startCommand.includes("Operations or Growth area files unless the user explicitly asks after init"), "start-leanos.md should keep Operations/Growth out of init scope");
   assert.equal(await exists(join(rootDir, ".leanos", "commands", "init-leanos.md")), false, "init-leanos.md should not be generated as an internal command");
@@ -488,6 +673,7 @@ async function assertOperationalPlaybookSections(rootDir) {
     "operations/engineering/playbooks/test-planning.playbook.md",
     "operations/devops/playbooks/setup-ci-cd.playbook.md",
     "operations/devops/playbooks/plan-deployment.playbook.md",
+    "operations/devops/playbooks/configure-github-project.playbook.md",
     "operations/devops/playbooks/configure-environments.playbook.md",
     "operations/devops/playbooks/define-observability.playbook.md",
     "operations/devops/playbooks/release-operations.playbook.md",

@@ -2,12 +2,13 @@
 
 ## Purpose
 
-Own delivery infrastructure, environments, deployment and observability notes.
+Own delivery infrastructure, environments, deployment, GitHub workflow setup and observability notes.
 
 ## When to Use
 
 - plan deployment
 - configure CI
+- configure GitHub Projects
 - document environments
 - define observability
 
@@ -24,6 +25,7 @@ Own delivery infrastructure, environments, deployment and observability notes.
 
 ## Common Paths
 
+- GitHub setup request: role `roles/github-devops.role.md` -> skill `skills/configure-github-project.skill.md` -> playbook `playbooks/configure-github-project.playbook.md`.
 - Deployment request: role `roles/devops-engineer.role.md` -> skill `skills/plan-deployment.skill.md` -> playbook `playbooks/plan-deployment.playbook.md`.
 - CI request: role `roles/devops-engineer.role.md` -> skill `skills/setup-ci.skill.md` -> playbook `playbooks/setup-ci-cd.playbook.md`.
 - Observability request: role `roles/devops-engineer.role.md` -> skill `skills/define-observability.skill.md` -> playbook `playbooks/define-observability.playbook.md`.

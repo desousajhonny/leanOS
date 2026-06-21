@@ -3,6 +3,15 @@ import { dirname, isAbsolute, relative, resolve, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 export const exampleAnswers = {
+  workspaceMode: "new-product-workspace",
+  detectedProject: {
+    hasGit: false,
+    hasPackageJson: false,
+    hasSourceDir: false,
+    hasGithubDir: false,
+    hasVercelConfig: false
+  },
+  prepareGithubManagement: true,
   companyName: "LeanOS Example Company",
   productName: "Example AI Product",
   productStatus: "new-product",

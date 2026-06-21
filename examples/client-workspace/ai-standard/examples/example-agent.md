@@ -117,7 +117,7 @@ Go to:
 
 `operations/engineering/README.md`
 
-If the user asks about deployment, environments, CI, observability or operations runbooks:
+If the user asks about deployment, environments, CI, observability, GitHub Projects or operations runbooks:
 
 Go to:
 

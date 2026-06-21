@@ -2,11 +2,12 @@
 
 ## Purpose
 
-Prepare release, environment and observability practices.
+Prepare release, environment, GitHub workflow and observability practices.
 
 ## Use When
 
 - deployment or CI is involved
+- GitHub Project setup is needed
 - runtime operations need documentation
 - environment risk exists
 
@@ -16,17 +17,21 @@ Read:
 
 - `../README.md`
 - `../area.yaml`
+- `../../../.github/leanos/project-sync.yaml`
+- `../../../.github/leanos/github-settings.example.json`
 
 ## Skills
 
 - `../skills/setup-ci.skill.md`
 - `../skills/plan-deployment.skill.md`
+- `../skills/configure-github-project.skill.md`
 - `../skills/define-observability.skill.md`
 
 ## Playbooks
 
 - `../playbooks/setup-ci-cd.playbook.md`
 - `../playbooks/plan-deployment.playbook.md`
+- `../playbooks/configure-github-project.playbook.md`
 - `../playbooks/configure-environments.playbook.md`
 - `../playbooks/define-observability.playbook.md`
 - `../playbooks/release-operations.playbook.md`

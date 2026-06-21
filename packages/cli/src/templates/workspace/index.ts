@@ -29,7 +29,7 @@ export function createWorkspaceFiles(answers: WorkspaceAnswers): FileEntry[] {
     ...globalWorkflowFiles(activeAreas),
     ...commandFiles(activeAreas),
     ...contextFiles(answers, activeAreas, activeRoots),
-    ...githubFiles(activeAreas),
+    ...githubFiles(answers, activeAreas),
     ...vscodeIntegrationFiles()
   ];
 }

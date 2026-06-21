@@ -42,6 +42,7 @@ export async function generateWorkspace(rootDir: string, answers: WorkspaceAnswe
       "operations/",
       "growth/",
       ".github/",
+      ".github/leanos",
       ".github/agents",
       ".github/prompts",
       ".leanos/vscode"

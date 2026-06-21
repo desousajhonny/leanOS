@@ -16,6 +16,7 @@ Use when a selected role points to a playbook.
 
 - `setup-ci-cd.playbook.md`
 - `plan-deployment.playbook.md`
+- `configure-github-project.playbook.md`
 - `configure-environments.playbook.md`
 - `define-observability.playbook.md`
 - `release-operations.playbook.md`

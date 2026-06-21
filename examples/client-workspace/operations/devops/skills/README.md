@@ -16,6 +16,7 @@ Use when a selected role points to a skill.
 
 - `setup-ci.skill.md`
 - `plan-deployment.skill.md`
+- `configure-github-project.skill.md`
 - `define-observability.skill.md`
 
 ## Related Folders

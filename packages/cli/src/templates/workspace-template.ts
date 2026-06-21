@@ -1,11 +1,13 @@
 export type {
   Department,
+  DetectedProject,
   OperatingMode,
   ProductStage,
   ProductStatus,
   ProductType,
   RootDepartment,
   Subarea,
-  WorkspaceAnswers
+  WorkspaceAnswers,
+  WorkspaceMode
 } from "./workspace/types.js";
 export { createWorkspaceFiles, getAllSubareas } from "./workspace/index.js";

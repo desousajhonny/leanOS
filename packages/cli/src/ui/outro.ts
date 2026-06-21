@@ -42,7 +42,9 @@ export function printCreatedWorkspaceOutro(answers: WorkspaceAnswers, result: Wo
       ? "LeanOS workspace updated"
       : result.mode === "overwrite"
         ? "LeanOS workspace regenerated"
-        : "LeanOS workspace created";
+        : answers.workspaceMode === "existing-product-repo"
+          ? "LeanOS installed as operating layer"
+          : "LeanOS workspace created";
   const fileModeNote =
     result.mode === "missing-only"
       ? "Some files already existed and were preserved. LeanOS created only the missing files."
@@ -55,9 +57,11 @@ export function printCreatedWorkspaceOutro(answers: WorkspaceAnswers, result: Wo
     "",
     keyValue("Company", answers.companyName),
     keyValue("Product", answers.productName),
+    keyValue("Workspace mode", answers.workspaceMode),
     keyValue("Type", productTypeLabels[answers.productType]),
     keyValue("Stage", stageLabels[answers.stage]),
     keyValue("Mode", modeLabels[answers.mode]),
+    keyValue("GitHub management", answers.prepareGithubManagement ? "Prepared" : "Not now"),
     keyValue("Areas", answers.subareas.join(", ")),
     "",
     ui.title("Files"),
@@ -83,6 +87,13 @@ export function printCreatedWorkspaceOutro(answers: WorkspaceAnswers, result: Wo
     "",
     stepLabel(5, 5, "Next actions"),
     "",
+    answers.workspaceMode === "existing-product-repo"
+      ? "Existing product files were preserved unless you explicitly chose overwrite. Start by capturing product and codebase context."
+      : "Define strategy and MVP before bootstrapping product app/code. Initial setup does not create source code.",
+    answers.prepareGithubManagement
+      ? `GitHub management was prepared. Add a token to ${ui.path(".env.local")} only when you run a future GitHub setup/sync flow.`
+      : `GitHub management was not requested. ${ui.path(".env.example")} documents optional future token variables.`,
+    "",
     "To use LeanOS in VS Code:",
     `1. Open this folder in ${ui.title("VS Code")}`,
     "2. Open Copilot Chat",
@@ -97,6 +108,7 @@ export function printCreatedWorkspaceOutro(answers: WorkspaceAnswers, result: Wo
     bullet('"Turn this idea into an MVP."'),
     bullet('"Create a roadmap for the first validation cycle."'),
     bullet('"Check if my MVP is coherent."'),
+    answers.workspaceMode === "existing-product-repo" ? bullet('"Summarize this existing product and codebase."') : bullet('"Plan the future /bootstrap product workflow."'),
     bullet('"Create a new UX research role using LeanOS standards."')
   ].join("\n");
 
