@@ -210,6 +210,7 @@ async function validateWorkspaceFiles() {
   await assertRootAgentMutationRules(rootDir);
   await assertOperationalPlaybookSections(rootDir);
   await assertSourceScaffoldSections(rootDir);
+  await assertValidationLoopSections(rootDir);
 
   for (const forbiddenPath of [
     ".leanos/departments",
@@ -715,6 +716,33 @@ async function assertSourceScaffoldSections(rootDir) {
       assert(content.includes(section), `${scaffoldFile} should include ${section}`);
     }
   }
+}
+
+async function assertValidationLoopSections(rootDir) {
+  const assumptions = await readFile(join(rootDir, "strategy", "validation", "assumptions.md"), "utf8");
+  const riskiestAssumptions = await readFile(join(rootDir, "strategy", "validation", "riskiest-assumptions.md"), "utf8");
+  const experiments = await readFile(join(rootDir, "strategy", "validation", "experiments.md"), "utf8");
+  const successMetrics = await readFile(join(rootDir, "strategy", "validation", "success-metrics.md"), "utf8");
+  const learningLog = await readFile(join(rootDir, "strategy", "validation", "learning-log.md"), "utf8");
+  const validationPlaybook = await readFile(join(rootDir, "strategy", "validation", "playbooks", "mvp-validation.playbook.md"), "utf8");
+  const startCommand = await readFile(join(rootDir, ".leanos", "commands", "start-leanos.md"), "utf8");
+  const createRoadmapCommand = await readFile(join(rootDir, ".leanos", "commands", "create-roadmap.md"), "utf8");
+
+  assert(assumptions.includes("assumption -> experiment -> evidence -> decision -> roadmap impact"), "assumptions.md should state the validation loop");
+  assert(assumptions.includes("## Assumption Types"), "assumptions.md should explain assumption types");
+  assert(assumptions.includes("Evidence Status"), "assumptions.md should track evidence status");
+  assert(assumptions.includes("## Entry Template"), "assumptions.md should provide an entry template");
+  assert(assumptions.includes("## Promotion Checklist"), "assumptions.md should include a promotion checklist");
+  assert(riskiestAssumptions.includes("Importance"), "riskiest-assumptions.md should define prioritization criteria");
+  assert(experiments.includes("Every experiment must link to an assumption"), "experiments.md should link experiments to assumptions");
+  assert(successMetrics.includes("A signal is not a decision"), "success-metrics.md should separate signals from decisions");
+  assert(learningLog.includes("Assumption | Experiment | Evidence | Insight | Decision | Roadmap Impact"), "learning-log.md should capture the full validation chain");
+  assert(learningLog.includes("Do not record an assumption as validated learning without evidence"), "learning-log.md should prevent assumptions becoming learning");
+  assert(validationPlaybook.includes("Run the validation loop from assumption to roadmap impact"), "mvp-validation playbook should state the validation loop purpose");
+  assert(validationPlaybook.includes("Separate evidence from insight"), "mvp-validation playbook should separate evidence from insight");
+  assert(validationPlaybook.includes("Update `../learning-log.md` only when evidence supports learning"), "mvp-validation playbook should protect learning-log quality");
+  assert(startCommand.includes("## Validation Evidence Rules"), "start-leanos should include validation evidence rules");
+  assert(createRoadmapCommand.includes("Do not treat assumptions as validated learning"), "roadmap command should not treat assumptions as validated learning");
 }
 
 async function validateWriterSkipsExistingFiles() {

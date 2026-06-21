@@ -90,12 +90,12 @@ Base para o fluxo Roadmap -> GitHub Project -> Epic -> Sub-issues -> Implementat
 
 Objetivo: transformar validacao em loop operacional, nao apenas arquivos soltos.
 
-- [ ] Definir ciclo: hipotese -> experimento -> evidencia -> decisao -> roadmap.
-- [ ] Atualizar playbook de validation para seguir esse ciclo.
-- [ ] Garantir que `learning-log.md` registre aprendizado validado.
-- [ ] Garantir que decisoes relevantes sejam refletidas em roadmap ou backlog.
-- [ ] Criar criterio para diferenciar insight, evidencia e decisao.
-- [ ] Atualizar comandos para nao tratar suposicoes como fatos.
+- [x] Definir ciclo: hipotese -> experimento -> evidencia -> decisao -> roadmap.
+- [x] Atualizar playbook de validation para seguir esse ciclo.
+- [x] Garantir que `learning-log.md` registre aprendizado validado.
+- [x] Garantir que decisoes relevantes sejam refletidas em roadmap ou backlog.
+- [x] Criar criterio para diferenciar insight, evidencia e decisao.
+- [x] Atualizar comandos para nao tratar suposicoes como fatos.
 
 ## 4. Preparar camada GitHub API
 

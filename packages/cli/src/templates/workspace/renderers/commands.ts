@@ -96,6 +96,15 @@ Roadmap files may be reviewed as next-step targets, but do not invent roadmap co
 - Keep weak or unvalidated claims visibly tentative.
 - Prefer \`TBD\` over invented specificity.
 
+## Validation Evidence Rules
+
+- Assumption: something believed but not yet proven.
+- Evidence: something observed from users, behavior, data or shipped product.
+- Insight: interpretation of evidence.
+- Decision: a committed change in strategy, MVP, roadmap or backlog.
+- Roadmap impact: what changes because of the decision.
+- Do not record validated learning without evidence.
+
 ## Write Protocol
 
 Before writing, show a proposed change plan with:
@@ -250,6 +259,13 @@ Read:
 3. Activate the role named by the area README.
 4. Load only the required skills and playbook.
 5. Produce the requested output.
+
+## Validation Rules
+
+- Separate assumption, evidence, insight, decision and roadmap impact.
+- Do not treat assumptions as validated learning.
+- If the request affects roadmap, MVP or issue scope, identify whether evidence exists.
+- If evidence is missing, propose a validation step before committing roadmap or implementation changes.
 
 ## Active Areas
 

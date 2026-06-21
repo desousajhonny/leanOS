@@ -75,6 +75,15 @@ Roadmap files may be reviewed as next-step targets, but do not invent roadmap co
 - Keep weak or unvalidated claims visibly tentative.
 - Prefer `TBD` over invented specificity.
 
+## Validation Evidence Rules
+
+- Assumption: something believed but not yet proven.
+- Evidence: something observed from users, behavior, data or shipped product.
+- Insight: interpretation of evidence.
+- Decision: a committed change in strategy, MVP, roadmap or backlog.
+- Roadmap impact: what changes because of the decision.
+- Do not record validated learning without evidence.
+
 ## Write Protocol
 
 Before writing, show a proposed change plan with:

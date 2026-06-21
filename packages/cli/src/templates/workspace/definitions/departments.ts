@@ -1,5 +1,5 @@
 import type { RootDepartmentDefinition } from "../types.js";
-import { checklist, companyProfile, decisionLog, folderReadme, learningLog, productBrief, stateDraft, titledDraft } from "../content/shared.js";
+import { assumptionsRegister, checklist, companyProfile, decisionLog, folderReadme, learningLog, productBrief, riskiestAssumptions, stateDraft, titledDraft, validationExperiments, validationSuccessMetrics } from "../content/shared.js";
 
 export const rootDepartments: RootDepartmentDefinition[] = [
   {
@@ -154,11 +154,11 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         whenToUse: ["define assumptions", "plan validation", "write interview scripts", "measure success", "capture learning"],
         sourceOfTruth: ["assumptions.md", "riskiest-assumptions.md", "experiments.md", "interview-script.md", "success-metrics.md", "learning-log.md"],
         files: [
-          { path: "assumptions.md", content: () => titledDraft("Assumptions", "List assumptions behind customer, problem, value and MVP.") },
-          { path: "riskiest-assumptions.md", content: () => titledDraft("Riskiest Assumptions", "Prioritize assumptions that could invalidate the product.") },
-          { path: "experiments.md", content: () => titledDraft("Experiments", "Plan validation experiments.") },
+          { path: "assumptions.md", content: () => assumptionsRegister() },
+          { path: "riskiest-assumptions.md", content: () => riskiestAssumptions() },
+          { path: "experiments.md", content: () => validationExperiments() },
           { path: "interview-script.md", content: () => titledDraft("Interview Script", "Prepare customer discovery questions.") },
-          { path: "success-metrics.md", content: () => titledDraft("Success Metrics", "Define validation signals.") },
+          { path: "success-metrics.md", content: () => validationSuccessMetrics() },
           { path: "learning-log.md", content: () => learningLog() }
         ],
         roles: [
@@ -178,7 +178,15 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           { slug: "define-success-metrics", title: "Define Success Metrics", purpose: "Define signals that indicate validation progress." }
         ],
         playbooks: [
-          { slug: "mvp-validation", title: "MVP Validation", purpose: "Plan and run the first validation cycle.", steps: ["List assumptions", "Prioritize risks", "Choose experiment", "Define metrics", "Capture learning"] }
+          {
+            slug: "mvp-validation",
+            title: "MVP Validation",
+            purpose: "Run the validation loop from assumption to roadmap impact.",
+            inputs: ["Product strategy", "MVP scope", "Assumption register", "Riskiest assumptions", "Experiment plan", "Success metrics"],
+            steps: ["Identify the assumption being tested", "Classify the risk and why it matters", "Design the smallest experiment that can produce evidence", "Define success and failure signals before running the experiment", "Collect evidence without interpreting it as fact too early", "Separate evidence from insight", "Make or defer a decision", "Update roadmap or backlog only when the decision requires it"],
+            outputs: ["Validated learning summary", "Evidence vs insight separation", "Decision or explicit no-decision", "Roadmap or backlog impact", "Next validation action"],
+            filesToUpdate: ["Update `../assumptions.md` when assumptions are added or reclassified.", "Update `../riskiest-assumptions.md` when priority changes.", "Update `../experiments.md` when an experiment is planned or completed.", "Update `../success-metrics.md` when signals are defined or changed.", "Update `../learning-log.md` only when evidence supports learning.", "Propose changes to `../../roadmap/roadmap.md` or `../../roadmap/backlog.md` only after a decision is confirmed."]
+          }
         ],
         commonPaths: [
           "Validation request: role `roles/validation-researcher.role.md` -> skill `skills/define-assumptions.skill.md` -> playbook `playbooks/mvp-validation.playbook.md`."

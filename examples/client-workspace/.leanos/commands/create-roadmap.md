@@ -21,6 +21,13 @@ Read:
 4. Load only the required skills and playbook.
 5. Produce the requested output.
 
+## Validation Rules
+
+- Separate assumption, evidence, insight, decision and roadmap impact.
+- Do not treat assumptions as validated learning.
+- If the request affects roadmap, MVP or issue scope, identify whether evidence exists.
+- If evidence is missing, propose a validation step before committing roadmap or implementation changes.
+
 ## Active Areas
 
 - strategy.company
