@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse } from "yaml";
-import { exampleAnswers } from "./generate-client-workspace.mjs";
+import { createTreeMarkdown, exampleAnswers } from "./generate-client-workspace.mjs";
 import { writeWorkspaceFiles } from "../dist/generators/file-writer.js";
 import { generateWorkspace } from "../dist/generators/workspace-generator.js";
 import { createWorkspaceFiles } from "../dist/templates/workspace-template.js";
@@ -180,6 +180,13 @@ async function validateClientWorkspaceFixture() {
   }
 
   const expectedFiles = createWorkspaceFiles(exampleAnswers);
+  const actualTreeContent = await readFile(clientWorkspaceTreePath, "utf8");
+  const expectedTreeContent = ensureTrailingNewline(createTreeMarkdown(expectedFiles));
+
+  if (actualTreeContent !== expectedTreeContent) {
+    failOutOfDate(["Changed fixture tree: examples/client-workspace-tree.md"]);
+  }
+
   const expectedPaths = expectedFiles.map((file) => file.path).sort();
   const actualPaths = (await listFiles(clientWorkspaceFixtureDir)).sort();
 

@@ -1,0 +1,131 @@
+import type { FileEntry } from "../../generators/file-writer.js";
+
+export type { FileEntry };
+
+export type ProductStatus = "new-product" | "existing-product" | "codebase-without-strategy";
+export type ProductType =
+  | "b2b-saas"
+  | "b2c-app"
+  | "ai-agent-product"
+  | "developer-tool"
+  | "marketplace"
+  | "internal-tool"
+  | "api-product"
+  | "not-sure";
+export type ProductStage =
+  | "idea"
+  | "researching-problem"
+  | "designing-mvp"
+  | "building-mvp"
+  | "mvp-launched"
+  | "existing-product-with-users"
+  | "scaling";
+export type OperatingMode =
+  | "solo-founder"
+  | "founder-plus-ai-agents"
+  | "small-team"
+  | "existing-startup-team"
+  | "internal-innovation-team";
+export type RootDepartment = "strategy" | "operations" | "growth";
+export type Department = RootDepartment;
+export type Subarea =
+  | "strategy.company"
+  | "strategy.product"
+  | "strategy.roadmap"
+  | "strategy.validation"
+  | "operations.core"
+  | "operations.design"
+  | "operations.engineering"
+  | "operations.devops"
+  | "operations.security"
+  | "growth.customer-experience"
+  | "growth.marketing"
+  | "growth.finance";
+
+export type WorkspaceAnswers = {
+  companyName: string;
+  productName: string;
+  productStatus: ProductStatus;
+  productType: ProductType;
+  description: string;
+  targetUser: string;
+  stage: ProductStage;
+  mode: OperatingMode;
+  subareas: Subarea[];
+};
+
+export type RootDepartmentDefinition = {
+  key: RootDepartment;
+  name: string;
+  purpose: string;
+  requestTypes: string;
+  areas: AreaDefinition[];
+  workflows: DepartmentWorkflowDefinition[];
+};
+
+export type AreaDefinition = {
+  key: Subarea;
+  root: RootDepartment;
+  slug: string;
+  name: string;
+  path: string;
+  routingKey: string;
+  requestTypes: string;
+  purpose: string;
+  whenToUse: string[];
+  sourceOfTruth: string[];
+  files: AreaFileDefinition[];
+  roles: RoleDefinition[];
+  skills: SkillDefinition[];
+  playbooks: PlaybookDefinition[];
+  commonPaths: string[];
+};
+
+export type AreaFileDefinition = {
+  path: string;
+  content: (answers: WorkspaceAnswers) => string;
+};
+
+export type RoleDefinition = {
+  slug: string;
+  title: string;
+  purpose: string;
+  useWhen: string[];
+  beforeActing: string[];
+  skills: string[];
+  playbooks: string[];
+};
+
+export type SkillDefinition = {
+  slug: string;
+  title: string;
+  purpose: string;
+};
+
+export type PlaybookDefinition = {
+  slug: string;
+  title: string;
+  purpose: string;
+  steps: string[];
+};
+
+export type WorkflowDefinition = {
+  slug: string;
+  purpose: string;
+  requiredSubareas: Subarea[];
+  steps: string[];
+};
+
+export type DepartmentWorkflowDefinition = {
+  slug: string;
+  purpose: string;
+  requiredAreas: string[];
+  steps: string[];
+};
+
+export type CommandDefinition = {
+  slug: string;
+  purpose: string;
+  area?: Subarea;
+  assetCreation?: boolean;
+};

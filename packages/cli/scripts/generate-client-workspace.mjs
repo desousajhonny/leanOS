@@ -64,7 +64,7 @@ export async function generateClientWorkspace() {
   };
 }
 
-function createTreeMarkdown(files) {
+export function createTreeMarkdown(files) {
   const root = createTreeNode();
 
   for (const file of files) {
