@@ -398,7 +398,6 @@ client-workspace/
 |   |-- AGENT.md
 |   |-- department.yaml
 |   `-- README.md
-|-- .env.example
 |-- .env.local
 |-- .gitignore
 |-- AGENT.md

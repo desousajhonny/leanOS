@@ -100,7 +100,6 @@ async function validateWorkspaceFiles() {
 
   for (const expectedPath of [
     "AGENT.md",
-    ".env.example",
     ".env.local",
     ".gitignore",
     "leanos.yaml",
@@ -169,7 +168,6 @@ async function validateWorkspaceFiles() {
   assert.equal(result.skippedPaths.length, 0, "Fresh generation should not skip files");
 
   await assertExists(join(rootDir, "AGENT.md"));
-  await assertExists(join(rootDir, ".env.example"));
   await assertExists(join(rootDir, ".env.local"));
   await assertExists(join(rootDir, ".gitignore"));
   await assertExists(join(rootDir, "leanos.yaml"));
@@ -266,7 +264,6 @@ async function validateWorkspaceFiles() {
 async function validateClientWorkspaceFixture() {
   const requiredPaths = [
     "AGENT.md",
-    ".env.example",
     ".env.local",
     ".gitignore",
     "leanos.yaml",
@@ -555,7 +552,6 @@ async function assertVsCodeIntegration(rootDir) {
 }
 
 async function assertGitHubReadiness(rootDir) {
-  const envExample = await readFile(join(rootDir, ".env.example"), "utf8");
   const envLocal = await readFile(join(rootDir, ".env.local"), "utf8");
   const gitignore = await readFile(join(rootDir, ".gitignore"), "utf8");
   const settingsExample = await readFile(join(rootDir, ".github", "leanos", "github-settings.example.json"), "utf8");
@@ -569,9 +565,6 @@ async function assertGitHubReadiness(rootDir) {
   const settings = JSON.parse(settingsExample);
   const projectSyncYaml = parse(projectSync);
 
-  assert(envExample.includes("LEANOS_GITHUB_TOKEN="), ".env.example should expose LEANOS_GITHUB_TOKEN placeholder");
-  assert(envExample.includes("Optional. LeanOS does not need this for /start-leanos"), ".env.example should explain that GitHub token setup is optional");
-  assert(envExample.includes("Do not commit real tokens"), ".env.example should warn against committing tokens");
   assert(envLocal.includes("Local only. Do not commit."), ".env.local should be clearly local-only");
   assert(envLocal.includes("LEANOS_GITHUB_TOKEN="), ".env.local should include LEANOS_GITHUB_TOKEN placeholder");
   assert(envLocal.includes("GITHUB_TOKEN="), ".env.local should include GITHUB_TOKEN placeholder");

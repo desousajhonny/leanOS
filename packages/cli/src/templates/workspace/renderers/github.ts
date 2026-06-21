@@ -14,7 +14,6 @@ export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefiniti
     : "Operations DevOps is not active in this workspace. Ask before configuring GitHub Project sync.";
 
   return [
-    { path: ".env.example", content: envExample() },
     ...(answers.prepareGithubManagement ? [{ path: ".env.local", content: envLocal() }] : []),
     { path: ".gitignore", content: workspaceGitignore() },
     { path: ".github/copilot-instructions.md", content: "# LeanOS Instructions\n\nStart from `../AGENT.md` and follow the LeanOS Navigation Chain before implementing product work.\n" },
@@ -62,22 +61,6 @@ body:
       required: true
 `
   };
-}
-
-function envExample(): string {
-  return `# LeanOS environment variables
-# Copy this file to .env for local use.
-# Optional. LeanOS does not need this for /start-leanos.
-# Use this only when configuring future GitHub sync capabilities.
-# Do not commit real tokens or secrets.
-
-# GitHub token used by future LeanOS GitHub capabilities.
-# Prefer a fine-grained token with the minimum required permissions.
-LEANOS_GITHUB_TOKEN=
-
-# Optional fallback used by some GitHub tooling.
-GITHUB_TOKEN=
-`;
 }
 
 function envLocal(): string {

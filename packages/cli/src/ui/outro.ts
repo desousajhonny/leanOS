@@ -92,7 +92,7 @@ export function printCreatedWorkspaceOutro(answers: WorkspaceAnswers, result: Wo
       : "Define strategy and MVP before bootstrapping product app/code. Initial setup does not create source code.",
     answers.prepareGithubManagement
       ? `GitHub management was prepared. Add a token to ${ui.path(".env.local")} only when you run a future GitHub setup/sync flow.`
-      : `GitHub management was not requested. ${ui.path(".env.example")} documents optional future token variables.`,
+      : `GitHub management was not requested. ${ui.path(".github/leanos/github-settings.example.json")} documents optional future token sources.`,
     "",
     "To use LeanOS in VS Code:",
     `1. Open this folder in ${ui.title("VS Code")}`,
