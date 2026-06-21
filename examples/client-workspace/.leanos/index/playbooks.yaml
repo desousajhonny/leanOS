@@ -20,6 +20,9 @@ playbooks:
   - key: mvp-ux-flow
     area: operations.design
     path: ../../operations/design/playbooks/mvp-ux-flow.playbook.md
+  - key: branch-from-issue
+    area: operations.engineering
+    path: ../../operations/engineering/playbooks/branch-from-issue.playbook.md
   - key: issue-to-pr
     area: operations.engineering
     path: ../../operations/engineering/playbooks/issue-to-pr.playbook.md

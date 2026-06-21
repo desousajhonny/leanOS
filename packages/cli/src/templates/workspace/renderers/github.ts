@@ -18,6 +18,8 @@ export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefiniti
     { path: ".gitignore", content: workspaceGitignore() },
     { path: ".github/copilot-instructions.md", content: "# LeanOS Instructions\n\nStart from `../AGENT.md` and follow the LeanOS Navigation Chain before implementing product work.\n" },
     { path: ".github/PULL_REQUEST_TEMPLATE.md", content: pullRequestTemplate() },
+    { path: ".github/ISSUE_TEMPLATE/epic.yml", content: epicIssueTemplate() },
+    { path: ".github/ISSUE_TEMPLATE/sub-issue.yml", content: subIssueTemplate() },
     ...["feature", "bug", "experiment", "validation", "research", "task"].map((name) => issueTemplate(`${name}.yml`, toTitle(name), `LeanOS ${name} issue.`)),
     { path: ".github/workflows/pr-validation.yml", content: prValidationWorkflow() },
     { path: ".github/leanos/README.md", content: folderReadme("GitHub LeanOS", "GitHub support files for LeanOS workflow conventions.", "Use when configuring labels, GitHub Projects sync, branch rules, PR validation guidance or deploy readiness.", "project-sync.yaml", ["github-settings.example.json", "project-sync.yaml", "sync-state.yaml", "labels.yaml", "branch-rules.md", "pr-validation-rules.md"], ["../ISSUE_TEMPLATE/", "../../operations/devops/", "../../operations/engineering/"], `${devopsNote}\n\n${engineeringNote}\n\nVercel readiness is guidance-only in this scaffold. Vercel can detect frameworks automatically after product code exists; create \`vercel.json\` only when a real app/framework needs overrides.`) },
@@ -25,9 +27,99 @@ export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefiniti
     { path: ".github/leanos/labels.yaml", content: labelsYaml() },
     { path: ".github/leanos/project-sync.yaml", content: projectSyncYaml(answers) },
     { path: ".github/leanos/sync-state.yaml", content: syncStateYaml() },
-    { path: ".github/leanos/branch-rules.md", content: "# Branch Rules\n\n- Use focused branches tied to a roadmap item or issue.\n- Keep branch scope aligned with MVP and validation goals.\n" },
-    { path: ".github/leanos/pr-validation-rules.md", content: "# PR Validation Rules\n\n- Link the PR to a LeanOS issue or task.\n- Check MVP scope and acceptance criteria.\n- Confirm tests or manual validation.\n- Capture learning when relevant.\n" }
+    { path: ".github/leanos/branch-rules.md", content: branchRules() },
+    { path: ".github/leanos/pr-validation-rules.md", content: prValidationRules() }
   ];
+}
+
+function epicIssueTemplate(): string {
+  return `name: Epic
+description: Roadmap-level LeanOS epic.
+title: "[Epic]: "
+labels: ["leanos", "epic"]
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What business, user or validation outcome should this epic create?
+    validations:
+      required: true
+  - type: textarea
+    id: strategic-context
+    attributes:
+      label: Strategic context
+      description: Product, ICP, problem, value proposition and validation assumption.
+    validations:
+      required: true
+  - type: textarea
+    id: mvp-linkage
+    attributes:
+      label: MVP and roadmap linkage
+      description: MVP scope, non-goals, acceptance criteria, roadmap item and milestone.
+    validations:
+      required: true
+  - type: textarea
+    id: cross-functional-criteria
+    attributes:
+      label: Product / Design / Engineering / Security criteria
+      description: Include design only when UX is involved; include security only when data, auth, privacy, abuse or compliance is involved.
+    validations:
+      required: true
+  - type: textarea
+    id: subissue-breakdown
+    attributes:
+      label: Sub-issue breakdown
+      description: Expected sub-issues, dependencies and open questions.
+`;
+}
+
+function subIssueTemplate(): string {
+  return `name: Sub-issue
+description: Implementation-ready child issue derived from an epic.
+title: "[Sub-issue]: "
+labels: ["leanos", "sub-issue"]
+body:
+  - type: input
+    id: parent-epic
+    attributes:
+      label: Parent epic
+      description: Link the parent epic issue number.
+      placeholder: "#654"
+    validations:
+      required: true
+  - type: textarea
+    id: purpose-scope
+    attributes:
+      label: Purpose and scope
+      description: Why this issue exists, what is included and what is explicitly excluded.
+    validations:
+      required: true
+  - type: textarea
+    id: product-criteria
+    attributes:
+      label: Product criteria
+      description: User value, acceptance criteria and success or learning signal.
+    validations:
+      required: true
+  - type: textarea
+    id: design-criteria
+    attributes:
+      label: Design criteria
+      description: Required only when user-facing UX, screens, states, copy or interactions are involved. Otherwise say not applicable.
+  - type: textarea
+    id: engineering-criteria
+    attributes:
+      label: Engineering criteria
+      description: Technical notes, dependencies, test expectations and operational notes.
+    validations:
+      required: true
+  - type: textarea
+    id: security-criteria
+    attributes:
+      label: Security criteria
+      description: Required only when data, auth, permissions, privacy, abuse or compliance are involved. Otherwise say not applicable.
+`;
 }
 
 function issueTemplate(fileName: string, name: string, description: string): FileEntry {
@@ -101,6 +193,18 @@ Thumbs.db
 function pullRequestTemplate(): string {
   return `# Pull Request
 
+## Summary
+
+Describe what changed and why.
+
+## Linked Issue
+
+Closes #
+
+## Parent Epic
+
+Epic #
+
 ## LeanOS Context
 
 - Active Department:
@@ -109,21 +213,99 @@ function pullRequestTemplate(): string {
 - Loaded Skills:
 - Relevant Playbook:
 
-## Summary
-
-Describe what changed.
-
-## Coherence Check
+## Product / MVP Alignment
 
 - Strategy alignment:
 - MVP scope alignment:
 - Acceptance criteria:
 - Validation or learning impact:
 
+## Design Notes
+
+State "Not applicable" when no user-facing design change exists.
+
+## Security Notes
+
+State "Not applicable" when no security-sensitive surface exists.
+
 ## Tests
 
 - [ ] Build or test command run
 - [ ] Manual validation completed
+
+## Risks
+
+- Scope risk:
+- Technical risk:
+- Product risk:
+- Security risk:
+
+## LeanOS Review Checklist
+
+- [ ] Issue context loaded
+- [ ] Branch follows LeanOS naming
+- [ ] Acceptance criteria addressed
+- [ ] Tests run or explained
+- [ ] Design criteria addressed or not applicable
+- [ ] Security criteria addressed or not applicable
+- [ ] No unrelated scope added
+`;
+}
+
+function branchRules(): string {
+  return `# Branch Rules
+
+## Required Format
+
+\`\`\`text
+issue/<issue-number>-<short-kebab-slug>
+\`\`\`
+
+Examples:
+
+\`\`\`text
+issue/554-add-login-rate-limit
+issue/598-fix-onboarding-empty-state
+\`\`\`
+
+## Rules
+
+- Create a branch before changing product code.
+- Do not implement issue work on the default branch.
+- Always include the real GitHub issue number.
+- Use a short kebab-case slug.
+- Do not include secrets, customer names or sensitive details.
+- If the branch already exists, ask before continuing.
+- Keep branch scope aligned with the linked issue, MVP scope and acceptance criteria.
+`;
+}
+
+function prValidationRules(): string {
+  return `# PR Validation Rules
+
+## Required Context
+
+- Linked issue and parent epic when available.
+- MVP scope and non-goals.
+- Acceptance criteria.
+- Relevant Product, Design, Engineering and Security criteria.
+- Tests or manual validation evidence.
+
+## Review Dimensions
+
+- Correctness: does the change work?
+- Scope control: does it avoid unrelated work?
+- Product alignment: does it satisfy user value and acceptance criteria?
+- Design: required only when user-facing UX changed.
+- Security: required when data, auth, permissions, privacy, abuse or compliance is involved.
+- Tests: are automated or manual checks sufficient?
+- LeanOS coherence: does it contradict source-of-truth files?
+
+## Decision
+
+- Approve only when acceptance criteria are addressed and risks are clear.
+- Request changes for bugs, missing tests, scope drift or security/design gaps.
+- Mark "blocked by missing context" when issue, MVP or criteria are unclear.
 `;
 }
 

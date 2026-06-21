@@ -22,6 +22,12 @@ Use when creating new workspace assets.
 - `area-template.yaml`
 - `folder-readme-template.md`
 - `github-issue-template.md`
+- `github-epic-template.md`
+- `github-subissue-template.md`
+- `issue-readiness-matrix-template.md`
+- `branch-name-template.md`
+- `pull-request-template.md`
+- `code-review-template.md`
 - `playbook-template.md`
 - `playbook-template.yaml`
 - `role-template.md`

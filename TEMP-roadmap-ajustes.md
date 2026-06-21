@@ -101,9 +101,10 @@ Objetivo: transformar validacao em loop operacional, nao apenas arquivos soltos.
 
 Objetivo: planejar integracao real com GitHub API, mantendo execucao segura via capabilities/scripts e nunca diretamente pelo LeanOS Chief.
 
-- [ ] Revisar templates de issue.
-- [ ] Revisar PR template.
-- [ ] Revisar regras de validacao de PR.
+- [x] Revisar templates de issue.
+- [x] Revisar PR template.
+- [x] Revisar regras de validacao de PR.
+- [x] Definir regra de branch obrigatoria por issue.
 - [x] Definir arquivos base de configuracao GitHub sem segredos.
 - [x] Definir `.github/leanos/github-settings.example.json`.
 - [x] Definir `.github/leanos/project-sync.yaml`.

@@ -4,29 +4,56 @@
 
 Draft GitHub-ready issues.
 
-## Before Acting
+Draft GitHub-ready epics and sub-issues from roadmap, MVP scope and issue readiness criteria.
+
+## Load First
 
 Read:
 
 - `../../AGENT.md`
-- `../context/current-focus.md`
-- `../context/next-actions.md`
 - `../index/routing-map.yaml`
+- `../../ai-standard/templates/github-epic-template.md`
+- `../../ai-standard/templates/github-subissue-template.md`
+- `../../ai-standard/templates/issue-readiness-matrix-template.md`
+- `../../.github/ISSUE_TEMPLATE/epic.yml`
+- `../../.github/ISSUE_TEMPLATE/sub-issue.yml`
+
+## Area Routing
+
+- Load `../../strategy/product/README.md` for product value, ICP, problem and acceptance quality.
+- Load `../../operations/core/README.md` and MVP source-of-truth files before drafting issues.
+- Load `../../operations/engineering/README.md` when sub-issues require implementation criteria.
+- Use `../../operations/design/README.md` only when the epic or sub-issue changes user-facing UX, screens, states, copy or interactions.
+- Use `../../operations/security/README.md` only when the issue touches data, auth, permissions, privacy, abuse risk or compliance.
 
 ## Process
 
-1. Route through `../../operations/core/README.md`.
-2. Load the department AGENT.md or README first.
-3. Activate the role named by the area README.
-4. Load only the required skills and playbook.
-5. Produce the requested output.
+1. Identify the roadmap item, MVP scope, milestone and parent epic context.
+2. Apply the Issue Readiness Matrix before drafting work.
+3. Use Product criteria for every epic and sub-issue.
+4. Use Engineering criteria for implementation-ready sub-issues.
+5. Add Design criteria only when user-facing UX is affected.
+6. Add Security criteria only when data, auth, permissions, privacy, abuse or compliance is involved.
+7. Split epics into sub-issues only when the parent epic has enough context.
+8. Mark missing role input as an explicit gap; do not invent criteria.
+9. Produce drafts first and ask for confirmation before any future GitHub API write.
 
-## Validation Rules
+## Output
 
-- Separate assumption, evidence, insight, decision and roadmap impact.
-- Do not treat assumptions as validated learning.
-- If the request affects roadmap, MVP or issue scope, identify whether evidence exists.
-- If evidence is missing, propose a validation step before committing roadmap or implementation changes.
+- Epic draft or selected parent epic
+- Proposed sub-issues
+- Product criteria
+- Design criteria or "not applicable"
+- Engineering criteria
+- Security criteria or "not applicable"
+- Dependencies and risks
+- Source-of-truth files used
+- Missing context
+- Confirmation question before remote creation
+
+## Remote Write Rule
+
+Do not call GitHub API directly from the model. Generate a draft payload and ask for explicit confirmation. A future CLI/script capability performs the actual API write.
 
 ## Active Areas
 

@@ -1,0 +1,38 @@
+name: Epic
+description: Roadmap-level LeanOS epic.
+title: "[Epic]: "
+labels: ["leanos", "epic"]
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What business, user or validation outcome should this epic create?
+    validations:
+      required: true
+  - type: textarea
+    id: strategic-context
+    attributes:
+      label: Strategic context
+      description: Product, ICP, problem, value proposition and validation assumption.
+    validations:
+      required: true
+  - type: textarea
+    id: mvp-linkage
+    attributes:
+      label: MVP and roadmap linkage
+      description: MVP scope, non-goals, acceptance criteria, roadmap item and milestone.
+    validations:
+      required: true
+  - type: textarea
+    id: cross-functional-criteria
+    attributes:
+      label: Product / Design / Engineering / Security criteria
+      description: Include design only when UX is involved; include security only when data, auth, privacy, abuse or compliance is involved.
+    validations:
+      required: true
+  - type: textarea
+    id: subissue-breakdown
+    attributes:
+      label: Sub-issue breakdown
+      description: Expected sub-issues, dependencies and open questions.

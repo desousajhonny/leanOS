@@ -1,0 +1,44 @@
+name: Sub-issue
+description: Implementation-ready child issue derived from an epic.
+title: "[Sub-issue]: "
+labels: ["leanos", "sub-issue"]
+body:
+  - type: input
+    id: parent-epic
+    attributes:
+      label: Parent epic
+      description: Link the parent epic issue number.
+      placeholder: "#654"
+    validations:
+      required: true
+  - type: textarea
+    id: purpose-scope
+    attributes:
+      label: Purpose and scope
+      description: Why this issue exists, what is included and what is explicitly excluded.
+    validations:
+      required: true
+  - type: textarea
+    id: product-criteria
+    attributes:
+      label: Product criteria
+      description: User value, acceptance criteria and success or learning signal.
+    validations:
+      required: true
+  - type: textarea
+    id: design-criteria
+    attributes:
+      label: Design criteria
+      description: Required only when user-facing UX, screens, states, copy or interactions are involved. Otherwise say not applicable.
+  - type: textarea
+    id: engineering-criteria
+    attributes:
+      label: Engineering criteria
+      description: Technical notes, dependencies, test expectations and operational notes.
+    validations:
+      required: true
+  - type: textarea
+    id: security-criteria
+    attributes:
+      label: Security criteria
+      description: Required only when data, auth, permissions, privacy, abuse or compliance are involved. Otherwise say not applicable.

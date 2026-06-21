@@ -11,9 +11,21 @@ export function commandFiles(activeAreas: AreaDefinition[]): FileEntry[] {
     { path: ".leanos/commands/README.md", content: folderReadme("Commands", "Slash command instructions for LeanOS agent chats.", "Use when the user invokes or describes a LeanOS command.", "../index/routing-map.yaml", commandDefinitions.map((command) => `${command.slug}.md`), ["../context/", "../index/", "../../ai-standard/"], `Available now: ${availableCommands.map((command) => formatCommandInvocation(command.slug)).join(", ")}. Commands tied to inactive areas include a warning and require explicit activation before use.`) },
     ...commandDefinitions.map((command) => ({
       path: `.leanos/commands/${command.slug}.md`,
-      content: command.slug === "start-leanos" ? startCommand(activeAreas) : command.assetCreation ? assetCreationCommand(command, activeAreas) : routingCommand(command, activeKeys)
+      content: commandContent(command, activeAreas, activeKeys)
     }))
   ];
+}
+
+function commandContent(command: CommandDefinition, activeAreas: AreaDefinition[], activeKeys: Subarea[]): string {
+  if (command.slug === "start-leanos") return startCommand(activeAreas);
+  if (command.assetCreation) return assetCreationCommand(command, activeAreas);
+  if (command.slug === "create-issues") return createIssuesCommand(command, activeKeys);
+  if (command.slug === "workon-issue") return workonIssueCommand(command, activeKeys);
+  if (command.slug === "create-branch") return createBranchCommand(command, activeKeys);
+  if (command.slug === "create-pr") return createPrCommand(command, activeKeys);
+  if (command.slug === "review-pr") return reviewPrCommand(command, activeKeys);
+
+  return routingCommand(command, activeKeys);
 }
 
 function startCommand(activeAreas: AreaDefinition[]): string {
@@ -227,6 +239,291 @@ function getInitStrategySourceFiles(activeAreas: AreaDefinition[]): string[] {
   }
 
   return files;
+}
+
+function createIssuesCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
+  const active = new Set(activeSubareas);
+  const coreNote = active.has("operations.core")
+    ? "Load `../../operations/core/README.md` and MVP source-of-truth files before drafting issues."
+    : "`operations.core` is not active. Do not draft implementation-ready issues until MVP scope and acceptance criteria are available or the user explicitly activates the area.";
+  const productNote = active.has("strategy.product")
+    ? "Load `../../strategy/product/README.md` for product value, ICP, problem and acceptance quality."
+    : "`strategy.product` is not active. Ask for product context before creating product-ready issues.";
+  const engineeringNote = active.has("operations.engineering")
+    ? "Load `../../operations/engineering/README.md` when sub-issues require implementation criteria."
+    : "`operations.engineering` is not active. Draft only planning-level issues unless the user activates Engineering.";
+  const designNote = active.has("operations.design")
+    ? "Use `../../operations/design/README.md` only when the epic or sub-issue changes user-facing UX, screens, states, copy or interactions."
+    : "Design is inactive. If the issue has UX impact, flag the gap and ask before adding Design criteria.";
+  const securityNote = active.has("operations.security")
+    ? "Use `../../operations/security/README.md` only when the issue touches data, auth, permissions, privacy, abuse risk or compliance."
+    : "Security is inactive. If the issue has a security-sensitive surface, flag the gap and ask before adding Security criteria.";
+
+  return `# ${formatCommandInvocation(command.slug)}
+
+## Purpose
+
+${command.purpose}
+
+Draft GitHub-ready epics and sub-issues from roadmap, MVP scope and issue readiness criteria.
+
+## Load First
+
+Read:
+
+- \`../../AGENT.md\`
+- \`../index/routing-map.yaml\`
+- \`../../ai-standard/templates/github-epic-template.md\`
+- \`../../ai-standard/templates/github-subissue-template.md\`
+- \`../../ai-standard/templates/issue-readiness-matrix-template.md\`
+- \`../../.github/ISSUE_TEMPLATE/epic.yml\`
+- \`../../.github/ISSUE_TEMPLATE/sub-issue.yml\`
+
+## Area Routing
+
+- ${productNote}
+- ${coreNote}
+- ${engineeringNote}
+- ${designNote}
+- ${securityNote}
+
+## Process
+
+1. Identify the roadmap item, MVP scope, milestone and parent epic context.
+2. Apply the Issue Readiness Matrix before drafting work.
+3. Use Product criteria for every epic and sub-issue.
+4. Use Engineering criteria for implementation-ready sub-issues.
+5. Add Design criteria only when user-facing UX is affected.
+6. Add Security criteria only when data, auth, permissions, privacy, abuse or compliance is involved.
+7. Split epics into sub-issues only when the parent epic has enough context.
+8. Mark missing role input as an explicit gap; do not invent criteria.
+9. Produce drafts first and ask for confirmation before any future GitHub API write.
+
+## Output
+
+- Epic draft or selected parent epic
+- Proposed sub-issues
+- Product criteria
+- Design criteria or "not applicable"
+- Engineering criteria
+- Security criteria or "not applicable"
+- Dependencies and risks
+- Source-of-truth files used
+- Missing context
+- Confirmation question before remote creation
+
+## Remote Write Rule
+
+Do not call GitHub API directly from the model. Generate a draft payload and ask for explicit confirmation. A future CLI/script capability performs the actual API write.
+
+## Active Areas
+
+${activeSubareas.map((area) => `- ${area}`).join("\n")}
+`;
+}
+
+function workonIssueCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
+  return `# ${formatCommandInvocation(command.slug)}
+
+## Purpose
+
+${command.purpose}
+
+Plan implementation from a GitHub issue before changing code.
+
+## Load First
+
+Read:
+
+- \`../../AGENT.md\`
+- \`../index/routing-map.yaml\`
+- \`../../operations/engineering/README.md\`
+- \`../../operations/engineering/roles/senior-developer.role.md\`
+- \`../../operations/engineering/skills/plan-implementation.skill.md\`
+- \`../../operations/engineering/skills/create-branch.skill.md\`
+- \`../../operations/engineering/playbooks/issue-to-pr.playbook.md\`
+- \`../../ai-standard/templates/issue-readiness-matrix-template.md\`
+- \`../../.github/leanos/branch-rules.md\`
+
+If \`operations.engineering\` is not active, do not load missing paths. Ask whether to activate or create Engineering before planning implementation.
+
+## Process
+
+1. Read or request the full GitHub issue body.
+2. Summarize the issue in the chat and ask the user to confirm the interpretation.
+3. Check Product and Engineering readiness.
+4. Check Design only when UX is affected.
+5. Check Security only when data, auth, privacy, abuse or compliance is involved.
+6. Propose the required issue-linked branch name before code changes.
+7. Produce an implementation plan and test plan.
+8. Ask for confirmation before modifying product code.
+
+## Output
+
+- Issue summary
+- Readiness gaps
+- Branch name proposal
+- Implementation plan
+- Test plan
+- Likely files to change
+- Risks
+- Confirmation question before code changes
+
+## Active Areas
+
+${activeSubareas.map((area) => `- ${area}`).join("\n")}
+`;
+}
+
+function createBranchCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
+  return `# ${formatCommandInvocation(command.slug)}
+
+## Purpose
+
+${command.purpose}
+
+Prepare a safe branch name before any implementation work.
+
+## Load First
+
+Read:
+
+- \`../../AGENT.md\`
+- \`../../operations/engineering/README.md\`
+- \`../../operations/engineering/skills/create-branch.skill.md\`
+- \`../../operations/engineering/playbooks/branch-from-issue.playbook.md\`
+- \`../../ai-standard/templates/branch-name-template.md\`
+- \`../../.github/leanos/branch-rules.md\`
+
+If \`operations.engineering\` is not active, do not load missing paths. Ask whether to activate or create Engineering before creating a branch plan.
+
+## Process
+
+1. Confirm the issue number and issue title.
+2. Use the required format: \`issue/<issue-number>-<short-kebab-slug>\`.
+3. Keep the slug short and scoped to the issue.
+4. Avoid secrets, customer names and sensitive details.
+5. Ask before reusing an existing branch.
+6. Do not run git commands unless the user explicitly asks in a tool-capable environment.
+
+## Output
+
+- Proposed branch name
+- Linked issue
+- Naming rationale
+- Safety checks
+- Next command recommendation
+
+## Active Areas
+
+${activeSubareas.map((area) => `- ${area}`).join("\n")}
+`;
+}
+
+function createPrCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
+  return `# ${formatCommandInvocation(command.slug)}
+
+## Purpose
+
+${command.purpose}
+
+Prepare a pull request draft that follows LeanOS structure and GitHub conventions.
+
+## Load First
+
+Read:
+
+- \`../../AGENT.md\`
+- \`../../operations/engineering/README.md\`
+- \`../../operations/engineering/skills/create-pr.skill.md\`
+- \`../../operations/engineering/playbooks/issue-to-pr.playbook.md\`
+- \`../../ai-standard/templates/pull-request-template.md\`
+- \`../../.github/PULL_REQUEST_TEMPLATE.md\`
+- \`../../.github/leanos/pr-validation-rules.md\`
+
+If \`operations.engineering\` is not active, do not load missing paths. Ask whether to activate or create Engineering before preparing a PR.
+
+## Process
+
+1. Confirm the linked issue, parent epic and branch.
+2. Summarize changed behavior and why it matters.
+3. Map changes to acceptance criteria.
+4. Include Product/MVP alignment.
+5. Include Design notes only when user-facing UX changed.
+6. Include Security notes only when data, auth, privacy, abuse or compliance is involved.
+7. Include tests run or explain why they were not run.
+8. Produce a PR body draft first and ask for confirmation before any remote PR creation.
+
+## Output
+
+- PR title
+- PR body
+- Linked issue and parent epic
+- Checklist state
+- Tests
+- Risks
+- Confirmation question before remote PR creation
+
+## Remote Write Rule
+
+Do not create the PR directly from the model. Generate the draft and ask for explicit confirmation. A future CLI/script capability performs the actual GitHub write.
+
+## Active Areas
+
+${activeSubareas.map((area) => `- ${area}`).join("\n")}
+`;
+}
+
+function reviewPrCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
+  return `# ${formatCommandInvocation(command.slug)}
+
+## Purpose
+
+${command.purpose}
+
+Review a PR against LeanOS issue, MVP, product, design, security and engineering criteria.
+
+## Load First
+
+Read:
+
+- \`../../AGENT.md\`
+- \`../../operations/engineering/README.md\`
+- \`../../operations/engineering/roles/pr-reviewer.role.md\`
+- \`../../operations/engineering/skills/review-pr.skill.md\`
+- \`../../operations/engineering/playbooks/pr-validation.playbook.md\`
+- \`../../ai-standard/templates/code-review-template.md\`
+- \`../../.github/leanos/pr-validation-rules.md\`
+
+If \`operations.engineering\` is not active, do not load missing paths. Ask whether to activate or create Engineering before reviewing the PR.
+
+## Process
+
+1. Load the PR description, linked issue and diff when available.
+2. Check scope against the issue and MVP acceptance criteria.
+3. Review correctness and likely regressions.
+4. Review tests and manual validation.
+5. Review Product alignment.
+6. Review Design only when UX changed.
+7. Review Security only when data, auth, permissions, privacy, abuse or compliance is involved.
+8. List findings first, ordered by severity.
+9. Recommend approve, request changes or blocked by missing context.
+
+## Output
+
+- Findings by severity
+- File or area references
+- Product alignment result
+- Design result or "not applicable"
+- Security result or "not applicable"
+- Test confidence
+- Open questions
+- Final recommendation
+
+## Active Areas
+
+${activeSubareas.map((area) => `- ${area}`).join("\n")}
+`;
 }
 
 function routingCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {

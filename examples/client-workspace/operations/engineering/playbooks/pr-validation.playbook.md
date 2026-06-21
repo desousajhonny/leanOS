@@ -4,23 +4,40 @@
 
 Validate implementation before merge.
 
-## Area
+## Inputs
 
-`operations/engineering`
+- PR description
+- Linked issue
+- Parent epic when available
+- MVP scope
+- Acceptance criteria
+- Changed files
+- Tests or validation evidence
 
-## Sequence
+## Process
 
 1. Read PR context
-2. Check scope
-3. Review tests
-4. Check coherence
-5. Recommend merge or changes
+2. Load `.github/leanos/pr-validation-rules.md`
+3. Check scope against issue and MVP
+4. Validate Product criteria and acceptance criteria
+5. Review Design criteria only when UX changed
+6. Review Security criteria only when data, auth, privacy, abuse or compliance is involved
+7. Review tests and manual validation
+8. List findings by severity
+9. Recommend merge, changes or blocked-by-context
 
-## Outputs
+## Output
 
-- Decision or action summary
-- Updated source-of-truth files when requested
-- Next recommended LeanOS command
+- Findings by severity
+- Product alignment
+- Design review result or not applicable
+- Security review result or not applicable
+- Test confidence
+- Merge recommendation
+
+## Files to Update
+
+- Update `../code-review-notes.md` or `../pr-log.md` only when the user asks for persistent review notes.
 
 ## Navigation
 

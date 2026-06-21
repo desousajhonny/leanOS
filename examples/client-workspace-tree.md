@@ -11,9 +11,11 @@ client-workspace/
 |   |   `-- leanos-chief.agent.md
 |   |-- ISSUE_TEMPLATE/
 |   |   |-- bug.yml
+|   |   |-- epic.yml
 |   |   |-- experiment.yml
 |   |   |-- feature.yml
 |   |   |-- research.yml
+|   |   |-- sub-issue.yml
 |   |   |-- task.yml
 |   |   `-- validation.yml
 |   |-- leanos/
@@ -41,6 +43,7 @@ client-workspace/
 |   |   `-- role-activation.md
 |   |-- commands/
 |   |   |-- check-coherence.md
+|   |   |-- create-branch.md
 |   |   |-- create-issues.md
 |   |   |-- create-playbook.md
 |   |   |-- create-pr.md
@@ -112,13 +115,19 @@ client-workspace/
 |   |   |-- agent-template.md
 |   |   |-- area-template.md
 |   |   |-- area-template.yaml
+|   |   |-- branch-name-template.md
+|   |   |-- code-review-template.md
 |   |   |-- command-template.md
 |   |   |-- department-template.md
 |   |   |-- department-template.yaml
 |   |   |-- folder-readme-template.md
+|   |   |-- github-epic-template.md
 |   |   |-- github-issue-template.md
+|   |   |-- github-subissue-template.md
+|   |   |-- issue-readiness-matrix-template.md
 |   |   |-- playbook-template.md
 |   |   |-- playbook-template.yaml
+|   |   |-- pull-request-template.md
 |   |   |-- README.md
 |   |   |-- role-template.md
 |   |   |-- role-template.yaml
@@ -269,6 +278,7 @@ client-workspace/
 |   |   `-- README.md
 |   |-- engineering/
 |   |   |-- playbooks/
+|   |   |   |-- branch-from-issue.playbook.md
 |   |   |   |-- issue-to-pr.playbook.md
 |   |   |   |-- pr-validation.playbook.md
 |   |   |   |-- README.md
@@ -278,6 +288,7 @@ client-workspace/
 |   |   |   |-- README.md
 |   |   |   `-- senior-developer.role.md
 |   |   |-- skills/
+|   |   |   |-- create-branch.skill.md
 |   |   |   |-- create-pr.skill.md
 |   |   |   |-- plan-implementation.skill.md
 |   |   |   |-- README.md

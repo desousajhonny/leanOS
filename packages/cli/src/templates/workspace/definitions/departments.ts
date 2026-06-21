@@ -335,28 +335,46 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Senior Developer",
             purpose: "Implement roadmap issues with maintainable code, tests and MVP alignment.",
             useWhen: ["implement an issue", "fix a bug", "modify code", "write tests", "prepare implementation for a PR"],
-            beforeActing: ["../../../.leanos/context/current-focus.md", "../../core/mvp/scope.md", "../../core/mvp/acceptance-criteria.md", "../../core/overview.md", "../implementation-notes.md"],
-            skills: ["plan-implementation", "write-tests", "create-pr"],
-            playbooks: ["issue-to-pr", "test-planning", "pr-validation"]
+            beforeActing: ["../../../.leanos/context/current-focus.md", "../../core/mvp/scope.md", "../../core/mvp/acceptance-criteria.md", "../../core/overview.md", "../../../.github/leanos/branch-rules.md", "../implementation-notes.md"],
+            skills: ["plan-implementation", "create-branch", "write-tests", "create-pr"],
+            playbooks: ["branch-from-issue", "issue-to-pr", "test-planning", "pr-validation"]
           },
           {
             slug: "pr-reviewer",
             title: "PR Reviewer",
             purpose: "Review pull requests against scope, tests, coherence and validation goals.",
             useWhen: ["review a PR", "validate implementation readiness", "check merge risk"],
-            beforeActing: ["../../core/mvp/scope.md", "../../core/mvp/acceptance-criteria.md", "../../../.github/leanos/pr-validation-rules.md"],
+            beforeActing: ["../../core/mvp/scope.md", "../../core/mvp/acceptance-criteria.md", "../../../.github/leanos/pr-validation-rules.md", "../../../ai-standard/templates/code-review-template.md"],
             skills: ["review-pr"],
             playbooks: ["pr-validation"]
           }
         ],
         skills: [
           { slug: "plan-implementation", title: "Plan Implementation", purpose: "Turn an issue into a scoped technical implementation plan." },
+          { slug: "create-branch", title: "Create Branch", purpose: "Define a safe issue-linked branch name and creation checklist before code changes." },
           { slug: "write-tests", title: "Write Tests", purpose: "Define or update tests for changed behavior." },
           { slug: "create-pr", title: "Create PR", purpose: "Prepare a PR summary tied to scope, tests and learning." },
           { slug: "review-pr", title: "Review PR", purpose: "Review PR changes for correctness, scope and LeanOS coherence." }
         ],
         playbooks: [
-          { slug: "issue-to-pr", title: "Issue to PR", purpose: "Move from a scoped issue to a reviewable pull request.", steps: ["Read issue and MVP scope", "Plan implementation", "Change code", "Update tests", "Prepare PR"] },
+          {
+            slug: "branch-from-issue",
+            title: "Branch From Issue",
+            purpose: "Create a safe branch plan before implementation starts.",
+            inputs: ["GitHub issue number", "Issue title", "Current default branch", "Existing branch list when available", "Branch rules"],
+            steps: ["Read the issue context and title", "Load `.github/leanos/branch-rules.md`", "Generate a branch name using the required issue format", "Check for sensitive words or unnecessary scope", "Ask before using an existing branch or creating a new one"],
+            outputs: ["Proposed branch name", "Linked issue", "Branch safety notes", "Next implementation step"],
+            filesToUpdate: ["Do not update files just to create a branch plan. Record branch decisions in `../implementation-notes.md` only when the user asks for persistent notes."]
+          },
+          {
+            slug: "issue-to-pr",
+            title: "Issue to PR",
+            purpose: "Move from a scoped issue to a reviewable pull request.",
+            inputs: ["GitHub issue body", "Parent epic when available", "MVP scope", "Acceptance criteria", "Product, Design, Engineering and Security criteria", "Branch name"],
+            steps: ["Read issue and MVP scope", "Confirm issue readiness with Product and Engineering criteria", "Check whether Design criteria are required for user-facing UX", "Check whether Security criteria are required for data, auth, privacy, abuse or compliance", "Create or confirm an issue-linked branch before code changes", "Plan implementation", "Change code within issue scope", "Update tests", "Prepare PR using the PR template"],
+            outputs: ["Implementation summary", "Branch used", "Files changed", "Tests run or proposed", "PR draft", "Known risks"],
+            filesToUpdate: ["Update `../implementation-notes.md` when implementation decisions should persist.", "Update `../pr-log.md` after PR creation or when the user asks for a persistent PR record."]
+          },
           {
             slug: "test-planning",
             title: "Test Planning",
@@ -366,10 +384,20 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             outputs: ["Test strategy", "Validation gaps", "Manual checks", "Next action"],
             filesToUpdate: ["Update `../implementation-notes.md` or PR notes if the workspace needs a persistent test decision."]
           },
-          { slug: "pr-validation", title: "PR Validation", purpose: "Validate implementation before merge.", steps: ["Read PR context", "Check scope", "Review tests", "Check coherence", "Recommend merge or changes"] }
+          {
+            slug: "pr-validation",
+            title: "PR Validation",
+            purpose: "Validate implementation before merge.",
+            inputs: ["PR description", "Linked issue", "Parent epic when available", "MVP scope", "Acceptance criteria", "Changed files", "Tests or validation evidence"],
+            steps: ["Read PR context", "Load `.github/leanos/pr-validation-rules.md`", "Check scope against issue and MVP", "Validate Product criteria and acceptance criteria", "Review Design criteria only when UX changed", "Review Security criteria only when data, auth, privacy, abuse or compliance is involved", "Review tests and manual validation", "List findings by severity", "Recommend merge, changes or blocked-by-context"],
+            outputs: ["Findings by severity", "Product alignment", "Design review result or not applicable", "Security review result or not applicable", "Test confidence", "Merge recommendation"],
+            filesToUpdate: ["Update `../code-review-notes.md` or `../pr-log.md` only when the user asks for persistent review notes."]
+          }
         ],
         commonPaths: [
-          "Implementation request: role `roles/senior-developer.role.md` -> skills `skills/plan-implementation.skill.md` and `skills/write-tests.skill.md` -> playbook `playbooks/issue-to-pr.playbook.md`."
+          "Branch request: role `roles/senior-developer.role.md` -> skill `skills/create-branch.skill.md` -> playbook `playbooks/branch-from-issue.playbook.md`.",
+          "Implementation request: role `roles/senior-developer.role.md` -> skills `skills/plan-implementation.skill.md` and `skills/write-tests.skill.md` -> playbook `playbooks/issue-to-pr.playbook.md`.",
+          "PR review request: role `roles/pr-reviewer.role.md` -> skill `skills/review-pr.skill.md` -> playbook `playbooks/pr-validation.playbook.md`."
         ]
       },
       {

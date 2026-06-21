@@ -139,6 +139,7 @@ skills:
       - define-ux-states
     operations.engineering:
       - plan-implementation
+      - create-branch
       - write-tests
       - create-pr
       - review-pr
@@ -177,6 +178,7 @@ playbooks:
     operations.design:
       - mvp-ux-flow
     operations.engineering:
+      - branch-from-issue
       - issue-to-pr
       - test-planning
       - pr-validation

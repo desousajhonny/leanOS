@@ -20,16 +20,19 @@ Read:
 - `../../core/mvp/scope.md`
 - `../../core/mvp/acceptance-criteria.md`
 - `../../core/overview.md`
+- `../../../.github/leanos/branch-rules.md`
 - `../implementation-notes.md`
 
 ## Skills
 
 - `../skills/plan-implementation.skill.md`
+- `../skills/create-branch.skill.md`
 - `../skills/write-tests.skill.md`
 - `../skills/create-pr.skill.md`
 
 ## Playbooks
 
+- `../playbooks/branch-from-issue.playbook.md`
 - `../playbooks/issue-to-pr.playbook.md`
 - `../playbooks/test-planning.playbook.md`
 - `../playbooks/pr-validation.playbook.md`

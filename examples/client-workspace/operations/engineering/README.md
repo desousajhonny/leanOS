@@ -28,4 +28,6 @@ Own implementation, tests, code quality and PR readiness.
 
 ## Common Paths
 
+- Branch request: role `roles/senior-developer.role.md` -> skill `skills/create-branch.skill.md` -> playbook `playbooks/branch-from-issue.playbook.md`.
 - Implementation request: role `roles/senior-developer.role.md` -> skills `skills/plan-implementation.skill.md` and `skills/write-tests.skill.md` -> playbook `playbooks/issue-to-pr.playbook.md`.
+- PR review request: role `roles/pr-reviewer.role.md` -> skill `skills/review-pr.skill.md` -> playbook `playbooks/pr-validation.playbook.md`.

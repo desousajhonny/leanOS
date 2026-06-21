@@ -114,7 +114,9 @@ async function validateWorkspaceFiles() {
     "operations/core/mvp/README.md",
     "operations/design/roles/ux-lead.role.md",
     "operations/engineering/playbooks/issue-to-pr.playbook.md",
+    "operations/engineering/playbooks/branch-from-issue.playbook.md",
     "operations/engineering/playbooks/test-planning.playbook.md",
+    "operations/engineering/skills/create-branch.skill.md",
     "operations/devops/playbooks/setup-ci-cd.playbook.md",
     "operations/devops/playbooks/plan-deployment.playbook.md",
     "operations/devops/roles/github-devops.role.md",
@@ -130,10 +132,19 @@ async function validateWorkspaceFiles() {
     ".github/leanos/project-sync.yaml",
     ".github/leanos/sync-state.yaml",
     ".github/leanos/labels.yaml",
+    ".github/ISSUE_TEMPLATE/epic.yml",
+    ".github/ISSUE_TEMPLATE/sub-issue.yml",
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/leanos/branch-rules.md",
+    ".github/leanos/pr-validation-rules.md",
     ".github/agents/leanos-chief.agent.md",
     ".github/prompts/start-leanos.prompt.md",
     ".github/prompts/leanos-init.prompt.md",
     ".leanos/commands/start-leanos.md",
+    ".leanos/commands/create-issues.md",
+    ".leanos/commands/create-branch.md",
+    ".leanos/commands/create-pr.md",
+    ".leanos/commands/review-pr.md",
     ".leanos/vscode/README.md"
   ]) {
     assert(paths.has(expectedPath), `Expected generated path missing: ${expectedPath}`);
@@ -206,6 +217,7 @@ async function validateWorkspaceFiles() {
 
   await assertVsCodeIntegration(rootDir);
   await assertGitHubReadiness(rootDir);
+  await assertGitHubIssuePrWorkflow(rootDir);
   await assertInitCommandRules(rootDir);
   await assertRootAgentMutationRules(rootDir);
   await assertOperationalPlaybookSections(rootDir);
@@ -272,6 +284,8 @@ async function validateClientWorkspaceFixture() {
     "strategy/product/README.md",
     "operations/core/mvp/README.md",
     "operations/design/roles/README.md",
+    "operations/engineering/skills/create-branch.skill.md",
+    "operations/engineering/playbooks/branch-from-issue.playbook.md",
     "operations/devops/playbooks/setup-ci-cd.playbook.md",
     "operations/devops/playbooks/plan-deployment.playbook.md",
     "operations/devops/roles/github-devops.role.md",
@@ -285,10 +299,19 @@ async function validateClientWorkspaceFixture() {
     ".github/leanos/github-settings.example.json",
     ".github/leanos/project-sync.yaml",
     ".github/leanos/sync-state.yaml",
+    ".github/ISSUE_TEMPLATE/epic.yml",
+    ".github/ISSUE_TEMPLATE/sub-issue.yml",
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/leanos/branch-rules.md",
+    ".github/leanos/pr-validation-rules.md",
     ".github/agents/leanos-chief.agent.md",
     ".github/prompts/start-leanos.prompt.md",
     ".github/prompts/leanos-init.prompt.md",
     ".leanos/commands/start-leanos.md",
+    ".leanos/commands/create-issues.md",
+    ".leanos/commands/create-branch.md",
+    ".leanos/commands/create-pr.md",
+    ".leanos/commands/review-pr.md",
     ".leanos/vscode/README.md"
   ];
 
@@ -594,6 +617,67 @@ async function assertGitHubReadiness(rootDir) {
   assert(githubPlaybook.includes("do not create `.vercel/`, run `vercel link` or add `vercel.json`"), "GitHub setup playbook should keep Vercel readiness guidance-only");
 }
 
+async function assertGitHubIssuePrWorkflow(rootDir) {
+  const epicTemplate = await readFile(join(rootDir, ".github", "ISSUE_TEMPLATE", "epic.yml"), "utf8");
+  const subIssueTemplate = await readFile(join(rootDir, ".github", "ISSUE_TEMPLATE", "sub-issue.yml"), "utf8");
+  const prTemplate = await readFile(join(rootDir, ".github", "PULL_REQUEST_TEMPLATE.md"), "utf8");
+  const branchRules = await readFile(join(rootDir, ".github", "leanos", "branch-rules.md"), "utf8");
+  const prRules = await readFile(join(rootDir, ".github", "leanos", "pr-validation-rules.md"), "utf8");
+  const aiEpicTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github-epic-template.md"), "utf8");
+  const aiSubIssueTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github-subissue-template.md"), "utf8");
+  const issueMatrix = await readFile(join(rootDir, "ai-standard", "templates", "issue-readiness-matrix-template.md"), "utf8");
+  const branchTemplate = await readFile(join(rootDir, "ai-standard", "templates", "branch-name-template.md"), "utf8");
+  const aiPrTemplate = await readFile(join(rootDir, "ai-standard", "templates", "pull-request-template.md"), "utf8");
+  const codeReviewTemplate = await readFile(join(rootDir, "ai-standard", "templates", "code-review-template.md"), "utf8");
+  const branchSkill = await readFile(join(rootDir, "operations", "engineering", "skills", "create-branch.skill.md"), "utf8");
+  const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-from-issue.playbook.md"), "utf8");
+  const issueToPrPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "issue-to-pr.playbook.md"), "utf8");
+  const prValidationPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
+  const createIssuesCommand = await readFile(join(rootDir, ".leanos", "commands", "create-issues.md"), "utf8");
+  const workonIssueCommand = await readFile(join(rootDir, ".leanos", "commands", "workon-issue.md"), "utf8");
+  const createBranchCommand = await readFile(join(rootDir, ".leanos", "commands", "create-branch.md"), "utf8");
+  const createPrCommand = await readFile(join(rootDir, ".leanos", "commands", "create-pr.md"), "utf8");
+  const reviewPrCommand = await readFile(join(rootDir, ".leanos", "commands", "review-pr.md"), "utf8");
+
+  assert(epicTemplate.includes("Product / Design / Engineering / Security criteria"), "Epic issue template should include cross-functional criteria");
+  assert(subIssueTemplate.includes("Parent epic"), "Sub-issue template should require parent epic linkage");
+  assert(subIssueTemplate.includes("Required only when user-facing UX"), "Sub-issue template should make Design conditional");
+  assert(subIssueTemplate.includes("Required only when data, auth, permissions, privacy, abuse or compliance"), "Sub-issue template should make Security conditional");
+  assert(prTemplate.includes("## Linked Issue"), "PR template should include linked issue");
+  assert(prTemplate.includes("## Parent Epic"), "PR template should include parent epic");
+  assert(prTemplate.includes("## Design Notes"), "PR template should include design notes");
+  assert(prTemplate.includes("## Security Notes"), "PR template should include security notes");
+  assert(prTemplate.includes("## LeanOS Review Checklist"), "PR template should include LeanOS review checklist");
+  assert(branchRules.includes("issue/<issue-number>-<short-kebab-slug>"), "Branch rules should define the required issue branch format");
+  assert(branchRules.includes("Do not implement issue work on the default branch"), "Branch rules should forbid default-branch implementation");
+  assert(prRules.includes("Product alignment"), "PR validation rules should require Product alignment");
+  assert(prRules.includes("Design: required only when user-facing UX changed"), "PR validation rules should make Design conditional");
+  assert(prRules.includes("Security: required when data, auth, permissions, privacy, abuse or compliance is involved"), "PR validation rules should make Security conditional");
+
+  for (const templateContent of [aiEpicTemplate, aiSubIssueTemplate, issueMatrix, branchTemplate, aiPrTemplate, codeReviewTemplate]) {
+    assert(templateContent.includes("# "), "AI Standard GitHub templates should have markdown content");
+  }
+
+  assert(issueMatrix.includes("Product | Always"), "Issue readiness matrix should require Product");
+  assert(issueMatrix.includes("Design | User-facing flow"), "Issue readiness matrix should make Design conditional");
+  assert(issueMatrix.includes("Engineering | Always for implementation work"), "Issue readiness matrix should require Engineering for implementation");
+  assert(issueMatrix.includes("Security | Data, auth, permissions, privacy, abuse or compliance"), "Issue readiness matrix should make Security conditional");
+  assert(branchSkill.includes("safe issue-linked branch name"), "Engineering should include create-branch skill");
+  assert(branchPlaybook.includes("Load `.github/leanos/branch-rules.md`"), "Branch playbook should load branch rules");
+  assert(issueToPrPlaybook.includes("Check whether Design criteria are required for user-facing UX"), "Issue-to-PR playbook should conditionally check Design");
+  assert(issueToPrPlaybook.includes("Check whether Security criteria are required for data, auth, privacy, abuse or compliance"), "Issue-to-PR playbook should conditionally check Security");
+  assert(prValidationPlaybook.includes("List findings by severity"), "PR validation playbook should output findings by severity");
+
+  assert(createIssuesCommand.includes("Issue Readiness Matrix"), "Create issues command should use the readiness matrix");
+  assert(createIssuesCommand.includes("Add Design criteria only when user-facing UX is affected"), "Create issues command should make Design conditional");
+  assert(createIssuesCommand.includes("Add Security criteria only when data, auth, permissions, privacy, abuse or compliance is involved"), "Create issues command should make Security conditional");
+  assert(createIssuesCommand.includes("Do not call GitHub API directly from the model"), "Create issues command should forbid direct model API writes");
+  assert(workonIssueCommand.includes("Propose the required issue-linked branch name before code changes"), "Workon issue should require branch proposal before code changes");
+  assert(createBranchCommand.includes("issue/<issue-number>-<short-kebab-slug>"), "Create branch command should require LeanOS branch format");
+  assert(createPrCommand.includes("A future CLI/script capability performs the actual GitHub write"), "Create PR command should keep remote writes out of the model");
+  assert(reviewPrCommand.includes("List findings first, ordered by severity"), "Review PR command should enforce code review output shape");
+}
+
 async function assertInitCommandRules(rootDir) {
   const startCommand = await readFile(join(rootDir, ".leanos", "commands", "start-leanos.md"), "utf8");
   const requiredSections = [
@@ -842,6 +926,7 @@ async function assertInitialContextCoherence(rootDir, selectedSubareas) {
     { command: "/create roadmap", area: "strategy.roadmap" },
     { command: "/create issues", area: "operations.core" },
     { command: "/workon issue", area: "operations.engineering" },
+    { command: "/create branch", area: "operations.engineering" },
     { command: "/create pr", area: "operations.engineering" },
     { command: "/review pr", area: "operations.engineering" }
   ];

@@ -2,7 +2,7 @@
 
 ## Summary
 
-Describe what changed and why.
+What changed and why.
 
 ## Linked Issue
 
@@ -14,16 +14,16 @@ Epic #
 
 ## LeanOS Context
 
-- Active Department:
-- Active Area:
-- Active Role:
-- Loaded Skills:
-- Relevant Playbook:
+- Department:
+- Area:
+- Role:
+- Skills:
+- Playbook:
 
 ## Product / MVP Alignment
 
-- Strategy alignment:
-- MVP scope alignment:
+- Roadmap item:
+- MVP scope:
 - Acceptance criteria:
 - Validation or learning impact:
 
@@ -37,8 +37,8 @@ State "Not applicable" when no security-sensitive surface exists.
 
 ## Tests
 
-- [ ] Build or test command run
-- [ ] Manual validation completed
+- [ ] Automated tests run or updated
+- [ ] Manual validation completed or explained
 
 ## Risks
 

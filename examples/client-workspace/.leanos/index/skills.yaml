@@ -62,6 +62,9 @@ skills:
   - key: plan-implementation
     area: operations.engineering
     path: ../../operations/engineering/skills/plan-implementation.skill.md
+  - key: create-branch
+    area: operations.engineering
+    path: ../../operations/engineering/skills/create-branch.skill.md
   - key: write-tests
     area: operations.engineering
     path: ../../operations/engineering/skills/write-tests.skill.md

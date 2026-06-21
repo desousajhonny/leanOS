@@ -4,29 +4,44 @@
 
 Review a PR.
 
-## Before Acting
+Review a PR against LeanOS issue, MVP, product, design, security and engineering criteria.
+
+## Load First
 
 Read:
 
 - `../../AGENT.md`
-- `../context/current-focus.md`
-- `../context/next-actions.md`
-- `../index/routing-map.yaml`
+- `../../operations/engineering/README.md`
+- `../../operations/engineering/roles/pr-reviewer.role.md`
+- `../../operations/engineering/skills/review-pr.skill.md`
+- `../../operations/engineering/playbooks/pr-validation.playbook.md`
+- `../../ai-standard/templates/code-review-template.md`
+- `../../.github/leanos/pr-validation-rules.md`
+
+If `operations.engineering` is not active, do not load missing paths. Ask whether to activate or create Engineering before reviewing the PR.
 
 ## Process
 
-1. Route through `../../operations/engineering/README.md`.
-2. Load the department AGENT.md or README first.
-3. Activate the role named by the area README.
-4. Load only the required skills and playbook.
-5. Produce the requested output.
+1. Load the PR description, linked issue and diff when available.
+2. Check scope against the issue and MVP acceptance criteria.
+3. Review correctness and likely regressions.
+4. Review tests and manual validation.
+5. Review Product alignment.
+6. Review Design only when UX changed.
+7. Review Security only when data, auth, permissions, privacy, abuse or compliance is involved.
+8. List findings first, ordered by severity.
+9. Recommend approve, request changes or blocked by missing context.
 
-## Validation Rules
+## Output
 
-- Separate assumption, evidence, insight, decision and roadmap impact.
-- Do not treat assumptions as validated learning.
-- If the request affects roadmap, MVP or issue scope, identify whether evidence exists.
-- If evidence is missing, propose a validation step before committing roadmap or implementation changes.
+- Findings by severity
+- File or area references
+- Product alignment result
+- Design result or "not applicable"
+- Security result or "not applicable"
+- Test confidence
+- Open questions
+- Final recommendation
 
 ## Active Areas
 

@@ -15,6 +15,7 @@ Use when a selected role points to a skill.
 ## Files
 
 - `plan-implementation.skill.md`
+- `create-branch.skill.md`
 - `write-tests.skill.md`
 - `create-pr.skill.md`
 - `review-pr.skill.md`

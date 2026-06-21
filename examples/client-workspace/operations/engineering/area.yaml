@@ -7,10 +7,12 @@ area:
     - pr-reviewer
   skills:
     - plan-implementation
+    - create-branch
     - write-tests
     - create-pr
     - review-pr
   playbooks:
+    - branch-from-issue
     - issue-to-pr
     - test-planning
     - pr-validation

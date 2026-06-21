@@ -9,6 +9,7 @@ export const commandDefinitions: CommandDefinition[] = [
   { slug: "create-roadmap", purpose: "Create a validation-first roadmap.", area: "strategy.roadmap" },
   { slug: "create-issues", purpose: "Draft GitHub-ready issues.", area: "operations.core" },
   { slug: "workon-issue", purpose: "Plan issue implementation.", area: "operations.engineering" },
+  { slug: "create-branch", purpose: "Prepare a safe branch name and branch creation plan for an issue.", area: "operations.engineering" },
   { slug: "create-pr", purpose: "Prepare a PR summary.", area: "operations.engineering" },
   { slug: "review-pr", purpose: "Review a PR.", area: "operations.engineering" },
   { slug: "create-role", purpose: "Create a new area-owned role using LeanOS AI Standard.", assetCreation: true },

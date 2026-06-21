@@ -4,29 +4,45 @@
 
 Plan issue implementation.
 
-## Before Acting
+Plan implementation from a GitHub issue before changing code.
+
+## Load First
 
 Read:
 
 - `../../AGENT.md`
-- `../context/current-focus.md`
-- `../context/next-actions.md`
 - `../index/routing-map.yaml`
+- `../../operations/engineering/README.md`
+- `../../operations/engineering/roles/senior-developer.role.md`
+- `../../operations/engineering/skills/plan-implementation.skill.md`
+- `../../operations/engineering/skills/create-branch.skill.md`
+- `../../operations/engineering/playbooks/issue-to-pr.playbook.md`
+- `../../ai-standard/templates/issue-readiness-matrix-template.md`
+- `../../.github/leanos/branch-rules.md`
+
+If `operations.engineering` is not active, do not load missing paths. Ask whether to activate or create Engineering before planning implementation.
 
 ## Process
 
-1. Route through `../../operations/engineering/README.md`.
-2. Load the department AGENT.md or README first.
-3. Activate the role named by the area README.
-4. Load only the required skills and playbook.
-5. Produce the requested output.
+1. Read or request the full GitHub issue body.
+2. Summarize the issue in the chat and ask the user to confirm the interpretation.
+3. Check Product and Engineering readiness.
+4. Check Design only when UX is affected.
+5. Check Security only when data, auth, privacy, abuse or compliance is involved.
+6. Propose the required issue-linked branch name before code changes.
+7. Produce an implementation plan and test plan.
+8. Ask for confirmation before modifying product code.
 
-## Validation Rules
+## Output
 
-- Separate assumption, evidence, insight, decision and roadmap impact.
-- Do not treat assumptions as validated learning.
-- If the request affects roadmap, MVP or issue scope, identify whether evidence exists.
-- If evidence is missing, propose a validation step before committing roadmap or implementation changes.
+- Issue summary
+- Readiness gaps
+- Branch name proposal
+- Implementation plan
+- Test plan
+- Likely files to change
+- Risks
+- Confirmation question before code changes
 
 ## Active Areas
 
