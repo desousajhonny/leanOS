@@ -866,6 +866,11 @@ async function assertFounderIntentRouting(rootDir) {
   assert.equal(rootAgent.includes("operations/workflows/issue-delivery-cycle.workflow.md"), false, "Root AGENT.md should not bypass Operations AGENT for workflows");
   assert.equal(rootAgent.includes("Root AGENT.md must not bypass department AGENT.md"), false, "Root AGENT.md should avoid narrow workflow-bypass prohibitions");
   assert(rootAgent.includes("## File Responsibilities"), "Root AGENT.md should define file responsibilities");
+  assert(rootAgent.includes("LeanOS uses owner-first navigation"), "Root AGENT.md should explain owner-first navigation");
+  assert(rootAgent.includes("Root chooses the owning department"), "Root AGENT.md should explain root-level navigation");
+  assert(rootAgent.includes("Department chooses a workflow or active area"), "Root AGENT.md should explain department-level navigation");
+  assert(rootAgent.includes("Area chooses the specialist role when it has `AGENT.md`"), "Root AGENT.md should explain area-level navigation");
+  assert(rootAgent.includes("Output updates only the smallest relevant source-of-truth, knowledge or decision file"), "Root AGENT.md should keep output scope narrow");
   assert(rootAgent.includes("## Red Lines"), "Root AGENT.md should define scalable red lines");
   assert(rootAgent.includes("`AGENT.md`: operational owner for that level"), "Root AGENT.md should define AGENT.md responsibility");
   assert(rootAgent.includes("`README.md`: directory map and explanation"), "Root AGENT.md should define README responsibility");
@@ -906,6 +911,8 @@ async function assertFounderIntentRouting(rootDir) {
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-to-github-project" && workflow.path === "../../strategy/workflows/roadmap-to-github-project.workflow.md"), "Workflows index should point to Strategy roadmap sync workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "issue-delivery-cycle" && workflow.path === "../../operations/workflows/issue-delivery-cycle.workflow.md"), "Workflows index should point to Operations issue delivery workflow");
   assert(rootAgentTemplate.includes("Route only to the owning department `AGENT.md`"), "Root agent template should keep root routing department-level");
+  assert(rootAgentTemplate.includes("LeanOS uses owner-first navigation"), "Root agent template should explain owner-first navigation");
+  assert(rootAgentTemplate.includes("Do not skip levels because a later file looks relevant"), "Root agent template should prevent route skipping");
   assert(rootAgentTemplate.includes("## Red Lines"), "Root agent template should include scalable red lines");
   assert(rootAgentTemplate.includes("When an area has `AGENT.md`, use it before loading roles, skills or playbooks"), "Root agent template should include area AGENT rule");
   assert(departmentAgentTemplate.includes("If the request spans multiple active areas, open `workflows/README.md`"), "Department agent template should route cross-area work through workflow index");

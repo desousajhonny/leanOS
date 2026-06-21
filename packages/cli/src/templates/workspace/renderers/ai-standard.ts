@@ -39,7 +39,7 @@ export function aiStandardFiles(): FileEntry[] {
 
   return [
     { path: "ai-standard/README.md", content: folderReadme("AI Standard", "LeanOS standards for creating and reviewing AI-native workspace assets.", "Use before creating or changing agents, departments, areas, roles, skills, playbooks, workflows or commands.", "navigation-chain.md", ["navigation-chain.md", "creation-rules.md", "quality-criteria.md", "naming-conventions.md", "folder-readme-rules.md", "templates/", "checklists/", "instructions/", "examples/"], ["../AGENT.md", "../.leanos/commands/"], "Consult the standard before creating or modifying LeanOS assets.") },
-    { path: "ai-standard/navigation-chain.md", content: "# Navigation Chain\n\n`AGENT.md -> Department AGENT.md -> Department README or Workflow -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`\n\nRoot AGENT.md chooses the owning department. Department AGENT.md chooses a department workflow or active area. Area AGENT.md files, when present, choose the specialist role before skills and playbooks are loaded. Area README files remain the directory map. Outputs should update source-of-truth files only when requested or clearly needed.\n" },
+    { path: "ai-standard/navigation-chain.md", content: "# Navigation Chain\n\nLeanOS uses owner-first navigation:\n\n`Root AGENT.md -> Department AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`\n\nUse the chain to choose the next owner, one level at a time.\n\n1. Root chooses the owning department.\n2. Department chooses a workflow or active area.\n3. Area chooses the specialist role when it has `AGENT.md`; otherwise use its `README.md` as the local map.\n4. Role points to the required skills and playbooks.\n5. Skills and playbooks shape the work.\n6. Output updates only the smallest relevant source-of-truth, knowledge or decision file.\n\nDo not skip levels because a later file looks relevant.\nDo not load the whole workspace when a smaller route exists.\n" },
     { path: "ai-standard/creation-rules.md", content: "# Creation Rules\n\n- `AGENT.md` is the operating owner for its level.\n- `README.md` is the directory map and explanation.\n- Area `AGENT.md` files are optional and should exist only when an area needs a lead router before specialist roles.\n- Create roles, skills and playbooks inside the correct area.\n- Do not place roles, skills or playbooks directly under root departments.\n- Every area asset must reference its area owner, local README and source-of-truth files.\n- Keep LeanOS runtime files in `.leanos/` small and route-focused.\n" },
     { path: "ai-standard/quality-criteria.md", content: "# Quality Criteria\n\n- Clear purpose\n- Explicit routing\n- Minimal context loading\n- Source-of-truth references\n- Output expectations\n" },
     { path: "ai-standard/naming-conventions.md", content: "# Naming Conventions\n\n- Use lowercase kebab-case for folders and file basenames.\n- Use direct, singular asset names: `<direct-name>.role.md`, `<direct-name>.skill.md`, `<direct-name>.playbook.md`, `<direct-name>.workflow.md`.\n- Roles end with `.role.md`.\n- Skills end with `.skill.md`.\n- Playbooks end with `.playbook.md`.\n- Workflows end with `.workflow.md`.\n- Prefer domain capability names such as `accessibility.skill.md` or `design-system.skill.md` over generic action names such as `define-accessibility.skill.md`.\n- Use action verbs only when the asset is truly procedural, such as `create-branch.skill.md`.\n- Knowledge files do not use asset suffixes; use names such as `knowledge/design-system.md`.\n" },
@@ -109,7 +109,21 @@ You are the chief operating agent for this workspace.
 
 ## Navigation Chain
 
-\`AGENT.md -> Department AGENT.md -> Department README or Workflow -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output\`
+LeanOS uses owner-first navigation:
+
+\`Root AGENT.md -> Department AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output\`
+
+Use the chain to choose the next owner, one level at a time.
+
+1. Root chooses the owning department.
+2. Department chooses a workflow or active area.
+3. Area chooses the specialist role when it has \`AGENT.md\`; otherwise use its \`README.md\` as the local map.
+4. Role points to the required skills and playbooks.
+5. Skills and playbooks shape the work.
+6. Output updates only the smallest relevant source-of-truth, knowledge or decision file.
+
+Do not skip levels because a later file looks relevant.
+Do not load the whole workspace when a smaller route exists.
 
 ## File Responsibilities
 
