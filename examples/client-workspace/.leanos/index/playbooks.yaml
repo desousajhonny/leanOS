@@ -1,0 +1,22 @@
+playbooks:
+  - key: product-strategy
+    department: product
+    path: ../departments/product/playbooks/product-strategy.playbook.md
+  - key: mvp-definition
+    department: product
+    path: ../departments/product/playbooks/mvp-definition.playbook.md
+  - key: mvp-ux-flow
+    department: design
+    path: ../departments/design/playbooks/mvp-ux-flow.playbook.md
+  - key: issue-to-pr
+    department: engineering
+    path: ../departments/engineering/playbooks/issue-to-pr.playbook.md
+  - key: pr-validation
+    department: engineering
+    path: ../departments/engineering/playbooks/pr-validation.playbook.md
+  - key: mvp-validation
+    department: validation
+    path: ../departments/validation/playbooks/mvp-validation.playbook.md
+  - key: mvp-launch
+    department: growth
+    path: ../departments/growth/playbooks/mvp-launch.playbook.md

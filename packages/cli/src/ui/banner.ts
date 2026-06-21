@@ -1,0 +1,23 @@
+import figlet from "figlet";
+import pc from "picocolors";
+
+const fallbackBanner = `
+██╗     ███████╗ █████╗ ███╗   ██╗ ██████╗ ███████╗
+██║     ██╔════╝██╔══██╗████╗  ██║██╔═══██╗██╔════╝
+██║     █████╗  ███████║██╔██╗ ██║██║   ██║███████╗
+██║     ██╔══╝  ██╔══██║██║╚██╗██║██║   ██║╚════██║
+███████╗███████╗██║  ██║██║ ╚████║╚██████╔╝███████║
+╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝`;
+
+export function printBanner(): void {
+  const banner = figlet.textSync("LeanOS", {
+    font: "ANSI Shadow",
+    horizontalLayout: "default",
+    verticalLayout: "default"
+  });
+
+  console.log(pc.cyan(banner || fallbackBanner));
+  console.log(pc.bold("LeanOS AI"));
+  console.log(pc.dim("Agent-native startup operating system"));
+  console.log("");
+}

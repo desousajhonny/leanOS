@@ -1,0 +1,10 @@
+department: design
+purpose: Own UX flows, screen specs, usability states and MVP design decisions.
+roles:
+  - ux-lead
+skills:
+  - map-user-flow
+  - create-screen-spec
+  - define-ux-states
+playbooks:
+  - mvp-ux-flow

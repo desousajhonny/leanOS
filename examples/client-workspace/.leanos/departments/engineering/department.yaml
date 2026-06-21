@@ -1,0 +1,15 @@
+department: engineering
+purpose: Own implementation, architecture, tests, technical decisions, code quality and PR readiness.
+roles:
+  - senior-developer
+  - ai-architect
+  - pr-reviewer
+skills:
+  - plan-implementation
+  - write-tests
+  - create-pr
+  - create-api-contract
+  - review-pr
+playbooks:
+  - issue-to-pr
+  - pr-validation

@@ -1,0 +1,5 @@
+type: playbook
+name: example-name
+owner: department
+source_of_truth: []
+related_assets: []

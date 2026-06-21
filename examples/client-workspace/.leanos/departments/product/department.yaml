@@ -1,0 +1,16 @@
+department: product
+purpose: Own strategy, ICP, value proposition, business model, roadmap coherence and MVP definition.
+roles:
+  - product-strategist
+  - product-manager
+skills:
+  - define-company
+  - define-product
+  - define-icp
+  - define-value-proposition
+  - define-business-model
+  - create-roadmap
+  - check-coherence
+playbooks:
+  - product-strategy
+  - mvp-definition

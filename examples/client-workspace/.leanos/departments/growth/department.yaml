@@ -1,0 +1,10 @@
+department: growth
+purpose: Own positioning, landing page copy, acquisition channels and launch loops.
+roles:
+  - growth-lead
+skills:
+  - define-positioning
+  - create-landing-page-copy
+  - create-launch-plan
+playbooks:
+  - mvp-launch

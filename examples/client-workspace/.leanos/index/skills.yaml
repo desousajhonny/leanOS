@@ -1,0 +1,64 @@
+skills:
+  - key: define-company
+    department: product
+    path: ../departments/product/skills/define-company.skill.md
+  - key: define-product
+    department: product
+    path: ../departments/product/skills/define-product.skill.md
+  - key: define-icp
+    department: product
+    path: ../departments/product/skills/define-icp.skill.md
+  - key: define-value-proposition
+    department: product
+    path: ../departments/product/skills/define-value-proposition.skill.md
+  - key: define-business-model
+    department: product
+    path: ../departments/product/skills/define-business-model.skill.md
+  - key: create-roadmap
+    department: product
+    path: ../departments/product/skills/create-roadmap.skill.md
+  - key: check-coherence
+    department: product
+    path: ../departments/product/skills/check-coherence.skill.md
+  - key: map-user-flow
+    department: design
+    path: ../departments/design/skills/map-user-flow.skill.md
+  - key: create-screen-spec
+    department: design
+    path: ../departments/design/skills/create-screen-spec.skill.md
+  - key: define-ux-states
+    department: design
+    path: ../departments/design/skills/define-ux-states.skill.md
+  - key: plan-implementation
+    department: engineering
+    path: ../departments/engineering/skills/plan-implementation.skill.md
+  - key: write-tests
+    department: engineering
+    path: ../departments/engineering/skills/write-tests.skill.md
+  - key: create-pr
+    department: engineering
+    path: ../departments/engineering/skills/create-pr.skill.md
+  - key: create-api-contract
+    department: engineering
+    path: ../departments/engineering/skills/create-api-contract.skill.md
+  - key: review-pr
+    department: engineering
+    path: ../departments/engineering/skills/review-pr.skill.md
+  - key: define-assumptions
+    department: validation
+    path: ../departments/validation/skills/define-assumptions.skill.md
+  - key: create-interview-script
+    department: validation
+    path: ../departments/validation/skills/create-interview-script.skill.md
+  - key: define-success-metrics
+    department: validation
+    path: ../departments/validation/skills/define-success-metrics.skill.md
+  - key: define-positioning
+    department: growth
+    path: ../departments/growth/skills/define-positioning.skill.md
+  - key: create-landing-page-copy
+    department: growth
+    path: ../departments/growth/skills/create-landing-page-copy.skill.md
+  - key: create-launch-plan
+    department: growth
+    path: ../departments/growth/skills/create-launch-plan.skill.md

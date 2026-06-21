@@ -1,0 +1,25 @@
+roles:
+  - key: product-strategist
+    department: product
+    path: ../departments/product/roles/product-strategist.role.md
+  - key: product-manager
+    department: product
+    path: ../departments/product/roles/product-manager.role.md
+  - key: ux-lead
+    department: design
+    path: ../departments/design/roles/ux-lead.role.md
+  - key: senior-developer
+    department: engineering
+    path: ../departments/engineering/roles/senior-developer.role.md
+  - key: ai-architect
+    department: engineering
+    path: ../departments/engineering/roles/ai-architect.role.md
+  - key: pr-reviewer
+    department: engineering
+    path: ../departments/engineering/roles/pr-reviewer.role.md
+  - key: validation-researcher
+    department: validation
+    path: ../departments/validation/roles/validation-researcher.role.md
+  - key: growth-lead
+    department: growth
+    path: ../departments/growth/roles/growth-lead.role.md

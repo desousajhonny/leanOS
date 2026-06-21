@@ -1,0 +1,14 @@
+{
+  "name": "leanos-ai-framework",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm --filter lean-os dev",
+    "generate:client-workspace": "npm --prefix packages/cli run generate:client-workspace",
+    "refresh": "npm run generate:client-workspace && npm test",
+    "test": "npm --prefix packages/cli run test:generator"
+  },
+  "packageManager": "pnpm@10.12.1"
+}

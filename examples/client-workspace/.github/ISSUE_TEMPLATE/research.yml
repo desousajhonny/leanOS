@@ -1,0 +1,26 @@
+name: Research
+description: LeanOS research issue.
+title: "[Research]: "
+labels: ["leanos"]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What problem, assumption, roadmap item or workflow does this relate to?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What should be done?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: How will we know this is complete?
+    validations:
+      required: true

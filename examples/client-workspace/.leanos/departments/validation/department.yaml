@@ -1,0 +1,10 @@
+department: validation
+purpose: Own assumptions, experiments, interviews, success metrics and learning capture.
+roles:
+  - validation-researcher
+skills:
+  - define-assumptions
+  - create-interview-script
+  - define-success-metrics
+playbooks:
+  - mvp-validation

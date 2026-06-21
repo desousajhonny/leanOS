@@ -1,0 +1,7 @@
+routing:
+  strategy: ../departments/product/README.md
+  ux: ../departments/design/README.md
+  engineering: ../departments/engineering/README.md
+  validation: ../departments/validation/README.md
+  growth: ../departments/growth/README.md
+  asset_creation: ../ai-standard/README.md

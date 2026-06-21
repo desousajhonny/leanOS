@@ -1,0 +1,13 @@
+labels:
+  - name: leanos
+    color: "5319e7"
+    description: LeanOS managed work
+  - name: validation
+    color: "0e8a16"
+    description: Validation or learning task
+  - name: mvp
+    color: "1d76db"
+    description: MVP scope work
+  - name: strategy
+    color: "fbca04"
+    description: Strategy or product definition
