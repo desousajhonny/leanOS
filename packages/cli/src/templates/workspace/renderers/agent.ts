@@ -1,8 +1,8 @@
 import type { AreaDefinition, FileEntry, RootDepartmentDefinition } from "../types.js";
 import { folderReadme } from "../content/shared.js";
 
-export function rootAgent(activeAreas: AreaDefinition[], activeRoots: RootDepartmentDefinition[]): string {
-  const routingLines = activeAreas.map((area) => `If the user asks about ${area.requestTypes}:\n\nGo to:\n\n\`${area.path}/README.md\``);
+export function rootAgent(_activeAreas: AreaDefinition[], activeRoots: RootDepartmentDefinition[]): string {
+  const routingLines = activeRoots.map((department) => `If the user asks about ${department.requestTypes}:\n\nGo to:\n\n\`${department.key}/AGENT.md\``);
 
   return `# LeanOS Agent
 
@@ -34,11 +34,28 @@ If the command file is missing, do not invent the command. Explain what is missi
 
 ## Navigation Chain
 
-\`AGENT.md -> Department AGENT.md/README.md -> Area README -> Role -> Skills -> Playbook -> Output\`
+\`AGENT.md -> Department AGENT.md -> Department README or Workflow -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output\`
 
 Do not jump directly to implementation.
 Do not load every file.
-Load the smallest relevant department, area, role, skill and playbook.
+Load the smallest relevant owner: department, area, role, skill and playbook.
+
+## File Responsibilities
+
+- \`AGENT.md\`: operational owner for that level. It decides the next route.
+- \`README.md\`: directory map and explanation.
+- \`department.yaml\` and \`area.yaml\`: machine-readable structure.
+- \`workflows/\`: multi-step flows owned by the department or area that contains them.
+- \`roles/\`, \`skills/\` and \`playbooks/\`: area-level execution assets.
+
+## Red Lines
+
+- Enter the owning department or area before acting.
+- When an area has its own \`AGENT.md\`, use it as the area operating owner before loading roles, skills or playbooks.
+- Do not invent missing workflows, roles, skills, playbooks, commands or templates.
+- Do not load the whole workspace when a smaller route exists.
+- Do not write secrets to tracked files.
+- Ask before modifying source-of-truth files or operating assets.
 
 ## Workspace Mutation Rules
 
@@ -54,19 +71,18 @@ Customize operating assets only when the user explicitly asks to change LeanOS i
 
 ## LeanOS Runtime
 
-\`.leanos/\` contains runtime files for commands, context, indexes, workflows and VS Code integration.
+\`.leanos/\` contains runtime files for commands, context, indexes and VS Code integration.
+\`.leanos/\` does not own business workflows. Operational workflows live in root departments or their areas, such as \`strategy/workflows/\` and \`operations/workflows/\`.
 
 \`ai-standard/\` contains reusable templates, instructions and quality criteria.
 
 ## Active Root Departments
 
-${activeRoots.map((department) => `- ${department.name}: \`${department.key}/README.md\``).join("\n")}
-
-## Active Areas
-
-${activeAreas.map((area) => `- ${area.name}: \`${area.path}/README.md\``).join("\n")}
+${activeRoots.map((department) => `- ${department.name}: \`${department.key}/AGENT.md\` (map: \`${department.key}/README.md\`)`).join("\n")}
 
 ## Routing
+
+Use this section only to choose the owning department. The department \`AGENT.md\` chooses the workflow or area.
 
 ${routingLines.join("\n\n")}
 `;
@@ -74,10 +90,10 @@ ${routingLines.join("\n\n")}
 
 export function leanosRuntimeFiles(): FileEntry[] {
   return [
-    { path: ".leanos/README.md", content: folderReadme("LeanOS Runtime", "Runtime files for LeanOS Chief.", "Use for commands, context, indexes, global workflows and VS Code integration.", "context/current-focus.md", ["agent/", "commands/", "context/", "workflows/", "index/", "vscode/"], ["../AGENT.md", "../ai-standard/", "../strategy/", "../operations/", "../growth/"], "This folder is runtime support. Operational roles, skills and playbooks live in workspace departments and areas.") },
+    { path: ".leanos/README.md", content: folderReadme("LeanOS Runtime", "Runtime files for LeanOS Chief.", "Use for commands, context, indexes and VS Code integration.", "context/current-focus.md", ["agent/", "commands/", "context/", "index/", "vscode/"], ["../AGENT.md", "../ai-standard/", "../strategy/", "../operations/", "../growth/"], "This folder is runtime support. Business workflows live in departments or areas such as `strategy/workflows/` and `operations/workflows/`. Operational roles, skills and playbooks live in workspace areas.") },
     { path: ".leanos/agent/README.md", content: folderReadme("Agent", "Chief Agent operating guidance.", "Use when defining how LeanOS Chief loads context, activates routes and formats output.", "chief-agent.md", ["chief-agent.md", "operating-rules.md", "context-loading.md", "role-activation.md", "output-standards.md"], ["../../ai-standard/", "../commands/", "../context/"], "Keep this folder concise. Route product work to root departments and areas.") },
     { path: ".leanos/agent/chief-agent.md", content: "# Chief Agent\n\nLeanOS Chief is the bootloader and dispatcher for the workspace.\n\nIt should load AGENT.md, leanos.yaml, context files and the routing map before acting.\n" },
-    { path: ".leanos/agent/operating-rules.md", content: "# Operating Rules\n\n- Start from `../../AGENT.md`.\n- LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface.\n- For `/start-leanos`, load `../commands/start-leanos.md` before acting.\n- For any LeanOS slash command, load `../commands/<command>.md`; if it is missing, do not invent it.\n- Load only relevant context.\n- Route through departments and areas.\n- Do not implement before loading the matching command, area, role, skill and playbook.\n- During `/start-leanos`, propose source-of-truth updates first and write only after explicit user confirmation.\n- Treat `/leanos-init` as a legacy alias for `/start-leanos`.\n- Do not modify roles, skills, playbooks, workflows, commands, `ai-standard/` or `.github/` during init.\n- Use operating assets to work; customize them only when the user explicitly asks to change LeanOS itself.\n" },
+    { path: ".leanos/agent/operating-rules.md", content: "# Operating Rules\n\n- Start from `../../AGENT.md`.\n- LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface.\n- Natural language founder requests are first-class. Root AGENT.md routes to the correct department; department AGENT.md files route to workflows or areas.\n- `AGENT.md` is the operating owner for its level; `README.md` is the directory map.\n- Area `AGENT.md` files, when present, choose the specialist role before skills and playbooks are loaded.\n- For `/start-leanos`, load `../commands/start-leanos.md` before acting.\n- For any LeanOS slash command, load `../commands/<command>.md`; if it is missing, do not invent it.\n- Load only relevant context.\n- Enter the owning department or area before acting.\n- Do not implement before loading the matching workflow or command, area, role, skill and playbook.\n- Business workflows live in root departments or areas, not in `.leanos/`.\n- During `/start-leanos`, propose source-of-truth updates first and write only after explicit user confirmation.\n- Treat `/leanos-init` as a legacy alias for `/start-leanos`.\n- Do not modify roles, skills, playbooks, workflows, commands, `ai-standard/` or `.github/` during init.\n- Do not write secrets to tracked files.\n- Use operating assets to work; customize them only when the user explicitly asks to change LeanOS itself.\n" },
     { path: ".leanos/agent/context-loading.md", content: "# Context Loading\n\nLeanOS uses lazy context loading.\n\nLoad `../context/` first, then use `../index/` to choose the smallest relevant path.\n" },
     { path: ".leanos/agent/role-activation.md", content: "# Role Activation\n\nRoles live inside active workspace areas.\n\nDo not activate a role from an inactive or missing area without asking the user.\n" },
     { path: ".leanos/agent/output-standards.md", content: "# Output Standards\n\nEvery output should include:\n\n- What was loaded\n- Decision or result\n- Files to update, if any\n- Next recommended command or route\n" }

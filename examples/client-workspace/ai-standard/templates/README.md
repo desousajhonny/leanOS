@@ -15,6 +15,10 @@ Use when creating new workspace assets.
 ## Files
 
 - `agent-template.md`
+- `root-agent-template.md`
+- `department-agent-template.md`
+- `area-agent-template.md`
+- `area-readme-template.md`
 - `command-template.md`
 - `department-template.md`
 - `department-template.yaml`

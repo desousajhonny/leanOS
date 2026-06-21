@@ -15,6 +15,7 @@ Use when a selected role points to a playbook.
 ## Files
 
 - `validation-cycle-planning.playbook.md`
+- `roadmap-sync-prep.playbook.md`
 
 ## Related Folders
 

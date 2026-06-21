@@ -2,6 +2,8 @@ area:
   key: operations.security
   department: operations
   path: operations/security
+  agent: null
+  readme: README.md
   roles:
     - security-reviewer
   skills:

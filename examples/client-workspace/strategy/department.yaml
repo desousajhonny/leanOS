@@ -4,13 +4,21 @@ department:
   purpose: Own company direction, product strategy, roadmap and validation learning.
   active_areas:
     - key: strategy.company
-      path: company/README.md
+      agent: null
+      readme: company/README.md
     - key: strategy.product
-      path: product/README.md
+      agent: null
+      readme: product/README.md
     - key: strategy.roadmap
-      path: roadmap/README.md
+      agent: null
+      readme: roadmap/README.md
     - key: strategy.validation
-      path: validation/README.md
+      agent: null
+      readme: validation/README.md
   workflows:
+    - key: idea-to-roadmap
+      path: workflows/idea-to-roadmap.workflow.md
     - key: strategy-validation-cycle
       path: workflows/strategy-validation-cycle.workflow.md
+    - key: roadmap-to-github-project
+      path: workflows/roadmap-to-github-project.workflow.md

@@ -2,6 +2,8 @@ area:
   key: strategy.product
   department: strategy
   path: strategy/product
+  agent: null
+  readme: README.md
   roles:
     - product-strategist
     - product-manager
@@ -10,6 +12,7 @@ area:
     - define-icp
     - define-value-proposition
     - define-business-model
+    - evaluate-idea
     - check-coherence
   playbooks:
     - product-strategy

@@ -1,8 +1,8 @@
-# Define UX States
+# Design System
 
 ## Purpose
 
-Define loading, empty, error, success and edge states.
+Define MVP design tokens, visual rules, component expectations and interaction principles.
 
 ## Area
 

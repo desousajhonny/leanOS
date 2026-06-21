@@ -1,7 +1,10 @@
 departments:
   - key: strategy
-    path: ../../strategy/README.md
+    agent: ../../strategy/AGENT.md
+    readme: ../../strategy/README.md
   - key: operations
-    path: ../../operations/README.md
+    agent: ../../operations/AGENT.md
+    readme: ../../operations/README.md
   - key: growth
-    path: ../../growth/README.md
+    agent: ../../growth/AGENT.md
+    readme: ../../growth/README.md

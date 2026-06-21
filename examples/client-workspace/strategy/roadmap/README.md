@@ -25,6 +25,15 @@ Own roadmap sequence, milestones, backlog and validation-first prioritization.
 3. Use the matching playbook from `playbooks/`.
 4. Produce the requested output and update source-of-truth files when needed.
 
+## File Responsibilities
+
+- `README.md`: area map and explanation.
+- `AGENT.md`: area operating lead when present.
+- `area.yaml`: machine-readable structure for this area.
+- `roles/`: operating personas for this area.
+- `skills/`: focused capabilities used by roles.
+- `playbooks/`: tactical execution sequences.
+
 ## Common Paths
 
 - Roadmap request: role `roles/roadmap-planner.role.md` -> skill `skills/create-roadmap.skill.md` -> playbook `playbooks/validation-cycle-planning.playbook.md`.

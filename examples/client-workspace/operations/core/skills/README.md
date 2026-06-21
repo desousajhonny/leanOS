@@ -17,6 +17,8 @@ Use when a selected role points to a skill.
 - `define-mvp.skill.md`
 - `write-acceptance-criteria.skill.md`
 - `check-delivery-coherence.skill.md`
+- `shape-epic.skill.md`
+- `write-subissue-criteria.skill.md`
 - `define-architecture.skill.md`
 - `create-api-contract.skill.md`
 

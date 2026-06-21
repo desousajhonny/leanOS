@@ -8,6 +8,10 @@ import { creationInstructions, folderReadme, qualityChecklist, standardTemplate,
 export function aiStandardFiles(): FileEntry[] {
   const templateFiles = [
     "agent-template.md",
+    "root-agent-template.md",
+    "department-agent-template.md",
+    "area-agent-template.md",
+    "area-readme-template.md",
     "command-template.md",
     "department-template.md",
     "department-template.yaml",
@@ -35,10 +39,10 @@ export function aiStandardFiles(): FileEntry[] {
 
   return [
     { path: "ai-standard/README.md", content: folderReadme("AI Standard", "LeanOS standards for creating and reviewing AI-native workspace assets.", "Use before creating or changing agents, departments, areas, roles, skills, playbooks, workflows or commands.", "navigation-chain.md", ["navigation-chain.md", "creation-rules.md", "quality-criteria.md", "naming-conventions.md", "folder-readme-rules.md", "templates/", "checklists/", "instructions/", "examples/"], ["../AGENT.md", "../.leanos/commands/"], "Consult the standard before creating or modifying LeanOS assets.") },
-    { path: "ai-standard/navigation-chain.md", content: "# Navigation Chain\n\n`AGENT.md -> Department AGENT.md/README.md -> Area README -> Role -> Skills -> Playbook -> Output`\n\nRoot departments route work. Areas own roles, skills and playbooks. Outputs should update source-of-truth files only when requested or clearly needed.\n" },
-    { path: "ai-standard/creation-rules.md", content: "# Creation Rules\n\n- Create roles, skills and playbooks inside the correct area.\n- Do not place roles, skills or playbooks directly under root departments.\n- Every area asset must reference its local README and source-of-truth files.\n- Keep LeanOS runtime files in `.leanos/` small and route-focused.\n" },
+    { path: "ai-standard/navigation-chain.md", content: "# Navigation Chain\n\n`AGENT.md -> Department AGENT.md -> Department README or Workflow -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`\n\nRoot AGENT.md chooses the owning department. Department AGENT.md chooses a department workflow or active area. Area AGENT.md files, when present, choose the specialist role before skills and playbooks are loaded. Area README files remain the directory map. Outputs should update source-of-truth files only when requested or clearly needed.\n" },
+    { path: "ai-standard/creation-rules.md", content: "# Creation Rules\n\n- `AGENT.md` is the operating owner for its level.\n- `README.md` is the directory map and explanation.\n- Area `AGENT.md` files are optional and should exist only when an area needs a lead router before specialist roles.\n- Create roles, skills and playbooks inside the correct area.\n- Do not place roles, skills or playbooks directly under root departments.\n- Every area asset must reference its area owner, local README and source-of-truth files.\n- Keep LeanOS runtime files in `.leanos/` small and route-focused.\n" },
     { path: "ai-standard/quality-criteria.md", content: "# Quality Criteria\n\n- Clear purpose\n- Explicit routing\n- Minimal context loading\n- Source-of-truth references\n- Output expectations\n" },
-    { path: "ai-standard/naming-conventions.md", content: "# Naming Conventions\n\n- Areas use lowercase kebab-case paths.\n- Roles end with `.role.md`.\n- Skills end with `.skill.md`.\n- Playbooks end with `.playbook.md`.\n- Workflows end with `.workflow.md`.\n" },
+    { path: "ai-standard/naming-conventions.md", content: "# Naming Conventions\n\n- Use lowercase kebab-case for folders and file basenames.\n- Use direct, singular asset names: `<direct-name>.role.md`, `<direct-name>.skill.md`, `<direct-name>.playbook.md`, `<direct-name>.workflow.md`.\n- Roles end with `.role.md`.\n- Skills end with `.skill.md`.\n- Playbooks end with `.playbook.md`.\n- Workflows end with `.workflow.md`.\n- Prefer domain capability names such as `accessibility.skill.md` or `design-system.skill.md` over generic action names such as `define-accessibility.skill.md`.\n- Use action verbs only when the asset is truly procedural, such as `create-branch.skill.md`.\n- Knowledge files do not use asset suffixes; use names such as `knowledge/design-system.md`.\n" },
     { path: "ai-standard/folder-readme-rules.md", content: "# Folder README Rules\n\nEvery important folder should explain purpose, when to use it, source of truth, files, related folders and navigation notes.\n" },
     { path: "ai-standard/templates/README.md", content: folderReadme("Templates", "Reusable templates for LeanOS assets.", "Use when creating new workspace assets.", "role-template.md", templateFiles, ["../checklists/", "../instructions/"], "Copy the smallest matching template and adapt it to the active department or area.") },
     ...templateFiles.map((file) => ({ path: `ai-standard/templates/${file}`, content: templateContent(file) })),
@@ -57,6 +61,11 @@ export function aiStandardFiles(): FileEntry[] {
 
 function templateContent(fileName: string): string {
   const templates: Record<string, string> = {
+    "agent-template.md": agentTemplate(),
+    "root-agent-template.md": rootAgentTemplate(),
+    "department-agent-template.md": departmentAgentTemplate(),
+    "area-agent-template.md": areaAgentTemplate(),
+    "area-readme-template.md": areaReadmeTemplate(),
     "github-epic-template.md": githubEpicTemplate(),
     "github-subissue-template.md": githubSubissueTemplate(),
     "issue-readiness-matrix-template.md": issueReadinessMatrixTemplate(),
@@ -66,6 +75,165 @@ function templateContent(fileName: string): string {
   };
 
   return templates[fileName] ?? standardTemplate(fileName);
+}
+
+function agentTemplate(): string {
+  return `# Agent Template
+
+Use the smallest matching agent template.
+
+## Choose One
+
+- Root workspace agent: \`root-agent-template.md\`
+- Department agent: \`department-agent-template.md\`
+- Area agent: \`area-agent-template.md\`
+
+## Rule
+
+\`AGENT.md\` is the operating owner for its level. It should route work, set red lines and delegate details to the next owner. Do not turn an AGENT.md into a full inventory of every workflow, role, skill or playbook.
+`;
+}
+
+function rootAgentTemplate(): string {
+  return `# <Workspace> Agent
+
+You are the chief operating agent for this workspace.
+
+## Start Here
+
+- \`leanos.yaml\`
+- \`.leanos/context/workspace-summary.md\`
+- \`.leanos/context/current-focus.md\`
+- \`.leanos/context/next-actions.md\`
+- \`.leanos/index/routing-map.yaml\`
+
+## Navigation Chain
+
+\`AGENT.md -> Department AGENT.md -> Department README or Workflow -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output\`
+
+## File Responsibilities
+
+- \`AGENT.md\`: operating owner for this level.
+- \`README.md\`: directory map and explanation.
+- \`department.yaml\` and \`area.yaml\`: machine-readable structure.
+- \`workflows/\`: multi-step flows owned by the department or area that contains them.
+- \`roles/\`, \`skills/\` and \`playbooks/\`: area-level execution assets.
+
+## Red Lines
+
+- Enter the owning department or area before acting.
+- When an area has \`AGENT.md\`, use it before loading roles, skills or playbooks.
+- Do not invent missing workflows, roles, skills, playbooks, commands or templates.
+- Do not load the whole workspace when a smaller route exists.
+- Do not write secrets to tracked files.
+- Ask before modifying source-of-truth files or operating assets.
+
+## Routing
+
+Route only to the owning department \`AGENT.md\`. The department agent chooses the workflow or area.
+`;
+}
+
+function departmentAgentTemplate(): string {
+  return `# <Department> Agent
+
+You are the operating owner for this department.
+
+Use \`README.md\` as the directory map. Use \`department.yaml\` when machine-readable structure matters.
+
+Roles, skills and playbooks do not live at the department root. They live inside active areas.
+
+## Operating Scope
+
+Describe what this department owns.
+
+## Routing Rules
+
+1. If the request spans multiple active areas, open \`workflows/README.md\` and choose the smallest matching workflow.
+2. If the request belongs to one area, route to that area \`AGENT.md\` when present; otherwise route to its README.
+3. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
+4. Do not load roles, skills or playbooks before entering the owning area.
+
+## Active Areas
+
+- <Area>: \`<area>/AGENT.md\` or \`<area>/README.md\` - <purpose>
+
+## Workflow Entry
+
+- Department workflows: \`workflows/README.md\`
+
+Use workflows for cross-area sequencing. Use area playbooks for tactical execution inside one area.
+`;
+}
+
+function areaAgentTemplate(): string {
+  return `# <Area> Agent
+
+You are the <Area Lead> for this workspace.
+
+This \`AGENT.md\` is the operating owner for the area.
+
+Use \`README.md\` as the directory map. Use \`area.yaml\` when machine-readable structure matters.
+
+## Operating Scope
+
+Describe what this area lead owns and how it protects quality.
+
+## Role Routing
+
+Choose the smallest specialist role for the request:
+
+- <Specialist Role>: \`roles/<role>.role.md\` - use when <condition>.
+
+## Routing Rules
+
+1. Start from this area AGENT for operational work inside the area.
+2. Load one specialist role before loading skills or playbooks.
+3. Load only skills and playbooks required by the selected role.
+4. If the request needs a missing specialist, skill or playbook, explain the gap and ask before creating it.
+5. Keep reusable area knowledge in \`knowledge/\` when the area uses a knowledge folder.
+
+## Navigation
+
+\`<area>/AGENT.md -> Role -> Skills -> Playbook -> Output\`
+`;
+}
+
+function areaReadmeTemplate(): string {
+  return `# <Area>
+
+## Purpose
+
+What this area owns.
+
+## When to Use
+
+- <intent or situation>
+
+## Source of Truth
+
+- \`<file>.md\`
+
+## Navigation
+
+1. If this area has \`AGENT.md\`, start there for operational routing.
+2. Use this README as the directory map.
+3. After the area owner selects a role, load only required skills and playbooks.
+4. Produce the requested output and update source-of-truth files when needed.
+
+## File Responsibilities
+
+- \`AGENT.md\`: optional area operating owner.
+- \`README.md\`: area map and explanation.
+- \`area.yaml\`: machine-readable structure for this area.
+- \`roles/\`: operating personas for this area.
+- \`skills/\`: focused capabilities used by roles.
+- \`playbooks/\`: tactical execution sequences.
+
+## Common Paths
+
+- <request>: role \`roles/<role>.role.md\` -> skill \`skills/<skill>.skill.md\` -> playbook \`playbooks/<playbook>.playbook.md\`.
+`;
 }
 
 function githubEpicTemplate(): string {

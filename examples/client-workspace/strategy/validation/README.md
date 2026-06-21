@@ -28,6 +28,15 @@ Own assumptions, experiments, interviews, success metrics and learning capture.
 3. Use the matching playbook from `playbooks/`.
 4. Produce the requested output and update source-of-truth files when needed.
 
+## File Responsibilities
+
+- `README.md`: area map and explanation.
+- `AGENT.md`: area operating lead when present.
+- `area.yaml`: machine-readable structure for this area.
+- `roles/`: operating personas for this area.
+- `skills/`: focused capabilities used by roles.
+- `playbooks/`: tactical execution sequences.
+
 ## Common Paths
 
 - Validation request: role `roles/validation-researcher.role.md` -> skill `skills/define-assumptions.skill.md` -> playbook `playbooks/mvp-validation.playbook.md`.

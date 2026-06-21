@@ -25,6 +25,7 @@ Read:
 - `../skills/define-icp.skill.md`
 - `../skills/define-value-proposition.skill.md`
 - `../skills/define-business-model.skill.md`
+- `../skills/evaluate-idea.skill.md`
 - `../skills/check-coherence.skill.md`
 
 ## Playbooks

@@ -1,6 +1,5 @@
 import { commandDefinitions } from "./definitions/commands.js";
 import { rootDepartments } from "./definitions/departments.js";
-import { workflowDefinitions } from "./definitions/workflows.js";
 import type { AreaDefinition, CommandDefinition, RootDepartmentDefinition, Subarea, WorkspaceAnswers } from "./types.js";
 
 export function getAllSubareas(): Subarea[] {
@@ -27,9 +26,16 @@ export function getActiveSubareaKeys(activeAreas: AreaDefinition[]): Set<Subarea
 
 export function getActiveWorkflowKeys(activeAreas: AreaDefinition[]): string[] {
   const activeKeys = getActiveSubareaKeys(activeAreas);
-  return workflowDefinitions
-    .filter((workflow) => workflow.requiredSubareas.every((area) => activeKeys.has(area)))
-    .map((workflow) => workflow.slug);
+  const activeRootKeys = new Set(activeAreas.map((area) => area.root));
+
+  return rootDepartments
+    .filter((department) => activeRootKeys.has(department.key))
+    .flatMap((department) => {
+      const activeAreaSlugs = new Set(activeAreas.filter((area) => area.root === department.key).map((area) => area.slug));
+      return department.workflows
+        .filter((workflow) => workflow.requiredAreas.every((area) => activeAreaSlugs.has(area)))
+        .map((workflow) => workflow.slug);
+    });
 }
 
 export function getAvailableCommands(activeAreas: AreaDefinition[]): CommandDefinition[] {

@@ -1,19 +1,42 @@
 # Operations Agent
 
-You are operating inside the Operations department.
+You are the CTO / Operations Lead for this workspace.
 
-This department routes work across areas. Roles, skills and playbooks do not live at the department root.
+This `AGENT.md` is the operating owner for the Operations department.
+
+Use `README.md` as the directory map. Use `department.yaml` when machine-readable structure matters.
+
+Roles, skills and playbooks do not live at the department root. They live inside active areas.
+
+## Operating Scope
+
+Own MVP execution, architecture, design, engineering, DevOps and security.
+
+Use this department for MVP, architecture, design, engineering, implementation, DevOps or security.
+
+## Routing Rules
+
+1. If the request spans multiple active areas, open `workflows/README.md` and choose the smallest matching workflow.
+2. If the request belongs to one area, route to that area README.
+3. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
+4. Do not load roles, skills or playbooks before entering the owning area.
 
 ## Active Areas
 
-- Core: `core/README.md`
-- Design: `design/README.md`
-- Engineering: `engineering/README.md`
-- DevOps: `devops/README.md`
-- Security: `security/README.md`
+- Core: `core/README.md` - Own MVP scope, system architecture and the operating bridge between Product and Engineering.
+- Design: `design/AGENT.md` - Own the MVP design foundation, accessibility baseline and user-flow clarity before implementation.
+- Engineering: `engineering/README.md` - Own implementation, tests, code quality and PR readiness.
+- DevOps: `devops/README.md` - Own delivery infrastructure, environments, deployment, GitHub workflow setup and observability notes.
+- Security: `security/README.md` - Own security, privacy, access control and threat-modeling context.
+
+## Workflow Entry
+
+- Department workflows: `workflows/README.md`
+
+Use workflows for cross-area sequencing. Use area playbooks for tactical execution inside one area.
 
 ## Navigation
 
-`operations/AGENT.md -> Area README -> Role -> Skills -> Playbook -> Output`
+`operations/AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`
 
-Load one area README before loading roles, skills or playbooks.
+Load one area owner before loading roles, skills or playbooks.

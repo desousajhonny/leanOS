@@ -6,7 +6,7 @@ export function contextFiles(answers: WorkspaceAnswers, activeAreas: AreaDefinit
   const activeWorkflows = getActiveWorkflowKeys(activeAreas);
 
   return [
-    { path: ".leanos/context/README.md", content: folderReadme("Context", "Current workspace state that helps LeanOS Chief start quickly.", "Use at the beginning of every LeanOS session.", "current-focus.md", ["workspace-summary.md", "active-workflow.md", "current-focus.md", "next-actions.md", "decision-index.md"], ["../index/", "../workflows/", "../../strategy/", "../../operations/", "../../growth/"], "Context files are lightweight pointers, not full manuals.") },
+    { path: ".leanos/context/README.md", content: folderReadme("Context", "Current workspace state that helps LeanOS Chief start quickly.", "Use at the beginning of every LeanOS session.", "current-focus.md", ["workspace-summary.md", "active-workflow.md", "current-focus.md", "next-actions.md", "decision-index.md"], ["../index/", "../../strategy/", "../../operations/", "../../growth/"], "Context files are lightweight pointers, not full manuals. Business workflows live in root departments.") },
     { path: ".leanos/context/workspace-summary.md", content: workspaceSummary(answers, activeAreas, activeRoots) },
     { path: ".leanos/context/active-workflow.md", content: activeWorkflowContext(activeWorkflows) },
     { path: ".leanos/context/current-focus.md", content: getCurrentFocus(answers, activeAreas) },
@@ -19,9 +19,9 @@ function activeWorkflowContext(activeWorkflows: string[]): string {
   if (activeWorkflows.length === 0) {
     return `# Active Workflow
 
-No complete global workflow is active yet.
+No complete local workflow is active yet.
 
-The currently active areas do not satisfy any full global workflow requirements.
+The currently active areas do not satisfy any full department workflow requirements.
 
 Use active area READMEs and available commands until the user activates more areas.
 `;
@@ -29,11 +29,11 @@ Use active area READMEs and available commands until the user activates more are
 
   return `# Active Workflow
 
-Current compatible global workflows:
+Current compatible local workflows:
 
 ${activeWorkflows.map((workflow) => `- ${workflow}`).join("\n")}
 
-Use only workflows listed here as active. Other workflow files may exist, but they can require areas that are not active yet.
+Use only workflows listed here as active. Other workflow files may exist inside root departments, but they can require areas that are not active yet.
 `;
 }
 
@@ -67,19 +67,26 @@ ${workspaceModeNote(answers)}
 
 Operate only through active workspace areas:
 
-${activeAreas.map((area) => `- ${area.key}: \`${area.path}/README.md\``).join("\n")}
+${activeAreas.map((area) => `- ${area.key}: \`${area.path}/${area.lead ? "AGENT.md" : "README.md"}\`${area.lead ? ` (map: \`${area.path}/README.md\`)` : ""}`).join("\n")}
 
-${activeWorkflows.length > 0 ? `Compatible global workflows:\n\n${activeWorkflows.map((workflow) => `- ${workflow}`).join("\n")}` : "No complete global workflow is active yet."}
+${activeWorkflows.length > 0 ? `Compatible local workflows:\n\n${activeWorkflows.map((workflow) => `- ${workflow}`).join("\n")}` : "No complete local workflow is active yet."}
 
 ${activeKeys.has("strategy.product") ? "Product strategy commands are available." : "Product strategy commands are not active. Ask before activating Strategy Product or creating product-specific assets."}
 `;
 }
 
 export function getNextActions(answers: WorkspaceAnswers, activeAreas: AreaDefinition[]): string {
+  const activeKeys = getActiveSubareaKeys(activeAreas);
   const availableCommands = getAvailableCommands(activeAreas)
     .filter((command) => !command.assetCreation)
-    .filter((command) => ["status", "define-icp", "define-mvp", "check-coherence", "workon-issue"].includes(command.slug))
-    .slice(0, 4);
+    .filter((command) => {
+      if (command.slug === "define-design") {
+        return activeKeys.has("operations.design") && activeKeys.has("strategy.product") && activeKeys.has("operations.core");
+      }
+
+      return ["status", "define-icp", "define-mvp", "check-coherence", "workon-issue"].includes(command.slug);
+    })
+    .slice(0, 5);
 
   if (availableCommands.length === 0) {
     return `# Next Actions

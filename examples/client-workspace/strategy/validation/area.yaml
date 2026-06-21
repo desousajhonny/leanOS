@@ -2,6 +2,8 @@ area:
   key: strategy.validation
   department: strategy
   path: strategy/validation
+  agent: null
+  readme: README.md
   roles:
     - validation-researcher
   skills:

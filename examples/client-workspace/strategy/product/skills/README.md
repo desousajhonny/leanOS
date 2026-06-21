@@ -18,6 +18,7 @@ Use when a selected role points to a skill.
 - `define-icp.skill.md`
 - `define-value-proposition.skill.md`
 - `define-business-model.skill.md`
+- `evaluate-idea.skill.md`
 - `check-coherence.skill.md`
 
 ## Related Folders

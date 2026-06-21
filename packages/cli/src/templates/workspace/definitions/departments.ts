@@ -76,7 +76,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             purpose: "Connect customer, problem, value proposition, business model, roadmap and validation logic.",
             useWhen: ["strategy is unclear", "ICP or value proposition needs definition", "roadmap coherence is at risk"],
             beforeActing: ["../brief.md", "../icp.md", "../value-proposition.md", "../../roadmap/current-cycle.md"],
-            skills: ["define-product", "define-icp", "define-value-proposition", "define-business-model", "check-coherence"],
+            skills: ["define-product", "define-icp", "define-value-proposition", "define-business-model", "evaluate-idea", "check-coherence"],
             playbooks: ["product-strategy"]
           },
           {
@@ -85,7 +85,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             purpose: "Translate strategy into coherent scope, stories and priorities with Operations Core.",
             useWhen: ["scope needs definition", "roadmap work needs issue-ready shape", "acceptance criteria are missing"],
             beforeActing: ["../brief.md", "../../roadmap/backlog.md", "../../../operations/core/mvp/scope.md", "../../../operations/core/mvp/acceptance-criteria.md"],
-            skills: ["define-product", "check-coherence"],
+            skills: ["define-product", "evaluate-idea", "check-coherence"],
             playbooks: ["product-strategy"]
           }
         ],
@@ -94,6 +94,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           { slug: "define-icp", title: "Define ICP", purpose: "Define the first customer segment with pains, triggers and exclusions." },
           { slug: "define-value-proposition", title: "Define Value Proposition", purpose: "Articulate the promise, outcome, proof and differentiation." },
           { slug: "define-business-model", title: "Define Business Model", purpose: "Draft revenue, channels, costs and delivery model." },
+          { slug: "evaluate-idea", title: "Evaluate Idea", purpose: "Evaluate a founder idea against user value, evidence, MVP scope and roadmap impact." },
           { slug: "check-coherence", title: "Check Coherence", purpose: "Check alignment between ICP, problem, value proposition, MVP, roadmap and issue." }
         ],
         playbooks: [
@@ -127,16 +128,26 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             purpose: "Turn strategy and validation risk into a coherent cycle plan.",
             useWhen: ["roadmap order is unclear", "backlog needs prioritization", "cycle planning is needed"],
             beforeActing: ["../roadmap.md", "../current-cycle.md", "../backlog.md", "../../product/brief.md"],
-            skills: ["create-roadmap", "prioritize-backlog"],
-            playbooks: ["validation-cycle-planning"]
+            skills: ["create-roadmap", "prioritize-backlog", "prepare-roadmap-sync"],
+            playbooks: ["validation-cycle-planning", "roadmap-sync-prep"]
           }
         ],
         skills: [
           { slug: "create-roadmap", title: "Create Roadmap", purpose: "Sequence roadmap work by validation cycle and strategic priority." },
-          { slug: "prioritize-backlog", title: "Prioritize Backlog", purpose: "Prioritize work by risk, learning value and delivery cost." }
+          { slug: "prioritize-backlog", title: "Prioritize Backlog", purpose: "Prioritize work by risk, learning value and delivery cost." },
+          { slug: "prepare-roadmap-sync", title: "Prepare Roadmap Sync", purpose: "Prepare roadmap epics, milestones and sync payload before GitHub Project updates." }
         ],
         playbooks: [
-          { slug: "validation-cycle-planning", title: "Validation Cycle Planning", purpose: "Plan the next coherent validation or delivery cycle.", steps: ["Read product strategy", "Read validation risk", "Review backlog", "Choose current cycle", "Record milestones"] }
+          { slug: "validation-cycle-planning", title: "Validation Cycle Planning", purpose: "Plan the next coherent validation or delivery cycle.", steps: ["Read product strategy", "Read validation risk", "Review backlog", "Choose current cycle", "Record milestones"] },
+          {
+            slug: "roadmap-sync-prep",
+            title: "Roadmap Sync Prep",
+            purpose: "Prepare roadmap items for GitHub Project sync without calling the API directly.",
+            inputs: ["Roadmap", "Milestones", "Current cycle", "Backlog", "MVP scope", "GitHub project sync settings"],
+            steps: ["Read roadmap and milestones", "Identify candidate epics", "Check MVP and validation linkage", "Ask DevOps to confirm GitHub project settings when needed", "Prepare sync payload", "Ask for confirmation before any remote write"],
+            outputs: ["Roadmap sync summary", "Milestone mapping", "Epic draft list", "Missing GitHub configuration", "Confirmation question before API execution"],
+            filesToUpdate: ["Update `../roadmap.md`, `../milestones.md` or `../current-cycle.md` only after explicit confirmation.", "Update `../../../.github/leanos/project-sync.yaml` only through DevOps/GitHub setup guidance."]
+          }
         ],
         commonPaths: [
           "Roadmap request: role `roles/roadmap-planner.role.md` -> skill `skills/create-roadmap.skill.md` -> playbook `playbooks/validation-cycle-planning.playbook.md`."
@@ -195,10 +206,22 @@ export const rootDepartments: RootDepartmentDefinition[] = [
     ],
     workflows: [
       {
+        slug: "idea-to-roadmap",
+        purpose: "Turn founder ideas into product, validation, MVP and roadmap decisions.",
+        requiredAreas: ["product", "roadmap", "validation"],
+        steps: ["Read product strategy", "Evaluate idea against ICP, problem and value", "Identify validation risk", "Check MVP impact with Operations Core when active", "Decide backlog, roadmap, experiment or discard", "Propose source-of-truth updates before writing"]
+      },
+      {
         slug: "strategy-validation-cycle",
         purpose: "Coordinate company, product, roadmap and validation work inside Strategy.",
         requiredAreas: ["product", "roadmap", "validation"],
         steps: ["Read product strategy", "Review roadmap cycle", "Prioritize assumptions", "Plan validation", "Capture learning"]
+      },
+      {
+        slug: "roadmap-to-github-project",
+        purpose: "Prepare roadmap, milestones and epics for GitHub Project sync.",
+        requiredAreas: ["roadmap", "product"],
+        steps: ["Read roadmap and current cycle", "Confirm product outcomes and priorities", "Prepare milestones and epic drafts", "Ask DevOps to validate GitHub project settings when needed", "Produce payload and ask for confirmation before API execution"]
       }
     ]
   },
@@ -241,10 +264,10 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "product-owner",
             title: "Product Owner",
             purpose: "Own MVP execution clarity with supervision from Product and PM strategy.",
-            useWhen: ["MVP scope needs definition", "acceptance criteria are unclear", "delivery scope needs coordination"],
-            beforeActing: ["../mvp/scope.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/brief.md"],
-            skills: ["define-mvp", "write-acceptance-criteria", "check-delivery-coherence"],
-            playbooks: ["mvp-delivery"]
+            useWhen: ["MVP scope needs definition", "acceptance criteria are unclear", "delivery scope needs coordination", "an epic needs to be broken into sub-issues"],
+            beforeActing: ["../mvp/scope.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/brief.md", "../../../ai-standard/templates/issue-readiness-matrix-template.md"],
+            skills: ["define-mvp", "write-acceptance-criteria", "check-delivery-coherence", "shape-epic", "write-subissue-criteria"],
+            playbooks: ["mvp-delivery", "epic-to-subissues"]
           },
           {
             slug: "technical-architect",
@@ -260,15 +283,27 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           { slug: "define-mvp", title: "Define MVP", purpose: "Turn strategy into the smallest coherent validation scope." },
           { slug: "write-acceptance-criteria", title: "Write Acceptance Criteria", purpose: "Define completion criteria for MVP work." },
           { slug: "check-delivery-coherence", title: "Check Delivery Coherence", purpose: "Check that delivery scope matches strategy, roadmap and acceptance criteria." },
+          { slug: "shape-epic", title: "Shape Epic", purpose: "Turn a roadmap epic into an implementation-ready scope boundary." },
+          { slug: "write-subissue-criteria", title: "Write Subissue Criteria", purpose: "Write Product and Engineering criteria for sub-issues, with Design and Security only when applicable." },
           { slug: "define-architecture", title: "Define Architecture", purpose: "Define system boundaries, data flow and technical decisions." },
           { slug: "create-api-contract", title: "Create API Contract", purpose: "Define API inputs, outputs, errors and ownership boundaries." }
         ],
         playbooks: [
           { slug: "mvp-delivery", title: "MVP Delivery", purpose: "Turn product strategy into executable MVP scope.", steps: ["Read product strategy", "Define MVP scope", "Write user stories", "Define acceptance criteria", "Confirm non-goals"] },
+          {
+            slug: "epic-to-subissues",
+            title: "Epic To Subissues",
+            purpose: "Break a GitHub epic into implementation-ready sub-issues with clear Product and Engineering criteria.",
+            inputs: ["Parent epic", "Roadmap item", "Milestone", "MVP scope", "Acceptance criteria", "Issue readiness matrix", "Design context when UX is affected", "Security context when sensitive surfaces are involved"],
+            steps: ["Read the parent epic and MVP scope", "Confirm the epic outcome and non-goals", "Apply the issue readiness matrix", "Write Product criteria for every sub-issue", "Write Engineering criteria for every implementation sub-issue", "Include Design criteria only when the sub-issue affects user-facing UX", "Include Security criteria only when data, auth, privacy, abuse or compliance is involved", "Ask Engineering to validate size and dependencies", "Prepare sub-issue drafts and ask for confirmation before any GitHub API write"],
+            outputs: ["Sub-issue draft list", "Product criteria", "Engineering criteria", "Design criteria or not applicable", "Security criteria or not applicable", "Dependencies", "Risks", "Confirmation question before remote issue creation"],
+            filesToUpdate: ["Do not update GitHub directly from the model.", "Update MVP source-of-truth files only when the user explicitly confirms a scope or criteria change."]
+          },
           { slug: "architecture-planning", title: "Architecture Planning", purpose: "Create enough architecture context to guide implementation.", steps: ["Read system context", "Define data model", "Define API contract", "Capture technical decisions"] }
         ],
         commonPaths: [
           "MVP request: role `roles/product-owner.role.md` -> skill `skills/define-mvp.skill.md` -> playbook `playbooks/mvp-delivery.playbook.md`.",
+          "Epic breakdown request: role `roles/product-owner.role.md` -> skills `skills/shape-epic.skill.md` and `skills/write-subissue-criteria.skill.md` -> playbook `playbooks/epic-to-subissues.playbook.md`.",
           "Architecture request: role `roles/technical-architect.role.md` -> skill `skills/define-architecture.skill.md` -> playbook `playbooks/architecture-planning.playbook.md`."
         ]
       },
@@ -278,39 +313,112 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         slug: "design",
         name: "Design",
         path: "operations/design",
+        lead: {
+          title: "UX Lead",
+          purpose: "Lead Design work, choose the right design specialist and keep design decisions aligned with Product, MVP and implementation needs."
+        },
         routingKey: "design",
         requestTypes: "screens, flows, UX, UI, onboarding or usability",
-        purpose: "Own UX flows, screen specs, usability states and MVP design decisions.",
-        whenToUse: ["map user flows", "define screens", "design onboarding", "reason about usability", "document UX states"],
-        sourceOfTruth: ["design-principles.md", "user-flows.md", "screen-specs.md", "ux-decisions.md", "usability-notes.md"],
+        purpose: "Own the MVP design foundation, accessibility baseline and user-flow clarity before implementation.",
+        whenToUse: ["define design foundation", "map user flows", "define accessibility baseline", "design onboarding", "reason about usability"],
+        sourceOfTruth: ["knowledge/design-system.md", "knowledge/accessibility.md", "knowledge/user-flows.md"],
         files: [
-          { path: "design-principles.md", content: () => titledDraft("Design Principles", "Define UX principles for the product.") },
-          { path: "user-flows.md", content: () => titledDraft("User Flows", "Document key user flows.") },
-          { path: "screen-specs.md", content: () => titledDraft("Screen Specs", "Define screen behavior and states.") },
-          { path: "ux-decisions.md", content: () => decisionLog("UX Decisions") },
-          { path: "usability-notes.md", content: () => titledDraft("Usability Notes", "Capture usability observations.") }
+          { path: "knowledge/README.md", content: () => folderReadme("Design Knowledge", "Design context produced by the Design area.", "Use after Product and MVP context exist, before implementation or user-facing issue work.", "design-system.md", ["design-system.md", "accessibility.md", "user-flows.md"], ["../roles/", "../skills/", "../playbooks/", "../../../strategy/product/", "../../core/mvp/"], "Keep this folder focused on reusable design foundation. Create screen specs, usability notes and UX decisions later when a concrete feature or screen requires them.") },
+          { path: "knowledge/design-system.md", content: () => titledDraft("Design System", "Define MVP design tokens, colors, typography, spacing, components and interaction principles.") },
+          { path: "knowledge/accessibility.md", content: () => titledDraft("Accessibility", "Define accessibility expectations for the MVP audience, flows and interface constraints.") },
+          { path: "knowledge/user-flows.md", content: () => titledDraft("User Flows", "Document key MVP user flows before implementation.") }
         ],
         roles: [
           {
-            slug: "ux-lead",
-            title: "UX Lead",
-            purpose: "Translate customer and MVP context into clear flows, screens, states and usability decisions.",
-            useWhen: ["screens, flows, onboarding, UI or usability are involved"],
-            beforeActing: ["../design-principles.md", "../user-flows.md", "../screen-specs.md", "../ux-decisions.md"],
-            skills: ["map-user-flow", "create-screen-spec", "define-ux-states"],
-            playbooks: ["mvp-ux-flow"]
+            slug: "ux-researcher",
+            title: "UX Researcher",
+            purpose: "Understand user context, behavior, pain points and research signals before design decisions harden.",
+            useWhen: ["research, user evidence, interviews, behavior, usability questions or unknown user needs are involved"],
+            beforeActing: ["../../../strategy/product/brief.md", "../../core/mvp/scope.md", "../knowledge/design-system.md", "../knowledge/accessibility.md", "../knowledge/user-flows.md"],
+            skills: ["user-research", "user-flow-mapping"],
+            playbooks: ["user-research", "mvp-ux-flow"]
+          },
+          {
+            slug: "product-designer",
+            title: "Product Designer",
+            purpose: "Translate product, MVP and user context into coherent UI structure, flows and design system decisions.",
+            useWhen: ["design foundation, UI, user flows, onboarding, layout, components or interaction design are involved"],
+            beforeActing: ["../../../strategy/product/brief.md", "../../core/mvp/scope.md", "../knowledge/design-system.md", "../knowledge/user-flows.md"],
+            skills: ["design-system", "user-flow-mapping", "screen-specification", "ux-states"],
+            playbooks: ["design-foundation", "mvp-ux-flow"]
+          },
+          {
+            slug: "accessibility-specialist",
+            title: "Accessibility Specialist",
+            purpose: "Define and review accessibility expectations for the MVP audience, flows and interface constraints.",
+            useWhen: ["accessibility, WCAG, keyboard navigation, contrast, screen readers or inclusive UX are involved"],
+            beforeActing: ["../knowledge/accessibility.md", "../knowledge/design-system.md", "../knowledge/user-flows.md"],
+            skills: ["accessibility", "user-flow-mapping"],
+            playbooks: ["accessibility-review"]
+          },
+          {
+            slug: "ux-writer",
+            title: "UX Writer",
+            purpose: "Make interface language, labels, empty states, errors and onboarding copy clear and useful.",
+            useWhen: ["microcopy, onboarding copy, labels, error messages, empty states or user guidance are involved"],
+            beforeActing: ["../../../strategy/product/brief.md", "../knowledge/user-flows.md", "../knowledge/accessibility.md"],
+            skills: ["microcopy", "user-flow-mapping"],
+            playbooks: ["ux-writing"]
           }
         ],
         skills: [
-          { slug: "map-user-flow", title: "Map User Flow", purpose: "Map the steps a user takes to reach the MVP outcome." },
-          { slug: "create-screen-spec", title: "Create Screen Spec", purpose: "Define screen purpose, content, states and interactions." },
-          { slug: "define-ux-states", title: "Define UX States", purpose: "Define loading, empty, error, success and edge states." }
+          { slug: "design-system", title: "Design System", purpose: "Define MVP design tokens, visual rules, component expectations and interaction principles." },
+          { slug: "accessibility", title: "Accessibility", purpose: "Define accessibility expectations based on the MVP audience, context and product constraints." },
+          { slug: "user-research", title: "User Research", purpose: "Extract design-relevant user evidence, assumptions and open questions from Product and Validation context." },
+          { slug: "user-flow-mapping", title: "User Flow Mapping", purpose: "Map the steps a user takes to reach the MVP outcome." },
+          { slug: "screen-specification", title: "Screen Specification", purpose: "Define screen purpose, content, states and interactions when a concrete screen exists." },
+          { slug: "ux-states", title: "UX States", purpose: "Define loading, empty, error, success and edge states when a concrete flow exists." },
+          { slug: "microcopy", title: "Microcopy", purpose: "Write clear interface copy, labels, helper text, empty states and error messages." }
         ],
         playbooks: [
-          { slug: "mvp-ux-flow", title: "MVP UX Flow", purpose: "Create a usable flow for the first validation cycle.", steps: ["Read ICP and MVP scope", "Map primary flow", "Specify screens", "Define UX states", "Record UX decisions"] }
+          {
+            slug: "design-foundation",
+            title: "Design Foundation",
+            purpose: "Create the MVP design foundation from product strategy and MVP scope before implementation.",
+            inputs: ["Product brief", "ICP", "MVP scope", "Primary user flows", "Accessibility needs", "Brand or product constraints"],
+            steps: ["Read Product and MVP context", "Define the design system baseline", "Define accessibility expectations for the MVP audience", "Map primary user flows", "Identify missing context", "Propose updates to Design knowledge files before writing"],
+            outputs: ["Design system baseline", "Accessibility baseline", "Primary user flows", "Open questions", "Confirmation question before file updates"],
+            filesToUpdate: ["Update `../knowledge/design-system.md` only after explicit confirmation.", "Update `../knowledge/accessibility.md` only after explicit confirmation.", "Update `../knowledge/user-flows.md` only after explicit confirmation."]
+          },
+          {
+            slug: "user-research",
+            title: "User Research",
+            purpose: "Clarify design-relevant user evidence before making UX decisions.",
+            inputs: ["Product brief", "ICP", "Validation assumptions", "Known user behavior", "Open design questions"],
+            steps: ["Read product and validation context", "Separate evidence from assumptions", "Identify design-relevant user needs", "Identify open research questions", "Recommend the smallest next research step"],
+            outputs: ["User evidence summary", "Design assumptions", "Open research questions", "Recommended next step"],
+            filesToUpdate: ["Update `../knowledge/user-flows.md` only when the user confirms a design-relevant flow change."]
+          },
+          { slug: "mvp-ux-flow", title: "MVP UX Flow", purpose: "Create a usable flow for the first validation cycle.", steps: ["Read ICP and MVP scope", "Map primary flow", "Check accessibility expectations", "Identify screens that may need specs later", "Record proposed Design knowledge updates"] },
+          {
+            slug: "accessibility-review",
+            title: "Accessibility Review",
+            purpose: "Review design foundation or UX flow for accessibility expectations.",
+            inputs: ["Accessibility knowledge", "Design system baseline", "User flows", "MVP audience and constraints"],
+            steps: ["Read accessibility baseline", "Check audience needs", "Check keyboard and screen-reader implications", "Check contrast and information hierarchy expectations", "List accessibility gaps"],
+            outputs: ["Accessibility review", "Gaps", "Required follow-up", "Not applicable notes when justified"],
+            filesToUpdate: ["Update `../knowledge/accessibility.md` only after explicit confirmation."]
+          },
+          {
+            slug: "ux-writing",
+            title: "UX Writing",
+            purpose: "Define clear interface language for MVP flows.",
+            inputs: ["Product positioning", "User flows", "Accessibility expectations", "Target user context"],
+            steps: ["Read product and flow context", "Identify key labels and user-facing moments", "Draft concise copy", "Check clarity and accessibility", "List open copy questions"],
+            outputs: ["Microcopy draft", "Tone notes", "Accessibility notes", "Open questions"],
+            filesToUpdate: ["Do not create screen-specific copy files until a concrete screen or feature requires them."]
+          }
         ],
         commonPaths: [
-          "UX request: role `roles/ux-lead.role.md` -> skill `skills/map-user-flow.skill.md` -> playbook `playbooks/mvp-ux-flow.playbook.md`."
+          "Design foundation request: area lead `AGENT.md` -> role `roles/product-designer.role.md` -> skills `skills/design-system.skill.md`, `skills/accessibility.skill.md` and `skills/user-flow-mapping.skill.md` -> playbook `playbooks/design-foundation.playbook.md`.",
+          "Research request: area lead `AGENT.md` -> role `roles/ux-researcher.role.md` -> skill `skills/user-research.skill.md` -> playbook `playbooks/user-research.playbook.md`.",
+          "Accessibility request: area lead `AGENT.md` -> role `roles/accessibility-specialist.role.md` -> skill `skills/accessibility.skill.md` -> playbook `playbooks/accessibility-review.playbook.md`.",
+          "UX writing request: area lead `AGENT.md` -> role `roles/ux-writer.role.md` -> skill `skills/microcopy.skill.md` -> playbook `playbooks/ux-writing.playbook.md`."
         ]
       },
       {
@@ -555,6 +663,18 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         purpose: "Coordinate Operations Core, Design and Engineering for delivery.",
         requiredAreas: ["core", "engineering"],
         steps: ["Read MVP scope", "Check architecture", "Route UX if needed", "Plan implementation", "Prepare PR"]
+      },
+      {
+        slug: "issue-delivery-cycle",
+        purpose: "Coordinate Operations areas from issue interpretation to branch, implementation, review and PR.",
+        requiredAreas: ["core", "engineering"],
+        steps: ["Read issue and MVP scope", "Route Design only when UX is affected", "Route Security only when data, auth, privacy, abuse or compliance is involved", "Create issue-linked branch", "Plan and implement in Engineering", "Run tests or explain gaps", "Run PR validation", "Prepare PR"]
+      },
+      {
+        slug: "post-merge-continuation",
+        purpose: "Continue delivery after a founder confirms a merge.",
+        requiredAreas: ["core", "engineering"],
+        steps: ["Confirm merge evidence or founder confirmation", "Record relevant implementation notes", "Identify learning or roadmap impact if any", "Load the next issue", "Restart issue delivery"]
       }
     ]
   },

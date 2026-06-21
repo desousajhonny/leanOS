@@ -62,6 +62,11 @@ const engineeringOnlyAnswers = {
   subareas: ["operations.engineering"]
 };
 
+const designOnlyAnswers = {
+  ...answers,
+  subareas: ["operations.design"]
+};
+
 const growthValidationAnswers = {
   ...answers,
   prepareGithubManagement: false,
@@ -87,6 +92,7 @@ await validateWorkspaceFiles();
 await validateClientWorkspaceFixture();
 await validatePartialAreaSelection();
 await validateEngineeringOnlyContext();
+await validateDesignOnlyContext();
 await validateGrowthValidationContext();
 await validateExistingProductRepoMode();
 await validateWriterSkipsExistingFiles();
@@ -111,8 +117,38 @@ async function validateWorkspaceFiles() {
     "operations/AGENT.md",
     "growth/AGENT.md",
     "strategy/product/README.md",
+    "strategy/product/skills/evaluate-idea.skill.md",
+    "strategy/workflows/idea-to-roadmap.workflow.md",
+    "strategy/workflows/roadmap-to-github-project.workflow.md",
+    "strategy/roadmap/skills/prepare-roadmap-sync.skill.md",
+    "strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md",
     "operations/core/mvp/README.md",
-    "operations/design/roles/ux-lead.role.md",
+    "operations/core/skills/shape-epic.skill.md",
+    "operations/core/skills/write-subissue-criteria.skill.md",
+    "operations/core/playbooks/epic-to-subissues.playbook.md",
+    "operations/workflows/issue-delivery-cycle.workflow.md",
+    "operations/workflows/post-merge-continuation.workflow.md",
+    ".leanos/commands/define-design.md",
+    "operations/design/knowledge/README.md",
+    "operations/design/knowledge/design-system.md",
+    "operations/design/knowledge/accessibility.md",
+    "operations/design/knowledge/user-flows.md",
+    "operations/design/AGENT.md",
+    "operations/design/roles/ux-researcher.role.md",
+    "operations/design/roles/product-designer.role.md",
+    "operations/design/roles/accessibility-specialist.role.md",
+    "operations/design/roles/ux-writer.role.md",
+    "operations/design/skills/design-system.skill.md",
+    "operations/design/skills/accessibility.skill.md",
+    "operations/design/skills/user-research.skill.md",
+    "operations/design/skills/user-flow-mapping.skill.md",
+    "operations/design/skills/screen-specification.skill.md",
+    "operations/design/skills/ux-states.skill.md",
+    "operations/design/skills/microcopy.skill.md",
+    "operations/design/playbooks/design-foundation.playbook.md",
+    "operations/design/playbooks/user-research.playbook.md",
+    "operations/design/playbooks/accessibility-review.playbook.md",
+    "operations/design/playbooks/ux-writing.playbook.md",
     "operations/engineering/playbooks/issue-to-pr.playbook.md",
     "operations/engineering/playbooks/branch-from-issue.playbook.md",
     "operations/engineering/playbooks/test-planning.playbook.md",
@@ -167,7 +203,28 @@ async function validateWorkspaceFiles() {
     "operations/devops/observability.md",
     "operations/devops/runbooks.md",
     "operations/security/security-checklist.md",
-    "operations/engineering/test-plan.md"
+    "operations/engineering/test-plan.md",
+    "operations/design/design-principles.md",
+    "operations/design/user-flows.md",
+    "operations/design/screen-specs.md",
+    "operations/design/ux-decisions.md",
+    "operations/design/usability-notes.md",
+    "operations/design/roles/ux-lead.role.md",
+    "operations/design/skills/map-user-flow.skill.md",
+    "operations/design/skills/create-screen-spec.skill.md",
+    "operations/design/skills/define-ux-states.skill.md",
+    ".leanos/workflows/README.md",
+    ".leanos/workflows/idea-to-roadmap.workflow.md",
+    ".leanos/workflows/roadmap-to-github-project.workflow.md",
+    ".leanos/workflows/issue-delivery-cycle.workflow.md",
+    ".leanos/workflows/new-product-mvp-validation.workflow.md",
+    ".leanos/workflows/issue-to-pr.workflow.md",
+    ".leanos/workflows/launch-and-learn.workflow.md",
+    ".leanos/commands/evaluate-idea.md",
+    ".leanos/commands/sync-roadmap.md",
+    ".leanos/commands/create-subissues.md",
+    ".leanos/commands/implement-issue.md",
+    ".leanos/commands/post-merge.md"
   ]) {
     assert.equal(paths.has(forbiddenPath), false, `Forbidden generated path should not exist: ${forbiddenPath}`);
   }
@@ -186,8 +243,26 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "strategy", "AGENT.md"));
   await assertExists(join(rootDir, "operations", "AGENT.md"));
   await assertExists(join(rootDir, "growth", "AGENT.md"));
+  await assertExists(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"));
+  await assertExists(join(rootDir, "strategy", "workflows", "roadmap-to-github-project.workflow.md"));
   await assertExists(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"));
+  await assertExists(join(rootDir, "strategy", "product", "skills", "evaluate-idea.skill.md"));
+  await assertExists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync.skill.md"));
+  await assertExists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md"));
   await assertExists(join(rootDir, "operations", "core", "mvp", "README.md"));
+  await assertExists(join(rootDir, "operations", "core", "skills", "shape-epic.skill.md"));
+  await assertExists(join(rootDir, "operations", "core", "skills", "write-subissue-criteria.skill.md"));
+  await assertExists(join(rootDir, "operations", "core", "playbooks", "epic-to-subissues.playbook.md"));
+  await assertExists(join(rootDir, "operations", "workflows", "issue-delivery-cycle.workflow.md"));
+  await assertExists(join(rootDir, "operations", "workflows", "post-merge-continuation.workflow.md"));
+  await assertExists(join(rootDir, ".leanos", "commands", "define-design.md"));
+  await assertExists(join(rootDir, "operations", "design", "knowledge", "README.md"));
+  await assertExists(join(rootDir, "operations", "design", "knowledge", "design-system.md"));
+  await assertExists(join(rootDir, "operations", "design", "knowledge", "accessibility.md"));
+  await assertExists(join(rootDir, "operations", "design", "knowledge", "user-flows.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "design-system.skill.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "accessibility.skill.md"));
+  await assertExists(join(rootDir, "operations", "design", "playbooks", "design-foundation.playbook.md"));
   await assertExists(join(rootDir, "operations", "design", "playbooks", "mvp-ux-flow.playbook.md"));
   await assertExists(join(rootDir, "operations", "engineering", "skills", "plan-implementation.skill.md"));
   await assertExists(join(rootDir, "operations", "engineering", "playbooks", "test-planning.playbook.md"));
@@ -208,6 +283,7 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"));
   await assertExists(join(rootDir, ".leanos", "commands", "start-leanos.md"));
   await assertExists(join(rootDir, ".leanos", "vscode", "README.md"));
+  assert.equal(await exists(join(rootDir, ".leanos", "workflows")), false, "Business workflows should not be generated under .leanos/workflows");
 
   assert(result.createdGroups.includes("ai-standard/"), "Expected created groups to mention root AI Standard");
   assert(result.createdGroups.includes("strategy/"), "Expected created groups to mention Strategy");
@@ -218,6 +294,8 @@ async function validateWorkspaceFiles() {
   await assertVsCodeIntegration(rootDir);
   await assertGitHubReadiness(rootDir);
   await assertGitHubIssuePrWorkflow(rootDir);
+  await assertFounderIntentRouting(rootDir);
+  await assertDesignFoundation(rootDir);
   await assertInitCommandRules(rootDir);
   await assertRootAgentMutationRules(rootDir);
   await assertOperationalPlaybookSections(rootDir);
@@ -231,6 +309,7 @@ async function validateWorkspaceFiles() {
     "pages",
     "package.json",
     "vercel.json",
+    ".leanos/workflows",
     ".leanos/ai-standard",
     "strategy/roles",
     "strategy/skills",
@@ -247,7 +326,12 @@ async function validateWorkspaceFiles() {
     "operations/devops/observability.md",
     "operations/devops/runbooks.md",
     "operations/security/security-checklist.md",
-    "operations/engineering/test-plan.md"
+    "operations/engineering/test-plan.md",
+    "operations/design/design-principles.md",
+    "operations/design/user-flows.md",
+    "operations/design/screen-specs.md",
+    "operations/design/ux-decisions.md",
+    "operations/design/usability-notes.md"
   ]) {
     assert.equal(await exists(join(rootDir, forbiddenPath)), false, `Forbidden path should not be generated: ${forbiddenPath}`);
   }
@@ -264,6 +348,14 @@ async function validateWorkspaceFiles() {
   assert.equal(yaml.roles.ownership, "area-first");
   assert.equal(yaml.skills.ownership, "area-first");
   assert.equal(yaml.playbooks.ownership, "area-first");
+  assert.equal(yaml.workflows.ownership, "department-local");
+  assert.equal(yaml.departments.routes.strategy.agent, "strategy/AGENT.md");
+  assert.equal(yaml.departments.routes.strategy.readme, "strategy/README.md");
+  assert.equal(yaml.departments.routes.operations.agent, "operations/AGENT.md");
+  assert.equal(yaml.departments.routes.growth.readme, "growth/README.md");
+  assert(yaml.workflows.active.includes("idea-to-roadmap"), "Expected active local Strategy idea-to-roadmap workflow");
+  assert(yaml.workflows.active.includes("roadmap-to-github-project"), "Expected active local Strategy GitHub roadmap workflow");
+  assert(yaml.workflows.active.includes("issue-delivery-cycle"), "Expected active local Operations issue delivery workflow");
   assert.deepEqual(yaml.departments.active, ["strategy", "operations", "growth"]);
 
   for (const subarea of yaml.subareas.active) {
@@ -282,8 +374,25 @@ async function validateClientWorkspaceFixture() {
     "leanos.yaml",
     "ai-standard/README.md",
     "strategy/product/README.md",
+    "strategy/product/skills/evaluate-idea.skill.md",
+    "strategy/workflows/idea-to-roadmap.workflow.md",
+    "strategy/workflows/roadmap-to-github-project.workflow.md",
+    "strategy/roadmap/skills/prepare-roadmap-sync.skill.md",
+    "strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md",
     "operations/core/mvp/README.md",
+    "operations/core/skills/shape-epic.skill.md",
+    "operations/core/skills/write-subissue-criteria.skill.md",
+    "operations/core/playbooks/epic-to-subissues.playbook.md",
+    "operations/design/knowledge/README.md",
+    "operations/design/knowledge/design-system.md",
+    "operations/design/knowledge/accessibility.md",
+    "operations/design/knowledge/user-flows.md",
     "operations/design/roles/README.md",
+    "operations/design/skills/design-system.skill.md",
+    "operations/design/skills/accessibility.skill.md",
+    "operations/design/playbooks/design-foundation.playbook.md",
+    "operations/workflows/issue-delivery-cycle.workflow.md",
+    "operations/workflows/post-merge-continuation.workflow.md",
     "operations/engineering/skills/create-branch.skill.md",
     "operations/engineering/playbooks/branch-from-issue.playbook.md",
     "operations/devops/playbooks/setup-ci-cd.playbook.md",
@@ -308,6 +417,7 @@ async function validateClientWorkspaceFixture() {
     ".github/prompts/start-leanos.prompt.md",
     ".github/prompts/leanos-init.prompt.md",
     ".leanos/commands/start-leanos.md",
+    ".leanos/commands/define-design.md",
     ".leanos/commands/create-issues.md",
     ".leanos/commands/create-branch.md",
     ".leanos/commands/create-pr.md",
@@ -323,6 +433,7 @@ async function validateClientWorkspaceFixture() {
 
   for (const forbiddenPath of [
     ".leanos/departments",
+    ".leanos/workflows",
     "src",
     "app",
     "pages",
@@ -335,7 +446,12 @@ async function validateClientWorkspaceFixture() {
     "operations/devops/observability.md",
     "operations/devops/runbooks.md",
     "operations/security/security-checklist.md",
-    "operations/engineering/test-plan.md"
+    "operations/engineering/test-plan.md",
+    "operations/design/design-principles.md",
+    "operations/design/user-flows.md",
+    "operations/design/screen-specs.md",
+    "operations/design/ux-decisions.md",
+    "operations/design/usability-notes.md"
   ]) {
     if (await exists(resolveFixturePath(forbiddenPath))) {
       failOutOfDate([`Forbidden fixture path exists: ${forbiddenPath}`]);
@@ -420,19 +536,31 @@ async function validatePartialAreaSelection() {
   assert.equal(rolesIndex.roles.some((role) => role.key === "growth-lead"), false, "Inactive marketing role should not be indexed");
   assert.equal(rolesIndex.roles.some((role) => role.key === "validation-researcher"), false, "Inactive validation role should not be indexed");
   assert.equal(rolesIndex.roles.some((role) => role.key === "ux-lead"), false, "Inactive design role should not be indexed");
+  assert.equal(rolesIndex.roles.some((role) => role.key === "product-designer"), false, "Inactive design specialist role should not be indexed");
 
   assert.equal(skillsIndex.skills.some((skill) => skill.key === "create-launch-plan"), false, "Inactive marketing skill should not be indexed");
   assert.equal(playbooksIndex.playbooks.some((playbook) => playbook.key === "mvp-validation"), false, "Inactive validation playbook should not be indexed");
 
   assert.equal(routingMap.routing.areas.product, "../../strategy/product/README.md");
   assert.equal(routingMap.routing.areas.engineering, "../../operations/engineering/README.md");
+  assert.equal(routingMap.routing.departments.strategy.agent, "../../strategy/AGENT.md");
+  assert.equal(routingMap.routing.departments.strategy.readme, "../../strategy/README.md");
+  assert.equal(routingMap.routing.departments.operations.agent, "../../operations/AGENT.md");
+  assert.equal(routingMap.routing.departments.operations.readme, "../../operations/README.md");
+  assert.equal(routingMap.routing.departments.growth, undefined);
   assert.equal(routingMap.routing.asset_creation, "../../ai-standard/README.md");
   assert.equal(routingMap.routing.areas.marketing, undefined);
   assert.equal(routingMap.routing.areas.validation, undefined);
   assert.equal(routingMap.routing.areas.design, undefined);
-  assert.equal(activeWorkflow.includes("- new-product-mvp-validation"), false, "Product + Engineering alone should not activate Product + Validation + Core workflow");
+  assert.equal(activeWorkflow.includes("- idea-to-roadmap"), false, "Product + Engineering alone should not activate Strategy idea workflow without Roadmap and Validation");
   assert(nextActions.includes("/define icp"), "Product-compatible next action should remain when Product is active");
   assert.equal(nextActions.includes("/define mvp"), false, "Core command should not appear when Core is inactive");
+
+  const defineDesignCommand = await readFile(join(rootDir, ".leanos", "commands", "define-design.md"), "utf8");
+  assert(defineDesignCommand.includes("`operations.design` is not active"), "Define design command should warn when Design is inactive");
+  assert.equal(defineDesignCommand.includes("../../operations/design/AGENT.md"), false, "Inactive Design command should not point to missing Design AGENT");
+  assert.equal(defineDesignCommand.includes("../../operations/design/README.md"), false, "Inactive Design command should not point to missing Design README");
+  assert.equal(defineDesignCommand.includes("../../operations/design/knowledge/design-system.md"), false, "Inactive Design command should not point to missing Design knowledge paths");
 
   await assertIndexPathsExist(rootDir);
   await assertInitialContextCoherence(rootDir, partialAreaAnswers.subareas);
@@ -455,11 +583,42 @@ async function validateEngineeringOnlyContext() {
   assert.equal(nextActions.includes("/define mvp"), false, "Engineering-only workspace should not suggest Core MVP command");
   assert.equal(nextActions.includes("/check coherence"), false, "Engineering-only workspace should not suggest Product coherence command");
   assert(nextActions.includes("/workon issue"), "Engineering-only workspace should suggest Engineering issue work");
-  assert.equal(activeWorkflow.includes("- issue-to-pr"), false, "Engineering-only workspace should not activate issue-to-pr without Core");
+  assert.equal(activeWorkflow.includes("- issue-delivery-cycle"), false, "Engineering-only workspace should not activate issue delivery without Core");
   assert(workspaceSummary.includes("Active departments: operations"), "Workspace summary should list Operations");
   assert(workspaceSummary.includes("Active areas: operations.engineering"), "Workspace summary should list the active Engineering area");
 
+  const routingMap = parse(await readFile(join(rootDir, ".leanos", "index", "routing-map.yaml"), "utf8"));
+  assert.equal(routingMap.routing.departments.operations.agent, "../../operations/AGENT.md");
+  assert.equal(routingMap.routing.departments.operations.readme, "../../operations/README.md");
+  assert.equal(routingMap.routing.departments.strategy, undefined);
+  assert.equal(routingMap.routing.departments.growth, undefined);
+
   await assertInitialContextCoherence(rootDir, engineeringOnlyAnswers.subareas);
+}
+
+async function validateDesignOnlyContext() {
+  const rootDir = await mkdtemp(join(tmpdir(), "leanos-design-only-"));
+  await generateWorkspace(rootDir, designOnlyAnswers);
+
+  const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
+  const defineDesignCommand = await readFile(join(rootDir, ".leanos", "commands", "define-design.md"), "utf8");
+  const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
+
+  assert.deepEqual(yaml.departments.active, ["operations"]);
+  assert.deepEqual(yaml.subareas.active.map((subarea) => subarea.key), ["operations.design"]);
+  assert.equal(yaml.subareas.active[0].agent, "operations/design/AGENT.md");
+  await assertExists(join(rootDir, "operations", "design", "AGENT.md"));
+  await assertExists(join(rootDir, "operations", "design", "knowledge", "design-system.md"));
+  await assertExists(join(rootDir, "operations", "design", "knowledge", "accessibility.md"));
+  await assertExists(join(rootDir, "operations", "design", "knowledge", "user-flows.md"));
+  assert.equal(await exists(join(rootDir, "strategy")), false, "Strategy should not be generated in Design-only workspace");
+  assert(defineDesignCommand.includes("`strategy.product` is not active"), "Define design should ask for Product context when Product is inactive");
+  assert(defineDesignCommand.includes("`operations.core` is not active"), "Define design should ask for MVP context when Core is inactive");
+  assert(defineDesignCommand.includes("../../operations/design/AGENT.md"), "Active Design command should point to Design area AGENT");
+  assert(defineDesignCommand.includes("../../operations/design/knowledge/design-system.md"), "Active Design command should point to Design knowledge files");
+  assert.equal(nextActions.includes("/define design"), false, "Design-only workspace should not recommend /define design before Product and MVP context exist");
+
+  await assertInitialContextCoherence(rootDir, designOnlyAnswers.subareas);
 }
 
 async function validateGrowthValidationContext() {
@@ -473,15 +632,20 @@ async function validateGrowthValidationContext() {
   const routingMap = parse(await readFile(join(rootDir, ".leanos", "index", "routing-map.yaml"), "utf8"));
 
   assert.deepEqual(yaml.departments.active, ["strategy", "growth"]);
-  assert.deepEqual(yaml.workflows.active, ["launch-and-learn"]);
+  assert.deepEqual(yaml.workflows.active, []);
   assert.equal(await exists(join(rootDir, "strategy", "product", "README.md")), false, "Product area should not be generated when not active");
   assert.equal(await exists(join(rootDir, "operations")), false, "Operations department should not be generated when not active");
-  assert(activeWorkflow.includes("- launch-and-learn"), "Growth Marketing + Strategy Validation should activate launch workflow");
-  assert.equal(activeWorkflow.includes("- new-product-mvp-validation"), false, "Growth + Validation workspace should not activate Product + Validation + Core workflow");
-  assert.equal(activeWorkflow.includes("- issue-to-pr"), false, "Growth + Validation workspace should not activate Engineering workflow");
+  assert.equal(activeWorkflow.includes("- launch-learning-loop"), false, "Growth Marketing without Customer Experience should not activate launch workflow");
+  assert.equal(activeWorkflow.includes("- idea-to-roadmap"), false, "Growth + Validation workspace should not activate Strategy idea workflow");
+  assert.equal(activeWorkflow.includes("- issue-delivery-cycle"), false, "Growth + Validation workspace should not activate Engineering workflow");
   assert.equal(nextActions.includes("/define icp"), false, "Growth + Validation workspace should not suggest Product commands");
   assert.equal(nextActions.includes("/workon issue"), false, "Growth + Validation workspace should not suggest Engineering commands");
   assert(workspaceSummary.includes("Active departments: strategy, growth"), "Workspace summary should use active department order from definitions");
+  assert.equal(routingMap.routing.departments.strategy.agent, "../../strategy/AGENT.md");
+  assert.equal(routingMap.routing.departments.strategy.readme, "../../strategy/README.md");
+  assert.equal(routingMap.routing.departments.growth.agent, "../../growth/AGENT.md");
+  assert.equal(routingMap.routing.departments.growth.readme, "../../growth/README.md");
+  assert.equal(routingMap.routing.departments.operations, undefined);
   assert.equal(routingMap.routing.areas.marketing, "../../growth/marketing/README.md");
   assert.equal(routingMap.routing.areas.validation, "../../strategy/validation/README.md");
   assert.equal(routingMap.routing.areas.product, undefined);
@@ -629,6 +793,7 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   const branchTemplate = await readFile(join(rootDir, "ai-standard", "templates", "branch-name-template.md"), "utf8");
   const aiPrTemplate = await readFile(join(rootDir, "ai-standard", "templates", "pull-request-template.md"), "utf8");
   const codeReviewTemplate = await readFile(join(rootDir, "ai-standard", "templates", "code-review-template.md"), "utf8");
+  const epicToSubissuesPlaybook = await readFile(join(rootDir, "operations", "core", "playbooks", "epic-to-subissues.playbook.md"), "utf8");
   const branchSkill = await readFile(join(rootDir, "operations", "engineering", "skills", "create-branch.skill.md"), "utf8");
   const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-from-issue.playbook.md"), "utf8");
   const issueToPrPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "issue-to-pr.playbook.md"), "utf8");
@@ -662,6 +827,10 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(issueMatrix.includes("Design | User-facing flow"), "Issue readiness matrix should make Design conditional");
   assert(issueMatrix.includes("Engineering | Always for implementation work"), "Issue readiness matrix should require Engineering for implementation");
   assert(issueMatrix.includes("Security | Data, auth, permissions, privacy, abuse or compliance"), "Issue readiness matrix should make Security conditional");
+  assert(epicToSubissuesPlaybook.includes("Break a GitHub epic into implementation-ready sub-issues"), "Operations Core should own epic-to-subissues playbook");
+  assert(epicToSubissuesPlaybook.includes("Write Product criteria for every sub-issue"), "Epic breakdown should require Product criteria");
+  assert(epicToSubissuesPlaybook.includes("Include Design criteria only when"), "Epic breakdown should make Design conditional");
+  assert(epicToSubissuesPlaybook.includes("Include Security criteria only when"), "Epic breakdown should make Security conditional");
   assert(branchSkill.includes("safe issue-linked branch name"), "Engineering should include create-branch skill");
   assert(branchPlaybook.includes("Load `.github/leanos/branch-rules.md`"), "Branch playbook should load branch rules");
   assert(issueToPrPlaybook.includes("Check whether Design criteria are required for user-facing UX"), "Issue-to-PR playbook should conditionally check Design");
@@ -676,6 +845,155 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(createBranchCommand.includes("issue/<issue-number>-<short-kebab-slug>"), "Create branch command should require LeanOS branch format");
   assert(createPrCommand.includes("A future CLI/script capability performs the actual GitHub write"), "Create PR command should keep remote writes out of the model");
   assert(reviewPrCommand.includes("List findings first, ordered by severity"), "Review PR command should enforce code review output shape");
+}
+
+async function assertFounderIntentRouting(rootDir) {
+  const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
+  const strategyAgent = await readFile(join(rootDir, "strategy", "AGENT.md"), "utf8");
+  const operationsAgent = await readFile(join(rootDir, "operations", "AGENT.md"), "utf8");
+  const growthAgent = await readFile(join(rootDir, "growth", "AGENT.md"), "utf8");
+  const runtimeReadme = await readFile(join(rootDir, ".leanos", "README.md"), "utf8");
+  const operatingRules = await readFile(join(rootDir, ".leanos", "agent", "operating-rules.md"), "utf8");
+  const vscodeAgent = await readFile(join(rootDir, ".github", "agents", "leanos-chief.agent.md"), "utf8");
+  const workflowsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "workflows.yaml"), "utf8"));
+  const rootAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "root-agent-template.md"), "utf8");
+  const departmentAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "department-agent-template.md"), "utf8");
+  const areaAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "area-agent-template.md"), "utf8");
+  const areaReadmeTemplate = await readFile(join(rootDir, "ai-standard", "templates", "area-readme-template.md"), "utf8");
+
+  assert.equal(rootAgent.includes("## Founder Intent Routing"), false, "Root AGENT.md should not contain separate Founder Intent Routing");
+  assert.equal(rootAgent.includes("strategy/workflows/idea-to-roadmap.workflow.md"), false, "Root AGENT.md should not bypass Strategy AGENT for workflows");
+  assert.equal(rootAgent.includes("operations/workflows/issue-delivery-cycle.workflow.md"), false, "Root AGENT.md should not bypass Operations AGENT for workflows");
+  assert.equal(rootAgent.includes("Root AGENT.md must not bypass department AGENT.md"), false, "Root AGENT.md should avoid narrow workflow-bypass prohibitions");
+  assert(rootAgent.includes("## File Responsibilities"), "Root AGENT.md should define file responsibilities");
+  assert(rootAgent.includes("## Red Lines"), "Root AGENT.md should define scalable red lines");
+  assert(rootAgent.includes("`AGENT.md`: operational owner for that level"), "Root AGENT.md should define AGENT.md responsibility");
+  assert(rootAgent.includes("`README.md`: directory map and explanation"), "Root AGENT.md should define README responsibility");
+  assert(rootAgent.includes("Enter the owning department or area before acting"), "Root AGENT.md should use owner-first red lines");
+  assert(rootAgent.includes("When an area has its own `AGENT.md`, use it as the area operating owner"), "Root AGENT.md should understand area-level agents");
+  assert(rootAgent.includes("Do not invent missing workflows, roles, skills, playbooks, commands or templates"), "Root AGENT.md should prevent asset invention");
+  assert(rootAgent.includes("Strategy: `strategy/AGENT.md`"), "Root AGENT.md should route Strategy through its AGENT");
+  assert(rootAgent.includes("Operations: `operations/AGENT.md`"), "Root AGENT.md should route Operations through its AGENT");
+  assert(rootAgent.includes("Growth: `growth/AGENT.md`"), "Root AGENT.md should route Growth through its AGENT");
+  assert.equal(rootAgent.includes("`strategy/product/README.md`"), false, "Root AGENT.md should not route directly to Strategy Product area");
+  assert.equal(rootAgent.includes("`operations/engineering/README.md`"), false, "Root AGENT.md should not route directly to Operations Engineering area");
+  assert(rootAgent.includes("Operational workflows live in root departments"), "AGENT.md should keep business workflows out of .leanos");
+  assert(strategyAgent.includes("CEO / PMO / Product Strategy operator"), "Strategy AGENT should define its executive operating owner");
+  assert(strategyAgent.includes("## Routing Rules"), "Strategy AGENT should define department-level routing rules");
+  assert(strategyAgent.includes("workflows/README.md"), "Strategy AGENT should point to workflow index instead of enumerating workflows");
+  assert.equal(strategyAgent.includes("workflows/idea-to-roadmap.workflow.md"), false, "Strategy AGENT should not enumerate every workflow path");
+  assert(operationsAgent.includes("CTO / Operations Lead"), "Operations AGENT should define its executive operating owner");
+  assert(operationsAgent.includes("## Routing Rules"), "Operations AGENT should define department-level routing rules");
+  assert(operationsAgent.includes("workflows/README.md"), "Operations AGENT should point to workflow index instead of enumerating workflows");
+  assert.equal(operationsAgent.includes("workflows/issue-delivery-cycle.workflow.md"), false, "Operations AGENT should not enumerate every workflow path");
+  assert(growthAgent.includes("Growth / Marketing / Finance Lead"), "Growth AGENT should define its executive operating owner");
+  assert(growthAgent.includes("## Routing Rules"), "Growth AGENT should define department-level routing rules");
+  assert(runtimeReadme.includes("Business workflows live in departments or areas"), ".leanos README should keep workflows local to departments or areas");
+  assert(operatingRules.includes("Natural language founder requests are first-class"), "Operating rules should support natural-language founder intent");
+  assert(operatingRules.includes("Root AGENT.md routes to the correct department; department AGENT.md files route to workflows or areas"), "Operating rules should route workflow selection through department agents");
+  assert(operatingRules.includes("`AGENT.md` is the operating owner for its level; `README.md` is the directory map"), "Operating rules should define AGENT and README responsibilities");
+  assert(operatingRules.includes("Area `AGENT.md` files, when present, choose the specialist role"), "Operating rules should define area AGENT responsibility");
+  assert.equal(operatingRules.includes("Root AGENT.md must not bypass department AGENT.md"), false, "Operating rules should avoid narrow workflow-bypass prohibitions");
+  assert(operatingRules.includes("Business workflows live in root departments or areas, not in `.leanos/`"), "Operating rules should keep business workflows out of .leanos");
+  assert(vscodeAgent.includes("Founder requests can be natural language"), "VS Code agent should support founder intent routing");
+  assert(vscodeAgent.includes("Then use the department `AGENT.md` to choose the workflow folder or active area"), "VS Code agent should route workflows through department AGENT files");
+  assert(vscodeAgent.includes("Enter the owning department or area before acting"), "VS Code agent should use owner-first routing");
+  assert(vscodeAgent.includes("When an area has its own `AGENT.md`, use it before loading roles, skills or playbooks"), "VS Code agent should understand area-level agents");
+  assert.equal(vscodeAgent.includes("Do not bypass department `AGENT.md`"), false, "VS Code agent should avoid narrow workflow-bypass prohibitions");
+  assert.equal(await exists(join(rootDir, ".leanos", "workflows")), false, ".leanos/workflows should not be generated");
+
+  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "idea-to-roadmap" && workflow.path === "../../strategy/workflows/idea-to-roadmap.workflow.md"), "Workflows index should point to Strategy idea workflow");
+  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-to-github-project" && workflow.path === "../../strategy/workflows/roadmap-to-github-project.workflow.md"), "Workflows index should point to Strategy roadmap sync workflow");
+  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "issue-delivery-cycle" && workflow.path === "../../operations/workflows/issue-delivery-cycle.workflow.md"), "Workflows index should point to Operations issue delivery workflow");
+  assert(rootAgentTemplate.includes("Route only to the owning department `AGENT.md`"), "Root agent template should keep root routing department-level");
+  assert(rootAgentTemplate.includes("## Red Lines"), "Root agent template should include scalable red lines");
+  assert(rootAgentTemplate.includes("When an area has `AGENT.md`, use it before loading roles, skills or playbooks"), "Root agent template should include area AGENT rule");
+  assert(departmentAgentTemplate.includes("If the request spans multiple active areas, open `workflows/README.md`"), "Department agent template should route cross-area work through workflow index");
+  assert(departmentAgentTemplate.includes("route to that area `AGENT.md` when present"), "Department agent template should route to area AGENT when present");
+  assert(departmentAgentTemplate.includes("Do not load roles, skills or playbooks before entering the owning area"), "Department agent template should keep roles/skills/playbooks area-owned");
+  assert(areaAgentTemplate.includes("Choose the smallest specialist role"), "Area AGENT template should route to specialist roles");
+  assert(areaAgentTemplate.includes("Keep reusable area knowledge in `knowledge/`"), "Area AGENT template should keep area knowledge modular");
+  assert(areaReadmeTemplate.includes("`README.md`: area map and explanation"), "Area README template should define map responsibility");
+}
+
+async function assertDesignFoundation(rootDir) {
+  const designReadme = await readFile(join(rootDir, "operations", "design", "README.md"), "utf8");
+  const designAgent = await readFile(join(rootDir, "operations", "design", "AGENT.md"), "utf8");
+  const areaYaml = parse(await readFile(join(rootDir, "operations", "design", "area.yaml"), "utf8"));
+  const productDesigner = await readFile(join(rootDir, "operations", "design", "roles", "product-designer.role.md"), "utf8");
+  const uxResearcher = await readFile(join(rootDir, "operations", "design", "roles", "ux-researcher.role.md"), "utf8");
+  const accessibilitySpecialist = await readFile(join(rootDir, "operations", "design", "roles", "accessibility-specialist.role.md"), "utf8");
+  const uxWriter = await readFile(join(rootDir, "operations", "design", "roles", "ux-writer.role.md"), "utf8");
+  const defineDesignCommand = await readFile(join(rootDir, ".leanos", "commands", "define-design.md"), "utf8");
+  const designFoundationPlaybook = await readFile(join(rootDir, "operations", "design", "playbooks", "design-foundation.playbook.md"), "utf8");
+  const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
+
+  await assertExists(join(rootDir, "operations", "design", "AGENT.md"));
+  await assertExists(join(rootDir, "operations", "design", "knowledge", "README.md"));
+  await assertExists(join(rootDir, "operations", "design", "knowledge", "design-system.md"));
+  await assertExists(join(rootDir, "operations", "design", "knowledge", "accessibility.md"));
+  await assertExists(join(rootDir, "operations", "design", "knowledge", "user-flows.md"));
+  await assertExists(join(rootDir, "operations", "design", "roles", "ux-researcher.role.md"));
+  await assertExists(join(rootDir, "operations", "design", "roles", "product-designer.role.md"));
+  await assertExists(join(rootDir, "operations", "design", "roles", "accessibility-specialist.role.md"));
+  await assertExists(join(rootDir, "operations", "design", "roles", "ux-writer.role.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "design-system.skill.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "accessibility.skill.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "user-research.skill.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "user-flow-mapping.skill.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "screen-specification.skill.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "ux-states.skill.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "microcopy.skill.md"));
+  await assertExists(join(rootDir, "operations", "design", "playbooks", "user-research.playbook.md"));
+  await assertExists(join(rootDir, "operations", "design", "playbooks", "accessibility-review.playbook.md"));
+  await assertExists(join(rootDir, "operations", "design", "playbooks", "ux-writing.playbook.md"));
+  assert.equal(await exists(join(rootDir, "operations", "design", "design-principles.md")), false, "Design principles should move out of the Design area root");
+  assert.equal(await exists(join(rootDir, "operations", "design", "user-flows.md")), false, "User flows should move into Design knowledge");
+  assert.equal(await exists(join(rootDir, "operations", "design", "screen-specs.md")), false, "Screen specs should not be generated in the initial Design scaffold");
+  assert.equal(await exists(join(rootDir, "operations", "design", "ux-decisions.md")), false, "UX decisions should not be generated in the initial Design scaffold");
+  assert.equal(await exists(join(rootDir, "operations", "design", "usability-notes.md")), false, "Usability notes should not be generated in the initial Design scaffold");
+  assert.equal(await exists(join(rootDir, "operations", "design", "roles", "ux-lead.role.md")), false, "UX Lead should be the area AGENT, not a specialist role file");
+  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-design-system.skill.md")), false, "Design skill should use direct naming without define- prefix");
+  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-accessibility.skill.md")), false, "Accessibility skill should use direct naming without define- prefix");
+  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "map-user-flow.skill.md")), false, "User flow skill should use direct naming");
+  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "create-screen-spec.skill.md")), false, "Screen spec skill should use direct naming");
+  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-ux-states.skill.md")), false, "UX states skill should use direct naming");
+
+  assert(designReadme.includes("knowledge/design-system.md"), "Design README should point to Design knowledge");
+  assert(designReadme.includes("Design foundation request"), "Design README should expose the design foundation common path");
+  assert(designReadme.includes("For operational work, start with `AGENT.md`"), "Design README should point operational work to the area AGENT");
+  assert(designAgent.includes("You are the UX Lead"), "Design AGENT should define UX Lead as the area owner");
+  assert(designAgent.includes("Product Designer: `roles/product-designer.role.md`"), "Design AGENT should route product design work");
+  assert(designAgent.includes("UX Researcher: `roles/ux-researcher.role.md`"), "Design AGENT should route research work");
+  assert(designAgent.includes("Accessibility Specialist: `roles/accessibility-specialist.role.md`"), "Design AGENT should route accessibility work");
+  assert(designAgent.includes("UX Writer: `roles/ux-writer.role.md`"), "Design AGENT should route UX writing work");
+  assert(designAgent.includes("Keep reusable area knowledge in `knowledge/`"), "Design AGENT should keep knowledge modular");
+  assert.equal(areaYaml.area.agent, "AGENT.md");
+  assert.deepEqual(areaYaml.area.source_of_truth, ["knowledge/design-system.md", "knowledge/accessibility.md", "knowledge/user-flows.md"]);
+  assert(productDesigner.includes("../knowledge/design-system.md"), "Product Designer should read design-system knowledge");
+  assert(productDesigner.includes("../knowledge/user-flows.md"), "Product Designer should read user-flow knowledge");
+  assert(uxResearcher.includes("../knowledge/user-flows.md"), "UX Researcher should read user-flow knowledge");
+  assert(accessibilitySpecialist.includes("../knowledge/accessibility.md"), "Accessibility Specialist should read accessibility knowledge");
+  assert(uxWriter.includes("../knowledge/user-flows.md"), "UX Writer should read user-flow knowledge");
+
+  assert(defineDesignCommand.includes("# /define design"), "Define design command should use the expected invocation");
+  assert(defineDesignCommand.includes("Prepare the MVP design foundation before implementation"), "Define design command should explain the design foundation purpose");
+  assert(defineDesignCommand.includes("../../operations/design/AGENT.md"), "Define design should load Design area AGENT");
+  assert(defineDesignCommand.includes("../../operations/design/roles/product-designer.role.md"), "Define design should load Product Designer role");
+  assert(defineDesignCommand.includes("../../strategy/product/README.md"), "Define design should load Product context when active");
+  assert(defineDesignCommand.includes("../../operations/core/mvp/scope.md"), "Define design should load MVP context when active");
+  assert(defineDesignCommand.includes("../../operations/design/skills/design-system.skill.md"), "Define design should load the direct design-system skill name");
+  assert(defineDesignCommand.includes("../../operations/design/skills/accessibility.skill.md"), "Define design should load the direct accessibility skill name");
+  assert(defineDesignCommand.includes("../../operations/design/skills/user-flow-mapping.skill.md"), "Define design should load user-flow-mapping skill");
+  assert.equal(defineDesignCommand.includes("../../operations/design/roles/ux-lead.role.md"), false, "Define design should not load old UX Lead role file");
+  assert.equal(defineDesignCommand.includes("../../operations/design/skills/define-design-system.skill.md"), false, "Define design should not load define-prefixed design-system skill");
+  assert.equal(defineDesignCommand.includes("../../operations/design/skills/define-accessibility.skill.md"), false, "Define design should not load define-prefixed accessibility skill");
+  assert(defineDesignCommand.includes("../../operations/design/knowledge/design-system.md"), "Define design should update design-system knowledge");
+  assert(defineDesignCommand.includes("Leave screen specs, usability notes and UX decisions for later"), "Define design should defer screen-specific files");
+  assert(defineDesignCommand.includes("Write only after explicit user confirmation"), "Define design should use propose-first writes");
+  assert(designFoundationPlaybook.includes("Design system baseline"), "Design foundation playbook should output a design system baseline");
+  assert(designFoundationPlaybook.includes("Accessibility baseline"), "Design foundation playbook should output an accessibility baseline");
+  assert(nextActions.includes("/define design"), "Full workspace should recommend /define design when Product, Core and Design are active");
 }
 
 async function assertInitCommandRules(rootDir) {
@@ -748,6 +1066,9 @@ async function assertRootAgentMutationRules(rootDir) {
 
 async function assertOperationalPlaybookSections(rootDir) {
   const playbooks = [
+    "strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md",
+    "operations/core/playbooks/epic-to-subissues.playbook.md",
+    "operations/design/playbooks/design-foundation.playbook.md",
     "operations/engineering/playbooks/test-planning.playbook.md",
     "operations/devops/playbooks/setup-ci-cd.playbook.md",
     "operations/devops/playbooks/plan-deployment.playbook.md",
@@ -782,8 +1103,9 @@ async function assertSourceScaffoldSections(rootDir) {
     "operations/core/technical-decisions.md",
     "operations/core/mvp/scope.md",
     "operations/core/mvp/release-checklist.md",
-    "operations/design/screen-specs.md",
-    "operations/design/ux-decisions.md",
+    "operations/design/knowledge/design-system.md",
+    "operations/design/knowledge/accessibility.md",
+    "operations/design/knowledge/user-flows.md",
     "operations/engineering/implementation-notes.md",
     "operations/engineering/pr-log.md",
     "operations/security/threat-model.md",
@@ -932,9 +1254,11 @@ async function assertInitialContextCoherence(rootDir, selectedSubareas) {
   ];
 
   const workflowRequirements = [
-    { workflow: "new-product-mvp-validation", subareas: ["strategy.product", "strategy.validation", "operations.core"] },
-    { workflow: "issue-to-pr", subareas: ["operations.core", "operations.engineering"] },
-    { workflow: "launch-and-learn", subareas: ["growth.marketing", "strategy.validation"] }
+    { workflow: "idea-to-roadmap", subareas: ["strategy.product", "strategy.roadmap", "strategy.validation"] },
+    { workflow: "roadmap-to-github-project", subareas: ["strategy.product", "strategy.roadmap"] },
+    { workflow: "issue-delivery-cycle", subareas: ["operations.core", "operations.engineering"] },
+    { workflow: "post-merge-continuation", subareas: ["operations.core", "operations.engineering"] },
+    { workflow: "launch-learning-loop", subareas: ["growth.marketing", "growth.customer-experience"] }
   ];
 
   for (const requirement of commandRequirements) {

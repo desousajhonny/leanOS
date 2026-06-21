@@ -4,6 +4,320 @@ Este arquivo e temporario. Ele lista os fluxos que o LeanOS deve automatizar no 
 
 Quando os fluxos forem convertidos em workflows, comandos de chat, templates, skills e scripts/capabilities oficiais, este arquivo deve ser removido.
 
+## Founder Journey Resumida
+
+Esta e a jornada principal do founder no LeanOS, do primeiro setup ate uma issue implementada, validada e pronta para PR.
+
+```text
+npx lean-os ai
+  -> /start-leanos
+  -> Idea-to-roadmap
+  -> Roadmap-sync-to-GitHub-Projects
+  -> Epic-to-sub-issues
+  -> Issue implementation
+  -> Branch creation
+  -> Code quality checks
+  -> Model code review
+  -> Pull request creation
+  -> Founder merge
+  -> Next issue
+```
+
+### 0. Setup Inicial Pelo CLI
+
+Intencao inicial:
+
+Criar ou instalar a camada operacional LeanOS no repositorio do founder.
+
+Fluxo aplicado:
+
+- `LeanOS install mode`
+
+O que acontece:
+
+- o CLI coleta contexto minimo;
+- detecta se e produto novo ou repositorio existente;
+- gera `AGENT.md`, `leanos.yaml`, `.leanos/`, `ai-standard/`, `strategy/`, `operations/`, `growth/` e GitHub/VScode support;
+- preserva arquivos existentes por padrao;
+- prepara GitHub management quando o founder pede;
+- nao cria app code ainda.
+
+Areas e roles:
+
+- CLI executa o scaffold.
+- LeanOS Chief ainda nao opera o negocio; ele fica preparado para iniciar no chat.
+
+Resultado esperado:
+
+- workspace versionavel criado;
+- LeanOS Chief preparado;
+- proximo passo claro: `/start-leanos`.
+
+### 1. Primeira Sessao: `/start-leanos`
+
+Intencao inicial:
+
+Transformar o workspace vazio em uma primeira leitura operacional da empresa/produto, sem inventar fatos e sem modificar assets operacionais.
+
+Fluxo aplicado:
+
+- `Start LeanOS`
+- base para `Idea-to-roadmap`
+
+O que acontece:
+
+- LeanOS Chief carrega `AGENT.md`, `leanos.yaml`, contexto e routing map;
+- entrevista o founder apenas sobre o que falta;
+- separa fatos, suposicoes, incertezas e decisoes;
+- propoe atualizacoes em arquivos source-of-truth;
+- pede confirmacao antes de escrever.
+
+Areas e roles:
+
+- `strategy/company/`
+  - role: `company-strategist`
+- `strategy/product/`
+  - roles: `product-strategist`, `product-manager`
+- `strategy/validation/`
+  - role: `validation-researcher`
+- `strategy/roadmap/`
+  - role: `roadmap-planner`
+
+Resultado esperado:
+
+- company profile inicial;
+- product brief inicial;
+- problema, ICP, value proposition e hipoteses iniciais;
+- proximo passo recomendado.
+
+### 2. Idea-to-roadmap
+
+Intencao inicial:
+
+O founder discute uma ideia, feature ou direcao de produto com o modelo, e o LeanOS transforma isso em decisao rastreavel.
+
+Fluxo aplicado:
+
+- `Idea-to-roadmap`
+- `strategy-validation-cycle`
+
+O que acontece:
+
+- o modelo avalia se a ideia fortalece ou contradiz strategy;
+- identifica impacto em ICP, problema, MVP, validacao e roadmap;
+- decide se a ideia deve ir para backlog, roadmap, experimento ou descarte;
+- propoe atualizacoes antes de escrever.
+
+Areas e roles:
+
+- `strategy/product/`
+  - `product-strategist`: coerencia entre usuario, problema, valor e posicionamento;
+  - `product-manager`: transforma direcao em escopo operacional.
+- `strategy/validation/`
+  - `validation-researcher`: identifica hipoteses e evidencia necessaria.
+- `strategy/roadmap/`
+  - `roadmap-planner`: sequencia trabalho e define ciclo.
+- `operations/core/mvp/`
+  - `product-owner`: traduz strategy em MVP scope e acceptance criteria.
+
+Resultado esperado:
+
+- decisao sobre a ideia;
+- impacto em roadmap/backlog;
+- hipoteses e criterios de validacao;
+- MVP scope atualizado quando confirmado.
+
+### 3. Roadmap-sync-to-GitHub-Projects
+
+Intencao inicial:
+
+Transformar roadmap local em estrutura executavel no GitHub: milestones, epics e project fields.
+
+Fluxo aplicado:
+
+- `Roadmap-sync-to-GitHub-Projects`
+
+O que acontece:
+
+- o modelo le roadmap, milestones, current cycle, backlog e MVP scope;
+- valida GitHub settings sem pedir token em arquivo;
+- gera plano/payload de sync;
+- pede confirmacao;
+- capability/script futuro executa a API.
+
+Areas e roles:
+
+- `strategy/roadmap/`
+  - `roadmap-planner`: define prioridade, milestone e ciclo.
+- `operations/core/`
+  - `product-owner`: garante MVP scope e acceptance criteria.
+- `operations/devops/`
+  - `github-devops`: guia configuracao GitHub Project, labels e sync state.
+- `operations/engineering/`
+  - `senior-developer`: valida viabilidade tecnica quando necessario.
+
+Resultado esperado:
+
+- epics GitHub-ready;
+- milestones e project fields definidos;
+- sync state sem segredos;
+- nada remoto executado sem confirmacao.
+
+### 4. Epic-to-sub-issues
+
+Intencao inicial:
+
+Quebrar um epic grande em sub-issues pequenas, implementaveis e com criterios claros.
+
+Fluxo aplicado:
+
+- `Epic-to-sub-issues`
+- matriz Product / Design / Engineering / Security
+
+O que acontece:
+
+- o modelo le o epic, roadmap item, milestone, MVP scope e acceptance criteria;
+- aplica matriz de prontidao;
+- cria sub-issues com escopo, non-goals, criterios e riscos;
+- inclui Design apenas quando ha UX, telas, estados, copy ou interacao;
+- inclui Security apenas quando ha dados, auth, permissoes, privacidade, abuso ou compliance;
+- pede confirmacao antes de criar issues via capability futura.
+
+Areas e roles:
+
+- `strategy/product/`
+  - `product-manager`: valor, usuario, outcome e acceptance criteria.
+- `operations/design/`
+  - `ux-lead`: fluxo, telas, estados e acessibilidade quando aplicavel.
+- `operations/security/`
+  - `security-reviewer`: criterios de dados, auth, permissoes e risco quando aplicavel.
+- `operations/engineering/`
+  - `senior-developer`: viabilidade, dependencia tecnica, testes e tamanho.
+
+Resultado esperado:
+
+- sub-issues GitHub-ready;
+- labels, milestone e parent epic;
+- criterios Product/Engineering sempre presentes;
+- Design/Security presentes quando aplicavel;
+- payload pronto para API apos confirmacao.
+
+### 5. Issue Implementation
+
+Intencao inicial:
+
+O founder pede para implementar uma issue especifica, e o modelo transforma a issue em plano, branch, codigo, testes e PR.
+
+Fluxo aplicado:
+
+- `Issue implementation`
+- `Branch creation`
+- `Code quality and internal engineering checks`
+
+O que acontece:
+
+- modelo busca ou recebe a issue;
+- resume objetivo, escopo, acceptance criteria e riscos;
+- pede confirmacao antes de alterar codigo;
+- cria ou propoe branch obrigatoria;
+- implementa dentro do escopo;
+- roda checks e testes disponiveis;
+- prepara PR.
+
+Areas e roles:
+
+- `operations/engineering/`
+  - `senior-developer`: implementa, cria branch, planeja testes e prepara PR.
+- `operations/core/`
+  - `product-owner`: garante alinhamento com MVP e acceptance criteria.
+- `operations/design/`
+  - `ux-lead`: participa se a issue afetar UX.
+- `operations/security/`
+  - `security-reviewer`: participa se a issue tocar dados, auth, privacidade ou compliance.
+
+Resultado esperado:
+
+- branch `issue/<issue-number>-<short-slug>`;
+- implementacao alinhada a issue;
+- testes ou justificativa clara;
+- resumo de arquivos alterados;
+- PR draft.
+
+### 6. Model Code Review E Pull Request
+
+Intencao inicial:
+
+Validar a implementacao antes do merge e abrir PR com contexto suficiente para revisao humana.
+
+Fluxo aplicado:
+
+- `Model code review`
+- `Pull request creation`
+- `PR validation`
+
+O que acontece:
+
+- modelo revisor le PR/diff, issue, epic, MVP scope e acceptance criteria;
+- lista findings por severidade;
+- valida Product, Engineering e testes;
+- valida Design somente se UX mudou;
+- valida Security somente se superficie sensivel existir;
+- recomenda merge, changes ou blocked-by-context;
+- PR segue template LeanOS.
+
+Areas e roles:
+
+- `operations/engineering/`
+  - `pr-reviewer`: valida corretude, escopo, testes e coerencia.
+- `operations/security/`
+  - `security-reviewer`: participa quando ha risco de seguranca.
+- `operations/design/`
+  - `ux-lead`: participa quando ha impacto de experiencia.
+- `operations/core/`
+  - `product-owner`: confirma MVP/acceptance criteria quando necessario.
+
+Resultado esperado:
+
+- PR descritivo;
+- checklist LeanOS preenchido;
+- riscos claros;
+- recomendacao de review;
+- founder decide merge manualmente no MVP.
+
+### 7. Post-merge Continuation
+
+Intencao inicial:
+
+Depois do merge manual, continuar o ciclo sem perder contexto.
+
+Fluxo aplicado:
+
+- `Post-merge continuation`
+
+O que acontece:
+
+- founder informa que o merge foi concluido;
+- modelo confirma status;
+- registra learning ou decisao quando aplicavel;
+- atualiza contexto/sync state quando capability existir;
+- carrega a proxima issue;
+- reinicia o fluxo de implementacao.
+
+Areas e roles:
+
+- `operations/engineering/`
+  - `senior-developer`: prepara proxima implementacao.
+- `strategy/validation/`
+  - `validation-researcher`: registra aprendizado quando o merge gerar evidencia.
+- `strategy/roadmap/`
+  - `roadmap-planner`: reordena proximos passos se necessario.
+
+Resultado esperado:
+
+- ciclo continua para a proxima issue;
+- contexto preservado;
+- nenhuma conclusao ou aprendizado e inventado sem evidencia.
+
 ## Principio Geral
 
 LeanOS deve transformar conversa em execucao rastreavel.

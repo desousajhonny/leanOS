@@ -23,7 +23,7 @@ Read:
 - Load `../../strategy/product/README.md` for product value, ICP, problem and acceptance quality.
 - Load `../../operations/core/README.md` and MVP source-of-truth files before drafting issues.
 - Load `../../operations/engineering/README.md` when sub-issues require implementation criteria.
-- Use `../../operations/design/README.md` only when the epic or sub-issue changes user-facing UX, screens, states, copy or interactions.
+- Use `../../operations/design/AGENT.md` only when the epic or sub-issue changes user-facing UX, screens, states, copy or interactions; use the README as the area map.
 - Use `../../operations/security/README.md` only when the issue touches data, auth, permissions, privacy, abuse risk or compliance.
 
 ## Process

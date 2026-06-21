@@ -8,18 +8,36 @@ playbooks:
   - key: validation-cycle-planning
     area: strategy.roadmap
     path: ../../strategy/roadmap/playbooks/validation-cycle-planning.playbook.md
+  - key: roadmap-sync-prep
+    area: strategy.roadmap
+    path: ../../strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md
   - key: mvp-validation
     area: strategy.validation
     path: ../../strategy/validation/playbooks/mvp-validation.playbook.md
   - key: mvp-delivery
     area: operations.core
     path: ../../operations/core/playbooks/mvp-delivery.playbook.md
+  - key: epic-to-subissues
+    area: operations.core
+    path: ../../operations/core/playbooks/epic-to-subissues.playbook.md
   - key: architecture-planning
     area: operations.core
     path: ../../operations/core/playbooks/architecture-planning.playbook.md
+  - key: design-foundation
+    area: operations.design
+    path: ../../operations/design/playbooks/design-foundation.playbook.md
+  - key: user-research
+    area: operations.design
+    path: ../../operations/design/playbooks/user-research.playbook.md
   - key: mvp-ux-flow
     area: operations.design
     path: ../../operations/design/playbooks/mvp-ux-flow.playbook.md
+  - key: accessibility-review
+    area: operations.design
+    path: ../../operations/design/playbooks/accessibility-review.playbook.md
+  - key: ux-writing
+    area: operations.design
+    path: ../../operations/design/playbooks/ux-writing.playbook.md
   - key: branch-from-issue
     area: operations.engineering
     path: ../../operations/engineering/playbooks/branch-from-issue.playbook.md

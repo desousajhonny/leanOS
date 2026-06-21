@@ -23,7 +23,6 @@ Use at the beginning of every LeanOS session.
 ## Related Folders
 
 - `../index/`
-- `../workflows/`
 - `../../strategy/`
 - `../../operations/`
 - `../../growth/`
@@ -34,4 +33,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-Context files are lightweight pointers, not full manuals.
+Context files are lightweight pointers, not full manuals. Business workflows live in root departments.

@@ -1,8 +1,8 @@
-# Create Screen Spec
+# Accessibility
 
 ## Purpose
 
-Define screen purpose, content, states and interactions.
+Define accessibility expectations based on the MVP audience, context and product constraints.
 
 ## Area
 

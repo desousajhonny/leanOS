@@ -32,7 +32,17 @@ Own MVP scope, system architecture and the operating bridge between Product and 
 3. Use the matching playbook from `playbooks/`.
 4. Produce the requested output and update source-of-truth files when needed.
 
+## File Responsibilities
+
+- `README.md`: area map and explanation.
+- `AGENT.md`: area operating lead when present.
+- `area.yaml`: machine-readable structure for this area.
+- `roles/`: operating personas for this area.
+- `skills/`: focused capabilities used by roles.
+- `playbooks/`: tactical execution sequences.
+
 ## Common Paths
 
 - MVP request: role `roles/product-owner.role.md` -> skill `skills/define-mvp.skill.md` -> playbook `playbooks/mvp-delivery.playbook.md`.
+- Epic breakdown request: role `roles/product-owner.role.md` -> skills `skills/shape-epic.skill.md` and `skills/write-subissue-criteria.skill.md` -> playbook `playbooks/epic-to-subissues.playbook.md`.
 - Architecture request: role `roles/technical-architect.role.md` -> skill `skills/define-architecture.skill.md` -> playbook `playbooks/architecture-planning.playbook.md`.

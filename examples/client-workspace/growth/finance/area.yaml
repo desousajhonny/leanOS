@@ -2,6 +2,8 @@ area:
   key: growth.finance
   department: growth
   path: growth/finance
+  agent: null
+  readme: README.md
   roles:
     - finance-operator
   skills:

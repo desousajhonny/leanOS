@@ -24,7 +24,7 @@ Then start from:
 ## Main Structure
 
 - \`.github/\` VS Code and GitHub integration files.
-- \`.leanos/\` LeanOS runtime, commands, context, indexes and global workflows.
+- \`.leanos/\` LeanOS runtime, commands, context and indexes.
 - \`ai-standard/\` templates, checklists and instructions for creating LeanOS assets.
 ${activeRoots.map((department) => `- \`${department.key}/\` ${department.name} department.`).join("\n")}
 

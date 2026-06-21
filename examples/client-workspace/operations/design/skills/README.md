@@ -10,13 +10,17 @@ Use when a selected role points to a skill.
 
 ## Source of Truth
 
-`../README.md`
+`../AGENT.md`
 
 ## Files
 
-- `map-user-flow.skill.md`
-- `create-screen-spec.skill.md`
-- `define-ux-states.skill.md`
+- `design-system.skill.md`
+- `accessibility.skill.md`
+- `user-research.skill.md`
+- `user-flow-mapping.skill.md`
+- `screen-specification.skill.md`
+- `ux-states.skill.md`
+- `microcopy.skill.md`
 
 ## Related Folders
 

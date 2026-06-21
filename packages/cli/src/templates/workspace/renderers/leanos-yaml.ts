@@ -50,13 +50,21 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
     },
     departments: {
       active: activeRoots.map((department) => department.key),
-      paths: Object.fromEntries(activeRoots.map((department) => [department.key, `${department.key}/README.md`]))
+      routes: Object.fromEntries(activeRoots.map((department) => [
+        department.key,
+        {
+          agent: `${department.key}/AGENT.md`,
+          readme: `${department.key}/README.md`
+        }
+      ]))
     },
     subareas: {
       active: activeAreas.map((area) => ({
         key: area.key,
         department: area.root,
-        path: `${area.path}/README.md`
+        path: `${area.path}/README.md`,
+        agent: area.lead ? `${area.path}/AGENT.md` : null,
+        readme: `${area.path}/README.md`
       }))
     },
     roles: {
@@ -72,7 +80,17 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
       active: Object.fromEntries(activeAreas.map((area) => [area.key, area.playbooks.map((playbook) => playbook.slug)]))
     },
     workflows: {
-      active: getActiveWorkflowKeys(activeAreas)
+      ownership: "department-local",
+      active: getActiveWorkflowKeys(activeAreas),
+      by_department: Object.fromEntries(
+        activeRoots.map((department) => [
+          department.key,
+          department.workflows.map((workflow) => ({
+            key: workflow.slug,
+            path: `${department.key}/workflows/${workflow.slug}.workflow.md`
+          }))
+        ])
+      )
     },
     ai_standard: {
       path: "ai-standard/README.md",

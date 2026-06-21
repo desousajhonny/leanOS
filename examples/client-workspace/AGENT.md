@@ -28,11 +28,28 @@ If the command file is missing, do not invent the command. Explain what is missi
 
 ## Navigation Chain
 
-`AGENT.md -> Department AGENT.md/README.md -> Area README -> Role -> Skills -> Playbook -> Output`
+`AGENT.md -> Department AGENT.md -> Department README or Workflow -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`
 
 Do not jump directly to implementation.
 Do not load every file.
-Load the smallest relevant department, area, role, skill and playbook.
+Load the smallest relevant owner: department, area, role, skill and playbook.
+
+## File Responsibilities
+
+- `AGENT.md`: operational owner for that level. It decides the next route.
+- `README.md`: directory map and explanation.
+- `department.yaml` and `area.yaml`: machine-readable structure.
+- `workflows/`: multi-step flows owned by the department or area that contains them.
+- `roles/`, `skills/` and `playbooks/`: area-level execution assets.
+
+## Red Lines
+
+- Enter the owning department or area before acting.
+- When an area has its own `AGENT.md`, use it as the area operating owner before loading roles, skills or playbooks.
+- Do not invent missing workflows, roles, skills, playbooks, commands or templates.
+- Do not load the whole workspace when a smaller route exists.
+- Do not write secrets to tracked files.
+- Ask before modifying source-of-truth files or operating assets.
 
 ## Workspace Mutation Rules
 
@@ -48,101 +65,35 @@ Customize operating assets only when the user explicitly asks to change LeanOS i
 
 ## LeanOS Runtime
 
-`.leanos/` contains runtime files for commands, context, indexes, workflows and VS Code integration.
+`.leanos/` contains runtime files for commands, context, indexes and VS Code integration.
+`.leanos/` does not own business workflows. Operational workflows live in root departments or their areas, such as `strategy/workflows/` and `operations/workflows/`.
 
 `ai-standard/` contains reusable templates, instructions and quality criteria.
 
 ## Active Root Departments
 
-- Strategy: `strategy/README.md`
-- Operations: `operations/README.md`
-- Growth: `growth/README.md`
-
-## Active Areas
-
-- Company: `strategy/company/README.md`
-- Product: `strategy/product/README.md`
-- Roadmap: `strategy/roadmap/README.md`
-- Validation: `strategy/validation/README.md`
-- Core: `operations/core/README.md`
-- Design: `operations/design/README.md`
-- Engineering: `operations/engineering/README.md`
-- DevOps: `operations/devops/README.md`
-- Security: `operations/security/README.md`
-- Customer Experience: `growth/customer-experience/README.md`
-- Marketing: `growth/marketing/README.md`
-- Finance: `growth/finance/README.md`
+- Strategy: `strategy/AGENT.md` (map: `strategy/README.md`)
+- Operations: `operations/AGENT.md` (map: `operations/README.md`)
+- Growth: `growth/AGENT.md` (map: `growth/README.md`)
 
 ## Routing
 
-If the user asks about company, mission, vision, principles or operating model:
+Use this section only to choose the owning department. The department `AGENT.md` chooses the workflow or area.
+
+If the user asks about company, product strategy, roadmap, validation, ICP or assumptions:
 
 Go to:
 
-`strategy/company/README.md`
+`strategy/AGENT.md`
 
-If the user asks about product strategy, ICP, value proposition, positioning or business model:
-
-Go to:
-
-`strategy/product/README.md`
-
-If the user asks about roadmap, milestones, backlog, cycle planning or prioritization:
+If the user asks about MVP, architecture, design, engineering, implementation, DevOps or security:
 
 Go to:
 
-`strategy/roadmap/README.md`
+`operations/AGENT.md`
 
-If the user asks about assumptions, experiments, interviews, research or validation:
-
-Go to:
-
-`strategy/validation/README.md`
-
-If the user asks about MVP, architecture, system context, data model or technical decisions:
+If the user asks about customer experience, marketing, landing pages, launch, acquisition or finance:
 
 Go to:
 
-`operations/core/README.md`
-
-If the user asks about screens, flows, UX, UI, onboarding or usability:
-
-Go to:
-
-`operations/design/README.md`
-
-If the user asks about code, implementation, bugs, tests, issues or pull requests:
-
-Go to:
-
-`operations/engineering/README.md`
-
-If the user asks about deployment, environments, CI, observability, GitHub Projects or operations runbooks:
-
-Go to:
-
-`operations/devops/README.md`
-
-If the user asks about security, privacy, access control, threat model or data protection:
-
-Go to:
-
-`operations/security/README.md`
-
-If the user asks about customer feedback, support, onboarding, retention or success moments:
-
-Go to:
-
-`growth/customer-experience/README.md`
-
-If the user asks about positioning, landing page, launch, acquisition or marketing:
-
-Go to:
-
-`growth/marketing/README.md`
-
-If the user asks about pricing, revenue model, budget, unit economics or finance:
-
-Go to:
-
-`growth/finance/README.md`
+`growth/AGENT.md`

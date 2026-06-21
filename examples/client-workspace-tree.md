@@ -51,6 +51,7 @@ client-workspace/
 |   |   |-- create-role.md
 |   |   |-- create-skill-role-playbook.md
 |   |   |-- create-skill.md
+|   |   |-- define-design.md
 |   |   |-- define-icp.md
 |   |   |-- define-mvp.md
 |   |   |-- README.md
@@ -75,11 +76,6 @@ client-workspace/
 |   |   |-- skills.yaml
 |   |   `-- workflows.yaml
 |   |-- vscode/
-|   |   `-- README.md
-|   |-- workflows/
-|   |   |-- issue-to-pr.workflow.md
-|   |   |-- launch-and-learn.workflow.md
-|   |   |-- new-product-mvp-validation.workflow.md
 |   |   `-- README.md
 |   `-- README.md
 |-- ai-standard/
@@ -113,11 +109,14 @@ client-workspace/
 |   |   `-- README.md
 |   |-- templates/
 |   |   |-- agent-template.md
+|   |   |-- area-agent-template.md
+|   |   |-- area-readme-template.md
 |   |   |-- area-template.md
 |   |   |-- area-template.yaml
 |   |   |-- branch-name-template.md
 |   |   |-- code-review-template.md
 |   |   |-- command-template.md
+|   |   |-- department-agent-template.md
 |   |   |-- department-template.md
 |   |   |-- department-template.yaml
 |   |   |-- folder-readme-template.md
@@ -131,6 +130,7 @@ client-workspace/
 |   |   |-- README.md
 |   |   |-- role-template.md
 |   |   |-- role-template.yaml
+|   |   |-- root-agent-template.md
 |   |   |-- root-readme-template.md
 |   |   |-- skill-template.md
 |   |   |-- skill-template.yaml
@@ -213,6 +213,7 @@ client-workspace/
 |   |   |   `-- user-stories.md
 |   |   |-- playbooks/
 |   |   |   |-- architecture-planning.playbook.md
+|   |   |   |-- epic-to-subissues.playbook.md
 |   |   |   |-- mvp-delivery.playbook.md
 |   |   |   `-- README.md
 |   |   |-- roles/
@@ -225,7 +226,9 @@ client-workspace/
 |   |   |   |-- define-architecture.skill.md
 |   |   |   |-- define-mvp.skill.md
 |   |   |   |-- README.md
-|   |   |   `-- write-acceptance-criteria.skill.md
+|   |   |   |-- shape-epic.skill.md
+|   |   |   |-- write-acceptance-criteria.skill.md
+|   |   |   `-- write-subissue-criteria.skill.md
 |   |   |-- ai-capabilities.md
 |   |   |-- api-contract.md
 |   |   |-- area.yaml
@@ -237,24 +240,36 @@ client-workspace/
 |   |   |-- system-context.md
 |   |   `-- technical-decisions.md
 |   |-- design/
-|   |   |-- playbooks/
-|   |   |   |-- mvp-ux-flow.playbook.md
-|   |   |   `-- README.md
-|   |   |-- roles/
+|   |   |-- knowledge/
+|   |   |   |-- accessibility.md
+|   |   |   |-- design-system.md
 |   |   |   |-- README.md
-|   |   |   `-- ux-lead.role.md
+|   |   |   `-- user-flows.md
+|   |   |-- playbooks/
+|   |   |   |-- accessibility-review.playbook.md
+|   |   |   |-- design-foundation.playbook.md
+|   |   |   |-- mvp-ux-flow.playbook.md
+|   |   |   |-- README.md
+|   |   |   |-- user-research.playbook.md
+|   |   |   `-- ux-writing.playbook.md
+|   |   |-- roles/
+|   |   |   |-- accessibility-specialist.role.md
+|   |   |   |-- product-designer.role.md
+|   |   |   |-- README.md
+|   |   |   |-- ux-researcher.role.md
+|   |   |   `-- ux-writer.role.md
 |   |   |-- skills/
-|   |   |   |-- create-screen-spec.skill.md
-|   |   |   |-- define-ux-states.skill.md
-|   |   |   |-- map-user-flow.skill.md
-|   |   |   `-- README.md
+|   |   |   |-- accessibility.skill.md
+|   |   |   |-- design-system.skill.md
+|   |   |   |-- microcopy.skill.md
+|   |   |   |-- README.md
+|   |   |   |-- screen-specification.skill.md
+|   |   |   |-- user-flow-mapping.skill.md
+|   |   |   |-- user-research.skill.md
+|   |   |   `-- ux-states.skill.md
+|   |   |-- AGENT.md
 |   |   |-- area.yaml
-|   |   |-- design-principles.md
-|   |   |-- README.md
-|   |   |-- screen-specs.md
-|   |   |-- usability-notes.md
-|   |   |-- user-flows.md
-|   |   `-- ux-decisions.md
+|   |   `-- README.md
 |   |-- devops/
 |   |   |-- playbooks/
 |   |   |   |-- configure-environments.playbook.md
@@ -317,7 +332,9 @@ client-workspace/
 |   |   |-- README.md
 |   |   `-- threat-model.md
 |   |-- workflows/
+|   |   |-- issue-delivery-cycle.workflow.md
 |   |   |-- mvp-to-pr.workflow.md
+|   |   |-- post-merge-continuation.workflow.md
 |   |   `-- README.md
 |   |-- AGENT.md
 |   |-- department.yaml
@@ -356,6 +373,7 @@ client-workspace/
 |   |   |   |-- define-icp.skill.md
 |   |   |   |-- define-product.skill.md
 |   |   |   |-- define-value-proposition.skill.md
+|   |   |   |-- evaluate-idea.skill.md
 |   |   |   `-- README.md
 |   |   |-- area.yaml
 |   |   |-- brief.md
@@ -369,12 +387,14 @@ client-workspace/
 |   |-- roadmap/
 |   |   |-- playbooks/
 |   |   |   |-- README.md
+|   |   |   |-- roadmap-sync-prep.playbook.md
 |   |   |   `-- validation-cycle-planning.playbook.md
 |   |   |-- roles/
 |   |   |   |-- README.md
 |   |   |   `-- roadmap-planner.role.md
 |   |   |-- skills/
 |   |   |   |-- create-roadmap.skill.md
+|   |   |   |-- prepare-roadmap-sync.skill.md
 |   |   |   |-- prioritize-backlog.skill.md
 |   |   |   `-- README.md
 |   |   |-- area.yaml
@@ -404,7 +424,9 @@ client-workspace/
 |   |   |-- riskiest-assumptions.md
 |   |   `-- success-metrics.md
 |   |-- workflows/
+|   |   |-- idea-to-roadmap.workflow.md
 |   |   |-- README.md
+|   |   |-- roadmap-to-github-project.workflow.md
 |   |   `-- strategy-validation-cycle.workflow.md
 |   |-- AGENT.md
 |   |-- department.yaml

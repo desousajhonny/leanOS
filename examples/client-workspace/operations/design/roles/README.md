@@ -6,15 +6,18 @@ Roles owned by the Design area.
 
 ## When to Use
 
-Use after the area README selects a role.
+Use after the area AGENT selects a role.
 
 ## Source of Truth
 
-`../README.md`
+`../AGENT.md`
 
 ## Files
 
-- `ux-lead.role.md`
+- `ux-researcher.role.md`
+- `product-designer.role.md`
+- `accessibility-specialist.role.md`
+- `ux-writer.role.md`
 
 ## Related Folders
 

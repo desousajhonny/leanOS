@@ -15,6 +15,8 @@ Use when work spans more than one active area inside this department.
 ## Files
 
 - `mvp-to-pr.workflow.md`
+- `issue-delivery-cycle.workflow.md`
+- `post-merge-continuation.workflow.md`
 
 ## Related Folders
 

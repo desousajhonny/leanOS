@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Document key user flows.
+Document key MVP user flows before implementation.
 
 ## Current State
 

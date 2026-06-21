@@ -2,6 +2,8 @@ area:
   key: strategy.company
   department: strategy
   path: strategy/company
+  agent: null
+  readme: README.md
   roles:
     - company-strategist
   skills:

@@ -12,9 +12,9 @@ Create a usable flow for the first validation cycle.
 
 1. Read ICP and MVP scope
 2. Map primary flow
-3. Specify screens
-4. Define UX states
-5. Record UX decisions
+3. Check accessibility expectations
+4. Identify screens that may need specs later
+5. Record proposed Design knowledge updates
 
 ## Outputs
 
@@ -24,4 +24,4 @@ Create a usable flow for the first validation cycle.
 
 ## Navigation
 
-Start from `../README.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.

@@ -20,9 +20,18 @@ roles:
   - key: technical-architect
     area: operations.core
     path: ../../operations/core/roles/technical-architect.role.md
-  - key: ux-lead
+  - key: ux-researcher
     area: operations.design
-    path: ../../operations/design/roles/ux-lead.role.md
+    path: ../../operations/design/roles/ux-researcher.role.md
+  - key: product-designer
+    area: operations.design
+    path: ../../operations/design/roles/product-designer.role.md
+  - key: accessibility-specialist
+    area: operations.design
+    path: ../../operations/design/roles/accessibility-specialist.role.md
+  - key: ux-writer
+    area: operations.design
+    path: ../../operations/design/roles/ux-writer.role.md
   - key: senior-developer
     area: operations.engineering
     path: ../../operations/engineering/roles/senior-developer.role.md

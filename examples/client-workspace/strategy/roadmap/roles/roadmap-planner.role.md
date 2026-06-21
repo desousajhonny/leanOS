@@ -23,10 +23,12 @@ Read:
 
 - `../skills/create-roadmap.skill.md`
 - `../skills/prioritize-backlog.skill.md`
+- `../skills/prepare-roadmap-sync.skill.md`
 
 ## Playbooks
 
 - `../playbooks/validation-cycle-planning.playbook.md`
+- `../playbooks/roadmap-sync-prep.playbook.md`
 
 ## Output Style
 

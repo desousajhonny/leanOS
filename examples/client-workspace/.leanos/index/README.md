@@ -27,7 +27,6 @@ Use when a model needs a quick routing map.
 - `../../strategy/`
 - `../../operations/`
 - `../../growth/`
-- `../workflows/`
 
 ## Navigation
 
@@ -35,4 +34,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-Use index files as maps, then load the destination README.
+Use index files as maps, then load the destination README. Business workflows live in departments or areas, not in `.leanos/`.

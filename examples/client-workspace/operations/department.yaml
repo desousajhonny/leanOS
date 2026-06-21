@@ -4,15 +4,24 @@ department:
   purpose: Own MVP execution, architecture, design, engineering, DevOps and security.
   active_areas:
     - key: operations.core
-      path: core/README.md
+      agent: null
+      readme: core/README.md
     - key: operations.design
-      path: design/README.md
+      agent: design/AGENT.md
+      readme: design/README.md
     - key: operations.engineering
-      path: engineering/README.md
+      agent: null
+      readme: engineering/README.md
     - key: operations.devops
-      path: devops/README.md
+      agent: null
+      readme: devops/README.md
     - key: operations.security
-      path: security/README.md
+      agent: null
+      readme: security/README.md
   workflows:
     - key: mvp-to-pr
       path: workflows/mvp-to-pr.workflow.md
+    - key: issue-delivery-cycle
+      path: workflows/issue-delivery-cycle.workflow.md
+    - key: post-merge-continuation
+      path: workflows/post-merge-continuation.workflow.md

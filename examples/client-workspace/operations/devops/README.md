@@ -23,6 +23,15 @@ Own delivery infrastructure, environments, deployment, GitHub workflow setup and
 3. Use the matching playbook from `playbooks/`.
 4. Produce the requested output and update source-of-truth files when needed.
 
+## File Responsibilities
+
+- `README.md`: area map and explanation.
+- `AGENT.md`: area operating lead when present.
+- `area.yaml`: machine-readable structure for this area.
+- `roles/`: operating personas for this area.
+- `skills/`: focused capabilities used by roles.
+- `playbooks/`: tactical execution sequences.
+
 ## Common Paths
 
 - GitHub setup request: role `roles/github-devops.role.md` -> skill `skills/configure-github-project.skill.md` -> playbook `playbooks/configure-github-project.playbook.md`.

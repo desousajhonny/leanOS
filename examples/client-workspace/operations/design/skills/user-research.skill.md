@@ -1,8 +1,8 @@
-# Map User Flow
+# User Research
 
 ## Purpose
 
-Map the steps a user takes to reach the MVP outcome.
+Extract design-relevant user evidence, assumptions and open questions from Product and Validation context.
 
 ## Area
 

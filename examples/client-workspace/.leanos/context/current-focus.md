@@ -9,7 +9,7 @@ Operate only through active workspace areas:
 - strategy.roadmap: `strategy/roadmap/README.md`
 - strategy.validation: `strategy/validation/README.md`
 - operations.core: `operations/core/README.md`
-- operations.design: `operations/design/README.md`
+- operations.design: `operations/design/AGENT.md` (map: `operations/design/README.md`)
 - operations.engineering: `operations/engineering/README.md`
 - operations.devops: `operations/devops/README.md`
 - operations.security: `operations/security/README.md`
@@ -17,10 +17,14 @@ Operate only through active workspace areas:
 - growth.marketing: `growth/marketing/README.md`
 - growth.finance: `growth/finance/README.md`
 
-Compatible global workflows:
+Compatible local workflows:
 
-- new-product-mvp-validation
-- issue-to-pr
-- launch-and-learn
+- idea-to-roadmap
+- strategy-validation-cycle
+- roadmap-to-github-project
+- mvp-to-pr
+- issue-delivery-cycle
+- post-merge-continuation
+- launch-learning-loop
 
 Product strategy commands are available.

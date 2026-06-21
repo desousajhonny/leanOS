@@ -14,7 +14,9 @@ Use when work spans more than one active area inside this department.
 
 ## Files
 
+- `idea-to-roadmap.workflow.md`
 - `strategy-validation-cycle.workflow.md`
+- `roadmap-to-github-project.workflow.md`
 
 ## Related Folders
 

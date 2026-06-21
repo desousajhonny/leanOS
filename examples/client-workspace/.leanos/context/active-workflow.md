@@ -1,9 +1,13 @@
 # Active Workflow
 
-Current compatible global workflows:
+Current compatible local workflows:
 
-- new-product-mvp-validation
-- issue-to-pr
-- launch-and-learn
+- idea-to-roadmap
+- strategy-validation-cycle
+- roadmap-to-github-project
+- mvp-to-pr
+- issue-delivery-cycle
+- post-merge-continuation
+- launch-learning-loop
 
-Use only workflows listed here as active. Other workflow files may exist, but they can require areas that are not active yet.
+Use only workflows listed here as active. Other workflow files may exist inside root departments, but they can require areas that are not active yet.

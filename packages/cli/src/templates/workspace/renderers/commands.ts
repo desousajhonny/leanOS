@@ -19,6 +19,7 @@ export function commandFiles(activeAreas: AreaDefinition[]): FileEntry[] {
 function commandContent(command: CommandDefinition, activeAreas: AreaDefinition[], activeKeys: Subarea[]): string {
   if (command.slug === "start-leanos") return startCommand(activeAreas);
   if (command.assetCreation) return assetCreationCommand(command, activeAreas);
+  if (command.slug === "define-design") return defineDesignCommand(command, activeKeys);
   if (command.slug === "create-issues") return createIssuesCommand(command, activeKeys);
   if (command.slug === "workon-issue") return workonIssueCommand(command, activeKeys);
   if (command.slug === "create-branch") return createBranchCommand(command, activeKeys);
@@ -26,6 +27,133 @@ function commandContent(command: CommandDefinition, activeAreas: AreaDefinition[
   if (command.slug === "review-pr") return reviewPrCommand(command, activeKeys);
 
   return routingCommand(command, activeKeys);
+}
+
+function defineDesignCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
+  const active = new Set(activeSubareas);
+  const designActive = active.has("operations.design");
+  const productActive = active.has("strategy.product");
+  const coreActive = active.has("operations.core");
+  const designLoad = designActive
+    ? [
+        "- `../../operations/AGENT.md`",
+        "- `../../operations/design/AGENT.md`",
+        "- `../../operations/design/README.md`",
+        "- `../../operations/design/roles/product-designer.role.md`",
+        "- `../../operations/design/skills/design-system.skill.md`",
+        "- `../../operations/design/skills/accessibility.skill.md`",
+        "- `../../operations/design/skills/user-flow-mapping.skill.md`",
+        "- `../../operations/design/playbooks/design-foundation.playbook.md`",
+        "- `../../operations/design/knowledge/design-system.md`",
+        "- `../../operations/design/knowledge/accessibility.md`",
+        "- `../../operations/design/knowledge/user-flows.md`"
+      ].join("\n")
+    : "- `operations.design` is not active. Do not load missing Design paths. Ask whether to activate or create the Design area before executing.";
+  const productLoad = productActive
+    ? [
+        "- `../../strategy/AGENT.md`",
+        "- `../../strategy/product/README.md`",
+        "- `../../strategy/product/brief.md`",
+        "- `../../strategy/product/icp.md`",
+        "- `../../strategy/product/problem.md`",
+        "- `../../strategy/product/value-proposition.md`"
+      ].join("\n")
+    : "- `strategy.product` is not active. Ask for product, ICP, problem and value proposition context before defining Design.";
+  const mvpLoad = coreActive
+    ? [
+        "- `../../operations/core/README.md`",
+        "- `../../operations/core/mvp/scope.md`",
+        "- `../../operations/core/mvp/user-stories.md`",
+        "- `../../operations/core/mvp/acceptance-criteria.md`"
+      ].join("\n")
+    : "- `operations.core` is not active. Ask for MVP scope and acceptance criteria before finalizing Design.";
+  const allowedUpdates = designActive
+    ? [
+        "- `../../operations/design/knowledge/design-system.md`",
+        "- `../../operations/design/knowledge/accessibility.md`",
+        "- `../../operations/design/knowledge/user-flows.md`"
+      ].join("\n")
+    : "- No file updates are allowed until `operations.design` is active.";
+  const forbiddenUpdates = designActive
+    ? [
+        "- `../../operations/design/screen-specs.md`",
+        "- `../../operations/design/usability-notes.md`",
+        "- `../../operations/design/ux-decisions.md`",
+        "- product code",
+        "- roles, skills, playbooks, workflows or `ai-standard/`"
+      ].join("\n")
+    : [
+        "- Do not create Design paths before the user activates or creates the Design area.",
+        "- product code",
+        "- roles, skills, playbooks, workflows or `ai-standard/`"
+      ].join("\n");
+
+  return `# ${formatCommandInvocation(command.slug)}
+
+## Purpose
+
+${command.purpose}
+
+Prepare the MVP design foundation before implementation: design system, accessibility baseline and primary user flows.
+
+## Load First
+
+Always read:
+
+- \`../../AGENT.md\`
+- \`../context/current-focus.md\`
+- \`../index/routing-map.yaml\`
+
+Design context:
+
+${designLoad}
+
+Product context:
+
+${productLoad}
+
+MVP context:
+
+${mvpLoad}
+
+## Process
+
+1. Confirm the target user, problem, value proposition and MVP scope.
+2. If Product or MVP context is missing, ask focused questions before writing Design knowledge.
+3. Define the design system baseline: tokens, color intent, typography, spacing, component principles and interaction principles.
+4. Define accessibility expectations for the MVP audience and core flows.
+5. Map the primary user flows needed before implementation.
+6. Leave screen specs, usability notes and UX decisions for later feature or screen-specific work.
+7. Propose file updates before writing.
+8. Write only after explicit user confirmation.
+
+## Allowed Updates
+
+Only after explicit confirmation, update:
+
+${allowedUpdates}
+
+## Forbidden Updates
+
+During \`/define design\`, do not create or update:
+
+${forbiddenUpdates}
+
+## Output
+
+- Loaded context
+- Missing Product or MVP context
+- Design system baseline
+- Accessibility baseline
+- Primary user flows
+- Proposed file updates
+- Open questions
+- Confirmation question before writing
+
+## Active Areas
+
+${activeSubareas.map((area) => `- ${area}`).join("\n")}
+`;
 }
 
 function startCommand(activeAreas: AreaDefinition[]): string {
@@ -253,7 +381,7 @@ function createIssuesCommand(command: CommandDefinition, activeSubareas: Subarea
     ? "Load `../../operations/engineering/README.md` when sub-issues require implementation criteria."
     : "`operations.engineering` is not active. Draft only planning-level issues unless the user activates Engineering.";
   const designNote = active.has("operations.design")
-    ? "Use `../../operations/design/README.md` only when the epic or sub-issue changes user-facing UX, screens, states, copy or interactions."
+    ? "Use `../../operations/design/AGENT.md` only when the epic or sub-issue changes user-facing UX, screens, states, copy or interactions; use the README as the area map."
     : "Design is inactive. If the issue has UX impact, flag the gap and ask before adding Design criteria.";
   const securityNote = active.has("operations.security")
     ? "Use `../../operations/security/README.md` only when the issue touches data, auth, permissions, privacy, abuse risk or compliance."

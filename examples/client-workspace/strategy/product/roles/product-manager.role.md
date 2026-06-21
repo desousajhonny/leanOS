@@ -22,6 +22,7 @@ Read:
 ## Skills
 
 - `../skills/define-product.skill.md`
+- `../skills/evaluate-idea.skill.md`
 - `../skills/check-coherence.skill.md`
 
 ## Playbooks

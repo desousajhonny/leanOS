@@ -1,10 +1,29 @@
 workflows:
-  - key: new-product-mvp-validation
-    path: ../workflows/new-product-mvp-validation.workflow.md
+  - key: idea-to-roadmap
+    department: strategy
+    path: ../../strategy/workflows/idea-to-roadmap.workflow.md
     active: true
-  - key: issue-to-pr
-    path: ../workflows/issue-to-pr.workflow.md
+  - key: strategy-validation-cycle
+    department: strategy
+    path: ../../strategy/workflows/strategy-validation-cycle.workflow.md
     active: true
-  - key: launch-and-learn
-    path: ../workflows/launch-and-learn.workflow.md
+  - key: roadmap-to-github-project
+    department: strategy
+    path: ../../strategy/workflows/roadmap-to-github-project.workflow.md
+    active: true
+  - key: mvp-to-pr
+    department: operations
+    path: ../../operations/workflows/mvp-to-pr.workflow.md
+    active: true
+  - key: issue-delivery-cycle
+    department: operations
+    path: ../../operations/workflows/issue-delivery-cycle.workflow.md
+    active: true
+  - key: post-merge-continuation
+    department: operations
+    path: ../../operations/workflows/post-merge-continuation.workflow.md
+    active: true
+  - key: launch-learning-loop
+    department: growth
+    path: ../../growth/workflows/launch-learning-loop.workflow.md
     active: true

@@ -2,6 +2,8 @@ area:
   key: operations.devops
   department: operations
   path: operations/devops
+  agent: null
+  readme: README.md
   roles:
     - devops-engineer
     - github-devops

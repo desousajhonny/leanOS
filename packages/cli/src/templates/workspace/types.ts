@@ -81,6 +81,7 @@ export type AreaDefinition = {
   slug: string;
   name: string;
   path: string;
+  lead?: AreaLeadDefinition;
   routingKey: string;
   requestTypes: string;
   purpose: string;
@@ -91,6 +92,11 @@ export type AreaDefinition = {
   skills: SkillDefinition[];
   playbooks: PlaybookDefinition[];
   commonPaths: string[];
+};
+
+export type AreaLeadDefinition = {
+  title: string;
+  purpose: string;
 };
 
 export type AreaFileDefinition = {

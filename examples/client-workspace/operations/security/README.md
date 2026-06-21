@@ -24,6 +24,15 @@ Own security, privacy, access control and threat-modeling context.
 3. Use the matching playbook from `playbooks/`.
 4. Produce the requested output and update source-of-truth files when needed.
 
+## File Responsibilities
+
+- `README.md`: area map and explanation.
+- `AGENT.md`: area operating lead when present.
+- `area.yaml`: machine-readable structure for this area.
+- `roles/`: operating personas for this area.
+- `skills/`: focused capabilities used by roles.
+- `playbooks/`: tactical execution sequences.
+
 ## Common Paths
 
 - Security request: role `roles/security-reviewer.role.md` -> skill `skills/review-security.skill.md` -> playbook `playbooks/security-review.playbook.md`.

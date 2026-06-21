@@ -24,4 +24,4 @@ All required areas are active in this department.
 
 ## Navigation
 
-Use Operations area READMEs for each step. Do not bypass area-first ownership.
+Use Operations area READMEs for each step to preserve area-first ownership.

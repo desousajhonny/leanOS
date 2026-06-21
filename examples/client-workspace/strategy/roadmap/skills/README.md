@@ -16,6 +16,7 @@ Use when a selected role points to a skill.
 
 - `create-roadmap.skill.md`
 - `prioritize-backlog.skill.md`
+- `prepare-roadmap-sync.skill.md`
 
 ## Related Folders
 

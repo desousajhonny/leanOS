@@ -35,48 +35,78 @@ departments:
     - strategy
     - operations
     - growth
-  paths:
-    strategy: strategy/README.md
-    operations: operations/README.md
-    growth: growth/README.md
+  routes:
+    strategy:
+      agent: strategy/AGENT.md
+      readme: strategy/README.md
+    operations:
+      agent: operations/AGENT.md
+      readme: operations/README.md
+    growth:
+      agent: growth/AGENT.md
+      readme: growth/README.md
 subareas:
   active:
     - key: strategy.company
       department: strategy
       path: strategy/company/README.md
+      agent: null
+      readme: strategy/company/README.md
     - key: strategy.product
       department: strategy
       path: strategy/product/README.md
+      agent: null
+      readme: strategy/product/README.md
     - key: strategy.roadmap
       department: strategy
       path: strategy/roadmap/README.md
+      agent: null
+      readme: strategy/roadmap/README.md
     - key: strategy.validation
       department: strategy
       path: strategy/validation/README.md
+      agent: null
+      readme: strategy/validation/README.md
     - key: operations.core
       department: operations
       path: operations/core/README.md
+      agent: null
+      readme: operations/core/README.md
     - key: operations.design
       department: operations
       path: operations/design/README.md
+      agent: operations/design/AGENT.md
+      readme: operations/design/README.md
     - key: operations.engineering
       department: operations
       path: operations/engineering/README.md
+      agent: null
+      readme: operations/engineering/README.md
     - key: operations.devops
       department: operations
       path: operations/devops/README.md
+      agent: null
+      readme: operations/devops/README.md
     - key: operations.security
       department: operations
       path: operations/security/README.md
+      agent: null
+      readme: operations/security/README.md
     - key: growth.customer-experience
       department: growth
       path: growth/customer-experience/README.md
+      agent: null
+      readme: growth/customer-experience/README.md
     - key: growth.marketing
       department: growth
       path: growth/marketing/README.md
+      agent: null
+      readme: growth/marketing/README.md
     - key: growth.finance
       department: growth
       path: growth/finance/README.md
+      agent: null
+      readme: growth/finance/README.md
 roles:
   ownership: area-first
   active:
@@ -93,7 +123,10 @@ roles:
       - product-owner
       - technical-architect
     operations.design:
-      - ux-lead
+      - ux-researcher
+      - product-designer
+      - accessibility-specialist
+      - ux-writer
     operations.engineering:
       - senior-developer
       - pr-reviewer
@@ -119,10 +152,12 @@ skills:
       - define-icp
       - define-value-proposition
       - define-business-model
+      - evaluate-idea
       - check-coherence
     strategy.roadmap:
       - create-roadmap
       - prioritize-backlog
+      - prepare-roadmap-sync
     strategy.validation:
       - define-assumptions
       - create-interview-script
@@ -131,12 +166,18 @@ skills:
       - define-mvp
       - write-acceptance-criteria
       - check-delivery-coherence
+      - shape-epic
+      - write-subissue-criteria
       - define-architecture
       - create-api-contract
     operations.design:
-      - map-user-flow
-      - create-screen-spec
-      - define-ux-states
+      - design-system
+      - accessibility
+      - user-research
+      - user-flow-mapping
+      - screen-specification
+      - ux-states
+      - microcopy
     operations.engineering:
       - plan-implementation
       - create-branch
@@ -170,13 +211,19 @@ playbooks:
       - product-strategy
     strategy.roadmap:
       - validation-cycle-planning
+      - roadmap-sync-prep
     strategy.validation:
       - mvp-validation
     operations.core:
       - mvp-delivery
+      - epic-to-subissues
       - architecture-planning
     operations.design:
+      - design-foundation
+      - user-research
       - mvp-ux-flow
+      - accessibility-review
+      - ux-writing
     operations.engineering:
       - branch-from-issue
       - issue-to-pr
@@ -199,10 +246,33 @@ playbooks:
     growth.finance:
       - finance-review
 workflows:
+  ownership: department-local
   active:
-    - new-product-mvp-validation
-    - issue-to-pr
-    - launch-and-learn
+    - idea-to-roadmap
+    - strategy-validation-cycle
+    - roadmap-to-github-project
+    - mvp-to-pr
+    - issue-delivery-cycle
+    - post-merge-continuation
+    - launch-learning-loop
+  by_department:
+    strategy:
+      - key: idea-to-roadmap
+        path: strategy/workflows/idea-to-roadmap.workflow.md
+      - key: strategy-validation-cycle
+        path: strategy/workflows/strategy-validation-cycle.workflow.md
+      - key: roadmap-to-github-project
+        path: strategy/workflows/roadmap-to-github-project.workflow.md
+    operations:
+      - key: mvp-to-pr
+        path: operations/workflows/mvp-to-pr.workflow.md
+      - key: issue-delivery-cycle
+        path: operations/workflows/issue-delivery-cycle.workflow.md
+      - key: post-merge-continuation
+        path: operations/workflows/post-merge-continuation.workflow.md
+    growth:
+      - key: launch-learning-loop
+        path: growth/workflows/launch-learning-loop.workflow.md
 ai_standard:
   path: ai-standard/README.md
   templates: ai-standard/templates

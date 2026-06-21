@@ -15,6 +15,7 @@ Use when a selected role points to a playbook.
 ## Files
 
 - `mvp-delivery.playbook.md`
+- `epic-to-subissues.playbook.md`
 - `architecture-planning.playbook.md`
 
 ## Related Folders

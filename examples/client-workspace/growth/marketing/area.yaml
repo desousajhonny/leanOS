@@ -2,6 +2,8 @@ area:
   key: growth.marketing
   department: growth
   path: growth/marketing
+  agent: null
+  readme: README.md
   roles:
     - growth-lead
   skills:

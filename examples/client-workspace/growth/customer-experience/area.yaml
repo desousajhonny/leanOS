@@ -2,6 +2,8 @@ area:
   key: growth.customer-experience
   department: growth
   path: growth/customer-experience
+  agent: null
+  readme: README.md
   roles:
     - cx-lead
   skills:

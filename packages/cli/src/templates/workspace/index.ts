@@ -10,7 +10,6 @@ import { indexFiles } from "./renderers/indexes.js";
 import { createLeanOsYaml } from "./renderers/leanos-yaml.js";
 import { workspaceReadme } from "./renderers/root-readme.js";
 import { vscodeIntegrationFiles } from "./renderers/vscode.js";
-import { globalWorkflowFiles } from "./renderers/workflows.js";
 
 export { getAllSubareas } from "./selectors.js";
 
@@ -26,7 +25,6 @@ export function createWorkspaceFiles(answers: WorkspaceAnswers): FileEntry[] {
     ...aiStandardFiles(),
     ...indexFiles(activeAreas, activeRoots),
     ...rootDepartmentFiles(answers, activeAreas, activeRoots),
-    ...globalWorkflowFiles(activeAreas),
     ...commandFiles(activeAreas),
     ...contextFiles(answers, activeAreas, activeRoots),
     ...githubFiles(answers, activeAreas),

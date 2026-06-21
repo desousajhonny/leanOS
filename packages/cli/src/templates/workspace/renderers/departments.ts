@@ -22,13 +22,14 @@ export function rootDepartmentFiles(answers: WorkspaceAnswers, activeAreas: Area
 
 function areaFiles(area: AreaDefinition, answers: WorkspaceAnswers): FileEntry[] {
   return [
+    ...(area.lead ? [{ path: `${area.path}/AGENT.md`, content: areaAgent(area) }] : []),
     { path: `${area.path}/README.md`, content: areaReadme(area) },
     { path: `${area.path}/area.yaml`, content: areaYaml(area) },
-    { path: `${area.path}/roles/README.md`, content: folderReadme(`${area.name} Roles`, `Roles owned by the ${area.name} area.`, "Use after the area README selects a role.", "../README.md", area.roles.map((role) => `${role.slug}.role.md`), ["../skills/", "../playbooks/"], "Load one role, then follow its skills and playbooks.") },
+    { path: `${area.path}/roles/README.md`, content: folderReadme(`${area.name} Roles`, `Roles owned by the ${area.name} area.`, area.lead ? "Use after the area AGENT selects a role." : "Use after the area README selects a role.", area.lead ? "../AGENT.md" : "../README.md", area.roles.map((role) => `${role.slug}.role.md`), ["../skills/", "../playbooks/"], "Load one role, then follow its skills and playbooks.") },
     ...area.roles.map((role) => ({ path: `${area.path}/roles/${role.slug}.role.md`, content: roleFile(area, role) })),
-    { path: `${area.path}/skills/README.md`, content: folderReadme(`${area.name} Skills`, `Skills owned by the ${area.name} area.`, "Use when a selected role points to a skill.", "../README.md", area.skills.map((skill) => `${skill.slug}.skill.md`), ["../roles/", "../playbooks/"], "Load only skills needed for the active task.") },
+    { path: `${area.path}/skills/README.md`, content: folderReadme(`${area.name} Skills`, `Skills owned by the ${area.name} area.`, "Use when a selected role points to a skill.", area.lead ? "../AGENT.md" : "../README.md", area.skills.map((skill) => `${skill.slug}.skill.md`), ["../roles/", "../playbooks/"], "Load only skills needed for the active task.") },
     ...area.skills.map((skill) => ({ path: `${area.path}/skills/${skill.slug}.skill.md`, content: skillFile(area, skill) })),
-    { path: `${area.path}/playbooks/README.md`, content: folderReadme(`${area.name} Playbooks`, `Execution sequences owned by the ${area.name} area.`, "Use when a selected role points to a playbook.", "../README.md", area.playbooks.map((playbook) => `${playbook.slug}.playbook.md`), ["../roles/", "../skills/"], "Use playbooks for sequencing, not for duplicating skill details.") },
+    { path: `${area.path}/playbooks/README.md`, content: folderReadme(`${area.name} Playbooks`, `Execution sequences owned by the ${area.name} area.`, "Use when a selected role points to a playbook.", area.lead ? "../AGENT.md" : "../README.md", area.playbooks.map((playbook) => `${playbook.slug}.playbook.md`), ["../roles/", "../skills/"], "Use playbooks for sequencing, not for duplicating skill details.") },
     ...area.playbooks.map((playbook) => ({ path: `${area.path}/playbooks/${playbook.slug}.playbook.md`, content: playbookFile(area, playbook) })),
     ...area.files.map((file) => ({ path: `${area.path}/${file.path}`, content: file.content(answers) }))
   ];
@@ -37,20 +38,53 @@ function areaFiles(area: AreaDefinition, answers: WorkspaceAnswers): FileEntry[]
 function departmentAgent(department: RootDepartmentDefinition, areas: AreaDefinition[]): string {
   return `# ${department.name} Agent
 
-You are operating inside the ${department.name} department.
+You are the ${departmentOperatingOwner(department)} for this workspace.
 
-This department routes work across areas. Roles, skills and playbooks do not live at the department root.
+This \`AGENT.md\` is the operating owner for the ${department.name} department.
+
+Use \`README.md\` as the directory map. Use \`department.yaml\` when machine-readable structure matters.
+
+Roles, skills and playbooks do not live at the department root. They live inside active areas.
+
+## Operating Scope
+
+${department.purpose}
+
+Use this department for ${department.requestTypes}.
+
+## Routing Rules
+
+1. If the request spans multiple active areas, open \`workflows/README.md\` and choose the smallest matching workflow.
+2. If the request belongs to one area, route to that area README.
+3. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
+4. Do not load roles, skills or playbooks before entering the owning area.
 
 ## Active Areas
 
-${areas.map((area) => `- ${area.name}: \`${area.slug}/README.md\``).join("\n")}
+${areas.map((area) => `- ${area.name}: \`${area.slug}/${area.lead ? "AGENT.md" : "README.md"}\` - ${area.purpose}`).join("\n")}
+
+## Workflow Entry
+
+- Department workflows: \`workflows/README.md\`
+
+Use workflows for cross-area sequencing. Use area playbooks for tactical execution inside one area.
 
 ## Navigation
 
-\`${department.key}/AGENT.md -> Area README -> Role -> Skills -> Playbook -> Output\`
+\`${department.key}/AGENT.md -> Area ${areas.some((area) => area.lead) ? "AGENT.md/README.md" : "README"} -> Role -> Skills -> Playbook -> Output\`
 
-Load one area README before loading roles, skills or playbooks.
+Load one area owner before loading roles, skills or playbooks.
 `;
+}
+
+function departmentOperatingOwner(department: RootDepartmentDefinition): string {
+  const owners: Record<RootDepartmentDefinition["key"], string> = {
+    strategy: "CEO / PMO / Product Strategy operator",
+    operations: "CTO / Operations Lead",
+    growth: "Growth / Marketing / Finance Lead"
+  };
+
+  return owners[department.key];
 }
 
 function departmentReadme(department: RootDepartmentDefinition, areas: AreaDefinition[]): string {
@@ -71,7 +105,7 @@ function departmentYaml(department: RootDepartmentDefinition, areas: AreaDefinit
       key: department.key,
       name: department.name,
       purpose: department.purpose,
-      active_areas: areas.map((area) => ({ key: area.key, path: `${area.slug}/README.md` })),
+      active_areas: areas.map((area) => ({ key: area.key, agent: area.lead ? `${area.slug}/AGENT.md` : null, readme: `${area.slug}/README.md` })),
       workflows: department.workflows.map((workflow) => ({ key: workflow.slug, path: `workflows/${workflow.slug}.workflow.md` }))
     }
   });
@@ -99,7 +133,7 @@ ${workflow.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}
 
 ## Navigation
 
-Use ${department.name} area READMEs for each step. Do not bypass area-first ownership.
+Use ${department.name} area READMEs for each step to preserve area-first ownership.
 `;
 }
 
@@ -120,14 +154,55 @@ ${area.sourceOfTruth.length > 0 ? area.sourceOfTruth.map((file) => `- \`${file}\
 
 ## Navigation
 
-1. Choose the relevant role from \`roles/\`.
-2. Load only the required skills from \`skills/\`.
-3. Use the matching playbook from \`playbooks/\`.
-4. Produce the requested output and update source-of-truth files when needed.
+${area.lead ? "1. For operational work, start with `AGENT.md`.\n2. Use this README as the directory map.\n3. After the area AGENT selects a role, load only required skills and playbooks.\n4. Produce the requested output and update source-of-truth files when needed." : "1. Choose the relevant role from `roles/`.\n2. Load only the required skills from `skills/`.\n3. Use the matching playbook from `playbooks/`.\n4. Produce the requested output and update source-of-truth files when needed."}
+
+## File Responsibilities
+
+- \`README.md\`: area map and explanation.
+- \`AGENT.md\`: area operating lead when present.
+- \`area.yaml\`: machine-readable structure for this area.
+- \`roles/\`: operating personas for this area.
+- \`skills/\`: focused capabilities used by roles.
+- \`playbooks/\`: tactical execution sequences.
 
 ## Common Paths
 
 ${area.commonPaths.map((item) => `- ${item}`).join("\n")}
+`;
+}
+
+function areaAgent(area: AreaDefinition): string {
+  if (!area.lead) return "";
+
+  return `# ${area.name} Agent
+
+You are the ${area.lead.title} for this workspace.
+
+This \`AGENT.md\` is the operating owner for the ${area.name} area.
+
+Use \`README.md\` as the directory map. Use \`area.yaml\` when machine-readable structure matters.
+
+## Operating Scope
+
+${area.lead.purpose}
+
+## Role Routing
+
+Choose the smallest specialist role for the request:
+
+${area.roles.map((role) => `- ${role.title}: \`roles/${role.slug}.role.md\` - use when ${role.useWhen.join("; ")}.`).join("\n")}
+
+## Routing Rules
+
+1. Start from this area AGENT for operational work inside ${area.name}.
+2. Load one specialist role before loading skills or playbooks.
+3. Load only skills and playbooks required by the selected role.
+4. If the request needs a missing specialist, skill or playbook, explain the gap and ask before creating it.
+5. Keep reusable area knowledge in \`knowledge/\`.
+
+## Navigation
+
+\`${area.path}/AGENT.md -> Role -> Skills -> Playbook -> Output\`
 `;
 }
 
@@ -137,6 +212,8 @@ function areaYaml(area: AreaDefinition): string {
       key: area.key,
       department: area.root,
       path: area.path,
+      agent: area.lead ? "AGENT.md" : null,
+      readme: "README.md",
       roles: area.roles.map((role) => role.slug),
       skills: area.skills.map((skill) => skill.slug),
       playbooks: area.playbooks.map((playbook) => playbook.slug),
@@ -146,6 +223,8 @@ function areaYaml(area: AreaDefinition): string {
 }
 
 export function roleFile(area: AreaDefinition, role: RoleDefinition): string {
+  const areaOwner = area.lead ? "../AGENT.md" : "../README.md";
+
   return `# ${role.title}
 
 ## Purpose
@@ -178,7 +257,7 @@ ${role.playbooks.map((playbook) => `- \`../playbooks/${playbook}.playbook.md\``)
 
 ## Navigation
 
-Start from \`../README.md\`, then load only the required skill and playbook.
+Start from \`${areaOwner}\`, then load only the required skill and playbook.
 `;
 }
 
@@ -214,6 +293,8 @@ ${skill.purpose}
 }
 
 export function playbookFile(area: AreaDefinition, playbook: PlaybookDefinition): string {
+  const areaOwner = area.lead ? "../AGENT.md" : "../README.md";
+
   if (playbook.inputs || playbook.outputs || playbook.filesToUpdate) {
     return `# ${playbook.title}
 
@@ -239,7 +320,7 @@ ${(playbook.filesToUpdate ?? ["Update relevant area source-of-truth files if app
 
 ## Navigation
 
-Start from \`../README.md\`, choose a role in \`../roles/\`, load required skills in \`../skills/\`, then use this playbook.
+Start from \`${areaOwner}\`, choose a role in \`../roles/\`, load required skills in \`../skills/\`, then use this playbook.
 `;
   }
 
@@ -265,6 +346,6 @@ ${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}
 
 ## Navigation
 
-Start from \`../README.md\`, choose a role in \`../roles/\`, load required skills in \`../skills/\`, then use this playbook.
+Start from \`${areaOwner}\`, choose a role in \`../roles/\`, load required skills in \`../skills/\`, then use this playbook.
 `;
 }

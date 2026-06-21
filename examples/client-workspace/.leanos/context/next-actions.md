@@ -28,7 +28,15 @@ Command:
 /define mvp
 ```
 
-## 4. Check Coherence
+## 4. Define Design
+
+Command:
+
+```text
+/define design
+```
+
+## 5. Check Coherence
 
 Command:
 
