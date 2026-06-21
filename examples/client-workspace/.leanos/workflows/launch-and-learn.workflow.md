@@ -2,26 +2,26 @@
 
 ## Purpose
 
-Coordinate a LeanOS flow across departments without loading the whole workspace.
+Launch, capture feedback and convert learning into the next cycle.
 
-## Required Departments
+## Required Areas
 
-- growth
-- validation
+- growth.marketing: `../../growth/marketing/README.md`
+- strategy.validation: `../../strategy/validation/README.md`
 
 ## Availability
 
-All required departments are active in this workspace.
+All required areas are active in this workspace.
 
 
 ## Sequence
 
-1. Route to Growth
-2. Define positioning
-3. Create launch plan
-4. Route to Validation
-5. Capture learning
+1. Route to Growth Marketing
+2. Create launch plan
+3. Route to Strategy Validation
+4. Capture learning
+5. Recommend next action
 
 ## Navigation
 
-Use department READMEs for each step. Do not bypass department-first ownership.
+Use department and area READMEs for each step. Do not bypass area-first ownership.

@@ -1,0 +1,23 @@
+area:
+  key: strategy.product
+  department: strategy
+  path: strategy/product
+  roles:
+    - product-strategist
+    - product-manager
+  skills:
+    - define-product
+    - define-icp
+    - define-value-proposition
+    - define-business-model
+    - check-coherence
+  playbooks:
+    - product-strategy
+  source_of_truth:
+    - brief.md
+    - problem.md
+    - icp.md
+    - jobs-to-be-done.md
+    - value-proposition.md
+    - positioning.md
+    - business-model-canvas.md

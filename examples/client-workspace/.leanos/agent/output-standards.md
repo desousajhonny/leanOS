@@ -1,12 +1,8 @@
 # Output Standards
 
-Start task responses with:
+Every output should include:
 
-```text
-Active Department:
-Active Role:
-Loaded Skills:
-Relevant Playbook:
-```
-
-Then provide the task-specific output. Keep outputs concise, decision-oriented and connected to source-of-truth files.
+- What was loaded
+- Decision or result
+- Files to update, if any
+- Next recommended command or route

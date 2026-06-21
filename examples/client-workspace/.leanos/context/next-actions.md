@@ -1,6 +1,14 @@
 # Next Actions
 
-## 1. Define Icp
+## 1. Status
+
+Command:
+
+```text
+/status
+```
+
+## 2. Define Icp
 
 Command:
 
@@ -8,7 +16,7 @@ Command:
 /define icp
 ```
 
-## 2. Define Mvp
+## 3. Define Mvp
 
 Command:
 
@@ -16,7 +24,7 @@ Command:
 /define mvp
 ```
 
-## 3. Check Coherence
+## 4. Check Coherence
 
 Command:
 

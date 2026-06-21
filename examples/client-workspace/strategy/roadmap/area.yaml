@@ -1,0 +1,16 @@
+area:
+  key: strategy.roadmap
+  department: strategy
+  path: strategy/roadmap
+  roles:
+    - roadmap-planner
+  skills:
+    - create-roadmap
+    - prioritize-backlog
+  playbooks:
+    - validation-cycle-planning
+  source_of_truth:
+    - roadmap.md
+    - milestones.md
+    - current-cycle.md
+    - backlog.md

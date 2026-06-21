@@ -1,0 +1,19 @@
+area:
+  key: strategy.validation
+  department: strategy
+  path: strategy/validation
+  roles:
+    - validation-researcher
+  skills:
+    - define-assumptions
+    - create-interview-script
+    - define-success-metrics
+  playbooks:
+    - mvp-validation
+  source_of_truth:
+    - assumptions.md
+    - riskiest-assumptions.md
+    - experiments.md
+    - interview-script.md
+    - success-metrics.md
+    - learning-log.md

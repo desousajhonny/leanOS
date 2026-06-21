@@ -2,41 +2,55 @@
 
 ## Purpose
 
-Create a new department-owned playbook using LeanOS AI Standard.
+Create a new area-owned playbook using LeanOS AI Standard.
 
 ## Before Acting
 
 First consult:
 
-- `../ai-standard/README.md`
-- `../ai-standard/navigation-chain.md`
-- `../ai-standard/creation-rules.md`
-- `../ai-standard/templates/`
-- `../ai-standard/checklists/`
-- `../ai-standard/instructions/`
+- `../../ai-standard/README.md`
+- `../../ai-standard/navigation-chain.md`
+- `../../ai-standard/creation-rules.md`
+- `../../ai-standard/templates/`
+- `../../ai-standard/checklists/`
+- `../../ai-standard/instructions/`
 
-## Department-First Rule
+## Area-First Rule
 
-Create role, skill and playbook assets inside the correct department:
+Create role, skill and playbook assets inside the correct active area:
 
-- Product assets: `../departments/product/`
-- Design assets: `../departments/design/`
-- Engineering assets: `../departments/engineering/`
-- Validation assets: `../departments/validation/`
-- Growth assets: `../departments/growth/`
+- Company assets: `../../strategy/company/`
+- Product assets: `../../strategy/product/`
+- Roadmap assets: `../../strategy/roadmap/`
+- Validation assets: `../../strategy/validation/`
+- Core assets: `../../operations/core/`
+- Design assets: `../../operations/design/`
+- Engineering assets: `../../operations/engineering/`
+- DevOps assets: `../../operations/devops/`
+- Security assets: `../../operations/security/`
+- Customer Experience assets: `../../growth/customer-experience/`
+- Marketing assets: `../../growth/marketing/`
+- Finance assets: `../../growth/finance/`
 
 ## Expected Output
 
-- Selected department
+- Selected department and area
 - Assets to create
 - Templates used
 - Checklists used
 - Files created or updated
 
-## Active Departments
+## Active Areas
 
-- product
-- design
-- engineering
-- validation
-- growth
+- strategy.company
+- strategy.product
+- strategy.roadmap
+- strategy.validation
+- operations.core
+- operations.design
+- operations.engineering
+- operations.devops
+- operations.security
+- growth.customer-experience
+- growth.marketing
+- growth.finance

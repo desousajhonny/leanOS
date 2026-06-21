@@ -1,0 +1,27 @@
+# MVP Validation
+
+## Purpose
+
+Plan and run the first validation cycle.
+
+## Area
+
+`strategy/validation`
+
+## Sequence
+
+1. List assumptions
+2. Prioritize risks
+3. Choose experiment
+4. Define metrics
+5. Capture learning
+
+## Outputs
+
+- Decision or action summary
+- Updated source-of-truth files when requested
+- Next recommended LeanOS command
+
+## Navigation
+
+Start from `../README.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.

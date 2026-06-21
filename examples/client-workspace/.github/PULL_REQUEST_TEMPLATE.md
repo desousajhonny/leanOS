@@ -3,6 +3,7 @@
 ## LeanOS Context
 
 - Active Department:
+- Active Area:
 - Active Role:
 - Loaded Skills:
 - Relevant Playbook:
@@ -13,7 +14,7 @@ Describe what changed.
 
 ## Coherence Check
 
-- ICP alignment:
+- Strategy alignment:
 - MVP scope alignment:
 - Acceptance criteria:
 - Validation or learning impact:

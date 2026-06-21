@@ -1,25 +1,46 @@
 roles:
+  - key: company-strategist
+    area: strategy.company
+    path: ../../strategy/company/roles/company-strategist.role.md
   - key: product-strategist
-    department: product
-    path: ../departments/product/roles/product-strategist.role.md
+    area: strategy.product
+    path: ../../strategy/product/roles/product-strategist.role.md
   - key: product-manager
-    department: product
-    path: ../departments/product/roles/product-manager.role.md
-  - key: ux-lead
-    department: design
-    path: ../departments/design/roles/ux-lead.role.md
-  - key: senior-developer
-    department: engineering
-    path: ../departments/engineering/roles/senior-developer.role.md
-  - key: ai-architect
-    department: engineering
-    path: ../departments/engineering/roles/ai-architect.role.md
-  - key: pr-reviewer
-    department: engineering
-    path: ../departments/engineering/roles/pr-reviewer.role.md
+    area: strategy.product
+    path: ../../strategy/product/roles/product-manager.role.md
+  - key: roadmap-planner
+    area: strategy.roadmap
+    path: ../../strategy/roadmap/roles/roadmap-planner.role.md
   - key: validation-researcher
-    department: validation
-    path: ../departments/validation/roles/validation-researcher.role.md
+    area: strategy.validation
+    path: ../../strategy/validation/roles/validation-researcher.role.md
+  - key: product-owner
+    area: operations.core
+    path: ../../operations/core/roles/product-owner.role.md
+  - key: technical-architect
+    area: operations.core
+    path: ../../operations/core/roles/technical-architect.role.md
+  - key: ux-lead
+    area: operations.design
+    path: ../../operations/design/roles/ux-lead.role.md
+  - key: senior-developer
+    area: operations.engineering
+    path: ../../operations/engineering/roles/senior-developer.role.md
+  - key: pr-reviewer
+    area: operations.engineering
+    path: ../../operations/engineering/roles/pr-reviewer.role.md
+  - key: devops-engineer
+    area: operations.devops
+    path: ../../operations/devops/roles/devops-engineer.role.md
+  - key: security-reviewer
+    area: operations.security
+    path: ../../operations/security/roles/security-reviewer.role.md
+  - key: cx-lead
+    area: growth.customer-experience
+    path: ../../growth/customer-experience/roles/cx-lead.role.md
   - key: growth-lead
-    department: growth
-    path: ../departments/growth/roles/growth-lead.role.md
+    area: growth.marketing
+    path: ../../growth/marketing/roles/growth-lead.role.md
+  - key: finance-operator
+    area: growth.finance
+    path: ../../growth/finance/roles/finance-operator.role.md

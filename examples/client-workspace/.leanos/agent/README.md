@@ -6,7 +6,7 @@ Chief Agent operating guidance.
 
 ## When to Use
 
-Use when defining how the agent loads context, activates roles and formats output.
+Use when defining how LeanOS Chief loads context, activates routes and formats output.
 
 ## Source of Truth
 
@@ -22,9 +22,9 @@ Use when defining how the agent loads context, activates roles and formats outpu
 
 ## Related Folders
 
-- `../ai-standard/`
-- `../departments/`
+- `../../ai-standard/`
 - `../commands/`
+- `../context/`
 
 ## Navigation
 
@@ -32,4 +32,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-Keep this folder concise; route detailed work to departments.
+Keep this folder concise. Route product work to root departments and areas.

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Current workspace state that helps the Chief Agent start quickly.
+Current workspace state that helps LeanOS Chief start quickly.
 
 ## When to Use
 
@@ -22,8 +22,11 @@ Use at the beginning of every LeanOS session.
 
 ## Related Folders
 
-- `../departments/`
+- `../index/`
 - `../workflows/`
+- `../../strategy/`
+- `../../operations/`
+- `../../growth/`
 
 ## Navigation
 

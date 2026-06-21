@@ -1,0 +1,18 @@
+department:
+  key: operations
+  name: Operations
+  purpose: Own MVP execution, architecture, design, engineering, DevOps and security.
+  active_areas:
+    - key: operations.core
+      path: core/README.md
+    - key: operations.design
+      path: design/README.md
+    - key: operations.engineering
+      path: engineering/README.md
+    - key: operations.devops
+      path: devops/README.md
+    - key: operations.security
+      path: security/README.md
+  workflows:
+    - key: mvp-to-pr
+      path: workflows/mvp-to-pr.workflow.md

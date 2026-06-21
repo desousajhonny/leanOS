@@ -11,7 +11,20 @@ export const exampleAnswers = {
   targetUser: "AI-first founders",
   stage: "idea",
   mode: "founder-plus-ai-agents",
-  departments: ["product", "validation", "engineering", "design", "growth"]
+  subareas: [
+    "strategy.company",
+    "strategy.product",
+    "strategy.roadmap",
+    "strategy.validation",
+    "operations.core",
+    "operations.design",
+    "operations.engineering",
+    "operations.devops",
+    "operations.security",
+    "growth.customer-experience",
+    "growth.marketing",
+    "growth.finance"
+  ]
 };
 
 const scriptPath = fileURLToPath(import.meta.url);

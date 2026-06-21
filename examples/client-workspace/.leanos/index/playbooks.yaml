@@ -1,22 +1,43 @@
 playbooks:
+  - key: company-foundation
+    area: strategy.company
+    path: ../../strategy/company/playbooks/company-foundation.playbook.md
   - key: product-strategy
-    department: product
-    path: ../departments/product/playbooks/product-strategy.playbook.md
-  - key: mvp-definition
-    department: product
-    path: ../departments/product/playbooks/mvp-definition.playbook.md
-  - key: mvp-ux-flow
-    department: design
-    path: ../departments/design/playbooks/mvp-ux-flow.playbook.md
-  - key: issue-to-pr
-    department: engineering
-    path: ../departments/engineering/playbooks/issue-to-pr.playbook.md
-  - key: pr-validation
-    department: engineering
-    path: ../departments/engineering/playbooks/pr-validation.playbook.md
+    area: strategy.product
+    path: ../../strategy/product/playbooks/product-strategy.playbook.md
+  - key: validation-cycle-planning
+    area: strategy.roadmap
+    path: ../../strategy/roadmap/playbooks/validation-cycle-planning.playbook.md
   - key: mvp-validation
-    department: validation
-    path: ../departments/validation/playbooks/mvp-validation.playbook.md
+    area: strategy.validation
+    path: ../../strategy/validation/playbooks/mvp-validation.playbook.md
+  - key: mvp-delivery
+    area: operations.core
+    path: ../../operations/core/playbooks/mvp-delivery.playbook.md
+  - key: architecture-planning
+    area: operations.core
+    path: ../../operations/core/playbooks/architecture-planning.playbook.md
+  - key: mvp-ux-flow
+    area: operations.design
+    path: ../../operations/design/playbooks/mvp-ux-flow.playbook.md
+  - key: issue-to-pr
+    area: operations.engineering
+    path: ../../operations/engineering/playbooks/issue-to-pr.playbook.md
+  - key: pr-validation
+    area: operations.engineering
+    path: ../../operations/engineering/playbooks/pr-validation.playbook.md
+  - key: release-operations
+    area: operations.devops
+    path: ../../operations/devops/playbooks/release-operations.playbook.md
+  - key: security-review
+    area: operations.security
+    path: ../../operations/security/playbooks/security-review.playbook.md
+  - key: customer-learning-loop
+    area: growth.customer-experience
+    path: ../../growth/customer-experience/playbooks/customer-learning-loop.playbook.md
   - key: mvp-launch
-    department: growth
-    path: ../departments/growth/playbooks/mvp-launch.playbook.md
+    area: growth.marketing
+    path: ../../growth/marketing/playbooks/mvp-launch.playbook.md
+  - key: finance-review
+    area: growth.finance
+    path: ../../growth/finance/playbooks/finance-review.playbook.md

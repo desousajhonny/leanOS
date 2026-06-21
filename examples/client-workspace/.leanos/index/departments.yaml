@@ -1,11 +1,7 @@
 departments:
-  - key: product
-    path: ../departments/product/README.md
-  - key: design
-    path: ../departments/design/README.md
-  - key: engineering
-    path: ../departments/engineering/README.md
-  - key: validation
-    path: ../departments/validation/README.md
+  - key: strategy
+    path: ../../strategy/README.md
+  - key: operations
+    path: ../../operations/README.md
   - key: growth
-    path: ../departments/growth/README.md
+    path: ../../growth/README.md

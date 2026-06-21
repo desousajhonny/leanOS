@@ -1,0 +1,18 @@
+area:
+  key: strategy.company
+  department: strategy
+  path: strategy/company
+  roles:
+    - company-strategist
+  skills:
+    - define-company
+    - clarify-operating-model
+  playbooks:
+    - company-foundation
+  source_of_truth:
+    - profile.md
+    - mission.md
+    - vision.md
+    - principles.md
+    - operating-model.md
+    - decision-log.md

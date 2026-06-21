@@ -2,27 +2,28 @@
 
 ## Purpose
 
-Coordinate a LeanOS flow across departments without loading the whole workspace.
+Move from product strategy to MVP scope and validation plan.
 
-## Required Departments
+## Required Areas
 
-- product
-- validation
+- strategy.product: `../../strategy/product/README.md`
+- strategy.validation: `../../strategy/validation/README.md`
+- operations.core: `../../operations/core/README.md`
 
 ## Availability
 
-All required departments are active in this workspace.
+All required areas are active in this workspace.
 
 
 ## Sequence
 
-1. Route to Product
+1. Route to Strategy Product
 2. Define ICP
-3. Define MVP
-4. Route to Validation
-5. Plan experiment
-6. Capture learning
+3. Route to Operations Core
+4. Define MVP
+5. Route to Strategy Validation
+6. Plan experiment
 
 ## Navigation
 
-Use department READMEs for each step. Do not bypass department-first ownership.
+Use department and area READMEs for each step. Do not bypass area-first ownership.

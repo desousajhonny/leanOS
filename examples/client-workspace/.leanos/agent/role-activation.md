@@ -1,10 +1,5 @@
 # Role Activation
 
-Before executing any task, identify:
+Roles live inside active workspace areas.
 
-- Active Department
-- Active Role
-- Loaded Skills
-- Relevant Playbook
-
-Use department READMEs as routers. Do not guess the role when the README gives a path.
+Do not activate a role from an inactive or missing area without asking the user.

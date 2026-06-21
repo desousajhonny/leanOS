@@ -11,18 +11,27 @@ Read:
 - `../../AGENT.md`
 - `../context/current-focus.md`
 - `../context/next-actions.md`
+- `../index/routing-map.yaml`
 
 ## Process
 
-1. Route through `../departments/product/README.md`.
-2. Activate the role named by that department.
-3. Load only the required skills and playbook.
-4. Produce the requested output.
+1. Route through `../../strategy/roadmap/README.md`.
+2. Load the department AGENT.md or README first.
+3. Activate the role named by the area README.
+4. Load only the required skills and playbook.
+5. Produce the requested output.
 
-## Active Departments
+## Active Areas
 
-- product
-- design
-- engineering
-- validation
-- growth
+- strategy.company
+- strategy.product
+- strategy.roadmap
+- strategy.validation
+- operations.core
+- operations.design
+- operations.engineering
+- operations.devops
+- operations.security
+- growth.customer-experience
+- growth.marketing
+- growth.finance

@@ -1,5 +1,5 @@
 import figlet from "figlet";
-import pc from "picocolors";
+import { ui } from "./theme.js";
 
 const fallbackBanner = `
 ██╗     ███████╗ █████╗ ███╗   ██╗ ██████╗ ███████╗
@@ -16,8 +16,9 @@ export function printBanner(): void {
     verticalLayout: "default"
   });
 
-  console.log(pc.cyan(banner || fallbackBanner));
-  console.log(pc.bold("LeanOS AI"));
-  console.log(pc.dim("Agent-native startup operating system"));
+  console.log(ui.brand(banner || fallbackBanner));
+  console.log(ui.title("LeanOS AI"));
+  console.log(ui.brand("Agent-native startup operating system"));
+  console.log(ui.muted("Strategy, validation and execution for AI-first products."));
   console.log("");
 }

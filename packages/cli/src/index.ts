@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import pc from "picocolors";
 import { runAiCommand } from "./commands/ai.js";
+import { ui } from "./ui/theme.js";
 
 const [command] = process.argv.slice(2);
 
@@ -16,26 +16,27 @@ async function main(): Promise<void> {
     return;
   }
 
-  console.log(pc.red(`Unknown command: ${command}`));
+  console.log(ui.error(`Unknown command: ${command}`));
   showHelp();
   process.exitCode = 1;
 }
 
 function showHelp(): void {
   console.log(`
-${pc.bold("LeanOS CLI")}
+${ui.title("LeanOS CLI")}
+${ui.muted("Agent-native startup operating system")}
 
 Usage:
-  lean-os ai
+  ${ui.command("lean-os ai")}
 
 Commands:
-  ai    Create an agent-native LeanOS startup workspace
+  ${ui.command("ai")}    Create an agent-native LeanOS startup workspace
 `);
 }
 
 main().catch((error: unknown) => {
   const message = error instanceof Error ? error.message : String(error);
-  console.error(pc.red("LeanOS failed to run."));
-  console.error(pc.dim(message));
+  console.error(ui.error("LeanOS failed to run."));
+  console.error(ui.muted(message));
   process.exitCode = 1;
 });

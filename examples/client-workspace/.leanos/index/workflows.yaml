@@ -2,9 +2,6 @@ workflows:
   - key: new-product-mvp-validation
     path: ../workflows/new-product-mvp-validation.workflow.md
     active: true
-  - key: existing-product-audit
-    path: ../workflows/existing-product-audit.workflow.md
-    active: true
   - key: issue-to-pr
     path: ../workflows/issue-to-pr.workflow.md
     active: true

@@ -109,7 +109,7 @@ LeanOS has three layers:
    Installs and generates the initial workspace.
 
 2. **LeanOS Workspace**
-   Stores company, product, validation, MVP, roadmap, architecture, GitHub, skills, and playbooks.
+   Stores LeanOS runtime files, the AI standard library, and the client operating departments: strategy, operations, and growth.
 
 3. **LeanOS Agent**
    Operates through the editor chat using natural language and slash commands.

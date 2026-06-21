@@ -1,4 +1,4 @@
-# Workflows
+# Global Workflows
 
 ## Purpose
 
@@ -6,7 +6,7 @@ Cross-department LeanOS workflows.
 
 ## When to Use
 
-Use when work spans more than one department.
+Use when work spans more than one root department.
 
 ## Source of Truth
 
@@ -15,13 +15,14 @@ Use when work spans more than one department.
 ## Files
 
 - `new-product-mvp-validation.workflow.md`
-- `existing-product-audit.workflow.md`
 - `issue-to-pr.workflow.md`
 - `launch-and-learn.workflow.md`
 
 ## Related Folders
 
-- `../departments/`
+- `../../strategy/`
+- `../../operations/`
+- `../../growth/`
 - `../context/`
 
 ## Navigation
@@ -30,4 +31,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-Workflows route between departments; if a required department is not active, ask before activating or creating it.
+Workflows route between departments and areas; if a required area is not active, ask before activating or creating it.

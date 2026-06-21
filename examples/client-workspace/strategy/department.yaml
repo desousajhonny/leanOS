@@ -1,0 +1,16 @@
+department:
+  key: strategy
+  name: Strategy
+  purpose: Own company direction, product strategy, roadmap and validation learning.
+  active_areas:
+    - key: strategy.company
+      path: company/README.md
+    - key: strategy.product
+      path: product/README.md
+    - key: strategy.roadmap
+      path: roadmap/README.md
+    - key: strategy.validation
+      path: validation/README.md
+  workflows:
+    - key: strategy-validation-cycle
+      path: workflows/strategy-validation-cycle.workflow.md

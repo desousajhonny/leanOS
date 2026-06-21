@@ -1,0 +1,20 @@
+area:
+  key: operations.engineering
+  department: operations
+  path: operations/engineering
+  roles:
+    - senior-developer
+    - pr-reviewer
+  skills:
+    - plan-implementation
+    - write-tests
+    - create-pr
+    - review-pr
+  playbooks:
+    - issue-to-pr
+    - pr-validation
+  source_of_truth:
+    - implementation-notes.md
+    - test-plan.md
+    - code-review-notes.md
+    - pr-log.md

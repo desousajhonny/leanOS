@@ -1,7 +1,7 @@
 import { outro } from "@clack/prompts";
-import pc from "picocolors";
 import type { WorkspaceAnswers } from "../templates/workspace-template.js";
 import type { WorkspaceGenerationResult } from "../generators/workspace-generator.js";
+import { bullet, keyValue, stepLabel, ui } from "./theme.js";
 
 const productTypeLabels: Record<string, string> = {
   "b2b-saas": "B2B SaaS",
@@ -33,68 +33,71 @@ const modeLabels: Record<string, string> = {
 };
 
 export function printComingSoonOutro(label: string): void {
-  outro(`${label} is coming soon. For now, use "Create a new LeanOS workspace".`);
+  outro(`${ui.title(label)} is coming soon. For now, use ${ui.command("Create a new LeanOS workspace")}.`);
 }
 
 export function printCreatedWorkspaceOutro(answers: WorkspaceAnswers, result: WorkspaceGenerationResult): void {
   const headline =
     result.mode === "missing-only"
-      ? "LeanOS missing workspace files created successfully."
+      ? "LeanOS workspace updated"
       : result.mode === "overwrite"
-        ? "LeanOS workspace created and existing files overwritten successfully."
-        : "LeanOS workspace created successfully.";
-  const groupsLabel =
+        ? "LeanOS workspace regenerated"
+        : "LeanOS workspace created";
+  const fileModeNote =
     result.mode === "missing-only"
-      ? "Updated / preserved:"
+      ? "Some files already existed and were preserved. LeanOS created only the missing files."
       : result.mode === "overwrite"
-        ? "Generated / overwritten:"
-        : "Generated:";
+        ? "Existing conflicting files were overwritten because you selected overwrite."
+        : "";
 
   const message = [
-    pc.green(headline),
+    ui.success(headline),
     "",
-    `Company: ${answers.companyName}`,
-    `Product: ${answers.productName}`,
-    `Type: ${productTypeLabels[answers.productType]}`,
-    `Stage: ${stageLabels[answers.stage]}`,
-    `Mode: ${modeLabels[answers.mode]}`,
-    `Departments: ${answers.departments.join(", ")}`,
+    keyValue("Company", answers.companyName),
+    keyValue("Product", answers.productName),
+    keyValue("Type", productTypeLabels[answers.productType]),
+    keyValue("Stage", stageLabels[answers.stage]),
+    keyValue("Mode", modeLabels[answers.mode]),
+    keyValue("Areas", answers.subareas.join(", ")),
     "",
-    `Files written: ${result.writtenPaths.length}`,
-    `Files skipped: ${result.skippedPaths.length}`,
-    result.skippedPaths.length > 0 ? "Skipped files already existed and were preserved." : "",
+    ui.title("Files"),
+    keyValue("Written", ui.success(String(result.writtenPaths.length))),
+    keyValue("Skipped", result.skippedPaths.length > 0 ? ui.warning(String(result.skippedPaths.length)) : "0"),
+    fileModeNote ? ui.warning(fileModeNote) : "",
     "",
-    groupsLabel,
-    ...result.createdGroups.map((group) => `- ${group}`),
+    ui.title("Main entrypoints"),
+    bullet(`${ui.path("AGENT.md")} ${ui.muted("universal agent entrypoint")}`),
+    bullet(`${ui.path("leanos.yaml")} ${ui.muted("workspace configuration")}`),
+    bullet(`${ui.path(".leanos/")} ${ui.muted("LeanOS runtime, commands, context and indexes")}`),
+    bullet(`${ui.path("ai-standard/")} ${ui.muted("templates, checklists and instructions")}`),
+    bullet(`${ui.path(".github/agents/leanos-chief.agent.md")} ${ui.muted("VS Code custom agent")}`),
+    bullet(`${ui.path(".github/prompts/leanos-init.prompt.md")} ${ui.muted("safe VS Code prompt command")}`),
     "",
-    "VS Code:",
+    ui.title("Workspace areas"),
+    bullet(ui.path("strategy/")),
+    bullet(ui.path("operations/")),
+    bullet(ui.path("growth/")),
+    bullet(ui.path(".leanos/commands")),
+    bullet(ui.path(".leanos/index")),
+    bullet(ui.path(".github")),
     "",
-    "LeanOS Chief custom agent prepared.",
+    stepLabel(5, 5, "Next actions"),
     "",
     "To use LeanOS in VS Code:",
-    "1. Open Copilot Chat",
-    "2. Select \"LeanOS Chief\"",
-    "3. Start with /init leanos",
+    `1. Open this folder in ${ui.title("VS Code")}`,
+    "2. Open Copilot Chat",
+    `3. Select ${ui.title("\"LeanOS Chief\"")}`,
+    `4. Run ${ui.command("/leanos-init")}`,
     "",
-    "If VS Code routes /init to its native command, use /leanos-init.",
+    `You can also start with ${ui.command("/init leanos")}. If VS Code routes ${ui.command("/init")} to its native command, use ${ui.command("/leanos-init")}.`,
     "",
-    "Next step:",
+    "Useful first requests:",
     "",
-    "Open your editor chat and type:",
-    "",
-    pc.bold("/init leanos"),
-    "",
-    "Any AI model should start from:",
-    "",
-    pc.bold("AGENT.md"),
-    "",
-    "You can also say:",
-    "",
-    '"Help me define the ICP."',
-    '"Turn this idea into an MVP."',
-    '"Create a roadmap for the first validation cycle."',
-    '"Check if my MVP is coherent."',
-    '"Create a new UX research role using LeanOS standards."'
+    bullet('"Help me define the ICP."'),
+    bullet('"Turn this idea into an MVP."'),
+    bullet('"Create a roadmap for the first validation cycle."'),
+    bullet('"Check if my MVP is coherent."'),
+    bullet('"Create a new UX research role using LeanOS standards."')
   ].join("\n");
 
   outro(message);

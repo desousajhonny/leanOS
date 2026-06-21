@@ -1,5 +1,7 @@
-import { confirm, isCancel, multiselect, select, text } from "@clack/prompts";
-import type { Department, OperatingMode, ProductStage, ProductStatus, ProductType, WorkspaceAnswers } from "../templates/workspace-template.js";
+import { confirm, groupMultiselect, isCancel, note, select, text } from "@clack/prompts";
+import type { OperatingMode, ProductStage, ProductStatus, ProductType, Subarea, WorkspaceAnswers } from "../templates/workspace-template.js";
+import { getAllSubareas } from "../templates/workspace-template.js";
+import { keyValue, stepLabel, ui } from "../ui/theme.js";
 
 type CancelledResult = {
   status: "cancelled";
@@ -56,15 +58,37 @@ const modeLabels: Record<OperatingMode, string> = {
   "internal-innovation-team": "Internal corporate innovation team"
 };
 
-const departmentLabels: Record<Department, string> = {
-  product: "Product",
-  validation: "Validation",
-  engineering: "Engineering",
-  design: "Design",
-  growth: "Growth"
+const subareaLabels: Record<Subarea, string> = {
+  "strategy.company": "Company",
+  "strategy.product": "Product",
+  "strategy.roadmap": "Roadmap",
+  "strategy.validation": "Validation",
+  "operations.core": "Core",
+  "operations.design": "Design",
+  "operations.engineering": "Engineering",
+  "operations.devops": "DevOps",
+  "operations.security": "Security",
+  "growth.customer-experience": "Customer Experience",
+  "growth.marketing": "Marketing",
+  "growth.finance": "Finance"
 };
 
-const defaultDepartments: Department[] = ["product", "validation", "engineering", "design", "growth"];
+const subareaHints: Record<Subarea, string> = {
+  "strategy.company": "mission, principles and operating model",
+  "strategy.product": "ICP, problem, value proposition and business model",
+  "strategy.roadmap": "cycles, milestones and backlog priority",
+  "strategy.validation": "assumptions, experiments and learning",
+  "operations.core": "architecture, MVP scope and acceptance criteria",
+  "operations.design": "flows, screens, UX states and usability",
+  "operations.engineering": "implementation, tests, issues and PRs",
+  "operations.devops": "environments, CI, deployment and observability",
+  "operations.security": "threat model, data protection and access control",
+  "growth.customer-experience": "feedback, support, churn and success moments",
+  "growth.marketing": "positioning, landing pages, launch and acquisition",
+  "growth.finance": "pricing, unit economics, budget and revenue model"
+};
+
+const defaultSubareas: Subarea[] = getAllSubareas();
 
 export async function runAiPrompts(): Promise<AiPromptResult> {
   const action = await select({
@@ -81,6 +105,8 @@ export async function runAiPrompts(): Promise<AiPromptResult> {
   if (action === "exit") return { status: "exit" };
   if (action === "connect") return { status: "coming-soon", label: "Connect LeanOS to an existing project" };
   if (action === "install-agent") return { status: "coming-soon", label: "Install LeanOS Agent files in this repo" };
+
+  note("Tell LeanOS what you are building. Keep it simple; the agent will refine this later.", stepLabel(1, 5, "Product profile"));
 
   const companyName = await text({
     message: "Company or startup name",
@@ -131,13 +157,19 @@ export async function runAiPrompts(): Promise<AiPromptResult> {
   });
   if (isCancel(mode)) return { status: "cancelled" };
 
-  const departments = await multiselect({
-    message: "Active departments",
-    options: toOptions(departmentLabels),
-    initialValues: defaultDepartments,
+  note("Choose the client workspace areas LeanOS should prepare.", stepLabel(2, 5, "Workspace areas"));
+
+  const subareas = await groupMultiselect({
+    message: "Which workspace areas should LeanOS prepare?",
+    options: {
+      Strategy: toOptionsForSubareas(["strategy.company", "strategy.product", "strategy.roadmap", "strategy.validation"]),
+      Operations: toOptionsForSubareas(["operations.core", "operations.design", "operations.engineering", "operations.devops", "operations.security"]),
+      Growth: toOptionsForSubareas(["growth.customer-experience", "growth.marketing", "growth.finance"])
+    },
+    initialValues: defaultSubareas,
     required: true
   });
-  if (isCancel(departments)) return { status: "cancelled" };
+  if (isCancel(subareas)) return { status: "cancelled" };
 
   const answers: WorkspaceAnswers = {
     companyName: String(companyName).trim(),
@@ -148,8 +180,26 @@ export async function runAiPrompts(): Promise<AiPromptResult> {
     targetUser: String(targetUser).trim(),
     stage: stage as ProductStage,
     mode: mode as OperatingMode,
-    departments: departments as Department[]
+    subareas: subareas as Subarea[]
   };
+
+  note(
+    [
+      `Workspace root: ${ui.path(process.cwd())}`,
+      `Entrypoints: ${ui.path("AGENT.md")}, ${ui.path("leanos.yaml")}, ${ui.path(".leanos/")}`,
+      "Existing files will be checked before anything is written."
+    ].join("\n"),
+    stepLabel(3, 5, "Workspace structure")
+  );
+
+  note(
+    [
+      `VS Code agent: ${ui.path(".github/agents/leanos-chief.agent.md")}`,
+      `Safe prompt command: ${ui.command("/leanos-init")}`,
+      "LeanOS Chief only dispatches to the framework files generated in this workspace."
+    ].join("\n"),
+    stepLabel(4, 5, "LeanOS Chief")
+  );
 
   const shouldCreate = await confirm({
     message: `${formatSummary(answers)}\n\nCreate workspace?`,
@@ -171,22 +221,31 @@ function required(value: string): string | void {
   }
 }
 
-function toOptions<TValue extends string>(labels: Record<TValue, string>): Array<{ value: TValue; label: string }> {
+function toOptions<TValue extends string>(labels: Record<TValue, string>, hints?: Partial<Record<TValue, string>>): Array<{ value: TValue; label: string; hint?: string }> {
   return Object.entries(labels).map(([value, label]) => ({
     value: value as TValue,
-    label: label as string
+    label: label as string,
+    hint: hints?.[value as TValue]
   }));
 }
 
 function formatSummary(answers: WorkspaceAnswers): string {
   return [
-    "LeanOS workspace summary:",
+    ui.title("LeanOS workspace summary"),
     "",
-    `Company: ${answers.companyName}`,
-    `Product: ${answers.productName}`,
-    `Type: ${productTypeLabels[answers.productType]}`,
-    `Stage: ${stageLabels[answers.stage]}`,
-    `Mode: ${modeLabels[answers.mode]}`,
-    `Departments: ${answers.departments.map((department) => departmentLabels[department]).join(", ")}`
+    keyValue("Company", answers.companyName),
+    keyValue("Product", answers.productName),
+    keyValue("Type", productTypeLabels[answers.productType]),
+    keyValue("Stage", stageLabels[answers.stage]),
+    keyValue("Mode", modeLabels[answers.mode]),
+    keyValue("Areas", answers.subareas.map((subarea) => subareaLabels[subarea]).join(", "))
   ].join("\n");
+}
+
+function toOptionsForSubareas(subareas: Subarea[]): Array<{ value: Subarea; label: string; hint?: string }> {
+  return subareas.map((subarea) => ({
+    value: subarea,
+    label: subareaLabels[subarea],
+    hint: subareaHints[subarea]
+  }));
 }

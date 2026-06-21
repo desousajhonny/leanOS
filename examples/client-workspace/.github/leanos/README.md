@@ -22,7 +22,7 @@ Use when configuring labels, branch rules or PR validation guidance.
 ## Related Folders
 
 - `../ISSUE_TEMPLATE/`
-- `../../.leanos/departments/engineering/`
+- `../../operations/engineering/`
 
 ## Navigation
 
@@ -30,4 +30,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-Route GitHub and PR validation work through `.leanos/departments/engineering/README.md` before changing GitHub workflow files.
+Route GitHub and PR validation work through `../../operations/engineering/README.md` before changing GitHub workflow files.

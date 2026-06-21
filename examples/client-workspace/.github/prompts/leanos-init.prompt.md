@@ -16,4 +16,4 @@ Load:
 - [.leanos/context/next-actions.md](../../.leanos/context/next-actions.md)
 - [.leanos/index/routing-map.yaml](../../.leanos/index/routing-map.yaml)
 
-Then summarize the active LeanOS workspace status, active departments, available workflows and recommended next action.
+Then summarize the active LeanOS workspace status, active departments, active areas, available workflows and recommended next action.

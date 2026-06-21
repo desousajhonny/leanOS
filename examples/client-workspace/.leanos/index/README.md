@@ -15,6 +15,7 @@ Use when a model needs a quick routing map.
 ## Files
 
 - `departments.yaml`
+- `areas.yaml`
 - `roles.yaml`
 - `skills.yaml`
 - `playbooks.yaml`
@@ -23,7 +24,9 @@ Use when a model needs a quick routing map.
 
 ## Related Folders
 
-- `../departments/`
+- `../../strategy/`
+- `../../operations/`
+- `../../growth/`
 - `../workflows/`
 
 ## Navigation

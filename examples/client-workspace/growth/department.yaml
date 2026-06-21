@@ -1,0 +1,14 @@
+department:
+  key: growth
+  name: Growth
+  purpose: Own customer experience, marketing, launch and financial learning loops.
+  active_areas:
+    - key: growth.customer-experience
+      path: customer-experience/README.md
+    - key: growth.marketing
+      path: marketing/README.md
+    - key: growth.finance
+      path: finance/README.md
+  workflows:
+    - key: launch-learning-loop
+      path: workflows/launch-learning-loop.workflow.md

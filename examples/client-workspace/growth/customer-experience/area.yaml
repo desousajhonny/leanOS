@@ -1,0 +1,16 @@
+area:
+  key: growth.customer-experience
+  department: growth
+  path: growth/customer-experience
+  roles:
+    - cx-lead
+  skills:
+    - map-customer-feedback
+    - synthesize-support-patterns
+  playbooks:
+    - customer-learning-loop
+  source_of_truth:
+    - customer-feedback.md
+    - support-notes.md
+    - churn-reasons.md
+    - success-moments.md

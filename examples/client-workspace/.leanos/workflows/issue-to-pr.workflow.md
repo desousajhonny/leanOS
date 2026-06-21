@@ -2,25 +2,27 @@
 
 ## Purpose
 
-Coordinate a LeanOS flow across departments without loading the whole workspace.
+Move from scoped MVP work to implementation and PR readiness.
 
-## Required Departments
+## Required Areas
 
-- engineering
+- operations.core: `../../operations/core/README.md`
+- operations.engineering: `../../operations/engineering/README.md`
 
 ## Availability
 
-All required departments are active in this workspace.
+All required areas are active in this workspace.
 
 
 ## Sequence
 
-1. Route to Engineering
-2. Activate Senior Developer
-3. Plan implementation
-4. Write tests
-5. Create PR
+1. Route to Operations Core
+2. Confirm scope
+3. Route to Engineering
+4. Plan implementation
+5. Write tests
+6. Create PR
 
 ## Navigation
 
-Use department READMEs for each step. Do not bypass department-first ownership.
+Use department and area READMEs for each step. Do not bypass area-first ownership.

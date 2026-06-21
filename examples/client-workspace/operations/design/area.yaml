@@ -1,0 +1,18 @@
+area:
+  key: operations.design
+  department: operations
+  path: operations/design
+  roles:
+    - ux-lead
+  skills:
+    - map-user-flow
+    - create-screen-spec
+    - define-ux-states
+  playbooks:
+    - mvp-ux-flow
+  source_of_truth:
+    - design-principles.md
+    - user-flows.md
+    - screen-specs.md
+    - ux-decisions.md
+    - usability-notes.md

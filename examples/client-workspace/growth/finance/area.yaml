@@ -1,0 +1,17 @@
+area:
+  key: growth.finance
+  department: growth
+  path: growth/finance
+  roles:
+    - finance-operator
+  skills:
+    - model-unit-economics
+    - review-pricing
+  playbooks:
+    - finance-review
+  source_of_truth:
+    - pricing.md
+    - revenue-model.md
+    - unit-economics.md
+    - budget.md
+    - finance-risks.md

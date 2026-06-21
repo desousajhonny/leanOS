@@ -11,5 +11,5 @@ npx lean-os ai
 The CLI creates the initial LeanOS workspace. After setup, open your editor chat and type:
 
 ```text
-/init leanos
+/leanos-init
 ```

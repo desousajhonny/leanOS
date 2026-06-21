@@ -1,64 +1,109 @@
 skills:
   - key: define-company
-    department: product
-    path: ../departments/product/skills/define-company.skill.md
+    area: strategy.company
+    path: ../../strategy/company/skills/define-company.skill.md
+  - key: clarify-operating-model
+    area: strategy.company
+    path: ../../strategy/company/skills/clarify-operating-model.skill.md
   - key: define-product
-    department: product
-    path: ../departments/product/skills/define-product.skill.md
+    area: strategy.product
+    path: ../../strategy/product/skills/define-product.skill.md
   - key: define-icp
-    department: product
-    path: ../departments/product/skills/define-icp.skill.md
+    area: strategy.product
+    path: ../../strategy/product/skills/define-icp.skill.md
   - key: define-value-proposition
-    department: product
-    path: ../departments/product/skills/define-value-proposition.skill.md
+    area: strategy.product
+    path: ../../strategy/product/skills/define-value-proposition.skill.md
   - key: define-business-model
-    department: product
-    path: ../departments/product/skills/define-business-model.skill.md
-  - key: create-roadmap
-    department: product
-    path: ../departments/product/skills/create-roadmap.skill.md
+    area: strategy.product
+    path: ../../strategy/product/skills/define-business-model.skill.md
   - key: check-coherence
-    department: product
-    path: ../departments/product/skills/check-coherence.skill.md
-  - key: map-user-flow
-    department: design
-    path: ../departments/design/skills/map-user-flow.skill.md
-  - key: create-screen-spec
-    department: design
-    path: ../departments/design/skills/create-screen-spec.skill.md
-  - key: define-ux-states
-    department: design
-    path: ../departments/design/skills/define-ux-states.skill.md
-  - key: plan-implementation
-    department: engineering
-    path: ../departments/engineering/skills/plan-implementation.skill.md
-  - key: write-tests
-    department: engineering
-    path: ../departments/engineering/skills/write-tests.skill.md
-  - key: create-pr
-    department: engineering
-    path: ../departments/engineering/skills/create-pr.skill.md
-  - key: create-api-contract
-    department: engineering
-    path: ../departments/engineering/skills/create-api-contract.skill.md
-  - key: review-pr
-    department: engineering
-    path: ../departments/engineering/skills/review-pr.skill.md
+    area: strategy.product
+    path: ../../strategy/product/skills/check-coherence.skill.md
+  - key: create-roadmap
+    area: strategy.roadmap
+    path: ../../strategy/roadmap/skills/create-roadmap.skill.md
+  - key: prioritize-backlog
+    area: strategy.roadmap
+    path: ../../strategy/roadmap/skills/prioritize-backlog.skill.md
   - key: define-assumptions
-    department: validation
-    path: ../departments/validation/skills/define-assumptions.skill.md
+    area: strategy.validation
+    path: ../../strategy/validation/skills/define-assumptions.skill.md
   - key: create-interview-script
-    department: validation
-    path: ../departments/validation/skills/create-interview-script.skill.md
+    area: strategy.validation
+    path: ../../strategy/validation/skills/create-interview-script.skill.md
   - key: define-success-metrics
-    department: validation
-    path: ../departments/validation/skills/define-success-metrics.skill.md
+    area: strategy.validation
+    path: ../../strategy/validation/skills/define-success-metrics.skill.md
+  - key: define-mvp
+    area: operations.core
+    path: ../../operations/core/skills/define-mvp.skill.md
+  - key: write-acceptance-criteria
+    area: operations.core
+    path: ../../operations/core/skills/write-acceptance-criteria.skill.md
+  - key: check-delivery-coherence
+    area: operations.core
+    path: ../../operations/core/skills/check-delivery-coherence.skill.md
+  - key: define-architecture
+    area: operations.core
+    path: ../../operations/core/skills/define-architecture.skill.md
+  - key: create-api-contract
+    area: operations.core
+    path: ../../operations/core/skills/create-api-contract.skill.md
+  - key: map-user-flow
+    area: operations.design
+    path: ../../operations/design/skills/map-user-flow.skill.md
+  - key: create-screen-spec
+    area: operations.design
+    path: ../../operations/design/skills/create-screen-spec.skill.md
+  - key: define-ux-states
+    area: operations.design
+    path: ../../operations/design/skills/define-ux-states.skill.md
+  - key: plan-implementation
+    area: operations.engineering
+    path: ../../operations/engineering/skills/plan-implementation.skill.md
+  - key: write-tests
+    area: operations.engineering
+    path: ../../operations/engineering/skills/write-tests.skill.md
+  - key: create-pr
+    area: operations.engineering
+    path: ../../operations/engineering/skills/create-pr.skill.md
+  - key: review-pr
+    area: operations.engineering
+    path: ../../operations/engineering/skills/review-pr.skill.md
+  - key: setup-ci
+    area: operations.devops
+    path: ../../operations/devops/skills/setup-ci.skill.md
+  - key: plan-deployment
+    area: operations.devops
+    path: ../../operations/devops/skills/plan-deployment.skill.md
+  - key: define-observability
+    area: operations.devops
+    path: ../../operations/devops/skills/define-observability.skill.md
+  - key: threat-model
+    area: operations.security
+    path: ../../operations/security/skills/threat-model.skill.md
+  - key: review-security
+    area: operations.security
+    path: ../../operations/security/skills/review-security.skill.md
+  - key: map-customer-feedback
+    area: growth.customer-experience
+    path: ../../growth/customer-experience/skills/map-customer-feedback.skill.md
+  - key: synthesize-support-patterns
+    area: growth.customer-experience
+    path: ../../growth/customer-experience/skills/synthesize-support-patterns.skill.md
   - key: define-positioning
-    department: growth
-    path: ../departments/growth/skills/define-positioning.skill.md
+    area: growth.marketing
+    path: ../../growth/marketing/skills/define-positioning.skill.md
   - key: create-landing-page-copy
-    department: growth
-    path: ../departments/growth/skills/create-landing-page-copy.skill.md
+    area: growth.marketing
+    path: ../../growth/marketing/skills/create-landing-page-copy.skill.md
   - key: create-launch-plan
-    department: growth
-    path: ../departments/growth/skills/create-launch-plan.skill.md
+    area: growth.marketing
+    path: ../../growth/marketing/skills/create-launch-plan.skill.md
+  - key: model-unit-economics
+    area: growth.finance
+    path: ../../growth/finance/skills/model-unit-economics.skill.md
+  - key: review-pricing
+    area: growth.finance
+    path: ../../growth/finance/skills/review-pricing.skill.md

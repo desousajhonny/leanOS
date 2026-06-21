@@ -2,27 +2,29 @@
 
 ## Purpose
 
-Growth source-of-truth files.
+Own customer experience, marketing, launch and financial learning loops.
 
 ## When to Use
 
-Use for positioning, landing pages, acquisition and launch.
+Use for customer experience, marketing, landing pages, launch, acquisition or finance.
 
 ## Source of Truth
 
-`positioning.md`
+`department.yaml`
 
 ## Files
 
-- `positioning.md`
-- `landing-page.md`
-- `acquisition-channels.md`
-- `launch-plan.md`
+- `AGENT.md`
+- `department.yaml`
+- `workflows/`
+- `customer-experience/`
+- `marketing/`
+- `finance/`
 
 ## Related Folders
 
-- `../product/`
-- `../validation/`
+- `../.leanos/index/`
+- `../ai-standard/`
 
 ## Navigation
 
@@ -30,4 +32,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-Route growth work through `.leanos/departments/growth/README.md`.
+This department root does not own roles, skills or playbooks directly. Route into an active area.

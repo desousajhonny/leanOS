@@ -1,0 +1,37 @@
+areas:
+  - key: strategy.company
+    department: strategy
+    path: ../../strategy/company/README.md
+  - key: strategy.product
+    department: strategy
+    path: ../../strategy/product/README.md
+  - key: strategy.roadmap
+    department: strategy
+    path: ../../strategy/roadmap/README.md
+  - key: strategy.validation
+    department: strategy
+    path: ../../strategy/validation/README.md
+  - key: operations.core
+    department: operations
+    path: ../../operations/core/README.md
+  - key: operations.design
+    department: operations
+    path: ../../operations/design/README.md
+  - key: operations.engineering
+    department: operations
+    path: ../../operations/engineering/README.md
+  - key: operations.devops
+    department: operations
+    path: ../../operations/devops/README.md
+  - key: operations.security
+    department: operations
+    path: ../../operations/security/README.md
+  - key: growth.customer-experience
+    department: growth
+    path: ../../growth/customer-experience/README.md
+  - key: growth.marketing
+    department: growth
+    path: ../../growth/marketing/README.md
+  - key: growth.finance
+    department: growth
+    path: ../../growth/finance/README.md

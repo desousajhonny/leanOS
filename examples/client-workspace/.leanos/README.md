@@ -1,22 +1,20 @@
-# LeanOS
+# LeanOS Runtime
 
 ## Purpose
 
-LeanOS operating files for the Chief Agent.
+Runtime files for LeanOS Chief.
 
 ## When to Use
 
-Use when routing agent behavior, commands, departments, workflows or standards.
+Use for commands, context, indexes, global workflows and VS Code integration.
 
 ## Source of Truth
 
-`leanos.yaml`
+`context/current-focus.md`
 
 ## Files
 
 - `agent/`
-- `ai-standard/`
-- `departments/`
 - `commands/`
 - `context/`
 - `workflows/`
@@ -26,7 +24,10 @@ Use when routing agent behavior, commands, departments, workflows or standards.
 ## Related Folders
 
 - `../AGENT.md`
-- `../README.md`
+- `../ai-standard/`
+- `../strategy/`
+- `../operations/`
+- `../growth/`
 
 ## Navigation
 
@@ -34,4 +35,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-Start at ../AGENT.md, then load only the relevant local README.
+This folder is runtime support. Operational roles, skills and playbooks live in workspace departments and areas.

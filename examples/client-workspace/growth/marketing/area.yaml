@@ -1,0 +1,17 @@
+area:
+  key: growth.marketing
+  department: growth
+  path: growth/marketing
+  roles:
+    - growth-lead
+  skills:
+    - define-positioning
+    - create-landing-page-copy
+    - create-launch-plan
+  playbooks:
+    - mvp-launch
+  source_of_truth:
+    - positioning.md
+    - landing-page.md
+    - acquisition-channels.md
+    - launch-plan.md

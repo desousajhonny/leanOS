@@ -2,26 +2,31 @@
 
 ## Purpose
 
-Operating cadence and risk source-of-truth files.
+Own MVP execution, architecture, design, engineering, DevOps and security.
 
 ## When to Use
 
-Use for weekly review, metrics and risks.
+Use for MVP, architecture, design, engineering, implementation, DevOps or security.
 
 ## Source of Truth
 
-`weekly-review.md`
+`department.yaml`
 
 ## Files
 
-- `weekly-review.md`
-- `metrics-review.md`
-- `risk-register.md`
+- `AGENT.md`
+- `department.yaml`
+- `workflows/`
+- `core/`
+- `design/`
+- `engineering/`
+- `devops/`
+- `security/`
 
 ## Related Folders
 
-- `../company/`
-- `../validation/`
+- `../.leanos/index/`
+- `../ai-standard/`
 
 ## Navigation
 
@@ -29,4 +34,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-Use operations files to keep the company cadence visible.
+This department root does not own roles, skills or playbooks directly. Route into an active area.

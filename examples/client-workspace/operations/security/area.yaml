@@ -1,0 +1,16 @@
+area:
+  key: operations.security
+  department: operations
+  path: operations/security
+  roles:
+    - security-reviewer
+  skills:
+    - threat-model
+    - review-security
+  playbooks:
+    - security-review
+  source_of_truth:
+    - threat-model.md
+    - data-protection.md
+    - access-control.md
+    - security-checklist.md

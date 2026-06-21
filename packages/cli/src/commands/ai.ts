@@ -1,8 +1,8 @@
-import { cancel, isCancel, note, outro, select } from "@clack/prompts";
-import pc from "picocolors";
+import { cancel, isCancel, note, outro, select, spinner } from "@clack/prompts";
 import { runAiPrompts } from "../prompts/ai-prompts.js";
 import { printBanner } from "../ui/banner.js";
 import { printCreatedWorkspaceOutro, printComingSoonOutro } from "../ui/outro.js";
+import { ui } from "../ui/theme.js";
 import { workspaceExists } from "../utils/paths.js";
 import { findWorkspaceConflicts, generateWorkspace, type WorkspaceGenerationMode } from "../generators/workspace-generator.js";
 
@@ -11,10 +11,8 @@ export async function runAiCommand(): Promise<void> {
 
   note(
     [
-      "LeanOS will create an agent-native startup workspace for your AI-first product.",
-      "",
-      "The CLI only collects the basics.",
-      "Your LeanOS Agent will continue the strategy, MVP, roadmap and execution workflow inside your editor chat."
+      `This wizard prepares the workspace structure and ${ui.title("LeanOS Chief")}.`,
+      `After setup, continue in your editor chat with ${ui.command("/leanos-init")}.`
     ].join("\n"),
     "Welcome"
   );
@@ -39,11 +37,18 @@ export async function runAiCommand(): Promise<void> {
   let overwriteExisting = true;
   let generationMode: WorkspaceGenerationMode = "create";
 
+  const validationSpinner = spinner();
+  validationSpinner.start("Validating workspace structure...");
   const conflicts = await findWorkspaceConflicts(process.cwd(), promptResult.answers);
+  validationSpinner.stop(
+    conflicts.length > 0
+      ? ui.warning("Existing files detected.")
+      : ui.success("Workspace target is ready.")
+  );
 
   if (conflicts.length > 0) {
     const hasLeanOsWorkspace = await workspaceExists(process.cwd());
-    const conflictPreview = conflicts.slice(0, 6).map((path) => `- ${path}`).join("\n");
+    const conflictPreview = conflicts.slice(0, 6).map((path) => `- ${ui.path(path)}`).join("\n");
     const remainingCount = conflicts.length - 6;
     const message = [
       hasLeanOsWorkspace
@@ -81,16 +86,28 @@ export async function runAiCommand(): Promise<void> {
     generationMode = conflictAction === "overwrite" ? "overwrite" : "missing-only";
   }
 
+  const generationSpinner = spinner();
+
   try {
+    generationSpinner.start(
+      generationMode === "missing-only"
+        ? "Creating missing LeanOS files..."
+        : generationMode === "overwrite"
+          ? "Generating LeanOS workspace and overwriting selected conflicts..."
+          : "Preparing LeanOS workspace..."
+    );
+    generationSpinner.message("Generating AGENT.md, command map and LeanOS Chief workspace agent...");
     const result = await generateWorkspace(process.cwd(), promptResult.answers, {
       overwriteExisting,
       mode: generationMode
     });
+    generationSpinner.stop(ui.success("LeanOS workspace structure is ready."));
     printCreatedWorkspaceOutro(promptResult.answers, result);
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    console.error(pc.red("Could not create the LeanOS workspace."));
-    console.error(pc.dim(message));
+    generationSpinner.stop(ui.error("Workspace generation stopped."), 1);
+    console.error(ui.error("Could not create the LeanOS workspace."));
+    console.error(ui.muted(message));
     process.exitCode = 1;
   }
 }

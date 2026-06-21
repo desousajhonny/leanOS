@@ -16,6 +16,21 @@ const projectRoot = resolve(packageRoot, "..", "..");
 const clientWorkspaceFixtureDir = resolve(projectRoot, "examples", "client-workspace");
 const clientWorkspaceTreePath = resolve(projectRoot, "examples", "client-workspace-tree.md");
 
+const allSubareas = [
+  "strategy.company",
+  "strategy.product",
+  "strategy.roadmap",
+  "strategy.validation",
+  "operations.core",
+  "operations.design",
+  "operations.engineering",
+  "operations.devops",
+  "operations.security",
+  "growth.customer-experience",
+  "growth.marketing",
+  "growth.finance"
+];
+
 const answers = {
   companyName: "Acme AI",
   productName: "Clinic Assistant AI",
@@ -25,27 +40,27 @@ const answers = {
   targetUser: "Small clinic owners",
   stage: "idea",
   mode: "solo-founder",
-  departments: ["product", "validation", "engineering", "design", "growth"]
+  subareas: allSubareas
 };
 
-const partialDepartmentAnswers = {
+const partialAreaAnswers = {
   ...answers,
-  departments: ["product", "engineering"]
+  subareas: ["strategy.product", "operations.engineering"]
 };
 
 const engineeringOnlyAnswers = {
   ...answers,
-  departments: ["engineering"]
+  subareas: ["operations.engineering"]
 };
 
 const growthValidationAnswers = {
   ...answers,
-  departments: ["growth", "validation"]
+  subareas: ["growth.marketing", "strategy.validation"]
 };
 
 await validateWorkspaceFiles();
 await validateClientWorkspaceFixture();
-await validatePartialDepartmentSelection();
+await validatePartialAreaSelection();
 await validateEngineeringOnlyContext();
 await validateGrowthValidationContext();
 await validateWriterSkipsExistingFiles();
@@ -60,16 +75,28 @@ async function validateWorkspaceFiles() {
   for (const expectedPath of [
     "AGENT.md",
     "leanos.yaml",
-    ".leanos/ai-standard/README.md",
-    ".leanos/ai-standard/navigation-chain.md",
-    ".leanos/departments/README.md",
-    ".leanos/index/README.md",
+    "ai-standard/README.md",
+    "ai-standard/navigation-chain.md",
+    ".leanos/index/areas.yaml",
+    ".leanos/index/routing-map.yaml",
+    "strategy/AGENT.md",
+    "operations/AGENT.md",
+    "growth/AGENT.md",
+    "strategy/product/README.md",
+    "operations/core/mvp/README.md",
+    "operations/design/roles/ux-lead.role.md",
+    "operations/engineering/playbooks/issue-to-pr.playbook.md",
+    "growth/marketing/playbooks/mvp-launch.playbook.md",
     ".github/leanos/README.md",
     ".github/agents/leanos-chief.agent.md",
     ".github/prompts/leanos-init.prompt.md",
     ".leanos/vscode/README.md"
   ]) {
     assert(paths.has(expectedPath), `Expected generated path missing: ${expectedPath}`);
+  }
+
+  for (const forbiddenPath of [".leanos/departments/README.md", ".leanos/ai-standard/README.md", "strategy/roles/README.md", "operations/skills/README.md", "growth/playbooks/README.md"]) {
+    assert.equal(paths.has(forbiddenPath), false, `Forbidden generated path should not exist: ${forbiddenPath}`);
   }
 
   const rootDir = await mkdtemp(join(tmpdir(), "leanos-generator-"));
@@ -80,43 +107,56 @@ async function validateWorkspaceFiles() {
 
   await assertExists(join(rootDir, "AGENT.md"));
   await assertExists(join(rootDir, "leanos.yaml"));
-  await assertExists(join(rootDir, ".leanos", "ai-standard", "README.md"));
-  await assertExists(join(rootDir, ".leanos", "departments", "engineering", "roles", "senior-developer.role.md"));
-  await assertExists(join(rootDir, ".github", "leanos", "README.md"));
+  await assertExists(join(rootDir, "ai-standard", "README.md"));
+  await assertExists(join(rootDir, "strategy", "AGENT.md"));
+  await assertExists(join(rootDir, "operations", "AGENT.md"));
+  await assertExists(join(rootDir, "growth", "AGENT.md"));
+  await assertExists(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"));
+  await assertExists(join(rootDir, "operations", "core", "mvp", "README.md"));
+  await assertExists(join(rootDir, "operations", "design", "playbooks", "mvp-ux-flow.playbook.md"));
+  await assertExists(join(rootDir, "operations", "engineering", "skills", "plan-implementation.skill.md"));
+  await assertExists(join(rootDir, "growth", "marketing", "skills", "create-launch-plan.skill.md"));
   await assertExists(join(rootDir, ".github", "agents", "leanos-chief.agent.md"));
   await assertExists(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"));
   await assertExists(join(rootDir, ".leanos", "vscode", "README.md"));
 
-  assert(result.createdGroups.includes(".github/agents"), "Expected created groups to mention VS Code agents");
-  assert(result.createdGroups.includes(".github/prompts"), "Expected created groups to mention VS Code prompts");
-  assert(result.createdGroups.includes(".leanos/vscode"), "Expected created groups to mention LeanOS VS Code docs");
+  assert(result.createdGroups.includes("ai-standard/"), "Expected created groups to mention root AI Standard");
+  assert(result.createdGroups.includes("strategy/"), "Expected created groups to mention Strategy");
+  assert(result.createdGroups.includes("operations/"), "Expected created groups to mention Operations");
+  assert(result.createdGroups.includes("growth/"), "Expected created groups to mention Growth");
 
   await assertVsCodeIntegration(rootDir);
 
-  for (const forbiddenPath of [".leanos/roles", ".leanos/skills", ".leanos/playbooks"]) {
-    assert.equal(await exists(join(rootDir, forbiddenPath)), false, `Legacy primary path should not be generated: ${forbiddenPath}`);
+  for (const forbiddenPath of [".leanos/departments", ".leanos/ai-standard", "strategy/roles", "strategy/skills", "strategy/playbooks", "operations/roles", "operations/skills", "operations/playbooks", "growth/roles", "growth/skills", "growth/playbooks"]) {
+    assert.equal(await exists(join(rootDir, forbiddenPath)), false, `Forbidden path should not be generated: ${forbiddenPath}`);
   }
 
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
   assert.equal(yaml.agent.entrypoint, "AGENT.md");
   assert.equal(yaml.agent.navigation_chain.enabled, true);
-  assert.equal(yaml.roles.ownership, "department-first");
-  assert.equal(yaml.skills.ownership, "department-first");
-  assert.equal(yaml.playbooks.ownership, "department-first");
+  assert.equal(yaml.agent.navigation_chain.doc, "ai-standard/navigation-chain.md");
+  assert.equal(yaml.ai_standard.path, "ai-standard/README.md");
+  assert.equal(yaml.roles.ownership, "area-first");
+  assert.equal(yaml.skills.ownership, "area-first");
+  assert.equal(yaml.playbooks.ownership, "area-first");
+  assert.deepEqual(yaml.departments.active, ["strategy", "operations", "growth"]);
 
-  for (const department of yaml.departments.active) {
-    await assertExists(join(rootDir, ".leanos", "departments", department, "README.md"));
+  for (const subarea of yaml.subareas.active) {
+    await assertExists(join(rootDir, subarea.path));
   }
 
-  await assertInitialContextCoherence(rootDir, answers.departments);
+  await assertIndexPathsExist(rootDir);
+  await assertInitialContextCoherence(rootDir, answers.subareas);
 }
 
 async function validateClientWorkspaceFixture() {
   const requiredPaths = [
     "AGENT.md",
     "leanos.yaml",
-    ".leanos/ai-standard/README.md",
-    ".leanos/departments/product/README.md",
+    "ai-standard/README.md",
+    "strategy/product/README.md",
+    "operations/core/mvp/README.md",
+    "operations/design/roles/README.md",
     ".leanos/index/routing-map.yaml",
     ".github/agents/leanos-chief.agent.md",
     ".github/prompts/leanos-init.prompt.md",
@@ -126,6 +166,12 @@ async function validateClientWorkspaceFixture() {
   for (const requiredPath of requiredPaths) {
     if (!(await exists(resolveFixturePath(requiredPath)))) {
       failOutOfDate([`Missing fixture file: ${requiredPath}`]);
+    }
+  }
+
+  for (const forbiddenPath of [".leanos/departments", ".leanos/ai-standard"]) {
+    if (await exists(resolveFixturePath(forbiddenPath))) {
+      failOutOfDate([`Forbidden fixture path exists: ${forbiddenPath}`]);
     }
   }
 
@@ -165,23 +211,28 @@ async function validateClientWorkspaceFixture() {
   }
 }
 
-async function validatePartialDepartmentSelection() {
+async function validatePartialAreaSelection() {
   const rootDir = await mkdtemp(join(tmpdir(), "leanos-partial-"));
-  await generateWorkspace(rootDir, partialDepartmentAnswers);
+  await generateWorkspace(rootDir, partialAreaAnswers);
 
-  await assertExists(join(rootDir, ".leanos", "departments", "product", "README.md"));
-  await assertExists(join(rootDir, ".leanos", "departments", "engineering", "README.md"));
-  assert.equal(await exists(join(rootDir, ".leanos", "departments", "growth", "README.md")), false, "Growth department should not be generated when not active");
-  assert.equal(await exists(join(rootDir, ".leanos", "departments", "validation", "README.md")), false, "Validation department should not be generated when not active");
-  assert.equal(await exists(join(rootDir, ".leanos", "departments", "design", "README.md")), false, "Design department should not be generated when not active");
+  await assertExists(join(rootDir, "strategy", "AGENT.md"));
+  await assertExists(join(rootDir, "operations", "AGENT.md"));
+  await assertExists(join(rootDir, "strategy", "product", "README.md"));
+  await assertExists(join(rootDir, "operations", "engineering", "README.md"));
+  assert.equal(await exists(join(rootDir, "growth", "AGENT.md")), false, "Growth department should not be generated when no Growth area is active");
+  assert.equal(await exists(join(rootDir, "strategy", "validation", "README.md")), false, "Inactive validation area should not be generated");
+  assert.equal(await exists(join(rootDir, "operations", "design", "README.md")), false, "Inactive design area should not be generated");
+  assert.equal(await exists(join(rootDir, "operations", "core", "README.md")), false, "Inactive core area should not be generated");
+  assert.equal(await exists(join(rootDir, "strategy", "roles")), false, "Root Strategy should not own roles directly");
+  assert.equal(await exists(join(rootDir, "operations", "playbooks")), false, "Root Operations should not own playbooks directly");
 
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
-  assert.deepEqual(yaml.departments.active, ["product", "engineering"]);
-  assert.deepEqual(yaml.workflows.active, ["existing-product-audit", "issue-to-pr"]);
-  assert.deepEqual(Object.keys(yaml.roles.active), ["product", "engineering"]);
-  assert.equal(yaml.roles.active.growth, undefined);
-  assert.equal(yaml.roles.active.validation, undefined);
-  assert.equal(yaml.roles.active.design, undefined);
+  assert.deepEqual(yaml.departments.active, ["strategy", "operations"]);
+  assert.deepEqual(yaml.workflows.active, []);
+  assert.deepEqual(Object.keys(yaml.roles.active), ["strategy.product", "operations.engineering"]);
+  assert.equal(yaml.roles.active["growth.marketing"], undefined);
+  assert.equal(yaml.roles.active["strategy.validation"], undefined);
+  assert.equal(yaml.roles.active["operations.design"], undefined);
 
   const rolesIndex = parse(await readFile(join(rootDir, ".leanos", "index", "roles.yaml"), "utf8"));
   const skillsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "skills.yaml"), "utf8"));
@@ -192,24 +243,25 @@ async function validatePartialDepartmentSelection() {
 
   assert(rolesIndex.roles.some((role) => role.key === "product-strategist"), "Product role should be indexed");
   assert(rolesIndex.roles.some((role) => role.key === "senior-developer"), "Engineering role should be indexed");
-  assert.equal(rolesIndex.roles.some((role) => role.key === "growth-lead"), false, "Inactive growth role should not be indexed");
+  assert.equal(rolesIndex.roles.some((role) => role.key === "growth-lead"), false, "Inactive marketing role should not be indexed");
   assert.equal(rolesIndex.roles.some((role) => role.key === "validation-researcher"), false, "Inactive validation role should not be indexed");
   assert.equal(rolesIndex.roles.some((role) => role.key === "ux-lead"), false, "Inactive design role should not be indexed");
 
-  assert.equal(skillsIndex.skills.some((skill) => skill.key === "create-launch-plan"), false, "Inactive growth skill should not be indexed");
-  assert.equal(skillsIndex.skills.some((skill) => skill.key === "define-assumptions"), false, "Inactive validation skill should not be indexed");
-  assert.equal(playbooksIndex.playbooks.some((playbook) => playbook.key === "mvp-launch"), false, "Inactive growth playbook should not be indexed");
+  assert.equal(skillsIndex.skills.some((skill) => skill.key === "create-launch-plan"), false, "Inactive marketing skill should not be indexed");
   assert.equal(playbooksIndex.playbooks.some((playbook) => playbook.key === "mvp-validation"), false, "Inactive validation playbook should not be indexed");
 
-  assert.equal(routingMap.routing.strategy, "../departments/product/README.md");
-  assert.equal(routingMap.routing.engineering, "../departments/engineering/README.md");
-  assert.equal(routingMap.routing.asset_creation, "../ai-standard/README.md");
-  assert.equal(routingMap.routing.growth, undefined);
-  assert.equal(routingMap.routing.validation, undefined);
-  assert.equal(routingMap.routing.ux, undefined);
-  assert.equal(activeWorkflow.includes("- new-product-mvp-validation"), false, "Validation workflow should not be active without Validation department");
+  assert.equal(routingMap.routing.areas.product, "../../strategy/product/README.md");
+  assert.equal(routingMap.routing.areas.engineering, "../../operations/engineering/README.md");
+  assert.equal(routingMap.routing.asset_creation, "../../ai-standard/README.md");
+  assert.equal(routingMap.routing.areas.marketing, undefined);
+  assert.equal(routingMap.routing.areas.validation, undefined);
+  assert.equal(routingMap.routing.areas.design, undefined);
+  assert.equal(activeWorkflow.includes("- new-product-mvp-validation"), false, "Product + Engineering alone should not activate Product + Validation + Core workflow");
   assert(nextActions.includes("/define icp"), "Product-compatible next action should remain when Product is active");
-  await assertInitialContextCoherence(rootDir, partialDepartmentAnswers.departments);
+  assert.equal(nextActions.includes("/define mvp"), false, "Core command should not appear when Core is inactive");
+
+  await assertIndexPathsExist(rootDir);
+  await assertInitialContextCoherence(rootDir, partialAreaAnswers.subareas);
 }
 
 async function validateEngineeringOnlyContext() {
@@ -221,18 +273,19 @@ async function validateEngineeringOnlyContext() {
   const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
   const workspaceSummary = await readFile(join(rootDir, ".leanos", "context", "workspace-summary.md"), "utf8");
 
-  assert.deepEqual(yaml.departments.active, ["engineering"]);
-  assert.deepEqual(yaml.workflows.active, ["issue-to-pr"]);
+  assert.deepEqual(yaml.departments.active, ["operations"]);
+  assert.deepEqual(yaml.workflows.active, []);
+  assert.equal(await exists(join(rootDir, "strategy")), false, "Strategy should not be generated when no Strategy area is active");
+  assert.equal(await exists(join(rootDir, "growth")), false, "Growth should not be generated when no Growth area is active");
   assert.equal(nextActions.includes("/define icp"), false, "Engineering-only workspace should not suggest Product ICP command");
-  assert.equal(nextActions.includes("/define mvp"), false, "Engineering-only workspace should not suggest Product MVP command");
+  assert.equal(nextActions.includes("/define mvp"), false, "Engineering-only workspace should not suggest Core MVP command");
   assert.equal(nextActions.includes("/check coherence"), false, "Engineering-only workspace should not suggest Product coherence command");
-  assert(nextActions.includes("/status"), "Engineering-only workspace should start from status");
-  assert.equal(activeWorkflow.includes("- new-product-mvp-validation"), false, "Engineering-only workspace should not activate Product + Validation workflow");
-  assert.equal(activeWorkflow.includes("- existing-product-audit"), false, "Engineering-only workspace should not activate Product workflow");
-  assert.equal(activeWorkflow.includes("- launch-and-learn"), false, "Engineering-only workspace should not activate Growth + Validation workflow");
-  assert(activeWorkflow.includes("- issue-to-pr"), "Engineering-only workspace should activate Engineering workflow");
-  assert(workspaceSummary.includes("Active departments: engineering"), "Workspace summary should list the active Engineering department");
-  await assertInitialContextCoherence(rootDir, engineeringOnlyAnswers.departments);
+  assert(nextActions.includes("/workon issue"), "Engineering-only workspace should suggest Engineering issue work");
+  assert.equal(activeWorkflow.includes("- issue-to-pr"), false, "Engineering-only workspace should not activate issue-to-pr without Core");
+  assert(workspaceSummary.includes("Active departments: operations"), "Workspace summary should list Operations");
+  assert(workspaceSummary.includes("Active areas: operations.engineering"), "Workspace summary should list the active Engineering area");
+
+  await assertInitialContextCoherence(rootDir, engineeringOnlyAnswers.subareas);
 }
 
 async function validateGrowthValidationContext() {
@@ -245,22 +298,22 @@ async function validateGrowthValidationContext() {
   const workspaceSummary = await readFile(join(rootDir, ".leanos", "context", "workspace-summary.md"), "utf8");
   const routingMap = parse(await readFile(join(rootDir, ".leanos", "index", "routing-map.yaml"), "utf8"));
 
-  assert.deepEqual(yaml.departments.active, ["validation", "growth"]);
+  assert.deepEqual(yaml.departments.active, ["strategy", "growth"]);
   assert.deepEqual(yaml.workflows.active, ["launch-and-learn"]);
-  assert.equal(await exists(join(rootDir, ".leanos", "departments", "product", "README.md")), false, "Product department should not be generated when not active");
-  assert.equal(await exists(join(rootDir, ".leanos", "departments", "engineering", "README.md")), false, "Engineering department should not be generated when not active");
-  assert(activeWorkflow.includes("- launch-and-learn"), "Growth + Validation workspace should activate launch workflow");
-  assert.equal(activeWorkflow.includes("- new-product-mvp-validation"), false, "Growth + Validation workspace should not activate Product + Validation workflow");
-  assert.equal(activeWorkflow.includes("- existing-product-audit"), false, "Growth + Validation workspace should not activate Product workflow");
+  assert.equal(await exists(join(rootDir, "strategy", "product", "README.md")), false, "Product area should not be generated when not active");
+  assert.equal(await exists(join(rootDir, "operations")), false, "Operations department should not be generated when not active");
+  assert(activeWorkflow.includes("- launch-and-learn"), "Growth Marketing + Strategy Validation should activate launch workflow");
+  assert.equal(activeWorkflow.includes("- new-product-mvp-validation"), false, "Growth + Validation workspace should not activate Product + Validation + Core workflow");
   assert.equal(activeWorkflow.includes("- issue-to-pr"), false, "Growth + Validation workspace should not activate Engineering workflow");
   assert.equal(nextActions.includes("/define icp"), false, "Growth + Validation workspace should not suggest Product commands");
   assert.equal(nextActions.includes("/workon issue"), false, "Growth + Validation workspace should not suggest Engineering commands");
-  assert(workspaceSummary.includes("Active departments: validation, growth"), "Workspace summary should use active department order from definitions");
-  assert.equal(routingMap.routing.growth, "../departments/growth/README.md");
-  assert.equal(routingMap.routing.validation, "../departments/validation/README.md");
-  assert.equal(routingMap.routing.strategy, undefined);
-  assert.equal(routingMap.routing.engineering, undefined);
-  await assertInitialContextCoherence(rootDir, growthValidationAnswers.departments);
+  assert(workspaceSummary.includes("Active departments: strategy, growth"), "Workspace summary should use active department order from definitions");
+  assert.equal(routingMap.routing.areas.marketing, "../../growth/marketing/README.md");
+  assert.equal(routingMap.routing.areas.validation, "../../strategy/validation/README.md");
+  assert.equal(routingMap.routing.areas.product, undefined);
+  assert.equal(routingMap.routing.areas.engineering, undefined);
+
+  await assertInitialContextCoherence(rootDir, growthValidationAnswers.subareas);
 }
 
 async function assertVsCodeIntegration(rootDir) {
@@ -272,8 +325,8 @@ async function assertVsCodeIntegration(rootDir) {
   assert(agentFile.includes("AGENT.md"), "LeanOS Chief agent should point to AGENT.md");
   assert(agentFile.includes("leanos.yaml"), "LeanOS Chief agent should point to leanos.yaml");
   assert(agentFile.includes("LeanOS Navigation Chain"), "LeanOS Chief agent should mention the Navigation Chain");
-  assert(agentFile.includes("Respect active departments in `leanos.yaml`"), "LeanOS Chief agent should respect active departments");
-  assert(agentFile.includes("Do not load missing department paths"), "LeanOS Chief agent should avoid missing department paths");
+  assert(agentFile.includes("Respect active departments and areas in `leanos.yaml`"), "LeanOS Chief agent should respect active departments and areas");
+  assert(agentFile.includes("Do not load missing area paths"), "LeanOS Chief agent should avoid missing area paths");
 
   for (const expectedLink of [
     "../../AGENT.md",
@@ -326,8 +379,51 @@ async function validateWriterOverwritesWhenAllowed() {
   assert.equal(await readFile(join(rootDir, "README.md"), "utf8"), "updated\n");
 }
 
-async function assertInitialContextCoherence(rootDir, selectedDepartments) {
-  const activeDepartments = new Set(selectedDepartments);
+async function assertIndexPathsExist(rootDir) {
+  const indexRoot = join(rootDir, ".leanos", "index");
+  const files = ["departments.yaml", "areas.yaml", "roles.yaml", "skills.yaml", "playbooks.yaml", "workflows.yaml", "routing-map.yaml"];
+
+  for (const file of files) {
+    await assertExists(join(indexRoot, file));
+  }
+
+  const documents = await Promise.all(files.map(async (file) => parse(await readFile(join(indexRoot, file), "utf8"))));
+  const paths = [];
+
+  for (const document of documents) {
+    collectPathStrings(document, paths);
+  }
+
+  for (const path of paths) {
+    if (!path.startsWith("../")) continue;
+    await assertExists(resolve(indexRoot, path));
+  }
+}
+
+function collectPathStrings(value, paths) {
+  if (Array.isArray(value)) {
+    for (const item of value) collectPathStrings(item, paths);
+    return;
+  }
+
+  if (value && typeof value === "object") {
+    for (const [key, child] of Object.entries(value)) {
+      if (key === "path" && typeof child === "string") {
+        paths.push(child);
+        continue;
+      }
+      collectPathStrings(child, paths);
+    }
+    return;
+  }
+
+  if (typeof value === "string" && value.startsWith("../")) {
+    paths.push(value);
+  }
+}
+
+async function assertInitialContextCoherence(rootDir, selectedSubareas) {
+  const activeSubareas = new Set(selectedSubareas);
   const initialFiles = [
     "README.md",
     "AGENT.md",
@@ -341,35 +437,34 @@ async function assertInitialContextCoherence(rootDir, selectedDepartments) {
   const activeWorkflow = await readFile(join(rootDir, ".leanos", "context", "active-workflow.md"), "utf8");
 
   const commandRequirements = [
-    { command: "/define icp", department: "product" },
-    { command: "/define mvp", department: "product" },
-    { command: "/check coherence", department: "product" },
-    { command: "/create roadmap", department: "product" },
-    { command: "/create issues", department: "product" },
-    { command: "/workon issue", department: "engineering" },
-    { command: "/create pr", department: "engineering" },
-    { command: "/review pr", department: "engineering" }
+    { command: "/define icp", area: "strategy.product" },
+    { command: "/define mvp", area: "operations.core" },
+    { command: "/check coherence", area: "strategy.product" },
+    { command: "/create roadmap", area: "strategy.roadmap" },
+    { command: "/create issues", area: "operations.core" },
+    { command: "/workon issue", area: "operations.engineering" },
+    { command: "/create pr", area: "operations.engineering" },
+    { command: "/review pr", area: "operations.engineering" }
   ];
 
   const workflowRequirements = [
-    { workflow: "new-product-mvp-validation", departments: ["product", "validation"] },
-    { workflow: "existing-product-audit", departments: ["product"] },
-    { workflow: "issue-to-pr", departments: ["engineering"] },
-    { workflow: "launch-and-learn", departments: ["growth", "validation"] }
+    { workflow: "new-product-mvp-validation", subareas: ["strategy.product", "strategy.validation", "operations.core"] },
+    { workflow: "issue-to-pr", subareas: ["operations.core", "operations.engineering"] },
+    { workflow: "launch-and-learn", subareas: ["growth.marketing", "strategy.validation"] }
   ];
 
   for (const requirement of commandRequirements) {
-    if (!activeDepartments.has(requirement.department)) {
+    if (!activeSubareas.has(requirement.area)) {
       assert.equal(
         initialContent.includes(requirement.command),
         false,
-        `Initial context should not recommend ${requirement.command} without active ${requirement.department}`
+        `Initial context should not recommend ${requirement.command} without active ${requirement.area}`
       );
     }
   }
 
   for (const requirement of workflowRequirements) {
-    const workflowAvailable = requirement.departments.every((department) => activeDepartments.has(department));
+    const workflowAvailable = requirement.subareas.every((subarea) => activeSubareas.has(subarea));
     if (!workflowAvailable) {
       assert.equal(
         activeWorkflow.includes(`- ${requirement.workflow}`),

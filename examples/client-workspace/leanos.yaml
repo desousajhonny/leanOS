@@ -18,51 +18,174 @@ agent:
   context_loading: lazy
   navigation_chain:
     enabled: true
-    doc: .leanos/ai-standard/navigation-chain.md
-  standard_library: .leanos/ai-standard
-governance:
-  mode: balanced
-github:
-  status: not_configured
-  project_sync: disabled
-architecture:
-  stack_status: undefined
+    doc: ai-standard/navigation-chain.md
+  standard_library: ai-standard
 departments:
   active:
-    - product
-    - design
-    - engineering
-    - validation
+    - strategy
+    - operations
     - growth
-roles:
-  ownership: department-first
+  paths:
+    strategy: strategy/README.md
+    operations: operations/README.md
+    growth: growth/README.md
+subareas:
   active:
-    product:
+    - key: strategy.company
+      department: strategy
+      path: strategy/company/README.md
+    - key: strategy.product
+      department: strategy
+      path: strategy/product/README.md
+    - key: strategy.roadmap
+      department: strategy
+      path: strategy/roadmap/README.md
+    - key: strategy.validation
+      department: strategy
+      path: strategy/validation/README.md
+    - key: operations.core
+      department: operations
+      path: operations/core/README.md
+    - key: operations.design
+      department: operations
+      path: operations/design/README.md
+    - key: operations.engineering
+      department: operations
+      path: operations/engineering/README.md
+    - key: operations.devops
+      department: operations
+      path: operations/devops/README.md
+    - key: operations.security
+      department: operations
+      path: operations/security/README.md
+    - key: growth.customer-experience
+      department: growth
+      path: growth/customer-experience/README.md
+    - key: growth.marketing
+      department: growth
+      path: growth/marketing/README.md
+    - key: growth.finance
+      department: growth
+      path: growth/finance/README.md
+roles:
+  ownership: area-first
+  active:
+    strategy.company:
+      - company-strategist
+    strategy.product:
       - product-strategist
       - product-manager
-    design:
-      - ux-lead
-    engineering:
-      - senior-developer
-      - ai-architect
-      - pr-reviewer
-    validation:
+    strategy.roadmap:
+      - roadmap-planner
+    strategy.validation:
       - validation-researcher
-    growth:
+    operations.core:
+      - product-owner
+      - technical-architect
+    operations.design:
+      - ux-lead
+    operations.engineering:
+      - senior-developer
+      - pr-reviewer
+    operations.devops:
+      - devops-engineer
+    operations.security:
+      - security-reviewer
+    growth.customer-experience:
+      - cx-lead
+    growth.marketing:
       - growth-lead
+    growth.finance:
+      - finance-operator
 skills:
-  ownership: department-first
+  ownership: area-first
+  active:
+    strategy.company:
+      - define-company
+      - clarify-operating-model
+    strategy.product:
+      - define-product
+      - define-icp
+      - define-value-proposition
+      - define-business-model
+      - check-coherence
+    strategy.roadmap:
+      - create-roadmap
+      - prioritize-backlog
+    strategy.validation:
+      - define-assumptions
+      - create-interview-script
+      - define-success-metrics
+    operations.core:
+      - define-mvp
+      - write-acceptance-criteria
+      - check-delivery-coherence
+      - define-architecture
+      - create-api-contract
+    operations.design:
+      - map-user-flow
+      - create-screen-spec
+      - define-ux-states
+    operations.engineering:
+      - plan-implementation
+      - write-tests
+      - create-pr
+      - review-pr
+    operations.devops:
+      - setup-ci
+      - plan-deployment
+      - define-observability
+    operations.security:
+      - threat-model
+      - review-security
+    growth.customer-experience:
+      - map-customer-feedback
+      - synthesize-support-patterns
+    growth.marketing:
+      - define-positioning
+      - create-landing-page-copy
+      - create-launch-plan
+    growth.finance:
+      - model-unit-economics
+      - review-pricing
 playbooks:
-  ownership: department-first
+  ownership: area-first
+  active:
+    strategy.company:
+      - company-foundation
+    strategy.product:
+      - product-strategy
+    strategy.roadmap:
+      - validation-cycle-planning
+    strategy.validation:
+      - mvp-validation
+    operations.core:
+      - mvp-delivery
+      - architecture-planning
+    operations.design:
+      - mvp-ux-flow
+    operations.engineering:
+      - issue-to-pr
+      - pr-validation
+    operations.devops:
+      - release-operations
+    operations.security:
+      - security-review
+    growth.customer-experience:
+      - customer-learning-loop
+    growth.marketing:
+      - mvp-launch
+    growth.finance:
+      - finance-review
 workflows:
   active:
     - new-product-mvp-validation
-    - existing-product-audit
     - issue-to-pr
     - launch-and-learn
 ai_standard:
-  enabled: true
-  path: .leanos/ai-standard
-  templates_path: .leanos/ai-standard/templates
-  checklists_path: .leanos/ai-standard/checklists
-  instructions_path: .leanos/ai-standard/instructions
+  path: ai-standard/README.md
+  templates: ai-standard/templates
+  checklists: ai-standard/checklists
+  instructions: ai-standard/instructions
+github:
+  status: not_configured
