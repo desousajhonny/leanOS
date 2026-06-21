@@ -1,9 +1,23 @@
 # Company Profile
 
+## Purpose
+
+Capture the initial company context collected by LeanOS.
+
+## Current State
+
 - Company: LeanOS Example Company
 - Operating mode: founder-plus-ai-agents
 - Current stage: idea
 
-## Draft
+## Decisions
 
-Describe what the company is building, who it serves and why now.
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD

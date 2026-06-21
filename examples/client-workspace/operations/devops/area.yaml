@@ -9,10 +9,9 @@ area:
     - plan-deployment
     - define-observability
   playbooks:
+    - setup-ci-cd
+    - plan-deployment
+    - configure-environments
+    - define-observability
     - release-operations
-  source_of_truth:
-    - environments.md
-    - deployment.md
-    - ci-cd.md
-    - observability.md
-    - runbooks.md
+  source_of_truth: []

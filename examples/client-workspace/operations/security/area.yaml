@@ -9,8 +9,8 @@ area:
     - review-security
   playbooks:
     - security-review
+    - security-checklist
   source_of_truth:
     - threat-model.md
     - data-protection.md
     - access-control.md
-    - security-checklist.md

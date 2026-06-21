@@ -26,6 +26,7 @@ Read:
 ## Playbooks
 
 - `../playbooks/security-review.playbook.md`
+- `../playbooks/security-checklist.playbook.md`
 
 ## Output Style
 

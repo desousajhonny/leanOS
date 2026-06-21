@@ -1,7 +1,21 @@
 # Experiments
 
+## Purpose
+
 Plan validation experiments.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

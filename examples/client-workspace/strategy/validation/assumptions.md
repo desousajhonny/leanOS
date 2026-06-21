@@ -1,7 +1,21 @@
 # Assumptions
 
+## Purpose
+
 List assumptions behind customer, problem, value and MVP.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

@@ -1,5 +1,5 @@
 import type { RootDepartmentDefinition } from "../types.js";
-import { checklist, companyProfile, decisionLog, folderReadme, learningLog, productBrief, titledDraft } from "../content/shared.js";
+import { checklist, companyProfile, decisionLog, folderReadme, learningLog, productBrief, stateDraft, titledDraft } from "../content/shared.js";
 
 export const rootDepartments: RootDepartmentDefinition[] = [
   {
@@ -315,11 +315,10 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         requestTypes: "code, implementation, bugs, tests, issues or pull requests",
         purpose: "Own implementation, tests, code quality and PR readiness.",
         whenToUse: ["implement a feature", "fix a bug", "modify code", "create or review a PR", "write tests", "work on a GitHub issue"],
-        sourceOfTruth: ["implementation-notes.md", "test-plan.md", "code-review-notes.md", "pr-log.md"],
+        sourceOfTruth: ["implementation-notes.md", "code-review-notes.md", "pr-log.md"],
         files: [
-          { path: "implementation-notes.md", content: () => titledDraft("Implementation Notes", "Capture implementation context and decisions.") },
-          { path: "test-plan.md", content: () => titledDraft("Test Plan", "Define automated and manual validation for implementation work.") },
-          { path: "code-review-notes.md", content: () => titledDraft("Code Review Notes", "Capture review observations and risks.") },
+          { path: "implementation-notes.md", content: () => stateDraft("Implementation Notes", "Capture implementation context and decisions.") },
+          { path: "code-review-notes.md", content: () => stateDraft("Code Review Notes", "Capture review observations and risks.") },
           { path: "pr-log.md", content: () => decisionLog("PR Log") }
         ],
         roles: [
@@ -330,7 +329,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             useWhen: ["implement an issue", "fix a bug", "modify code", "write tests", "prepare implementation for a PR"],
             beforeActing: ["../../../.leanos/context/current-focus.md", "../../core/mvp/scope.md", "../../core/mvp/acceptance-criteria.md", "../../core/overview.md", "../implementation-notes.md"],
             skills: ["plan-implementation", "write-tests", "create-pr"],
-            playbooks: ["issue-to-pr", "pr-validation"]
+            playbooks: ["issue-to-pr", "test-planning", "pr-validation"]
           },
           {
             slug: "pr-reviewer",
@@ -350,6 +349,15 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         ],
         playbooks: [
           { slug: "issue-to-pr", title: "Issue to PR", purpose: "Move from a scoped issue to a reviewable pull request.", steps: ["Read issue and MVP scope", "Plan implementation", "Change code", "Update tests", "Prepare PR"] },
+          {
+            slug: "test-planning",
+            title: "Test Planning",
+            purpose: "Plan validation for implementation work without storing procedural test instructions as loose area files.",
+            inputs: ["Implementation scope", "Acceptance criteria", "Changed behavior", "Known risks"],
+            steps: ["Identify changed behavior", "Choose automated and manual validation", "Map tests to acceptance criteria", "Identify risky gaps", "Summarize validation readiness"],
+            outputs: ["Test strategy", "Validation gaps", "Manual checks", "Next action"],
+            filesToUpdate: ["Update `../implementation-notes.md` or PR notes if the workspace needs a persistent test decision."]
+          },
           { slug: "pr-validation", title: "PR Validation", purpose: "Validate implementation before merge.", steps: ["Read PR context", "Check scope", "Review tests", "Check coherence", "Recommend merge or changes"] }
         ],
         commonPaths: [
@@ -366,23 +374,17 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         requestTypes: "deployment, environments, CI, observability or operations runbooks",
         purpose: "Own delivery infrastructure, environments, deployment and observability notes.",
         whenToUse: ["plan deployment", "configure CI", "document environments", "define observability"],
-        sourceOfTruth: ["environments.md", "deployment.md", "ci-cd.md", "observability.md", "runbooks.md"],
-        files: [
-          { path: "environments.md", content: () => titledDraft("Environments", "Document local, staging and production environments.") },
-          { path: "deployment.md", content: () => titledDraft("Deployment", "Define deployment flow and release constraints.") },
-          { path: "ci-cd.md", content: () => titledDraft("CI/CD", "Document build, test and release automation.") },
-          { path: "observability.md", content: () => titledDraft("Observability", "Define logs, metrics, alerts and traces.") },
-          { path: "runbooks.md", content: () => titledDraft("Runbooks", "Capture operational procedures.") }
-        ],
+        sourceOfTruth: [],
+        files: [],
         roles: [
           {
             slug: "devops-engineer",
             title: "DevOps Engineer",
             purpose: "Prepare release, environment and observability practices.",
             useWhen: ["deployment or CI is involved", "runtime operations need documentation", "environment risk exists"],
-            beforeActing: ["../environments.md", "../deployment.md", "../ci-cd.md", "../observability.md"],
+            beforeActing: ["../README.md", "../area.yaml"],
             skills: ["setup-ci", "plan-deployment", "define-observability"],
-            playbooks: ["release-operations"]
+            playbooks: ["setup-ci-cd", "plan-deployment", "configure-environments", "define-observability", "release-operations"]
           }
         ],
         skills: [
@@ -391,10 +393,56 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           { slug: "define-observability", title: "Define Observability", purpose: "Define runtime visibility for the product." }
         ],
         playbooks: [
-          { slug: "release-operations", title: "Release Operations", purpose: "Prepare a release-ready operational path.", steps: ["Read environment docs", "Check CI", "Plan deployment", "Define observability", "Record runbook"] }
+          {
+            slug: "setup-ci-cd",
+            title: "Setup CI/CD",
+            purpose: "Plan build, test and release automation for the workspace.",
+            inputs: ["Repository structure", "Build command", "Test command", "Deployment target", "Required validation gates"],
+            steps: ["Identify build and test commands", "Choose required CI checks", "Define release trigger", "Document secrets or environment needs", "Define failure handling"],
+            outputs: ["CI/CD readiness", "Required checks", "Automation gaps", "Next action"],
+            filesToUpdate: ["Update relevant DevOps notes or GitHub workflow files if the workspace has them."]
+          },
+          {
+            slug: "plan-deployment",
+            title: "Plan Deployment",
+            purpose: "Plan a safe deployment path.",
+            inputs: ["Release scope", "Target environment", "Current validation status", "Known risks"],
+            steps: ["Identify target environment", "Confirm required validation gates", "Define deployment steps", "Define rollback path", "Define post-deploy checks"],
+            outputs: ["Deployment readiness", "Deployment steps", "Risks", "Rollback notes", "Next action"],
+            filesToUpdate: ["Update relevant DevOps notes or release records if the workspace has them."]
+          },
+          {
+            slug: "configure-environments",
+            title: "Configure Environments",
+            purpose: "Plan environment boundaries and configuration without inventing project-specific infrastructure.",
+            inputs: ["Product stage", "Runtime requirements", "Secrets or integration needs", "Deployment target"],
+            steps: ["Identify required environments", "Define environment responsibilities", "List configuration needs", "Identify secrets and access boundaries", "Capture open questions"],
+            outputs: ["Environment plan", "Configuration needs", "Access risks", "Open questions"],
+            filesToUpdate: ["Update relevant DevOps notes or environment records if the workspace has them."]
+          },
+          {
+            slug: "define-observability",
+            title: "Define Observability",
+            purpose: "Define runtime visibility for logs, metrics, alerts and traces.",
+            inputs: ["Critical user flows", "Failure modes", "Runtime architecture", "Support needs"],
+            steps: ["Identify critical signals", "Define logs and metrics", "Choose alert conditions", "Define incident visibility", "List observability gaps"],
+            outputs: ["Observability plan", "Critical signals", "Alert candidates", "Instrumentation gaps", "Next action"],
+            filesToUpdate: ["Update relevant DevOps notes or observability records if the workspace has them."]
+          },
+          {
+            slug: "release-operations",
+            title: "Release Operations",
+            purpose: "Prepare a release-ready operational path.",
+            inputs: ["Release scope", "CI/CD readiness", "Environment plan", "Deployment plan", "Observability plan"],
+            steps: ["Check CI/CD readiness", "Confirm environment target", "Review deployment path", "Confirm observability checks", "Summarize release readiness"],
+            outputs: ["Release readiness", "Blocking risks", "Rollback notes", "Post-release checks", "Next action"],
+            filesToUpdate: ["Update relevant DevOps notes, release records or PR notes if the workspace has them."]
+          }
         ],
         commonPaths: [
-          "DevOps request: role `roles/devops-engineer.role.md` -> skill `skills/plan-deployment.skill.md` -> playbook `playbooks/release-operations.playbook.md`."
+          "Deployment request: role `roles/devops-engineer.role.md` -> skill `skills/plan-deployment.skill.md` -> playbook `playbooks/plan-deployment.playbook.md`.",
+          "CI request: role `roles/devops-engineer.role.md` -> skill `skills/setup-ci.skill.md` -> playbook `playbooks/setup-ci-cd.playbook.md`.",
+          "Observability request: role `roles/devops-engineer.role.md` -> skill `skills/define-observability.skill.md` -> playbook `playbooks/define-observability.playbook.md`."
         ]
       },
       {
@@ -407,12 +455,11 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         requestTypes: "security, privacy, access control, threat model or data protection",
         purpose: "Own security, privacy, access control and threat-modeling context.",
         whenToUse: ["review security risk", "define access control", "document data protection", "threat model a feature"],
-        sourceOfTruth: ["threat-model.md", "data-protection.md", "access-control.md", "security-checklist.md"],
+        sourceOfTruth: ["threat-model.md", "data-protection.md", "access-control.md"],
         files: [
-          { path: "threat-model.md", content: () => titledDraft("Threat Model", "Document assets, threats, trust boundaries and mitigations.") },
-          { path: "data-protection.md", content: () => titledDraft("Data Protection", "Document sensitive data, retention and protection expectations.") },
-          { path: "access-control.md", content: () => titledDraft("Access Control", "Define permissions, roles and access boundaries.") },
-          { path: "security-checklist.md", content: () => checklist("Security Checklist") }
+          { path: "threat-model.md", content: () => stateDraft("Threat Model", "Document assets, threats, trust boundaries and mitigations.") },
+          { path: "data-protection.md", content: () => stateDraft("Data Protection", "Document sensitive data, retention and protection expectations.") },
+          { path: "access-control.md", content: () => stateDraft("Access Control", "Define permissions, roles and access boundaries.") }
         ],
         roles: [
           {
@@ -422,7 +469,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             useWhen: ["security risk is present", "user data is involved", "access control needs definition"],
             beforeActing: ["../threat-model.md", "../data-protection.md", "../access-control.md"],
             skills: ["threat-model", "review-security"],
-            playbooks: ["security-review"]
+            playbooks: ["security-review", "security-checklist"]
           }
         ],
         skills: [
@@ -430,7 +477,16 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           { slug: "review-security", title: "Review Security", purpose: "Review a change or scope for security and privacy risk." }
         ],
         playbooks: [
-          { slug: "security-review", title: "Security Review", purpose: "Review work against security expectations.", steps: ["Read threat model", "Check data protection", "Review access control", "Record risks"] }
+          { slug: "security-review", title: "Security Review", purpose: "Review work against security expectations.", steps: ["Read threat model", "Check data protection", "Review access control", "Record risks"] },
+          {
+            slug: "security-checklist",
+            title: "Security Checklist",
+            purpose: "Run a lightweight security checklist as an executable review process.",
+            inputs: ["Feature or change scope", "Threat model", "Data protection notes", "Access control notes"],
+            steps: ["Check sensitive data exposure", "Check access boundaries", "Check threat mitigations", "Identify open security questions", "Record risks or required follow-up"],
+            outputs: ["Checklist result", "Security risks", "Required follow-up", "Next action"],
+            filesToUpdate: ["Update `../threat-model.md`, `../data-protection.md` or `../access-control.md` when new decisions are discovered."]
+          }
         ],
         commonPaths: [
           "Security request: role `roles/security-reviewer.role.md` -> skill `skills/review-security.skill.md` -> playbook `playbooks/security-review.playbook.md`."

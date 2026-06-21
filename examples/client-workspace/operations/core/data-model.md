@@ -1,7 +1,21 @@
 # Data Model
 
+## Purpose
+
 Describe core entities and relationships.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

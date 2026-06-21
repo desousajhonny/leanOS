@@ -31,6 +31,7 @@ Read:
 ## Playbooks
 
 - `../playbooks/issue-to-pr.playbook.md`
+- `../playbooks/test-planning.playbook.md`
 - `../playbooks/pr-validation.playbook.md`
 
 ## Output Style

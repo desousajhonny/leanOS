@@ -15,6 +15,7 @@ Use when a selected role points to a playbook.
 ## Files
 
 - `security-review.playbook.md`
+- `security-checklist.playbook.md`
 
 ## Related Folders
 

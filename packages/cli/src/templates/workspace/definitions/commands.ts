@@ -1,7 +1,7 @@
 import type { CommandDefinition } from "../types.js";
 
 export const commandDefinitions: CommandDefinition[] = [
-  { slug: "init-leanos", purpose: "Initialize LeanOS by reading AGENT.md, leanos.yaml, current focus and next actions." },
+  { slug: "start-leanos", purpose: "Start LeanOS by reading AGENT.md, leanos.yaml, current focus and next actions." },
   { slug: "status", purpose: "Summarize the current LeanOS workspace status." },
   { slug: "define-icp", purpose: "Define ICP.", area: "strategy.product" },
   { slug: "define-mvp", purpose: "Define MVP scope.", area: "operations.core" },

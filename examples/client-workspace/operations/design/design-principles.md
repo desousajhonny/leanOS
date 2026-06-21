@@ -1,7 +1,21 @@
 # Design Principles
 
+## Purpose
+
 Define UX principles for the product.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

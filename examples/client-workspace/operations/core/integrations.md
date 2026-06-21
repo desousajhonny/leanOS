@@ -1,7 +1,21 @@
 # Integrations
 
+## Purpose
+
 Document external systems and APIs.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

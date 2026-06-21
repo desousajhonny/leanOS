@@ -116,7 +116,7 @@ ${area.whenToUse.map((item) => `- ${item}`).join("\n")}
 
 ## Source of Truth
 
-${area.sourceOfTruth.map((file) => `- \`${file}\``).join("\n")}
+${area.sourceOfTruth.length > 0 ? area.sourceOfTruth.map((file) => `- \`${file}\``).join("\n") : "- No loose source-of-truth files yet. Use playbooks for operational procedures and update persistent notes only when the workspace creates them."}
 
 ## Navigation
 
@@ -214,6 +214,35 @@ ${skill.purpose}
 }
 
 export function playbookFile(area: AreaDefinition, playbook: PlaybookDefinition): string {
+  if (playbook.inputs || playbook.outputs || playbook.filesToUpdate) {
+    return `# ${playbook.title}
+
+## Purpose
+
+${playbook.purpose}
+
+## Inputs
+
+${(playbook.inputs ?? ["Area source-of-truth files", "Active role instructions", "User request"]).map((input) => `- ${input}`).join("\n")}
+
+## Process
+
+${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}
+
+## Output
+
+${(playbook.outputs ?? ["Decision or action summary", "Updated source-of-truth files when requested", "Next recommended LeanOS command"]).map((output) => `- ${output}`).join("\n")}
+
+## Files to Update
+
+${(playbook.filesToUpdate ?? ["Update relevant area source-of-truth files if applicable."]).map((file) => `- ${file}`).join("\n")}
+
+## Navigation
+
+Start from \`../README.md\`, choose a role in \`../roles/\`, load required skills in \`../skills/\`, then use this playbook.
+`;
+  }
+
   return `# ${playbook.title}
 
 ## Purpose

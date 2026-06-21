@@ -166,11 +166,17 @@ playbooks:
       - mvp-ux-flow
     operations.engineering:
       - issue-to-pr
+      - test-planning
       - pr-validation
     operations.devops:
+      - setup-ci-cd
+      - plan-deployment
+      - configure-environments
+      - define-observability
       - release-operations
     operations.security:
       - security-review
+      - security-checklist
     growth.customer-experience:
       - customer-learning-loop
     growth.marketing:

@@ -13,11 +13,7 @@ Own delivery infrastructure, environments, deployment and observability notes.
 
 ## Source of Truth
 
-- `environments.md`
-- `deployment.md`
-- `ci-cd.md`
-- `observability.md`
-- `runbooks.md`
+- No loose source-of-truth files yet. Use playbooks for operational procedures and update persistent notes only when the workspace creates them.
 
 ## Navigation
 
@@ -28,4 +24,6 @@ Own delivery infrastructure, environments, deployment and observability notes.
 
 ## Common Paths
 
-- DevOps request: role `roles/devops-engineer.role.md` -> skill `skills/plan-deployment.skill.md` -> playbook `playbooks/release-operations.playbook.md`.
+- Deployment request: role `roles/devops-engineer.role.md` -> skill `skills/plan-deployment.skill.md` -> playbook `playbooks/plan-deployment.playbook.md`.
+- CI request: role `roles/devops-engineer.role.md` -> skill `skills/setup-ci.skill.md` -> playbook `playbooks/setup-ci-cd.playbook.md`.
+- Observability request: role `roles/devops-engineer.role.md` -> skill `skills/define-observability.skill.md` -> playbook `playbooks/define-observability.playbook.md`.

@@ -1,7 +1,21 @@
 # Prompt Architecture
 
+## Purpose
+
 Define prompt strategy and context boundaries.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

@@ -33,7 +33,7 @@ npx lean-os ai
 The CLI creates the initial LeanOS workspace. After that, the main experience continues inside your editor chat:
 
 ```text
-/init leanos
+/start-leanos
 ```
 
 ## Local Development

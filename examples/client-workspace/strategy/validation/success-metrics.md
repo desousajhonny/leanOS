@@ -1,7 +1,21 @@
 # Success Metrics
 
+## Purpose
+
 Define validation signals.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

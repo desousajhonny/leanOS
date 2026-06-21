@@ -23,15 +23,33 @@ playbooks:
   - key: issue-to-pr
     area: operations.engineering
     path: ../../operations/engineering/playbooks/issue-to-pr.playbook.md
+  - key: test-planning
+    area: operations.engineering
+    path: ../../operations/engineering/playbooks/test-planning.playbook.md
   - key: pr-validation
     area: operations.engineering
     path: ../../operations/engineering/playbooks/pr-validation.playbook.md
+  - key: setup-ci-cd
+    area: operations.devops
+    path: ../../operations/devops/playbooks/setup-ci-cd.playbook.md
+  - key: plan-deployment
+    area: operations.devops
+    path: ../../operations/devops/playbooks/plan-deployment.playbook.md
+  - key: configure-environments
+    area: operations.devops
+    path: ../../operations/devops/playbooks/configure-environments.playbook.md
+  - key: define-observability
+    area: operations.devops
+    path: ../../operations/devops/playbooks/define-observability.playbook.md
   - key: release-operations
     area: operations.devops
     path: ../../operations/devops/playbooks/release-operations.playbook.md
   - key: security-review
     area: operations.security
     path: ../../operations/security/playbooks/security-review.playbook.md
+  - key: security-checklist
+    area: operations.security
+    path: ../../operations/security/playbooks/security-checklist.playbook.md
   - key: customer-learning-loop
     area: growth.customer-experience
     path: ../../growth/customer-experience/playbooks/customer-learning-loop.playbook.md

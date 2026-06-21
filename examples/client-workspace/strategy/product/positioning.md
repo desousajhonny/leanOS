@@ -1,7 +1,21 @@
 # Positioning
 
+## Purpose
+
 Define category, audience, problem and point of view.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

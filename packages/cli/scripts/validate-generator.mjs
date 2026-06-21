@@ -86,16 +86,38 @@ async function validateWorkspaceFiles() {
     "operations/core/mvp/README.md",
     "operations/design/roles/ux-lead.role.md",
     "operations/engineering/playbooks/issue-to-pr.playbook.md",
+    "operations/engineering/playbooks/test-planning.playbook.md",
+    "operations/devops/playbooks/setup-ci-cd.playbook.md",
+    "operations/devops/playbooks/plan-deployment.playbook.md",
+    "operations/devops/playbooks/configure-environments.playbook.md",
+    "operations/devops/playbooks/define-observability.playbook.md",
+    "operations/devops/playbooks/release-operations.playbook.md",
+    "operations/security/playbooks/security-checklist.playbook.md",
     "growth/marketing/playbooks/mvp-launch.playbook.md",
     ".github/leanos/README.md",
     ".github/agents/leanos-chief.agent.md",
+    ".github/prompts/start-leanos.prompt.md",
     ".github/prompts/leanos-init.prompt.md",
+    ".leanos/commands/start-leanos.md",
     ".leanos/vscode/README.md"
   ]) {
     assert(paths.has(expectedPath), `Expected generated path missing: ${expectedPath}`);
   }
 
-  for (const forbiddenPath of [".leanos/departments/README.md", ".leanos/ai-standard/README.md", "strategy/roles/README.md", "operations/skills/README.md", "growth/playbooks/README.md"]) {
+  for (const forbiddenPath of [
+    ".leanos/departments/README.md",
+    ".leanos/ai-standard/README.md",
+    "strategy/roles/README.md",
+    "operations/skills/README.md",
+    "growth/playbooks/README.md",
+    "operations/devops/environments.md",
+    "operations/devops/deployment.md",
+    "operations/devops/ci-cd.md",
+    "operations/devops/observability.md",
+    "operations/devops/runbooks.md",
+    "operations/security/security-checklist.md",
+    "operations/engineering/test-plan.md"
+  ]) {
     assert.equal(paths.has(forbiddenPath), false, `Forbidden generated path should not exist: ${forbiddenPath}`);
   }
 
@@ -115,9 +137,17 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "operations", "core", "mvp", "README.md"));
   await assertExists(join(rootDir, "operations", "design", "playbooks", "mvp-ux-flow.playbook.md"));
   await assertExists(join(rootDir, "operations", "engineering", "skills", "plan-implementation.skill.md"));
+  await assertExists(join(rootDir, "operations", "engineering", "playbooks", "test-planning.playbook.md"));
+  await assertExists(join(rootDir, "operations", "devops", "playbooks", "setup-ci-cd.playbook.md"));
+  await assertExists(join(rootDir, "operations", "devops", "playbooks", "plan-deployment.playbook.md"));
+  await assertExists(join(rootDir, "operations", "devops", "playbooks", "configure-environments.playbook.md"));
+  await assertExists(join(rootDir, "operations", "devops", "playbooks", "define-observability.playbook.md"));
+  await assertExists(join(rootDir, "operations", "security", "playbooks", "security-checklist.playbook.md"));
   await assertExists(join(rootDir, "growth", "marketing", "skills", "create-launch-plan.skill.md"));
   await assertExists(join(rootDir, ".github", "agents", "leanos-chief.agent.md"));
+  await assertExists(join(rootDir, ".github", "prompts", "start-leanos.prompt.md"));
   await assertExists(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"));
+  await assertExists(join(rootDir, ".leanos", "commands", "start-leanos.md"));
   await assertExists(join(rootDir, ".leanos", "vscode", "README.md"));
 
   assert(result.createdGroups.includes("ai-standard/"), "Expected created groups to mention root AI Standard");
@@ -126,8 +156,31 @@ async function validateWorkspaceFiles() {
   assert(result.createdGroups.includes("growth/"), "Expected created groups to mention Growth");
 
   await assertVsCodeIntegration(rootDir);
+  await assertInitCommandRules(rootDir);
+  await assertRootAgentMutationRules(rootDir);
+  await assertOperationalPlaybookSections(rootDir);
+  await assertSourceScaffoldSections(rootDir);
 
-  for (const forbiddenPath of [".leanos/departments", ".leanos/ai-standard", "strategy/roles", "strategy/skills", "strategy/playbooks", "operations/roles", "operations/skills", "operations/playbooks", "growth/roles", "growth/skills", "growth/playbooks"]) {
+  for (const forbiddenPath of [
+    ".leanos/departments",
+    ".leanos/ai-standard",
+    "strategy/roles",
+    "strategy/skills",
+    "strategy/playbooks",
+    "operations/roles",
+    "operations/skills",
+    "operations/playbooks",
+    "growth/roles",
+    "growth/skills",
+    "growth/playbooks",
+    "operations/devops/environments.md",
+    "operations/devops/deployment.md",
+    "operations/devops/ci-cd.md",
+    "operations/devops/observability.md",
+    "operations/devops/runbooks.md",
+    "operations/security/security-checklist.md",
+    "operations/engineering/test-plan.md"
+  ]) {
     assert.equal(await exists(join(rootDir, forbiddenPath)), false, `Forbidden path should not be generated: ${forbiddenPath}`);
   }
 
@@ -157,9 +210,17 @@ async function validateClientWorkspaceFixture() {
     "strategy/product/README.md",
     "operations/core/mvp/README.md",
     "operations/design/roles/README.md",
+    "operations/devops/playbooks/setup-ci-cd.playbook.md",
+    "operations/devops/playbooks/plan-deployment.playbook.md",
+    "operations/devops/playbooks/configure-environments.playbook.md",
+    "operations/devops/playbooks/define-observability.playbook.md",
+    "operations/security/playbooks/security-checklist.playbook.md",
+    "operations/engineering/playbooks/test-planning.playbook.md",
     ".leanos/index/routing-map.yaml",
     ".github/agents/leanos-chief.agent.md",
+    ".github/prompts/start-leanos.prompt.md",
     ".github/prompts/leanos-init.prompt.md",
+    ".leanos/commands/start-leanos.md",
     ".leanos/vscode/README.md"
   ];
 
@@ -169,7 +230,17 @@ async function validateClientWorkspaceFixture() {
     }
   }
 
-  for (const forbiddenPath of [".leanos/departments", ".leanos/ai-standard"]) {
+  for (const forbiddenPath of [
+    ".leanos/departments",
+    ".leanos/ai-standard",
+    "operations/devops/environments.md",
+    "operations/devops/deployment.md",
+    "operations/devops/ci-cd.md",
+    "operations/devops/observability.md",
+    "operations/devops/runbooks.md",
+    "operations/security/security-checklist.md",
+    "operations/engineering/test-plan.md"
+  ]) {
     if (await exists(resolveFixturePath(forbiddenPath))) {
       failOutOfDate([`Forbidden fixture path exists: ${forbiddenPath}`]);
     }
@@ -325,7 +396,8 @@ async function validateGrowthValidationContext() {
 
 async function assertVsCodeIntegration(rootDir) {
   const agentFile = await readFile(join(rootDir, ".github", "agents", "leanos-chief.agent.md"), "utf8");
-  const promptFile = await readFile(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"), "utf8");
+  const startPromptFile = await readFile(join(rootDir, ".github", "prompts", "start-leanos.prompt.md"), "utf8");
+  const aliasPromptFile = await readFile(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"), "utf8");
   const vscodeReadme = await readFile(join(rootDir, ".leanos", "vscode", "README.md"), "utf8");
 
   assert(agentFile.includes("name: LeanOS Chief"), "LeanOS Chief agent should declare its VS Code name");
@@ -334,6 +406,8 @@ async function assertVsCodeIntegration(rootDir) {
   assert(agentFile.includes("LeanOS Navigation Chain"), "LeanOS Chief agent should mention the Navigation Chain");
   assert(agentFile.includes("Respect active departments and areas in `leanos.yaml`"), "LeanOS Chief agent should respect active departments and areas");
   assert(agentFile.includes("Do not load missing area paths"), "LeanOS Chief agent should avoid missing area paths");
+  assert(agentFile.includes("propose-first mode"), "LeanOS Chief agent should use propose-first mode during init");
+  assert(agentFile.includes("Do not enrich roles, skills, playbooks, workflows, commands, `ai-standard/` or `.github/`"), "LeanOS Chief agent should protect operating assets during init");
 
   for (const expectedLink of [
     "../../AGENT.md",
@@ -343,14 +417,125 @@ async function assertVsCodeIntegration(rootDir) {
     "../../.leanos/context/next-actions.md",
     "../../.leanos/index/routing-map.yaml"
   ]) {
-    assert(promptFile.includes(expectedLink), `LeanOS init prompt should reference ${expectedLink}`);
+    assert(startPromptFile.includes(expectedLink), `LeanOS start prompt should reference ${expectedLink}`);
+    assert(aliasPromptFile.includes(expectedLink), `LeanOS init alias prompt should reference ${expectedLink}`);
   }
 
-  assert(promptFile.includes("name: leanos-init"), "LeanOS init prompt should use the safe slash command name");
-  assert(promptFile.includes("agent: 'LeanOS Chief'"), "LeanOS init prompt should target LeanOS Chief");
+  assert(startPromptFile.includes("name: start-leanos"), "LeanOS start prompt should use the primary slash command name");
+  assert(startPromptFile.includes("agent: 'LeanOS Chief'"), "LeanOS start prompt should target LeanOS Chief");
+  assert(startPromptFile.includes("Use propose-first mode"), "LeanOS start prompt should use propose-first mode");
+  assert(startPromptFile.includes("Write only after explicit user confirmation"), "LeanOS start prompt should require confirmation before writes");
+  assert(startPromptFile.includes("Do not modify roles, skills, playbooks, workflows, commands, `ai-standard/`, `.github/`"), "LeanOS start prompt should protect operating assets");
+  assert(aliasPromptFile.includes("name: leanos-init"), "LeanOS init alias prompt should keep the legacy slash command name");
+  assert(aliasPromptFile.includes("Prefer `/start-leanos`"), "LeanOS init alias prompt should point users to /start-leanos");
   assert(vscodeReadme.includes(".github/agents/leanos-chief.agent.md"), "VS Code README should document the agent path");
-  assert(vscodeReadme.includes("/leanos-init"), "VS Code README should document the safe prompt command");
+  assert(vscodeReadme.includes("/start-leanos"), "VS Code README should document the primary start command");
+  assert(vscodeReadme.includes("/leanos-init"), "VS Code README should document the legacy alias command");
   assert.equal(await exists(join(rootDir, ".vscode", "settings.json")), false, "Generator should not write VS Code workspace settings");
+}
+
+async function assertInitCommandRules(rootDir) {
+  const startCommand = await readFile(join(rootDir, ".leanos", "commands", "start-leanos.md"), "utf8");
+  const requiredSections = ["## Purpose", "## Load First", "## What To Do", "## Allowed Updates", "## Forbidden Updates", "## Confirmation Rule", "## Output"];
+  const forbiddenTargets = ["`roles/`", "`skills/`", "`playbooks/`", "`workflows/`", "`../../ai-standard/`", "`../commands/`", "`../../.github/`"];
+  const strategyTargets = [
+    "../../strategy/company/profile.md",
+    "../../strategy/product/brief.md",
+    "../../strategy/validation/assumptions.md",
+    "../../strategy/roadmap/roadmap.md"
+  ];
+
+  for (const section of requiredSections) {
+    assert(startCommand.includes(section), `start-leanos.md should include ${section}`);
+  }
+
+  for (const target of forbiddenTargets) {
+    assert(startCommand.includes(target), `start-leanos.md should forbid ${target}`);
+  }
+
+  for (const target of strategyTargets) {
+    assert(startCommand.includes(target), `start-leanos.md should mention Strategy source-of-truth target ${target}`);
+  }
+
+  assert(startCommand.includes("# /start-leanos"), "start-leanos.md should document the primary command");
+  assert(startCommand.includes("Never write files during init until the user explicitly confirms"), "start-leanos.md should require explicit confirmation before writes");
+  assert(startCommand.includes("Operations or Growth area files unless the user explicitly asks after init"), "start-leanos.md should keep Operations/Growth out of init scope");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands", "init-leanos.md")), false, "init-leanos.md should not be generated as an internal command");
+}
+
+async function assertRootAgentMutationRules(rootDir) {
+  const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
+  const operatingRules = await readFile(join(rootDir, ".leanos", "agent", "operating-rules.md"), "utf8");
+
+  assert(rootAgent.includes("## Workspace Mutation Rules"), "AGENT.md should include Workspace Mutation Rules");
+  assert(rootAgent.includes("## Command Handling"), "AGENT.md should include portable command handling");
+  assert(rootAgent.includes("LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface"), "AGENT.md should make commands model-agnostic");
+  assert(rootAgent.includes("`.leanos/commands/start-leanos.md`"), "AGENT.md should map /start-leanos to its command file");
+  assert(rootAgent.includes("When the user invokes legacy `/leanos-init`, treat it as `/start-leanos`"), "AGENT.md should document the legacy init alias");
+  assert(rootAgent.includes("Source-of-truth files describe what the company knows"), "AGENT.md should explain source-of-truth files");
+  assert(rootAgent.includes("Operating assets describe how LeanOS works"), "AGENT.md should explain operating assets");
+  assert(rootAgent.includes("Do not enrich roles, skills, playbooks, workflows, commands or `ai-standard/`"), "AGENT.md should protect operating assets during init");
+  assert(rootAgent.includes("`/create role`, `/create skill` or `/create playbook`"), "AGENT.md should route operating asset customization to creation commands");
+  assert(operatingRules.includes("LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface"), "operating rules should make commands model-agnostic");
+  assert(operatingRules.includes("For `/start-leanos`, load `../commands/start-leanos.md` before acting"), "operating rules should map /start-leanos to its command file");
+  assert(operatingRules.includes("During `/start-leanos`, propose source-of-truth updates first"), "operating rules should require propose-first start");
+  assert(operatingRules.includes("Treat `/leanos-init` as a legacy alias for `/start-leanos`"), "operating rules should document the legacy init alias");
+  assert(operatingRules.includes("Do not modify roles, skills, playbooks, workflows, commands, `ai-standard/` or `.github/` during init"), "operating rules should protect operating assets during init");
+}
+
+async function assertOperationalPlaybookSections(rootDir) {
+  const playbooks = [
+    "operations/engineering/playbooks/test-planning.playbook.md",
+    "operations/devops/playbooks/setup-ci-cd.playbook.md",
+    "operations/devops/playbooks/plan-deployment.playbook.md",
+    "operations/devops/playbooks/configure-environments.playbook.md",
+    "operations/devops/playbooks/define-observability.playbook.md",
+    "operations/devops/playbooks/release-operations.playbook.md",
+    "operations/security/playbooks/security-checklist.playbook.md"
+  ];
+  const requiredSections = ["## Purpose", "## Inputs", "## Process", "## Output", "## Files to Update", "## Navigation"];
+
+  for (const playbook of playbooks) {
+    const content = await readFile(join(rootDir, playbook), "utf8");
+
+    for (const section of requiredSections) {
+      assert(content.includes(section), `${playbook} should include ${section}`);
+    }
+  }
+}
+
+async function assertSourceScaffoldSections(rootDir) {
+  const scaffoldFiles = [
+    "strategy/company/profile.md",
+    "strategy/company/decision-log.md",
+    "strategy/product/brief.md",
+    "strategy/company/mission.md",
+    "strategy/product/icp.md",
+    "strategy/roadmap/roadmap.md",
+    "strategy/validation/assumptions.md",
+    "strategy/validation/learning-log.md",
+    "operations/core/overview.md",
+    "operations/core/technical-decisions.md",
+    "operations/core/mvp/scope.md",
+    "operations/core/mvp/release-checklist.md",
+    "operations/design/screen-specs.md",
+    "operations/design/ux-decisions.md",
+    "operations/engineering/implementation-notes.md",
+    "operations/engineering/pr-log.md",
+    "operations/security/threat-model.md",
+    "growth/customer-experience/customer-feedback.md",
+    "growth/marketing/landing-page.md",
+    "growth/finance/pricing.md"
+  ];
+  const requiredSections = ["## Purpose", "## Current State", "## Decisions", "## Open Questions", "## Next Update"];
+
+  for (const scaffoldFile of scaffoldFiles) {
+    const content = await readFile(join(rootDir, scaffoldFile), "utf8");
+
+    for (const section of requiredSections) {
+      assert(content.includes(section), `${scaffoldFile} should include ${section}`);
+    }
+  }
 }
 
 async function validateWriterSkipsExistingFiles() {

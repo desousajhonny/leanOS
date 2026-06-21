@@ -23,7 +23,8 @@ client-workspace/
 |   |   |-- project-sync.yaml
 |   |   `-- README.md
 |   |-- prompts/
-|   |   `-- leanos-init.prompt.md
+|   |   |-- leanos-init.prompt.md
+|   |   `-- start-leanos.prompt.md
 |   |-- workflows/
 |   |   `-- pr-validation.yml
 |   |-- copilot-instructions.md
@@ -47,9 +48,9 @@ client-workspace/
 |   |   |-- create-skill.md
 |   |   |-- define-icp.md
 |   |   |-- define-mvp.md
-|   |   |-- init-leanos.md
 |   |   |-- README.md
 |   |   |-- review-pr.md
+|   |   |-- start-leanos.md
 |   |   |-- status.md
 |   |   `-- workon-issue.md
 |   |-- context/
@@ -245,8 +246,12 @@ client-workspace/
 |   |   `-- ux-decisions.md
 |   |-- devops/
 |   |   |-- playbooks/
+|   |   |   |-- configure-environments.playbook.md
+|   |   |   |-- define-observability.playbook.md
+|   |   |   |-- plan-deployment.playbook.md
 |   |   |   |-- README.md
-|   |   |   `-- release-operations.playbook.md
+|   |   |   |-- release-operations.playbook.md
+|   |   |   `-- setup-ci-cd.playbook.md
 |   |   |-- roles/
 |   |   |   |-- devops-engineer.role.md
 |   |   |   `-- README.md
@@ -256,17 +261,13 @@ client-workspace/
 |   |   |   |-- README.md
 |   |   |   `-- setup-ci.skill.md
 |   |   |-- area.yaml
-|   |   |-- ci-cd.md
-|   |   |-- deployment.md
-|   |   |-- environments.md
-|   |   |-- observability.md
-|   |   |-- README.md
-|   |   `-- runbooks.md
+|   |   `-- README.md
 |   |-- engineering/
 |   |   |-- playbooks/
 |   |   |   |-- issue-to-pr.playbook.md
 |   |   |   |-- pr-validation.playbook.md
-|   |   |   `-- README.md
+|   |   |   |-- README.md
+|   |   |   `-- test-planning.playbook.md
 |   |   |-- roles/
 |   |   |   |-- pr-reviewer.role.md
 |   |   |   |-- README.md
@@ -281,11 +282,11 @@ client-workspace/
 |   |   |-- code-review-notes.md
 |   |   |-- implementation-notes.md
 |   |   |-- pr-log.md
-|   |   |-- README.md
-|   |   `-- test-plan.md
+|   |   `-- README.md
 |   |-- security/
 |   |   |-- playbooks/
 |   |   |   |-- README.md
+|   |   |   |-- security-checklist.playbook.md
 |   |   |   `-- security-review.playbook.md
 |   |   |-- roles/
 |   |   |   |-- README.md
@@ -298,7 +299,6 @@ client-workspace/
 |   |   |-- area.yaml
 |   |   |-- data-protection.md
 |   |   |-- README.md
-|   |   |-- security-checklist.md
 |   |   `-- threat-model.md
 |   |-- workflows/
 |   |   |-- mvp-to-pr.workflow.md

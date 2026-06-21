@@ -1,7 +1,21 @@
 # Ideal Customer Profile
 
+## Purpose
+
 Define the first customer segment to validate.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

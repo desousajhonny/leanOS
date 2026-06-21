@@ -1,7 +1,21 @@
 # Success Moments
 
+## Purpose
+
 Document when customers get value.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

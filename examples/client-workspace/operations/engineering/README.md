@@ -16,7 +16,6 @@ Own implementation, tests, code quality and PR readiness.
 ## Source of Truth
 
 - `implementation-notes.md`
-- `test-plan.md`
 - `code-review-notes.md`
 - `pr-log.md`
 

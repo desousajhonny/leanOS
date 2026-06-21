@@ -195,7 +195,7 @@ export async function runAiPrompts(): Promise<AiPromptResult> {
   note(
     [
       `VS Code agent: ${ui.path(".github/agents/leanos-chief.agent.md")}`,
-      `Safe prompt command: ${ui.command("/leanos-init")}`,
+      `Start command: ${ui.command("/start-leanos")}`,
       "LeanOS Chief only dispatches to the framework files generated in this workspace."
     ].join("\n"),
     stepLabel(4, 5, "LeanOS Chief")

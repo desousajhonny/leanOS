@@ -1,7 +1,21 @@
 # Revenue Model
 
+## Purpose
+
 Define revenue streams and assumptions.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

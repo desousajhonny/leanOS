@@ -12,9 +12,9 @@ area:
     - review-pr
   playbooks:
     - issue-to-pr
+    - test-planning
     - pr-validation
   source_of_truth:
     - implementation-notes.md
-    - test-plan.md
     - code-review-notes.md
     - pr-log.md

@@ -15,16 +15,20 @@ VS Code detects workspace custom agents from `.github/agents`.
 Open Copilot Chat, select `LeanOS Chief`, then start with:
 
 ```text
-/init leanos
+/start-leanos
 ```
 
-If VS Code routes `/init` to its native command, use the safe workspace prompt:
+Legacy workspaces may still use:
 
 ```text
 /leanos-init
 ```
 
-The prompt file is:
+The primary prompt file is:
+
+`.github/prompts/start-leanos.prompt.md`
+
+The legacy alias file is:
 
 `.github/prompts/leanos-init.prompt.md`
 

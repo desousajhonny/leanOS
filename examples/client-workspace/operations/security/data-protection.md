@@ -1,7 +1,21 @@
 # Data Protection
 
+## Purpose
+
 Document sensitive data, retention and protection expectations.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

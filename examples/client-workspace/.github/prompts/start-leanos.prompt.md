@@ -1,13 +1,11 @@
 ---
-name: leanos-init
-description: Legacy alias for start-leanos.
+name: start-leanos
+description: Start LeanOS Chief for this workspace.
 agent: 'LeanOS Chief'
 ---
-# Initialize LeanOS
+# Start LeanOS
 
-This prompt is a legacy alias. Prefer `/start-leanos` for new workspaces.
-
-Treat this prompt exactly like `/start-leanos`.
+Treat this prompt as the safe workspace bootstrap for LeanOS Chief.
 
 Load:
 

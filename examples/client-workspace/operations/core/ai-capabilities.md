@@ -1,7 +1,21 @@
 # AI Capabilities
 
+## Purpose
+
 Define AI features and responsibilities.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

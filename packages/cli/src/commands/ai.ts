@@ -12,7 +12,7 @@ export async function runAiCommand(): Promise<void> {
   note(
     [
       `This wizard prepares the workspace structure and ${ui.title("LeanOS Chief")}.`,
-      `After setup, continue in your editor chat with ${ui.command("/leanos-init")}.`
+      `After setup, continue in your editor chat with ${ui.command("/start-leanos")}.`
     ].join("\n"),
     "Welcome"
   );

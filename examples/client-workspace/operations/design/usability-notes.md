@@ -1,7 +1,21 @@
 # Usability Notes
 
+## Purpose
+
 Capture usability observations.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

@@ -1,7 +1,7 @@
 ---
 name: LeanOS Chief
 description: Operate LeanOS workspaces through AGENT.md, runtime commands, active departments, areas, roles, skills and playbooks.
-argument-hint: Start with /init leanos or /leanos-init
+argument-hint: Start with /start-leanos
 ---
 # LeanOS Chief
 
@@ -14,7 +14,7 @@ Always start from `AGENT.md` and `leanos.yaml`.
 `ai-standard/` is the standard library for creating and validating LeanOS assets.
 The client operating workspace lives in `strategy/`, `operations/` and `growth/`.
 
-On `/init leanos`, load:
+On `/start-leanos`, load:
 
 - [AGENT.md](../../AGENT.md)
 - [leanos.yaml](../../leanos.yaml)
@@ -28,6 +28,10 @@ For any LeanOS slash command, load `.leanos/commands/<command>.md`. Normalize sp
 Follow the LeanOS Navigation Chain:
 
 `AGENT.md -> Department AGENT.md/README.md -> Area README -> Role -> Skills -> Playbook -> Output`
+
+During `/start-leanos` or legacy `/leanos-init`, use propose-first mode: propose source-of-truth updates and write only after explicit user confirmation.
+Use company/product context to update source-of-truth files, primarily in `strategy/`.
+Do not enrich roles, skills, playbooks, workflows, commands, `ai-standard/` or `.github/` with company/product context during init.
 
 Respect active departments and areas in `leanos.yaml`.
 Do not load missing area paths.

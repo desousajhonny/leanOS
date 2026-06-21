@@ -3,18 +3,38 @@ import type { WorkspaceAnswers } from "../types.js";
 export function companyProfile(answers: WorkspaceAnswers): string {
   return `# Company Profile
 
+## Purpose
+
+Capture the initial company context collected by LeanOS.
+
+## Current State
+
 - Company: ${answers.companyName}
 - Operating mode: ${answers.mode}
 - Current stage: ${answers.stage}
 
-## Draft
+## Decisions
 
-Describe what the company is building, who it serves and why now.
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
 `;
 }
 
 export function productBrief(answers: WorkspaceAnswers): string {
   return `# Product Brief
+
+## Purpose
+
+Capture the initial product context collected by LeanOS.
+
+## Current State
 
 - Product: ${answers.productName}
 - Type: ${answers.productType}
@@ -25,9 +45,17 @@ export function productBrief(answers: WorkspaceAnswers): string {
 
 ${answers.description}
 
-## Draft
+## Decisions
 
-Clarify customer, problem, value proposition, MVP and validation path.
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
 `;
 }
 
@@ -65,11 +93,29 @@ ${agentNotes}
 }
 
 export function titledDraft(title: string, guidance: string): string {
+  return stateDraft(title, guidance);
+}
+
+export function stateDraft(title: string, purpose: string): string {
   return `# ${title}
 
-${guidance}
+## Purpose
 
-## Draft
+${purpose}
+
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD
 `;
@@ -78,14 +124,54 @@ TBD
 export function decisionLog(title: string): string {
   return `# ${title}
 
+## Purpose
+
+Capture durable decisions and why they were made.
+
+## Current State
+
+No decisions recorded yet.
+
+## Decisions
+
 | Date | Decision | Context | Owner |
 | --- | --- | --- | --- |
 | TBD | TBD | TBD | TBD |
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
 `;
 }
 
 export function learningLog(): string {
   return `# Learning Log
+
+## Purpose
+
+Capture validated learning and its impact on the workspace.
+
+## Current State
+
+No learning recorded yet.
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+
+## Learning Entries
 
 | Date | Source | Learning | Impact |
 | --- | --- | --- | --- |
@@ -95,6 +181,28 @@ export function learningLog(): string {
 
 export function checklist(title: string): string {
   return `# ${title}
+
+## Purpose
+
+Track readiness without inventing project-specific facts.
+
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+
+## Checklist
 
 - [ ] Context reviewed
 - [ ] Scope is coherent
@@ -141,6 +249,8 @@ export function creationInstructions(assetName: string): string {
 }
 
 export function formatCommandInvocation(slug: string): string {
+  if (slug === "start-leanos") return "/start-leanos";
+
   return `/${slug.replace(/-/g, " ")}`;
 }
 

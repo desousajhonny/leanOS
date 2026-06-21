@@ -16,7 +16,6 @@ Own security, privacy, access control and threat-modeling context.
 - `threat-model.md`
 - `data-protection.md`
 - `access-control.md`
-- `security-checklist.md`
 
 ## Navigation
 

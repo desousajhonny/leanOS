@@ -106,7 +106,10 @@ export type PlaybookDefinition = {
   slug: string;
   title: string;
   purpose: string;
+  inputs?: string[];
   steps: string[];
+  outputs?: string[];
+  filesToUpdate?: string[];
 };
 
 export type WorkflowDefinition = {

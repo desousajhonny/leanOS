@@ -14,6 +14,18 @@ Read these files first:
 - `.leanos/context/next-actions.md`
 - `.leanos/index/routing-map.yaml`
 
+## Command Handling
+
+LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface.
+
+When the user invokes `/start-leanos`, load `.leanos/commands/start-leanos.md` and follow it.
+
+When the user invokes legacy `/leanos-init`, treat it as `/start-leanos`.
+
+For any LeanOS slash command, normalize the command to kebab-case and load `.leanos/commands/<command>.md` before acting.
+
+If the command file is missing, do not invent the command. Explain what is missing and route through the active context instead.
+
 ## Navigation Chain
 
 `AGENT.md -> Department AGENT.md/README.md -> Area README -> Role -> Skills -> Playbook -> Output`
@@ -21,6 +33,18 @@ Read these files first:
 Do not jump directly to implementation.
 Do not load every file.
 Load the smallest relevant department, area, role, skill and playbook.
+
+## Workspace Mutation Rules
+
+Source-of-truth files describe what the company knows: strategy, product context, validation learning, operating state and decisions.
+
+Operating assets describe how LeanOS works: roles, skills, playbooks, workflows, commands, AI Standard and GitHub/VS Code support.
+
+During `/start-leanos`, use propose-first mode. Propose source-of-truth updates first and write only after explicit user confirmation.
+
+Do not enrich roles, skills, playbooks, workflows, commands or `ai-standard/` with company/product context during init.
+
+Customize operating assets only when the user explicitly asks to change LeanOS itself, usually through `/create role`, `/create skill` or `/create playbook`.
 
 ## LeanOS Runtime
 

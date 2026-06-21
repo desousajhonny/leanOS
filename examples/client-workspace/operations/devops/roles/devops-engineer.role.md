@@ -14,10 +14,8 @@ Prepare release, environment and observability practices.
 
 Read:
 
-- `../environments.md`
-- `../deployment.md`
-- `../ci-cd.md`
-- `../observability.md`
+- `../README.md`
+- `../area.yaml`
 
 ## Skills
 
@@ -27,6 +25,10 @@ Read:
 
 ## Playbooks
 
+- `../playbooks/setup-ci-cd.playbook.md`
+- `../playbooks/plan-deployment.playbook.md`
+- `../playbooks/configure-environments.playbook.md`
+- `../playbooks/define-observability.playbook.md`
 - `../playbooks/release-operations.playbook.md`
 
 ## Output Style

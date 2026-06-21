@@ -1,7 +1,21 @@
 # Acceptance Criteria
 
+## Purpose
+
 Define completion criteria.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD

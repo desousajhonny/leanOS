@@ -12,7 +12,7 @@ This workspace separates LeanOS runtime files from the client's operating struct
 For any AI model:
 
 \`\`\`text
-/leanos-init
+/start-leanos
 \`\`\`
 
 Then start from:
@@ -46,7 +46,7 @@ ${activeAreas.map((area) => `- \`${area.path}/\` ${area.purpose}`).join("\n")}
 Open Copilot Chat, select \`LeanOS Chief\`, and run:
 
 \`\`\`text
-/leanos-init
+/start-leanos
 \`\`\`
 `;
 }

@@ -4,23 +4,33 @@
 
 Prepare a release-ready operational path.
 
-## Area
+## Inputs
 
-`operations/devops`
+- Release scope
+- CI/CD readiness
+- Environment plan
+- Deployment plan
+- Observability plan
 
-## Sequence
+## Process
 
-1. Read environment docs
-2. Check CI
-3. Plan deployment
-4. Define observability
-5. Record runbook
+1. Check CI/CD readiness
+2. Confirm environment target
+3. Review deployment path
+4. Confirm observability checks
+5. Summarize release readiness
 
-## Outputs
+## Output
 
-- Decision or action summary
-- Updated source-of-truth files when requested
-- Next recommended LeanOS command
+- Release readiness
+- Blocking risks
+- Rollback notes
+- Post-release checks
+- Next action
+
+## Files to Update
+
+- Update relevant DevOps notes, release records or PR notes if the workspace has them.
 
 ## Navigation
 

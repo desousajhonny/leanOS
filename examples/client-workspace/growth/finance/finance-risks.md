@@ -1,7 +1,21 @@
 # Finance Risks
 
+## Purpose
+
 Capture risks around pricing, runway and unit economics.
 
-## Draft
+## Current State
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
 
 TBD
