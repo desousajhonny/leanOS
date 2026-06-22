@@ -2,15 +2,11 @@
 
 ## Purpose
 
-Quality checklists for LeanOS assets.
+Quality gates for LeanOS assets.
 
 ## When to Use
 
-Use before accepting newly created or modified assets.
-
-## Source of Truth
-
-`role-quality-checklist.md`
+Use before accepting a newly created or modified asset.
 
 ## Files
 
@@ -22,16 +18,20 @@ Use before accepting newly created or modified assets.
 - `readme-quality-checklist.md`
 - `role-quality-checklist.md`
 - `skill-quality-checklist.md`
+- `workflow-quality-checklist.md`
 
 ## Related Folders
 
+- `../foundation/`
 - `../templates/`
 - `../instructions/`
 
 ## Navigation
 
-Use this README to choose the next specific file. Do not load unrelated files.
+1. Confirm the asset type in `../foundation/asset-taxonomy.md`.
+2. Use the matching checklist only.
+3. If no checklist matches, use `../foundation/quality-criteria.md` and ask before creating a new checklist.
 
 ## Agent Notes
 
-Run the relevant checklist before final output.
+Do not treat all checklists as interchangeable. Each checklist protects a different asset type.

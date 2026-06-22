@@ -128,6 +128,15 @@ async function validateWorkspaceFiles() {
     "ai-standard/templates/github/github-epic-template.md",
     "ai-standard/templates/review/README.md",
     "ai-standard/templates/review/code-review-template.md",
+    "ai-standard/checklists/agent-quality-checklist.md",
+    "ai-standard/checklists/area-quality-checklist.md",
+    "ai-standard/checklists/command-quality-checklist.md",
+    "ai-standard/checklists/department-quality-checklist.md",
+    "ai-standard/checklists/playbook-quality-checklist.md",
+    "ai-standard/checklists/readme-quality-checklist.md",
+    "ai-standard/checklists/role-quality-checklist.md",
+    "ai-standard/checklists/skill-quality-checklist.md",
+    "ai-standard/checklists/workflow-quality-checklist.md",
     ".leanos/index/areas.yaml",
     ".leanos/index/routing-map.yaml",
     "strategy/AGENT.md",
@@ -349,6 +358,7 @@ async function validateWorkspaceFiles() {
   await assertDesignFoundation(rootDir);
   await assertAiStandardAssetTaxonomy(rootDir);
   await assertAiStandardTemplates(rootDir);
+  await assertAiStandardChecklists(rootDir);
   await assertInitCommandRules(rootDir);
   await assertRootAgentMutationRules(rootDir);
   await assertOperationalPlaybookSections(rootDir);
@@ -1092,6 +1102,40 @@ async function assertAiStandardTemplates(rootDir) {
   assert(githubReadme.includes("github-epic-template.md"), "GitHub templates README should list epic template");
   assert(githubReadme.includes("pull-request-template.md"), "GitHub templates README should list PR template");
   assert(reviewReadme.includes("code-review-template.md"), "Review templates README should list code review template");
+}
+
+async function assertAiStandardChecklists(rootDir) {
+  const checklistsReadme = await readFile(join(rootDir, "ai-standard", "checklists", "README.md"), "utf8");
+  const agentChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "agent-quality-checklist.md"), "utf8");
+  const readmeChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "readme-quality-checklist.md"), "utf8");
+  const departmentChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "department-quality-checklist.md"), "utf8");
+  const areaChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "area-quality-checklist.md"), "utf8");
+  const roleChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "role-quality-checklist.md"), "utf8");
+  const skillChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "skill-quality-checklist.md"), "utf8");
+  const playbookChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "playbook-quality-checklist.md"), "utf8");
+  const workflowChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "workflow-quality-checklist.md"), "utf8");
+  const commandChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "command-quality-checklist.md"), "utf8");
+
+  assert(checklistsReadme.includes("workflow-quality-checklist.md"), "Checklists README should list workflow checklist");
+  assert(checklistsReadme.includes("Do not treat all checklists as interchangeable"), "Checklists README should explain checklist specificity");
+  assert(agentChecklist.includes("Root agents route only to departments"), "Agent checklist should validate root routing boundaries");
+  assert(agentChecklist.includes("does not try to be a full inventory"), "Agent checklist should prevent giant inventories");
+  assert(readmeChecklist.includes("The README is a map, not the operator"), "README checklist should define README responsibility");
+  assert(readmeChecklist.includes("does not duplicate the full content of child files"), "README checklist should prevent duplication");
+  assert(departmentChecklist.includes("does not contain `roles/`, `skills/` or `playbooks/` directly"), "Department checklist should enforce area-first execution assets");
+  assert(departmentChecklist.includes("Department workflows coordinate across areas or stages"), "Department checklist should validate workflow ownership");
+  assert(areaChecklist.includes("has `roles/`, `skills/` and `playbooks/`"), "Area checklist should validate execution folders");
+  assert(areaChecklist.includes("Area AGENT, when present, chooses the specialist role"), "Area checklist should validate area routing");
+  assert(roleChecklist.includes("with which hat should the agent act"), "Role checklist should validate persona responsibility");
+  assert(roleChecklist.includes("points to relevant skills"), "Role checklist should require skill pointers");
+  assert(skillChecklist.includes("one reusable capability"), "Skill checklist should validate reusable capability");
+  assert(skillChecklist.includes("does not become a full process sequence"), "Skill checklist should avoid playbook duplication");
+  assert(playbookChecklist.includes("ordered execution sequence"), "Playbook checklist should validate sequencing");
+  assert(playbookChecklist.includes("uses skills rather than duplicating all skill content"), "Playbook checklist should avoid skill duplication");
+  assert(workflowChecklist.includes("does not live in `.leanos/workflows/`"), "Workflow checklist should keep workflows local to departments or areas");
+  assert(workflowChecklist.includes("defines handoffs between owners"), "Workflow checklist should validate handoffs");
+  assert(commandChecklist.includes("Allowed updates are explicit"), "Command checklist should validate allowed updates");
+  assert(commandChecklist.includes("Remote writes require confirmation"), "Command checklist should validate remote write safety");
 }
 
 async function assertDesignFoundation(rootDir) {

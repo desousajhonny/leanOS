@@ -207,16 +207,16 @@ Principio: nao fazer apenas reorganizacao visual. Cada pasta, template, checklis
 
 ### 7.3 Tornar checklists especificos por asset
 
-- [ ] Substituir checklists genericos identicos por checklists especificos.
-- [ ] `agent-quality-checklist.md`: validar roteamento, red lines, nivel correto e ausencia de inventario excessivo.
-- [ ] `readme-quality-checklist.md`: validar mapa de pasta, quando usar, arquivos, relacionados e notas de navegacao.
-- [ ] `department-quality-checklist.md`: validar areas ativas, workflows locais, ausencia de roles/skills/playbooks no root.
-- [ ] `area-quality-checklist.md`: validar `AGENT.md` quando necessario, `area.yaml`, knowledge, roles, skills e playbooks.
-- [ ] `role-quality-checklist.md`: validar responsabilidade, contexto necessario, skills/playbooks apontados e output esperado.
-- [ ] `skill-quality-checklist.md`: validar capability reutilizavel, limites, checks, outputs e red lines.
-- [ ] `playbook-quality-checklist.md`: validar sequencia, entradas, processo, outputs e arquivos atualizaveis.
-- [ ] `workflow-quality-checklist.md`: adicionar checklist de workflow se ainda nao existir.
-- [ ] `command-quality-checklist.md`: validar load first, allowed updates, forbidden updates, confirmation rule e output.
+- [x] Substituir checklists genericos identicos por checklists especificos.
+- [x] `agent-quality-checklist.md`: validar roteamento, red lines, nivel correto e ausencia de inventario excessivo.
+- [x] `readme-quality-checklist.md`: validar mapa de pasta, quando usar, arquivos, relacionados e notas de navegacao.
+- [x] `department-quality-checklist.md`: validar areas ativas, workflows locais, ausencia de roles/skills/playbooks no root.
+- [x] `area-quality-checklist.md`: validar `AGENT.md` quando necessario, `area.yaml`, knowledge, roles, skills e playbooks.
+- [x] `role-quality-checklist.md`: validar responsabilidade, contexto necessario, skills/playbooks apontados e output esperado.
+- [x] `skill-quality-checklist.md`: validar capability reutilizavel, limites, checks, outputs e red lines.
+- [x] `playbook-quality-checklist.md`: validar sequencia, entradas, processo, outputs e arquivos atualizaveis.
+- [x] `workflow-quality-checklist.md`: adicionar checklist de workflow se ainda nao existir.
+- [x] `command-quality-checklist.md`: validar load first, allowed updates, forbidden updates, confirmation rule e output.
 - [ ] Criar checklists GitHub/review se fizer sentido apos reorganizar templates.
 
 ### 7.4 Tornar instructions especificas por criacao

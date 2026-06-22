@@ -88,7 +88,8 @@ client-workspace/
 |   |   |-- readme-quality-checklist.md
 |   |   |-- README.md
 |   |   |-- role-quality-checklist.md
-|   |   `-- skill-quality-checklist.md
+|   |   |-- skill-quality-checklist.md
+|   |   `-- workflow-quality-checklist.md
 |   |-- examples/
 |   |   |-- example-agent.md
 |   |   |-- example-folder-readme.md
