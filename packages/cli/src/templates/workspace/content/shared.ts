@@ -1,11 +1,11 @@
 import type { WorkspaceAnswers } from "../types.js";
 
-export function companyProfile(answers: WorkspaceAnswers): string {
-  return `# Company Profile
+export function businessProfile(answers: WorkspaceAnswers): string {
+  return `# Business Profile
 
 ## Purpose
 
-Capture the initial company context collected by LeanOS.
+Capture the initial business context collected by LeanOS.
 
 ## Current State
 

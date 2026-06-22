@@ -238,43 +238,6 @@ client-workspace/
 |   |-- department.yaml
 |   `-- README.md
 |-- operations/
-|   |-- core/
-|   |   |-- mvp/
-|   |   |   |-- acceptance-criteria.md
-|   |   |   |-- non-goals.md
-|   |   |   |-- README.md
-|   |   |   |-- release-checklist.md
-|   |   |   |-- scope.md
-|   |   |   |-- user-flows.md
-|   |   |   `-- user-stories.md
-|   |   |-- playbooks/
-|   |   |   |-- architecture-planning.playbook.md
-|   |   |   |-- epic-to-subissues.playbook.md
-|   |   |   |-- mvp-delivery.playbook.md
-|   |   |   `-- README.md
-|   |   |-- roles/
-|   |   |   |-- product-owner.role.md
-|   |   |   |-- README.md
-|   |   |   `-- technical-architect.role.md
-|   |   |-- skills/
-|   |   |   |-- check-delivery-coherence.skill.md
-|   |   |   |-- create-api-contract.skill.md
-|   |   |   |-- define-architecture.skill.md
-|   |   |   |-- define-mvp.skill.md
-|   |   |   |-- README.md
-|   |   |   |-- shape-epic.skill.md
-|   |   |   |-- write-acceptance-criteria.skill.md
-|   |   |   `-- write-subissue-criteria.skill.md
-|   |   |-- ai-capabilities.md
-|   |   |-- api-contract.md
-|   |   |-- area.yaml
-|   |   |-- data-model.md
-|   |   |-- integrations.md
-|   |   |-- overview.md
-|   |   |-- prompt-architecture.md
-|   |   |-- README.md
-|   |   |-- system-context.md
-|   |   `-- technical-decisions.md
 |   |-- design/
 |   |   |-- knowledge/
 |   |   |   |-- accessibility.md
@@ -328,6 +291,17 @@ client-workspace/
 |   |   |-- area.yaml
 |   |   `-- README.md
 |   |-- engineering/
+|   |   |-- knowledge/
+|   |   |   |-- code-review-notes.md
+|   |   |   |-- code-standards.md
+|   |   |   |-- component-guidelines.md
+|   |   |   |-- data-guidelines.md
+|   |   |   |-- implementation-notes.md
+|   |   |   |-- implementation-rules.md
+|   |   |   |-- pr-log.md
+|   |   |   |-- README.md
+|   |   |   |-- review-criteria.md
+|   |   |   `-- testing-strategy.md
 |   |   |-- playbooks/
 |   |   |   |-- branch-from-issue.playbook.md
 |   |   |   |-- issue-to-pr.playbook.md
@@ -337,18 +311,55 @@ client-workspace/
 |   |   |-- roles/
 |   |   |   |-- pr-reviewer.role.md
 |   |   |   |-- README.md
-|   |   |   `-- senior-developer.role.md
+|   |   |   |-- senior-developer.role.md
+|   |   |   `-- test-engineer.role.md
 |   |   |-- skills/
 |   |   |   |-- create-branch.skill.md
 |   |   |   |-- create-pr.skill.md
+|   |   |   |-- follow-code-standards.skill.md
 |   |   |   |-- plan-implementation.skill.md
 |   |   |   |-- README.md
+|   |   |   |-- review-data-change.skill.md
 |   |   |   |-- review-pr.skill.md
 |   |   |   `-- write-tests.skill.md
+|   |   |-- AGENT.md
 |   |   |-- area.yaml
-|   |   |-- code-review-notes.md
-|   |   |-- implementation-notes.md
-|   |   |-- pr-log.md
+|   |   `-- README.md
+|   |-- product-ops/
+|   |   |-- knowledge/
+|   |   |   |-- delivery-context.md
+|   |   |   |-- issue-readiness.md
+|   |   |   |-- overview.md
+|   |   |   |-- README.md
+|   |   |   `-- technical-decisions.md
+|   |   |-- mvp/
+|   |   |   |-- acceptance-criteria.md
+|   |   |   |-- non-goals.md
+|   |   |   |-- prd.md
+|   |   |   |-- README.md
+|   |   |   |-- release-checklist.md
+|   |   |   |-- scope.md
+|   |   |   |-- user-flows.md
+|   |   |   `-- user-stories.md
+|   |   |-- playbooks/
+|   |   |   |-- delivery-readiness.playbook.md
+|   |   |   |-- epic-to-subissues.playbook.md
+|   |   |   |-- mvp-delivery.playbook.md
+|   |   |   `-- README.md
+|   |   |-- roles/
+|   |   |   |-- delivery-architect.role.md
+|   |   |   |-- product-owner.role.md
+|   |   |   `-- README.md
+|   |   |-- skills/
+|   |   |   |-- check-delivery-coherence.skill.md
+|   |   |   |-- define-delivery-boundaries.skill.md
+|   |   |   |-- define-mvp.skill.md
+|   |   |   |-- README.md
+|   |   |   |-- shape-epic.skill.md
+|   |   |   |-- write-acceptance-criteria.skill.md
+|   |   |   `-- write-subissue-criteria.skill.md
+|   |   |-- AGENT.md
+|   |   |-- area.yaml
 |   |   `-- README.md
 |   |-- security/
 |   |   |-- playbooks/
@@ -376,26 +387,38 @@ client-workspace/
 |   |-- department.yaml
 |   `-- README.md
 |-- strategy/
-|   |-- company/
+|   |-- business/
+|   |   |-- knowledge/
+|   |   |   |-- decision-log.md
+|   |   |   |-- mission.md
+|   |   |   |-- operating-model.md
+|   |   |   |-- principles.md
+|   |   |   |-- profile.md
+|   |   |   |-- README.md
+|   |   |   `-- vision.md
 |   |   |-- playbooks/
-|   |   |   |-- company-foundation.playbook.md
+|   |   |   |-- business-foundation.playbook.md
 |   |   |   `-- README.md
 |   |   |-- roles/
-|   |   |   |-- company-strategist.role.md
+|   |   |   |-- business-strategist.role.md
 |   |   |   `-- README.md
 |   |   |-- skills/
 |   |   |   |-- clarify-operating-model.skill.md
-|   |   |   |-- define-company.skill.md
+|   |   |   |-- define-business-identity.skill.md
 |   |   |   `-- README.md
+|   |   |-- AGENT.md
 |   |   |-- area.yaml
-|   |   |-- decision-log.md
-|   |   |-- mission.md
-|   |   |-- operating-model.md
-|   |   |-- principles.md
-|   |   |-- profile.md
-|   |   |-- README.md
-|   |   `-- vision.md
+|   |   `-- README.md
 |   |-- product/
+|   |   |-- knowledge/
+|   |   |   |-- brief.md
+|   |   |   |-- business-model-canvas.md
+|   |   |   |-- icp.md
+|   |   |   |-- jobs-to-be-done.md
+|   |   |   |-- positioning.md
+|   |   |   |-- problem.md
+|   |   |   |-- README.md
+|   |   |   `-- value-proposition.md
 |   |   |-- playbooks/
 |   |   |   |-- product-strategy.playbook.md
 |   |   |   `-- README.md
@@ -411,20 +434,20 @@ client-workspace/
 |   |   |   |-- define-value-proposition.skill.md
 |   |   |   |-- evaluate-idea.skill.md
 |   |   |   `-- README.md
+|   |   |-- AGENT.md
 |   |   |-- area.yaml
-|   |   |-- brief.md
-|   |   |-- business-model-canvas.md
-|   |   |-- icp.md
-|   |   |-- jobs-to-be-done.md
-|   |   |-- positioning.md
-|   |   |-- problem.md
-|   |   |-- README.md
-|   |   `-- value-proposition.md
+|   |   `-- README.md
 |   |-- roadmap/
+|   |   |-- knowledge/
+|   |   |   |-- backlog.md
+|   |   |   |-- current-cycle.md
+|   |   |   |-- milestones.md
+|   |   |   |-- README.md
+|   |   |   `-- roadmap.md
 |   |   |-- playbooks/
 |   |   |   |-- README.md
-|   |   |   |-- roadmap-sync-prep.playbook.md
-|   |   |   `-- validation-cycle-planning.playbook.md
+|   |   |   |-- roadmap-cycle-planning.playbook.md
+|   |   |   `-- roadmap-sync-prep.playbook.md
 |   |   |-- roles/
 |   |   |   |-- README.md
 |   |   |   `-- roadmap-planner.role.md
@@ -433,12 +456,9 @@ client-workspace/
 |   |   |   |-- prepare-roadmap-sync.skill.md
 |   |   |   |-- prioritize-backlog.skill.md
 |   |   |   `-- README.md
+|   |   |-- AGENT.md
 |   |   |-- area.yaml
-|   |   |-- backlog.md
-|   |   |-- current-cycle.md
-|   |   |-- milestones.md
-|   |   |-- README.md
-|   |   `-- roadmap.md
+|   |   `-- README.md
 |   |-- validation/
 |   |   |-- playbooks/
 |   |   |   |-- mvp-validation.playbook.md

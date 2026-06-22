@@ -12,8 +12,8 @@ Understand user context, behavior, pain points and research signals before desig
 
 Read:
 
-- `../../../strategy/product/brief.md`
-- `../../core/mvp/scope.md`
+- `../../../strategy/product/knowledge/brief.md`
+- `../../product-ops/mvp/scope.md`
 - `../knowledge/design-system.md`
 - `../knowledge/accessibility.md`
 - `../knowledge/user-flows.md`

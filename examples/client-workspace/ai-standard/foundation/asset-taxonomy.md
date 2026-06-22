@@ -64,7 +64,7 @@ Example: `operations/design/README.md` explains the Design area, its knowledge f
 - Do not store narrative product context or company facts in it.
 - Agents should use it when they need machine-readable structure.
 
-Example: `operations/department.yaml` lists areas such as Core, Design, Engineering, DevOps and Security.
+Example: `operations/department.yaml` lists areas such as Product Ops, Design, Engineering, DevOps and Security.
 
 ### `area.yaml`
 
@@ -136,7 +136,7 @@ A workflow is a multi-step flow that moves work across areas or across a departm
 - Do not place business workflows in `.leanos/workflows/`; `.leanos/` is runtime support.
 - Agents should use workflows to coordinate owners, then enter the relevant area and role.
 
-Example: `operations/workflows/issue-delivery-cycle.workflow.md` can coordinate Core, Design, Engineering and Security for issue delivery.
+Example: `operations/workflows/issue-delivery-cycle.workflow.md` can coordinate Product Ops, Design, Engineering and Security for issue delivery.
 
 ### Command
 

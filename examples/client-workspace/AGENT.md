@@ -25,6 +25,7 @@ Read these files first:
 - Do not load the whole workspace when a smaller route exists.
 - Do not write secrets to tracked files.
 - Ask before modifying knowledge, decision or framework files.
+- Do not create or modify LeanOS framework assets from memory. Route through `ai-standard/README.md`.
 - During `/start-leanos`, do not enrich roles, skills, playbooks, workflows, commands or `ai-standard/` with company/product context.
 - Do not modify source-of-truth, decision, framework or runtime files until the user explicitly confirms the proposed changes.
 
@@ -94,11 +95,11 @@ Do not load the whole workspace when a smaller route exists.
 Use this section only to choose the owning department. The department `AGENT.md` chooses the workflow or area.
 
 - Strategy: `strategy/AGENT.md`
-  Use for company, product strategy, roadmap, validation, ICP or assumptions.
+  Use for business, product strategy, roadmap, validation, ICP or assumptions.
   Map: `strategy/README.md`
 
 - Operations: `operations/AGENT.md`
-  Use for MVP, architecture, design, engineering, implementation, DevOps or security.
+  Use for MVP scope, issue readiness, design, engineering, implementation, DevOps or security.
   Map: `operations/README.md`
 
 - Growth: `growth/AGENT.md`
@@ -110,14 +111,27 @@ Use this section only to choose the owning department. The department `AGENT.md`
 `.leanos/` contains runtime files for commands, context, indexes and VS Code integration.
 `.leanos/` does not own business workflows. Operational workflows live in root departments or their areas, such as `strategy/workflows/` and `operations/workflows/`.
 
-`ai-standard/` contains reusable templates, instructions and quality criteria.
+`ai-standard/` is the framework standards router for creating, changing, reviewing or validating LeanOS assets.
 
-## Asset Creation Routing
+## Framework Standards Routing
 
-If the user asks to create or change a LeanOS role, skill, playbook, workflow, command, template, checklist or standard:
+Use `ai-standard/README.md` only when the user asks to create, change, review or validate LeanOS framework assets.
+
+Framework assets include:
+
+- roles, skills, playbooks, workflows and commands
+- `AGENT.md` files and README files
+- templates, checklists and instructions
+- `department.yaml` and `area.yaml`
+
+Do not guess the correct template, checklist or instruction from memory.
+
+When framework standards are needed:
 
 1. Load `ai-standard/README.md`.
-2. Load the matching creation instruction from `ai-standard/instructions/`.
-3. Use the matching template from `ai-standard/templates/`.
-4. Validate with the matching checklist from `ai-standard/checklists/`.
-5. Ask before writing framework assets.
+2. Follow its route to the smallest needed foundation, instruction, template, checklist or example.
+3. State the selected asset type, owner and target path.
+4. Propose the change before writing.
+5. Validate with the matching checklist before final output.
+
+Do not use `ai-standard/` to define product strategy, MVP, roadmap, design, engineering work or growth work. Route those through the Navigation Chain first.

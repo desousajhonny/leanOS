@@ -11,12 +11,13 @@ Create a safe branch plan before implementation starts.
 - Current default branch
 - Existing branch list when available
 - Branch rules
+- Skill: create-branch
 
 ## Process
 
 1. Read the issue context and title
 2. Load `.github/leanos/branch-rules.md`
-3. Generate a branch name using the required issue format
+3. Use `skills/create-branch.skill.md` to generate a branch name using the required issue format
 4. Check for sensitive words or unnecessary scope
 5. Ask before using an existing branch or creating a new one
 
@@ -29,8 +30,8 @@ Create a safe branch plan before implementation starts.
 
 ## Files to Update
 
-- Do not update files just to create a branch plan. Record branch decisions in `../implementation-notes.md` only when the user asks for persistent notes.
+- Do not update files just to create a branch plan. Record branch decisions in `../knowledge/implementation-notes.md` only when the user asks for persistent notes.
 
 ## Navigation
 
-Start from `../README.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.

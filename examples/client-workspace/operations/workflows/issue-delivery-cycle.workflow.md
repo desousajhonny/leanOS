@@ -6,7 +6,7 @@ Coordinate Operations areas from issue interpretation to branch, implementation,
 
 ## Required Areas
 
-- core
+- product-ops
 - engineering
 
 ## Availability

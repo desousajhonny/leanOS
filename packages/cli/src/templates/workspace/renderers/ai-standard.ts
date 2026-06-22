@@ -390,7 +390,7 @@ The founder asks to implement a specific GitHub issue.
 
 ## Participating Areas
 
-- Core: confirms MVP scope and issue readiness.
+- Product Ops: confirms MVP scope, issue readiness and delivery boundaries.
 - Engineering: plans, implements, tests and prepares PR.
 - Design: conditional, only when UX changes.
 - Security: conditional, only when data, auth, permissions, privacy, abuse risk or compliance is involved.
@@ -437,7 +437,7 @@ Prepare the MVP Design foundation before implementation.
 - \`../../operations/design/skills/user-flow-mapping.skill.md\`
 - \`../../operations/design/playbooks/design-foundation.playbook.md\`
 - \`../../strategy/product/README.md\`
-- \`../../operations/core/mvp/scope.md\`
+- \`../../operations/product-ops/mvp/scope.md\`
 
 ## Process
 
@@ -1328,26 +1328,37 @@ function aiStandardReadme(): string {
 
 ## Purpose
 
-LeanOS standards for creating, reviewing and routing AI-native workspace assets.
+LeanOS source-of-truth for creating, reviewing and routing AI-native framework assets.
 
 ## When to Use
 
 Use this folder before creating or changing agents, departments, areas, roles, skills, playbooks, workflows, commands, templates, checklists or instructions.
 
-## How to Navigate
+## Fast Route
 
-Load only the smallest route needed:
+Use this route for most asset creation work:
 
-1. Use \`foundation/asset-taxonomy.md\` when deciding what type of asset something is.
-2. Use \`foundation/navigation-chain.md\` when deciding how an agent should route work.
-3. Use \`foundation/creation-rules.md\` before creating or changing framework assets.
-4. Use \`foundation/naming-conventions.md\` before naming files or folders.
-5. Use \`foundation/quality-criteria.md\` before accepting an asset.
-6. Use \`foundation/folder-documentation-rules.md\` when creating or reviewing folder documentation.
-7. Use \`instructions/\` for the step-by-step creation process.
-8. Use \`templates/\` for the starting structure.
-9. Use \`checklists/\` before final output.
-10. Use \`examples/\` only as references.
+1. Decide the asset type with \`foundation/asset-taxonomy.md\`.
+2. Confirm placement and boundaries with \`foundation/creation-rules.md\`.
+3. Confirm naming with \`foundation/naming-conventions.md\`.
+4. Load the matching file in \`instructions/\`.
+5. Use the matching starter in \`templates/\`.
+6. Validate the result with the matching file in \`checklists/\`.
+7. Open \`examples/\` only if a reference would improve quality.
+
+## Decision Map
+
+| Need | Go To | Why |
+| --- | --- | --- |
+| Decide what kind of asset something is | \`foundation/asset-taxonomy.md\` | Defines AGENT, README, YAML, role, skill, playbook, knowledge, workflow and command. |
+| Decide how a model should move through the workspace | \`foundation/navigation-chain.md\` | Defines owner-first navigation and prevents route skipping. |
+| Decide whether a new file should exist | \`foundation/creation-rules.md\` | Prevents asset sprawl and duplicated ownership. |
+| Name a file or folder | \`foundation/naming-conventions.md\` | Keeps names predictable and machine-readable. |
+| Judge quality when no specific checklist is enough | \`foundation/quality-criteria.md\` | Provides universal quality and rejection criteria. |
+| Create a folder README | \`foundation/folder-documentation-rules.md\` and \`instructions/create-readme-instructions.md\` | Keeps README files as maps, not executors. |
+| Create an asset | \`instructions/\` then \`templates/\` | Gives the procedure and the starting shape. |
+| Review an asset before accepting it | \`checklists/\` | Applies the right quality gate for the asset type. |
+| See what good looks like | \`examples/\` | Provides reference shape only, not active context. |
 
 ## Routes
 
@@ -1371,6 +1382,25 @@ Creation procedures. Use when the user asks to create or update a LeanOS asset.
 
 Illustrative examples. Use only for reference; active workspace context wins.
 
+## Creation Flow
+
+For any new LeanOS asset:
+
+1. Load only this README and the smallest matching files.
+2. State the selected asset type and owner.
+3. State the target path.
+4. Use the matching instruction and template.
+5. Validate with the matching checklist.
+6. Ask before writing framework files.
+
+## Do Not Load By Default
+
+- Do not load every foundation file.
+- Do not load every template category.
+- Do not load every checklist.
+- Do not load examples unless a reference is needed.
+- Do not let examples override active workspace context.
+
 ## Files
 
 - \`foundation/\`
@@ -1387,6 +1417,8 @@ Illustrative examples. Use only for reference; active workspace context wins.
 ## Agent Notes
 
 Do not load all of \`ai-standard/\` by default. Choose the smallest foundation file, instruction, template and checklist needed for the active request.
+
+If the next route is unclear, start with \`foundation/asset-taxonomy.md\`.
 `;
 }
 
@@ -1762,7 +1794,7 @@ Example: \`operations/design/README.md\` explains the Design area, its knowledge
 - Do not store narrative product context or company facts in it.
 - Agents should use it when they need machine-readable structure.
 
-Example: \`operations/department.yaml\` lists areas such as Core, Design, Engineering, DevOps and Security.
+Example: \`operations/department.yaml\` lists areas such as Product Ops, Design, Engineering, DevOps and Security.
 
 ### \`area.yaml\`
 
@@ -1834,7 +1866,7 @@ A workflow is a multi-step flow that moves work across areas or across a departm
 - Do not place business workflows in \`.leanos/workflows/\`; \`.leanos/\` is runtime support.
 - Agents should use workflows to coordinate owners, then enter the relevant area and role.
 
-Example: \`operations/workflows/issue-delivery-cycle.workflow.md\` can coordinate Core, Design, Engineering and Security for issue delivery.
+Example: \`operations/workflows/issue-delivery-cycle.workflow.md\` can coordinate Product Ops, Design, Engineering and Security for issue delivery.
 
 ### Command
 
@@ -1919,6 +1951,7 @@ Read these files first:
 - Do not load the whole workspace when a smaller route exists.
 - Do not write secrets to tracked files.
 - Ask before modifying knowledge, decision or framework files.
+- Do not create or modify LeanOS framework assets from memory. Route through \`ai-standard/README.md\`.
 - During \`/start-leanos\`, do not enrich roles, skills, playbooks, workflows, commands or \`ai-standard/\` with company/product context.
 - Do not modify source-of-truth, decision, framework or runtime files until the user explicitly confirms the proposed changes.
 
@@ -1996,17 +2029,30 @@ Use this section only to choose the owning department. The department \`AGENT.md
 \`.leanos/\` contains runtime files for commands, context, indexes and VS Code integration.
 \`.leanos/\` does not own business workflows. Operational workflows live in root departments or their areas.
 
-\`ai-standard/\` contains reusable templates, instructions and quality criteria.
+\`ai-standard/\` is the framework standards router for creating, changing, reviewing or validating LeanOS assets.
 
-## Asset Creation Routing
+## Framework Standards Routing
 
-If the user asks to create or change a LeanOS role, skill, playbook, workflow, command, template, checklist or standard:
+Use \`ai-standard/README.md\` only when the user asks to create, change, review or validate LeanOS framework assets.
+
+Framework assets include:
+
+- roles, skills, playbooks, workflows and commands
+- \`AGENT.md\` files and README files
+- templates, checklists and instructions
+- \`department.yaml\` and \`area.yaml\`
+
+Do not guess the correct template, checklist or instruction from memory.
+
+When framework standards are needed:
 
 1. Load \`ai-standard/README.md\`.
-2. Load the matching creation instruction from \`ai-standard/instructions/\`.
-3. Use the matching template from \`ai-standard/templates/\`.
-4. Validate with the matching checklist from \`ai-standard/checklists/\`.
-5. Ask before writing framework assets.
+2. Follow its route to the smallest needed foundation, instruction, template, checklist or example.
+3. State the selected asset type, owner and target path.
+4. Propose the change before writing.
+5. Validate with the matching checklist before final output.
+
+Do not use \`ai-standard/\` to define product strategy, MVP, roadmap, design, engineering work or growth work. Route those through the Navigation Chain first.
 `;
 }
 

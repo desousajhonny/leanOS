@@ -38,11 +38,11 @@ export type DetectedProject = {
   gitRemoteOrigin?: string;
 };
 export type Subarea =
-  | "strategy.company"
+  | "strategy.business"
   | "strategy.product"
   | "strategy.roadmap"
   | "strategy.validation"
-  | "operations.core"
+  | "operations.product-ops"
   | "operations.design"
   | "operations.engineering"
   | "operations.devops"
@@ -86,6 +86,8 @@ export type AreaDefinition = {
   requestTypes: string;
   purpose: string;
   whenToUse: string[];
+  operatingRules?: string[];
+  redLines?: string[];
   sourceOfTruth: string[];
   files: AreaFileDefinition[];
   roles: RoleDefinition[];

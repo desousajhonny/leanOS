@@ -4,24 +4,55 @@
 
 Evaluate a founder idea against user value, evidence, MVP scope and roadmap impact.
 
-## Area
+## Use When
 
-`strategy/product`
+- the founder proposes a new idea
+- a feature request may change direction
+- roadmap priority needs product judgment
+
+## Required Context
+
+- ../knowledge/brief.md
+- ../knowledge/problem.md
+- ../knowledge/value-proposition.md
+- ../../roadmap/knowledge/backlog.md
 
 ## Inputs
 
-- Area source-of-truth files
-- Active role instructions
-- User request
+- Idea
+- Expected user value
+- Evidence
+- MVP impact
+- Roadmap impact
 
 ## Process
 
-1. Read the minimum relevant source-of-truth files.
-2. Apply this skill to the user request.
-3. Prepare a concise output or file update.
+1. Restate the idea.
+2. Identify the user and problem it serves.
+3. Check fit with ICP and value proposition.
+4. Name assumptions and evidence gaps.
+5. Recommend accept, park, validate or reject.
+
+## Checks
+
+- Idea is tied to a user outcome.
+- Roadmap impact is explicit.
+- Validation need is clear.
 
 ## Output
 
-- Summary
-- Decisions
-- Suggested file updates
+- Idea evaluation
+- Assumptions
+- Recommended decision
+- Roadmap or validation follow-up
+
+## Files to Update
+
+- ../../roadmap/knowledge/backlog.md
+- ../../validation/assumptions.md
+
+## Red Lines
+
+- Do not add ideas directly to roadmap as committed work.
+- Do not skip validation risk.
+- Do not implement from idea evaluation alone.

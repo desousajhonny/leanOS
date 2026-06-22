@@ -2,7 +2,7 @@ area:
   key: strategy.roadmap
   department: strategy
   path: strategy/roadmap
-  agent: null
+  agent: AGENT.md
   readme: README.md
   roles:
     - roadmap-planner
@@ -11,10 +11,10 @@ area:
     - prioritize-backlog
     - prepare-roadmap-sync
   playbooks:
-    - validation-cycle-planning
+    - roadmap-cycle-planning
     - roadmap-sync-prep
   source_of_truth:
-    - roadmap.md
-    - milestones.md
-    - current-cycle.md
-    - backlog.md
+    - knowledge/roadmap.md
+    - knowledge/milestones.md
+    - knowledge/current-cycle.md
+    - knowledge/backlog.md

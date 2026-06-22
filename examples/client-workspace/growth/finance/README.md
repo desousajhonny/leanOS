@@ -19,6 +19,9 @@ Own pricing, revenue model, unit economics, budget and financial risks.
 - `budget.md`
 - `finance-risks.md`
 
+
+
+
 ## Navigation
 
 1. Choose the relevant role from `roles/`.

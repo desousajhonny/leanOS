@@ -2,36 +2,31 @@
 
 ## Purpose
 
-Own MVP execution, architecture, design, engineering, DevOps and security.
+Own product operations, design, engineering, DevOps and security for delivery.
 
-## When to Use
-
-Use for MVP, architecture, design, engineering, implementation, DevOps or security.
-
-## Source of Truth
-
-`department.yaml`
+Use for MVP scope, issue readiness, design, engineering, implementation, DevOps or security.
 
 ## Files
 
-- `AGENT.md`
-- `department.yaml`
-- `workflows/`
-- `core/`
-- `design/`
-- `engineering/`
-- `devops/`
-- `security/`
+- `AGENT.md`: department operating owner. It routes requests to the right area or department workflow.
+- `README.md`: this map.
+- `department.yaml`: machine-readable structure for active areas and workflows.
+- `workflows/`: cross-area workflows owned by this department.
+- `product-ops/`: Turn Strategy and Roadmap into MVP scope, acceptance criteria and implementation-ready work.
+- `design/`: Own the MVP design foundation, accessibility baseline and user-flow clarity before implementation.
+- `engineering/`: Own implementation, tests, code quality and PR readiness.
+- `devops/`: Own delivery infrastructure, environments, deployment, GitHub workflow setup and observability notes.
+- `security/`: Own security, privacy, access control and threat-modeling context.
+
+## Start Here
+
+`AGENT.md`
 
 ## Related Folders
 
 - `../.leanos/index/`
 - `../ai-standard/`
 
-## Navigation
-
-Use this README to choose the next specific file. Do not load unrelated files.
-
 ## Agent Notes
 
-This department root does not own roles, skills or playbooks directly. Route into an active area.
+This department root does not own roles, skills or playbooks directly. Route into an active area before loading execution assets.

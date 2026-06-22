@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Translate strategy into coherent scope, stories and priorities with Operations Core.
+Translate strategy into coherent scope, stories and priorities with Product Ops.
 
 ## Use When
 
@@ -14,10 +14,10 @@ Translate strategy into coherent scope, stories and priorities with Operations C
 
 Read:
 
-- `../brief.md`
-- `../../roadmap/backlog.md`
-- `../../../operations/core/mvp/scope.md`
-- `../../../operations/core/mvp/acceptance-criteria.md`
+- `../knowledge/brief.md`
+- `../../roadmap/knowledge/backlog.md`
+- `../../../operations/product-ops/mvp/scope.md`
+- `../../../operations/product-ops/mvp/acceptance-criteria.md`
 
 ## Skills
 
@@ -37,4 +37,4 @@ Read:
 
 ## Navigation
 
-Start from `../README.md`, then load only the required skill and playbook.
+Start from `../AGENT.md`, then load only the required skill and playbook.

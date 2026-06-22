@@ -1,16 +1,16 @@
 department:
   key: operations
   name: Operations
-  purpose: Own MVP execution, architecture, design, engineering, DevOps and security.
+  purpose: Own product operations, design, engineering, DevOps and security for delivery.
   active_areas:
-    - key: operations.core
-      agent: null
-      readme: core/README.md
+    - key: operations.product-ops
+      agent: product-ops/AGENT.md
+      readme: product-ops/README.md
     - key: operations.design
       agent: design/AGENT.md
       readme: design/README.md
     - key: operations.engineering
-      agent: null
+      agent: engineering/AGENT.md
       readme: engineering/README.md
     - key: operations.devops
       agent: null

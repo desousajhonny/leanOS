@@ -88,15 +88,35 @@ function departmentOperatingOwner(department: RootDepartmentDefinition): string 
 }
 
 function departmentReadme(department: RootDepartmentDefinition, areas: AreaDefinition[]): string {
-  return folderReadme(
-    department.name,
-    department.purpose,
-    `Use for ${department.requestTypes}.`,
-    "department.yaml",
-    ["AGENT.md", "department.yaml", "workflows/", ...areas.map((area) => `${area.slug}/`)],
-    ["../.leanos/index/", "../ai-standard/"],
-    "This department root does not own roles, skills or playbooks directly. Route into an active area."
-  );
+  return `# ${department.name}
+
+## Purpose
+
+${department.purpose}
+
+Use for ${department.requestTypes}.
+
+## Files
+
+- \`AGENT.md\`: department operating owner. It routes requests to the right area or department workflow.
+- \`README.md\`: this map.
+- \`department.yaml\`: machine-readable structure for active areas and workflows.
+- \`workflows/\`: cross-area workflows owned by this department.
+${areas.map((area) => `- \`${area.slug}/\`: ${area.purpose}`).join("\n")}
+
+## Start Here
+
+\`AGENT.md\`
+
+## Related Folders
+
+- \`../.leanos/index/\`
+- \`../ai-standard/\`
+
+## Agent Notes
+
+This department root does not own roles, skills or playbooks directly. Route into an active area before loading execution assets.
+`;
 }
 
 function departmentYaml(department: RootDepartmentDefinition, areas: AreaDefinition[]): string {
@@ -152,6 +172,9 @@ ${area.whenToUse.map((item) => `- ${item}`).join("\n")}
 
 ${area.sourceOfTruth.length > 0 ? area.sourceOfTruth.map((file) => `- \`${file}\``).join("\n") : "- No loose source-of-truth files yet. Use playbooks for operational procedures and update persistent notes only when the workspace creates them."}
 
+${area.operatingRules?.length ? `## Operating Rules\n\n${area.operatingRules.map((item) => `- ${item}`).join("\n")}\n` : ""}
+${area.redLines?.length ? `## Red Lines\n\n${area.redLines.map((item) => `- ${item}`).join("\n")}\n` : ""}
+
 ## Navigation
 
 ${area.lead ? "1. For operational work, start with `AGENT.md`.\n2. Use this README as the directory map.\n3. After the area AGENT selects a role, load only required skills and playbooks.\n4. Produce the requested output and update source-of-truth files when needed." : "1. Choose the relevant role from `roles/`.\n2. Load only the required skills from `skills/`.\n3. Use the matching playbook from `playbooks/`.\n4. Produce the requested output and update source-of-truth files when needed."}
@@ -185,6 +208,9 @@ Use \`README.md\` as the directory map. Use \`area.yaml\` when machine-readable 
 ## Operating Scope
 
 ${area.lead.purpose}
+
+${area.operatingRules?.length ? `## Operating Rules\n\n${area.operatingRules.map((item) => `- ${item}`).join("\n")}\n` : ""}
+${area.redLines?.length ? `## Red Lines\n\n${area.redLines.map((item) => `- ${item}`).join("\n")}\n` : ""}
 
 ## Role Routing
 

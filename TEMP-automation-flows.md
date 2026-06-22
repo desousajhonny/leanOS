@@ -74,8 +74,8 @@ O que acontece:
 
 Areas e roles:
 
-- `strategy/company/`
-  - role: `company-strategist`
+- `strategy/business/`
+  - role: `business-strategist`
 - `strategy/product/`
   - roles: `product-strategist`, `product-manager`
 - `strategy/validation/`
@@ -85,7 +85,7 @@ Areas e roles:
 
 Resultado esperado:
 
-- company profile inicial;
+- business profile inicial;
 - product brief inicial;
 - problema, ICP, value proposition e hipoteses iniciais;
 - proximo passo recomendado.
@@ -117,7 +117,7 @@ Areas e roles:
   - `validation-researcher`: identifica hipoteses e evidencia necessaria.
 - `strategy/roadmap/`
   - `roadmap-planner`: sequencia trabalho e define ciclo.
-- `operations/core/mvp/`
+- `operations/product-ops/mvp/`
   - `product-owner`: traduz strategy em MVP scope e acceptance criteria.
 
 Resultado esperado:
@@ -149,7 +149,7 @@ Areas e roles:
 
 - `strategy/roadmap/`
   - `roadmap-planner`: define prioridade, milestone e ciclo.
-- `operations/core/`
+- `operations/product-ops/`
   - `product-owner`: garante MVP scope e acceptance criteria.
 - `operations/devops/`
   - `github-devops`: guia configuracao GitHub Project, labels e sync state.
@@ -228,7 +228,7 @@ Areas e roles:
 
 - `operations/engineering/`
   - `senior-developer`: implementa, cria branch, planeja testes e prepara PR.
-- `operations/core/`
+- `operations/product-ops/`
   - `product-owner`: garante alinhamento com MVP e acceptance criteria.
 - `operations/design/`
   - `ux-lead`: participa se a issue afetar UX.
@@ -273,7 +273,7 @@ Areas e roles:
   - `security-reviewer`: participa quando ha risco de seguranca.
 - `operations/design/`
   - `ux-lead`: participa quando ha impacto de experiencia.
-- `operations/core/`
+- `operations/product-ops/`
   - `product-owner`: confirma MVP/acceptance criteria quando necessario.
 
 Resultado esperado:
@@ -428,7 +428,7 @@ Objetivo: transformar novas ideias discutidas entre founder e modelo em estrateg
 Entrada:
 
 - ideia nova;
-- contexto atual de company/product;
+- contexto atual de business/product;
 - validacao existente;
 - MVP scope atual;
 - roadmap atual;
@@ -436,11 +436,11 @@ Entrada:
 
 Areas envolvidas:
 
-- `strategy/company/`
+- `strategy/business/`
 - `strategy/product/`
 - `strategy/validation/`
 - `strategy/roadmap/`
-- `operations/core/mvp/`
+- `operations/product-ops/mvp/`
 
 Resultado esperado:
 
@@ -488,7 +488,7 @@ Entrada:
 Areas envolvidas:
 
 - `strategy/roadmap/`
-- `operations/core/mvp/`
+- `operations/product-ops/mvp/`
 - `operations/engineering/`
 - `.github/leanos/`
 
@@ -543,7 +543,7 @@ Entrada:
 Areas envolvidas:
 
 - `strategy/product/`
-- `operations/core/mvp/`
+- `operations/product-ops/mvp/`
 - `operations/design/`
 - `operations/security/`
 - `operations/engineering/`

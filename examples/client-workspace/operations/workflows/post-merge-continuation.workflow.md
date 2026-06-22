@@ -6,7 +6,7 @@ Continue delivery after a founder confirms a merge.
 
 ## Required Areas
 
-- core
+- product-ops
 - engineering
 
 ## Availability

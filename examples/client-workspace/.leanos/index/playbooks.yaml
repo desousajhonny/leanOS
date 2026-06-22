@@ -1,13 +1,13 @@
 playbooks:
-  - key: company-foundation
-    area: strategy.company
-    path: ../../strategy/company/playbooks/company-foundation.playbook.md
+  - key: business-foundation
+    area: strategy.business
+    path: ../../strategy/business/playbooks/business-foundation.playbook.md
   - key: product-strategy
     area: strategy.product
     path: ../../strategy/product/playbooks/product-strategy.playbook.md
-  - key: validation-cycle-planning
+  - key: roadmap-cycle-planning
     area: strategy.roadmap
-    path: ../../strategy/roadmap/playbooks/validation-cycle-planning.playbook.md
+    path: ../../strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md
   - key: roadmap-sync-prep
     area: strategy.roadmap
     path: ../../strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md
@@ -15,14 +15,14 @@ playbooks:
     area: strategy.validation
     path: ../../strategy/validation/playbooks/mvp-validation.playbook.md
   - key: mvp-delivery
-    area: operations.core
-    path: ../../operations/core/playbooks/mvp-delivery.playbook.md
+    area: operations.product-ops
+    path: ../../operations/product-ops/playbooks/mvp-delivery.playbook.md
   - key: epic-to-subissues
-    area: operations.core
-    path: ../../operations/core/playbooks/epic-to-subissues.playbook.md
-  - key: architecture-planning
-    area: operations.core
-    path: ../../operations/core/playbooks/architecture-planning.playbook.md
+    area: operations.product-ops
+    path: ../../operations/product-ops/playbooks/epic-to-subissues.playbook.md
+  - key: delivery-readiness
+    area: operations.product-ops
+    path: ../../operations/product-ops/playbooks/delivery-readiness.playbook.md
   - key: design-foundation
     area: operations.design
     path: ../../operations/design/playbooks/design-foundation.playbook.md

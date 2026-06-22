@@ -10,13 +10,15 @@ Use when a selected role points to a skill.
 
 ## Source of Truth
 
-`../README.md`
+`../AGENT.md`
 
 ## Files
 
 - `plan-implementation.skill.md`
+- `follow-code-standards.skill.md`
 - `create-branch.skill.md`
 - `write-tests.skill.md`
+- `review-data-change.skill.md`
 - `create-pr.skill.md`
 - `review-pr.skill.md`
 

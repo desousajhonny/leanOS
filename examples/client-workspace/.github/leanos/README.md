@@ -35,6 +35,6 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 Route GitHub setup through `../../operations/devops/README.md` before configuring project sync.
 
-Route GitHub and PR validation work through `../../operations/engineering/README.md` before changing GitHub workflow files.
+Route GitHub branch, PR and validation work through `../../operations/engineering/AGENT.md` before changing GitHub workflow files.
 
 Vercel readiness is guidance-only in this scaffold. Vercel can detect frameworks automatically after product code exists; create `vercel.json` only when a real app/framework needs overrides.

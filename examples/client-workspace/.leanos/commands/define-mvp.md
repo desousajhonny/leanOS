@@ -15,7 +15,7 @@ Read:
 
 ## Process
 
-1. Route through `../../operations/core/README.md`.
+1. Route through `../../operations/product-ops/README.md`.
 2. Load the department AGENT.md or README first.
 3. Activate the role named by the area README.
 4. Load only the required skills and playbook.
@@ -30,11 +30,11 @@ Read:
 
 ## Active Areas
 
-- strategy.company
+- strategy.business
 - strategy.product
 - strategy.roadmap
 - strategy.validation
-- operations.core
+- operations.product-ops
 - operations.design
 - operations.engineering
 - operations.devops

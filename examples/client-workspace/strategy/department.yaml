@@ -1,16 +1,16 @@
 department:
   key: strategy
   name: Strategy
-  purpose: Own company direction, product strategy, roadmap and validation learning.
+  purpose: Own business direction, product strategy, roadmap and validation learning.
   active_areas:
-    - key: strategy.company
-      agent: null
-      readme: company/README.md
+    - key: strategy.business
+      agent: business/AGENT.md
+      readme: business/README.md
     - key: strategy.product
-      agent: null
+      agent: product/AGENT.md
       readme: product/README.md
     - key: strategy.roadmap
-      agent: null
+      agent: roadmap/AGENT.md
       readme: roadmap/README.md
     - key: strategy.validation
       agent: null

@@ -6,15 +6,16 @@ Roles owned by the Engineering area.
 
 ## When to Use
 
-Use after the area README selects a role.
+Use after the area AGENT selects a role.
 
 ## Source of Truth
 
-`../README.md`
+`../AGENT.md`
 
 ## Files
 
 - `senior-developer.role.md`
+- `test-engineer.role.md`
 - `pr-reviewer.role.md`
 
 ## Related Folders

@@ -21,8 +21,8 @@ Read:
 ## Area Routing
 
 - Load `../../strategy/product/README.md` for product value, ICP, problem and acceptance quality.
-- Load `../../operations/core/README.md` and MVP source-of-truth files before drafting issues.
-- Load `../../operations/engineering/README.md` when sub-issues require implementation criteria.
+- Load `../../operations/product-ops/AGENT.md`, `../../operations/product-ops/README.md` and MVP knowledge files before drafting issues.
+- Load `../../operations/engineering/AGENT.md` and `../../operations/engineering/README.md` when sub-issues require implementation criteria.
 - Use `../../operations/design/AGENT.md` only when the epic or sub-issue changes user-facing UX, screens, states, copy or interactions; use the README as the area map.
 - Use `../../operations/security/README.md` only when the issue touches data, auth, permissions, privacy, abuse risk or compliance.
 
@@ -57,11 +57,11 @@ Do not call GitHub API directly from the model. Generate a draft payload and ask
 
 ## Active Areas
 
-- strategy.company
+- strategy.business
 - strategy.product
 - strategy.roadmap
 - strategy.validation
-- operations.core
+- operations.product-ops
 - operations.design
 - operations.engineering
 - operations.devops

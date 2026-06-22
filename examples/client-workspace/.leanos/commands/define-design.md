@@ -32,17 +32,19 @@ Product context:
 
 - `../../strategy/AGENT.md`
 - `../../strategy/product/README.md`
-- `../../strategy/product/brief.md`
-- `../../strategy/product/icp.md`
-- `../../strategy/product/problem.md`
-- `../../strategy/product/value-proposition.md`
+- `../../strategy/product/AGENT.md`
+- `../../strategy/product/knowledge/brief.md`
+- `../../strategy/product/knowledge/icp.md`
+- `../../strategy/product/knowledge/problem.md`
+- `../../strategy/product/knowledge/value-proposition.md`
 
 MVP context:
 
-- `../../operations/core/README.md`
-- `../../operations/core/mvp/scope.md`
-- `../../operations/core/mvp/user-stories.md`
-- `../../operations/core/mvp/acceptance-criteria.md`
+- `../../operations/product-ops/README.md`
+- `../../operations/product-ops/mvp/scope.md`
+- `../../operations/product-ops/mvp/prd.md`
+- `../../operations/product-ops/mvp/user-stories.md`
+- `../../operations/product-ops/mvp/acceptance-criteria.md`
 
 ## Process
 
@@ -84,11 +86,11 @@ During `/define design`, do not create or update:
 
 ## Active Areas
 
-- strategy.company
+- strategy.business
 - strategy.product
 - strategy.roadmap
 - strategy.validation
-- operations.core
+- operations.product-ops
 - operations.design
 - operations.engineering
 - operations.devops

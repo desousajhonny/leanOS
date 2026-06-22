@@ -1,0 +1,29 @@
+area:
+  key: operations.product-ops
+  department: operations
+  path: operations/product-ops
+  agent: AGENT.md
+  readme: README.md
+  roles:
+    - product-owner
+    - delivery-architect
+  skills:
+    - define-mvp
+    - write-acceptance-criteria
+    - check-delivery-coherence
+    - shape-epic
+    - write-subissue-criteria
+    - define-delivery-boundaries
+  playbooks:
+    - mvp-delivery
+    - epic-to-subissues
+    - delivery-readiness
+  source_of_truth:
+    - knowledge/overview.md
+    - knowledge/delivery-context.md
+    - knowledge/issue-readiness.md
+    - knowledge/technical-decisions.md
+    - mvp/scope.md
+    - mvp/prd.md
+    - mvp/user-stories.md
+    - mvp/acceptance-criteria.md

@@ -4,24 +4,40 @@
 
 Move from raw product context to coherent strategy.
 
-## Area
+## Inputs
 
-`strategy/product`
+- ../knowledge/brief.md
+- ../knowledge/problem.md
+- ../knowledge/icp.md
+- ../knowledge/value-proposition.md
+- ../knowledge/positioning.md
+- ../knowledge/business-model-canvas.md
 
-## Sequence
+## Process
 
-1. Read product brief
-2. Clarify ICP
-3. Define problem
-4. Define value proposition
-5. Check roadmap and MVP coherence
+1. Load the Product AGENT and choose Product Strategist or Product Manager.
+2. Read the minimum Product knowledge files for the request.
+3. Clarify ICP, problem and value proposition before touching roadmap or MVP scope.
+4. Separate decisions, assumptions and open questions.
+5. Use validation or roadmap areas when the output affects evidence or sequencing.
+6. Propose file updates and wait for confirmation before writing.
 
-## Outputs
+## Output
 
-- Decision or action summary
-- Updated source-of-truth files when requested
-- Next recommended LeanOS command
+- Product strategy summary
+- Updated Product knowledge proposal
+- Assumptions or validation follow-up
+- MVP or roadmap handoff when applicable
+
+## Files to Update
+
+- ../knowledge/brief.md
+- ../knowledge/problem.md
+- ../knowledge/icp.md
+- ../knowledge/value-proposition.md
+- ../knowledge/positioning.md
+- ../knowledge/business-model-canvas.md
 
 ## Navigation
 
-Start from `../README.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.

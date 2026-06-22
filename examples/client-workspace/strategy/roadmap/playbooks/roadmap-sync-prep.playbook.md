@@ -6,12 +6,12 @@ Prepare roadmap items for GitHub Project sync without calling the API directly.
 
 ## Inputs
 
-- Roadmap
-- Milestones
-- Current cycle
-- Backlog
-- MVP scope
-- GitHub project sync settings
+- ../knowledge/roadmap.md
+- ../knowledge/milestones.md
+- ../knowledge/current-cycle.md
+- ../knowledge/backlog.md
+- ../../../operations/product-ops/mvp/scope.md
+- ../../../.github/leanos/project-sync.yaml
 
 ## Process
 
@@ -32,9 +32,9 @@ Prepare roadmap items for GitHub Project sync without calling the API directly.
 
 ## Files to Update
 
-- Update `../roadmap.md`, `../milestones.md` or `../current-cycle.md` only after explicit confirmation.
+- Update `../knowledge/roadmap.md`, `../knowledge/milestones.md` or `../knowledge/current-cycle.md` only after explicit confirmation.
 - Update `../../../.github/leanos/project-sync.yaml` only through DevOps/GitHub setup guidance.
 
 ## Navigation
 
-Start from `../README.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.

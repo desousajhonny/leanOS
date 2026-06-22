@@ -1,10 +1,10 @@
 skills:
-  - key: define-company
-    area: strategy.company
-    path: ../../strategy/company/skills/define-company.skill.md
+  - key: define-business-identity
+    area: strategy.business
+    path: ../../strategy/business/skills/define-business-identity.skill.md
   - key: clarify-operating-model
-    area: strategy.company
-    path: ../../strategy/company/skills/clarify-operating-model.skill.md
+    area: strategy.business
+    path: ../../strategy/business/skills/clarify-operating-model.skill.md
   - key: define-product
     area: strategy.product
     path: ../../strategy/product/skills/define-product.skill.md
@@ -42,26 +42,23 @@ skills:
     area: strategy.validation
     path: ../../strategy/validation/skills/define-success-metrics.skill.md
   - key: define-mvp
-    area: operations.core
-    path: ../../operations/core/skills/define-mvp.skill.md
+    area: operations.product-ops
+    path: ../../operations/product-ops/skills/define-mvp.skill.md
   - key: write-acceptance-criteria
-    area: operations.core
-    path: ../../operations/core/skills/write-acceptance-criteria.skill.md
+    area: operations.product-ops
+    path: ../../operations/product-ops/skills/write-acceptance-criteria.skill.md
   - key: check-delivery-coherence
-    area: operations.core
-    path: ../../operations/core/skills/check-delivery-coherence.skill.md
+    area: operations.product-ops
+    path: ../../operations/product-ops/skills/check-delivery-coherence.skill.md
   - key: shape-epic
-    area: operations.core
-    path: ../../operations/core/skills/shape-epic.skill.md
+    area: operations.product-ops
+    path: ../../operations/product-ops/skills/shape-epic.skill.md
   - key: write-subissue-criteria
-    area: operations.core
-    path: ../../operations/core/skills/write-subissue-criteria.skill.md
-  - key: define-architecture
-    area: operations.core
-    path: ../../operations/core/skills/define-architecture.skill.md
-  - key: create-api-contract
-    area: operations.core
-    path: ../../operations/core/skills/create-api-contract.skill.md
+    area: operations.product-ops
+    path: ../../operations/product-ops/skills/write-subissue-criteria.skill.md
+  - key: define-delivery-boundaries
+    area: operations.product-ops
+    path: ../../operations/product-ops/skills/define-delivery-boundaries.skill.md
   - key: user-research
     area: operations.design
     path: ../../operations/design/skills/user-research.skill.md
@@ -86,12 +83,18 @@ skills:
   - key: plan-implementation
     area: operations.engineering
     path: ../../operations/engineering/skills/plan-implementation.skill.md
+  - key: follow-code-standards
+    area: operations.engineering
+    path: ../../operations/engineering/skills/follow-code-standards.skill.md
   - key: create-branch
     area: operations.engineering
     path: ../../operations/engineering/skills/create-branch.skill.md
   - key: write-tests
     area: operations.engineering
     path: ../../operations/engineering/skills/write-tests.skill.md
+  - key: review-data-change
+    area: operations.engineering
+    path: ../../operations/engineering/skills/review-data-change.skill.md
   - key: create-pr
     area: operations.engineering
     path: ../../operations/engineering/skills/create-pr.skill.md

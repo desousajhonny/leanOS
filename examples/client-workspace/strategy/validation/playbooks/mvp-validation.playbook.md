@@ -39,7 +39,7 @@ Run the validation loop from assumption to roadmap impact.
 - Update `../experiments.md` when an experiment is planned or completed.
 - Update `../success-metrics.md` when signals are defined or changed.
 - Update `../learning-log.md` only when evidence supports learning.
-- Propose changes to `../../roadmap/roadmap.md` or `../../roadmap/backlog.md` only after a decision is confirmed.
+- Propose changes to `../../roadmap/knowledge/roadmap.md` or `../../roadmap/knowledge/backlog.md` only after a decision is confirmed.
 
 ## Navigation
 

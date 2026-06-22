@@ -20,7 +20,7 @@ Use when work spans more than one active area inside this department.
 
 ## Related Folders
 
-- `../core/`
+- `../product-ops/`
 - `../design/`
 - `../engineering/`
 - `../devops/`

@@ -18,11 +18,11 @@ github:
     status: pending_configuration
     enabled: false
     source:
-      roadmap: ../../strategy/roadmap/roadmap.md
-      milestones: ../../strategy/roadmap/milestones.md
-      current_cycle: ../../strategy/roadmap/current-cycle.md
-      mvp_scope: ../../operations/core/mvp/scope.md
-      acceptance_criteria: ../../operations/core/mvp/acceptance-criteria.md
+      roadmap: ../../strategy/roadmap/knowledge/roadmap.md
+      milestones: ../../strategy/roadmap/knowledge/milestones.md
+      current_cycle: ../../strategy/roadmap/knowledge/current-cycle.md
+      mvp_scope: ../../operations/product-ops/mvp/scope.md
+      acceptance_criteria: ../../operations/product-ops/mvp/acceptance-criteria.md
   rules:
     never_store_token: true
     dry_run_before_remote_write: true

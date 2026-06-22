@@ -7,7 +7,7 @@ export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefiniti
   const engineeringActive = activeKeys.has("operations.engineering");
   const devopsActive = activeKeys.has("operations.devops");
   const engineeringNote = engineeringActive
-    ? "Route GitHub and PR validation work through `../../operations/engineering/README.md` before changing GitHub workflow files."
+    ? "Route GitHub branch, PR and validation work through `../../operations/engineering/AGENT.md` before changing GitHub workflow files."
     : "Operations Engineering is not active in this workspace. Ask before activating it or changing GitHub workflow files.";
   const devopsNote = devopsActive
     ? "Route GitHub setup through `../../operations/devops/README.md` before configuring project sync."
@@ -386,11 +386,11 @@ function projectSyncYaml(answers: WorkspaceAnswers): string {
     status: ${answers.prepareGithubManagement ? "pending_configuration" : "not_requested"}
     enabled: false
     source:
-      roadmap: ../../strategy/roadmap/roadmap.md
-      milestones: ../../strategy/roadmap/milestones.md
-      current_cycle: ../../strategy/roadmap/current-cycle.md
-      mvp_scope: ../../operations/core/mvp/scope.md
-      acceptance_criteria: ../../operations/core/mvp/acceptance-criteria.md
+      roadmap: ../../strategy/roadmap/knowledge/roadmap.md
+      milestones: ../../strategy/roadmap/knowledge/milestones.md
+      current_cycle: ../../strategy/roadmap/knowledge/current-cycle.md
+      mvp_scope: ../../operations/product-ops/mvp/scope.md
+      acceptance_criteria: ../../operations/product-ops/mvp/acceptance-criteria.md
   rules:
     never_store_token: true
     dry_run_before_remote_write: true

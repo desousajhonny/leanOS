@@ -11,8 +11,11 @@ Review a PR against LeanOS issue, MVP, product, design, security and engineering
 Read:
 
 - `../../AGENT.md`
+- `../../operations/engineering/AGENT.md`
 - `../../operations/engineering/README.md`
 - `../../operations/engineering/roles/pr-reviewer.role.md`
+- `../../operations/engineering/knowledge/review-criteria.md`
+- `../../operations/engineering/knowledge/code-standards.md`
 - `../../operations/engineering/skills/review-pr.skill.md`
 - `../../operations/engineering/playbooks/pr-validation.playbook.md`
 - `../../ai-standard/templates/review/code-review-template.md`
@@ -45,11 +48,11 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 
 ## Active Areas
 
-- strategy.company
+- strategy.business
 - strategy.product
 - strategy.roadmap
 - strategy.validation
-- operations.core
+- operations.product-ops
 - operations.design
 - operations.engineering
 - operations.devops

@@ -33,7 +33,7 @@ LeanOS treats the company itself as a product.
 
 The company is not just the organization building the product. It is also an operating system with its own profile, principles, workflows, validation loops, decision history and quality rules.
 
-In LeanOS, `strategy/company/` is the source-of-truth area for that operating system. It captures:
+In LeanOS, `strategy/business/` is the source-of-truth area for that operating system. It captures:
 
 - who the company is and who it exists for
 - mission, vision and principles
@@ -42,9 +42,9 @@ In LeanOS, `strategy/company/` is the source-of-truth area for that operating sy
 - what has been decided and why
 - which assumptions still need validation
 
-This means product work should be coherent with the company model. Before creating features, issues or pull requests, LeanOS Chief should understand the company context, product strategy and validation state.
+This means product work should be coherent with the business operating model. Before creating features, issues or pull requests, LeanOS Chief should understand the business context, product strategy and validation state.
 
-The product is what the company builds. The company is the system that decides what is worth building.
+The product is what the company builds. The business is the system that decides what is worth building.
 
 ## Quick Start
 
@@ -152,12 +152,12 @@ Roles, skills and playbooks live inside internal areas, not directly in the root
 
 Current areas:
 
-- `strategy/company/`
+- `strategy/business/`
 - `strategy/product/`
 - `strategy/roadmap/`
 - `strategy/validation/`
-- `operations/core/`
-- `operations/core/mvp/`
+- `operations/product-ops/`
+- `operations/product-ops/mvp/`
 - `operations/design/`
 - `operations/engineering/`
 - `operations/devops/`

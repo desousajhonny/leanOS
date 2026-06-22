@@ -11,7 +11,9 @@ Prepare a pull request draft that follows LeanOS structure and GitHub convention
 Read:
 
 - `../../AGENT.md`
+- `../../operations/engineering/AGENT.md`
 - `../../operations/engineering/README.md`
+- `../../operations/engineering/knowledge/review-criteria.md`
 - `../../operations/engineering/skills/create-pr.skill.md`
 - `../../operations/engineering/playbooks/issue-to-pr.playbook.md`
 - `../../ai-standard/templates/github/pull-request-template.md`
@@ -47,11 +49,11 @@ Do not create the PR directly from the model. Generate the draft and ask for exp
 
 ## Active Areas
 
-- strategy.company
+- strategy.business
 - strategy.product
 - strategy.roadmap
 - strategy.validation
-- operations.core
+- operations.product-ops
 - operations.design
 - operations.engineering
 - operations.devops

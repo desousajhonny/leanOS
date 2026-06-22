@@ -11,6 +11,7 @@ Prepare a safe branch name before any implementation work.
 Read:
 
 - `../../AGENT.md`
+- `../../operations/engineering/AGENT.md`
 - `../../operations/engineering/README.md`
 - `../../operations/engineering/skills/create-branch.skill.md`
 - `../../operations/engineering/playbooks/branch-from-issue.playbook.md`
@@ -38,11 +39,11 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 
 ## Active Areas
 
-- strategy.company
+- strategy.business
 - strategy.product
 - strategy.roadmap
 - strategy.validation
-- operations.core
+- operations.product-ops
 - operations.design
 - operations.engineering
 - operations.devops

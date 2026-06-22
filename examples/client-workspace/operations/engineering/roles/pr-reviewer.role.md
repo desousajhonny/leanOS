@@ -14,14 +14,20 @@ Review pull requests against scope, tests, coherence and validation goals.
 
 Read:
 
-- `../../core/mvp/scope.md`
-- `../../core/mvp/acceptance-criteria.md`
+- `../../product-ops/mvp/scope.md`
+- `../../product-ops/mvp/prd.md`
+- `../../product-ops/mvp/acceptance-criteria.md`
+- `../knowledge/review-criteria.md`
+- `../knowledge/code-standards.md`
+- `../knowledge/data-guidelines.md`
 - `../../../.github/leanos/pr-validation-rules.md`
 - `../../../ai-standard/templates/review/code-review-template.md`
 
 ## Skills
 
 - `../skills/review-pr.skill.md`
+- `../skills/follow-code-standards.skill.md`
+- `../skills/review-data-change.skill.md`
 
 ## Playbooks
 
@@ -35,4 +41,4 @@ Read:
 
 ## Navigation
 
-Start from `../README.md`, then load only the required skill and playbook.
+Start from `../AGENT.md`, then load only the required skill and playbook.

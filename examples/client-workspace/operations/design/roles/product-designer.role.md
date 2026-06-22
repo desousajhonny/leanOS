@@ -12,8 +12,8 @@ Translate product, MVP and user context into coherent UI structure, flows and de
 
 Read:
 
-- `../../../strategy/product/brief.md`
-- `../../core/mvp/scope.md`
+- `../../../strategy/product/knowledge/brief.md`
+- `../../product-ops/mvp/scope.md`
 - `../knowledge/design-system.md`
 - `../knowledge/user-flows.md`
 

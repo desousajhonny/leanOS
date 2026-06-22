@@ -60,11 +60,11 @@ const modeLabels: Record<OperatingMode, string> = {
 };
 
 const subareaLabels: Record<Subarea, string> = {
-  "strategy.company": "Company",
+  "strategy.business": "Business",
   "strategy.product": "Product",
   "strategy.roadmap": "Roadmap",
   "strategy.validation": "Validation",
-  "operations.core": "Core",
+  "operations.product-ops": "Product Ops",
   "operations.design": "Design",
   "operations.engineering": "Engineering",
   "operations.devops": "DevOps",
@@ -75,11 +75,11 @@ const subareaLabels: Record<Subarea, string> = {
 };
 
 const subareaHints: Record<Subarea, string> = {
-  "strategy.company": "mission, principles and operating model",
+  "strategy.business": "brand, mission, principles and operating model",
   "strategy.product": "ICP, problem, value proposition and business model",
   "strategy.roadmap": "cycles, milestones and backlog priority",
   "strategy.validation": "assumptions, experiments and learning",
-  "operations.core": "architecture, MVP scope and acceptance criteria",
+  "operations.product-ops": "MVP scope, acceptance criteria and issue readiness",
   "operations.design": "flows, screens, UX states and usability",
   "operations.engineering": "implementation, tests, issues and PRs",
   "operations.devops": "environments, CI, deployment and observability",
@@ -197,8 +197,8 @@ export async function runAiPrompts(): Promise<AiPromptResult> {
   const subareas = await groupMultiselect({
     message: "Which workspace areas should LeanOS prepare?",
     options: {
-      Strategy: toOptionsForSubareas(["strategy.company", "strategy.product", "strategy.roadmap", "strategy.validation"]),
-      Operations: toOptionsForSubareas(["operations.core", "operations.design", "operations.engineering", "operations.devops", "operations.security"]),
+      Strategy: toOptionsForSubareas(["strategy.business", "strategy.product", "strategy.roadmap", "strategy.validation"]),
+      Operations: toOptionsForSubareas(["operations.product-ops", "operations.design", "operations.engineering", "operations.devops", "operations.security"]),
       Growth: toOptionsForSubareas(["growth.customer-experience", "growth.marketing", "growth.finance"])
     },
     initialValues: defaultSubareas,

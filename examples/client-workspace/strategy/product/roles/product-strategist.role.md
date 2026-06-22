@@ -14,10 +14,10 @@ Connect customer, problem, value proposition, business model, roadmap and valida
 
 Read:
 
-- `../brief.md`
-- `../icp.md`
-- `../value-proposition.md`
-- `../../roadmap/current-cycle.md`
+- `../knowledge/brief.md`
+- `../knowledge/icp.md`
+- `../knowledge/value-proposition.md`
+- `../../roadmap/knowledge/current-cycle.md`
 
 ## Skills
 
@@ -40,4 +40,4 @@ Read:
 
 ## Navigation
 
-Start from `../README.md`, then load only the required skill and playbook.
+Start from `../AGENT.md`, then load only the required skill and playbook.

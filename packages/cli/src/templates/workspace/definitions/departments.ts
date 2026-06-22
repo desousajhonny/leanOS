@@ -1,5 +1,5 @@
 import type { RootDepartmentDefinition } from "../types.js";
-import { assumptionsRegister, checklist, companyProfile, decisionLog, folderReadme, learningLog, productBrief, riskiestAssumptions, stateDraft, titledDraft, validationExperiments, validationSuccessMetrics } from "../content/shared.js";
+import { assumptionsRegister, businessProfile, checklist, decisionLog, folderReadme, learningLog, productBrief, riskiestAssumptions, stateDraft, titledDraft, validationExperiments, validationSuccessMetrics } from "../content/shared.js";
 
 function designSystemKnowledge(): string {
   return `# Design System
@@ -108,52 +108,1228 @@ TBD
 `;
 }
 
+function productOpsOverviewKnowledge(): string {
+  return `# Product Ops Overview
+
+## Purpose
+
+Keep the operational bridge between Strategy, Roadmap and Engineering clear enough for implementation.
+
+## Current State
+
+TBD
+
+## Product Context
+
+TBD
+
+## MVP Boundary
+
+TBD
+
+## Delivery Model
+
+TBD
+
+## Issue Readiness
+
+TBD
+
+## Cross-Area Dependencies
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function deliveryContextKnowledge(): string {
+  return `# Delivery Context
+
+## Purpose
+
+Capture the delivery assumptions, constraints and operating context needed before Engineering starts work.
+
+## Current State
+
+TBD
+
+## Repository Context
+
+TBD
+
+## Product Constraints
+
+TBD
+
+## Technical Constraints
+
+TBD
+
+## Dependencies
+
+TBD
+
+## Risks
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function issueReadinessKnowledge(): string {
+  return `# Issue Readiness
+
+## Purpose
+
+Define what an issue needs before it is ready for implementation.
+
+## Current State
+
+TBD
+
+## Required Product Criteria
+
+TBD
+
+## Required Engineering Criteria
+
+TBD
+
+## Design Criteria
+
+TBD
+
+## Security Criteria
+
+TBD
+
+## Dependencies
+
+TBD
+
+## Blockers
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function mvpScopeKnowledge(): string {
+  return `# MVP Scope
+
+## Purpose
+
+Define the smallest coherent product scope that can be implemented, tested and learned from.
+
+## Current State
+
+TBD
+
+## In Scope
+
+TBD
+
+## Out of Scope
+
+TBD
+
+## Primary User Outcome
+
+TBD
+
+## Success Criteria
+
+TBD
+
+## Dependencies
+
+TBD
+
+## Risks
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function mvpPrdKnowledge(): string {
+  return `# Product Requirements Document
+
+## Purpose
+
+Translate product strategy and MVP scope into clear requirements before Design and Engineering execution.
+
+## Current State
+
+TBD
+
+## Product Outcome
+
+TBD
+
+## Problem
+
+TBD
+
+## Target User
+
+TBD
+
+## Scope
+
+TBD
+
+## Requirements
+
+TBD
+
+## User Stories
+
+TBD
+
+## Acceptance Criteria
+
+TBD
+
+## Design Considerations
+
+TBD
+
+## Security and Privacy Considerations
+
+TBD
+
+## Dependencies
+
+TBD
+
+## Non-Goals
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function mvpUserStoriesKnowledge(): string {
+  return `# User Stories
+
+## Purpose
+
+Capture the MVP user stories that can later become epics, sub-issues or acceptance criteria.
+
+## Current State
+
+TBD
+
+## Primary Stories
+
+TBD
+
+## Secondary Stories
+
+TBD
+
+## User Value
+
+TBD
+
+## Acceptance Notes
+
+TBD
+
+## Dependencies
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function mvpAcceptanceCriteriaKnowledge(): string {
+  return `# Acceptance Criteria
+
+## Purpose
+
+Define the criteria that make MVP work complete, testable and reviewable.
+
+## Current State
+
+TBD
+
+## Global Acceptance Criteria
+
+TBD
+
+## Feature-Level Criteria
+
+TBD
+
+## Quality Bar
+
+TBD
+
+## Test Expectations
+
+TBD
+
+## Not Accepted If
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function engineeringCodeStandardsKnowledge(): string {
+  return `# Code Standards
+
+## Purpose
+
+Define how Engineering should write maintainable code inside this product.
+
+## Current State
+
+TBD
+
+## Existing Patterns First
+
+TBD
+
+## Modularization
+
+TBD
+
+## Component and Module Boundaries
+
+TBD
+
+## Naming
+
+TBD
+
+## Error Handling
+
+TBD
+
+## Configuration
+
+TBD
+
+## Do Not Do
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function engineeringImplementationRulesKnowledge(): string {
+  return `# Implementation Rules
+
+## Purpose
+
+Define the non-negotiable engineering process before code changes start.
+
+## Current State
+
+TBD
+
+## Required Context Before Coding
+
+TBD
+
+## Branch Rule
+
+TBD
+
+## Scope Control
+
+TBD
+
+## Design Dependency
+
+TBD
+
+## Security and Data Dependency
+
+TBD
+
+## Done Criteria
+
+TBD
+
+## Red Lines
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function engineeringComponentGuidelinesKnowledge(): string {
+  return `# Component Guidelines
+
+## Purpose
+
+Define how Engineering should create, reuse and modify UI components.
+
+## Current State
+
+TBD
+
+## Design Dependency
+
+TBD
+
+## Reuse Existing Components
+
+TBD
+
+## Component Boundaries
+
+TBD
+
+## State and Effects
+
+TBD
+
+## Styling
+
+TBD
+
+## Accessibility States
+
+TBD
+
+## Do Not Do
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function engineeringDataGuidelinesKnowledge(): string {
+  return `# Data Guidelines
+
+## Purpose
+
+Define how Engineering should handle database, API, persistence and data-sensitive changes.
+
+## Current State
+
+TBD
+
+## Schema Changes
+
+TBD
+
+## Migrations
+
+TBD
+
+## Validation
+
+TBD
+
+## Sensitive Data
+
+TBD
+
+## Indexes and Performance
+
+TBD
+
+## Backward Compatibility
+
+TBD
+
+## Rollback
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function engineeringTestingStrategyKnowledge(): string {
+  return `# Testing Strategy
+
+## Purpose
+
+Define how Engineering should choose and explain tests for implementation work.
+
+## Current State
+
+TBD
+
+## Unit Tests
+
+TBD
+
+## Integration Tests
+
+TBD
+
+## End-to-End Tests
+
+TBD
+
+## Manual Validation
+
+TBD
+
+## Regression Checks
+
+TBD
+
+## Test Gaps
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function engineeringReviewCriteriaKnowledge(): string {
+  return `# Review Criteria
+
+## Purpose
+
+Define how Engineering reviews implementation, tests, risk and PR readiness.
+
+## Current State
+
+TBD
+
+## Scope Review
+
+TBD
+
+## Code Review
+
+TBD
+
+## Test Review
+
+TBD
+
+## Design Review
+
+TBD
+
+## Security Review
+
+TBD
+
+## Data Review
+
+TBD
+
+## Merge Recommendation
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function productProblemKnowledge(): string {
+  return `# Problem
+
+## Purpose
+
+Define the painful, frequent and valuable problem this product should solve.
+
+## Current State
+
+TBD
+
+## Problem Statement
+
+TBD
+
+## Who Feels It
+
+TBD
+
+## Frequency and Urgency
+
+TBD
+
+## Existing Alternatives
+
+TBD
+
+## Why Now
+
+TBD
+
+## Evidence
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function productIcpKnowledge(): string {
+  return `# Ideal Customer Profile
+
+## Purpose
+
+Define the first customer segment LeanOS should optimize strategy, MVP and validation around.
+
+## Current State
+
+TBD
+
+## Primary Segment
+
+TBD
+
+## Buyer or Decision Maker
+
+TBD
+
+## End User
+
+TBD
+
+## Pain Triggers
+
+TBD
+
+## Qualification Criteria
+
+TBD
+
+## Exclusions
+
+TBD
+
+## Evidence
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function productJobsKnowledge(): string {
+  return `# Jobs To Be Done
+
+## Purpose
+
+Describe the job the customer is trying to get done and the progress they want to make.
+
+## Current State
+
+TBD
+
+## Core Job
+
+TBD
+
+## Functional Jobs
+
+TBD
+
+## Emotional Jobs
+
+TBD
+
+## Social Jobs
+
+TBD
+
+## Current Workarounds
+
+TBD
+
+## Success Criteria
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function productValuePropositionKnowledge(): string {
+  return `# Value Proposition
+
+## Purpose
+
+Define the promise, outcome, proof and differentiation for the product.
+
+## Current State
+
+TBD
+
+## Promise
+
+TBD
+
+## Primary Outcome
+
+TBD
+
+## Before and After
+
+TBD
+
+## Differentiation
+
+TBD
+
+## Proof or Evidence
+
+TBD
+
+## Risks
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function productPositioningKnowledge(): string {
+  return `# Positioning
+
+## Purpose
+
+Define category, audience, problem, point of view and market alternative.
+
+## Current State
+
+TBD
+
+## Category
+
+TBD
+
+## Audience
+
+TBD
+
+## Market Alternative
+
+TBD
+
+## Point of View
+
+TBD
+
+## Messaging Pillars
+
+TBD
+
+## Do Not Say
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function productBusinessModelKnowledge(): string {
+  return `# Business Model Canvas
+
+## Purpose
+
+Define how the product can create, deliver and capture value at MVP stage.
+
+## Current State
+
+TBD
+
+## Customer Segments
+
+TBD
+
+## Channels
+
+TBD
+
+## Revenue Model
+
+TBD
+
+## Cost Drivers
+
+TBD
+
+## Key Activities
+
+TBD
+
+## Key Partners
+
+TBD
+
+## Assumptions to Validate
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function roadmapKnowledge(): string {
+  return `# Roadmap
+
+## Purpose
+
+Sequence product and business work into visible, decision-ready roadmap items.
+
+## Current State
+
+TBD
+
+## Roadmap Principles
+
+TBD
+
+## Now
+
+TBD
+
+## Next
+
+TBD
+
+## Later
+
+TBD
+
+## Not Planned
+
+TBD
+
+## Decision Criteria
+
+TBD
+
+## Risks and Dependencies
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function roadmapMilestonesKnowledge(): string {
+  return `# Milestones
+
+## Purpose
+
+Define visible checkpoints that connect roadmap work to outcomes.
+
+## Current State
+
+TBD
+
+## Active Milestones
+
+| Milestone | Outcome | Target Window | Status |
+| --- | --- | --- | --- |
+| TBD | TBD | TBD | TBD |
+
+## Milestone Criteria
+
+TBD
+
+## Dependencies
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function roadmapCurrentCycleKnowledge(): string {
+  return `# Current Cycle
+
+## Purpose
+
+Define the current planning or delivery cycle without overcommitting future work.
+
+## Current State
+
+TBD
+
+## Cycle Goal
+
+TBD
+
+## Committed Work
+
+TBD
+
+## Candidate Work
+
+TBD
+
+## Constraints
+
+TBD
+
+## Success Criteria
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function roadmapBacklogKnowledge(): string {
+  return `# Backlog
+
+## Purpose
+
+Collect candidate work before it becomes committed roadmap scope.
+
+## Current State
+
+TBD
+
+## Candidate Items
+
+| Item | Source | User/Business Value | Risk | Status |
+| --- | --- | --- | --- | --- |
+| TBD | TBD | TBD | TBD | candidate |
+
+## Prioritization Criteria
+
+TBD
+
+## Parking Lot
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
 export const rootDepartments: RootDepartmentDefinition[] = [
   {
     key: "strategy",
     name: "Strategy",
-    purpose: "Own company direction, product strategy, roadmap and validation learning.",
-    requestTypes: "company, product strategy, roadmap, validation, ICP or assumptions",
+    purpose: "Own business direction, product strategy, roadmap and validation learning.",
+    requestTypes: "business, product strategy, roadmap, validation, ICP or assumptions",
     areas: [
       {
-        key: "strategy.company",
+        key: "strategy.business",
         root: "strategy",
-        slug: "company",
-        name: "Company",
-        path: "strategy/company",
-        routingKey: "company",
-        requestTypes: "company, mission, vision, principles or operating model",
-        purpose: "Keep company identity, principles, mission and operating decisions coherent.",
-        whenToUse: ["define company", "clarify mission", "capture principles", "record strategic decisions"],
-        sourceOfTruth: ["profile.md", "mission.md", "vision.md", "principles.md", "operating-model.md", "decision-log.md"],
+        slug: "business",
+        name: "Business",
+        path: "strategy/business",
+        lead: {
+          title: "Business Lead",
+          purpose: "Route business identity, brand logic, mission, principles and operating model work."
+        },
+        routingKey: "business",
+        requestTypes: "business, brand, mission, vision, principles or operating model",
+        purpose: "Keep business identity, principles, mission and operating decisions coherent.",
+        whenToUse: ["define business identity", "clarify mission", "capture principles", "record strategic decisions"],
+        sourceOfTruth: ["knowledge/profile.md", "knowledge/mission.md", "knowledge/vision.md", "knowledge/principles.md", "knowledge/operating-model.md", "knowledge/decision-log.md"],
         files: [
-          { path: "profile.md", content: companyProfile },
-          { path: "mission.md", content: () => titledDraft("Mission", "Define why the company exists and who it serves.") },
-          { path: "vision.md", content: () => titledDraft("Vision", "Describe the future state this company wants to create.") },
-          { path: "principles.md", content: () => titledDraft("Principles", "Capture operating principles that guide decisions.") },
-          { path: "operating-model.md", content: () => titledDraft("Operating Model", "Define how the company operates with humans and AI models.") },
-          { path: "decision-log.md", content: () => decisionLog("Decision Log") }
+          { path: "knowledge/README.md", content: () => folderReadme("Business Knowledge", "Durable business context produced by Strategy Business.", "Use when defining business identity, brand logic, mission, principles, operating model or strategic decisions.", "profile.md", ["profile.md", "mission.md", "vision.md", "principles.md", "operating-model.md", "decision-log.md"], ["../roles/", "../skills/", "../playbooks/", "../../product/", "../../roadmap/"], "Keep business context here. Do not enrich roles, skills or playbooks with business-specific facts.") },
+          { path: "knowledge/profile.md", content: businessProfile },
+          { path: "knowledge/mission.md", content: () => titledDraft("Mission", "Define why the business exists and who it serves.") },
+          { path: "knowledge/vision.md", content: () => titledDraft("Vision", "Describe the future state this business wants to create.") },
+          { path: "knowledge/principles.md", content: () => titledDraft("Principles", "Capture operating principles that guide decisions.") },
+          { path: "knowledge/operating-model.md", content: () => titledDraft("Operating Model", "Define how the business operates with humans and AI models.") },
+          { path: "knowledge/decision-log.md", content: () => decisionLog("Decision Log") }
         ],
         roles: [
           {
-            slug: "company-strategist",
-            title: "Company Strategist",
-            purpose: "Clarify company context, principles, positioning and decision quality.",
-            useWhen: ["company direction is unclear", "operating model needs definition", "a strategic decision must be recorded"],
-            beforeActing: ["../profile.md", "../principles.md", "../operating-model.md", "../decision-log.md"],
-            skills: ["define-company", "clarify-operating-model"],
-            playbooks: ["company-foundation"]
+            slug: "business-strategist",
+            title: "Business Strategist",
+            purpose: "Clarify business context, principles, positioning and decision quality.",
+            useWhen: ["business direction is unclear", "operating model needs definition", "a strategic decision must be recorded"],
+            beforeActing: ["../knowledge/profile.md", "../knowledge/principles.md", "../knowledge/operating-model.md", "../knowledge/decision-log.md"],
+            skills: ["define-business-identity", "clarify-operating-model"],
+            playbooks: ["business-foundation"]
           }
         ],
         skills: [
-          { slug: "define-company", title: "Define Company", purpose: "Clarify company context, mission, principles and operating model." },
-          { slug: "clarify-operating-model", title: "Clarify Operating Model", purpose: "Define how humans and AI models collaborate in the company." }
+          {
+            slug: "define-business-identity",
+            title: "Define Business Identity",
+            purpose: "Clarify business context, mission, principles and identity.",
+            useWhen: ["business identity is unclear", "mission or principles need definition", "product work lacks business context"],
+            requiredContext: ["../knowledge/profile.md", "../knowledge/mission.md", "../knowledge/principles.md"],
+            inputs: ["Business name", "Founder intent", "Target customer", "Product context", "Known principles"],
+            process: ["Summarize what the business is.", "Clarify why it exists.", "Identify principles that should guide product and operational decisions.", "Separate founder beliefs from validated facts.", "Propose updates before writing."],
+            checks: ["Mission is clear enough to guide tradeoffs.", "Principles are actionable.", "Open questions are visible."],
+            outputs: ["Business identity summary", "Mission/principles update proposal", "Open questions"],
+            filesToUpdate: ["../knowledge/profile.md", "../knowledge/mission.md", "../knowledge/principles.md"],
+            redLines: ["Do not invent brand claims or market proof.", "Do not turn founder preferences into validated facts.", "Do not update files without confirmation."]
+          },
+          {
+            slug: "clarify-operating-model",
+            title: "Clarify Operating Model",
+            purpose: "Define how humans and AI models collaborate in the business.",
+            useWhen: ["operating model needs definition", "AI/human collaboration is unclear", "decision ownership is ambiguous"],
+            requiredContext: ["../knowledge/operating-model.md", "../knowledge/principles.md", "../knowledge/decision-log.md"],
+            inputs: ["Operating mode", "Founder role", "AI model responsibilities", "Decision constraints"],
+            process: ["Define what humans own.", "Define what AI agents can assist with.", "Name decisions that require founder confirmation.", "Record durable decisions in the decision log."],
+            checks: ["Human approval points are explicit.", "AI responsibilities do not exceed the workspace rules.", "Decisions are recorded with context."],
+            outputs: ["Operating model update", "Decision log proposal", "Open risks"],
+            filesToUpdate: ["../knowledge/operating-model.md", "../knowledge/decision-log.md"],
+            redLines: ["Do not grant models authority to make irreversible business decisions.", "Do not store secrets or private credentials.", "Do not update files without confirmation."]
+          }
         ],
         playbooks: [
-          { slug: "company-foundation", title: "Company Foundation", purpose: "Move from raw company context to usable operating principles.", steps: ["Read company profile", "Clarify mission", "List principles", "Define operating model", "Record decisions"] }
+          {
+            slug: "business-foundation",
+            title: "Business Foundation",
+            purpose: "Move from raw business context to usable identity, principles and operating model.",
+            inputs: ["../knowledge/profile.md", "../knowledge/mission.md", "../knowledge/vision.md", "../knowledge/principles.md", "../knowledge/operating-model.md", "../knowledge/decision-log.md"],
+            steps: ["Load the Business AGENT and Business Strategist role.", "Clarify business profile and mission.", "Identify principles that affect product, roadmap and execution decisions.", "Define how the founder and AI agents collaborate.", "Record decisions and open questions.", "Propose file updates and wait for confirmation before writing."],
+            outputs: ["Business foundation summary", "Mission/principles proposal", "Operating model proposal", "Decision log entries"],
+            filesToUpdate: ["../knowledge/profile.md", "../knowledge/mission.md", "../knowledge/vision.md", "../knowledge/principles.md", "../knowledge/operating-model.md", "../knowledge/decision-log.md"]
+          }
         ],
         commonPaths: [
-          "Company request: role `roles/company-strategist.role.md` -> skill `skills/define-company.skill.md` -> playbook `playbooks/company-foundation.playbook.md`."
+          "Business request: `AGENT.md` -> role `roles/business-strategist.role.md` -> skill `skills/define-business-identity.skill.md` or `skills/clarify-operating-model.skill.md` -> playbook `playbooks/business-foundation.playbook.md`."
         ]
       },
       {
@@ -162,19 +1338,24 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         slug: "product",
         name: "Product",
         path: "strategy/product",
+        lead: {
+          title: "Product Lead",
+          purpose: "Route product strategy work, choose the right product role and keep product decisions aligned with validation, roadmap and MVP scope."
+        },
         routingKey: "product",
         requestTypes: "product strategy, ICP, value proposition, positioning or business model",
         purpose: "Own product strategy, ICP, value proposition, positioning and business model coherence.",
         whenToUse: ["define strategy", "clarify ICP", "shape value proposition", "check product coherence"],
-        sourceOfTruth: ["brief.md", "problem.md", "icp.md", "jobs-to-be-done.md", "value-proposition.md", "positioning.md", "business-model-canvas.md"],
+        sourceOfTruth: ["knowledge/brief.md", "knowledge/problem.md", "knowledge/icp.md", "knowledge/jobs-to-be-done.md", "knowledge/value-proposition.md", "knowledge/positioning.md", "knowledge/business-model-canvas.md"],
         files: [
-          { path: "brief.md", content: productBrief },
-          { path: "problem.md", content: () => titledDraft("Problem", "Define the painful, frequent and valuable problem.") },
-          { path: "icp.md", content: () => titledDraft("Ideal Customer Profile", "Define the first customer segment to validate.") },
-          { path: "jobs-to-be-done.md", content: () => titledDraft("Jobs To Be Done", "Describe the job the customer is trying to get done.") },
-          { path: "value-proposition.md", content: () => titledDraft("Value Proposition", "Define promise, outcome, proof and differentiation.") },
-          { path: "positioning.md", content: () => titledDraft("Positioning", "Define category, audience, problem and point of view.") },
-          { path: "business-model-canvas.md", content: () => titledDraft("Business Model Canvas", "Define customers, channels, revenue, costs, partners and key activities.") }
+          { path: "knowledge/README.md", content: () => folderReadme("Product Knowledge", "Durable product context produced by Strategy Product.", "Use when defining product strategy, ICP, value proposition, positioning, business model or product coherence.", "brief.md", ["brief.md", "problem.md", "icp.md", "jobs-to-be-done.md", "value-proposition.md", "positioning.md", "business-model-canvas.md"], ["../roles/", "../skills/", "../playbooks/", "../../validation/", "../../roadmap/", "../../../operations/product-ops/mvp/"], "Keep company/product context here. Do not enrich roles, skills or playbooks with company-specific facts.") },
+          { path: "knowledge/brief.md", content: productBrief },
+          { path: "knowledge/problem.md", content: productProblemKnowledge },
+          { path: "knowledge/icp.md", content: productIcpKnowledge },
+          { path: "knowledge/jobs-to-be-done.md", content: productJobsKnowledge },
+          { path: "knowledge/value-proposition.md", content: productValuePropositionKnowledge },
+          { path: "knowledge/positioning.md", content: productPositioningKnowledge },
+          { path: "knowledge/business-model-canvas.md", content: productBusinessModelKnowledge }
         ],
         roles: [
           {
@@ -182,33 +1363,113 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Product Strategist",
             purpose: "Connect customer, problem, value proposition, business model, roadmap and validation logic.",
             useWhen: ["strategy is unclear", "ICP or value proposition needs definition", "roadmap coherence is at risk"],
-            beforeActing: ["../brief.md", "../icp.md", "../value-proposition.md", "../../roadmap/current-cycle.md"],
+            beforeActing: ["../knowledge/brief.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../../roadmap/knowledge/current-cycle.md"],
             skills: ["define-product", "define-icp", "define-value-proposition", "define-business-model", "evaluate-idea", "check-coherence"],
             playbooks: ["product-strategy"]
           },
           {
             slug: "product-manager",
             title: "Product Manager",
-            purpose: "Translate strategy into coherent scope, stories and priorities with Operations Core.",
+            purpose: "Translate strategy into coherent scope, stories and priorities with Product Ops.",
             useWhen: ["scope needs definition", "roadmap work needs issue-ready shape", "acceptance criteria are missing"],
-            beforeActing: ["../brief.md", "../../roadmap/backlog.md", "../../../operations/core/mvp/scope.md", "../../../operations/core/mvp/acceptance-criteria.md"],
+            beforeActing: ["../knowledge/brief.md", "../../roadmap/knowledge/backlog.md", "../../../operations/product-ops/mvp/scope.md", "../../../operations/product-ops/mvp/acceptance-criteria.md"],
             skills: ["define-product", "evaluate-idea", "check-coherence"],
             playbooks: ["product-strategy"]
           }
         ],
         skills: [
-          { slug: "define-product", title: "Define Product", purpose: "Clarify product brief, problem, target user and product status." },
-          { slug: "define-icp", title: "Define ICP", purpose: "Define the first customer segment with pains, triggers and exclusions." },
-          { slug: "define-value-proposition", title: "Define Value Proposition", purpose: "Articulate the promise, outcome, proof and differentiation." },
-          { slug: "define-business-model", title: "Define Business Model", purpose: "Draft revenue, channels, costs and delivery model." },
-          { slug: "evaluate-idea", title: "Evaluate Idea", purpose: "Evaluate a founder idea against user value, evidence, MVP scope and roadmap impact." },
-          { slug: "check-coherence", title: "Check Coherence", purpose: "Check alignment between ICP, problem, value proposition, MVP, roadmap and issue." }
+          {
+            slug: "define-product",
+            title: "Define Product",
+            purpose: "Clarify product brief, problem, target user and product status.",
+            useWhen: ["the product is vague", "the founder has raw context but no product brief", "MVP or roadmap work needs a product baseline"],
+            requiredContext: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md"],
+            inputs: ["Founder description", "Product status", "Product type", "Primary user", "Known problem and outcome"],
+            process: ["Summarize the product in plain language.", "Separate facts from assumptions.", "Name the primary user and problem.", "Identify what is still unknown.", "Propose updates before writing."],
+            checks: ["The product can be explained in one paragraph.", "Problem and user are not treated as validated unless evidence exists.", "Open questions are explicit."],
+            outputs: ["Product brief update", "Problem summary", "Open questions", "Recommended next validation or MVP step"],
+            filesToUpdate: ["../knowledge/brief.md", "../knowledge/problem.md"],
+            redLines: ["Do not invent customer evidence.", "Do not define MVP scope here; route MVP scope to Product Ops.", "Do not update files without confirmation."]
+          },
+          {
+            slug: "define-icp",
+            title: "Define ICP",
+            purpose: "Define the first customer segment with pains, triggers and exclusions.",
+            useWhen: ["the target customer is too broad", "validation needs a first segment", "marketing or design needs a clearer audience"],
+            requiredContext: ["../knowledge/icp.md", "../knowledge/problem.md", "../../validation/assumptions.md"],
+            inputs: ["Primary user", "Buyer or decision maker", "Pain trigger", "Exclusion criteria", "Evidence level"],
+            process: ["Choose the narrowest useful first segment.", "Clarify buyer, user and decision maker.", "List qualification criteria and exclusions.", "Connect ICP to assumptions that need validation."],
+            checks: ["ICP is specific enough to recruit or interview.", "Exclusions are listed.", "Assumptions are not presented as validated facts."],
+            outputs: ["ICP draft", "Recruiting or validation criteria", "Assumptions to validate"],
+            filesToUpdate: ["../knowledge/icp.md", "../../validation/assumptions.md"],
+            redLines: ["Do not define everyone as the ICP.", "Do not skip exclusions.", "Do not create Growth acquisition plans from ICP alone."]
+          },
+          {
+            slug: "define-value-proposition",
+            title: "Define Value Proposition",
+            purpose: "Articulate the promise, outcome, proof and differentiation.",
+            useWhen: ["the product promise is unclear", "positioning or landing page work needs a sharper value proposition", "roadmap work needs value alignment"],
+            requiredContext: ["../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md"],
+            inputs: ["Problem", "ICP", "Desired outcome", "Alternative solution", "Evidence or proof"],
+            process: ["State the promise.", "Describe the before and after.", "Name differentiation versus alternatives.", "Separate proof from assumptions.", "List risks and open questions."],
+            checks: ["Promise is outcome-focused.", "Differentiation is not generic.", "Proof is not invented."],
+            outputs: ["Value proposition update", "Differentiation notes", "Proof gaps"],
+            filesToUpdate: ["../knowledge/value-proposition.md", "../knowledge/positioning.md"],
+            redLines: ["Do not write marketing copy as if proof already exists.", "Do not overpromise beyond MVP capability."]
+          },
+          {
+            slug: "define-business-model",
+            title: "Define Business Model",
+            purpose: "Draft revenue, channels, costs and delivery model.",
+            useWhen: ["pricing or revenue logic is unclear", "financial assumptions affect MVP scope", "go-to-market needs a business model baseline"],
+            requiredContext: ["../knowledge/business-model-canvas.md", "../knowledge/icp.md", "../knowledge/value-proposition.md"],
+            inputs: ["Customer segment", "Willingness-to-pay assumption", "Delivery model", "Channel assumption", "Cost drivers"],
+            process: ["Draft the simplest viable revenue model.", "List cost and delivery assumptions.", "Identify pricing risks.", "Route detailed finance modeling to Growth Finance when needed."],
+            checks: ["Revenue model is plausible for the ICP.", "Costs and delivery assumptions are visible.", "Unknowns are recorded."],
+            outputs: ["Business model canvas update", "Pricing assumptions", "Finance follow-up questions"],
+            filesToUpdate: ["../knowledge/business-model-canvas.md", "../../../growth/finance/pricing.md"],
+            redLines: ["Do not invent pricing validation.", "Do not make financial commitments without evidence.", "Do not update Growth Finance unless that area is active or the user confirms."]
+          },
+          {
+            slug: "evaluate-idea",
+            title: "Evaluate Idea",
+            purpose: "Evaluate a founder idea against user value, evidence, MVP scope and roadmap impact.",
+            useWhen: ["the founder proposes a new idea", "a feature request may change direction", "roadmap priority needs product judgment"],
+            requiredContext: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/value-proposition.md", "../../roadmap/knowledge/backlog.md"],
+            inputs: ["Idea", "Expected user value", "Evidence", "MVP impact", "Roadmap impact"],
+            process: ["Restate the idea.", "Identify the user and problem it serves.", "Check fit with ICP and value proposition.", "Name assumptions and evidence gaps.", "Recommend accept, park, validate or reject."],
+            checks: ["Idea is tied to a user outcome.", "Roadmap impact is explicit.", "Validation need is clear."],
+            outputs: ["Idea evaluation", "Assumptions", "Recommended decision", "Roadmap or validation follow-up"],
+            filesToUpdate: ["../../roadmap/knowledge/backlog.md", "../../validation/assumptions.md"],
+            redLines: ["Do not add ideas directly to roadmap as committed work.", "Do not skip validation risk.", "Do not implement from idea evaluation alone."]
+          },
+          {
+            slug: "check-coherence",
+            title: "Check Coherence",
+            purpose: "Check alignment between ICP, problem, value proposition, MVP, roadmap and issue.",
+            useWhen: ["strategy feels inconsistent", "MVP scope may not match the problem", "roadmap or issue work needs product review"],
+            requiredContext: ["../knowledge/icp.md", "../knowledge/problem.md", "../knowledge/value-proposition.md", "../../../operations/product-ops/mvp/scope.md", "../../roadmap/knowledge/roadmap.md"],
+            inputs: ["ICP", "Problem", "Value proposition", "MVP scope", "Roadmap or issue"],
+            process: ["Check ICP/problem fit.", "Check value proposition/problem fit.", "Check MVP/value fit.", "Check roadmap/MVP fit.", "List contradictions and next fixes."],
+            checks: ["Findings separate alignment from inconsistency.", "Risks are actionable.", "Next command or workflow is clear."],
+            outputs: ["Coherence score", "Aligned points", "Inconsistencies", "Risks", "Recommended next action"],
+            filesToUpdate: ["Update no files unless the user asks after reviewing the findings."],
+            redLines: ["Do not silently rewrite strategy.", "Do not treat coherence review as approval to implement."]
+          }
         ],
         playbooks: [
-          { slug: "product-strategy", title: "Product Strategy", purpose: "Move from raw product context to coherent strategy.", steps: ["Read product brief", "Clarify ICP", "Define problem", "Define value proposition", "Check roadmap and MVP coherence"] }
+          {
+            slug: "product-strategy",
+            title: "Product Strategy",
+            purpose: "Move from raw product context to coherent strategy.",
+            inputs: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/business-model-canvas.md"],
+            steps: ["Load the Product AGENT and choose Product Strategist or Product Manager.", "Read the minimum Product knowledge files for the request.", "Clarify ICP, problem and value proposition before touching roadmap or MVP scope.", "Separate decisions, assumptions and open questions.", "Use validation or roadmap areas when the output affects evidence or sequencing.", "Propose file updates and wait for confirmation before writing."],
+            outputs: ["Product strategy summary", "Updated Product knowledge proposal", "Assumptions or validation follow-up", "MVP or roadmap handoff when applicable"],
+            filesToUpdate: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/business-model-canvas.md"]
+          }
         ],
         commonPaths: [
-          "Product strategy request: role `roles/product-strategist.role.md` -> skill `skills/check-coherence.skill.md` -> playbook `playbooks/product-strategy.playbook.md`."
+          "Product strategy request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/check-coherence.skill.md` -> playbook `playbooks/product-strategy.playbook.md`."
         ]
       },
       {
@@ -217,47 +1478,96 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         slug: "roadmap",
         name: "Roadmap",
         path: "strategy/roadmap",
+        lead: {
+          title: "Roadmap Lead",
+          purpose: "Route roadmap planning, prioritization, cycle planning and GitHub sync preparation."
+        },
         routingKey: "roadmap",
         requestTypes: "roadmap, milestones, backlog, cycle planning or prioritization",
-        purpose: "Own roadmap sequence, milestones, backlog and validation-first prioritization.",
+        purpose: "Own roadmap sequence, milestones, backlog and planning-cycle prioritization.",
         whenToUse: ["sequence product work", "prioritize backlog", "define current cycle", "plan milestones"],
-        sourceOfTruth: ["roadmap.md", "milestones.md", "current-cycle.md", "backlog.md"],
+        sourceOfTruth: ["knowledge/roadmap.md", "knowledge/milestones.md", "knowledge/current-cycle.md", "knowledge/backlog.md"],
         files: [
-          { path: "roadmap.md", content: () => titledDraft("Roadmap", "Sequence product work by validation cycle.") },
-          { path: "milestones.md", content: () => titledDraft("Milestones", "Define visible checkpoints.") },
-          { path: "current-cycle.md", content: () => titledDraft("Current Cycle", "Define the current validation or delivery cycle.") },
-          { path: "backlog.md", content: () => titledDraft("Backlog", "Collect candidate work before prioritization.") }
+          { path: "knowledge/README.md", content: () => folderReadme("Roadmap Knowledge", "Durable roadmap context produced by Strategy Roadmap.", "Use when sequencing product work, planning milestones, choosing the current cycle or preparing GitHub sync.", "roadmap.md", ["roadmap.md", "milestones.md", "current-cycle.md", "backlog.md"], ["../roles/", "../skills/", "../playbooks/", "../../product/", "../../../operations/product-ops/mvp/", "../../../.github/leanos/"], "Keep roadmap planning context here. Do not turn candidate backlog items into committed scope without explicit confirmation.") },
+          { path: "knowledge/roadmap.md", content: roadmapKnowledge },
+          { path: "knowledge/milestones.md", content: roadmapMilestonesKnowledge },
+          { path: "knowledge/current-cycle.md", content: roadmapCurrentCycleKnowledge },
+          { path: "knowledge/backlog.md", content: roadmapBacklogKnowledge }
         ],
         roles: [
           {
             slug: "roadmap-planner",
             title: "Roadmap Planner",
-            purpose: "Turn strategy and validation risk into a coherent cycle plan.",
+            purpose: "Turn business, product and MVP context into a coherent roadmap and cycle plan.",
             useWhen: ["roadmap order is unclear", "backlog needs prioritization", "cycle planning is needed"],
-            beforeActing: ["../roadmap.md", "../current-cycle.md", "../backlog.md", "../../product/brief.md"],
+            beforeActing: ["../knowledge/roadmap.md", "../knowledge/current-cycle.md", "../knowledge/backlog.md", "../../product/knowledge/brief.md", "../../../operations/product-ops/mvp/scope.md"],
             skills: ["create-roadmap", "prioritize-backlog", "prepare-roadmap-sync"],
-            playbooks: ["validation-cycle-planning", "roadmap-sync-prep"]
+            playbooks: ["roadmap-cycle-planning", "roadmap-sync-prep"]
           }
         ],
         skills: [
-          { slug: "create-roadmap", title: "Create Roadmap", purpose: "Sequence roadmap work by validation cycle and strategic priority." },
-          { slug: "prioritize-backlog", title: "Prioritize Backlog", purpose: "Prioritize work by risk, learning value and delivery cost." },
-          { slug: "prepare-roadmap-sync", title: "Prepare Roadmap Sync", purpose: "Prepare roadmap epics, milestones and sync payload before GitHub Project updates." }
+          {
+            slug: "create-roadmap",
+            title: "Create Roadmap",
+            purpose: "Sequence roadmap work by business outcome, product value, MVP scope and delivery constraints.",
+            useWhen: ["the founder needs a roadmap", "product strategy needs execution sequence", "MVP scope needs a planning path"],
+            requiredContext: ["../knowledge/roadmap.md", "../knowledge/current-cycle.md", "../../product/knowledge/brief.md", "../../../operations/product-ops/mvp/scope.md"],
+            inputs: ["Product strategy", "MVP scope", "Business constraints", "Known risks", "Candidate work"],
+            process: ["Clarify the roadmap objective.", "Separate Now, Next, Later and Not Planned.", "Connect items to outcomes.", "Identify dependencies and risks.", "Propose updates before writing."],
+            checks: ["Now items are small enough to execute.", "Roadmap items are not vague wishes.", "MVP scope is not expanded silently."],
+            outputs: ["Roadmap proposal", "Current cycle proposal", "Risks and dependencies", "Open questions"],
+            filesToUpdate: ["../knowledge/roadmap.md", "../knowledge/current-cycle.md"],
+            redLines: ["Do not commit future work without founder confirmation.", "Do not invent milestones or dates.", "Do not turn backlog candidates into committed scope silently."]
+          },
+          {
+            slug: "prioritize-backlog",
+            title: "Prioritize Backlog",
+            purpose: "Prioritize candidate work by value, risk, evidence, effort and current cycle fit.",
+            useWhen: ["backlog is unordered", "a new idea needs placement", "the current cycle needs sharper priority"],
+            requiredContext: ["../knowledge/backlog.md", "../knowledge/current-cycle.md", "../../product/knowledge/problem.md", "../../product/knowledge/value-proposition.md"],
+            inputs: ["Candidate backlog items", "Product value", "Risk", "Effort", "Dependencies"],
+            process: ["Group candidate work.", "Score by outcome value, risk reduction, effort and dependency.", "Recommend keep, park, split or discard.", "Update only after confirmation."],
+            checks: ["Top items have a clear user or business outcome.", "Large items are flagged for epic breakdown.", "Dependencies are visible."],
+            outputs: ["Prioritized backlog", "Parked items", "Items needing epic breakdown"],
+            filesToUpdate: ["../knowledge/backlog.md", "../knowledge/current-cycle.md"],
+            redLines: ["Do not use priority as permission to implement.", "Do not hide uncertainty.", "Do not remove backlog items without confirmation."]
+          },
+          {
+            slug: "prepare-roadmap-sync",
+            title: "Prepare Roadmap Sync",
+            purpose: "Prepare roadmap epics, milestones and sync payload before GitHub Project updates.",
+            useWhen: ["roadmap should be prepared for GitHub", "milestones need project sync readiness", "epics need draft payloads"],
+            requiredContext: ["../knowledge/roadmap.md", "../knowledge/milestones.md", "../knowledge/current-cycle.md", "../../../operations/product-ops/mvp/scope.md", "../../../.github/leanos/project-sync.yaml"],
+            inputs: ["Roadmap", "Milestones", "Current cycle", "MVP scope", "GitHub project settings"],
+            process: ["Check GitHub readiness.", "Map roadmap items to milestone candidates.", "Identify epic candidates.", "Prepare dry-run sync payload.", "Ask for confirmation before any remote write."],
+            checks: ["No GitHub token is stored in workspace files.", "Remote writes require dry-run and confirmation.", "Duplicate epic risk is visible."],
+            outputs: ["Sync readiness summary", "Milestone mapping", "Epic draft list", "Missing configuration"],
+            filesToUpdate: ["../knowledge/roadmap.md", "../knowledge/milestones.md", "../knowledge/current-cycle.md", "../../../.github/leanos/project-sync.yaml"],
+            redLines: ["Do not call GitHub API directly from the model.", "Do not store tokens.", "Do not create remote items without explicit confirmation."]
+          }
         ],
         playbooks: [
-          { slug: "validation-cycle-planning", title: "Validation Cycle Planning", purpose: "Plan the next coherent validation or delivery cycle.", steps: ["Read product strategy", "Read validation risk", "Review backlog", "Choose current cycle", "Record milestones"] },
+          {
+            slug: "roadmap-cycle-planning",
+            title: "Roadmap Cycle Planning",
+            purpose: "Plan the next coherent roadmap cycle from strategy, MVP scope, constraints and known risks.",
+            inputs: ["../knowledge/roadmap.md", "../knowledge/current-cycle.md", "../knowledge/backlog.md", "../../product/knowledge/brief.md", "../../../operations/product-ops/mvp/scope.md"],
+            steps: ["Load the Roadmap AGENT and Roadmap Planner role.", "Review product strategy and MVP scope.", "Review backlog candidates.", "Choose Now, Next, Later and Not Planned boundaries.", "Define current cycle goal and success criteria.", "Propose updates and wait for confirmation before writing."],
+            outputs: ["Roadmap cycle summary", "Current cycle proposal", "Backlog changes", "Milestone follow-up"],
+            filesToUpdate: ["../knowledge/roadmap.md", "../knowledge/current-cycle.md", "../knowledge/backlog.md"]
+          },
           {
             slug: "roadmap-sync-prep",
             title: "Roadmap Sync Prep",
             purpose: "Prepare roadmap items for GitHub Project sync without calling the API directly.",
-            inputs: ["Roadmap", "Milestones", "Current cycle", "Backlog", "MVP scope", "GitHub project sync settings"],
+            inputs: ["../knowledge/roadmap.md", "../knowledge/milestones.md", "../knowledge/current-cycle.md", "../knowledge/backlog.md", "../../../operations/product-ops/mvp/scope.md", "../../../.github/leanos/project-sync.yaml"],
             steps: ["Read roadmap and milestones", "Identify candidate epics", "Check MVP and validation linkage", "Ask DevOps to confirm GitHub project settings when needed", "Prepare sync payload", "Ask for confirmation before any remote write"],
             outputs: ["Roadmap sync summary", "Milestone mapping", "Epic draft list", "Missing GitHub configuration", "Confirmation question before API execution"],
-            filesToUpdate: ["Update `../roadmap.md`, `../milestones.md` or `../current-cycle.md` only after explicit confirmation.", "Update `../../../.github/leanos/project-sync.yaml` only through DevOps/GitHub setup guidance."]
+            filesToUpdate: ["Update `../knowledge/roadmap.md`, `../knowledge/milestones.md` or `../knowledge/current-cycle.md` only after explicit confirmation.", "Update `../../../.github/leanos/project-sync.yaml` only through DevOps/GitHub setup guidance."]
           }
         ],
         commonPaths: [
-          "Roadmap request: role `roles/roadmap-planner.role.md` -> skill `skills/create-roadmap.skill.md` -> playbook `playbooks/validation-cycle-planning.playbook.md`."
+          "Roadmap request: `AGENT.md` -> role `roles/roadmap-planner.role.md` -> skill `skills/create-roadmap.skill.md` -> playbook `playbooks/roadmap-cycle-planning.playbook.md`."
         ]
       },
       {
@@ -303,7 +1613,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             inputs: ["Product strategy", "MVP scope", "Assumption register", "Riskiest assumptions", "Experiment plan", "Success metrics"],
             steps: ["Identify the assumption being tested", "Classify the risk and why it matters", "Design the smallest experiment that can produce evidence", "Define success and failure signals before running the experiment", "Collect evidence without interpreting it as fact too early", "Separate evidence from insight", "Make or defer a decision", "Update roadmap or backlog only when the decision requires it"],
             outputs: ["Validated learning summary", "Evidence vs insight separation", "Decision or explicit no-decision", "Roadmap or backlog impact", "Next validation action"],
-            filesToUpdate: ["Update `../assumptions.md` when assumptions are added or reclassified.", "Update `../riskiest-assumptions.md` when priority changes.", "Update `../experiments.md` when an experiment is planned or completed.", "Update `../success-metrics.md` when signals are defined or changed.", "Update `../learning-log.md` only when evidence supports learning.", "Propose changes to `../../roadmap/roadmap.md` or `../../roadmap/backlog.md` only after a decision is confirmed."]
+            filesToUpdate: ["Update `../assumptions.md` when assumptions are added or reclassified.", "Update `../riskiest-assumptions.md` when priority changes.", "Update `../experiments.md` when an experiment is planned or completed.", "Update `../success-metrics.md` when signals are defined or changed.", "Update `../learning-log.md` only when evidence supports learning.", "Propose changes to `../../roadmap/knowledge/roadmap.md` or `../../roadmap/knowledge/backlog.md` only after a decision is confirmed."]
           }
         ],
         commonPaths: [
@@ -316,7 +1626,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         slug: "idea-to-roadmap",
         purpose: "Turn founder ideas into product, validation, MVP and roadmap decisions.",
         requiredAreas: ["product", "roadmap", "validation"],
-        steps: ["Read product strategy", "Evaluate idea against ICP, problem and value", "Identify validation risk", "Check MVP impact with Operations Core when active", "Decide backlog, roadmap, experiment or discard", "Propose source-of-truth updates before writing"]
+        steps: ["Read product strategy", "Evaluate idea against ICP, problem and value", "Identify validation risk", "Check MVP impact with Product Ops when active", "Decide backlog, roadmap, experiment or discard", "Propose source-of-truth updates before writing"]
       },
       {
         slug: "strategy-validation-cycle",
@@ -335,34 +1645,36 @@ export const rootDepartments: RootDepartmentDefinition[] = [
   {
     key: "operations",
     name: "Operations",
-    purpose: "Own MVP execution, architecture, design, engineering, DevOps and security.",
-    requestTypes: "MVP, architecture, design, engineering, implementation, DevOps or security",
+    purpose: "Own product operations, design, engineering, DevOps and security for delivery.",
+    requestTypes: "MVP scope, issue readiness, design, engineering, implementation, DevOps or security",
     areas: [
       {
-        key: "operations.core",
+        key: "operations.product-ops",
         root: "operations",
-        slug: "core",
-        name: "Core",
-        path: "operations/core",
-        routingKey: "core",
-        requestTypes: "MVP, architecture, system context, data model or technical decisions",
-        purpose: "Own MVP scope, system architecture and the operating bridge between Product and Engineering.",
-        whenToUse: ["define MVP", "shape acceptance criteria", "define architecture", "coordinate delivery scope"],
-        sourceOfTruth: ["overview.md", "system-context.md", "data-model.md", "api-contract.md", "ai-capabilities.md", "prompt-architecture.md", "integrations.md", "technical-decisions.md", "mvp/scope.md", "mvp/user-stories.md", "mvp/acceptance-criteria.md"],
+        slug: "product-ops",
+        name: "Product Ops",
+        path: "operations/product-ops",
+        lead: {
+          title: "Product Ops Lead",
+          purpose: "Route MVP scope, epic shaping, issue readiness and delivery-boundary work before Engineering starts implementation."
+        },
+        routingKey: "product_ops",
+        requestTypes: "MVP scope, acceptance criteria, epics, sub-issues, issue readiness or delivery boundaries",
+        purpose: "Turn Strategy and Roadmap into MVP scope, acceptance criteria and implementation-ready work.",
+        whenToUse: ["define MVP", "shape acceptance criteria", "break epics into sub-issues", "check issue readiness", "coordinate delivery scope"],
+        sourceOfTruth: ["knowledge/overview.md", "knowledge/delivery-context.md", "knowledge/issue-readiness.md", "knowledge/technical-decisions.md", "mvp/scope.md", "mvp/prd.md", "mvp/user-stories.md", "mvp/acceptance-criteria.md"],
         files: [
-          { path: "overview.md", content: () => titledDraft("Architecture Overview", "Describe the current or intended architecture.") },
-          { path: "system-context.md", content: () => titledDraft("System Context", "Define actors, systems and boundaries.") },
-          { path: "data-model.md", content: () => titledDraft("Data Model", "Describe core entities and relationships.") },
-          { path: "api-contract.md", content: () => titledDraft("API Contract", "Define API inputs, outputs and errors.") },
-          { path: "ai-capabilities.md", content: () => titledDraft("AI Capabilities", "Define AI features and responsibilities.") },
-          { path: "prompt-architecture.md", content: () => titledDraft("Prompt Architecture", "Define prompt strategy and context boundaries.") },
-          { path: "integrations.md", content: () => titledDraft("Integrations", "Document external systems and APIs.") },
-          { path: "technical-decisions.md", content: () => decisionLog("Technical Decisions") },
-          { path: "mvp/README.md", content: () => folderReadme("MVP", "MVP execution source-of-truth files.", "Use for MVP scope, stories, flows, acceptance criteria and release readiness.", "scope.md", ["scope.md", "user-stories.md", "user-flows.md", "acceptance-criteria.md", "non-goals.md", "release-checklist.md"], ["../", "../../../strategy/product/", "../../../strategy/roadmap/"], "MVP work is owned by Operations Core with Product/PM supervision.") },
-          { path: "mvp/scope.md", content: () => titledDraft("MVP Scope", "Define the smallest coherent product scope.") },
-          { path: "mvp/user-stories.md", content: () => titledDraft("User Stories", "Capture user stories in priority order.") },
+          { path: "knowledge/README.md", content: () => folderReadme("Product Ops Knowledge", "Durable operational context produced by Product Ops.", "Use when turning strategy and roadmap into MVP scope, issue readiness and delivery boundaries.", "overview.md", ["overview.md", "delivery-context.md", "issue-readiness.md", "technical-decisions.md"], ["../roles/", "../skills/", "../playbooks/", "../mvp/", "../../../strategy/product/", "../../../strategy/roadmap/"], "Keep this folder focused on delivery context. Do not move full architecture, API contracts or data models here before the product stack exists.") },
+          { path: "knowledge/overview.md", content: productOpsOverviewKnowledge },
+          { path: "knowledge/delivery-context.md", content: deliveryContextKnowledge },
+          { path: "knowledge/issue-readiness.md", content: issueReadinessKnowledge },
+          { path: "knowledge/technical-decisions.md", content: () => decisionLog("Technical Decisions") },
+          { path: "mvp/README.md", content: () => folderReadme("MVP", "MVP execution knowledge owned by Product Ops.", "Use for MVP scope, PRD, stories, flows, acceptance criteria and release readiness.", "scope.md", ["scope.md", "prd.md", "user-stories.md", "user-flows.md", "acceptance-criteria.md", "non-goals.md", "release-checklist.md"], ["../knowledge/", "../roles/", "../skills/", "../playbooks/", "../../../strategy/product/", "../../../strategy/roadmap/"], "MVP work is owned by Product Ops with Product/PM supervision. Keep implementation details out until Engineering starts.") },
+          { path: "mvp/scope.md", content: mvpScopeKnowledge },
+          { path: "mvp/prd.md", content: mvpPrdKnowledge },
+          { path: "mvp/user-stories.md", content: mvpUserStoriesKnowledge },
           { path: "mvp/user-flows.md", content: () => titledDraft("User Flows", "Describe core MVP flows.") },
-          { path: "mvp/acceptance-criteria.md", content: () => titledDraft("Acceptance Criteria", "Define completion criteria.") },
+          { path: "mvp/acceptance-criteria.md", content: mvpAcceptanceCriteriaKnowledge },
           { path: "mvp/non-goals.md", content: () => titledDraft("Non-Goals", "List what is intentionally excluded.") },
           { path: "mvp/release-checklist.md", content: () => checklist("MVP Release Checklist") }
         ],
@@ -372,18 +1684,18 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Product Owner",
             purpose: "Own MVP execution clarity with supervision from Product and PM strategy.",
             useWhen: ["MVP scope needs definition", "acceptance criteria are unclear", "delivery scope needs coordination", "an epic needs to be broken into sub-issues"],
-            beforeActing: ["../mvp/scope.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/brief.md", "../../../ai-standard/templates/github/issue-readiness-matrix-template.md"],
+            beforeActing: ["../knowledge/overview.md", "../knowledge/issue-readiness.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/knowledge/brief.md", "../../../ai-standard/templates/github/issue-readiness-matrix-template.md"],
             skills: ["define-mvp", "write-acceptance-criteria", "check-delivery-coherence", "shape-epic", "write-subissue-criteria"],
             playbooks: ["mvp-delivery", "epic-to-subissues"]
           },
           {
-            slug: "technical-architect",
-            title: "Technical Architect",
-            purpose: "Define architecture boundaries, data model, APIs and AI capabilities.",
-            useWhen: ["system boundaries are unclear", "API/data model is needed", "technical decisions need recording"],
-            beforeActing: ["../overview.md", "../system-context.md", "../data-model.md", "../technical-decisions.md"],
-            skills: ["define-architecture", "create-api-contract"],
-            playbooks: ["architecture-planning"]
+            slug: "delivery-architect",
+            title: "Delivery Architect",
+            purpose: "Define delivery boundaries, technical constraints and implementation readiness without overdesigning architecture too early.",
+            useWhen: ["delivery boundaries are unclear", "technical constraints affect scope", "implementation readiness needs review", "technical decisions need recording"],
+            beforeActing: ["../knowledge/overview.md", "../knowledge/delivery-context.md", "../knowledge/technical-decisions.md", "../mvp/scope.md"],
+            skills: ["define-delivery-boundaries", "check-delivery-coherence"],
+            playbooks: ["delivery-readiness"]
           }
         ],
         skills: [
@@ -392,26 +1704,42 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           { slug: "check-delivery-coherence", title: "Check Delivery Coherence", purpose: "Check that delivery scope matches strategy, roadmap and acceptance criteria." },
           { slug: "shape-epic", title: "Shape Epic", purpose: "Turn a roadmap epic into an implementation-ready scope boundary." },
           { slug: "write-subissue-criteria", title: "Write Subissue Criteria", purpose: "Write Product and Engineering criteria for sub-issues, with Design and Security only when applicable." },
-          { slug: "define-architecture", title: "Define Architecture", purpose: "Define system boundaries, data flow and technical decisions." },
-          { slug: "create-api-contract", title: "Create API Contract", purpose: "Define API inputs, outputs, errors and ownership boundaries." }
+          { slug: "define-delivery-boundaries", title: "Define Delivery Boundaries", purpose: "Define enough technical and operational boundaries for safe implementation without creating premature architecture artifacts." }
         ],
         playbooks: [
-          { slug: "mvp-delivery", title: "MVP Delivery", purpose: "Turn product strategy into executable MVP scope.", steps: ["Read product strategy", "Define MVP scope", "Write user stories", "Define acceptance criteria", "Confirm non-goals"] },
+          {
+            slug: "mvp-delivery",
+            title: "MVP Delivery",
+            purpose: "Turn product strategy into executable MVP scope.",
+            inputs: ["Product brief", "Problem", "ICP", "Value proposition", "Roadmap or current cycle when available", "Existing MVP scope", "Existing PRD when available"],
+            steps: ["Read Product Ops AGENT and choose the Product Owner role", "Read product strategy and existing MVP knowledge", "Define the smallest coherent MVP scope", "Write or refine the MVP PRD", "Write or refine user stories", "Define acceptance criteria", "Confirm non-goals", "Identify Design, Security, Engineering or DevOps dependencies", "Propose file updates and wait for confirmation before writing"],
+            outputs: ["MVP scope proposal", "PRD proposal", "User stories", "Acceptance criteria", "Non-goals", "Dependencies", "Open questions"],
+            filesToUpdate: ["Update `../mvp/scope.md`, `../mvp/prd.md`, `../mvp/user-stories.md`, `../mvp/acceptance-criteria.md` and `../mvp/non-goals.md` only after explicit confirmation.", "Update `../knowledge/overview.md` or `../knowledge/delivery-context.md` when delivery context changes."]
+          },
           {
             slug: "epic-to-subissues",
             title: "Epic To Subissues",
             purpose: "Break a GitHub epic into implementation-ready sub-issues with clear Product and Engineering criteria.",
-            inputs: ["Parent epic", "Roadmap item", "Milestone", "MVP scope", "Acceptance criteria", "Issue readiness matrix", "Design context when UX is affected", "Security context when sensitive surfaces are involved"],
-            steps: ["Read the parent epic and MVP scope", "Confirm the epic outcome and non-goals", "Apply the issue readiness matrix", "Write Product criteria for every sub-issue", "Write Engineering criteria for every implementation sub-issue", "Include Design criteria only when the sub-issue affects user-facing UX", "Include Security criteria only when data, auth, privacy, abuse or compliance is involved", "Ask Engineering to validate size and dependencies", "Prepare sub-issue drafts and ask for confirmation before any GitHub API write"],
+            inputs: ["Parent epic", "Roadmap item", "Milestone", "MVP scope", "PRD", "Acceptance criteria", "Issue readiness matrix", "Design context when UX is affected", "Security context when sensitive surfaces are involved"],
+            steps: ["Read the parent epic, MVP scope and PRD", "Confirm the epic outcome and non-goals", "Apply the issue readiness matrix", "Write Product criteria for every sub-issue", "Write Engineering criteria for every implementation sub-issue", "Include Design criteria only when the sub-issue affects user-facing UX", "Include Security criteria only when data, auth, privacy, abuse or compliance is involved", "Ask Engineering to validate size and dependencies", "Prepare sub-issue drafts and ask for confirmation before any GitHub API write"],
             outputs: ["Sub-issue draft list", "Product criteria", "Engineering criteria", "Design criteria or not applicable", "Security criteria or not applicable", "Dependencies", "Risks", "Confirmation question before remote issue creation"],
             filesToUpdate: ["Do not update GitHub directly from the model.", "Update MVP source-of-truth files only when the user explicitly confirms a scope or criteria change."]
           },
-          { slug: "architecture-planning", title: "Architecture Planning", purpose: "Create enough architecture context to guide implementation.", steps: ["Read system context", "Define data model", "Define API contract", "Capture technical decisions"] }
+          {
+            slug: "delivery-readiness",
+            title: "Delivery Readiness",
+            purpose: "Confirm that an issue or MVP slice has enough product, technical and operational clarity to enter Engineering.",
+            inputs: ["Issue or MVP slice", "Product Ops overview", "MVP scope", "PRD", "Acceptance criteria", "Issue readiness notes", "Design and Security context when applicable"],
+            steps: ["Read Product Ops AGENT and choose the Delivery Architect role", "Review MVP scope, PRD and acceptance criteria", "Identify dependencies and technical constraints", "Check Design and Security applicability", "Capture only confirmed technical decisions", "Recommend ready, needs product shaping, needs design, needs security or blocked"],
+            outputs: ["Delivery readiness result", "Missing criteria", "Dependencies", "Design or Security applicability", "Technical decision notes", "Recommended next action"],
+            filesToUpdate: ["Update `../knowledge/issue-readiness.md`, `../knowledge/delivery-context.md` or `../knowledge/technical-decisions.md` only after explicit confirmation."]
+          }
         ],
         commonPaths: [
+          "Product Ops request: area lead `AGENT.md` -> choose Product Owner or Delivery Architect -> load only the required skills and playbook.",
           "MVP request: role `roles/product-owner.role.md` -> skill `skills/define-mvp.skill.md` -> playbook `playbooks/mvp-delivery.playbook.md`.",
           "Epic breakdown request: role `roles/product-owner.role.md` -> skills `skills/shape-epic.skill.md` and `skills/write-subissue-criteria.skill.md` -> playbook `playbooks/epic-to-subissues.playbook.md`.",
-          "Architecture request: role `roles/technical-architect.role.md` -> skill `skills/define-architecture.skill.md` -> playbook `playbooks/architecture-planning.playbook.md`."
+          "Delivery readiness request: role `roles/delivery-architect.role.md` -> skill `skills/define-delivery-boundaries.skill.md` -> playbook `playbooks/delivery-readiness.playbook.md`."
         ]
       },
       {
@@ -430,7 +1758,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         whenToUse: ["define design foundation", "map user flows", "define accessibility baseline", "design onboarding", "reason about usability"],
         sourceOfTruth: ["knowledge/design-system.md", "knowledge/accessibility.md", "knowledge/user-flows.md"],
         files: [
-          { path: "knowledge/README.md", content: () => folderReadme("Design Knowledge", "Design context produced by the Design area.", "Use after Product and MVP context exist, before implementation or user-facing issue work.", "design-system.md", ["design-system.md", "accessibility.md", "user-flows.md"], ["../roles/", "../skills/", "../playbooks/", "../../../strategy/product/", "../../core/mvp/"], "Keep this folder focused on reusable design foundation. Create screen specs, usability notes and UX decisions later when a concrete feature or screen requires them.") },
+          { path: "knowledge/README.md", content: () => folderReadme("Design Knowledge", "Design context produced by the Design area.", "Use after Product and MVP context exist, before implementation or user-facing issue work.", "design-system.md", ["design-system.md", "accessibility.md", "user-flows.md"], ["../roles/", "../skills/", "../playbooks/", "../../../strategy/product/", "../../product-ops/mvp/"], "Keep this folder focused on reusable design foundation. Create screen specs, usability notes and UX decisions later when a concrete feature or screen requires them.") },
           { path: "knowledge/design-system.md", content: designSystemKnowledge },
           { path: "knowledge/accessibility.md", content: accessibilityKnowledge },
           { path: "knowledge/user-flows.md", content: userFlowsKnowledge }
@@ -441,7 +1769,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "UX Researcher",
             purpose: "Understand user context, behavior, pain points and research signals before design decisions harden.",
             useWhen: ["research, user evidence, interviews, behavior, usability questions or unknown user needs are involved"],
-            beforeActing: ["../../../strategy/product/brief.md", "../../core/mvp/scope.md", "../knowledge/design-system.md", "../knowledge/accessibility.md", "../knowledge/user-flows.md"],
+            beforeActing: ["../../../strategy/product/knowledge/brief.md", "../../product-ops/mvp/scope.md", "../knowledge/design-system.md", "../knowledge/accessibility.md", "../knowledge/user-flows.md"],
             skills: ["user-research", "user-flow-mapping"],
             playbooks: ["user-research", "mvp-ux-flow"]
           },
@@ -450,7 +1778,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Product Designer",
             purpose: "Translate product, MVP and user context into coherent UI structure, flows and design system decisions.",
             useWhen: ["design foundation, UI, user flows, onboarding, layout, components or interaction design are involved"],
-            beforeActing: ["../../../strategy/product/brief.md", "../../core/mvp/scope.md", "../knowledge/design-system.md", "../knowledge/user-flows.md"],
+            beforeActing: ["../../../strategy/product/knowledge/brief.md", "../../product-ops/mvp/scope.md", "../knowledge/design-system.md", "../knowledge/user-flows.md"],
             skills: ["design-system", "user-flow-mapping", "screen-specification", "design-review"],
             playbooks: ["design-foundation", "mvp-ux-flow"]
           },
@@ -468,7 +1796,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "UX Writer",
             purpose: "Make interface language, labels, empty states, errors and onboarding copy clear and useful.",
             useWhen: ["microcopy, onboarding copy, labels, error messages, empty states or user guidance are involved"],
-            beforeActing: ["../../../strategy/product/brief.md", "../knowledge/user-flows.md", "../knowledge/accessibility.md"],
+            beforeActing: ["../../../strategy/product/knowledge/brief.md", "../knowledge/user-flows.md", "../knowledge/accessibility.md"],
             skills: ["microcopy", "user-flow-mapping", "design-review"],
             playbooks: ["ux-writing"]
           }
@@ -627,15 +1955,42 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         slug: "engineering",
         name: "Engineering",
         path: "operations/engineering",
+        lead: {
+          title: "Engineering Lead",
+          purpose: "Route implementation, branch, testing, data-change, PR and review work while enforcing Engineering red lines before code changes."
+        },
         routingKey: "engineering",
         requestTypes: "code, implementation, bugs, tests, issues or pull requests",
         purpose: "Own implementation, tests, code quality and PR readiness.",
         whenToUse: ["implement a feature", "fix a bug", "modify code", "create or review a PR", "write tests", "work on a GitHub issue"],
-        sourceOfTruth: ["implementation-notes.md", "code-review-notes.md", "pr-log.md"],
+        operatingRules: [
+          "Read the issue, PRD, MVP scope and acceptance criteria before planning implementation.",
+          "Create or confirm an issue-linked branch before changing code.",
+          "Follow existing repository patterns before introducing new abstractions.",
+          "Route user-facing UI work through Design when the design foundation or flow is missing.",
+          "Route data, auth, permissions, privacy, abuse or compliance work through Security when risk is present.",
+          "Use `.github/leanos/branch-rules.md` and `.github/PULL_REQUEST_TEMPLATE.md` for branch and PR conventions."
+        ],
+        redLines: [
+          "Do not implement outside the confirmed issue or PRD scope.",
+          "Do not create new user-facing components before Design defines the structure or confirms the gap.",
+          "Do not hardcode secrets, configuration, business rules, copy or design values.",
+          "Do not create large unstructured files, components or functions when modular composition is possible.",
+          "Do not make destructive data or migration changes without explicit confirmation and rollback notes.",
+          "Do not open or recommend a PR without tests, manual validation notes or a clear test-gap explanation."
+        ],
+        sourceOfTruth: ["knowledge/code-standards.md", "knowledge/implementation-rules.md", "knowledge/component-guidelines.md", "knowledge/data-guidelines.md", "knowledge/testing-strategy.md", "knowledge/review-criteria.md", "knowledge/implementation-notes.md", "knowledge/code-review-notes.md", "knowledge/pr-log.md"],
         files: [
-          { path: "implementation-notes.md", content: () => stateDraft("Implementation Notes", "Capture implementation context and decisions.") },
-          { path: "code-review-notes.md", content: () => stateDraft("Code Review Notes", "Capture review observations and risks.") },
-          { path: "pr-log.md", content: () => decisionLog("PR Log") }
+          { path: "knowledge/README.md", content: () => folderReadme("Engineering Knowledge", "Durable Engineering rules, standards and implementation notes.", "Use before planning code changes, branch work, tests, PRs or reviews.", "implementation-rules.md", ["code-standards.md", "implementation-rules.md", "component-guidelines.md", "data-guidelines.md", "testing-strategy.md", "review-criteria.md", "implementation-notes.md", "code-review-notes.md", "pr-log.md"], ["../roles/", "../skills/", "../playbooks/", "../../product-ops/mvp/", "../../../.github/leanos/"], "Engineering knowledge defines how code should be changed. It does not replace issue scope, PRD, Design or Security review.") },
+          { path: "knowledge/code-standards.md", content: engineeringCodeStandardsKnowledge },
+          { path: "knowledge/implementation-rules.md", content: engineeringImplementationRulesKnowledge },
+          { path: "knowledge/component-guidelines.md", content: engineeringComponentGuidelinesKnowledge },
+          { path: "knowledge/data-guidelines.md", content: engineeringDataGuidelinesKnowledge },
+          { path: "knowledge/testing-strategy.md", content: engineeringTestingStrategyKnowledge },
+          { path: "knowledge/review-criteria.md", content: engineeringReviewCriteriaKnowledge },
+          { path: "knowledge/implementation-notes.md", content: () => stateDraft("Implementation Notes", "Capture implementation context and decisions.") },
+          { path: "knowledge/code-review-notes.md", content: () => stateDraft("Code Review Notes", "Capture review observations and risks.") },
+          { path: "knowledge/pr-log.md", content: () => decisionLog("PR Log") }
         ],
         roles: [
           {
@@ -643,69 +1998,161 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Senior Developer",
             purpose: "Implement roadmap issues with maintainable code, tests and MVP alignment.",
             useWhen: ["implement an issue", "fix a bug", "modify code", "write tests", "prepare implementation for a PR"],
-            beforeActing: ["../../../.leanos/context/current-focus.md", "../../core/mvp/scope.md", "../../core/mvp/acceptance-criteria.md", "../../core/overview.md", "../../../.github/leanos/branch-rules.md", "../implementation-notes.md"],
-            skills: ["plan-implementation", "create-branch", "write-tests", "create-pr"],
+            beforeActing: ["../../../.leanos/context/current-focus.md", "../../product-ops/mvp/scope.md", "../../product-ops/mvp/prd.md", "../../product-ops/mvp/acceptance-criteria.md", "../../product-ops/knowledge/issue-readiness.md", "../knowledge/implementation-rules.md", "../knowledge/code-standards.md", "../knowledge/component-guidelines.md", "../knowledge/data-guidelines.md", "../knowledge/testing-strategy.md", "../../../.github/leanos/branch-rules.md", "../knowledge/implementation-notes.md"],
+            skills: ["plan-implementation", "follow-code-standards", "create-branch", "write-tests", "review-data-change", "create-pr"],
             playbooks: ["branch-from-issue", "issue-to-pr", "test-planning", "pr-validation"]
+          },
+          {
+            slug: "test-engineer",
+            title: "Test Engineer",
+            purpose: "Plan and evaluate validation coverage for implementation work.",
+            useWhen: ["test coverage is unclear", "acceptance criteria need validation mapping", "risk-based test planning is needed", "test gaps must be explained"],
+            beforeActing: ["../knowledge/testing-strategy.md", "../knowledge/implementation-rules.md", "../../product-ops/mvp/acceptance-criteria.md", "../../product-ops/mvp/prd.md"],
+            skills: ["write-tests", "review-pr"],
+            playbooks: ["test-planning", "pr-validation"]
           },
           {
             slug: "pr-reviewer",
             title: "PR Reviewer",
             purpose: "Review pull requests against scope, tests, coherence and validation goals.",
             useWhen: ["review a PR", "validate implementation readiness", "check merge risk"],
-            beforeActing: ["../../core/mvp/scope.md", "../../core/mvp/acceptance-criteria.md", "../../../.github/leanos/pr-validation-rules.md", "../../../ai-standard/templates/review/code-review-template.md"],
-            skills: ["review-pr"],
+            beforeActing: ["../../product-ops/mvp/scope.md", "../../product-ops/mvp/prd.md", "../../product-ops/mvp/acceptance-criteria.md", "../knowledge/review-criteria.md", "../knowledge/code-standards.md", "../knowledge/data-guidelines.md", "../../../.github/leanos/pr-validation-rules.md", "../../../ai-standard/templates/review/code-review-template.md"],
+            skills: ["review-pr", "follow-code-standards", "review-data-change"],
             playbooks: ["pr-validation"]
           }
         ],
         skills: [
-          { slug: "plan-implementation", title: "Plan Implementation", purpose: "Turn an issue into a scoped technical implementation plan." },
-          { slug: "create-branch", title: "Create Branch", purpose: "Define a safe issue-linked branch name and creation checklist before code changes." },
-          { slug: "write-tests", title: "Write Tests", purpose: "Define or update tests for changed behavior." },
-          { slug: "create-pr", title: "Create PR", purpose: "Prepare a PR summary tied to scope, tests and learning." },
-          { slug: "review-pr", title: "Review PR", purpose: "Review PR changes for correctness, scope and LeanOS coherence." }
+          {
+            slug: "plan-implementation",
+            title: "Plan Implementation",
+            purpose: "Turn an issue into a scoped technical implementation plan before code changes.",
+            useWhen: ["a GitHub issue should be implemented", "a bug fix needs scope", "implementation work needs sequencing"],
+            requiredContext: ["Issue body", "PRD", "MVP scope", "Acceptance criteria", "Engineering implementation rules", "Code standards"],
+            inputs: ["Issue", "Linked epic or PRD", "Acceptance criteria", "Current repository patterns", "Known risks"],
+            process: ["Summarize the issue in the chat", "Identify files or modules likely involved", "Classify Design, Security and data impact", "Plan the smallest safe implementation steps", "Identify tests and validation", "Ask for confirmation before code changes when scope is unclear"],
+            checks: ["Implementation plan stays inside issue scope", "Existing repository patterns are preferred", "Dependencies and risks are explicit", "Design/Security/Data routing is explicit when applicable"],
+            outputs: ["Issue summary", "Implementation plan", "Files likely involved", "Tests to run or add", "Risks", "Confirmation question when needed"],
+            filesToUpdate: ["Update `../knowledge/implementation-notes.md` only when implementation decisions should persist."],
+            redLines: ["Do not begin code changes without branch context", "Do not expand scope silently", "Do not skip Design/Security/Data classification."]
+          },
+          {
+            slug: "follow-code-standards",
+            title: "Follow Code Standards",
+            purpose: "Apply project coding standards, modularity, naming and hardcoding rules.",
+            useWhen: ["writing or reviewing code", "choosing a pattern", "splitting files or components", "deciding whether to introduce a new abstraction"],
+            requiredContext: ["Code standards", "Implementation rules", "Existing repository patterns"],
+            inputs: ["Target code area", "Existing files", "Proposed change", "Known project conventions"],
+            process: ["Inspect nearby patterns", "Choose the smallest matching pattern", "Separate UI, state, data access, validation and side effects where practical", "Avoid hardcoded secrets/config/copy/design values", "Keep functions and components focused", "Document any intentional deviation"],
+            checks: ["No unnecessary new abstraction", "No large unstructured component or file", "No hidden business rule", "No duplicated logic when a local reusable pattern exists"],
+            outputs: ["Pattern decision", "Modularity notes", "Hardcoding risks", "Refactor or no-refactor recommendation"],
+            filesToUpdate: ["Update `../knowledge/code-standards.md` only when the user confirms a durable standard change."],
+            redLines: ["Do not invent architecture that the repo does not need", "Do not hardcode values that belong in config, data, design tokens or copy sources."]
+          },
+          {
+            slug: "create-branch",
+            title: "Create Branch",
+            purpose: "Define a safe issue-linked branch name and creation checklist before code changes.",
+            useWhen: ["implementation is about to start", "a GitHub issue has been selected", "branch naming needs validation"],
+            requiredContext: ["GitHub issue number", "Issue title", "Branch rules"],
+            inputs: ["Issue number", "Issue title", "Branch type", "Existing branch names when available"],
+            process: ["Load branch rules", "Generate an issue-linked branch name", "Keep the branch name short and descriptive", "Check for conflicting branch names", "Ask before reusing or replacing a branch"],
+            checks: ["Branch includes the issue number when available", "Branch name does not include secrets or vague wording", "Branch matches repository convention"],
+            outputs: ["Proposed branch name", "Branch command or plan", "Safety notes"],
+            filesToUpdate: ["Do not update files just to create a branch plan."]
+          },
+          {
+            slug: "write-tests",
+            title: "Write Tests",
+            purpose: "Define or update tests for changed behavior.",
+            useWhen: ["behavior changes", "bug fixes need regression coverage", "acceptance criteria require validation", "PR test gaps need explanation"],
+            requiredContext: ["Testing strategy", "Acceptance criteria", "Changed behavior", "Known risks"],
+            inputs: ["Implementation scope", "Changed behavior", "Acceptance criteria", "Existing test patterns"],
+            process: ["Identify behavior under test", "Choose unit, integration, e2e or manual validation", "Map tests to acceptance criteria", "Add regression coverage for bugs", "List test gaps honestly"],
+            checks: ["Tests prove behavior, not implementation details", "Risky behavior has coverage or an explicit gap", "Manual checks are concrete"],
+            outputs: ["Test plan", "Test changes", "Manual validation", "Known gaps"],
+            filesToUpdate: ["Update `../knowledge/implementation-notes.md` only when persistent testing decisions are useful."]
+          },
+          {
+            slug: "review-data-change",
+            title: "Review Data Change",
+            purpose: "Review database, API, persistence, migration and data-sensitive changes before implementation or PR approval.",
+            useWhen: ["data model, migration, API contract, persistence, auth, permissions, privacy or sensitive data is involved"],
+            requiredContext: ["Data guidelines", "Security context when sensitive data is involved", "Acceptance criteria", "Current schema or API patterns"],
+            inputs: ["Proposed data change", "Data sensitivity", "Migration needs", "Rollback expectation", "Compatibility requirements"],
+            process: ["Classify data sensitivity", "Identify schema or API impact", "Check validation and authorization", "Check migration and rollback implications", "Check index/performance needs", "Route to Security when privacy/auth/compliance risk exists"],
+            checks: ["No destructive change without confirmation", "No sensitive data exposure", "Backward compatibility is considered", "Rollback path is visible"],
+            outputs: ["Data-change review", "Risks", "Migration notes", "Security routing result", "Rollback notes"],
+            filesToUpdate: ["Update `../knowledge/data-guidelines.md` only after explicit confirmation."]
+          },
+          {
+            slug: "create-pr",
+            title: "Create PR",
+            purpose: "Prepare a PR summary tied to issue scope, tests and review criteria.",
+            useWhen: ["implementation is ready for review", "PR description needs structure", "merge risk needs communication"],
+            requiredContext: ["PR template", "Linked issue", "Implementation notes", "Tests run", "Known risks"],
+            inputs: ["Branch", "Linked issue", "Changed files", "Tests", "Risks", "Screenshots or UX notes when applicable"],
+            process: ["Load PR template", "Summarize scope", "List implementation notes", "List tests and manual validation", "Flag Design/Security/Data applicability", "List known risks and follow-up"],
+            checks: ["PR references the issue", "Tests or gaps are explicit", "Description does not hide known risk"],
+            outputs: ["PR title", "PR body", "Test summary", "Risk notes"],
+            filesToUpdate: ["Update `../knowledge/pr-log.md` after PR creation or when the user asks for a persistent PR record."]
+          },
+          {
+            slug: "review-pr",
+            title: "Review PR",
+            purpose: "Review PR changes for correctness, scope and LeanOS coherence.",
+            useWhen: ["review a PR", "validate implementation readiness", "check merge risk", "perform code review"],
+            requiredContext: ["Review criteria", "PR validation rules", "Linked issue", "PRD", "Acceptance criteria", "Changed files"],
+            inputs: ["PR description", "Diff", "Linked issue", "Tests", "Known risks"],
+            process: ["Check scope against issue and PRD", "Review code standards", "Review tests", "Review Design applicability", "Review Security/Data applicability", "List findings by severity", "Recommend merge, changes or blocked"],
+            checks: ["Findings are actionable", "Severity is clear", "Design/Security/Data are not forced when not applicable", "Merge recommendation is justified"],
+            outputs: ["Findings by severity", "Scope result", "Code result", "Test result", "Design result or not applicable", "Security/Data result or not applicable", "Merge recommendation"],
+            filesToUpdate: ["Update `../knowledge/code-review-notes.md` or `../knowledge/pr-log.md` only when the user asks for persistent review notes."]
+          }
         ],
         playbooks: [
           {
             slug: "branch-from-issue",
             title: "Branch From Issue",
             purpose: "Create a safe branch plan before implementation starts.",
-            inputs: ["GitHub issue number", "Issue title", "Current default branch", "Existing branch list when available", "Branch rules"],
-            steps: ["Read the issue context and title", "Load `.github/leanos/branch-rules.md`", "Generate a branch name using the required issue format", "Check for sensitive words or unnecessary scope", "Ask before using an existing branch or creating a new one"],
+            inputs: ["GitHub issue number", "Issue title", "Current default branch", "Existing branch list when available", "Branch rules", "Skill: create-branch"],
+            steps: ["Read the issue context and title", "Load `.github/leanos/branch-rules.md`", "Use `skills/create-branch.skill.md` to generate a branch name using the required issue format", "Check for sensitive words or unnecessary scope", "Ask before using an existing branch or creating a new one"],
             outputs: ["Proposed branch name", "Linked issue", "Branch safety notes", "Next implementation step"],
-            filesToUpdate: ["Do not update files just to create a branch plan. Record branch decisions in `../implementation-notes.md` only when the user asks for persistent notes."]
+            filesToUpdate: ["Do not update files just to create a branch plan. Record branch decisions in `../knowledge/implementation-notes.md` only when the user asks for persistent notes."]
           },
           {
             slug: "issue-to-pr",
             title: "Issue to PR",
             purpose: "Move from a scoped issue to a reviewable pull request.",
-            inputs: ["GitHub issue body", "Parent epic when available", "MVP scope", "Acceptance criteria", "Product, Design, Engineering and Security criteria", "Branch name"],
-            steps: ["Read issue and MVP scope", "Confirm issue readiness with Product and Engineering criteria", "Check whether Design criteria are required for user-facing UX", "Check whether Security criteria are required for data, auth, privacy, abuse or compliance", "Create or confirm an issue-linked branch before code changes", "Plan implementation", "Change code within issue scope", "Update tests", "Prepare PR using the PR template"],
+            inputs: ["GitHub issue body", "Parent epic when available", "MVP scope", "PRD", "Acceptance criteria", "Product, Design, Engineering and Security criteria", "Branch name", "Engineering knowledge"],
+            steps: ["Read Engineering AGENT and choose the Senior Developer role", "Read issue, PRD, MVP scope and acceptance criteria", "Confirm issue readiness with Product and Engineering criteria", "Check whether Design criteria are required for user-facing UX", "Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance", "Create or confirm an issue-linked branch before code changes", "Use `skills/plan-implementation.skill.md` to plan implementation", "Use `skills/follow-code-standards.skill.md` while changing code", "Use `skills/review-data-change.skill.md` when data/API/persistence is involved", "Use `skills/write-tests.skill.md` to update tests or explain gaps", "Use `skills/create-pr.skill.md` to prepare PR using the PR template"],
             outputs: ["Implementation summary", "Branch used", "Files changed", "Tests run or proposed", "PR draft", "Known risks"],
-            filesToUpdate: ["Update `../implementation-notes.md` when implementation decisions should persist.", "Update `../pr-log.md` after PR creation or when the user asks for a persistent PR record."]
+            filesToUpdate: ["Update `../knowledge/implementation-notes.md` when implementation decisions should persist.", "Update `../knowledge/pr-log.md` after PR creation or when the user asks for a persistent PR record."]
           },
           {
             slug: "test-planning",
             title: "Test Planning",
             purpose: "Plan validation for implementation work without storing procedural test instructions as loose area files.",
-            inputs: ["Implementation scope", "Acceptance criteria", "Changed behavior", "Known risks"],
-            steps: ["Identify changed behavior", "Choose automated and manual validation", "Map tests to acceptance criteria", "Identify risky gaps", "Summarize validation readiness"],
+            inputs: ["Implementation scope", "PRD", "Acceptance criteria", "Changed behavior", "Known risks", "Testing strategy", "Skill: write-tests"],
+            steps: ["Read `knowledge/testing-strategy.md`", "Identify changed behavior", "Use `skills/write-tests.skill.md` to choose automated and manual validation", "Map tests to acceptance criteria", "Identify risky gaps", "Summarize validation readiness"],
             outputs: ["Test strategy", "Validation gaps", "Manual checks", "Next action"],
-            filesToUpdate: ["Update `../implementation-notes.md` or PR notes if the workspace needs a persistent test decision."]
+            filesToUpdate: ["Update `../knowledge/implementation-notes.md` or PR notes if the workspace needs a persistent test decision."]
           },
           {
             slug: "pr-validation",
             title: "PR Validation",
             purpose: "Validate implementation before merge.",
-            inputs: ["PR description", "Linked issue", "Parent epic when available", "MVP scope", "Acceptance criteria", "Changed files", "Tests or validation evidence"],
-            steps: ["Read PR context", "Load `.github/leanos/pr-validation-rules.md`", "Check scope against issue and MVP", "Validate Product criteria and acceptance criteria", "Review Design criteria only when UX changed", "Review Security criteria only when data, auth, privacy, abuse or compliance is involved", "Review tests and manual validation", "List findings by severity", "Recommend merge, changes or blocked-by-context"],
-            outputs: ["Findings by severity", "Product alignment", "Design review result or not applicable", "Security review result or not applicable", "Test confidence", "Merge recommendation"],
-            filesToUpdate: ["Update `../code-review-notes.md` or `../pr-log.md` only when the user asks for persistent review notes."]
+            inputs: ["PR description", "Linked issue", "Parent epic when available", "MVP scope", "PRD", "Acceptance criteria", "Changed files", "Tests or validation evidence", "Review criteria"],
+            steps: ["Read Engineering AGENT and choose PR Reviewer or Test Engineer as needed", "Read PR context", "Load `.github/leanos/pr-validation-rules.md` and `knowledge/review-criteria.md`", "Use `skills/review-pr.skill.md` to check scope against issue, PRD and MVP", "Use `skills/follow-code-standards.skill.md` to check code quality", "Use `skills/review-data-change.skill.md` when data/API/persistence is involved", "Validate Product criteria and acceptance criteria", "Review Design criteria only when UX changed", "Review Security criteria only when data, auth, privacy, abuse or compliance is involved", "Review tests and manual validation", "List findings by severity", "Recommend merge, changes or blocked-by-context"],
+            outputs: ["Findings by severity", "Product alignment", "Code quality result", "Design review result or not applicable", "Security/Data review result or not applicable", "Test confidence", "Merge recommendation"],
+            filesToUpdate: ["Update `../knowledge/code-review-notes.md` or `../knowledge/pr-log.md` only when the user asks for persistent review notes."]
           }
         ],
         commonPaths: [
-          "Branch request: role `roles/senior-developer.role.md` -> skill `skills/create-branch.skill.md` -> playbook `playbooks/branch-from-issue.playbook.md`.",
-          "Implementation request: role `roles/senior-developer.role.md` -> skills `skills/plan-implementation.skill.md` and `skills/write-tests.skill.md` -> playbook `playbooks/issue-to-pr.playbook.md`.",
-          "PR review request: role `roles/pr-reviewer.role.md` -> skill `skills/review-pr.skill.md` -> playbook `playbooks/pr-validation.playbook.md`."
+          "Branch request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/create-branch.skill.md` -> playbook `playbooks/branch-from-issue.playbook.md`.",
+          "Implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skills `skills/plan-implementation.skill.md`, `skills/follow-code-standards.skill.md` and `skills/write-tests.skill.md` -> playbook `playbooks/issue-to-pr.playbook.md`.",
+          "Data change request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` or `roles/pr-reviewer.role.md` -> skill `skills/review-data-change.skill.md` -> route Security when sensitive risk exists.",
+          "Test request: area lead `AGENT.md` -> role `roles/test-engineer.role.md` -> skill `skills/write-tests.skill.md` -> playbook `playbooks/test-planning.playbook.md`.",
+          "PR review request: area lead `AGENT.md` -> role `roles/pr-reviewer.role.md` -> skills `skills/review-pr.skill.md`, `skills/follow-code-standards.skill.md` and conditional `skills/review-data-change.skill.md` -> playbook `playbooks/pr-validation.playbook.md`."
         ]
       },
       {
@@ -860,20 +2307,20 @@ export const rootDepartments: RootDepartmentDefinition[] = [
     workflows: [
       {
         slug: "mvp-to-pr",
-        purpose: "Coordinate Operations Core, Design and Engineering for delivery.",
-        requiredAreas: ["core", "engineering"],
+        purpose: "Coordinate Product Ops, Design and Engineering for delivery.",
+        requiredAreas: ["product-ops", "engineering"],
         steps: ["Read MVP scope", "Check architecture", "Route UX if needed", "Plan implementation", "Prepare PR"]
       },
       {
         slug: "issue-delivery-cycle",
         purpose: "Coordinate Operations areas from issue interpretation to branch, implementation, review and PR.",
-        requiredAreas: ["core", "engineering"],
+        requiredAreas: ["product-ops", "engineering"],
         steps: ["Read issue and MVP scope", "Route Design only when UX is affected", "Route Security only when data, auth, privacy, abuse or compliance is involved", "Create issue-linked branch", "Plan and implement in Engineering", "Run tests or explain gaps", "Run PR validation", "Prepare PR"]
       },
       {
         slug: "post-merge-continuation",
         purpose: "Continue delivery after a founder confirms a merge.",
-        requiredAreas: ["core", "engineering"],
+        requiredAreas: ["product-ops", "engineering"],
         steps: ["Confirm merge evidence or founder confirmation", "Record relevant implementation notes", "Identify learning or roadmap impact if any", "Load the next issue", "Restart issue delivery"]
       }
     ]

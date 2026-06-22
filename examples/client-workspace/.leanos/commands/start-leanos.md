@@ -57,10 +57,10 @@ Ask these only when useful for the current stage:
 
 Map founder responses to source-of-truth files only when the matching area is active:
 
-- Company identity, mission, vision, principles and operating model -> `strategy/company/`
+- Business identity, brand logic, mission, vision, principles and operating model -> `strategy/business/`
 - Product description, problem, ICP, value proposition, positioning and business model -> `strategy/product/`
 - Assumptions, riskiest assumptions, experiments, success metrics and learning -> `strategy/validation/`
-- Roadmap, milestones, current cycle and backlog -> `strategy/roadmap/`
+- Roadmap, milestones, current cycle and backlog -> `strategy/roadmap/knowledge/`
 
 If a Strategy area is not active, do not propose writes to its missing path. Mention that the area is inactive and ask before activating or creating it.
 
@@ -111,27 +111,28 @@ Only after explicit confirmation, `/start-leanos` may update:
 - `../context/workspace-summary.md`
 - `../context/current-focus.md`
 - `../context/next-actions.md`
-- `../../strategy/company/profile.md`
-- `../../strategy/company/mission.md`
-- `../../strategy/company/vision.md`
-- `../../strategy/company/principles.md`
-- `../../strategy/company/operating-model.md`
-- `../../strategy/product/brief.md`
-- `../../strategy/product/problem.md`
-- `../../strategy/product/icp.md`
-- `../../strategy/product/jobs-to-be-done.md`
-- `../../strategy/product/value-proposition.md`
-- `../../strategy/product/positioning.md`
-- `../../strategy/product/business-model-canvas.md`
+- `../../strategy/business/knowledge/profile.md`
+- `../../strategy/business/knowledge/mission.md`
+- `../../strategy/business/knowledge/vision.md`
+- `../../strategy/business/knowledge/principles.md`
+- `../../strategy/business/knowledge/operating-model.md`
+- `../../strategy/business/knowledge/decision-log.md`
+- `../../strategy/product/knowledge/brief.md`
+- `../../strategy/product/knowledge/problem.md`
+- `../../strategy/product/knowledge/icp.md`
+- `../../strategy/product/knowledge/jobs-to-be-done.md`
+- `../../strategy/product/knowledge/value-proposition.md`
+- `../../strategy/product/knowledge/positioning.md`
+- `../../strategy/product/knowledge/business-model-canvas.md`
 - `../../strategy/validation/assumptions.md`
 - `../../strategy/validation/riskiest-assumptions.md`
 - `../../strategy/validation/experiments.md`
 - `../../strategy/validation/success-metrics.md`
 - `../../strategy/validation/learning-log.md`
-- `../../strategy/roadmap/roadmap.md`
-- `../../strategy/roadmap/milestones.md`
-- `../../strategy/roadmap/current-cycle.md`
-- `../../strategy/roadmap/backlog.md`
+- `../../strategy/roadmap/knowledge/roadmap.md`
+- `../../strategy/roadmap/knowledge/milestones.md`
+- `../../strategy/roadmap/knowledge/current-cycle.md`
+- `../../strategy/roadmap/knowledge/backlog.md`
 
 Strategy Roadmap files may be reviewed as next-step targets, but do not invent roadmap content before strategy is coherent.
 
@@ -176,11 +177,11 @@ Return:
 
 ## Active Areas
 
-- strategy.company
+- strategy.business
 - strategy.product
 - strategy.roadmap
 - strategy.validation
-- operations.core
+- operations.product-ops
 - operations.design
 - operations.engineering
 - operations.devops

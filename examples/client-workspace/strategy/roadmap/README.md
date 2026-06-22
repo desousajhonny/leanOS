@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Own roadmap sequence, milestones, backlog and validation-first prioritization.
+Own roadmap sequence, milestones, backlog and planning-cycle prioritization.
 
 ## When to Use
 
@@ -13,16 +13,19 @@ Own roadmap sequence, milestones, backlog and validation-first prioritization.
 
 ## Source of Truth
 
-- `roadmap.md`
-- `milestones.md`
-- `current-cycle.md`
-- `backlog.md`
+- `knowledge/roadmap.md`
+- `knowledge/milestones.md`
+- `knowledge/current-cycle.md`
+- `knowledge/backlog.md`
+
+
+
 
 ## Navigation
 
-1. Choose the relevant role from `roles/`.
-2. Load only the required skills from `skills/`.
-3. Use the matching playbook from `playbooks/`.
+1. For operational work, start with `AGENT.md`.
+2. Use this README as the directory map.
+3. After the area AGENT selects a role, load only required skills and playbooks.
 4. Produce the requested output and update source-of-truth files when needed.
 
 ## File Responsibilities
@@ -36,4 +39,4 @@ Own roadmap sequence, milestones, backlog and validation-first prioritization.
 
 ## Common Paths
 
-- Roadmap request: role `roles/roadmap-planner.role.md` -> skill `skills/create-roadmap.skill.md` -> playbook `playbooks/validation-cycle-planning.playbook.md`.
+- Roadmap request: `AGENT.md` -> role `roles/roadmap-planner.role.md` -> skill `skills/create-roadmap.skill.md` -> playbook `playbooks/roadmap-cycle-planning.playbook.md`.

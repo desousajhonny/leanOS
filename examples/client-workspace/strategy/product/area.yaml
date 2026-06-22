@@ -2,7 +2,7 @@ area:
   key: strategy.product
   department: strategy
   path: strategy/product
-  agent: null
+  agent: AGENT.md
   readme: README.md
   roles:
     - product-strategist
@@ -17,10 +17,10 @@ area:
   playbooks:
     - product-strategy
   source_of_truth:
-    - brief.md
-    - problem.md
-    - icp.md
-    - jobs-to-be-done.md
-    - value-proposition.md
-    - positioning.md
-    - business-model-canvas.md
+    - knowledge/brief.md
+    - knowledge/problem.md
+    - knowledge/icp.md
+    - knowledge/jobs-to-be-done.md
+    - knowledge/value-proposition.md
+    - knowledge/positioning.md
+    - knowledge/business-model-canvas.md

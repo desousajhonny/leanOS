@@ -24,7 +24,7 @@ Use after Product and MVP context exist, before implementation or user-facing is
 - `../skills/`
 - `../playbooks/`
 - `../../../strategy/product/`
-- `../../core/mvp/`
+- `../../product-ops/mvp/`
 
 ## Navigation
 

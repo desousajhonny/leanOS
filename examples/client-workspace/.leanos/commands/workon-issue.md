@@ -12,10 +12,15 @@ Read:
 
 - `../../AGENT.md`
 - `../index/routing-map.yaml`
+- `../../operations/engineering/AGENT.md`
 - `../../operations/engineering/README.md`
 - `../../operations/engineering/roles/senior-developer.role.md`
+- `../../operations/engineering/knowledge/implementation-rules.md`
+- `../../operations/engineering/knowledge/code-standards.md`
+- `../../operations/engineering/knowledge/testing-strategy.md`
 - `../../operations/engineering/skills/plan-implementation.skill.md`
 - `../../operations/engineering/skills/create-branch.skill.md`
+- `../../operations/engineering/skills/follow-code-standards.skill.md`
 - `../../operations/engineering/playbooks/issue-to-pr.playbook.md`
 - `../../ai-standard/templates/github/issue-readiness-matrix-template.md`
 - `../../.github/leanos/branch-rules.md`
@@ -46,11 +51,11 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 
 ## Active Areas
 
-- strategy.company
+- strategy.business
 - strategy.product
 - strategy.roadmap
 - strategy.validation
-- operations.core
+- operations.product-ops
 - operations.design
 - operations.engineering
 - operations.devops

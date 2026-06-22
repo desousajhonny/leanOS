@@ -1,7 +1,7 @@
 roles:
-  - key: company-strategist
-    area: strategy.company
-    path: ../../strategy/company/roles/company-strategist.role.md
+  - key: business-strategist
+    area: strategy.business
+    path: ../../strategy/business/roles/business-strategist.role.md
   - key: product-strategist
     area: strategy.product
     path: ../../strategy/product/roles/product-strategist.role.md
@@ -15,11 +15,11 @@ roles:
     area: strategy.validation
     path: ../../strategy/validation/roles/validation-researcher.role.md
   - key: product-owner
-    area: operations.core
-    path: ../../operations/core/roles/product-owner.role.md
-  - key: technical-architect
-    area: operations.core
-    path: ../../operations/core/roles/technical-architect.role.md
+    area: operations.product-ops
+    path: ../../operations/product-ops/roles/product-owner.role.md
+  - key: delivery-architect
+    area: operations.product-ops
+    path: ../../operations/product-ops/roles/delivery-architect.role.md
   - key: ux-researcher
     area: operations.design
     path: ../../operations/design/roles/ux-researcher.role.md
@@ -35,6 +35,9 @@ roles:
   - key: senior-developer
     area: operations.engineering
     path: ../../operations/engineering/roles/senior-developer.role.md
+  - key: test-engineer
+    area: operations.engineering
+    path: ../../operations/engineering/roles/test-engineer.role.md
   - key: pr-reviewer
     area: operations.engineering
     path: ../../operations/engineering/roles/pr-reviewer.role.md

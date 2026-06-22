@@ -4,24 +4,62 @@
 
 Review PR changes for correctness, scope and LeanOS coherence.
 
-## Area
+## Use When
 
-`operations/engineering`
+- review a PR
+- validate implementation readiness
+- check merge risk
+- perform code review
+
+## Required Context
+
+- Review criteria
+- PR validation rules
+- Linked issue
+- PRD
+- Acceptance criteria
+- Changed files
 
 ## Inputs
 
-- Area source-of-truth files
-- Active role instructions
-- User request
+- PR description
+- Diff
+- Linked issue
+- Tests
+- Known risks
 
 ## Process
 
-1. Read the minimum relevant source-of-truth files.
-2. Apply this skill to the user request.
-3. Prepare a concise output or file update.
+1. Check scope against issue and PRD
+2. Review code standards
+3. Review tests
+4. Review Design applicability
+5. Review Security/Data applicability
+6. List findings by severity
+7. Recommend merge, changes or blocked
+
+## Checks
+
+- Findings are actionable
+- Severity is clear
+- Design/Security/Data are not forced when not applicable
+- Merge recommendation is justified
 
 ## Output
 
-- Summary
-- Decisions
-- Suggested file updates
+- Findings by severity
+- Scope result
+- Code result
+- Test result
+- Design result or not applicable
+- Security/Data result or not applicable
+- Merge recommendation
+
+## Files to Update
+
+- Update `../knowledge/code-review-notes.md` or `../knowledge/pr-log.md` only when the user asks for persistent review notes.
+
+## Red Lines
+
+- Do not invent product-specific facts.
+- Ask before modifying files.

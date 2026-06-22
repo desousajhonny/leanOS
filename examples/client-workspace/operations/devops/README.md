@@ -16,6 +16,9 @@ Own delivery infrastructure, environments, deployment, GitHub workflow setup and
 
 - No loose source-of-truth files yet. Use playbooks for operational procedures and update persistent notes only when the workspace creates them.
 
+
+
+
 ## Navigation
 
 1. Choose the relevant role from `roles/`.

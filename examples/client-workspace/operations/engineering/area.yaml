@@ -2,15 +2,18 @@ area:
   key: operations.engineering
   department: operations
   path: operations/engineering
-  agent: null
+  agent: AGENT.md
   readme: README.md
   roles:
     - senior-developer
+    - test-engineer
     - pr-reviewer
   skills:
     - plan-implementation
+    - follow-code-standards
     - create-branch
     - write-tests
+    - review-data-change
     - create-pr
     - review-pr
   playbooks:
@@ -19,6 +22,12 @@ area:
     - test-planning
     - pr-validation
   source_of_truth:
-    - implementation-notes.md
-    - code-review-notes.md
-    - pr-log.md
+    - knowledge/code-standards.md
+    - knowledge/implementation-rules.md
+    - knowledge/component-guidelines.md
+    - knowledge/data-guidelines.md
+    - knowledge/testing-strategy.md
+    - knowledge/review-criteria.md
+    - knowledge/implementation-notes.md
+    - knowledge/code-review-notes.md
+    - knowledge/pr-log.md

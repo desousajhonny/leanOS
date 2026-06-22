@@ -1,0 +1,20 @@
+area:
+  key: strategy.business
+  department: strategy
+  path: strategy/business
+  agent: AGENT.md
+  readme: README.md
+  roles:
+    - business-strategist
+  skills:
+    - define-business-identity
+    - clarify-operating-model
+  playbooks:
+    - business-foundation
+  source_of_truth:
+    - knowledge/profile.md
+    - knowledge/mission.md
+    - knowledge/vision.md
+    - knowledge/principles.md
+    - knowledge/operating-model.md
+    - knowledge/decision-log.md

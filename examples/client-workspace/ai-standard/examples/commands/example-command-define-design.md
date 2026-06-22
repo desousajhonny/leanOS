@@ -15,7 +15,7 @@ Prepare the MVP Design foundation before implementation.
 - `../../operations/design/skills/user-flow-mapping.skill.md`
 - `../../operations/design/playbooks/design-foundation.playbook.md`
 - `../../strategy/product/README.md`
-- `../../operations/core/mvp/scope.md`
+- `../../operations/product-ops/mvp/scope.md`
 
 ## Process
 

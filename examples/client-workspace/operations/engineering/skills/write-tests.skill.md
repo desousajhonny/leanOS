@@ -4,24 +4,53 @@
 
 Define or update tests for changed behavior.
 
-## Area
+## Use When
 
-`operations/engineering`
+- behavior changes
+- bug fixes need regression coverage
+- acceptance criteria require validation
+- PR test gaps need explanation
+
+## Required Context
+
+- Testing strategy
+- Acceptance criteria
+- Changed behavior
+- Known risks
 
 ## Inputs
 
-- Area source-of-truth files
-- Active role instructions
-- User request
+- Implementation scope
+- Changed behavior
+- Acceptance criteria
+- Existing test patterns
 
 ## Process
 
-1. Read the minimum relevant source-of-truth files.
-2. Apply this skill to the user request.
-3. Prepare a concise output or file update.
+1. Identify behavior under test
+2. Choose unit, integration, e2e or manual validation
+3. Map tests to acceptance criteria
+4. Add regression coverage for bugs
+5. List test gaps honestly
+
+## Checks
+
+- Tests prove behavior, not implementation details
+- Risky behavior has coverage or an explicit gap
+- Manual checks are concrete
 
 ## Output
 
-- Summary
-- Decisions
-- Suggested file updates
+- Test plan
+- Test changes
+- Manual validation
+- Known gaps
+
+## Files to Update
+
+- Update `../knowledge/implementation-notes.md` only when persistent testing decisions are useful.
+
+## Red Lines
+
+- Do not invent product-specific facts.
+- Ask before modifying files.

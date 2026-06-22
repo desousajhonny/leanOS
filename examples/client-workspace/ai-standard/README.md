@@ -2,26 +2,37 @@
 
 ## Purpose
 
-LeanOS standards for creating, reviewing and routing AI-native workspace assets.
+LeanOS source-of-truth for creating, reviewing and routing AI-native framework assets.
 
 ## When to Use
 
 Use this folder before creating or changing agents, departments, areas, roles, skills, playbooks, workflows, commands, templates, checklists or instructions.
 
-## How to Navigate
+## Fast Route
 
-Load only the smallest route needed:
+Use this route for most asset creation work:
 
-1. Use `foundation/asset-taxonomy.md` when deciding what type of asset something is.
-2. Use `foundation/navigation-chain.md` when deciding how an agent should route work.
-3. Use `foundation/creation-rules.md` before creating or changing framework assets.
-4. Use `foundation/naming-conventions.md` before naming files or folders.
-5. Use `foundation/quality-criteria.md` before accepting an asset.
-6. Use `foundation/folder-documentation-rules.md` when creating or reviewing folder documentation.
-7. Use `instructions/` for the step-by-step creation process.
-8. Use `templates/` for the starting structure.
-9. Use `checklists/` before final output.
-10. Use `examples/` only as references.
+1. Decide the asset type with `foundation/asset-taxonomy.md`.
+2. Confirm placement and boundaries with `foundation/creation-rules.md`.
+3. Confirm naming with `foundation/naming-conventions.md`.
+4. Load the matching file in `instructions/`.
+5. Use the matching starter in `templates/`.
+6. Validate the result with the matching file in `checklists/`.
+7. Open `examples/` only if a reference would improve quality.
+
+## Decision Map
+
+| Need | Go To | Why |
+| --- | --- | --- |
+| Decide what kind of asset something is | `foundation/asset-taxonomy.md` | Defines AGENT, README, YAML, role, skill, playbook, knowledge, workflow and command. |
+| Decide how a model should move through the workspace | `foundation/navigation-chain.md` | Defines owner-first navigation and prevents route skipping. |
+| Decide whether a new file should exist | `foundation/creation-rules.md` | Prevents asset sprawl and duplicated ownership. |
+| Name a file or folder | `foundation/naming-conventions.md` | Keeps names predictable and machine-readable. |
+| Judge quality when no specific checklist is enough | `foundation/quality-criteria.md` | Provides universal quality and rejection criteria. |
+| Create a folder README | `foundation/folder-documentation-rules.md` and `instructions/create-readme-instructions.md` | Keeps README files as maps, not executors. |
+| Create an asset | `instructions/` then `templates/` | Gives the procedure and the starting shape. |
+| Review an asset before accepting it | `checklists/` | Applies the right quality gate for the asset type. |
+| See what good looks like | `examples/` | Provides reference shape only, not active context. |
 
 ## Routes
 
@@ -45,6 +56,25 @@ Creation procedures. Use when the user asks to create or update a LeanOS asset.
 
 Illustrative examples. Use only for reference; active workspace context wins.
 
+## Creation Flow
+
+For any new LeanOS asset:
+
+1. Load only this README and the smallest matching files.
+2. State the selected asset type and owner.
+3. State the target path.
+4. Use the matching instruction and template.
+5. Validate with the matching checklist.
+6. Ask before writing framework files.
+
+## Do Not Load By Default
+
+- Do not load every foundation file.
+- Do not load every template category.
+- Do not load every checklist.
+- Do not load examples unless a reference is needed.
+- Do not let examples override active workspace context.
+
 ## Files
 
 - `foundation/`
@@ -61,3 +91,5 @@ Illustrative examples. Use only for reference; active workspace context wins.
 ## Agent Notes
 
 Do not load all of `ai-standard/` by default. Choose the smallest foundation file, instruction, template and checklist needed for the active request.
+
+If the next route is unclear, start with `foundation/asset-taxonomy.md`.

@@ -10,15 +10,25 @@ routing:
       agent: ../../growth/AGENT.md
       readme: ../../growth/README.md
   areas:
-    company: ../../strategy/company/README.md
-    product: ../../strategy/product/README.md
-    roadmap: ../../strategy/roadmap/README.md
+    business:
+      agent: ../../strategy/business/AGENT.md
+      readme: ../../strategy/business/README.md
+    product:
+      agent: ../../strategy/product/AGENT.md
+      readme: ../../strategy/product/README.md
+    roadmap:
+      agent: ../../strategy/roadmap/AGENT.md
+      readme: ../../strategy/roadmap/README.md
     validation: ../../strategy/validation/README.md
-    core: ../../operations/core/README.md
+    product_ops:
+      agent: ../../operations/product-ops/AGENT.md
+      readme: ../../operations/product-ops/README.md
     design:
       agent: ../../operations/design/AGENT.md
       readme: ../../operations/design/README.md
-    engineering: ../../operations/engineering/README.md
+    engineering:
+      agent: ../../operations/engineering/AGENT.md
+      readme: ../../operations/engineering/README.md
     devops: ../../operations/devops/README.md
     security: ../../operations/security/README.md
     customer_experience: ../../growth/customer-experience/README.md

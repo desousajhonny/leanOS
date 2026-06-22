@@ -10,9 +10,9 @@ Roles, skills and playbooks do not live at the department root. They live inside
 
 ## Operating Scope
 
-Own company direction, product strategy, roadmap and validation learning.
+Own business direction, product strategy, roadmap and validation learning.
 
-Use this department for company, product strategy, roadmap, validation, ICP or assumptions.
+Use this department for business, product strategy, roadmap, validation, ICP or assumptions.
 
 ## Routing Rules
 
@@ -23,9 +23,9 @@ Use this department for company, product strategy, roadmap, validation, ICP or a
 
 ## Active Areas
 
-- Company: `company/README.md` - Keep company identity, principles, mission and operating decisions coherent.
-- Product: `product/README.md` - Own product strategy, ICP, value proposition, positioning and business model coherence.
-- Roadmap: `roadmap/README.md` - Own roadmap sequence, milestones, backlog and validation-first prioritization.
+- Business: `business/AGENT.md` - Keep business identity, principles, mission and operating decisions coherent.
+- Product: `product/AGENT.md` - Own product strategy, ICP, value proposition, positioning and business model coherence.
+- Roadmap: `roadmap/AGENT.md` - Own roadmap sequence, milestones, backlog and planning-cycle prioritization.
 - Validation: `validation/README.md` - Own assumptions, experiments, interviews, success metrics and learning capture.
 
 ## Workflow Entry
@@ -36,6 +36,6 @@ Use workflows for cross-area sequencing. Use area playbooks for tactical executi
 
 ## Navigation
 
-`strategy/AGENT.md -> Area README -> Role -> Skills -> Playbook -> Output`
+`strategy/AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`
 
 Load one area owner before loading roles, skills or playbooks.

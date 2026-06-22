@@ -13,19 +13,22 @@ Own product strategy, ICP, value proposition, positioning and business model coh
 
 ## Source of Truth
 
-- `brief.md`
-- `problem.md`
-- `icp.md`
-- `jobs-to-be-done.md`
-- `value-proposition.md`
-- `positioning.md`
-- `business-model-canvas.md`
+- `knowledge/brief.md`
+- `knowledge/problem.md`
+- `knowledge/icp.md`
+- `knowledge/jobs-to-be-done.md`
+- `knowledge/value-proposition.md`
+- `knowledge/positioning.md`
+- `knowledge/business-model-canvas.md`
+
+
+
 
 ## Navigation
 
-1. Choose the relevant role from `roles/`.
-2. Load only the required skills from `skills/`.
-3. Use the matching playbook from `playbooks/`.
+1. For operational work, start with `AGENT.md`.
+2. Use this README as the directory map.
+3. After the area AGENT selects a role, load only required skills and playbooks.
 4. Produce the requested output and update source-of-truth files when needed.
 
 ## File Responsibilities
@@ -39,4 +42,4 @@ Own product strategy, ICP, value proposition, positioning and business model coh
 
 ## Common Paths
 
-- Product strategy request: role `roles/product-strategist.role.md` -> skill `skills/check-coherence.skill.md` -> playbook `playbooks/product-strategy.playbook.md`.
+- Product strategy request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/check-coherence.skill.md` -> playbook `playbooks/product-strategy.playbook.md`.

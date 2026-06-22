@@ -47,31 +47,31 @@ departments:
       readme: growth/README.md
 subareas:
   active:
-    - key: strategy.company
+    - key: strategy.business
       department: strategy
-      path: strategy/company/README.md
-      agent: null
-      readme: strategy/company/README.md
+      path: strategy/business/README.md
+      agent: strategy/business/AGENT.md
+      readme: strategy/business/README.md
     - key: strategy.product
       department: strategy
       path: strategy/product/README.md
-      agent: null
+      agent: strategy/product/AGENT.md
       readme: strategy/product/README.md
     - key: strategy.roadmap
       department: strategy
       path: strategy/roadmap/README.md
-      agent: null
+      agent: strategy/roadmap/AGENT.md
       readme: strategy/roadmap/README.md
     - key: strategy.validation
       department: strategy
       path: strategy/validation/README.md
       agent: null
       readme: strategy/validation/README.md
-    - key: operations.core
+    - key: operations.product-ops
       department: operations
-      path: operations/core/README.md
-      agent: null
-      readme: operations/core/README.md
+      path: operations/product-ops/README.md
+      agent: operations/product-ops/AGENT.md
+      readme: operations/product-ops/README.md
     - key: operations.design
       department: operations
       path: operations/design/README.md
@@ -80,7 +80,7 @@ subareas:
     - key: operations.engineering
       department: operations
       path: operations/engineering/README.md
-      agent: null
+      agent: operations/engineering/AGENT.md
       readme: operations/engineering/README.md
     - key: operations.devops
       department: operations
@@ -110,8 +110,8 @@ subareas:
 roles:
   ownership: area-first
   active:
-    strategy.company:
-      - company-strategist
+    strategy.business:
+      - business-strategist
     strategy.product:
       - product-strategist
       - product-manager
@@ -119,9 +119,9 @@ roles:
       - roadmap-planner
     strategy.validation:
       - validation-researcher
-    operations.core:
+    operations.product-ops:
       - product-owner
-      - technical-architect
+      - delivery-architect
     operations.design:
       - ux-researcher
       - product-designer
@@ -129,6 +129,7 @@ roles:
       - ux-writer
     operations.engineering:
       - senior-developer
+      - test-engineer
       - pr-reviewer
     operations.devops:
       - devops-engineer
@@ -144,8 +145,8 @@ roles:
 skills:
   ownership: area-first
   active:
-    strategy.company:
-      - define-company
+    strategy.business:
+      - define-business-identity
       - clarify-operating-model
     strategy.product:
       - define-product
@@ -162,14 +163,13 @@ skills:
       - define-assumptions
       - create-interview-script
       - define-success-metrics
-    operations.core:
+    operations.product-ops:
       - define-mvp
       - write-acceptance-criteria
       - check-delivery-coherence
       - shape-epic
       - write-subissue-criteria
-      - define-architecture
-      - create-api-contract
+      - define-delivery-boundaries
     operations.design:
       - user-research
       - user-flow-mapping
@@ -180,8 +180,10 @@ skills:
       - design-review
     operations.engineering:
       - plan-implementation
+      - follow-code-standards
       - create-branch
       - write-tests
+      - review-data-change
       - create-pr
       - review-pr
     operations.devops:
@@ -205,19 +207,19 @@ skills:
 playbooks:
   ownership: area-first
   active:
-    strategy.company:
-      - company-foundation
+    strategy.business:
+      - business-foundation
     strategy.product:
       - product-strategy
     strategy.roadmap:
-      - validation-cycle-planning
+      - roadmap-cycle-planning
       - roadmap-sync-prep
     strategy.validation:
       - mvp-validation
-    operations.core:
+    operations.product-ops:
       - mvp-delivery
       - epic-to-subissues
-      - architecture-planning
+      - delivery-readiness
     operations.design:
       - design-foundation
       - user-research

@@ -42,11 +42,11 @@ Then start from:
 
 ## Active Areas
 
-- `strategy/company/` Keep company identity, principles, mission and operating decisions coherent.
+- `strategy/business/` Keep business identity, principles, mission and operating decisions coherent.
 - `strategy/product/` Own product strategy, ICP, value proposition, positioning and business model coherence.
-- `strategy/roadmap/` Own roadmap sequence, milestones, backlog and validation-first prioritization.
+- `strategy/roadmap/` Own roadmap sequence, milestones, backlog and planning-cycle prioritization.
 - `strategy/validation/` Own assumptions, experiments, interviews, success metrics and learning capture.
-- `operations/core/` Own MVP scope, system architecture and the operating bridge between Product and Engineering.
+- `operations/product-ops/` Turn Strategy and Roadmap into MVP scope, acceptance criteria and implementation-ready work.
 - `operations/design/` Own the MVP design foundation, accessibility baseline and user-flow clarity before implementation.
 - `operations/engineering/` Own implementation, tests, code quality and PR readiness.
 - `operations/devops/` Own delivery infrastructure, environments, deployment, GitHub workflow setup and observability notes.

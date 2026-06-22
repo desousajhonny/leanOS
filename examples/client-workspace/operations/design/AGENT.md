@@ -10,6 +10,9 @@ Use `README.md` as the directory map. Use `area.yaml` when machine-readable stru
 
 Lead Design work, choose the right design specialist and keep design decisions aligned with Product, MVP and implementation needs.
 
+
+
+
 ## Role Routing
 
 Choose the smallest specialist role for the request:

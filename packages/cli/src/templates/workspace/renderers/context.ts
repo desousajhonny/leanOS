@@ -81,7 +81,7 @@ export function getNextActions(answers: WorkspaceAnswers, activeAreas: AreaDefin
     .filter((command) => !command.assetCreation)
     .filter((command) => {
       if (command.slug === "define-design") {
-        return activeKeys.has("operations.design") && activeKeys.has("strategy.product") && activeKeys.has("operations.core");
+        return activeKeys.has("operations.design") && activeKeys.has("strategy.product") && activeKeys.has("operations.product-ops");
       }
 
       return ["status", "define-icp", "define-mvp", "check-coherence", "workon-issue"].includes(command.slug);

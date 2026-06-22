@@ -33,7 +33,7 @@ function defineDesignCommand(command: CommandDefinition, activeSubareas: Subarea
   const active = new Set(activeSubareas);
   const designActive = active.has("operations.design");
   const productActive = active.has("strategy.product");
-  const coreActive = active.has("operations.core");
+  const productOpsActive = active.has("operations.product-ops");
   const designLoad = designActive
     ? [
         "- `../../operations/AGENT.md`",
@@ -53,20 +53,22 @@ function defineDesignCommand(command: CommandDefinition, activeSubareas: Subarea
     ? [
         "- `../../strategy/AGENT.md`",
         "- `../../strategy/product/README.md`",
-        "- `../../strategy/product/brief.md`",
-        "- `../../strategy/product/icp.md`",
-        "- `../../strategy/product/problem.md`",
-        "- `../../strategy/product/value-proposition.md`"
+        "- `../../strategy/product/AGENT.md`",
+        "- `../../strategy/product/knowledge/brief.md`",
+        "- `../../strategy/product/knowledge/icp.md`",
+        "- `../../strategy/product/knowledge/problem.md`",
+        "- `../../strategy/product/knowledge/value-proposition.md`"
       ].join("\n")
     : "- `strategy.product` is not active. Ask for product, ICP, problem and value proposition context before defining Design.";
-  const mvpLoad = coreActive
+  const mvpLoad = productOpsActive
     ? [
-        "- `../../operations/core/README.md`",
-        "- `../../operations/core/mvp/scope.md`",
-        "- `../../operations/core/mvp/user-stories.md`",
-        "- `../../operations/core/mvp/acceptance-criteria.md`"
+        "- `../../operations/product-ops/README.md`",
+        "- `../../operations/product-ops/mvp/scope.md`",
+        "- `../../operations/product-ops/mvp/prd.md`",
+        "- `../../operations/product-ops/mvp/user-stories.md`",
+        "- `../../operations/product-ops/mvp/acceptance-criteria.md`"
       ].join("\n")
-    : "- `operations.core` is not active. Ask for MVP scope and acceptance criteria before finalizing Design.";
+    : "- `operations.product-ops` is not active. Ask for MVP scope and acceptance criteria before finalizing Design.";
   const allowedUpdates = designActive
     ? [
         "- `../../operations/design/knowledge/design-system.md`",
@@ -216,10 +218,10 @@ Ask these only when useful for the current stage:
 
 Map founder responses to source-of-truth files only when the matching area is active:
 
-- Company identity, mission, vision, principles and operating model -> \`strategy/company/\`
+- Business identity, brand logic, mission, vision, principles and operating model -> \`strategy/business/\`
 - Product description, problem, ICP, value proposition, positioning and business model -> \`strategy/product/\`
 - Assumptions, riskiest assumptions, experiments, success metrics and learning -> \`strategy/validation/\`
-- Roadmap, milestones, current cycle and backlog -> \`strategy/roadmap/\`
+- Roadmap, milestones, current cycle and backlog -> \`strategy/roadmap/knowledge/\`
 
 If a Strategy area is not active, do not propose writes to its missing path. Mention that the area is inactive and ask before activating or creating it.
 
@@ -323,25 +325,26 @@ function getInitStrategySourceFiles(activeAreas: AreaDefinition[]): string[] {
   const activeKeys = new Set(activeAreas.map((area) => area.key));
   const files: string[] = [];
 
-  if (activeKeys.has("strategy.company")) {
+  if (activeKeys.has("strategy.business")) {
     files.push(
-      "strategy/company/profile.md",
-      "strategy/company/mission.md",
-      "strategy/company/vision.md",
-      "strategy/company/principles.md",
-      "strategy/company/operating-model.md"
+      "strategy/business/knowledge/profile.md",
+      "strategy/business/knowledge/mission.md",
+      "strategy/business/knowledge/vision.md",
+      "strategy/business/knowledge/principles.md",
+      "strategy/business/knowledge/operating-model.md",
+      "strategy/business/knowledge/decision-log.md"
     );
   }
 
   if (activeKeys.has("strategy.product")) {
     files.push(
-      "strategy/product/brief.md",
-      "strategy/product/problem.md",
-      "strategy/product/icp.md",
-      "strategy/product/jobs-to-be-done.md",
-      "strategy/product/value-proposition.md",
-      "strategy/product/positioning.md",
-      "strategy/product/business-model-canvas.md"
+      "strategy/product/knowledge/brief.md",
+      "strategy/product/knowledge/problem.md",
+      "strategy/product/knowledge/icp.md",
+      "strategy/product/knowledge/jobs-to-be-done.md",
+      "strategy/product/knowledge/value-proposition.md",
+      "strategy/product/knowledge/positioning.md",
+      "strategy/product/knowledge/business-model-canvas.md"
     );
   }
 
@@ -357,10 +360,10 @@ function getInitStrategySourceFiles(activeAreas: AreaDefinition[]): string[] {
 
   if (activeKeys.has("strategy.roadmap")) {
     files.push(
-      "strategy/roadmap/roadmap.md",
-      "strategy/roadmap/milestones.md",
-      "strategy/roadmap/current-cycle.md",
-      "strategy/roadmap/backlog.md"
+      "strategy/roadmap/knowledge/roadmap.md",
+      "strategy/roadmap/knowledge/milestones.md",
+      "strategy/roadmap/knowledge/current-cycle.md",
+      "strategy/roadmap/knowledge/backlog.md"
     );
   }
 
@@ -369,14 +372,14 @@ function getInitStrategySourceFiles(activeAreas: AreaDefinition[]): string[] {
 
 function createIssuesCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
   const active = new Set(activeSubareas);
-  const coreNote = active.has("operations.core")
-    ? "Load `../../operations/core/README.md` and MVP source-of-truth files before drafting issues."
-    : "`operations.core` is not active. Do not draft implementation-ready issues until MVP scope and acceptance criteria are available or the user explicitly activates the area.";
+  const productOpsNote = active.has("operations.product-ops")
+    ? "Load `../../operations/product-ops/AGENT.md`, `../../operations/product-ops/README.md` and MVP knowledge files before drafting issues."
+    : "`operations.product-ops` is not active. Do not draft implementation-ready issues until MVP scope and acceptance criteria are available or the user explicitly activates the area.";
   const productNote = active.has("strategy.product")
     ? "Load `../../strategy/product/README.md` for product value, ICP, problem and acceptance quality."
     : "`strategy.product` is not active. Ask for product context before creating product-ready issues.";
   const engineeringNote = active.has("operations.engineering")
-    ? "Load `../../operations/engineering/README.md` when sub-issues require implementation criteria."
+    ? "Load `../../operations/engineering/AGENT.md` and `../../operations/engineering/README.md` when sub-issues require implementation criteria."
     : "`operations.engineering` is not active. Draft only planning-level issues unless the user activates Engineering.";
   const designNote = active.has("operations.design")
     ? "Use `../../operations/design/AGENT.md` only when the epic or sub-issue changes user-facing UX, screens, states, copy or interactions; use the README as the area map."
@@ -408,7 +411,7 @@ Read:
 ## Area Routing
 
 - ${productNote}
-- ${coreNote}
+- ${productOpsNote}
 - ${engineeringNote}
 - ${designNote}
 - ${securityNote}
@@ -463,10 +466,15 @@ Read:
 
 - \`../../AGENT.md\`
 - \`../index/routing-map.yaml\`
+- \`../../operations/engineering/AGENT.md\`
 - \`../../operations/engineering/README.md\`
 - \`../../operations/engineering/roles/senior-developer.role.md\`
+- \`../../operations/engineering/knowledge/implementation-rules.md\`
+- \`../../operations/engineering/knowledge/code-standards.md\`
+- \`../../operations/engineering/knowledge/testing-strategy.md\`
 - \`../../operations/engineering/skills/plan-implementation.skill.md\`
 - \`../../operations/engineering/skills/create-branch.skill.md\`
+- \`../../operations/engineering/skills/follow-code-standards.skill.md\`
 - \`../../operations/engineering/playbooks/issue-to-pr.playbook.md\`
 - \`../../ai-standard/templates/github/issue-readiness-matrix-template.md\`
 - \`../../.github/leanos/branch-rules.md\`
@@ -515,6 +523,7 @@ Prepare a safe branch name before any implementation work.
 Read:
 
 - \`../../AGENT.md\`
+- \`../../operations/engineering/AGENT.md\`
 - \`../../operations/engineering/README.md\`
 - \`../../operations/engineering/skills/create-branch.skill.md\`
 - \`../../operations/engineering/playbooks/branch-from-issue.playbook.md\`
@@ -560,7 +569,9 @@ Prepare a pull request draft that follows LeanOS structure and GitHub convention
 Read:
 
 - \`../../AGENT.md\`
+- \`../../operations/engineering/AGENT.md\`
 - \`../../operations/engineering/README.md\`
+- \`../../operations/engineering/knowledge/review-criteria.md\`
 - \`../../operations/engineering/skills/create-pr.skill.md\`
 - \`../../operations/engineering/playbooks/issue-to-pr.playbook.md\`
 - \`../../ai-standard/templates/github/pull-request-template.md\`
@@ -614,8 +625,11 @@ Review a PR against LeanOS issue, MVP, product, design, security and engineering
 Read:
 
 - \`../../AGENT.md\`
+- \`../../operations/engineering/AGENT.md\`
 - \`../../operations/engineering/README.md\`
 - \`../../operations/engineering/roles/pr-reviewer.role.md\`
+- \`../../operations/engineering/knowledge/review-criteria.md\`
+- \`../../operations/engineering/knowledge/code-standards.md\`
 - \`../../operations/engineering/skills/review-pr.skill.md\`
 - \`../../operations/engineering/playbooks/pr-validation.playbook.md\`
 - \`../../ai-standard/templates/review/code-review-template.md\`

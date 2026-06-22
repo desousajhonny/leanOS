@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Coordinate Operations Core, Design and Engineering for delivery.
+Coordinate Product Ops, Design and Engineering for delivery.
 
 ## Required Areas
 
-- core
+- product-ops
 - engineering
 
 ## Availability

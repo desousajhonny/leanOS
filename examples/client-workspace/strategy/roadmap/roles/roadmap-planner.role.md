@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Turn strategy and validation risk into a coherent cycle plan.
+Turn business, product and MVP context into a coherent roadmap and cycle plan.
 
 ## Use When
 
@@ -14,10 +14,11 @@ Turn strategy and validation risk into a coherent cycle plan.
 
 Read:
 
-- `../roadmap.md`
-- `../current-cycle.md`
-- `../backlog.md`
-- `../../product/brief.md`
+- `../knowledge/roadmap.md`
+- `../knowledge/current-cycle.md`
+- `../knowledge/backlog.md`
+- `../../product/knowledge/brief.md`
+- `../../../operations/product-ops/mvp/scope.md`
 
 ## Skills
 
@@ -27,7 +28,7 @@ Read:
 
 ## Playbooks
 
-- `../playbooks/validation-cycle-planning.playbook.md`
+- `../playbooks/roadmap-cycle-planning.playbook.md`
 - `../playbooks/roadmap-sync-prep.playbook.md`
 
 ## Output Style
@@ -38,4 +39,4 @@ Read:
 
 ## Navigation
 
-Start from `../README.md`, then load only the required skill and playbook.
+Start from `../AGENT.md`, then load only the required skill and playbook.

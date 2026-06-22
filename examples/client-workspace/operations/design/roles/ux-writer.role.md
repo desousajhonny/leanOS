@@ -12,7 +12,7 @@ Make interface language, labels, empty states, errors and onboarding copy clear 
 
 Read:
 
-- `../../../strategy/product/brief.md`
+- `../../../strategy/product/knowledge/brief.md`
 - `../knowledge/user-flows.md`
 - `../knowledge/accessibility.md`
 
