@@ -501,9 +501,9 @@ Esses workflows devem ser cross-area e apontar para areas especificas:
 
 Adicionar:
 
-- `ai-standard/templates/github-epic-template.md`
-- `ai-standard/templates/github-subissue-template.md`
-- `ai-standard/templates/issue-readiness-matrix-template.md`
+- `ai-standard/templates/github/github-epic-template.md`
+- `ai-standard/templates/github/github-subissue-template.md`
+- `ai-standard/templates/github/issue-readiness-matrix-template.md`
 
 Esses templates devem ser usados pelo modelo antes de qualquer chamada API.
 

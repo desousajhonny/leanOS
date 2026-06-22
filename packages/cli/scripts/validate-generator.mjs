@@ -401,6 +401,7 @@ async function validateWorkspaceFiles() {
   await assertOperationalPlaybookSections(rootDir);
   await assertSourceScaffoldSections(rootDir);
   await assertValidationLoopSections(rootDir);
+  await assertNoOldAiStandardReferences(rootDir);
 
   for (const forbiddenPath of [
     ".leanos/departments",
@@ -627,6 +628,8 @@ async function validateClientWorkspaceFixture() {
   if (changedPaths.length > 0) {
     failOutOfDate(formatPathDiff("Changed", changedPaths));
   }
+
+  await assertNoOldAiStandardReferences(clientWorkspaceFixtureDir);
 }
 
 async function validatePartialAreaSelection() {
@@ -1329,6 +1332,53 @@ async function assertAiStandardExamples(rootDir) {
     "example-playbook-issue-to-pr.md"
   ]) {
     assert.equal(await exists(join(examplesRoot, oldFlatExample)), false, `Old flat example should not exist: ${oldFlatExample}`);
+  }
+}
+
+async function assertNoOldAiStandardReferences(rootDir) {
+  const oldReferences = [
+    "ai-standard/navigation-chain.md",
+    "ai-standard/asset-taxonomy.md",
+    "ai-standard/creation-rules.md",
+    "ai-standard/quality-criteria.md",
+    "ai-standard/naming-conventions.md",
+    "ai-standard/folder-readme-rules.md",
+    "ai-standard/folder-documentation-rules.md",
+    "ai-standard/standards",
+    "ai-standard/templates/root-agent-template.md",
+    "ai-standard/templates/department-agent-template.md",
+    "ai-standard/templates/area-agent-template.md",
+    "ai-standard/templates/role-template.md",
+    "ai-standard/templates/skill-template.md",
+    "ai-standard/templates/playbook-template.md",
+    "ai-standard/templates/workflow-template.md",
+    "ai-standard/templates/command-template.md",
+    "ai-standard/templates/github-epic-template.md",
+    "ai-standard/templates/github-subissue-template.md",
+    "ai-standard/templates/issue-readiness-matrix-template.md",
+    "ai-standard/templates/branch-name-template.md",
+    "ai-standard/templates/pull-request-template.md",
+    "ai-standard/templates/code-review-template.md",
+    "ai-standard/examples/example-agent.md",
+    "ai-standard/examples/example-folder-readme.md",
+    "ai-standard/examples/example-role-senior-developer.md",
+    "ai-standard/examples/example-skill-check-coherence.md",
+    "ai-standard/examples/example-playbook-issue-to-pr.md",
+    ".leanos/ai-standard",
+    ".leanos/departments"
+  ];
+  const files = await listFiles(rootDir);
+
+  for (const file of files) {
+    const content = await readFile(join(rootDir, file), "utf8");
+
+    for (const oldReference of oldReferences) {
+      assert.equal(
+        content.includes(oldReference),
+        false,
+        `Old AI Standard path reference should not appear in ${file}: ${oldReference}`
+      );
+    }
   }
 }
 

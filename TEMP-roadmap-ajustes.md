@@ -252,13 +252,13 @@ Principio: nao fazer apenas reorganizacao visual. Cada pasta, template, checklis
 
 ### 7.6 Atualizar gerador, preview e validacoes
 
-- [ ] Atualizar `packages/cli/src/templates/workspace/renderers/ai-standard.ts`.
-- [ ] Atualizar qualquer comando, AGENT ou renderer que aponte para paths antigos.
-- [ ] Atualizar `packages/cli/scripts/validate-generator.mjs`.
-- [ ] Regenerar `examples/client-workspace/`.
-- [ ] Garantir que `examples/client-workspace-tree.md` reflita a nova estrutura.
-- [ ] Validar que nenhum link antigo quebrado permaneceu.
-- [ ] Rodar:
+- [x] Atualizar `packages/cli/src/templates/workspace/renderers/ai-standard.ts`.
+- [x] Atualizar qualquer comando, AGENT ou renderer que aponte para paths antigos.
+- [x] Atualizar `packages/cli/scripts/validate-generator.mjs`.
+- [x] Regenerar `examples/client-workspace/`.
+- [x] Garantir que `examples/client-workspace-tree.md` reflita a nova estrutura.
+- [x] Validar que nenhum link antigo quebrado permaneceu.
+- [x] Rodar:
   - `npm --prefix packages/cli run build`
   - `npm run generate:client-workspace`
   - `node packages/cli/scripts/validate-generator.mjs`
