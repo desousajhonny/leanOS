@@ -4,24 +4,54 @@
 
 Extract design-relevant user evidence, assumptions and open questions from Product and Validation context.
 
-## Area
+## Use When
 
-`operations/design`
+- user evidence is unclear
+- research questions are needed
+- design decisions depend on user behavior, pain or context
+
+## Required Context
+
+- Product brief
+- ICP or target user
+- Validation assumptions when available
+- Existing user-flow knowledge
 
 ## Inputs
 
-- Area source-of-truth files
-- Active role instructions
 - User request
+- Known evidence
+- Known assumptions
+- Open product or design questions
 
 ## Process
 
-1. Read the minimum relevant source-of-truth files.
-2. Apply this skill to the user request.
-3. Prepare a concise output or file update.
+1. Separate evidence from assumptions
+2. Identify user, behavior, pain and context
+3. Extract research questions
+4. Map evidence gaps
+5. Propose the smallest next research step
+
+## Checks
+
+- Do not treat hypotheses as facts
+- Keep assumptions visibly tentative
+- Make research questions specific enough to act on
 
 ## Output
 
-- Summary
-- Decisions
-- Suggested file updates
+- Evidence summary
+- Assumption list
+- Research questions
+- Evidence gaps
+- Smallest next research step
+
+## Files to Update
+
+- Update `../knowledge/user-flows.md` only when confirmed design-relevant flow learning exists.
+
+## Red Lines
+
+- Do not invent user evidence
+- Do not claim validation without evidence
+- Ask before writing research conclusions to knowledge files.

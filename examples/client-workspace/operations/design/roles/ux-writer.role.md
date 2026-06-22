@@ -20,6 +20,7 @@ Read:
 
 - `../skills/microcopy.skill.md`
 - `../skills/user-flow-mapping.skill.md`
+- `../skills/design-review.skill.md`
 
 ## Playbooks
 

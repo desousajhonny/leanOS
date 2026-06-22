@@ -51,7 +51,7 @@ MVP context:
 3. Define the design system baseline: tokens, color intent, typography, spacing, component principles and interaction principles.
 4. Define accessibility expectations for the MVP audience and core flows.
 5. Map the primary user flows needed before implementation.
-6. Leave screen specs, usability notes and UX decisions for later feature or screen-specific work.
+6. Leave screen-specific artifacts for later feature or screen-specific work.
 7. Propose file updates before writing.
 8. Write only after explicit user confirmation.
 
@@ -67,9 +67,7 @@ Only after explicit confirmation, update:
 
 During `/define design`, do not create or update:
 
-- `../../operations/design/screen-specs.md`
-- `../../operations/design/usability-notes.md`
-- `../../operations/design/ux-decisions.md`
+- screen-specific design files before a concrete feature or screen requires them
 - product code
 - roles, skills, playbooks, workflows or `ai-standard/`
 

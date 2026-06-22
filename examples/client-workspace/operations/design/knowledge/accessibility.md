@@ -1,21 +1,33 @@
 # Accessibility
 
-## Purpose
-
-Define accessibility expectations for the MVP audience, flows and interface constraints.
-
-## Current State
+## Accessibility Baseline
 
 TBD
 
-## Decisions
+## WCAG Target
 
 TBD
 
-## Open Questions
+## Keyboard Navigation
 
 TBD
 
-## Next Update
+## Focus Rules
+
+TBD
+
+## Contrast Rules
+
+TBD
+
+## Forms and Errors
+
+TBD
+
+## Screen Reader Notes
+
+TBD
+
+## Known Risks
 
 TBD

@@ -260,13 +260,13 @@ client-workspace/
 |   |   |   `-- ux-writer.role.md
 |   |   |-- skills/
 |   |   |   |-- accessibility.skill.md
+|   |   |   |-- design-review.skill.md
 |   |   |   |-- design-system.skill.md
 |   |   |   |-- microcopy.skill.md
 |   |   |   |-- README.md
 |   |   |   |-- screen-specification.skill.md
 |   |   |   |-- user-flow-mapping.skill.md
-|   |   |   |-- user-research.skill.md
-|   |   |   `-- ux-states.skill.md
+|   |   |   `-- user-research.skill.md
 |   |   |-- AGENT.md
 |   |   |-- area.yaml
 |   |   `-- README.md

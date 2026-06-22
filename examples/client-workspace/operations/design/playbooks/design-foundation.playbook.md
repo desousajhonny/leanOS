@@ -12,13 +12,14 @@ Create the MVP design foundation from product strategy and MVP scope before impl
 - Primary user flows
 - Accessibility needs
 - Brand or product constraints
+- Skills: design-system, accessibility, user-flow-mapping
 
 ## Process
 
 1. Read Product and MVP context
-2. Define the design system baseline
-3. Define accessibility expectations for the MVP audience
-4. Map primary user flows
+2. Use `skills/design-system.skill.md` to define the design system baseline
+3. Use `skills/accessibility.skill.md` to define accessibility expectations for the MVP audience
+4. Use `skills/user-flow-mapping.skill.md` to map primary user flows
 5. Identify missing context
 6. Propose updates to Design knowledge files before writing
 

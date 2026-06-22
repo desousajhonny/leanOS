@@ -10,13 +10,13 @@ area:
     - accessibility-specialist
     - ux-writer
   skills:
-    - design-system
-    - accessibility
     - user-research
     - user-flow-mapping
+    - design-system
     - screen-specification
-    - ux-states
     - microcopy
+    - accessibility
+    - design-review
   playbooks:
     - design-foundation
     - user-research

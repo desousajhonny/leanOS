@@ -1,21 +1,29 @@
 # User Flows
 
-## Purpose
-
-Document key MVP user flows before implementation.
-
-## Current State
+## Primary Flow
 
 TBD
 
-## Decisions
+## Entry Point
+
+TBD
+
+## User Goal
+
+TBD
+
+## Steps
+
+TBD
+
+## Edge Cases
+
+TBD
+
+## Required Screens
 
 TBD
 
 ## Open Questions
-
-TBD
-
-## Next Update
 
 TBD

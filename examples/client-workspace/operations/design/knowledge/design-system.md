@@ -1,21 +1,33 @@
 # Design System
 
-## Purpose
-
-Define MVP design tokens, colors, typography, spacing, components and interaction principles.
-
-## Current State
+## Tokens
 
 TBD
 
-## Decisions
+## Typography
+
+TBD
+
+## Color Intent
+
+TBD
+
+## Spacing
+
+TBD
+
+## Components
+
+TBD
+
+## Interaction Principles
+
+TBD
+
+## Do Not Do
 
 TBD
 
 ## Open Questions
-
-TBD
-
-## Next Update
 
 TBD

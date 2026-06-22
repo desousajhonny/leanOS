@@ -262,6 +262,47 @@ Start from \`${areaOwner}\`, then load only the required skill and playbook.
 }
 
 export function skillFile(area: AreaDefinition, skill: SkillDefinition): string {
+  if (skill.useWhen || skill.requiredContext || skill.inputs || skill.process || skill.checks || skill.outputs || skill.filesToUpdate || skill.redLines) {
+    return `# ${skill.title}
+
+## Purpose
+
+${skill.purpose}
+
+## Use When
+
+${(skill.useWhen ?? ["Use when this capability is required for the active request."]).map((item) => `- ${item}`).join("\n")}
+
+## Required Context
+
+${(skill.requiredContext ?? ["Area README", "Active role instructions", "User request"]).map((item) => `- ${item}`).join("\n")}
+
+## Inputs
+
+${(skill.inputs ?? ["Relevant area knowledge", "Active role instructions", "User request"]).map((item) => `- ${item}`).join("\n")}
+
+## Process
+
+${(skill.process ?? ["Read the minimum relevant context.", "Apply this skill to the request.", "Prepare a concise output or file update."]).map((item, index) => `${index + 1}. ${item}`).join("\n")}
+
+## Checks
+
+${(skill.checks ?? ["Check that the output matches the active request.", "Check that no unsupported product facts were invented."]).map((item) => `- ${item}`).join("\n")}
+
+## Output
+
+${(skill.outputs ?? ["Summary", "Decisions", "Suggested file updates"]).map((item) => `- ${item}`).join("\n")}
+
+## Files to Update
+
+${(skill.filesToUpdate ?? ["Update relevant area knowledge only after explicit confirmation."]).map((item) => `- ${item}`).join("\n")}
+
+## Red Lines
+
+${(skill.redLines ?? ["Do not invent product-specific facts.", "Ask before modifying files."]).map((item) => `- ${item}`).join("\n")}
+`;
+  }
+
   return `# ${skill.title}
 
 ## Purpose

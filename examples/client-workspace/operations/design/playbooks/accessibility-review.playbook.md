@@ -10,14 +10,14 @@ Review design foundation or UX flow for accessibility expectations.
 - Design system baseline
 - User flows
 - MVP audience and constraints
+- Skills: accessibility, design-review when general UX evaluation is needed
 
 ## Process
 
 1. Read accessibility baseline
-2. Check audience needs
-3. Check keyboard and screen-reader implications
-4. Check contrast and information hierarchy expectations
-5. List accessibility gaps
+2. Use `skills/accessibility.skill.md` to check audience needs, keyboard, focus, contrast, forms, errors and screen-reader implications
+3. Use `skills/design-review.skill.md` when the request needs a broader UX/design result
+4. List accessibility gaps
 
 ## Output
 

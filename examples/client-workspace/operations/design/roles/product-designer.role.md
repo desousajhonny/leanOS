@@ -22,7 +22,7 @@ Read:
 - `../skills/design-system.skill.md`
 - `../skills/user-flow-mapping.skill.md`
 - `../skills/screen-specification.skill.md`
-- `../skills/ux-states.skill.md`
+- `../skills/design-review.skill.md`
 
 ## Playbooks
 

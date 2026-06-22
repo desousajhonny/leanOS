@@ -14,6 +14,31 @@ Read these files first:
 - `.leanos/context/next-actions.md`
 - `.leanos/index/routing-map.yaml`
 
+## Red Lines / Non-Negotiable Rules
+
+- For every LeanOS task, command, workflow, file update, strategy decision, product decision, implementation request or review request, always start with the Response Header.
+- Never execute a routed LeanOS task before showing the route.
+- Use `not applicable` only when a Response Header field truly does not apply.
+- Enter the owning department or area before acting.
+- When an area has its own `AGENT.md`, use it as the area operating owner before loading roles, skills or playbooks.
+- Do not invent missing workflows, roles, skills, playbooks, commands or templates.
+- Do not load the whole workspace when a smaller route exists.
+- Do not write secrets to tracked files.
+- Ask before modifying knowledge, decision or framework files.
+- During `/start-leanos`, do not enrich roles, skills, playbooks, workflows, commands or `ai-standard/` with company/product context.
+- Do not modify source-of-truth, decision, framework or runtime files until the user explicitly confirms the proposed changes.
+
+## Response Header
+
+For every routed LeanOS task, start with:
+
+Active Department:
+Active Area:
+Active Role:
+Loaded Skills:
+Relevant Playbook:
+Loaded Context:
+
 ## Command Handling
 
 LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface.
@@ -25,6 +50,18 @@ When the user invokes legacy `/leanos-init`, treat it as `/start-leanos`.
 For any LeanOS slash command, normalize the command to kebab-case and load `.leanos/commands/<command>.md` before acting.
 
 If the command file is missing, do not invent the command. Explain what is missing and route through the active context instead.
+
+## Natural Language Handling
+
+If a natural-language request clearly matches an existing LeanOS command, load the matching command file before acting.
+
+Examples:
+
+- "help me define the ICP" -> `.leanos/commands/define-icp.md`
+- "define the MVP" -> `.leanos/commands/define-mvp.md`
+- "review this PR" -> `.leanos/commands/review-pr.md`
+
+If no command clearly matches, route through the Navigation Chain.
 
 ## Navigation Chain
 
@@ -39,7 +76,7 @@ Use the chain to choose the next owner, one level at a time.
 3. Area chooses the specialist role when it has `AGENT.md`; otherwise use its `README.md` as the local map.
 4. Role points to the required skills and playbooks.
 5. Skills and playbooks shape the work.
-6. Output updates only the smallest relevant source-of-truth, knowledge or decision file.
+6. Output updates only the smallest relevant knowledge, decision or project file.
 
 Do not skip levels because a later file looks relevant.
 Do not load the whole workspace when a smaller route exists.
@@ -52,26 +89,21 @@ Do not load the whole workspace when a smaller route exists.
 - `workflows/`: multi-step flows owned by the department or area that contains them.
 - `roles/`, `skills/` and `playbooks/`: area-level execution assets.
 
-## Red Lines
+## Root Routing
 
-- Enter the owning department or area before acting.
-- When an area has its own `AGENT.md`, use it as the area operating owner before loading roles, skills or playbooks.
-- Do not invent missing workflows, roles, skills, playbooks, commands or templates.
-- Do not load the whole workspace when a smaller route exists.
-- Do not write secrets to tracked files.
-- Ask before modifying source-of-truth files or operating assets.
+Use this section only to choose the owning department. The department `AGENT.md` chooses the workflow or area.
 
-## Workspace Mutation Rules
+- Strategy: `strategy/AGENT.md`
+  Use for company, product strategy, roadmap, validation, ICP or assumptions.
+  Map: `strategy/README.md`
 
-Source-of-truth files describe what the company knows: strategy, product context, validation learning, operating state and decisions.
+- Operations: `operations/AGENT.md`
+  Use for MVP, architecture, design, engineering, implementation, DevOps or security.
+  Map: `operations/README.md`
 
-Operating assets describe how LeanOS works: roles, skills, playbooks, workflows, commands, AI Standard and GitHub/VS Code support.
-
-During `/start-leanos`, use propose-first mode. Propose source-of-truth updates first and write only after explicit user confirmation.
-
-Do not enrich roles, skills, playbooks, workflows, commands or `ai-standard/` with company/product context during init.
-
-Customize operating assets only when the user explicitly asks to change LeanOS itself, usually through `/create role`, `/create skill` or `/create playbook`.
+- Growth: `growth/AGENT.md`
+  Use for customer experience, marketing, landing pages, launch, acquisition or finance.
+  Map: `growth/README.md`
 
 ## LeanOS Runtime
 
@@ -80,30 +112,12 @@ Customize operating assets only when the user explicitly asks to change LeanOS i
 
 `ai-standard/` contains reusable templates, instructions and quality criteria.
 
-## Active Root Departments
+## Asset Creation Routing
 
-- Strategy: `strategy/AGENT.md` (map: `strategy/README.md`)
-- Operations: `operations/AGENT.md` (map: `operations/README.md`)
-- Growth: `growth/AGENT.md` (map: `growth/README.md`)
+If the user asks to create or change a LeanOS role, skill, playbook, workflow, command, template, checklist or standard:
 
-## Routing
-
-Use this section only to choose the owning department. The department `AGENT.md` chooses the workflow or area.
-
-If the user asks about company, product strategy, roadmap, validation, ICP or assumptions:
-
-Go to:
-
-`strategy/AGENT.md`
-
-If the user asks about MVP, architecture, design, engineering, implementation, DevOps or security:
-
-Go to:
-
-`operations/AGENT.md`
-
-If the user asks about customer experience, marketing, landing pages, launch, acquisition or finance:
-
-Go to:
-
-`growth/AGENT.md`
+1. Load `ai-standard/README.md`.
+2. Load the matching creation instruction from `ai-standard/instructions/`.
+3. Use the matching template from `ai-standard/templates/`.
+4. Validate with the matching checklist from `ai-standard/checklists/`.
+5. Ask before writing framework assets.

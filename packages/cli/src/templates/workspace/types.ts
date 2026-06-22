@@ -118,6 +118,14 @@ export type SkillDefinition = {
   slug: string;
   title: string;
   purpose: string;
+  useWhen?: string[];
+  requiredContext?: string[];
+  inputs?: string[];
+  process?: string[];
+  checks?: string[];
+  outputs?: string[];
+  filesToUpdate?: string[];
+  redLines?: string[];
 };
 
 export type PlaybookDefinition = {

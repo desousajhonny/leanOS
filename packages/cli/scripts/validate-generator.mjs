@@ -143,8 +143,8 @@ async function validateWorkspaceFiles() {
     "operations/design/skills/user-research.skill.md",
     "operations/design/skills/user-flow-mapping.skill.md",
     "operations/design/skills/screen-specification.skill.md",
-    "operations/design/skills/ux-states.skill.md",
     "operations/design/skills/microcopy.skill.md",
+    "operations/design/skills/design-review.skill.md",
     "operations/design/playbooks/design-foundation.playbook.md",
     "operations/design/playbooks/user-research.playbook.md",
     "operations/design/playbooks/accessibility-review.playbook.md",
@@ -870,16 +870,31 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("Root chooses the owning department"), "Root AGENT.md should explain root-level navigation");
   assert(rootAgent.includes("Department chooses a workflow or active area"), "Root AGENT.md should explain department-level navigation");
   assert(rootAgent.includes("Area chooses the specialist role when it has `AGENT.md`"), "Root AGENT.md should explain area-level navigation");
-  assert(rootAgent.includes("Output updates only the smallest relevant source-of-truth, knowledge or decision file"), "Root AGENT.md should keep output scope narrow");
-  assert(rootAgent.includes("## Red Lines"), "Root AGENT.md should define scalable red lines");
+  assert(rootAgent.includes("Output updates only the smallest relevant knowledge, decision or project file"), "Root AGENT.md should keep output scope narrow");
+  assert(rootAgent.includes("## Red Lines / Non-Negotiable Rules"), "Root AGENT.md should define scalable red lines");
+  assert(rootAgent.includes("## Response Header"), "Root AGENT.md should define the response header");
+  assert(rootAgent.includes("Active Department:"), "Root AGENT.md should require active department in response header");
+  assert(rootAgent.includes("Active Area:"), "Root AGENT.md should require active area in response header");
+  assert(rootAgent.includes("Active Role:"), "Root AGENT.md should require active role in response header");
+  assert(rootAgent.includes("Loaded Skills:"), "Root AGENT.md should require loaded skills in response header");
+  assert(rootAgent.includes("Relevant Playbook:"), "Root AGENT.md should require relevant playbook in response header");
+  assert(rootAgent.includes("Loaded Context:"), "Root AGENT.md should require loaded context in response header");
+  assert(rootAgent.includes("## Natural Language Handling"), "Root AGENT.md should route natural-language requests");
+  assert(rootAgent.includes("If a natural-language request clearly matches an existing LeanOS command"), "Root AGENT.md should map natural language to commands when clear");
+  assert(rootAgent.includes("## Asset Creation Routing"), "Root AGENT.md should route framework asset creation through AI Standard");
+  assert(rootAgent.includes("Load `ai-standard/README.md`"), "Root AGENT.md should load AI Standard for asset creation");
   assert(rootAgent.includes("`AGENT.md`: operational owner for that level"), "Root AGENT.md should define AGENT.md responsibility");
   assert(rootAgent.includes("`README.md`: directory map and explanation"), "Root AGENT.md should define README responsibility");
   assert(rootAgent.includes("Enter the owning department or area before acting"), "Root AGENT.md should use owner-first red lines");
   assert(rootAgent.includes("When an area has its own `AGENT.md`, use it as the area operating owner"), "Root AGENT.md should understand area-level agents");
   assert(rootAgent.includes("Do not invent missing workflows, roles, skills, playbooks, commands or templates"), "Root AGENT.md should prevent asset invention");
+  assert(rootAgent.includes("## Root Routing"), "Root AGENT.md should have a single root routing section");
   assert(rootAgent.includes("Strategy: `strategy/AGENT.md`"), "Root AGENT.md should route Strategy through its AGENT");
   assert(rootAgent.includes("Operations: `operations/AGENT.md`"), "Root AGENT.md should route Operations through its AGENT");
   assert(rootAgent.includes("Growth: `growth/AGENT.md`"), "Root AGENT.md should route Growth through its AGENT");
+  assert.equal(rootAgent.includes("## Active Root Departments"), false, "Root AGENT.md should not duplicate active departments and routing");
+  assert.equal(rootAgent.includes("## Routing"), false, "Root AGENT.md should use Root Routing instead of a separate Routing section");
+  assert.equal(rootAgent.includes("## Workspace Mutation Rules"), false, "Root AGENT.md should not keep the old mutation rules section");
   assert.equal(rootAgent.includes("`strategy/product/README.md`"), false, "Root AGENT.md should not route directly to Strategy Product area");
   assert.equal(rootAgent.includes("`operations/engineering/README.md`"), false, "Root AGENT.md should not route directly to Operations Engineering area");
   assert(rootAgent.includes("Operational workflows live in root departments"), "AGENT.md should keep business workflows out of .leanos");
@@ -910,11 +925,15 @@ async function assertFounderIntentRouting(rootDir) {
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "idea-to-roadmap" && workflow.path === "../../strategy/workflows/idea-to-roadmap.workflow.md"), "Workflows index should point to Strategy idea workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-to-github-project" && workflow.path === "../../strategy/workflows/roadmap-to-github-project.workflow.md"), "Workflows index should point to Strategy roadmap sync workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "issue-delivery-cycle" && workflow.path === "../../operations/workflows/issue-delivery-cycle.workflow.md"), "Workflows index should point to Operations issue delivery workflow");
-  assert(rootAgentTemplate.includes("Route only to the owning department `AGENT.md`"), "Root agent template should keep root routing department-level");
+  assert(rootAgentTemplate.includes("## Root Routing"), "Root agent template should keep root routing department-level");
+  assert(rootAgentTemplate.includes("Use this section only to choose the owning department"), "Root agent template should keep routing scoped to departments");
   assert(rootAgentTemplate.includes("LeanOS uses owner-first navigation"), "Root agent template should explain owner-first navigation");
   assert(rootAgentTemplate.includes("Do not skip levels because a later file looks relevant"), "Root agent template should prevent route skipping");
-  assert(rootAgentTemplate.includes("## Red Lines"), "Root agent template should include scalable red lines");
-  assert(rootAgentTemplate.includes("When an area has `AGENT.md`, use it before loading roles, skills or playbooks"), "Root agent template should include area AGENT rule");
+  assert(rootAgentTemplate.includes("## Red Lines / Non-Negotiable Rules"), "Root agent template should include scalable red lines");
+  assert(rootAgentTemplate.includes("## Response Header"), "Root agent template should include response header");
+  assert(rootAgentTemplate.includes("## Natural Language Handling"), "Root agent template should include natural language handling");
+  assert(rootAgentTemplate.includes("## Asset Creation Routing"), "Root agent template should include asset creation routing");
+  assert(rootAgentTemplate.includes("When an area has its own `AGENT.md`, use it as the area operating owner before loading roles, skills or playbooks"), "Root agent template should include area AGENT rule");
   assert(departmentAgentTemplate.includes("If the request spans multiple active areas, open `workflows/README.md`"), "Department agent template should route cross-area work through workflow index");
   assert(departmentAgentTemplate.includes("route to that area `AGENT.md` when present"), "Department agent template should route to area AGENT when present");
   assert(departmentAgentTemplate.includes("Do not load roles, skills or playbooks before entering the owning area"), "Department agent template should keep roles/skills/playbooks area-owned");
@@ -934,6 +953,17 @@ async function assertDesignFoundation(rootDir) {
   const defineDesignCommand = await readFile(join(rootDir, ".leanos", "commands", "define-design.md"), "utf8");
   const designFoundationPlaybook = await readFile(join(rootDir, "operations", "design", "playbooks", "design-foundation.playbook.md"), "utf8");
   const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
+  const skillsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "skills.yaml"), "utf8"));
+  const designSystemKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "design-system.md"), "utf8");
+  const accessibilityKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "accessibility.md"), "utf8");
+  const userFlowsKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "user-flows.md"), "utf8");
+  const userResearchSkill = await readFile(join(rootDir, "operations", "design", "skills", "user-research.skill.md"), "utf8");
+  const userFlowMappingSkill = await readFile(join(rootDir, "operations", "design", "skills", "user-flow-mapping.skill.md"), "utf8");
+  const designSystemSkill = await readFile(join(rootDir, "operations", "design", "skills", "design-system.skill.md"), "utf8");
+  const screenSpecificationSkill = await readFile(join(rootDir, "operations", "design", "skills", "screen-specification.skill.md"), "utf8");
+  const microcopySkill = await readFile(join(rootDir, "operations", "design", "skills", "microcopy.skill.md"), "utf8");
+  const accessibilitySkill = await readFile(join(rootDir, "operations", "design", "skills", "accessibility.skill.md"), "utf8");
+  const designReviewSkill = await readFile(join(rootDir, "operations", "design", "skills", "design-review.skill.md"), "utf8");
 
   await assertExists(join(rootDir, "operations", "design", "AGENT.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "README.md"));
@@ -949,8 +979,8 @@ async function assertDesignFoundation(rootDir) {
   await assertExists(join(rootDir, "operations", "design", "skills", "user-research.skill.md"));
   await assertExists(join(rootDir, "operations", "design", "skills", "user-flow-mapping.skill.md"));
   await assertExists(join(rootDir, "operations", "design", "skills", "screen-specification.skill.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "ux-states.skill.md"));
   await assertExists(join(rootDir, "operations", "design", "skills", "microcopy.skill.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "design-review.skill.md"));
   await assertExists(join(rootDir, "operations", "design", "playbooks", "user-research.playbook.md"));
   await assertExists(join(rootDir, "operations", "design", "playbooks", "accessibility-review.playbook.md"));
   await assertExists(join(rootDir, "operations", "design", "playbooks", "ux-writing.playbook.md"));
@@ -964,7 +994,36 @@ async function assertDesignFoundation(rootDir) {
   assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-accessibility.skill.md")), false, "Accessibility skill should use direct naming without define- prefix");
   assert.equal(await exists(join(rootDir, "operations", "design", "skills", "map-user-flow.skill.md")), false, "User flow skill should use direct naming");
   assert.equal(await exists(join(rootDir, "operations", "design", "skills", "create-screen-spec.skill.md")), false, "Screen spec skill should use direct naming");
+  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "ux-states.skill.md")), false, "UX states should be incorporated into screen specification");
   assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-ux-states.skill.md")), false, "UX states skill should use direct naming");
+
+  for (const heading of ["## Tokens", "## Typography", "## Color Intent", "## Spacing", "## Components", "## Interaction Principles", "## Do Not Do", "## Open Questions"]) {
+    assert(designSystemKnowledge.includes(heading), `Design system knowledge should include ${heading}`);
+  }
+
+  for (const heading of ["## Accessibility Baseline", "## WCAG Target", "## Keyboard Navigation", "## Focus Rules", "## Contrast Rules", "## Forms and Errors", "## Screen Reader Notes", "## Known Risks"]) {
+    assert(accessibilityKnowledge.includes(heading), `Accessibility knowledge should include ${heading}`);
+  }
+
+  for (const heading of ["## Primary Flow", "## Entry Point", "## User Goal", "## Steps", "## Edge Cases", "## Required Screens", "## Open Questions"]) {
+    assert(userFlowsKnowledge.includes(heading), `User flows knowledge should include ${heading}`);
+  }
+
+  for (const skillContent of [userResearchSkill, userFlowMappingSkill, designSystemSkill, screenSpecificationSkill, microcopySkill, accessibilitySkill, designReviewSkill]) {
+    for (const heading of ["## Purpose", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output", "## Files to Update", "## Red Lines"]) {
+      assert(skillContent.includes(heading), `Design skill should include ${heading}`);
+    }
+  }
+
+  assert(userResearchSkill.includes("Separate evidence from assumptions"), "User research skill should separate evidence from assumptions");
+  assert(userResearchSkill.includes("Do not treat hypotheses as facts"), "User research skill should avoid treating hypotheses as facts");
+  assert(userFlowMappingSkill.includes("Avoid flows larger than the MVP"), "User flow mapping should avoid oversized MVP flows");
+  assert(designSystemSkill.includes("Prioritize flow clarity before visual polish"), "Design system skill should avoid polish before flow clarity");
+  assert(screenSpecificationSkill.includes("default, loading, empty, error, success and edge-case states"), "Screen specification should include required UX states");
+  assert(microcopySkill.includes("labels, helper text, empty states, errors, success messages and onboarding hints"), "Microcopy skill should cover key copy surfaces");
+  assert(accessibilitySkill.includes("WCAG 2.2 AA"), "Accessibility skill should use WCAG 2.2 AA baseline");
+  assert(designReviewSkill.includes("pass, concerns, blocked or not applicable"), "Design review skill should classify review result");
+  assert(designReviewSkill.includes("Findings are ordered by severity"), "Design review skill should order findings by severity");
 
   assert(designReadme.includes("knowledge/design-system.md"), "Design README should point to Design knowledge");
   assert(designReadme.includes("Design foundation request"), "Design README should expose the design foundation common path");
@@ -976,12 +1035,19 @@ async function assertDesignFoundation(rootDir) {
   assert(designAgent.includes("UX Writer: `roles/ux-writer.role.md`"), "Design AGENT should route UX writing work");
   assert(designAgent.includes("Keep reusable area knowledge in `knowledge/`"), "Design AGENT should keep knowledge modular");
   assert.equal(areaYaml.area.agent, "AGENT.md");
+  assert(areaYaml.area.skills.includes("design-review"), "Design area YAML should list design-review skill");
+  assert.equal(areaYaml.area.skills.includes("ux-states"), false, "Design area YAML should not list ux-states skill");
+  assert(skillsIndex.skills.some((skill) => skill.key === "design-review" && skill.path === "../../operations/design/skills/design-review.skill.md"), "Skills index should list design-review");
+  assert.equal(skillsIndex.skills.some((skill) => skill.key === "ux-states"), false, "Skills index should not list ux-states");
   assert.deepEqual(areaYaml.area.source_of_truth, ["knowledge/design-system.md", "knowledge/accessibility.md", "knowledge/user-flows.md"]);
   assert(productDesigner.includes("../knowledge/design-system.md"), "Product Designer should read design-system knowledge");
   assert(productDesigner.includes("../knowledge/user-flows.md"), "Product Designer should read user-flow knowledge");
+  assert(productDesigner.includes("../skills/design-review.skill.md"), "Product Designer should point to design-review skill");
   assert(uxResearcher.includes("../knowledge/user-flows.md"), "UX Researcher should read user-flow knowledge");
   assert(accessibilitySpecialist.includes("../knowledge/accessibility.md"), "Accessibility Specialist should read accessibility knowledge");
+  assert(accessibilitySpecialist.includes("../skills/design-review.skill.md"), "Accessibility Specialist should point to design-review skill");
   assert(uxWriter.includes("../knowledge/user-flows.md"), "UX Writer should read user-flow knowledge");
+  assert(uxWriter.includes("../skills/design-review.skill.md"), "UX Writer should point to design-review skill");
 
   assert(defineDesignCommand.includes("# /define design"), "Define design command should use the expected invocation");
   assert(defineDesignCommand.includes("Prepare the MVP design foundation before implementation"), "Define design command should explain the design foundation purpose");
@@ -996,7 +1062,10 @@ async function assertDesignFoundation(rootDir) {
   assert.equal(defineDesignCommand.includes("../../operations/design/skills/define-design-system.skill.md"), false, "Define design should not load define-prefixed design-system skill");
   assert.equal(defineDesignCommand.includes("../../operations/design/skills/define-accessibility.skill.md"), false, "Define design should not load define-prefixed accessibility skill");
   assert(defineDesignCommand.includes("../../operations/design/knowledge/design-system.md"), "Define design should update design-system knowledge");
-  assert(defineDesignCommand.includes("Leave screen specs, usability notes and UX decisions for later"), "Define design should defer screen-specific files");
+  assert(defineDesignCommand.includes("Leave screen-specific artifacts for later feature or screen-specific work"), "Define design should defer screen-specific files");
+  assert.equal(defineDesignCommand.includes("screen-specs.md"), false, "Define design should not reference removed screen specs file");
+  assert.equal(defineDesignCommand.includes("usability-notes.md"), false, "Define design should not reference removed usability notes file");
+  assert.equal(defineDesignCommand.includes("ux-decisions.md"), false, "Define design should not reference removed UX decisions file");
   assert(defineDesignCommand.includes("Write only after explicit user confirmation"), "Define design should use propose-first writes");
   assert(designFoundationPlaybook.includes("Design system baseline"), "Design foundation playbook should output a design system baseline");
   assert(designFoundationPlaybook.includes("Accessibility baseline"), "Design foundation playbook should output an accessibility baseline");
@@ -1055,18 +1124,18 @@ async function assertRootAgentMutationRules(rootDir) {
   const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
   const operatingRules = await readFile(join(rootDir, ".leanos", "agent", "operating-rules.md"), "utf8");
 
-  assert(rootAgent.includes("## Workspace Mutation Rules"), "AGENT.md should include Workspace Mutation Rules");
+  assert.equal(rootAgent.includes("## Workspace Mutation Rules"), false, "AGENT.md should not include the old Workspace Mutation Rules section");
   assert(rootAgent.includes("## Command Handling"), "AGENT.md should include portable command handling");
   assert(rootAgent.includes("LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface"), "AGENT.md should make commands model-agnostic");
   assert(rootAgent.includes("`.leanos/commands/start-leanos.md`"), "AGENT.md should map /start-leanos to its command file");
   assert(rootAgent.includes("When the user invokes legacy `/leanos-init`, treat it as `/start-leanos`"), "AGENT.md should document the legacy init alias");
-  assert(rootAgent.includes("Source-of-truth files describe what the company knows"), "AGENT.md should explain source-of-truth files");
-  assert(rootAgent.includes("Operating assets describe how LeanOS works"), "AGENT.md should explain operating assets");
-  assert(rootAgent.includes("Do not enrich roles, skills, playbooks, workflows, commands or `ai-standard/`"), "AGENT.md should protect operating assets during init");
-  assert(rootAgent.includes("`/create role`, `/create skill` or `/create playbook`"), "AGENT.md should route operating asset customization to creation commands");
+  assert(rootAgent.includes("During `/start-leanos`, do not enrich roles, skills, playbooks, workflows, commands or `ai-standard/`"), "AGENT.md should protect framework assets during init from Red Lines");
+  assert(rootAgent.includes("Ask before modifying knowledge, decision or framework files"), "AGENT.md should require confirmation before file mutation");
+  assert.equal(rootAgent.includes("Source-of-truth files describe what the company knows"), false, "AGENT.md should avoid old source-of-truth taxonomy");
+  assert.equal(rootAgent.includes("Operating assets describe how LeanOS works"), false, "AGENT.md should avoid old operating-assets taxonomy");
   assert(operatingRules.includes("LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface"), "operating rules should make commands model-agnostic");
   assert(operatingRules.includes("For `/start-leanos`, load `../commands/start-leanos.md` before acting"), "operating rules should map /start-leanos to its command file");
-  assert(operatingRules.includes("During `/start-leanos`, propose source-of-truth updates first"), "operating rules should require propose-first start");
+  assert(operatingRules.includes("During `/start-leanos`, propose updates first"), "operating rules should require propose-first start");
   assert(operatingRules.includes("Treat `/leanos-init` as a legacy alias for `/start-leanos`"), "operating rules should document the legacy init alias");
   assert(operatingRules.includes("Do not modify roles, skills, playbooks, workflows, commands, `ai-standard/` or `.github/` during init"), "operating rules should protect operating assets during init");
 }
@@ -1110,9 +1179,6 @@ async function assertSourceScaffoldSections(rootDir) {
     "operations/core/technical-decisions.md",
     "operations/core/mvp/scope.md",
     "operations/core/mvp/release-checklist.md",
-    "operations/design/knowledge/design-system.md",
-    "operations/design/knowledge/accessibility.md",
-    "operations/design/knowledge/user-flows.md",
     "operations/engineering/implementation-notes.md",
     "operations/engineering/pr-log.md",
     "operations/security/threat-model.md",

@@ -11,11 +11,12 @@ Clarify design-relevant user evidence before making UX decisions.
 - Validation assumptions
 - Known user behavior
 - Open design questions
+- Skill: user-research
 
 ## Process
 
 1. Read product and validation context
-2. Separate evidence from assumptions
+2. Use `skills/user-research.skill.md` to separate evidence from assumptions
 3. Identify design-relevant user needs
 4. Identify open research questions
 5. Recommend the smallest next research step

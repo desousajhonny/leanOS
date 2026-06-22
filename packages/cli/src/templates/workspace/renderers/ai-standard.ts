@@ -39,7 +39,7 @@ export function aiStandardFiles(): FileEntry[] {
 
   return [
     { path: "ai-standard/README.md", content: folderReadme("AI Standard", "LeanOS standards for creating and reviewing AI-native workspace assets.", "Use before creating or changing agents, departments, areas, roles, skills, playbooks, workflows or commands.", "navigation-chain.md", ["navigation-chain.md", "creation-rules.md", "quality-criteria.md", "naming-conventions.md", "folder-readme-rules.md", "templates/", "checklists/", "instructions/", "examples/"], ["../AGENT.md", "../.leanos/commands/"], "Consult the standard before creating or modifying LeanOS assets.") },
-    { path: "ai-standard/navigation-chain.md", content: "# Navigation Chain\n\nLeanOS uses owner-first navigation:\n\n`Root AGENT.md -> Department AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`\n\nUse the chain to choose the next owner, one level at a time.\n\n1. Root chooses the owning department.\n2. Department chooses a workflow or active area.\n3. Area chooses the specialist role when it has `AGENT.md`; otherwise use its `README.md` as the local map.\n4. Role points to the required skills and playbooks.\n5. Skills and playbooks shape the work.\n6. Output updates only the smallest relevant source-of-truth, knowledge or decision file.\n\nDo not skip levels because a later file looks relevant.\nDo not load the whole workspace when a smaller route exists.\n" },
+    { path: "ai-standard/navigation-chain.md", content: "# Navigation Chain\n\nLeanOS uses owner-first navigation:\n\n`Root AGENT.md -> Department AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`\n\nUse the chain to choose the next owner, one level at a time.\n\n1. Root chooses the owning department.\n2. Department chooses a workflow or active area.\n3. Area chooses the specialist role when it has `AGENT.md`; otherwise use its `README.md` as the local map.\n4. Role points to the required skills and playbooks.\n5. Skills and playbooks shape the work.\n6. Output updates only the smallest relevant knowledge, decision or project file.\n\nDo not skip levels because a later file looks relevant.\nDo not load the whole workspace when a smaller route exists.\n" },
     { path: "ai-standard/creation-rules.md", content: "# Creation Rules\n\n- `AGENT.md` is the operating owner for its level.\n- `README.md` is the directory map and explanation.\n- Area `AGENT.md` files are optional and should exist only when an area needs a lead router before specialist roles.\n- Create roles, skills and playbooks inside the correct area.\n- Do not place roles, skills or playbooks directly under root departments.\n- Every area asset must reference its area owner, local README and source-of-truth files.\n- Keep LeanOS runtime files in `.leanos/` small and route-focused.\n" },
     { path: "ai-standard/quality-criteria.md", content: "# Quality Criteria\n\n- Clear purpose\n- Explicit routing\n- Minimal context loading\n- Source-of-truth references\n- Output expectations\n" },
     { path: "ai-standard/naming-conventions.md", content: "# Naming Conventions\n\n- Use lowercase kebab-case for folders and file basenames.\n- Use direct, singular asset names: `<direct-name>.role.md`, `<direct-name>.skill.md`, `<direct-name>.playbook.md`, `<direct-name>.workflow.md`.\n- Roles end with `.role.md`.\n- Skills end with `.skill.md`.\n- Playbooks end with `.playbook.md`.\n- Workflows end with `.workflow.md`.\n- Prefer domain capability names such as `accessibility.skill.md` or `design-system.skill.md` over generic action names such as `define-accessibility.skill.md`.\n- Use action verbs only when the asset is truly procedural, such as `create-branch.skill.md`.\n- Knowledge files do not use asset suffixes; use names such as `knowledge/design-system.md`.\n" },
@@ -99,13 +99,66 @@ function rootAgentTemplate(): string {
 
 You are the chief operating agent for this workspace.
 
+Your job is to help the user operate a product company with strategic coherence before and during implementation.
+
 ## Start Here
+
+Read these files first:
 
 - \`leanos.yaml\`
 - \`.leanos/context/workspace-summary.md\`
 - \`.leanos/context/current-focus.md\`
 - \`.leanos/context/next-actions.md\`
 - \`.leanos/index/routing-map.yaml\`
+
+## Red Lines / Non-Negotiable Rules
+
+- For every LeanOS task, command, workflow, file update, strategy decision, product decision, implementation request or review request, always start with the Response Header.
+- Never execute a routed LeanOS task before showing the route.
+- Use \`not applicable\` only when a Response Header field truly does not apply.
+- Enter the owning department or area before acting.
+- When an area has its own \`AGENT.md\`, use it as the area operating owner before loading roles, skills or playbooks.
+- Do not invent missing workflows, roles, skills, playbooks, commands or templates.
+- Do not load the whole workspace when a smaller route exists.
+- Do not write secrets to tracked files.
+- Ask before modifying knowledge, decision or framework files.
+- During \`/start-leanos\`, do not enrich roles, skills, playbooks, workflows, commands or \`ai-standard/\` with company/product context.
+- Do not modify source-of-truth, decision, framework or runtime files until the user explicitly confirms the proposed changes.
+
+## Response Header
+
+For every routed LeanOS task, start with:
+
+Active Department:
+Active Area:
+Active Role:
+Loaded Skills:
+Relevant Playbook:
+Loaded Context:
+
+## Command Handling
+
+LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface.
+
+When the user invokes \`/start-leanos\`, load \`.leanos/commands/start-leanos.md\` and follow it.
+
+When the user invokes legacy \`/leanos-init\`, treat it as \`/start-leanos\`.
+
+For any LeanOS slash command, normalize the command to kebab-case and load \`.leanos/commands/<command>.md\` before acting.
+
+If the command file is missing, do not invent the command. Explain what is missing and route through the active context instead.
+
+## Natural Language Handling
+
+If a natural-language request clearly matches an existing LeanOS command, load the matching command file before acting.
+
+Examples:
+
+- "help me define the ICP" -> \`.leanos/commands/define-icp.md\`
+- "define the MVP" -> \`.leanos/commands/define-mvp.md\`
+- "review this PR" -> \`.leanos/commands/review-pr.md\`
+
+If no command clearly matches, route through the Navigation Chain.
 
 ## Navigation Chain
 
@@ -120,7 +173,7 @@ Use the chain to choose the next owner, one level at a time.
 3. Area chooses the specialist role when it has \`AGENT.md\`; otherwise use its \`README.md\` as the local map.
 4. Role points to the required skills and playbooks.
 5. Skills and playbooks shape the work.
-6. Output updates only the smallest relevant source-of-truth, knowledge or decision file.
+6. Output updates only the smallest relevant knowledge, decision or project file.
 
 Do not skip levels because a later file looks relevant.
 Do not load the whole workspace when a smaller route exists.
@@ -133,18 +186,30 @@ Do not load the whole workspace when a smaller route exists.
 - \`workflows/\`: multi-step flows owned by the department or area that contains them.
 - \`roles/\`, \`skills/\` and \`playbooks/\`: area-level execution assets.
 
-## Red Lines
+## Root Routing
 
-- Enter the owning department or area before acting.
-- When an area has \`AGENT.md\`, use it before loading roles, skills or playbooks.
-- Do not invent missing workflows, roles, skills, playbooks, commands or templates.
-- Do not load the whole workspace when a smaller route exists.
-- Do not write secrets to tracked files.
-- Ask before modifying source-of-truth files or operating assets.
+Use this section only to choose the owning department. The department \`AGENT.md\` chooses the workflow or area.
 
-## Routing
+- <Department>: \`<department>/AGENT.md\`
+  Use for <request types>.
+  Map: \`<department>/README.md\`
 
-Route only to the owning department \`AGENT.md\`. The department agent chooses the workflow or area.
+## LeanOS Runtime
+
+\`.leanos/\` contains runtime files for commands, context, indexes and VS Code integration.
+\`.leanos/\` does not own business workflows. Operational workflows live in root departments or their areas.
+
+\`ai-standard/\` contains reusable templates, instructions and quality criteria.
+
+## Asset Creation Routing
+
+If the user asks to create or change a LeanOS role, skill, playbook, workflow, command, template, checklist or standard:
+
+1. Load \`ai-standard/README.md\`.
+2. Load the matching creation instruction from \`ai-standard/instructions/\`.
+3. Use the matching template from \`ai-standard/templates/\`.
+4. Validate with the matching checklist from \`ai-standard/checklists/\`.
+5. Ask before writing framework assets.
 `;
 }
 

@@ -14,13 +14,13 @@ Use when a selected role points to a skill.
 
 ## Files
 
-- `design-system.skill.md`
-- `accessibility.skill.md`
 - `user-research.skill.md`
 - `user-flow-mapping.skill.md`
+- `design-system.skill.md`
 - `screen-specification.skill.md`
-- `ux-states.skill.md`
 - `microcopy.skill.md`
+- `accessibility.skill.md`
+- `design-review.skill.md`
 
 ## Related Folders
 

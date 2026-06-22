@@ -171,13 +171,13 @@ skills:
       - define-architecture
       - create-api-contract
     operations.design:
-      - design-system
-      - accessibility
       - user-research
       - user-flow-mapping
+      - design-system
       - screen-specification
-      - ux-states
       - microcopy
+      - accessibility
+      - design-review
     operations.engineering:
       - plan-implementation
       - create-branch

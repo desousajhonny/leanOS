@@ -62,27 +62,27 @@ skills:
   - key: create-api-contract
     area: operations.core
     path: ../../operations/core/skills/create-api-contract.skill.md
-  - key: design-system
-    area: operations.design
-    path: ../../operations/design/skills/design-system.skill.md
-  - key: accessibility
-    area: operations.design
-    path: ../../operations/design/skills/accessibility.skill.md
   - key: user-research
     area: operations.design
     path: ../../operations/design/skills/user-research.skill.md
   - key: user-flow-mapping
     area: operations.design
     path: ../../operations/design/skills/user-flow-mapping.skill.md
+  - key: design-system
+    area: operations.design
+    path: ../../operations/design/skills/design-system.skill.md
   - key: screen-specification
     area: operations.design
     path: ../../operations/design/skills/screen-specification.skill.md
-  - key: ux-states
-    area: operations.design
-    path: ../../operations/design/skills/ux-states.skill.md
   - key: microcopy
     area: operations.design
     path: ../../operations/design/skills/microcopy.skill.md
+  - key: accessibility
+    area: operations.design
+    path: ../../operations/design/skills/accessibility.skill.md
+  - key: design-review
+    area: operations.design
+    path: ../../operations/design/skills/design-review.skill.md
   - key: plan-implementation
     area: operations.engineering
     path: ../../operations/engineering/skills/plan-implementation.skill.md
