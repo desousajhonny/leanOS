@@ -221,17 +221,17 @@ Principio: nao fazer apenas reorganizacao visual. Cada pasta, template, checklis
 
 ### 7.4 Tornar instructions especificas por criacao
 
-- [ ] Substituir instructions genericas identicas por instructions especificas.
-- [ ] `create-agent-instructions.md`: quando criar root, department ou area AGENT; como evitar duplicar inventario.
-- [ ] `create-readme-instructions.md`: como criar README como mapa, nao como executor.
-- [ ] `create-department-instructions.md`: como criar departamento raiz com workflows e areas, sem roles/skills/playbooks diretos.
-- [ ] `create-area-instructions.md`: como criar area com `AGENT.md` opcional, knowledge, roles, skills e playbooks.
-- [ ] `create-role-instructions.md`: como definir persona/responsabilidade e apontar skills/playbooks.
-- [ ] `create-skill-instructions.md`: como definir capability reutilizavel sem virar processo completo.
-- [ ] `create-playbook-instructions.md`: como criar sequencia pratica usando skills.
-- [ ] `create-workflow-instructions.md`: como criar fluxo multi-area ou multi-stage.
-- [ ] `create-command-instructions.md`: como criar comando de chat seguro, com carregamento minimo e confirmacao.
-- [ ] Atualizar `instructions/README.md` para explicar qual instruction usar em cada situacao.
+- [x] Substituir instructions genericas identicas por instructions especificas.
+- [x] `create-agent-instructions.md`: quando criar root, department ou area AGENT; como evitar duplicar inventario.
+- [x] `create-readme-instructions.md`: como criar README como mapa, nao como executor.
+- [x] `create-department-instructions.md`: como criar departamento raiz com workflows e areas, sem roles/skills/playbooks diretos.
+- [x] `create-area-instructions.md`: como criar area com `AGENT.md` opcional, knowledge, roles, skills e playbooks.
+- [x] `create-role-instructions.md`: como definir persona/responsabilidade e apontar skills/playbooks.
+- [x] `create-skill-instructions.md`: como definir capability reutilizavel sem virar processo completo.
+- [x] `create-playbook-instructions.md`: como criar sequencia pratica usando skills.
+- [x] `create-workflow-instructions.md`: como criar fluxo multi-area ou multi-stage.
+- [x] `create-command-instructions.md`: como criar comando de chat seguro, com carregamento minimo e confirmacao.
+- [x] Atualizar `instructions/README.md` para explicar qual instruction usar em cada situacao.
 
 ### 7.5 Melhorar examples por categoria
 

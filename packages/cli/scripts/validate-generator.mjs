@@ -137,6 +137,16 @@ async function validateWorkspaceFiles() {
     "ai-standard/checklists/role-quality-checklist.md",
     "ai-standard/checklists/skill-quality-checklist.md",
     "ai-standard/checklists/workflow-quality-checklist.md",
+    "ai-standard/instructions/README.md",
+    "ai-standard/instructions/create-agent-instructions.md",
+    "ai-standard/instructions/create-area-instructions.md",
+    "ai-standard/instructions/create-command-instructions.md",
+    "ai-standard/instructions/create-department-instructions.md",
+    "ai-standard/instructions/create-playbook-instructions.md",
+    "ai-standard/instructions/create-readme-instructions.md",
+    "ai-standard/instructions/create-role-instructions.md",
+    "ai-standard/instructions/create-skill-instructions.md",
+    "ai-standard/instructions/create-workflow-instructions.md",
     ".leanos/index/areas.yaml",
     ".leanos/index/routing-map.yaml",
     "strategy/AGENT.md",
@@ -359,6 +369,7 @@ async function validateWorkspaceFiles() {
   await assertAiStandardAssetTaxonomy(rootDir);
   await assertAiStandardTemplates(rootDir);
   await assertAiStandardChecklists(rootDir);
+  await assertAiStandardInstructions(rootDir);
   await assertInitCommandRules(rootDir);
   await assertRootAgentMutationRules(rootDir);
   await assertOperationalPlaybookSections(rootDir);
@@ -1136,6 +1147,83 @@ async function assertAiStandardChecklists(rootDir) {
   assert(workflowChecklist.includes("defines handoffs between owners"), "Workflow checklist should validate handoffs");
   assert(commandChecklist.includes("Allowed updates are explicit"), "Command checklist should validate allowed updates");
   assert(commandChecklist.includes("Remote writes require confirmation"), "Command checklist should validate remote write safety");
+}
+
+async function assertAiStandardInstructions(rootDir) {
+  const instructionsRoot = join(rootDir, "ai-standard", "instructions");
+  const instructionsReadme = await readFile(join(instructionsRoot, "README.md"), "utf8");
+  const instructionFiles = [
+    "create-agent",
+    "create-area",
+    "create-command",
+    "create-department",
+    "create-playbook",
+    "create-readme",
+    "create-role",
+    "create-skill",
+    "create-workflow"
+  ];
+  const contents = Object.fromEntries(
+    await Promise.all(instructionFiles.map(async (name) => [name, await readFile(join(instructionsRoot, `${name}-instructions.md`), "utf8")]))
+  );
+
+  assert(instructionsReadme.includes("Do not use one instruction for every asset type"), "Instructions README should explain instruction specificity");
+  assert(instructionsReadme.includes("../foundation/asset-taxonomy.md"), "Instructions README should point to asset taxonomy");
+  assert(instructionsReadme.includes("../foundation/creation-rules.md"), "Instructions README should point to creation rules");
+  assert(instructionsReadme.includes("../templates/"), "Instructions README should point to templates");
+  assert(instructionsReadme.includes("../checklists/"), "Instructions README should point to checklists");
+
+  assert(contents["create-agent"].includes("../templates/agents/root-agent-template.md"), "Create agent instructions should point to root agent template");
+  assert(contents["create-agent"].includes("../templates/agents/department-agent-template.md"), "Create agent instructions should point to department agent template");
+  assert(contents["create-agent"].includes("../templates/agents/area-agent-template.md"), "Create agent instructions should point to area agent template");
+  assert(contents["create-agent"].includes("../checklists/agent-quality-checklist.md"), "Create agent instructions should point to agent checklist");
+  assert(contents["create-agent"].includes("Do not make root AGENT route directly to area roles or skills"), "Create agent instructions should protect Navigation Chain levels");
+
+  assert(contents["create-readme"].includes("../foundation/folder-documentation-rules.md"), "Create README instructions should point to folder documentation rules");
+  assert(contents["create-readme"].includes("../templates/structure/folder-readme-template.md"), "Create README instructions should point to folder README template");
+  assert(contents["create-readme"].includes("../checklists/readme-quality-checklist.md"), "Create README instructions should point to README checklist");
+  assert(contents["create-readme"].includes("Keep it a map, not an executor"), "Create README instructions should keep README as a map");
+
+  assert(contents["create-department"].includes("../templates/agents/department-agent-template.md"), "Create department instructions should point to department agent template");
+  assert(contents["create-department"].includes("../templates/structure/department-template.yaml"), "Create department instructions should point to department YAML template");
+  assert(contents["create-department"].includes("../checklists/department-quality-checklist.md"), "Create department instructions should point to department checklist");
+  assert(contents["create-department"].includes("Do not create roles, skills or playbooks at department root"), "Create department instructions should protect area-owned assets");
+
+  assert(contents["create-area"].includes("../templates/structure/area-template.yaml"), "Create area instructions should point to area YAML template");
+  assert(contents["create-area"].includes("../templates/agents/area-agent-template.md"), "Create area instructions should point to area agent template");
+  assert(contents["create-area"].includes("../checklists/area-quality-checklist.md"), "Create area instructions should point to area checklist");
+  assert(contents["create-area"].includes("Create `roles/`, `skills/`, `playbooks/` and `knowledge/` only when they are needed"), "Create area instructions should avoid decorative folders");
+
+  assert(contents["create-role"].includes("../templates/execution/role-template.md"), "Create role instructions should point to role template");
+  assert(contents["create-role"].includes("../checklists/role-quality-checklist.md"), "Create role instructions should point to role checklist");
+  assert(contents["create-role"].includes("Define what hat the agent should wear"), "Create role instructions should define persona responsibility");
+  assert(contents["create-role"].includes("Do not create a role for a one-off task"), "Create role instructions should avoid one-off roles");
+
+  assert(contents["create-skill"].includes("../templates/execution/skill-template.md"), "Create skill instructions should point to skill template");
+  assert(contents["create-skill"].includes("../checklists/skill-quality-checklist.md"), "Create skill instructions should point to skill checklist");
+  assert(contents["create-skill"].includes("Define one reusable capability"), "Create skill instructions should define reusable capability");
+  assert(contents["create-skill"].includes("Avoid turning the skill into a full ordered process"), "Create skill instructions should avoid playbook duplication");
+
+  assert(contents["create-playbook"].includes("../templates/execution/playbook-template.md"), "Create playbook instructions should point to playbook template");
+  assert(contents["create-playbook"].includes("../checklists/playbook-quality-checklist.md"), "Create playbook instructions should point to playbook checklist");
+  assert(contents["create-playbook"].includes("Reference skills instead of duplicating them"), "Create playbook instructions should reference skills");
+  assert(contents["create-playbook"].includes("Do not duplicate a workflow"), "Create playbook instructions should avoid workflow duplication");
+
+  assert(contents["create-workflow"].includes("../templates/execution/workflow-template.md"), "Create workflow instructions should point to workflow template");
+  assert(contents["create-workflow"].includes("../checklists/workflow-quality-checklist.md"), "Create workflow instructions should point to workflow checklist");
+  assert(contents["create-workflow"].includes("spans multiple areas, roles or stages"), "Create workflow instructions should explain workflow scope");
+  assert(contents["create-workflow"].includes("Do not place business workflows in `.leanos/workflows/`"), "Create workflow instructions should keep business workflows local");
+
+  assert(contents["create-command"].includes("../templates/commands/command-template.md"), "Create command instructions should point to command template");
+  assert(contents["create-command"].includes("../checklists/command-quality-checklist.md"), "Create command instructions should point to command checklist");
+  assert(contents["create-command"].includes("Require confirmation before durable or remote changes"), "Create command instructions should require confirmation");
+  assert(contents["create-command"].includes("Do not ask the model to perform remote writes directly"), "Create command instructions should protect remote writes");
+
+  for (const [name, content] of Object.entries(contents)) {
+    assert.equal(content.includes("Choose the active department and area"), false, `${name} instructions should not use the old generic body`);
+  }
+
+  assert(new Set(Object.values(contents)).size === instructionFiles.length, "Instructions should be specific, not identical copies");
 }
 
 async function assertDesignFoundation(rootDir) {

@@ -2,15 +2,11 @@
 
 ## Purpose
 
-Instructions for creating LeanOS assets.
+Step-by-step creation procedures for LeanOS assets.
 
 ## When to Use
 
-Use when a command asks to create or update framework assets.
-
-## Source of Truth
-
-`create-role-instructions.md`
+Use when the user asks to create or update framework assets such as agents, departments, areas, roles, skills, playbooks, workflows, commands or READMEs.
 
 ## Files
 
@@ -26,13 +22,18 @@ Use when a command asks to create or update framework assets.
 
 ## Related Folders
 
+- `../foundation/`
 - `../templates/`
 - `../checklists/`
 
 ## Navigation
 
-Use this README to choose the next specific file. Do not load unrelated files.
+1. Confirm the asset type in `../foundation/asset-taxonomy.md`.
+2. Read `../foundation/creation-rules.md`.
+3. Open the matching instruction file.
+4. Use the matching template.
+5. Validate with the matching checklist.
 
 ## Agent Notes
 
-Follow instructions, then validate with the matching checklist.
+Do not use one instruction for every asset type. Each instruction protects a different creation path.
