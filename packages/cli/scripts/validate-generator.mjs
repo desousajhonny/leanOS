@@ -147,6 +147,26 @@ async function validateWorkspaceFiles() {
     "ai-standard/instructions/create-role-instructions.md",
     "ai-standard/instructions/create-skill-instructions.md",
     "ai-standard/instructions/create-workflow-instructions.md",
+    "ai-standard/examples/README.md",
+    "ai-standard/examples/agents/README.md",
+    "ai-standard/examples/agents/example-root-agent.md",
+    "ai-standard/examples/agents/example-area-agent.md",
+    "ai-standard/examples/structure/README.md",
+    "ai-standard/examples/structure/example-folder-readme.md",
+    "ai-standard/examples/structure/example-area-readme.md",
+    "ai-standard/examples/execution/README.md",
+    "ai-standard/examples/execution/example-role-senior-developer.md",
+    "ai-standard/examples/execution/example-skill-check-coherence.md",
+    "ai-standard/examples/execution/example-playbook-issue-to-pr.md",
+    "ai-standard/examples/execution/example-workflow-issue-delivery-cycle.md",
+    "ai-standard/examples/commands/README.md",
+    "ai-standard/examples/commands/example-command-define-design.md",
+    "ai-standard/examples/github/README.md",
+    "ai-standard/examples/github/example-github-epic.md",
+    "ai-standard/examples/github/example-github-subissue.md",
+    "ai-standard/examples/github/example-pull-request.md",
+    "ai-standard/examples/review/README.md",
+    "ai-standard/examples/review/example-code-review.md",
     ".leanos/index/areas.yaml",
     ".leanos/index/routing-map.yaml",
     "strategy/AGENT.md",
@@ -288,7 +308,12 @@ async function validateWorkspaceFiles() {
     "ai-standard/templates/issue-readiness-matrix-template.md",
     "ai-standard/templates/branch-name-template.md",
     "ai-standard/templates/pull-request-template.md",
-    "ai-standard/templates/code-review-template.md"
+    "ai-standard/templates/code-review-template.md",
+    "ai-standard/examples/example-agent.md",
+    "ai-standard/examples/example-folder-readme.md",
+    "ai-standard/examples/example-role-senior-developer.md",
+    "ai-standard/examples/example-skill-check-coherence.md",
+    "ai-standard/examples/example-playbook-issue-to-pr.md"
   ]) {
     assert.equal(paths.has(forbiddenPath), false, `Forbidden generated path should not exist: ${forbiddenPath}`);
   }
@@ -370,6 +395,7 @@ async function validateWorkspaceFiles() {
   await assertAiStandardTemplates(rootDir);
   await assertAiStandardChecklists(rootDir);
   await assertAiStandardInstructions(rootDir);
+  await assertAiStandardExamples(rootDir);
   await assertInitCommandRules(rootDir);
   await assertRootAgentMutationRules(rootDir);
   await assertOperationalPlaybookSections(rootDir);
@@ -427,7 +453,12 @@ async function validateWorkspaceFiles() {
     "ai-standard/templates/issue-readiness-matrix-template.md",
     "ai-standard/templates/branch-name-template.md",
     "ai-standard/templates/pull-request-template.md",
-    "ai-standard/templates/code-review-template.md"
+    "ai-standard/templates/code-review-template.md",
+    "ai-standard/examples/example-agent.md",
+    "ai-standard/examples/example-folder-readme.md",
+    "ai-standard/examples/example-role-senior-developer.md",
+    "ai-standard/examples/example-skill-check-coherence.md",
+    "ai-standard/examples/example-playbook-issue-to-pr.md"
   ]) {
     assert.equal(await exists(join(rootDir, forbiddenPath)), false, `Forbidden path should not be generated: ${forbiddenPath}`);
   }
@@ -1224,6 +1255,81 @@ async function assertAiStandardInstructions(rootDir) {
   }
 
   assert(new Set(Object.values(contents)).size === instructionFiles.length, "Instructions should be specific, not identical copies");
+}
+
+async function assertAiStandardExamples(rootDir) {
+  const examplesRoot = join(rootDir, "ai-standard", "examples");
+  const examplesReadme = await readFile(join(examplesRoot, "README.md"), "utf8");
+  const agentsReadme = await readFile(join(examplesRoot, "agents", "README.md"), "utf8");
+  const structureReadme = await readFile(join(examplesRoot, "structure", "README.md"), "utf8");
+  const executionReadme = await readFile(join(examplesRoot, "execution", "README.md"), "utf8");
+  const commandsReadme = await readFile(join(examplesRoot, "commands", "README.md"), "utf8");
+  const githubReadme = await readFile(join(examplesRoot, "github", "README.md"), "utf8");
+  const reviewReadme = await readFile(join(examplesRoot, "review", "README.md"), "utf8");
+  const areaAgentExample = await readFile(join(examplesRoot, "agents", "example-area-agent.md"), "utf8");
+  const areaReadmeExample = await readFile(join(examplesRoot, "structure", "example-area-readme.md"), "utf8");
+  const roleExample = await readFile(join(examplesRoot, "execution", "example-role-senior-developer.md"), "utf8");
+  const skillExample = await readFile(join(examplesRoot, "execution", "example-skill-check-coherence.md"), "utf8");
+  const playbookExample = await readFile(join(examplesRoot, "execution", "example-playbook-issue-to-pr.md"), "utf8");
+  const workflowExample = await readFile(join(examplesRoot, "execution", "example-workflow-issue-delivery-cycle.md"), "utf8");
+  const commandExample = await readFile(join(examplesRoot, "commands", "example-command-define-design.md"), "utf8");
+  const epicExample = await readFile(join(examplesRoot, "github", "example-github-epic.md"), "utf8");
+  const subissueExample = await readFile(join(examplesRoot, "github", "example-github-subissue.md"), "utf8");
+  const prExample = await readFile(join(examplesRoot, "github", "example-pull-request.md"), "utf8");
+  const codeReviewExample = await readFile(join(examplesRoot, "review", "example-code-review.md"), "utf8");
+
+  assert(examplesReadme.includes("Examples show what \"good enough\" can look like"), "Examples README should explain examples are quality references");
+  assert(examplesReadme.includes("They are not active workspace context, not templates and not instructions"), "Examples README should prevent example misuse");
+  assert(examplesReadme.includes("agents/"), "Examples README should route to agents examples");
+  assert(examplesReadme.includes("structure/"), "Examples README should route to structure examples");
+  assert(examplesReadme.includes("execution/"), "Examples README should route to execution examples");
+  assert(examplesReadme.includes("commands/"), "Examples README should route to command examples");
+  assert(examplesReadme.includes("github/"), "Examples README should route to GitHub examples");
+  assert(examplesReadme.includes("review/"), "Examples README should route to review examples");
+
+  assert(agentsReadme.includes("example-root-agent.md"), "Agent examples README should list root agent example");
+  assert(agentsReadme.includes("example-area-agent.md"), "Agent examples README should list area agent example");
+  assert(structureReadme.includes("example-folder-readme.md"), "Structure examples README should list folder README example");
+  assert(structureReadme.includes("example-area-readme.md"), "Structure examples README should list area README example");
+  assert(executionReadme.includes("example-role-senior-developer.md"), "Execution examples README should list role example");
+  assert(executionReadme.includes("example-skill-check-coherence.md"), "Execution examples README should list skill example");
+  assert(executionReadme.includes("example-playbook-issue-to-pr.md"), "Execution examples README should list playbook example");
+  assert(executionReadme.includes("example-workflow-issue-delivery-cycle.md"), "Execution examples README should list workflow example");
+  assert(commandsReadme.includes("example-command-define-design.md"), "Command examples README should list command example");
+  assert(githubReadme.includes("example-github-epic.md"), "GitHub examples README should list epic example");
+  assert(githubReadme.includes("example-github-subissue.md"), "GitHub examples README should list sub-issue example");
+  assert(githubReadme.includes("example-pull-request.md"), "GitHub examples README should list PR example");
+  assert(reviewReadme.includes("example-code-review.md"), "Review examples README should list code review example");
+
+  assert(areaAgentExample.includes("# Design Agent"), "Area AGENT example should use a concrete Design area");
+  assert(areaAgentExample.includes("Role Routing"), "Area AGENT example should show role routing");
+  assert(areaAgentExample.includes("operations/design/AGENT.md -> Role -> Skills -> Playbook -> Output"), "Area AGENT example should show area Navigation Chain");
+  assert(areaReadmeExample.includes("## File Responsibilities"), "Area README example should show file responsibilities");
+  assert(roleExample.includes("# Senior Developer"), "Role example should use Senior Developer");
+  assert(skillExample.includes("Check Coherence"), "Skill example should use Check Coherence");
+  assert(playbookExample.includes("Issue to PR"), "Playbook example should use Issue to PR");
+  assert(workflowExample.includes("Participating Areas"), "Workflow example should show participating areas");
+  assert(workflowExample.includes("Design: conditional"), "Workflow example should mark Design as conditional");
+  assert(workflowExample.includes("Security: conditional"), "Workflow example should mark Security as conditional");
+  assert(commandExample.includes("## Load First"), "Command example should define Load First");
+  assert(commandExample.includes("## Allowed Updates"), "Command example should define allowed updates");
+  assert(commandExample.includes("## Forbidden Updates"), "Command example should define forbidden updates");
+  assert(epicExample.includes("## Product Criteria"), "Epic example should include Product criteria");
+  assert(epicExample.includes("## Design Criteria"), "Epic example should include Design criteria");
+  assert(epicExample.includes("## Security Criteria"), "Epic example should include Security criteria");
+  assert(subissueExample.includes("## Definition of Done"), "Sub-issue example should include Definition of Done");
+  assert(prExample.includes("## LeanOS Context"), "PR example should include LeanOS context");
+  assert(codeReviewExample.includes("## Findings"), "Code review example should include findings");
+
+  for (const oldFlatExample of [
+    "example-agent.md",
+    "example-folder-readme.md",
+    "example-role-senior-developer.md",
+    "example-skill-check-coherence.md",
+    "example-playbook-issue-to-pr.md"
+  ]) {
+    assert.equal(await exists(join(examplesRoot, oldFlatExample)), false, `Old flat example should not exist: ${oldFlatExample}`);
+  }
 }
 
 async function assertDesignFoundation(rootDir) {

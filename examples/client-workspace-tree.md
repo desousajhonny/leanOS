@@ -91,11 +91,31 @@ client-workspace/
 |   |   |-- skill-quality-checklist.md
 |   |   `-- workflow-quality-checklist.md
 |   |-- examples/
-|   |   |-- example-agent.md
-|   |   |-- example-folder-readme.md
-|   |   |-- example-playbook-issue-to-pr.md
-|   |   |-- example-role-senior-developer.md
-|   |   |-- example-skill-check-coherence.md
+|   |   |-- agents/
+|   |   |   |-- example-area-agent.md
+|   |   |   |-- example-root-agent.md
+|   |   |   `-- README.md
+|   |   |-- commands/
+|   |   |   |-- example-command-define-design.md
+|   |   |   `-- README.md
+|   |   |-- execution/
+|   |   |   |-- example-playbook-issue-to-pr.md
+|   |   |   |-- example-role-senior-developer.md
+|   |   |   |-- example-skill-check-coherence.md
+|   |   |   |-- example-workflow-issue-delivery-cycle.md
+|   |   |   `-- README.md
+|   |   |-- github/
+|   |   |   |-- example-github-epic.md
+|   |   |   |-- example-github-subissue.md
+|   |   |   |-- example-pull-request.md
+|   |   |   `-- README.md
+|   |   |-- review/
+|   |   |   |-- example-code-review.md
+|   |   |   `-- README.md
+|   |   |-- structure/
+|   |   |   |-- example-area-readme.md
+|   |   |   |-- example-folder-readme.md
+|   |   |   `-- README.md
 |   |   `-- README.md
 |   |-- foundation/
 |   |   |-- asset-taxonomy.md

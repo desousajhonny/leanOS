@@ -235,13 +235,13 @@ Principio: nao fazer apenas reorganizacao visual. Cada pasta, template, checklis
 
 ### 7.5 Melhorar examples por categoria
 
-- [ ] Separar examples por categoria, se ajudar:
+- [x] Separar examples por categoria, se ajudar:
   - `examples/agents/`
   - `examples/structure/`
   - `examples/execution/`
   - `examples/github/`
-- [ ] Garantir que examples sejam claramente ilustrativos e nao sobrescrevam o contexto ativo.
-- [ ] Adicionar exemplos bons para:
+- [x] Garantir que examples sejam claramente ilustrativos e nao sobrescrevam o contexto ativo.
+- [x] Adicionar exemplos bons para:
   - area `AGENT.md`
   - role
   - skill
