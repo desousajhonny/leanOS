@@ -372,7 +372,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Product Owner",
             purpose: "Own MVP execution clarity with supervision from Product and PM strategy.",
             useWhen: ["MVP scope needs definition", "acceptance criteria are unclear", "delivery scope needs coordination", "an epic needs to be broken into sub-issues"],
-            beforeActing: ["../mvp/scope.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/brief.md", "../../../ai-standard/templates/issue-readiness-matrix-template.md"],
+            beforeActing: ["../mvp/scope.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/brief.md", "../../../ai-standard/templates/github/issue-readiness-matrix-template.md"],
             skills: ["define-mvp", "write-acceptance-criteria", "check-delivery-coherence", "shape-epic", "write-subissue-criteria"],
             playbooks: ["mvp-delivery", "epic-to-subissues"]
           },
@@ -652,7 +652,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "PR Reviewer",
             purpose: "Review pull requests against scope, tests, coherence and validation goals.",
             useWhen: ["review a PR", "validate implementation readiness", "check merge risk"],
-            beforeActing: ["../../core/mvp/scope.md", "../../core/mvp/acceptance-criteria.md", "../../../.github/leanos/pr-validation-rules.md", "../../../ai-standard/templates/code-review-template.md"],
+            beforeActing: ["../../core/mvp/scope.md", "../../core/mvp/acceptance-criteria.md", "../../../.github/leanos/pr-validation-rules.md", "../../../ai-standard/templates/review/code-review-template.md"],
             skills: ["review-pr"],
             playbooks: ["pr-validation"]
           }

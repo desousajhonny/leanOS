@@ -96,6 +96,14 @@ client-workspace/
 |   |   |-- example-role-senior-developer.md
 |   |   |-- example-skill-check-coherence.md
 |   |   `-- README.md
+|   |-- foundation/
+|   |   |-- asset-taxonomy.md
+|   |   |-- creation-rules.md
+|   |   |-- folder-documentation-rules.md
+|   |   |-- naming-conventions.md
+|   |   |-- navigation-chain.md
+|   |   |-- quality-criteria.md
+|   |   `-- README.md
 |   |-- instructions/
 |   |   |-- create-agent-instructions.md
 |   |   |-- create-area-instructions.md
@@ -108,38 +116,45 @@ client-workspace/
 |   |   |-- create-workflow-instructions.md
 |   |   `-- README.md
 |   |-- templates/
-|   |   |-- agent-template.md
-|   |   |-- area-agent-template.md
-|   |   |-- area-readme-template.md
-|   |   |-- area-template.md
-|   |   |-- area-template.yaml
-|   |   |-- branch-name-template.md
-|   |   |-- code-review-template.md
-|   |   |-- command-template.md
-|   |   |-- department-agent-template.md
-|   |   |-- department-template.md
-|   |   |-- department-template.yaml
-|   |   |-- folder-readme-template.md
-|   |   |-- github-epic-template.md
-|   |   |-- github-issue-template.md
-|   |   |-- github-subissue-template.md
-|   |   |-- issue-readiness-matrix-template.md
-|   |   |-- playbook-template.md
-|   |   |-- playbook-template.yaml
-|   |   |-- pull-request-template.md
-|   |   |-- README.md
-|   |   |-- role-template.md
-|   |   |-- role-template.yaml
-|   |   |-- root-agent-template.md
-|   |   |-- root-readme-template.md
-|   |   |-- skill-template.md
-|   |   |-- skill-template.yaml
-|   |   `-- workflow-template.md
-|   |-- creation-rules.md
-|   |-- folder-readme-rules.md
-|   |-- naming-conventions.md
-|   |-- navigation-chain.md
-|   |-- quality-criteria.md
+|   |   |-- agents/
+|   |   |   |-- agent-template.md
+|   |   |   |-- area-agent-template.md
+|   |   |   |-- department-agent-template.md
+|   |   |   |-- README.md
+|   |   |   `-- root-agent-template.md
+|   |   |-- commands/
+|   |   |   |-- command-template.md
+|   |   |   `-- README.md
+|   |   |-- execution/
+|   |   |   |-- playbook-template.md
+|   |   |   |-- playbook-template.yaml
+|   |   |   |-- README.md
+|   |   |   |-- role-template.md
+|   |   |   |-- role-template.yaml
+|   |   |   |-- skill-template.md
+|   |   |   |-- skill-template.yaml
+|   |   |   `-- workflow-template.md
+|   |   |-- github/
+|   |   |   |-- branch-name-template.md
+|   |   |   |-- github-epic-template.md
+|   |   |   |-- github-issue-template.md
+|   |   |   |-- github-subissue-template.md
+|   |   |   |-- issue-readiness-matrix-template.md
+|   |   |   |-- pull-request-template.md
+|   |   |   `-- README.md
+|   |   |-- review/
+|   |   |   |-- code-review-template.md
+|   |   |   `-- README.md
+|   |   |-- structure/
+|   |   |   |-- area-readme-template.md
+|   |   |   |-- area-template.md
+|   |   |   |-- area-template.yaml
+|   |   |   |-- department-template.md
+|   |   |   |-- department-template.yaml
+|   |   |   |-- folder-readme-template.md
+|   |   |   |-- README.md
+|   |   |   `-- root-readme-template.md
+|   |   `-- README.md
 |   `-- README.md
 |-- growth/
 |   |-- customer-experience/

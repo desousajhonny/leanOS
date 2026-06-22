@@ -399,9 +399,9 @@ Read:
 
 - \`../../AGENT.md\`
 - \`../index/routing-map.yaml\`
-- \`../../ai-standard/templates/github-epic-template.md\`
-- \`../../ai-standard/templates/github-subissue-template.md\`
-- \`../../ai-standard/templates/issue-readiness-matrix-template.md\`
+- \`../../ai-standard/templates/github/github-epic-template.md\`
+- \`../../ai-standard/templates/github/github-subissue-template.md\`
+- \`../../ai-standard/templates/github/issue-readiness-matrix-template.md\`
 - \`../../.github/ISSUE_TEMPLATE/epic.yml\`
 - \`../../.github/ISSUE_TEMPLATE/sub-issue.yml\`
 
@@ -468,7 +468,7 @@ Read:
 - \`../../operations/engineering/skills/plan-implementation.skill.md\`
 - \`../../operations/engineering/skills/create-branch.skill.md\`
 - \`../../operations/engineering/playbooks/issue-to-pr.playbook.md\`
-- \`../../ai-standard/templates/issue-readiness-matrix-template.md\`
+- \`../../ai-standard/templates/github/issue-readiness-matrix-template.md\`
 - \`../../.github/leanos/branch-rules.md\`
 
 If \`operations.engineering\` is not active, do not load missing paths. Ask whether to activate or create Engineering before planning implementation.
@@ -518,7 +518,7 @@ Read:
 - \`../../operations/engineering/README.md\`
 - \`../../operations/engineering/skills/create-branch.skill.md\`
 - \`../../operations/engineering/playbooks/branch-from-issue.playbook.md\`
-- \`../../ai-standard/templates/branch-name-template.md\`
+- \`../../ai-standard/templates/github/branch-name-template.md\`
 - \`../../.github/leanos/branch-rules.md\`
 
 If \`operations.engineering\` is not active, do not load missing paths. Ask whether to activate or create Engineering before creating a branch plan.
@@ -563,7 +563,7 @@ Read:
 - \`../../operations/engineering/README.md\`
 - \`../../operations/engineering/skills/create-pr.skill.md\`
 - \`../../operations/engineering/playbooks/issue-to-pr.playbook.md\`
-- \`../../ai-standard/templates/pull-request-template.md\`
+- \`../../ai-standard/templates/github/pull-request-template.md\`
 - \`../../.github/PULL_REQUEST_TEMPLATE.md\`
 - \`../../.github/leanos/pr-validation-rules.md\`
 
@@ -618,7 +618,7 @@ Read:
 - \`../../operations/engineering/roles/pr-reviewer.role.md\`
 - \`../../operations/engineering/skills/review-pr.skill.md\`
 - \`../../operations/engineering/playbooks/pr-validation.playbook.md\`
-- \`../../ai-standard/templates/code-review-template.md\`
+- \`../../ai-standard/templates/review/code-review-template.md\`
 - \`../../.github/leanos/pr-validation-rules.md\`
 
 If \`operations.engineering\` is not active, do not load missing paths. Ask whether to activate or create Engineering before reviewing the PR.
@@ -710,8 +710,8 @@ ${command.purpose}
 First consult:
 
 - \`../../ai-standard/README.md\`
-- \`../../ai-standard/navigation-chain.md\`
-- \`../../ai-standard/creation-rules.md\`
+- \`../../ai-standard/foundation/navigation-chain.md\`
+- \`../../ai-standard/foundation/creation-rules.md\`
 - \`../../ai-standard/templates/\`
 - \`../../ai-standard/checklists/\`
 - \`../../ai-standard/instructions/\`

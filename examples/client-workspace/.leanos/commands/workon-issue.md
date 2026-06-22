@@ -17,7 +17,7 @@ Read:
 - `../../operations/engineering/skills/plan-implementation.skill.md`
 - `../../operations/engineering/skills/create-branch.skill.md`
 - `../../operations/engineering/playbooks/issue-to-pr.playbook.md`
-- `../../ai-standard/templates/issue-readiness-matrix-template.md`
+- `../../ai-standard/templates/github/issue-readiness-matrix-template.md`
 - `../../.github/leanos/branch-rules.md`
 
 If `operations.engineering` is not active, do not load missing paths. Ask whether to activate or create Engineering before planning implementation.

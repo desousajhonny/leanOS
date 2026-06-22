@@ -15,7 +15,7 @@ Read:
 - `../../operations/engineering/roles/pr-reviewer.role.md`
 - `../../operations/engineering/skills/review-pr.skill.md`
 - `../../operations/engineering/playbooks/pr-validation.playbook.md`
-- `../../ai-standard/templates/code-review-template.md`
+- `../../ai-standard/templates/review/code-review-template.md`
 - `../../.github/leanos/pr-validation-rules.md`
 
 If `operations.engineering` is not active, do not load missing paths. Ask whether to activate or create Engineering before reviewing the PR.

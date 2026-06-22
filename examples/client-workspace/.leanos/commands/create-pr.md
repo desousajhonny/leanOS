@@ -14,7 +14,7 @@ Read:
 - `../../operations/engineering/README.md`
 - `../../operations/engineering/skills/create-pr.skill.md`
 - `../../operations/engineering/playbooks/issue-to-pr.playbook.md`
-- `../../ai-standard/templates/pull-request-template.md`
+- `../../ai-standard/templates/github/pull-request-template.md`
 - `../../.github/PULL_REQUEST_TEMPLATE.md`
 - `../../.github/leanos/pr-validation-rules.md`
 

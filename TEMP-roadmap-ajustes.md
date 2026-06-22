@@ -160,7 +160,122 @@ Objetivo: deixar o pacote publicavel e testavel por usuarios reais.
 - [ ] Publicar somente apos confirmacao explicita.
 - [ ] Testar via `npx lean-os ai` apos publicacao.
 
-## 7. Definicao de MVP pronto para teste externo
+## 7. Fortalecer `ai-standard/` como source-of-truth do framework
+
+Objetivo: transformar `ai-standard/` em uma biblioteca clara de padroes do LeanOS, para humanos e modelos saberem exatamente onde procurar, o que criar e como validar cada tipo de asset.
+
+Principio: nao fazer apenas reorganizacao visual. Cada pasta, template, checklist e instruction deve ter responsabilidade propria e conteudo especifico.
+
+### 7.1 Reorganizar arquitetura de informacao do `ai-standard/`
+
+- [ ] Definir a nova estrutura alvo do `ai-standard/`.
+- [x] Agrupar arquivos raiz soltos em uma pasta de fundacao, `foundation/`:
+  - `asset-taxonomy.md`
+  - `navigation-chain.md`
+  - `creation-rules.md`
+  - `naming-conventions.md`
+  - `quality-criteria.md`
+  - `folder-documentation-rules.md`
+- [x] Atualizar `ai-standard/README.md` para explicar:
+  - o que e `foundation/`
+  - o que e `templates/`
+  - o que e `checklists/`
+  - o que e `instructions/`
+  - o que e `examples/`
+  - quando carregar cada rota
+- [x] Atualizar todas as referencias internas para os novos paths.
+- [x] Atualizar `leanos.yaml`, `.leanos/index/routing-map.yaml`, comandos e AGENTs se algum path mudar.
+- [x] Garantir que modelos nao precisem carregar tudo: README deve funcionar como roteador do `ai-standard`.
+
+### 7.2 Separar templates por categoria
+
+- [x] Definir subpastas para templates:
+  - `templates/agents/`
+  - `templates/structure/`
+  - `templates/execution/`
+  - `templates/commands/`
+  - `templates/github/`
+  - `templates/review/`
+- [x] Mover templates de agent para `templates/agents/`.
+- [x] Mover templates de department, area, README e YAML para `templates/structure/`.
+- [x] Mover templates de role, skill, playbook e workflow para `templates/execution/`.
+- [x] Mover command template para `templates/commands/`.
+- [x] Mover templates de GitHub issue, epic, sub-issue, PR, branch e readiness matrix para `templates/github/`.
+- [x] Mover code review template para `templates/review/`.
+- [x] Atualizar `templates/README.md` para explicar cada categoria e quando usar.
+- [x] Atualizar instructions e commands que apontam para templates antigos.
+
+### 7.3 Tornar checklists especificos por asset
+
+- [ ] Substituir checklists genericos identicos por checklists especificos.
+- [ ] `agent-quality-checklist.md`: validar roteamento, red lines, nivel correto e ausencia de inventario excessivo.
+- [ ] `readme-quality-checklist.md`: validar mapa de pasta, quando usar, arquivos, relacionados e notas de navegacao.
+- [ ] `department-quality-checklist.md`: validar areas ativas, workflows locais, ausencia de roles/skills/playbooks no root.
+- [ ] `area-quality-checklist.md`: validar `AGENT.md` quando necessario, `area.yaml`, knowledge, roles, skills e playbooks.
+- [ ] `role-quality-checklist.md`: validar responsabilidade, contexto necessario, skills/playbooks apontados e output esperado.
+- [ ] `skill-quality-checklist.md`: validar capability reutilizavel, limites, checks, outputs e red lines.
+- [ ] `playbook-quality-checklist.md`: validar sequencia, entradas, processo, outputs e arquivos atualizaveis.
+- [ ] `workflow-quality-checklist.md`: adicionar checklist de workflow se ainda nao existir.
+- [ ] `command-quality-checklist.md`: validar load first, allowed updates, forbidden updates, confirmation rule e output.
+- [ ] Criar checklists GitHub/review se fizer sentido apos reorganizar templates.
+
+### 7.4 Tornar instructions especificas por criacao
+
+- [ ] Substituir instructions genericas identicas por instructions especificas.
+- [ ] `create-agent-instructions.md`: quando criar root, department ou area AGENT; como evitar duplicar inventario.
+- [ ] `create-readme-instructions.md`: como criar README como mapa, nao como executor.
+- [ ] `create-department-instructions.md`: como criar departamento raiz com workflows e areas, sem roles/skills/playbooks diretos.
+- [ ] `create-area-instructions.md`: como criar area com `AGENT.md` opcional, knowledge, roles, skills e playbooks.
+- [ ] `create-role-instructions.md`: como definir persona/responsabilidade e apontar skills/playbooks.
+- [ ] `create-skill-instructions.md`: como definir capability reutilizavel sem virar processo completo.
+- [ ] `create-playbook-instructions.md`: como criar sequencia pratica usando skills.
+- [ ] `create-workflow-instructions.md`: como criar fluxo multi-area ou multi-stage.
+- [ ] `create-command-instructions.md`: como criar comando de chat seguro, com carregamento minimo e confirmacao.
+- [ ] Atualizar `instructions/README.md` para explicar qual instruction usar em cada situacao.
+
+### 7.5 Melhorar examples por categoria
+
+- [ ] Separar examples por categoria, se ajudar:
+  - `examples/agents/`
+  - `examples/structure/`
+  - `examples/execution/`
+  - `examples/github/`
+- [ ] Garantir que examples sejam claramente ilustrativos e nao sobrescrevam o contexto ativo.
+- [ ] Adicionar exemplos bons para:
+  - area `AGENT.md`
+  - role
+  - skill
+  - playbook
+  - workflow
+  - command
+  - GitHub epic/sub-issue/PR
+
+### 7.6 Atualizar gerador, preview e validacoes
+
+- [ ] Atualizar `packages/cli/src/templates/workspace/renderers/ai-standard.ts`.
+- [ ] Atualizar qualquer comando, AGENT ou renderer que aponte para paths antigos.
+- [ ] Atualizar `packages/cli/scripts/validate-generator.mjs`.
+- [ ] Regenerar `examples/client-workspace/`.
+- [ ] Garantir que `examples/client-workspace-tree.md` reflita a nova estrutura.
+- [ ] Validar que nenhum link antigo quebrado permaneceu.
+- [ ] Rodar:
+  - `npm --prefix packages/cli run build`
+  - `npm run generate:client-workspace`
+  - `node packages/cli/scripts/validate-generator.mjs`
+  - `npm test`
+  - `node packages/cli/dist/index.js --help`
+  - `git diff --check`
+
+### 7.7 Criterio de pronto
+
+- [ ] Um modelo consegue abrir `ai-standard/README.md` e saber exatamente onde ir.
+- [ ] Cada checklist tem criterios especificos para seu asset type.
+- [ ] Cada instruction orienta criacao real, nao texto generico.
+- [ ] Templates estao separados por responsabilidade.
+- [ ] Paths internos estao consistentes.
+- [ ] Preview gerado esta sincronizado com o template real.
+
+## 8. Definicao de MVP pronto para teste externo
 
 O MVP esta pronto para teste externo quando um usuario consegue:
 
@@ -186,7 +301,8 @@ O MVP esta pronto para teste externo quando um usuario consegue:
 7. Padronizar `/check coherence` e `/define mvp`.
 8. Tornar o ciclo de validacao explicito.
 9. Revisar artefatos GitHub/API.
-10. Preparar release publica.
+10. Fortalecer `ai-standard/` como source-of-truth do framework.
+11. Preparar release publica.
 
 ## Remocao
 

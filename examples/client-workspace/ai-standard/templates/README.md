@@ -2,54 +2,102 @@
 
 ## Purpose
 
-Reusable templates for LeanOS assets.
+Reusable starting structures for LeanOS framework assets and GitHub collaboration artifacts.
 
 ## When to Use
 
-Use when creating new workspace assets.
+Use after selecting the asset type with `../foundation/asset-taxonomy.md` and before drafting a new file.
 
-## Source of Truth
+Templates are starting structures. They are not active workspace context and should not override the owning AGENT, role, skill, playbook, workflow or command.
 
-`role-template.md`
+## Categories
 
-## Files
+### `agents/`
 
-- `agent-template.md`
-- `root-agent-template.md`
-- `department-agent-template.md`
-- `area-agent-template.md`
-- `area-readme-template.md`
-- `command-template.md`
-- `department-template.md`
-- `department-template.yaml`
-- `area-template.md`
-- `area-template.yaml`
-- `folder-readme-template.md`
-- `github-issue-template.md`
-- `github-epic-template.md`
-- `github-subissue-template.md`
-- `issue-readiness-matrix-template.md`
-- `branch-name-template.md`
-- `pull-request-template.md`
-- `code-review-template.md`
-- `playbook-template.md`
-- `playbook-template.yaml`
-- `role-template.md`
-- `role-template.yaml`
-- `root-readme-template.md`
-- `skill-template.md`
-- `skill-template.yaml`
-- `workflow-template.md`
+Templates for root, department and area AGENT.md files.
 
-## Related Folders
+Use when: Use when creating an operating owner or routing layer.
 
-- `../checklists/`
-- `../instructions/`
+Files:
+- `agents/agent-template.md`
+- `agents/root-agent-template.md`
+- `agents/department-agent-template.md`
+- `agents/area-agent-template.md`
 
-## Navigation
+### `structure/`
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Templates for folders, READMEs, departments, areas and YAML structure.
 
-## Agent Notes
+Use when: Use when creating or documenting workspace structure.
 
-Copy the smallest matching template and adapt it to the active department or area.
+Files:
+- `structure/root-readme-template.md`
+- `structure/folder-readme-template.md`
+- `structure/area-readme-template.md`
+- `structure/department-template.md`
+- `structure/department-template.yaml`
+- `structure/area-template.md`
+- `structure/area-template.yaml`
+
+### `execution/`
+
+Templates for area-level roles, skills, playbooks and workflows.
+
+Use when: Use when creating operational execution assets inside an area or department workflow folder.
+
+Files:
+- `execution/role-template.md`
+- `execution/role-template.yaml`
+- `execution/skill-template.md`
+- `execution/skill-template.yaml`
+- `execution/playbook-template.md`
+- `execution/playbook-template.yaml`
+- `execution/workflow-template.md`
+
+### `commands/`
+
+Templates for portable LeanOS chat command files.
+
+Use when: Use when creating a stable slash-command behavior in .leanos/commands/.
+
+Files:
+- `commands/command-template.md`
+
+### `github/`
+
+Templates for GitHub issues, epics, sub-issues, branch naming, PRs and readiness matrices.
+
+Use when: Use when shaping GitHub-ready work items or repository collaboration artifacts.
+
+Files:
+- `github/github-issue-template.md`
+- `github/github-epic-template.md`
+- `github/github-subissue-template.md`
+- `github/issue-readiness-matrix-template.md`
+- `github/branch-name-template.md`
+- `github/pull-request-template.md`
+
+### `review/`
+
+Templates for reviewing code, implementation and delivery quality.
+
+Use when: Use when creating or applying review outputs.
+
+Files:
+- `review/code-review-template.md`
+
+## How to Use
+
+1. Confirm the asset type in `../foundation/asset-taxonomy.md`.
+2. Load the matching creation instruction from `../instructions/`.
+3. Open only the smallest matching template category.
+4. Copy the matching template shape.
+5. Adapt it to the active department or area.
+6. Validate with the matching checklist in `../checklists/`.
+
+## Red Lines
+
+- Do not load every template by default.
+- Do not use a GitHub template for a LeanOS framework asset.
+- Do not use an execution template for folder documentation.
+- Do not use examples as templates when a real template exists.

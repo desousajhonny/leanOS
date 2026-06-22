@@ -110,7 +110,24 @@ async function validateWorkspaceFiles() {
     ".gitignore",
     "leanos.yaml",
     "ai-standard/README.md",
-    "ai-standard/navigation-chain.md",
+    "ai-standard/foundation/README.md",
+    "ai-standard/foundation/navigation-chain.md",
+    "ai-standard/foundation/asset-taxonomy.md",
+    "ai-standard/foundation/creation-rules.md",
+    "ai-standard/foundation/quality-criteria.md",
+    "ai-standard/foundation/folder-documentation-rules.md",
+    "ai-standard/templates/agents/README.md",
+    "ai-standard/templates/agents/root-agent-template.md",
+    "ai-standard/templates/structure/README.md",
+    "ai-standard/templates/structure/area-template.yaml",
+    "ai-standard/templates/execution/README.md",
+    "ai-standard/templates/execution/role-template.md",
+    "ai-standard/templates/commands/README.md",
+    "ai-standard/templates/commands/command-template.md",
+    "ai-standard/templates/github/README.md",
+    "ai-standard/templates/github/github-epic-template.md",
+    "ai-standard/templates/review/README.md",
+    "ai-standard/templates/review/code-review-template.md",
     ".leanos/index/areas.yaml",
     ".leanos/index/routing-map.yaml",
     "strategy/AGENT.md",
@@ -224,7 +241,35 @@ async function validateWorkspaceFiles() {
     ".leanos/commands/sync-roadmap.md",
     ".leanos/commands/create-subissues.md",
     ".leanos/commands/implement-issue.md",
-    ".leanos/commands/post-merge.md"
+    ".leanos/commands/post-merge.md",
+    "ai-standard/navigation-chain.md",
+    "ai-standard/asset-taxonomy.md",
+    "ai-standard/creation-rules.md",
+    "ai-standard/quality-criteria.md",
+    "ai-standard/naming-conventions.md",
+    "ai-standard/folder-readme-rules.md",
+    "ai-standard/folder-documentation-rules.md",
+    "ai-standard/standards/README.md",
+    "ai-standard/standards/navigation-chain.md",
+    "ai-standard/standards/asset-taxonomy.md",
+    "ai-standard/standards/creation-rules.md",
+    "ai-standard/standards/quality-criteria.md",
+    "ai-standard/standards/naming-conventions.md",
+    "ai-standard/standards/folder-readme-rules.md",
+    "ai-standard/templates/root-agent-template.md",
+    "ai-standard/templates/department-agent-template.md",
+    "ai-standard/templates/area-agent-template.md",
+    "ai-standard/templates/role-template.md",
+    "ai-standard/templates/skill-template.md",
+    "ai-standard/templates/playbook-template.md",
+    "ai-standard/templates/workflow-template.md",
+    "ai-standard/templates/command-template.md",
+    "ai-standard/templates/github-epic-template.md",
+    "ai-standard/templates/github-subissue-template.md",
+    "ai-standard/templates/issue-readiness-matrix-template.md",
+    "ai-standard/templates/branch-name-template.md",
+    "ai-standard/templates/pull-request-template.md",
+    "ai-standard/templates/code-review-template.md"
   ]) {
     assert.equal(paths.has(forbiddenPath), false, `Forbidden generated path should not exist: ${forbiddenPath}`);
   }
@@ -240,6 +285,12 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, ".gitignore"));
   await assertExists(join(rootDir, "leanos.yaml"));
   await assertExists(join(rootDir, "ai-standard", "README.md"));
+  await assertExists(join(rootDir, "ai-standard", "foundation", "README.md"));
+  await assertExists(join(rootDir, "ai-standard", "foundation", "asset-taxonomy.md"));
+  await assertExists(join(rootDir, "ai-standard", "foundation", "navigation-chain.md"));
+  await assertExists(join(rootDir, "ai-standard", "foundation", "creation-rules.md"));
+  await assertExists(join(rootDir, "ai-standard", "foundation", "quality-criteria.md"));
+  await assertExists(join(rootDir, "ai-standard", "foundation", "folder-documentation-rules.md"));
   await assertExists(join(rootDir, "strategy", "AGENT.md"));
   await assertExists(join(rootDir, "operations", "AGENT.md"));
   await assertExists(join(rootDir, "growth", "AGENT.md"));
@@ -296,6 +347,8 @@ async function validateWorkspaceFiles() {
   await assertGitHubIssuePrWorkflow(rootDir);
   await assertFounderIntentRouting(rootDir);
   await assertDesignFoundation(rootDir);
+  await assertAiStandardAssetTaxonomy(rootDir);
+  await assertAiStandardTemplates(rootDir);
   await assertInitCommandRules(rootDir);
   await assertRootAgentMutationRules(rootDir);
   await assertOperationalPlaybookSections(rootDir);
@@ -331,7 +384,29 @@ async function validateWorkspaceFiles() {
     "operations/design/user-flows.md",
     "operations/design/screen-specs.md",
     "operations/design/ux-decisions.md",
-    "operations/design/usability-notes.md"
+    "operations/design/usability-notes.md",
+    "ai-standard/navigation-chain.md",
+    "ai-standard/asset-taxonomy.md",
+    "ai-standard/creation-rules.md",
+    "ai-standard/quality-criteria.md",
+    "ai-standard/naming-conventions.md",
+    "ai-standard/folder-readme-rules.md",
+    "ai-standard/folder-documentation-rules.md",
+    "ai-standard/standards",
+    "ai-standard/templates/root-agent-template.md",
+    "ai-standard/templates/department-agent-template.md",
+    "ai-standard/templates/area-agent-template.md",
+    "ai-standard/templates/role-template.md",
+    "ai-standard/templates/skill-template.md",
+    "ai-standard/templates/playbook-template.md",
+    "ai-standard/templates/workflow-template.md",
+    "ai-standard/templates/command-template.md",
+    "ai-standard/templates/github-epic-template.md",
+    "ai-standard/templates/github-subissue-template.md",
+    "ai-standard/templates/issue-readiness-matrix-template.md",
+    "ai-standard/templates/branch-name-template.md",
+    "ai-standard/templates/pull-request-template.md",
+    "ai-standard/templates/code-review-template.md"
   ]) {
     assert.equal(await exists(join(rootDir, forbiddenPath)), false, `Forbidden path should not be generated: ${forbiddenPath}`);
   }
@@ -343,8 +418,9 @@ async function validateWorkspaceFiles() {
   assert.equal(yaml.workspace.product_code_policy, "do_not_create_app_code_during_initial_setup");
   assert.equal(yaml.github.status, "pending_user_token");
   assert.equal(yaml.github.project_management, "prepared");
-  assert.equal(yaml.agent.navigation_chain.doc, "ai-standard/navigation-chain.md");
+  assert.equal(yaml.agent.navigation_chain.doc, "ai-standard/foundation/navigation-chain.md");
   assert.equal(yaml.ai_standard.path, "ai-standard/README.md");
+  assert.equal(yaml.ai_standard.foundation, "ai-standard/foundation");
   assert.equal(yaml.roles.ownership, "area-first");
   assert.equal(yaml.skills.ownership, "area-first");
   assert.equal(yaml.playbooks.ownership, "area-first");
@@ -787,12 +863,12 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   const prTemplate = await readFile(join(rootDir, ".github", "PULL_REQUEST_TEMPLATE.md"), "utf8");
   const branchRules = await readFile(join(rootDir, ".github", "leanos", "branch-rules.md"), "utf8");
   const prRules = await readFile(join(rootDir, ".github", "leanos", "pr-validation-rules.md"), "utf8");
-  const aiEpicTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github-epic-template.md"), "utf8");
-  const aiSubIssueTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github-subissue-template.md"), "utf8");
-  const issueMatrix = await readFile(join(rootDir, "ai-standard", "templates", "issue-readiness-matrix-template.md"), "utf8");
-  const branchTemplate = await readFile(join(rootDir, "ai-standard", "templates", "branch-name-template.md"), "utf8");
-  const aiPrTemplate = await readFile(join(rootDir, "ai-standard", "templates", "pull-request-template.md"), "utf8");
-  const codeReviewTemplate = await readFile(join(rootDir, "ai-standard", "templates", "code-review-template.md"), "utf8");
+  const aiEpicTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "github-epic-template.md"), "utf8");
+  const aiSubIssueTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "github-subissue-template.md"), "utf8");
+  const issueMatrix = await readFile(join(rootDir, "ai-standard", "templates", "github", "issue-readiness-matrix-template.md"), "utf8");
+  const branchTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "branch-name-template.md"), "utf8");
+  const aiPrTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "pull-request-template.md"), "utf8");
+  const codeReviewTemplate = await readFile(join(rootDir, "ai-standard", "templates", "review", "code-review-template.md"), "utf8");
   const epicToSubissuesPlaybook = await readFile(join(rootDir, "operations", "core", "playbooks", "epic-to-subissues.playbook.md"), "utf8");
   const branchSkill = await readFile(join(rootDir, "operations", "engineering", "skills", "create-branch.skill.md"), "utf8");
   const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-from-issue.playbook.md"), "utf8");
@@ -856,10 +932,10 @@ async function assertFounderIntentRouting(rootDir) {
   const operatingRules = await readFile(join(rootDir, ".leanos", "agent", "operating-rules.md"), "utf8");
   const vscodeAgent = await readFile(join(rootDir, ".github", "agents", "leanos-chief.agent.md"), "utf8");
   const workflowsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "workflows.yaml"), "utf8"));
-  const rootAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "root-agent-template.md"), "utf8");
-  const departmentAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "department-agent-template.md"), "utf8");
-  const areaAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "area-agent-template.md"), "utf8");
-  const areaReadmeTemplate = await readFile(join(rootDir, "ai-standard", "templates", "area-readme-template.md"), "utf8");
+  const rootAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "agents", "root-agent-template.md"), "utf8");
+  const departmentAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "agents", "department-agent-template.md"), "utf8");
+  const areaAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "agents", "area-agent-template.md"), "utf8");
+  const areaReadmeTemplate = await readFile(join(rootDir, "ai-standard", "templates", "structure", "area-readme-template.md"), "utf8");
 
   assert.equal(rootAgent.includes("## Founder Intent Routing"), false, "Root AGENT.md should not contain separate Founder Intent Routing");
   assert.equal(rootAgent.includes("strategy/workflows/idea-to-roadmap.workflow.md"), false, "Root AGENT.md should not bypass Strategy AGENT for workflows");
@@ -940,6 +1016,82 @@ async function assertFounderIntentRouting(rootDir) {
   assert(areaAgentTemplate.includes("Choose the smallest specialist role"), "Area AGENT template should route to specialist roles");
   assert(areaAgentTemplate.includes("Keep reusable area knowledge in `knowledge/`"), "Area AGENT template should keep area knowledge modular");
   assert(areaReadmeTemplate.includes("`README.md`: area map and explanation"), "Area README template should define map responsibility");
+}
+
+async function assertAiStandardAssetTaxonomy(rootDir) {
+  const aiStandardReadme = await readFile(join(rootDir, "ai-standard", "README.md"), "utf8");
+  const foundationReadme = await readFile(join(rootDir, "ai-standard", "foundation", "README.md"), "utf8");
+  const assetTaxonomy = await readFile(join(rootDir, "ai-standard", "foundation", "asset-taxonomy.md"), "utf8");
+  const creationRules = await readFile(join(rootDir, "ai-standard", "foundation", "creation-rules.md"), "utf8");
+  const qualityCriteria = await readFile(join(rootDir, "ai-standard", "foundation", "quality-criteria.md"), "utf8");
+  const folderDocumentationRules = await readFile(join(rootDir, "ai-standard", "foundation", "folder-documentation-rules.md"), "utf8");
+
+  assert(aiStandardReadme.includes("foundation/"), "AI Standard README should route to foundation");
+  assert(aiStandardReadme.includes("templates/"), "AI Standard README should route to templates");
+  assert(aiStandardReadme.includes("checklists/"), "AI Standard README should route to checklists");
+  assert(aiStandardReadme.includes("instructions/"), "AI Standard README should route to instructions");
+  assert(aiStandardReadme.includes("examples/"), "AI Standard README should route to examples");
+  assert(aiStandardReadme.includes("Do not load all of `ai-standard/` by default"), "AI Standard README should encourage minimal loading");
+  assert(foundationReadme.includes("asset-taxonomy.md"), "Foundation README should list asset taxonomy");
+  assert(foundationReadme.includes("navigation-chain.md"), "Foundation README should list navigation chain");
+  assert(foundationReadme.includes("folder-documentation-rules.md"), "Foundation README should list folder documentation rules");
+  assert(assetTaxonomy.includes("# Asset Taxonomy"), "Asset taxonomy should have expected title");
+  assert(assetTaxonomy.includes("Role = who acts."), "Asset taxonomy should define role concept");
+  assert(assetTaxonomy.includes("Skill = capability used."), "Asset taxonomy should define skill concept");
+  assert(assetTaxonomy.includes("Playbook = execution sequence."), "Asset taxonomy should define playbook concept");
+  assert(assetTaxonomy.includes("Knowledge = information/source of truth."), "Asset taxonomy should define knowledge concept");
+  assert(assetTaxonomy.includes("| Asset | What It Is | Question It Answers |"), "Asset taxonomy should include summary table");
+  assert(assetTaxonomy.includes("`AGENT.md`"), "Asset taxonomy should explain AGENT.md");
+  assert(assetTaxonomy.includes("`README.md`"), "Asset taxonomy should explain README.md");
+  assert(assetTaxonomy.includes("`department.yaml`"), "Asset taxonomy should explain department.yaml");
+  assert(assetTaxonomy.includes("`area.yaml`"), "Asset taxonomy should explain area.yaml");
+  assert(assetTaxonomy.includes("### Role"), "Asset taxonomy should explain roles");
+  assert(assetTaxonomy.includes("### Skill"), "Asset taxonomy should explain skills");
+  assert(assetTaxonomy.includes("### Playbook"), "Asset taxonomy should explain playbooks");
+  assert(assetTaxonomy.includes("### Knowledge"), "Asset taxonomy should explain knowledge");
+  assert(assetTaxonomy.includes("### Workflow"), "Asset taxonomy should explain workflows");
+  assert(assetTaxonomy.includes("### Command"), "Asset taxonomy should explain commands");
+  assert(assetTaxonomy.includes("operations/design/AGENT.md"), "Asset taxonomy should include Design AGENT example");
+  assert(assetTaxonomy.includes("operations/design/skills/accessibility.skill.md"), "Asset taxonomy should include Design skill example");
+  assert(assetTaxonomy.includes("operations/design/playbooks/design-foundation.playbook.md"), "Asset taxonomy should include Design playbook example");
+  assert(assetTaxonomy.includes("operations/design/knowledge/design-system.md"), "Asset taxonomy should include Design knowledge example");
+  assert(creationRules.includes("## Creation Decision"), "Creation rules should explain creation decisions");
+  assert(creationRules.includes("## Placement Rules"), "Creation rules should explain placement rules");
+  assert(creationRules.includes("## Confirmation Rule"), "Creation rules should explain confirmation rules");
+  assert(creationRules.includes("Do not create files just to make the workspace look complete"), "Creation rules should prevent cosmetic scaffolding");
+  assert(qualityCriteria.includes("## Universal Criteria"), "Quality criteria should include universal criteria");
+  assert(qualityCriteria.includes("## Asset-Specific Signals"), "Quality criteria should include asset-specific signals");
+  assert(qualityCriteria.includes("## Rejection Criteria"), "Quality criteria should include rejection criteria");
+  assert(folderDocumentationRules.includes("# Folder Documentation Rules"), "Folder documentation rules should have expected title");
+  assert(folderDocumentationRules.includes("A folder README is a map, not the operator"), "Folder documentation rules should define README responsibility");
+  assert(folderDocumentationRules.includes("## Required Sections"), "Folder documentation rules should define required sections");
+  assert(folderDocumentationRules.includes("Do not make folder README files huge inventories"), "Folder documentation rules should prevent huge inventories");
+}
+
+async function assertAiStandardTemplates(rootDir) {
+  const templatesReadme = await readFile(join(rootDir, "ai-standard", "templates", "README.md"), "utf8");
+  const agentsReadme = await readFile(join(rootDir, "ai-standard", "templates", "agents", "README.md"), "utf8");
+  const structureReadme = await readFile(join(rootDir, "ai-standard", "templates", "structure", "README.md"), "utf8");
+  const executionReadme = await readFile(join(rootDir, "ai-standard", "templates", "execution", "README.md"), "utf8");
+  const commandsReadme = await readFile(join(rootDir, "ai-standard", "templates", "commands", "README.md"), "utf8");
+  const githubReadme = await readFile(join(rootDir, "ai-standard", "templates", "github", "README.md"), "utf8");
+  const reviewReadme = await readFile(join(rootDir, "ai-standard", "templates", "review", "README.md"), "utf8");
+
+  assert(templatesReadme.includes("agents/"), "Templates README should route to agents");
+  assert(templatesReadme.includes("structure/"), "Templates README should route to structure");
+  assert(templatesReadme.includes("execution/"), "Templates README should route to execution");
+  assert(templatesReadme.includes("commands/"), "Templates README should route to commands");
+  assert(templatesReadme.includes("github/"), "Templates README should route to GitHub");
+  assert(templatesReadme.includes("review/"), "Templates README should route to review");
+  assert(templatesReadme.includes("Do not load every template by default"), "Templates README should discourage loading every template");
+  assert(agentsReadme.includes("root-agent-template.md"), "Agent templates README should list root agent template");
+  assert(structureReadme.includes("department-template.yaml"), "Structure templates README should list department YAML template");
+  assert(executionReadme.includes("role-template.md"), "Execution templates README should list role template");
+  assert(executionReadme.includes("workflow-template.md"), "Execution templates README should list workflow template");
+  assert(commandsReadme.includes("command-template.md"), "Command templates README should list command template");
+  assert(githubReadme.includes("github-epic-template.md"), "GitHub templates README should list epic template");
+  assert(githubReadme.includes("pull-request-template.md"), "GitHub templates README should list PR template");
+  assert(reviewReadme.includes("code-review-template.md"), "Review templates README should list code review template");
 }
 
 async function assertDesignFoundation(rootDir) {

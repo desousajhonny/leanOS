@@ -14,7 +14,7 @@ Read:
 - `../../operations/engineering/README.md`
 - `../../operations/engineering/skills/create-branch.skill.md`
 - `../../operations/engineering/playbooks/branch-from-issue.playbook.md`
-- `../../ai-standard/templates/branch-name-template.md`
+- `../../ai-standard/templates/github/branch-name-template.md`
 - `../../.github/leanos/branch-rules.md`
 
 If `operations.engineering` is not active, do not load missing paths. Ask whether to activate or create Engineering before creating a branch plan.

@@ -5,47 +5,74 @@ import { rootAgent } from "./agent.js";
 import { playbookFile, roleFile, skillFile } from "./departments.js";
 import { creationInstructions, folderReadme, qualityChecklist, standardTemplate, toTitle } from "../content/shared.js";
 
+type TemplateGroup = {
+  key: string;
+  title: string;
+  purpose: string;
+  use: string;
+  files: string[];
+};
+
 export function aiStandardFiles(): FileEntry[] {
-  const templateFiles = [
-    "agent-template.md",
-    "root-agent-template.md",
-    "department-agent-template.md",
-    "area-agent-template.md",
-    "area-readme-template.md",
-    "command-template.md",
-    "department-template.md",
-    "department-template.yaml",
-    "area-template.md",
-    "area-template.yaml",
-    "folder-readme-template.md",
-    "github-issue-template.md",
-    "github-epic-template.md",
-    "github-subissue-template.md",
-    "issue-readiness-matrix-template.md",
-    "branch-name-template.md",
-    "pull-request-template.md",
-    "code-review-template.md",
-    "playbook-template.md",
-    "playbook-template.yaml",
-    "role-template.md",
-    "role-template.yaml",
-    "root-readme-template.md",
-    "skill-template.md",
-    "skill-template.yaml",
-    "workflow-template.md"
+  const templateGroups = [
+    {
+      key: "agents",
+      title: "Agent Templates",
+      purpose: "Templates for root, department and area AGENT.md files.",
+      use: "Use when creating an operating owner or routing layer.",
+      files: ["agent-template.md", "root-agent-template.md", "department-agent-template.md", "area-agent-template.md"]
+    },
+    {
+      key: "structure",
+      title: "Structure Templates",
+      purpose: "Templates for folders, READMEs, departments, areas and YAML structure.",
+      use: "Use when creating or documenting workspace structure.",
+      files: ["root-readme-template.md", "folder-readme-template.md", "area-readme-template.md", "department-template.md", "department-template.yaml", "area-template.md", "area-template.yaml"]
+    },
+    {
+      key: "execution",
+      title: "Execution Templates",
+      purpose: "Templates for area-level roles, skills, playbooks and workflows.",
+      use: "Use when creating operational execution assets inside an area or department workflow folder.",
+      files: ["role-template.md", "role-template.yaml", "skill-template.md", "skill-template.yaml", "playbook-template.md", "playbook-template.yaml", "workflow-template.md"]
+    },
+    {
+      key: "commands",
+      title: "Command Templates",
+      purpose: "Templates for portable LeanOS chat command files.",
+      use: "Use when creating a stable slash-command behavior in .leanos/commands/.",
+      files: ["command-template.md"]
+    },
+    {
+      key: "github",
+      title: "GitHub Templates",
+      purpose: "Templates for GitHub issues, epics, sub-issues, branch naming, PRs and readiness matrices.",
+      use: "Use when shaping GitHub-ready work items or repository collaboration artifacts.",
+      files: ["github-issue-template.md", "github-epic-template.md", "github-subissue-template.md", "issue-readiness-matrix-template.md", "branch-name-template.md", "pull-request-template.md"]
+    },
+    {
+      key: "review",
+      title: "Review Templates",
+      purpose: "Templates for reviewing code, implementation and delivery quality.",
+      use: "Use when creating or applying review outputs.",
+      files: ["code-review-template.md"]
+    }
   ];
   const checklists = ["agent", "area", "command", "department", "playbook", "readme", "role", "skill"];
   const instructions = ["create-agent", "create-area", "create-command", "create-department", "create-playbook", "create-readme", "create-role", "create-skill", "create-workflow"];
 
   return [
-    { path: "ai-standard/README.md", content: folderReadme("AI Standard", "LeanOS standards for creating and reviewing AI-native workspace assets.", "Use before creating or changing agents, departments, areas, roles, skills, playbooks, workflows or commands.", "navigation-chain.md", ["navigation-chain.md", "creation-rules.md", "quality-criteria.md", "naming-conventions.md", "folder-readme-rules.md", "templates/", "checklists/", "instructions/", "examples/"], ["../AGENT.md", "../.leanos/commands/"], "Consult the standard before creating or modifying LeanOS assets.") },
-    { path: "ai-standard/navigation-chain.md", content: "# Navigation Chain\n\nLeanOS uses owner-first navigation:\n\n`Root AGENT.md -> Department AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`\n\nUse the chain to choose the next owner, one level at a time.\n\n1. Root chooses the owning department.\n2. Department chooses a workflow or active area.\n3. Area chooses the specialist role when it has `AGENT.md`; otherwise use its `README.md` as the local map.\n4. Role points to the required skills and playbooks.\n5. Skills and playbooks shape the work.\n6. Output updates only the smallest relevant knowledge, decision or project file.\n\nDo not skip levels because a later file looks relevant.\nDo not load the whole workspace when a smaller route exists.\n" },
-    { path: "ai-standard/creation-rules.md", content: "# Creation Rules\n\n- `AGENT.md` is the operating owner for its level.\n- `README.md` is the directory map and explanation.\n- Area `AGENT.md` files are optional and should exist only when an area needs a lead router before specialist roles.\n- Create roles, skills and playbooks inside the correct area.\n- Do not place roles, skills or playbooks directly under root departments.\n- Every area asset must reference its area owner, local README and source-of-truth files.\n- Keep LeanOS runtime files in `.leanos/` small and route-focused.\n" },
-    { path: "ai-standard/quality-criteria.md", content: "# Quality Criteria\n\n- Clear purpose\n- Explicit routing\n- Minimal context loading\n- Source-of-truth references\n- Output expectations\n" },
-    { path: "ai-standard/naming-conventions.md", content: "# Naming Conventions\n\n- Use lowercase kebab-case for folders and file basenames.\n- Use direct, singular asset names: `<direct-name>.role.md`, `<direct-name>.skill.md`, `<direct-name>.playbook.md`, `<direct-name>.workflow.md`.\n- Roles end with `.role.md`.\n- Skills end with `.skill.md`.\n- Playbooks end with `.playbook.md`.\n- Workflows end with `.workflow.md`.\n- Prefer domain capability names such as `accessibility.skill.md` or `design-system.skill.md` over generic action names such as `define-accessibility.skill.md`.\n- Use action verbs only when the asset is truly procedural, such as `create-branch.skill.md`.\n- Knowledge files do not use asset suffixes; use names such as `knowledge/design-system.md`.\n" },
-    { path: "ai-standard/folder-readme-rules.md", content: "# Folder README Rules\n\nEvery important folder should explain purpose, when to use it, source of truth, files, related folders and navigation notes.\n" },
-    { path: "ai-standard/templates/README.md", content: folderReadme("Templates", "Reusable templates for LeanOS assets.", "Use when creating new workspace assets.", "role-template.md", templateFiles, ["../checklists/", "../instructions/"], "Copy the smallest matching template and adapt it to the active department or area.") },
-    ...templateFiles.map((file) => ({ path: `ai-standard/templates/${file}`, content: templateContent(file) })),
+    { path: "ai-standard/README.md", content: aiStandardReadme() },
+    { path: "ai-standard/foundation/README.md", content: folderReadme("Foundation", "Core LeanOS foundation for asset taxonomy, navigation, naming, creation and quality.", "Start here when deciding what kind of asset exists, where it belongs or how to judge quality.", "asset-taxonomy.md", ["asset-taxonomy.md", "navigation-chain.md", "creation-rules.md", "quality-criteria.md", "naming-conventions.md", "folder-documentation-rules.md"], ["../templates/", "../checklists/", "../instructions/", "../examples/"], "Load only the foundation file needed for the active decision. Do not load all foundation files by default.") },
+    { path: "ai-standard/foundation/navigation-chain.md", content: "# Navigation Chain\n\nLeanOS uses owner-first navigation:\n\n`Root AGENT.md -> Department AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`\n\nUse the chain to choose the next owner, one level at a time.\n\n1. Root chooses the owning department.\n2. Department chooses a workflow or active area.\n3. Area chooses the specialist role when it has `AGENT.md`; otherwise use its `README.md` as the local map.\n4. Role points to the required skills and playbooks.\n5. Skills and playbooks shape the work.\n6. Output updates only the smallest relevant knowledge, decision or project file.\n\nDo not skip levels because a later file looks relevant.\nDo not load the whole workspace when a smaller route exists.\n" },
+    { path: "ai-standard/foundation/asset-taxonomy.md", content: assetTaxonomy() },
+    { path: "ai-standard/foundation/creation-rules.md", content: creationRules() },
+    { path: "ai-standard/foundation/quality-criteria.md", content: qualityCriteria() },
+    { path: "ai-standard/foundation/naming-conventions.md", content: "# Naming Conventions\n\n- Use lowercase kebab-case for folders and file basenames.\n- Use direct, singular asset names: `<direct-name>.role.md`, `<direct-name>.skill.md`, `<direct-name>.playbook.md`, `<direct-name>.workflow.md`.\n- Roles end with `.role.md`.\n- Skills end with `.skill.md`.\n- Playbooks end with `.playbook.md`.\n- Workflows end with `.workflow.md`.\n- Prefer domain capability names such as `accessibility.skill.md` or `design-system.skill.md` over generic action names such as `define-accessibility.skill.md`.\n- Use action verbs only when the asset is truly procedural, such as `create-branch.skill.md`.\n- Knowledge files do not use asset suffixes; use names such as `knowledge/design-system.md`.\n" },
+    { path: "ai-standard/foundation/folder-documentation-rules.md", content: folderDocumentationRules() },
+    { path: "ai-standard/templates/README.md", content: templatesReadme(templateGroups) },
+    ...templateGroups.map((group) => ({ path: `ai-standard/templates/${group.key}/README.md`, content: templateGroupReadme(group) })),
+    ...templateGroups.flatMap((group) => group.files.map((file) => ({ path: `ai-standard/templates/${group.key}/${file}`, content: templateContent(file) }))),
     { path: "ai-standard/checklists/README.md", content: folderReadme("Checklists", "Quality checklists for LeanOS assets.", "Use before accepting newly created or modified assets.", "role-quality-checklist.md", checklists.map((name) => `${name}-quality-checklist.md`), ["../templates/", "../instructions/"], "Run the relevant checklist before final output.") },
     ...checklists.map((name) => ({ path: `ai-standard/checklists/${name}-quality-checklist.md`, content: qualityChecklist(toTitle(name)) })),
     { path: "ai-standard/instructions/README.md", content: folderReadme("Instructions", "Instructions for creating LeanOS assets.", "Use when a command asks to create or update framework assets.", "create-role-instructions.md", instructions.map((name) => `${name}-instructions.md`), ["../templates/", "../checklists/"], "Follow instructions, then validate with the matching checklist.") },
@@ -75,6 +102,624 @@ function templateContent(fileName: string): string {
   };
 
   return templates[fileName] ?? standardTemplate(fileName);
+}
+
+function templatesReadme(groups: TemplateGroup[]): string {
+  return `# Templates
+
+## Purpose
+
+Reusable starting structures for LeanOS framework assets and GitHub collaboration artifacts.
+
+## When to Use
+
+Use after selecting the asset type with \`../foundation/asset-taxonomy.md\` and before drafting a new file.
+
+Templates are starting structures. They are not active workspace context and should not override the owning AGENT, role, skill, playbook, workflow or command.
+
+## Categories
+
+${groups.map((group) => `### \`${group.key}/\`\n\n${group.purpose}\n\nUse when: ${group.use}\n\nFiles:\n${group.files.map((file) => `- \`${group.key}/${file}\``).join("\n")}`).join("\n\n")}
+
+## How to Use
+
+1. Confirm the asset type in \`../foundation/asset-taxonomy.md\`.
+2. Load the matching creation instruction from \`../instructions/\`.
+3. Open only the smallest matching template category.
+4. Copy the matching template shape.
+5. Adapt it to the active department or area.
+6. Validate with the matching checklist in \`../checklists/\`.
+
+## Red Lines
+
+- Do not load every template by default.
+- Do not use a GitHub template for a LeanOS framework asset.
+- Do not use an execution template for folder documentation.
+- Do not use examples as templates when a real template exists.
+`;
+}
+
+function templateGroupReadme(group: TemplateGroup): string {
+  return `# ${group.title}
+
+## Purpose
+
+${group.purpose}
+
+## When to Use
+
+${group.use}
+
+## Files
+
+${group.files.map((file) => `- \`${file}\``).join("\n")}
+
+## Related Folders
+
+- \`../\`
+- \`../../instructions/\`
+- \`../../checklists/\`
+- \`../../foundation/\`
+
+## Navigation
+
+Use this folder only after \`../../foundation/asset-taxonomy.md\` confirms the needed asset type.
+
+## Agent Notes
+
+Load only the matching template file. Do not load unrelated template categories.
+`;
+}
+
+function aiStandardReadme(): string {
+  return `# AI Standard
+
+## Purpose
+
+LeanOS standards for creating, reviewing and routing AI-native workspace assets.
+
+## When to Use
+
+Use this folder before creating or changing agents, departments, areas, roles, skills, playbooks, workflows, commands, templates, checklists or instructions.
+
+## How to Navigate
+
+Load only the smallest route needed:
+
+1. Use \`foundation/asset-taxonomy.md\` when deciding what type of asset something is.
+2. Use \`foundation/navigation-chain.md\` when deciding how an agent should route work.
+3. Use \`foundation/creation-rules.md\` before creating or changing framework assets.
+4. Use \`foundation/naming-conventions.md\` before naming files or folders.
+5. Use \`foundation/quality-criteria.md\` before accepting an asset.
+6. Use \`foundation/folder-documentation-rules.md\` when creating or reviewing folder documentation.
+7. Use \`instructions/\` for the step-by-step creation process.
+8. Use \`templates/\` for the starting structure.
+9. Use \`checklists/\` before final output.
+10. Use \`examples/\` only as references.
+
+## Routes
+
+### \`foundation/\`
+
+Core conceptual rules. Use when deciding what belongs where, how assets relate, how navigation works or whether a proposed asset is valid.
+
+### \`templates/\`
+
+Reusable starting structures. Use after choosing the asset type and before drafting the file.
+
+### \`checklists/\`
+
+Quality gates. Use before accepting a newly created or modified asset.
+
+### \`instructions/\`
+
+Creation procedures. Use when the user asks to create or update a LeanOS asset.
+
+### \`examples/\`
+
+Illustrative examples. Use only for reference; active workspace context wins.
+
+## Files
+
+- \`foundation/\`
+- \`templates/\`
+- \`checklists/\`
+- \`instructions/\`
+- \`examples/\`
+
+## Related Folders
+
+- \`../AGENT.md\`
+- \`../.leanos/commands/\`
+
+## Agent Notes
+
+Do not load all of \`ai-standard/\` by default. Choose the smallest foundation file, instruction, template and checklist needed for the active request.
+`;
+}
+
+function creationRules(): string {
+  return `# Creation Rules
+
+Use these rules before creating or changing any LeanOS framework asset.
+
+## Purpose
+
+Creation rules protect the workspace from asset sprawl, duplicated responsibilities and route-breaking files.
+
+They answer:
+
+- Should this asset exist?
+- Where should it live?
+- Which existing asset should own this responsibility?
+- What must be loaded before creating it?
+- What should not be created?
+
+## Load First
+
+Before creating an asset, load:
+
+1. \`asset-taxonomy.md\` to confirm the asset type.
+2. \`navigation-chain.md\` to confirm where the asset belongs.
+3. \`naming-conventions.md\` to name the file correctly.
+4. The matching instruction in \`../instructions/\`.
+5. The matching template in \`../templates/\`.
+6. The matching checklist in \`../checklists/\`.
+
+## Creation Decision
+
+Create a new asset only when all are true:
+
+- The request cannot be handled by an existing asset.
+- The new asset has a clear owner in the Navigation Chain.
+- The new asset has a stable reusable purpose.
+- The asset will reduce ambiguity for future models.
+- The user confirms the creation or update.
+
+Do not create an asset when:
+
+- A README note is enough.
+- A role can reference an existing skill.
+- A skill can be reused instead of a new skill.
+- A playbook would duplicate an existing workflow.
+- The asset is only a one-off answer to the current user.
+- The asset would bypass department or area ownership.
+
+## Placement Rules
+
+- Root \`AGENT.md\` lives at workspace root.
+- Department \`AGENT.md\`, \`README.md\`, \`department.yaml\` and \`workflows/\` live at department root.
+- Area \`AGENT.md\`, \`README.md\`, \`area.yaml\`, \`knowledge/\`, \`roles/\`, \`skills/\` and \`playbooks/\` live inside the area.
+- Roles, skills and playbooks do not live directly under root departments.
+- Business workflows live in departments or areas, not in \`.leanos/\`.
+- Runtime command instructions live in \`.leanos/commands/\`.
+- Framework standards, templates, checklists, instructions and examples live in \`ai-standard/\`.
+
+## Responsibility Rules
+
+- \`AGENT.md\` routes and sets operating boundaries.
+- \`README.md\` maps a folder.
+- \`department.yaml\` and \`area.yaml\` provide machine-readable structure.
+- Role files define who acts.
+- Skill files define reusable capabilities.
+- Playbook files define execution sequence.
+- Knowledge files store confirmed facts and decisions.
+- Workflow files coordinate multi-step work across owners.
+- Command files define portable chat command behavior.
+
+## Confirmation Rule
+
+Before writing or changing framework assets:
+
+1. State the asset type.
+2. State the owner path.
+3. State why an existing asset is not enough.
+4. State which template and checklist will be used.
+5. Ask for explicit confirmation.
+
+## Red Lines
+
+- Do not invent missing roles, skills, playbooks, workflows, commands or templates.
+- Do not create assets outside the owning department or area.
+- Do not place product or company facts inside framework operating assets.
+- Do not update \`ai-standard/\`, \`.leanos/commands/\`, roles, skills, playbooks or workflows during \`/start-leanos\`.
+- Do not create a broad asset when a narrow one would be clearer.
+- Do not create files just to make the workspace look complete.
+
+## Design Example
+
+If Design needs a reusable capability for evaluating PRs:
+
+- Asset type: skill.
+- Owner: \`operations/design/skills/\`.
+- File: \`design-review.skill.md\`.
+- Role usage: Product Designer, Accessibility Specialist or UX Writer can load it when relevant.
+- Do not create \`design-review.playbook.md\` unless there is a repeatable execution sequence beyond the skill itself.
+`;
+}
+
+function qualityCriteria(): string {
+  return `# Quality Criteria
+
+Use these criteria to judge whether a LeanOS asset is good enough to keep.
+
+## Purpose
+
+Quality criteria prevent vague assets, duplicated logic and confusing routes.
+
+They answer:
+
+- Is this asset clear?
+- Is it owned by the right level?
+- Does it load only necessary context?
+- Does it preserve the Navigation Chain?
+- Does it help future models act better?
+
+## Universal Criteria
+
+Every LeanOS asset should have:
+
+- Clear purpose.
+- Explicit owner.
+- Correct location.
+- Minimal context loading.
+- Clear inputs.
+- Clear outputs.
+- Boundaries and red lines when relevant.
+- References to related assets only when useful.
+- No duplicated responsibility.
+- No invented product or company facts.
+
+## Routing Quality
+
+A good asset:
+
+- Keeps root routing at department level.
+- Lets department AGENTs choose workflows or areas.
+- Lets area AGENTs choose roles.
+- Lets roles load skills and playbooks.
+- Does not skip levels because a later file looks relevant.
+- Does not ask a model to load the whole workspace.
+
+## Content Quality
+
+A good asset:
+
+- Uses direct language.
+- Says when to use it.
+- Says when not to use it.
+- Names the files it may update.
+- Separates facts from assumptions.
+- Uses \`not applicable\` explicitly when a dimension does not apply.
+- Asks for confirmation before mutating durable files.
+
+## Asset-Specific Signals
+
+| Asset | Quality Signal |
+| --- | --- |
+| \`AGENT.md\` | Routes to the next owner without becoming a giant inventory. |
+| \`README.md\` | Explains folder purpose, files and navigation without becoming an executor. |
+| \`role\` | Defines a clear operating hat and points to relevant skills/playbooks. |
+| \`skill\` | Describes a reusable capability, checks and outputs. |
+| \`playbook\` | Provides an ordered execution sequence with inputs and outputs. |
+| \`knowledge\` | Stores confirmed context without process instructions. |
+| \`workflow\` | Coordinates multi-area or multi-stage work. |
+| \`command\` | Loads minimal context and defines allowed/forbidden updates. |
+
+## Rejection Criteria
+
+Reject or revise an asset when:
+
+- It duplicates another asset.
+- It mixes role, skill, playbook and knowledge responsibilities.
+- It has no clear owner.
+- It points to paths that do not exist.
+- It recommends inactive areas without warning.
+- It stores secrets or token values.
+- It makes implementation decisions without loading the required role, skill and playbook.
+- It updates source-of-truth or framework files without confirmation.
+
+## Final Check
+
+Before accepting an asset, answer:
+
+1. What type of asset is this?
+2. Who owns it?
+3. What question does it answer?
+4. What should load it?
+5. What should it never do?
+6. Which checklist validates it?
+`;
+}
+
+function folderDocumentationRules(): string {
+  return `# Folder Documentation Rules
+
+Use these rules when creating or reviewing folder documentation, especially \`README.md\` files.
+
+## Purpose
+
+Folder documentation helps humans and models understand where they are, what belongs there and where to go next.
+
+It answers:
+
+- What is this folder for?
+- When should an agent enter it?
+- Which files are important?
+- Which files are source of truth, operating assets or examples?
+- Where should the agent route next?
+
+## README Responsibility
+
+A folder README is a map, not the operator.
+
+It should:
+
+- Explain the folder purpose.
+- Explain when to use the folder.
+- List important files and subfolders.
+- Point to the operating owner when one exists.
+- Identify related folders.
+- Provide navigation notes.
+
+It should not:
+
+- Replace \`AGENT.md\` routing.
+- Replace role instructions.
+- Replace skill capabilities.
+- Replace playbook sequence.
+- Store product facts that belong in knowledge files.
+- Become a catch-all document.
+
+## Required Sections
+
+Use these sections for important folders:
+
+- \`# <Folder Name>\`
+- \`## Purpose\`
+- \`## When to Use\`
+- \`## Source of Truth\` when the folder owns knowledge or durable context.
+- \`## Files\`
+- \`## Related Folders\`
+- \`## Navigation\`
+- \`## Agent Notes\`
+
+If a section does not apply, omit it or state \`Not applicable\` when the absence matters.
+
+## Navigation Rules
+
+- If the folder has \`AGENT.md\`, tell agents to start there for operational work.
+- If the folder has \`department.yaml\` or \`area.yaml\`, mention that it provides machine-readable structure.
+- If the folder has \`roles/\`, \`skills/\` or \`playbooks/\`, explain that the area owner selects them.
+- If the folder contains examples, say examples are references only.
+- If the folder contains templates, say templates are starting structures, not active workspace context.
+
+## Folder Type Examples
+
+### Department Folder
+
+Example: \`operations/README.md\`
+
+- Explains what Operations owns.
+- Points to \`operations/AGENT.md\`.
+- Lists active areas.
+- Points to \`workflows/\` for cross-area work.
+- Does not list every role, skill or playbook from every area.
+
+### Area Folder
+
+Example: \`operations/design/README.md\`
+
+- Explains what Design owns.
+- Points to \`operations/design/AGENT.md\`.
+- Lists \`knowledge/\`, \`roles/\`, \`skills/\` and \`playbooks/\`.
+- Explains common paths at a high level.
+- Does not execute the Design process itself.
+
+### Knowledge Folder
+
+Example: \`operations/design/knowledge/README.md\`
+
+- Explains which durable Design facts live there.
+- Lists knowledge files.
+- Says updates require confirmation.
+- Does not define skills or playbook sequence.
+
+### AI Standard Folder
+
+Example: \`ai-standard/README.md\`
+
+- Routes to foundation, templates, checklists, instructions and examples.
+- Explains when to use each route.
+- Tells models not to load everything by default.
+
+## Red Lines
+
+- Do not make folder README files huge inventories.
+- Do not duplicate all content from child files.
+- Do not document paths that do not exist.
+- Do not point directly to a role when an area AGENT should route first.
+- Do not hide process rules inside a README when a playbook should own them.
+`;
+}
+
+function assetTaxonomy(): string {
+  return `# Asset Taxonomy
+
+Use this taxonomy before creating, changing or routing LeanOS workspace assets.
+
+## Core Rule
+
+\`\`\`text
+Role = who acts.
+Skill = capability used.
+Playbook = execution sequence.
+Knowledge = information/source of truth.
+\`\`\`
+
+Do not use one asset type to do another asset type's job.
+
+## Quick Reference
+
+| Asset | What It Is | Question It Answers |
+| --- | --- | --- |
+| \`AGENT.md\` | Operating owner and router for a workspace level | "Who owns routing at this level?" |
+| \`README.md\` | Directory map and human explanation | "What is here and when should I use it?" |
+| \`department.yaml\` | Machine-readable department structure | "Which areas and workflows belong to this department?" |
+| \`area.yaml\` | Machine-readable area structure | "Which roles, skills, playbooks and knowledge belong to this area?" |
+| \`role\` | Persona/responsibility used by the agent | "Which hat should the agent wear?" |
+| \`skill\` | Reusable capability used by a role | "Which capability should be applied?" |
+| \`playbook\` | Practical execution sequence | "In which order should the work happen?" |
+| \`knowledge\` | Context, facts and source of truth | "What do we know about this?" |
+| \`workflow\` | Multi-step flow across areas or a department | "How should larger work move across owners?" |
+| \`command\` | Portable chat instruction for a known intent | "What should happen when the user invokes this command?" |
+
+## Asset Types
+
+### \`AGENT.md\`
+
+An \`AGENT.md\` is the operating owner for a level of the workspace.
+
+- Lives at the root, department root or selected area root.
+- Answers: "Who decides the next route here?"
+- Create when a level needs routing rules, red lines or delegation logic.
+- Do not create when a README map is enough.
+- Agents should load it before entering lower-level roles, skills or playbooks.
+
+Example: \`operations/design/AGENT.md\` acts as the Design area lead. It chooses between Product Designer, UX Researcher, Accessibility Specialist and UX Writer.
+
+### \`README.md\`
+
+A \`README.md\` is the map for a folder.
+
+- Lives in every important folder.
+- Answers: "What is this folder for, what files exist here and how do I navigate?"
+- Create for folders that humans or models will enter.
+- Do not use it as a long operating manual when an \`AGENT.md\`, role, skill or playbook should own that detail.
+- Agents should use it to understand local structure.
+
+Example: \`operations/design/README.md\` explains the Design area, its knowledge files, roles, skills and playbooks.
+
+### \`department.yaml\`
+
+\`department.yaml\` is the structured map for a root department.
+
+- Lives at \`strategy/department.yaml\`, \`operations/department.yaml\` or \`growth/department.yaml\`.
+- Answers: "Which areas and workflows are active in this department?"
+- Create for every root department.
+- Do not store narrative product context or company facts in it.
+- Agents should use it when they need machine-readable structure.
+
+Example: \`operations/department.yaml\` lists areas such as Core, Design, Engineering, DevOps and Security.
+
+### \`area.yaml\`
+
+\`area.yaml\` is the structured map for an area.
+
+- Lives inside an area, such as \`operations/design/area.yaml\`.
+- Answers: "Which roles, skills, playbooks and knowledge files belong here?"
+- Create for every active area.
+- Do not use it as a replacement for role, skill or playbook instructions.
+- Agents should use it to verify available local assets.
+
+Example: \`operations/design/area.yaml\` lists Design roles, skills, playbooks and \`knowledge/\` files.
+
+### Role
+
+A role is an operating persona and responsibility boundary.
+
+- Lives in \`<area>/roles/<direct-name>.role.md\`.
+- Answers: "With which hat should the agent act?"
+- Create when a recurring responsibility needs a distinct point of view.
+- Do not create a role for a one-off task or a simple capability.
+- Agents should select one role before loading skills or playbooks.
+
+Example: \`operations/design/roles/product-designer.role.md\` owns product design decisions and points to \`design-system.skill.md\`, \`user-flow-mapping.skill.md\`, \`screen-specification.skill.md\` and \`design-review.skill.md\`.
+
+### Skill
+
+A skill is a reusable capability.
+
+- Lives in \`<area>/skills/<direct-name>.skill.md\`.
+- Answers: "Which capability should be applied?"
+- Create when the same capability is reused by one or more roles or playbooks.
+- Do not make a skill a full process; that belongs in a playbook.
+- Agents should load only the skills required by the active role and task.
+
+Example: \`operations/design/skills/accessibility.skill.md\` defines how to apply accessibility checks and WCAG 2.2 AA expectations.
+
+### Playbook
+
+A playbook is a practical execution sequence.
+
+- Lives in \`<area>/playbooks/<direct-name>.playbook.md\`.
+- Answers: "In which order should this work happen?"
+- Create when a task has repeatable steps, inputs, outputs and file update rules.
+- Do not create a playbook for a single check or isolated capability.
+- Agents should use it after selecting the role and loading required skills.
+
+Example: \`operations/design/playbooks/design-foundation.playbook.md\` sequences design-system, accessibility and user-flow work before implementation.
+
+### Knowledge
+
+Knowledge files hold context, facts, decisions and source-of-truth notes.
+
+- Lives in \`<area>/knowledge/\` when the area uses reusable knowledge.
+- Answers: "What do we know about this?"
+- Create when information must persist across tasks.
+- Do not put operating instructions, role behavior or process steps here.
+- Agents should update knowledge only after explicit user confirmation.
+
+Example: \`operations/design/knowledge/design-system.md\` stores the design-system baseline. It does not decide how to create the design system; the skill and playbook do that.
+
+### Workflow
+
+A workflow is a multi-step flow that moves work across areas or across a department.
+
+- Lives in \`<department>/workflows/\` or, when truly area-owned, \`<area>/workflows/\`.
+- Answers: "How should larger work move across owners?"
+- Create when the task spans multiple roles, areas or stages.
+- Do not place business workflows in \`.leanos/workflows/\`; \`.leanos/\` is runtime support.
+- Agents should use workflows to coordinate owners, then enter the relevant area and role.
+
+Example: \`operations/workflows/issue-delivery-cycle.workflow.md\` can coordinate Core, Design, Engineering and Security for issue delivery.
+
+### Command
+
+A command is a portable chat instruction for a known user intent.
+
+- Lives in \`.leanos/commands/<command>.md\`.
+- Answers: "What should happen when the user invokes this command?"
+- Create when a common chat intent needs stable loading rules.
+- Do not create commands for every possible workflow; natural language can route through AGENT.md.
+- Agents should load the command file before acting on a matching slash command.
+
+Example: \`.leanos/commands/define-design.md\` tells the agent how to prepare Design foundation safely.
+
+## Design Example
+
+If the founder says, "define the design before implementation":
+
+1. Root \`AGENT.md\` routes to \`operations/AGENT.md\`.
+2. Operations routes to \`operations/design/AGENT.md\`.
+3. Design area AGENT chooses \`roles/product-designer.role.md\`.
+4. The role loads skills:
+   - \`skills/design-system.skill.md\`
+   - \`skills/accessibility.skill.md\`
+   - \`skills/user-flow-mapping.skill.md\`
+5. The work follows \`playbooks/design-foundation.playbook.md\`.
+6. Confirmed outputs update:
+   - \`knowledge/design-system.md\`
+   - \`knowledge/accessibility.md\`
+   - \`knowledge/user-flows.md\`
+
+This keeps responsibilities separated:
+
+- The role defines the operating perspective.
+- The skills define capabilities.
+- The playbook defines order.
+- The knowledge files store confirmed facts and decisions.
+`;
 }
 
 function agentTemplate(): string {

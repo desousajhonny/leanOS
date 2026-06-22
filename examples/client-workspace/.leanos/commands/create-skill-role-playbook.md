@@ -9,8 +9,8 @@ Create a coherent role, skill and playbook set inside the correct area.
 First consult:
 
 - `../../ai-standard/README.md`
-- `../../ai-standard/navigation-chain.md`
-- `../../ai-standard/creation-rules.md`
+- `../../ai-standard/foundation/navigation-chain.md`
+- `../../ai-standard/foundation/creation-rules.md`
 - `../../ai-standard/templates/`
 - `../../ai-standard/checklists/`
 - `../../ai-standard/instructions/`

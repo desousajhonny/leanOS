@@ -44,7 +44,7 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
       context_loading: "lazy",
       navigation_chain: {
         enabled: true,
-        doc: "ai-standard/navigation-chain.md"
+        doc: "ai-standard/foundation/navigation-chain.md"
       },
       standard_library: "ai-standard"
     },
@@ -94,6 +94,7 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
     },
     ai_standard: {
       path: "ai-standard/README.md",
+      foundation: "ai-standard/foundation",
       templates: "ai-standard/templates",
       checklists: "ai-standard/checklists",
       instructions: "ai-standard/instructions"

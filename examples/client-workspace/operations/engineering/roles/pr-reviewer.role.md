@@ -17,7 +17,7 @@ Read:
 - `../../core/mvp/scope.md`
 - `../../core/mvp/acceptance-criteria.md`
 - `../../../.github/leanos/pr-validation-rules.md`
-- `../../../ai-standard/templates/code-review-template.md`
+- `../../../ai-standard/templates/review/code-review-template.md`
 
 ## Skills
 
