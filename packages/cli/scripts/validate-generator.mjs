@@ -605,6 +605,14 @@ async function validateWorkspaceFiles() {
   assert(epicToFeaturesWorkflow.includes("Ask Engineering to validate implementation boundaries"), "Epic to features workflow should require Engineering validation");
   assert(epicToFeaturesWorkflow.includes("Stop before branch, code, PR or remote write"), "Epic to features workflow should stop before implementation or remote writes");
   assert(epicToFeaturesWorkflow.includes("Next route:\n\n`issue-delivery-cycle`"), "Epic to features workflow should bridge to issue delivery cycle");
+  const issueDeliveryWorkflow = await readFile(join(rootDir, "operations", "workflows", "issue-delivery-cycle.workflow.md"), "utf8");
+  assert(issueDeliveryWorkflow.includes("Accept only a local Feature or GitHub Feature issue as input"), "Issue delivery workflow should start from a Feature, not a loose idea or Epic");
+  assert(issueDeliveryWorkflow.includes("Load Product Ops first"), "Issue delivery workflow should start with Product Ops readiness");
+  assert(issueDeliveryWorkflow.includes("ready-to-develop.md"), "Issue delivery workflow should run the ready-to-develop gate");
+  assert(issueDeliveryWorkflow.includes("route Design before Engineering"), "Issue delivery workflow should route Design before Engineering when UI is affected");
+  assert(issueDeliveryWorkflow.includes("new component contract"), "Issue delivery workflow should handle new component contract readiness");
+  assert(issueDeliveryWorkflow.includes("stop before code"), "Issue delivery workflow should stop before code when Design component readiness is missing");
+  assert(issueDeliveryWorkflow.includes("implement reusable component work before the screen or Feature"), "Issue delivery workflow should implement reusable components before dependent screens or features");
   await assertExists(join(rootDir, ".leanos", "commands", "define-design.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "README.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "design-system.md"));

@@ -261,7 +261,7 @@ Objetivo: impedir que o modelo implemente UI improvisada, componentes duplicados
 
 Decisao proposta:
 
-- [ ] Documentar fluxo operacional de Component Readiness dentro de `issue-delivery-cycle`:
+- [x] Documentar fluxo operacional de Component Readiness dentro de `issue-delivery-cycle`:
   - Founder pede implementacao de uma Feature ou GitHub Feature issue;
   - Root `AGENT.md` identifica intencao de delivery/implementacao e roteia para `operations/AGENT.md`;
   - `operations/AGENT.md` carrega `operations/workflows/issue-delivery-cycle.workflow.md`;

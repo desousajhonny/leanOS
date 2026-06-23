@@ -4115,9 +4115,23 @@ export const rootDepartments: RootDepartmentDefinition[] = [
       },
       {
         slug: "issue-delivery-cycle",
-        purpose: "Coordinate Operations areas from issue interpretation to branch, implementation, review and PR.",
+        purpose: "Coordinate Operations areas from Feature interpretation to readiness, component/design checks, branch, implementation, review and PR.",
         requiredAreas: ["product-ops", "engineering"],
-        steps: ["Read issue and delivery scope", "Route Design only when UX is affected", "Route Security only when data, auth, privacy, abuse or compliance is involved", "Create issue-linked branch", "Plan and implement in Engineering", "Run tests or explain gaps", "Run PR validation", "Prepare PR"]
+        steps: [
+          "Accept only a local Feature or GitHub Feature issue as input; do not start from a loose idea, roadmap item or unsplit Epic",
+          "Load Product Ops first to identify the Feature, parent Epic, delivery scope and readiness state",
+          "Run `operations/product-ops/knowledge/ready-to-develop.md` before branch, code or PR work",
+          "If the Feature affects UI, screens, flows, copy, accessibility or reusable components, route Design before Engineering",
+          "Ask Design to confirm whether the Feature can reuse an existing component, adapt an existing component or needs a new component contract",
+          "If a new component contract is needed and the component readiness assets do not exist yet, stop before code and explain the missing Design path or template to the founder",
+          "Route Security only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved",
+          "Route DevOps only when environments, CI/CD, deploy, observability, configuration, GitHub sync or release readiness are affected",
+          "After Product Ops, Design, Security and DevOps readiness are ready or explicitly not applicable, create the issue-linked branch",
+          "Plan implementation in Engineering; implement reusable component work before the screen or Feature that depends on it",
+          "Run tests or explain gaps",
+          "Run PR validation",
+          "Prepare PR"
+        ]
       },
       {
         slug: "post-merge-continuation",
