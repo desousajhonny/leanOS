@@ -15,6 +15,7 @@ Use when turning strategy and roadmap into delivery scope, issue readiness and d
 ## Files
 
 - `overview.md`
+- `work-taxonomy.md`
 - `delivery-scope.md`
 - `delivery-context.md`
 - `issue-readiness.md`

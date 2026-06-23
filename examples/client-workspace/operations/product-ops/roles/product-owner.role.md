@@ -16,6 +16,7 @@ Own MVP execution clarity with supervision from Product and PM strategy.
 Read:
 
 - `../knowledge/overview.md`
+- `../knowledge/work-taxonomy.md`
 - `../knowledge/delivery-scope.md`
 - `../knowledge/issue-readiness.md`
 - `../knowledge/ready-to-develop.md`

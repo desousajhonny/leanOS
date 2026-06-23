@@ -261,7 +261,7 @@ Objetivo: definir uma linguagem product-first antes de implementar o proximo flu
 
 Decisao proposta:
 
-- [ ] Criar `operations/product-ops/knowledge/work-taxonomy.md`
+- [x] Criar `operations/product-ops/knowledge/work-taxonomy.md`
   - deve explicar Roadmap, Backlog, Delivery Scope, Epic, Feature e Task;
   - deve deixar claro como cada item entra no sistema;
   - deve definir que Epic e uma initiative ou bloco grande de entrega;

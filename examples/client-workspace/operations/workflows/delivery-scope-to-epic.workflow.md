@@ -17,7 +17,7 @@ All required areas are active in this department.
 
 1. Confirm delivery scope exists and has scope_type, milestone and release_goal
 2. Load Product Ops and choose Product Owner
-3. Read delivery scope, PRD, acceptance criteria and ready-to-develop gate
+3. Read work taxonomy, delivery scope, PRD, acceptance criteria and ready-to-develop gate
 4. Use GitHub templates to draft one or more epics with outcome, non-goals, risks and readiness notes
 5. Route DevOps only when GitHub Project configuration, labels, milestones or sync state need validation
 6. Route Engineering only when epic boundaries need technical feasibility review

@@ -359,7 +359,8 @@ client-workspace/
 |   |   |   |-- overview.md
 |   |   |   |-- README.md
 |   |   |   |-- ready-to-develop.md
-|   |   |   `-- technical-decisions.md
+|   |   |   |-- technical-decisions.md
+|   |   |   `-- work-taxonomy.md
 |   |   |-- mvp/
 |   |   |   |-- acceptance-criteria.md
 |   |   |   |-- non-goals.md

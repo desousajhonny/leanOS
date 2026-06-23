@@ -15,6 +15,7 @@ Turn Strategy and Roadmap into delivery scope, acceptance criteria and implement
 ## Source of Truth
 
 - `knowledge/overview.md`
+- `knowledge/work-taxonomy.md`
 - `knowledge/delivery-scope.md`
 - `knowledge/delivery-context.md`
 - `knowledge/issue-readiness.md`

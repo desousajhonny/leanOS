@@ -153,6 +153,178 @@ TBD
 `;
 }
 
+function workTaxonomyKnowledge(): string {
+  return `# Work Taxonomy
+
+## Purpose
+
+Define the LeanOS product work hierarchy so agents, founders and future GitHub sync flows use the same language.
+
+This file is a framework rule for Product Ops. Use it before creating epics, features, tasks or GitHub tracking items.
+
+## Core Hierarchy
+
+~~~text
+Backlog
+  -> Roadmap
+    -> Delivery Scope
+      -> Epic
+        -> Feature
+          -> Task
+            -> Implementation / PR
+~~~
+
+## Backlog
+
+Backlog is the organized parking lot for ideas, opportunities, improvements and problems that may become roadmap later.
+
+It answers:
+
+- What might be worth considering later?
+- What is not committed yet?
+- What needs more evidence or prioritization?
+
+Backlog items do not automatically become delivery work.
+
+## Roadmap
+
+Roadmap is the product direction and sequencing plan.
+
+It answers:
+
+- What are we likely to build?
+- Why does it matter?
+- When or in which horizon should it happen?
+- Which milestone, cycle or release might own it?
+
+Roadmap is not a task list and not everything in roadmap needs GitHub tracking.
+
+## Delivery Scope
+
+Delivery Scope is the confirmed slice of roadmap that becomes real delivery work.
+
+It answers:
+
+- What are we actually preparing to build now?
+- Is this MVP, Release, Experiment, Beta or Internal work?
+- What is the milestone?
+- What is the release goal?
+- What is explicitly out of scope?
+
+Delivery Scope must exist before an Epic is created.
+
+## Epic
+
+Epic is a large delivery initiative inside a confirmed Delivery Scope.
+
+It answers:
+
+- What outcome should this delivery block achieve?
+- Which user or business capability does it unlock?
+- Which features belong inside it?
+- What is out of scope?
+
+Epic is not usually small enough to implement directly.
+
+Local Epic structure:
+
+~~~text
+operations/product-ops/epics/<epic-slug>/
+  README.md
+  <feature-slug>.md
+~~~
+
+The Epic README owns the epic context. Files inside the Epic folder are Features that belong to that Epic.
+
+## Feature
+
+Feature is a concrete product capability inside an Epic.
+
+It answers:
+
+- What can the user or system do after this is implemented?
+- What acceptance criteria prove it works?
+- Which Design, Security, DevOps or Engineering criteria apply?
+- Which tasks are needed to implement it?
+
+Feature is the main unit that should pass the Delivery Readiness Matrix before implementation.
+
+## Task
+
+Task is a concrete implementation or operational checklist item inside a Feature.
+
+It answers:
+
+- What specific work needs to be done?
+- What can be checked off during implementation?
+
+Tasks should normally live inside the Feature file as a checklist.
+
+Example task names:
+
+~~~text
+Create database model
+Create form
+Add validation
+Add tests
+~~~
+
+Create separate Task issues only when there is a clear operational reason.
+
+## Naming Convention
+
+Use stable, searchable titles:
+
+- Epic title: [EPIC] Customer Management
+- Feature title: [FEATURE: Customer Management] Create customer profile
+
+Use stable keys in metadata or body when needed:
+
+~~~yaml
+epic_key: customer-management
+feature_key: create-customer-profile
+~~~
+
+Avoid manual ordering names like [EPIC A] because they break when priority changes.
+
+## Local Vs GitHub
+
+LeanOS local files are the primary operational source.
+
+GitHub is an optional tracking and sync layer.
+
+Mapping:
+
+- Local Epic -> GitHub issue with label epic
+- Local Feature -> GitHub issue with label feature
+- Feature Tasks -> checklist inside the Feature issue by default
+
+If local and GitHub disagree, the model must explain the conflict and ask before overwriting either side.
+
+## Ownership
+
+- Backlog and Roadmap: Strategy Roadmap.
+- Delivery Scope: Product Ops.
+- Epic: Product Ops.
+- Feature: Product Ops with Engineering, and Design/Security/DevOps when applicable.
+- Task: Engineering or the area responsible for execution.
+
+## Readiness Rule
+
+A Feature can exist before it is ready to develop.
+
+A Feature can enter implementation only after it passes \`ready-to-develop.md\`.
+
+## Do Not Do
+
+- Do not treat roadmap items as implementation work.
+- Do not skip Delivery Scope before creating an Epic.
+- Do not send vague Epics directly to Engineering.
+- Do not create GitHub issues before the founder confirms sync.
+- Do not make Tasks top-level planning objects unless they need separate tracking.
+`;
+}
+
 function deliveryContextKnowledge(): string {
   return `# Delivery Context
 
@@ -2506,10 +2678,11 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         requestTypes: "delivery scope, acceptance criteria, epics, sub-issues, issue readiness or delivery boundaries",
         purpose: "Turn Strategy and Roadmap into delivery scope, acceptance criteria and implementation-ready work.",
         whenToUse: ["define MVP", "shape acceptance criteria", "break epics into sub-issues", "check issue readiness", "coordinate delivery scope"],
-        sourceOfTruth: ["knowledge/overview.md", "knowledge/delivery-scope.md", "knowledge/delivery-context.md", "knowledge/issue-readiness.md", "knowledge/ready-to-develop.md", "knowledge/technical-decisions.md", "mvp/scope.md", "mvp/prd.md", "mvp/user-stories.md", "mvp/acceptance-criteria.md"],
+        sourceOfTruth: ["knowledge/overview.md", "knowledge/work-taxonomy.md", "knowledge/delivery-scope.md", "knowledge/delivery-context.md", "knowledge/issue-readiness.md", "knowledge/ready-to-develop.md", "knowledge/technical-decisions.md", "mvp/scope.md", "mvp/prd.md", "mvp/user-stories.md", "mvp/acceptance-criteria.md"],
         files: [
-          { path: "knowledge/README.md", content: () => folderReadme("Product Ops Knowledge", "Durable operational context produced by Product Ops.", "Use when turning strategy and roadmap into delivery scope, issue readiness and delivery boundaries.", "overview.md", ["overview.md", "delivery-scope.md", "delivery-context.md", "issue-readiness.md", "ready-to-develop.md", "technical-decisions.md"], ["../roles/", "../skills/", "../playbooks/", "../mvp/", "../../../strategy/product/", "../../../strategy/roadmap/"], "Keep this folder focused on delivery context. Do not move full architecture, API contracts or data models here before the product stack exists.") },
+          { path: "knowledge/README.md", content: () => folderReadme("Product Ops Knowledge", "Durable operational context produced by Product Ops.", "Use when turning strategy and roadmap into delivery scope, issue readiness and delivery boundaries.", "overview.md", ["overview.md", "work-taxonomy.md", "delivery-scope.md", "delivery-context.md", "issue-readiness.md", "ready-to-develop.md", "technical-decisions.md"], ["../roles/", "../skills/", "../playbooks/", "../mvp/", "../../../strategy/product/", "../../../strategy/roadmap/"], "Keep this folder focused on delivery context. Do not move full architecture, API contracts or data models here before the product stack exists.") },
           { path: "knowledge/overview.md", content: productOpsOverviewKnowledge },
+          { path: "knowledge/work-taxonomy.md", content: workTaxonomyKnowledge },
           { path: "knowledge/delivery-scope.md", content: deliveryScopeKnowledge },
           { path: "knowledge/delivery-context.md", content: deliveryContextKnowledge },
           { path: "knowledge/issue-readiness.md", content: issueReadinessKnowledge },
@@ -2530,7 +2703,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Product Owner",
             purpose: "Own MVP execution clarity with supervision from Product and PM strategy.",
             useWhen: ["MVP scope needs definition", "acceptance criteria are unclear", "delivery scope needs coordination", "an epic needs to be broken into sub-issues"],
-            beforeActing: ["../knowledge/overview.md", "../knowledge/delivery-scope.md", "../knowledge/issue-readiness.md", "../knowledge/ready-to-develop.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md"],
+            beforeActing: ["../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/delivery-scope.md", "../knowledge/issue-readiness.md", "../knowledge/ready-to-develop.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md"],
             skills: ["define-delivery-scope", "define-mvp", "write-acceptance-criteria", "check-delivery-coherence", "shape-epic", "write-subissue-criteria"],
             playbooks: ["delivery-scope-planning", "mvp-delivery", "epic-to-subissues"]
           },
@@ -2566,7 +2739,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Shape Epic",
             purpose: "Turn a roadmap epic into an implementation-ready scope boundary before sub-issues are created.",
             useWhen: ["a roadmap item needs to become a GitHub epic", "an existing epic needs enough clarity to be broken down", "the team needs to confirm outcome, scope and non-goals before issue creation"],
-            requiredContext: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/issue-readiness.md", "../knowledge/ready-to-develop.md", "../mvp/prd.md", "../mvp/scope.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md"],
+            requiredContext: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/issue-readiness.md", "../knowledge/ready-to-develop.md", "../mvp/prd.md", "../mvp/scope.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md"],
             inputs: ["Parent epic or roadmap item", "Product outcome", "MVP scope", "Non-goals", "Milestone or current cycle", "Known dependencies"],
             process: ["Restate the epic outcome in one sentence.", "Confirm the user, problem and business value.", "Identify scope boundaries and non-goals.", "Map the epic to MVP scope, PRD and roadmap milestone.", "List likely sub-issue slices without creating them yet.", "Mark missing context explicitly instead of inventing it."],
             checks: ["Outcome is clear.", "Scope and non-goals are explicit.", "The epic can be split without losing product intent.", "Missing Product, Design, Security, DevOps or Engineering input is called out."],
@@ -3675,7 +3848,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         slug: "delivery-scope-to-epic",
         purpose: "Turn confirmed delivery scope into GitHub-ready epic drafts without creating sub-issues, branches or code.",
         requiredAreas: ["product-ops"],
-        steps: ["Confirm delivery scope exists and has scope_type, milestone and release_goal", "Load Product Ops and choose Product Owner", "Read delivery scope, PRD, acceptance criteria and ready-to-develop gate", "Use GitHub templates to draft one or more epics with outcome, non-goals, risks and readiness notes", "Route DevOps only when GitHub Project configuration, labels, milestones or sync state need validation", "Route Engineering only when epic boundaries need technical feasibility review", "Ask for confirmation before any GitHub API write or project sync", "Stop before sub-issues, branches, code or PR work"],
+        steps: ["Confirm delivery scope exists and has scope_type, milestone and release_goal", "Load Product Ops and choose Product Owner", "Read work taxonomy, delivery scope, PRD, acceptance criteria and ready-to-develop gate", "Use GitHub templates to draft one or more epics with outcome, non-goals, risks and readiness notes", "Route DevOps only when GitHub Project configuration, labels, milestones or sync state need validation", "Route Engineering only when epic boundaries need technical feasibility review", "Ask for confirmation before any GitHub API write or project sync", "Stop before sub-issues, branches, code or PR work"],
         continuationBridge: {
           immediate: "O epic draft esta pronto.\nQuer que eu quebre esse epic em sub-issues usando a Delivery Readiness Matrix?",
           laterTriggers: ["quebre esse epic em sub-issues", "crie as sub-issues desse epic", "vamos fatiar esse epic", "prepara as issues de implementacao", "quebre o epic #123"],

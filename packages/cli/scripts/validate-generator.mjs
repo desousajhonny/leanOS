@@ -558,6 +558,7 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "operations", "product-ops", "AGENT.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "README.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "overview.md"));
+  await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "work-taxonomy.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "delivery-context.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "issue-readiness.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "ready-to-develop.md"));
@@ -581,6 +582,7 @@ async function validateWorkspaceFiles() {
   assert(deliveryScopeWorkflow.includes("Next route:\n\n`delivery-scope-to-epic`"), "Roadmap item to delivery scope workflow should bridge to delivery-scope-to-epic");
   const deliveryScopeToEpicWorkflow = await readFile(join(rootDir, "operations", "workflows", "delivery-scope-to-epic.workflow.md"), "utf8");
   assert(deliveryScopeToEpicWorkflow.includes("Turn confirmed delivery scope into GitHub-ready epic drafts"), "Delivery scope to epic workflow should define its planning purpose");
+  assert(deliveryScopeToEpicWorkflow.includes("Read work taxonomy"), "Delivery scope to epic workflow should load Product Ops work taxonomy");
   assert(deliveryScopeToEpicWorkflow.includes("Ask for confirmation before any GitHub API write"), "Delivery scope to epic workflow should require confirmation before GitHub writes");
   assert(deliveryScopeToEpicWorkflow.includes("Next route:\n\n`epic-to-subissues`"), "Delivery scope to epic workflow should bridge to epic-to-subissues");
   await assertExists(join(rootDir, ".leanos", "commands", "define-design.md"));
@@ -1487,6 +1489,14 @@ async function assertFounderIntentRouting(rootDir) {
   assert(readyToDevelop.includes("## Design Readiness"), "Ready-to-develop gate should include design readiness");
   assert(readyToDevelop.includes("## Security Readiness"), "Ready-to-develop gate should include security readiness");
   assert(readyToDevelop.includes("## Ready States"), "Ready-to-develop gate should define ready states");
+  const workTaxonomy = await readFile(join(rootDir, "operations", "product-ops", "knowledge", "work-taxonomy.md"), "utf8");
+  assert(workTaxonomy.includes("# Work Taxonomy"), "Product Ops should generate work taxonomy");
+  assert(workTaxonomy.includes("Backlog"), "Work taxonomy should define Backlog");
+  assert(workTaxonomy.includes("Delivery Scope"), "Work taxonomy should define Delivery Scope");
+  assert(workTaxonomy.includes("Epic"), "Work taxonomy should define Epic");
+  assert(workTaxonomy.includes("Feature"), "Work taxonomy should define Feature");
+  assert(workTaxonomy.includes("Task"), "Work taxonomy should define Task");
+  assert(workTaxonomy.includes("[FEATURE: Customer Management]"), "Work taxonomy should define Feature naming convention");
   assert(operatingRules.includes("`AGENT.md` is the operating owner for its level; `README.md` is the directory map"), "Operating rules should define AGENT and README responsibilities");
   assert(operatingRules.includes("Area `AGENT.md` files, when present, choose the specialist role"), "Operating rules should define area AGENT responsibility");
   assert.equal(operatingRules.includes("Root AGENT.md must not bypass department AGENT.md"), false, "Operating rules should avoid narrow workflow-bypass prohibitions");

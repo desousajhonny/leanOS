@@ -1,0 +1,168 @@
+# Work Taxonomy
+
+## Purpose
+
+Define the LeanOS product work hierarchy so agents, founders and future GitHub sync flows use the same language.
+
+This file is a framework rule for Product Ops. Use it before creating epics, features, tasks or GitHub tracking items.
+
+## Core Hierarchy
+
+~~~text
+Backlog
+  -> Roadmap
+    -> Delivery Scope
+      -> Epic
+        -> Feature
+          -> Task
+            -> Implementation / PR
+~~~
+
+## Backlog
+
+Backlog is the organized parking lot for ideas, opportunities, improvements and problems that may become roadmap later.
+
+It answers:
+
+- What might be worth considering later?
+- What is not committed yet?
+- What needs more evidence or prioritization?
+
+Backlog items do not automatically become delivery work.
+
+## Roadmap
+
+Roadmap is the product direction and sequencing plan.
+
+It answers:
+
+- What are we likely to build?
+- Why does it matter?
+- When or in which horizon should it happen?
+- Which milestone, cycle or release might own it?
+
+Roadmap is not a task list and not everything in roadmap needs GitHub tracking.
+
+## Delivery Scope
+
+Delivery Scope is the confirmed slice of roadmap that becomes real delivery work.
+
+It answers:
+
+- What are we actually preparing to build now?
+- Is this MVP, Release, Experiment, Beta or Internal work?
+- What is the milestone?
+- What is the release goal?
+- What is explicitly out of scope?
+
+Delivery Scope must exist before an Epic is created.
+
+## Epic
+
+Epic is a large delivery initiative inside a confirmed Delivery Scope.
+
+It answers:
+
+- What outcome should this delivery block achieve?
+- Which user or business capability does it unlock?
+- Which features belong inside it?
+- What is out of scope?
+
+Epic is not usually small enough to implement directly.
+
+Local Epic structure:
+
+~~~text
+operations/product-ops/epics/<epic-slug>/
+  README.md
+  <feature-slug>.md
+~~~
+
+The Epic README owns the epic context. Files inside the Epic folder are Features that belong to that Epic.
+
+## Feature
+
+Feature is a concrete product capability inside an Epic.
+
+It answers:
+
+- What can the user or system do after this is implemented?
+- What acceptance criteria prove it works?
+- Which Design, Security, DevOps or Engineering criteria apply?
+- Which tasks are needed to implement it?
+
+Feature is the main unit that should pass the Delivery Readiness Matrix before implementation.
+
+## Task
+
+Task is a concrete implementation or operational checklist item inside a Feature.
+
+It answers:
+
+- What specific work needs to be done?
+- What can be checked off during implementation?
+
+Tasks should normally live inside the Feature file as a checklist.
+
+Example task names:
+
+~~~text
+Create database model
+Create form
+Add validation
+Add tests
+~~~
+
+Create separate Task issues only when there is a clear operational reason.
+
+## Naming Convention
+
+Use stable, searchable titles:
+
+- Epic title: [EPIC] Customer Management
+- Feature title: [FEATURE: Customer Management] Create customer profile
+
+Use stable keys in metadata or body when needed:
+
+~~~yaml
+epic_key: customer-management
+feature_key: create-customer-profile
+~~~
+
+Avoid manual ordering names like [EPIC A] because they break when priority changes.
+
+## Local Vs GitHub
+
+LeanOS local files are the primary operational source.
+
+GitHub is an optional tracking and sync layer.
+
+Mapping:
+
+- Local Epic -> GitHub issue with label epic
+- Local Feature -> GitHub issue with label feature
+- Feature Tasks -> checklist inside the Feature issue by default
+
+If local and GitHub disagree, the model must explain the conflict and ask before overwriting either side.
+
+## Ownership
+
+- Backlog and Roadmap: Strategy Roadmap.
+- Delivery Scope: Product Ops.
+- Epic: Product Ops.
+- Feature: Product Ops with Engineering, and Design/Security/DevOps when applicable.
+- Task: Engineering or the area responsible for execution.
+
+## Readiness Rule
+
+A Feature can exist before it is ready to develop.
+
+A Feature can enter implementation only after it passes `ready-to-develop.md`.
+
+## Do Not Do
+
+- Do not treat roadmap items as implementation work.
+- Do not skip Delivery Scope before creating an Epic.
+- Do not send vague Epics directly to Engineering.
+- Do not create GitHub issues before the founder confirms sync.
+- Do not make Tasks top-level planning objects unless they need separate tracking.

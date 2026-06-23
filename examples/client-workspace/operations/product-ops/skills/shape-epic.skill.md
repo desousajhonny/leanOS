@@ -14,6 +14,7 @@ Turn a roadmap epic into an implementation-ready scope boundary before sub-issue
 
 - ../AGENT.md
 - ../knowledge/overview.md
+- ../knowledge/work-taxonomy.md
 - ../knowledge/issue-readiness.md
 - ../knowledge/ready-to-develop.md
 - ../mvp/prd.md
