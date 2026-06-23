@@ -54,7 +54,17 @@ Store remote IDs, issue numbers, project item IDs and conflict state in:
 
 Do not store tokens, secrets or personal credentials in sync state.
 
+## Sync Location Decision
+
+Do not create or depend on `operations/product-ops/epics/synced/` in the initial scaffold.
+
+Keep local Epics and Features in `operations/product-ops/epics/` and use `sync-state.yaml` as the index for remote status.
+
+Reason: synced work is still product context. Moving it to an archive folder can hide useful context from future planning and implementation flows.
+
 ## Required Sync Behavior
+
+Use `/github-sync` as the chat intent for this flow.
 
 Before creating or updating GitHub:
 

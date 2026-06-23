@@ -381,6 +381,7 @@ async function validateWorkspaceFiles() {
     ".github/prompts/leanos-init.prompt.md",
     ".leanos/commands/start-leanos.md",
     ".leanos/commands/create-issues.md",
+    ".leanos/commands/github-sync.md",
     ".leanos/commands/create-branch.md",
     ".leanos/commands/create-pr.md",
     ".leanos/commands/review-pr.md",
@@ -587,6 +588,7 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "operations", "workflows", "issue-delivery-cycle.workflow.md"));
   await assertExists(join(rootDir, "operations", "workflows", "post-merge-continuation.workflow.md"));
   assert.equal(await exists(join(rootDir, "operations", "product-ops", "epics", "example-epic")), false, "Product Ops should not generate fake example epics");
+  assert.equal(await exists(join(rootDir, "operations", "product-ops", "epics", "synced")), false, "Product Ops should not generate a synced epics archive folder");
   const deliveryScopeWorkflow = await readFile(join(rootDir, "operations", "workflows", "roadmap-item-to-delivery-scope.workflow.md"), "utf8");
   assert(deliveryScopeWorkflow.includes("## Continuation Bridge"), "Roadmap item to delivery scope workflow should offer a continuation bridge");
   assert(deliveryScopeWorkflow.includes("Next route:\n\n`delivery-scope-to-epic`"), "Roadmap item to delivery scope workflow should bridge to delivery-scope-to-epic");
@@ -681,6 +683,7 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, ".github", "prompts", "start-leanos.prompt.md"));
   await assertExists(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"));
   await assertExists(join(rootDir, ".leanos", "commands", "start-leanos.md"));
+  await assertExists(join(rootDir, ".leanos", "commands", "github-sync.md"));
   await assertExists(join(rootDir, ".leanos", "vscode", "README.md"));
   assert.equal(await exists(join(rootDir, ".leanos", "workflows")), false, "Business workflows should not be generated under .leanos/workflows");
 
@@ -954,6 +957,7 @@ async function validateClientWorkspaceFixture() {
     ".leanos/commands/start-leanos.md",
     ".leanos/commands/define-design.md",
     ".leanos/commands/create-issues.md",
+    ".leanos/commands/github-sync.md",
     ".leanos/commands/create-branch.md",
     ".leanos/commands/create-pr.md",
     ".leanos/commands/review-pr.md",
@@ -1315,6 +1319,7 @@ async function assertGitHubReadiness(rootDir) {
   const projectSync = await readFile(join(rootDir, ".github", "leanos", "project-sync.yaml"), "utf8");
   const syncState = await readFile(join(rootDir, ".github", "leanos", "sync-state.yaml"), "utf8");
   const labels = await readFile(join(rootDir, ".github", "leanos", "labels.yaml"), "utf8");
+  const githubSyncCommand = await readFile(join(rootDir, ".leanos", "commands", "github-sync.md"), "utf8");
   const githubReadme = await readFile(join(rootDir, ".github", "leanos", "README.md"), "utf8");
   const githubRole = await readFile(join(rootDir, "operations", "devops", "roles", "github-devops.role.md"), "utf8");
   const githubSkill = await readFile(join(rootDir, "operations", "devops", "skills", "configure-github-project.skill.md"), "utf8");
@@ -1346,6 +1351,17 @@ async function assertGitHubReadiness(rootDir) {
   assert(workMapping.includes("Feature markdown file"), "GitHub work mapping should map local Feature files");
   assert(workMapping.includes("Feature Tasks"), "GitHub work mapping should keep Feature tasks as checklists");
   assert(workMapping.includes("Exceptional Task"), "GitHub work mapping should define task issue exceptions");
+  assert(workMapping.includes("Use `/github-sync` as the chat intent for this flow"), "GitHub work mapping should route sync through /github-sync");
+  assert(workMapping.includes("Do not create or depend on `operations/product-ops/epics/synced/`"), "GitHub work mapping should avoid a synced archive folder");
+  assert(workMapping.includes("use `sync-state.yaml` as the index"), "GitHub work mapping should use sync-state as the sync index");
+  assert(githubSyncCommand.includes("# /github-sync"), "GitHub sync command should be generated");
+  assert(githubSyncCommand.includes("operations/product-ops/epics/"), "GitHub sync command should read local Epics and Features");
+  assert(githubSyncCommand.includes(".github/leanos/work-mapping.md"), "GitHub sync command should load work mapping");
+  assert(githubSyncCommand.includes(".github/leanos/sync-state.yaml"), "GitHub sync command should compare sync state");
+  assert(githubSyncCommand.includes("dry-run summary"), "GitHub sync command should prepare a dry-run");
+  assert(githubSyncCommand.includes("Do not call GitHub API directly from the model"), "GitHub sync command should block direct model API writes");
+  assert(githubSyncCommand.includes("Feature Tasks as checklists"), "GitHub sync command should keep tasks as feature checklists by default");
+  assert(githubSyncCommand.includes("may store GitHub issue numbers"), "GitHub sync command should allow only non-secret sync-state updates");
   assert(syncState.includes("must never store tokens"), "GitHub sync state should warn against storing tokens");
   assert(syncState.includes("features: {}"), "GitHub sync state should track features");
   assert(syncState.includes("task_issues: {}"), "GitHub sync state should track exceptional task issues");
@@ -1577,6 +1593,8 @@ async function assertFounderIntentRouting(rootDir) {
   assert(workTaxonomy.includes("| scoped | Delivery boundaries"), "Work taxonomy should explain scoped status");
   assert(workTaxonomy.includes("| blocked | Cannot move forward"), "Work taxonomy should explain blocked status");
   assert(workTaxonomy.includes("## Sync Status"), "Work taxonomy should define remote sync status separately");
+  assert(workTaxonomy.includes("## Sync State Decision"), "Work taxonomy should define the sync-state decision");
+  assert(workTaxonomy.includes("Do not move synced Epics or Features into a separate `synced/` folder"), "Work taxonomy should avoid a synced archive folder");
   assert(workTaxonomy.includes("not_synced"), "Work taxonomy should include not_synced sync status");
   assert(workTaxonomy.includes("sync_ready"), "Work taxonomy should include sync_ready sync status");
   assert(workTaxonomy.includes("conflict"), "Work taxonomy should include conflict sync status");

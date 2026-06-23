@@ -462,6 +462,7 @@ export function creationInstructions(assetName: string): string {
 
 export function formatCommandInvocation(slug: string): string {
   if (slug === "start-leanos") return "/start-leanos";
+  if (slug === "github-sync") return "/github-sync";
 
   return `/${slug.replace(/-/g, " ")}`;
 }

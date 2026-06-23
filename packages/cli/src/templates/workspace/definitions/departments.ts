@@ -355,6 +355,18 @@ Task issues are exceptions, not the default. Create a separate Task issue only w
 
 Remote sync metadata must live in \`.github/leanos/sync-state.yaml\`. Do not store GitHub IDs inside product work status unless the template explicitly includes a sync field.
 
+## Sync State Decision
+
+Do not move synced Epics or Features into a separate \`synced/\` folder in the initial LeanOS scaffold.
+
+Reason:
+
+- the local Epic folder remains the operational context for future planning, feature shaping and implementation;
+- moving synced work can make the model miss relevant product context;
+- sync state is metadata, not a new product hierarchy.
+
+Use \`.github/leanos/sync-state.yaml\` as the sync index. Keep product work in \`operations/product-ops/epics/\`.
+
 If local and GitHub disagree, the model must explain the conflict and ask before overwriting either side.
 
 Required labels:
@@ -398,6 +410,7 @@ A Feature can enter implementation only after it passes \`ready-to-develop.md\`.
 - Do not create GitHub issues before the founder confirms sync.
 - Do not make Tasks top-level planning objects unless they need separate tracking.
 - Do not use GitHub issue numbers as the only identifier for local Epics or Features.
+- Do not create or use \`operations/product-ops/epics/synced/\` unless a future framework version explicitly supports that flow.
 `;
 }
 
@@ -470,6 +483,16 @@ Feature title:
 - Separate Task issue -> only when assignment, review, deployment, security or tracking needs separate ownership.
 - Remote IDs and issue numbers -> \`../../../.github/leanos/sync-state.yaml\`, not product status.
 
+## Sync Location Decision
+
+Keep synced and unsynced Epics in this folder.
+
+Do not create \`operations/product-ops/epics/synced/\` in the MVP scaffold.
+
+Use \`../../../.github/leanos/sync-state.yaml\` to know whether an Epic or Feature is \`not_synced\`, \`sync_ready\`, \`synced\` or \`conflict\`.
+
+This keeps Product Ops context visible to the model without forcing it to reread a second archive folder.
+
 ## Status Rules
 
 Use \`status\` for product work state:
@@ -489,7 +512,7 @@ Do not use \`synced\` as a product status.
 ## Do Not Do
 
 - Do not create example Epics that are not tied to real delivery scope.
-- Do not move synced Epics to another folder unless the framework explicitly supports that flow.
+- Do not move synced Epics to another folder unless a future framework version explicitly supports that flow.
 - Do not treat GitHub as the source of truth when local LeanOS files exist.
 `;
 }

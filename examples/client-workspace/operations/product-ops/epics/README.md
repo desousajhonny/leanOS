@@ -66,6 +66,16 @@ Feature title:
 - Separate Task issue -> only when assignment, review, deployment, security or tracking needs separate ownership.
 - Remote IDs and issue numbers -> `../../../.github/leanos/sync-state.yaml`, not product status.
 
+## Sync Location Decision
+
+Keep synced and unsynced Epics in this folder.
+
+Do not create `operations/product-ops/epics/synced/` in the MVP scaffold.
+
+Use `../../../.github/leanos/sync-state.yaml` to know whether an Epic or Feature is `not_synced`, `sync_ready`, `synced` or `conflict`.
+
+This keeps Product Ops context visible to the model without forcing it to reread a second archive folder.
+
 ## Status Rules
 
 Use `status` for product work state:
@@ -85,5 +95,5 @@ Do not use `synced` as a product status.
 ## Do Not Do
 
 - Do not create example Epics that are not tied to real delivery scope.
-- Do not move synced Epics to another folder unless the framework explicitly supports that flow.
+- Do not move synced Epics to another folder unless a future framework version explicitly supports that flow.
 - Do not treat GitHub as the source of truth when local LeanOS files exist.

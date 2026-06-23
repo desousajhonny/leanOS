@@ -58,6 +58,7 @@ client-workspace/
 |   |   |-- define-design.md
 |   |   |-- define-icp.md
 |   |   |-- define-mvp.md
+|   |   |-- github-sync.md
 |   |   |-- README.md
 |   |   |-- review-pr.md
 |   |   |-- start-leanos.md

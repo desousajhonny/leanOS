@@ -199,6 +199,18 @@ Task issues are exceptions, not the default. Create a separate Task issue only w
 
 Remote sync metadata must live in `.github/leanos/sync-state.yaml`. Do not store GitHub IDs inside product work status unless the template explicitly includes a sync field.
 
+## Sync State Decision
+
+Do not move synced Epics or Features into a separate `synced/` folder in the initial LeanOS scaffold.
+
+Reason:
+
+- the local Epic folder remains the operational context for future planning, feature shaping and implementation;
+- moving synced work can make the model miss relevant product context;
+- sync state is metadata, not a new product hierarchy.
+
+Use `.github/leanos/sync-state.yaml` as the sync index. Keep product work in `operations/product-ops/epics/`.
+
 If local and GitHub disagree, the model must explain the conflict and ask before overwriting either side.
 
 Required labels:
@@ -242,3 +254,4 @@ A Feature can enter implementation only after it passes `ready-to-develop.md`.
 - Do not create GitHub issues before the founder confirms sync.
 - Do not make Tasks top-level planning objects unless they need separate tracking.
 - Do not use GitHub issue numbers as the only identifier for local Epics or Features.
+- Do not create or use `operations/product-ops/epics/synced/` unless a future framework version explicitly supports that flow.

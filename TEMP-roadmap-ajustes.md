@@ -322,17 +322,17 @@ Decisao proposta:
   - Feature local -> GitHub issue com label `feature`;
   - Tasks -> checklist interna dentro da Feature issue por padrao;
   - criar issue separada para Task somente se houver necessidade operacional clara.
-- [ ] Planejar comando/chat intent `/github-sync`:
+- [x] Planejar comando/chat intent `/github-sync`:
   - o modelo deve ler `operations/product-ops/epics/`;
   - identificar Epics/Features ainda nao sincronizados;
   - preparar payload/dry-run;
   - pedir confirmacao antes de criar/atualizar GitHub issues;
   - atualizar sync state sem segredos.
-- [ ] Avaliar pasta de sync local:
-  - opcao: `operations/product-ops/epics/synced/` para epics ja sincronizados;
-  - objetivo: reduzir releitura desnecessaria e custo de contexto;
-  - cuidado: mover arquivos pode esconder contexto do modelo; talvez seja melhor manter no lugar e registrar sync em `.github/leanos/sync-state.yaml`;
-  - decisao futura: `synced/` fisico vs sync-state como indice.
+- [x] Avaliar pasta de sync local:
+  - decisao: nao criar `operations/product-ops/epics/synced/` no scaffold inicial;
+  - manter Epics e Features em `operations/product-ops/epics/`;
+  - usar `.github/leanos/sync-state.yaml` como indice de sync remoto;
+  - motivo: mover arquivos sincronizados pode esconder contexto util do modelo em planejamentos futuros.
 - [x] Criar/ajustar skill:
   - manter `write-feature-criteria` como skill de criterios e usar o playbook `epic-to-features` para a quebra completa;
   - a skill deve gerar Features com Tasks internas;
