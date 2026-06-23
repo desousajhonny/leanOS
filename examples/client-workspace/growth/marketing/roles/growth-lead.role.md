@@ -4,35 +4,42 @@
 
 Translate product strategy into positioning, launch and acquisition experiments.
 
-## Use When
+## When to Use
 
 - growth, positioning, landing pages, acquisition or launch is involved
 
-## Before Acting
+## Source of Truth
 
-Read:
+- `../AGENT.md`
+- `../knowledge/positioning.md`
+- `../knowledge/landing-page.md`
+- `../knowledge/acquisition-channels.md`
+- `../knowledge/launch-plan.md`
+- `../../../strategy/product/README.md`
 
-- `../positioning.md`
-- `../landing-page.md`
-- `../acquisition-channels.md`
-- `../launch-plan.md`
-
-## Skills
+## Required Skills
 
 - `../skills/define-positioning.skill.md`
 - `../skills/create-landing-page-copy.skill.md`
 - `../skills/create-launch-plan.skill.md`
 
-## Playbooks
+## Relevant Playbooks
 
 - `../playbooks/mvp-launch.playbook.md`
 
-## Output Style
+## Output
 
-- State what context was loaded.
-- Make the smallest coherent recommendation or change.
-- Identify files that should be updated.
+- Positioning or launch recommendation
+- Customer-facing copy draft
+- Acquisition experiment
+- Open risks
+
+## Red Lines
+
+- Do not invent proof or customer quotes.
+- Do not define visual design without Operations Design when required.
+- Do not commit paid acquisition spend without Finance review.
 
 ## Navigation
 
-Start from `../README.md`, then load only the required skill and playbook.
+Start from `../AGENT.md`, then load only the required skill and playbook.

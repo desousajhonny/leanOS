@@ -114,6 +114,8 @@ export type RoleDefinition = {
   beforeActing: string[];
   skills: string[];
   playbooks: string[];
+  outputs?: string[];
+  redLines?: string[];
 };
 
 export type SkillDefinition = {
@@ -134,10 +136,14 @@ export type PlaybookDefinition = {
   slug: string;
   title: string;
   purpose: string;
+  useWhen?: string[];
+  beforeActing?: string[];
   inputs?: string[];
   steps: string[];
+  securityGate?: string[];
   outputs?: string[];
   filesToUpdate?: string[];
+  stopConditions?: string[];
 };
 
 export type WorkflowDefinition = {

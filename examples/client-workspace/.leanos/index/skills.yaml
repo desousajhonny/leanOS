@@ -32,15 +32,6 @@ skills:
   - key: prepare-roadmap-sync
     area: strategy.roadmap
     path: ../../strategy/roadmap/skills/prepare-roadmap-sync.skill.md
-  - key: define-assumptions
-    area: strategy.validation
-    path: ../../strategy/validation/skills/define-assumptions.skill.md
-  - key: create-interview-script
-    area: strategy.validation
-    path: ../../strategy/validation/skills/create-interview-script.skill.md
-  - key: define-success-metrics
-    area: strategy.validation
-    path: ../../strategy/validation/skills/define-success-metrics.skill.md
   - key: define-mvp
     area: operations.product-ops
     path: ../../operations/product-ops/skills/define-mvp.skill.md
@@ -101,24 +92,57 @@ skills:
   - key: review-pr
     area: operations.engineering
     path: ../../operations/engineering/skills/review-pr.skill.md
+  - key: configure-github-project
+    area: operations.devops
+    path: ../../operations/devops/skills/configure-github-project.skill.md
+  - key: configure-environments
+    area: operations.devops
+    path: ../../operations/devops/skills/configure-environments.skill.md
   - key: setup-ci
     area: operations.devops
     path: ../../operations/devops/skills/setup-ci.skill.md
   - key: plan-deployment
     area: operations.devops
     path: ../../operations/devops/skills/plan-deployment.skill.md
-  - key: configure-github-project
-    area: operations.devops
-    path: ../../operations/devops/skills/configure-github-project.skill.md
   - key: define-observability
     area: operations.devops
     path: ../../operations/devops/skills/define-observability.skill.md
-  - key: threat-model
+  - key: prepare-release
+    area: operations.devops
+    path: ../../operations/devops/skills/prepare-release.skill.md
+  - key: threat-modeling
     area: operations.security
-    path: ../../operations/security/skills/threat-model.skill.md
-  - key: review-security
+    path: ../../operations/security/skills/threat-modeling.skill.md
+  - key: access-control-review
     area: operations.security
-    path: ../../operations/security/skills/review-security.skill.md
+    path: ../../operations/security/skills/access-control-review.skill.md
+  - key: api-security-review
+    area: operations.security
+    path: ../../operations/security/skills/api-security-review.skill.md
+  - key: database-security-review
+    area: operations.security
+    path: ../../operations/security/skills/database-security-review.skill.md
+  - key: secrets-management
+    area: operations.security
+    path: ../../operations/security/skills/secrets-management.skill.md
+  - key: secure-code-review
+    area: operations.security
+    path: ../../operations/security/skills/secure-code-review.skill.md
+  - key: dependency-supply-chain-review
+    area: operations.security
+    path: ../../operations/security/skills/dependency-supply-chain-review.skill.md
+  - key: infra-hardening-review
+    area: operations.security
+    path: ../../operations/security/skills/infra-hardening-review.skill.md
+  - key: incident-response
+    area: operations.security
+    path: ../../operations/security/skills/incident-response.skill.md
+  - key: security-automation-readiness
+    area: operations.security
+    path: ../../operations/security/skills/security-automation-readiness.skill.md
+  - key: ai-generated-code-security
+    area: operations.security
+    path: ../../operations/security/skills/ai-generated-code-security.skill.md
   - key: map-customer-feedback
     area: growth.customer-experience
     path: ../../growth/customer-experience/skills/map-customer-feedback.skill.md

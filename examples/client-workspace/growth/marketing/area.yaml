@@ -2,7 +2,7 @@ area:
   key: growth.marketing
   department: growth
   path: growth/marketing
-  agent: null
+  agent: AGENT.md
   readme: README.md
   roles:
     - growth-lead
@@ -13,7 +13,7 @@ area:
   playbooks:
     - mvp-launch
   source_of_truth:
-    - positioning.md
-    - landing-page.md
-    - acquisition-channels.md
-    - launch-plan.md
+    - knowledge/positioning.md
+    - knowledge/landing-page.md
+    - knowledge/acquisition-channels.md
+    - knowledge/launch-plan.md

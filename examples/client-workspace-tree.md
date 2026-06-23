@@ -25,6 +25,7 @@ client-workspace/
 |   |   |-- pr-validation-rules.md
 |   |   |-- project-sync.yaml
 |   |   |-- README.md
+|   |   |-- security-automation.md
 |   |   `-- sync-state.yaml
 |   |-- prompts/
 |   |   |-- leanos-init.prompt.md
@@ -157,10 +158,10 @@ client-workspace/
 |   |   |   `-- workflow-template.md
 |   |   |-- github/
 |   |   |   |-- branch-name-template.md
+|   |   |   |-- delivery-readiness-matrix-template.md
 |   |   |   |-- github-epic-template.md
 |   |   |   |-- github-issue-template.md
 |   |   |   |-- github-subissue-template.md
-|   |   |   |-- issue-readiness-matrix-template.md
 |   |   |   |-- pull-request-template.md
 |   |   |   `-- README.md
 |   |   |-- review/
@@ -179,6 +180,12 @@ client-workspace/
 |   `-- README.md
 |-- growth/
 |   |-- customer-experience/
+|   |   |-- knowledge/
+|   |   |   |-- churn-reasons.md
+|   |   |   |-- customer-feedback.md
+|   |   |   |-- README.md
+|   |   |   |-- success-moments.md
+|   |   |   `-- support-notes.md
 |   |   |-- playbooks/
 |   |   |   |-- customer-learning-loop.playbook.md
 |   |   |   `-- README.md
@@ -189,13 +196,17 @@ client-workspace/
 |   |   |   |-- map-customer-feedback.skill.md
 |   |   |   |-- README.md
 |   |   |   `-- synthesize-support-patterns.skill.md
+|   |   |-- AGENT.md
 |   |   |-- area.yaml
-|   |   |-- churn-reasons.md
-|   |   |-- customer-feedback.md
-|   |   |-- README.md
-|   |   |-- success-moments.md
-|   |   `-- support-notes.md
+|   |   `-- README.md
 |   |-- finance/
+|   |   |-- knowledge/
+|   |   |   |-- budget.md
+|   |   |   |-- finance-risks.md
+|   |   |   |-- pricing.md
+|   |   |   |-- README.md
+|   |   |   |-- revenue-model.md
+|   |   |   `-- unit-economics.md
 |   |   |-- playbooks/
 |   |   |   |-- finance-review.playbook.md
 |   |   |   `-- README.md
@@ -206,14 +217,16 @@ client-workspace/
 |   |   |   |-- model-unit-economics.skill.md
 |   |   |   |-- README.md
 |   |   |   `-- review-pricing.skill.md
+|   |   |-- AGENT.md
 |   |   |-- area.yaml
-|   |   |-- budget.md
-|   |   |-- finance-risks.md
-|   |   |-- pricing.md
-|   |   |-- README.md
-|   |   |-- revenue-model.md
-|   |   `-- unit-economics.md
+|   |   `-- README.md
 |   |-- marketing/
+|   |   |-- knowledge/
+|   |   |   |-- acquisition-channels.md
+|   |   |   |-- landing-page.md
+|   |   |   |-- launch-plan.md
+|   |   |   |-- positioning.md
+|   |   |   `-- README.md
 |   |   |-- playbooks/
 |   |   |   |-- mvp-launch.playbook.md
 |   |   |   `-- README.md
@@ -225,11 +238,8 @@ client-workspace/
 |   |   |   |-- create-launch-plan.skill.md
 |   |   |   |-- define-positioning.skill.md
 |   |   |   `-- README.md
-|   |   |-- acquisition-channels.md
+|   |   |-- AGENT.md
 |   |   |-- area.yaml
-|   |   |-- landing-page.md
-|   |   |-- launch-plan.md
-|   |   |-- positioning.md
 |   |   `-- README.md
 |   |-- workflows/
 |   |   |-- launch-learning-loop.workflow.md
@@ -270,6 +280,14 @@ client-workspace/
 |   |   |-- area.yaml
 |   |   `-- README.md
 |   |-- devops/
+|   |   |-- knowledge/
+|   |   |   |-- ci-cd.md
+|   |   |   |-- deployment-readiness.md
+|   |   |   |-- environments.md
+|   |   |   |-- github-management.md
+|   |   |   |-- observability.md
+|   |   |   |-- README.md
+|   |   |   `-- release-notes.md
 |   |   |-- playbooks/
 |   |   |   |-- configure-environments.playbook.md
 |   |   |   |-- configure-github-project.playbook.md
@@ -281,13 +299,17 @@ client-workspace/
 |   |   |-- roles/
 |   |   |   |-- devops-engineer.role.md
 |   |   |   |-- github-devops.role.md
-|   |   |   `-- README.md
+|   |   |   |-- README.md
+|   |   |   `-- release-manager.role.md
 |   |   |-- skills/
+|   |   |   |-- configure-environments.skill.md
 |   |   |   |-- configure-github-project.skill.md
 |   |   |   |-- define-observability.skill.md
 |   |   |   |-- plan-deployment.skill.md
+|   |   |   |-- prepare-release.skill.md
 |   |   |   |-- README.md
 |   |   |   `-- setup-ci.skill.md
+|   |   |-- AGENT.md
 |   |   |-- area.yaml
 |   |   `-- README.md
 |   |-- engineering/
@@ -362,22 +384,52 @@ client-workspace/
 |   |   |-- area.yaml
 |   |   `-- README.md
 |   |-- security/
-|   |   |-- playbooks/
+|   |   |-- knowledge/
+|   |   |   |-- access-control.md
+|   |   |   |-- data-protection.md
+|   |   |   |-- database-security.md
+|   |   |   |-- incident-response.md
+|   |   |   |-- infra-hardening.md
 |   |   |   |-- README.md
-|   |   |   |-- security-checklist.playbook.md
-|   |   |   `-- security-review.playbook.md
+|   |   |   |-- secrets-management.md
+|   |   |   |-- secure-coding.md
+|   |   |   |-- security-automation.md
+|   |   |   |-- security-baseline.md
+|   |   |   `-- threat-model.md
+|   |   |-- playbooks/
+|   |   |   |-- ai-generated-code-security-review.playbook.md
+|   |   |   |-- api-security-review.playbook.md
+|   |   |   |-- database-security-review.playbook.md
+|   |   |   |-- incident-response.playbook.md
+|   |   |   |-- pre-deploy-security-review.playbook.md
+|   |   |   |-- pre-mvp-security-checklist.playbook.md
+|   |   |   |-- README.md
+|   |   |   |-- secrets-rotation.playbook.md
+|   |   |   |-- security-automation-readiness.playbook.md
+|   |   |   |-- security-foundation.playbook.md
+|   |   |   `-- vulnerability-response.playbook.md
 |   |   |-- roles/
+|   |   |   |-- application-security-engineer.role.md
+|   |   |   |-- cloud-security-reviewer.role.md
+|   |   |   |-- data-protection-reviewer.role.md
 |   |   |   |-- README.md
 |   |   |   `-- security-reviewer.role.md
 |   |   |-- skills/
+|   |   |   |-- access-control-review.skill.md
+|   |   |   |-- ai-generated-code-security.skill.md
+|   |   |   |-- api-security-review.skill.md
+|   |   |   |-- database-security-review.skill.md
+|   |   |   |-- dependency-supply-chain-review.skill.md
+|   |   |   |-- incident-response.skill.md
+|   |   |   |-- infra-hardening-review.skill.md
 |   |   |   |-- README.md
-|   |   |   |-- review-security.skill.md
-|   |   |   `-- threat-model.skill.md
-|   |   |-- access-control.md
+|   |   |   |-- secrets-management.skill.md
+|   |   |   |-- secure-code-review.skill.md
+|   |   |   |-- security-automation-readiness.skill.md
+|   |   |   `-- threat-modeling.skill.md
+|   |   |-- AGENT.md
 |   |   |-- area.yaml
-|   |   |-- data-protection.md
-|   |   |-- README.md
-|   |   `-- threat-model.md
+|   |   `-- README.md
 |   |-- workflows/
 |   |   |-- issue-delivery-cycle.workflow.md
 |   |   |-- mvp-to-pr.workflow.md
@@ -418,6 +470,7 @@ client-workspace/
 |   |   |   |-- positioning.md
 |   |   |   |-- problem.md
 |   |   |   |-- README.md
+|   |   |   |-- validation-notes.md
 |   |   |   `-- value-proposition.md
 |   |   |-- playbooks/
 |   |   |   |-- product-strategy.playbook.md
@@ -459,31 +512,11 @@ client-workspace/
 |   |   |-- AGENT.md
 |   |   |-- area.yaml
 |   |   `-- README.md
-|   |-- validation/
-|   |   |-- playbooks/
-|   |   |   |-- mvp-validation.playbook.md
-|   |   |   `-- README.md
-|   |   |-- roles/
-|   |   |   |-- README.md
-|   |   |   `-- validation-researcher.role.md
-|   |   |-- skills/
-|   |   |   |-- create-interview-script.skill.md
-|   |   |   |-- define-assumptions.skill.md
-|   |   |   |-- define-success-metrics.skill.md
-|   |   |   `-- README.md
-|   |   |-- area.yaml
-|   |   |-- assumptions.md
-|   |   |-- experiments.md
-|   |   |-- interview-script.md
-|   |   |-- learning-log.md
-|   |   |-- README.md
-|   |   |-- riskiest-assumptions.md
-|   |   `-- success-metrics.md
 |   |-- workflows/
 |   |   |-- idea-to-roadmap.workflow.md
+|   |   |-- new-idea-intake.workflow.md
 |   |   |-- README.md
-|   |   |-- roadmap-to-github-project.workflow.md
-|   |   `-- strategy-validation-cycle.workflow.md
+|   |   `-- roadmap-to-github-project.workflow.md
 |   |-- AGENT.md
 |   |-- department.yaml
 |   `-- README.md

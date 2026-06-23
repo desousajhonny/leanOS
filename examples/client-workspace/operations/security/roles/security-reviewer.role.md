@@ -2,38 +2,55 @@
 
 ## Purpose
 
-Review product and implementation work for security and privacy risk.
+Review product, implementation, PR and deploy work against the Security Starter Baseline.
 
-## Use When
+## When to Use
 
 - security risk is present
-- user data is involved
-- access control needs definition
+- data, auth, privacy, abuse or compliance is involved
+- a PR or deploy needs security gate review
 
-## Before Acting
+## Source of Truth
 
-Read:
+- `../AGENT.md`
+- `../knowledge/security-baseline.md`
+- `../knowledge/threat-model.md`
+- `../knowledge/access-control.md`
+- `../knowledge/data-protection.md`
+- `../knowledge/secure-coding.md`
+- `../knowledge/security-automation.md`
 
-- `../threat-model.md`
-- `../data-protection.md`
-- `../access-control.md`
+## Required Skills
 
-## Skills
+- `../skills/threat-modeling.skill.md`
+- `../skills/access-control-review.skill.md`
+- `../skills/secure-code-review.skill.md`
+- `../skills/ai-generated-code-security.skill.md`
+- `../skills/security-automation-readiness.skill.md`
 
-- `../skills/threat-model.skill.md`
-- `../skills/review-security.skill.md`
+## Relevant Playbooks
 
-## Playbooks
+- `../playbooks/security-foundation.playbook.md`
+- `../playbooks/pre-mvp-security-checklist.playbook.md`
+- `../playbooks/pre-deploy-security-review.playbook.md`
+- `../playbooks/security-automation-readiness.playbook.md`
+- `../playbooks/ai-generated-code-security-review.playbook.md`
 
-- `../playbooks/security-review.playbook.md`
-- `../playbooks/security-checklist.playbook.md`
+## Output
 
-## Output Style
+- Security risk summary
+- Gate decision
+- Required fixes
+- Stop conditions
+- Files that may be updated after confirmation
 
-- State what context was loaded.
-- Make the smallest coherent recommendation or change.
-- Identify files that should be updated.
+## Red Lines
+
+- Do not approve private data access without server-side authorization.
+- Do not treat client-side checks as security controls.
+- Do not ignore AI-generated-code risks.
+- Do not update auth, secrets, CI/CD, infra or dependencies without human review.
 
 ## Navigation
 
-Start from `../README.md`, then load only the required skill and playbook.
+Start from `../AGENT.md`, then load only the required skill and playbook.

@@ -11,9 +11,6 @@ playbooks:
   - key: roadmap-sync-prep
     area: strategy.roadmap
     path: ../../strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md
-  - key: mvp-validation
-    area: strategy.validation
-    path: ../../strategy/validation/playbooks/mvp-validation.playbook.md
   - key: mvp-delivery
     area: operations.product-ops
     path: ../../operations/product-ops/playbooks/mvp-delivery.playbook.md
@@ -68,12 +65,36 @@ playbooks:
   - key: release-operations
     area: operations.devops
     path: ../../operations/devops/playbooks/release-operations.playbook.md
-  - key: security-review
+  - key: security-foundation
     area: operations.security
-    path: ../../operations/security/playbooks/security-review.playbook.md
-  - key: security-checklist
+    path: ../../operations/security/playbooks/security-foundation.playbook.md
+  - key: pre-mvp-security-checklist
     area: operations.security
-    path: ../../operations/security/playbooks/security-checklist.playbook.md
+    path: ../../operations/security/playbooks/pre-mvp-security-checklist.playbook.md
+  - key: security-automation-readiness
+    area: operations.security
+    path: ../../operations/security/playbooks/security-automation-readiness.playbook.md
+  - key: pre-deploy-security-review
+    area: operations.security
+    path: ../../operations/security/playbooks/pre-deploy-security-review.playbook.md
+  - key: api-security-review
+    area: operations.security
+    path: ../../operations/security/playbooks/api-security-review.playbook.md
+  - key: database-security-review
+    area: operations.security
+    path: ../../operations/security/playbooks/database-security-review.playbook.md
+  - key: secrets-rotation
+    area: operations.security
+    path: ../../operations/security/playbooks/secrets-rotation.playbook.md
+  - key: vulnerability-response
+    area: operations.security
+    path: ../../operations/security/playbooks/vulnerability-response.playbook.md
+  - key: incident-response
+    area: operations.security
+    path: ../../operations/security/playbooks/incident-response.playbook.md
+  - key: ai-generated-code-security-review
+    area: operations.security
+    path: ../../operations/security/playbooks/ai-generated-code-security-review.playbook.md
   - key: customer-learning-loop
     area: growth.customer-experience
     path: ../../growth/customer-experience/playbooks/customer-learning-loop.playbook.md

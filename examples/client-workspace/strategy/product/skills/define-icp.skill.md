@@ -14,7 +14,7 @@ Define the first customer segment with pains, triggers and exclusions.
 
 - ../knowledge/icp.md
 - ../knowledge/problem.md
-- ../../validation/assumptions.md
+- ../knowledge/validation-notes.md
 
 ## Inputs
 
@@ -46,7 +46,7 @@ Define the first customer segment with pains, triggers and exclusions.
 ## Files to Update
 
 - ../knowledge/icp.md
-- ../../validation/assumptions.md
+- ../knowledge/validation-notes.md
 
 ## Red Lines
 

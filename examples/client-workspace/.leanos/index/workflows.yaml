@@ -1,11 +1,11 @@
 workflows:
+  - key: new-idea-intake
+    department: strategy
+    path: ../../strategy/workflows/new-idea-intake.workflow.md
+    active: true
   - key: idea-to-roadmap
     department: strategy
     path: ../../strategy/workflows/idea-to-roadmap.workflow.md
-    active: true
-  - key: strategy-validation-cycle
-    department: strategy
-    path: ../../strategy/workflows/strategy-validation-cycle.workflow.md
     active: true
   - key: roadmap-to-github-project
     department: strategy

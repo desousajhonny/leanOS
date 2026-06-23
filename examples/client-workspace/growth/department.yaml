@@ -4,13 +4,13 @@ department:
   purpose: Own customer experience, marketing, launch and financial learning loops.
   active_areas:
     - key: growth.customer-experience
-      agent: null
+      agent: customer-experience/AGENT.md
       readme: customer-experience/README.md
     - key: growth.marketing
-      agent: null
+      agent: marketing/AGENT.md
       readme: marketing/README.md
     - key: growth.finance
-      agent: null
+      agent: finance/AGENT.md
       readme: finance/README.md
   workflows:
     - key: launch-learning-loop

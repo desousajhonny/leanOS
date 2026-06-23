@@ -158,6 +158,10 @@ ${activeSubareas.map((area) => `- ${area}`).join("\n")}
 
 function startCommand(activeAreas: AreaDefinition[]): string {
   const strategyFiles = getInitStrategySourceFiles(activeAreas);
+  const activeKeys = new Set(activeAreas.map((area) => area.key));
+  const validationMapping = activeKeys.has("strategy.validation")
+    ? "- Assumptions, experiments, success metrics and learning -> `strategy/validation/`"
+    : "- Lightweight assumptions, evidence, learning and validation needs -> `strategy/product/knowledge/validation-notes.md`";
 
   return `# /start-leanos
 
@@ -220,7 +224,7 @@ Map founder responses to source-of-truth files only when the matching area is ac
 
 - Business identity, brand logic, mission, vision, principles and operating model -> \`strategy/business/\`
 - Product description, problem, ICP, value proposition, positioning and business model -> \`strategy/product/\`
-- Assumptions, riskiest assumptions, experiments, success metrics and learning -> \`strategy/validation/\`
+${validationMapping}
 - Roadmap, milestones, current cycle and backlog -> \`strategy/roadmap/knowledge/\`
 
 If a Strategy area is not active, do not propose writes to its missing path. Mention that the area is inactive and ask before activating or creating it.
@@ -344,7 +348,8 @@ function getInitStrategySourceFiles(activeAreas: AreaDefinition[]): string[] {
       "strategy/product/knowledge/jobs-to-be-done.md",
       "strategy/product/knowledge/value-proposition.md",
       "strategy/product/knowledge/positioning.md",
-      "strategy/product/knowledge/business-model-canvas.md"
+      "strategy/product/knowledge/business-model-canvas.md",
+      "strategy/product/knowledge/validation-notes.md"
     );
   }
 
@@ -385,8 +390,11 @@ function createIssuesCommand(command: CommandDefinition, activeSubareas: Subarea
     ? "Use `../../operations/design/AGENT.md` only when the epic or sub-issue changes user-facing UX, screens, states, copy or interactions; use the README as the area map."
     : "Design is inactive. If the issue has UX impact, flag the gap and ask before adding Design criteria.";
   const securityNote = active.has("operations.security")
-    ? "Use `../../operations/security/README.md` only when the issue touches data, auth, permissions, privacy, abuse risk or compliance."
+    ? "Use `../../operations/security/AGENT.md` only when the issue touches data, auth, permissions, privacy, abuse risk, compliance, API security, database security, secrets, infrastructure or AI-generated-code risk."
     : "Security is inactive. If the issue has a security-sensitive surface, flag the gap and ask before adding Security criteria.";
+  const devopsNote = active.has("operations.devops")
+    ? "Use `../../operations/devops/AGENT.md` only when the issue touches environments, CI/CD, deploy, observability, GitHub Project, config or release readiness."
+    : "DevOps is inactive. If the issue has delivery, environment or release impact, flag the gap and ask before adding DevOps criteria.";
 
   return `# ${formatCommandInvocation(command.slug)}
 
@@ -404,9 +412,10 @@ Read:
 - \`../index/routing-map.yaml\`
 - \`../../ai-standard/templates/github/github-epic-template.md\`
 - \`../../ai-standard/templates/github/github-subissue-template.md\`
-- \`../../ai-standard/templates/github/issue-readiness-matrix-template.md\`
+- \`../../ai-standard/templates/github/delivery-readiness-matrix-template.md\`
 - \`../../.github/ISSUE_TEMPLATE/epic.yml\`
 - \`../../.github/ISSUE_TEMPLATE/sub-issue.yml\`
+- \`../../operations/product-ops/playbooks/epic-to-subissues.playbook.md\`
 
 ## Area Routing
 
@@ -415,27 +424,32 @@ Read:
 - ${engineeringNote}
 - ${designNote}
 - ${securityNote}
+- ${devopsNote}
 
 ## Process
 
 1. Identify the roadmap item, MVP scope, milestone and parent epic context.
-2. Apply the Issue Readiness Matrix before drafting work.
-3. Use Product criteria for every epic and sub-issue.
-4. Use Engineering criteria for implementation-ready sub-issues.
-5. Add Design criteria only when user-facing UX is affected.
-6. Add Security criteria only when data, auth, permissions, privacy, abuse or compliance is involved.
-7. Split epics into sub-issues only when the parent epic has enough context.
-8. Mark missing role input as an explicit gap; do not invent criteria.
-9. Produce drafts first and ask for confirmation before any future GitHub API write.
+2. Route through Product Ops and load \`../../operations/product-ops/playbooks/epic-to-subissues.playbook.md\`.
+3. Apply the Delivery Readiness Matrix (DRM) before drafting work.
+4. Use Product Ops criteria for every epic and sub-issue.
+5. Use Engineering criteria for implementation-ready sub-issues.
+6. Add Design criteria only when user-facing UX, UI, flow, accessibility, copy or interaction is affected.
+7. Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
+8. Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.
+9. Split epics into sub-issues only when the parent epic has enough context.
+10. Mark missing role input as an explicit gap; do not invent criteria.
+11. Produce drafts first and ask for confirmation before any future GitHub API write.
 
 ## Output
 
 - Epic draft or selected parent epic
 - Proposed sub-issues
-- Product criteria
-- Design criteria or "not applicable"
+- Delivery Readiness Matrix (DRM)
+- Product Ops criteria
+- Design criteria or "not applicable" with reason
 - Engineering criteria
-- Security criteria or "not applicable"
+- Security criteria or "not applicable" with reason
+- DevOps criteria or "not applicable" with reason
 - Dependencies and risks
 - Source-of-truth files used
 - Missing context
@@ -476,7 +490,7 @@ Read:
 - \`../../operations/engineering/skills/create-branch.skill.md\`
 - \`../../operations/engineering/skills/follow-code-standards.skill.md\`
 - \`../../operations/engineering/playbooks/issue-to-pr.playbook.md\`
-- \`../../ai-standard/templates/github/issue-readiness-matrix-template.md\`
+- \`../../ai-standard/templates/github/delivery-readiness-matrix-template.md\`
 - \`../../.github/leanos/branch-rules.md\`
 
 If \`operations.engineering\` is not active, do not load missing paths. Ask whether to activate or create Engineering before planning implementation.
@@ -485,12 +499,13 @@ If \`operations.engineering\` is not active, do not load missing paths. Ask whet
 
 1. Read or request the full GitHub issue body.
 2. Summarize the issue in the chat and ask the user to confirm the interpretation.
-3. Check Product and Engineering readiness.
-4. Check Design only when UX is affected.
-5. Check Security only when data, auth, privacy, abuse or compliance is involved.
-6. Propose the required issue-linked branch name before code changes.
-7. Produce an implementation plan and test plan.
-8. Ask for confirmation before modifying product code.
+3. Check Product Ops and Engineering readiness with the Delivery Readiness Matrix (DRM).
+4. Check Design only when UX, UI, flow, accessibility, copy or interaction is affected.
+5. Check Security only when data, auth, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
+6. Check DevOps only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.
+7. Propose the required issue-linked branch name before code changes.
+8. Produce an implementation plan and test plan.
+9. Ask for confirmation before modifying product code.
 
 ## Output
 

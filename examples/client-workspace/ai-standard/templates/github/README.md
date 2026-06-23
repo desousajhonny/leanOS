@@ -13,7 +13,7 @@ Use when shaping GitHub-ready work items or repository collaboration artifacts.
 - `github-issue-template.md`
 - `github-epic-template.md`
 - `github-subissue-template.md`
-- `issue-readiness-matrix-template.md`
+- `delivery-readiness-matrix-template.md`
 - `branch-name-template.md`
 - `pull-request-template.md`
 

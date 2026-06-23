@@ -2,7 +2,7 @@ area:
   key: growth.customer-experience
   department: growth
   path: growth/customer-experience
-  agent: null
+  agent: AGENT.md
   readme: README.md
   roles:
     - cx-lead
@@ -12,7 +12,7 @@ area:
   playbooks:
     - customer-learning-loop
   source_of_truth:
-    - customer-feedback.md
-    - support-notes.md
-    - churn-reasons.md
-    - success-moments.md
+    - knowledge/customer-feedback.md
+    - knowledge/support-notes.md
+    - knowledge/churn-reasons.md
+    - knowledge/success-moments.md

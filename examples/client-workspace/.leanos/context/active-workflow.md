@@ -2,8 +2,8 @@
 
 Current compatible local workflows:
 
+- new-idea-intake
 - idea-to-roadmap
-- strategy-validation-cycle
 - roadmap-to-github-project
 - mvp-to-pr
 - issue-delivery-cycle

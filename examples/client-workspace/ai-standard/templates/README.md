@@ -73,7 +73,7 @@ Files:
 - `github/github-issue-template.md`
 - `github/github-epic-template.md`
 - `github/github-subissue-template.md`
-- `github/issue-readiness-matrix-template.md`
+- `github/delivery-readiness-matrix-template.md`
 - `github/branch-name-template.md`
 - `github/pull-request-template.md`
 

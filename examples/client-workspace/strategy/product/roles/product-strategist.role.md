@@ -17,6 +17,7 @@ Read:
 - `../knowledge/brief.md`
 - `../knowledge/icp.md`
 - `../knowledge/value-proposition.md`
+- `../knowledge/validation-notes.md`
 - `../../roadmap/knowledge/current-cycle.md`
 
 ## Skills

@@ -6,7 +6,7 @@ Durable product context produced by Strategy Product.
 
 ## When to Use
 
-Use when defining product strategy, ICP, value proposition, positioning, business model or product coherence.
+Use when defining product strategy, ICP, value proposition, positioning, business model, lightweight validation notes or product coherence.
 
 ## Source of Truth
 
@@ -21,13 +21,13 @@ Use when defining product strategy, ICP, value proposition, positioning, busines
 - `value-proposition.md`
 - `positioning.md`
 - `business-model-canvas.md`
+- `validation-notes.md`
 
 ## Related Folders
 
 - `../roles/`
 - `../skills/`
 - `../playbooks/`
-- `../../validation/`
 - `../../roadmap/`
 - `../../../operations/product-ops/mvp/`
 

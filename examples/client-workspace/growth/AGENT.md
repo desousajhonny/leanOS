@@ -23,9 +23,9 @@ Use this department for customer experience, marketing, landing pages, launch, a
 
 ## Active Areas
 
-- Customer Experience: `customer-experience/README.md` - Own customer learning loops, support notes and experience feedback.
-- Marketing: `marketing/README.md` - Own positioning, landing page copy, acquisition channels and launch loops.
-- Finance: `finance/README.md` - Own pricing, revenue model, unit economics, budget and financial risks.
+- Customer Experience: `customer-experience/AGENT.md` - Own customer learning loops, support notes and experience feedback.
+- Marketing: `marketing/AGENT.md` - Own positioning, landing page copy, acquisition channels and launch loops.
+- Finance: `finance/AGENT.md` - Own pricing, revenue model, unit economics, budget and financial risks.
 
 ## Workflow Entry
 
@@ -35,6 +35,6 @@ Use workflows for cross-area sequencing. Use area playbooks for tactical executi
 
 ## Navigation
 
-`growth/AGENT.md -> Area README -> Role -> Skills -> Playbook -> Output`
+`growth/AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`
 
 Load one area owner before loading roles, skills or playbooks.

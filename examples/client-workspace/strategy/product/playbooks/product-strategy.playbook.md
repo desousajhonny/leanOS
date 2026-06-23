@@ -12,6 +12,7 @@ Move from raw product context to coherent strategy.
 - ../knowledge/value-proposition.md
 - ../knowledge/positioning.md
 - ../knowledge/business-model-canvas.md
+- ../knowledge/validation-notes.md
 
 ## Process
 
@@ -37,6 +38,7 @@ Move from raw product context to coherent strategy.
 - ../knowledge/value-proposition.md
 - ../knowledge/positioning.md
 - ../knowledge/business-model-canvas.md
+- ../knowledge/validation-notes.md
 
 ## Navigation
 

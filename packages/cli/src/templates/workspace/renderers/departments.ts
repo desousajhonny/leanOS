@@ -5,19 +5,25 @@ import { folderReadme, toTitle } from "../content/shared.js";
 export function rootDepartmentFiles(answers: WorkspaceAnswers, activeAreas: AreaDefinition[], activeRoots: RootDepartmentDefinition[]): FileEntry[] {
   return activeRoots.flatMap((department) => {
     const areas = activeAreas.filter((area) => area.root === department.key);
+    const workflows = activeDepartmentWorkflows(department, areas);
 
     return [
       { path: `${department.key}/AGENT.md`, content: departmentAgent(department, areas) },
       { path: `${department.key}/README.md`, content: departmentReadme(department, areas) },
-      { path: `${department.key}/department.yaml`, content: departmentYaml(department, areas) },
-      { path: `${department.key}/workflows/README.md`, content: folderReadme(`${department.name} Workflows`, `Internal cross-area workflows for ${department.name}.`, "Use when work spans more than one active area inside this department.", "../department.yaml", department.workflows.map((workflow) => `${workflow.slug}.workflow.md`), areas.map((area) => `../${area.slug}/`), "Workflows route between areas; if an area is missing, ask before activating or creating it.") },
-      ...department.workflows.map((workflow) => ({
+      { path: `${department.key}/department.yaml`, content: departmentYaml(department, areas, workflows) },
+      { path: `${department.key}/workflows/README.md`, content: folderReadme(`${department.name} Workflows`, `Internal cross-area workflows for ${department.name}.`, "Use when work spans more than one active area inside this department.", "../department.yaml", workflows.map((workflow) => `${workflow.slug}.workflow.md`), areas.map((area) => `../${area.slug}/`), "Workflows route between active areas; if a workflow is missing, ask before activating or creating the missing area.") },
+      ...workflows.map((workflow) => ({
         path: `${department.key}/workflows/${workflow.slug}.workflow.md`,
         content: departmentWorkflowFile(department, areas, workflow)
       })),
       ...areas.flatMap((area) => areaFiles(area, answers))
     ];
   });
+}
+
+function activeDepartmentWorkflows(department: RootDepartmentDefinition, areas: AreaDefinition[]): DepartmentWorkflowDefinition[] {
+  const activeSlugs = new Set(areas.map((area) => area.slug));
+  return department.workflows.filter((workflow) => workflow.requiredAreas.every((area) => activeSlugs.has(area)));
 }
 
 function areaFiles(area: AreaDefinition, answers: WorkspaceAnswers): FileEntry[] {
@@ -119,14 +125,14 @@ This department root does not own roles, skills or playbooks directly. Route int
 `;
 }
 
-function departmentYaml(department: RootDepartmentDefinition, areas: AreaDefinition[]): string {
+function departmentYaml(department: RootDepartmentDefinition, areas: AreaDefinition[], workflows: DepartmentWorkflowDefinition[]): string {
   return stringifyYaml({
     department: {
       key: department.key,
       name: department.name,
       purpose: department.purpose,
       active_areas: areas.map((area) => ({ key: area.key, agent: area.lead ? `${area.slug}/AGENT.md` : null, readme: `${area.slug}/README.md` })),
-      workflows: department.workflows.map((workflow) => ({ key: workflow.slug, path: `workflows/${workflow.slug}.workflow.md` }))
+      workflows: workflows.map((workflow) => ({ key: workflow.slug, path: `workflows/${workflow.slug}.workflow.md` }))
     }
   });
 }
@@ -251,6 +257,43 @@ function areaYaml(area: AreaDefinition): string {
 export function roleFile(area: AreaDefinition, role: RoleDefinition): string {
   const areaOwner = area.lead ? "../AGENT.md" : "../README.md";
 
+  if (role.outputs || role.redLines) {
+    return `# ${role.title}
+
+## Purpose
+
+${role.purpose}
+
+## When to Use
+
+${role.useWhen.map((item) => `- ${item}`).join("\n")}
+
+## Source of Truth
+
+${role.beforeActing.map((file) => `- \`${file}\``).join("\n")}
+
+## Required Skills
+
+${role.skills.map((skill) => `- \`../skills/${skill}.skill.md\``).join("\n")}
+
+## Relevant Playbooks
+
+${role.playbooks.map((playbook) => `- \`../playbooks/${playbook}.playbook.md\``).join("\n")}
+
+## Output
+
+${(role.outputs ?? ["Context loaded", "Recommendation", "Files that should be updated"]).map((item) => `- ${item}`).join("\n")}
+
+## Red Lines
+
+${(role.redLines ?? ["Do not invent product-specific facts.", "Ask before modifying files."]).map((item) => `- ${item}`).join("\n")}
+
+## Navigation
+
+Start from \`${areaOwner}\`, then load only the required skill and playbook.
+`;
+  }
+
   return `# ${role.title}
 
 ## Purpose
@@ -361,6 +404,51 @@ ${skill.purpose}
 
 export function playbookFile(area: AreaDefinition, playbook: PlaybookDefinition): string {
   const areaOwner = area.lead ? "../AGENT.md" : "../README.md";
+
+  if (playbook.useWhen || playbook.beforeActing || playbook.securityGate || playbook.stopConditions) {
+    return `# ${playbook.title}
+
+## Purpose
+
+${playbook.purpose}
+
+## When to Use
+
+${(playbook.useWhen ?? ["Use when this execution sequence matches the active request."]).map((item) => `- ${item}`).join("\n")}
+
+## Before Acting
+
+${(playbook.beforeActing ?? [areaOwner, "../area.yaml"]).map((item) => `- \`${item}\``).join("\n")}
+
+## Inputs
+
+${(playbook.inputs ?? ["Area knowledge", "Active role instructions", "User request"]).map((input) => `- ${input}`).join("\n")}
+
+## Steps
+
+${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}
+
+## Security Gate
+
+${(playbook.securityGate ?? ["Stop when security context is missing or risk is unclear."]).map((item) => `- ${item}`).join("\n")}
+
+## Output
+
+${(playbook.outputs ?? ["Decision or action summary", "Updated knowledge files when requested", "Next recommended LeanOS action"]).map((output) => `- ${output}`).join("\n")}
+
+## Files to Update
+
+${(playbook.filesToUpdate ?? ["Update relevant area knowledge only after explicit confirmation."]).map((file) => `- ${file}`).join("\n")}
+
+## Stop Conditions
+
+${(playbook.stopConditions ?? ["Stop and ask for confirmation before changing security-sensitive files."]).map((item) => `- ${item}`).join("\n")}
+
+## Navigation
+
+Start from \`${areaOwner}\`, choose a role in \`../roles/\`, load required skills in \`../skills/\`, then use this playbook.
+`;
+  }
 
   if (playbook.inputs || playbook.outputs || playbook.filesToUpdate) {
     return `# ${playbook.title}

@@ -4,24 +4,52 @@
 
 Evaluate pricing hypotheses against customer value and costs.
 
-## Area
+## Use When
 
-`growth/finance`
+- pricing is being considered
+- packaging needs review
+- willingness to pay is unclear
+
+## Required Context
+
+- Pricing
+- Value proposition
+- ICP
+- Revenue model
 
 ## Inputs
 
-- Area source-of-truth files
-- Active role instructions
-- User request
+- Target user
+- Value created
+- Pricing hypothesis
+- Alternatives
+- Costs
 
 ## Process
 
-1. Read the minimum relevant source-of-truth files.
-2. Apply this skill to the user request.
-3. Prepare a concise output or file update.
+1. Check value alignment
+2. Check package simplicity
+3. Identify willingness-to-pay assumptions
+4. List validation method
+
+## Checks
+
+- Pricing matches ICP/value
+- Assumptions are not treated as proof
+- Validation path exists
 
 ## Output
 
-- Summary
-- Decisions
-- Suggested file updates
+- Pricing review
+- Risks
+- Validation plan
+- Open questions
+
+## Files to Update
+
+- Update `../knowledge/pricing.md` or `../knowledge/revenue-model.md` after explicit confirmation.
+
+## Red Lines
+
+- Do not invent willingness-to-pay evidence.
+- Do not promise revenue outcomes.

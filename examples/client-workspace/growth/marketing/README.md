@@ -13,19 +13,29 @@ Own positioning, landing page copy, acquisition channels and launch loops.
 
 ## Source of Truth
 
-- `positioning.md`
-- `landing-page.md`
-- `acquisition-channels.md`
-- `launch-plan.md`
+- `knowledge/positioning.md`
+- `knowledge/landing-page.md`
+- `knowledge/acquisition-channels.md`
+- `knowledge/launch-plan.md`
 
+## Operating Rules
 
+- Use Strategy Product as the source for ICP, problem, value proposition and positioning claims.
+- Route visual design or UI structure to Operations Design when needed.
+- Keep launch plans focused on learning, not vanity activity.
+
+## Red Lines
+
+- Do not invent proof, testimonials or customer results.
+- Do not create visual design direction without Design when UX/brand details matter.
+- Do not spend budget or commit channels without Finance review when money is involved.
 
 
 ## Navigation
 
-1. Choose the relevant role from `roles/`.
-2. Load only the required skills from `skills/`.
-3. Use the matching playbook from `playbooks/`.
+1. For operational work, start with `AGENT.md`.
+2. Use this README as the directory map.
+3. After the area AGENT selects a role, load only required skills and playbooks.
 4. Produce the requested output and update source-of-truth files when needed.
 
 ## File Responsibilities
@@ -39,4 +49,4 @@ Own positioning, landing page copy, acquisition channels and launch loops.
 
 ## Common Paths
 
-- Launch request: role `roles/growth-lead.role.md` -> skill `skills/create-launch-plan.skill.md` -> playbook `playbooks/mvp-launch.playbook.md`.
+- Launch request: area lead `AGENT.md` -> role `roles/growth-lead.role.md` -> skills `skills/define-positioning.skill.md`, `skills/create-landing-page-copy.skill.md` and `skills/create-launch-plan.skill.md` -> playbook `playbooks/mvp-launch.playbook.md`.

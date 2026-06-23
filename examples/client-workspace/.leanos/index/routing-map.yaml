@@ -19,7 +19,6 @@ routing:
     roadmap:
       agent: ../../strategy/roadmap/AGENT.md
       readme: ../../strategy/roadmap/README.md
-    validation: ../../strategy/validation/README.md
     product_ops:
       agent: ../../operations/product-ops/AGENT.md
       readme: ../../operations/product-ops/README.md
@@ -29,9 +28,19 @@ routing:
     engineering:
       agent: ../../operations/engineering/AGENT.md
       readme: ../../operations/engineering/README.md
-    devops: ../../operations/devops/README.md
-    security: ../../operations/security/README.md
-    customer_experience: ../../growth/customer-experience/README.md
-    marketing: ../../growth/marketing/README.md
-    finance: ../../growth/finance/README.md
+    devops:
+      agent: ../../operations/devops/AGENT.md
+      readme: ../../operations/devops/README.md
+    security:
+      agent: ../../operations/security/AGENT.md
+      readme: ../../operations/security/README.md
+    customer_experience:
+      agent: ../../growth/customer-experience/AGENT.md
+      readme: ../../growth/customer-experience/README.md
+    marketing:
+      agent: ../../growth/marketing/AGENT.md
+      readme: ../../growth/marketing/README.md
+    finance:
+      agent: ../../growth/finance/AGENT.md
+      readme: ../../growth/finance/README.md
   asset_creation: ../../ai-standard/README.md

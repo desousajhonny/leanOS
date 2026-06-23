@@ -6,12 +6,16 @@ export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefiniti
   const activeKeys = getActiveSubareaKeys(activeAreas);
   const engineeringActive = activeKeys.has("operations.engineering");
   const devopsActive = activeKeys.has("operations.devops");
+  const securityActive = activeKeys.has("operations.security");
   const engineeringNote = engineeringActive
     ? "Route GitHub branch, PR and validation work through `../../operations/engineering/AGENT.md` before changing GitHub workflow files."
     : "Operations Engineering is not active in this workspace. Ask before activating it or changing GitHub workflow files.";
   const devopsNote = devopsActive
-    ? "Route GitHub setup through `../../operations/devops/README.md` before configuring project sync."
+    ? "Route GitHub setup through `../../operations/devops/AGENT.md` before configuring project sync."
     : "Operations DevOps is not active in this workspace. Ask before configuring GitHub Project sync.";
+  const securityNote = securityActive
+    ? "Route security automation readiness through `../../operations/security/AGENT.md` before adding scanner workflows or security gates."
+    : "Operations Security is not active in this workspace. Ask before adding security automation or scanner workflows.";
 
   return [
     ...(answers.prepareGithubManagement ? [{ path: ".env.local", content: envLocal() }] : []),
@@ -22,13 +26,14 @@ export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefiniti
     { path: ".github/ISSUE_TEMPLATE/sub-issue.yml", content: subIssueTemplate() },
     ...["feature", "bug", "experiment", "validation", "research", "task"].map((name) => issueTemplate(`${name}.yml`, toTitle(name), `LeanOS ${name} issue.`)),
     { path: ".github/workflows/pr-validation.yml", content: prValidationWorkflow() },
-    { path: ".github/leanos/README.md", content: folderReadme("GitHub LeanOS", "GitHub support files for LeanOS workflow conventions.", "Use when configuring labels, GitHub Projects sync, branch rules, PR validation guidance or deploy readiness.", "project-sync.yaml", ["github-settings.example.json", "project-sync.yaml", "sync-state.yaml", "labels.yaml", "branch-rules.md", "pr-validation-rules.md"], ["../ISSUE_TEMPLATE/", "../../operations/devops/", "../../operations/engineering/"], `${devopsNote}\n\n${engineeringNote}\n\nVercel readiness is guidance-only in this scaffold. Vercel can detect frameworks automatically after product code exists; create \`vercel.json\` only when a real app/framework needs overrides.`) },
+    { path: ".github/leanos/README.md", content: folderReadme("GitHub LeanOS", "GitHub support files for LeanOS workflow conventions.", "Use when configuring labels, GitHub Projects sync, branch rules, PR validation guidance, security automation or deploy readiness.", "project-sync.yaml", ["github-settings.example.json", "project-sync.yaml", "sync-state.yaml", "labels.yaml", "branch-rules.md", "pr-validation-rules.md", "security-automation.md"], ["../ISSUE_TEMPLATE/", "../../operations/devops/", "../../operations/engineering/", "../../operations/security/"], `${devopsNote}\n\n${engineeringNote}\n\n${securityNote}\n\nVercel readiness is guidance-only in this scaffold. Vercel can detect frameworks automatically after product code exists; create \`vercel.json\` only when a real app/framework needs overrides.`) },
     { path: ".github/leanos/github-settings.example.json", content: githubSettingsExampleJson() },
     { path: ".github/leanos/labels.yaml", content: labelsYaml() },
     { path: ".github/leanos/project-sync.yaml", content: projectSyncYaml(answers) },
     { path: ".github/leanos/sync-state.yaml", content: syncStateYaml() },
     { path: ".github/leanos/branch-rules.md", content: branchRules() },
-    { path: ".github/leanos/pr-validation-rules.md", content: prValidationRules() }
+    { path: ".github/leanos/pr-validation-rules.md", content: prValidationRules() },
+    { path: ".github/leanos/security-automation.md", content: securityAutomationReadiness() }
   ];
 }
 
@@ -306,6 +311,59 @@ function prValidationRules(): string {
 - Approve only when acceptance criteria are addressed and risks are clear.
 - Request changes for bugs, missing tests, scope drift or security/design gaps.
 - Mark "blocked by missing context" when issue, MVP or criteria are unclear.
+`;
+}
+
+function securityAutomationReadiness(): string {
+  return `# Security Automation Readiness
+
+## Purpose
+
+Track which automated security checks should be enabled for this repository before production readiness.
+
+This file is guidance-only in the initial scaffold. Do not create scanner workflows from this file alone.
+
+## Read First
+
+- \`../../operations/security/AGENT.md\`
+- \`../../operations/security/knowledge/security-automation.md\`
+- \`../../operations/security/playbooks/security-automation-readiness.playbook.md\`
+- \`../../operations/devops/knowledge/ci-cd.md\`
+
+## Candidate Checks
+
+- Secret scanning
+- Dependency audit / dependency review
+- SAST / code scanning
+- IaC or config scanning
+- API security checks
+- Container scanning, when containers exist
+- License/supply-chain review, when dependencies matter
+
+## Activation Rules
+
+- Enable only after language, framework, package manager and stable commands are known.
+- Prefer GitHub-native security features when available and appropriate.
+- Do not create blocking CI workflows before the project has reliable build/test commands.
+- Do not disable or bypass existing scanners without explicit human review.
+- Do not store scanner tokens, provider tokens or secrets in tracked files.
+
+## Readiness Matrix
+
+| Check | Status | Required Before Production | Notes |
+|---|---|---|---|
+| Secret scanning | not_configured | yes | Enable or document provider limitation. |
+| Dependency audit | not_configured | yes | Depends on package manager. |
+| SAST / code scanning | not_configured | recommended | Enable when language/framework is supported. |
+| IaC/config scanning | not_applicable | conditional | Required when infra/config files exist. |
+| API security checks | not_configured | conditional | Required for public or sensitive APIs. |
+
+## Stop Conditions
+
+- Production deploy requested while security automation status is unknown.
+- Critical dependency or secret finding has no owner or mitigation.
+- Scanner workflow would be created without known stack/build/test commands.
+- Security automation requires paid/provider features the founder has not confirmed.
 `;
 }
 

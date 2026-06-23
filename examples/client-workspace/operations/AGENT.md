@@ -26,8 +26,8 @@ Use this department for MVP scope, issue readiness, design, engineering, impleme
 - Product Ops: `product-ops/AGENT.md` - Turn Strategy and Roadmap into MVP scope, acceptance criteria and implementation-ready work.
 - Design: `design/AGENT.md` - Own the MVP design foundation, accessibility baseline and user-flow clarity before implementation.
 - Engineering: `engineering/AGENT.md` - Own implementation, tests, code quality and PR readiness.
-- DevOps: `devops/README.md` - Own delivery infrastructure, environments, deployment, GitHub workflow setup and observability notes.
-- Security: `security/README.md` - Own security, privacy, access control and threat-modeling context.
+- DevOps: `devops/AGENT.md` - Own delivery infrastructure, environments, deployment, GitHub workflow setup and observability notes.
+- Security: `security/AGENT.md` - Own the mandatory security baseline for implementation, PR and deploy readiness.
 
 ## Workflow Entry
 

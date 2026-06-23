@@ -59,7 +59,7 @@ Map founder responses to source-of-truth files only when the matching area is ac
 
 - Business identity, brand logic, mission, vision, principles and operating model -> `strategy/business/`
 - Product description, problem, ICP, value proposition, positioning and business model -> `strategy/product/`
-- Assumptions, riskiest assumptions, experiments, success metrics and learning -> `strategy/validation/`
+- Lightweight assumptions, evidence, learning and validation needs -> `strategy/product/knowledge/validation-notes.md`
 - Roadmap, milestones, current cycle and backlog -> `strategy/roadmap/knowledge/`
 
 If a Strategy area is not active, do not propose writes to its missing path. Mention that the area is inactive and ask before activating or creating it.
@@ -124,11 +124,7 @@ Only after explicit confirmation, `/start-leanos` may update:
 - `../../strategy/product/knowledge/value-proposition.md`
 - `../../strategy/product/knowledge/positioning.md`
 - `../../strategy/product/knowledge/business-model-canvas.md`
-- `../../strategy/validation/assumptions.md`
-- `../../strategy/validation/riskiest-assumptions.md`
-- `../../strategy/validation/experiments.md`
-- `../../strategy/validation/success-metrics.md`
-- `../../strategy/validation/learning-log.md`
+- `../../strategy/product/knowledge/validation-notes.md`
 - `../../strategy/roadmap/knowledge/roadmap.md`
 - `../../strategy/roadmap/knowledge/milestones.md`
 - `../../strategy/roadmap/knowledge/current-cycle.md`
@@ -180,7 +176,6 @@ Return:
 - strategy.business
 - strategy.product
 - strategy.roadmap
-- strategy.validation
 - operations.product-ops
 - operations.design
 - operations.engineering

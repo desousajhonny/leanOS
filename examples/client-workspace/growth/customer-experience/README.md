@@ -13,19 +13,29 @@ Own customer learning loops, support notes and experience feedback.
 
 ## Source of Truth
 
-- `customer-feedback.md`
-- `support-notes.md`
-- `churn-reasons.md`
-- `success-moments.md`
+- `knowledge/customer-feedback.md`
+- `knowledge/support-notes.md`
+- `knowledge/churn-reasons.md`
+- `knowledge/success-moments.md`
 
+## Operating Rules
 
+- Treat customer signals as evidence, not product decisions by themselves.
+- Route product changes back to Strategy Product or Product Ops when feedback affects scope.
+- Keep feedback lightweight and useful for learning loops.
+
+## Red Lines
+
+- Do not store sensitive customer data, private identifiers or support secrets in these files.
+- Do not treat one loud customer as validated market evidence.
+- Do not promise roadmap changes without Strategy/Roadmap confirmation.
 
 
 ## Navigation
 
-1. Choose the relevant role from `roles/`.
-2. Load only the required skills from `skills/`.
-3. Use the matching playbook from `playbooks/`.
+1. For operational work, start with `AGENT.md`.
+2. Use this README as the directory map.
+3. After the area AGENT selects a role, load only required skills and playbooks.
 4. Produce the requested output and update source-of-truth files when needed.
 
 ## File Responsibilities
@@ -39,4 +49,4 @@ Own customer learning loops, support notes and experience feedback.
 
 ## Common Paths
 
-- Customer experience request: role `roles/cx-lead.role.md` -> skill `skills/map-customer-feedback.skill.md` -> playbook `playbooks/customer-learning-loop.playbook.md`.
+- Customer experience request: area lead `AGENT.md` -> role `roles/cx-lead.role.md` -> skills `skills/map-customer-feedback.skill.md` and conditional `skills/synthesize-support-patterns.skill.md` -> playbook `playbooks/customer-learning-loop.playbook.md`.

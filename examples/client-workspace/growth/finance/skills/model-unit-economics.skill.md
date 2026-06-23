@@ -4,24 +4,52 @@
 
 Clarify acquisition, delivery and margin assumptions.
 
-## Area
+## Use When
 
-`growth/finance`
+- unit economics are unclear
+- pricing or acquisition cost needs rough evaluation
+- growth spend is being considered
+
+## Required Context
+
+- Pricing
+- Revenue model
+- Budget
+- Known costs
 
 ## Inputs
 
-- Area source-of-truth files
-- Active role instructions
-- User request
+- Acquisition cost
+- Delivery cost
+- Price
+- Gross margin
+- Usage or value metric
 
 ## Process
 
-1. Read the minimum relevant source-of-truth files.
-2. Apply this skill to the user request.
-3. Prepare a concise output or file update.
+1. List assumptions
+2. Separate knowns from guesses
+3. Estimate unit economics directionally
+4. Identify sensitivity and missing evidence
+
+## Checks
+
+- Assumptions are explicit
+- No false precision
+- Risks are visible
 
 ## Output
 
-- Summary
-- Decisions
-- Suggested file updates
+- Unit economics summary
+- Sensitive assumptions
+- Risks
+- Validation needs
+
+## Files to Update
+
+- Update `../knowledge/unit-economics.md` after explicit confirmation.
+
+## Red Lines
+
+- Do not present estimates as validated facts.
+- Do not make investment or accounting claims.

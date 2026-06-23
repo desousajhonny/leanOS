@@ -15,7 +15,6 @@ Use for business, product strategy, roadmap, validation, ICP or assumptions.
 - `business/`: Keep business identity, principles, mission and operating decisions coherent.
 - `product/`: Own product strategy, ICP, value proposition, positioning and business model coherence.
 - `roadmap/`: Own roadmap sequence, milestones, backlog and planning-cycle prioritization.
-- `validation/`: Own assumptions, experiments, interviews, success metrics and learning capture.
 
 ## Start Here
 

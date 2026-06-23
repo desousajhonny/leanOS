@@ -26,7 +26,6 @@ Use this department for business, product strategy, roadmap, validation, ICP or 
 - Business: `business/AGENT.md` - Keep business identity, principles, mission and operating decisions coherent.
 - Product: `product/AGENT.md` - Own product strategy, ICP, value proposition, positioning and business model coherence.
 - Roadmap: `roadmap/AGENT.md` - Own roadmap sequence, milestones, backlog and planning-cycle prioritization.
-- Validation: `validation/README.md` - Own assumptions, experiments, interviews, success metrics and learning capture.
 
 ## Workflow Entry
 

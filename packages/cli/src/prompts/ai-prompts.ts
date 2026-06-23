@@ -63,7 +63,7 @@ const subareaLabels: Record<Subarea, string> = {
   "strategy.business": "Business",
   "strategy.product": "Product",
   "strategy.roadmap": "Roadmap",
-  "strategy.validation": "Validation",
+  "strategy.validation": "Validation (formal discovery)",
   "operations.product-ops": "Product Ops",
   "operations.design": "Design",
   "operations.engineering": "Engineering",
@@ -78,7 +78,7 @@ const subareaHints: Record<Subarea, string> = {
   "strategy.business": "brand, mission, principles and operating model",
   "strategy.product": "ICP, problem, value proposition and business model",
   "strategy.roadmap": "cycles, milestones and backlog priority",
-  "strategy.validation": "assumptions, experiments and learning",
+  "strategy.validation": "optional interviews, experiments and evidence loops",
   "operations.product-ops": "MVP scope, acceptance criteria and issue readiness",
   "operations.design": "flows, screens, UX states and usability",
   "operations.engineering": "implementation, tests, issues and PRs",
@@ -89,7 +89,7 @@ const subareaHints: Record<Subarea, string> = {
   "growth.finance": "pricing, unit economics, budget and revenue model"
 };
 
-const defaultSubareas: Subarea[] = getAllSubareas();
+const defaultSubareas: Subarea[] = getAllSubareas().filter((subarea) => subarea !== "strategy.validation");
 
 export async function runAiPrompts(): Promise<AiPromptResult> {
   const detectedProject = await detectProject(process.cwd());

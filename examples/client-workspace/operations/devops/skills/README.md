@@ -10,14 +10,16 @@ Use when a selected role points to a skill.
 
 ## Source of Truth
 
-`../README.md`
+`../AGENT.md`
 
 ## Files
 
+- `configure-github-project.skill.md`
+- `configure-environments.skill.md`
 - `setup-ci.skill.md`
 - `plan-deployment.skill.md`
-- `configure-github-project.skill.md`
 - `define-observability.skill.md`
+- `prepare-release.skill.md`
 
 ## Related Folders
 

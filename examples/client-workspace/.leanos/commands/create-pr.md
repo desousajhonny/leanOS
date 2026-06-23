@@ -52,7 +52,6 @@ Do not create the PR directly from the model. Generate the draft and ask for exp
 - strategy.business
 - strategy.product
 - strategy.roadmap
-- strategy.validation
 - operations.product-ops
 - operations.design
 - operations.engineering

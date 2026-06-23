@@ -11,14 +11,18 @@ Prepare a release-ready operational path.
 - Environment plan
 - Deployment plan
 - Observability plan
+- Skill: prepare-release
 
 ## Process
 
-1. Check CI/CD readiness
-2. Confirm environment target
-3. Review deployment path
-4. Confirm observability checks
-5. Summarize release readiness
+1. Read DevOps AGENT and choose Release Manager
+2. Read `knowledge/release-notes.md`, `knowledge/ci-cd.md`, `knowledge/deployment-readiness.md` and `knowledge/observability.md`
+3. Use `skills/prepare-release.skill.md` to summarize release scope and linked issues
+4. Check CI/CD readiness
+5. Confirm environment target
+6. Review deployment path and rollback
+7. Confirm observability and post-deploy checks
+8. Summarize release readiness
 
 ## Output
 
@@ -30,8 +34,8 @@ Prepare a release-ready operational path.
 
 ## Files to Update
 
-- Update relevant DevOps notes, release records or PR notes if the workspace has them.
+- Update `../knowledge/release-notes.md` after explicit confirmation.
 
 ## Navigation
 
-Start from `../README.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.

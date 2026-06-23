@@ -1,155 +1,450 @@
 # TEMP Roadmap de Ajustes LeanOS
 
-Este arquivo e temporario. Ele deve ser removido quando os itens abaixo forem implementados, validados e incorporados ao fluxo normal do projeto.
+Este arquivo e temporario. Ele deve ser removido quando os itens relevantes forem implementados, validados e incorporados ao fluxo normal do projeto ou movidos para issues oficiais.
+
+Ultima limpeza: 2026-06-22.
+
+## Estado Atual
+
+O LeanOS ja tem um MVP forte de framework e scaffold:
+
+- CLI `npx lean-os ai` com dois modos oficiais:
+  - `new-product-workspace`
+  - `existing-product-repo`
+- workspace cliente com `AGENT.md`, `leanos.yaml`, `.leanos/`, `ai-standard/`, `strategy/`, `operations/`, `growth/` e `.github/`.
+- LeanOS Chief preparado para VS Code/Copilot via `.github/agents/leanos-chief.agent.md`.
+- prompt de inicio seguro via `/start-leanos`.
+- arquitetura Navigation Chain:
+  - `Root AGENT.md -> Department AGENT.md/README.md -> Area AGENT.md/README.md -> Role -> Skill -> Playbook -> Output`
+- `ai-standard/` reorganizado como source-of-truth do framework.
+- areas principais normalizadas com `AGENT.md`, `README.md`, `area.yaml`, `knowledge/`, `roles/`, `skills/` e `playbooks/`.
+- `strategy/validation` saiu do scaffold padrao do MVP e fica como area opcional futura.
 
 ## Decisoes de Escopo
 
-- [ ] Nao expandir a arvore de pastas agora; a estrutura atual ja e suficiente para o MVP.
-- [ ] Manter `Company as a Product` como conceito de posicionamento e logica do framework.
-- [ ] Nao mover `Company as a Product` para dentro de `strategy/business/` como se fosse contexto operacional da empresa do usuario final.
-- [ ] Focar em profundidade operacional dos comandos principais, nao em mais scaffolding.
-- [ ] Usar `TEMP-automation-flows.md` como mapa temporario dos fluxos que serao automatizados no futuro.
-- [ ] Tratar `new-product-workspace` e `existing-product-repo` como modos oficiais de instalacao.
+- [x] Nao expandir a arvore de pastas agora; a estrutura atual ja e suficiente para o MVP.
+- [x] Manter `Company as a Product` como conceito de posicionamento e logica do framework.
+- [x] Nao mover `Company as a Product` para dentro de `strategy/business/` como se fosse contexto operacional da empresa do usuario final.
+- [x] Focar em profundidade operacional dos comandos, workflows e assets principais, nao em mais scaffolding.
+- [x] Usar `TEMP-automation-flows.md` apenas como mapa historico/temporario dos fluxos.
+- [x] Usar `TEMP-github-roadmap-flow.md` apenas como especificacao temporaria da futura camada GitHub.
+- [x] Tratar `new-product-workspace` e `existing-product-repo` como modos oficiais de instalacao.
+- [x] Manter GitHub/Vercel como readiness no MVP; nada de deploy automatico ou chamada remota sem confirmacao.
+- [x] Manter UX chat-first: o founder fala a intencao no chat, e o LeanOS roteia para workflows, roles, skills e playbooks.
 
-## 1. Fortalecer `/start-leanos`
+## Concluido
 
-Objetivo: transformar `/start-leanos` em uma primeira sessao guiada, clara e segura.
+### 1. `/start-leanos`
 
-- [x] Definir roteiro de entrevista inicial do founder.
-- [x] Separar perguntas obrigatorias de perguntas opcionais.
-- [x] Mapear respostas para arquivos Strategy elegiveis.
-- [x] Garantir que o Chief sempre proponha mudancas antes de escrever.
-- [x] Garantir que nenhuma alteracao aconteca sem confirmacao explicita.
-- [x] Registrar incertezas como perguntas abertas, nao como fatos inventados.
-- [x] Definir output padrao do comando:
-  - contexto carregado
-  - resumo do workspace
-  - lacunas detectadas
-  - arquivos propostos para atualizacao
-  - proximo comando recomendado
-- [x] Atualizar testes para validar o comportamento esperado do comando.
+- [x] Definido como bootstrap seguro, nao como comando generico.
+- [x] Carrega contexto minimo: `AGENT.md`, `leanos.yaml`, `.leanos/context/*` e `.leanos/index/routing-map.yaml`.
+- [x] Resume estado do workspace.
+- [x] Identifica lacunas.
+- [x] Propoe arquivos elegiveis para preenchimento.
+- [x] Pede confirmacao antes de qualquer alteracao.
+- [x] Nao enriquece roles, skills, playbooks, workflows, commands ou `ai-standard/` com contexto de empresa/produto durante init.
+- [x] Funciona como comando de chat para VS Code, Codex, Claude, Gemini, Copilot e outros modelos.
 
-## 2. Padronizar comandos principais
+### 2. `ai-standard/`
 
-Objetivo: fazer os comandos centrais entregarem outputs consistentes, previsiveis e uteis.
+- [x] Criada taxonomia clara de assets.
+- [x] Reorganizado em:
+  - `foundation/`
+  - `templates/`
+  - `checklists/`
+  - `instructions/`
+  - `examples/`
+- [x] Templates separados por categoria.
+- [x] Checklists especificos por asset.
+- [x] Instructions especificas por criacao.
+- [x] Examples separados por categoria.
+- [x] `ai-standard/README.md` funciona como roteador, sem exigir que o modelo carregue tudo.
+- [x] `AGENT.md` raiz aponta para `ai-standard/README.md` quando precisar criar ou validar assets do framework.
 
-Base para o fluxo Roadmap -> GitHub Project -> Epic -> Sub-issues -> Implementation:
+### 3. Estrutura de areas
 
-- [ ] Usar `TEMP-automation-flows.md` como mapa de fluxos principais e sub-workflows.
-- [ ] Usar `TEMP-github-roadmap-flow.md` como especificacao temporaria do fluxo GitHub.
-- [ ] Separar responsabilidade: LeanOS Chief despacha, roles operacionais guiam e capabilities/scripts executam API.
-- [ ] Garantir que comandos de chat gerem plano/payload antes de qualquer chamada remota.
-- [ ] Garantir confirmacao explicita antes de executar GitHub API.
-- [ ] Manter UX chat-first para founders que nao querem operar pelo terminal.
+- [x] `strategy/business` normalizado.
+- [x] `strategy/product` normalizado.
+- [x] `strategy/roadmap` normalizado.
+- [x] `strategy/validation` removido do MVP padrao e mantido como opcional futura.
+- [x] `operations/product-ops` normalizado.
+- [x] `operations/design` normalizado.
+- [x] `operations/engineering` normalizado.
+- [x] `operations/devops` normalizado.
+- [x] `operations/security` normalizado.
+- [x] `growth/customer-experience` normalizado.
+- [x] `growth/marketing` normalizado.
+- [x] `growth/finance` normalizado.
 
-### `/check coherence`
+### 4. GitHub readiness inicial
+
+- [x] Templates de issue, epic, sub-issue, PR, branch e readiness matrix criados no `ai-standard`.
+- [x] Regras de branch por issue definidas.
+- [x] Regras de PR e PR review definidas.
+- [x] `.github/leanos/` preparado sem segredos.
+- [x] `.env.local` gerado apenas quando o usuario escolhe preparar GitHub management.
+- [x] Tokens reais nao sao persistidos pelo framework.
+- [x] Fluxo conceitual Roadmap -> GitHub Project -> Epic -> Sub-issues -> Implementation documentado temporariamente.
+
+### 5. Security baseline
+
+- [x] `operations/security` cobre baseline minimo para MVP.
+- [x] Inclui threat model, access control, data protection, database security, secrets, secure coding, infra hardening, incident response e security automation readiness.
+- [x] Security entra condicionalmente em issues quando houver dados, auth, permissoes, privacidade, abuso, compliance, API, banco, secrets, infra, dependencia ou risco de codigo gerado por IA.
+
+## Pendencias Ativas
+
+### Regra de Execucao Para Esta Fase
+
+Antes de padronizar comandos, fortalecer os workflows.
+
+Racional:
+
+- Comandos sao portas de entrada estaveis para intents conhecidas.
+- Intencoes naturais do founder podem acionar o mesmo caminho sem slash command.
+- Workflows sao donos do processo quando ha varias etapas, areas ou handoffs.
+- Playbooks executam tarefas praticas dentro de uma area.
+- Capabilities/scripts entram apenas no fim, quando houver confirmacao e necessidade de acao externa.
+
+Plano passo a passo:
+
+- [ ] Primeiro, mapear as intencoes principais do founder para workflows locais.
+- [ ] Depois, revisar cada workflow para declarar contexto, participantes, sequencia, checkpoints, handoffs e output.
+- [ ] Depois, ajustar comandos para carregar o workflow certo em vez de conter toda a logica do processo.
+- [ ] Depois, garantir que pedidos em linguagem natural caiam no mesmo workflow que o comando equivalente.
+- [ ] Depois, conectar GitHub/capabilities apenas como etapa final confirmada do workflow.
+- [ ] Por fim, rodar a Founder Journey completa para validar se o modelo navega sem pular etapas.
+
+### 1. Padronizar Comandos Principais
+
+Status: importante, mas deve ser executado depois da revisao dos workflows.
+
+Objetivo: garantir que os comandos centrais sejam portas de entrada consistentes, previsiveis, confirmaveis e roteadas pela Navigation Chain.
+
+Regras gerais:
+
+- [ ] Todo comando deve carregar contexto minimo antes de agir.
+- [ ] Todo comando que aciona trabalho multi-area deve carregar o workflow correspondente antes de entrar em roles, skills ou playbooks.
+- [ ] O comando nao deve duplicar a logica completa do workflow; ele deve normalizar a intencao, carregar contexto e apontar para o processo correto.
+- [ ] Todo comando deve declarar:
+  - purpose
+  - load first
+  - routing
+  - allowed updates
+  - forbidden updates
+  - confirmation rule
+  - expected output
+- [ ] Todo comando que altera arquivo deve propor primeiro e escrever somente apos confirmacao.
+- [ ] Todo comando que envolve GitHub/API deve gerar plano ou payload antes de qualquer chamada remota.
+- [ ] Nenhum comando deve apontar para area inativa sem aviso explicito.
+- [ ] Slash commands continuam como atalhos; a experiencia principal deve continuar chat-first.
+- [ ] Pedido em linguagem natural e slash command equivalente devem seguir o mesmo workflow.
+
+#### `/check coherence`
 
 - [ ] Definir score de coerencia.
 - [ ] Listar alinhamentos.
 - [ ] Listar inconsistencias.
 - [ ] Listar riscos.
-- [ ] Recomendar proximo comando.
-- [ ] Garantir que nao recomende areas inativas sem aviso.
+- [ ] Recomendar proximo passo.
+- [ ] Evitar recomendar areas inativas sem aviso.
+- [ ] Verificar coerencia entre Strategy, MVP, Roadmap, Design, Security e Engineering quando essas areas estiverem ativas.
 
-### `/define mvp`
+#### `/define mvp`
 
 - [ ] Definir inputs obrigatorios.
 - [ ] Carregar Strategy antes de Operations.
-- [ ] Separar MVP scope, non-goals, user stories, user flows e acceptance criteria.
+- [ ] Roteiar para `operations/product-ops/AGENT.md`.
+- [ ] Separar:
+  - MVP scope
+  - non-goals
+  - user stories
+  - user flows
+  - acceptance criteria
+  - release checklist
+  - PRD, quando fizer sentido
 - [ ] Evitar definir MVP sem problema, ICP e value proposition minimamente claros.
 - [ ] Pedir confirmacao antes de atualizar arquivos.
 
-### `/create issues`
+#### `/create issues`
 
 - [ ] Converter MVP/roadmap em epics e sub-issues GitHub-ready.
-- [ ] Criar template de epic.
-- [ ] Criar template de sub-issue.
-- [ ] Aplicar matriz 3D Product/Design/Security antes de criar sub-issues.
+- [ ] Usar templates de epic e sub-issue em `ai-standard/templates/github/`.
+- [ ] Aplicar Delivery Readiness Matrix (DRM) com Product Ops, Design, Engineering, Security e DevOps conforme necessidade da issue.
+- [ ] Design participa apenas quando houver UX, UI, fluxo, acessibilidade, copy ou experiencia de tela.
+- [ ] Security participa quando houver dados, auth, privacidade, API, banco, secrets, compliance, infra ou risco de abuso.
 - [ ] Incluir acceptance criteria.
-- [ ] Incluir links para source-of-truth files.
-- [ ] Marcar dependencias e riscos.
-- [ ] Evitar criar issue sem contexto de MVP.
+- [ ] Incluir links para arquivos de contexto.
+- [ ] Marcar dependencias, riscos e perguntas abertas.
+- [ ] Gerar payload/draft antes de criar qualquer issue real.
+- [ ] Exigir confirmacao antes de qualquer chamada GitHub.
 
-### `/workon issue`
+#### `/workon issue`
 
-- [ ] Carregar issue/contexto antes de planejar implementacao.
-- [ ] Roteiar para Engineering.
+- [ ] Carregar issue do GitHub ou draft local antes de planejar implementacao.
+- [ ] Resumir a issue no chat para confirmacao do usuario.
+- [ ] Roteiar para `operations/engineering/AGENT.md`.
+- [ ] Exigir branch obrigatoria antes de editar codigo.
+- [ ] Seguir naming convention de branch alinhada a issue.
 - [ ] Definir plano de implementacao.
-- [ ] Definir plano de teste.
-- [ ] Registrar arquivos provaveis de mudanca.
+- [ ] Definir plano de testes.
+- [ ] Identificar arquivos provaveis de mudanca.
+- [ ] Respeitar Design e Security quando a issue exigir.
 
-### `/review pr`
+#### `/review pr`
 
-- [ ] Validar PR contra MVP scope.
+- [ ] Validar PR contra escopo da issue.
 - [ ] Validar contra acceptance criteria.
-- [ ] Validar riscos de estrategia/produto quando aplicavel.
+- [ ] Validar contra MVP scope quando aplicavel.
+- [ ] Validar riscos de produto, design, seguranca e engenharia quando aplicavel.
 - [ ] Separar bugs, riscos, perguntas e sugestoes.
-- [ ] Evitar aprovar mudanca que contradiga source-of-truth files.
+- [ ] Usar templates e criterios de review em `ai-standard/templates/review/`.
+- [ ] Evitar aprovar mudanca que contradiga contexto aprovado.
 
-## 3. Tornar o ciclo de validacao explicito
+### 2. Revisar Workflows Locais
 
-Objetivo: transformar validacao em loop operacional, nao apenas arquivos soltos.
+Status: primeira prioridade da proxima rodada.
 
-- [x] Definir ciclo: hipotese -> experimento -> evidencia -> decisao -> roadmap.
-- [x] Atualizar playbook de validation para seguir esse ciclo.
-- [x] Garantir que `learning-log.md` registre aprendizado validado.
-- [x] Garantir que decisoes relevantes sejam refletidas em roadmap ou backlog.
-- [x] Criar criterio para diferenciar insight, evidencia e decisao.
-- [x] Atualizar comandos para nao tratar suposicoes como fatos.
+Objetivo: transformar workflows em rotas realmente acionaveis pelos modelos, sem duplicar comandos e sem colocar workflow de negocio dentro de `.leanos/`.
 
-## 4. Preparar camada GitHub API
+Regras:
 
-Objetivo: planejar integracao real com GitHub API, mantendo execucao segura via capabilities/scripts e nunca diretamente pelo LeanOS Chief.
+- [ ] Workflow coordena varias areas, etapas ou handoffs.
+- [ ] Playbook executa uma tarefa pratica dentro de uma area.
+- [ ] Workflows de negocio vivem no departamento/area dona do fluxo.
+- [ ] `.leanos/` fica como runtime leve: commands, context, indexes e integracao.
+- [ ] Workflows devem apontar para department/area AGENTs quando eles existirem.
+- [ ] Workflows nao devem pular direto para role quando a area tem `AGENT.md`.
+- [ ] Workflows devem declarar areas requeridas e disponibilidade.
+- [ ] Workflows nao devem apontar para paths ausentes.
 
-- [x] Revisar templates de issue.
-- [x] Revisar PR template.
-- [x] Revisar regras de validacao de PR.
-- [x] Definir regra de branch obrigatoria por issue.
-- [x] Definir arquivos base de configuracao GitHub sem segredos.
-- [x] Definir `.github/leanos/github-settings.example.json`.
-- [x] Definir `.github/leanos/project-sync.yaml`.
-- [x] Definir `.github/leanos/sync-state.yaml`.
-- [x] Perguntar no wizard se o usuario quer preparar GitHub management.
-- [x] Gerar `.env.local` apenas quando GitHub management for solicitado.
-- [ ] Definir comando de chat `/configure github`.
-- [ ] Definir comando de chat `/sync-roadmap`.
-- [ ] Definir comando de chat `/create subissues`.
-- [ ] Definir capability `github.configure`.
-- [ ] Definir capability `github.status`.
-- [ ] Definir capability `github.syncRoadmap`.
-- [ ] Definir capability `github.createSubissues`.
-- [ ] Garantir dry-run antes de escrita remota.
-- [ ] Garantir que tokens nunca sejam persistidos no workspace.
-- [ ] Documentar GitHub Project, milestones, epics, sub-issues e sync state.
+Decisao de delivery:
 
-## 5. Planejar update/migration de workspaces
+- [ ] Separar Issue Shaping de Issue Delivery.
+- [ ] Issue Shaping acontece antes do desenvolvimento, principalmente em `operations/product-ops/playbooks/epic-to-subissues.playbook.md`.
+- [ ] Issue Shaping aplica a Delivery Readiness Matrix (DRM) para envolver Product Ops, Design, Engineering, Security e DevOps quando aplicavel.
+- [ ] Issue Delivery assume que a issue idealmente ja veio pronta; ele faz recheck, atualiza riscos e so entao inicia branch, implementacao, testes, PR e review.
+- [ ] Product Ops, Design, Security e DevOps nao devem redescobrir tudo no momento de implementacao; entram como checkpoint quando a issue esta incompleta, mudou ou revelou risco novo.
 
-Objetivo: preparar o caminho para evoluir workspaces ja criados.
+Cada workflow deve responder:
+
+- [ ] Qual intencao do founder dispara este workflow?
+- [ ] Qual comando, se existir, tambem aponta para ele?
+- [ ] Qual departamento e dono do workflow?
+- [ ] Quais areas participam sempre?
+- [ ] Quais areas entram condicionalmente?
+- [ ] Qual contexto deve ser carregado primeiro?
+- [ ] Qual e a sequencia de etapas?
+- [ ] Onde ha checkpoints de confirmacao do usuario?
+- [ ] Quais arquivos podem ser atualizados?
+- [ ] Quais arquivos nao podem ser atualizados?
+- [ ] Quando uma capability/script externo pode ser chamado?
+- [ ] Qual output final esperado?
+
+#### Workflow Map - Founder Journey Completa
+
+Jornadas internas devem ser criadas em `docs/framework/founder-journeys/` usando `journey-template.md`.
+
+| Etapa | Scaffold atualizado | Jornada criada | Momento | Workflow / Entrada | Intencao do Founder | Dono | Roles Principais | Playbooks Principais | Estado |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0 | [ ] | [ ] `docs/framework/founder-journeys/start-leanos.md` | Setup inicial | `.leanos/commands/start-leanos.md` + Strategy Baseline | "vamos comecar", "configurar o LeanOS", "iniciar o projeto" | LeanOS Chief + Strategy | Business Strategist, Product Strategist | `business-foundation`, `product-strategy` | Existe, garantir Strategy Baseline minima |
+| 1 | [ ] | [ ] `docs/framework/founder-journeys/define-mvp.md` | Primeira definicao do produto | `operations/workflows/define-mvp.workflow.md` ou `operations/product-ops/playbooks/mvp-delivery.playbook.md` | "Defina o MVP", "qual a primeira versao?", "o que entra no MVP?" | Product Ops | Product Owner, Delivery Architect, Product Designer quando aplicavel, Security Reviewer quando aplicavel | `mvp-delivery`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Playbook existe, decidir se vira workflow |
+| 2 | [x] | [x] `docs/framework/founder-journeys/new-idea-intake.md` | Novas ideias e features | `strategy/workflows/new-idea-intake.workflow.md` | "Tenho uma ideia", "quero avaliar uma feature nova", "isso faz sentido para o produto?" | Strategy | Product Strategist, Product Manager, Business Strategist, Roadmap Planner | `product-strategy`, `business-foundation`, `roadmap-cycle-planning`, `mvp-delivery` | Jornada criada e scaffold ajustado para separar intake de roadmap |
+| 3 | [ ] | [ ] `docs/framework/founder-journeys/idea-to-roadmap.md` | Decisao de roadmap | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" | Strategy / Roadmap | Product Strategist, Product Manager, Roadmap Planner | `roadmap-cycle-planning`, `product-strategy` | Deve transformar ideia validada em item de roadmap, sem assumir MVP ou GitHub |
+| 4 | [ ] | [ ] `docs/framework/founder-journeys/roadmap-item-to-mvp-scope.md` | Decisao de MVP | `operations/workflows/roadmap-item-to-mvp-scope.workflow.md` ou `operations/product-ops/playbooks/mvp-delivery.playbook.md` | "Isso entra no MVP?", "esse item precisa ir para a primeira versao?" | Product Ops + Strategy | Product Owner, Product Strategist, Delivery Architect, Product Designer/Security quando aplicavel | `mvp-delivery`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Decide se um item de roadmap vira escopo de MVP |
+| 5 | [ ] | [ ] `docs/framework/founder-journeys/mvp-to-epic.md` | Planning de execucao | `operations/workflows/mvp-to-epic.workflow.md` ou `strategy/workflows/roadmap-to-github-project.workflow.md` | "Deseja quebrar o MVP em epics?", "crie os epics no GitHub" | Product Ops + DevOps | Product Owner, Roadmap Planner, GitHub DevOps, Senior Developer quando aplicavel | `roadmap-sync-prep`, `configure-github-project`, `delivery-readiness` | MVP scope deve virar trabalho rastreavel antes de implementacao |
+| 6 | [ ] | [ ] `docs/framework/founder-journeys/epic-to-subissues.md` | Issue Shaping | `operations/workflows/epic-to-subissues.workflow.md` | "Quebre o epic #123 em sub-issues" | Operations / Product Ops | Product Owner, Product Designer, Security Reviewer, DevOps Engineer, Senior Developer | `epic-to-subissues`, `delivery-readiness`, `mvp-ux-flow`, `accessibility-review`, `pre-mvp-security-checklist`, `api-security-review`, `setup-ci-cd` | Falta criar workflow |
+| 7 | [ ] | [ ] `docs/framework/founder-journeys/issue-delivery-cycle.md` | Implementacao | `operations/workflows/issue-delivery-cycle.workflow.md` | "Implemente a issue #554", "vamos comecar essa feature" | Operations / Engineering | Product Owner, Senior Developer, Test Engineer, PR Reviewer, Security Reviewer quando aplicavel | `delivery-readiness`, `branch-from-issue`, `issue-to-pr`, `test-planning`, `pr-validation`, `ai-generated-code-security-review` | Existe, precisa fortalecer |
+| 8 | [ ] | [ ] `docs/framework/founder-journeys/review-pr.md` | Review e PR | Dentro de `issue-delivery-cycle` ou futuro workflow de review | "Revise o PR", "esta pronto para merge?" | Engineering + Security/DevOps quando aplicavel | PR Reviewer, Test Engineer, Security Reviewer, Release Manager | `pr-validation`, `pre-deploy-security-review`, `security-automation-readiness`, `release-operations` | Coberto por playbooks, talvez nao precise workflow separado |
+| 9 | [ ] | [ ] `docs/framework/founder-journeys/post-merge-continuation.md` | Pos-merge | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a proxima issue", "o que atualizamos depois do merge?" | Operations | Product Owner, Senior Developer, Release Manager, CX Lead quando aplicavel | `release-operations`, `delivery-readiness`, `customer-learning-loop` | Existe, precisa fortalecer |
+| 10 | [ ] | [ ] `docs/framework/founder-journeys/launch-learning-loop.md` | Lancamento e aprendizado | `growth/workflows/launch-learning-loop.workflow.md` | "Lancamos, o que aprendemos?", "como melhorar aquisicao/conversao?" | Growth | Growth Lead, CX Lead, Finance Operator | `mvp-launch`, `customer-learning-loop`, `finance-review` | Existe, pode ficar lean para depois |
+
+MVP continua sendo o nome principal da etapa. O criterio de qualidade deve incluir uma Lovable Baseline:
+
+- [ ] fluxo principal compreensivel;
+- [ ] proposta de valor clara;
+- [ ] experiencia minima digna;
+- [ ] acessibilidade basica;
+- [ ] criterios de seguranca minimos;
+- [ ] nao parecer prototipo descartavel quando entregue a usuario real.
+
+#### Regra de Uso
+
+- [ ] Workflow coordena a jornada entre areas.
+- [ ] Playbook executa uma parte pratica dentro de uma area.
+- [ ] Comandos e linguagem natural devem apontar para o workflow correto.
+- [ ] Se uma etapa envolver mais de uma area, preferir workflow.
+- [ ] Se uma etapa for execucao local de uma area, usar playbook.
+
+#### Regra Roadmap, MVP e GitHub
+
+- [ ] Nem todo item de roadmap precisa virar issue, epic ou milestone no GitHub.
+- [ ] Roadmap pode conter direcao estrategica, oportunidades futuras, backlog de produto e ideias ainda nao priorizadas.
+- [ ] Todo item marcado como parte do MVP precisa virar trabalho executavel e rastreavel antes de implementacao.
+- [ ] Um item de MVP deve passar por `mvp-to-epic` antes de Engineering iniciar desenvolvimento.
+- [ ] Um epic de MVP deve passar por `epic-to-subissues` antes de virar trabalho de implementacao.
+- [ ] GitHub Project deve representar principalmente o que esta em execucao, em preparacao para execucao ou explicitamente selecionado para delivery.
+- [ ] O modelo deve pedir confirmacao antes de promover item de roadmap para MVP, antes de criar epic e antes de criar sub-issues via API.
+
+#### Ordem Para Implementar Os Workflows
+
+1. `strategy/workflows/new-idea-intake.workflow.md`
+2. `strategy/workflows/idea-to-roadmap.workflow.md`
+3. `operations/workflows/roadmap-item-to-mvp-scope.workflow.md` ou manter como fase de Product Ops
+4. `operations/workflows/mvp-to-epic.workflow.md`
+5. `operations/workflows/epic-to-subissues.workflow.md`
+6. `operations/workflows/issue-delivery-cycle.workflow.md`
+7. Decidir destino de `operations/workflows/mvp-to-pr.workflow.md`
+8. `operations/workflows/post-merge-continuation.workflow.md`
+9. `operations/workflows/define-mvp.workflow.md` ou manter como playbook em Product Ops
+10. `strategy/workflows/roadmap-to-github-project.workflow.md`
+11. `growth/workflows/launch-learning-loop.workflow.md`
+
+Workflows a revisar:
+
+- [ ] `operations/product-ops/playbooks/epic-to-subissues.playbook.md`
+  - primeira execucao desta fase;
+  - deve ser o processo oficial de Issue Shaping;
+  - deve usar Delivery Readiness Matrix (DRM);
+  - deve produzir sub-issues GitHub-ready antes do desenvolvimento;
+  - deve envolver Design, Security e DevOps apenas quando aplicavel;
+  - deve parar antes de qualquer GitHub API write sem confirmacao.
+
+- [ ] `.leanos/commands/start-leanos.md`
+  - deve criar Strategy Baseline minima, nao MVP completo;
+  - baseline minima: negocio, produto/ideia principal, usuario alvo, problema/dor, promessa de valor, alternativa atual, hipotese mais arriscada e foco imediato;
+  - deve deixar MVP scope como proximo passo quando ainda nao estiver definido.
+
+- [ ] `operations/workflows/define-mvp.workflow.md` ou `operations/product-ops/playbooks/mvp-delivery.playbook.md`
+  - deve usar Strategy Baseline como entrada;
+  - se Strategy Baseline nao existir, deve fazer perguntas de baseline antes de definir MVP;
+  - deve definir MVP scope, non-goals, PRD, user stories, user flows, acceptance criteria e release checklist;
+  - deve incluir Lovable Baseline como criterio de qualidade do MVP.
+
+- [x] `strategy/workflows/new-idea-intake.workflow.md`
+  - deve servir para ideias novas e features propostas em produtos ja iniciados;
+  - deve capturar, qualificar e decidir o destino da ideia antes de qualquer roadmap change;
+  - deve detalhar como o Product Strategist valida a ideia contra ICP, problema, valor, foco atual, evidencias e custo de oportunidade;
+  - deve passar por Business, Product e Roadmap;
+  - deve usar validacao leve em `strategy/product/knowledge/validation-notes.md`;
+  - nao deve exigir `strategy/validation` no MVP padrao.
+  - saidas possiveis: descartar, manter como pergunta aberta, registrar validation note ou propor promocao para roadmap.
+- [ ] `strategy/workflows/idea-to-roadmap.workflow.md`
+  - deve transformar uma ideia validada em item de roadmap;
+  - deve definir problema, usuario afetado, valor esperado, dependencia, prioridade inicial e horizonte;
+  - nao deve marcar automaticamente como MVP;
+  - deve perguntar de forma founder-friendly se a ideia deve entrar no backlog/roadmap.
+- [ ] `operations/workflows/roadmap-item-to-mvp-scope.workflow.md`
+  - deve decidir se um item de roadmap entra no MVP;
+  - deve atualizar MVP scope, PRD, non-goals, riscos e criterios minimos quando confirmado;
+  - deve registrar por que o item entrou ou nao entrou no MVP;
+  - deve preparar o item para `mvp-to-epic` quando aprovado.
+- [ ] `operations/workflows/mvp-to-epic.workflow.md`
+  - deve transformar itens de MVP em epics rastreaveis;
+  - deve preparar payload/draft para GitHub Project quando configurado;
+  - deve manter fora do GitHub itens de roadmap que nao estao selecionados para delivery;
+  - deve pedir confirmacao antes de criar ou atualizar epics.
+- [ ] `strategy/workflows/roadmap-to-github-project.workflow.md`
+  - deve preparar sync de roadmap para GitHub;
+  - deve focar em itens de MVP, current cycle e itens explicitamente selecionados para delivery;
+  - deve tratar GitHub como plano/payload/dry-run antes de chamada real;
+  - deve envolver Product/Roadmap e DevOps apenas para readiness/configuracao.
+- [ ] `operations/workflows/issue-delivery-cycle.workflow.md`
+  - deve coordenar Product Ops, Engineering, Design condicional, Security condicional e review.
+- [ ] `operations/workflows/mvp-to-pr.workflow.md`
+  - deve ser revisado para decidir se continua necessario ou se foi absorvido por issue-delivery-cycle.
+- [ ] `operations/workflows/post-merge-continuation.workflow.md`
+  - deve orientar retorno pos-merge: atualizar contexto, proxima issue, riscos e follow-up.
+- [ ] `growth/workflows/launch-learning-loop.workflow.md`
+  - deve continuar lean e usar area AGENTs/knowledge paths atualizados.
+
+### 3. Camada GitHub Chat-First
+
+Status: importante.
+
+Objetivo: preparar a futura automacao GitHub sem transformar o founder em operador de terminal.
+
+Decisao: o LeanOS Chief nao chama API diretamente. O modelo entende a intencao, carrega contexto, propoe plano/payload e pede confirmacao. A execucao real fica para capability/script seguro.
+
+Pendencias:
+
+- [ ] Reescrever `TEMP-github-roadmap-flow.md` ou mover o conteudo relevante para assets oficiais do workspace.
+- [ ] Definir o fluxo GitHub como chat-first:
+  - founder pede no chat;
+  - modelo carrega contexto;
+  - modelo prepara plano/draft/payload;
+  - usuario confirma;
+  - capability/script executa;
+  - resultado volta para contexto.
+- [ ] Definir capabilities futuras:
+  - `github.configure`
+  - `github.status`
+  - `github.syncRoadmap`
+  - `github.createSubissues`
+  - `github.readIssue`
+  - `github.createBranch`
+  - `github.openPullRequest`
+- [ ] Definir dry-run obrigatorio antes de escrita remota.
+- [ ] Definir como registrar sync state sem segredos.
+- [ ] Definir como evitar duplicidade em milestones, epics e sub-issues.
+- [ ] Definir como lidar com repositorio existente vs produto novo.
+- [ ] Documentar quais arquivos `.github/leanos/` sao configuracao, estado e templates.
+- [ ] Garantir que tokens nunca sejam persistidos em arquivos versionados.
+
+### 4. Teste Externo da Founder Journey
+
+Status: importante.
+
+Objetivo: validar se o MVP funciona para um founder real, sem depender de conhecimento interno do framework.
+
+Cenario minimo:
+
+- [ ] Rodar `npx lean-os ai`.
+- [ ] Criar workspace novo.
+- [ ] Instalar LeanOS em repo/produto existente sem sobrescrever arquivos importantes.
+- [ ] Abrir workspace em VS Code, Codex, Claude ou outro agente.
+- [ ] Selecionar LeanOS Chief quando aplicavel.
+- [ ] Rodar `/start-leanos`.
+- [ ] Definir Business/Product/Roadmap com confirmacao.
+- [ ] Rodar `/define mvp`.
+- [ ] Rodar `/define design` quando Design estiver ativo.
+- [ ] Rodar `/check coherence`.
+- [ ] Gerar plano de issues ou execucao.
+- [ ] Simular `workon issue`.
+- [ ] Simular `review pr`.
+- [ ] Continuar o trabalho em uma nova sessao sem perder contexto.
+
+Critérios de aceite:
+
+- [ ] O usuario entende o proximo passo sem ler o template interno.
+- [ ] O modelo navega pela cadeia correta.
+- [ ] O modelo nao pula AGENTs de departamento/area.
+- [ ] O modelo nao inventa workflow, role, skill ou playbook.
+- [ ] O modelo nao modifica arquivos sensiveis sem confirmacao.
+- [ ] O preview `examples/client-workspace/` representa exatamente o que o CLI gera.
+
+### 5. Planejar Update/Migration de Workspaces
+
+Status: futuro, nao bloqueia o MVP inicial.
+
+Objetivo: preparar o caminho para evoluir workspaces ja criados sem destruir trabalho do usuario.
 
 - [ ] Definir necessidade de um futuro `lean-os update`.
-- [ ] Listar quais arquivos sao runtime e poderiam ser atualizados pelo framework.
-- [ ] Listar quais arquivos sao source-of-truth do cliente e nao devem ser sobrescritos.
+- [ ] Listar quais arquivos sao runtime do framework e podem receber update.
+- [ ] Listar quais arquivos sao contexto/knowledge do cliente e nao devem ser sobrescritos.
 - [ ] Definir estrategia de migracao segura:
-  - detectar versao em `leanos.yaml`
-  - comparar arquivos runtime
-  - propor mudancas
-  - preservar alteracoes do usuario
-- [ ] Nao implementar agora sem uma especificacao propria.
+  - detectar versao em `leanos.yaml`;
+  - comparar arquivos runtime;
+  - propor mudancas;
+  - preservar alteracoes do usuario;
+  - criar diff antes de aplicar.
+- [ ] Nao implementar sem uma especificacao propria.
 
-## 5.1 Planejar `/bootstrap product`
+### 6. Preparar Release Publica do MVP
 
-Objetivo: definir o fluxo futuro que cria app code somente depois de Strategy, MVP e stack estarem claros.
+Status: pendente.
 
-- [ ] Definir quando o workspace esta pronto para criar app code.
-- [ ] Definir perguntas de stack: Next.js, Vite, API, dashboard ou outro.
-- [ ] Definir defaults para founder iniciante.
-- [ ] Definir como preparar Vercel sem criar `.vercel/` ou deploy automatico.
-- [ ] Definir como preservar repositorios existentes.
-- [ ] Definir testes para garantir que o setup inicial nao cria `src/`, `app/`, `pages/`, `package.json` ou `vercel.json`.
-
-## 6. Preparar release publica do MVP
-
-Objetivo: deixar o pacote publicavel e testavel por usuarios reais.
+Objetivo: publicar uma versao confiavel para usuarios reais.
 
 - [ ] Atualizar versao do pacote se necessario.
 - [ ] Rodar build.
@@ -160,570 +455,37 @@ Objetivo: deixar o pacote publicavel e testavel por usuarios reais.
 - [ ] Publicar somente apos confirmacao explicita.
 - [ ] Testar via `npx lean-os ai` apos publicacao.
 
-## 7. Fortalecer `ai-standard/` como source-of-truth do framework
+## Pendencias Futuras Nao Bloqueantes
 
-Objetivo: transformar `ai-standard/` em uma biblioteca clara de padroes do LeanOS, para humanos e modelos saberem exatamente onde procurar, o que criar e como validar cada tipo de asset.
+### `/bootstrap product`
 
-Principio: nao fazer apenas reorganizacao visual. Cada pasta, template, checklist e instruction deve ter responsabilidade propria e conteudo especifico.
+- [ ] Definir quando o workspace esta pronto para criar app code.
+- [ ] Definir perguntas de stack: Next.js, Vite, API, dashboard ou outro.
+- [ ] Definir defaults para founder iniciante.
+- [ ] Definir como preparar Vercel sem criar `.vercel/` ou deploy automatico.
+- [ ] Definir como preservar repositorios existentes.
+- [ ] Garantir que o setup inicial nao cria `src/`, `app/`, `pages/`, `package.json` ou `vercel.json`.
 
-### 7.1 Reorganizar arquitetura de informacao do `ai-standard/`
+### `strategy/validation`
 
-- [ ] Definir a nova estrutura alvo do `ai-standard/`.
-- [x] Agrupar arquivos raiz soltos em uma pasta de fundacao, `foundation/`:
-  - `asset-taxonomy.md`
-  - `navigation-chain.md`
-  - `creation-rules.md`
-  - `naming-conventions.md`
-  - `quality-criteria.md`
-  - `folder-documentation-rules.md`
-- [x] Atualizar `ai-standard/README.md` para explicar:
-  - o que e `foundation/`
-  - o que e `templates/`
-  - o que e `checklists/`
-  - o que e `instructions/`
-  - o que e `examples/`
-  - quando carregar cada rota
-- [x] Atualizar todas as referencias internas para os novos paths.
-- [x] Atualizar `leanos.yaml`, `.leanos/index/routing-map.yaml`, comandos e AGENTs se algum path mudar.
-- [x] Garantir que modelos nao precisem carregar tudo: README deve funcionar como roteador do `ai-standard`.
+- [ ] Reintroduzir como area opcional quando houver necessidade de discovery formal.
+- [ ] Criar `AGENT.md` como Validation Lead.
+- [ ] Criar `knowledge/` para evidencias, entrevistas, experimentos e aprendizado.
+- [ ] Revisar roles, skills e playbooks de validacao formal.
+- [ ] Garantir que ela nao volte a ser requisito do MVP padrao sem decisao explicita.
 
-### 7.2 Separar templates por categoria
+## Ordem Recomendada Atual
 
-- [x] Definir subpastas para templates:
-  - `templates/agents/`
-  - `templates/structure/`
-  - `templates/execution/`
-  - `templates/commands/`
-  - `templates/github/`
-  - `templates/review/`
-- [x] Mover templates de agent para `templates/agents/`.
-- [x] Mover templates de department, area, README e YAML para `templates/structure/`.
-- [x] Mover templates de role, skill, playbook e workflow para `templates/execution/`.
-- [x] Mover command template para `templates/commands/`.
-- [x] Mover templates de GitHub issue, epic, sub-issue, PR, branch e readiness matrix para `templates/github/`.
-- [x] Mover code review template para `templates/review/`.
-- [x] Atualizar `templates/README.md` para explicar cada categoria e quando usar.
-- [x] Atualizar instructions e commands que apontam para templates antigos.
-
-### 7.3 Tornar checklists especificos por asset
-
-- [x] Substituir checklists genericos identicos por checklists especificos.
-- [x] `agent-quality-checklist.md`: validar roteamento, red lines, nivel correto e ausencia de inventario excessivo.
-- [x] `readme-quality-checklist.md`: validar mapa de pasta, quando usar, arquivos, relacionados e notas de navegacao.
-- [x] `department-quality-checklist.md`: validar areas ativas, workflows locais, ausencia de roles/skills/playbooks no root.
-- [x] `area-quality-checklist.md`: validar `AGENT.md` quando necessario, `area.yaml`, knowledge, roles, skills e playbooks.
-- [x] `role-quality-checklist.md`: validar responsabilidade, contexto necessario, skills/playbooks apontados e output esperado.
-- [x] `skill-quality-checklist.md`: validar capability reutilizavel, limites, checks, outputs e red lines.
-- [x] `playbook-quality-checklist.md`: validar sequencia, entradas, processo, outputs e arquivos atualizaveis.
-- [x] `workflow-quality-checklist.md`: adicionar checklist de workflow se ainda nao existir.
-- [x] `command-quality-checklist.md`: validar load first, allowed updates, forbidden updates, confirmation rule e output.
-- [ ] Criar checklists GitHub/review se fizer sentido apos reorganizar templates.
-
-### 7.4 Tornar instructions especificas por criacao
-
-- [x] Substituir instructions genericas identicas por instructions especificas.
-- [x] `create-agent-instructions.md`: quando criar root, department ou area AGENT; como evitar duplicar inventario.
-- [x] `create-readme-instructions.md`: como criar README como mapa, nao como executor.
-- [x] `create-department-instructions.md`: como criar departamento raiz com workflows e areas, sem roles/skills/playbooks diretos.
-- [x] `create-area-instructions.md`: como criar area com `AGENT.md` opcional, knowledge, roles, skills e playbooks.
-- [x] `create-role-instructions.md`: como definir persona/responsabilidade e apontar skills/playbooks.
-- [x] `create-skill-instructions.md`: como definir capability reutilizavel sem virar processo completo.
-- [x] `create-playbook-instructions.md`: como criar sequencia pratica usando skills.
-- [x] `create-workflow-instructions.md`: como criar fluxo multi-area ou multi-stage.
-- [x] `create-command-instructions.md`: como criar comando de chat seguro, com carregamento minimo e confirmacao.
-- [x] Atualizar `instructions/README.md` para explicar qual instruction usar em cada situacao.
-
-### 7.5 Melhorar examples por categoria
-
-- [x] Separar examples por categoria, se ajudar:
-  - `examples/agents/`
-  - `examples/structure/`
-  - `examples/execution/`
-  - `examples/github/`
-- [x] Garantir que examples sejam claramente ilustrativos e nao sobrescrevam o contexto ativo.
-- [x] Adicionar exemplos bons para:
-  - area `AGENT.md`
-  - role
-  - skill
-  - playbook
-  - workflow
-  - command
-  - GitHub epic/sub-issue/PR
-
-### 7.6 Atualizar gerador, preview e validacoes
-
-- [x] Atualizar `packages/cli/src/templates/workspace/renderers/ai-standard.ts`.
-- [x] Atualizar qualquer comando, AGENT ou renderer que aponte para paths antigos.
-- [x] Atualizar `packages/cli/scripts/validate-generator.mjs`.
-- [x] Regenerar `examples/client-workspace/`.
-- [x] Garantir que `examples/client-workspace-tree.md` reflita a nova estrutura.
-- [x] Validar que nenhum link antigo quebrado permaneceu.
-- [x] Rodar:
-  - `npm --prefix packages/cli run build`
-  - `npm run generate:client-workspace`
-  - `node packages/cli/scripts/validate-generator.mjs`
-  - `npm test`
-  - `node packages/cli/dist/index.js --help`
-  - `git diff --check`
-
-### 7.7 Criterio de pronto
-
-- [x] Um modelo consegue abrir `ai-standard/README.md` e saber exatamente onde ir.
-- [x] Cada checklist tem criterios especificos para seu asset type.
-- [x] Cada instruction orienta criacao real, nao texto generico.
-- [x] Templates estao separados por responsabilidade.
-- [x] Paths internos estao consistentes.
-- [x] Preview gerado esta sincronizado com o template real.
-
-### 7.8 Normalizar areas do workspace pelo padrao Design
-
-Objetivo: aplicar nas demais areas a logica que ficou definida em `operations/design/`: area com mapa claro, `AGENT.md` quando houver roteamento interno relevante, `knowledge/` para contexto duravel, roles/skills/playbooks especificos e poucos arquivos soltos.
-
-Principio de MVP: gerar apenas o que todo negocio precisa independentemente do setor. Arquivos muito especificos, tardios ou dependentes de stack devem ser criados por fluxo posterior, nao no scaffold inicial.
-
-#### Padrao alvo para areas
-
-- [ ] Definir regra objetiva para quando uma area deve ter `AGENT.md`:
-  - criar quando a area tiver multiplas roles, multiplos caminhos operacionais ou precisar decidir qual especialista ativar;
-  - evitar quando a area tiver apenas uma responsabilidade simples e o README for suficiente.
-- [ ] Padronizar `README.md` como mapa da area, nao como executor.
-- [ ] Padronizar `AGENT.md` como lider operacional da area, quando existir.
-- [ ] Padronizar `area.yaml` para declarar:
-  - key
-  - department
-  - path
-  - agent, quando existir
-  - readme
-  - knowledge files
-  - roles
-  - skills
-  - playbooks
-  - workflows locais, quando houver
-- [ ] Criar `knowledge/` nas areas que mantem fatos, decisoes, contexto ou materiais de referencia.
-- [ ] Mover arquivos de conhecimento soltos para `knowledge/`.
-- [ ] Remover arquivos soltos que nao fazem sentido para o MVP inicial.
-- [ ] Manter `roles/`, `skills/` e `playbooks/` dentro da area, nao no departamento raiz.
-- [ ] Garantir naming convention:
-  - `[direct-name].role.md`
-  - `[direct-name].skill.md`
-  - `[direct-name].playbook.md`
-  - `[direct-name].workflow.md`
-- [ ] Atualizar `ai-standard` se alguma regra nova de area/knowledge precisar virar padrao oficial.
-- [ ] Atualizar `.leanos/index/*` para nao apontar para paths antigos.
-- [ ] Atualizar `leanos.yaml` para refletir agents, knowledge e assets por area.
-- [ ] Atualizar validacao para impedir arquivos soltos indevidos em areas normalizadas.
-
-#### Diagnostico atual
-
-- [x] `operations/design` ja segue o padrao alvo:
-  - tem `AGENT.md`
-  - tem `knowledge/`
-  - tem roles especializadas
-  - tem skills/playbooks especificos
-  - nao tem arquivos soltos no root da area.
-- [x] `strategy/business` foi renomeado de `strategy/company` e normalizado para `AGENT.md` + `knowledge/`:
-  - `decision-log.md`
-  - `mission.md`
-  - `operating-model.md`
-  - `principles.md`
-  - `profile.md`
-  - `vision.md`
-- [x] `strategy/product` foi normalizado para `AGENT.md` + `knowledge/`:
-  - `brief.md`
-  - `business-model-canvas.md`
-  - `icp.md`
-  - `jobs-to-be-done.md`
-  - `positioning.md`
-  - `problem.md`
-  - `value-proposition.md`
-- [ ] `strategy/validation` esta em standby para decisao de escopo do MVP:
-  - `assumptions.md`
-  - `experiments.md`
-  - `interview-script.md`
-  - `learning-log.md`
-  - `riskiest-assumptions.md`
-  - `success-metrics.md`
-- [x] `strategy/roadmap` foi normalizado para `AGENT.md` + `knowledge/`:
-  - `backlog.md`
-  - `current-cycle.md`
-  - `milestones.md`
-  - `roadmap.md`
-- [x] `operations/product-ops` foi normalizado para Product Ops Lead + `knowledge/` + `mvp/`:
-  - `knowledge/overview.md`
-  - `knowledge/delivery-context.md`
-  - `knowledge/issue-readiness.md`
-  - `knowledge/technical-decisions.md`
-  - `mvp/`
-  - arquivos prematuros de arquitetura foram adiados ate existir stack/app real.
-- [ ] `operations/engineering` ainda tem conhecimento solto:
-  - `code-review-notes.md`
-  - `implementation-notes.md`
-  - `pr-log.md`
-- [ ] `operations/devops` nao tem knowledge root, mas precisa avaliar se falta contexto minimo para GitHub, ambientes, deploy e Vercel readiness.
-- [ ] `operations/security` ainda tem conhecimento solto:
-  - `access-control.md`
-  - `data-protection.md`
-  - `threat-model.md`
-- [ ] `growth/customer-experience` ainda tem conhecimento solto:
-  - `churn-reasons.md`
-  - `customer-feedback.md`
-  - `success-moments.md`
-  - `support-notes.md`
-- [ ] `growth/marketing` ainda tem conhecimento solto:
-  - `acquisition-channels.md`
-  - `landing-page.md`
-  - `launch-plan.md`
-  - `positioning.md`
-- [ ] `growth/finance` ainda tem conhecimento solto:
-  - `budget.md`
-  - `finance-risks.md`
-  - `pricing.md`
-  - `revenue-model.md`
-  - `unit-economics.md`
-
-#### Strategy areas
-
-- [x] `strategy/business`: criar `AGENT.md` como Business Lead.
-- [x] `strategy/business`: criar `knowledge/` para identidade e operacao do negocio.
-- [x] `strategy/business`: manter no MVP inicial:
-  - `knowledge/profile.md`
-  - `knowledge/mission.md`
-  - `knowledge/vision.md`
-  - `knowledge/principles.md`
-  - `knowledge/operating-model.md`
-  - `knowledge/decision-log.md`
-- [x] `strategy/business`: revisar roles:
-  - trocar `company-strategist.role.md` por `business-strategist.role.md`;
-  - `founder-ceo.role.md` nao foi criado nesta rodada para evitar duplicar `business-strategist`.
-- [x] `strategy/business`: revisar skills:
-  - trocar `define-company.skill.md` por `define-business-identity.skill.md`
-  - `clarify-operating-model.skill.md`
-  - `decision-making.skill.md` nao foi criado nesta rodada.
-- [x] `strategy/business`: revisar playbooks:
-  - trocar `company-foundation.playbook.md` por `business-foundation.playbook.md`;
-  - garantir que ele preencha knowledge, nao roles/skills/playbooks.
-
-- [x] `strategy/product`: criar `AGENT.md` como Product Lead quando houver roteamento entre estrategia, ICP, posicionamento, modelo de negocio e ideia nova.
-- [x] `strategy/product`: criar `knowledge/` para contexto de produto.
-- [x] `strategy/product`: manter no MVP inicial:
-  - `knowledge/brief.md`
-  - `knowledge/problem.md`
-  - `knowledge/icp.md`
-  - `knowledge/jobs-to-be-done.md`
-  - `knowledge/value-proposition.md`
-  - `knowledge/positioning.md`
-  - `knowledge/business-model-canvas.md`
-- [x] `strategy/product`: revisar se `business-model-canvas.md` deve ser simples o suficiente para founder iniciante.
-- [x] `strategy/product`: revisar roles:
-  - `product-strategist.role.md`
-  - `product-manager.role.md`
-  - `product-discovery-lead.role.md` nao foi criado nesta rodada para evitar duplicar `product-strategist`.
-- [x] `strategy/product`: revisar skills:
-  - `evaluate-idea.skill.md`
-  - `define-product.skill.md`
-  - `define-icp.skill.md`
-  - `define-value-proposition.skill.md`
-  - `define-business-model.skill.md`
-  - `check-coherence.skill.md`
-- [x] `strategy/product`: revisar e enriquecer `product-strategy.playbook.md`.
-- [ ] `strategy/product`: avaliar um playbook mais claro para `idea-to-roadmap` junto com workflow de Strategy.
-
-- [ ] `strategy/validation`: criar `AGENT.md` como Validation Lead.
-- [ ] `strategy/validation`: criar `knowledge/` para evidencias e aprendizado.
-- [ ] `strategy/validation`: manter no MVP inicial:
-  - `knowledge/assumptions.md`
-  - `knowledge/riskiest-assumptions.md`
-  - `knowledge/experiments.md`
-  - `knowledge/interview-script.md`
-  - `knowledge/success-metrics.md`
-  - `knowledge/learning-log.md`
-- [ ] `strategy/validation`: revisar roles:
-  - manter `validation-researcher.role.md`;
-  - avaliar `customer-interviewer.role.md` apenas se nao duplicar Growth/CX.
-- [ ] `strategy/validation`: revisar skills:
-  - `define-assumptions.skill.md`
-  - `create-interview-script.skill.md`
-  - `define-success-metrics.skill.md`
-  - avaliar `synthesize-evidence.skill.md`.
-- [ ] `strategy/validation`: revisar playbooks:
-  - manter/enriquecer `mvp-validation.playbook.md`;
-  - garantir ciclo hipotese -> experimento -> evidencia -> decisao -> roadmap.
-
-- [x] `strategy/roadmap`: criar `AGENT.md` como Roadmap Lead.
-- [x] `strategy/roadmap`: criar `knowledge/` para planejamento versionavel.
-- [x] `strategy/roadmap`: manter no MVP inicial:
-  - `knowledge/roadmap.md`
-  - `knowledge/milestones.md`
-  - `knowledge/current-cycle.md`
-  - `knowledge/backlog.md`
-- [x] `strategy/roadmap`: revisar roles:
-  - manter `roadmap-planner.role.md`;
-  - `product-ops.role.md` nao foi criado nesta rodada para evitar duplicar `roadmap-planner`.
-- [x] `strategy/roadmap`: revisar skills:
-  - `create-roadmap.skill.md`
-  - `prioritize-backlog.skill.md`
-  - `prepare-roadmap-sync.skill.md`
-- [x] `strategy/roadmap`: revisar playbooks:
-  - trocar `validation-cycle-planning.playbook.md` por `roadmap-cycle-planning.playbook.md`
-  - `roadmap-sync-prep.playbook.md`
-- [ ] `strategy/workflows`: garantir que `idea-to-roadmap.workflow.md` e `roadmap-to-github-project.workflow.md` apontem para area AGENTs e knowledge paths atualizados.
-
-#### Operations areas
-
-- [x] `operations/product-ops`: decidir papel da area: Product Ops = MVP scope, acceptance criteria, issue readiness, epic/sub-issue shaping e delivery boundaries.
-- [x] `operations/product-ops`: criar `AGENT.md` como Product Ops Lead.
-- [x] `operations/product-ops`: criar `knowledge/` e reduzir arquivos tecnicos prematuros.
-- [x] `operations/product-ops`: manter no MVP inicial:
-  - `knowledge/overview.md`
-  - `knowledge/delivery-context.md`
-  - `knowledge/issue-readiness.md`
-  - `knowledge/technical-decisions.md`
-  - `mvp/README.md`
-  - `mvp/scope.md`
-  - `mvp/non-goals.md`
-  - `mvp/user-stories.md`
-  - `mvp/user-flows.md`
-  - `mvp/acceptance-criteria.md`
-  - `mvp/release-checklist.md`
-- [x] `operations/product-ops`: adiar estes arquivos ate stack/arquitetura existir:
-  - `api-contract.md`
-  - `data-model.md`
-  - `integrations.md`
-  - `prompt-architecture.md`
-  - `ai-capabilities.md`
-- [x] `operations/product-ops`: revisar roles:
-  - `product-owner.role.md`
-  - trocar `technical-architect.role.md` por `delivery-architect.role.md`.
-- [x] `operations/product-ops`: revisar skills:
-  - `define-mvp.skill.md`
-  - `write-acceptance-criteria.skill.md`
-  - `shape-epic.skill.md`
-  - `write-subissue-criteria.skill.md`
-  - `check-delivery-coherence.skill.md`
-  - trocar arquitetura prematura por `define-delivery-boundaries.skill.md`.
-- [x] `operations/product-ops`: revisar playbooks:
-  - `mvp-delivery.playbook.md`
-  - `epic-to-subissues.playbook.md`
-  - trocar `architecture-planning.playbook.md` por `delivery-readiness.playbook.md`
-
-- [x] `operations/engineering`: criar `AGENT.md` como Engineering Lead.
-- [x] `operations/engineering`: criar `knowledge/` para padroes, regras, historico tecnico e criterios de review.
-- [x] `operations/engineering`: manter no MVP inicial:
-  - `knowledge/code-standards.md`
-  - `knowledge/implementation-rules.md`
-  - `knowledge/component-guidelines.md`
-  - `knowledge/data-guidelines.md`
-  - `knowledge/testing-strategy.md`
-  - `knowledge/review-criteria.md`
-  - `knowledge/implementation-notes.md`
-  - `knowledge/code-review-notes.md`
-  - `knowledge/pr-log.md`
-- [x] `operations/engineering`: revisar roles:
-  - `senior-developer.role.md`
-  - `pr-reviewer.role.md`
-  - adicionar `test-engineer.role.md`.
-- [x] `operations/engineering`: revisar skills:
-  - `plan-implementation.skill.md`
-  - `follow-code-standards.skill.md`
-  - `create-branch.skill.md`
-  - `create-pr.skill.md`
-  - `review-pr.skill.md`
-  - `write-tests.skill.md`
-  - `review-data-change.skill.md`
-- [x] `operations/engineering`: revisar playbooks:
-  - `branch-from-issue.playbook.md`
-  - `issue-to-pr.playbook.md`
-  - `pr-validation.playbook.md`
-  - `test-planning.playbook.md`
-- [x] `operations/engineering`: garantir que branch, PR e review usem templates GitHub em `ai-standard/templates/github/`.
-
-- [ ] `operations/devops`: criar `AGENT.md` como DevOps/GitHub Operations Lead.
-- [ ] `operations/devops`: criar `knowledge/` para setup e readiness operacional.
-- [ ] `operations/devops`: manter no MVP inicial:
-  - `knowledge/github-management.md`
-  - `knowledge/environments.md`
-  - `knowledge/deployment-readiness.md`
-  - `knowledge/ci-cd.md`
-  - `knowledge/observability.md`
-- [ ] `operations/devops`: garantir que GitHub token/env seja orientado sem salvar segredo no workspace.
-- [ ] `operations/devops`: manter Vercel como readiness, nao como deploy automatico.
-- [ ] `operations/devops`: revisar roles:
-  - `github-devops.role.md`
-  - `devops-engineer.role.md`
-  - avaliar `release-manager.role.md`.
-- [ ] `operations/devops`: revisar skills:
-  - `configure-github-project.skill.md`
-  - `configure-environments.skill.md`
-  - `setup-ci.skill.md`
-  - `plan-deployment.skill.md`
-  - `define-observability.skill.md`
-- [ ] `operations/devops`: revisar playbooks:
-  - `configure-github-project.playbook.md`
-  - `configure-environments.playbook.md`
-  - `setup-ci-cd.playbook.md`
-  - `plan-deployment.playbook.md`
-  - `define-observability.playbook.md`
-  - `release-operations.playbook.md`
-
-- [ ] `operations/security`: criar `AGENT.md` como Security Lead.
-- [ ] `operations/security`: criar `knowledge/` para baseline de seguranca.
-- [ ] `operations/security`: manter no MVP inicial:
-  - `knowledge/threat-model.md`
-  - `knowledge/access-control.md`
-  - `knowledge/data-protection.md`
-  - avaliar `knowledge/security-baseline.md`.
-- [ ] `operations/security`: revisar roles:
-  - `security-reviewer.role.md`
-  - avaliar `privacy-reviewer.role.md` apenas se nao virar escopo juridico pesado.
-- [ ] `operations/security`: revisar skills:
-  - `threat-model.skill.md`
-  - `review-security.skill.md`
-  - avaliar `access-control-review.skill.md`.
-- [ ] `operations/security`: revisar playbooks:
-  - `security-checklist.playbook.md`
-  - `security-review.playbook.md`
-- [ ] `operations/security`: garantir participacao condicional em sub-issues apenas quando houver dados, auth, permissoes, privacidade, abuso ou compliance.
-
-- [ ] `operations/workflows`: revisar workflows de departamento:
-  - `issue-delivery-cycle.workflow.md`
-  - `mvp-to-pr.workflow.md`
-  - `post-merge-continuation.workflow.md`
-- [ ] `operations/workflows`: garantir que workflows de departamento roteiem para area AGENTs, nao diretamente para roles quando houver area AGENT.
-
-#### Growth areas
-
-- [ ] `growth/customer-experience`: criar `AGENT.md` como Customer Experience Lead.
-- [ ] `growth/customer-experience`: criar `knowledge/` para sinais e aprendizado pos-lancamento.
-- [ ] `growth/customer-experience`: manter no MVP inicial:
-  - `knowledge/customer-feedback.md`
-  - `knowledge/support-notes.md`
-  - `knowledge/success-moments.md`
-  - `knowledge/churn-reasons.md`
-- [ ] `growth/customer-experience`: revisar roles:
-  - `cx-lead.role.md`
-  - avaliar `customer-researcher.role.md` apenas se nao duplicar Strategy/Validation.
-- [ ] `growth/customer-experience`: revisar skills:
-  - `map-customer-feedback.skill.md`
-  - `synthesize-support-patterns.skill.md`
-- [ ] `growth/customer-experience`: revisar playbooks:
-  - `customer-learning-loop.playbook.md`.
-
-- [ ] `growth/marketing`: criar `AGENT.md` como Marketing/Growth Lead.
-- [ ] `growth/marketing`: criar `knowledge/` para go-to-market inicial.
-- [ ] `growth/marketing`: manter no MVP inicial:
-  - `knowledge/positioning.md`
-  - `knowledge/landing-page.md`
-  - `knowledge/launch-plan.md`
-  - `knowledge/acquisition-channels.md`
-- [ ] `growth/marketing`: revisar roles:
-  - `growth-lead.role.md`
-  - avaliar `positioning-strategist.role.md` ou `copywriter.role.md` apenas se necessario.
-- [ ] `growth/marketing`: revisar skills:
-  - `define-positioning.skill.md`
-  - `create-landing-page-copy.skill.md`
-  - `create-launch-plan.skill.md`
-- [ ] `growth/marketing`: revisar playbooks:
-  - `mvp-launch.playbook.md`.
-- [ ] `growth/marketing`: garantir que design visual de landing page seja roteado para `operations/design` quando necessario.
-
-- [ ] `growth/finance`: decidir se precisa de `AGENT.md` ou se README basta no MVP.
-- [ ] `growth/finance`: criar `knowledge/` para modelo financeiro basico.
-- [ ] `growth/finance`: manter no MVP inicial:
-  - `knowledge/pricing.md`
-  - `knowledge/revenue-model.md`
-  - `knowledge/unit-economics.md`
-  - `knowledge/budget.md`
-  - `knowledge/finance-risks.md`
-- [ ] `growth/finance`: revisar roles:
-  - `finance-operator.role.md`.
-- [ ] `growth/finance`: revisar skills:
-  - `review-pricing.skill.md`
-  - `model-unit-economics.skill.md`.
-- [ ] `growth/finance`: revisar playbooks:
-  - `finance-review.playbook.md`.
-
-- [ ] `growth/workflows`: revisar `launch-learning-loop.workflow.md` para usar area AGENTs e knowledge paths atualizados.
-
-#### Conteudo minimo por arquivo
-
-- [ ] Knowledge files devem ser scaffolds estruturados e preenchiveis, nao arquivos quase vazios.
-- [ ] Cada knowledge file deve ter secoes especificas ao assunto, como foi feito em Design:
-  - contexto atual
-  - decisoes
-  - criterios
-  - riscos
-  - perguntas abertas
-  - proxima revisao
-- [ ] Role files devem declarar:
-  - responsabilidade
-  - quando usar
-  - contexto que deve carregar
-  - skills disponiveis
-  - playbooks recomendados
-  - output esperado
-  - red lines especificas.
-- [ ] Skill files devem declarar:
-  - capability reutilizavel
-  - inputs
-  - metodo
-  - checks
-  - output
-  - limites.
-- [ ] Playbook files devem declarar:
-  - objetivo
-  - entradas
-  - passos
-  - decisoes/confirmacoes
-  - arquivos que pode atualizar
-  - arquivos que nao pode atualizar
-  - output esperado.
-- [ ] Area AGENTs devem ser curtos e focados em roteamento, como `operations/design/AGENT.md`.
-- [ ] READMEs devem explicar a pasta e apontar rotas, sem repetir todas as regras do AGENT.
-
-#### Validacao e preview
-
-- [ ] Atualizar `packages/cli/scripts/validate-generator.mjs` para validar o padrao por area.
-- [ ] Atualizar fixture `examples/client-workspace/`.
-- [ ] Atualizar `examples/client-workspace-tree.md`.
-- [ ] Garantir que areas desativadas nao gerem AGENT, knowledge, roles, skills ou playbooks.
-- [ ] Garantir que indexes nao apontem para arquivos removidos ou movidos.
-- [ ] Rodar:
-  - `npm --prefix packages/cli run build`
-  - `npm run generate:client-workspace`
-  - `node packages/cli/scripts/validate-generator.mjs`
-  - `npm test`
-  - `node packages/cli/dist/index.js --help`
-  - `git diff --check`
-
-## 8. Definicao de MVP pronto para teste externo
-
-O MVP esta pronto para teste externo quando um usuario consegue:
-
-- [ ] Rodar `npx lean-os ai`.
-- [ ] Criar o workspace sem sobrescrever arquivos importantes por acidente.
-- [ ] Abrir o workspace em VS Code, Codex, Claude ou outro agente.
-- [ ] Rodar `/start-leanos`.
-- [ ] Ser guiado por uma primeira sessao clara.
-- [ ] Preencher Strategy com confirmacao.
-- [ ] Rodar `/define mvp`.
-- [ ] Rodar `/check coherence`.
-- [ ] Gerar plano de issues ou execucao.
-- [ ] Continuar o trabalho em uma nova sessao sem perder contexto.
-
-## Ordem Recomendada
-
-1. Fortalecer `/start-leanos`.
-2. Mapear fluxos em `TEMP-automation-flows.md`.
-3. Detalhar `Idea-to-roadmap`.
-4. Detalhar `Roadmap-sync-to-GitHub-Projects`.
-5. Detalhar `Epic-to-sub-issues`.
-6. Detalhar `Issue implementation`.
-7. Padronizar `/check coherence` e `/define mvp`.
-8. Tornar o ciclo de validacao explicito.
-9. Revisar artefatos GitHub/API.
-10. Fortalecer `ai-standard/` como source-of-truth do framework.
-11. Preparar release publica.
+1. Revisar workflows locais.
+2. Mapear intents naturais e comandos para esses workflows.
+3. Padronizar comandos principais como portas de entrada, nao como donos do processo.
+4. Formalizar camada GitHub chat-first como etapa final confirmada dos workflows.
+5. Rodar teste externo da Founder Journey.
+6. Ajustar lacunas descobertas no teste.
+7. Preparar release publica do MVP.
+8. Planejar update/migration.
+9. Planejar `/bootstrap product`.
 
 ## Remocao
 
-- [ ] Excluir este arquivo quando todos os itens relevantes forem implementados ou movidos para issues oficiais.
+- [ ] Excluir este arquivo quando todos os itens relevantes forem implementados, validados ou movidos para issues oficiais.

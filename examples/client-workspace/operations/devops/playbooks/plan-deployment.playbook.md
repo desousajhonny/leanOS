@@ -10,14 +10,17 @@ Plan a safe deployment path.
 - Target environment
 - Current validation status
 - Known risks
+- Environment plan
+- Skill: plan-deployment
 
 ## Process
 
-1. Identify target environment
-2. Confirm required validation gates
-3. Define deployment steps
-4. Define rollback path
-5. Define post-deploy checks
+1. Read DevOps AGENT and choose DevOps Engineer
+2. Read `knowledge/environments.md` and `knowledge/deployment-readiness.md`
+3. Confirm product code/framework exists before provider-specific deployment planning
+4. Use `skills/plan-deployment.skill.md` to define release gates, rollback and smoke checks
+5. Document Vercel readiness as guidance only; do not create `.vercel/`, run `vercel link` or deploy automatically
+6. Ask before creating provider config or remote state
 
 ## Output
 
@@ -29,8 +32,8 @@ Plan a safe deployment path.
 
 ## Files to Update
 
-- Update relevant DevOps notes or release records if the workspace has them.
+- Update `../knowledge/deployment-readiness.md` after confirmation.
 
 ## Navigation
 
-Start from `../README.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.

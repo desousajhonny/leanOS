@@ -155,7 +155,6 @@ Current areas:
 - `strategy/business/`
 - `strategy/product/`
 - `strategy/roadmap/`
-- `strategy/validation/`
 - `operations/product-ops/`
 - `operations/product-ops/mvp/`
 - `operations/design/`
@@ -177,7 +176,9 @@ During `/start-leanos`, LeanOS Chief may propose updates to:
 - `.leanos/context/workspace-summary.md`
 - `.leanos/context/current-focus.md`
 - `.leanos/context/next-actions.md`
-- Strategy source-of-truth files such as company profile, product brief, ICP, assumptions and learning log
+- Strategy source-of-truth files such as business profile, product brief, ICP, validation notes and roadmap context
+
+In the MVP scaffold, lightweight validation lives in `strategy/product/knowledge/validation-notes.md`. A dedicated `strategy/validation/` area can be activated later when the founder starts running formal experiments, interviews and evidence loops.
 
 It must not modify during init:
 
@@ -287,7 +288,7 @@ npx lean-os ai
 /start-leanos
 Help me define the ICP.
 Turn this idea into an MVP.
-Create a roadmap for the first validation cycle.
+Create a roadmap for the first MVP learning cycle.
 Check if this MVP is coherent.
 Create GitHub issues for this roadmap.
 Start working on the authentication issue.

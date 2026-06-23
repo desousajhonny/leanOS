@@ -4,23 +4,35 @@
 
 Review business assumptions and financial risk.
 
-## Area
+## Inputs
 
-`growth/finance`
+- Pricing
+- Revenue model
+- Unit economics
+- Budget
+- Finance risks
 
-## Sequence
+## Process
 
-1. Read pricing
-2. Review revenue model
-3. Check unit economics
-4. Record risks
+1. Read Finance AGENT and choose Finance Operator
+2. Use `skills/review-pricing.skill.md` when pricing or packaging is involved
+3. Use `skills/model-unit-economics.skill.md` when costs, margins or spend are involved
+4. Separate assumptions from evidence
+5. Identify founder decisions needed
+6. Route product value questions to Strategy Product when needed
 
-## Outputs
+## Output
 
-- Decision or action summary
-- Updated source-of-truth files when requested
-- Next recommended LeanOS command
+- Finance review
+- Assumptions
+- Risks
+- Decisions needed
+- Validation needs
+
+## Files to Update
+
+- Update `../knowledge/pricing.md`, `../knowledge/revenue-model.md`, `../knowledge/unit-economics.md`, `../knowledge/budget.md` or `../knowledge/finance-risks.md` after explicit confirmation.
 
 ## Navigation
 
-Start from `../README.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.

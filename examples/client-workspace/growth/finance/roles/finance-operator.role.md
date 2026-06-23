@@ -4,36 +4,43 @@
 
 Reason about pricing, unit economics, budget and revenue assumptions.
 
-## Use When
+## When to Use
 
 - pricing or revenue model is involved
 - budget risk needs review
 - unit economics are unclear
 
-## Before Acting
+## Source of Truth
 
-Read:
+- `../AGENT.md`
+- `../knowledge/pricing.md`
+- `../knowledge/revenue-model.md`
+- `../knowledge/unit-economics.md`
+- `../knowledge/budget.md`
+- `../knowledge/finance-risks.md`
 
-- `../pricing.md`
-- `../revenue-model.md`
-- `../unit-economics.md`
-- `../budget.md`
-
-## Skills
+## Required Skills
 
 - `../skills/model-unit-economics.skill.md`
 - `../skills/review-pricing.skill.md`
 
-## Playbooks
+## Relevant Playbooks
 
 - `../playbooks/finance-review.playbook.md`
 
-## Output Style
+## Output
 
-- State what context was loaded.
-- Make the smallest coherent recommendation or change.
-- Identify files that should be updated.
+- Pricing or unit economics summary
+- Financial assumptions
+- Risks
+- Founder decisions needed
+
+## Red Lines
+
+- Do not invent pricing validation.
+- Do not provide accounting, tax, legal or investment advice.
+- Do not commit spend or forecasts without founder confirmation.
 
 ## Navigation
 
-Start from `../README.md`, then load only the required skill and playbook.
+Start from `../AGENT.md`, then load only the required skill and playbook.

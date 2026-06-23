@@ -13,10 +13,10 @@ department:
       agent: engineering/AGENT.md
       readme: engineering/README.md
     - key: operations.devops
-      agent: null
+      agent: devops/AGENT.md
       readme: devops/README.md
     - key: operations.security
-      agent: null
+      agent: security/AGENT.md
       readme: security/README.md
   workflows:
     - key: mvp-to-pr

@@ -15,13 +15,15 @@ Prepare GitHub settings for roadmap sync without calling the API directly from t
 
 ## Process
 
-1. Read `.github/leanos/github-settings.example.json`
-2. Review `.github/leanos/project-sync.yaml`
-3. Ask for missing owner, repository, project and field mapping
-4. Confirm token source without asking the user to paste secrets into files
-5. Document Vercel readiness as guidance only; do not create `.vercel/`, run `vercel link` or add `vercel.json` until a real app/framework needs it
-6. Propose the project-sync update before writing
-7. Validate that sync-state remains secret-free
+1. Read DevOps AGENT and choose GitHub DevOps
+2. Read `knowledge/github-management.md`
+3. Read `.github/leanos/github-settings.example.json`
+4. Review `.github/leanos/project-sync.yaml`
+5. Ask for missing owner, repository, project and field mapping
+6. Confirm token source without asking the user to paste secrets into files
+7. Document Vercel readiness as guidance only; do not create `.vercel/`, run `vercel link` or add `vercel.json` until a real app/framework needs it
+8. Propose the project-sync update before writing
+9. Validate that sync-state remains secret-free
 
 ## Output
 
@@ -34,9 +36,10 @@ Prepare GitHub settings for roadmap sync without calling the API directly from t
 
 ## Files to Update
 
+- Update `../knowledge/github-management.md` after confirmation.
 - Update `../../../.github/leanos/project-sync.yaml` only after explicit confirmation.
 - Update `../../../.github/leanos/sync-state.yaml` only with non-secret sync metadata.
 
 ## Navigation
 
-Start from `../README.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.

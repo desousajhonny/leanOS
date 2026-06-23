@@ -22,7 +22,7 @@ Read:
 - `../mvp/user-stories.md`
 - `../mvp/acceptance-criteria.md`
 - `../../../strategy/product/knowledge/brief.md`
-- `../../../ai-standard/templates/github/issue-readiness-matrix-template.md`
+- `../../../ai-standard/templates/github/delivery-readiness-matrix-template.md`
 
 ## Skills
 

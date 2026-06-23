@@ -6,11 +6,11 @@ Roles owned by the Customer Experience area.
 
 ## When to Use
 
-Use after the area README selects a role.
+Use after the area AGENT selects a role.
 
 ## Source of Truth
 
-`../README.md`
+`../AGENT.md`
 
 ## Files
 

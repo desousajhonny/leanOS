@@ -10,12 +10,20 @@ Use when a selected role points to a playbook.
 
 ## Source of Truth
 
-`../README.md`
+`../AGENT.md`
 
 ## Files
 
-- `security-review.playbook.md`
-- `security-checklist.playbook.md`
+- `security-foundation.playbook.md`
+- `pre-mvp-security-checklist.playbook.md`
+- `security-automation-readiness.playbook.md`
+- `pre-deploy-security-review.playbook.md`
+- `api-security-review.playbook.md`
+- `database-security-review.playbook.md`
+- `secrets-rotation.playbook.md`
+- `vulnerability-response.playbook.md`
+- `incident-response.playbook.md`
+- `ai-generated-code-security-review.playbook.md`
 
 ## Related Folders
 

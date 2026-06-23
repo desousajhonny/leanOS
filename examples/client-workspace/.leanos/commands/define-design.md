@@ -89,7 +89,6 @@ During `/define design`, do not create or update:
 - strategy.business
 - strategy.product
 - strategy.roadmap
-- strategy.validation
 - operations.product-ops
 - operations.design
 - operations.engineering

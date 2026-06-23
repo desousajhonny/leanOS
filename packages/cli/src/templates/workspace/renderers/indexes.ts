@@ -41,11 +41,13 @@ function localWorkflowIndex(activeAreas: AreaDefinition[], activeRoots: RootDepa
   return activeRoots.flatMap((department) => {
     const activeAreaSlugs = new Set(activeAreas.filter((area) => area.root === department.key).map((area) => area.slug));
 
-    return department.workflows.map((workflow) => ({
-      key: workflow.slug,
-      department: department.key,
-      path: `../../${department.key}/workflows/${workflow.slug}.workflow.md`,
-      active: workflow.requiredAreas.every((area) => activeAreaSlugs.has(area))
-    }));
+    return department.workflows
+      .filter((workflow) => workflow.requiredAreas.every((area) => activeAreaSlugs.has(area)))
+      .map((workflow) => ({
+        key: workflow.slug,
+        department: department.key,
+        path: `../../${department.key}/workflows/${workflow.slug}.workflow.md`,
+        active: true
+      }));
   });
 }

@@ -4,24 +4,54 @@
 
 Plan launch actions, channels and learning loops.
 
-## Area
+## Use When
 
-`growth/marketing`
+- MVP launch is being planned
+- acquisition channels need prioritization
+- launch learning needs structure
+
+## Required Context
+
+- Positioning
+- Landing page
+- Acquisition channels
+- Customer learning goals
 
 ## Inputs
 
-- Area source-of-truth files
-- Active role instructions
-- User request
+- Launch goal
+- Audience
+- Channels
+- Assets
+- Timeline
+- Learning metrics
 
 ## Process
 
-1. Read the minimum relevant source-of-truth files.
-2. Apply this skill to the user request.
-3. Prepare a concise output or file update.
+1. Clarify launch goal
+2. Choose smallest viable channels
+3. List needed assets
+4. Define learning metrics
+5. Route budget questions to Finance
+
+## Checks
+
+- Launch is feasible
+- Learning goal is explicit
+- Budget implications are visible
 
 ## Output
 
-- Summary
-- Decisions
-- Suggested file updates
+- Launch plan
+- Channel experiments
+- Learning metrics
+- Risks
+
+## Files to Update
+
+- Update `../knowledge/launch-plan.md` and `../knowledge/acquisition-channels.md` after explicit confirmation.
+
+## Red Lines
+
+- Do not commit spend without Finance review.
+- Do not optimize for vanity metrics only.

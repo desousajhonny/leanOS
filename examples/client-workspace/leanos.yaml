@@ -62,11 +62,6 @@ subareas:
       path: strategy/roadmap/README.md
       agent: strategy/roadmap/AGENT.md
       readme: strategy/roadmap/README.md
-    - key: strategy.validation
-      department: strategy
-      path: strategy/validation/README.md
-      agent: null
-      readme: strategy/validation/README.md
     - key: operations.product-ops
       department: operations
       path: operations/product-ops/README.md
@@ -85,27 +80,27 @@ subareas:
     - key: operations.devops
       department: operations
       path: operations/devops/README.md
-      agent: null
+      agent: operations/devops/AGENT.md
       readme: operations/devops/README.md
     - key: operations.security
       department: operations
       path: operations/security/README.md
-      agent: null
+      agent: operations/security/AGENT.md
       readme: operations/security/README.md
     - key: growth.customer-experience
       department: growth
       path: growth/customer-experience/README.md
-      agent: null
+      agent: growth/customer-experience/AGENT.md
       readme: growth/customer-experience/README.md
     - key: growth.marketing
       department: growth
       path: growth/marketing/README.md
-      agent: null
+      agent: growth/marketing/AGENT.md
       readme: growth/marketing/README.md
     - key: growth.finance
       department: growth
       path: growth/finance/README.md
-      agent: null
+      agent: growth/finance/AGENT.md
       readme: growth/finance/README.md
 roles:
   ownership: area-first
@@ -117,8 +112,6 @@ roles:
       - product-manager
     strategy.roadmap:
       - roadmap-planner
-    strategy.validation:
-      - validation-researcher
     operations.product-ops:
       - product-owner
       - delivery-architect
@@ -134,8 +127,12 @@ roles:
     operations.devops:
       - devops-engineer
       - github-devops
+      - release-manager
     operations.security:
       - security-reviewer
+      - application-security-engineer
+      - cloud-security-reviewer
+      - data-protection-reviewer
     growth.customer-experience:
       - cx-lead
     growth.marketing:
@@ -159,10 +156,6 @@ skills:
       - create-roadmap
       - prioritize-backlog
       - prepare-roadmap-sync
-    strategy.validation:
-      - define-assumptions
-      - create-interview-script
-      - define-success-metrics
     operations.product-ops:
       - define-mvp
       - write-acceptance-criteria
@@ -187,13 +180,24 @@ skills:
       - create-pr
       - review-pr
     operations.devops:
+      - configure-github-project
+      - configure-environments
       - setup-ci
       - plan-deployment
-      - configure-github-project
       - define-observability
+      - prepare-release
     operations.security:
-      - threat-model
-      - review-security
+      - threat-modeling
+      - access-control-review
+      - api-security-review
+      - database-security-review
+      - secrets-management
+      - secure-code-review
+      - dependency-supply-chain-review
+      - infra-hardening-review
+      - incident-response
+      - security-automation-readiness
+      - ai-generated-code-security
     growth.customer-experience:
       - map-customer-feedback
       - synthesize-support-patterns
@@ -214,8 +218,6 @@ playbooks:
     strategy.roadmap:
       - roadmap-cycle-planning
       - roadmap-sync-prep
-    strategy.validation:
-      - mvp-validation
     operations.product-ops:
       - mvp-delivery
       - epic-to-subissues
@@ -239,8 +241,16 @@ playbooks:
       - define-observability
       - release-operations
     operations.security:
-      - security-review
-      - security-checklist
+      - security-foundation
+      - pre-mvp-security-checklist
+      - security-automation-readiness
+      - pre-deploy-security-review
+      - api-security-review
+      - database-security-review
+      - secrets-rotation
+      - vulnerability-response
+      - incident-response
+      - ai-generated-code-security-review
     growth.customer-experience:
       - customer-learning-loop
     growth.marketing:
@@ -250,8 +260,8 @@ playbooks:
 workflows:
   ownership: department-local
   active:
+    - new-idea-intake
     - idea-to-roadmap
-    - strategy-validation-cycle
     - roadmap-to-github-project
     - mvp-to-pr
     - issue-delivery-cycle
@@ -259,10 +269,10 @@ workflows:
     - launch-learning-loop
   by_department:
     strategy:
+      - key: new-idea-intake
+        path: strategy/workflows/new-idea-intake.workflow.md
       - key: idea-to-roadmap
         path: strategy/workflows/idea-to-roadmap.workflow.md
-      - key: strategy-validation-cycle
-        path: strategy/workflows/strategy-validation-cycle.workflow.md
       - key: roadmap-to-github-project
         path: strategy/workflows/roadmap-to-github-project.workflow.md
     operations:

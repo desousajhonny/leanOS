@@ -14,6 +14,8 @@ Guide safe GitHub repository, Project, labels and sync configuration without sto
 
 Read:
 
+- `../AGENT.md`
+- `../knowledge/github-management.md`
 - `../../../.github/leanos/github-settings.example.json`
 - `../../../.github/leanos/project-sync.yaml`
 - `../../../.github/leanos/sync-state.yaml`
@@ -35,4 +37,4 @@ Read:
 
 ## Navigation
 
-Start from `../README.md`, then load only the required skill and playbook.
+Start from `../AGENT.md`, then load only the required skill and playbook.

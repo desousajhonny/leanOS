@@ -22,7 +22,7 @@ Read:
 - `../../operations/engineering/skills/create-branch.skill.md`
 - `../../operations/engineering/skills/follow-code-standards.skill.md`
 - `../../operations/engineering/playbooks/issue-to-pr.playbook.md`
-- `../../ai-standard/templates/github/issue-readiness-matrix-template.md`
+- `../../ai-standard/templates/github/delivery-readiness-matrix-template.md`
 - `../../.github/leanos/branch-rules.md`
 
 If `operations.engineering` is not active, do not load missing paths. Ask whether to activate or create Engineering before planning implementation.
@@ -31,12 +31,13 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 
 1. Read or request the full GitHub issue body.
 2. Summarize the issue in the chat and ask the user to confirm the interpretation.
-3. Check Product and Engineering readiness.
-4. Check Design only when UX is affected.
-5. Check Security only when data, auth, privacy, abuse or compliance is involved.
-6. Propose the required issue-linked branch name before code changes.
-7. Produce an implementation plan and test plan.
-8. Ask for confirmation before modifying product code.
+3. Check Product Ops and Engineering readiness with the Delivery Readiness Matrix (DRM).
+4. Check Design only when UX, UI, flow, accessibility, copy or interaction is affected.
+5. Check Security only when data, auth, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
+6. Check DevOps only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.
+7. Propose the required issue-linked branch name before code changes.
+8. Produce an implementation plan and test plan.
+9. Ask for confirmation before modifying product code.
 
 ## Output
 
@@ -54,7 +55,6 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 - strategy.business
 - strategy.product
 - strategy.roadmap
-- strategy.validation
 - operations.product-ops
 - operations.design
 - operations.engineering

@@ -22,7 +22,7 @@ Create role, skill and playbook assets inside the correct active area:
 - Business assets: `../../strategy/business/`
 - Product assets: `../../strategy/product/`
 - Roadmap assets: `../../strategy/roadmap/`
-- Validation assets: `../../strategy/validation/`
+- Validation assets: `../../strategy/validation/` (not active; ask before activating or creating it)
 - Product Ops assets: `../../operations/product-ops/`
 - Design assets: `../../operations/design/`
 - Engineering assets: `../../operations/engineering/`
@@ -45,7 +45,6 @@ Create role, skill and playbook assets inside the correct active area:
 - strategy.business
 - strategy.product
 - strategy.roadmap
-- strategy.validation
 - operations.product-ops
 - operations.design
 - operations.engineering

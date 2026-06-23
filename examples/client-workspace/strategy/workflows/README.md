@@ -14,8 +14,8 @@ Use when work spans more than one active area inside this department.
 
 ## Files
 
+- `new-idea-intake.workflow.md`
 - `idea-to-roadmap.workflow.md`
-- `strategy-validation-cycle.workflow.md`
 - `roadmap-to-github-project.workflow.md`
 
 ## Related Folders
@@ -23,7 +23,6 @@ Use when work spans more than one active area inside this department.
 - `../business/`
 - `../product/`
 - `../roadmap/`
-- `../validation/`
 
 ## Navigation
 
@@ -31,4 +30,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-Workflows route between areas; if an area is missing, ask before activating or creating it.
+Workflows route between active areas; if a workflow is missing, ask before activating or creating the missing area.

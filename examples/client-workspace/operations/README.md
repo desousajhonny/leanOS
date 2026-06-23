@@ -16,7 +16,7 @@ Use for MVP scope, issue readiness, design, engineering, implementation, DevOps 
 - `design/`: Own the MVP design foundation, accessibility baseline and user-flow clarity before implementation.
 - `engineering/`: Own implementation, tests, code quality and PR readiness.
 - `devops/`: Own delivery infrastructure, environments, deployment, GitHub workflow setup and observability notes.
-- `security/`: Own security, privacy, access control and threat-modeling context.
+- `security/`: Own the mandatory security baseline for implementation, PR and deploy readiness.
 
 ## Start Here
 

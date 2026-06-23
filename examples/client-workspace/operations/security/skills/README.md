@@ -10,12 +10,21 @@ Use when a selected role points to a skill.
 
 ## Source of Truth
 
-`../README.md`
+`../AGENT.md`
 
 ## Files
 
-- `threat-model.skill.md`
-- `review-security.skill.md`
+- `threat-modeling.skill.md`
+- `access-control-review.skill.md`
+- `api-security-review.skill.md`
+- `database-security-review.skill.md`
+- `secrets-management.skill.md`
+- `secure-code-review.skill.md`
+- `dependency-supply-chain-review.skill.md`
+- `infra-hardening-review.skill.md`
+- `incident-response.skill.md`
+- `security-automation-readiness.skill.md`
+- `ai-generated-code-security.skill.md`
 
 ## Related Folders
 

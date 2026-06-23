@@ -11,14 +11,16 @@ Plan build, test and release automation for the workspace.
 - Test command
 - Deployment target
 - Required validation gates
+- Skill: setup-ci
 
 ## Process
 
-1. Identify build and test commands
-2. Choose required CI checks
-3. Define release trigger
-4. Document secrets or environment needs
-5. Define failure handling
+1. Read DevOps AGENT and choose DevOps Engineer
+2. Read `knowledge/ci-cd.md` and `.github/leanos/pr-validation-rules.md`
+3. Use `skills/setup-ci.skill.md` to identify build, test and validation gates
+4. Separate validation workflows from deployment automation
+5. Document secrets or environment needs without storing values
+6. Define failure handling and ask before changing workflow files
 
 ## Output
 
@@ -29,8 +31,9 @@ Plan build, test and release automation for the workspace.
 
 ## Files to Update
 
-- Update relevant DevOps notes or GitHub workflow files if the workspace has them.
+- Update `../knowledge/ci-cd.md` after confirmation.
+- Update `.github/workflows/*` only after explicit user confirmation.
 
 ## Navigation
 
-Start from `../README.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.

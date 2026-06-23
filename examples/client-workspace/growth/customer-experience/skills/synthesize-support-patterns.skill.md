@@ -4,24 +4,50 @@
 
 Turn support notes into learning and actions.
 
-## Area
+## Use When
 
-`growth/customer-experience`
+- support notes repeat
+- onboarding friction appears
+- retention or success patterns need synthesis
+
+## Required Context
+
+- Support notes
+- Success moments
+- Churn reasons
 
 ## Inputs
 
-- Area source-of-truth files
-- Active role instructions
-- User request
+- Support notes
+- Frequency
+- Affected user segment
+- Workarounds
+- Outcome
 
 ## Process
 
-1. Read the minimum relevant source-of-truth files.
-2. Apply this skill to the user request.
-3. Prepare a concise output or file update.
+1. Identify recurring problems
+2. Separate product defects from education gaps
+3. Map friction to onboarding/product/growth
+4. Recommend next action
+
+## Checks
+
+- Sensitive support details removed
+- Pattern has enough signal
+- Owner is clear
 
 ## Output
 
-- Summary
-- Decisions
-- Suggested file updates
+- Support pattern summary
+- Friction themes
+- Recommended action
+
+## Files to Update
+
+- Update `../knowledge/support-notes.md`, `../knowledge/success-moments.md` or `../knowledge/churn-reasons.md` after explicit confirmation.
+
+## Red Lines
+
+- Do not store secrets or customer private data.
+- Do not promise fixes without Product Ops or Roadmap review.

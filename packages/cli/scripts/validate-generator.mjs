@@ -126,6 +126,7 @@ async function validateWorkspaceFiles() {
     "ai-standard/templates/commands/command-template.md",
     "ai-standard/templates/github/README.md",
     "ai-standard/templates/github/github-epic-template.md",
+    "ai-standard/templates/github/delivery-readiness-matrix-template.md",
     "ai-standard/templates/review/README.md",
     "ai-standard/templates/review/code-review-template.md",
     "ai-standard/checklists/agent-quality-checklist.md",
@@ -196,6 +197,7 @@ async function validateWorkspaceFiles() {
     "strategy/product/knowledge/positioning.md",
     "strategy/product/knowledge/business-model-canvas.md",
     "strategy/product/skills/evaluate-idea.skill.md",
+    "strategy/workflows/new-idea-intake.workflow.md",
     "strategy/workflows/idea-to-roadmap.workflow.md",
     "strategy/workflows/roadmap-to-github-project.workflow.md",
     "strategy/roadmap/AGENT.md",
@@ -262,16 +264,99 @@ async function validateWorkspaceFiles() {
     "operations/engineering/playbooks/branch-from-issue.playbook.md",
     "operations/engineering/playbooks/test-planning.playbook.md",
     "operations/engineering/skills/create-branch.skill.md",
+    "operations/devops/AGENT.md",
+    "operations/devops/knowledge/README.md",
+    "operations/devops/knowledge/github-management.md",
+    "operations/devops/knowledge/environments.md",
+    "operations/devops/knowledge/deployment-readiness.md",
+    "operations/devops/knowledge/ci-cd.md",
+    "operations/devops/knowledge/observability.md",
+    "operations/devops/knowledge/release-notes.md",
     "operations/devops/playbooks/setup-ci-cd.playbook.md",
     "operations/devops/playbooks/plan-deployment.playbook.md",
+    "operations/devops/roles/devops-engineer.role.md",
     "operations/devops/roles/github-devops.role.md",
+    "operations/devops/roles/release-manager.role.md",
+    "operations/devops/skills/setup-ci.skill.md",
+    "operations/devops/skills/plan-deployment.skill.md",
     "operations/devops/skills/configure-github-project.skill.md",
+    "operations/devops/skills/configure-environments.skill.md",
+    "operations/devops/skills/define-observability.skill.md",
+    "operations/devops/skills/prepare-release.skill.md",
     "operations/devops/playbooks/configure-github-project.playbook.md",
     "operations/devops/playbooks/configure-environments.playbook.md",
     "operations/devops/playbooks/define-observability.playbook.md",
     "operations/devops/playbooks/release-operations.playbook.md",
-    "operations/security/playbooks/security-checklist.playbook.md",
+    "operations/security/AGENT.md",
+    "operations/security/knowledge/README.md",
+    "operations/security/knowledge/security-baseline.md",
+    "operations/security/knowledge/threat-model.md",
+    "operations/security/knowledge/access-control.md",
+    "operations/security/knowledge/data-protection.md",
+    "operations/security/knowledge/database-security.md",
+    "operations/security/knowledge/secrets-management.md",
+    "operations/security/knowledge/infra-hardening.md",
+    "operations/security/knowledge/secure-coding.md",
+    "operations/security/knowledge/incident-response.md",
+    "operations/security/knowledge/security-automation.md",
+    "operations/security/knowledge/security-automation.md",
+    "operations/security/roles/security-reviewer.role.md",
+    "operations/security/roles/application-security-engineer.role.md",
+    "operations/security/roles/cloud-security-reviewer.role.md",
+    "operations/security/roles/data-protection-reviewer.role.md",
+    "operations/security/skills/threat-modeling.skill.md",
+    "operations/security/skills/access-control-review.skill.md",
+    "operations/security/skills/api-security-review.skill.md",
+    "operations/security/skills/database-security-review.skill.md",
+    "operations/security/skills/secrets-management.skill.md",
+    "operations/security/skills/secure-code-review.skill.md",
+    "operations/security/skills/dependency-supply-chain-review.skill.md",
+    "operations/security/skills/infra-hardening-review.skill.md",
+    "operations/security/skills/incident-response.skill.md",
+    "operations/security/skills/ai-generated-code-security.skill.md",
+    "operations/security/skills/security-automation-readiness.skill.md",
+    "operations/security/playbooks/security-foundation.playbook.md",
+    "operations/security/playbooks/pre-mvp-security-checklist.playbook.md",
+    "operations/security/playbooks/pre-deploy-security-review.playbook.md",
+    "operations/security/playbooks/api-security-review.playbook.md",
+    "operations/security/playbooks/database-security-review.playbook.md",
+    "operations/security/playbooks/secrets-rotation.playbook.md",
+    "operations/security/playbooks/vulnerability-response.playbook.md",
+    "operations/security/playbooks/incident-response.playbook.md",
+    "operations/security/playbooks/ai-generated-code-security-review.playbook.md",
+    "operations/security/playbooks/security-automation-readiness.playbook.md",
+    "growth/customer-experience/AGENT.md",
+    "growth/customer-experience/knowledge/README.md",
+    "growth/customer-experience/knowledge/customer-feedback.md",
+    "growth/customer-experience/knowledge/support-notes.md",
+    "growth/customer-experience/knowledge/success-moments.md",
+    "growth/customer-experience/knowledge/churn-reasons.md",
+    "growth/customer-experience/roles/cx-lead.role.md",
+    "growth/customer-experience/skills/map-customer-feedback.skill.md",
+    "growth/customer-experience/skills/synthesize-support-patterns.skill.md",
+    "growth/customer-experience/playbooks/customer-learning-loop.playbook.md",
+    "growth/marketing/AGENT.md",
+    "growth/marketing/knowledge/README.md",
+    "growth/marketing/knowledge/positioning.md",
+    "growth/marketing/knowledge/landing-page.md",
+    "growth/marketing/knowledge/acquisition-channels.md",
+    "growth/marketing/knowledge/launch-plan.md",
+    "growth/marketing/roles/growth-lead.role.md",
+    "growth/marketing/skills/define-positioning.skill.md",
+    "growth/marketing/skills/create-landing-page-copy.skill.md",
+    "growth/marketing/skills/create-launch-plan.skill.md",
     "growth/marketing/playbooks/mvp-launch.playbook.md",
+    "growth/finance/AGENT.md",
+    "growth/finance/knowledge/README.md",
+    "growth/finance/knowledge/pricing.md",
+    "growth/finance/knowledge/revenue-model.md",
+    "growth/finance/knowledge/unit-economics.md",
+    "growth/finance/knowledge/budget.md",
+    "growth/finance/knowledge/finance-risks.md",
+    "growth/finance/roles/finance-operator.role.md",
+    "growth/finance/skills/review-pricing.skill.md",
+    "growth/finance/skills/model-unit-economics.skill.md",
+    "growth/finance/playbooks/finance-review.playbook.md",
     ".github/leanos/README.md",
     ".github/leanos/github-settings.example.json",
     ".github/leanos/project-sync.yaml",
@@ -282,6 +367,7 @@ async function validateWorkspaceFiles() {
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/leanos/branch-rules.md",
     ".github/leanos/pr-validation-rules.md",
+    ".github/leanos/security-automation.md",
     ".github/agents/leanos-chief.agent.md",
     ".github/prompts/start-leanos.prompt.md",
     ".github/prompts/leanos-init.prompt.md",
@@ -308,10 +394,38 @@ async function validateWorkspaceFiles() {
     "growth/playbooks/README.md",
     "operations/devops/environments.md",
     "operations/devops/deployment.md",
+    "operations/devops/deployment-readiness.md",
+    "operations/devops/github-management.md",
     "operations/devops/ci-cd.md",
     "operations/devops/observability.md",
+    "operations/devops/release-notes.md",
     "operations/devops/runbooks.md",
     "operations/security/security-checklist.md",
+    "operations/security/threat-model.md",
+    "operations/security/access-control.md",
+    "operations/security/data-protection.md",
+    "operations/security/database-security.md",
+    "operations/security/secrets-management.md",
+    "operations/security/infra-hardening.md",
+    "operations/security/secure-coding.md",
+    "operations/security/incident-response.md",
+    "operations/security/skills/threat-model.skill.md",
+    "operations/security/skills/review-security.skill.md",
+    "operations/security/playbooks/security-review.playbook.md",
+    "operations/security/playbooks/security-checklist.playbook.md",
+    "growth/customer-experience/customer-feedback.md",
+    "growth/customer-experience/support-notes.md",
+    "growth/customer-experience/success-moments.md",
+    "growth/customer-experience/churn-reasons.md",
+    "growth/marketing/positioning.md",
+    "growth/marketing/landing-page.md",
+    "growth/marketing/acquisition-channels.md",
+    "growth/marketing/launch-plan.md",
+    "growth/finance/pricing.md",
+    "growth/finance/revenue-model.md",
+    "growth/finance/unit-economics.md",
+    "growth/finance/budget.md",
+    "growth/finance/finance-risks.md",
     "operations/engineering/implementation-notes.md",
     "operations/engineering/code-review-notes.md",
     "operations/engineering/pr-log.md",
@@ -423,9 +537,11 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "strategy", "product", "knowledge", "README.md"));
   await assertExists(join(rootDir, "strategy", "product", "knowledge", "brief.md"));
   await assertExists(join(rootDir, "strategy", "product", "knowledge", "icp.md"));
+  await assertExists(join(rootDir, "strategy", "product", "knowledge", "validation-notes.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "AGENT.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "knowledge", "roadmap.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-cycle-planning.playbook.md"));
+  await assertExists(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md"));
   await assertExists(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"));
   await assertExists(join(rootDir, "strategy", "workflows", "roadmap-to-github-project.workflow.md"));
   await assertExists(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"));
@@ -475,19 +591,55 @@ async function validateWorkspaceFiles() {
   assert.equal(await exists(join(rootDir, "operations", "engineering", "implementation-notes.md")), false, "Engineering implementation notes should live in knowledge/");
   assert.equal(await exists(join(rootDir, "operations", "engineering", "code-review-notes.md")), false, "Engineering code review notes should live in knowledge/");
   assert.equal(await exists(join(rootDir, "operations", "engineering", "pr-log.md")), false, "Engineering PR log should live in knowledge/");
+  await assertExists(join(rootDir, "operations", "devops", "AGENT.md"));
+  await assertExists(join(rootDir, "operations", "devops", "knowledge", "README.md"));
+  await assertExists(join(rootDir, "operations", "devops", "knowledge", "github-management.md"));
+  await assertExists(join(rootDir, "operations", "devops", "knowledge", "environments.md"));
+  await assertExists(join(rootDir, "operations", "devops", "knowledge", "deployment-readiness.md"));
+  await assertExists(join(rootDir, "operations", "devops", "knowledge", "ci-cd.md"));
+  await assertExists(join(rootDir, "operations", "devops", "knowledge", "observability.md"));
+  await assertExists(join(rootDir, "operations", "devops", "knowledge", "release-notes.md"));
   await assertExists(join(rootDir, "operations", "devops", "playbooks", "setup-ci-cd.playbook.md"));
   await assertExists(join(rootDir, "operations", "devops", "playbooks", "plan-deployment.playbook.md"));
+  await assertExists(join(rootDir, "operations", "devops", "roles", "devops-engineer.role.md"));
   await assertExists(join(rootDir, "operations", "devops", "roles", "github-devops.role.md"));
+  await assertExists(join(rootDir, "operations", "devops", "roles", "release-manager.role.md"));
   await assertExists(join(rootDir, "operations", "devops", "skills", "configure-github-project.skill.md"));
+  await assertExists(join(rootDir, "operations", "devops", "skills", "configure-environments.skill.md"));
+  await assertExists(join(rootDir, "operations", "devops", "skills", "setup-ci.skill.md"));
+  await assertExists(join(rootDir, "operations", "devops", "skills", "plan-deployment.skill.md"));
+  await assertExists(join(rootDir, "operations", "devops", "skills", "define-observability.skill.md"));
+  await assertExists(join(rootDir, "operations", "devops", "skills", "prepare-release.skill.md"));
   await assertExists(join(rootDir, "operations", "devops", "playbooks", "configure-github-project.playbook.md"));
   await assertExists(join(rootDir, "operations", "devops", "playbooks", "configure-environments.playbook.md"));
   await assertExists(join(rootDir, "operations", "devops", "playbooks", "define-observability.playbook.md"));
-  await assertExists(join(rootDir, "operations", "security", "playbooks", "security-checklist.playbook.md"));
+  await assertExists(join(rootDir, "operations", "devops", "playbooks", "release-operations.playbook.md"));
+  await assertExists(join(rootDir, "operations", "security", "AGENT.md"));
+  await assertExists(join(rootDir, "operations", "security", "knowledge", "README.md"));
+  await assertExists(join(rootDir, "operations", "security", "knowledge", "security-baseline.md"));
+  await assertExists(join(rootDir, "operations", "security", "knowledge", "threat-model.md"));
+  await assertExists(join(rootDir, "operations", "security", "knowledge", "access-control.md"));
+  await assertExists(join(rootDir, "operations", "security", "knowledge", "data-protection.md"));
+  await assertExists(join(rootDir, "operations", "security", "knowledge", "database-security.md"));
+  await assertExists(join(rootDir, "operations", "security", "knowledge", "secrets-management.md"));
+  await assertExists(join(rootDir, "operations", "security", "knowledge", "infra-hardening.md"));
+  await assertExists(join(rootDir, "operations", "security", "knowledge", "secure-coding.md"));
+  await assertExists(join(rootDir, "operations", "security", "knowledge", "incident-response.md"));
+  await assertExists(join(rootDir, "operations", "security", "knowledge", "security-automation.md"));
+  await assertExists(join(rootDir, "operations", "security", "roles", "application-security-engineer.role.md"));
+  await assertExists(join(rootDir, "operations", "security", "roles", "cloud-security-reviewer.role.md"));
+  await assertExists(join(rootDir, "operations", "security", "roles", "data-protection-reviewer.role.md"));
+  await assertExists(join(rootDir, "operations", "security", "skills", "ai-generated-code-security.skill.md"));
+  await assertExists(join(rootDir, "operations", "security", "skills", "security-automation-readiness.skill.md"));
+  await assertExists(join(rootDir, "operations", "security", "playbooks", "pre-deploy-security-review.playbook.md"));
+  await assertExists(join(rootDir, "operations", "security", "playbooks", "ai-generated-code-security-review.playbook.md"));
+  await assertExists(join(rootDir, "operations", "security", "playbooks", "security-automation-readiness.playbook.md"));
   await assertExists(join(rootDir, "growth", "marketing", "skills", "create-launch-plan.skill.md"));
   await assertExists(join(rootDir, ".github", "agents", "leanos-chief.agent.md"));
   await assertExists(join(rootDir, ".github", "leanos", "github-settings.example.json"));
   await assertExists(join(rootDir, ".github", "leanos", "project-sync.yaml"));
   await assertExists(join(rootDir, ".github", "leanos", "sync-state.yaml"));
+  await assertExists(join(rootDir, ".github", "leanos", "security-automation.md"));
   await assertExists(join(rootDir, ".github", "prompts", "start-leanos.prompt.md"));
   await assertExists(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"));
   await assertExists(join(rootDir, ".leanos", "commands", "start-leanos.md"));
@@ -509,6 +661,9 @@ async function validateWorkspaceFiles() {
   await assertRoadmapAreaPattern(rootDir);
   await assertDesignFoundation(rootDir);
   await assertEngineeringAreaPattern(rootDir);
+  await assertDevOpsAreaPattern(rootDir);
+  await assertSecurityAreaPattern(rootDir);
+  await assertGrowthAreaPattern(rootDir);
   await assertAiStandardAssetTaxonomy(rootDir);
   await assertAiStandardTemplates(rootDir);
   await assertAiStandardChecklists(rootDir);
@@ -543,10 +698,25 @@ async function validateWorkspaceFiles() {
     "growth/playbooks",
     "operations/devops/environments.md",
     "operations/devops/deployment.md",
+    "operations/devops/deployment-readiness.md",
+    "operations/devops/github-management.md",
     "operations/devops/ci-cd.md",
     "operations/devops/observability.md",
+    "operations/devops/release-notes.md",
     "operations/devops/runbooks.md",
     "operations/security/security-checklist.md",
+    "operations/security/threat-model.md",
+    "operations/security/access-control.md",
+    "operations/security/data-protection.md",
+    "operations/security/database-security.md",
+    "operations/security/secrets-management.md",
+    "operations/security/infra-hardening.md",
+    "operations/security/secure-coding.md",
+    "operations/security/incident-response.md",
+    "operations/security/skills/threat-model.skill.md",
+    "operations/security/skills/review-security.skill.md",
+    "operations/security/playbooks/security-review.playbook.md",
+    "operations/security/playbooks/security-checklist.playbook.md",
     "operations/engineering/test-plan.md",
     "operations/design/design-principles.md",
     "operations/design/user-flows.md",
@@ -602,6 +772,7 @@ async function validateWorkspaceFiles() {
   assert.equal(yaml.departments.routes.strategy.readme, "strategy/README.md");
   assert.equal(yaml.departments.routes.operations.agent, "operations/AGENT.md");
   assert.equal(yaml.departments.routes.growth.readme, "growth/README.md");
+  assert(yaml.workflows.active.includes("new-idea-intake"), "Expected active local Strategy new-idea-intake workflow");
   assert(yaml.workflows.active.includes("idea-to-roadmap"), "Expected active local Strategy idea-to-roadmap workflow");
   assert(yaml.workflows.active.includes("roadmap-to-github-project"), "Expected active local Strategy GitHub roadmap workflow");
   assert(yaml.workflows.active.includes("issue-delivery-cycle"), "Expected active local Operations issue delivery workflow");
@@ -624,6 +795,8 @@ async function validateClientWorkspaceFixture() {
     "ai-standard/README.md",
     "strategy/product/README.md",
     "strategy/product/skills/evaluate-idea.skill.md",
+    "strategy/product/knowledge/validation-notes.md",
+    "strategy/workflows/new-idea-intake.workflow.md",
     "strategy/workflows/idea-to-roadmap.workflow.md",
     "strategy/workflows/roadmap-to-github-project.workflow.md",
     "strategy/roadmap/skills/prepare-roadmap-sync.skill.md",
@@ -662,14 +835,67 @@ async function validateClientWorkspaceFixture() {
     "operations/engineering/skills/review-data-change.skill.md",
     "operations/engineering/skills/create-branch.skill.md",
     "operations/engineering/playbooks/branch-from-issue.playbook.md",
+    "operations/devops/AGENT.md",
+    "operations/devops/knowledge/README.md",
+    "operations/devops/knowledge/github-management.md",
+    "operations/devops/knowledge/environments.md",
+    "operations/devops/knowledge/deployment-readiness.md",
+    "operations/devops/knowledge/ci-cd.md",
+    "operations/devops/knowledge/observability.md",
+    "operations/devops/knowledge/release-notes.md",
     "operations/devops/playbooks/setup-ci-cd.playbook.md",
     "operations/devops/playbooks/plan-deployment.playbook.md",
+    "operations/devops/roles/devops-engineer.role.md",
     "operations/devops/roles/github-devops.role.md",
+    "operations/devops/roles/release-manager.role.md",
+    "operations/devops/skills/setup-ci.skill.md",
+    "operations/devops/skills/plan-deployment.skill.md",
     "operations/devops/skills/configure-github-project.skill.md",
+    "operations/devops/skills/configure-environments.skill.md",
+    "operations/devops/skills/define-observability.skill.md",
+    "operations/devops/skills/prepare-release.skill.md",
     "operations/devops/playbooks/configure-github-project.playbook.md",
     "operations/devops/playbooks/configure-environments.playbook.md",
     "operations/devops/playbooks/define-observability.playbook.md",
-    "operations/security/playbooks/security-checklist.playbook.md",
+    "operations/devops/playbooks/release-operations.playbook.md",
+    "operations/security/AGENT.md",
+    "operations/security/knowledge/README.md",
+    "operations/security/knowledge/security-baseline.md",
+    "operations/security/knowledge/threat-model.md",
+    "operations/security/knowledge/access-control.md",
+    "operations/security/knowledge/data-protection.md",
+    "operations/security/knowledge/database-security.md",
+    "operations/security/knowledge/secrets-management.md",
+    "operations/security/knowledge/infra-hardening.md",
+    "operations/security/knowledge/secure-coding.md",
+    "operations/security/knowledge/incident-response.md",
+    "operations/security/roles/application-security-engineer.role.md",
+    "operations/security/roles/cloud-security-reviewer.role.md",
+    "operations/security/roles/data-protection-reviewer.role.md",
+    "operations/security/skills/ai-generated-code-security.skill.md",
+    "operations/security/skills/security-automation-readiness.skill.md",
+    "operations/security/playbooks/pre-deploy-security-review.playbook.md",
+    "operations/security/playbooks/ai-generated-code-security-review.playbook.md",
+    "operations/security/playbooks/security-automation-readiness.playbook.md",
+    "growth/customer-experience/AGENT.md",
+    "growth/customer-experience/knowledge/customer-feedback.md",
+    "growth/customer-experience/knowledge/support-notes.md",
+    "growth/customer-experience/knowledge/success-moments.md",
+    "growth/customer-experience/knowledge/churn-reasons.md",
+    "growth/customer-experience/playbooks/customer-learning-loop.playbook.md",
+    "growth/marketing/AGENT.md",
+    "growth/marketing/knowledge/positioning.md",
+    "growth/marketing/knowledge/landing-page.md",
+    "growth/marketing/knowledge/acquisition-channels.md",
+    "growth/marketing/knowledge/launch-plan.md",
+    "growth/marketing/playbooks/mvp-launch.playbook.md",
+    "growth/finance/AGENT.md",
+    "growth/finance/knowledge/pricing.md",
+    "growth/finance/knowledge/revenue-model.md",
+    "growth/finance/knowledge/unit-economics.md",
+    "growth/finance/knowledge/budget.md",
+    "growth/finance/knowledge/finance-risks.md",
+    "growth/finance/playbooks/finance-review.playbook.md",
     "operations/engineering/playbooks/test-planning.playbook.md",
     ".leanos/index/routing-map.yaml",
     ".github/leanos/github-settings.example.json",
@@ -680,6 +906,7 @@ async function validateClientWorkspaceFixture() {
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/leanos/branch-rules.md",
     ".github/leanos/pr-validation-rules.md",
+    ".github/leanos/security-automation.md",
     ".github/agents/leanos-chief.agent.md",
     ".github/prompts/start-leanos.prompt.md",
     ".github/prompts/leanos-init.prompt.md",
@@ -707,12 +934,36 @@ async function validateClientWorkspaceFixture() {
     "package.json",
     "vercel.json",
     ".leanos/ai-standard",
+    "strategy/validation",
     "operations/devops/environments.md",
     "operations/devops/deployment.md",
+    "operations/devops/deployment-readiness.md",
+    "operations/devops/github-management.md",
     "operations/devops/ci-cd.md",
     "operations/devops/observability.md",
+    "operations/devops/release-notes.md",
     "operations/devops/runbooks.md",
     "operations/security/security-checklist.md",
+    "operations/security/threat-model.md",
+    "operations/security/access-control.md",
+    "operations/security/data-protection.md",
+    "operations/security/skills/threat-model.skill.md",
+    "operations/security/skills/review-security.skill.md",
+    "operations/security/playbooks/security-review.playbook.md",
+    "operations/security/playbooks/security-checklist.playbook.md",
+    "growth/customer-experience/customer-feedback.md",
+    "growth/customer-experience/support-notes.md",
+    "growth/customer-experience/success-moments.md",
+    "growth/customer-experience/churn-reasons.md",
+    "growth/marketing/positioning.md",
+    "growth/marketing/landing-page.md",
+    "growth/marketing/acquisition-channels.md",
+    "growth/marketing/launch-plan.md",
+    "growth/finance/pricing.md",
+    "growth/finance/revenue-model.md",
+    "growth/finance/unit-economics.md",
+    "growth/finance/budget.md",
+    "growth/finance/finance-risks.md",
     "operations/engineering/test-plan.md",
     "operations/design/design-principles.md",
     "operations/design/user-flows.md",
@@ -825,7 +1076,8 @@ async function validatePartialAreaSelection() {
   assert.equal(routingMap.routing.areas.marketing, undefined);
   assert.equal(routingMap.routing.areas.validation, undefined);
   assert.equal(routingMap.routing.areas.design, undefined);
-  assert.equal(activeWorkflow.includes("- idea-to-roadmap"), false, "Product + Engineering alone should not activate Strategy idea workflow without Roadmap and Validation");
+  assert.equal(activeWorkflow.includes("- new-idea-intake"), false, "Product + Engineering alone should not activate Strategy idea workflow without Roadmap");
+  assert.equal(activeWorkflow.includes("- idea-to-roadmap"), false, "Product + Engineering alone should not activate Strategy roadmap workflow without Roadmap");
   assert(nextActions.includes("/define icp"), "Product-compatible next action should remain when Product is active");
   assert.equal(nextActions.includes("/define mvp"), false, "Product Ops command should not appear when Product Ops is inactive");
 
@@ -909,7 +1161,8 @@ async function validateGrowthValidationContext() {
   assert.equal(await exists(join(rootDir, "strategy", "product", "README.md")), false, "Product area should not be generated when not active");
   assert.equal(await exists(join(rootDir, "operations")), false, "Operations department should not be generated when not active");
   assert.equal(activeWorkflow.includes("- launch-learning-loop"), false, "Growth Marketing without Customer Experience should not activate launch workflow");
-  assert.equal(activeWorkflow.includes("- idea-to-roadmap"), false, "Growth + Validation workspace should not activate Strategy idea workflow");
+  assert.equal(activeWorkflow.includes("- new-idea-intake"), false, "Growth + Validation workspace should not activate Strategy idea intake workflow");
+  assert.equal(activeWorkflow.includes("- idea-to-roadmap"), false, "Growth + Validation workspace should not activate Strategy idea-to-roadmap workflow");
   assert.equal(activeWorkflow.includes("- issue-delivery-cycle"), false, "Growth + Validation workspace should not activate Engineering workflow");
   assert.equal(nextActions.includes("/define icp"), false, "Growth + Validation workspace should not suggest Product commands");
   assert.equal(nextActions.includes("/workon issue"), false, "Growth + Validation workspace should not suggest Engineering commands");
@@ -919,7 +1172,8 @@ async function validateGrowthValidationContext() {
   assert.equal(routingMap.routing.departments.growth.agent, "../../growth/AGENT.md");
   assert.equal(routingMap.routing.departments.growth.readme, "../../growth/README.md");
   assert.equal(routingMap.routing.departments.operations, undefined);
-  assert.equal(routingMap.routing.areas.marketing, "../../growth/marketing/README.md");
+  assert.equal(routingMap.routing.areas.marketing.agent, "../../growth/marketing/AGENT.md");
+  assert.equal(routingMap.routing.areas.marketing.readme, "../../growth/marketing/README.md");
   assert.equal(routingMap.routing.areas.validation, "../../strategy/validation/README.md");
   assert.equal(routingMap.routing.areas.product, undefined);
   assert.equal(routingMap.routing.areas.engineering, undefined);
@@ -1045,7 +1299,7 @@ async function assertGitHubReadiness(rootDir) {
   assert(syncState.includes("must never store tokens"), "GitHub sync state should warn against storing tokens");
   assert(labels.includes("name: epic"), "GitHub labels should include epic");
   assert(labels.includes("name: sub-issue"), "GitHub labels should include sub-issue");
-  assert(githubReadme.includes("Route GitHub setup through `../../operations/devops/README.md`"), "GitHub README should route setup through DevOps when active");
+  assert(githubReadme.includes("Route GitHub setup through `../../operations/devops/AGENT.md`"), "GitHub README should route setup through DevOps when active");
   assert(githubReadme.includes("Vercel readiness is guidance-only"), "GitHub README should document Vercel readiness without execution");
   assert(githubRole.includes("Guide safe GitHub repository, Project, labels and sync configuration"), "GitHub DevOps role should describe GitHub setup ownership");
   assert(githubSkill.includes("without storing secrets"), "GitHub setup skill should protect secrets");
@@ -1062,7 +1316,7 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   const prRules = await readFile(join(rootDir, ".github", "leanos", "pr-validation-rules.md"), "utf8");
   const aiEpicTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "github-epic-template.md"), "utf8");
   const aiSubIssueTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "github-subissue-template.md"), "utf8");
-  const issueMatrix = await readFile(join(rootDir, "ai-standard", "templates", "github", "issue-readiness-matrix-template.md"), "utf8");
+  const issueMatrix = await readFile(join(rootDir, "ai-standard", "templates", "github", "delivery-readiness-matrix-template.md"), "utf8");
   const branchTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "branch-name-template.md"), "utf8");
   const aiPrTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "pull-request-template.md"), "utf8");
   const codeReviewTemplate = await readFile(join(rootDir, "ai-standard", "templates", "review", "code-review-template.md"), "utf8");
@@ -1096,23 +1350,31 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
     assert(templateContent.includes("# "), "AI Standard GitHub templates should have markdown content");
   }
 
-  assert(issueMatrix.includes("Product | Always"), "Issue readiness matrix should require Product");
-  assert(issueMatrix.includes("Design | User-facing flow"), "Issue readiness matrix should make Design conditional");
+  assert(issueMatrix.includes("# Delivery Readiness Matrix (DRM)"), "Delivery readiness matrix should use the DRM name");
+  assert(issueMatrix.includes("Product Ops | Always"), "Delivery readiness matrix should require Product Ops");
+  assert(issueMatrix.includes("Design | User-facing flow"), "Delivery readiness matrix should make Design conditional");
   assert(issueMatrix.includes("Engineering | Always for implementation work"), "Issue readiness matrix should require Engineering for implementation");
-  assert(issueMatrix.includes("Security | Data, auth, permissions, privacy, abuse or compliance"), "Issue readiness matrix should make Security conditional");
+  assert(issueMatrix.includes("Security | Data, auth, permissions, privacy, abuse"), "Issue readiness matrix should make Security conditional");
+  assert(issueMatrix.includes("DevOps | Environment, deploy, CI/CD"), "Delivery readiness matrix should make DevOps conditional");
   assert(epicToSubissuesPlaybook.includes("Break a GitHub epic into implementation-ready sub-issues"), "Product Ops should own epic-to-subissues playbook");
-  assert(epicToSubissuesPlaybook.includes("Write Product criteria for every sub-issue"), "Epic breakdown should require Product criteria");
-  assert(epicToSubissuesPlaybook.includes("Include Design criteria only when"), "Epic breakdown should make Design conditional");
-  assert(epicToSubissuesPlaybook.includes("Include Security criteria only when"), "Epic breakdown should make Security conditional");
+  assert(epicToSubissuesPlaybook.includes("Delivery Readiness Matrix (DRM)"), "Epic breakdown should use the DRM");
+  assert(epicToSubissuesPlaybook.includes("Write Product Ops criteria for every sub-issue"), "Epic breakdown should require Product Ops criteria");
+  assert(epicToSubissuesPlaybook.includes("Add Design criteria only when"), "Epic breakdown should make Design conditional");
+  assert(epicToSubissuesPlaybook.includes("Add Security criteria only when"), "Epic breakdown should make Security conditional");
+  assert(epicToSubissuesPlaybook.includes("Add DevOps criteria only when"), "Epic breakdown should make DevOps conditional");
+  assert(epicToSubissuesPlaybook.includes("Stop before any GitHub API write until the user explicitly confirms"), "Epic breakdown should require confirmation before GitHub writes");
   assert(branchSkill.includes("safe issue-linked branch name"), "Engineering should include create-branch skill");
   assert(branchPlaybook.includes("Load `.github/leanos/branch-rules.md`"), "Branch playbook should load branch rules");
   assert(issueToPrPlaybook.includes("Check whether Design criteria are required for user-facing UX"), "Issue-to-PR playbook should conditionally check Design");
   assert(issueToPrPlaybook.includes("Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance"), "Issue-to-PR playbook should conditionally check Security/Data");
   assert(prValidationPlaybook.includes("List findings by severity"), "PR validation playbook should output findings by severity");
 
-  assert(createIssuesCommand.includes("Issue Readiness Matrix"), "Create issues command should use the readiness matrix");
-  assert(createIssuesCommand.includes("Add Design criteria only when user-facing UX is affected"), "Create issues command should make Design conditional");
-  assert(createIssuesCommand.includes("Add Security criteria only when data, auth, permissions, privacy, abuse or compliance is involved"), "Create issues command should make Security conditional");
+  assert(createIssuesCommand.includes("Delivery Readiness Matrix (DRM)"), "Create issues command should use the DRM");
+  assert(createIssuesCommand.includes("operations/product-ops/playbooks/epic-to-subissues.playbook.md"), "Create issues command should load the epic-to-subissues playbook");
+  assert(createIssuesCommand.includes("Add Design criteria only when user-facing UX, UI, flow, accessibility, copy or interaction is affected"), "Create issues command should make Design conditional");
+  assert(createIssuesCommand.includes("Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved"), "Create issues command should make Security conditional");
+  assert(createIssuesCommand.includes("Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected"), "Create issues command should make DevOps conditional");
+  assert(createIssuesCommand.includes("../../operations/devops/AGENT.md"), "Create issues command should route DevOps through AGENT.md when applicable");
   assert(createIssuesCommand.includes("Do not call GitHub API directly from the model"), "Create issues command should forbid direct model API writes");
   assert(workonIssueCommand.includes("Propose the required issue-linked branch name before code changes"), "Workon issue should require branch proposal before code changes");
   assert(createBranchCommand.includes("issue/<issue-number>-<short-kebab-slug>"), "Create branch command should require LeanOS branch format");
@@ -1201,7 +1463,8 @@ async function assertFounderIntentRouting(rootDir) {
   assert.equal(vscodeAgent.includes("Do not bypass department `AGENT.md`"), false, "VS Code agent should avoid narrow workflow-bypass prohibitions");
   assert.equal(await exists(join(rootDir, ".leanos", "workflows")), false, ".leanos/workflows should not be generated");
 
-  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "idea-to-roadmap" && workflow.path === "../../strategy/workflows/idea-to-roadmap.workflow.md"), "Workflows index should point to Strategy idea workflow");
+  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "new-idea-intake" && workflow.path === "../../strategy/workflows/new-idea-intake.workflow.md"), "Workflows index should point to Strategy new idea intake workflow");
+  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "idea-to-roadmap" && workflow.path === "../../strategy/workflows/idea-to-roadmap.workflow.md"), "Workflows index should point to Strategy idea-to-roadmap workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-to-github-project" && workflow.path === "../../strategy/workflows/roadmap-to-github-project.workflow.md"), "Workflows index should point to Strategy roadmap sync workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "issue-delivery-cycle" && workflow.path === "../../operations/workflows/issue-delivery-cycle.workflow.md"), "Workflows index should point to Operations issue delivery workflow");
   assert(rootAgentTemplate.includes("## Root Routing"), "Root agent template should keep root routing department-level");
@@ -1243,8 +1506,12 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
   assert(assetTaxonomy.includes("# Asset Taxonomy"), "Asset taxonomy should have expected title");
   assert(assetTaxonomy.includes("Role = who acts."), "Asset taxonomy should define role concept");
   assert(assetTaxonomy.includes("Skill = capability used."), "Asset taxonomy should define skill concept");
-  assert(assetTaxonomy.includes("Playbook = execution sequence."), "Asset taxonomy should define playbook concept");
+  assert(assetTaxonomy.includes("Playbook = practical task execution inside an area."), "Asset taxonomy should define playbook concept");
   assert(assetTaxonomy.includes("Knowledge = information/source of truth."), "Asset taxonomy should define knowledge concept");
+  assert(assetTaxonomy.includes("Workflow = coordination across areas, stages or handoffs."), "Asset taxonomy should define workflow concept");
+  assert(assetTaxonomy.includes("## Workflow vs Playbook"), "Asset taxonomy should distinguish workflows from playbooks");
+  assert(assetTaxonomy.includes("Workflow = coordinates multiple areas, stages or handoffs."), "Asset taxonomy should clarify workflow scope");
+  assert(assetTaxonomy.includes("Playbook = executes a practical task inside one area."), "Asset taxonomy should clarify playbook scope");
   assert(assetTaxonomy.includes("| Asset | What It Is | Question It Answers |"), "Asset taxonomy should include summary table");
   assert(assetTaxonomy.includes("`AGENT.md`"), "Asset taxonomy should explain AGENT.md");
   assert(assetTaxonomy.includes("`README.md`"), "Asset taxonomy should explain README.md");
@@ -1569,7 +1836,7 @@ async function assertAiStandardReadiness(rootDir) {
   assert(aiStandardReadme.includes("Do not let examples override active workspace context"), "AI Standard README should keep examples subordinate to context");
 
   const fileChecks = [
-    ["ai-standard/foundation/asset-taxonomy.md", ["Role = who acts.", "Skill = capability used.", "Playbook = execution sequence.", "Knowledge = information/source of truth."]],
+    ["ai-standard/foundation/asset-taxonomy.md", ["Role = who acts.", "Skill = capability used.", "Playbook = practical task execution inside an area.", "Knowledge = information/source of truth.", "Workflow = coordination across areas, stages or handoffs."]],
     ["ai-standard/checklists/agent-quality-checklist.md", ["Root agents route only to departments", "does not try to be a full inventory"]],
     ["ai-standard/checklists/skill-quality-checklist.md", ["one reusable capability", "does not become a full process sequence"]],
     ["ai-standard/instructions/create-skill-instructions.md", ["Define one reusable capability", "../templates/execution/skill-template.md", "../checklists/skill-quality-checklist.md"]],
@@ -1626,6 +1893,7 @@ async function assertProductAreaPattern(rootDir) {
   const valueProposition = await readFile(join(rootDir, "strategy", "product", "knowledge", "value-proposition.md"), "utf8");
   const positioning = await readFile(join(rootDir, "strategy", "product", "knowledge", "positioning.md"), "utf8");
   const businessModel = await readFile(join(rootDir, "strategy", "product", "knowledge", "business-model-canvas.md"), "utf8");
+  const validationNotes = await readFile(join(rootDir, "strategy", "product", "knowledge", "validation-notes.md"), "utf8");
   const productStrategistRole = await readFile(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"), "utf8");
   const productManagerRole = await readFile(join(rootDir, "strategy", "product", "roles", "product-manager.role.md"), "utf8");
 
@@ -1646,6 +1914,10 @@ async function assertProductAreaPattern(rootDir) {
   assert(positioning.includes("## Do Not Say"), "Product positioning should include Do Not Say");
   assert(businessModel.includes("## Revenue Model"), "Product business model should include revenue model");
   assert(businessModel.includes("## Assumptions to Validate"), "Product business model should include assumptions to validate");
+  assert(validationNotes.includes("## Key Assumptions"), "Product validation notes should include key assumptions");
+  assert(validationNotes.includes("## Evidence"), "Product validation notes should include evidence");
+  assert(validationNotes.includes("## Roadmap Impact"), "Product validation notes should include roadmap impact");
+  assert(productAreaYaml.area.source_of_truth.includes("knowledge/validation-notes.md"), "Product area.yaml should list validation notes as source of truth");
   assert(productStrategistRole.includes("../knowledge/brief.md"), "Product Strategist should load Product knowledge files");
   assert(productManagerRole.includes("../knowledge/brief.md"), "Product Manager should load Product knowledge files");
 
@@ -1915,6 +2187,321 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(workonIssueCommand.includes("../../operations/engineering/knowledge/code-standards.md"), "Workon issue command should load code standards");
 }
 
+async function assertDevOpsAreaPattern(rootDir) {
+  const devopsReadme = await readFile(join(rootDir, "operations", "devops", "README.md"), "utf8");
+  const devopsAgent = await readFile(join(rootDir, "operations", "devops", "AGENT.md"), "utf8");
+  const areaYaml = parse(await readFile(join(rootDir, "operations", "devops", "area.yaml"), "utf8"));
+  const githubManagement = await readFile(join(rootDir, "operations", "devops", "knowledge", "github-management.md"), "utf8");
+  const environments = await readFile(join(rootDir, "operations", "devops", "knowledge", "environments.md"), "utf8");
+  const deploymentReadiness = await readFile(join(rootDir, "operations", "devops", "knowledge", "deployment-readiness.md"), "utf8");
+  const ciCd = await readFile(join(rootDir, "operations", "devops", "knowledge", "ci-cd.md"), "utf8");
+  const observability = await readFile(join(rootDir, "operations", "devops", "knowledge", "observability.md"), "utf8");
+  const releaseNotes = await readFile(join(rootDir, "operations", "devops", "knowledge", "release-notes.md"), "utf8");
+  const devopsEngineer = await readFile(join(rootDir, "operations", "devops", "roles", "devops-engineer.role.md"), "utf8");
+  const githubDevops = await readFile(join(rootDir, "operations", "devops", "roles", "github-devops.role.md"), "utf8");
+  const releaseManager = await readFile(join(rootDir, "operations", "devops", "roles", "release-manager.role.md"), "utf8");
+  const configureGithubProject = await readFile(join(rootDir, "operations", "devops", "skills", "configure-github-project.skill.md"), "utf8");
+  const configureEnvironments = await readFile(join(rootDir, "operations", "devops", "skills", "configure-environments.skill.md"), "utf8");
+  const setupCi = await readFile(join(rootDir, "operations", "devops", "skills", "setup-ci.skill.md"), "utf8");
+  const planDeployment = await readFile(join(rootDir, "operations", "devops", "skills", "plan-deployment.skill.md"), "utf8");
+  const defineObservability = await readFile(join(rootDir, "operations", "devops", "skills", "define-observability.skill.md"), "utf8");
+  const prepareRelease = await readFile(join(rootDir, "operations", "devops", "skills", "prepare-release.skill.md"), "utf8");
+  const githubProjectPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "configure-github-project.playbook.md"), "utf8");
+  const setupCiCdPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "setup-ci-cd.playbook.md"), "utf8");
+  const planDeploymentPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "plan-deployment.playbook.md"), "utf8");
+  const releaseOperationsPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "release-operations.playbook.md"), "utf8");
+
+  await assertExists(join(rootDir, "operations", "devops", "AGENT.md"));
+  await assertExists(join(rootDir, "operations", "devops", "knowledge", "README.md"));
+  assert.equal(await exists(join(rootDir, "operations", "devops", "github-management.md")), false, "DevOps GitHub management should live in knowledge/");
+  assert.equal(await exists(join(rootDir, "operations", "devops", "environments.md")), false, "DevOps environments should live in knowledge/");
+  assert.equal(await exists(join(rootDir, "operations", "devops", "deployment-readiness.md")), false, "DevOps deployment readiness should live in knowledge/");
+  assert.equal(await exists(join(rootDir, "operations", "devops", "ci-cd.md")), false, "DevOps CI/CD should live in knowledge/");
+  assert.equal(await exists(join(rootDir, "operations", "devops", "observability.md")), false, "DevOps observability should live in knowledge/");
+  assert.equal(await exists(join(rootDir, "operations", "devops", "release-notes.md")), false, "DevOps release notes should live in knowledge/");
+
+  assert(devopsReadme.includes("start with `AGENT.md`"), "DevOps README should route operational work through AGENT.md");
+  assert(devopsReadme.includes("Do not store tokens, secrets or credentials in workspace files"), "DevOps README should include token storage red line");
+  assert(devopsAgent.includes("You are the DevOps Lead"), "DevOps AGENT should define DevOps Lead");
+  assert(devopsAgent.includes("GitHub DevOps: `roles/github-devops.role.md`"), "DevOps AGENT should route GitHub DevOps work");
+  assert(devopsAgent.includes("DevOps Engineer: `roles/devops-engineer.role.md`"), "DevOps AGENT should route DevOps Engineer work");
+  assert(devopsAgent.includes("Release Manager: `roles/release-manager.role.md`"), "DevOps AGENT should route Release Manager work");
+  assert(devopsAgent.includes("Do not store tokens, secrets or credentials in workspace files"), "DevOps AGENT should protect secrets");
+  assert(devopsAgent.includes("Do not create `.vercel/`, run `vercel link` or deploy automatically"), "DevOps AGENT should block automatic Vercel actions");
+  assert.equal(areaYaml.area.agent, "AGENT.md", "DevOps area.yaml should declare AGENT.md");
+  assert(areaYaml.area.source_of_truth.includes("knowledge/github-management.md"), "DevOps area.yaml should list GitHub management knowledge");
+  assert(areaYaml.area.source_of_truth.includes("knowledge/deployment-readiness.md"), "DevOps area.yaml should list deployment readiness knowledge");
+  assert(areaYaml.area.roles.includes("release-manager"), "DevOps area.yaml should list release-manager");
+  assert(areaYaml.area.skills.includes("prepare-release"), "DevOps area.yaml should list prepare-release");
+
+  for (const content of [githubManagement, environments, deploymentReadiness, ciCd, observability, releaseNotes]) {
+    for (const section of ["## Purpose", "## Current State", "## Decisions", "## Open Questions", "## Next Update"]) {
+      assert(content.includes(section), `DevOps knowledge should include ${section}`);
+    }
+  }
+
+  assert(githubManagement.includes("## Token Source"), "GitHub management knowledge should define token source");
+  assert(githubManagement.includes("## Dry Run"), "GitHub management knowledge should define dry-run readiness");
+  assert(environments.includes("## Preview / Staging"), "Environments knowledge should separate preview/staging");
+  assert(environments.includes("## Secrets"), "Environments knowledge should include secret handling");
+  assert(deploymentReadiness.includes("## Vercel Readiness"), "Deployment readiness should include Vercel readiness");
+  assert(deploymentReadiness.includes("## Framework Detection"), "Deployment readiness should include framework detection");
+  assert(deploymentReadiness.includes("## Rollback"), "Deployment readiness should include rollback");
+  assert(ciCd.includes("## Required Checks"), "CI/CD knowledge should include required checks");
+  assert(ciCd.includes("## Failure Handling"), "CI/CD knowledge should include failure handling");
+  assert(observability.includes("## Logs"), "Observability knowledge should include logs");
+  assert(observability.includes("## Errors"), "Observability knowledge should include errors");
+  assert(observability.includes("## Metrics"), "Observability knowledge should include metrics");
+  assert(observability.includes("## Post-Deploy Checks"), "Observability knowledge should include post-deploy checks");
+  assert(releaseNotes.includes("## Linked Issues"), "Release notes should include linked issues");
+  assert(releaseNotes.includes("## Rollback"), "Release notes should include rollback");
+
+  assert(devopsEngineer.includes("../knowledge/environments.md"), "DevOps Engineer should load environments knowledge");
+  assert(devopsEngineer.includes("../knowledge/deployment-readiness.md"), "DevOps Engineer should load deployment readiness knowledge");
+  assert(githubDevops.includes("../knowledge/github-management.md"), "GitHub DevOps should load GitHub management knowledge");
+  assert(releaseManager.includes("../knowledge/release-notes.md"), "Release Manager should load release notes knowledge");
+
+  for (const skillContent of [configureGithubProject, configureEnvironments, setupCi, planDeployment, defineObservability, prepareRelease]) {
+    for (const heading of ["## Purpose", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output"]) {
+      assert(skillContent.includes(heading), `DevOps skill should include ${heading}`);
+    }
+  }
+
+  assert(configureGithubProject.includes("No token stored in workspace"), "Configure GitHub Project should protect tokens");
+  assert(configureEnvironments.includes("Secrets are not written into markdown"), "Configure Environments should protect secrets");
+  assert(setupCi.includes("CI does not deploy automatically by default"), "Setup CI should avoid automatic deploy");
+  assert(planDeployment.includes("No `.vercel/` creation"), "Plan Deployment should block Vercel metadata creation");
+  assert(defineObservability.includes("Post-deploy checks"), "Define Observability should include post-deploy checks");
+  assert(prepareRelease.includes("Rollback is explicit"), "Prepare Release should include rollback checks");
+  assert(githubProjectPlaybook.includes("Read DevOps AGENT and choose GitHub DevOps"), "GitHub project playbook should start at DevOps AGENT");
+  assert(githubProjectPlaybook.includes("knowledge/github-management.md"), "GitHub project playbook should update GitHub knowledge");
+  assert(setupCiCdPlaybook.includes("skills/setup-ci.skill.md"), "Setup CI/CD playbook should use setup-ci skill");
+  assert(planDeploymentPlaybook.includes("do not create `.vercel/`, run `vercel link` or deploy automatically"), "Plan deployment playbook should preserve Vercel safety");
+  assert(releaseOperationsPlaybook.includes("skills/prepare-release.skill.md"), "Release operations should use prepare-release skill");
+  assert(releaseOperationsPlaybook.includes("knowledge/release-notes.md"), "Release operations should update release notes");
+}
+
+async function assertSecurityAreaPattern(rootDir) {
+  const securityReadme = await readFile(join(rootDir, "operations", "security", "README.md"), "utf8");
+  const securityAgent = await readFile(join(rootDir, "operations", "security", "AGENT.md"), "utf8");
+  const areaYaml = parse(await readFile(join(rootDir, "operations", "security", "area.yaml"), "utf8"));
+  const baseline = await readFile(join(rootDir, "operations", "security", "knowledge", "security-baseline.md"), "utf8");
+  const threatModel = await readFile(join(rootDir, "operations", "security", "knowledge", "threat-model.md"), "utf8");
+  const accessControl = await readFile(join(rootDir, "operations", "security", "knowledge", "access-control.md"), "utf8");
+  const dataProtection = await readFile(join(rootDir, "operations", "security", "knowledge", "data-protection.md"), "utf8");
+  const databaseSecurity = await readFile(join(rootDir, "operations", "security", "knowledge", "database-security.md"), "utf8");
+  const secretsManagement = await readFile(join(rootDir, "operations", "security", "knowledge", "secrets-management.md"), "utf8");
+  const infraHardening = await readFile(join(rootDir, "operations", "security", "knowledge", "infra-hardening.md"), "utf8");
+  const secureCoding = await readFile(join(rootDir, "operations", "security", "knowledge", "secure-coding.md"), "utf8");
+  const incidentResponse = await readFile(join(rootDir, "operations", "security", "knowledge", "incident-response.md"), "utf8");
+  const securityAutomation = await readFile(join(rootDir, "operations", "security", "knowledge", "security-automation.md"), "utf8");
+  const securityReviewer = await readFile(join(rootDir, "operations", "security", "roles", "security-reviewer.role.md"), "utf8");
+  const appSecEngineer = await readFile(join(rootDir, "operations", "security", "roles", "application-security-engineer.role.md"), "utf8");
+  const cloudSecurityReviewer = await readFile(join(rootDir, "operations", "security", "roles", "cloud-security-reviewer.role.md"), "utf8");
+  const dataProtectionReviewer = await readFile(join(rootDir, "operations", "security", "roles", "data-protection-reviewer.role.md"), "utf8");
+  const aiGeneratedCodeSecurity = await readFile(join(rootDir, "operations", "security", "skills", "ai-generated-code-security.skill.md"), "utf8");
+  const securityAutomationReadiness = await readFile(join(rootDir, "operations", "security", "skills", "security-automation-readiness.skill.md"), "utf8");
+  const apiSecurityReview = await readFile(join(rootDir, "operations", "security", "skills", "api-security-review.skill.md"), "utf8");
+  const databaseSecurityReview = await readFile(join(rootDir, "operations", "security", "skills", "database-security-review.skill.md"), "utf8");
+  const preDeployReview = await readFile(join(rootDir, "operations", "security", "playbooks", "pre-deploy-security-review.playbook.md"), "utf8");
+  const aiGeneratedReview = await readFile(join(rootDir, "operations", "security", "playbooks", "ai-generated-code-security-review.playbook.md"), "utf8");
+  const securityAutomationPlaybook = await readFile(join(rootDir, "operations", "security", "playbooks", "security-automation-readiness.playbook.md"), "utf8");
+  const githubSecurityAutomation = await readFile(join(rootDir, ".github", "leanos", "security-automation.md"), "utf8");
+  const createIssuesCommand = await readFile(join(rootDir, ".leanos", "commands", "create-issues.md"), "utf8");
+
+  for (const oldPath of ["threat-model.md", "access-control.md", "data-protection.md"]) {
+    assert.equal(await exists(join(rootDir, "operations", "security", oldPath)), false, `Security ${oldPath} should live in knowledge/`);
+  }
+
+  assert(securityReadme.includes("start with `AGENT.md`"), "Security README should route operational work through AGENT.md");
+  assert(securityReadme.includes("No public production database"), "Security README should include baseline red lines");
+  assert(securityReadme.includes("quality gate"), "Security README should explain quality gate role");
+  assert(securityAgent.includes("You are the Security Lead"), "Security AGENT should define Security Lead");
+  assert(securityAgent.includes("Application Security Engineer: `roles/application-security-engineer.role.md`"), "Security AGENT should route AppSec work");
+  assert(securityAgent.includes("Cloud Security Reviewer: `roles/cloud-security-reviewer.role.md`"), "Security AGENT should route cloud security work");
+  assert(securityAgent.includes("Data Protection Reviewer: `roles/data-protection-reviewer.role.md`"), "Security AGENT should route data protection work");
+  assert(securityAgent.includes("No public production database"), "Security AGENT should include public database red line");
+  assert(securityAgent.includes("AI agents must not change auth, secrets, CI/CD, infra or dependencies without human review"), "Security AGENT should include AI agent red line");
+  assert.equal(areaYaml.area.agent, "AGENT.md", "Security area.yaml should declare AGENT.md");
+  assert(areaYaml.area.source_of_truth.includes("knowledge/security-baseline.md"), "Security area.yaml should list security baseline");
+  assert(areaYaml.area.source_of_truth.includes("knowledge/security-automation.md"), "Security area.yaml should list security automation readiness");
+  assert(areaYaml.area.source_of_truth.includes("knowledge/database-security.md"), "Security area.yaml should list database security");
+  assert(areaYaml.area.roles.includes("application-security-engineer"), "Security area.yaml should list AppSec role");
+  assert(areaYaml.area.skills.includes("ai-generated-code-security"), "Security area.yaml should list AI generated code security skill");
+  assert(areaYaml.area.skills.includes("security-automation-readiness"), "Security area.yaml should list security automation readiness skill");
+  assert(areaYaml.area.playbooks.includes("pre-deploy-security-review"), "Security area.yaml should list pre-deploy security review");
+  assert(areaYaml.area.playbooks.includes("security-automation-readiness"), "Security area.yaml should list security automation readiness playbook");
+
+  for (const content of [baseline, threatModel, accessControl, dataProtection, databaseSecurity, secretsManagement, infraHardening, secureCoding, incidentResponse, securityAutomation]) {
+    for (const section of ["## Purpose", "## What to Document", "## Required Checks", "## Red Lines", "## Related Playbooks"]) {
+      assert(content.includes(section), `Security knowledge should include ${section}`);
+    }
+  }
+
+  for (const redLine of [
+    "No public production database.",
+    "No secrets in Git, logs, prompts, screenshots or tracked files.",
+    "No private endpoint without server-side authentication and authorization.",
+    "Every user-owned or tenant-owned object access must validate ownership server-side.",
+    "Never trust userId, tenantId, role or isAdmin from the client.",
+    "Never build SQL with string concatenation.",
+    "Sensitive data must not appear in logs, analytics, errors or events.",
+    "Admin access requires RBAC, MFA when available and audit trail.",
+    "Production, staging and development must use separate databases, secrets and permissions.",
+    "Production deploy requires backup, rollback path and security review.",
+    "AI agents must not change auth, secrets, CI/CD, infra or dependencies without human review."
+  ]) {
+    assert(baseline.includes(redLine), `Security baseline should include red line: ${redLine}`);
+  }
+
+  assert(baseline.includes("OWASP Top 10"), "Security baseline should reference OWASP Top 10");
+  assert(baseline.includes("OWASP API Security Top 10"), "Security baseline should reference OWASP API Security Top 10");
+  assert(baseline.includes("NIST SSDF"), "Security baseline should reference NIST SSDF");
+  assert(databaseSecurity.includes("OWASP Database Security Cheat Sheet"), "Database security should reference OWASP Database Security Cheat Sheet");
+  assert(secureCoding.includes("OWASP Secure Coding with AI"), "Secure coding should reference OWASP Secure Coding with AI");
+  assert(securityAutomation.includes("Secret scanning"), "Security automation knowledge should mention secret scanning");
+  assert(securityAutomation.toLowerCase().includes("dependency audit"), "Security automation knowledge should mention dependency audit");
+  assert(securityAutomation.includes("SAST/code scanning"), "Security automation knowledge should mention SAST/code scanning");
+  assert(securityAutomation.includes("IaC/config scanning"), "Security automation knowledge should mention IaC/config scanning");
+  assert(securityAutomation.includes("Do not create scanner workflows until stack, package manager and stable commands are known"), "Security automation knowledge should avoid fragile early workflows");
+
+  for (const roleContent of [securityReviewer, appSecEngineer, cloudSecurityReviewer, dataProtectionReviewer]) {
+    for (const section of ["## Purpose", "## When to Use", "## Source of Truth", "## Required Skills", "## Relevant Playbooks", "## Output", "## Red Lines"]) {
+      assert(roleContent.includes(section), `Security role should include ${section}`);
+    }
+  }
+
+  for (const skillContent of [aiGeneratedCodeSecurity, apiSecurityReview, databaseSecurityReview, securityAutomationReadiness]) {
+    for (const section of ["## Purpose", "## Use When", "## Required Context", "## Process", "## Checks", "## Output", "## Files to Update", "## Red Lines"]) {
+      assert(skillContent.includes(section), `Security skill should include ${section}`);
+    }
+  }
+
+  for (const aiRisk of [
+    "hallucinated dependencies",
+    "outdated dependencies with CVEs",
+    "prompt injection via issues, PRs, docs or logs",
+    "unsafe shell commands",
+    "out-of-scope file edits",
+    "test deletion or fabricated tests",
+    "secrets/context leakage",
+    "auth, secrets, CI/CD, infra or dependencies without human review",
+    "broad MCP/tool permissions"
+  ]) {
+    assert(aiGeneratedCodeSecurity.includes(aiRisk), `AI generated code security skill should cover ${aiRisk}`);
+  }
+
+  for (const section of ["## Purpose", "## When to Use", "## Before Acting", "## Steps", "## Security Gate", "## Output", "## Files to Update", "## Stop Conditions"]) {
+    assert(preDeployReview.includes(section), `Pre-deploy security review should include ${section}`);
+    assert(aiGeneratedReview.includes(section), `AI generated code review playbook should include ${section}`);
+    assert(securityAutomationPlaybook.includes(section), `Security automation readiness playbook should include ${section}`);
+  }
+
+  for (const blocker of [
+    "public database",
+    "missing authorization",
+    "secrets in code",
+    "client-side token exposure",
+    "unsafe query",
+    "open CORS without justification",
+    "no rate limit on login or sensitive APIs",
+    "sensitive data in logs",
+    "no backup or rollback path",
+    "critical vulnerable dependency",
+    "over-permissive service account",
+    "missing tenant isolation"
+  ]) {
+    assert(preDeployReview.includes(blocker), `Pre-deploy security review should block ${blocker}`);
+  }
+
+  assert(createIssuesCommand.includes("../../operations/security/AGENT.md"), "Create issues command should route Security through AGENT.md");
+  assert.equal(createIssuesCommand.includes("../../operations/security/README.md` only when"), false, "Create issues command should not route Security directly to README");
+  assert(securityAutomationReadiness.includes("Secret scanning status is explicit"), "Security automation skill should check secret scanning status");
+  assert(securityAutomationReadiness.includes("Dependency audit status is explicit"), "Security automation skill should check dependency audit status");
+  assert(securityAutomationReadiness.includes("No scanner workflow is created without stable commands"), "Security automation skill should avoid fragile scanner workflows");
+  assert(securityAutomationPlaybook.includes("Production deploy requires explicit security automation status"), "Security automation playbook should gate production readiness");
+  assert(securityAutomationPlaybook.includes("Block creating scanner workflows when stack, package manager or commands are unknown"), "Security automation playbook should block premature scanner workflows");
+  assert(preDeployReview.includes("security automation readiness status"), "Pre-deploy review should include security automation readiness");
+  assert(githubSecurityAutomation.includes("This file is guidance-only in the initial scaffold"), "GitHub security automation doc should be guidance-only");
+  assert(githubSecurityAutomation.includes("Secret scanning"), "GitHub security automation doc should mention secret scanning");
+  assert(githubSecurityAutomation.includes("Dependency audit"), "GitHub security automation doc should mention dependency audit");
+  assert(githubSecurityAutomation.includes("Do not create blocking CI workflows before the project has reliable build/test commands"), "GitHub security automation doc should avoid fragile blocking workflows");
+}
+
+async function assertGrowthAreaPattern(rootDir) {
+  const cxReadme = await readFile(join(rootDir, "growth", "customer-experience", "README.md"), "utf8");
+  const cxAgent = await readFile(join(rootDir, "growth", "customer-experience", "AGENT.md"), "utf8");
+  const cxYaml = parse(await readFile(join(rootDir, "growth", "customer-experience", "area.yaml"), "utf8"));
+  const customerFeedback = await readFile(join(rootDir, "growth", "customer-experience", "knowledge", "customer-feedback.md"), "utf8");
+  const supportNotes = await readFile(join(rootDir, "growth", "customer-experience", "knowledge", "support-notes.md"), "utf8");
+  const cxRole = await readFile(join(rootDir, "growth", "customer-experience", "roles", "cx-lead.role.md"), "utf8");
+  const customerLearningLoop = await readFile(join(rootDir, "growth", "customer-experience", "playbooks", "customer-learning-loop.playbook.md"), "utf8");
+
+  const marketingReadme = await readFile(join(rootDir, "growth", "marketing", "README.md"), "utf8");
+  const marketingAgent = await readFile(join(rootDir, "growth", "marketing", "AGENT.md"), "utf8");
+  const marketingYaml = parse(await readFile(join(rootDir, "growth", "marketing", "area.yaml"), "utf8"));
+  const landingPage = await readFile(join(rootDir, "growth", "marketing", "knowledge", "landing-page.md"), "utf8");
+  const growthLead = await readFile(join(rootDir, "growth", "marketing", "roles", "growth-lead.role.md"), "utf8");
+  const mvpLaunch = await readFile(join(rootDir, "growth", "marketing", "playbooks", "mvp-launch.playbook.md"), "utf8");
+
+  const financeReadme = await readFile(join(rootDir, "growth", "finance", "README.md"), "utf8");
+  const financeAgent = await readFile(join(rootDir, "growth", "finance", "AGENT.md"), "utf8");
+  const financeYaml = parse(await readFile(join(rootDir, "growth", "finance", "area.yaml"), "utf8"));
+  const pricing = await readFile(join(rootDir, "growth", "finance", "knowledge", "pricing.md"), "utf8");
+  const financeOperator = await readFile(join(rootDir, "growth", "finance", "roles", "finance-operator.role.md"), "utf8");
+  const financeReview = await readFile(join(rootDir, "growth", "finance", "playbooks", "finance-review.playbook.md"), "utf8");
+  const growthWorkflow = await readFile(join(rootDir, "growth", "workflows", "launch-learning-loop.workflow.md"), "utf8");
+
+  for (const oldPath of [
+    "growth/customer-experience/customer-feedback.md",
+    "growth/customer-experience/support-notes.md",
+    "growth/customer-experience/success-moments.md",
+    "growth/customer-experience/churn-reasons.md",
+    "growth/marketing/positioning.md",
+    "growth/marketing/landing-page.md",
+    "growth/marketing/acquisition-channels.md",
+    "growth/marketing/launch-plan.md",
+    "growth/finance/pricing.md",
+    "growth/finance/revenue-model.md",
+    "growth/finance/unit-economics.md",
+    "growth/finance/budget.md",
+    "growth/finance/finance-risks.md"
+  ]) {
+    assert.equal(await exists(join(rootDir, oldPath)), false, `Growth loose path should move into knowledge/: ${oldPath}`);
+  }
+
+  for (const [readme, agent, yaml, expectedAgentTitle] of [
+    [cxReadme, cxAgent, cxYaml, "Customer Experience Lead"],
+    [marketingReadme, marketingAgent, marketingYaml, "Marketing Lead"],
+    [financeReadme, financeAgent, financeYaml, "Finance Lead"]
+  ]) {
+    assert(readme.includes("start with `AGENT.md`"), "Growth area README should route operational work through AGENT.md");
+    assert(agent.includes(`You are the ${expectedAgentTitle}`), `Growth area AGENT should define ${expectedAgentTitle}`);
+    assert.equal(yaml.area.agent, "AGENT.md", "Growth area.yaml should declare AGENT.md");
+  }
+
+  for (const content of [customerFeedback, supportNotes, landingPage, pricing]) {
+    for (const section of ["## Purpose", "## Current State", "## Decisions", "## Risks", "## Open Questions", "## Next Update"]) {
+      assert(content.includes(section), `Growth knowledge should include ${section}`);
+    }
+  }
+
+  assert(cxYaml.area.source_of_truth.includes("knowledge/customer-feedback.md"), "CX area.yaml should list customer feedback knowledge");
+  assert(marketingYaml.area.source_of_truth.includes("knowledge/landing-page.md"), "Marketing area.yaml should list landing page knowledge");
+  assert(financeYaml.area.source_of_truth.includes("knowledge/pricing.md"), "Finance area.yaml should list pricing knowledge");
+  assert(cxRole.includes("## Red Lines"), "CX role should include red lines");
+  assert(growthLead.includes("## Red Lines"), "Growth Lead should include red lines");
+  assert(financeOperator.includes("## Red Lines"), "Finance Operator should include red lines");
+  assert(customerLearningLoop.includes("skills/map-customer-feedback.skill.md"), "Customer learning loop should use feedback mapping skill");
+  assert(customerLearningLoop.includes("Strategy/Product or Product Ops"), "Customer learning loop should route product changes back to product owners");
+  assert(mvpLaunch.includes("Route visual design to Operations Design"), "MVP launch should route design work to Operations Design");
+  assert(mvpLaunch.includes("Route budget/pricing implications to Growth Finance"), "MVP launch should route finance work to Finance");
+  assert(financeReadme.includes("Do not make accounting, tax, legal or investment advice claims"), "Finance should avoid professional advice claims");
+  assert(growthWorkflow.includes("Read Marketing AGENT"), "Growth workflow should route through Marketing AGENT");
+  assert(growthWorkflow.includes("Read Customer Experience AGENT"), "Growth workflow should route through Customer Experience AGENT");
+  assert(growthWorkflow.includes("Review Finance AGENT when pricing, budget or unit economics are involved"), "Growth workflow should make Finance conditional");
+}
+
 async function assertInitCommandRules(rootDir) {
   const startCommand = await readFile(join(rootDir, ".leanos", "commands", "start-leanos.md"), "utf8");
   const requiredSections = [
@@ -2000,9 +2587,20 @@ async function assertOperationalPlaybookSections(rootDir) {
     "operations/devops/playbooks/configure-environments.playbook.md",
     "operations/devops/playbooks/define-observability.playbook.md",
     "operations/devops/playbooks/release-operations.playbook.md",
-    "operations/security/playbooks/security-checklist.playbook.md"
+    "operations/security/playbooks/security-foundation.playbook.md",
+    "operations/security/playbooks/pre-mvp-security-checklist.playbook.md",
+    "operations/security/playbooks/pre-deploy-security-review.playbook.md",
+    "operations/security/playbooks/api-security-review.playbook.md",
+    "operations/security/playbooks/database-security-review.playbook.md",
+    "operations/security/playbooks/secrets-rotation.playbook.md",
+    "operations/security/playbooks/vulnerability-response.playbook.md",
+    "operations/security/playbooks/incident-response.playbook.md",
+    "operations/security/playbooks/ai-generated-code-security-review.playbook.md",
+    "growth/customer-experience/playbooks/customer-learning-loop.playbook.md",
+    "growth/marketing/playbooks/mvp-launch.playbook.md",
+    "growth/finance/playbooks/finance-review.playbook.md"
   ];
-  const requiredSections = ["## Purpose", "## Inputs", "## Process", "## Output", "## Files to Update", "## Navigation"];
+  const requiredSections = ["## Purpose", "## Inputs", "## Output", "## Files to Update", "## Navigation"];
 
   for (const playbook of playbooks) {
     const content = await readFile(join(rootDir, playbook), "utf8");
@@ -2010,6 +2608,8 @@ async function assertOperationalPlaybookSections(rootDir) {
     for (const section of requiredSections) {
       assert(content.includes(section), `${playbook} should include ${section}`);
     }
+
+    assert(content.includes("## Process") || content.includes("## Steps"), `${playbook} should include ## Process or ## Steps`);
   }
 }
 
@@ -2020,6 +2620,7 @@ async function assertSourceScaffoldSections(rootDir) {
     "strategy/product/knowledge/brief.md",
     "strategy/business/knowledge/mission.md",
     "strategy/product/knowledge/icp.md",
+    "strategy/product/knowledge/validation-notes.md",
     "strategy/roadmap/knowledge/roadmap.md",
     "strategy/validation/assumptions.md",
     "strategy/validation/learning-log.md",
@@ -2038,10 +2639,25 @@ async function assertSourceScaffoldSections(rootDir) {
     "operations/engineering/knowledge/review-criteria.md",
     "operations/engineering/knowledge/implementation-notes.md",
     "operations/engineering/knowledge/pr-log.md",
-    "operations/security/threat-model.md",
-    "growth/customer-experience/customer-feedback.md",
-    "growth/marketing/landing-page.md",
-    "growth/finance/pricing.md"
+    "operations/devops/knowledge/github-management.md",
+    "operations/devops/knowledge/environments.md",
+    "operations/devops/knowledge/deployment-readiness.md",
+    "operations/devops/knowledge/ci-cd.md",
+    "operations/devops/knowledge/observability.md",
+    "operations/devops/knowledge/release-notes.md",
+    "growth/customer-experience/knowledge/customer-feedback.md",
+    "growth/customer-experience/knowledge/support-notes.md",
+    "growth/customer-experience/knowledge/success-moments.md",
+    "growth/customer-experience/knowledge/churn-reasons.md",
+    "growth/marketing/knowledge/positioning.md",
+    "growth/marketing/knowledge/landing-page.md",
+    "growth/marketing/knowledge/acquisition-channels.md",
+    "growth/marketing/knowledge/launch-plan.md",
+    "growth/finance/knowledge/pricing.md",
+    "growth/finance/knowledge/revenue-model.md",
+    "growth/finance/knowledge/unit-economics.md",
+    "growth/finance/knowledge/budget.md",
+    "growth/finance/knowledge/finance-risks.md"
   ];
   const requiredSections = ["## Purpose", "## Current State", "## Decisions", "## Open Questions", "## Next Update"];
 
@@ -2203,7 +2819,8 @@ async function assertInitialContextCoherence(rootDir, selectedSubareas) {
   ];
 
   const workflowRequirements = [
-    { workflow: "idea-to-roadmap", subareas: ["strategy.product", "strategy.roadmap", "strategy.validation"] },
+    { workflow: "new-idea-intake", subareas: ["strategy.product", "strategy.roadmap"] },
+    { workflow: "idea-to-roadmap", subareas: ["strategy.product", "strategy.roadmap"] },
     { workflow: "roadmap-to-github-project", subareas: ["strategy.product", "strategy.roadmap"] },
     { workflow: "issue-delivery-cycle", subareas: ["operations.product-ops", "operations.engineering"] },
     { workflow: "post-merge-continuation", subareas: ["operations.product-ops", "operations.engineering"] },

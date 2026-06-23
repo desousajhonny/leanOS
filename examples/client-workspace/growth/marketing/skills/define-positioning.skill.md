@@ -4,24 +4,52 @@
 
 Define category, audience, promise and differentiation.
 
-## Area
+## Use When
 
-`growth/marketing`
+- market message is unclear
+- landing page needs positioning
+- launch needs a focused story
+
+## Required Context
+
+- Product problem
+- ICP
+- Value proposition
+- Existing positioning
 
 ## Inputs
 
-- Area source-of-truth files
-- Active role instructions
-- User request
+- Audience
+- Problem
+- Promise
+- Alternatives
+- Differentiation
 
 ## Process
 
-1. Read the minimum relevant source-of-truth files.
-2. Apply this skill to the user request.
-3. Prepare a concise output or file update.
+1. Load product context
+2. Define audience and category
+3. Clarify promise and proof
+4. Identify differentiation
+5. Capture open claims that need validation
+
+## Checks
+
+- No invented proof
+- Message matches ICP/problem
+- Differentiation is specific enough for MVP
 
 ## Output
 
-- Summary
-- Decisions
-- Suggested file updates
+- Positioning statement
+- Messaging risks
+- Open proof questions
+
+## Files to Update
+
+- Update `../knowledge/positioning.md` after explicit confirmation.
+
+## Red Lines
+
+- Do not invent evidence.
+- Do not overpromise beyond product capability.

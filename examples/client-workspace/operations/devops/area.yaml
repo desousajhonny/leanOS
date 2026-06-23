@@ -2,16 +2,19 @@ area:
   key: operations.devops
   department: operations
   path: operations/devops
-  agent: null
+  agent: AGENT.md
   readme: README.md
   roles:
     - devops-engineer
     - github-devops
+    - release-manager
   skills:
+    - configure-github-project
+    - configure-environments
     - setup-ci
     - plan-deployment
-    - configure-github-project
     - define-observability
+    - prepare-release
   playbooks:
     - setup-ci-cd
     - plan-deployment
@@ -19,4 +22,10 @@ area:
     - configure-environments
     - define-observability
     - release-operations
-  source_of_truth: []
+  source_of_truth:
+    - knowledge/github-management.md
+    - knowledge/environments.md
+    - knowledge/deployment-readiness.md
+    - knowledge/ci-cd.md
+    - knowledge/observability.md
+    - knowledge/release-notes.md

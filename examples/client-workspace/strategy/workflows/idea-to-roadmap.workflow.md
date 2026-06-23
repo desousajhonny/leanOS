@@ -2,13 +2,12 @@
 
 ## Purpose
 
-Turn founder ideas into product, validation, MVP and roadmap decisions.
+Promote a qualified idea into a roadmap or backlog item without assuming MVP scope or GitHub execution.
 
 ## Required Areas
 
 - product
 - roadmap
-- validation
 
 ## Availability
 
@@ -17,12 +16,12 @@ All required areas are active in this department.
 
 ## Sequence
 
-1. Read product strategy
-2. Evaluate idea against ICP, problem and value
-3. Identify validation risk
-4. Check MVP impact with Product Ops when active
-5. Decide backlog, roadmap, experiment or discard
-6. Propose source-of-truth updates before writing
+1. Confirm the idea already passed intake
+2. Read product strategy and roadmap context
+3. Define problem, user, expected value, dependencies and evidence level
+4. Classify the item as backlog, Now, Next, Later or Not Planned
+5. Do not mark as MVP unless the next workflow confirms it
+6. Propose roadmap or backlog updates and wait for confirmation before writing
 
 ## Navigation
 

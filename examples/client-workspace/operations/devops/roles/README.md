@@ -6,16 +6,17 @@ Roles owned by the DevOps area.
 
 ## When to Use
 
-Use after the area README selects a role.
+Use after the area AGENT selects a role.
 
 ## Source of Truth
 
-`../README.md`
+`../AGENT.md`
 
 ## Files
 
 - `devops-engineer.role.md`
 - `github-devops.role.md`
+- `release-manager.role.md`
 
 ## Related Folders
 

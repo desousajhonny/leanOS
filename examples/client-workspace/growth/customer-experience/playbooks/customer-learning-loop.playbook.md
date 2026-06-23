@@ -2,25 +2,36 @@
 
 ## Purpose
 
-Turn customer experience signals into next actions.
+Turn customer experience signals into next actions without overbuilding process.
 
-## Area
+## Inputs
 
-`growth/customer-experience`
+- Customer feedback
+- Support notes
+- Success moments
+- Churn reasons
+- Current product/roadmap context when available
 
-## Sequence
+## Process
 
-1. Read feedback
-2. Cluster support patterns
-3. Identify friction
-4. Recommend product or growth follow-up
+1. Read Customer Experience AGENT and choose CX Lead
+2. Use `skills/map-customer-feedback.skill.md` to cluster feedback
+3. Use `skills/synthesize-support-patterns.skill.md` when support patterns exist
+4. Identify friction, success moments and churn risks
+5. Route product changes to Strategy/Product or Product Ops when needed
+6. Route messaging/launch implications to Marketing when needed
 
-## Outputs
+## Output
 
-- Decision or action summary
-- Updated source-of-truth files when requested
-- Next recommended LeanOS command
+- Learning summary
+- Customer signal clusters
+- Recommended product/growth/support follow-up
+- Open questions
+
+## Files to Update
+
+- Update `../knowledge/customer-feedback.md`, `../knowledge/support-notes.md`, `../knowledge/success-moments.md` or `../knowledge/churn-reasons.md` after explicit confirmation.
 
 ## Navigation
 
-Start from `../README.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.

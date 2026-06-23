@@ -2,17 +2,44 @@ area:
   key: operations.security
   department: operations
   path: operations/security
-  agent: null
+  agent: AGENT.md
   readme: README.md
   roles:
     - security-reviewer
+    - application-security-engineer
+    - cloud-security-reviewer
+    - data-protection-reviewer
   skills:
-    - threat-model
-    - review-security
+    - threat-modeling
+    - access-control-review
+    - api-security-review
+    - database-security-review
+    - secrets-management
+    - secure-code-review
+    - dependency-supply-chain-review
+    - infra-hardening-review
+    - incident-response
+    - security-automation-readiness
+    - ai-generated-code-security
   playbooks:
-    - security-review
-    - security-checklist
+    - security-foundation
+    - pre-mvp-security-checklist
+    - security-automation-readiness
+    - pre-deploy-security-review
+    - api-security-review
+    - database-security-review
+    - secrets-rotation
+    - vulnerability-response
+    - incident-response
+    - ai-generated-code-security-review
   source_of_truth:
-    - threat-model.md
-    - data-protection.md
-    - access-control.md
+    - knowledge/security-baseline.md
+    - knowledge/threat-model.md
+    - knowledge/access-control.md
+    - knowledge/data-protection.md
+    - knowledge/database-security.md
+    - knowledge/secrets-management.md
+    - knowledge/infra-hardening.md
+    - knowledge/secure-coding.md
+    - knowledge/incident-response.md
+    - knowledge/security-automation.md

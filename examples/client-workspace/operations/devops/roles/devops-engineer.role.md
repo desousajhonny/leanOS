@@ -15,17 +15,21 @@ Prepare release, environment, GitHub workflow and observability practices.
 
 Read:
 
-- `../README.md`
+- `../AGENT.md`
 - `../area.yaml`
+- `../knowledge/environments.md`
+- `../knowledge/deployment-readiness.md`
+- `../knowledge/ci-cd.md`
+- `../knowledge/observability.md`
 - `../../../.github/leanos/project-sync.yaml`
-- `../../../.github/leanos/github-settings.example.json`
 
 ## Skills
 
+- `../skills/configure-environments.skill.md`
 - `../skills/setup-ci.skill.md`
 - `../skills/plan-deployment.skill.md`
-- `../skills/configure-github-project.skill.md`
 - `../skills/define-observability.skill.md`
+- `../skills/prepare-release.skill.md`
 
 ## Playbooks
 
@@ -44,4 +48,4 @@ Read:
 
 ## Navigation
 
-Start from `../README.md`, then load only the required skill and playbook.
+Start from `../AGENT.md`, then load only the required skill and playbook.

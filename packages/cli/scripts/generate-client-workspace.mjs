@@ -24,7 +24,6 @@ export const exampleAnswers = {
     "strategy.business",
     "strategy.product",
     "strategy.roadmap",
-    "strategy.validation",
     "operations.product-ops",
     "operations.design",
     "operations.engineering",

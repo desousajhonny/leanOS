@@ -13,10 +13,10 @@ Define runtime visibility for logs, metrics, alerts and traces.
 
 ## Process
 
-1. Identify critical signals
-2. Define logs and metrics
-3. Choose alert conditions
-4. Define incident visibility
+1. Read DevOps AGENT and choose DevOps Engineer
+2. Read `knowledge/observability.md`
+3. Use `skills/define-observability.skill.md` to identify logs, errors, metrics and alert candidates
+4. Define post-deploy checks
 5. List observability gaps
 
 ## Output
@@ -29,8 +29,8 @@ Define runtime visibility for logs, metrics, alerts and traces.
 
 ## Files to Update
 
-- Update relevant DevOps notes or observability records if the workspace has them.
+- Update `../knowledge/observability.md` after explicit confirmation.
 
 ## Navigation
 
-Start from `../README.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.

@@ -11,9 +11,6 @@ roles:
   - key: roadmap-planner
     area: strategy.roadmap
     path: ../../strategy/roadmap/roles/roadmap-planner.role.md
-  - key: validation-researcher
-    area: strategy.validation
-    path: ../../strategy/validation/roles/validation-researcher.role.md
   - key: product-owner
     area: operations.product-ops
     path: ../../operations/product-ops/roles/product-owner.role.md
@@ -47,9 +44,21 @@ roles:
   - key: github-devops
     area: operations.devops
     path: ../../operations/devops/roles/github-devops.role.md
+  - key: release-manager
+    area: operations.devops
+    path: ../../operations/devops/roles/release-manager.role.md
   - key: security-reviewer
     area: operations.security
     path: ../../operations/security/roles/security-reviewer.role.md
+  - key: application-security-engineer
+    area: operations.security
+    path: ../../operations/security/roles/application-security-engineer.role.md
+  - key: cloud-security-reviewer
+    area: operations.security
+    path: ../../operations/security/roles/cloud-security-reviewer.role.md
+  - key: data-protection-reviewer
+    area: operations.security
+    path: ../../operations/security/roles/data-protection-reviewer.role.md
   - key: cx-lead
     area: growth.customer-experience
     path: ../../growth/customer-experience/roles/cx-lead.role.md

@@ -49,7 +49,7 @@ Evaluate a founder idea against user value, evidence, MVP scope and roadmap impa
 ## Files to Update
 
 - ../../roadmap/knowledge/backlog.md
-- ../../validation/assumptions.md
+- ../knowledge/validation-notes.md
 
 ## Red Lines
 

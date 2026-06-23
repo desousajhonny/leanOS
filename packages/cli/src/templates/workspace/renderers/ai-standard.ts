@@ -48,7 +48,7 @@ export function aiStandardFiles(): FileEntry[] {
       title: "GitHub Templates",
       purpose: "Templates for GitHub issues, epics, sub-issues, branch naming, PRs and readiness matrices.",
       use: "Use when shaping GitHub-ready work items or repository collaboration artifacts.",
-      files: ["github-issue-template.md", "github-epic-template.md", "github-subissue-template.md", "issue-readiness-matrix-template.md", "branch-name-template.md", "pull-request-template.md"]
+      files: ["github-issue-template.md", "github-epic-template.md", "github-subissue-template.md", "delivery-readiness-matrix-template.md", "branch-name-template.md", "pull-request-template.md"]
     },
     {
       key: "review",
@@ -136,7 +136,7 @@ function templateContent(fileName: string): string {
     "area-readme-template.md": areaReadmeTemplate(),
     "github-epic-template.md": githubEpicTemplate(),
     "github-subissue-template.md": githubSubissueTemplate(),
-    "issue-readiness-matrix-template.md": issueReadinessMatrixTemplate(),
+    "delivery-readiness-matrix-template.md": deliveryReadinessMatrixTemplate(),
     "branch-name-template.md": branchNameTemplate(),
     "pull-request-template.md": pullRequestTemplate(),
     "code-review-template.md": codeReviewTemplate()
@@ -1737,8 +1737,9 @@ Use this taxonomy before creating, changing or routing LeanOS workspace assets.
 \`\`\`text
 Role = who acts.
 Skill = capability used.
-Playbook = execution sequence.
+Playbook = practical task execution inside an area.
 Knowledge = information/source of truth.
+Workflow = coordination across areas, stages or handoffs.
 \`\`\`
 
 Do not use one asset type to do another asset type's job.
@@ -1753,10 +1754,25 @@ Do not use one asset type to do another asset type's job.
 | \`area.yaml\` | Machine-readable area structure | "Which roles, skills, playbooks and knowledge belong to this area?" |
 | \`role\` | Persona/responsibility used by the agent | "Which hat should the agent wear?" |
 | \`skill\` | Reusable capability used by a role | "Which capability should be applied?" |
-| \`playbook\` | Practical execution sequence | "In which order should the work happen?" |
+| \`playbook\` | Practical task execution inside an area | "In which order should this area execute the task?" |
 | \`knowledge\` | Context, facts and source of truth | "What do we know about this?" |
-| \`workflow\` | Multi-step flow across areas or a department | "How should larger work move across owners?" |
+| \`workflow\` | Multi-area, multi-stage or handoff coordination | "How should larger work move across owners?" |
 | \`command\` | Portable chat instruction for a known intent | "What should happen when the user invokes this command?" |
+
+## Workflow vs Playbook
+
+Use this distinction when deciding where a process belongs:
+
+\`\`\`text
+Workflow = coordinates multiple areas, stages or handoffs.
+Playbook = executes a practical task inside one area.
+\`\`\`
+
+A workflow should explain who participates, what handoffs happen and when the work moves from one owner to another.
+A playbook should explain the concrete steps an area follows after the correct owner, role and skills are selected.
+
+If the process crosses Product Ops, Design, Engineering or Security, it is probably a workflow.
+If the process is branch creation, PR preparation, design foundation or security review inside one area, it is probably a playbook.
 
 ## Asset Types
 
@@ -1834,12 +1850,13 @@ Example: \`operations/design/skills/accessibility.skill.md\` defines how to appl
 
 ### Playbook
 
-A playbook is a practical execution sequence.
+A playbook is a practical execution sequence inside one area.
 
 - Lives in \`<area>/playbooks/<direct-name>.playbook.md\`.
-- Answers: "In which order should this work happen?"
+- Answers: "In which order should this area execute the task?"
 - Create when a task has repeatable steps, inputs, outputs and file update rules.
 - Do not create a playbook for a single check or isolated capability.
+- Do not use a playbook to coordinate multiple areas or cross-department handoffs.
 - Agents should use it after selecting the role and loading required skills.
 
 Example: \`operations/design/playbooks/design-foundation.playbook.md\` sequences design-system, accessibility and user-flow work before implementation.
@@ -1858,11 +1875,12 @@ Example: \`operations/design/knowledge/design-system.md\` stores the design-syst
 
 ### Workflow
 
-A workflow is a multi-step flow that moves work across areas or across a department.
+A workflow coordinates multiple areas, stages or handoffs.
 
 - Lives in \`<department>/workflows/\` or, when truly area-owned, \`<area>/workflows/\`.
 - Answers: "How should larger work move across owners?"
 - Create when the task spans multiple roles, areas or stages.
+- Do not create a workflow for practical execution inside one area; use a playbook for that.
 - Do not place business workflows in \`.leanos/workflows/\`; \`.leanos/\` is runtime support.
 - Agents should use workflows to coordinate owners, then enter the relevant area and role.
 
@@ -2314,25 +2332,34 @@ If not applicable, write: "Not applicable; no security-sensitive surface identif
 `;
 }
 
-function issueReadinessMatrixTemplate(): string {
-  return `# Issue Readiness Matrix
+function deliveryReadinessMatrixTemplate(): string {
+  return `# Delivery Readiness Matrix (DRM)
 
 Use this before creating epics, sub-issues or implementation plans.
 
+The DRM shapes work before development starts. It prevents the model from coding before the issue has enough Product, Design, Engineering, Security and DevOps clarity.
+
 | Dimension | Required When | Required Output | Status |
 | --- | --- | --- | --- |
-| Product | Always | user, problem, outcome, acceptance criteria, learning signal | TBD |
-| Design | User-facing flow, screen, state, copy or interaction changes | flow, states, UX constraints, accessibility notes | not_applicable/TBD |
-| Engineering | Always for implementation work | technical approach, boundaries, dependencies, test plan | TBD |
-| Security | Data, auth, permissions, privacy, abuse or compliance is involved | data classification, permission rules, privacy/security criteria | not_applicable/TBD |
+| Product Ops | Always | outcome, scope boundary, non-goals, acceptance criteria, milestone, parent epic linkage | TBD |
+| Design | User-facing flow, screen, state, copy, accessibility or interaction changes | user flow, required screens/states, component/design-system notes, accessibility notes | not_applicable/TBD |
+| Engineering | Always for implementation work | implementation boundary, dependencies, test plan, branch/PR expectation | TBD |
+| Security | Data, auth, permissions, privacy, abuse, API, database, secrets, compliance or AI-generated-code risk | risk notes, security criteria, data/auth/privacy requirements | not_applicable/TBD |
+| DevOps | Environment, deploy, CI/CD, GitHub Project, observability, config or release impact | environment/config notes, CI/deploy/release/observability criteria | not_applicable/TBD |
 
 ## Readiness Rule
 
-Do not create implementation-ready sub-issues until Product and Engineering are clear.
+Do not create implementation-ready sub-issues until Product Ops and Engineering are clear.
 
 Design is required only when user experience is affected.
 
 Security is required only when the issue has a security-sensitive surface.
+
+DevOps is required only when delivery, environment, automation, release or operational readiness is affected.
+
+## Output Rule
+
+If a dimension is not applicable, say why. If it is applicable but unclear, mark it as missing context and stop before creating GitHub issues.
 `;
 }
 

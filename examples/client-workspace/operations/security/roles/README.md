@@ -6,15 +6,18 @@ Roles owned by the Security area.
 
 ## When to Use
 
-Use after the area README selects a role.
+Use after the area AGENT selects a role.
 
 ## Source of Truth
 
-`../README.md`
+`../AGENT.md`
 
 ## Files
 
 - `security-reviewer.role.md`
+- `application-security-engineer.role.md`
+- `cloud-security-reviewer.role.md`
+- `data-protection-reviewer.role.md`
 
 ## Related Folders
 

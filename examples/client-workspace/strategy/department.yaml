@@ -12,13 +12,10 @@ department:
     - key: strategy.roadmap
       agent: roadmap/AGENT.md
       readme: roadmap/README.md
-    - key: strategy.validation
-      agent: null
-      readme: validation/README.md
   workflows:
+    - key: new-idea-intake
+      path: workflows/new-idea-intake.workflow.md
     - key: idea-to-roadmap
       path: workflows/idea-to-roadmap.workflow.md
-    - key: strategy-validation-cycle
-      path: workflows/strategy-validation-cycle.workflow.md
     - key: roadmap-to-github-project
       path: workflows/roadmap-to-github-project.workflow.md

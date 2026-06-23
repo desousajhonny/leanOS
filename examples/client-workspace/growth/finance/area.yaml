@@ -2,7 +2,7 @@ area:
   key: growth.finance
   department: growth
   path: growth/finance
-  agent: null
+  agent: AGENT.md
   readme: README.md
   roles:
     - finance-operator
@@ -12,8 +12,8 @@ area:
   playbooks:
     - finance-review
   source_of_truth:
-    - pricing.md
-    - revenue-model.md
-    - unit-economics.md
-    - budget.md
-    - finance-risks.md
+    - knowledge/pricing.md
+    - knowledge/revenue-model.md
+    - knowledge/unit-economics.md
+    - knowledge/budget.md
+    - knowledge/finance-risks.md

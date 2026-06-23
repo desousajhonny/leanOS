@@ -20,6 +20,7 @@ Own product strategy, ICP, value proposition, positioning and business model coh
 - `knowledge/value-proposition.md`
 - `knowledge/positioning.md`
 - `knowledge/business-model-canvas.md`
+- `knowledge/validation-notes.md`
 
 
 

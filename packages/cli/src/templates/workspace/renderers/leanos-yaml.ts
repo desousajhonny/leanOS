@@ -85,7 +85,7 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
       by_department: Object.fromEntries(
         activeRoots.map((department) => [
           department.key,
-          department.workflows.map((workflow) => ({
+          activeDepartmentWorkflows(department, activeAreas).map((workflow) => ({
             key: workflow.slug,
             path: `${department.key}/workflows/${workflow.slug}.workflow.md`
           }))
@@ -105,4 +105,9 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
       token_source: "env:LEANOS_GITHUB_TOKEN"
     }
   });
+}
+
+function activeDepartmentWorkflows(department: RootDepartmentDefinition, activeAreas: AreaDefinition[]) {
+  const activeAreaSlugs = new Set(activeAreas.filter((area) => area.root === department.key).map((area) => area.slug));
+  return department.workflows.filter((workflow) => workflow.requiredAreas.every((area) => activeAreaSlugs.has(area)));
 }

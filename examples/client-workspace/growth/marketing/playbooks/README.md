@@ -10,7 +10,7 @@ Use when a selected role points to a playbook.
 
 ## Source of Truth
 
-`../README.md`
+`../AGENT.md`
 
 ## Files
 
