@@ -313,7 +313,7 @@ Decisao proposta:
   - Security quando houver dados/auth/API/privacy/permissoes/abuso/compliance;
   - DevOps quando houver ambiente/deploy/config/observabilidade/GitHub Project.
 - [x] Aplicar a DRM completa no workflow/jornada `epic-to-features`.
-- [ ] Definir Definition of Ready:
+- [x] Definir Definition of Ready:
   - Feature so entra em desenvolvimento depois de passar pelo `ready-to-develop`;
   - Feature pode existir localmente antes de estar pronta para desenvolvimento;
   - o modelo deve explicar gaps antes de sugerir implementacao.

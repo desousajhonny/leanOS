@@ -1541,6 +1541,11 @@ async function assertFounderIntentRouting(rootDir) {
   const readyToDevelop = await readFile(join(rootDir, "operations", "product-ops", "knowledge", "ready-to-develop.md"), "utf8");
   assert(readyToDevelop.includes("# Ready To Develop"), "Product Ops should generate a ready-to-develop gate");
   assert(readyToDevelop.includes("## Core Rule"), "Ready-to-develop gate should define the core rule");
+  assert(readyToDevelop.includes("## Local Feature Rule"), "Ready-to-develop gate should define local Feature readiness");
+  assert(readyToDevelop.includes("A GitHub issue is optional for readiness"), "Ready-to-develop gate should not require GitHub for local readiness");
+  assert(readyToDevelop.includes("## Feature Definition of Ready"), "Ready-to-develop gate should define Feature Definition of Ready");
+  assert(readyToDevelop.includes("needs-epic-breakdown"), "Ready-to-develop gate should block unsplit Epics before coding");
+  assert(readyToDevelop.includes("issue-delivery-cycle"), "Ready-to-develop gate should guard the implementation workflow");
   assert(readyToDevelop.includes("## Design Readiness"), "Ready-to-develop gate should include design readiness");
   assert(readyToDevelop.includes("## Security Readiness"), "Ready-to-develop gate should include security readiness");
   assert(readyToDevelop.includes("## Ready States"), "Ready-to-develop gate should define ready states");

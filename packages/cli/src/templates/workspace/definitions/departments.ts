@@ -629,13 +629,23 @@ function readyToDevelopKnowledge(): string {
 
 ## Purpose
 
-Define the fixed LeanOS gate for deciding whether a roadmap item, delivery scope, epic or issue can move into implementation.
+Define the fixed LeanOS Definition of Ready for deciding whether a Feature can move into implementation.
 
 This is a framework criterion, not a product status log. Do not rewrite it with product-specific progress unless the framework itself changes.
 
 ## Core Rule
 
-A work item is ready to develop only when Product, Delivery Scope, Issue, Design, Security, Engineering and DevOps readiness are satisfied or explicitly marked not applicable.
+A Feature is ready to develop only when Product Ops, Delivery Scope, Feature, Design, Security, Engineering and DevOps readiness are satisfied or explicitly marked not applicable.
+
+An Epic can be important and still not ready for code. An Epic becomes developable only after it is broken into Features and at least one Feature passes this gate.
+
+## Local Feature Rule
+
+- A local Feature can exist before GitHub is configured.
+- A GitHub issue is optional for readiness when the local Feature file is complete enough to guide implementation.
+- GitHub sync is tracking, not product readiness.
+- If both local Feature and GitHub issue exist, compare them before planning and explain any mismatch to the founder.
+- Do not start \`issue-delivery-cycle\` from a vague roadmap item, unsplit Epic or loose idea.
 
 ## Product Readiness
 
@@ -651,12 +661,22 @@ A work item is ready to develop only when Product, Delivery Scope, Issue, Design
 - Non-goals are explicit.
 - Dependencies and constraints are visible.
 
-## Issue Readiness
+## Feature Definition of Ready
 
-- The work has an issue, epic or confirmed bootstrap request.
+- The Feature has a clear title, parent Epic and lifecycle status.
+- The Feature is small enough to plan, branch, implement, test and review safely.
+- The Feature has acceptance criteria that can validate the result.
+- Internal tasks are listed when useful, but tasks do not replace acceptance criteria.
+- The Feature records Product Ops, Engineering and conditional Design, Security and DevOps criteria.
+- The Feature is not just an idea, note or vague roadmap item.
+
+## Feature And Issue Readiness
+
+- The work has a local Feature file or a GitHub issue that represents a Feature.
 - Acceptance criteria are clear enough to validate the result.
 - The implementation boundary is small enough to execute safely.
-- The issue is not just an idea, note or vague roadmap item.
+- The Feature can be traced back to roadmap item, delivery scope and Epic.
+- If GitHub is used, the GitHub issue should mirror the local Feature before code starts.
 
 ## Design Readiness
 
@@ -697,10 +717,12 @@ Required when the work touches environments, CI/CD, deploy, observability, GitHu
 - \`not-ready\`: the work is still an idea or lacks essential context.
 - \`needs-product\`: product intent, user, problem or value is unclear.
 - \`needs-delivery-scope\`: roadmap item exists but no delivery scope is confirmed.
+- \`needs-epic-breakdown\`: an Epic exists but has not been broken into Features.
+- \`needs-feature-definition\`: the Feature is local but lacks acceptance criteria, boundaries, tasks or readiness criteria.
 - \`needs-design\`: UX/UI/accessibility context is required before coding.
 - \`needs-security\`: data/auth/privacy/API/security context is required before coding.
 - \`needs-devops\`: environment/deploy/CI/GitHub readiness is required before coding.
-- \`ready-to-plan\`: enough context exists to create a development plan, branch and implementation approach.
+- \`ready-to-plan\`: enough context exists to create a development plan and implementation approach.
 - \`ready-to-code\`: enough context exists to begin implementation after the plan is confirmed.
 
 ## Model Behavior
@@ -710,6 +732,8 @@ Required when the work touches environments, CI/CD, deploy, observability, GitHu
 - Use \`where-we-are.md\` for status/readiness questions.
 - Use \`issue-delivery-cycle\` only after readiness is confirmed.
 - Never treat importance as readiness.
+- Never treat GitHub sync as readiness by itself.
+- If the founder asks to code too early, name the current state and offer the smallest next step.
 
 ## Founder-Friendly Output
 
