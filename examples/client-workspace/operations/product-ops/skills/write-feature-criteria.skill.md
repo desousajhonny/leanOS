@@ -37,17 +37,21 @@ Apply the Delivery Readiness Matrix (DRM) to draft implementation-ready features
 1. Write Product Ops criteria for every feature.
 2. Write Engineering criteria for every implementation-ready feature.
 3. Add internal tasks inside each feature.
-4. Add Design criteria only when the feature affects UX, UI, flow, copy, accessibility or interaction.
-5. Add Security criteria only when the feature touches data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk.
-6. Add DevOps criteria only when the feature touches environments, CI/CD, deploy, observability, GitHub Project, config or release readiness.
-7. Mark non-applicable dimensions explicitly with a reason.
-8. Produce local feature drafts and ask for confirmation before remote creation.
+4. Add Design criteria only when the feature affects UX, UI, flow, copy, accessibility, screens, states, components or interaction.
+5. When Design is applicable, identify whether the feature can reuse a component, adapt a component or needs a new component spec.
+6. Do not write the full component spec during Feature Shaping; add a Design task for `component-readiness` when a spec is required.
+7. Add Security criteria only when the feature touches data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk.
+8. Add DevOps criteria only when the feature touches environments, CI/CD, deploy, observability, GitHub Project, config or release readiness.
+9. Mark non-applicable dimensions explicitly with a reason.
+10. Produce local feature drafts and ask for confirmation before remote creation.
 
 ## Checks
 
 - Every feature has Product Ops and Engineering clarity.
 - Every feature has internal tasks.
 - Design is included or explicitly not applicable.
+- UI features identify component reuse, adaptation or required component spec.
+- Features that need a new component include a Design task before Engineering work.
 - Security is included or explicitly not applicable.
 - DevOps is included or explicitly not applicable.
 - Dependencies and risks are visible.
@@ -58,6 +62,8 @@ Apply the Delivery Readiness Matrix (DRM) to draft implementation-ready features
 - Feature draft list
 - DRM table per feature
 - Internal task checklist per feature
+- Component readiness decision when UI is affected
+- Design task for component spec when needed
 - Dependencies
 - Risks
 - Missing context

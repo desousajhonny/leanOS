@@ -605,6 +605,8 @@ async function validateWorkspaceFiles() {
   const epicToFeaturesWorkflow = await readFile(join(rootDir, "operations", "workflows", "epic-to-features.workflow.md"), "utf8");
   assert(epicToFeaturesWorkflow.includes("Break a confirmed local LeanOS Epic into implementation-ready Feature files"), "Epic to features workflow should define feature shaping purpose");
   assert(epicToFeaturesWorkflow.includes("Route Design only when UX"), "Epic to features workflow should make Design conditional");
+  assert(epicToFeaturesWorkflow.includes("identify component reuse, component adaptation or the need for a future component spec task"), "Epic to features workflow should detect component readiness during feature shaping");
+  assert(epicToFeaturesWorkflow.includes("Do not write full component specs in this workflow"), "Epic to features workflow should not write full component specs during shaping");
   assert(epicToFeaturesWorkflow.includes("Route Security only when data, auth"), "Epic to features workflow should make Security conditional");
   assert(epicToFeaturesWorkflow.includes("Ask Engineering to validate implementation boundaries"), "Epic to features workflow should require Engineering validation");
   assert(epicToFeaturesWorkflow.includes("Stop before branch, code, PR or remote write"), "Epic to features workflow should stop before implementation or remote writes");
@@ -1483,6 +1485,9 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(epicToFeaturesPlaybook.includes("Delivery Readiness Matrix (DRM)"), "Epic breakdown should use the DRM");
   assert(epicToFeaturesPlaybook.includes("Write Product Ops criteria for every feature"), "Epic breakdown should require Product Ops criteria");
   assert(epicToFeaturesPlaybook.includes("Add Design criteria only when"), "Epic breakdown should make Design conditional");
+  assert(epicToFeaturesPlaybook.includes("When a Feature depends on UI components"), "Epic breakdown should detect component needs");
+  assert(epicToFeaturesPlaybook.includes("Do not create the full component spec during Feature Shaping"), "Epic breakdown should defer full component specs");
+  assert(epicToFeaturesPlaybook.includes("Design task for component spec"), "Epic breakdown should add a Design task when component spec is required");
   assert(epicToFeaturesPlaybook.includes("Add Security criteria only when"), "Epic breakdown should make Security conditional");
   assert(epicToFeaturesPlaybook.includes("Add DevOps criteria only when"), "Epic breakdown should make DevOps conditional");
   assert(epicToFeaturesPlaybook.includes("Stop before any GitHub API write until the user explicitly confirms"), "Epic breakdown should require confirmation before GitHub writes");

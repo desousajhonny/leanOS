@@ -300,7 +300,7 @@ Decisao proposta:
   - se a Feature tem UI, os componentes necessarios devem estar conhecidos;
   - se um componente novo e necessario, a Feature nao esta `ready-to-code` ate Design criar ou confirmar a component spec;
   - Feature pode ter uma task de Design pendente antes de Engineering.
-- [ ] Atualizar `epic-to-features`
+- [x] Atualizar `epic-to-features`
   - durante Feature Shaping, Design detecta necessidade de componentes;
   - nao precisa escrever spec completa nessa etapa;
   - deve adicionar task na Feature quando component spec for necessaria.

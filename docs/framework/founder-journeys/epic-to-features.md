@@ -201,11 +201,14 @@ Why:
 
 - This skill applies the Feature-level Delivery Readiness Matrix.
 - It defines Product Ops and Engineering as required and Design/Security/DevOps as conditional.
+- When Design is applicable, it identifies whether the Feature can reuse a component, adapt an existing component or needs a future component spec task.
+- It does not write the complete component spec during this journey.
 
 Navigation Evidence:
 
 - The skill points to `ai-standard/templates/product/feature-template.md`.
 - The playbook points to the same DRM and local Epics folder.
+- Component specs are handled later by `operations/design/playbooks/component-readiness.playbook.md` when a real Feature needs one.
 
 Next step:
 
@@ -224,6 +227,8 @@ Why:
 
 - The workflow and playbook define these as conditional criteria.
 - Non-applicable dimensions must be marked with a reason.
+- If Design finds a missing component spec, this journey adds a Design task to the Feature instead of asking Engineering to code immediately.
+- The full component spec belongs to the component readiness path, not Epic slicing.
 
 ### Step 7 - Founder Confirmation
 
@@ -239,6 +244,8 @@ Minha proposta:
 
 Cada feature tera criterios de Product Ops e Engineering.
 Design entra na primeira e segunda porque existe fluxo de tela.
+Na importacao por CSV, parece que precisaremos confirmar se ja existe um componente de tabela/importacao.
+Se nao existir, vou adicionar uma task de Design para component readiness antes da implementacao.
 Security entra na importacao por CSV porque envolve dados de clientes.
 DevOps nao parece necessario agora, exceto se voce quiser sincronizar com GitHub.
 

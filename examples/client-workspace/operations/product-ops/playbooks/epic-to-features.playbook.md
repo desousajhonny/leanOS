@@ -38,6 +38,7 @@ Break a LeanOS epic into implementation-ready features with internal tasks using
 - Acceptance criteria
 - Delivery Readiness Matrix (DRM)
 - Design context when UX is affected
+- Component inventory when UI components are affected
 - Security context when sensitive surfaces are involved
 - DevOps context when delivery or environment impact exists
 - Engineering constraints and dependencies
@@ -50,12 +51,14 @@ Break a LeanOS epic into implementation-ready features with internal tasks using
 4. Load `skills/write-feature-criteria.skill.md` and apply the Feature-level Delivery Readiness Matrix (DRM).
 5. Write Product Ops criteria for every feature.
 6. Add internal tasks inside each feature.
-7. Add Design criteria only when UX, UI, flow, copy, accessibility or interaction is affected.
-8. Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
-9. Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.
-10. Ask Engineering to validate implementation boundaries, dependencies, test approach and feature size.
-11. Mark non-applicable dimensions explicitly and explain why.
-12. Prepare local feature drafts and ask for confirmation before any remote write.
+7. Add Design criteria only when UX, UI, flow, copy, accessibility, screens, states, components or interaction is affected.
+8. When a Feature depends on UI components, check whether it can reuse an approved component, adapt one or needs a new component spec.
+9. Do not create the full component spec during Feature Shaping; add a Design task for `operations/design/playbooks/component-readiness.playbook.md` when a component spec is needed.
+10. Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
+11. Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.
+12. Ask Engineering to validate implementation boundaries, dependencies, test approach and feature size.
+13. Mark non-applicable dimensions explicitly and explain why.
+14. Prepare local feature drafts and ask for confirmation before any remote write.
 
 ## Security Gate
 
@@ -70,6 +73,8 @@ Break a LeanOS epic into implementation-ready features with internal tasks using
 - DRM criteria for each feature
 - Product Ops criteria
 - Design criteria or not applicable with reason
+- Component reuse/adaptation/spec decision when UI is affected
+- Design task for component spec when needed
 - Engineering criteria
 - Security criteria or not applicable with reason
 - DevOps criteria or not applicable with reason
