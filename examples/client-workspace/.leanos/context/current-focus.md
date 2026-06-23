@@ -23,6 +23,7 @@ Compatible local workflows:
 - roadmap-to-github-project
 - roadmap-item-to-delivery-scope
 - delivery-scope-to-epic
+- epic-to-features
 - mvp-to-pr
 - issue-delivery-cycle
 - post-merge-continuation

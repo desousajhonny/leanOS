@@ -23,6 +23,8 @@ department:
       path: workflows/roadmap-item-to-delivery-scope.workflow.md
     - key: delivery-scope-to-epic
       path: workflows/delivery-scope-to-epic.workflow.md
+    - key: epic-to-features
+      path: workflows/epic-to-features.workflow.md
     - key: mvp-to-pr
       path: workflows/mvp-to-pr.workflow.md
     - key: issue-delivery-cycle

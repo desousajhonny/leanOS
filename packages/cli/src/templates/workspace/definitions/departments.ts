@@ -4009,6 +4009,35 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         }
       },
       {
+        slug: "epic-to-features",
+        purpose: "Break a confirmed local LeanOS Epic into implementation-ready Feature files with internal Tasks and Delivery Readiness Matrix criteria before Engineering starts work.",
+        requiredAreas: ["product-ops", "engineering"],
+        steps: [
+          "Confirm the local Epic folder exists under `operations/product-ops/epics/` and has outcome, scope, non-goals, ownership and Epic Readiness Matrix",
+          "Load Product Ops and choose Product Owner",
+          "Load `operations/product-ops/playbooks/epic-to-features.playbook.md`",
+          "Use `shape-epic.skill.md` to verify the Epic is ready for feature breakdown",
+          "Use `write-feature-criteria.skill.md` and the local Product Feature template to draft Feature files inside the Epic folder",
+          "Route Design only when UX, UI, flow, copy, accessibility, screens, states or interaction are affected",
+          "Route Security only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved",
+          "Route DevOps only when environments, CI/CD, deploy, observability, config, GitHub sync or release readiness are affected",
+          "Ask Engineering to validate implementation boundaries, dependencies, tests and feature size",
+          "Ask for confirmation before writing Feature files, syncing GitHub or starting implementation",
+          "Stop before branch, code, PR or remote write"
+        ],
+        continuationBridge: {
+          immediate: "As features foram definidas.\nQuer que eu verifique se alguma delas ja esta pronta para desenvolvimento?",
+          laterTriggers: ["vamos implementar essa feature", "essa feature esta pronta para desenvolver?", "podemos iniciar o desenvolvimento?", "comece pela feature", "implemente a feature"],
+          nextRoute: "issue-delivery-cycle",
+          rules: [
+            "Do not automatically start implementation after feature shaping.",
+            "If the founder says yes, run the ready-to-develop gate before routing to Engineering.",
+            "If readiness is missing, explain the gap in founder-friendly language and recommend the next LeanOS route.",
+            "If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `issue-delivery-cycle` only after readiness is confirmed."
+          ]
+        }
+      },
+      {
         slug: "mvp-to-pr",
         purpose: "Coordinate Product Ops, Design and Engineering for delivery.",
         requiredAreas: ["product-ops", "engineering"],

@@ -267,6 +267,7 @@ workflows:
     - roadmap-to-github-project
     - roadmap-item-to-delivery-scope
     - delivery-scope-to-epic
+    - epic-to-features
     - mvp-to-pr
     - issue-delivery-cycle
     - post-merge-continuation
@@ -284,6 +285,8 @@ workflows:
         path: operations/workflows/roadmap-item-to-delivery-scope.workflow.md
       - key: delivery-scope-to-epic
         path: operations/workflows/delivery-scope-to-epic.workflow.md
+      - key: epic-to-features
+        path: operations/workflows/epic-to-features.workflow.md
       - key: mvp-to-pr
         path: operations/workflows/mvp-to-pr.workflow.md
       - key: issue-delivery-cycle

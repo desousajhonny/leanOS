@@ -312,7 +312,7 @@ Decisao proposta:
   - Design quando houver UX/UI/copy/acessibilidade/fluxo/tela;
   - Security quando houver dados/auth/API/privacy/permissoes/abuso/compliance;
   - DevOps quando houver ambiente/deploy/config/observabilidade/GitHub Project.
-- [ ] Aplicar a DRM completa no workflow/jornada `epic-to-features`.
+- [x] Aplicar a DRM completa no workflow/jornada `epic-to-features`.
 - [ ] Definir Definition of Ready:
   - Feature so entra em desenvolvimento depois de passar pelo `ready-to-develop`;
   - Feature pode existir localmente antes de estar pronta para desenvolvimento;
@@ -333,18 +333,18 @@ Decisao proposta:
   - objetivo: reduzir releitura desnecessaria e custo de contexto;
   - cuidado: mover arquivos pode esconder contexto do modelo; talvez seja melhor manter no lugar e registrar sync em `.github/leanos/sync-state.yaml`;
   - decisao futura: `synced/` fisico vs sync-state como indice.
-- [ ] Criar/ajustar skill:
-  - renomear ou substituir `write-feature-criteria` por algo como `break-epic-into-features`;
+- [x] Criar/ajustar skill:
+  - manter `write-feature-criteria` como skill de criterios e usar o playbook `epic-to-features` para a quebra completa;
   - a skill deve gerar Features com Tasks internas;
   - cada Feature deve conter Product Ops, Engineering e DRM aplicavel: Design, Security e DevOps quando necessario.
-- [ ] Criar/ajustar playbook:
-  - renomear ou substituir `epic-to-features` por `epic-to-features`;
+- [x] Criar/ajustar playbook:
+  - manter `epic-to-features` como playbook oficial de Feature Shaping;
   - o playbook deve quebrar Epic em Features;
   - Tasks ficam dentro de cada Feature;
   - GitHub sync de Features vira etapa opcional posterior.
-- [ ] Atualizar workflows e jornadas:
+- [x] Atualizar workflows e jornadas:
   - `delivery-scope-to-epic` termina em Epic local, com GitHub sync opcional;
-  - proximo fluxo passa a ser `epic-to-features`, nao `epic-to-features`;
+  - proximo fluxo passa a ser `epic-to-features`;
   - `issue-delivery-cycle` deve aceitar Feature local ou GitHub issue como entrada, desde que passe pelo `ready-to-develop`.
 
 #### Workflow Map - Founder Journey Completa
@@ -359,7 +359,7 @@ Jornadas internas devem ser criadas em `docs/framework/founder-journeys/` usando
 | 3 | [x] | [x] `docs/framework/founder-journeys/idea-to-roadmap.md` | Decisao de roadmap | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" | Strategy / Roadmap | Product Strategist, Product Manager, Roadmap Planner | `roadmap-cycle-planning`, `product-strategy` | Jornada criada; scaffold existente validado; gap futuro: delivery scope deve ser contexto opcional no Roadmap Planner |
 | 4 | [x] | [x] `docs/framework/founder-journeys/roadmap-item-to-delivery-scope.md` | Decisao de delivery scope | `operations/workflows/roadmap-item-to-delivery-scope.workflow.md` | "Isso entra na proxima entrega?", "isso entra no MVP?", "qual milestone recebe esse item?" | Product Ops + Strategy | Product Owner, Product Strategist, Delivery Architect, Product Designer/Security quando aplicavel | `delivery-scope-planning`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada e scaffold atualizado; MVP e apenas um tipo de delivery scope |
 | 5 | [x] | [x] `docs/framework/founder-journeys/delivery-scope-to-epic.md` | Planning de execucao | `operations/workflows/delivery-scope-to-epic.workflow.md` | "Deseja quebrar esse escopo em epics?", "crie os epics no GitHub" | Product Ops + DevOps | Product Owner, Roadmap Planner, GitHub DevOps, Senior Developer quando aplicavel | `roadmap-sync-prep`, `configure-github-project`, `delivery-readiness` | Jornada criada e scaffold atualizado; GitHub write exige confirmacao |
-| 6 | [ ] | [ ] `docs/framework/founder-journeys/epic-to-features.md` | Feature Shaping | `operations/workflows/epic-to-features.workflow.md` | "Quebre esse epic em features", "quais features precisamos para esse epic?" | Operations / Product Ops | Product Owner, Product Designer, Security Reviewer, DevOps Engineer, Senior Developer | `epic-to-features`, `delivery-readiness`, `mvp-ux-flow`, `accessibility-review`, `pre-mvp-security-checklist`, `api-security-review`, `setup-ci-cd` | Antes de criar, ajustar taxonomia Epic -> Feature -> Tasks |
+| 6 | [x] | [x] `docs/framework/founder-journeys/epic-to-features.md` | Feature Shaping | `operations/workflows/epic-to-features.workflow.md` | "Quebre esse epic em features", "quais features precisamos para esse epic?" | Operations / Product Ops | Product Owner, Product Designer, Security Reviewer, DevOps Engineer, Senior Developer | `epic-to-features`, `delivery-readiness`, `mvp-ux-flow`, `accessibility-review`, `pre-mvp-security-checklist`, `api-security-review`, `setup-ci-cd` | Jornada criada; scaffold deve gerar workflow local e aplicar DRM completa |
 | 7 | [ ] | [ ] `docs/framework/founder-journeys/issue-delivery-cycle.md` | Implementacao | `operations/workflows/issue-delivery-cycle.workflow.md` | "Implemente a issue #554", "vamos comecar essa feature" | Operations / Engineering | Product Owner, Senior Developer, Test Engineer, PR Reviewer, Security Reviewer quando aplicavel | `delivery-readiness`, `branch-from-issue`, `issue-to-pr`, `test-planning`, `pr-validation`, `ai-generated-code-security-review` | Existe, precisa fortalecer |
 | 8 | [ ] | [ ] `docs/framework/founder-journeys/review-pr.md` | Review e PR | Dentro de `issue-delivery-cycle` ou futuro workflow de review | "Revise o PR", "esta pronto para merge?" | Engineering + Security/DevOps quando aplicavel | PR Reviewer, Test Engineer, Security Reviewer, Release Manager | `pr-validation`, `pre-deploy-security-review`, `security-automation-readiness`, `release-operations` | Coberto por playbooks, talvez nao precise workflow separado |
 | 9 | [ ] | [ ] `docs/framework/founder-journeys/post-merge-continuation.md` | Pos-merge | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a proxima issue", "o que atualizamos depois do merge?" | Operations | Product Owner, Senior Developer, Release Manager, CX Lead quando aplicavel | `release-operations`, `delivery-readiness`, `customer-learning-loop` | Existe, precisa fortalecer |
@@ -408,7 +408,7 @@ MVP continua sendo o nome principal da etapa. O criterio de qualidade deve inclu
 
 Workflows a revisar:
 
-- [ ] `operations/product-ops/playbooks/epic-to-features.playbook.md`
+- [x] `operations/product-ops/playbooks/epic-to-features.playbook.md`
   - primeira execucao desta fase;
   - deve ser o processo oficial de Feature Shaping;
   - deve usar Delivery Readiness Matrix (DRM);

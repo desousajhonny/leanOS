@@ -19,6 +19,10 @@ workflows:
     department: operations
     path: ../../operations/workflows/delivery-scope-to-epic.workflow.md
     active: true
+  - key: epic-to-features
+    department: operations
+    path: ../../operations/workflows/epic-to-features.workflow.md
+    active: true
   - key: mvp-to-pr
     department: operations
     path: ../../operations/workflows/mvp-to-pr.workflow.md
