@@ -168,6 +168,7 @@ skills:
       - user-research
       - user-flow-mapping
       - design-system
+      - component-analysis
       - screen-specification
       - microcopy
       - accessibility
@@ -226,6 +227,7 @@ playbooks:
       - delivery-readiness
     operations.design:
       - design-foundation
+      - component-readiness
       - user-research
       - mvp-ux-flow
       - accessibility-review

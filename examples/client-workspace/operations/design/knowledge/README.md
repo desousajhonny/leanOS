@@ -17,6 +17,7 @@ Use after Product and MVP context exist, before implementation or user-facing is
 - `design-system.md`
 - `accessibility.md`
 - `user-flows.md`
+- `component-inventory.md`
 
 ## Related Folders
 
@@ -32,4 +33,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-Keep this folder focused on reusable design foundation. Create screen specs, usability notes and UX decisions later when a concrete feature or screen requires them.
+Keep this folder focused on reusable design foundation and component readiness. Create screen specs, usability notes and UX decisions later when a concrete feature or screen requires them.

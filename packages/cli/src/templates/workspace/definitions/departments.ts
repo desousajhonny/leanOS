@@ -108,6 +108,47 @@ TBD
 `;
 }
 
+function componentInventoryKnowledge(): string {
+  return `# Component Inventory
+
+## Purpose
+
+Track reusable UI components that Design has approved, planned or identified as gaps.
+
+This is not source code. It is a lightweight Design catalog that helps the model decide whether a Feature can reuse an existing component, adapt one or needs a new component specification before Engineering starts.
+
+## How To Use
+
+- Check this file before asking Engineering to create or modify user-facing UI.
+- Keep entries short and link to a component spec when one exists.
+- Mark components as approved, planned, needs-spec, deprecated or unknown.
+- Do not invent components just to make implementation easier.
+
+## Component List
+
+| Component | Status | Purpose | Used In | Spec | Notes |
+| --- | --- | --- | --- | --- | --- |
+| TBD | unknown | TBD | TBD | TBD | TBD |
+
+## Known Gaps
+
+| Gap | Needed For | Why It Matters | Next Step |
+| --- | --- | --- | --- |
+| TBD | TBD | TBD | TBD |
+
+## Reuse Rules
+
+- Reuse an approved component when it satisfies the Feature behavior, states and accessibility needs.
+- Adapt an existing component only when the change improves the reusable component without breaking existing usage.
+- Create a new component only when reuse or adaptation would create unclear behavior, accessibility risk or brittle composition.
+- If a new component is needed, create or request a component spec before Engineering implements it.
+
+## Open Questions
+
+TBD
+`;
+}
+
 function productOpsOverviewKnowledge(): string {
   return `# Product Ops Overview
 
@@ -3043,12 +3084,13 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         requestTypes: "screens, flows, UX, UI, onboarding or usability",
         purpose: "Own the MVP design foundation, accessibility baseline and user-flow clarity before implementation.",
         whenToUse: ["define design foundation", "map user flows", "define accessibility baseline", "design onboarding", "reason about usability"],
-        sourceOfTruth: ["knowledge/design-system.md", "knowledge/accessibility.md", "knowledge/user-flows.md"],
+        sourceOfTruth: ["knowledge/design-system.md", "knowledge/accessibility.md", "knowledge/user-flows.md", "knowledge/component-inventory.md"],
         files: [
-          { path: "knowledge/README.md", content: () => folderReadme("Design Knowledge", "Design context produced by the Design area.", "Use after Product and MVP context exist, before implementation or user-facing issue work.", "design-system.md", ["design-system.md", "accessibility.md", "user-flows.md"], ["../roles/", "../skills/", "../playbooks/", "../../../strategy/product/", "../../product-ops/mvp/"], "Keep this folder focused on reusable design foundation. Create screen specs, usability notes and UX decisions later when a concrete feature or screen requires them.") },
+          { path: "knowledge/README.md", content: () => folderReadme("Design Knowledge", "Design context produced by the Design area.", "Use after Product and MVP context exist, before implementation or user-facing issue work.", "design-system.md", ["design-system.md", "accessibility.md", "user-flows.md", "component-inventory.md"], ["../roles/", "../skills/", "../playbooks/", "../../../strategy/product/", "../../product-ops/mvp/"], "Keep this folder focused on reusable design foundation and component readiness. Create screen specs, usability notes and UX decisions later when a concrete feature or screen requires them.") },
           { path: "knowledge/design-system.md", content: designSystemKnowledge },
           { path: "knowledge/accessibility.md", content: accessibilityKnowledge },
-          { path: "knowledge/user-flows.md", content: userFlowsKnowledge }
+          { path: "knowledge/user-flows.md", content: userFlowsKnowledge },
+          { path: "knowledge/component-inventory.md", content: componentInventoryKnowledge }
         ],
         roles: [
           {
@@ -3065,9 +3107,9 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Product Designer",
             purpose: "Translate product, MVP and user context into coherent UI structure, flows and design system decisions.",
             useWhen: ["design foundation, UI, user flows, onboarding, layout, components or interaction design are involved"],
-            beforeActing: ["../../../strategy/product/knowledge/brief.md", "../../product-ops/mvp/scope.md", "../knowledge/design-system.md", "../knowledge/user-flows.md"],
-            skills: ["design-system", "user-flow-mapping", "screen-specification", "design-review"],
-            playbooks: ["design-foundation", "mvp-ux-flow"]
+            beforeActing: ["../../../strategy/product/knowledge/brief.md", "../../product-ops/mvp/scope.md", "../knowledge/design-system.md", "../knowledge/user-flows.md", "../knowledge/component-inventory.md"],
+            skills: ["design-system", "user-flow-mapping", "component-analysis", "screen-specification", "design-review"],
+            playbooks: ["design-foundation", "component-readiness", "mvp-ux-flow"]
           },
           {
             slug: "accessibility-specialist",
@@ -3127,6 +3169,19 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             outputs: ["Design-system baseline", "Token notes", "Typography notes", "Color intent", "Component expectations", "Do and don't guidance"],
             filesToUpdate: ["Update `../knowledge/design-system.md` only after explicit confirmation."],
             redLines: ["Do not over-polish before user flow clarity", "Do not invent brand constraints", "Do not create a full design system when an MVP baseline is enough."]
+          },
+          {
+            slug: "component-analysis",
+            title: "Component Analysis",
+            purpose: "Decide whether a Feature can reuse an existing component, adapt one or needs a new Design-owned component specification before Engineering starts.",
+            useWhen: ["a Feature affects UI, reusable components, tables, forms, cards, navigation, panels, modals or repeated interface patterns", "Engineering may need a component before implementing a screen or Feature"],
+            requiredContext: ["Feature or GitHub Feature issue", "Parent Epic when available", "Design system knowledge", "Accessibility knowledge", "User-flow knowledge", "Component inventory", "Component spec template"],
+            inputs: ["Feature goal", "Required UI behavior", "Known screens or flows", "Existing component inventory", "Design-system constraints", "Accessibility needs"],
+            process: ["Identify the UI surface involved in the Feature", "Check `../knowledge/component-inventory.md` for an approved or planned component", "Classify the decision as reuse, adapt, create-new, not-applicable or blocked", "If reuse is possible, name the component and any usage constraints", "If adaptation is needed, explain whether the change belongs in the reusable component or only in this Feature", "If a new component is needed, require a component spec before Engineering starts", "Use `../../../ai-standard/templates/design/component-spec-template.md` when drafting a new component contract"],
+            checks: ["Do not create a new component when an approved one satisfies the need", "Do not adapt a component in a way that breaks existing usage", "Do not send Engineering to code a new user-facing component without a Design component spec", "Design and accessibility requirements are explicit before implementation"],
+            outputs: ["Component decision: reuse, adapt, create-new, not-applicable or blocked", "Recommended component", "Required component spec", "Accessibility notes", "Engineering handoff notes", "Open questions"],
+            filesToUpdate: ["Update `../knowledge/component-inventory.md` only after explicit confirmation.", "Create or update a concrete component spec only when a real Feature requires it and the user confirms."],
+            redLines: ["Do not invent component availability", "Do not create component specs for hypothetical future UI", "Do not let Engineering implement a new user-facing component from vague design notes."]
           },
           {
             slug: "screen-specification",
@@ -3192,6 +3247,17 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             filesToUpdate: ["Update `../knowledge/design-system.md` only after explicit confirmation.", "Update `../knowledge/accessibility.md` only after explicit confirmation.", "Update `../knowledge/user-flows.md` only after explicit confirmation."]
           },
           {
+            slug: "component-readiness",
+            title: "Component Readiness",
+            purpose: "Prepare a Design component decision or component spec when a Feature needs UI/component clarity before Engineering.",
+            inputs: ["Feature or GitHub Feature issue", "Parent Epic when available", "Design system knowledge", "Accessibility knowledge", "User-flow knowledge", "Component inventory", "Template: ../../../ai-standard/templates/design/component-spec-template.md", "Skill: component-analysis"],
+            steps: ["Read the Feature goal, acceptance criteria and UI impact.", "Read `../knowledge/design-system.md`, `../knowledge/accessibility.md`, `../knowledge/user-flows.md` and `../knowledge/component-inventory.md`.", "Use `skills/component-analysis.skill.md` to classify reuse, adapt, create-new, not-applicable or blocked.", "If reuse is enough, document the chosen component and usage notes.", "If adaptation is needed, define what changes and who must approve them.", "If a new component is needed, use `../../../ai-standard/templates/design/component-spec-template.md` to draft the component contract.", "Update `../knowledge/component-inventory.md` after confirmation.", "Return the Design readiness result to Product Ops and Engineering."],
+            securityGate: ["Stop if accessibility, focus, keyboard behavior, contrast or error-state risk is unclear for a new user-facing component.", "Stop if the component would collect, display or modify sensitive user data and Security has not reviewed the relevant risk."],
+            outputs: ["Component readiness result", "Reuse/adapt/create-new decision", "Component spec draft when required", "Inventory update proposal", "Engineering handoff notes", "Blocking gaps"],
+            filesToUpdate: ["Update `../knowledge/component-inventory.md` only after explicit confirmation.", "Create or update `../knowledge/components/<component-name>.md` only for a real Feature after confirmation."],
+            stopConditions: ["Stop if the Feature is hypothetical or not tied to a real delivery need.", "Stop if a new component is needed but the component spec cannot be drafted from available Product, Design and accessibility context.", "Stop before Engineering if the component decision is blocked or missing founder confirmation."]
+          },
+          {
             slug: "user-research",
             title: "User Research",
             purpose: "Clarify design-relevant user evidence before making UX decisions.",
@@ -3230,6 +3296,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         ],
         commonPaths: [
           "Design foundation request: area lead `AGENT.md` -> role `roles/product-designer.role.md` -> skills `skills/design-system.skill.md`, `skills/accessibility.skill.md` and `skills/user-flow-mapping.skill.md` -> playbook `playbooks/design-foundation.playbook.md`.",
+          "Component readiness request: area lead `AGENT.md` -> role `roles/product-designer.role.md` -> skill `skills/component-analysis.skill.md` -> playbook `playbooks/component-readiness.playbook.md`.",
           "Research request: area lead `AGENT.md` -> role `roles/ux-researcher.role.md` -> skill `skills/user-research.skill.md` -> playbook `playbooks/user-research.playbook.md`.",
           "Accessibility request: area lead `AGENT.md` -> role `roles/accessibility-specialist.role.md` -> skills `skills/accessibility.skill.md` and `skills/design-review.skill.md` when general UX evaluation is needed -> playbook `playbooks/accessibility-review.playbook.md`.",
           "UX writing request: area lead `AGENT.md` -> role `roles/ux-writer.role.md` -> skill `skills/microcopy.skill.md` -> playbook `playbooks/ux-writing.playbook.md`.",

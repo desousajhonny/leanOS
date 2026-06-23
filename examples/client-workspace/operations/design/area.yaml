@@ -13,12 +13,14 @@ area:
     - user-research
     - user-flow-mapping
     - design-system
+    - component-analysis
     - screen-specification
     - microcopy
     - accessibility
     - design-review
   playbooks:
     - design-foundation
+    - component-readiness
     - user-research
     - mvp-ux-flow
     - accessibility-review
@@ -27,3 +29,4 @@ area:
     - knowledge/design-system.md
     - knowledge/accessibility.md
     - knowledge/user-flows.md
+    - knowledge/component-inventory.md

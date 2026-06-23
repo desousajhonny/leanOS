@@ -152,6 +152,9 @@ client-workspace/
 |   |   |-- commands/
 |   |   |   |-- command-template.md
 |   |   |   `-- README.md
+|   |   |-- design/
+|   |   |   |-- component-spec-template.md
+|   |   |   `-- README.md
 |   |   |-- execution/
 |   |   |   |-- playbook-template.md
 |   |   |   |-- playbook-template.yaml
@@ -260,11 +263,13 @@ client-workspace/
 |   |-- design/
 |   |   |-- knowledge/
 |   |   |   |-- accessibility.md
+|   |   |   |-- component-inventory.md
 |   |   |   |-- design-system.md
 |   |   |   |-- README.md
 |   |   |   `-- user-flows.md
 |   |   |-- playbooks/
 |   |   |   |-- accessibility-review.playbook.md
+|   |   |   |-- component-readiness.playbook.md
 |   |   |   |-- design-foundation.playbook.md
 |   |   |   |-- mvp-ux-flow.playbook.md
 |   |   |   |-- README.md
@@ -278,6 +283,7 @@ client-workspace/
 |   |   |   `-- ux-writer.role.md
 |   |   |-- skills/
 |   |   |   |-- accessibility.skill.md
+|   |   |   |-- component-analysis.skill.md
 |   |   |   |-- design-review.skill.md
 |   |   |   |-- design-system.skill.md
 |   |   |   |-- microcopy.skill.md

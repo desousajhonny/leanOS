@@ -26,6 +26,9 @@ playbooks:
   - key: design-foundation
     area: operations.design
     path: ../../operations/design/playbooks/design-foundation.playbook.md
+  - key: component-readiness
+    area: operations.design
+    path: ../../operations/design/playbooks/component-readiness.playbook.md
   - key: user-research
     area: operations.design
     path: ../../operations/design/playbooks/user-research.playbook.md

@@ -132,6 +132,8 @@ async function validateWorkspaceFiles() {
     "ai-standard/templates/product/README.md",
     "ai-standard/templates/product/epic-template.md",
     "ai-standard/templates/product/feature-template.md",
+    "ai-standard/templates/design/README.md",
+    "ai-standard/templates/design/component-spec-template.md",
     "ai-standard/templates/review/README.md",
     "ai-standard/templates/review/code-review-template.md",
     "ai-standard/checklists/agent-quality-checklist.md",
@@ -864,14 +866,18 @@ async function validateClientWorkspaceFixture() {
     "operations/product-ops/skills/define-delivery-boundaries.skill.md",
     "operations/product-ops/playbooks/epic-to-features.playbook.md",
     "operations/product-ops/playbooks/delivery-readiness.playbook.md",
+    "ai-standard/templates/design/component-spec-template.md",
     "operations/design/knowledge/README.md",
     "operations/design/knowledge/design-system.md",
     "operations/design/knowledge/accessibility.md",
     "operations/design/knowledge/user-flows.md",
+    "operations/design/knowledge/component-inventory.md",
     "operations/design/roles/README.md",
     "operations/design/skills/design-system.skill.md",
     "operations/design/skills/accessibility.skill.md",
+    "operations/design/skills/component-analysis.skill.md",
     "operations/design/playbooks/design-foundation.playbook.md",
+    "operations/design/playbooks/component-readiness.playbook.md",
     "operations/workflows/feature-to-delivery-cycle.workflow.md",
     "operations/workflows/post-merge-continuation.workflow.md",
     "operations/engineering/AGENT.md",
@@ -1715,14 +1721,17 @@ async function assertAiStandardTemplates(rootDir) {
   const executionReadme = await readFile(join(rootDir, "ai-standard", "templates", "execution", "README.md"), "utf8");
   const commandsReadme = await readFile(join(rootDir, "ai-standard", "templates", "commands", "README.md"), "utf8");
   const githubReadme = await readFile(join(rootDir, "ai-standard", "templates", "github", "README.md"), "utf8");
+  const designReadme = await readFile(join(rootDir, "ai-standard", "templates", "design", "README.md"), "utf8");
   const reviewReadme = await readFile(join(rootDir, "ai-standard", "templates", "review", "README.md"), "utf8");
   const playbookTemplate = await readFile(join(rootDir, "ai-standard", "templates", "execution", "playbook-template.md"), "utf8");
+  const componentSpecTemplate = await readFile(join(rootDir, "ai-standard", "templates", "design", "component-spec-template.md"), "utf8");
 
   assert(templatesReadme.includes("agents/"), "Templates README should route to agents");
   assert(templatesReadme.includes("structure/"), "Templates README should route to structure");
   assert(templatesReadme.includes("execution/"), "Templates README should route to execution");
   assert(templatesReadme.includes("commands/"), "Templates README should route to commands");
   assert(templatesReadme.includes("github/"), "Templates README should route to GitHub");
+  assert(templatesReadme.includes("design/"), "Templates README should route to Design templates");
   assert(templatesReadme.includes("review/"), "Templates README should route to review");
   assert(templatesReadme.includes("Do not load every template by default"), "Templates README should discourage loading every template");
   assert(agentsReadme.includes("root-agent-template.md"), "Agent templates README should list root agent template");
@@ -1736,6 +1745,10 @@ async function assertAiStandardTemplates(rootDir) {
   assert(githubReadme.includes("github-epic-template.md"), "GitHub templates README should list epic template");
   assert(githubReadme.includes("github-feature-template.md"), "GitHub templates README should list feature template");
   assert(githubReadme.includes("pull-request-template.md"), "GitHub templates README should list PR template");
+  assert(designReadme.includes("component-spec-template.md"), "Design templates README should list component spec template");
+  for (const heading of ["## When To Use", "## Anatomy", "## Variants", "## States", "## Accessibility", "## Composition Rules", "## Engineering Notes", "## Do Not Do"]) {
+    assert(componentSpecTemplate.includes(heading), `Component spec template should include ${heading}`);
+  }
   assert(reviewReadme.includes("code-review-template.md"), "Review templates README should list code review template");
 }
 
@@ -2179,19 +2192,23 @@ async function assertDesignFoundation(rootDir) {
   const designSystemKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "design-system.md"), "utf8");
   const accessibilityKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "accessibility.md"), "utf8");
   const userFlowsKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "user-flows.md"), "utf8");
+  const componentInventoryKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "component-inventory.md"), "utf8");
   const userResearchSkill = await readFile(join(rootDir, "operations", "design", "skills", "user-research.skill.md"), "utf8");
   const userFlowMappingSkill = await readFile(join(rootDir, "operations", "design", "skills", "user-flow-mapping.skill.md"), "utf8");
   const designSystemSkill = await readFile(join(rootDir, "operations", "design", "skills", "design-system.skill.md"), "utf8");
+  const componentAnalysisSkill = await readFile(join(rootDir, "operations", "design", "skills", "component-analysis.skill.md"), "utf8");
   const screenSpecificationSkill = await readFile(join(rootDir, "operations", "design", "skills", "screen-specification.skill.md"), "utf8");
   const microcopySkill = await readFile(join(rootDir, "operations", "design", "skills", "microcopy.skill.md"), "utf8");
   const accessibilitySkill = await readFile(join(rootDir, "operations", "design", "skills", "accessibility.skill.md"), "utf8");
   const designReviewSkill = await readFile(join(rootDir, "operations", "design", "skills", "design-review.skill.md"), "utf8");
+  const componentReadinessPlaybook = await readFile(join(rootDir, "operations", "design", "playbooks", "component-readiness.playbook.md"), "utf8");
 
   await assertExists(join(rootDir, "operations", "design", "AGENT.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "README.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "design-system.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "accessibility.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "user-flows.md"));
+  await assertExists(join(rootDir, "operations", "design", "knowledge", "component-inventory.md"));
   await assertExists(join(rootDir, "operations", "design", "roles", "ux-researcher.role.md"));
   await assertExists(join(rootDir, "operations", "design", "roles", "product-designer.role.md"));
   await assertExists(join(rootDir, "operations", "design", "roles", "accessibility-specialist.role.md"));
@@ -2200,10 +2217,12 @@ async function assertDesignFoundation(rootDir) {
   await assertExists(join(rootDir, "operations", "design", "skills", "accessibility.skill.md"));
   await assertExists(join(rootDir, "operations", "design", "skills", "user-research.skill.md"));
   await assertExists(join(rootDir, "operations", "design", "skills", "user-flow-mapping.skill.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "component-analysis.skill.md"));
   await assertExists(join(rootDir, "operations", "design", "skills", "screen-specification.skill.md"));
   await assertExists(join(rootDir, "operations", "design", "skills", "microcopy.skill.md"));
   await assertExists(join(rootDir, "operations", "design", "skills", "design-review.skill.md"));
   await assertExists(join(rootDir, "operations", "design", "playbooks", "user-research.playbook.md"));
+  await assertExists(join(rootDir, "operations", "design", "playbooks", "component-readiness.playbook.md"));
   await assertExists(join(rootDir, "operations", "design", "playbooks", "accessibility-review.playbook.md"));
   await assertExists(join(rootDir, "operations", "design", "playbooks", "ux-writing.playbook.md"));
   assert.equal(await exists(join(rootDir, "operations", "design", "design-principles.md")), false, "Design principles should move out of the Design area root");
@@ -2231,7 +2250,12 @@ async function assertDesignFoundation(rootDir) {
     assert(userFlowsKnowledge.includes(heading), `User flows knowledge should include ${heading}`);
   }
 
-  for (const skillContent of [userResearchSkill, userFlowMappingSkill, designSystemSkill, screenSpecificationSkill, microcopySkill, accessibilitySkill, designReviewSkill]) {
+  for (const heading of ["## Purpose", "## How To Use", "## Component List", "## Known Gaps", "## Reuse Rules", "## Open Questions"]) {
+    assert(componentInventoryKnowledge.includes(heading), `Component inventory knowledge should include ${heading}`);
+  }
+  assert(componentInventoryKnowledge.includes("approved, planned, needs-spec, deprecated or unknown"), "Component inventory should define practical component statuses");
+
+  for (const skillContent of [userResearchSkill, userFlowMappingSkill, designSystemSkill, componentAnalysisSkill, screenSpecificationSkill, microcopySkill, accessibilitySkill, designReviewSkill]) {
     for (const heading of ["## Purpose", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output", "## Files to Update", "## Red Lines"]) {
       assert(skillContent.includes(heading), `Design skill should include ${heading}`);
     }
@@ -2241,6 +2265,9 @@ async function assertDesignFoundation(rootDir) {
   assert(userResearchSkill.includes("Do not treat hypotheses as facts"), "User research skill should avoid treating hypotheses as facts");
   assert(userFlowMappingSkill.includes("Avoid flows larger than the MVP"), "User flow mapping should avoid oversized MVP flows");
   assert(designSystemSkill.includes("Prioritize flow clarity before visual polish"), "Design system skill should avoid polish before flow clarity");
+  assert(componentAnalysisSkill.includes("reuse, adapt, create-new, not-applicable or blocked"), "Component analysis should classify component readiness decisions");
+  assert(componentAnalysisSkill.includes("component-inventory.md"), "Component analysis should read component inventory");
+  assert(componentAnalysisSkill.includes("component-spec-template.md"), "Component analysis should use the component spec template");
   assert(screenSpecificationSkill.includes("default, loading, empty, error, success and edge-case states"), "Screen specification should include required UX states");
   assert(microcopySkill.includes("labels, helper text, empty states, errors, success messages and onboarding hints"), "Microcopy skill should cover key copy surfaces");
   assert(accessibilitySkill.includes("WCAG 2.2 AA"), "Accessibility skill should use WCAG 2.2 AA baseline");
@@ -2258,12 +2285,18 @@ async function assertDesignFoundation(rootDir) {
   assert(designAgent.includes("Keep reusable area knowledge in `knowledge/`"), "Design AGENT should keep knowledge modular");
   assert.equal(areaYaml.area.agent, "AGENT.md");
   assert(areaYaml.area.skills.includes("design-review"), "Design area YAML should list design-review skill");
+  assert(areaYaml.area.skills.includes("component-analysis"), "Design area YAML should list component-analysis skill");
+  assert(areaYaml.area.playbooks.includes("component-readiness"), "Design area YAML should list component-readiness playbook");
   assert.equal(areaYaml.area.skills.includes("ux-states"), false, "Design area YAML should not list ux-states skill");
   assert(skillsIndex.skills.some((skill) => skill.key === "design-review" && skill.path === "../../operations/design/skills/design-review.skill.md"), "Skills index should list design-review");
+  assert(skillsIndex.skills.some((skill) => skill.key === "component-analysis" && skill.path === "../../operations/design/skills/component-analysis.skill.md"), "Skills index should list component-analysis");
   assert.equal(skillsIndex.skills.some((skill) => skill.key === "ux-states"), false, "Skills index should not list ux-states");
-  assert.deepEqual(areaYaml.area.source_of_truth, ["knowledge/design-system.md", "knowledge/accessibility.md", "knowledge/user-flows.md"]);
+  assert.deepEqual(areaYaml.area.source_of_truth, ["knowledge/design-system.md", "knowledge/accessibility.md", "knowledge/user-flows.md", "knowledge/component-inventory.md"]);
   assert(productDesigner.includes("../knowledge/design-system.md"), "Product Designer should read design-system knowledge");
   assert(productDesigner.includes("../knowledge/user-flows.md"), "Product Designer should read user-flow knowledge");
+  assert(productDesigner.includes("../knowledge/component-inventory.md"), "Product Designer should read component inventory");
+  assert(productDesigner.includes("../skills/component-analysis.skill.md"), "Product Designer should point to component-analysis skill");
+  assert(productDesigner.includes("../playbooks/component-readiness.playbook.md"), "Product Designer should point to component-readiness playbook");
   assert(productDesigner.includes("../skills/design-review.skill.md"), "Product Designer should point to design-review skill");
   assert(uxResearcher.includes("../knowledge/user-flows.md"), "UX Researcher should read user-flow knowledge");
   assert(accessibilitySpecialist.includes("../knowledge/accessibility.md"), "Accessibility Specialist should read accessibility knowledge");
@@ -2291,6 +2324,9 @@ async function assertDesignFoundation(rootDir) {
   assert(defineDesignCommand.includes("Write only after explicit user confirmation"), "Define design should use propose-first writes");
   assert(designFoundationPlaybook.includes("Design system baseline"), "Design foundation playbook should output a design system baseline");
   assert(designFoundationPlaybook.includes("Accessibility baseline"), "Design foundation playbook should output an accessibility baseline");
+  assert(componentReadinessPlaybook.includes("Component readiness result"), "Component readiness playbook should output a readiness result");
+  assert(componentReadinessPlaybook.includes("component-spec-template.md"), "Component readiness playbook should use the component spec template");
+  assert(componentReadinessPlaybook.includes("Return the Design readiness result to Product Ops and Engineering"), "Component readiness should hand off to Product Ops and Engineering");
   assert(nextActions.includes("/define design"), "Full workspace should recommend /define design when Product, Product Ops and Design are active");
 }
 

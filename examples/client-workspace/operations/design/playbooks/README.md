@@ -15,6 +15,7 @@ Use when a selected role points to a playbook.
 ## Files
 
 - `design-foundation.playbook.md`
+- `component-readiness.playbook.md`
 - `user-research.playbook.md`
 - `mvp-ux-flow.playbook.md`
 - `accessibility-review.playbook.md`

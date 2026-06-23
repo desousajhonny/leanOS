@@ -273,18 +273,18 @@ Decisao proposta:
   - Design atualiza `operations/design/knowledge/component-inventory.md`;
   - workflow volta ao readiness check;
   - Engineering so entra depois de Design readiness, Security readiness e DevOps readiness estarem prontos ou explicitamente nao aplicaveis.
-- [ ] Criar `operations/design/knowledge/component-inventory.md`
+- [x] Criar `operations/design/knowledge/component-inventory.md`
   - lista simples de componentes aprovados, planejados e gaps;
   - nao contem codigo fonte;
   - deve informar nome, proposito, status, onde e usado, notas e proximo passo.
-- [ ] Criar `ai-standard/templates/design/component-spec-template.md`
+- [x] Criar `ai-standard/templates/design/component-spec-template.md`
   - template base do framework para documentar componentes;
   - deve cobrir Purpose, When To Use, When Not To Use, Anatomy, Variants, States, Behavior, Accessibility, Content Rules, Design Tokens, Composition Rules, Engineering Notes, Do Not Do e Open Questions.
-- [ ] Criar `operations/design/skills/component-analysis.skill.md`
+- [x] Criar `operations/design/skills/component-analysis.skill.md`
   - analisa se uma Feature com UI usa componente existente, adapta componente existente ou precisa de componente novo;
   - consulta `design-system.md`, `accessibility.md`, `user-flows.md` e `component-inventory.md`;
   - produz recomendacao de reuso/criacao e gaps para Engineering.
-- [ ] Criar `operations/design/playbooks/component-readiness.playbook.md`
+- [x] Criar `operations/design/playbooks/component-readiness.playbook.md`
   - executa a especificacao de componente quando a Feature precisa de componente novo;
   - usa o template `ai-standard/templates/design/component-spec-template.md`;
   - atualiza `component-inventory.md`;
@@ -645,11 +645,23 @@ Objetivo: publicar uma versao confiavel para usuarios reais.
 
 ## Pendencias Futuras Nao Bloqueantes
 
-### `/bootstrap product`
+### `/bootstrap product` / `/bootstrap-app`
 
 - [ ] Definir quando o workspace esta pronto para criar app code.
 - [ ] Definir perguntas de stack: Next.js, Vite, API, dashboard ou outro.
 - [ ] Definir defaults para founder iniciante.
+- [ ] Definir se o comando canonico sera `/bootstrap product`, `/bootstrap-app` ou um alias entre os dois.
+- [ ] Criar futura skill de Engineering para planejar estrutura inicial do app, como `plan-app-structure.skill.md` ou `bootstrap-app-structure.skill.md`.
+- [ ] Criar futuro playbook de Engineering para criar a fundacao do produto digital, como `app-foundation.playbook.md` ou `bootstrap-product-app.playbook.md`.
+- [ ] Definir templates por tipo de produto digital em `ai-standard/templates/engineering/`, por exemplo:
+  - webapp;
+  - mobile/native app;
+  - desktop app;
+  - API/service;
+  - dashboard/admin app;
+  - agent app.
+- [ ] Definir uma tree padrao por tipo de app para orientar onde ficam componentes, modules/features, design system/UI, lib, API/server, styles, tests e assets.
+- [ ] Garantir que Engineering nao cria `src/`, `app/`, `pages/`, componentes ou stack inicial sem passar por esse fluxo.
 - [ ] Definir como preparar Vercel sem criar `.vercel/` ou deploy automatico.
 - [ ] Definir como preservar repositorios existentes.
 - [ ] Garantir que o setup inicial nao cria `src/`, `app/`, `pages/`, `package.json` ou `vercel.json`.

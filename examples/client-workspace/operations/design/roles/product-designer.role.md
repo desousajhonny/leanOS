@@ -16,17 +16,20 @@ Read:
 - `../../product-ops/mvp/scope.md`
 - `../knowledge/design-system.md`
 - `../knowledge/user-flows.md`
+- `../knowledge/component-inventory.md`
 
 ## Skills
 
 - `../skills/design-system.skill.md`
 - `../skills/user-flow-mapping.skill.md`
+- `../skills/component-analysis.skill.md`
 - `../skills/screen-specification.skill.md`
 - `../skills/design-review.skill.md`
 
 ## Playbooks
 
 - `../playbooks/design-foundation.playbook.md`
+- `../playbooks/component-readiness.playbook.md`
 - `../playbooks/mvp-ux-flow.playbook.md`
 
 ## Output Style

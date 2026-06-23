@@ -87,6 +87,15 @@ Files:
 - `product/epic-template.md`
 - `product/feature-template.md`
 
+### `design/`
+
+Templates for Design-owned specifications that hand off user-facing structure to Engineering.
+
+Use when: Use when Design needs to document a component contract before implementation.
+
+Files:
+- `design/component-spec-template.md`
+
 ### `review/`
 
 Templates for reviewing code, implementation and delivery quality.

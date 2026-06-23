@@ -17,6 +17,7 @@ Own the MVP design foundation, accessibility baseline and user-flow clarity befo
 - `knowledge/design-system.md`
 - `knowledge/accessibility.md`
 - `knowledge/user-flows.md`
+- `knowledge/component-inventory.md`
 
 
 
@@ -40,6 +41,7 @@ Own the MVP design foundation, accessibility baseline and user-flow clarity befo
 ## Common Paths
 
 - Design foundation request: area lead `AGENT.md` -> role `roles/product-designer.role.md` -> skills `skills/design-system.skill.md`, `skills/accessibility.skill.md` and `skills/user-flow-mapping.skill.md` -> playbook `playbooks/design-foundation.playbook.md`.
+- Component readiness request: area lead `AGENT.md` -> role `roles/product-designer.role.md` -> skill `skills/component-analysis.skill.md` -> playbook `playbooks/component-readiness.playbook.md`.
 - Research request: area lead `AGENT.md` -> role `roles/ux-researcher.role.md` -> skill `skills/user-research.skill.md` -> playbook `playbooks/user-research.playbook.md`.
 - Accessibility request: area lead `AGENT.md` -> role `roles/accessibility-specialist.role.md` -> skills `skills/accessibility.skill.md` and `skills/design-review.skill.md` when general UX evaluation is needed -> playbook `playbooks/accessibility-review.playbook.md`.
 - UX writing request: area lead `AGENT.md` -> role `roles/ux-writer.role.md` -> skill `skills/microcopy.skill.md` -> playbook `playbooks/ux-writing.playbook.md`.

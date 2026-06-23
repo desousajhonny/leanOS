@@ -62,6 +62,9 @@ skills:
   - key: design-system
     area: operations.design
     path: ../../operations/design/skills/design-system.skill.md
+  - key: component-analysis
+    area: operations.design
+    path: ../../operations/design/skills/component-analysis.skill.md
   - key: screen-specification
     area: operations.design
     path: ../../operations/design/skills/screen-specification.skill.md

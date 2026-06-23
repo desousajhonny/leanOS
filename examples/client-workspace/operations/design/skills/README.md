@@ -17,6 +17,7 @@ Use when a selected role points to a skill.
 - `user-research.skill.md`
 - `user-flow-mapping.skill.md`
 - `design-system.skill.md`
+- `component-analysis.skill.md`
 - `screen-specification.skill.md`
 - `microcopy.skill.md`
 - `accessibility.skill.md`
