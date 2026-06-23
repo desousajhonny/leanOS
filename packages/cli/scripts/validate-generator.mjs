@@ -268,6 +268,7 @@ async function validateWorkspaceFiles() {
     "operations/engineering/knowledge/pr-log.md",
     "operations/engineering/roles/test-engineer.role.md",
     "operations/engineering/skills/follow-code-standards.skill.md",
+    "operations/engineering/skills/implement-component.skill.md",
     "operations/engineering/skills/review-data-change.skill.md",
     "operations/engineering/playbooks/issue-to-pr.playbook.md",
     "operations/engineering/playbooks/branch-from-issue.playbook.md",
@@ -889,6 +890,7 @@ async function validateClientWorkspaceFixture() {
     "operations/engineering/knowledge/review-criteria.md",
     "operations/engineering/roles/test-engineer.role.md",
     "operations/engineering/skills/follow-code-standards.skill.md",
+    "operations/engineering/skills/implement-component.skill.md",
     "operations/engineering/skills/review-data-change.skill.md",
     "operations/engineering/skills/create-branch.skill.md",
     "operations/engineering/playbooks/branch-from-issue.playbook.md",
@@ -2334,6 +2336,7 @@ async function assertEngineeringAreaPattern(rootDir) {
   const engineeringReadme = await readFile(join(rootDir, "operations", "engineering", "README.md"), "utf8");
   const engineeringAgent = await readFile(join(rootDir, "operations", "engineering", "AGENT.md"), "utf8");
   const areaYaml = parse(await readFile(join(rootDir, "operations", "engineering", "area.yaml"), "utf8"));
+  const skillsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "skills.yaml"), "utf8"));
   const codeStandards = await readFile(join(rootDir, "operations", "engineering", "knowledge", "code-standards.md"), "utf8");
   const implementationRules = await readFile(join(rootDir, "operations", "engineering", "knowledge", "implementation-rules.md"), "utf8");
   const componentGuidelines = await readFile(join(rootDir, "operations", "engineering", "knowledge", "component-guidelines.md"), "utf8");
@@ -2345,6 +2348,7 @@ async function assertEngineeringAreaPattern(rootDir) {
   const prReviewer = await readFile(join(rootDir, "operations", "engineering", "roles", "pr-reviewer.role.md"), "utf8");
   const planImplementation = await readFile(join(rootDir, "operations", "engineering", "skills", "plan-implementation.skill.md"), "utf8");
   const followCodeStandards = await readFile(join(rootDir, "operations", "engineering", "skills", "follow-code-standards.skill.md"), "utf8");
+  const implementComponent = await readFile(join(rootDir, "operations", "engineering", "skills", "implement-component.skill.md"), "utf8");
   const reviewDataChange = await readFile(join(rootDir, "operations", "engineering", "skills", "review-data-change.skill.md"), "utf8");
   const issueToPr = await readFile(join(rootDir, "operations", "engineering", "playbooks", "issue-to-pr.playbook.md"), "utf8");
   const prValidation = await readFile(join(rootDir, "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
@@ -2368,7 +2372,9 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(areaYaml.area.source_of_truth.includes("knowledge/code-standards.md"), "Engineering area.yaml should list code standards");
   assert(areaYaml.area.roles.includes("test-engineer"), "Engineering area.yaml should list test-engineer");
   assert(areaYaml.area.skills.includes("follow-code-standards"), "Engineering area.yaml should list follow-code-standards");
+  assert(areaYaml.area.skills.includes("implement-component"), "Engineering area.yaml should list implement-component");
   assert(areaYaml.area.skills.includes("review-data-change"), "Engineering area.yaml should list review-data-change");
+  assert(skillsIndex.skills.some((skill) => skill.key === "implement-component" && skill.path === "../../operations/engineering/skills/implement-component.skill.md"), "Skills index should list implement-component");
 
   for (const content of [codeStandards, implementationRules, componentGuidelines, dataGuidelines, testingStrategy, reviewCriteria]) {
     for (const section of ["## Purpose", "## Current State", "## Decisions", "## Open Questions", "## Next Update"]) {
@@ -2384,10 +2390,11 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(reviewCriteria.includes("## Merge Recommendation"), "Review criteria should include merge recommendation");
   assert(seniorDeveloper.includes("../knowledge/code-standards.md"), "Senior Developer should read code standards");
   assert(seniorDeveloper.includes("../knowledge/component-guidelines.md"), "Senior Developer should read component guidelines");
+  assert(seniorDeveloper.includes("../skills/implement-component.skill.md"), "Senior Developer should use implement-component skill");
   assert(testEngineer.includes("../knowledge/testing-strategy.md"), "Test Engineer should read testing strategy");
   assert(prReviewer.includes("../knowledge/review-criteria.md"), "PR Reviewer should read review criteria");
 
-  for (const skillContent of [planImplementation, followCodeStandards, reviewDataChange]) {
+  for (const skillContent of [planImplementation, followCodeStandards, implementComponent, reviewDataChange]) {
     for (const heading of ["## Purpose", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output"]) {
       assert(skillContent.includes(heading), `Engineering skill should include ${heading}`);
     }
@@ -2395,8 +2402,13 @@ async function assertEngineeringAreaPattern(rootDir) {
 
   assert(planImplementation.includes("Do not begin code changes without branch context"), "Plan implementation should block code without branch context");
   assert(followCodeStandards.includes("No large unstructured component or file"), "Code standards skill should enforce modularity");
+  assert(implementComponent.includes("Design component spec"), "Implement component skill should require Design component spec");
+  assert(implementComponent.includes("../../design/knowledge/component-inventory.md"), "Implement component skill should read Design component inventory");
+  assert(implementComponent.includes("../knowledge/component-guidelines.md"), "Implement component skill should read Engineering component guidelines");
+  assert(implementComponent.includes("Do not implement a new user-facing component without a Design spec"), "Implement component skill should block component work without Design spec");
   assert(reviewDataChange.includes("No destructive change without confirmation"), "Data review skill should block destructive changes");
   assert(issueToPr.includes("skills/follow-code-standards.skill.md"), "Issue-to-PR playbook should use code standards skill");
+  assert(issueToPr.includes("skills/implement-component.skill.md"), "Issue-to-PR playbook should use implement-component when needed");
   assert(issueToPr.includes("skills/review-data-change.skill.md"), "Issue-to-PR playbook should use data review when applicable");
   assert(prValidation.includes("knowledge/review-criteria.md"), "PR validation should load review criteria");
   assert(prValidation.includes("Security/Data review result or not applicable"), "PR validation should classify Security/Data result");

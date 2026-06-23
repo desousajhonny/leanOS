@@ -289,7 +289,7 @@ Decisao proposta:
   - usa o template `ai-standard/templates/design/component-spec-template.md`;
   - atualiza `component-inventory.md`;
   - cria ou recomenda criar uma spec concreta somente quando houver Feature real.
-- [ ] Criar `operations/engineering/skills/implement-component.skill.md`
+- [x] Criar `operations/engineering/skills/implement-component.skill.md`
   - implementa componente seguindo component spec, design system, acessibilidade e padroes do repositorio;
   - impede cores, copy, regra de negocio ou estado hardcoded quando deveriam vir do contrato de Design ou do sistema.
 - [ ] Criar `operations/engineering/playbooks/component-implementation.playbook.md`

@@ -33,6 +33,7 @@ Read:
 
 - `../skills/plan-implementation.skill.md`
 - `../skills/follow-code-standards.skill.md`
+- `../skills/implement-component.skill.md`
 - `../skills/create-branch.skill.md`
 - `../skills/write-tests.skill.md`
 - `../skills/review-data-change.skill.md`

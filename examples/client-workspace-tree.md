@@ -354,6 +354,7 @@ client-workspace/
 |   |   |   |-- create-branch.skill.md
 |   |   |   |-- create-pr.skill.md
 |   |   |   |-- follow-code-standards.skill.md
+|   |   |   |-- implement-component.skill.md
 |   |   |   |-- plan-implementation.skill.md
 |   |   |   |-- README.md
 |   |   |   |-- review-data-change.skill.md

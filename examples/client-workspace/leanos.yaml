@@ -176,6 +176,7 @@ skills:
     operations.engineering:
       - plan-implementation
       - follow-code-standards
+      - implement-component
       - create-branch
       - write-tests
       - review-data-change

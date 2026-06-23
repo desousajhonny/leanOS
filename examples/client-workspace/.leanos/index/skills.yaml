@@ -83,6 +83,9 @@ skills:
   - key: follow-code-standards
     area: operations.engineering
     path: ../../operations/engineering/skills/follow-code-standards.skill.md
+  - key: implement-component
+    area: operations.engineering
+    path: ../../operations/engineering/skills/implement-component.skill.md
   - key: create-branch
     area: operations.engineering
     path: ../../operations/engineering/skills/create-branch.skill.md

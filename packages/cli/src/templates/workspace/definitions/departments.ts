@@ -3353,7 +3353,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             purpose: "Implement roadmap issues with maintainable code, tests and MVP alignment.",
             useWhen: ["implement an issue", "fix a bug", "modify code", "write tests", "prepare implementation for a PR"],
             beforeActing: ["../../../.leanos/context/current-focus.md", "../../product-ops/mvp/scope.md", "../../product-ops/mvp/prd.md", "../../product-ops/mvp/acceptance-criteria.md", "../../product-ops/knowledge/issue-readiness.md", "../knowledge/implementation-rules.md", "../knowledge/code-standards.md", "../knowledge/component-guidelines.md", "../knowledge/data-guidelines.md", "../knowledge/testing-strategy.md", "../../../.github/leanos/branch-rules.md", "../knowledge/implementation-notes.md"],
-            skills: ["plan-implementation", "follow-code-standards", "create-branch", "write-tests", "review-data-change", "create-pr"],
+            skills: ["plan-implementation", "follow-code-standards", "implement-component", "create-branch", "write-tests", "review-data-change", "create-pr"],
             playbooks: ["branch-from-issue", "issue-to-pr", "test-planning", "pr-validation"]
           },
           {
@@ -3401,6 +3401,19 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             outputs: ["Pattern decision", "Modularity notes", "Hardcoding risks", "Refactor or no-refactor recommendation"],
             filesToUpdate: ["Update `../knowledge/code-standards.md` only when the user confirms a durable standard change."],
             redLines: ["Do not invent architecture that the repo does not need", "Do not hardcode values that belong in config, data, design tokens or copy sources."]
+          },
+          {
+            slug: "implement-component",
+            title: "Implement Component",
+            purpose: "Implement reusable UI components from a Design component spec before dependent screen or Feature work.",
+            useWhen: ["a Feature requires a new user-facing component", "Design has produced or confirmed a component spec", "a screen depends on a reusable component that does not exist yet", "component behavior, states or accessibility must be implemented before feature delivery"],
+            requiredContext: ["Feature or GitHub Feature issue", "Design component spec", "Design component inventory", "Design system", "Accessibility baseline", "Engineering component guidelines", "Code standards", "Testing strategy"],
+            inputs: ["Approved component spec", "Parent Feature acceptance criteria", "Existing component patterns", "Design tokens", "Accessibility requirements", "Expected states", "Repository UI conventions"],
+            process: ["Read the Feature and confirm why the component is needed", "Read the component spec from Design before changing code", "Check `../../design/knowledge/component-inventory.md` and nearby code for an existing reusable component", "Load `../../design/knowledge/design-system.md`, `../../design/knowledge/accessibility.md` and `../knowledge/component-guidelines.md`", "Implement the reusable component before the screen or Feature that consumes it", "Keep styling, copy, variants, states and accessibility aligned with the Design contract", "Separate reusable component behavior from one-off screen logic", "Add tests, examples, stories or manual validation notes when the repository supports them"],
+            checks: ["Component follows the Design spec", "Design tokens and accessibility requirements are respected", "No duplicate component already exists", "Component is reusable and composable", "Required states are handled", "Feature-specific workflow logic is kept outside the reusable component", "Tests or validation gaps are explicit"],
+            outputs: ["Component implementation plan", "Files changed", "States covered", "Accessibility notes", "Tests or manual validation", "Known gaps", "Next screen or Feature implementation step"],
+            filesToUpdate: ["Update `../knowledge/implementation-notes.md` when component implementation decisions should persist.", "Do not update Design component specs unless routed back to Design and confirmed by the user."],
+            redLines: ["Do not implement a new user-facing component without a Design spec or explicit Design confirmation", "Do not hardcode colors, spacing, copy, business rules or states that belong in Design, data or configuration", "Do not mix reusable component code with one-off screen behavior when separation is practical", "Do not bypass accessibility states, keyboard behavior or focus requirements."]
           },
           {
             slug: "create-branch",
@@ -3478,7 +3491,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Issue to PR",
             purpose: "Move from a scoped issue to a reviewable pull request.",
             inputs: ["GitHub issue body", "Parent epic when available", "MVP scope", "PRD", "Acceptance criteria", "Product, Design, Engineering and Security criteria", "Branch name", "Engineering knowledge"],
-            steps: ["Read Engineering AGENT and choose the Senior Developer role", "Read issue, PRD, MVP scope and acceptance criteria", "Confirm issue readiness with Product and Engineering criteria", "Check whether Design criteria are required for user-facing UX", "Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance", "Create or confirm an issue-linked branch before code changes", "Use `skills/plan-implementation.skill.md` to plan implementation", "Use `skills/follow-code-standards.skill.md` while changing code", "Use `skills/review-data-change.skill.md` when data/API/persistence is involved", "Use `skills/write-tests.skill.md` to update tests or explain gaps", "Use `skills/create-pr.skill.md` to prepare PR using the PR template"],
+            steps: ["Read Engineering AGENT and choose the Senior Developer role", "Read issue, PRD, MVP scope and acceptance criteria", "Confirm issue readiness with Product and Engineering criteria", "Check whether Design criteria are required for user-facing UX", "Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance", "Create or confirm an issue-linked branch before code changes", "Use `skills/plan-implementation.skill.md` to plan implementation", "Use `skills/implement-component.skill.md` before screen or Feature work when a new reusable component is required", "Use `skills/follow-code-standards.skill.md` while changing code", "Use `skills/review-data-change.skill.md` when data/API/persistence is involved", "Use `skills/write-tests.skill.md` to update tests or explain gaps", "Use `skills/create-pr.skill.md` to prepare PR using the PR template"],
             outputs: ["Implementation summary", "Branch used", "Files changed", "Tests run or proposed", "PR draft", "Known risks"],
             filesToUpdate: ["Update `../knowledge/implementation-notes.md` when implementation decisions should persist.", "Update `../knowledge/pr-log.md` after PR creation or when the user asks for a persistent PR record."]
           },
@@ -3503,7 +3516,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         ],
         commonPaths: [
           "Branch request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/create-branch.skill.md` -> playbook `playbooks/branch-from-issue.playbook.md`.",
-          "Implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skills `skills/plan-implementation.skill.md`, `skills/follow-code-standards.skill.md` and `skills/write-tests.skill.md` -> playbook `playbooks/issue-to-pr.playbook.md`.",
+          "Implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skills `skills/plan-implementation.skill.md`, conditional `skills/implement-component.skill.md`, `skills/follow-code-standards.skill.md` and `skills/write-tests.skill.md` -> playbook `playbooks/issue-to-pr.playbook.md`.",
           "Data change request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` or `roles/pr-reviewer.role.md` -> skill `skills/review-data-change.skill.md` -> route Security when sensitive risk exists.",
           "Test request: area lead `AGENT.md` -> role `roles/test-engineer.role.md` -> skill `skills/write-tests.skill.md` -> playbook `playbooks/test-planning.playbook.md`.",
           "PR review request: area lead `AGENT.md` -> role `roles/pr-reviewer.role.md` -> skills `skills/review-pr.skill.md`, `skills/follow-code-standards.skill.md` and conditional `skills/review-data-change.skill.md` -> playbook `playbooks/pr-validation.playbook.md`."

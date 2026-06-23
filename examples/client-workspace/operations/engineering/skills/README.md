@@ -16,6 +16,7 @@ Use when a selected role points to a skill.
 
 - `plan-implementation.skill.md`
 - `follow-code-standards.skill.md`
+- `implement-component.skill.md`
 - `create-branch.skill.md`
 - `write-tests.skill.md`
 - `review-data-change.skill.md`
