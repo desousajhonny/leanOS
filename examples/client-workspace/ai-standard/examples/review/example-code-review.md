@@ -5,7 +5,7 @@
 - PR: #812
 - Linked issue: #554
 - Parent epic: #123
-- MVP scope: guided intake flow
+- Delivery scope: guided intake flow
 - Acceptance criteria: patient can complete and review required fields
 
 ## Findings

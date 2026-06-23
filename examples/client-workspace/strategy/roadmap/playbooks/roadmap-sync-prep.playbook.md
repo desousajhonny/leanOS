@@ -17,7 +17,7 @@ Prepare roadmap items for GitHub Project sync without calling the API directly.
 
 1. Read roadmap and milestones
 2. Identify candidate epics
-3. Check MVP and validation linkage
+3. Check delivery scope, MVP when applicable and validation linkage
 4. Ask DevOps to confirm GitHub project settings when needed
 5. Prepare sync payload
 6. Ask for confirmation before any remote write

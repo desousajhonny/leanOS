@@ -68,7 +68,7 @@ function defineDesignCommand(command: CommandDefinition, activeSubareas: Subarea
         "- `../../operations/product-ops/mvp/user-stories.md`",
         "- `../../operations/product-ops/mvp/acceptance-criteria.md`"
       ].join("\n")
-    : "- `operations.product-ops` is not active. Ask for MVP scope and acceptance criteria before finalizing Design.";
+    : "- `operations.product-ops` is not active. Ask for delivery scope and acceptance criteria before finalizing Design.";
   const allowedUpdates = designActive
     ? [
         "- `../../operations/design/knowledge/design-system.md`",
@@ -118,7 +118,7 @@ ${mvpLoad}
 
 ## Process
 
-1. Confirm the target user, problem, value proposition and MVP scope.
+1. Confirm the target user, problem, value proposition and delivery scope.
 2. If Product or MVP context is missing, ask focused questions before writing Design knowledge.
 3. Define the design system baseline: tokens, color intent, typography, spacing, component principles and interaction principles.
 4. Define accessibility expectations for the MVP audience and core flows.
@@ -379,7 +379,7 @@ function createIssuesCommand(command: CommandDefinition, activeSubareas: Subarea
   const active = new Set(activeSubareas);
   const productOpsNote = active.has("operations.product-ops")
     ? "Load `../../operations/product-ops/AGENT.md`, `../../operations/product-ops/README.md` and MVP knowledge files before drafting issues."
-    : "`operations.product-ops` is not active. Do not draft implementation-ready issues until MVP scope and acceptance criteria are available or the user explicitly activates the area.";
+    : "`operations.product-ops` is not active. Do not draft implementation-ready issues until delivery scope and acceptance criteria are available or the user explicitly activates the area.";
   const productNote = active.has("strategy.product")
     ? "Load `../../strategy/product/README.md` for product value, ICP, problem and acceptance quality."
     : "`strategy.product` is not active. Ask for product context before creating product-ready issues.";
@@ -402,7 +402,7 @@ function createIssuesCommand(command: CommandDefinition, activeSubareas: Subarea
 
 ${command.purpose}
 
-Draft GitHub-ready epics and sub-issues from roadmap, MVP scope and issue readiness criteria.
+Draft GitHub-ready epics and sub-issues from roadmap, delivery scope and issue readiness criteria.
 
 ## Load First
 
@@ -428,7 +428,7 @@ Read:
 
 ## Process
 
-1. Identify the roadmap item, MVP scope, milestone and parent epic context.
+1. Identify the roadmap item, delivery scope, milestone and parent epic context.
 2. Route through Product Ops and load \`../../operations/product-ops/playbooks/epic-to-subissues.playbook.md\`.
 3. Apply the Delivery Readiness Matrix (DRM) before drafting work.
 4. Use Product Ops criteria for every epic and sub-issue.

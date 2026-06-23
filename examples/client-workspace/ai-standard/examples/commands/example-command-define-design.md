@@ -19,7 +19,7 @@ Prepare the MVP Design foundation before implementation.
 
 ## Process
 
-1. Confirm product, ICP, problem, value proposition and MVP scope.
+1. Confirm product, ICP, problem, value proposition and delivery scope.
 2. Define the design system baseline.
 3. Define accessibility baseline.
 4. Map primary user flows.

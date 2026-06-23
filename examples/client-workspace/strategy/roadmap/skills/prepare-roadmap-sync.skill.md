@@ -23,7 +23,7 @@ Prepare roadmap epics, milestones and sync payload before GitHub Project updates
 - Roadmap
 - Milestones
 - Current cycle
-- MVP scope
+- Delivery scope
 - GitHub project settings
 
 ## Process

@@ -22,6 +22,8 @@ All required areas are active in this department.
 4. Review Finance AGENT when pricing, budget or unit economics are involved
 5. Recommend next learning loop
 
+
+
 ## Navigation
 
 Use Growth area READMEs for each step to preserve area-first ownership.

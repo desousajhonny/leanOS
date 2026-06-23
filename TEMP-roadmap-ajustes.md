@@ -241,6 +241,18 @@ Cada workflow deve responder:
 - [ ] Quando uma capability/script externo pode ser chamado?
 - [ ] Qual output final esperado?
 
+#### Readiness Criteria / Gates
+
+Objetivo: manter apenas gates fixos que realmente ajudam o modelo a decidir se pode avancar para desenvolvimento ou lancamento. O diagnostico do momento do produto continua no protocolo `where-we-are.md`; os gates abaixo sao reguas de decisao, nao status logs do produto.
+
+- [x] Criar `operations/product-ops/knowledge/ready-to-develop.md`
+  - define quando um roadmap item, delivery scope, epic ou issue pode entrar em desenvolvimento;
+  - exige Product, Delivery Scope, Issue, Design, Security, Engineering e DevOps readiness como satisfeitos ou explicitamente nao aplicaveis;
+  - e usado pelo protocolo `.leanos/agent/protocols/where-we-are.md`.
+- [ ] Criar `ready-for-launch`
+  - deve cobrir negocio, usabilidade, acessibilidade, seguranca, privacidade, DevOps, observabilidade, rollback, suporte, marketing/go-to-market e aprendizado pos-lancamento;
+  - deve responder se o produto/release esta pronto para ir para usuarios reais, nao apenas se o codigo esta pronto.
+
 #### Workflow Map - Founder Journey Completa
 
 Jornadas internas devem ser criadas em `docs/framework/founder-journeys/` usando `journey-template.md`.
@@ -250,9 +262,9 @@ Jornadas internas devem ser criadas em `docs/framework/founder-journeys/` usando
 | 0 | [ ] | [ ] `docs/framework/founder-journeys/start-leanos.md` | Setup inicial | `.leanos/commands/start-leanos.md` + Strategy Baseline | "vamos comecar", "configurar o LeanOS", "iniciar o projeto" | LeanOS Chief + Strategy | Business Strategist, Product Strategist | `business-foundation`, `product-strategy` | Existe, garantir Strategy Baseline minima |
 | 1 | [ ] | [ ] `docs/framework/founder-journeys/define-mvp.md` | Primeira definicao do produto | `operations/workflows/define-mvp.workflow.md` ou `operations/product-ops/playbooks/mvp-delivery.playbook.md` | "Defina o MVP", "qual a primeira versao?", "o que entra no MVP?" | Product Ops | Product Owner, Delivery Architect, Product Designer quando aplicavel, Security Reviewer quando aplicavel | `mvp-delivery`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Playbook existe, decidir se vira workflow |
 | 2 | [x] | [x] `docs/framework/founder-journeys/new-idea-intake.md` | Novas ideias e features | `strategy/workflows/new-idea-intake.workflow.md` | "Tenho uma ideia", "quero avaliar uma feature nova", "isso faz sentido para o produto?" | Strategy | Product Strategist, Product Manager, Business Strategist, Roadmap Planner | `product-strategy`, `business-foundation`, `roadmap-cycle-planning`, `mvp-delivery` | Jornada criada e scaffold ajustado para separar intake de roadmap |
-| 3 | [ ] | [ ] `docs/framework/founder-journeys/idea-to-roadmap.md` | Decisao de roadmap | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" | Strategy / Roadmap | Product Strategist, Product Manager, Roadmap Planner | `roadmap-cycle-planning`, `product-strategy` | Deve transformar ideia validada em item de roadmap, sem assumir MVP ou GitHub |
-| 4 | [ ] | [ ] `docs/framework/founder-journeys/roadmap-item-to-mvp-scope.md` | Decisao de MVP | `operations/workflows/roadmap-item-to-mvp-scope.workflow.md` ou `operations/product-ops/playbooks/mvp-delivery.playbook.md` | "Isso entra no MVP?", "esse item precisa ir para a primeira versao?" | Product Ops + Strategy | Product Owner, Product Strategist, Delivery Architect, Product Designer/Security quando aplicavel | `mvp-delivery`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Decide se um item de roadmap vira escopo de MVP |
-| 5 | [ ] | [ ] `docs/framework/founder-journeys/mvp-to-epic.md` | Planning de execucao | `operations/workflows/mvp-to-epic.workflow.md` ou `strategy/workflows/roadmap-to-github-project.workflow.md` | "Deseja quebrar o MVP em epics?", "crie os epics no GitHub" | Product Ops + DevOps | Product Owner, Roadmap Planner, GitHub DevOps, Senior Developer quando aplicavel | `roadmap-sync-prep`, `configure-github-project`, `delivery-readiness` | MVP scope deve virar trabalho rastreavel antes de implementacao |
+| 3 | [x] | [x] `docs/framework/founder-journeys/idea-to-roadmap.md` | Decisao de roadmap | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" | Strategy / Roadmap | Product Strategist, Product Manager, Roadmap Planner | `roadmap-cycle-planning`, `product-strategy` | Jornada criada; scaffold existente validado; gap futuro: delivery scope deve ser contexto opcional no Roadmap Planner |
+| 4 | [x] | [x] `docs/framework/founder-journeys/roadmap-item-to-delivery-scope.md` | Decisao de delivery scope | `operations/workflows/roadmap-item-to-delivery-scope.workflow.md` | "Isso entra na proxima entrega?", "isso entra no MVP?", "qual milestone recebe esse item?" | Product Ops + Strategy | Product Owner, Product Strategist, Delivery Architect, Product Designer/Security quando aplicavel | `delivery-scope-planning`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada e scaffold atualizado; MVP e apenas um tipo de delivery scope |
+| 5 | [ ] | [ ] `docs/framework/founder-journeys/delivery-scope-to-epic.md` | Planning de execucao | `operations/workflows/delivery-scope-to-epic.workflow.md` ou `strategy/workflows/roadmap-to-github-project.workflow.md` | "Deseja quebrar esse escopo em epics?", "crie os epics no GitHub" | Product Ops + DevOps | Product Owner, Roadmap Planner, GitHub DevOps, Senior Developer quando aplicavel | `roadmap-sync-prep`, `configure-github-project`, `delivery-readiness` | Delivery scope deve virar trabalho rastreavel antes de implementacao |
 | 6 | [ ] | [ ] `docs/framework/founder-journeys/epic-to-subissues.md` | Issue Shaping | `operations/workflows/epic-to-subissues.workflow.md` | "Quebre o epic #123 em sub-issues" | Operations / Product Ops | Product Owner, Product Designer, Security Reviewer, DevOps Engineer, Senior Developer | `epic-to-subissues`, `delivery-readiness`, `mvp-ux-flow`, `accessibility-review`, `pre-mvp-security-checklist`, `api-security-review`, `setup-ci-cd` | Falta criar workflow |
 | 7 | [ ] | [ ] `docs/framework/founder-journeys/issue-delivery-cycle.md` | Implementacao | `operations/workflows/issue-delivery-cycle.workflow.md` | "Implemente a issue #554", "vamos comecar essa feature" | Operations / Engineering | Product Owner, Senior Developer, Test Engineer, PR Reviewer, Security Reviewer quando aplicavel | `delivery-readiness`, `branch-from-issue`, `issue-to-pr`, `test-planning`, `pr-validation`, `ai-generated-code-security-review` | Existe, precisa fortalecer |
 | 8 | [ ] | [ ] `docs/framework/founder-journeys/review-pr.md` | Review e PR | Dentro de `issue-delivery-cycle` ou futuro workflow de review | "Revise o PR", "esta pronto para merge?" | Engineering + Security/DevOps quando aplicavel | PR Reviewer, Test Engineer, Security Reviewer, Release Manager | `pr-validation`, `pre-deploy-security-review`, `security-automation-readiness`, `release-operations` | Coberto por playbooks, talvez nao precise workflow separado |
@@ -281,17 +293,17 @@ MVP continua sendo o nome principal da etapa. O criterio de qualidade deve inclu
 - [ ] Nem todo item de roadmap precisa virar issue, epic ou milestone no GitHub.
 - [ ] Roadmap pode conter direcao estrategica, oportunidades futuras, backlog de produto e ideias ainda nao priorizadas.
 - [ ] Todo item marcado como parte do MVP precisa virar trabalho executavel e rastreavel antes de implementacao.
-- [ ] Um item de MVP deve passar por `mvp-to-epic` antes de Engineering iniciar desenvolvimento.
+- [ ] Um item de delivery scope deve passar por `delivery-scope-to-epic` antes de Engineering iniciar desenvolvimento.
 - [ ] Um epic de MVP deve passar por `epic-to-subissues` antes de virar trabalho de implementacao.
 - [ ] GitHub Project deve representar principalmente o que esta em execucao, em preparacao para execucao ou explicitamente selecionado para delivery.
-- [ ] O modelo deve pedir confirmacao antes de promover item de roadmap para MVP, antes de criar epic e antes de criar sub-issues via API.
+- [ ] O modelo deve pedir confirmacao antes de promover item de roadmap para delivery scope, antes de criar epic e antes de criar sub-issues via API.
 
 #### Ordem Para Implementar Os Workflows
 
 1. `strategy/workflows/new-idea-intake.workflow.md`
 2. `strategy/workflows/idea-to-roadmap.workflow.md`
-3. `operations/workflows/roadmap-item-to-mvp-scope.workflow.md` ou manter como fase de Product Ops
-4. `operations/workflows/mvp-to-epic.workflow.md`
+3. `operations/workflows/roadmap-item-to-delivery-scope.workflow.md` ou manter como fase de Product Ops
+4. `operations/workflows/delivery-scope-to-epic.workflow.md`
 5. `operations/workflows/epic-to-subissues.workflow.md`
 6. `operations/workflows/issue-delivery-cycle.workflow.md`
 7. Decidir destino de `operations/workflows/mvp-to-pr.workflow.md`
@@ -329,24 +341,29 @@ Workflows a revisar:
   - deve usar validacao leve em `strategy/product/knowledge/validation-notes.md`;
   - nao deve exigir `strategy/validation` no MVP padrao.
   - saidas possiveis: descartar, manter como pergunta aberta, registrar validation note ou propor promocao para roadmap.
-- [ ] `strategy/workflows/idea-to-roadmap.workflow.md`
+- [x] `strategy/workflows/idea-to-roadmap.workflow.md`
   - deve transformar uma ideia validada em item de roadmap;
   - deve definir problema, usuario afetado, valor esperado, dependencia, prioridade inicial e horizonte;
   - nao deve marcar automaticamente como MVP;
-  - deve perguntar de forma founder-friendly se a ideia deve entrar no backlog/roadmap.
-- [ ] `operations/workflows/roadmap-item-to-mvp-scope.workflow.md`
-  - deve decidir se um item de roadmap entra no MVP;
-  - deve atualizar MVP scope, PRD, non-goals, riscos e criterios minimos quando confirmado;
-  - deve registrar por que o item entrou ou nao entrou no MVP;
-  - deve preparar o item para `mvp-to-epic` quando aprovado.
-- [ ] `operations/workflows/mvp-to-epic.workflow.md`
-  - deve transformar itens de MVP em epics rastreaveis;
+  - deve perguntar de forma founder-friendly se a ideia deve entrar no backlog/roadmap;
+  - jornada criada em `docs/framework/founder-journeys/idea-to-roadmap.md`;
+  - gap futuro: Roadmap Planner deve tratar `operations/product-ops/mvp/scope.md` como contexto opcional, nao como dependencia obrigatoria desta jornada.
+- [x] `operations/workflows/roadmap-item-to-delivery-scope.workflow.md`
+  - deve decidir se um item de roadmap entra em um delivery scope;
+  - deve registrar `scope_type`, `milestone` e `release_goal` quando confirmado;
+  - deve tratar MVP como um tipo inicial de delivery scope, nao como modelo permanente do roadmap;
+  - deve atualizar scope, PRD, non-goals, riscos e criterios minimos quando confirmado;
+  - deve registrar por que o item entrou ou nao entrou no delivery scope;
+  - deve preparar o item para `delivery-scope-to-epic` quando aprovado;
+  - jornada criada em `docs/framework/founder-journeys/roadmap-item-to-delivery-scope.md`.
+- [ ] `operations/workflows/delivery-scope-to-epic.workflow.md`
+  - deve transformar itens de delivery scope em epics rastreaveis;
   - deve preparar payload/draft para GitHub Project quando configurado;
   - deve manter fora do GitHub itens de roadmap que nao estao selecionados para delivery;
   - deve pedir confirmacao antes de criar ou atualizar epics.
 - [ ] `strategy/workflows/roadmap-to-github-project.workflow.md`
   - deve preparar sync de roadmap para GitHub;
-  - deve focar em itens de MVP, current cycle e itens explicitamente selecionados para delivery;
+  - deve focar em itens de delivery scope, current cycle e itens explicitamente selecionados para delivery;
   - deve tratar GitHub como plano/payload/dry-run antes de chamada real;
   - deve envolver Product/Roadmap e DevOps apenas para readiness/configuracao.
 - [ ] `operations/workflows/issue-delivery-cycle.workflow.md`

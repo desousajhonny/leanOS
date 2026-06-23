@@ -8,6 +8,7 @@ Confirm that an issue or MVP slice has enough product, technical and operational
 
 - Issue or MVP slice
 - Product Ops overview
+- Ready To Develop criteria
 - MVP scope
 - PRD
 - Acceptance criteria

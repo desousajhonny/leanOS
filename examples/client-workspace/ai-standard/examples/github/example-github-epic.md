@@ -13,9 +13,11 @@ Clinic owners can capture structured patient intake before the appointment.
 - Validation assumption: clinics will trust guided AI intake for low-risk cases
 - Evidence status: assumption
 
-## MVP Linkage
+## Delivery Scope Linkage
 
-- MVP scope: guided intake flow, intake summary and staff review
+- scope_type: MVP
+- milestone: MVP Alpha
+- release_goal: validate the guided intake flow, intake summary and staff review
 - Non-goals: insurance automation, diagnosis, clinical decision-making
 - Acceptance criteria: staff can review and edit the intake summary
 - Roadmap item: MVP Intake Flow

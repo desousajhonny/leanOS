@@ -107,8 +107,9 @@ export function aiStandardFiles(): FileEntry[] {
 
   return [
     { path: "ai-standard/README.md", content: aiStandardReadme() },
-    { path: "ai-standard/foundation/README.md", content: folderReadme("Foundation", "Core LeanOS foundation for asset taxonomy, navigation, naming, creation and quality.", "Start here when deciding what kind of asset exists, where it belongs or how to judge quality.", "asset-taxonomy.md", ["asset-taxonomy.md", "navigation-chain.md", "creation-rules.md", "quality-criteria.md", "naming-conventions.md", "folder-documentation-rules.md"], ["../templates/", "../checklists/", "../instructions/", "../examples/"], "Load only the foundation file needed for the active decision. Do not load all foundation files by default.") },
+    { path: "ai-standard/foundation/README.md", content: folderReadme("Foundation", "Core LeanOS foundation for asset taxonomy, navigation, naming, guided conversation, creation and quality.", "Start here when deciding what kind of asset exists, where it belongs, how to talk to the founder or how to judge quality.", "asset-taxonomy.md", ["asset-taxonomy.md", "navigation-chain.md", "guided-conversation.md", "creation-rules.md", "quality-criteria.md", "naming-conventions.md", "folder-documentation-rules.md"], ["../templates/", "../checklists/", "../instructions/", "../examples/"], "Load only the foundation file needed for the active decision. Do not load all foundation files by default.") },
     { path: "ai-standard/foundation/navigation-chain.md", content: "# Navigation Chain\n\nLeanOS uses owner-first navigation:\n\n`Root AGENT.md -> Department AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`\n\nUse the chain to choose the next owner, one level at a time.\n\n1. Root chooses the owning department.\n2. Department chooses a workflow or active area.\n3. Area chooses the specialist role when it has `AGENT.md`; otherwise use its `README.md` as the local map.\n4. Role points to the required skills and playbooks.\n5. Skills and playbooks shape the work.\n6. Output updates only the smallest relevant knowledge, decision or project file.\n\nDo not skip levels because a later file looks relevant.\nDo not load the whole workspace when a smaller route exists.\n" },
+    { path: "ai-standard/foundation/guided-conversation.md", content: guidedConversation() },
     { path: "ai-standard/foundation/asset-taxonomy.md", content: assetTaxonomy() },
     { path: "ai-standard/foundation/creation-rules.md", content: creationRules() },
     { path: "ai-standard/foundation/quality-criteria.md", content: qualityCriteria() },
@@ -134,6 +135,8 @@ function templateContent(fileName: string): string {
     "department-agent-template.md": departmentAgentTemplate(),
     "area-agent-template.md": areaAgentTemplate(),
     "area-readme-template.md": areaReadmeTemplate(),
+    "playbook-template.md": playbookTemplate(),
+    "playbook-template.yaml": playbookYamlTemplate(),
     "github-epic-template.md": githubEpicTemplate(),
     "github-subissue-template.md": githubSubissueTemplate(),
     "delivery-readiness-matrix-template.md": deliveryReadinessMatrixTemplate(),
@@ -390,7 +393,7 @@ The founder asks to implement a specific GitHub issue.
 
 ## Participating Areas
 
-- Product Ops: confirms MVP scope, issue readiness and delivery boundaries.
+- Product Ops: confirms delivery scope, issue readiness and delivery boundaries.
 - Engineering: plans, implements, tests and prepares PR.
 - Design: conditional, only when UX changes.
 - Security: conditional, only when data, auth, permissions, privacy, abuse risk or compliance is involved.
@@ -441,7 +444,7 @@ Prepare the MVP Design foundation before implementation.
 
 ## Process
 
-1. Confirm product, ICP, problem, value proposition and MVP scope.
+1. Confirm product, ICP, problem, value proposition and delivery scope.
 2. Define the design system baseline.
 3. Define accessibility baseline.
 4. Map primary user flows.
@@ -487,9 +490,11 @@ Clinic owners can capture structured patient intake before the appointment.
 - Validation assumption: clinics will trust guided AI intake for low-risk cases
 - Evidence status: assumption
 
-## MVP Linkage
+## Delivery Scope Linkage
 
-- MVP scope: guided intake flow, intake summary and staff review
+- scope_type: MVP
+- milestone: MVP Alpha
+- release_goal: validate the guided intake flow, intake summary and staff review
 - Non-goals: insurance automation, diagnosis, clinical decision-making
 - Acceptance criteria: staff can review and edit the intake summary
 - Roadmap item: MVP Intake Flow
@@ -612,10 +617,10 @@ Epic #123
 - Skills: plan-implementation, create-pr
 - Playbook: issue-to-pr
 
-## Product / MVP Alignment
+## Product / Delivery Scope Alignment
 
 - Roadmap item: MVP Intake Flow
-- MVP scope: guided intake flow
+- Delivery scope: guided intake flow
 - Acceptance criteria: patient can complete and review required fields
 - Validation or learning impact: enables first usability test
 
@@ -649,7 +654,7 @@ function exampleCodeReview(): string {
 - PR: #812
 - Linked issue: #554
 - Parent epic: #123
-- MVP scope: guided intake flow
+- Delivery scope: guided intake flow
 - Acceptance criteria: patient can complete and review required fields
 
 ## Findings
@@ -893,6 +898,13 @@ Use this checklist before accepting a \`.playbook.md\` file.
 - [ ] Files to update are listed when applicable.
 - [ ] Confirmation is required before durable file updates.
 
+## Guided Conversation
+
+- [ ] If the playbook asks the founder to choose, classify, prioritize or confirm, it references \`../foundation/guided-conversation.md\`.
+- [ ] Guided questions use numbered options when the decision has predictable paths.
+- [ ] The founder can answer with a number or free-form text.
+- [ ] Technical paths appear after the founder understands the decision.
+
 ## Scope
 
 - [ ] The playbook belongs to the correct area.
@@ -995,6 +1007,166 @@ ${instructions.map((name) => `- \`${name}-instructions.md\``).join("\n")}
 ## Agent Notes
 
 Do not use one instruction for every asset type. Each instruction protects a different creation path.
+`;
+}
+
+function guidedConversation(): string {
+  return `# Guided Conversation
+
+## Purpose
+
+Make LeanOS feel guided for founders without turning workflows into rigid forms.
+
+Use this foundation when an agent, workflow, playbook or command needs to ask the founder for context, classification, prioritization, confirmation or a decision.
+
+## Core Rule
+
+When the founder needs to choose between predictable paths, use numbered options instead of only open-ended questions.
+
+Use:
+
+- 3 to 5 numbered options;
+- one "not sure / help me decide" option;
+- one question at a time when the decision changes state, roadmap, MVP, issue, PR or implementation;
+- plain founder-friendly language before technical paths;
+- free-form answers as valid input.
+
+Always allow:
+
+\`\`\`text
+You can reply with the number, or describe it in your own words.
+\`\`\`
+
+## When To Use Guided Questions
+
+Use guided questions when:
+
+- the founder needs to choose a destination for an idea;
+- the model lacks required context;
+- a decision changes roadmap, MVP, issue, PR, implementation, launch or learning state;
+- a file update depends on founder confirmation;
+- the founder may not know the correct LeanOS command or workflow name.
+
+Do not use guided questions when:
+
+- the answer is a simple factual clarification;
+- the founder already gave a clear decision;
+- the model can safely summarize and ask for confirmation;
+- the question would create fake precision too early.
+
+## Question Types
+
+### Discovery Question
+
+Use to understand missing context.
+
+Example:
+
+\`\`\`text
+Quem essa ideia ajudaria primeiro?
+
+1. Um usuario novo tentando entender o produto
+2. Um usuario ativo tentando concluir uma tarefa
+3. Um cliente pagante com problema operacional
+4. O founder/time interno
+5. Nao sei ainda, me ajude a descobrir
+\`\`\`
+
+### Decision Question
+
+Use to choose the next path.
+
+Example:
+
+\`\`\`text
+Qual destino faz mais sentido para essa ideia agora?
+
+1. Refinar melhor comigo
+2. Registrar como hipotese para validar depois
+3. Guardar como candidata ao roadmap
+4. Descartar por enquanto
+5. Nao sei, me ajude a decidir
+\`\`\`
+
+### Priority Question
+
+Use to rank urgency or impact.
+
+Example:
+
+\`\`\`text
+Por que essa ideia parece importante agora?
+
+1. Resolve uma dor clara do usuario
+2. Pode aumentar conversao ou receita
+3. Reduz trabalho manual
+4. Melhora retencao ou experiencia
+5. Ainda e so uma intuicao
+\`\`\`
+
+### Confirmation Question
+
+Use before durable updates or external actions.
+
+Example:
+
+\`\`\`text
+Posso registrar essa ideia como candidata ao roadmap?
+
+1. Sim, registre no backlog
+2. Nao, vamos apenas manter na conversa
+3. Quero ajustar a ideia antes
+\`\`\`
+
+### Risk Question
+
+Use when a path may introduce risk.
+
+Example:
+
+\`\`\`text
+Essa ideia envolve dados sensiveis, login, pagamento ou permissoes?
+
+1. Sim
+2. Nao
+3. Talvez, nao tenho certeza
+\`\`\`
+
+## Writing Rules
+
+- Ask one important guided question at a time.
+- Do not ask a long questionnaire unless the playbook explicitly requires an intake form.
+- Put the human decision before file paths.
+- Explain the recommendation before asking for confirmation.
+- If the founder answers with a number, restate the selected meaning before continuing.
+- If the founder answers freely, map the answer to the closest option and say how you interpreted it.
+
+## Output Shape
+
+Recommended shape:
+
+\`\`\`text
+Minha leitura:
+<short evaluation>
+
+Proximo passo:
+<recommended path>
+
+Escolha uma opcao:
+1. <option>
+2. <option>
+3. <option>
+4. Nao sei, me ajude a decidir
+
+Voce pode responder so com o numero ou do seu jeito.
+\`\`\`
+
+## Red Lines
+
+- Do not make a decision for the founder when the decision changes durable state.
+- Do not hide file updates behind friendly language.
+- Do not expose technical paths before the founder understands the decision.
+- Do not force numbered options when the founder needs open exploration.
 `;
 }
 
@@ -1218,6 +1390,7 @@ Use when creating a \`.playbook.md\` file inside an area.
 2. Confirm the playbook is tactical execution inside one area.
 3. Check whether a department workflow should own the broader flow.
 4. Identify skills the playbook should use.
+5. Load \`../foundation/guided-conversation.md\` when the playbook asks the founder to choose, classify, prioritize or confirm.
 
 ## Choose Template
 
@@ -1230,8 +1403,9 @@ Use when creating a \`.playbook.md\` file inside an area.
 2. Define inputs.
 3. Define ordered process.
 4. Reference skills instead of duplicating them.
-5. Define outputs.
-6. Define files to update and confirmation rules.
+5. Add \`Guided Conversation\` when founder input or confirmation is part of the playbook.
+6. Define outputs.
+7. Define files to update and confirmation rules.
 
 ## Validate
 
@@ -1341,10 +1515,11 @@ Use this route for most asset creation work:
 1. Decide the asset type with \`foundation/asset-taxonomy.md\`.
 2. Confirm placement and boundaries with \`foundation/creation-rules.md\`.
 3. Confirm naming with \`foundation/naming-conventions.md\`.
-4. Load the matching file in \`instructions/\`.
-5. Use the matching starter in \`templates/\`.
-6. Validate the result with the matching file in \`checklists/\`.
-7. Open \`examples/\` only if a reference would improve quality.
+4. Use \`foundation/guided-conversation.md\` when the asset asks the founder to decide, classify, prioritize or confirm.
+5. Load the matching file in \`instructions/\`.
+6. Use the matching starter in \`templates/\`.
+7. Validate the result with the matching file in \`checklists/\`.
+8. Open \`examples/\` only if a reference would improve quality.
 
 ## Decision Map
 
@@ -1352,6 +1527,7 @@ Use this route for most asset creation work:
 | --- | --- | --- |
 | Decide what kind of asset something is | \`foundation/asset-taxonomy.md\` | Defines AGENT, README, YAML, role, skill, playbook, knowledge, workflow and command. |
 | Decide how a model should move through the workspace | \`foundation/navigation-chain.md\` | Defines owner-first navigation and prevents route skipping. |
+| Design founder-friendly questions or decisions | \`foundation/guided-conversation.md\` | Defines numbered options, decision pauses and confirmation prompts. |
 | Decide whether a new file should exist | \`foundation/creation-rules.md\` | Prevents asset sprawl and duplicated ownership. |
 | Name a file or folder | \`foundation/naming-conventions.md\` | Keeps names predictable and machine-readable. |
 | Judge quality when no specific checklist is enough | \`foundation/quality-criteria.md\` | Provides universal quality and rejection criteria. |
@@ -1970,6 +2146,7 @@ Read these files first:
 - Do not write secrets to tracked files.
 - Ask before modifying knowledge, decision or framework files.
 - Do not create or modify LeanOS framework assets from memory. Route through \`ai-standard/README.md\`.
+- For "where are we?", "what do we have?", "what is missing?", "can we start building?" or similar readiness/status requests, load \`.leanos/agent/protocols/where-we-are.md\` before recommending a next step or implementation.
 - During \`/start-leanos\`, do not enrich roles, skills, playbooks, workflows, commands or \`ai-standard/\` with company/product context.
 - Do not modify source-of-truth, decision, framework or runtime files until the user explicitly confirms the proposed changes.
 
@@ -2007,6 +2184,16 @@ Examples:
 - "review this PR" -> \`.leanos/commands/review-pr.md\`
 
 If no command clearly matches, route through the Navigation Chain.
+
+## Status And Readiness Questions
+
+When the founder asks where the product stands, what exists so far, what is missing, what should happen next or whether development can start, do not answer from memory and do not jump directly to implementation.
+
+Load:
+
+\`.leanos/agent/protocols/where-we-are.md\`
+
+Use that protocol to inspect the smallest relevant Strategy, Operations and GitHub readiness files. Then explain the current product moment, missing prerequisites, risk of skipping steps and the safest next route.
 
 ## Navigation Chain
 
@@ -2089,10 +2276,21 @@ Describe what this department owns.
 
 ## Routing Rules
 
-1. If the request spans multiple active areas, open \`workflows/README.md\` and choose the smallest matching workflow.
-2. If the request belongs to one area, route to that area \`AGENT.md\` when present; otherwise route to its README.
-3. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
-4. Do not load roles, skills or playbooks before entering the owning area.
+1. If the founder request is a journey, open \`workflows/README.md\` and choose the smallest matching workflow.
+2. A journey changes state, priority, scope, handoff, roadmap, delivery, launch or learning.
+3. If the request belongs to one area and one asset family, route to that area \`AGENT.md\` when present; otherwise route to its README.
+4. If you are unsure, check \`workflows/README.md\` first; if no workflow matches, route to the smallest active area.
+5. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
+6. Do not load roles, skills or playbooks before entering the owning area.
+
+## Journey Signals
+
+Use \`workflows/README.md\` when the founder asks for a multi-step decision or transition, such as:
+
+- evaluating, planning, shaping, implementing, reviewing or launching something;
+- moving work from one stage to another;
+- coordinating multiple areas or handoffs;
+- changing priority, scope, roadmap, delivery or learning state.
 
 ## Active Areas
 
@@ -2102,7 +2300,7 @@ Describe what this department owns.
 
 - Department workflows: \`workflows/README.md\`
 
-Use workflows for cross-area sequencing. Use area playbooks for tactical execution inside one area.
+Use workflows for multi-step journeys and cross-area sequencing. Use area playbooks for tactical execution inside one area.
 `;
 }
 
@@ -2176,6 +2374,102 @@ What this area owns.
 `;
 }
 
+function playbookTemplate(): string {
+  return `# <Playbook Name>
+
+## Purpose
+
+Explain the practical task this playbook executes inside one area.
+
+## Use When
+
+- ...
+- ...
+- ...
+
+## Inputs
+
+- ...
+- ...
+- ...
+
+## Guided Conversation
+
+Use \`../../../ai-standard/foundation/guided-conversation.md\` when the playbook needs the founder to choose, classify, prioritize or confirm.
+
+Ask guided questions when:
+
+- required context is missing;
+- the founder must choose between predictable paths;
+- a durable file update depends on confirmation;
+- the next step changes roadmap, MVP, issue, PR, implementation, launch or learning state.
+
+Do not ask a rigid questionnaire. Ask only what is missing.
+
+## Process
+
+1. ...
+2. ...
+3. ...
+
+## Outputs
+
+- ...
+- ...
+- ...
+
+## Files To Update
+
+- ...
+
+## Confirmation Rules
+
+- Ask before updating durable files.
+- Ask before calling scripts, APIs or external capabilities.
+- Ask before changing roadmap, MVP, issue, PR or implementation state.
+
+## Red Lines
+
+- Do not duplicate a workflow.
+- Do not duplicate skills.
+- Do not invent missing context.
+- Do not update files without explicit confirmation.
+
+## Navigation
+
+\`../AGENT.md -> roles/<role>.role.md -> skills/<skill>.skill.md -> playbooks/<this-playbook>.playbook.md -> Output\`
+`;
+}
+
+function playbookYamlTemplate(): string {
+  return `playbook:
+  key: <playbook-key>
+  title: <Playbook Name>
+  owner_area: <department.area>
+  purpose: <practical task this playbook executes>
+  use_when:
+    - <trigger>
+  inputs:
+    - <input>
+  guided_conversation:
+    foundation: ../../../ai-standard/foundation/guided-conversation.md
+    use_when:
+      - founder decision is needed
+      - durable update needs confirmation
+  process:
+    - <step>
+  outputs:
+    - <output>
+  files_to_update:
+    - <path>
+  confirmation_required:
+    - durable file updates
+    - external actions
+  red_lines:
+    - do not duplicate a workflow
+`;
+}
+
 function githubEpicTemplate(): string {
   return `# Epic: <title>
 
@@ -2192,9 +2486,11 @@ What business, user or validation outcome this epic should create.
 - Validation assumption:
 - Evidence status:
 
-## MVP Linkage
+## Delivery Scope Linkage
 
-- MVP scope:
+- scope_type:
+- milestone:
+- release_goal:
 - Non-goals:
 - Acceptance criteria:
 - Roadmap item:
@@ -2414,10 +2710,10 @@ Epic #
 - Skills:
 - Playbook:
 
-## Product / MVP Alignment
+## Product / Delivery Scope Alignment
 
 - Roadmap item:
-- MVP scope:
+- Delivery scope:
 - Acceptance criteria:
 - Validation or learning impact:
 
@@ -2461,7 +2757,7 @@ function codeReviewTemplate(): string {
 - PR:
 - Linked issue:
 - Parent epic:
-- MVP scope:
+- Delivery scope:
 - Acceptance criteria:
 
 ## Findings

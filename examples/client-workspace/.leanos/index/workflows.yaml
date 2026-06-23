@@ -11,6 +11,10 @@ workflows:
     department: strategy
     path: ../../strategy/workflows/roadmap-to-github-project.workflow.md
     active: true
+  - key: roadmap-item-to-delivery-scope
+    department: operations
+    path: ../../operations/workflows/roadmap-item-to-delivery-scope.workflow.md
+    active: true
   - key: mvp-to-pr
     department: operations
     path: ../../operations/workflows/mvp-to-pr.workflow.md

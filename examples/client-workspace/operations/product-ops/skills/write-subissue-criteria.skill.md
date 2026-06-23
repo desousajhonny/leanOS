@@ -14,6 +14,7 @@ Apply the Delivery Readiness Matrix (DRM) to draft implementation-ready sub-issu
 
 - ../AGENT.md
 - ../knowledge/issue-readiness.md
+- ../knowledge/ready-to-develop.md
 - ../mvp/prd.md
 - ../mvp/acceptance-criteria.md
 - ../../../ai-standard/templates/github/delivery-readiness-matrix-template.md

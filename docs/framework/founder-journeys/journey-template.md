@@ -8,6 +8,52 @@ The model does X because it read Y, and Y instructed or allowed X.
 
 If the reason cannot be explained, the route is too implicit and should become a clearer AGENT, workflow, role, skill or playbook rule.
 
+## Human Overview
+
+Short version for the framework owner.
+
+- **Trigger:** what the founder says.
+- **Goal:** what this journey decides or produces.
+- **Starts at:** first route owner.
+- **Passes through:** key workflow, area, role or playbook.
+- **Ends with:** final decision, output or handoff.
+- **Does not do:** boundaries that prevent premature execution.
+
+Keep this section short. The detailed execution contract lives below.
+
+## Flow Diagram
+
+Use a vertical Mermaid diagram for readability:
+
+```mermaid
+flowchart TD
+  A["Founder intent"]
+  B["Root AGENT"]
+  C["Department AGENT"]
+  D["Workflow"]
+  E{"Route files exist?"}
+  F["Area / Role"]
+  G["Playbook / Skill"]
+  H["Guided conversation"]
+  I{"Founder confirms?"}
+  J["Update / output / handoff"]
+  K["Explain outcome to founder"]
+  L["Stop without writing / map gap"]
+
+  A --> B --> C --> D --> E
+  E -->|Yes| F --> G --> H --> I
+  E -->|No| K
+  I -->|Yes| J
+  I -->|No| K
+  K --> L
+```
+
+## Flow In Plain Words
+
+One paragraph explaining the route:
+
+> The model starts at Root AGENT because..., enters `<department>` because..., reads the workflow because..., activates `<role>` because..., and ends by asking the founder to confirm...
+
 ## Founder Trigger
 
 Real phrases that can start this journey:
@@ -169,6 +215,21 @@ Founder-friendly questions:
 
 Do not ask as a rigid form. Ask only what is missing.
 
+## Guided Conversation Points
+
+List where the journey uses guided choices without writing the full questionnaire here.
+
+| Step | Purpose | Source |
+| --- | --- | --- |
+| Step ... | Choose between predictable paths | `<area>/playbooks/<playbook>.playbook.md` |
+| Step ... | Confirm before durable updates | `<workflow or playbook>` |
+
+Rules:
+
+- Keep detailed guided questions in the owning playbook or command.
+- Use `ai-standard/foundation/guided-conversation.md` as the global rule.
+- Do not turn this journey document into a script.
+
 ## Confirmation Checkpoints
 
 The model must ask for confirmation before:
@@ -220,6 +281,35 @@ The journey can end with:
 - ...
 - ...
 
+## Continuation Bridge
+
+At the end of this journey, the model must offer one clear next-step bridge when a safe next flow exists.
+
+The bridge must be founder-friendly, not file/path-first.
+
+Immediate bridge:
+
+```text
+<simple question that lets the founder continue now>
+```
+
+Later-session triggers:
+
+- "<natural founder phrase>"
+- "<natural founder phrase>"
+- "<optional command or shortcut if one exists>"
+
+Next route:
+
+`<next-journey-or-workflow>`
+
+Rules:
+
+- Do not automatically start the next journey without founder confirmation.
+- If the founder says yes, declare the new route before loading the next workflow.
+- If the founder says no, explain the current outcome and stop without writing anything else.
+- If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route normally, and load the next journey.
+
 ## Next Recommended Journey
 
 After this journey, the next flow can be:
@@ -262,6 +352,8 @@ Use this checklist to test whether the journey really applies the Navigation Cha
 - [ ] The model asks for confirmation before updating files.
 - [ ] The founder-facing output is understandable before technical paths appear.
 - [ ] Internal file updates are listed only after the human decision.
+- [ ] The continuation bridge offers the next flow without starting it automatically.
+- [ ] Later-session triggers are listed for natural founder language.
 
 ### Conditional Areas
 

@@ -112,6 +112,7 @@ async function validateWorkspaceFiles() {
     "ai-standard/README.md",
     "ai-standard/foundation/README.md",
     "ai-standard/foundation/navigation-chain.md",
+    "ai-standard/foundation/guided-conversation.md",
     "ai-standard/foundation/asset-taxonomy.md",
     "ai-standard/foundation/creation-rules.md",
     "ai-standard/foundation/quality-criteria.md",
@@ -544,6 +545,12 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md"));
   await assertExists(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"));
   await assertExists(join(rootDir, "strategy", "workflows", "roadmap-to-github-project.workflow.md"));
+  const newIdeaWorkflow = await readFile(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md"), "utf8");
+  const ideaToRoadmapWorkflow = await readFile(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"), "utf8");
+  assert(newIdeaWorkflow.includes("## Continuation Bridge"), "New idea intake workflow should offer a continuation bridge");
+  assert(newIdeaWorkflow.includes("Next route:\n\n`idea-to-roadmap`"), "New idea intake workflow should bridge to idea-to-roadmap");
+  assert(ideaToRoadmapWorkflow.includes("## Continuation Bridge"), "Idea-to-roadmap workflow should offer a continuation bridge");
+  assert(ideaToRoadmapWorkflow.includes("Next route:\n\n`roadmap-item-to-delivery-scope`"), "Idea-to-roadmap workflow should bridge to roadmap-item-to-delivery-scope");
   await assertExists(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"));
   await assertExists(join(rootDir, "strategy", "product", "skills", "evaluate-idea.skill.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync.skill.md"));
@@ -553,6 +560,7 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "overview.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "delivery-context.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "issue-readiness.md"));
+  await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "ready-to-develop.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "technical-decisions.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "mvp", "README.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "skills", "shape-epic.skill.md"));
@@ -564,8 +572,12 @@ async function validateWorkspaceFiles() {
   assert.equal(await exists(join(rootDir, "operations", "product-ops", "api-contract.md")), false, "Product Ops should not generate premature API contract files");
   assert.equal(await exists(join(rootDir, "operations", "product-ops", "data-model.md")), false, "Product Ops should not generate premature data model files");
   assert.equal(await exists(join(rootDir, "operations", "product-ops", "system-context.md")), false, "Product Ops should not generate premature system context files");
+  await assertExists(join(rootDir, "operations", "workflows", "roadmap-item-to-delivery-scope.workflow.md"));
   await assertExists(join(rootDir, "operations", "workflows", "issue-delivery-cycle.workflow.md"));
   await assertExists(join(rootDir, "operations", "workflows", "post-merge-continuation.workflow.md"));
+  const deliveryScopeWorkflow = await readFile(join(rootDir, "operations", "workflows", "roadmap-item-to-delivery-scope.workflow.md"), "utf8");
+  assert(deliveryScopeWorkflow.includes("## Continuation Bridge"), "Roadmap item to delivery scope workflow should offer a continuation bridge");
+  assert(deliveryScopeWorkflow.includes("Next route:\n\n`delivery-scope-to-epic`"), "Roadmap item to delivery scope workflow should bridge to delivery-scope-to-epic");
   await assertExists(join(rootDir, ".leanos", "commands", "define-design.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "README.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "design-system.md"));
@@ -1389,6 +1401,7 @@ async function assertFounderIntentRouting(rootDir) {
   const growthAgent = await readFile(join(rootDir, "growth", "AGENT.md"), "utf8");
   const runtimeReadme = await readFile(join(rootDir, ".leanos", "README.md"), "utf8");
   const operatingRules = await readFile(join(rootDir, ".leanos", "agent", "operating-rules.md"), "utf8");
+  const whereWeAreProtocol = await readFile(join(rootDir, ".leanos", "agent", "protocols", "where-we-are.md"), "utf8");
   const vscodeAgent = await readFile(join(rootDir, ".github", "agents", "leanos-chief.agent.md"), "utf8");
   const workflowsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "workflows.yaml"), "utf8"));
   const rootAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "agents", "root-agent-template.md"), "utf8");
@@ -1416,6 +1429,9 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("Loaded Context:"), "Root AGENT.md should require loaded context in response header");
   assert(rootAgent.includes("## Natural Language Handling"), "Root AGENT.md should route natural-language requests");
   assert(rootAgent.includes("If a natural-language request clearly matches an existing LeanOS command"), "Root AGENT.md should map natural language to commands when clear");
+  assert(rootAgent.includes("## Status And Readiness Questions"), "Root AGENT.md should handle status and readiness questions");
+  assert(rootAgent.includes("`.leanos/agent/protocols/where-we-are.md`"), "Root AGENT.md should route status and readiness questions to the where-we-are protocol");
+  assert(rootAgent.includes("do not answer from memory"), "Root AGENT.md should avoid memory-only status answers");
   assert(rootAgent.includes("## Framework Standards Routing"), "Root AGENT.md should route framework standards through AI Standard");
   assert(rootAgent.includes("Use `ai-standard/README.md` only when the user asks to create, change, review or validate LeanOS framework assets"), "Root AGENT.md should load AI Standard only for framework asset work");
   assert(rootAgent.includes("Do not guess the correct template, checklist or instruction from memory"), "Root AGENT.md should prevent framework asset hallucination");
@@ -1452,6 +1468,19 @@ async function assertFounderIntentRouting(rootDir) {
   assert(runtimeReadme.includes("Business workflows live in departments or areas"), ".leanos README should keep workflows local to departments or areas");
   assert(operatingRules.includes("Natural language founder requests are first-class"), "Operating rules should support natural-language founder intent");
   assert(operatingRules.includes("Root AGENT.md routes to the correct department; department AGENT.md files route to workflows or areas"), "Operating rules should route workflow selection through department agents");
+  assert(operatingRules.includes("For status, resume, readiness or \"can we build?\" requests, load `protocols/where-we-are.md`"), "Operating rules should route status and readiness through where-we-are protocol");
+  assert(whereWeAreProtocol.includes("# Where We Are Protocol"), "Where-we-are protocol should be generated");
+  assert(whereWeAreProtocol.includes("Do not recommend implementation before checking product, roadmap and delivery readiness"), "Where-we-are protocol should prevent premature implementation");
+  assert(whereWeAreProtocol.includes("operations/product-ops/knowledge/ready-to-develop.md"), "Where-we-are protocol should load the ready-to-develop gate");
+  assert(whereWeAreProtocol.includes("## Development Gate"), "Where-we-are protocol should define a development gate");
+  assert(whereWeAreProtocol.includes("## Recommended Routes By Gap"), "Where-we-are protocol should recommend routes by gap");
+  assert(whereWeAreProtocol.includes("Ainda nao recomendo comecar pelo codigo"), "Where-we-are protocol should provide founder-friendly early-development feedback");
+  const readyToDevelop = await readFile(join(rootDir, "operations", "product-ops", "knowledge", "ready-to-develop.md"), "utf8");
+  assert(readyToDevelop.includes("# Ready To Develop"), "Product Ops should generate a ready-to-develop gate");
+  assert(readyToDevelop.includes("## Core Rule"), "Ready-to-develop gate should define the core rule");
+  assert(readyToDevelop.includes("## Design Readiness"), "Ready-to-develop gate should include design readiness");
+  assert(readyToDevelop.includes("## Security Readiness"), "Ready-to-develop gate should include security readiness");
+  assert(readyToDevelop.includes("## Ready States"), "Ready-to-develop gate should define ready states");
   assert(operatingRules.includes("`AGENT.md` is the operating owner for its level; `README.md` is the directory map"), "Operating rules should define AGENT and README responsibilities");
   assert(operatingRules.includes("Area `AGENT.md` files, when present, choose the specialist role"), "Operating rules should define area AGENT responsibility");
   assert.equal(operatingRules.includes("Root AGENT.md must not bypass department AGENT.md"), false, "Operating rules should avoid narrow workflow-bypass prohibitions");
@@ -1474,11 +1503,14 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgentTemplate.includes("## Red Lines / Non-Negotiable Rules"), "Root agent template should include scalable red lines");
   assert(rootAgentTemplate.includes("## Response Header"), "Root agent template should include response header");
   assert(rootAgentTemplate.includes("## Natural Language Handling"), "Root agent template should include natural language handling");
+  assert(rootAgentTemplate.includes("## Status And Readiness Questions"), "Root agent template should include status and readiness handling");
+  assert(rootAgentTemplate.includes("`.leanos/agent/protocols/where-we-are.md`"), "Root agent template should point to where-we-are protocol");
   assert(rootAgentTemplate.includes("## Framework Standards Routing"), "Root agent template should include framework standards routing");
   assert(rootAgentTemplate.includes("Use `ai-standard/README.md` only when the user asks to create, change, review or validate LeanOS framework assets"), "Root agent template should route framework standards through AI Standard README");
   assert(rootAgentTemplate.includes("Do not guess the correct template, checklist or instruction from memory"), "Root agent template should prevent framework asset hallucination");
   assert(rootAgentTemplate.includes("When an area has its own `AGENT.md`, use it as the area operating owner before loading roles, skills or playbooks"), "Root agent template should include area AGENT rule");
-  assert(departmentAgentTemplate.includes("If the request spans multiple active areas, open `workflows/README.md`"), "Department agent template should route cross-area work through workflow index");
+  assert(departmentAgentTemplate.includes("If the founder request is a journey, open `workflows/README.md`"), "Department agent template should route journeys through workflow index");
+  assert(departmentAgentTemplate.includes("A journey changes state, priority, scope, handoff, roadmap, delivery, launch or learning"), "Department agent template should define workflow journey signals");
   assert(departmentAgentTemplate.includes("route to that area `AGENT.md` when present"), "Department agent template should route to area AGENT when present");
   assert(departmentAgentTemplate.includes("Do not load roles, skills or playbooks before entering the owning area"), "Department agent template should keep roles/skills/playbooks area-owned");
   assert(areaAgentTemplate.includes("Choose the smallest specialist role"), "Area AGENT template should route to specialist roles");
@@ -1490,6 +1522,7 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
   const aiStandardReadme = await readFile(join(rootDir, "ai-standard", "README.md"), "utf8");
   const foundationReadme = await readFile(join(rootDir, "ai-standard", "foundation", "README.md"), "utf8");
   const assetTaxonomy = await readFile(join(rootDir, "ai-standard", "foundation", "asset-taxonomy.md"), "utf8");
+  const guidedConversation = await readFile(join(rootDir, "ai-standard", "foundation", "guided-conversation.md"), "utf8");
   const creationRules = await readFile(join(rootDir, "ai-standard", "foundation", "creation-rules.md"), "utf8");
   const qualityCriteria = await readFile(join(rootDir, "ai-standard", "foundation", "quality-criteria.md"), "utf8");
   const folderDocumentationRules = await readFile(join(rootDir, "ai-standard", "foundation", "folder-documentation-rules.md"), "utf8");
@@ -1502,7 +1535,13 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
   assert(aiStandardReadme.includes("Do not load all of `ai-standard/` by default"), "AI Standard README should encourage minimal loading");
   assert(foundationReadme.includes("asset-taxonomy.md"), "Foundation README should list asset taxonomy");
   assert(foundationReadme.includes("navigation-chain.md"), "Foundation README should list navigation chain");
+  assert(foundationReadme.includes("guided-conversation.md"), "Foundation README should list guided conversation");
   assert(foundationReadme.includes("folder-documentation-rules.md"), "Foundation README should list folder documentation rules");
+  assert(aiStandardReadme.includes("foundation/guided-conversation.md"), "AI Standard README should route guided conversation decisions");
+  assert(guidedConversation.includes("# Guided Conversation"), "Guided conversation should have expected title");
+  assert(guidedConversation.includes("3 to 5 numbered options"), "Guided conversation should define numbered options");
+  assert(guidedConversation.includes("not sure / help me decide"), "Guided conversation should include a help-me-decide option");
+  assert(guidedConversation.includes("You can reply with the number"), "Guided conversation should support low-friction answers");
   assert(assetTaxonomy.includes("# Asset Taxonomy"), "Asset taxonomy should have expected title");
   assert(assetTaxonomy.includes("Role = who acts."), "Asset taxonomy should define role concept");
   assert(assetTaxonomy.includes("Skill = capability used."), "Asset taxonomy should define skill concept");
@@ -1548,6 +1587,7 @@ async function assertAiStandardTemplates(rootDir) {
   const commandsReadme = await readFile(join(rootDir, "ai-standard", "templates", "commands", "README.md"), "utf8");
   const githubReadme = await readFile(join(rootDir, "ai-standard", "templates", "github", "README.md"), "utf8");
   const reviewReadme = await readFile(join(rootDir, "ai-standard", "templates", "review", "README.md"), "utf8");
+  const playbookTemplate = await readFile(join(rootDir, "ai-standard", "templates", "execution", "playbook-template.md"), "utf8");
 
   assert(templatesReadme.includes("agents/"), "Templates README should route to agents");
   assert(templatesReadme.includes("structure/"), "Templates README should route to structure");
@@ -1559,7 +1599,10 @@ async function assertAiStandardTemplates(rootDir) {
   assert(agentsReadme.includes("root-agent-template.md"), "Agent templates README should list root agent template");
   assert(structureReadme.includes("department-template.yaml"), "Structure templates README should list department YAML template");
   assert(executionReadme.includes("role-template.md"), "Execution templates README should list role template");
+  assert(executionReadme.includes("playbook-template.md"), "Execution templates README should list playbook template");
   assert(executionReadme.includes("workflow-template.md"), "Execution templates README should list workflow template");
+  assert(playbookTemplate.includes("## Guided Conversation"), "Playbook template should include guided conversation section");
+  assert(playbookTemplate.includes("../../../ai-standard/foundation/guided-conversation.md"), "Playbook template should point to guided conversation foundation");
   assert(commandsReadme.includes("command-template.md"), "Command templates README should list command template");
   assert(githubReadme.includes("github-epic-template.md"), "GitHub templates README should list epic template");
   assert(githubReadme.includes("pull-request-template.md"), "GitHub templates README should list PR template");
@@ -1594,6 +1637,8 @@ async function assertAiStandardChecklists(rootDir) {
   assert(skillChecklist.includes("does not become a full process sequence"), "Skill checklist should avoid playbook duplication");
   assert(playbookChecklist.includes("ordered execution sequence"), "Playbook checklist should validate sequencing");
   assert(playbookChecklist.includes("uses skills rather than duplicating all skill content"), "Playbook checklist should avoid skill duplication");
+  assert(playbookChecklist.includes("## Guided Conversation"), "Playbook checklist should include guided conversation criteria");
+  assert(playbookChecklist.includes("numbered options"), "Playbook checklist should validate guided numbered options");
   assert(workflowChecklist.includes("does not live in `.leanos/workflows/`"), "Workflow checklist should keep workflows local to departments or areas");
   assert(workflowChecklist.includes("defines handoffs between owners"), "Workflow checklist should validate handoffs");
   assert(commandChecklist.includes("Allowed updates are explicit"), "Command checklist should validate allowed updates");
@@ -1656,8 +1701,10 @@ async function assertAiStandardInstructions(rootDir) {
   assert(contents["create-skill"].includes("Avoid turning the skill into a full ordered process"), "Create skill instructions should avoid playbook duplication");
 
   assert(contents["create-playbook"].includes("../templates/execution/playbook-template.md"), "Create playbook instructions should point to playbook template");
+  assert(contents["create-playbook"].includes("../foundation/guided-conversation.md"), "Create playbook instructions should point to guided conversation foundation when needed");
   assert(contents["create-playbook"].includes("../checklists/playbook-quality-checklist.md"), "Create playbook instructions should point to playbook checklist");
   assert(contents["create-playbook"].includes("Reference skills instead of duplicating them"), "Create playbook instructions should reference skills");
+  assert(contents["create-playbook"].includes("Guided Conversation"), "Create playbook instructions should require guided conversation when founder input is needed");
   assert(contents["create-playbook"].includes("Do not duplicate a workflow"), "Create playbook instructions should avoid workflow duplication");
 
   assert(contents["create-workflow"].includes("../templates/execution/workflow-template.md"), "Create workflow instructions should point to workflow template");
@@ -1896,6 +1943,7 @@ async function assertProductAreaPattern(rootDir) {
   const validationNotes = await readFile(join(rootDir, "strategy", "product", "knowledge", "validation-notes.md"), "utf8");
   const productStrategistRole = await readFile(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"), "utf8");
   const productManagerRole = await readFile(join(rootDir, "strategy", "product", "roles", "product-manager.role.md"), "utf8");
+  const productStrategyPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "product-strategy.playbook.md"), "utf8");
 
   assert(productAgent.includes("# Product Agent"), "Product should have an area AGENT");
   assert(productAgent.includes("You are the Product Lead"), "Product AGENT should act as Product Lead");
@@ -1920,6 +1968,9 @@ async function assertProductAreaPattern(rootDir) {
   assert(productAreaYaml.area.source_of_truth.includes("knowledge/validation-notes.md"), "Product area.yaml should list validation notes as source of truth");
   assert(productStrategistRole.includes("../knowledge/brief.md"), "Product Strategist should load Product knowledge files");
   assert(productManagerRole.includes("../knowledge/brief.md"), "Product Manager should load Product knowledge files");
+  assert(productStrategyPlaybook.includes("## Guided Conversation"), "Product strategy playbook should include guided conversation");
+  assert(productStrategyPlaybook.includes("../../../ai-standard/foundation/guided-conversation.md"), "Product strategy playbook should point to guided conversation standard");
+  assert(productStrategyPlaybook.includes("Offer numbered choices for idea destination"), "Product strategy playbook should guide idea-destination choices");
 
   for (const oldPath of [
     "brief.md",

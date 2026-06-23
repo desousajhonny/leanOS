@@ -198,6 +198,65 @@ TBD
 `;
 }
 
+function deliveryScopeKnowledge(): string {
+  return `# Delivery Scope
+
+## Purpose
+
+Define which roadmap items are committed to a concrete delivery scope.
+
+## Current State
+
+TBD
+
+## Scope Header
+
+~~~yaml
+scope_type: MVP | Release | Experiment | Beta | Internal
+milestone: TBD
+release_goal: TBD
+~~~
+
+## Included Roadmap Items
+
+| Item | Outcome | Scope Type | Milestone | Release Goal | Status |
+| --- | --- | --- | --- | --- | --- |
+| TBD | TBD | TBD | TBD | TBD | candidate |
+
+## Non-Goals
+
+TBD
+
+## Acceptance Direction
+
+TBD
+
+## Design Applicability
+
+TBD
+
+## Security Applicability
+
+TBD
+
+## DevOps Applicability
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
 function issueReadinessKnowledge(): string {
   return `# Issue Readiness
 
@@ -244,6 +303,109 @@ TBD
 ## Next Update
 
 TBD
+`;
+}
+
+function readyToDevelopKnowledge(): string {
+  return `# Ready To Develop
+
+## Purpose
+
+Define the fixed LeanOS gate for deciding whether a roadmap item, delivery scope, epic or issue can move into implementation.
+
+This is a framework criterion, not a product status log. Do not rewrite it with product-specific progress unless the framework itself changes.
+
+## Core Rule
+
+A work item is ready to develop only when Product, Delivery Scope, Issue, Design, Security, Engineering and DevOps readiness are satisfied or explicitly marked not applicable.
+
+## Product Readiness
+
+- The user, problem and expected outcome are clear.
+- The work is tied to product strategy, roadmap or confirmed founder intent.
+- The value proposition or business reason is understandable.
+- Missing product context is listed before implementation starts.
+
+## Delivery Scope Readiness
+
+- The item belongs to a delivery scope such as MVP, Release, Experiment, Beta or Internal.
+- \`scope_type\`, \`milestone\` and \`release_goal\` are defined when applicable.
+- Non-goals are explicit.
+- Dependencies and constraints are visible.
+
+## Issue Readiness
+
+- The work has an issue, epic or confirmed bootstrap request.
+- Acceptance criteria are clear enough to validate the result.
+- The implementation boundary is small enough to execute safely.
+- The issue is not just an idea, note or vague roadmap item.
+
+## Design Readiness
+
+Required when the work touches UX, UI, copy, accessibility, onboarding, screens, states, flows or user interaction.
+
+- Design foundation or user-flow context exists.
+- Accessibility impact is checked.
+- Required screens, states or components are described enough for Engineering.
+- If Design is not applicable, the reason is explicit.
+
+## Security Readiness
+
+Required when the work touches data, authentication, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk.
+
+- Sensitive data and access rules are understood.
+- Security acceptance criteria are defined when needed.
+- Secret handling is safe.
+- If Security is not applicable, the reason is explicit.
+
+## Engineering Readiness
+
+- The technical boundary is understandable.
+- Code standards, testing expectations and review criteria are known.
+- Branch and PR conventions are clear.
+- The model has enough context to plan before coding.
+
+## DevOps Readiness
+
+Required when the work touches environments, CI/CD, deploy, observability, GitHub Project, config, release or runtime operations.
+
+- Environment impact is understood.
+- CI/CD and deployment expectations are clear when applicable.
+- Observability or rollback needs are considered when relevant.
+- If DevOps is not applicable, the reason is explicit.
+
+## Ready States
+
+- \`not-ready\`: the work is still an idea or lacks essential context.
+- \`needs-product\`: product intent, user, problem or value is unclear.
+- \`needs-delivery-scope\`: roadmap item exists but no delivery scope is confirmed.
+- \`needs-design\`: UX/UI/accessibility context is required before coding.
+- \`needs-security\`: data/auth/privacy/API/security context is required before coding.
+- \`needs-devops\`: environment/deploy/CI/GitHub readiness is required before coding.
+- \`ready-to-plan\`: enough context exists to create a development plan, branch and implementation approach.
+- \`ready-to-code\`: enough context exists to begin implementation after the plan is confirmed.
+
+## Model Behavior
+
+- If the work is not ready, explain the missing criteria in founder-friendly language.
+- Recommend the next LeanOS route instead of writing code too early.
+- Use \`where-we-are.md\` for status/readiness questions.
+- Use \`issue-delivery-cycle\` only after readiness is confirmed.
+- Never treat importance as readiness.
+
+## Founder-Friendly Output
+
+Use this shape when the founder asks if development can start:
+
+~~~text
+Ainda nao recomendo comecar pelo codigo.
+
+O item ainda precisa de <missing readiness area>.
+Se implementarmos agora, o risco e <risk>.
+
+O proximo passo seguro e <recommended route>.
+Quer que eu conduza esse passo agora?
+~~~
 `;
 }
 
@@ -1722,21 +1884,41 @@ TBD
 
 TBD
 
+## Delivery Scope Model
+
+Backlog guarda possibilidades. Roadmap organiza intenção de implementação. Delivery scope transforma intenção em compromisso de entrega.
+
+Use this lightweight header when a roadmap item becomes delivery-ready:
+
+~~~yaml
+scope_type: MVP | Release | Experiment | Beta | Internal
+milestone: TBD
+release_goal: TBD
+~~~
+
 ## Now
 
-TBD
+| Item | Outcome | Delivery Scope | Milestone | Release Goal | Status |
+| --- | --- | --- | --- | --- | --- |
+| TBD | TBD | none | TBD | TBD | candidate |
 
 ## Next
 
-TBD
+| Item | Outcome | Delivery Scope | Milestone | Release Goal | Status |
+| --- | --- | --- | --- | --- | --- |
+| TBD | TBD | none | TBD | TBD | candidate |
 
 ## Later
 
-TBD
+| Item | Outcome | Delivery Scope | Milestone | Release Goal | Status |
+| --- | --- | --- | --- | --- | --- |
+| TBD | TBD | none | TBD | TBD | candidate |
 
 ## Not Planned
 
-TBD
+| Item | Reason | Decision Date | Revisit Trigger |
+| --- | --- | --- | --- |
+| TBD | TBD | TBD | TBD |
 
 ## Decision Criteria
 
@@ -1857,9 +2039,17 @@ TBD
 
 ## Candidate Items
 
-| Item | Source | User/Business Value | Risk | Status |
-| --- | --- | --- | --- | --- |
-| TBD | TBD | TBD | TBD | candidate |
+| Item | Source | User/Business Value | Evidence | Risk | Roadmap Status |
+| --- | --- | --- | --- | --- | --- |
+| TBD | TBD | TBD | TBD | TBD | candidate |
+
+## Roadmap Status Values
+
+- candidate: worth tracking, not sequenced yet.
+- now: belongs to the current roadmap horizon.
+- next: likely next after current focus.
+- later: useful, but intentionally delayed.
+- not-planned: explicitly not pursued now.
 
 ## Prioritization Criteria
 
@@ -1976,7 +2166,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         path: "strategy/product",
         lead: {
           title: "Product Lead",
-          purpose: "Route product strategy work, choose the right product role and keep product decisions aligned with validation, roadmap and MVP scope."
+          purpose: "Route product strategy work, choose the right product role and keep product decisions aligned with validation, roadmap and delivery scope."
         },
         routingKey: "product",
         requestTypes: "product strategy, ICP, value proposition, positioning or business model",
@@ -2026,7 +2216,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             checks: ["The product can be explained in one paragraph.", "Problem and user are not treated as validated unless evidence exists.", "Open questions are explicit."],
             outputs: ["Product brief update", "Problem summary", "Open questions", "Recommended next validation or MVP step"],
             filesToUpdate: ["../knowledge/brief.md", "../knowledge/problem.md"],
-            redLines: ["Do not invent customer evidence.", "Do not define MVP scope here; route MVP scope to Product Ops.", "Do not update files without confirmation."]
+            redLines: ["Do not invent customer evidence.", "Do not define delivery scope here; route delivery-scope decisions to Product Ops.", "Do not update files without confirmation."]
           },
           {
             slug: "define-icp",
@@ -2070,7 +2260,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           {
             slug: "evaluate-idea",
             title: "Evaluate Idea",
-            purpose: "Evaluate a founder idea against user value, evidence, MVP scope and roadmap impact.",
+            purpose: "Evaluate a founder idea against user value, evidence, delivery-scope risk and roadmap impact.",
             useWhen: ["the founder proposes a new idea", "a feature request may change direction", "roadmap priority needs product judgment"],
             requiredContext: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/value-proposition.md", "../../roadmap/knowledge/backlog.md"],
             inputs: ["Idea", "Expected user value", "Evidence", "MVP impact", "Roadmap impact"],
@@ -2084,9 +2274,9 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "check-coherence",
             title: "Check Coherence",
             purpose: "Check alignment between ICP, problem, value proposition, MVP, roadmap and issue.",
-            useWhen: ["strategy feels inconsistent", "MVP scope may not match the problem", "roadmap or issue work needs product review"],
+            useWhen: ["strategy feels inconsistent", "delivery scope may not match the problem", "roadmap or issue work needs product review"],
             requiredContext: ["../knowledge/icp.md", "../knowledge/problem.md", "../knowledge/value-proposition.md", "../../../operations/product-ops/mvp/scope.md", "../../roadmap/knowledge/roadmap.md"],
-            inputs: ["ICP", "Problem", "Value proposition", "MVP scope", "Roadmap or issue"],
+            inputs: ["ICP", "Problem", "Value proposition", "Delivery scope", "Roadmap or issue"],
             process: ["Check ICP/problem fit.", "Check value proposition/problem fit.", "Check MVP/value fit.", "Check roadmap/MVP fit.", "List contradictions and next fixes."],
             checks: ["Findings separate alignment from inconsistency.", "Risks are actionable.", "Next command or workflow is clear."],
             outputs: ["Coherence score", "Aligned points", "Inconsistencies", "Risks", "Recommended next action"],
@@ -2100,7 +2290,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Product Strategy",
             purpose: "Move from raw product context to coherent strategy.",
             inputs: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/business-model-canvas.md", "../knowledge/validation-notes.md"],
-            steps: ["Load the Product AGENT and choose Product Strategist or Product Manager.", "Read the minimum Product knowledge files for the request.", "Clarify ICP, problem and value proposition before touching roadmap or MVP scope.", "Separate decisions, assumptions and open questions.", "Use validation or roadmap areas when the output affects evidence or sequencing.", "Propose file updates and wait for confirmation before writing."],
+            steps: ["Load the Product AGENT and choose Product Strategist or Product Manager.", "Read the minimum Product knowledge files for the request.", "Clarify ICP, problem and value proposition before touching roadmap or delivery scope.", "Separate decisions, assumptions and open questions.", "Use validation or roadmap areas when the output affects evidence or sequencing.", "Propose file updates and wait for confirmation before writing."],
+            guidedConversation: ["Use guided questions when the founder proposes a new idea, unclear product direction or a roadmap-impacting change.", "Offer numbered choices for idea destination: refine, validation note, roadmap candidate, discard or help me decide.", "Ask one decision question before any roadmap or MVP handoff.", "Let the founder answer with a number or free-form text."],
             outputs: ["Product strategy summary", "Updated Product knowledge proposal", "Assumptions or validation follow-up", "MVP or roadmap handoff when applicable"],
             filesToUpdate: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/business-model-canvas.md", "../knowledge/validation-notes.md"]
           }
@@ -2146,12 +2337,12 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           {
             slug: "create-roadmap",
             title: "Create Roadmap",
-            purpose: "Sequence roadmap work by business outcome, product value, MVP scope and delivery constraints.",
-            useWhen: ["the founder needs a roadmap", "product strategy needs execution sequence", "MVP scope needs a planning path"],
+            purpose: "Sequence roadmap work by business outcome, product value, delivery scope and delivery constraints.",
+            useWhen: ["the founder needs a roadmap", "product strategy needs execution sequence", "delivery scope needs a planning path"],
             requiredContext: ["../knowledge/roadmap.md", "../knowledge/current-cycle.md", "../../product/knowledge/brief.md", "../../../operations/product-ops/mvp/scope.md"],
-            inputs: ["Product strategy", "MVP scope", "Business constraints", "Known risks", "Candidate work"],
-            process: ["Clarify the roadmap objective.", "Separate Now, Next, Later and Not Planned.", "Connect items to outcomes.", "Identify dependencies and risks.", "Propose updates before writing."],
-            checks: ["Now items are small enough to execute.", "Roadmap items are not vague wishes.", "MVP scope is not expanded silently."],
+            inputs: ["Product strategy", "Optional MVP scope when this is the first delivery scope", "Business constraints", "Known risks", "Candidate work"],
+            process: ["Clarify the roadmap objective.", "Separate Now, Next, Later and Not Planned.", "Connect items to outcomes.", "Identify delivery scope type, milestone and release goal only when confirmed.", "Identify dependencies and risks.", "Propose updates before writing."],
+            checks: ["Now items are small enough to execute.", "Roadmap items are not vague wishes.", "Delivery scope is not expanded silently.", "MVP is treated as one delivery scope type, not the permanent roadmap model."],
             outputs: ["Roadmap proposal", "Current cycle proposal", "Risks and dependencies", "Open questions"],
             filesToUpdate: ["../knowledge/roadmap.md", "../knowledge/current-cycle.md"],
             redLines: ["Do not commit future work without founder confirmation.", "Do not invent milestones or dates.", "Do not turn backlog candidates into committed scope silently."]
@@ -2175,7 +2366,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             purpose: "Prepare roadmap epics, milestones and sync payload before GitHub Project updates.",
             useWhen: ["roadmap should be prepared for GitHub", "milestones need project sync readiness", "epics need draft payloads"],
             requiredContext: ["../knowledge/roadmap.md", "../knowledge/milestones.md", "../knowledge/current-cycle.md", "../../../operations/product-ops/mvp/scope.md", "../../../.github/leanos/project-sync.yaml"],
-            inputs: ["Roadmap", "Milestones", "Current cycle", "MVP scope", "GitHub project settings"],
+            inputs: ["Roadmap", "Milestones", "Current cycle", "Delivery scope", "GitHub project settings"],
             process: ["Check GitHub readiness.", "Map roadmap items to milestone candidates.", "Identify epic candidates.", "Prepare dry-run sync payload.", "Ask for confirmation before any remote write."],
             checks: ["No GitHub token is stored in workspace files.", "Remote writes require dry-run and confirmation.", "Duplicate epic risk is visible."],
             outputs: ["Sync readiness summary", "Milestone mapping", "Epic draft list", "Missing configuration"],
@@ -2187,9 +2378,9 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           {
             slug: "roadmap-cycle-planning",
             title: "Roadmap Cycle Planning",
-            purpose: "Plan the next coherent roadmap cycle from strategy, MVP scope, constraints and known risks.",
+            purpose: "Plan the next coherent roadmap cycle from strategy, delivery scope, constraints and known risks.",
             inputs: ["../knowledge/roadmap.md", "../knowledge/current-cycle.md", "../knowledge/backlog.md", "../../product/knowledge/brief.md", "../../../operations/product-ops/mvp/scope.md"],
-            steps: ["Load the Roadmap AGENT and Roadmap Planner role.", "Review product strategy and MVP scope.", "Review backlog candidates.", "Choose Now, Next, Later and Not Planned boundaries.", "Define current cycle goal and success criteria.", "Propose updates and wait for confirmation before writing."],
+            steps: ["Load the Roadmap AGENT and Roadmap Planner role.", "Review product strategy and delivery scope context. Treat MVP scope as optional when this is the first product delivery.", "Review backlog candidates.", "Choose Now, Next, Later and Not Planned boundaries.", "Define current cycle goal and success criteria.", "Propose updates and wait for confirmation before writing."],
             outputs: ["Roadmap cycle summary", "Current cycle proposal", "Backlog changes", "Milestone follow-up"],
             filesToUpdate: ["../knowledge/roadmap.md", "../knowledge/current-cycle.md", "../knowledge/backlog.md"]
           },
@@ -2198,7 +2389,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Roadmap Sync Prep",
             purpose: "Prepare roadmap items for GitHub Project sync without calling the API directly.",
             inputs: ["../knowledge/roadmap.md", "../knowledge/milestones.md", "../knowledge/current-cycle.md", "../knowledge/backlog.md", "../../../operations/product-ops/mvp/scope.md", "../../../.github/leanos/project-sync.yaml"],
-            steps: ["Read roadmap and milestones", "Identify candidate epics", "Check MVP and validation linkage", "Ask DevOps to confirm GitHub project settings when needed", "Prepare sync payload", "Ask for confirmation before any remote write"],
+            steps: ["Read roadmap and milestones", "Identify candidate epics", "Check delivery scope, MVP when applicable and validation linkage", "Ask DevOps to confirm GitHub project settings when needed", "Prepare sync payload", "Ask for confirmation before any remote write"],
             outputs: ["Roadmap sync summary", "Milestone mapping", "Epic draft list", "Missing GitHub configuration", "Confirmation question before API execution"],
             filesToUpdate: ["Update `../knowledge/roadmap.md`, `../knowledge/milestones.md` or `../knowledge/current-cycle.md` only after explicit confirmation.", "Update `../../../.github/leanos/project-sync.yaml` only through DevOps/GitHub setup guidance."]
           }
@@ -2261,15 +2452,25 @@ export const rootDepartments: RootDepartmentDefinition[] = [
     workflows: [
       {
         slug: "new-idea-intake",
-        purpose: "Capture, qualify and decide the next destination of a founder idea before it becomes roadmap, MVP scope or implementation work.",
+        purpose: "Capture, qualify and decide the next destination of a founder idea before it becomes roadmap, delivery scope or implementation work.",
         requiredAreas: ["product", "roadmap"],
-        steps: ["Read product strategy", "Restate the founder idea in plain language", "Evaluate idea against ICP, problem, value proposition, evidence and current focus", "Identify assumptions, evidence gaps and opportunity cost", "Route to Roadmap only if backlog or sequencing impact needs review", "Recommend reject, park, validation note, backlog candidate or roadmap candidate", "Ask for confirmation before recording the idea anywhere"]
+        steps: ["Read product strategy", "Restate the founder idea in plain language", "Evaluate idea against ICP, problem, value proposition, evidence and current focus", "Identify assumptions, evidence gaps and opportunity cost", "Route to Roadmap only if backlog or sequencing impact needs review", "Recommend reject, park, validation note, backlog candidate or roadmap candidate", "Ask for confirmation before recording the idea anywhere"],
+        continuationBridge: {
+          immediate: "Essa ideia parece forte o bastante para ser acompanhada.\nQuer que eu transforme isso em um item de roadmap ou backlog para decidirmos prioridade e momento?",
+          laterTriggers: ["vamos colocar aquela ideia no roadmap", "quero salvar essa ideia no backlog", "vamos priorizar a ideia que discutimos", "essa ideia merece entrar no produto?"],
+          nextRoute: "idea-to-roadmap"
+        }
       },
       {
         slug: "idea-to-roadmap",
-        purpose: "Promote a qualified idea into a roadmap or backlog item without assuming MVP scope or GitHub execution.",
+        purpose: "Promote a qualified idea into a roadmap or backlog item without assuming delivery scope or GitHub execution.",
         requiredAreas: ["product", "roadmap"],
-        steps: ["Confirm the idea already passed intake", "Read product strategy and roadmap context", "Define problem, user, expected value, dependencies and evidence level", "Classify the item as backlog, Now, Next, Later or Not Planned", "Do not mark as MVP unless the next workflow confirms it", "Propose roadmap or backlog updates and wait for confirmation before writing"]
+        steps: ["Confirm the idea already passed intake", "Read product strategy and roadmap context", "Define problem, user, expected value, dependencies and evidence level", "Classify the item as backlog, Now, Next, Later or Not Planned", "Do not mark as MVP unless the next workflow confirms it", "Propose roadmap or backlog updates and wait for confirmation before writing"],
+        continuationBridge: {
+          immediate: "Esse item agora esta organizado como roadmap/backlog.\nQuer que eu avalie se ele deve entrar em uma entrega planejada, como MVP, release, experimento ou beta?",
+          laterTriggers: ["isso entra no MVP?", "isso entra na proxima entrega?", "vamos planejar a entrega desse item", "vamos transformar esse item do roadmap em escopo", "qual milestone recebe esse item?"],
+          nextRoute: "roadmap-item-to-delivery-scope"
+        }
       },
       {
         slug: "strategy-validation-cycle",
@@ -2289,7 +2490,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
     key: "operations",
     name: "Operations",
     purpose: "Own product operations, design, engineering, DevOps and security for delivery.",
-    requestTypes: "MVP scope, issue readiness, design, engineering, implementation, DevOps or security",
+    requestTypes: "delivery scope, issue readiness, design, engineering, implementation, DevOps or security",
     areas: [
       {
         key: "operations.product-ops",
@@ -2299,18 +2500,20 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         path: "operations/product-ops",
         lead: {
           title: "Product Ops Lead",
-          purpose: "Route MVP scope, epic shaping, issue readiness and delivery-boundary work before Engineering starts implementation."
+          purpose: "Route delivery scope, epic shaping, issue readiness and delivery-boundary work before Engineering starts implementation."
         },
         routingKey: "product_ops",
-        requestTypes: "MVP scope, acceptance criteria, epics, sub-issues, issue readiness or delivery boundaries",
-        purpose: "Turn Strategy and Roadmap into MVP scope, acceptance criteria and implementation-ready work.",
+        requestTypes: "delivery scope, acceptance criteria, epics, sub-issues, issue readiness or delivery boundaries",
+        purpose: "Turn Strategy and Roadmap into delivery scope, acceptance criteria and implementation-ready work.",
         whenToUse: ["define MVP", "shape acceptance criteria", "break epics into sub-issues", "check issue readiness", "coordinate delivery scope"],
-        sourceOfTruth: ["knowledge/overview.md", "knowledge/delivery-context.md", "knowledge/issue-readiness.md", "knowledge/technical-decisions.md", "mvp/scope.md", "mvp/prd.md", "mvp/user-stories.md", "mvp/acceptance-criteria.md"],
+        sourceOfTruth: ["knowledge/overview.md", "knowledge/delivery-scope.md", "knowledge/delivery-context.md", "knowledge/issue-readiness.md", "knowledge/ready-to-develop.md", "knowledge/technical-decisions.md", "mvp/scope.md", "mvp/prd.md", "mvp/user-stories.md", "mvp/acceptance-criteria.md"],
         files: [
-          { path: "knowledge/README.md", content: () => folderReadme("Product Ops Knowledge", "Durable operational context produced by Product Ops.", "Use when turning strategy and roadmap into MVP scope, issue readiness and delivery boundaries.", "overview.md", ["overview.md", "delivery-context.md", "issue-readiness.md", "technical-decisions.md"], ["../roles/", "../skills/", "../playbooks/", "../mvp/", "../../../strategy/product/", "../../../strategy/roadmap/"], "Keep this folder focused on delivery context. Do not move full architecture, API contracts or data models here before the product stack exists.") },
+          { path: "knowledge/README.md", content: () => folderReadme("Product Ops Knowledge", "Durable operational context produced by Product Ops.", "Use when turning strategy and roadmap into delivery scope, issue readiness and delivery boundaries.", "overview.md", ["overview.md", "delivery-scope.md", "delivery-context.md", "issue-readiness.md", "ready-to-develop.md", "technical-decisions.md"], ["../roles/", "../skills/", "../playbooks/", "../mvp/", "../../../strategy/product/", "../../../strategy/roadmap/"], "Keep this folder focused on delivery context. Do not move full architecture, API contracts or data models here before the product stack exists.") },
           { path: "knowledge/overview.md", content: productOpsOverviewKnowledge },
+          { path: "knowledge/delivery-scope.md", content: deliveryScopeKnowledge },
           { path: "knowledge/delivery-context.md", content: deliveryContextKnowledge },
           { path: "knowledge/issue-readiness.md", content: issueReadinessKnowledge },
+          { path: "knowledge/ready-to-develop.md", content: readyToDevelopKnowledge },
           { path: "knowledge/technical-decisions.md", content: () => decisionLog("Technical Decisions") },
           { path: "mvp/README.md", content: () => folderReadme("MVP", "MVP execution knowledge owned by Product Ops.", "Use for MVP scope, PRD, stories, flows, acceptance criteria and release readiness.", "scope.md", ["scope.md", "prd.md", "user-stories.md", "user-flows.md", "acceptance-criteria.md", "non-goals.md", "release-checklist.md"], ["../knowledge/", "../roles/", "../skills/", "../playbooks/", "../../../strategy/product/", "../../../strategy/roadmap/"], "MVP work is owned by Product Ops with Product/PM supervision. Keep implementation details out until Engineering starts.") },
           { path: "mvp/scope.md", content: mvpScopeKnowledge },
@@ -2327,21 +2530,34 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Product Owner",
             purpose: "Own MVP execution clarity with supervision from Product and PM strategy.",
             useWhen: ["MVP scope needs definition", "acceptance criteria are unclear", "delivery scope needs coordination", "an epic needs to be broken into sub-issues"],
-            beforeActing: ["../knowledge/overview.md", "../knowledge/issue-readiness.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/knowledge/brief.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md"],
-            skills: ["define-mvp", "write-acceptance-criteria", "check-delivery-coherence", "shape-epic", "write-subissue-criteria"],
-            playbooks: ["mvp-delivery", "epic-to-subissues"]
+            beforeActing: ["../knowledge/overview.md", "../knowledge/delivery-scope.md", "../knowledge/issue-readiness.md", "../knowledge/ready-to-develop.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md"],
+            skills: ["define-delivery-scope", "define-mvp", "write-acceptance-criteria", "check-delivery-coherence", "shape-epic", "write-subissue-criteria"],
+            playbooks: ["delivery-scope-planning", "mvp-delivery", "epic-to-subissues"]
           },
           {
             slug: "delivery-architect",
             title: "Delivery Architect",
             purpose: "Define delivery boundaries, technical constraints and implementation readiness without overdesigning architecture too early.",
             useWhen: ["delivery boundaries are unclear", "technical constraints affect scope", "implementation readiness needs review", "technical decisions need recording"],
-            beforeActing: ["../knowledge/overview.md", "../knowledge/delivery-context.md", "../knowledge/technical-decisions.md", "../mvp/scope.md"],
+            beforeActing: ["../knowledge/overview.md", "../knowledge/delivery-context.md", "../knowledge/ready-to-develop.md", "../knowledge/technical-decisions.md", "../mvp/scope.md"],
             skills: ["define-delivery-boundaries", "check-delivery-coherence"],
             playbooks: ["delivery-readiness"]
           }
         ],
         skills: [
+          {
+            slug: "define-delivery-scope",
+            title: "Define Delivery Scope",
+            purpose: "Decide whether a roadmap item becomes a concrete delivery scope and capture scope_type, milestone and release_goal.",
+            useWhen: ["a roadmap item may enter the next delivery", "the founder asks whether something enters MVP, release, beta or experiment scope", "a roadmap item needs Product Ops shaping before epic creation"],
+            requiredContext: ["../knowledge/delivery-scope.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../strategy/roadmap/knowledge/backlog.md", "../../../strategy/product/knowledge/brief.md"],
+            inputs: ["Roadmap item", "Product outcome", "User/business value", "Evidence level", "Scope type", "Milestone", "Release goal", "Known constraints"],
+            process: ["Restate the roadmap item and outcome.", "Confirm whether the item is ready for delivery scope or should remain roadmap/backlog.", "Choose scope_type: MVP, Release, Experiment, Beta or Internal.", "Define milestone and release_goal.", "Identify non-goals, dependencies and risks.", "Check Design, Security and DevOps applicability.", "Propose file updates and wait for confirmation before writing."],
+            checks: ["The roadmap item is clear enough to scope.", "The scope_type is explicit.", "Milestone and release_goal are not invented silently.", "Non-goals are visible.", "The item is not sent to GitHub before delivery scope is confirmed."],
+            outputs: ["Delivery scope recommendation", "scope_type", "milestone", "release_goal", "Non-goals", "Dependencies", "Next workflow recommendation"],
+            filesToUpdate: ["Update `../knowledge/delivery-scope.md` only after explicit confirmation.", "Update `../mvp/scope.md` only when `scope_type` is MVP and the founder confirms.", "Do not create GitHub issues from this skill."],
+            redLines: ["Do not treat roadmap priority as delivery commitment.", "Do not mark an item as MVP just because it is important.", "Do not create epics or sub-issues in this step."]
+          },
           { slug: "define-mvp", title: "Define MVP", purpose: "Turn strategy into the smallest coherent validation scope." },
           { slug: "write-acceptance-criteria", title: "Write Acceptance Criteria", purpose: "Define completion criteria for MVP work." },
           { slug: "check-delivery-coherence", title: "Check Delivery Coherence", purpose: "Check that delivery scope matches strategy, roadmap and acceptance criteria." },
@@ -2350,7 +2566,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Shape Epic",
             purpose: "Turn a roadmap epic into an implementation-ready scope boundary before sub-issues are created.",
             useWhen: ["a roadmap item needs to become a GitHub epic", "an existing epic needs enough clarity to be broken down", "the team needs to confirm outcome, scope and non-goals before issue creation"],
-            requiredContext: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/issue-readiness.md", "../mvp/prd.md", "../mvp/scope.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md"],
+            requiredContext: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/issue-readiness.md", "../knowledge/ready-to-develop.md", "../mvp/prd.md", "../mvp/scope.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md"],
             inputs: ["Parent epic or roadmap item", "Product outcome", "MVP scope", "Non-goals", "Milestone or current cycle", "Known dependencies"],
             process: ["Restate the epic outcome in one sentence.", "Confirm the user, problem and business value.", "Identify scope boundaries and non-goals.", "Map the epic to MVP scope, PRD and roadmap milestone.", "List likely sub-issue slices without creating them yet.", "Mark missing context explicitly instead of inventing it."],
             checks: ["Outcome is clear.", "Scope and non-goals are explicit.", "The epic can be split without losing product intent.", "Missing Product, Design, Security, DevOps or Engineering input is called out."],
@@ -2363,7 +2579,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Write Subissue Criteria",
             purpose: "Apply the Delivery Readiness Matrix (DRM) to draft implementation-ready sub-issues.",
             useWhen: ["an epic is ready to be broken into sub-issues", "sub-issues need Product, Design, Engineering, Security or DevOps criteria", "GitHub issue drafts need to be prepared before remote creation"],
-            requiredContext: ["../AGENT.md", "../knowledge/issue-readiness.md", "../mvp/prd.md", "../mvp/acceptance-criteria.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md", "../../../ai-standard/templates/github/github-subissue-template.md"],
+            requiredContext: ["../AGENT.md", "../knowledge/issue-readiness.md", "../knowledge/ready-to-develop.md", "../mvp/prd.md", "../mvp/acceptance-criteria.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md", "../../../ai-standard/templates/github/github-subissue-template.md"],
             inputs: ["Ready epic", "MVP scope", "PRD", "Acceptance criteria", "Delivery Readiness Matrix", "Applicable Design, Security, DevOps and Engineering context"],
             process: ["Write Product Ops criteria for every sub-issue.", "Write Engineering criteria for every implementation sub-issue.", "Add Design criteria only when the sub-issue affects UX, UI, flow, copy, accessibility or interaction.", "Add Security criteria only when the sub-issue touches data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk.", "Add DevOps criteria only when the sub-issue touches environments, CI/CD, deploy, observability, GitHub Project, config or release readiness.", "Mark non-applicable dimensions explicitly with a reason.", "Produce drafts and ask for confirmation before remote creation."],
             checks: ["Every sub-issue has Product Ops and Engineering clarity.", "Design is included or explicitly not applicable.", "Security is included or explicitly not applicable.", "DevOps is included or explicitly not applicable.", "Dependencies and risks are visible.", "No GitHub write happens without confirmation."],
@@ -2374,6 +2590,15 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           { slug: "define-delivery-boundaries", title: "Define Delivery Boundaries", purpose: "Define enough technical and operational boundaries for safe implementation without creating premature architecture artifacts." }
         ],
         playbooks: [
+          {
+            slug: "delivery-scope-planning",
+            title: "Delivery Scope Planning",
+            purpose: "Turn a roadmap item into a confirmed delivery scope without creating epics, issues or code.",
+            inputs: ["Roadmap item", "Product brief", "Backlog and roadmap status", "Existing delivery scope", "MVP scope when scope_type is MVP", "Known constraints"],
+            steps: ["Read Product Ops AGENT and choose the Product Owner role.", "Read roadmap item, product brief and current delivery scope.", "Use `skills/define-delivery-scope.skill.md` to decide whether the item becomes delivery scope.", "Set `scope_type`, `milestone` and `release_goal` only after the founder confirms.", "Define non-goals, dependencies and applicability for Design, Security and DevOps.", "If `scope_type` is MVP, map the decision to MVP files.", "Propose file updates and wait for confirmation before writing."],
+            outputs: ["Delivery scope proposal", "scope_type", "milestone", "release_goal", "Non-goals", "Design/Security/DevOps applicability", "Recommended next workflow"],
+            filesToUpdate: ["Update `../knowledge/delivery-scope.md` only after explicit confirmation.", "Update `../mvp/scope.md`, `../mvp/prd.md`, `../mvp/non-goals.md` and `../mvp/acceptance-criteria.md` only when `scope_type` is MVP and the founder confirms.", "Do not update GitHub from this playbook."]
+          },
           {
             slug: "mvp-delivery",
             title: "MVP Delivery",
@@ -2400,7 +2625,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "delivery-readiness",
             title: "Delivery Readiness",
             purpose: "Confirm that an issue or MVP slice has enough product, technical and operational clarity to enter Engineering.",
-            inputs: ["Issue or MVP slice", "Product Ops overview", "MVP scope", "PRD", "Acceptance criteria", "Issue readiness notes", "Design and Security context when applicable"],
+            inputs: ["Issue or MVP slice", "Product Ops overview", "Ready To Develop criteria", "MVP scope", "PRD", "Acceptance criteria", "Issue readiness notes", "Design and Security context when applicable"],
             steps: ["Read Product Ops AGENT and choose the Delivery Architect role", "Review MVP scope, PRD and acceptance criteria", "Identify dependencies and technical constraints", "Check Design and Security applicability", "Capture only confirmed technical decisions", "Recommend ready, needs product shaping, needs design, needs security or blocked"],
             outputs: ["Delivery readiness result", "Missing criteria", "Dependencies", "Design or Security applicability", "Technical decision notes", "Recommended next action"],
             filesToUpdate: ["Update `../knowledge/issue-readiness.md`, `../knowledge/delivery-context.md` or `../knowledge/technical-decisions.md` only after explicit confirmation."]
@@ -2408,6 +2633,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         ],
         commonPaths: [
           "Product Ops request: area lead `AGENT.md` -> choose Product Owner or Delivery Architect -> load only the required skills and playbook.",
+          "Delivery scope request: role `roles/product-owner.role.md` -> skill `skills/define-delivery-scope.skill.md` -> playbook `playbooks/delivery-scope-planning.playbook.md`.",
           "MVP request: role `roles/product-owner.role.md` -> skill `skills/define-mvp.skill.md` -> playbook `playbooks/mvp-delivery.playbook.md`.",
           "Epic breakdown request: role `roles/product-owner.role.md` -> skills `skills/shape-epic.skill.md` and `skills/write-subissue-criteria.skill.md` -> playbook `playbooks/epic-to-subissues.playbook.md`.",
           "Delivery readiness request: role `roles/delivery-architect.role.md` -> skill `skills/define-delivery-boundaries.skill.md` -> playbook `playbooks/delivery-readiness.playbook.md`."
@@ -3429,16 +3655,33 @@ export const rootDepartments: RootDepartmentDefinition[] = [
     ],
     workflows: [
       {
+        slug: "roadmap-item-to-delivery-scope",
+        purpose: "Decide whether a roadmap item becomes a concrete delivery scope before epic, issue or implementation work.",
+        requiredAreas: ["product-ops"],
+        steps: ["Confirm the roadmap item exists and has enough product context", "Load Product Ops and choose Product Owner", "Use delivery scope planning to decide scope_type, milestone and release_goal", "Route Design only when user-facing UX is affected", "Route Security only when data, auth, privacy, abuse, API, compliance or AI-generated-code risk is involved", "Route DevOps only when environments, deploy, GitHub project, observability or release readiness are affected", "Ask for confirmation before updating delivery scope or MVP files", "Stop before GitHub epics, sub-issues, branches or code"],
+        continuationBridge: {
+          immediate: "Esse delivery scope esta definido.\nQuer que eu prepare isso para virar epicos no GitHub Projects?",
+          laterTriggers: ["vamos criar o epico disso", "manda esse scope para o GitHub", "cria os epicos desse delivery item", "vamos quebrar isso em epicos", "vamos atualizar o GitHub Projects com esse delivery item"],
+          nextRoute: "delivery-scope-to-epic",
+          rules: [
+            "Do not automatically start the next journey without founder confirmation.",
+            "If the founder says yes, declare the new route before loading GitHub, DevOps or epic-planning files.",
+            "If the founder says no, explain the delivery-scope outcome and stop without writing anything else.",
+            "If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `delivery-scope-to-epic`."
+          ]
+        }
+      },
+      {
         slug: "mvp-to-pr",
         purpose: "Coordinate Product Ops, Design and Engineering for delivery.",
         requiredAreas: ["product-ops", "engineering"],
-        steps: ["Read MVP scope", "Check architecture", "Route UX if needed", "Plan implementation", "Prepare PR"]
+        steps: ["Read delivery scope", "Check architecture", "Route UX if needed", "Plan implementation", "Prepare PR"]
       },
       {
         slug: "issue-delivery-cycle",
         purpose: "Coordinate Operations areas from issue interpretation to branch, implementation, review and PR.",
         requiredAreas: ["product-ops", "engineering"],
-        steps: ["Read issue and MVP scope", "Route Design only when UX is affected", "Route Security only when data, auth, privacy, abuse or compliance is involved", "Create issue-linked branch", "Plan and implement in Engineering", "Run tests or explain gaps", "Run PR validation", "Prepare PR"]
+        steps: ["Read issue and delivery scope", "Route Design only when UX is affected", "Route Security only when data, auth, privacy, abuse or compliance is involved", "Create issue-linked branch", "Plan and implement in Engineering", "Run tests or explain gaps", "Run PR validation", "Prepare PR"]
       },
       {
         slug: "post-merge-continuation",

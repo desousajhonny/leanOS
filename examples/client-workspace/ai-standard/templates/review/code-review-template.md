@@ -5,7 +5,7 @@
 - PR:
 - Linked issue:
 - Parent epic:
-- MVP scope:
+- Delivery scope:
 - Acceptance criteria:
 
 ## Findings

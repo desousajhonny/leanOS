@@ -14,6 +14,7 @@ Use when a selected role points to a skill.
 
 ## Files
 
+- `define-delivery-scope.skill.md`
 - `define-mvp.skill.md`
 - `write-acceptance-criteria.skill.md`
 - `check-delivery-coherence.skill.md`

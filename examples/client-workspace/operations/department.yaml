@@ -19,6 +19,8 @@ department:
       agent: security/AGENT.md
       readme: security/README.md
   workflows:
+    - key: roadmap-item-to-delivery-scope
+      path: workflows/roadmap-item-to-delivery-scope.workflow.md
     - key: mvp-to-pr
       path: workflows/mvp-to-pr.workflow.md
     - key: issue-delivery-cycle

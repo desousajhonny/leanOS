@@ -19,6 +19,7 @@ Use when defining how LeanOS Chief loads context, activates routes and formats o
 - `context-loading.md`
 - `role-activation.md`
 - `output-standards.md`
+- `protocols/`
 
 ## Related Folders
 
@@ -32,4 +33,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-Keep this folder concise. Route product work to root departments and areas.
+Keep this folder concise. Route product work to root departments and areas. Protocols are internal agent procedures, not product workflows.

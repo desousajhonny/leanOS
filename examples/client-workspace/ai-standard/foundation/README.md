@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Core LeanOS foundation for asset taxonomy, navigation, naming, creation and quality.
+Core LeanOS foundation for asset taxonomy, navigation, naming, guided conversation, creation and quality.
 
 ## When to Use
 
-Start here when deciding what kind of asset exists, where it belongs or how to judge quality.
+Start here when deciding what kind of asset exists, where it belongs, how to talk to the founder or how to judge quality.
 
 ## Source of Truth
 
@@ -16,6 +16,7 @@ Start here when deciding what kind of asset exists, where it belongs or how to j
 
 - `asset-taxonomy.md`
 - `navigation-chain.md`
+- `guided-conversation.md`
 - `creation-rules.md`
 - `quality-criteria.md`
 - `naming-conventions.md`

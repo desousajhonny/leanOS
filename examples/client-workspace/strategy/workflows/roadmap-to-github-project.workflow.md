@@ -22,6 +22,8 @@ All required areas are active in this department.
 4. Ask DevOps to validate GitHub project settings when needed
 5. Produce payload and ask for confirmation before API execution
 
+
+
 ## Navigation
 
 Use Strategy area READMEs for each step to preserve area-first ownership.

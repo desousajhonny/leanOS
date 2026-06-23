@@ -60,10 +60,18 @@ Use this department for ${department.requestTypes}.
 
 ## Routing Rules
 
-1. If the request spans multiple active areas, open \`workflows/README.md\` and choose the smallest matching workflow.
-2. If the request belongs to one area, route to that area README.
-3. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
-4. Do not load roles, skills or playbooks before entering the owning area.
+1. If the founder request is a journey, open \`workflows/README.md\` and choose the smallest matching workflow.
+2. A journey changes state, priority, scope, handoff, roadmap, delivery, launch or learning.
+3. If the request belongs to one area and one asset family, route to that area ${areas.some((area) => area.lead) ? "\`AGENT.md\` when present; otherwise route to its README" : "README"}.
+4. If you are unsure, check \`workflows/README.md\` first; if no workflow matches, route to the smallest active area.
+5. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
+6. Do not load roles, skills or playbooks before entering the owning area.
+
+## Journey Signals
+
+Use \`workflows/README.md\` when the founder asks for a multi-step decision or transition, such as:
+
+${departmentJourneySignals(department)}
 
 ## Active Areas
 
@@ -73,7 +81,7 @@ ${areas.map((area) => `- ${area.name}: \`${area.slug}/${area.lead ? "AGENT.md" :
 
 - Department workflows: \`workflows/README.md\`
 
-Use workflows for cross-area sequencing. Use area playbooks for tactical execution inside one area.
+Use workflows for multi-step journeys and cross-area sequencing. Use area playbooks for tactical execution inside one area.
 
 ## Navigation
 
@@ -91,6 +99,30 @@ function departmentOperatingOwner(department: RootDepartmentDefinition): string 
   };
 
   return owners[department.key];
+}
+
+function departmentJourneySignals(department: RootDepartmentDefinition): string {
+  const signals: Record<RootDepartmentDefinition["key"], string[]> = {
+    strategy: [
+      "evaluating a new idea before roadmap or MVP",
+      "deciding whether an idea should enter roadmap",
+      "changing product direction, priority or sequencing",
+      "preparing roadmap sync or strategic handoff"
+    ],
+    operations: [
+      "turning delivery scope into executable work",
+      "shaping epics or sub-issues before implementation",
+      "coordinating design, engineering, security or DevOps handoffs",
+      "moving from issue to implementation, PR or post-merge follow-up"
+    ],
+    growth: [
+      "planning launch, learning or acquisition loops",
+      "connecting customer feedback to product or marketing decisions",
+      "reviewing pricing, finance or growth tradeoffs"
+    ]
+  };
+
+  return signals[department.key].map((signal) => `- ${signal}`).join("\n");
 }
 
 function departmentReadme(department: RootDepartmentDefinition, areas: AreaDefinition[]): string {
@@ -157,9 +189,48 @@ ${missingAreas.length > 0 ? `## Availability\n\nThis workflow references areas t
 
 ${workflow.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}
 
+${workflow.continuationBridge ? continuationBridgeSection(workflow) : ""}
+
 ## Navigation
 
 Use ${department.name} area READMEs for each step to preserve area-first ownership.
+`;
+}
+
+function continuationBridgeSection(workflow: DepartmentWorkflowDefinition): string {
+  const bridge = workflow.continuationBridge;
+  if (!bridge) {
+    return "";
+  }
+
+  const rules = bridge.rules ?? [
+    "Do not automatically start the next journey without founder confirmation.",
+    "If the founder says yes, declare the new route before loading the next workflow.",
+    "If the founder says no, explain the current outcome and stop without writing anything else.",
+    "If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md` and route normally."
+  ];
+
+  return `## Continuation Bridge
+
+At the end of this workflow, offer one clear next-step bridge when a safe next flow exists.
+
+Immediate bridge:
+
+\`\`\`text
+${bridge.immediate}
+\`\`\`
+
+Later-session triggers:
+
+${bridge.laterTriggers.map((trigger) => `- "${trigger}"`).join("\n")}
+
+Next route:
+
+\`${bridge.nextRoute}\`
+
+Rules:
+
+${rules.map((rule) => `- ${rule}`).join("\n")}
 `;
 }
 
@@ -426,8 +497,7 @@ ${(playbook.inputs ?? ["Area knowledge", "Active role instructions", "User reque
 
 ## Steps
 
-${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}
-
+${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}${playbook.guidedConversation ? `\n\n${guidedConversationSection(playbook.guidedConversation)}\n` : "\n"}
 ## Security Gate
 
 ${(playbook.securityGate ?? ["Stop when security context is missing or risk is unclear."]).map((item) => `- ${item}`).join("\n")}
@@ -463,8 +533,7 @@ ${(playbook.inputs ?? ["Area source-of-truth files", "Active role instructions",
 
 ## Process
 
-${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}
-
+${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}${playbook.guidedConversation ? `\n\n${guidedConversationSection(playbook.guidedConversation)}\n` : "\n"}
 ## Output
 
 ${(playbook.outputs ?? ["Decision or action summary", "Updated source-of-truth files when requested", "Next recommended LeanOS command"]).map((output) => `- ${output}`).join("\n")}
@@ -491,8 +560,7 @@ ${playbook.purpose}
 
 ## Sequence
 
-${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}
-
+${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}${playbook.guidedConversation ? `\n\n${guidedConversationSection(playbook.guidedConversation)}\n` : "\n"}
 ## Outputs
 
 - Decision or action summary
@@ -503,4 +571,14 @@ ${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}
 
 Start from \`${areaOwner}\`, choose a role in \`../roles/\`, load required skills in \`../skills/\`, then use this playbook.
 `;
+}
+
+function guidedConversationSection(items: string[]): string {
+  return `## Guided Conversation
+
+Use \`../../../ai-standard/foundation/guided-conversation.md\`.
+
+${items.map((item) => `- ${item}`).join("\n")}
+
+Do not ask a rigid questionnaire. Ask only what is missing.`;
 }

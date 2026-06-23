@@ -4,7 +4,7 @@
 
 Draft GitHub-ready issues.
 
-Draft GitHub-ready epics and sub-issues from roadmap, MVP scope and issue readiness criteria.
+Draft GitHub-ready epics and sub-issues from roadmap, delivery scope and issue readiness criteria.
 
 ## Load First
 
@@ -30,7 +30,7 @@ Read:
 
 ## Process
 
-1. Identify the roadmap item, MVP scope, milestone and parent epic context.
+1. Identify the roadmap item, delivery scope, milestone and parent epic context.
 2. Route through Product Ops and load `../../operations/product-ops/playbooks/epic-to-subissues.playbook.md`.
 3. Apply the Delivery Readiness Matrix (DRM) before drafting work.
 4. Use Product Ops criteria for every epic and sub-issue.

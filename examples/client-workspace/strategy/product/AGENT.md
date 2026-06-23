@@ -8,7 +8,7 @@ Use `README.md` as the directory map. Use `area.yaml` when machine-readable stru
 
 ## Operating Scope
 
-Route product strategy work, choose the right product role and keep product decisions aligned with validation, roadmap and MVP scope.
+Route product strategy work, choose the right product role and keep product decisions aligned with validation, roadmap and delivery scope.
 
 
 

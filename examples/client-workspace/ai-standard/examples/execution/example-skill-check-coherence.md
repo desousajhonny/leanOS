@@ -7,7 +7,7 @@ Check alignment between ICP, problem, value proposition, MVP, roadmap and issue.
 ## Use When
 
 - strategy feels inconsistent
-- MVP scope may not match the problem
+- delivery scope may not match the problem
 - roadmap or issue work needs product review
 
 ## Required Context
@@ -23,7 +23,7 @@ Check alignment between ICP, problem, value proposition, MVP, roadmap and issue.
 - ICP
 - Problem
 - Value proposition
-- MVP scope
+- Delivery scope
 - Roadmap or issue
 
 ## Process

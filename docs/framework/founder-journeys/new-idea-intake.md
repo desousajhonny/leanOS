@@ -8,6 +8,44 @@ This journey designs how LeanOS should handle a founder saying:
 
 The purpose is not to add the idea to the roadmap immediately. The purpose is to understand, qualify and decide the next destination of the idea.
 
+## Human Overview
+
+- **Trigger:** founder says they have an idea or wants to evaluate a new feature.
+- **Goal:** understand whether the idea should be rejected, refined, saved as a note or promoted to roadmap consideration.
+- **Starts at:** Root `AGENT.md`, then `strategy/AGENT.md`.
+- **Passes through:** `new-idea-intake.workflow.md`, Product Strategist and Product Strategy playbook.
+- **Ends with:** a founder-friendly recommendation and a decision pause.
+- **Does not do:** add to roadmap automatically, define MVP, create GitHub issues or start implementation.
+
+## Flow Diagram
+
+```mermaid
+flowchart TD
+  A["Founder: tenho uma ideia"]
+  B["Root AGENT"]
+  C["Strategy AGENT"]
+  D["new-idea-intake workflow"]
+  E{"Route files exist?"}
+  F["Product Strategist"]
+  G["Product Strategy playbook"]
+  H["Guided questions"]
+  I{"Destination?"}
+  J["Reject / refine / note"]
+  K["Handoff: idea-to-roadmap"]
+  L["Explain missing route to founder"]
+  M["Stop and map gap"]
+
+  A --> B --> C --> D --> E
+  E -->|Yes| F --> G --> H --> I
+  E -->|No| L --> M
+  I -->|Not ready| J
+  I -->|Promote| K
+```
+
+## Flow In Plain Words
+
+The model starts at Root `AGENT.md` because the founder is speaking in natural language. It enters Strategy because the request is about product direction, reads `new-idea-intake.workflow.md` because this is a decision journey, activates Product because the first question is product fit, and ends by asking whether the idea should be discarded, refined, saved as a note or handed off to `idea-to-roadmap`.
+
 ## Founder Trigger
 
 Real phrases that can start this journey:
@@ -31,7 +69,7 @@ It can happen:
 
 ## Human Goal
 
-The founder wants to know whether a new idea deserves attention without accidentally turning it into roadmap, MVP scope or implementation work too early.
+The founder wants to know whether a new idea deserves attention without accidentally turning it into roadmap, delivery scope or implementation work too early.
 
 In founder-friendly language:
 
@@ -57,7 +95,7 @@ The idea can end as:
 - registered as a validation note;
 - moved to product backlog;
 - recommended for `idea-to-roadmap`;
-- recommended for `roadmap-item-to-mvp-scope` only after it already becomes a roadmap item.
+- recommended for `roadmap-item-to-delivery-scope` only after it already becomes a roadmap item.
 
 ## Owner
 
@@ -91,7 +129,7 @@ Rules:
 - The model must declare the route before evaluating the idea.
 - The model uses Product first because the first question is product fit, not delivery planning.
 - Roadmap enters only when the Product evaluation says the idea may affect sequencing, backlog or current cycle.
-- Product Ops/MVP enters only in a later journey, `roadmap-item-to-mvp-scope`, after the idea becomes a roadmap item.
+- Product Ops/Delivery Scope enters only in a later journey, `roadmap-item-to-delivery-scope`, after the idea becomes a roadmap item.
 - If `new-idea-intake.workflow.md` is missing, the model should report the gap instead of inventing a replacement workflow.
 
 ## What The Model Does In Practice
@@ -132,17 +170,20 @@ The model opens:
 Why:
 
 - Root `AGENT.md` chose Strategy as the owning department.
-- `strategy/AGENT.md` says cross-area requests should open `workflows/README.md`.
-- A new idea can involve Product and Roadmap, so it is potentially cross-area.
+- `strategy/AGENT.md` says founder journeys should open `workflows/README.md`.
+- `strategy/AGENT.md` defines a journey as a request that changes state, priority, scope, handoff, roadmap, delivery, launch or learning.
+- A new idea is a decision journey because it may become a validation note, backlog candidate, roadmap item or future MVP candidate.
 
 Navigation Evidence:
 
 - `strategy/AGENT.md` lists Product and Roadmap as active areas.
-- `strategy/AGENT.md` says workflows are for cross-area sequencing.
+- `strategy/AGENT.md` lists evaluating a new idea before roadmap or MVP as a Strategy journey signal.
+- `strategy/AGENT.md` says workflows are for multi-step decisions or transitions.
 
 What the model understands here:
 
 - Strategy owns the judgment.
+- This is not a simple Product file update.
 - Product should evaluate the idea first.
 - Roadmap should enter only if the idea may become backlog or roadmap work.
 
@@ -158,7 +199,7 @@ The model opens:
 
 Why:
 
-- `strategy/AGENT.md` instructed workflow selection for cross-area sequencing.
+- `strategy/AGENT.md` instructed workflow selection because this is a Strategy journey.
 - The model needs the workflow that evaluates a new idea before promotion.
 
 Navigation Evidence:
@@ -277,7 +318,7 @@ Why:
 
 Navigation Evidence:
 
-- `product-strategy.playbook.md` says to clarify ICP, problem and value proposition before touching roadmap or MVP scope.
+- `product-strategy.playbook.md` says to clarify ICP, problem and value proposition before touching roadmap or delivery scope.
 - It says to propose file updates and wait for confirmation before writing.
 
 What the model understands here:
@@ -288,43 +329,84 @@ What the model understands here:
 
 Next step:
 
-Roadmap only if needed:
+Decision pause before any roadmap handoff.
 
-`strategy/roadmap/AGENT.md`
+### Step 8 - Decision Pause Before Roadmap
 
-### Step 8 - Enter Roadmap only for backlog or sequencing impact
+The model does not open a new area yet.
 
-The model opens:
-
-`strategy/roadmap/AGENT.md`
-
-Only when:
-
-- the idea looks promising enough to become a backlog candidate;
-- the founder asks whether it should enter roadmap;
-- the idea may change current cycle, sequencing or priority.
+Instead, it pauses and talks to the founder in plain language.
 
 Why:
 
-- Product has evaluated the idea and identified possible roadmap impact.
+- `product-strategy.playbook.md` says to propose updates and wait for confirmation before writing.
+- `evaluate-idea.skill.md` says not to add ideas directly to roadmap as committed work.
+- `new-idea-intake` is an intake journey, not a roadmap mutation journey.
+- The founder must decide whether the idea should be rejected, refined, tracked or promoted.
+
+Navigation Evidence:
+
+- Product Strategy has completed the initial evaluation.
+- The separate workflow `strategy/workflows/idea-to-roadmap.workflow.md` exists for roadmap promotion.
+- Root `AGENT.md` says to ask before modifying knowledge, decision or framework files.
+
+What the model understands here:
+
+- It should explain the evaluation before naming files.
+- It should not open Roadmap automatically.
+- It should ask the founder what destination makes sense.
+
+Founder-friendly prompts:
+
+- "Essa ideia parece alinhada com o produto, mas ainda nao parece pronta para MVP. Quer que eu trate como candidata ao roadmap?"
+- "Essa ideia parece interessante, mas depende de uma hipotese forte. Quer que eu registre como ponto para validar depois?"
+- "Essa ideia parece fora do foco atual. Quer refinar, guardar para depois ou descartar por enquanto?"
+- "Essa ideia parece forte o suficiente para virar item de roadmap. Quer que eu siga para a etapa de roadmap?"
+- "Quer que eu apenas registre essa ideia como nota, sem mexer no roadmap agora?"
+
+Next step:
+
+- Stop here if the founder rejects, parks or only wants a note.
+- Start `idea-to-roadmap` only if the founder confirms roadmap/backlog promotion.
+
+### Step 9 - Optional Handoff To Idea To Roadmap
+
+The model starts a new journey only if the founder confirms.
+
+Next workflow:
+
+`strategy/workflows/idea-to-roadmap.workflow.md`
+
+Only when:
+
+- the founder says the idea should enter roadmap or backlog;
+- the founder wants to track timing, priority or sequencing;
+- the founder explicitly asks to "colocar no roadmap", "guardar no backlog" or "acompanhar para depois".
+
+Why:
+
+- `new-idea-intake` produced an evaluation and recommendation.
+- `idea-to-roadmap` is the correct workflow for turning a qualified idea into a structured roadmap/backlog item.
 - Roadmap owns backlog, current cycle and sequencing.
 
 Navigation Evidence:
 
-- `strategy/roadmap/AGENT.md` says Roadmap owns roadmap planning, prioritization, cycle planning and GitHub sync preparation.
+- `strategy/workflows/idea-to-roadmap.workflow.md` is separate from `new-idea-intake.workflow.md`.
+- `strategy/roadmap/AGENT.md` says Roadmap owns planning, prioritization, cycle planning and GitHub sync preparation.
 - `roadmap-planner.role.md` reads roadmap, current cycle, backlog and Product brief.
 
 What the model understands here:
 
-- Roadmap can help classify the idea as Now, Next, Later or Not Planned.
+- The current intake journey is complete.
+- The next journey can classify the idea as backlog, Now, Next, Later or Not Planned.
 - This still does not mean the item is MVP.
 - GitHub is not involved yet.
 
 Next step:
 
-`strategy/roadmap/roles/roadmap-planner.role.md`
+Declare the new route for `idea-to-roadmap` before loading Roadmap files.
 
-### Step 9 - Produce founder-friendly recommendation
+### Step 10 - Produce founder-friendly recommendation
 
 The model responds in plain language first.
 
@@ -341,7 +423,7 @@ Minha recomendação:
 - registrar a hipótese que precisa ser validada;
 - revisar depois que o fluxo principal estiver mais claro.
 
-Você quer que eu registre essa ideia no backlog para futuras validações?
+Você quer que eu siga para a etapa de roadmap e registre isso como candidata para depois?
 ```
 
 Why:
@@ -354,15 +436,15 @@ Navigation Evidence:
 
 - Product skill gives decision categories.
 - Product playbook gives proposal-before-write behavior.
-- Roadmap route enters only if backlog/sequence is relevant.
+- Roadmap route enters only through the next workflow, after founder confirmation.
 
 ## Active Roles
 
 | Order | Role | When It Enters | Why It Enters | Route Evidence |
 | --- | --- | --- | --- | --- |
 | 1 | Product Strategist | Always | Evaluates idea against ICP, problem, value proposition, assumptions and product coherence. | `strategy/product/AGENT.md`, `product-strategist.role.md` |
-| 2 | Roadmap Planner | Conditional | Enters only if the idea may become backlog, roadmap candidate or cycle impact. | `strategy/roadmap/AGENT.md`, `roadmap-planner.role.md` |
-| 3 | Product Manager | Conditional | Enters only if the founder asks to shape scope or acceptance criteria after the idea passes intake. | `strategy/product/AGENT.md`, `product-manager.role.md` |
+| 2 | Product Manager | Conditional follow-up | Enters only if the founder asks to shape scope or acceptance criteria after the idea passes intake. | `strategy/product/AGENT.md`, `product-manager.role.md` |
+| Next journey | Roadmap Planner | Not active during intake | Enters only after the founder confirms `idea-to-roadmap`. | `strategy/workflows/idea-to-roadmap.workflow.md`, `strategy/roadmap/AGENT.md` |
 
 ## Active Skills
 
@@ -370,14 +452,14 @@ Navigation Evidence:
 | --- | --- | --- | --- |
 | `evaluate-idea.skill.md` | Product Strategist | Judge user value, evidence, MVP impact and roadmap impact. | `product-strategist.role.md` points to it. |
 | `check-coherence.skill.md` | Product Strategist | Check if the idea conflicts with ICP, value proposition or current focus. | `product-strategist.role.md` points to it. |
-| `prioritize-backlog.skill.md` | Roadmap Planner | Classify the idea if it becomes backlog or roadmap candidate. | `roadmap-planner.role.md` points to it. |
+| `prioritize-backlog.skill.md` | Roadmap Planner | Not used during intake; used only if the next journey promotes the idea to backlog or roadmap. | `roadmap-planner.role.md` points to it. |
 
 ## Active Playbooks
 
 | Playbook | Area | Role In The Journey | Route Evidence |
 | --- | --- | --- | --- |
 | `product-strategy.playbook.md` | `strategy/product` | Main operating sequence for evaluating and communicating the idea. | `product-strategist.role.md` points to it. |
-| `roadmap-cycle-planning.playbook.md` | `strategy/roadmap` | Conditional sequence for backlog/cycle impact. | `roadmap-planner.role.md` points to it. |
+| `roadmap-cycle-planning.playbook.md` | `strategy/roadmap` | Not used during intake; used by the next journey if the founder confirms roadmap promotion. | `roadmap-planner.role.md` points to it. |
 
 ## Founder Questions
 
@@ -393,6 +475,16 @@ Founder-friendly questions:
 
 Do not ask as a rigid form. Ask only what is missing.
 
+## Guided Conversation Points
+
+| Step | Purpose | Source |
+| --- | --- | --- |
+| Step 6 | Ask only missing product-fit context before evaluating the idea. | `strategy/product/skills/evaluate-idea.skill.md` |
+| Step 8 | Help the founder choose the idea destination before any roadmap handoff. | `strategy/product/playbooks/product-strategy.playbook.md` |
+| Confirmation | Confirm whether to record a note or start `idea-to-roadmap`. | `ai-standard/foundation/guided-conversation.md` |
+
+Detailed options belong in the Product Strategy playbook and the global guided conversation standard, not in this journey document.
+
 ## Confirmation Checkpoints
 
 The model must ask for confirmation before:
@@ -400,9 +492,9 @@ The model must ask for confirmation before:
 - registering the idea in `strategy/product/knowledge/validation-notes.md`;
 - adding the idea to `strategy/roadmap/knowledge/backlog.md`;
 - changing `strategy/roadmap/knowledge/roadmap.md`;
-- marking the idea as MVP candidate;
+- marking the idea as delivery scope candidate;
 - starting `idea-to-roadmap`;
-- starting `roadmap-item-to-mvp-scope`;
+- starting `roadmap-item-to-delivery-scope`;
 - creating issues, epics, branches or code.
 
 ## Founder-facing Output
@@ -435,15 +527,16 @@ Only after this should the model show technical file updates, if needed.
 Files that can be updated if the founder confirms:
 
 - `strategy/product/knowledge/validation-notes.md`
-- `strategy/roadmap/knowledge/backlog.md`
-- `strategy/roadmap/knowledge/current-cycle.md` only when cycle impact is explicitly confirmed
-- `strategy/roadmap/knowledge/roadmap.md` only through `idea-to-roadmap`, not during intake by default
+- no roadmap file during intake by default
+- `strategy/roadmap/knowledge/backlog.md` only after starting `idea-to-roadmap`
+- `strategy/roadmap/knowledge/current-cycle.md` only inside `idea-to-roadmap` when cycle impact is explicitly confirmed
+- `strategy/roadmap/knowledge/roadmap.md` only through `idea-to-roadmap`, not during intake
 
 ## Forbidden Actions
 
 During this journey, the model cannot:
 
-- add the idea directly to MVP scope;
+- add the idea directly to delivery scope;
 - create GitHub issues or epics;
 - create implementation branches;
 - write code;
@@ -461,14 +554,43 @@ The journey can end with:
 - **Validation note**: the idea exposes an assumption worth tracking.
 - **Backlog candidate**: the idea may be useful later.
 - **Roadmap candidate**: the idea is strong enough to move to `idea-to-roadmap`.
-- **MVP candidate**: only after roadmap consideration, the next journey may evaluate MVP scope.
+- **Delivery scope candidate**: only after roadmap consideration, the next journey may evaluate whether this belongs to MVP, a release, an experiment or another delivery scope.
+
+## Continuation Bridge
+
+At the end of this journey, the model must offer one clear next-step bridge when the idea is strong enough to be tracked.
+
+Immediate bridge:
+
+```text
+Essa ideia parece forte o bastante para ser acompanhada.
+Quer que eu transforme isso em um item de roadmap ou backlog para decidirmos prioridade e momento?
+```
+
+Later-session triggers:
+
+- "vamos colocar aquela ideia no roadmap"
+- "quero salvar essa ideia no backlog"
+- "vamos priorizar a ideia que discutimos"
+- "essa ideia merece entrar no produto?"
+
+Next route:
+
+`idea-to-roadmap`
+
+Rules:
+
+- Do not start `idea-to-roadmap` automatically.
+- If the founder says yes, declare the new route before loading Roadmap files.
+- If the founder says no, explain the current outcome and stop without writing anything else.
+- If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Strategy, and load `idea-to-roadmap`.
 
 ## Next Recommended Journey
 
 After this journey, the next flow can be:
 
 - `idea-to-roadmap` when the idea should become a roadmap/backlog item.
-- `roadmap-item-to-mvp-scope` when an existing roadmap item may enter MVP.
+- `roadmap-item-to-delivery-scope` when an existing roadmap item may enter MVP, a release, an experiment or another delivery scope.
 - `define-mvp` when the MVP itself is still undefined.
 - `start-leanos` when the workspace does not have enough strategy baseline.
 
@@ -512,11 +634,13 @@ Use this checklist to test whether the journey really applies the Navigation Cha
 - [x] The model asks for confirmation before updating files.
 - [x] The founder-facing output is understandable before technical paths appear.
 - [x] Internal file updates are listed only after the human decision.
+- [x] The continuation bridge offers `idea-to-roadmap` without starting it automatically.
+- [x] Later-session triggers are listed for natural founder language.
 
 ### Conditional Areas
 
 - [x] Roadmap explains when it enters.
-- [x] Product Ops/MVP is not part of this journey.
+- [x] Product Ops/Delivery Scope is not part of this journey.
 - [x] Design does not enter during intake unless the idea is specifically UX/design research, and even then it should be a follow-up.
 - [x] Security does not enter during intake unless the idea is fundamentally about data, auth, permissions, privacy, API, database, secrets, compliance or risk.
 - [x] DevOps does not enter during intake.

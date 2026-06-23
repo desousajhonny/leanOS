@@ -7,6 +7,7 @@
 - Area `AGENT.md` files, when present, choose the specialist role before skills and playbooks are loaded.
 - For `/start-leanos`, load `../commands/start-leanos.md` before acting.
 - For any LeanOS slash command, load `../commands/<command>.md`; if it is missing, do not invent it.
+- For status, resume, readiness or "can we build?" requests, load `protocols/where-we-are.md` before recommending a next step.
 - Load only relevant context.
 - Enter the owning department or area before acting.
 - Do not implement before loading the matching workflow or command, area, role, skill and playbook.

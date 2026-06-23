@@ -8,7 +8,7 @@ Use `README.md` as the directory map. Use `area.yaml` when machine-readable stru
 
 ## Operating Scope
 
-Route MVP scope, epic shaping, issue readiness and delivery-boundary work before Engineering starts implementation.
+Route delivery scope, epic shaping, issue readiness and delivery-boundary work before Engineering starts implementation.
 
 
 

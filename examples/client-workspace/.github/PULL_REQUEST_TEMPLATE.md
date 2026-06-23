@@ -20,10 +20,10 @@ Epic #
 - Loaded Skills:
 - Relevant Playbook:
 
-## Product / MVP Alignment
+## Product / Delivery Scope Alignment
 
 - Strategy alignment:
-- MVP scope alignment:
+- Delivery scope alignment:
 - Acceptance criteria:
 - Validation or learning impact:
 

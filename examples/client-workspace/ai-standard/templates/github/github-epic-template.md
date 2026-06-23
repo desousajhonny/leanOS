@@ -13,9 +13,11 @@ What business, user or validation outcome this epic should create.
 - Validation assumption:
 - Evidence status:
 
-## MVP Linkage
+## Delivery Scope Linkage
 
-- MVP scope:
+- scope_type:
+- milestone:
+- release_goal:
 - Non-goals:
 - Acceptance criteria:
 - Roadmap item:

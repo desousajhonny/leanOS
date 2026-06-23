@@ -17,6 +17,13 @@ Use this checklist before accepting a `.playbook.md` file.
 - [ ] Files to update are listed when applicable.
 - [ ] Confirmation is required before durable file updates.
 
+## Guided Conversation
+
+- [ ] If the playbook asks the founder to choose, classify, prioritize or confirm, it references `../foundation/guided-conversation.md`.
+- [ ] Guided questions use numbered options when the decision has predictable paths.
+- [ ] The founder can answer with a number or free-form text.
+- [ ] Technical paths appear after the founder understands the decision.
+
 ## Scope
 
 - [ ] The playbook belongs to the correct area.

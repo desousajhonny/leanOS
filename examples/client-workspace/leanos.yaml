@@ -157,6 +157,7 @@ skills:
       - prioritize-backlog
       - prepare-roadmap-sync
     operations.product-ops:
+      - define-delivery-scope
       - define-mvp
       - write-acceptance-criteria
       - check-delivery-coherence
@@ -219,6 +220,7 @@ playbooks:
       - roadmap-cycle-planning
       - roadmap-sync-prep
     operations.product-ops:
+      - delivery-scope-planning
       - mvp-delivery
       - epic-to-subissues
       - delivery-readiness
@@ -263,6 +265,7 @@ workflows:
     - new-idea-intake
     - idea-to-roadmap
     - roadmap-to-github-project
+    - roadmap-item-to-delivery-scope
     - mvp-to-pr
     - issue-delivery-cycle
     - post-merge-continuation
@@ -276,6 +279,8 @@ workflows:
       - key: roadmap-to-github-project
         path: strategy/workflows/roadmap-to-github-project.workflow.md
     operations:
+      - key: roadmap-item-to-delivery-scope
+        path: operations/workflows/roadmap-item-to-delivery-scope.workflow.md
       - key: mvp-to-pr
         path: operations/workflows/mvp-to-pr.workflow.md
       - key: issue-delivery-cycle

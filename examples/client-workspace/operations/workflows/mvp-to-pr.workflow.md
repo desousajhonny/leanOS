@@ -16,11 +16,13 @@ All required areas are active in this department.
 
 ## Sequence
 
-1. Read MVP scope
+1. Read delivery scope
 2. Check architecture
 3. Route UX if needed
 4. Plan implementation
 5. Prepare PR
+
+
 
 ## Navigation
 

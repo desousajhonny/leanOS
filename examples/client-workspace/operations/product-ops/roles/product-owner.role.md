@@ -16,16 +16,20 @@ Own MVP execution clarity with supervision from Product and PM strategy.
 Read:
 
 - `../knowledge/overview.md`
+- `../knowledge/delivery-scope.md`
 - `../knowledge/issue-readiness.md`
+- `../knowledge/ready-to-develop.md`
 - `../mvp/scope.md`
 - `../mvp/prd.md`
 - `../mvp/user-stories.md`
 - `../mvp/acceptance-criteria.md`
 - `../../../strategy/product/knowledge/brief.md`
+- `../../../strategy/roadmap/knowledge/roadmap.md`
 - `../../../ai-standard/templates/github/delivery-readiness-matrix-template.md`
 
 ## Skills
 
+- `../skills/define-delivery-scope.skill.md`
 - `../skills/define-mvp.skill.md`
 - `../skills/write-acceptance-criteria.skill.md`
 - `../skills/check-delivery-coherence.skill.md`
@@ -34,6 +38,7 @@ Read:
 
 ## Playbooks
 
+- `../playbooks/delivery-scope-planning.playbook.md`
 - `../playbooks/mvp-delivery.playbook.md`
 - `../playbooks/epic-to-subissues.playbook.md`
 

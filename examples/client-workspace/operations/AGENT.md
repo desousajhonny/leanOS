@@ -12,18 +12,29 @@ Roles, skills and playbooks do not live at the department root. They live inside
 
 Own product operations, design, engineering, DevOps and security for delivery.
 
-Use this department for MVP scope, issue readiness, design, engineering, implementation, DevOps or security.
+Use this department for delivery scope, issue readiness, design, engineering, implementation, DevOps or security.
 
 ## Routing Rules
 
-1. If the request spans multiple active areas, open `workflows/README.md` and choose the smallest matching workflow.
-2. If the request belongs to one area, route to that area README.
-3. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
-4. Do not load roles, skills or playbooks before entering the owning area.
+1. If the founder request is a journey, open `workflows/README.md` and choose the smallest matching workflow.
+2. A journey changes state, priority, scope, handoff, roadmap, delivery, launch or learning.
+3. If the request belongs to one area and one asset family, route to that area `AGENT.md` when present; otherwise route to its README.
+4. If you are unsure, check `workflows/README.md` first; if no workflow matches, route to the smallest active area.
+5. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
+6. Do not load roles, skills or playbooks before entering the owning area.
+
+## Journey Signals
+
+Use `workflows/README.md` when the founder asks for a multi-step decision or transition, such as:
+
+- turning delivery scope into executable work
+- shaping epics or sub-issues before implementation
+- coordinating design, engineering, security or DevOps handoffs
+- moving from issue to implementation, PR or post-merge follow-up
 
 ## Active Areas
 
-- Product Ops: `product-ops/AGENT.md` - Turn Strategy and Roadmap into MVP scope, acceptance criteria and implementation-ready work.
+- Product Ops: `product-ops/AGENT.md` - Turn Strategy and Roadmap into delivery scope, acceptance criteria and implementation-ready work.
 - Design: `design/AGENT.md` - Own the MVP design foundation, accessibility baseline and user-flow clarity before implementation.
 - Engineering: `engineering/AGENT.md` - Own implementation, tests, code quality and PR readiness.
 - DevOps: `devops/AGENT.md` - Own delivery infrastructure, environments, deployment, GitHub workflow setup and observability notes.
@@ -33,7 +44,7 @@ Use this department for MVP scope, issue readiness, design, engineering, impleme
 
 - Department workflows: `workflows/README.md`
 
-Use workflows for cross-area sequencing. Use area playbooks for tactical execution inside one area.
+Use workflows for multi-step journeys and cross-area sequencing. Use area playbooks for tactical execution inside one area.
 
 ## Navigation
 

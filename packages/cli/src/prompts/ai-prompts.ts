@@ -79,7 +79,7 @@ const subareaHints: Record<Subarea, string> = {
   "strategy.product": "ICP, problem, value proposition and business model",
   "strategy.roadmap": "cycles, milestones and backlog priority",
   "strategy.validation": "optional interviews, experiments and evidence loops",
-  "operations.product-ops": "MVP scope, acceptance criteria and issue readiness",
+  "operations.product-ops": "delivery scope, acceptance criteria and issue readiness",
   "operations.design": "flows, screens, UX states and usability",
   "operations.engineering": "implementation, tests, issues and PRs",
   "operations.devops": "environments, CI, deployment and observability",

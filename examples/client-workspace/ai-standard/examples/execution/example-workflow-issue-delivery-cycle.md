@@ -10,7 +10,7 @@ The founder asks to implement a specific GitHub issue.
 
 ## Participating Areas
 
-- Product Ops: confirms MVP scope, issue readiness and delivery boundaries.
+- Product Ops: confirms delivery scope, issue readiness and delivery boundaries.
 - Engineering: plans, implements, tests and prepares PR.
 - Design: conditional, only when UX changes.
 - Security: conditional, only when data, auth, permissions, privacy, abuse risk or compliance is involved.

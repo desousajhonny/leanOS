@@ -16,10 +16,20 @@ Use this department for customer experience, marketing, landing pages, launch, a
 
 ## Routing Rules
 
-1. If the request spans multiple active areas, open `workflows/README.md` and choose the smallest matching workflow.
-2. If the request belongs to one area, route to that area README.
-3. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
-4. Do not load roles, skills or playbooks before entering the owning area.
+1. If the founder request is a journey, open `workflows/README.md` and choose the smallest matching workflow.
+2. A journey changes state, priority, scope, handoff, roadmap, delivery, launch or learning.
+3. If the request belongs to one area and one asset family, route to that area `AGENT.md` when present; otherwise route to its README.
+4. If you are unsure, check `workflows/README.md` first; if no workflow matches, route to the smallest active area.
+5. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
+6. Do not load roles, skills or playbooks before entering the owning area.
+
+## Journey Signals
+
+Use `workflows/README.md` when the founder asks for a multi-step decision or transition, such as:
+
+- planning launch, learning or acquisition loops
+- connecting customer feedback to product or marketing decisions
+- reviewing pricing, finance or growth tradeoffs
 
 ## Active Areas
 
@@ -31,7 +41,7 @@ Use this department for customer experience, marketing, landing pages, launch, a
 
 - Department workflows: `workflows/README.md`
 
-Use workflows for cross-area sequencing. Use area playbooks for tactical execution inside one area.
+Use workflows for multi-step journeys and cross-area sequencing. Use area playbooks for tactical execution inside one area.
 
 ## Navigation
 

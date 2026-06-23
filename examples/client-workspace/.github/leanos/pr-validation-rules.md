@@ -3,7 +3,7 @@
 ## Required Context
 
 - Linked issue and parent epic when available.
-- MVP scope and non-goals.
+- Delivery scope and non-goals.
 - Acceptance criteria.
 - Relevant Product, Design, Engineering and Security criteria.
 - Tests or manual validation evidence.

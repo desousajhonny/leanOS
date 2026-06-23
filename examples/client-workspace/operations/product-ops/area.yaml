@@ -8,6 +8,7 @@ area:
     - product-owner
     - delivery-architect
   skills:
+    - define-delivery-scope
     - define-mvp
     - write-acceptance-criteria
     - check-delivery-coherence
@@ -15,13 +16,16 @@ area:
     - write-subissue-criteria
     - define-delivery-boundaries
   playbooks:
+    - delivery-scope-planning
     - mvp-delivery
     - epic-to-subissues
     - delivery-readiness
   source_of_truth:
     - knowledge/overview.md
+    - knowledge/delivery-scope.md
     - knowledge/delivery-context.md
     - knowledge/issue-readiness.md
+    - knowledge/ready-to-develop.md
     - knowledge/technical-decisions.md
     - mvp/scope.md
     - mvp/prd.md

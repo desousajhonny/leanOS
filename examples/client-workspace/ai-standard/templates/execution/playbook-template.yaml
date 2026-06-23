@@ -1,11 +1,25 @@
-# Playbook Template
-
-Use this template as a starting point.
-
-## Required
-
-- Purpose
-- Inputs
-- Process
-- Output
-- Navigation
+playbook:
+  key: <playbook-key>
+  title: <Playbook Name>
+  owner_area: <department.area>
+  purpose: <practical task this playbook executes>
+  use_when:
+    - <trigger>
+  inputs:
+    - <input>
+  guided_conversation:
+    foundation: ../../../ai-standard/foundation/guided-conversation.md
+    use_when:
+      - founder decision is needed
+      - durable update needs confirmation
+  process:
+    - <step>
+  outputs:
+    - <output>
+  files_to_update:
+    - <path>
+  confirmation_required:
+    - durable file updates
+    - external actions
+  red_lines:
+    - do not duplicate a workflow

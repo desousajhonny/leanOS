@@ -20,10 +20,10 @@ Epic #123
 - Skills: plan-implementation, create-pr
 - Playbook: issue-to-pr
 
-## Product / MVP Alignment
+## Product / Delivery Scope Alignment
 
 - Roadmap item: MVP Intake Flow
-- MVP scope: guided intake flow
+- Delivery scope: guided intake flow
 - Acceptance criteria: patient can complete and review required fields
 - Validation or learning impact: enables first usability test
 

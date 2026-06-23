@@ -17,6 +17,7 @@ Read:
 
 - `../knowledge/overview.md`
 - `../knowledge/delivery-context.md`
+- `../knowledge/ready-to-develop.md`
 - `../knowledge/technical-decisions.md`
 - `../mvp/scope.md`
 

@@ -14,6 +14,7 @@ Use when a selected role points to a playbook.
 
 ## Files
 
+- `delivery-scope-planning.playbook.md`
 - `mvp-delivery.playbook.md`
 - `epic-to-subissues.playbook.md`
 - `delivery-readiness.playbook.md`

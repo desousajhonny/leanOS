@@ -140,6 +140,7 @@ export type PlaybookDefinition = {
   beforeActing?: string[];
   inputs?: string[];
   steps: string[];
+  guidedConversation?: string[];
   securityGate?: string[];
   outputs?: string[];
   filesToUpdate?: string[];
@@ -158,6 +159,12 @@ export type DepartmentWorkflowDefinition = {
   purpose: string;
   requiredAreas: string[];
   steps: string[];
+  continuationBridge?: {
+    immediate: string;
+    laterTriggers: string[];
+    nextRoute: string;
+    rules?: string[];
+  };
 };
 
 export type CommandDefinition = {

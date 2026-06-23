@@ -12,21 +12,41 @@ TBD
 
 TBD
 
+## Delivery Scope Model
+
+Backlog guarda possibilidades. Roadmap organiza intenção de implementação. Delivery scope transforma intenção em compromisso de entrega.
+
+Use this lightweight header when a roadmap item becomes delivery-ready:
+
+~~~yaml
+scope_type: MVP | Release | Experiment | Beta | Internal
+milestone: TBD
+release_goal: TBD
+~~~
+
 ## Now
 
-TBD
+| Item | Outcome | Delivery Scope | Milestone | Release Goal | Status |
+| --- | --- | --- | --- | --- | --- |
+| TBD | TBD | none | TBD | TBD | candidate |
 
 ## Next
 
-TBD
+| Item | Outcome | Delivery Scope | Milestone | Release Goal | Status |
+| --- | --- | --- | --- | --- | --- |
+| TBD | TBD | none | TBD | TBD | candidate |
 
 ## Later
 
-TBD
+| Item | Outcome | Delivery Scope | Milestone | Release Goal | Status |
+| --- | --- | --- | --- | --- | --- |
+| TBD | TBD | none | TBD | TBD | candidate |
 
 ## Not Planned
 
-TBD
+| Item | Reason | Decision Date | Revisit Trigger |
+| --- | --- | --- | --- |
+| TBD | TBD | TBD | TBD |
 
 ## Decision Criteria
 

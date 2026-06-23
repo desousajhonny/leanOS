@@ -4,7 +4,7 @@
 
 Own product operations, design, engineering, DevOps and security for delivery.
 
-Use for MVP scope, issue readiness, design, engineering, implementation, DevOps or security.
+Use for delivery scope, issue readiness, design, engineering, implementation, DevOps or security.
 
 ## Files
 
@@ -12,7 +12,7 @@ Use for MVP scope, issue readiness, design, engineering, implementation, DevOps 
 - `README.md`: this map.
 - `department.yaml`: machine-readable structure for active areas and workflows.
 - `workflows/`: cross-area workflows owned by this department.
-- `product-ops/`: Turn Strategy and Roadmap into MVP scope, acceptance criteria and implementation-ready work.
+- `product-ops/`: Turn Strategy and Roadmap into delivery scope, acceptance criteria and implementation-ready work.
 - `design/`: Own the MVP design foundation, accessibility baseline and user-flow clarity before implementation.
 - `engineering/`: Own implementation, tests, code quality and PR readiness.
 - `devops/`: Own delivery infrastructure, environments, deployment, GitHub workflow setup and observability notes.

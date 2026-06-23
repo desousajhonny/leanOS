@@ -18,10 +18,10 @@ body:
     validations:
       required: true
   - type: textarea
-    id: mvp-linkage
+    id: delivery-scope-linkage
     attributes:
-      label: MVP and roadmap linkage
-      description: MVP scope, non-goals, acceptance criteria, roadmap item and milestone.
+      label: Delivery scope and roadmap linkage
+      description: Delivery scope, non-goals, acceptance criteria, roadmap item and milestone.
     validations:
       required: true
   - type: textarea

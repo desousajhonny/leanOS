@@ -21,4 +21,4 @@ issue/598-fix-onboarding-empty-state
 - Use a short kebab-case slug.
 - Do not include secrets, customer names or sensitive details.
 - If the branch already exists, ask before continuing.
-- Keep branch scope aligned with the linked issue, MVP scope and acceptance criteria.
+- Keep branch scope aligned with the linked issue, delivery scope and acceptance criteria.

@@ -11,6 +11,9 @@ playbooks:
   - key: roadmap-sync-prep
     area: strategy.roadmap
     path: ../../strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md
+  - key: delivery-scope-planning
+    area: operations.product-ops
+    path: ../../operations/product-ops/playbooks/delivery-scope-planning.playbook.md
   - key: mvp-delivery
     area: operations.product-ops
     path: ../../operations/product-ops/playbooks/mvp-delivery.playbook.md

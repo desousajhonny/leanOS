@@ -53,5 +53,5 @@ Clarify product brief, problem, target user and product status.
 ## Red Lines
 
 - Do not invent customer evidence.
-- Do not define MVP scope here; route MVP scope to Product Ops.
+- Do not define delivery scope here; route delivery-scope decisions to Product Ops.
 - Do not update files without confirmation.

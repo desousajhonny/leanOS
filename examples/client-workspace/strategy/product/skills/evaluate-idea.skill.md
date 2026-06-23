@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Evaluate a founder idea against user value, evidence, MVP scope and roadmap impact.
+Evaluate a founder idea against user value, evidence, delivery-scope risk and roadmap impact.
 
 ## Use When
 

@@ -13,7 +13,7 @@ labels:
     description: Validation or learning task
   - name: mvp
     color: "1d76db"
-    description: MVP scope work
+    description: MVP delivery scope work
   - name: strategy
     color: "fbca04"
     description: Strategy or product definition

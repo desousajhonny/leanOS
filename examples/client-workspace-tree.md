@@ -36,6 +36,9 @@ client-workspace/
 |   `-- PULL_REQUEST_TEMPLATE.md
 |-- .leanos/
 |   |-- agent/
+|   |   |-- protocols/
+|   |   |   |-- README.md
+|   |   |   `-- where-we-are.md
 |   |   |-- chief-agent.md
 |   |   |-- context-loading.md
 |   |   |-- operating-rules.md
@@ -122,6 +125,7 @@ client-workspace/
 |   |   |-- asset-taxonomy.md
 |   |   |-- creation-rules.md
 |   |   |-- folder-documentation-rules.md
+|   |   |-- guided-conversation.md
 |   |   |-- naming-conventions.md
 |   |   |-- navigation-chain.md
 |   |   |-- quality-criteria.md
@@ -350,9 +354,11 @@ client-workspace/
 |   |-- product-ops/
 |   |   |-- knowledge/
 |   |   |   |-- delivery-context.md
+|   |   |   |-- delivery-scope.md
 |   |   |   |-- issue-readiness.md
 |   |   |   |-- overview.md
 |   |   |   |-- README.md
+|   |   |   |-- ready-to-develop.md
 |   |   |   `-- technical-decisions.md
 |   |   |-- mvp/
 |   |   |   |-- acceptance-criteria.md
@@ -365,6 +371,7 @@ client-workspace/
 |   |   |   `-- user-stories.md
 |   |   |-- playbooks/
 |   |   |   |-- delivery-readiness.playbook.md
+|   |   |   |-- delivery-scope-planning.playbook.md
 |   |   |   |-- epic-to-subissues.playbook.md
 |   |   |   |-- mvp-delivery.playbook.md
 |   |   |   `-- README.md
@@ -375,6 +382,7 @@ client-workspace/
 |   |   |-- skills/
 |   |   |   |-- check-delivery-coherence.skill.md
 |   |   |   |-- define-delivery-boundaries.skill.md
+|   |   |   |-- define-delivery-scope.skill.md
 |   |   |   |-- define-mvp.skill.md
 |   |   |   |-- README.md
 |   |   |   |-- shape-epic.skill.md
@@ -434,7 +442,8 @@ client-workspace/
 |   |   |-- issue-delivery-cycle.workflow.md
 |   |   |-- mvp-to-pr.workflow.md
 |   |   |-- post-merge-continuation.workflow.md
-|   |   `-- README.md
+|   |   |-- README.md
+|   |   `-- roadmap-item-to-delivery-scope.workflow.md
 |   |-- AGENT.md
 |   |-- department.yaml
 |   `-- README.md

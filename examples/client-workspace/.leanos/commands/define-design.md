@@ -48,7 +48,7 @@ MVP context:
 
 ## Process
 
-1. Confirm the target user, problem, value proposition and MVP scope.
+1. Confirm the target user, problem, value proposition and delivery scope.
 2. If Product or MVP context is missing, ask focused questions before writing Design knowledge.
 3. Define the design system baseline: tokens, color intent, typography, spacing, component principles and interaction principles.
 4. Define accessibility expectations for the MVP audience and core flows.

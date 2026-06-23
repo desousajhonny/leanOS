@@ -26,6 +26,7 @@ Read these files first:
 - Do not write secrets to tracked files.
 - Ask before modifying knowledge, decision or framework files.
 - Do not create or modify LeanOS framework assets from memory. Route through `ai-standard/README.md`.
+- For "where are we?", "what do we have?", "what is missing?", "can we start building?" or similar readiness/status requests, load `.leanos/agent/protocols/where-we-are.md` before recommending a next step or implementation.
 - During `/start-leanos`, do not enrich roles, skills, playbooks, workflows, commands or `ai-standard/` with company/product context.
 - Do not modify source-of-truth, decision, framework or runtime files until the user explicitly confirms the proposed changes.
 
@@ -63,6 +64,16 @@ Examples:
 - "review this PR" -> `.leanos/commands/review-pr.md`
 
 If no command clearly matches, route through the Navigation Chain.
+
+## Status And Readiness Questions
+
+When the founder asks where the product stands, what exists so far, what is missing, what should happen next or whether development can start, do not answer from memory and do not jump directly to implementation.
+
+Load:
+
+`.leanos/agent/protocols/where-we-are.md`
+
+Use that protocol to inspect the smallest relevant Strategy, Operations and GitHub readiness files. Then explain the current product moment, missing prerequisites, risk of skipping steps and the safest next route.
 
 ## Navigation Chain
 

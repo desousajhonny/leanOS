@@ -20,10 +20,10 @@ Epic #
 - Skills:
 - Playbook:
 
-## Product / MVP Alignment
+## Product / Delivery Scope Alignment
 
 - Roadmap item:
-- MVP scope:
+- Delivery scope:
 - Acceptance criteria:
 - Validation or learning impact:
 

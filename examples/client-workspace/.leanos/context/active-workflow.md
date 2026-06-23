@@ -5,6 +5,7 @@ Current compatible local workflows:
 - new-idea-intake
 - idea-to-roadmap
 - roadmap-to-github-project
+- roadmap-item-to-delivery-scope
 - mvp-to-pr
 - issue-delivery-cycle
 - post-merge-continuation

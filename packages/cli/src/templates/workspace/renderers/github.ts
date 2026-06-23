@@ -58,10 +58,10 @@ body:
     validations:
       required: true
   - type: textarea
-    id: mvp-linkage
+    id: delivery-scope-linkage
     attributes:
-      label: MVP and roadmap linkage
-      description: MVP scope, non-goals, acceptance criteria, roadmap item and milestone.
+      label: Delivery scope and roadmap linkage
+      description: Delivery scope, non-goals, acceptance criteria, roadmap item and milestone.
     validations:
       required: true
   - type: textarea
@@ -218,10 +218,10 @@ Epic #
 - Loaded Skills:
 - Relevant Playbook:
 
-## Product / MVP Alignment
+## Product / Delivery Scope Alignment
 
 - Strategy alignment:
-- MVP scope alignment:
+- Delivery scope alignment:
 - Acceptance criteria:
 - Validation or learning impact:
 
@@ -281,7 +281,7 @@ issue/598-fix-onboarding-empty-state
 - Use a short kebab-case slug.
 - Do not include secrets, customer names or sensitive details.
 - If the branch already exists, ask before continuing.
-- Keep branch scope aligned with the linked issue, MVP scope and acceptance criteria.
+- Keep branch scope aligned with the linked issue, delivery scope and acceptance criteria.
 `;
 }
 
@@ -291,7 +291,7 @@ function prValidationRules(): string {
 ## Required Context
 
 - Linked issue and parent epic when available.
-- MVP scope and non-goals.
+- Delivery scope and non-goals.
 - Acceptance criteria.
 - Relevant Product, Design, Engineering and Security criteria.
 - Tests or manual validation evidence.
@@ -510,7 +510,7 @@ function labelsYaml(): string {
     description: Validation or learning task
   - name: mvp
     color: "1d76db"
-    description: MVP scope work
+    description: MVP delivery scope work
   - name: strategy
     color: "fbca04"
     description: Strategy or product definition

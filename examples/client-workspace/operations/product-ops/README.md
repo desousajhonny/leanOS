@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Turn Strategy and Roadmap into MVP scope, acceptance criteria and implementation-ready work.
+Turn Strategy and Roadmap into delivery scope, acceptance criteria and implementation-ready work.
 
 ## When to Use
 
@@ -15,8 +15,10 @@ Turn Strategy and Roadmap into MVP scope, acceptance criteria and implementation
 ## Source of Truth
 
 - `knowledge/overview.md`
+- `knowledge/delivery-scope.md`
 - `knowledge/delivery-context.md`
 - `knowledge/issue-readiness.md`
+- `knowledge/ready-to-develop.md`
 - `knowledge/technical-decisions.md`
 - `mvp/scope.md`
 - `mvp/prd.md`
@@ -45,6 +47,7 @@ Turn Strategy and Roadmap into MVP scope, acceptance criteria and implementation
 ## Common Paths
 
 - Product Ops request: area lead `AGENT.md` -> choose Product Owner or Delivery Architect -> load only the required skills and playbook.
+- Delivery scope request: role `roles/product-owner.role.md` -> skill `skills/define-delivery-scope.skill.md` -> playbook `playbooks/delivery-scope-planning.playbook.md`.
 - MVP request: role `roles/product-owner.role.md` -> skill `skills/define-mvp.skill.md` -> playbook `playbooks/mvp-delivery.playbook.md`.
 - Epic breakdown request: role `roles/product-owner.role.md` -> skills `skills/shape-epic.skill.md` and `skills/write-subissue-criteria.skill.md` -> playbook `playbooks/epic-to-subissues.playbook.md`.
 - Delivery readiness request: role `roles/delivery-architect.role.md` -> skill `skills/define-delivery-boundaries.skill.md` -> playbook `playbooks/delivery-readiness.playbook.md`.
