@@ -312,7 +312,7 @@ Decisao proposta:
   - se faltar spec, rotear para Design antes de branch/codigo;
   - depois da spec aprovada, Engineering implementa o componente e entao a tela/feature;
   - se Design/Security/DevOps nao se aplicam, registrar explicitamente o motivo.
-- [ ] Atualizar Engineering flow para componentes:
+- [x] Atualizar Engineering flow para componentes:
   - Engineering deve ler a component spec antes de implementar componente novo;
   - Engineering deve implementar primeiro o componente reutilizavel, validar estados/acessibilidade/testes, e so depois implementar a tela/feature que usa o componente;
   - Engineering nao pode criar componente novo sem spec ou confirmacao explicita de Design.

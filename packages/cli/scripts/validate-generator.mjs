@@ -2377,12 +2377,14 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert.equal(await exists(join(rootDir, "operations", "engineering", "pr-log.md")), false, "PR log should move into knowledge/");
 
   assert(engineeringReadme.includes("start with `AGENT.md`"), "Engineering README should route operational work through AGENT.md");
-  assert(engineeringReadme.includes("Do not create new user-facing components before Design defines the structure"), "Engineering README should include component red line");
+  assert(engineeringReadme.includes("Read the approved Design component spec before implementing a new reusable component"), "Engineering README should require Design component spec before component work");
+  assert(engineeringReadme.includes("Do not create new user-facing components before Design defines the structure or confirms the component spec"), "Engineering README should include component red line");
   assert(engineeringAgent.includes("You are the Engineering Lead"), "Engineering AGENT should define Engineering Lead");
   assert(engineeringAgent.includes("Senior Developer: `roles/senior-developer.role.md`"), "Engineering AGENT should route Senior Developer work");
   assert(engineeringAgent.includes("Test Engineer: `roles/test-engineer.role.md`"), "Engineering AGENT should route Test Engineer work");
   assert(engineeringAgent.includes("PR Reviewer: `roles/pr-reviewer.role.md`"), "Engineering AGENT should route PR Reviewer work");
   assert(engineeringAgent.includes("Create or confirm an issue-linked branch before changing code"), "Engineering AGENT should require branch before code changes");
+  assert(engineeringAgent.includes("Implement reusable component work before the screen or Feature that depends on it"), "Engineering AGENT should implement reusable component before dependent Feature");
   assert(engineeringAgent.includes("Do not hardcode secrets, configuration, business rules, copy or design values"), "Engineering AGENT should forbid hardcoding");
   assert.equal(areaYaml.area.agent, "AGENT.md", "Engineering area.yaml should declare AGENT.md");
   assert(areaYaml.area.source_of_truth.includes("knowledge/code-standards.md"), "Engineering area.yaml should list code standards");
@@ -2401,6 +2403,10 @@ async function assertEngineeringAreaPattern(rootDir) {
   }
 
   assert(componentGuidelines.includes("## Design Dependency"), "Component guidelines should define Design dependency");
+  assert(componentGuidelines.includes("Read the approved Design component spec before implementing a new user-facing component"), "Component guidelines should require Design spec before component implementation");
+  assert(componentGuidelines.includes("../../design/knowledge/component-inventory.md"), "Component guidelines should point to component inventory");
+  assert(componentGuidelines.includes("Implement reusable component behavior before the screen or Feature that consumes it"), "Component guidelines should implement component before dependent Feature");
+  assert(componentGuidelines.includes("Do not create a new user-facing component without a Design spec"), "Component guidelines should block component work without Design spec");
   assert(componentGuidelines.includes("## Do Not Do"), "Component guidelines should include Do Not Do");
   assert(dataGuidelines.includes("## Migrations"), "Data guidelines should include migrations");
   assert(dataGuidelines.includes("## Rollback"), "Data guidelines should include rollback");
