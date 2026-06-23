@@ -20,7 +20,7 @@ All required areas are active in this department.
 2. Record relevant implementation notes
 3. Identify learning or roadmap impact if any
 4. Load the next issue
-5. Restart issue delivery
+5. Restart feature delivery
 
 
 

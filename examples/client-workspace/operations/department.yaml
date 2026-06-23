@@ -27,7 +27,7 @@ department:
       path: workflows/epic-to-features.workflow.md
     - key: mvp-to-pr
       path: workflows/mvp-to-pr.workflow.md
-    - key: issue-delivery-cycle
-      path: workflows/issue-delivery-cycle.workflow.md
+    - key: feature-to-delivery-cycle
+      path: workflows/feature-to-delivery-cycle.workflow.md
     - key: post-merge-continuation
       path: workflows/post-merge-continuation.workflow.md

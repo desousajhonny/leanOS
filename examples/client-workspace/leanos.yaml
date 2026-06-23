@@ -269,7 +269,7 @@ workflows:
     - delivery-scope-to-epic
     - epic-to-features
     - mvp-to-pr
-    - issue-delivery-cycle
+    - feature-to-delivery-cycle
     - post-merge-continuation
     - launch-learning-loop
   by_department:
@@ -289,8 +289,8 @@ workflows:
         path: operations/workflows/epic-to-features.workflow.md
       - key: mvp-to-pr
         path: operations/workflows/mvp-to-pr.workflow.md
-      - key: issue-delivery-cycle
-        path: operations/workflows/issue-delivery-cycle.workflow.md
+      - key: feature-to-delivery-cycle
+        path: operations/workflows/feature-to-delivery-cycle.workflow.md
       - key: post-merge-continuation
         path: operations/workflows/post-merge-continuation.workflow.md
     growth:

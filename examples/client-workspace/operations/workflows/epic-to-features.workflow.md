@@ -49,14 +49,14 @@ Later-session triggers:
 
 Next route:
 
-`issue-delivery-cycle`
+`feature-to-delivery-cycle`
 
 Rules:
 
 - Do not automatically start implementation after feature shaping.
 - If the founder says yes, run the ready-to-develop gate before routing to Engineering.
 - If readiness is missing, explain the gap in founder-friendly language and recommend the next LeanOS route.
-- If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `issue-delivery-cycle` only after readiness is confirmed.
+- If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `feature-to-delivery-cycle` only after readiness is confirmed.
 
 
 ## Navigation

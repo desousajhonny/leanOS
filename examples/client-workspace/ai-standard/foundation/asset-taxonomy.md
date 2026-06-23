@@ -154,7 +154,7 @@ A workflow coordinates multiple areas, stages or handoffs.
 - Do not place business workflows in `.leanos/workflows/`; `.leanos/` is runtime support.
 - Agents should use workflows to coordinate owners, then enter the relevant area and role.
 
-Example: `operations/workflows/issue-delivery-cycle.workflow.md` can coordinate Product Ops, Design, Engineering and Security for issue delivery.
+Example: `operations/workflows/feature-to-delivery-cycle.workflow.md` can coordinate Product Ops, Design, Engineering and Security for feature delivery.
 
 ### Command
 

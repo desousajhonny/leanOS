@@ -33,7 +33,7 @@ flowchart TD
   R{"Founder confirms file updates?"}
   S["Write local Feature files"]
   T["Stop without writing"]
-  U["Bridge: ready-to-develop then issue-delivery-cycle"]
+  U["Bridge: ready-to-develop then feature-to-delivery-cycle"]
 
   A --> B --> C --> D --> E
   E -->|No| F
@@ -61,7 +61,7 @@ The model starts at Root `AGENT.md` because the founder is speaking naturally. I
 
 ## Moment
 
-Feature Shaping. This happens after `delivery-scope-to-epic` and before `issue-delivery-cycle`.
+Feature Shaping. This happens after `delivery-scope-to-epic` and before `feature-to-delivery-cycle`.
 
 ## Start Condition
 
@@ -339,7 +339,7 @@ Later-session triggers:
 
 Next route:
 
-`issue-delivery-cycle`
+`feature-to-delivery-cycle`
 
 Rules:
 
@@ -379,4 +379,4 @@ Rules:
 - [ ] The model does not skip Product Ops.
 - [ ] The model applies DRM before creating Features.
 - [ ] The model asks for confirmation before writing.
-- [ ] The model offers `issue-delivery-cycle` only after readiness check.
+- [ ] The model offers `feature-to-delivery-cycle` only after readiness check.

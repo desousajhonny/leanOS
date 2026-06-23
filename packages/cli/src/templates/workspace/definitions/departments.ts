@@ -691,7 +691,7 @@ An Epic can be important and still not ready for code. An Epic becomes developab
 - A GitHub issue is optional for readiness when the local Feature file is complete enough to guide implementation.
 - GitHub sync is tracking, not product readiness.
 - If both local Feature and GitHub issue exist, compare them before planning and explain any mismatch to the founder.
-- Do not start \`issue-delivery-cycle\` from a vague roadmap item, unsplit Epic or loose idea.
+- Do not start \`feature-to-delivery-cycle\` from a vague roadmap item, unsplit Epic or loose idea.
 
 ## Product Readiness
 
@@ -776,7 +776,7 @@ Required when the work touches environments, CI/CD, deploy, observability, GitHu
 - If the work is not ready, explain the missing criteria in founder-friendly language.
 - Recommend the next LeanOS route instead of writing code too early.
 - Use \`where-we-are.md\` for status/readiness questions.
-- Use \`issue-delivery-cycle\` only after readiness is confirmed.
+- Use \`feature-to-delivery-cycle\` only after readiness is confirmed.
 - Never treat importance as readiness.
 - Never treat GitHub sync as readiness by itself.
 - If the founder asks to code too early, name the current state and offer the smallest next step.
@@ -4098,12 +4098,12 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         continuationBridge: {
           immediate: "As features foram definidas.\nQuer que eu verifique se alguma delas ja esta pronta para desenvolvimento?",
           laterTriggers: ["vamos implementar essa feature", "essa feature esta pronta para desenvolver?", "podemos iniciar o desenvolvimento?", "comece pela feature", "implemente a feature"],
-          nextRoute: "issue-delivery-cycle",
+          nextRoute: "feature-to-delivery-cycle",
           rules: [
             "Do not automatically start implementation after feature shaping.",
             "If the founder says yes, run the ready-to-develop gate before routing to Engineering.",
             "If readiness is missing, explain the gap in founder-friendly language and recommend the next LeanOS route.",
-            "If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `issue-delivery-cycle` only after readiness is confirmed."
+            "If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `feature-to-delivery-cycle` only after readiness is confirmed."
           ]
         }
       },
@@ -4114,7 +4114,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         steps: ["Read delivery scope", "Check architecture", "Route UX if needed", "Plan implementation", "Prepare PR"]
       },
       {
-        slug: "issue-delivery-cycle",
+        slug: "feature-to-delivery-cycle",
         purpose: "Coordinate Operations areas from Feature interpretation to readiness, component/design checks, branch, implementation, review and PR.",
         requiredAreas: ["product-ops", "engineering"],
         steps: [
@@ -4137,7 +4137,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         slug: "post-merge-continuation",
         purpose: "Continue delivery after a founder confirms a merge.",
         requiredAreas: ["product-ops", "engineering"],
-        steps: ["Confirm merge evidence or founder confirmation", "Record relevant implementation notes", "Identify learning or roadmap impact if any", "Load the next issue", "Restart issue delivery"]
+        steps: ["Confirm merge evidence or founder confirmation", "Record relevant implementation notes", "Identify learning or roadmap impact if any", "Load the next issue", "Restart feature delivery"]
       }
     ]
   },

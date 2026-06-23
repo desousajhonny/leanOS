@@ -18,7 +18,7 @@ Use when work spans more than one active area inside this department.
 - `delivery-scope-to-epic.workflow.md`
 - `epic-to-features.workflow.md`
 - `mvp-to-pr.workflow.md`
-- `issue-delivery-cycle.workflow.md`
+- `feature-to-delivery-cycle.workflow.md`
 - `post-merge-continuation.workflow.md`
 
 ## Related Folders

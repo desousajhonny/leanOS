@@ -18,7 +18,7 @@ An Epic can be important and still not ready for code. An Epic becomes developab
 - A GitHub issue is optional for readiness when the local Feature file is complete enough to guide implementation.
 - GitHub sync is tracking, not product readiness.
 - If both local Feature and GitHub issue exist, compare them before planning and explain any mismatch to the founder.
-- Do not start `issue-delivery-cycle` from a vague roadmap item, unsplit Epic or loose idea.
+- Do not start `feature-to-delivery-cycle` from a vague roadmap item, unsplit Epic or loose idea.
 
 ## Product Readiness
 
@@ -103,7 +103,7 @@ Required when the work touches environments, CI/CD, deploy, observability, GitHu
 - If the work is not ready, explain the missing criteria in founder-friendly language.
 - Recommend the next LeanOS route instead of writing code too early.
 - Use `where-we-are.md` for status/readiness questions.
-- Use `issue-delivery-cycle` only after readiness is confirmed.
+- Use `feature-to-delivery-cycle` only after readiness is confirmed.
 - Never treat importance as readiness.
 - Never treat GitHub sync as readiness by itself.
 - If the founder asks to code too early, name the current state and offer the smallest next step.

@@ -222,11 +222,11 @@ Regras:
 
 Decisao de delivery:
 
-- [ ] Separar Feature Shaping de Issue Delivery.
+- [ ] Separar Feature Shaping de Feature Delivery.
 - [ ] Feature Shaping acontece antes do desenvolvimento, principalmente em futuro `operations/product-ops/playbooks/epic-to-features.playbook.md`.
 - [ ] Feature Shaping aplica a Delivery Readiness Matrix (DRM) para envolver Product Ops, Design, Engineering, Security e DevOps quando aplicavel.
-- [ ] Issue Delivery assume que a issue idealmente ja veio pronta; ele faz recheck, atualiza riscos e so entao inicia branch, implementacao, testes, PR e review.
-- [ ] Product Ops, Design, Security e DevOps nao devem redescobrir tudo no momento de implementacao; entram como checkpoint quando a issue esta incompleta, mudou ou revelou risco novo.
+- [ ] Feature Delivery assume que a Feature idealmente ja veio pronta; ele faz recheck, atualiza riscos e so entao inicia branch, implementacao, testes, PR e review.
+- [ ] Product Ops, Design, Security e DevOps nao devem redescobrir tudo no momento de implementacao; entram como checkpoint quando a Feature esta incompleta, mudou ou revelou risco novo.
 
 Cada workflow deve responder:
 
@@ -261,10 +261,10 @@ Objetivo: impedir que o modelo implemente UI improvisada, componentes duplicados
 
 Decisao proposta:
 
-- [x] Documentar fluxo operacional de Component Readiness dentro de `issue-delivery-cycle`:
+- [x] Documentar fluxo operacional de Component Readiness dentro de `feature-to-delivery-cycle`:
   - Founder pede implementacao de uma Feature ou GitHub Feature issue;
   - Root `AGENT.md` identifica intencao de delivery/implementacao e roteia para `operations/AGENT.md`;
-  - `operations/AGENT.md` carrega `operations/workflows/issue-delivery-cycle.workflow.md`;
+  - `operations/AGENT.md` carrega `operations/workflows/feature-to-delivery-cycle.workflow.md`;
   - workflow entra primeiro em Product Ops para identificar Feature, Epic pai e readiness;
   - Product Ops usa `operations/product-ops/knowledge/ready-to-develop.md`;
   - se a Feature tem UI/tela/fluxo/componente, workflow roteia para Design antes de Engineering;
@@ -304,7 +304,7 @@ Decisao proposta:
   - durante Feature Shaping, Design detecta necessidade de componentes;
   - nao precisa escrever spec completa nessa etapa;
   - deve adicionar task na Feature quando component spec for necessaria.
-- [ ] Atualizar `issue-delivery-cycle`
+- [ ] Atualizar `feature-to-delivery-cycle`
   - aceitar Feature local ou GitHub Feature issue, nunca Epic/roadmap/ideia solta direto;
   - iniciar por Operations workflow, nao por Root chamando Product Ops diretamente;
   - Product Ops e o primeiro checkpoint de readiness;
@@ -316,8 +316,9 @@ Decisao proposta:
   - Engineering deve ler a component spec antes de implementar componente novo;
   - Engineering deve implementar primeiro o componente reutilizavel, validar estados/acessibilidade/testes, e so depois implementar a tela/feature que usa o componente;
   - Engineering nao pode criar componente novo sem spec ou confirmacao explicita de Design.
-- [ ] Atualizar jornada `docs/framework/founder-journeys/issue-delivery-cycle.md` quando ela for criada:
-  - mostrar caminho: Founder intent -> Root AGENT -> Operations AGENT -> issue-delivery-cycle -> Product Ops readiness -> Design component readiness se necessario -> Engineering -> PR validation;
+- [x] Criar/atualizar jornada `docs/framework/founder-journeys/feature-to-delivery-cycle.md`:
+  - este e o proximo passo depois de fortalecer o workflow no scaffold;
+  - mostrar caminho: Founder intent -> Root AGENT -> Operations AGENT -> feature-to-delivery-cycle -> Product Ops readiness -> Design component readiness se necessario -> Engineering -> PR validation;
   - deixar claro por que cada salto acontece: por regra do AGENT, por workflow ou por playbook;
   - incluir exemplo founder-friendly quando faltar component spec.
 - [ ] Decidir estrutura para specs concretas de componentes:
@@ -419,7 +420,7 @@ Decisao proposta:
 - [x] Atualizar workflows e jornadas:
   - `delivery-scope-to-epic` termina em Epic local, com GitHub sync opcional;
   - proximo fluxo passa a ser `epic-to-features`;
-  - `issue-delivery-cycle` deve aceitar Feature local ou GitHub issue como entrada, desde que passe pelo `ready-to-develop`.
+  - `feature-to-delivery-cycle` deve aceitar Feature local ou GitHub issue como entrada, desde que passe pelo `ready-to-develop`.
 
 #### Workflow Map - Founder Journey Completa
 
@@ -434,8 +435,8 @@ Jornadas internas devem ser criadas em `docs/framework/founder-journeys/` usando
 | 4 | [x] | [x] `docs/framework/founder-journeys/roadmap-item-to-delivery-scope.md` | Decisao de delivery scope | `operations/workflows/roadmap-item-to-delivery-scope.workflow.md` | "Isso entra na proxima entrega?", "isso entra no MVP?", "qual milestone recebe esse item?" | Product Ops + Strategy | Product Owner, Product Strategist, Delivery Architect, Product Designer/Security quando aplicavel | `delivery-scope-planning`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada e scaffold atualizado; MVP e apenas um tipo de delivery scope |
 | 5 | [x] | [x] `docs/framework/founder-journeys/delivery-scope-to-epic.md` | Planning de execucao | `operations/workflows/delivery-scope-to-epic.workflow.md` | "Deseja quebrar esse escopo em epics?", "crie os epics no GitHub" | Product Ops + DevOps | Product Owner, Roadmap Planner, GitHub DevOps, Senior Developer quando aplicavel | `roadmap-sync-prep`, `configure-github-project`, `delivery-readiness` | Jornada criada e scaffold atualizado; GitHub write exige confirmacao |
 | 6 | [x] | [x] `docs/framework/founder-journeys/epic-to-features.md` | Feature Shaping | `operations/workflows/epic-to-features.workflow.md` | "Quebre esse epic em features", "quais features precisamos para esse epic?" | Operations / Product Ops | Product Owner, Product Designer, Security Reviewer, DevOps Engineer, Senior Developer | `epic-to-features`, `delivery-readiness`, `mvp-ux-flow`, `accessibility-review`, `pre-mvp-security-checklist`, `api-security-review`, `setup-ci-cd` | Jornada criada; scaffold deve gerar workflow local e aplicar DRM completa |
-| 7 | [ ] | [ ] `docs/framework/founder-journeys/issue-delivery-cycle.md` | Implementacao | `operations/workflows/issue-delivery-cycle.workflow.md` | "Implemente a issue #554", "vamos comecar essa feature" | Operations / Engineering | Product Owner, Senior Developer, Test Engineer, PR Reviewer, Security Reviewer quando aplicavel | `delivery-readiness`, `branch-from-issue`, `issue-to-pr`, `test-planning`, `pr-validation`, `ai-generated-code-security-review` | Existe, precisa fortalecer |
-| 8 | [ ] | [ ] `docs/framework/founder-journeys/review-pr.md` | Review e PR | Dentro de `issue-delivery-cycle` ou futuro workflow de review | "Revise o PR", "esta pronto para merge?" | Engineering + Security/DevOps quando aplicavel | PR Reviewer, Test Engineer, Security Reviewer, Release Manager | `pr-validation`, `pre-deploy-security-review`, `security-automation-readiness`, `release-operations` | Coberto por playbooks, talvez nao precise workflow separado |
+| 7 | [x] | [x] `docs/framework/founder-journeys/feature-to-delivery-cycle.md` | Implementacao | `operations/workflows/feature-to-delivery-cycle.workflow.md` | "Implemente a feature", "implemente a issue #554", "vamos comecar essa feature" | Operations / Engineering | Product Owner, Product Designer quando UI/componente for afetado, Senior Developer, Test Engineer, PR Reviewer, Security Reviewer quando aplicavel | `delivery-readiness`, `component-readiness`, `branch-from-issue`, `issue-to-pr`, `test-planning`, `pr-validation`, `ai-generated-code-security-review` | Scaffold fortalecido com Component Readiness; jornada criada; falta criar assets concretos de component readiness |
+| 8 | [ ] | [ ] `docs/framework/founder-journeys/review-pr.md` | Review e PR | Dentro de `feature-to-delivery-cycle` ou futuro workflow de review | "Revise o PR", "esta pronto para merge?" | Engineering + Security/DevOps quando aplicavel | PR Reviewer, Test Engineer, Security Reviewer, Release Manager | `pr-validation`, `pre-deploy-security-review`, `security-automation-readiness`, `release-operations` | Coberto por playbooks, talvez nao precise workflow separado |
 | 9 | [ ] | [ ] `docs/framework/founder-journeys/post-merge-continuation.md` | Pos-merge | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a proxima issue", "o que atualizamos depois do merge?" | Operations | Product Owner, Senior Developer, Release Manager, CX Lead quando aplicavel | `release-operations`, `delivery-readiness`, `customer-learning-loop` | Existe, precisa fortalecer |
 | 10 | [ ] | [ ] `docs/framework/founder-journeys/launch-learning-loop.md` | Lancamento e aprendizado | `growth/workflows/launch-learning-loop.workflow.md` | "Lancamos, o que aprendemos?", "como melhorar aquisicao/conversao?" | Growth | Growth Lead, CX Lead, Finance Operator | `mvp-launch`, `customer-learning-loop`, `finance-review` | Existe, pode ficar lean para depois |
 
@@ -473,7 +474,7 @@ MVP continua sendo o nome principal da etapa. O criterio de qualidade deve inclu
 3. `operations/workflows/roadmap-item-to-delivery-scope.workflow.md` ou manter como fase de Product Ops
 4. `operations/workflows/delivery-scope-to-epic.workflow.md`
 5. `operations/workflows/epic-to-features.workflow.md`
-6. `operations/workflows/issue-delivery-cycle.workflow.md`
+6. `operations/workflows/feature-to-delivery-cycle.workflow.md`
 7. Decidir destino de `operations/workflows/mvp-to-pr.workflow.md`
 8. `operations/workflows/post-merge-continuation.workflow.md`
 9. `operations/workflows/define-mvp.workflow.md` ou manter como playbook em Product Ops
@@ -536,10 +537,10 @@ Workflows a revisar:
   - deve focar em itens de delivery scope, current cycle e itens explicitamente selecionados para delivery;
   - deve tratar GitHub como plano/payload/dry-run antes de chamada real;
   - deve envolver Product/Roadmap e DevOps apenas para readiness/configuracao.
-- [ ] `operations/workflows/issue-delivery-cycle.workflow.md`
+- [ ] `operations/workflows/feature-to-delivery-cycle.workflow.md`
   - deve coordenar Product Ops, Engineering, Design condicional, Security condicional e review.
 - [ ] `operations/workflows/mvp-to-pr.workflow.md`
-  - deve ser revisado para decidir se continua necessario ou se foi absorvido por issue-delivery-cycle.
+  - deve ser revisado para decidir se continua necessario ou se foi absorvido por feature-to-delivery-cycle.
 - [ ] `operations/workflows/post-merge-continuation.workflow.md`
   - deve orientar retorno pos-merge: atualizar contexto, proxima issue, riscos e follow-up.
 - [ ] `growth/workflows/launch-learning-loop.workflow.md`

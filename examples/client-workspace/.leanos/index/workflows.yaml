@@ -27,9 +27,9 @@ workflows:
     department: operations
     path: ../../operations/workflows/mvp-to-pr.workflow.md
     active: true
-  - key: issue-delivery-cycle
+  - key: feature-to-delivery-cycle
     department: operations
-    path: ../../operations/workflows/issue-delivery-cycle.workflow.md
+    path: ../../operations/workflows/feature-to-delivery-cycle.workflow.md
     active: true
   - key: post-merge-continuation
     department: operations

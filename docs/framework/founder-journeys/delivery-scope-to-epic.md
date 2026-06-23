@@ -621,4 +621,4 @@ Before considering this journey complete, verify:
 
 - If GitHub setup remains too vague, improve DevOps GitHub readiness assets before automating remote writes.
 - If epic drafts vary too much, strengthen `ai-standard/templates/github/github-epic-template.md`.
-- If this journey starts getting too many implementation checks, move them to `epic-to-features` or `issue-delivery-cycle`.
+- If this journey starts getting too many implementation checks, move them to `epic-to-features` or `feature-to-delivery-cycle`.

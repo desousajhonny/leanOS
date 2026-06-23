@@ -87,7 +87,7 @@ export function aiStandardFiles(): FileEntry[] {
       title: "Execution Examples",
       purpose: "Examples of roles, skills, playbooks and workflows.",
       use: "Use when reviewing area-level execution assets or department/area workflows.",
-      files: ["example-role-senior-developer.md", "example-skill-check-coherence.md", "example-playbook-issue-to-pr.md", "example-workflow-issue-delivery-cycle.md"]
+      files: ["example-role-senior-developer.md", "example-skill-check-coherence.md", "example-playbook-issue-to-pr.md", "example-workflow-feature-to-delivery-cycle.md"]
     },
     {
       key: "commands",
@@ -301,7 +301,7 @@ function exampleContent(_groupKey: string, fileName: string): string {
     "example-role-senior-developer.md": roleFile(engineering, seniorDeveloper),
     "example-skill-check-coherence.md": skillFile(product, checkCoherence),
     "example-playbook-issue-to-pr.md": playbookFile(engineering, issueToPr),
-    "example-workflow-issue-delivery-cycle.md": exampleWorkflowIssueDeliveryCycle(),
+    "example-workflow-feature-to-delivery-cycle.md": exampleWorkflowFeatureToDeliveryCycle(),
     "example-command-define-design.md": exampleCommandDefineDesign(),
     "example-github-epic.md": exampleGithubEpic(),
     "example-github-feature.md": exampleGithubFeature(),
@@ -389,8 +389,8 @@ Own product experience quality: design system, accessibility, flows, interaction
 `;
 }
 
-function exampleWorkflowIssueDeliveryCycle(): string {
-  return `# Issue Delivery Cycle Workflow
+function exampleWorkflowFeatureToDeliveryCycle(): string {
+  return `# Feature To Delivery Cycle Workflow
 
 ## Purpose
 
@@ -2069,7 +2069,7 @@ A workflow coordinates multiple areas, stages or handoffs.
 - Do not place business workflows in \`.leanos/workflows/\`; \`.leanos/\` is runtime support.
 - Agents should use workflows to coordinate owners, then enter the relevant area and role.
 
-Example: \`operations/workflows/issue-delivery-cycle.workflow.md\` can coordinate Product Ops, Design, Engineering and Security for issue delivery.
+Example: \`operations/workflows/feature-to-delivery-cycle.workflow.md\` can coordinate Product Ops, Design, Engineering and Security for feature delivery.
 
 ### Command
 

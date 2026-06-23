@@ -272,7 +272,7 @@ If these are missing, explain the gap and recommend the next LeanOS route instea
 - Delivery scope missing -> \`roadmap-item-to-delivery-scope\`
 - Local epics missing -> \`delivery-scope-to-epic\` when available
 - Features missing -> \`epic-to-features\` when available
-- Implementation ready -> \`issue-delivery-cycle\`
+- Implementation ready -> \`feature-to-delivery-cycle\`
 - PR/review needed -> Engineering PR validation route
 - Launch/readiness needed -> Growth or DevOps based on the gap
 

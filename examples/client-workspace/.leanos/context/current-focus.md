@@ -25,7 +25,7 @@ Compatible local workflows:
 - delivery-scope-to-epic
 - epic-to-features
 - mvp-to-pr
-- issue-delivery-cycle
+- feature-to-delivery-cycle
 - post-merge-continuation
 - launch-learning-loop
 

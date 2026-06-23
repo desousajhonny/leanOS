@@ -107,7 +107,7 @@ client-workspace/
 |   |   |   |-- example-playbook-issue-to-pr.md
 |   |   |   |-- example-role-senior-developer.md
 |   |   |   |-- example-skill-check-coherence.md
-|   |   |   |-- example-workflow-issue-delivery-cycle.md
+|   |   |   |-- example-workflow-feature-to-delivery-cycle.md
 |   |   |   `-- README.md
 |   |   |-- github/
 |   |   |   |-- example-github-epic.md
@@ -449,7 +449,7 @@ client-workspace/
 |   |-- workflows/
 |   |   |-- delivery-scope-to-epic.workflow.md
 |   |   |-- epic-to-features.workflow.md
-|   |   |-- issue-delivery-cycle.workflow.md
+|   |   |-- feature-to-delivery-cycle.workflow.md
 |   |   |-- mvp-to-pr.workflow.md
 |   |   |-- post-merge-continuation.workflow.md
 |   |   |-- README.md

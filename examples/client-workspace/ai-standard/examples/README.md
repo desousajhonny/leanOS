@@ -42,7 +42,7 @@ Files:
 - `execution/example-role-senior-developer.md`
 - `execution/example-skill-check-coherence.md`
 - `execution/example-playbook-issue-to-pr.md`
-- `execution/example-workflow-issue-delivery-cycle.md`
+- `execution/example-workflow-feature-to-delivery-cycle.md`
 
 ### `commands/`
 
