@@ -325,10 +325,11 @@ Decisao proposta:
   - opcao preferida: `operations/design/knowledge/components/<component-name>.md`;
   - nao gerar specs concretas no scaffold inicial;
   - criar arquivo apenas quando uma Feature real exigir componente novo.
-- [ ] Planejar `screen-spec-template.md` para etapa futura:
+- [x] Planejar `screen-spec-template.md` para etapa futura:
   - provavel local: `ai-standard/templates/design/screen-spec-template.md`;
   - screen spec deve documentar tela/fluxo concreto, nao ser gerada no scaffold inicial;
   - deve cobrir layout, required components, actions, states, table rules, accessibility, responsive behavior e analytics/events quando aplicavel.
+  - plano interno criado em `docs/framework/screen-spec-template-plan.md`.
 
 #### Product Work Taxonomy
 
