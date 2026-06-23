@@ -25,7 +25,7 @@ flowchart TD
   J{"UI/component affected?"}
   K["Design checks component readiness"]
   L{"Component contract ready?"}
-  M["Explain missing Design spec and stop before code"]
+  M["Route to component-readiness before branch/code"]
   N{"Security/DevOps needed?"}
   O["Run conditional Security/DevOps checks"]
   P["Engineering plans branch and implementation"]
@@ -51,7 +51,7 @@ flowchart TD
 
 ## Flow In Plain Words
 
-The model starts at Root `AGENT.md` because the founder is speaking naturally. It enters Operations because the request is about delivery and implementation. It reads `operations/workflows/feature-to-delivery-cycle.workflow.md` because the work crosses Product Ops, conditional Design/Security/DevOps and Engineering. It enters Product Ops first because a Feature must pass readiness before code. It enters Design only when the Feature touches UI, screens, flows, copy, accessibility or components. Engineering starts only after readiness is satisfied or a non-applicable reason is explicit.
+The model starts at Root `AGENT.md` because the founder is speaking naturally. It enters Operations because the request is about delivery and implementation. It reads `operations/workflows/feature-to-delivery-cycle.workflow.md` because the work crosses Product Ops, conditional Design/Security/DevOps and Engineering. It enters Product Ops first because a Feature must pass readiness before code. It enters Design only when the Feature touches UI, screens, flows, copy, accessibility or components. If a component spec is required but missing, the model routes to Design component readiness before any branch or code. Engineering starts only after readiness is satisfied or a non-applicable reason is explicit.
 
 ## Founder Trigger
 
@@ -111,7 +111,8 @@ Rules:
 - The model cannot skip Product Ops and go directly to Engineering.
 - The model cannot start from a loose idea, roadmap item or unsplit Epic.
 - If UI/component work is involved, the model must route Design before Engineering.
-- If a required Design component spec is missing, the model stops before code and explains the missing step.
+- If a required Design component spec is missing, the model routes to `operations/design/playbooks/component-readiness.playbook.md` before branch or code.
+- If Design, Security or DevOps are not applicable, the model says why in the founder-facing summary.
 - If Security or DevOps are not applicable, the model must state why.
 
 ## What The Model Does In Practice
@@ -181,13 +182,13 @@ Design checks:
 - whether the Feature can reuse an existing component;
 - whether a new component contract is needed.
 
-If a new component is needed but the component spec path/template does not exist yet, the model stops before code and says:
+If a new component is needed but the concrete component spec does not exist yet, the model routes to Design before branch or code and says:
 
 ```text
 Ainda nao recomendo codar essa Feature.
 
-Ela precisa de um contrato de Design para o componente novo antes da Engenharia implementar.
-O proximo passo seguro e criar a especificacao do componente e atualizar o inventario de componentes.
+Ela precisa de uma spec de Design para o componente novo antes da Engenharia implementar.
+O proximo passo seguro e rodar component readiness, criar a spec do componente e atualizar o inventario de componentes.
 
 Quer que eu conduza esse passo de Design agora?
 ```
@@ -212,7 +213,7 @@ Why:
 - Conditional readiness gaps are closed or explicitly not applicable.
 - Engineering now owns branch, implementation, tests and PR preparation.
 
-If a reusable component is part of the work, Engineering implements the component first, validates states/accessibility/tests, and only then implements the screen or Feature that depends on it.
+If a reusable component is part of the work and the Design spec is approved, Engineering runs `operations/engineering/playbooks/component-implementation.playbook.md`, implements the component first, validates states/accessibility/tests, and only then implements the screen or Feature that depends on it.
 
 ### Step 7 - PR Preparation
 

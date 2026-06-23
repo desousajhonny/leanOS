@@ -304,7 +304,7 @@ Decisao proposta:
   - durante Feature Shaping, Design detecta necessidade de componentes;
   - nao precisa escrever spec completa nessa etapa;
   - deve adicionar task na Feature quando component spec for necessaria.
-- [ ] Atualizar `feature-to-delivery-cycle`
+- [x] Atualizar `feature-to-delivery-cycle`
   - aceitar Feature local ou GitHub Feature issue, nunca Epic/roadmap/ideia solta direto;
   - iniciar por Operations workflow, nao por Root chamando Product Ops diretamente;
   - Product Ops e o primeiro checkpoint de readiness;

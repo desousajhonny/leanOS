@@ -616,9 +616,11 @@ async function validateWorkspaceFiles() {
   assert(featureDeliveryWorkflow.includes("Load Product Ops first"), "Feature delivery workflow should start with Product Ops readiness");
   assert(featureDeliveryWorkflow.includes("ready-to-develop.md"), "Feature delivery workflow should run the ready-to-develop gate");
   assert(featureDeliveryWorkflow.includes("route Design before Engineering"), "Feature delivery workflow should route Design before Engineering when UI is affected");
-  assert(featureDeliveryWorkflow.includes("new component contract"), "Feature delivery workflow should handle new component contract readiness");
-  assert(featureDeliveryWorkflow.includes("stop before code"), "Feature delivery workflow should stop before code when Design component readiness is missing");
-  assert(featureDeliveryWorkflow.includes("implement reusable component work before the screen or Feature"), "Feature delivery workflow should implement reusable components before dependent screens or features");
+  assert(featureDeliveryWorkflow.includes("new component spec is needed and no approved spec exists"), "Feature delivery workflow should handle missing component specs");
+  assert(featureDeliveryWorkflow.includes("operations/design/playbooks/component-readiness.playbook.md"), "Feature delivery workflow should route missing component specs to Design");
+  assert(featureDeliveryWorkflow.includes("before branch or code"), "Feature delivery workflow should stop before branch or code when Design component readiness is missing");
+  assert(featureDeliveryWorkflow.includes("Record why Design, Security or DevOps are not applicable"), "Feature delivery workflow should record non-applicable dimensions");
+  assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/component-implementation.playbook.md"), "Feature delivery workflow should run component implementation after approved spec");
   await assertExists(join(rootDir, ".leanos", "commands", "define-design.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "README.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "design-system.md"));
