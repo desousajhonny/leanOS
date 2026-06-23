@@ -79,12 +79,14 @@ O LeanOS ja tem um MVP forte de framework e scaffold:
 ### 4. GitHub readiness inicial
 
 - [x] Templates de issue, epic, sub-issue, PR, branch e readiness matrix criados no `ai-standard`.
+  - atualizar depois para linguagem product-first: Epic -> Feature -> Tasks, com GitHub issue como representacao remota.
 - [x] Regras de branch por issue definidas.
 - [x] Regras de PR e PR review definidas.
 - [x] `.github/leanos/` preparado sem segredos.
 - [x] `.env.local` gerado apenas quando o usuario escolhe preparar GitHub management.
 - [x] Tokens reais nao sao persistidos pelo framework.
 - [x] Fluxo conceitual Roadmap -> GitHub Project -> Epic -> Sub-issues -> Implementation documentado temporariamente.
+  - revisar depois para Epic -> Features -> Tasks internas, mantendo GitHub como camada opcional.
 
 ### 5. Security baseline
 
@@ -168,8 +170,8 @@ Regras gerais:
 
 #### `/create issues`
 
-- [ ] Converter MVP/roadmap em epics e sub-issues GitHub-ready.
-- [ ] Usar templates de epic e sub-issue em `ai-standard/templates/github/`.
+- [ ] Converter delivery scope em Epics locais e, depois, Features com Tasks internas.
+- [ ] Usar templates de Epic e Feature; GitHub templates ficam como representacao remota opcional.
 - [ ] Aplicar Delivery Readiness Matrix (DRM) com Product Ops, Design, Engineering, Security e DevOps conforme necessidade da issue.
 - [ ] Design participa apenas quando houver UX, UI, fluxo, acessibilidade, copy ou experiencia de tela.
 - [ ] Security participa quando houver dados, auth, privacidade, API, banco, secrets, compliance, infra ou risco de abuso.
@@ -220,9 +222,9 @@ Regras:
 
 Decisao de delivery:
 
-- [ ] Separar Issue Shaping de Issue Delivery.
-- [ ] Issue Shaping acontece antes do desenvolvimento, principalmente em `operations/product-ops/playbooks/epic-to-subissues.playbook.md`.
-- [ ] Issue Shaping aplica a Delivery Readiness Matrix (DRM) para envolver Product Ops, Design, Engineering, Security e DevOps quando aplicavel.
+- [ ] Separar Feature Shaping de Issue Delivery.
+- [ ] Feature Shaping acontece antes do desenvolvimento, principalmente em futuro `operations/product-ops/playbooks/epic-to-features.playbook.md`.
+- [ ] Feature Shaping aplica a Delivery Readiness Matrix (DRM) para envolver Product Ops, Design, Engineering, Security e DevOps quando aplicavel.
 - [ ] Issue Delivery assume que a issue idealmente ja veio pronta; ele faz recheck, atualiza riscos e so entao inicia branch, implementacao, testes, PR e review.
 - [ ] Product Ops, Design, Security e DevOps nao devem redescobrir tudo no momento de implementacao; entram como checkpoint quando a issue esta incompleta, mudou ou revelou risco novo.
 
@@ -253,6 +255,92 @@ Objetivo: manter apenas gates fixos que realmente ajudam o modelo a decidir se p
   - deve cobrir negocio, usabilidade, acessibilidade, seguranca, privacidade, DevOps, observabilidade, rollback, suporte, marketing/go-to-market e aprendizado pos-lancamento;
   - deve responder se o produto/release esta pronto para ir para usuarios reais, nao apenas se o codigo esta pronto.
 
+#### Product Work Taxonomy
+
+Objetivo: definir uma linguagem product-first antes de implementar o proximo fluxo. O LeanOS nao deve depender do vocabulario do GitHub para organizar trabalho.
+
+Decisao proposta:
+
+- [ ] Criar `operations/product-ops/knowledge/work-taxonomy.md`
+  - deve explicar Roadmap, Backlog, Delivery Scope, Epic, Feature e Task;
+  - deve deixar claro como cada item entra no sistema;
+  - deve definir que Epic e uma initiative ou bloco grande de entrega;
+  - deve definir que Epic e quebrado em Features;
+  - deve definir que Feature contem Tasks internas;
+  - deve definir que GitHub issue e representacao remota opcional, nao a linguagem central do LeanOS.
+- [ ] Atualizar linguagem do framework:
+  - substituir "sub-issues" por "features" quando estivermos falando da decomposicao LeanOS local;
+  - manter "issues" apenas para GitHub, PRs e tracking remoto;
+  - tratar GitHub labels/templates como mapeamento: Epic -> issue `epic`, Feature -> issue `feature`, Task -> checklist interna ou task operacional.
+- [ ] Criar/ajustar templates:
+  - `ai-standard/templates/product/epic-template.md` ou equivalente;
+  - `ai-standard/templates/product/feature-template.md` ou equivalente;
+  - revisar `ai-standard/templates/github/github-epic-template.md`;
+  - criar/revisar template GitHub para Feature se ainda nao existir.
+- [ ] Definir naming convention para titulos de Epic e Feature:
+  - Epic deve ter prefixo claro, por exemplo `[EPIC] Customer Management` ou `[EPIC: Customer Management]`;
+  - Feature deve ter prefixo claro, por exemplo `[FEATURE] Create customer profile` ou `[FEATURE: Customer Management] Create customer profile`;
+  - evitar letras manuais tipo `[EPIC A]`, porque envelhecem mal quando a ordem muda;
+  - se precisar de codigo estavel, preferir campo separado como `epic_key: customer-management` no YAML/frontmatter ou no corpo do template;
+  - GitHub title deve seguir o mesmo padrao para facilitar busca, labels e sync.
+- [ ] Criar estrutura local para epics:
+  - `operations/product-ops/epics/README.md`;
+  - cada epic local vive em uma pasta propria: `operations/product-ops/epics/<epic-slug>/`;
+  - `operations/product-ops/epics/<epic-slug>/README.md` descreve o Epic;
+  - cada arquivo dentro da pasta do Epic representa uma Feature daquele Epic;
+  - nao criar subpasta `features/` no MVP; tudo dentro da pasta do Epic e considerado parte dele;
+  - Tasks ficam como checklist interna dentro de cada Feature;
+  - GitHub sync deve mapear epic local para issue remota quando existir.
+- [ ] Definir ciclo de vida e ownership:
+  - status sugeridos: `idea`, `candidate`, `scoped`, `ready`, `in-progress`, `blocked`, `done`, `synced`;
+  - Roadmap/Backlog pertence a Strategy Roadmap;
+  - Delivery Scope, Epic e Feature Shaping pertencem a Product Ops;
+  - Task execution pertence a Engineering ou area responsavel;
+  - Design, Security e DevOps entram como criterios condicionais na Feature.
+- [ ] Definir regra local vs GitHub:
+  - LeanOS local e a fonte operacional primaria;
+  - GitHub e camada opcional de tracking/sync;
+  - se houver conflito entre local e GitHub, o modelo deve explicar a diferenca e pedir confirmacao antes de sobrescrever qualquer lado.
+- [ ] Definir DRM por Feature:
+  - Product Ops sempre;
+  - Engineering sempre;
+  - Design quando houver UX/UI/copy/acessibilidade/fluxo/tela;
+  - Security quando houver dados/auth/API/privacy/permissoes/abuso/compliance;
+  - DevOps quando houver ambiente/deploy/config/observabilidade/GitHub Project.
+- [ ] Definir Definition of Ready:
+  - Feature so entra em desenvolvimento depois de passar pelo `ready-to-develop`;
+  - Feature pode existir localmente antes de estar pronta para desenvolvimento;
+  - o modelo deve explicar gaps antes de sugerir implementacao.
+- [ ] Definir GitHub mapping:
+  - Epic local -> GitHub issue com label `epic`;
+  - Feature local -> GitHub issue com label `feature`;
+  - Tasks -> checklist interna dentro da Feature issue por padrao;
+  - criar issue separada para Task somente se houver necessidade operacional clara.
+- [ ] Planejar comando/chat intent `/github-sync`:
+  - o modelo deve ler `operations/product-ops/epics/`;
+  - identificar Epics/Features ainda nao sincronizados;
+  - preparar payload/dry-run;
+  - pedir confirmacao antes de criar/atualizar GitHub issues;
+  - atualizar sync state sem segredos.
+- [ ] Avaliar pasta de sync local:
+  - opcao: `operations/product-ops/epics/synced/` para epics ja sincronizados;
+  - objetivo: reduzir releitura desnecessaria e custo de contexto;
+  - cuidado: mover arquivos pode esconder contexto do modelo; talvez seja melhor manter no lugar e registrar sync em `.github/leanos/sync-state.yaml`;
+  - decisao futura: `synced/` fisico vs sync-state como indice.
+- [ ] Criar/ajustar skill:
+  - renomear ou substituir `write-subissue-criteria` por algo como `break-epic-into-features`;
+  - a skill deve gerar Features com Tasks internas;
+  - cada Feature deve conter Product Ops, Engineering e DRM aplicavel: Design, Security e DevOps quando necessario.
+- [ ] Criar/ajustar playbook:
+  - renomear ou substituir `epic-to-subissues` por `epic-to-features`;
+  - o playbook deve quebrar Epic em Features;
+  - Tasks ficam dentro de cada Feature;
+  - GitHub sync de Features vira etapa opcional posterior.
+- [ ] Atualizar workflows e jornadas:
+  - `delivery-scope-to-epic` termina em Epic local, com GitHub sync opcional;
+  - proximo fluxo passa a ser `epic-to-features`, nao `epic-to-subissues`;
+  - `issue-delivery-cycle` deve aceitar Feature local ou GitHub issue como entrada, desde que passe pelo `ready-to-develop`.
+
 #### Workflow Map - Founder Journey Completa
 
 Jornadas internas devem ser criadas em `docs/framework/founder-journeys/` usando `journey-template.md`.
@@ -264,8 +352,8 @@ Jornadas internas devem ser criadas em `docs/framework/founder-journeys/` usando
 | 2 | [x] | [x] `docs/framework/founder-journeys/new-idea-intake.md` | Novas ideias e features | `strategy/workflows/new-idea-intake.workflow.md` | "Tenho uma ideia", "quero avaliar uma feature nova", "isso faz sentido para o produto?" | Strategy | Product Strategist, Product Manager, Business Strategist, Roadmap Planner | `product-strategy`, `business-foundation`, `roadmap-cycle-planning`, `mvp-delivery` | Jornada criada e scaffold ajustado para separar intake de roadmap |
 | 3 | [x] | [x] `docs/framework/founder-journeys/idea-to-roadmap.md` | Decisao de roadmap | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" | Strategy / Roadmap | Product Strategist, Product Manager, Roadmap Planner | `roadmap-cycle-planning`, `product-strategy` | Jornada criada; scaffold existente validado; gap futuro: delivery scope deve ser contexto opcional no Roadmap Planner |
 | 4 | [x] | [x] `docs/framework/founder-journeys/roadmap-item-to-delivery-scope.md` | Decisao de delivery scope | `operations/workflows/roadmap-item-to-delivery-scope.workflow.md` | "Isso entra na proxima entrega?", "isso entra no MVP?", "qual milestone recebe esse item?" | Product Ops + Strategy | Product Owner, Product Strategist, Delivery Architect, Product Designer/Security quando aplicavel | `delivery-scope-planning`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada e scaffold atualizado; MVP e apenas um tipo de delivery scope |
-| 5 | [ ] | [ ] `docs/framework/founder-journeys/delivery-scope-to-epic.md` | Planning de execucao | `operations/workflows/delivery-scope-to-epic.workflow.md` ou `strategy/workflows/roadmap-to-github-project.workflow.md` | "Deseja quebrar esse escopo em epics?", "crie os epics no GitHub" | Product Ops + DevOps | Product Owner, Roadmap Planner, GitHub DevOps, Senior Developer quando aplicavel | `roadmap-sync-prep`, `configure-github-project`, `delivery-readiness` | Delivery scope deve virar trabalho rastreavel antes de implementacao |
-| 6 | [ ] | [ ] `docs/framework/founder-journeys/epic-to-subissues.md` | Issue Shaping | `operations/workflows/epic-to-subissues.workflow.md` | "Quebre o epic #123 em sub-issues" | Operations / Product Ops | Product Owner, Product Designer, Security Reviewer, DevOps Engineer, Senior Developer | `epic-to-subissues`, `delivery-readiness`, `mvp-ux-flow`, `accessibility-review`, `pre-mvp-security-checklist`, `api-security-review`, `setup-ci-cd` | Falta criar workflow |
+| 5 | [x] | [x] `docs/framework/founder-journeys/delivery-scope-to-epic.md` | Planning de execucao | `operations/workflows/delivery-scope-to-epic.workflow.md` | "Deseja quebrar esse escopo em epics?", "crie os epics no GitHub" | Product Ops + DevOps | Product Owner, Roadmap Planner, GitHub DevOps, Senior Developer quando aplicavel | `roadmap-sync-prep`, `configure-github-project`, `delivery-readiness` | Jornada criada e scaffold atualizado; GitHub write exige confirmacao |
+| 6 | [ ] | [ ] `docs/framework/founder-journeys/epic-to-features.md` | Feature Shaping | `operations/workflows/epic-to-features.workflow.md` | "Quebre esse epic em features", "quais features precisamos para esse epic?" | Operations / Product Ops | Product Owner, Product Designer, Security Reviewer, DevOps Engineer, Senior Developer | `epic-to-features`, `delivery-readiness`, `mvp-ux-flow`, `accessibility-review`, `pre-mvp-security-checklist`, `api-security-review`, `setup-ci-cd` | Antes de criar, ajustar taxonomia Epic -> Feature -> Tasks |
 | 7 | [ ] | [ ] `docs/framework/founder-journeys/issue-delivery-cycle.md` | Implementacao | `operations/workflows/issue-delivery-cycle.workflow.md` | "Implemente a issue #554", "vamos comecar essa feature" | Operations / Engineering | Product Owner, Senior Developer, Test Engineer, PR Reviewer, Security Reviewer quando aplicavel | `delivery-readiness`, `branch-from-issue`, `issue-to-pr`, `test-planning`, `pr-validation`, `ai-generated-code-security-review` | Existe, precisa fortalecer |
 | 8 | [ ] | [ ] `docs/framework/founder-journeys/review-pr.md` | Review e PR | Dentro de `issue-delivery-cycle` ou futuro workflow de review | "Revise o PR", "esta pronto para merge?" | Engineering + Security/DevOps quando aplicavel | PR Reviewer, Test Engineer, Security Reviewer, Release Manager | `pr-validation`, `pre-deploy-security-review`, `security-automation-readiness`, `release-operations` | Coberto por playbooks, talvez nao precise workflow separado |
 | 9 | [ ] | [ ] `docs/framework/founder-journeys/post-merge-continuation.md` | Pos-merge | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a proxima issue", "o que atualizamos depois do merge?" | Operations | Product Owner, Senior Developer, Release Manager, CX Lead quando aplicavel | `release-operations`, `delivery-readiness`, `customer-learning-loop` | Existe, precisa fortalecer |
@@ -294,9 +382,9 @@ MVP continua sendo o nome principal da etapa. O criterio de qualidade deve inclu
 - [ ] Roadmap pode conter direcao estrategica, oportunidades futuras, backlog de produto e ideias ainda nao priorizadas.
 - [ ] Todo item marcado como parte do MVP precisa virar trabalho executavel e rastreavel antes de implementacao.
 - [ ] Um item de delivery scope deve passar por `delivery-scope-to-epic` antes de Engineering iniciar desenvolvimento.
-- [ ] Um epic de MVP deve passar por `epic-to-subissues` antes de virar trabalho de implementacao.
+- [ ] Um epic de MVP deve passar por `epic-to-features` antes de virar trabalho de implementacao.
 - [ ] GitHub Project deve representar principalmente o que esta em execucao, em preparacao para execucao ou explicitamente selecionado para delivery.
-- [ ] O modelo deve pedir confirmacao antes de promover item de roadmap para delivery scope, antes de criar epic e antes de criar sub-issues via API.
+- [ ] O modelo deve pedir confirmacao antes de promover item de roadmap para delivery scope, antes de criar epic e antes de sincronizar epics/features com GitHub.
 
 #### Ordem Para Implementar Os Workflows
 
@@ -304,7 +392,7 @@ MVP continua sendo o nome principal da etapa. O criterio de qualidade deve inclu
 2. `strategy/workflows/idea-to-roadmap.workflow.md`
 3. `operations/workflows/roadmap-item-to-delivery-scope.workflow.md` ou manter como fase de Product Ops
 4. `operations/workflows/delivery-scope-to-epic.workflow.md`
-5. `operations/workflows/epic-to-subissues.workflow.md`
+5. `operations/workflows/epic-to-features.workflow.md`
 6. `operations/workflows/issue-delivery-cycle.workflow.md`
 7. Decidir destino de `operations/workflows/mvp-to-pr.workflow.md`
 8. `operations/workflows/post-merge-continuation.workflow.md`
@@ -314,12 +402,13 @@ MVP continua sendo o nome principal da etapa. O criterio de qualidade deve inclu
 
 Workflows a revisar:
 
-- [ ] `operations/product-ops/playbooks/epic-to-subissues.playbook.md`
+- [ ] `operations/product-ops/playbooks/epic-to-features.playbook.md`
   - primeira execucao desta fase;
-  - deve ser o processo oficial de Issue Shaping;
+  - deve ser o processo oficial de Feature Shaping;
   - deve usar Delivery Readiness Matrix (DRM);
-  - deve produzir sub-issues GitHub-ready antes do desenvolvimento;
+  - deve produzir Features locais com Tasks internas antes do desenvolvimento;
   - deve envolver Design, Security e DevOps apenas quando aplicavel;
+  - deve tratar GitHub sync como opcional;
   - deve parar antes de qualquer GitHub API write sem confirmacao.
 
 - [ ] `.leanos/commands/start-leanos.md`
@@ -356,11 +445,12 @@ Workflows a revisar:
   - deve registrar por que o item entrou ou nao entrou no delivery scope;
   - deve preparar o item para `delivery-scope-to-epic` quando aprovado;
   - jornada criada em `docs/framework/founder-journeys/roadmap-item-to-delivery-scope.md`.
-- [ ] `operations/workflows/delivery-scope-to-epic.workflow.md`
+- [x] `operations/workflows/delivery-scope-to-epic.workflow.md`
   - deve transformar itens de delivery scope em epics rastreaveis;
   - deve preparar payload/draft para GitHub Project quando configurado;
   - deve manter fora do GitHub itens de roadmap que nao estao selecionados para delivery;
   - deve pedir confirmacao antes de criar ou atualizar epics.
+  - jornada criada em `docs/framework/founder-journeys/delivery-scope-to-epic.md`.
 - [ ] `strategy/workflows/roadmap-to-github-project.workflow.md`
   - deve preparar sync de roadmap para GitHub;
   - deve focar em itens de delivery scope, current cycle e itens explicitamente selecionados para delivery;
@@ -397,13 +487,13 @@ Pendencias:
   - `github.configure`
   - `github.status`
   - `github.syncRoadmap`
-  - `github.createSubissues`
+  - `github.createFeatures` ou equivalente, se decidirmos sincronizar Features como GitHub issues;
   - `github.readIssue`
   - `github.createBranch`
   - `github.openPullRequest`
 - [ ] Definir dry-run obrigatorio antes de escrita remota.
 - [ ] Definir como registrar sync state sem segredos.
-- [ ] Definir como evitar duplicidade em milestones, epics e sub-issues.
+- [ ] Definir como evitar duplicidade em milestones, epics e features/issues sincronizadas.
 - [ ] Definir como lidar com repositorio existente vs produto novo.
 - [ ] Documentar quais arquivos `.github/leanos/` sao configuracao, estado e templates.
 - [ ] Garantir que tokens nunca sejam persistidos em arquivos versionados.

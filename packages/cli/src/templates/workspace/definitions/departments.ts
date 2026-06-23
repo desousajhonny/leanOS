@@ -3672,6 +3672,23 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         }
       },
       {
+        slug: "delivery-scope-to-epic",
+        purpose: "Turn confirmed delivery scope into GitHub-ready epic drafts without creating sub-issues, branches or code.",
+        requiredAreas: ["product-ops"],
+        steps: ["Confirm delivery scope exists and has scope_type, milestone and release_goal", "Load Product Ops and choose Product Owner", "Read delivery scope, PRD, acceptance criteria and ready-to-develop gate", "Use GitHub templates to draft one or more epics with outcome, non-goals, risks and readiness notes", "Route DevOps only when GitHub Project configuration, labels, milestones or sync state need validation", "Route Engineering only when epic boundaries need technical feasibility review", "Ask for confirmation before any GitHub API write or project sync", "Stop before sub-issues, branches, code or PR work"],
+        continuationBridge: {
+          immediate: "O epic draft esta pronto.\nQuer que eu quebre esse epic em sub-issues usando a Delivery Readiness Matrix?",
+          laterTriggers: ["quebre esse epic em sub-issues", "crie as sub-issues desse epic", "vamos fatiar esse epic", "prepara as issues de implementacao", "quebre o epic #123"],
+          nextRoute: "epic-to-subissues",
+          rules: [
+            "Do not automatically start sub-issue creation without founder confirmation.",
+            "If the founder says yes, declare the new route and load Product Ops epic-to-subissues assets before drafting sub-issues.",
+            "If the founder says no, explain the epic draft outcome and stop without writing anything else.",
+            "If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `epic-to-subissues`."
+          ]
+        }
+      },
+      {
         slug: "mvp-to-pr",
         purpose: "Coordinate Product Ops, Design and Engineering for delivery.",
         requiredAreas: ["product-ops", "engineering"],

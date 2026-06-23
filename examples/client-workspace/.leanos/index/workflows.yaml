@@ -15,6 +15,10 @@ workflows:
     department: operations
     path: ../../operations/workflows/roadmap-item-to-delivery-scope.workflow.md
     active: true
+  - key: delivery-scope-to-epic
+    department: operations
+    path: ../../operations/workflows/delivery-scope-to-epic.workflow.md
+    active: true
   - key: mvp-to-pr
     department: operations
     path: ../../operations/workflows/mvp-to-pr.workflow.md

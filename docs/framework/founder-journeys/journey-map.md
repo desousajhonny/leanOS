@@ -9,7 +9,7 @@ Use this map to track which founder journeys have been designed with `journey-te
 | [x] | 2 | Novas ideias e features | `new-idea-intake.md` | `strategy/workflows/new-idea-intake.workflow.md` | "Tenho uma ideia", "quero avaliar uma feature nova", "isso faz sentido para o produto?" |
 | [x] | 3 | Decisao de roadmap | `idea-to-roadmap.md` | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" |
 | [x] | 4 | Decisao de delivery scope | `roadmap-item-to-delivery-scope.md` | `operations/workflows/roadmap-item-to-delivery-scope.workflow.md` | "Isso entra na proxima entrega?", "isso entra no MVP?", "qual milestone recebe esse item?" |
-| [ ] | 5 | Planning de execucao | `delivery-scope-to-epic.md` | `operations/workflows/delivery-scope-to-epic.workflow.md` ou `strategy/workflows/roadmap-to-github-project.workflow.md` | "Deseja quebrar esse escopo em epics?", "crie os epics no GitHub" |
+| [x] | 5 | Planning de execucao | `delivery-scope-to-epic.md` | `operations/workflows/delivery-scope-to-epic.workflow.md` | "Deseja quebrar esse escopo em epics?", "crie os epics no GitHub" |
 | [ ] | 6 | Issue Shaping | `epic-to-subissues.md` | `operations/workflows/epic-to-subissues.workflow.md` | "Quebre o epic #123 em sub-issues" |
 | [ ] | 7 | Implementacao | `issue-delivery-cycle.md` | `operations/workflows/issue-delivery-cycle.workflow.md` | "Implemente a issue #554", "vamos comecar essa feature" |
 | [ ] | 8 | Review e PR | `review-pr.md` | Dentro de `issue-delivery-cycle` ou futuro workflow de review | "Revise o PR", "esta pronto para merge?" |

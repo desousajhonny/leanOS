@@ -573,11 +573,16 @@ async function validateWorkspaceFiles() {
   assert.equal(await exists(join(rootDir, "operations", "product-ops", "data-model.md")), false, "Product Ops should not generate premature data model files");
   assert.equal(await exists(join(rootDir, "operations", "product-ops", "system-context.md")), false, "Product Ops should not generate premature system context files");
   await assertExists(join(rootDir, "operations", "workflows", "roadmap-item-to-delivery-scope.workflow.md"));
+  await assertExists(join(rootDir, "operations", "workflows", "delivery-scope-to-epic.workflow.md"));
   await assertExists(join(rootDir, "operations", "workflows", "issue-delivery-cycle.workflow.md"));
   await assertExists(join(rootDir, "operations", "workflows", "post-merge-continuation.workflow.md"));
   const deliveryScopeWorkflow = await readFile(join(rootDir, "operations", "workflows", "roadmap-item-to-delivery-scope.workflow.md"), "utf8");
   assert(deliveryScopeWorkflow.includes("## Continuation Bridge"), "Roadmap item to delivery scope workflow should offer a continuation bridge");
   assert(deliveryScopeWorkflow.includes("Next route:\n\n`delivery-scope-to-epic`"), "Roadmap item to delivery scope workflow should bridge to delivery-scope-to-epic");
+  const deliveryScopeToEpicWorkflow = await readFile(join(rootDir, "operations", "workflows", "delivery-scope-to-epic.workflow.md"), "utf8");
+  assert(deliveryScopeToEpicWorkflow.includes("Turn confirmed delivery scope into GitHub-ready epic drafts"), "Delivery scope to epic workflow should define its planning purpose");
+  assert(deliveryScopeToEpicWorkflow.includes("Ask for confirmation before any GitHub API write"), "Delivery scope to epic workflow should require confirmation before GitHub writes");
+  assert(deliveryScopeToEpicWorkflow.includes("Next route:\n\n`epic-to-subissues`"), "Delivery scope to epic workflow should bridge to epic-to-subissues");
   await assertExists(join(rootDir, ".leanos", "commands", "define-design.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "README.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "design-system.md"));
@@ -787,6 +792,7 @@ async function validateWorkspaceFiles() {
   assert(yaml.workflows.active.includes("new-idea-intake"), "Expected active local Strategy new-idea-intake workflow");
   assert(yaml.workflows.active.includes("idea-to-roadmap"), "Expected active local Strategy idea-to-roadmap workflow");
   assert(yaml.workflows.active.includes("roadmap-to-github-project"), "Expected active local Strategy GitHub roadmap workflow");
+  assert(yaml.workflows.active.includes("delivery-scope-to-epic"), "Expected active local Operations delivery scope to epic workflow");
   assert(yaml.workflows.active.includes("issue-delivery-cycle"), "Expected active local Operations issue delivery workflow");
   assert.deepEqual(yaml.departments.active, ["strategy", "operations", "growth"]);
 
@@ -1495,6 +1501,7 @@ async function assertFounderIntentRouting(rootDir) {
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "new-idea-intake" && workflow.path === "../../strategy/workflows/new-idea-intake.workflow.md"), "Workflows index should point to Strategy new idea intake workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "idea-to-roadmap" && workflow.path === "../../strategy/workflows/idea-to-roadmap.workflow.md"), "Workflows index should point to Strategy idea-to-roadmap workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-to-github-project" && workflow.path === "../../strategy/workflows/roadmap-to-github-project.workflow.md"), "Workflows index should point to Strategy roadmap sync workflow");
+  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "delivery-scope-to-epic" && workflow.path === "../../operations/workflows/delivery-scope-to-epic.workflow.md"), "Workflows index should point to Operations delivery scope to epic workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "issue-delivery-cycle" && workflow.path === "../../operations/workflows/issue-delivery-cycle.workflow.md"), "Workflows index should point to Operations issue delivery workflow");
   assert(rootAgentTemplate.includes("## Root Routing"), "Root agent template should keep root routing department-level");
   assert(rootAgentTemplate.includes("Use this section only to choose the owning department"), "Root agent template should keep routing scoped to departments");
@@ -2873,6 +2880,7 @@ async function assertInitialContextCoherence(rootDir, selectedSubareas) {
     { workflow: "new-idea-intake", subareas: ["strategy.product", "strategy.roadmap"] },
     { workflow: "idea-to-roadmap", subareas: ["strategy.product", "strategy.roadmap"] },
     { workflow: "roadmap-to-github-project", subareas: ["strategy.product", "strategy.roadmap"] },
+    { workflow: "delivery-scope-to-epic", subareas: ["operations.product-ops"] },
     { workflow: "issue-delivery-cycle", subareas: ["operations.product-ops", "operations.engineering"] },
     { workflow: "post-merge-continuation", subareas: ["operations.product-ops", "operations.engineering"] },
     { workflow: "launch-learning-loop", subareas: ["growth.marketing", "growth.customer-experience"] }

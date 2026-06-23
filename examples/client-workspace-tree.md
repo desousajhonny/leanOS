@@ -439,6 +439,7 @@ client-workspace/
 |   |   |-- area.yaml
 |   |   `-- README.md
 |   |-- workflows/
+|   |   |-- delivery-scope-to-epic.workflow.md
 |   |   |-- issue-delivery-cycle.workflow.md
 |   |   |-- mvp-to-pr.workflow.md
 |   |   |-- post-merge-continuation.workflow.md

@@ -15,6 +15,7 @@ Use when work spans more than one active area inside this department.
 ## Files
 
 - `roadmap-item-to-delivery-scope.workflow.md`
+- `delivery-scope-to-epic.workflow.md`
 - `mvp-to-pr.workflow.md`
 - `issue-delivery-cycle.workflow.md`
 - `post-merge-continuation.workflow.md`
