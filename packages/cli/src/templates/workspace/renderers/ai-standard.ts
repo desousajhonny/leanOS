@@ -51,6 +51,13 @@ export function aiStandardFiles(): FileEntry[] {
       files: ["github-issue-template.md", "github-epic-template.md", "github-feature-template.md", "delivery-readiness-matrix-template.md", "branch-name-template.md", "pull-request-template.md"]
     },
     {
+      key: "product",
+      title: "Product Work Templates",
+      purpose: "Templates for local LeanOS product work before optional GitHub sync.",
+      use: "Use when shaping local epics and features from delivery scope.",
+      files: ["epic-template.md", "feature-template.md"]
+    },
+    {
       key: "review",
       title: "Review Templates",
       purpose: "Templates for reviewing code, implementation and delivery quality.",
@@ -137,6 +144,8 @@ function templateContent(fileName: string): string {
     "area-readme-template.md": areaReadmeTemplate(),
     "playbook-template.md": playbookTemplate(),
     "playbook-template.yaml": playbookYamlTemplate(),
+    "epic-template.md": productEpicTemplate(),
+    "feature-template.md": productFeatureTemplate(),
     "github-epic-template.md": githubEpicTemplate(),
     "github-feature-template.md": githubFeatureTemplate(),
     "delivery-readiness-matrix-template.md": deliveryReadinessMatrixTemplate(),
@@ -2470,12 +2479,245 @@ function playbookYamlTemplate(): string {
 `;
 }
 
+function productEpicTemplate(): string {
+  return `# [EPIC] <epic title>
+
+## Metadata
+
+~~~yaml
+epic_key: <stable-kebab-key>
+source_roadmap_item: <roadmap item or backlog reference>
+delivery_scope:
+  scope_type: MVP | Release | Experiment | Beta | Internal
+  milestone:
+  release_goal:
+status: candidate | scoped | ready | in-progress | done | synced
+owner: Product Ops
+decision_owner: Product Owner
+supporting_roles:
+  - Roadmap Planner
+  - Product Strategist
+  - Senior Developer when technical feasibility matters
+  - Product Designer when UX is affected
+  - Security Reviewer when data/auth/privacy/security is affected
+  - DevOps Engineer when delivery, deploy or GitHub sync is affected
+github_issue:
+  synced: false
+  url:
+~~~
+
+## Outcome
+
+What user, business or validation outcome this epic should create.
+
+## Why Now
+
+Why this epic belongs in the current delivery scope instead of backlog or later roadmap.
+
+## Starting Point
+
+Use these inputs before shaping the epic:
+
+- Product brief:
+- ICP / user segment:
+- Problem:
+- Roadmap item:
+- Delivery scope:
+- PRD or MVP scope:
+- Existing evidence:
+- Known constraints:
+
+## Scope
+
+What is included.
+
+## Non-goals
+
+What is explicitly excluded.
+
+## Epic Decision Criteria
+
+- User value:
+- Business value:
+- Strategic fit:
+- Evidence level:
+- Opportunity cost:
+- Milestone fit:
+- Risk level:
+
+## Epic Readiness Matrix
+
+Use this to decide which specialists must participate before breaking the epic into features.
+
+| Dimension | Required? | Why / Not Applicable | Required Output |
+| --- | --- | --- | --- |
+| Product Ops | yes | Epic ownership and delivery scope | outcome, scope, non-goals, feature candidates |
+| Roadmap / Strategy | yes | Roadmap and milestone alignment | roadmap linkage and priority rationale |
+| Engineering | conditional | Technical feasibility, dependencies or unknown complexity | feasibility notes and implementation boundary |
+| Design | conditional | User-facing flow, screen, state, copy or accessibility impact | UX notes and design questions |
+| Security | conditional | Data, auth, permissions, privacy, abuse, API or compliance risk | security criteria and risks |
+| DevOps | conditional | GitHub sync, CI/CD, environment, release, observability or config impact | operational criteria |
+
+## Expected Features
+
+List candidate features. Do not fully detail them here; each feature gets its own feature file.
+
+| Feature | User Outcome | Required Dimensions | Notes |
+| --- | --- | --- | --- |
+| <feature title> | <outcome> | Product Ops, Engineering, Design/Security/DevOps if applicable | <notes> |
+
+## Dependencies
+
+- Product:
+- Design:
+- Engineering:
+- Security:
+- DevOps:
+
+## Risks
+
+- Product risk:
+- Technical risk:
+- Design risk:
+- Security risk:
+- Delivery risk:
+
+## Open Questions
+
+- TBD
+
+## Next Step
+
+After this epic is confirmed, run \`epic-to-features\` to create feature files with internal tasks and Delivery Readiness Matrix criteria.
+`;
+}
+
+function productFeatureTemplate(): string {
+  return `# [FEATURE: <epic title>] <feature title>
+
+## Metadata
+
+~~~yaml
+feature_key: <stable-kebab-key>
+parent_epic_key: <epic-key>
+status: candidate | shaped | ready-to-develop | in-progress | done | synced
+owner: Product Ops
+execution_owner: Engineering
+github_issue:
+  synced: false
+  url:
+~~~
+
+## Parent Epic
+
+- Epic:
+- Epic outcome:
+- Milestone:
+- Delivery scope:
+
+## User Story
+
+As a <user>, I want <capability> so that <outcome>.
+
+## Purpose
+
+Why this feature exists.
+
+## Scope
+
+What should be implemented.
+
+## Non-goals
+
+What should not be implemented.
+
+## Acceptance Criteria
+
+- TBD
+
+## Tasks
+
+Use tasks as the internal implementation checklist. Keep them small enough to guide Engineering.
+
+~~~text
+Create database model
+Create UI
+Add validation
+Add tests
+~~~
+
+## Delivery Readiness Matrix
+
+| Dimension | Status | Criteria / Notes |
+| --- | --- | --- |
+| Product Ops | required | user value, acceptance criteria, non-goals |
+| Engineering | required | implementation boundary, dependencies, tests |
+| Design | not_applicable/TBD/ready | required only for UX, UI, copy, flow, state or accessibility impact |
+| Security | not_applicable/TBD/ready | required only for data, auth, permissions, privacy, abuse, API or compliance risk |
+| DevOps | not_applicable/TBD/ready | required only for deploy, env, CI/CD, observability, config or GitHub sync impact |
+
+## Design Criteria
+
+If not applicable, say why.
+
+- Flow:
+- Screens or states:
+- Component/design-system notes:
+- Accessibility:
+
+## Engineering Criteria
+
+- Suggested area:
+- Technical notes:
+- Dependencies:
+- Test expectations:
+- Observability or operational notes:
+
+## Security Criteria
+
+If not applicable, say why.
+
+- Data:
+- Permissions:
+- Privacy:
+- Abuse cases:
+- Security acceptance criteria:
+
+## Definition of Ready
+
+- [ ] Parent epic is clear
+- [ ] Acceptance criteria are testable
+- [ ] Product Ops and Engineering criteria are ready
+- [ ] Design is ready or explicitly not applicable
+- [ ] Security is ready or explicitly not applicable
+- [ ] DevOps is ready or explicitly not applicable
+- [ ] Tasks are clear enough for implementation
+`;
+}
+
 function githubEpicTemplate(): string {
   return `# Epic: <title>
+
+## Local Source
+
+- Local epic key:
+- Local epic path:
+- Delivery scope:
+- Roadmap item:
+- GitHub sync status:
 
 ## Outcome
 
 What business, user or validation outcome this epic should create.
+
+## Decision Ownership
+
+- Owner: Product Ops / Product Owner
+- Strategy/Roadmap reviewer:
+- Engineering reviewer when technical feasibility matters:
+- Design reviewer when UX is affected:
+- Security reviewer when data/auth/privacy/security is affected:
+- DevOps reviewer when GitHub, deploy or environment readiness is affected:
 
 ## Strategic Context
 
@@ -2492,9 +2734,7 @@ What business, user or validation outcome this epic should create.
 - milestone:
 - release_goal:
 - Non-goals:
-- Acceptance criteria:
 - Roadmap item:
-- Milestone:
 
 ## Scope
 
@@ -2508,8 +2748,20 @@ What is explicitly excluded.
 
 - User value:
 - Jobs to be done:
-- Acceptance criteria:
 - Learning or success signal:
+
+## Epic Readiness Matrix
+
+Use this matrix to decide which specialists must shape the features under this epic.
+
+| Dimension | Required? | Why / Not Applicable | Required Output |
+| --- | --- | --- | --- |
+| Product Ops | yes | Epic ownership and delivery scope | outcome, scope, non-goals, expected features |
+| Strategy / Roadmap | yes | Roadmap and milestone alignment | priority rationale |
+| Engineering | conditional | Feasibility, dependencies or unknown complexity | feasibility notes |
+| Design | conditional | UX, UI, flow, copy or accessibility impact | design criteria for affected features |
+| Security | conditional | data, auth, permissions, privacy, abuse, API or compliance risk | security criteria for affected features |
+| DevOps | conditional | GitHub sync, CI/CD, env, deploy, observability or config impact | operational criteria |
 
 ## Design Criteria
 
@@ -2549,17 +2801,29 @@ If not applicable, write: "Not applicable; no security-sensitive surface identif
 - Design:
 - Engineering:
 - Security:
+- DevOps:
 
 ## Feature Breakdown
 
 - Status: not_started
 - Expected features:
 - Open questions:
+
+## Next Step
+
+After this epic is confirmed, break it into local features with internal tasks before implementation.
 `;
 }
 
 function githubFeatureTemplate(): string {
   return `# <feature title>
+
+## Local Source
+
+- Local feature key:
+- Local feature path:
+- Parent epic key:
+- GitHub sync status:
 
 ## Parent Epic
 
@@ -2581,6 +2845,7 @@ What should not be implemented.
 
 ## Product Criteria
 
+- User story:
 - User value:
 - Acceptance criteria:
 - Success or learning signal:
@@ -2595,6 +2860,16 @@ Create UI
 Add validation
 Add tests
 ~~~
+
+## Delivery Readiness Matrix
+
+| Dimension | Status | Criteria / Notes |
+| --- | --- | --- |
+| Product Ops | required | user value, acceptance criteria, non-goals |
+| Engineering | required | implementation boundary, dependencies, tests |
+| Design | not_applicable/TBD/ready | UX, UI, copy, flow, state or accessibility impact |
+| Security | not_applicable/TBD/ready | data, auth, permissions, privacy, abuse, API or compliance risk |
+| DevOps | not_applicable/TBD/ready | deploy, env, CI/CD, observability, config or GitHub sync impact |
 
 ## Design Criteria
 
@@ -2645,6 +2920,10 @@ function deliveryReadinessMatrixTemplate(): string {
 Use this before creating epics, features or implementation plans.
 
 The DRM shapes work before development starts. It prevents the model from coding before the feature or issue has enough Product, Design, Engineering, Security and DevOps clarity.
+
+Epic-level DRM decides which dimensions must participate and what kinds of feature criteria will be needed.
+
+Feature-level DRM turns those dimensions into concrete, testable criteria and internal tasks.
 
 | Dimension | Required When | Required Output | Status |
 | --- | --- | --- | --- |

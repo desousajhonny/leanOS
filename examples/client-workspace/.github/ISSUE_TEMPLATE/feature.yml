@@ -4,6 +4,13 @@ title: "[FEATURE]: "
 labels: ["leanos", "feature"]
 body:
   - type: input
+    id: local-feature-key
+    attributes:
+      label: Local feature key
+      description: Stable LeanOS feature key, for example create-customer-profile.
+    validations:
+      required: true
+  - type: input
     id: parent-epic
     attributes:
       label: Parent epic
@@ -22,7 +29,7 @@ body:
     id: product-criteria
     attributes:
       label: Product criteria
-      description: User value, acceptance criteria and success or learning signal.
+      description: User story, user value, acceptance criteria and success or learning signal.
     validations:
       required: true
   - type: textarea
@@ -30,6 +37,13 @@ body:
     attributes:
       label: Tasks
       description: Internal implementation checklist for this feature.
+    validations:
+      required: true
+  - type: textarea
+    id: delivery-readiness-matrix
+    attributes:
+      label: Delivery Readiness Matrix
+      description: Product Ops and Engineering are required. Design, Security and DevOps are required only when applicable; otherwise explain why not applicable.
     validations:
       required: true
   - type: textarea

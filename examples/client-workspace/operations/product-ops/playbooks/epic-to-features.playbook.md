@@ -22,6 +22,8 @@ Break a LeanOS epic into implementation-ready features with internal tasks using
 - `../mvp/acceptance-criteria.md`
 - `../../../strategy/product/AGENT.md`
 - `../../../strategy/roadmap/AGENT.md`
+- `../../../ai-standard/templates/product/epic-template.md`
+- `../../../ai-standard/templates/product/feature-template.md`
 - `../../../ai-standard/templates/github/github-epic-template.md`
 - `../../../ai-standard/templates/github/github-feature-template.md`
 - `../../../ai-standard/templates/github/delivery-readiness-matrix-template.md`
@@ -42,16 +44,17 @@ Break a LeanOS epic into implementation-ready features with internal tasks using
 ## Steps
 
 1. Load Product Ops AGENT and choose `roles/product-owner.role.md`.
-2. Load `skills/shape-epic.skill.md` and confirm the epic outcome, scope boundary and non-goals.
-3. Load `skills/write-feature-criteria.skill.md` and apply the Delivery Readiness Matrix (DRM).
-4. Write Product Ops criteria for every feature.
-5. Add internal tasks inside each feature.
-6. Add Design criteria only when UX, UI, flow, copy, accessibility or interaction is affected.
-7. Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
-8. Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.
-9. Ask Engineering to validate implementation boundaries, dependencies, test approach and feature size.
-10. Mark non-applicable dimensions explicitly and explain why.
-11. Prepare local feature drafts and ask for confirmation before any remote write.
+2. Load the local Product Epic and Feature templates from `../../../ai-standard/templates/product/` before preparing any GitHub issue.
+3. Load `skills/shape-epic.skill.md` and confirm the epic outcome, decision ownership, scope boundary, non-goals and Epic Readiness Matrix.
+4. Load `skills/write-feature-criteria.skill.md` and apply the Feature-level Delivery Readiness Matrix (DRM).
+5. Write Product Ops criteria for every feature.
+6. Add internal tasks inside each feature.
+7. Add Design criteria only when UX, UI, flow, copy, accessibility or interaction is affected.
+8. Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
+9. Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.
+10. Ask Engineering to validate implementation boundaries, dependencies, test approach and feature size.
+11. Mark non-applicable dimensions explicitly and explain why.
+12. Prepare local feature drafts and ask for confirmation before any remote write.
 
 ## Security Gate
 

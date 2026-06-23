@@ -268,16 +268,18 @@ Decisao proposta:
   - deve definir que Epic e quebrado em Features;
   - deve definir que Feature contem Tasks internas;
   - deve definir que GitHub issue e representacao remota opcional, nao a linguagem central do LeanOS.
-- [ ] Atualizar linguagem do framework:
-  - substituir "features" por "features" quando estivermos falando da decomposicao LeanOS local;
+- [x] Atualizar linguagem do framework:
+  - substituir termos antigos de decomposicao GitHub por "features" quando estivermos falando da decomposicao LeanOS local;
   - manter "issues" apenas para GitHub, PRs e tracking remoto;
   - tratar GitHub labels/templates como mapeamento: Epic -> issue `epic`, Feature -> issue `feature`, Task -> checklist interna ou task operacional.
-- [ ] Criar/ajustar templates:
-  - `ai-standard/templates/product/epic-template.md` ou equivalente;
-  - `ai-standard/templates/product/feature-template.md` ou equivalente;
+- [x] Criar/ajustar templates:
+  - criar `ai-standard/templates/product/epic-template.md`;
+  - criar `ai-standard/templates/product/feature-template.md`;
   - revisar `ai-standard/templates/github/github-epic-template.md`;
-  - criar/revisar template GitHub para Feature se ainda nao existir.
-- [ ] Definir naming convention para titulos de Epic e Feature:
+  - revisar `ai-standard/templates/github/github-feature-template.md`;
+  - garantir que o Epic tenha outcome, ownership, scope, non-goals, readiness matrix, riscos e expected features;
+  - garantir que a Feature tenha parent epic, user story, acceptance criteria, tasks internas e DRM por Product Ops, Engineering, Design, Security e DevOps quando aplicavel.
+- [x] Definir naming convention para titulos de Epic e Feature:
   - Epic deve ter prefixo claro, por exemplo `[EPIC] Customer Management` ou `[EPIC: Customer Management]`;
   - Feature deve ter prefixo claro, por exemplo `[FEATURE] Create customer profile` ou `[FEATURE: Customer Management] Create customer profile`;
   - evitar letras manuais tipo `[EPIC A]`, porque envelhecem mal quando a ordem muda;
@@ -301,12 +303,15 @@ Decisao proposta:
   - LeanOS local e a fonte operacional primaria;
   - GitHub e camada opcional de tracking/sync;
   - se houver conflito entre local e GitHub, o modelo deve explicar a diferenca e pedir confirmacao antes de sobrescrever qualquer lado.
-- [ ] Definir DRM por Feature:
+- [x] Definir DRM por Epic e Feature nos templates:
+  - Epic-level DRM decide quais dimensoes precisam participar antes de quebrar o Epic;
+  - Feature-level DRM transforma essas dimensoes em criterios concretos e tarefas internas;
   - Product Ops sempre;
   - Engineering sempre;
   - Design quando houver UX/UI/copy/acessibilidade/fluxo/tela;
   - Security quando houver dados/auth/API/privacy/permissoes/abuso/compliance;
   - DevOps quando houver ambiente/deploy/config/observabilidade/GitHub Project.
+- [ ] Aplicar a DRM completa no workflow/jornada `epic-to-features`.
 - [ ] Definir Definition of Ready:
   - Feature so entra em desenvolvimento depois de passar pelo `ready-to-develop`;
   - Feature pode existir localmente antes de estar pronta para desenvolvimento;

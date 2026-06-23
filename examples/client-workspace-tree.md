@@ -167,6 +167,10 @@ client-workspace/
 |   |   |   |-- github-issue-template.md
 |   |   |   |-- pull-request-template.md
 |   |   |   `-- README.md
+|   |   |-- product/
+|   |   |   |-- epic-template.md
+|   |   |   |-- feature-template.md
+|   |   |   `-- README.md
 |   |   |-- review/
 |   |   |   |-- code-review-template.md
 |   |   |   `-- README.md

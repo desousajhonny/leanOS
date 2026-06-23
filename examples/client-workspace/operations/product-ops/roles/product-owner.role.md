@@ -26,6 +26,8 @@ Read:
 - `../mvp/acceptance-criteria.md`
 - `../../../strategy/product/knowledge/brief.md`
 - `../../../strategy/roadmap/knowledge/roadmap.md`
+- `../../../ai-standard/templates/product/epic-template.md`
+- `../../../ai-standard/templates/product/feature-template.md`
 - `../../../ai-standard/templates/github/delivery-readiness-matrix-template.md`
 
 ## Skills

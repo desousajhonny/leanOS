@@ -1,5 +1,12 @@
 # <feature title>
 
+## Local Source
+
+- Local feature key:
+- Local feature path:
+- Parent epic key:
+- GitHub sync status:
+
 ## Parent Epic
 
 - Epic:
@@ -20,6 +27,7 @@ What should not be implemented.
 
 ## Product Criteria
 
+- User story:
 - User value:
 - Acceptance criteria:
 - Success or learning signal:
@@ -34,6 +42,16 @@ Create UI
 Add validation
 Add tests
 ~~~
+
+## Delivery Readiness Matrix
+
+| Dimension | Status | Criteria / Notes |
+| --- | --- | --- |
+| Product Ops | required | user value, acceptance criteria, non-goals |
+| Engineering | required | implementation boundary, dependencies, tests |
+| Design | not_applicable/TBD/ready | UX, UI, copy, flow, state or accessibility impact |
+| Security | not_applicable/TBD/ready | data, auth, permissions, privacy, abuse, API or compliance risk |
+| DevOps | not_applicable/TBD/ready | deploy, env, CI/CD, observability, config or GitHub sync impact |
 
 ## Design Criteria
 

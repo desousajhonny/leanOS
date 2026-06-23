@@ -70,6 +70,20 @@ It answers:
 
 Epic is not usually small enough to implement directly.
 
+Epic is decided by Product Ops, with Roadmap/Strategy confirming fit and timing. Engineering, Design, Security and DevOps participate only when their criteria are applicable.
+
+Start Epic analysis from:
+
+- confirmed Delivery Scope;
+- roadmap item and milestone;
+- PRD or MVP scope when relevant;
+- user/business outcome;
+- scope and non-goals;
+- expected feature groups;
+- risk and dependency map.
+
+Epic-level DRM decides who must participate before features are created. It does not replace feature-level DRM.
+
 Local Epic structure:
 
 ~~~text
@@ -92,6 +106,8 @@ It answers:
 - Which tasks are needed to implement it?
 
 Feature is the main unit that should pass the Delivery Readiness Matrix before implementation.
+
+Feature-level DRM turns the Epic decision into concrete Product Ops, Engineering and conditional Design, Security and DevOps criteria.
 
 ## Task
 

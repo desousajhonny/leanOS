@@ -129,6 +129,9 @@ async function validateWorkspaceFiles() {
     "ai-standard/templates/github/github-epic-template.md",
     "ai-standard/templates/github/github-feature-template.md",
     "ai-standard/templates/github/delivery-readiness-matrix-template.md",
+    "ai-standard/templates/product/README.md",
+    "ai-standard/templates/product/epic-template.md",
+    "ai-standard/templates/product/feature-template.md",
     "ai-standard/templates/review/README.md",
     "ai-standard/templates/review/code-review-template.md",
     "ai-standard/checklists/agent-quality-checklist.md",
@@ -582,9 +585,10 @@ async function validateWorkspaceFiles() {
   assert(deliveryScopeWorkflow.includes("## Continuation Bridge"), "Roadmap item to delivery scope workflow should offer a continuation bridge");
   assert(deliveryScopeWorkflow.includes("Next route:\n\n`delivery-scope-to-epic`"), "Roadmap item to delivery scope workflow should bridge to delivery-scope-to-epic");
   const deliveryScopeToEpicWorkflow = await readFile(join(rootDir, "operations", "workflows", "delivery-scope-to-epic.workflow.md"), "utf8");
-  assert(deliveryScopeToEpicWorkflow.includes("Turn confirmed delivery scope into GitHub-ready epic drafts"), "Delivery scope to epic workflow should define its planning purpose");
+  assert(deliveryScopeToEpicWorkflow.includes("Turn confirmed delivery scope into local LeanOS epic drafts"), "Delivery scope to epic workflow should define its local planning purpose");
+  assert(deliveryScopeToEpicWorkflow.includes("GitHub sync is optional"), "Delivery scope to epic workflow should keep GitHub sync optional");
   assert(deliveryScopeToEpicWorkflow.includes("Read work taxonomy"), "Delivery scope to epic workflow should load Product Ops work taxonomy");
-  assert(deliveryScopeToEpicWorkflow.includes("Ask for confirmation before any GitHub API write"), "Delivery scope to epic workflow should require confirmation before GitHub writes");
+  assert(deliveryScopeToEpicWorkflow.includes("Ask for confirmation before any durable write, GitHub API write or project sync"), "Delivery scope to epic workflow should require confirmation before durable or remote writes");
   assert(deliveryScopeToEpicWorkflow.includes("Next route:\n\n`epic-to-features`"), "Delivery scope to epic workflow should bridge to epic-to-features");
   await assertExists(join(rootDir, ".leanos", "commands", "define-design.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "README.md"));
@@ -1337,6 +1341,8 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   const prRules = await readFile(join(rootDir, ".github", "leanos", "pr-validation-rules.md"), "utf8");
   const aiEpicTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "github-epic-template.md"), "utf8");
   const aiFeatureTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "github-feature-template.md"), "utf8");
+  const productEpicTemplate = await readFile(join(rootDir, "ai-standard", "templates", "product", "epic-template.md"), "utf8");
+  const productFeatureTemplate = await readFile(join(rootDir, "ai-standard", "templates", "product", "feature-template.md"), "utf8");
   const issueMatrix = await readFile(join(rootDir, "ai-standard", "templates", "github", "delivery-readiness-matrix-template.md"), "utf8");
   const branchTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "branch-name-template.md"), "utf8");
   const aiPrTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "pull-request-template.md"), "utf8");
@@ -1352,8 +1358,10 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   const createPrCommand = await readFile(join(rootDir, ".leanos", "commands", "create-pr.md"), "utf8");
   const reviewPrCommand = await readFile(join(rootDir, ".leanos", "commands", "review-pr.md"), "utf8");
 
-  assert(epicTemplate.includes("Product / Design / Engineering / Security criteria"), "Epic issue template should include cross-functional criteria");
+  assert(epicTemplate.includes("Decision ownership"), "Epic issue template should include decision ownership");
+  assert(epicTemplate.includes("Epic readiness matrix"), "Epic issue template should include Epic readiness matrix");
   assert(featureTemplate.includes("Parent epic"), "Feature template should require parent epic linkage");
+  assert(featureTemplate.includes("Delivery Readiness Matrix"), "Feature template should include the DRM");
   assert(featureTemplate.includes("Required only when user-facing UX"), "Feature template should make Design conditional");
   assert(featureTemplate.includes("Required only when data, auth, permissions, privacy, abuse or compliance"), "Feature template should make Security conditional");
   assert(prTemplate.includes("## Linked Issue"), "PR template should include linked issue");
@@ -1367,11 +1375,20 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(prRules.includes("Design: required only when user-facing UX changed"), "PR validation rules should make Design conditional");
   assert(prRules.includes("Security: required when data, auth, permissions, privacy, abuse or compliance is involved"), "PR validation rules should make Security conditional");
 
-  for (const templateContent of [aiEpicTemplate, aiFeatureTemplate, issueMatrix, branchTemplate, aiPrTemplate, codeReviewTemplate]) {
-    assert(templateContent.includes("# "), "AI Standard GitHub templates should have markdown content");
+  for (const templateContent of [aiEpicTemplate, aiFeatureTemplate, productEpicTemplate, productFeatureTemplate, issueMatrix, branchTemplate, aiPrTemplate, codeReviewTemplate]) {
+    assert(templateContent.includes("# "), "AI Standard templates should have markdown content");
   }
 
+  assert(productEpicTemplate.includes("# [EPIC] <epic title>"), "Product epic template should define local epic title format");
+  assert(productEpicTemplate.includes("## Decision Ownership") || productEpicTemplate.includes("decision_owner"), "Product epic template should define decision ownership");
+  assert(productEpicTemplate.includes("## Epic Readiness Matrix"), "Product epic template should include Epic Readiness Matrix");
+  assert(productEpicTemplate.includes("Expected Features"), "Product epic template should list expected features");
+  assert(productFeatureTemplate.includes("# [FEATURE:"), "Product feature template should define local feature title format");
+  assert(productFeatureTemplate.includes("## Delivery Readiness Matrix"), "Product feature template should include feature-level DRM");
+  assert(productFeatureTemplate.includes("## Tasks"), "Product feature template should keep tasks inside the feature");
   assert(issueMatrix.includes("# Delivery Readiness Matrix (DRM)"), "Delivery readiness matrix should use the DRM name");
+  assert(issueMatrix.includes("Epic-level DRM decides"), "Delivery readiness matrix should distinguish Epic-level DRM");
+  assert(issueMatrix.includes("Feature-level DRM turns"), "Delivery readiness matrix should distinguish Feature-level DRM");
   assert(issueMatrix.includes("Product Ops | Always"), "Delivery readiness matrix should require Product Ops");
   assert(issueMatrix.includes("Design | User-facing flow"), "Delivery readiness matrix should make Design conditional");
   assert(issueMatrix.includes("Engineering | Always for implementation work"), "Issue readiness matrix should require Engineering for implementation");

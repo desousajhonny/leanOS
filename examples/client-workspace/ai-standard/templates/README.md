@@ -77,6 +77,16 @@ Files:
 - `github/branch-name-template.md`
 - `github/pull-request-template.md`
 
+### `product/`
+
+Templates for local LeanOS product work before optional GitHub sync.
+
+Use when: Use when shaping local epics and features from delivery scope.
+
+Files:
+- `product/epic-template.md`
+- `product/feature-template.md`
+
 ### `review/`
 
 Templates for reviewing code, implementation and delivery quality.

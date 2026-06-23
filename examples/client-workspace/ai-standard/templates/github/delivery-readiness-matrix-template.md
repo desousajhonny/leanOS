@@ -4,6 +4,10 @@ Use this before creating epics, features or implementation plans.
 
 The DRM shapes work before development starts. It prevents the model from coding before the feature or issue has enough Product, Design, Engineering, Security and DevOps clarity.
 
+Epic-level DRM decides which dimensions must participate and what kinds of feature criteria will be needed.
+
+Feature-level DRM turns those dimensions into concrete, testable criteria and internal tasks.
+
 | Dimension | Required When | Required Output | Status |
 | --- | --- | --- | --- |
 | Product Ops | Always | outcome, scope boundary, non-goals, acceptance criteria, milestone, parent epic linkage | TBD |

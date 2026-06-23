@@ -40,9 +40,16 @@ export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefiniti
 function epicIssueTemplate(): string {
   return `name: Epic
 description: Roadmap-level LeanOS epic.
-title: "[Epic]: "
+title: "[EPIC]: "
 labels: ["leanos", "epic"]
 body:
+  - type: input
+    id: local-epic-key
+    attributes:
+      label: Local epic key
+      description: Stable LeanOS epic key, for example customer-management.
+    validations:
+      required: true
   - type: textarea
     id: outcome
     attributes:
@@ -65,17 +72,24 @@ body:
     validations:
       required: true
   - type: textarea
-    id: cross-functional-criteria
+    id: decision-ownership
     attributes:
-      label: Product / Design / Engineering / Security criteria
-      description: Include design only when UX is involved; include security only when data, auth, privacy, abuse or compliance is involved.
+      label: Decision ownership
+      description: Product Owner, Roadmap/Strategy reviewer and any conditional Engineering, Design, Security or DevOps reviewer.
+    validations:
+      required: true
+  - type: textarea
+    id: epic-readiness-matrix
+    attributes:
+      label: Epic readiness matrix
+      description: Product Ops and Roadmap are required; Engineering, Design, Security and DevOps are conditional. Explain required/not applicable for each.
     validations:
       required: true
   - type: textarea
     id: feature-breakdown
     attributes:
       label: Feature breakdown
-      description: Expected features, dependencies and open questions.
+      description: Expected features, dependencies, risks and open questions.
 `;
 }
 
@@ -85,6 +99,13 @@ description: Implementation-ready feature derived from an epic.
 title: "[FEATURE]: "
 labels: ["leanos", "feature"]
 body:
+  - type: input
+    id: local-feature-key
+    attributes:
+      label: Local feature key
+      description: Stable LeanOS feature key, for example create-customer-profile.
+    validations:
+      required: true
   - type: input
     id: parent-epic
     attributes:
@@ -104,7 +125,7 @@ body:
     id: product-criteria
     attributes:
       label: Product criteria
-      description: User value, acceptance criteria and success or learning signal.
+      description: User story, user value, acceptance criteria and success or learning signal.
     validations:
       required: true
   - type: textarea
@@ -112,6 +133,13 @@ body:
     attributes:
       label: Tasks
       description: Internal implementation checklist for this feature.
+    validations:
+      required: true
+  - type: textarea
+    id: delivery-readiness-matrix
+    attributes:
+      label: Delivery Readiness Matrix
+      description: Product Ops and Engineering are required. Design, Security and DevOps are required only when applicable; otherwise explain why not applicable.
     validations:
       required: true
   - type: textarea

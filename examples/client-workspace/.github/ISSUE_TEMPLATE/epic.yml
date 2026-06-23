@@ -1,8 +1,15 @@
 name: Epic
 description: Roadmap-level LeanOS epic.
-title: "[Epic]: "
+title: "[EPIC]: "
 labels: ["leanos", "epic"]
 body:
+  - type: input
+    id: local-epic-key
+    attributes:
+      label: Local epic key
+      description: Stable LeanOS epic key, for example customer-management.
+    validations:
+      required: true
   - type: textarea
     id: outcome
     attributes:
@@ -25,14 +32,21 @@ body:
     validations:
       required: true
   - type: textarea
-    id: cross-functional-criteria
+    id: decision-ownership
     attributes:
-      label: Product / Design / Engineering / Security criteria
-      description: Include design only when UX is involved; include security only when data, auth, privacy, abuse or compliance is involved.
+      label: Decision ownership
+      description: Product Owner, Roadmap/Strategy reviewer and any conditional Engineering, Design, Security or DevOps reviewer.
+    validations:
+      required: true
+  - type: textarea
+    id: epic-readiness-matrix
+    attributes:
+      label: Epic readiness matrix
+      description: Product Ops and Roadmap are required; Engineering, Design, Security and DevOps are conditional. Explain required/not applicable for each.
     validations:
       required: true
   - type: textarea
     id: feature-breakdown
     attributes:
       label: Feature breakdown
-      description: Expected features, dependencies and open questions.
+      description: Expected features, dependencies, risks and open questions.
