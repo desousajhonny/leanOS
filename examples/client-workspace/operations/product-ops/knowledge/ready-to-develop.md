@@ -58,7 +58,20 @@ Required when the work touches UX, UI, copy, accessibility, onboarding, screens,
 - Design foundation or user-flow context exists.
 - Accessibility impact is checked.
 - Required screens, states or components are described enough for Engineering.
+- If the Feature needs a new user-facing component, Design must create or confirm a component spec before Engineering starts code.
+- If the Feature reuses an existing component, name the component and any usage constraints.
 - If Design is not applicable, the reason is explicit.
+
+## Component Readiness
+
+Required when a Feature includes UI that depends on a reusable component.
+
+- Check `operations/design/knowledge/component-inventory.md` before assuming a component exists.
+- Reuse an approved component when it satisfies the Feature.
+- If an existing component needs adaptation, Design must state whether the change belongs in the reusable component or only in this Feature.
+- If a new component is required, the Feature is not `ready-to-code` until Design creates or confirms a component spec.
+- Engineering must read the component spec before using `operations/engineering/skills/implement-component.skill.md` or `operations/engineering/playbooks/component-implementation.playbook.md`.
+- A missing component spec should create a Design task or route to `operations/design/playbooks/component-readiness.playbook.md`, not trigger immediate code.
 
 ## Security Readiness
 
@@ -93,6 +106,7 @@ Required when the work touches environments, CI/CD, deploy, observability, GitHu
 - `needs-epic-breakdown`: an Epic exists but has not been broken into Features.
 - `needs-feature-definition`: the Feature is local but lacks acceptance criteria, boundaries, tasks or readiness criteria.
 - `needs-design`: UX/UI/accessibility context is required before coding.
+- `needs-component-spec`: the Feature needs a new or adapted reusable component before Engineering can code it.
 - `needs-security`: data/auth/privacy/API/security context is required before coding.
 - `needs-devops`: environment/deploy/CI/GitHub readiness is required before coding.
 - `ready-to-plan`: enough context exists to create a development plan and implementation approach.
@@ -104,6 +118,7 @@ Required when the work touches environments, CI/CD, deploy, observability, GitHu
 - Recommend the next LeanOS route instead of writing code too early.
 - Use `where-we-are.md` for status/readiness questions.
 - Use `feature-to-delivery-cycle` only after readiness is confirmed.
+- Route missing component specs to Design before Engineering.
 - Never treat importance as readiness.
 - Never treat GitHub sync as readiness by itself.
 - If the founder asks to code too early, name the current state and offer the smallest next step.

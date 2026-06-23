@@ -296,7 +296,7 @@ Decisao proposta:
   - sequencia pratica para Engineering implementar componente reutilizavel antes da tela/feature;
   - deve exigir leitura da component spec, design system, accessibility, component inventory e code standards;
   - deve incluir testes/validacao de estados, acessibilidade e composicao.
-- [ ] Atualizar `ready-to-develop.md`
+- [x] Atualizar `ready-to-develop.md`
   - se a Feature tem UI, os componentes necessarios devem estar conhecidos;
   - se um componente novo e necessario, a Feature nao esta `ready-to-code` ate Design criar ou confirmar a component spec;
   - Feature pode ter uma task de Design pendente antes de Engineering.

@@ -1597,6 +1597,11 @@ async function assertFounderIntentRouting(rootDir) {
   assert(readyToDevelop.includes("needs-epic-breakdown"), "Ready-to-develop gate should block unsplit Epics before coding");
   assert(readyToDevelop.includes("feature-to-delivery-cycle"), "Ready-to-develop gate should guard the implementation workflow");
   assert(readyToDevelop.includes("## Design Readiness"), "Ready-to-develop gate should include design readiness");
+  assert(readyToDevelop.includes("## Component Readiness"), "Ready-to-develop gate should include component readiness");
+  assert(readyToDevelop.includes("operations/design/knowledge/component-inventory.md"), "Ready-to-develop gate should read component inventory");
+  assert(readyToDevelop.includes("needs-component-spec"), "Ready-to-develop gate should block missing component specs");
+  assert(readyToDevelop.includes("operations/design/playbooks/component-readiness.playbook.md"), "Ready-to-develop gate should route missing component specs to Design");
+  assert(readyToDevelop.includes("operations/engineering/playbooks/component-implementation.playbook.md"), "Ready-to-develop gate should point to Engineering component implementation after Design spec");
   assert(readyToDevelop.includes("## Security Readiness"), "Ready-to-develop gate should include security readiness");
   assert(readyToDevelop.includes("## Ready States"), "Ready-to-develop gate should define ready states");
   const workTaxonomy = await readFile(join(rootDir, "operations", "product-ops", "knowledge", "work-taxonomy.md"), "utf8");
