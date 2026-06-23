@@ -292,7 +292,7 @@ Decisao proposta:
 - [x] Criar `operations/engineering/skills/implement-component.skill.md`
   - implementa componente seguindo component spec, design system, acessibilidade e padroes do repositorio;
   - impede cores, copy, regra de negocio ou estado hardcoded quando deveriam vir do contrato de Design ou do sistema.
-- [ ] Criar `operations/engineering/playbooks/component-implementation.playbook.md`
+- [x] Criar `operations/engineering/playbooks/component-implementation.playbook.md`
   - sequencia pratica para Engineering implementar componente reutilizavel antes da tela/feature;
   - deve exigir leitura da component spec, design system, accessibility, component inventory e code standards;
   - deve incluir testes/validacao de estados, acessibilidade e composicao.

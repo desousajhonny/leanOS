@@ -24,7 +24,7 @@ Move from a scoped issue to a reviewable pull request.
 5. Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance
 6. Create or confirm an issue-linked branch before code changes
 7. Use `skills/plan-implementation.skill.md` to plan implementation
-8. Use `skills/implement-component.skill.md` before screen or Feature work when a new reusable component is required
+8. Run `playbooks/component-implementation.playbook.md` before screen or Feature work when a new reusable component is required
 9. Use `skills/follow-code-standards.skill.md` while changing code
 10. Use `skills/review-data-change.skill.md` when data/API/persistence is involved
 11. Use `skills/write-tests.skill.md` to update tests or explain gaps

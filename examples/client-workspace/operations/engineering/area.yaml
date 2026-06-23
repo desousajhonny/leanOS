@@ -19,6 +19,7 @@ area:
     - review-pr
   playbooks:
     - branch-from-issue
+    - component-implementation
     - issue-to-pr
     - test-planning
     - pr-validation

@@ -42,6 +42,7 @@ Read:
 ## Playbooks
 
 - `../playbooks/branch-from-issue.playbook.md`
+- `../playbooks/component-implementation.playbook.md`
 - `../playbooks/issue-to-pr.playbook.md`
 - `../playbooks/test-planning.playbook.md`
 - `../playbooks/pr-validation.playbook.md`

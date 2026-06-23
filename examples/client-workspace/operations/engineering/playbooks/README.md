@@ -15,6 +15,7 @@ Use when a selected role points to a playbook.
 ## Files
 
 - `branch-from-issue.playbook.md`
+- `component-implementation.playbook.md`
 - `issue-to-pr.playbook.md`
 - `test-planning.playbook.md`
 - `pr-validation.playbook.md`

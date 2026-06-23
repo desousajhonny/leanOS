@@ -44,6 +44,9 @@ playbooks:
   - key: branch-from-issue
     area: operations.engineering
     path: ../../operations/engineering/playbooks/branch-from-issue.playbook.md
+  - key: component-implementation
+    area: operations.engineering
+    path: ../../operations/engineering/playbooks/component-implementation.playbook.md
   - key: issue-to-pr
     area: operations.engineering
     path: ../../operations/engineering/playbooks/issue-to-pr.playbook.md
