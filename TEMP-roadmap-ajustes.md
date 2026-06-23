@@ -255,6 +255,80 @@ Objetivo: manter apenas gates fixos que realmente ajudam o modelo a decidir se p
   - deve cobrir negocio, usabilidade, acessibilidade, seguranca, privacidade, DevOps, observabilidade, rollback, suporte, marketing/go-to-market e aprendizado pos-lancamento;
   - deve responder se o produto/release esta pronto para ir para usuarios reais, nao apenas se o codigo esta pronto.
 
+#### Component Readiness / Design To Engineering
+
+Objetivo: impedir que o modelo implemente UI improvisada, componentes duplicados ou componentes hardcoded sem contrato de Design. O Design decide e documenta o componente; Engineering implementa seguindo esse contrato.
+
+Decisao proposta:
+
+- [ ] Documentar fluxo operacional de Component Readiness dentro de `issue-delivery-cycle`:
+  - Founder pede implementacao de uma Feature ou GitHub Feature issue;
+  - Root `AGENT.md` identifica intencao de delivery/implementacao e roteia para `operations/AGENT.md`;
+  - `operations/AGENT.md` carrega `operations/workflows/issue-delivery-cycle.workflow.md`;
+  - workflow entra primeiro em Product Ops para identificar Feature, Epic pai e readiness;
+  - Product Ops usa `operations/product-ops/knowledge/ready-to-develop.md`;
+  - se a Feature tem UI/tela/fluxo/componente, workflow roteia para Design antes de Engineering;
+  - Design analisa componente existente vs componente novo;
+  - se componente novo for necessario, Design cria/atualiza spec em `operations/design/knowledge/components/<component-name>.md` usando `ai-standard/templates/design/component-spec-template.md`;
+  - Design atualiza `operations/design/knowledge/component-inventory.md`;
+  - workflow volta ao readiness check;
+  - Engineering so entra depois de Design readiness, Security readiness e DevOps readiness estarem prontos ou explicitamente nao aplicaveis.
+- [ ] Criar `operations/design/knowledge/component-inventory.md`
+  - lista simples de componentes aprovados, planejados e gaps;
+  - nao contem codigo fonte;
+  - deve informar nome, proposito, status, onde e usado, notas e proximo passo.
+- [ ] Criar `ai-standard/templates/design/component-spec-template.md`
+  - template base do framework para documentar componentes;
+  - deve cobrir Purpose, When To Use, When Not To Use, Anatomy, Variants, States, Behavior, Accessibility, Content Rules, Design Tokens, Composition Rules, Engineering Notes, Do Not Do e Open Questions.
+- [ ] Criar `operations/design/skills/component-analysis.skill.md`
+  - analisa se uma Feature com UI usa componente existente, adapta componente existente ou precisa de componente novo;
+  - consulta `design-system.md`, `accessibility.md`, `user-flows.md` e `component-inventory.md`;
+  - produz recomendacao de reuso/criacao e gaps para Engineering.
+- [ ] Criar `operations/design/playbooks/component-readiness.playbook.md`
+  - executa a especificacao de componente quando a Feature precisa de componente novo;
+  - usa o template `ai-standard/templates/design/component-spec-template.md`;
+  - atualiza `component-inventory.md`;
+  - cria ou recomenda criar uma spec concreta somente quando houver Feature real.
+- [ ] Criar `operations/engineering/skills/implement-component.skill.md`
+  - implementa componente seguindo component spec, design system, acessibilidade e padroes do repositorio;
+  - impede cores, copy, regra de negocio ou estado hardcoded quando deveriam vir do contrato de Design ou do sistema.
+- [ ] Criar `operations/engineering/playbooks/component-implementation.playbook.md`
+  - sequencia pratica para Engineering implementar componente reutilizavel antes da tela/feature;
+  - deve exigir leitura da component spec, design system, accessibility, component inventory e code standards;
+  - deve incluir testes/validacao de estados, acessibilidade e composicao.
+- [ ] Atualizar `ready-to-develop.md`
+  - se a Feature tem UI, os componentes necessarios devem estar conhecidos;
+  - se um componente novo e necessario, a Feature nao esta `ready-to-code` ate Design criar ou confirmar a component spec;
+  - Feature pode ter uma task de Design pendente antes de Engineering.
+- [ ] Atualizar `epic-to-features`
+  - durante Feature Shaping, Design detecta necessidade de componentes;
+  - nao precisa escrever spec completa nessa etapa;
+  - deve adicionar task na Feature quando component spec for necessaria.
+- [ ] Atualizar `issue-delivery-cycle`
+  - aceitar Feature local ou GitHub Feature issue, nunca Epic/roadmap/ideia solta direto;
+  - iniciar por Operations workflow, nao por Root chamando Product Ops diretamente;
+  - Product Ops e o primeiro checkpoint de readiness;
+  - antes de Engineering codar, verificar se a Feature com UI tem component spec quando necessaria;
+  - se faltar spec, rotear para Design antes de branch/codigo;
+  - depois da spec aprovada, Engineering implementa o componente e entao a tela/feature;
+  - se Design/Security/DevOps nao se aplicam, registrar explicitamente o motivo.
+- [ ] Atualizar Engineering flow para componentes:
+  - Engineering deve ler a component spec antes de implementar componente novo;
+  - Engineering deve implementar primeiro o componente reutilizavel, validar estados/acessibilidade/testes, e so depois implementar a tela/feature que usa o componente;
+  - Engineering nao pode criar componente novo sem spec ou confirmacao explicita de Design.
+- [ ] Atualizar jornada `docs/framework/founder-journeys/issue-delivery-cycle.md` quando ela for criada:
+  - mostrar caminho: Founder intent -> Root AGENT -> Operations AGENT -> issue-delivery-cycle -> Product Ops readiness -> Design component readiness se necessario -> Engineering -> PR validation;
+  - deixar claro por que cada salto acontece: por regra do AGENT, por workflow ou por playbook;
+  - incluir exemplo founder-friendly quando faltar component spec.
+- [ ] Decidir estrutura para specs concretas de componentes:
+  - opcao preferida: `operations/design/knowledge/components/<component-name>.md`;
+  - nao gerar specs concretas no scaffold inicial;
+  - criar arquivo apenas quando uma Feature real exigir componente novo.
+- [ ] Planejar `screen-spec-template.md` para etapa futura:
+  - provavel local: `ai-standard/templates/design/screen-spec-template.md`;
+  - screen spec deve documentar tela/fluxo concreto, nao ser gerada no scaffold inicial;
+  - deve cobrir layout, required components, actions, states, table rules, accessibility, responsive behavior e analytics/events quando aplicavel.
+
 #### Product Work Taxonomy
 
 Objetivo: definir uma linguagem product-first antes de implementar o proximo fluxo. O LeanOS nao deve depender do vocabulario do GitHub para organizar trabalho.
