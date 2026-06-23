@@ -149,6 +149,45 @@ TBD
 `;
 }
 
+function componentSpecsReadme(): string {
+  return `# Component Specs
+
+## Purpose
+
+Store concrete Design component specifications created for real Features.
+
+This folder is intentionally empty in the initial scaffold except for this README. Do not create speculative component specs.
+
+## When To Create A Spec
+
+Create \`<component-name>.md\` only when:
+
+- a real Feature needs a new or adapted reusable component;
+- Product Ops has confirmed the Feature context;
+- Design has enough product, user-flow, design-system and accessibility context;
+- the founder confirms the component readiness work.
+
+## Naming
+
+- Use kebab-case: \`customer-table.md\`, \`csv-import-panel.md\`, \`billing-status-badge.md\`.
+- Name the component by reusable purpose, not by one screen.
+- Link the spec from \`../component-inventory.md\`.
+
+## Required Template
+
+Use:
+
+\`../../../../ai-standard/templates/design/component-spec-template.md\`
+
+## Do Not Do
+
+- Do not store source code here.
+- Do not create specs for hypothetical future components.
+- Do not let Engineering implement a new user-facing component from notes that are not a component spec.
+- Do not duplicate a component spec when an approved component can be reused or adapted.
+`;
+}
+
 function productOpsOverviewKnowledge(): string {
   return `# Product Ops Overview
 
@@ -3127,11 +3166,12 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         whenToUse: ["define design foundation", "map user flows", "define accessibility baseline", "design onboarding", "reason about usability"],
         sourceOfTruth: ["knowledge/design-system.md", "knowledge/accessibility.md", "knowledge/user-flows.md", "knowledge/component-inventory.md"],
         files: [
-          { path: "knowledge/README.md", content: () => folderReadme("Design Knowledge", "Design context produced by the Design area.", "Use after Product and MVP context exist, before implementation or user-facing issue work.", "design-system.md", ["design-system.md", "accessibility.md", "user-flows.md", "component-inventory.md"], ["../roles/", "../skills/", "../playbooks/", "../../../strategy/product/", "../../product-ops/mvp/"], "Keep this folder focused on reusable design foundation and component readiness. Create screen specs, usability notes and UX decisions later when a concrete feature or screen requires them.") },
+          { path: "knowledge/README.md", content: () => folderReadme("Design Knowledge", "Design context produced by the Design area.", "Use after Product and MVP context exist, before implementation or user-facing issue work.", "design-system.md", ["design-system.md", "accessibility.md", "user-flows.md", "component-inventory.md", "components/README.md"], ["../roles/", "../skills/", "../playbooks/", "../../../strategy/product/", "../../product-ops/mvp/"], "Keep this folder focused on reusable design foundation and component readiness. Create component specs inside `components/` only when a real Feature requires them. Create screen specs, usability notes and UX decisions later when a concrete feature or screen requires them.") },
           { path: "knowledge/design-system.md", content: designSystemKnowledge },
           { path: "knowledge/accessibility.md", content: accessibilityKnowledge },
           { path: "knowledge/user-flows.md", content: userFlowsKnowledge },
-          { path: "knowledge/component-inventory.md", content: componentInventoryKnowledge }
+          { path: "knowledge/component-inventory.md", content: componentInventoryKnowledge },
+          { path: "knowledge/components/README.md", content: componentSpecsReadme }
         ],
         roles: [
           {

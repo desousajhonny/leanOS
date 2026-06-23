@@ -321,7 +321,7 @@ Decisao proposta:
   - mostrar caminho: Founder intent -> Root AGENT -> Operations AGENT -> feature-to-delivery-cycle -> Product Ops readiness -> Design component readiness se necessario -> Engineering -> PR validation;
   - deixar claro por que cada salto acontece: por regra do AGENT, por workflow ou por playbook;
   - incluir exemplo founder-friendly quando faltar component spec.
-- [ ] Decidir estrutura para specs concretas de componentes:
+- [x] Decidir estrutura para specs concretas de componentes:
   - opcao preferida: `operations/design/knowledge/components/<component-name>.md`;
   - nao gerar specs concretas no scaffold inicial;
   - criar arquivo apenas quando uma Feature real exigir componente novo.

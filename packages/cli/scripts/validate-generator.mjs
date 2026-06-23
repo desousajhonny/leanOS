@@ -239,6 +239,8 @@ async function validateWorkspaceFiles() {
     "operations/design/knowledge/design-system.md",
     "operations/design/knowledge/accessibility.md",
     "operations/design/knowledge/user-flows.md",
+    "operations/design/knowledge/component-inventory.md",
+    "operations/design/knowledge/components/README.md",
     "operations/design/AGENT.md",
     "operations/design/roles/ux-researcher.role.md",
     "operations/design/roles/product-designer.role.md",
@@ -878,6 +880,7 @@ async function validateClientWorkspaceFixture() {
     "operations/design/knowledge/accessibility.md",
     "operations/design/knowledge/user-flows.md",
     "operations/design/knowledge/component-inventory.md",
+    "operations/design/knowledge/components/README.md",
     "operations/design/roles/README.md",
     "operations/design/skills/design-system.skill.md",
     "operations/design/skills/accessibility.skill.md",
@@ -2196,6 +2199,7 @@ async function assertRoadmapAreaPattern(rootDir) {
 async function assertDesignFoundation(rootDir) {
   const designReadme = await readFile(join(rootDir, "operations", "design", "README.md"), "utf8");
   const designAgent = await readFile(join(rootDir, "operations", "design", "AGENT.md"), "utf8");
+  const designKnowledgeReadme = await readFile(join(rootDir, "operations", "design", "knowledge", "README.md"), "utf8");
   const areaYaml = parse(await readFile(join(rootDir, "operations", "design", "area.yaml"), "utf8"));
   const productDesigner = await readFile(join(rootDir, "operations", "design", "roles", "product-designer.role.md"), "utf8");
   const uxResearcher = await readFile(join(rootDir, "operations", "design", "roles", "ux-researcher.role.md"), "utf8");
@@ -2209,6 +2213,7 @@ async function assertDesignFoundation(rootDir) {
   const accessibilityKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "accessibility.md"), "utf8");
   const userFlowsKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "user-flows.md"), "utf8");
   const componentInventoryKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "component-inventory.md"), "utf8");
+  const componentSpecsReadme = await readFile(join(rootDir, "operations", "design", "knowledge", "components", "README.md"), "utf8");
   const userResearchSkill = await readFile(join(rootDir, "operations", "design", "skills", "user-research.skill.md"), "utf8");
   const userFlowMappingSkill = await readFile(join(rootDir, "operations", "design", "skills", "user-flow-mapping.skill.md"), "utf8");
   const designSystemSkill = await readFile(join(rootDir, "operations", "design", "skills", "design-system.skill.md"), "utf8");
@@ -2225,6 +2230,7 @@ async function assertDesignFoundation(rootDir) {
   await assertExists(join(rootDir, "operations", "design", "knowledge", "accessibility.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "user-flows.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "component-inventory.md"));
+  await assertExists(join(rootDir, "operations", "design", "knowledge", "components", "README.md"));
   await assertExists(join(rootDir, "operations", "design", "roles", "ux-researcher.role.md"));
   await assertExists(join(rootDir, "operations", "design", "roles", "product-designer.role.md"));
   await assertExists(join(rootDir, "operations", "design", "roles", "accessibility-specialist.role.md"));
@@ -2270,6 +2276,12 @@ async function assertDesignFoundation(rootDir) {
     assert(componentInventoryKnowledge.includes(heading), `Component inventory knowledge should include ${heading}`);
   }
   assert(componentInventoryKnowledge.includes("approved, planned, needs-spec, deprecated or unknown"), "Component inventory should define practical component statuses");
+  assert(componentSpecsReadme.includes("Store concrete Design component specifications created for real Features"), "Component specs README should explain its purpose");
+  assert(componentSpecsReadme.includes("intentionally empty in the initial scaffold except for this README"), "Component specs folder should avoid speculative specs");
+  assert(componentSpecsReadme.includes("<component-name>.md"), "Component specs README should define component spec naming");
+  assert(componentSpecsReadme.includes("../../../../ai-standard/templates/design/component-spec-template.md"), "Component specs README should point to the component spec template");
+  const componentSpecEntries = await readdir(join(rootDir, "operations", "design", "knowledge", "components"));
+  assert.deepEqual(componentSpecEntries, ["README.md"], "Component specs folder should not generate concrete component specs in the initial scaffold");
 
   for (const skillContent of [userResearchSkill, userFlowMappingSkill, designSystemSkill, componentAnalysisSkill, screenSpecificationSkill, microcopySkill, accessibilitySkill, designReviewSkill]) {
     for (const heading of ["## Purpose", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output", "## Files to Update", "## Red Lines"]) {
@@ -2291,6 +2303,8 @@ async function assertDesignFoundation(rootDir) {
   assert(designReviewSkill.includes("Findings are ordered by severity"), "Design review skill should order findings by severity");
 
   assert(designReadme.includes("knowledge/design-system.md"), "Design README should point to Design knowledge");
+  assert(designKnowledgeReadme.includes("components/README.md"), "Design knowledge README should include component specs folder guidance");
+  assert(designKnowledgeReadme.includes("Create component specs inside `components/` only when a real Feature requires them"), "Design knowledge README should prevent speculative component specs");
   assert(designReadme.includes("Design foundation request"), "Design README should expose the design foundation common path");
   assert(designReadme.includes("For operational work, start with `AGENT.md`"), "Design README should point operational work to the area AGENT");
   assert(designAgent.includes("You are the UX Lead"), "Design AGENT should define UX Lead as the area owner");

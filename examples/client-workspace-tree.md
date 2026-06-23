@@ -262,6 +262,8 @@ client-workspace/
 |-- operations/
 |   |-- design/
 |   |   |-- knowledge/
+|   |   |   |-- components/
+|   |   |   |   `-- README.md
 |   |   |   |-- accessibility.md
 |   |   |   |-- component-inventory.md
 |   |   |   |-- design-system.md
