@@ -285,7 +285,7 @@ Decisao proposta:
   - evitar letras manuais tipo `[EPIC A]`, porque envelhecem mal quando a ordem muda;
   - se precisar de codigo estavel, preferir campo separado como `epic_key: customer-management` no YAML/frontmatter ou no corpo do template;
   - GitHub title deve seguir o mesmo padrao para facilitar busca, labels e sync.
-- [ ] Criar estrutura local para epics:
+- [x] Criar estrutura local para epics:
   - `operations/product-ops/epics/README.md`;
   - cada epic local vive em uma pasta propria: `operations/product-ops/epics/<epic-slug>/`;
   - `operations/product-ops/epics/<epic-slug>/README.md` descreve o Epic;
@@ -293,13 +293,14 @@ Decisao proposta:
   - nao criar subpasta `features/` no MVP; tudo dentro da pasta do Epic e considerado parte dele;
   - Tasks ficam como checklist interna dentro de cada Feature;
   - GitHub sync deve mapear epic local para issue remota quando existir.
-- [ ] Definir ciclo de vida e ownership:
-  - status sugeridos: `idea`, `candidate`, `scoped`, `ready`, `in-progress`, `blocked`, `done`, `synced`;
+- [x] Definir ciclo de vida e ownership:
+  - status de produto: `idea`, `candidate`, `scoped`, `ready`, `in-progress`, `blocked`, `done`;
+  - status de sync remoto: `not_synced`, `sync_ready`, `synced`, `conflict`;
   - Roadmap/Backlog pertence a Strategy Roadmap;
   - Delivery Scope, Epic e Feature Shaping pertencem a Product Ops;
   - Task execution pertence a Engineering ou area responsavel;
   - Design, Security e DevOps entram como criterios condicionais na Feature.
-- [ ] Definir regra local vs GitHub:
+- [x] Definir regra local vs GitHub:
   - LeanOS local e a fonte operacional primaria;
   - GitHub e camada opcional de tracking/sync;
   - se houver conflito entre local e GitHub, o modelo deve explicar a diferenca e pedir confirmacao antes de sobrescrever qualquer lado.

@@ -147,6 +147,40 @@ feature_key: create-customer-profile
 
 Avoid manual ordering names like [EPIC A] because they break when priority changes.
 
+## Lifecycle Status
+
+Use these values for product work status. Do not use GitHub sync as product status.
+
+| Status | Meaning | Decided By |
+| --- | --- | --- |
+| idea | Raw idea, note or opportunity. Not qualified yet. | Strategy / Product |
+| candidate | Worth tracking, but not committed to delivery. | Strategy Roadmap |
+| scoped | Delivery boundaries, milestone and non-goals are confirmed. | Product Ops |
+| ready | Ready for the next step because required criteria are satisfied or explicitly not applicable. | Product Ops with required reviewers |
+| in-progress | Actively being implemented, reviewed or delivered. | Owning execution area |
+| blocked | Cannot move forward until a named blocker is resolved. | Owning area, with blocker owner |
+| done | Delivered, descoped with explanation or closed with result recorded. | Owning area with Product Ops review |
+
+## Sync Status
+
+Use these values only for remote tracking such as GitHub.
+
+| Sync Status | Meaning |
+| --- | --- |
+| not_synced | Exists locally only. |
+| sync_ready | Local item is ready to be proposed for remote sync. |
+| synced | Remote GitHub item exists and matches local state enough to continue. |
+| conflict | Local and remote state disagree and need founder confirmation before overwrite. |
+
+Product status and sync status are separate.
+
+Example:
+
+~~~yaml
+status: ready
+sync_status: not_synced
+~~~
+
 ## Local Vs GitHub
 
 LeanOS local files are the primary operational source.
@@ -168,6 +202,18 @@ If local and GitHub disagree, the model must explain the conflict and ask before
 - Epic: Product Ops.
 - Feature: Product Ops with Engineering, and Design/Security/DevOps when applicable.
 - Task: Engineering or the area responsible for execution.
+
+## Transition Ownership
+
+| Transition | Owner | Required Confirmation |
+| --- | --- | --- |
+| idea -> candidate | Strategy / Product | founder confirms it is worth tracking |
+| candidate -> scoped | Product Ops | founder confirms delivery scope, milestone and release goal |
+| scoped -> ready | Product Ops + required reviewers | Product Ops and Engineering are ready; Design/Security/DevOps are ready or not applicable |
+| ready -> in-progress | Engineering or execution area | implementation owner confirms branch/plan |
+| in-progress -> blocked | Owning execution area | blocker and blocker owner are named |
+| in-progress -> done | Owning execution area + Product Ops | result and acceptance criteria are recorded |
+| not_synced -> synced | DevOps or GitHub capability | founder confirms remote write |
 
 ## Readiness Rule
 

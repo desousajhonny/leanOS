@@ -24,6 +24,7 @@ Read:
 - `../mvp/prd.md`
 - `../mvp/user-stories.md`
 - `../mvp/acceptance-criteria.md`
+- `../epics/README.md`
 - `../../../strategy/product/knowledge/brief.md`
 - `../../../strategy/roadmap/knowledge/roadmap.md`
 - `../../../ai-standard/templates/product/epic-template.md`

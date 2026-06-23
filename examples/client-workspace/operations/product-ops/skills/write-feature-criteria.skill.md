@@ -18,6 +18,7 @@ Apply the Delivery Readiness Matrix (DRM) to draft implementation-ready features
 - ../knowledge/ready-to-develop.md
 - ../mvp/prd.md
 - ../mvp/acceptance-criteria.md
+- ../epics/README.md
 - ../../../ai-standard/templates/product/feature-template.md
 - ../../../ai-standard/templates/github/delivery-readiness-matrix-template.md
 - ../../../ai-standard/templates/github/github-feature-template.md

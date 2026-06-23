@@ -355,6 +355,8 @@ client-workspace/
 |   |   |-- area.yaml
 |   |   `-- README.md
 |   |-- product-ops/
+|   |   |-- epics/
+|   |   |   `-- README.md
 |   |   |-- knowledge/
 |   |   |   |-- delivery-context.md
 |   |   |   |-- delivery-scope.md

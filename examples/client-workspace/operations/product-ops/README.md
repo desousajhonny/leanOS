@@ -25,6 +25,7 @@ Turn Strategy and Roadmap into delivery scope, acceptance criteria and implement
 - `mvp/prd.md`
 - `mvp/user-stories.md`
 - `mvp/acceptance-criteria.md`
+- `epics/README.md`
 
 
 

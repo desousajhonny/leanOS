@@ -5,11 +5,11 @@
 ~~~yaml
 feature_key: <stable-kebab-key>
 parent_epic_key: <epic-key>
-status: candidate | shaped | ready-to-develop | in-progress | done | synced
+status: candidate | scoped | ready | in-progress | blocked | done
+sync_status: not_synced | sync_ready | synced | conflict
 owner: Product Ops
 execution_owner: Engineering
 github_issue:
-  synced: false
   url:
 ~~~
 

@@ -9,7 +9,8 @@ delivery_scope:
   scope_type: MVP | Release | Experiment | Beta | Internal
   milestone:
   release_goal:
-status: candidate | scoped | ready | in-progress | done | synced
+status: candidate | scoped | ready | in-progress | blocked | done
+sync_status: not_synced | sync_ready | synced | conflict
 owner: Product Ops
 decision_owner: Product Owner
 supporting_roles:
@@ -20,7 +21,6 @@ supporting_roles:
   - Security Reviewer when data/auth/privacy/security is affected
   - DevOps Engineer when delivery, deploy or GitHub sync is affected
 github_issue:
-  synced: false
   url:
 ~~~
 

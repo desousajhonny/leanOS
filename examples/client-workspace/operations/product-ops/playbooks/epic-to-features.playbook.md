@@ -20,6 +20,7 @@ Break a LeanOS epic into implementation-ready features with internal tasks using
 - `../mvp/prd.md`
 - `../mvp/scope.md`
 - `../mvp/acceptance-criteria.md`
+- `../epics/README.md`
 - `../../../strategy/product/AGENT.md`
 - `../../../strategy/roadmap/AGENT.md`
 - `../../../ai-standard/templates/product/epic-template.md`

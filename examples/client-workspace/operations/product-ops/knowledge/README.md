@@ -28,6 +28,7 @@ Use when turning strategy and roadmap into delivery scope, issue readiness and d
 - `../skills/`
 - `../playbooks/`
 - `../mvp/`
+- `../epics/`
 - `../../../strategy/product/`
 - `../../../strategy/roadmap/`
 

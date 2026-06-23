@@ -19,6 +19,7 @@ Turn a roadmap epic into an implementation-ready scope boundary before features 
 - ../knowledge/ready-to-develop.md
 - ../mvp/prd.md
 - ../mvp/scope.md
+- ../epics/README.md
 - ../../../strategy/product/knowledge/brief.md
 - ../../../strategy/roadmap/knowledge/roadmap.md
 - ../../../ai-standard/templates/product/epic-template.md
