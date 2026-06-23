@@ -25,7 +25,8 @@ client-workspace/
 |   |   |-- project-sync.yaml
 |   |   |-- README.md
 |   |   |-- security-automation.md
-|   |   `-- sync-state.yaml
+|   |   |-- sync-state.yaml
+|   |   `-- work-mapping.md
 |   |-- prompts/
 |   |   |-- leanos-init.prompt.md
 |   |   `-- start-leanos.prompt.md

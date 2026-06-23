@@ -23,6 +23,22 @@ github:
       current_cycle: ../../strategy/roadmap/knowledge/current-cycle.md
       mvp_scope: ../../operations/product-ops/mvp/scope.md
       acceptance_criteria: ../../operations/product-ops/mvp/acceptance-criteria.md
+      epics: ../../operations/product-ops/epics/
+  work_mapping:
+    epic:
+      local_source: operations/product-ops/epics/<epic-slug>/README.md
+      github_target: issue
+      required_labels: [leanos, epic]
+      title_format: "[EPIC] <epic title>"
+    feature:
+      local_source: operations/product-ops/epics/<epic-slug>/<feature-slug>.md
+      github_target: issue
+      required_labels: [leanos, feature]
+      title_format: "[FEATURE: <epic title>] <feature title>"
+    task:
+      local_source: feature_file_checklist
+      github_target: feature_issue_checklist
+      separate_issue_default: false
   rules:
     never_store_token: true
     dry_run_before_remote_write: true

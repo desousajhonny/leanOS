@@ -366,6 +366,7 @@ async function validateWorkspaceFiles() {
     "growth/finance/playbooks/finance-review.playbook.md",
     ".github/leanos/README.md",
     ".github/leanos/github-settings.example.json",
+    ".github/leanos/work-mapping.md",
     ".github/leanos/project-sync.yaml",
     ".github/leanos/sync-state.yaml",
     ".github/leanos/labels.yaml",
@@ -673,6 +674,7 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "growth", "marketing", "skills", "create-launch-plan.skill.md"));
   await assertExists(join(rootDir, ".github", "agents", "leanos-chief.agent.md"));
   await assertExists(join(rootDir, ".github", "leanos", "github-settings.example.json"));
+  await assertExists(join(rootDir, ".github", "leanos", "work-mapping.md"));
   await assertExists(join(rootDir, ".github", "leanos", "project-sync.yaml"));
   await assertExists(join(rootDir, ".github", "leanos", "sync-state.yaml"));
   await assertExists(join(rootDir, ".github", "leanos", "security-automation.md"));
@@ -937,6 +939,7 @@ async function validateClientWorkspaceFixture() {
     "operations/engineering/playbooks/test-planning.playbook.md",
     ".leanos/index/routing-map.yaml",
     ".github/leanos/github-settings.example.json",
+    ".github/leanos/work-mapping.md",
     ".github/leanos/project-sync.yaml",
     ".github/leanos/sync-state.yaml",
     ".github/ISSUE_TEMPLATE/epic.yml",
@@ -1308,6 +1311,7 @@ async function assertGitHubReadiness(rootDir) {
   const envLocal = await readFile(join(rootDir, ".env.local"), "utf8");
   const gitignore = await readFile(join(rootDir, ".gitignore"), "utf8");
   const settingsExample = await readFile(join(rootDir, ".github", "leanos", "github-settings.example.json"), "utf8");
+  const workMapping = await readFile(join(rootDir, ".github", "leanos", "work-mapping.md"), "utf8");
   const projectSync = await readFile(join(rootDir, ".github", "leanos", "project-sync.yaml"), "utf8");
   const syncState = await readFile(join(rootDir, ".github", "leanos", "sync-state.yaml"), "utf8");
   const labels = await readFile(join(rootDir, ".github", "leanos", "labels.yaml"), "utf8");
@@ -1331,12 +1335,24 @@ async function assertGitHubReadiness(rootDir) {
   assert.equal(projectSyncYaml.github.status, "pending_user_token", "GitHub project sync should wait for a user token when management is prepared");
   assert.equal(projectSyncYaml.github.project_sync.status, "pending_configuration", "GitHub project sync should record pending configuration when management is prepared");
   assert.equal(projectSyncYaml.github.project_sync.enabled, false, "GitHub project sync should start disabled");
+  assert.equal(projectSyncYaml.github.work_mapping.epic.github_target, "issue", "GitHub mapping should sync Epics to issues");
+  assert.equal(projectSyncYaml.github.work_mapping.feature.github_target, "issue", "GitHub mapping should sync Features to issues");
+  assert.equal(projectSyncYaml.github.work_mapping.task.github_target, "feature_issue_checklist", "GitHub mapping should keep Tasks as Feature checklists by default");
+  assert.equal(projectSyncYaml.github.work_mapping.task.separate_issue_default, false, "GitHub mapping should not create task issues by default");
   assert.equal(projectSyncYaml.github.rules.never_store_token, true, "GitHub project sync should forbid token storage");
   assert.equal(projectSyncYaml.github.rules.dry_run_before_remote_write, true, "GitHub project sync should require dry-run before remote writes");
   assert.equal(projectSyncYaml.github.rules.require_confirmation_before_api_write, true, "GitHub project sync should require confirmation before API writes");
+  assert(workMapping.includes("Epic folder README"), "GitHub work mapping should map local Epic README files");
+  assert(workMapping.includes("Feature markdown file"), "GitHub work mapping should map local Feature files");
+  assert(workMapping.includes("Feature Tasks"), "GitHub work mapping should keep Feature tasks as checklists");
+  assert(workMapping.includes("Exceptional Task"), "GitHub work mapping should define task issue exceptions");
   assert(syncState.includes("must never store tokens"), "GitHub sync state should warn against storing tokens");
+  assert(syncState.includes("features: {}"), "GitHub sync state should track features");
+  assert(syncState.includes("task_issues: {}"), "GitHub sync state should track exceptional task issues");
+  assert.equal(syncState.includes("sub_issues"), false, "GitHub sync state should not use old sub_issues terminology");
   assert(labels.includes("name: epic"), "GitHub labels should include epic");
   assert(labels.includes("name: feature"), "GitHub labels should include feature");
+  assert(labels.includes("name: task"), "GitHub labels should include exceptional task issues");
   assert(githubReadme.includes("Route GitHub setup through `../../operations/devops/AGENT.md`"), "GitHub README should route setup through DevOps when active");
   assert(githubReadme.includes("Vercel readiness is guidance-only"), "GitHub README should document Vercel readiness without execution");
   assert(githubRole.includes("Guide safe GitHub repository, Project, labels and sync configuration"), "GitHub DevOps role should describe GitHub setup ownership");

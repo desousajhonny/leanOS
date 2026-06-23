@@ -15,6 +15,7 @@ Use when configuring labels, GitHub Projects sync, branch rules, PR validation g
 ## Files
 
 - `github-settings.example.json`
+- `work-mapping.md`
 - `project-sync.yaml`
 - `sync-state.yaml`
 - `labels.yaml`

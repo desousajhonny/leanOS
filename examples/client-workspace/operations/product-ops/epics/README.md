@@ -26,6 +26,7 @@ operations/product-ops/epics/
 - Do not create a `features/` subfolder in the MVP scaffold.
 - Tasks stay inside Feature files as internal checklists unless separate tracking is explicitly needed.
 - GitHub sync is optional and must be confirmed by the founder.
+- GitHub mapping rules live in `../../../.github/leanos/work-mapping.md`.
 
 ## Naming
 
@@ -56,6 +57,14 @@ Feature title:
 3. Run `epic-to-features` to create Feature files inside the Epic folder.
 4. Run `ready-to-develop.md` before Engineering starts implementation.
 5. Sync with GitHub only after confirmation.
+
+## GitHub Mapping
+
+- Epic folder README -> GitHub issue with labels `leanos` and `epic`.
+- Feature markdown file -> GitHub issue with labels `leanos` and `feature`.
+- Feature Tasks -> checklist inside the Feature GitHub issue.
+- Separate Task issue -> only when assignment, review, deployment, security or tracking needs separate ownership.
+- Remote IDs and issue numbers -> `../../../.github/leanos/sync-state.yaml`, not product status.
 
 ## Status Rules
 

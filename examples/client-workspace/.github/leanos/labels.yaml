@@ -8,6 +8,9 @@ labels:
   - name: feature
     color: "bfd4f2"
     description: Feature created from an epic
+  - name: task
+    color: "d4c5f9"
+    description: Exceptional task issue created from a feature checklist item
   - name: validation
     color: "0e8a16"
     description: Validation or learning task

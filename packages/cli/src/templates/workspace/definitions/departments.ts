@@ -343,13 +343,26 @@ LeanOS local files are the primary operational source.
 
 GitHub is an optional tracking and sync layer.
 
-Mapping:
+## GitHub Mapping
+
+Default mapping:
 
 - Local Epic -> GitHub issue with label epic
 - Local Feature -> GitHub issue with label feature
 - Feature Tasks -> checklist inside the Feature issue by default
 
+Task issues are exceptions, not the default. Create a separate Task issue only when a task needs separate assignment, review, timeline, deployment, security review or external tracking.
+
+Remote sync metadata must live in \`.github/leanos/sync-state.yaml\`. Do not store GitHub IDs inside product work status unless the template explicitly includes a sync field.
+
 If local and GitHub disagree, the model must explain the conflict and ask before overwriting either side.
+
+Required labels:
+
+- \`leanos\`
+- \`epic\` for synced Epics
+- \`feature\` for synced Features
+- \`task\` only for exceptional task issues
 
 ## Ownership
 
@@ -384,6 +397,7 @@ A Feature can enter implementation only after it passes \`ready-to-develop.md\`.
 - Do not send vague Epics directly to Engineering.
 - Do not create GitHub issues before the founder confirms sync.
 - Do not make Tasks top-level planning objects unless they need separate tracking.
+- Do not use GitHub issue numbers as the only identifier for local Epics or Features.
 `;
 }
 
@@ -416,6 +430,7 @@ operations/product-ops/epics/
 - Do not create a \`features/\` subfolder in the MVP scaffold.
 - Tasks stay inside Feature files as internal checklists unless separate tracking is explicitly needed.
 - GitHub sync is optional and must be confirmed by the founder.
+- GitHub mapping rules live in \`../../../.github/leanos/work-mapping.md\`.
 
 ## Naming
 
@@ -446,6 +461,14 @@ Feature title:
 3. Run \`epic-to-features\` to create Feature files inside the Epic folder.
 4. Run \`ready-to-develop.md\` before Engineering starts implementation.
 5. Sync with GitHub only after confirmation.
+
+## GitHub Mapping
+
+- Epic folder README -> GitHub issue with labels \`leanos\` and \`epic\`.
+- Feature markdown file -> GitHub issue with labels \`leanos\` and \`feature\`.
+- Feature Tasks -> checklist inside the Feature GitHub issue.
+- Separate Task issue -> only when assignment, review, deployment, security or tracking needs separate ownership.
+- Remote IDs and issue numbers -> \`../../../.github/leanos/sync-state.yaml\`, not product status.
 
 ## Status Rules
 

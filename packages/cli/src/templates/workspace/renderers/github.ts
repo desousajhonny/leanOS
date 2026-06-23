@@ -26,8 +26,9 @@ export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefiniti
     { path: ".github/ISSUE_TEMPLATE/feature.yml", content: featureIssueTemplate() },
     ...["bug", "experiment", "validation", "research", "task"].map((name) => issueTemplate(`${name}.yml`, toTitle(name), `LeanOS ${name} issue.`)),
     { path: ".github/workflows/pr-validation.yml", content: prValidationWorkflow() },
-    { path: ".github/leanos/README.md", content: folderReadme("GitHub LeanOS", "GitHub support files for LeanOS workflow conventions.", "Use when configuring labels, GitHub Projects sync, branch rules, PR validation guidance, security automation or deploy readiness.", "project-sync.yaml", ["github-settings.example.json", "project-sync.yaml", "sync-state.yaml", "labels.yaml", "branch-rules.md", "pr-validation-rules.md", "security-automation.md"], ["../ISSUE_TEMPLATE/", "../../operations/devops/", "../../operations/engineering/", "../../operations/security/"], `${devopsNote}\n\n${engineeringNote}\n\n${securityNote}\n\nVercel readiness is guidance-only in this scaffold. Vercel can detect frameworks automatically after product code exists; create \`vercel.json\` only when a real app/framework needs overrides.`) },
+    { path: ".github/leanos/README.md", content: folderReadme("GitHub LeanOS", "GitHub support files for LeanOS workflow conventions.", "Use when configuring labels, GitHub Projects sync, branch rules, PR validation guidance, security automation or deploy readiness.", "project-sync.yaml", ["github-settings.example.json", "work-mapping.md", "project-sync.yaml", "sync-state.yaml", "labels.yaml", "branch-rules.md", "pr-validation-rules.md", "security-automation.md"], ["../ISSUE_TEMPLATE/", "../../operations/devops/", "../../operations/engineering/", "../../operations/security/"], `${devopsNote}\n\n${engineeringNote}\n\n${securityNote}\n\nVercel readiness is guidance-only in this scaffold. Vercel can detect frameworks automatically after product code exists; create \`vercel.json\` only when a real app/framework needs overrides.`) },
     { path: ".github/leanos/github-settings.example.json", content: githubSettingsExampleJson() },
+    { path: ".github/leanos/work-mapping.md", content: workMappingRules() },
     { path: ".github/leanos/labels.yaml", content: labelsYaml() },
     { path: ".github/leanos/project-sync.yaml", content: projectSyncYaml(answers) },
     { path: ".github/leanos/sync-state.yaml", content: syncStateYaml() },
@@ -454,6 +455,96 @@ function githubSettingsExampleJson(): string {
 `;
 }
 
+function workMappingRules(): string {
+  return `# GitHub Work Mapping
+
+## Purpose
+
+Define how LeanOS local product work maps to GitHub tracking.
+
+This file is a sync contract. It does not make GitHub the source of truth, and it does not authorize remote writes by itself.
+
+## Source Of Truth
+
+LeanOS local files are the primary operational source:
+
+- Product hierarchy: \`../../operations/product-ops/knowledge/work-taxonomy.md\`
+- Local Epics and Features: \`../../operations/product-ops/epics/\`
+- Epic template: \`../../ai-standard/templates/product/epic-template.md\`
+- Feature template: \`../../ai-standard/templates/product/feature-template.md\`
+
+GitHub is an optional remote tracking layer.
+
+## Default Mapping
+
+| Local LeanOS item | GitHub item | Required labels | Notes |
+| --- | --- | --- | --- |
+| Epic folder README | Issue | \`leanos\`, \`epic\` | One GitHub issue per local Epic. |
+| Feature markdown file | Issue | \`leanos\`, \`feature\` | One GitHub issue per local Feature. |
+| Feature Tasks | Checklist inside Feature issue | none by default | Tasks stay inside the Feature issue unless separate tracking is justified. |
+| Exceptional Task | Issue | \`leanos\`, \`task\` | Use only for separate ownership, review, deployment, security or external dependency. |
+
+## Title Conventions
+
+Epic issue:
+
+~~~text
+[EPIC] Customer Management
+~~~
+
+Feature issue:
+
+~~~text
+[FEATURE: Customer Management] Create customer profile
+~~~
+
+Exceptional task issue:
+
+~~~text
+[TASK: Create customer profile] Add database migration
+~~~
+
+## Sync Metadata
+
+Store remote IDs, issue numbers, project item IDs and conflict state in:
+
+\`sync-state.yaml\`
+
+Do not store tokens, secrets or personal credentials in sync state.
+
+## Required Sync Behavior
+
+Before creating or updating GitHub:
+
+1. Read Product Ops work taxonomy.
+2. Read the local Epic folder.
+3. Read each Feature file being synced.
+4. Compare local state with \`sync-state.yaml\`.
+5. Prepare a dry-run summary.
+6. Ask the founder for confirmation.
+7. Only then call a future CLI/script capability for the remote write.
+
+## Conflict Rule
+
+If local and GitHub disagree, do not overwrite either side automatically.
+
+Explain:
+
+- what differs;
+- which side is newer or more complete, if knowable;
+- what would be changed;
+- what the founder must confirm.
+
+## Do Not Do
+
+- Do not create GitHub issues for raw ideas, backlog notes or unsplit Epics.
+- Do not create one GitHub issue per Task by default.
+- Do not treat \`synced\` as product readiness.
+- Do not start implementation from GitHub sync alone; the Feature must pass \`ready-to-develop.md\`.
+- Do not call GitHub API directly from model reasoning.
+`;
+}
+
 function projectSyncYaml(answers: WorkspaceAnswers): string {
   const githubRemote = parseGithubRemote(answers.detectedProject?.gitRemoteOrigin);
   const owner = githubRemote?.owner ?? "TODO";
@@ -484,6 +575,22 @@ function projectSyncYaml(answers: WorkspaceAnswers): string {
       current_cycle: ../../strategy/roadmap/knowledge/current-cycle.md
       mvp_scope: ../../operations/product-ops/mvp/scope.md
       acceptance_criteria: ../../operations/product-ops/mvp/acceptance-criteria.md
+      epics: ../../operations/product-ops/epics/
+  work_mapping:
+    epic:
+      local_source: operations/product-ops/epics/<epic-slug>/README.md
+      github_target: issue
+      required_labels: [leanos, epic]
+      title_format: "[EPIC] <epic title>"
+    feature:
+      local_source: operations/product-ops/epics/<epic-slug>/<feature-slug>.md
+      github_target: issue
+      required_labels: [leanos, feature]
+      title_format: "[FEATURE: <epic title>] <feature title>"
+    task:
+      local_source: feature_file_checklist
+      github_target: feature_issue_checklist
+      separate_issue_default: false
   rules:
     never_store_token: true
     dry_run_before_remote_write: true
@@ -522,10 +629,12 @@ function syncStateYaml(): string {
   project_number: null
   milestones: {}
   epics: {}
-  sub_issues: {}
+  features: {}
+  task_issues: {}
   notes:
     - This file may store GitHub IDs, issue numbers and sync metadata.
     - This file must never store tokens, secrets or personal credentials.
+    - Local LeanOS files remain the operational source unless the founder confirms a remote overwrite.
 `;
 }
 
@@ -540,6 +649,9 @@ function labelsYaml(): string {
   - name: feature
     color: "bfd4f2"
     description: Feature created from an epic
+  - name: task
+    color: "d4c5f9"
+    description: Exceptional task issue created from a feature checklist item
   - name: validation
     color: "0e8a16"
     description: Validation or learning task

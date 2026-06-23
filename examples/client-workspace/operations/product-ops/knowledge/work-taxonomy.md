@@ -187,13 +187,26 @@ LeanOS local files are the primary operational source.
 
 GitHub is an optional tracking and sync layer.
 
-Mapping:
+## GitHub Mapping
+
+Default mapping:
 
 - Local Epic -> GitHub issue with label epic
 - Local Feature -> GitHub issue with label feature
 - Feature Tasks -> checklist inside the Feature issue by default
 
+Task issues are exceptions, not the default. Create a separate Task issue only when a task needs separate assignment, review, timeline, deployment, security review or external tracking.
+
+Remote sync metadata must live in `.github/leanos/sync-state.yaml`. Do not store GitHub IDs inside product work status unless the template explicitly includes a sync field.
+
 If local and GitHub disagree, the model must explain the conflict and ask before overwriting either side.
+
+Required labels:
+
+- `leanos`
+- `epic` for synced Epics
+- `feature` for synced Features
+- `task` only for exceptional task issues
 
 ## Ownership
 
@@ -228,3 +241,4 @@ A Feature can enter implementation only after it passes `ready-to-develop.md`.
 - Do not send vague Epics directly to Engineering.
 - Do not create GitHub issues before the founder confirms sync.
 - Do not make Tasks top-level planning objects unless they need separate tracking.
+- Do not use GitHub issue numbers as the only identifier for local Epics or Features.

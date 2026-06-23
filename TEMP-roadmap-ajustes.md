@@ -317,7 +317,7 @@ Decisao proposta:
   - Feature so entra em desenvolvimento depois de passar pelo `ready-to-develop`;
   - Feature pode existir localmente antes de estar pronta para desenvolvimento;
   - o modelo deve explicar gaps antes de sugerir implementacao.
-- [ ] Definir GitHub mapping:
+- [x] Definir GitHub mapping:
   - Epic local -> GitHub issue com label `epic`;
   - Feature local -> GitHub issue com label `feature`;
   - Tasks -> checklist interna dentro da Feature issue por padrao;
