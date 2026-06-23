@@ -97,3 +97,13 @@ If not applicable, say why.
 - [ ] Security is ready or explicitly not applicable
 - [ ] DevOps is ready or explicitly not applicable
 - [ ] Tasks are clear enough for implementation
+
+## Definition of Done
+
+- [ ] Acceptance criteria satisfied
+- [ ] Tasks completed or explicitly descoped
+- [ ] Tests or validation evidence recorded
+- [ ] Design review completed or explicitly not applicable
+- [ ] Security review completed or explicitly not applicable
+- [ ] DevOps/release notes completed or explicitly not applicable
+- [ ] Parent epic updated with result

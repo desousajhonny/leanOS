@@ -63,6 +63,27 @@ What is explicitly excluded.
 - Milestone fit:
 - Risk level:
 
+## Success Metrics
+
+- Primary success metric:
+- Supporting metric:
+- Qualitative signal:
+- Learning signal:
+
+## Epic Done When
+
+The Epic is done when all confirmed Features are delivered or explicitly descoped, the outcome can be measured, and the parent delivery scope is updated.
+
+## Approval Gate
+
+- Product Owner approval:
+- Roadmap / Strategy approval:
+- Engineering feasibility checked:
+- Design checked or not applicable:
+- Security checked or not applicable:
+- DevOps checked or not applicable:
+- Founder confirmation:
+
 ## Epic Readiness Matrix
 
 Use this to decide which specialists must participate before breaking the epic into features.

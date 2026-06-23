@@ -1,6 +1,6 @@
 name: Epic
 description: Roadmap-level LeanOS epic.
-title: "[EPIC]: "
+title: "[EPIC] "
 labels: ["leanos", "epic"]
 body:
   - type: input

@@ -1348,6 +1348,7 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   const aiPrTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "pull-request-template.md"), "utf8");
   const codeReviewTemplate = await readFile(join(rootDir, "ai-standard", "templates", "review", "code-review-template.md"), "utf8");
   const epicToFeaturesPlaybook = await readFile(join(rootDir, "operations", "product-ops", "playbooks", "epic-to-features.playbook.md"), "utf8");
+  const shapeEpicSkill = await readFile(join(rootDir, "operations", "product-ops", "skills", "shape-epic.skill.md"), "utf8");
   const branchSkill = await readFile(join(rootDir, "operations", "engineering", "skills", "create-branch.skill.md"), "utf8");
   const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-from-issue.playbook.md"), "utf8");
   const issueToPrPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "issue-to-pr.playbook.md"), "utf8");
@@ -1358,6 +1359,8 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   const createPrCommand = await readFile(join(rootDir, ".leanos", "commands", "create-pr.md"), "utf8");
   const reviewPrCommand = await readFile(join(rootDir, ".leanos", "commands", "review-pr.md"), "utf8");
 
+  assert(epicTemplate.includes('title: "[EPIC] "'), "Epic issue form should use canonical EPIC title prefix");
+  assert(featureTemplate.includes('title: "[FEATURE: <epic>] "'), "Feature issue form should use canonical FEATURE title prefix");
   assert(epicTemplate.includes("Decision ownership"), "Epic issue template should include decision ownership");
   assert(epicTemplate.includes("Epic readiness matrix"), "Epic issue template should include Epic readiness matrix");
   assert(featureTemplate.includes("Parent epic"), "Feature template should require parent epic linkage");
@@ -1381,11 +1384,18 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
 
   assert(productEpicTemplate.includes("# [EPIC] <epic title>"), "Product epic template should define local epic title format");
   assert(productEpicTemplate.includes("## Decision Ownership") || productEpicTemplate.includes("decision_owner"), "Product epic template should define decision ownership");
+  assert(productEpicTemplate.includes("## Success Metrics"), "Product epic template should include success metrics");
+  assert(productEpicTemplate.includes("## Epic Done When"), "Product epic template should include done criteria");
+  assert(productEpicTemplate.includes("## Approval Gate"), "Product epic template should include an approval gate");
   assert(productEpicTemplate.includes("## Epic Readiness Matrix"), "Product epic template should include Epic Readiness Matrix");
   assert(productEpicTemplate.includes("Expected Features"), "Product epic template should list expected features");
   assert(productFeatureTemplate.includes("# [FEATURE:"), "Product feature template should define local feature title format");
   assert(productFeatureTemplate.includes("## Delivery Readiness Matrix"), "Product feature template should include feature-level DRM");
   assert(productFeatureTemplate.includes("## Tasks"), "Product feature template should keep tasks inside the feature");
+  assert(productFeatureTemplate.includes("## Definition of Ready"), "Product feature template should include Definition of Ready");
+  assert(productFeatureTemplate.includes("## Definition of Done"), "Product feature template should include Definition of Done");
+  assert(shapeEpicSkill.includes("local LeanOS Epic"), "Shape Epic skill should be local-first, not GitHub-first");
+  assert.equal(shapeEpicSkill.includes("become a GitHub epic"), false, "Shape Epic skill should not route to GitHub first");
   assert(issueMatrix.includes("# Delivery Readiness Matrix (DRM)"), "Delivery readiness matrix should use the DRM name");
   assert(issueMatrix.includes("Epic-level DRM decides"), "Delivery readiness matrix should distinguish Epic-level DRM");
   assert(issueMatrix.includes("Feature-level DRM turns"), "Delivery readiness matrix should distinguish Feature-level DRM");
@@ -1499,6 +1509,8 @@ async function assertFounderIntentRouting(rootDir) {
   assert(whereWeAreProtocol.includes("Do not recommend implementation before checking product, roadmap and delivery readiness"), "Where-we-are protocol should prevent premature implementation");
   assert(whereWeAreProtocol.includes("operations/product-ops/knowledge/ready-to-develop.md"), "Where-we-are protocol should load the ready-to-develop gate");
   assert(whereWeAreProtocol.includes("## Development Gate"), "Where-we-are protocol should define a development gate");
+  assert(whereWeAreProtocol.includes("local Epic/Feature exists"), "Where-we-are protocol should support local Epic/Feature readiness");
+  assert(whereWeAreProtocol.includes("Local epics missing"), "Where-we-are protocol should route missing local epics");
   assert(whereWeAreProtocol.includes("## Recommended Routes By Gap"), "Where-we-are protocol should recommend routes by gap");
   assert(whereWeAreProtocol.includes("Ainda nao recomendo comecar pelo codigo"), "Where-we-are protocol should provide founder-friendly early-development feedback");
   const readyToDevelop = await readFile(join(rootDir, "operations", "product-ops", "knowledge", "ready-to-develop.md"), "utf8");

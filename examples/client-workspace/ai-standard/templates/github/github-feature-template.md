@@ -1,4 +1,4 @@
-# <feature title>
+# [FEATURE: <epic title>] <feature title>
 
 ## Local Source
 
@@ -84,6 +84,16 @@ Use when this feature touches data, auth, permissions, privacy, abuse risk or co
 - Security acceptance criteria:
 
 If not applicable, write: "Not applicable; no security-sensitive surface identified."
+
+## Definition of Ready
+
+- [ ] Parent epic is clear
+- [ ] Acceptance criteria are testable
+- [ ] Product Ops and Engineering criteria are ready
+- [ ] Design is ready or explicitly not applicable
+- [ ] Security is ready or explicitly not applicable
+- [ ] DevOps is ready or explicitly not applicable
+- [ ] Tasks are clear enough for implementation
 
 ## Definition of Done
 

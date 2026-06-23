@@ -1,4 +1,4 @@
-# Epic: <title>
+# [EPIC] <epic title>
 
 ## Local Source
 
@@ -51,6 +51,27 @@ What is explicitly excluded.
 - User value:
 - Jobs to be done:
 - Learning or success signal:
+
+## Success Metrics
+
+- Primary success metric:
+- Supporting metric:
+- Qualitative signal:
+- Learning signal:
+
+## Epic Done When
+
+The Epic is done when all confirmed Features are delivered or explicitly descoped, the outcome can be measured, and the parent delivery scope is updated.
+
+## Approval Gate
+
+- Product Owner approval:
+- Roadmap / Strategy approval:
+- Engineering feasibility checked:
+- Design checked or not applicable:
+- Security checked or not applicable:
+- DevOps checked or not applicable:
+- Founder confirmation:
 
 ## Epic Readiness Matrix
 

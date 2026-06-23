@@ -6,9 +6,9 @@ Turn a roadmap epic into an implementation-ready scope boundary before features 
 
 ## Use When
 
-- a roadmap item needs to become a GitHub epic
+- a roadmap item needs to become a local LeanOS Epic
 - an existing epic needs enough clarity to be broken down
-- the team needs to confirm outcome, scope and non-goals before issue creation
+- the team needs to confirm outcome, scope and non-goals before features or remote sync
 
 ## Required Context
 

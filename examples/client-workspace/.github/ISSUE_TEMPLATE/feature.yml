@@ -1,6 +1,6 @@
 name: Feature
 description: Implementation-ready feature derived from an epic.
-title: "[FEATURE]: "
+title: "[FEATURE: <epic>] "
 labels: ["leanos", "feature"]
 body:
   - type: input

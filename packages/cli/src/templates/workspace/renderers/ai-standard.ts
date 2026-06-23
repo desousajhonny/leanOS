@@ -2545,6 +2545,27 @@ What is explicitly excluded.
 - Milestone fit:
 - Risk level:
 
+## Success Metrics
+
+- Primary success metric:
+- Supporting metric:
+- Qualitative signal:
+- Learning signal:
+
+## Epic Done When
+
+The Epic is done when all confirmed Features are delivered or explicitly descoped, the outcome can be measured, and the parent delivery scope is updated.
+
+## Approval Gate
+
+- Product Owner approval:
+- Roadmap / Strategy approval:
+- Engineering feasibility checked:
+- Design checked or not applicable:
+- Security checked or not applicable:
+- DevOps checked or not applicable:
+- Founder confirmation:
+
 ## Epic Readiness Matrix
 
 Use this to decide which specialists must participate before breaking the epic into features.
@@ -2692,11 +2713,21 @@ If not applicable, say why.
 - [ ] Security is ready or explicitly not applicable
 - [ ] DevOps is ready or explicitly not applicable
 - [ ] Tasks are clear enough for implementation
+
+## Definition of Done
+
+- [ ] Acceptance criteria satisfied
+- [ ] Tasks completed or explicitly descoped
+- [ ] Tests or validation evidence recorded
+- [ ] Design review completed or explicitly not applicable
+- [ ] Security review completed or explicitly not applicable
+- [ ] DevOps/release notes completed or explicitly not applicable
+- [ ] Parent epic updated with result
 `;
 }
 
 function githubEpicTemplate(): string {
-  return `# Epic: <title>
+  return `# [EPIC] <epic title>
 
 ## Local Source
 
@@ -2749,6 +2780,27 @@ What is explicitly excluded.
 - User value:
 - Jobs to be done:
 - Learning or success signal:
+
+## Success Metrics
+
+- Primary success metric:
+- Supporting metric:
+- Qualitative signal:
+- Learning signal:
+
+## Epic Done When
+
+The Epic is done when all confirmed Features are delivered or explicitly descoped, the outcome can be measured, and the parent delivery scope is updated.
+
+## Approval Gate
+
+- Product Owner approval:
+- Roadmap / Strategy approval:
+- Engineering feasibility checked:
+- Design checked or not applicable:
+- Security checked or not applicable:
+- DevOps checked or not applicable:
+- Founder confirmation:
 
 ## Epic Readiness Matrix
 
@@ -2816,7 +2868,7 @@ After this epic is confirmed, break it into local features with internal tasks b
 }
 
 function githubFeatureTemplate(): string {
-  return `# <feature title>
+  return `# [FEATURE: <epic title>] <feature title>
 
 ## Local Source
 
@@ -2902,6 +2954,16 @@ Use when this feature touches data, auth, permissions, privacy, abuse risk or co
 - Security acceptance criteria:
 
 If not applicable, write: "Not applicable; no security-sensitive surface identified."
+
+## Definition of Ready
+
+- [ ] Parent epic is clear
+- [ ] Acceptance criteria are testable
+- [ ] Product Ops and Engineering criteria are ready
+- [ ] Design is ready or explicitly not applicable
+- [ ] Security is ready or explicitly not applicable
+- [ ] DevOps is ready or explicitly not applicable
+- [ ] Tasks are clear enough for implementation
 
 ## Definition of Done
 

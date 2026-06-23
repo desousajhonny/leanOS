@@ -40,7 +40,7 @@ export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefiniti
 function epicIssueTemplate(): string {
   return `name: Epic
 description: Roadmap-level LeanOS epic.
-title: "[EPIC]: "
+title: "[EPIC] "
 labels: ["leanos", "epic"]
 body:
   - type: input
@@ -96,7 +96,7 @@ body:
 function featureIssueTemplate(): string {
   return `name: Feature
 description: Implementation-ready feature derived from an epic.
-title: "[FEATURE]: "
+title: "[FEATURE: <epic>] "
 labels: ["leanos", "feature"]
 body:
   - type: input

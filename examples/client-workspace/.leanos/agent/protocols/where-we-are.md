@@ -95,7 +95,7 @@ Do not recommend implementation until the diagnosis confirms:
 - roadmap or backlog item exists for the work;
 - delivery scope exists when the work belongs to MVP, release, experiment, beta or internal delivery;
 - PRD or acceptance criteria exist when product behavior is affected;
-- GitHub epic/issue exists, or the founder explicitly asks for a bootstrap flow instead of issue-based work;
+- local Epic/Feature exists, GitHub issue exists, or the founder explicitly asks for a bootstrap flow instead of issue-based work;
 - Design is checked when UX, UI, copy, accessibility, screens, states or user flows are affected;
 - Security is checked when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved;
 - DevOps is checked when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are involved.
@@ -108,7 +108,7 @@ If these are missing, explain the gap and recommend the next LeanOS route instea
 - Product strategy weak -> Strategy Product through `strategy/AGENT.md`
 - Roadmap missing -> `idea-to-roadmap` or Strategy Roadmap through `strategy/AGENT.md`
 - Delivery scope missing -> `roadmap-item-to-delivery-scope`
-- GitHub epics missing -> `delivery-scope-to-epic` when available
+- Local epics missing -> `delivery-scope-to-epic` when available
 - Features missing -> `epic-to-features` when available
 - Implementation ready -> `issue-delivery-cycle`
 - PR/review needed -> Engineering PR validation route
