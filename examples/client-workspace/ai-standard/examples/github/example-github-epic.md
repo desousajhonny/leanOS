@@ -53,5 +53,5 @@ Clinic owners can capture structured patient intake before the appointment.
 ## Sub-issue Breakdown
 
 - Status: ready_for_breakdown
-- Expected sub-issues: intake form, draft persistence, staff review, security controls
+- Expected features: intake form, draft persistence, staff review, security controls
 - Open questions: retention policy

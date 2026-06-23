@@ -17,9 +17,9 @@ playbooks:
   - key: mvp-delivery
     area: operations.product-ops
     path: ../../operations/product-ops/playbooks/mvp-delivery.playbook.md
-  - key: epic-to-subissues
+  - key: epic-to-features
     area: operations.product-ops
-    path: ../../operations/product-ops/playbooks/epic-to-subissues.playbook.md
+    path: ../../operations/product-ops/playbooks/epic-to-features.playbook.md
   - key: delivery-readiness
     area: operations.product-ops
     path: ../../operations/product-ops/playbooks/delivery-readiness.playbook.md

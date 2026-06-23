@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Examples of GitHub epics, sub-issues and pull requests.
+Examples of GitHub epics, features and pull requests.
 
 ## When to Use
 
@@ -11,7 +11,7 @@ Use when reviewing GitHub-ready collaboration artifacts.
 ## Files
 
 - `example-github-epic.md`
-- `example-github-subissue.md`
+- `example-github-feature.md`
 - `example-pull-request.md`
 
 ## Related Folders

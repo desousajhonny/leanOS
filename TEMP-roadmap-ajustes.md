@@ -78,14 +78,14 @@ O LeanOS ja tem um MVP forte de framework e scaffold:
 
 ### 4. GitHub readiness inicial
 
-- [x] Templates de issue, epic, sub-issue, PR, branch e readiness matrix criados no `ai-standard`.
+- [x] Templates de issue, epic, feature, PR, branch e readiness matrix criados no `ai-standard`.
   - atualizar depois para linguagem product-first: Epic -> Feature -> Tasks, com GitHub issue como representacao remota.
 - [x] Regras de branch por issue definidas.
 - [x] Regras de PR e PR review definidas.
 - [x] `.github/leanos/` preparado sem segredos.
 - [x] `.env.local` gerado apenas quando o usuario escolhe preparar GitHub management.
 - [x] Tokens reais nao sao persistidos pelo framework.
-- [x] Fluxo conceitual Roadmap -> GitHub Project -> Epic -> Sub-issues -> Implementation documentado temporariamente.
+- [x] Fluxo conceitual Roadmap -> GitHub Project -> Epic -> Features -> Implementation documentado temporariamente.
   - revisar depois para Epic -> Features -> Tasks internas, mantendo GitHub como camada opcional.
 
 ### 5. Security baseline
@@ -269,7 +269,7 @@ Decisao proposta:
   - deve definir que Feature contem Tasks internas;
   - deve definir que GitHub issue e representacao remota opcional, nao a linguagem central do LeanOS.
 - [ ] Atualizar linguagem do framework:
-  - substituir "sub-issues" por "features" quando estivermos falando da decomposicao LeanOS local;
+  - substituir "features" por "features" quando estivermos falando da decomposicao LeanOS local;
   - manter "issues" apenas para GitHub, PRs e tracking remoto;
   - tratar GitHub labels/templates como mapeamento: Epic -> issue `epic`, Feature -> issue `feature`, Task -> checklist interna ou task operacional.
 - [ ] Criar/ajustar templates:
@@ -328,17 +328,17 @@ Decisao proposta:
   - cuidado: mover arquivos pode esconder contexto do modelo; talvez seja melhor manter no lugar e registrar sync em `.github/leanos/sync-state.yaml`;
   - decisao futura: `synced/` fisico vs sync-state como indice.
 - [ ] Criar/ajustar skill:
-  - renomear ou substituir `write-subissue-criteria` por algo como `break-epic-into-features`;
+  - renomear ou substituir `write-feature-criteria` por algo como `break-epic-into-features`;
   - a skill deve gerar Features com Tasks internas;
   - cada Feature deve conter Product Ops, Engineering e DRM aplicavel: Design, Security e DevOps quando necessario.
 - [ ] Criar/ajustar playbook:
-  - renomear ou substituir `epic-to-subissues` por `epic-to-features`;
+  - renomear ou substituir `epic-to-features` por `epic-to-features`;
   - o playbook deve quebrar Epic em Features;
   - Tasks ficam dentro de cada Feature;
   - GitHub sync de Features vira etapa opcional posterior.
 - [ ] Atualizar workflows e jornadas:
   - `delivery-scope-to-epic` termina em Epic local, com GitHub sync opcional;
-  - proximo fluxo passa a ser `epic-to-features`, nao `epic-to-subissues`;
+  - proximo fluxo passa a ser `epic-to-features`, nao `epic-to-features`;
   - `issue-delivery-cycle` deve aceitar Feature local ou GitHub issue como entrada, desde que passe pelo `ready-to-develop`.
 
 #### Workflow Map - Founder Journey Completa

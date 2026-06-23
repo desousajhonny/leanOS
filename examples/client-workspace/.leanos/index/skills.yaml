@@ -47,9 +47,9 @@ skills:
   - key: shape-epic
     area: operations.product-ops
     path: ../../operations/product-ops/skills/shape-epic.skill.md
-  - key: write-subissue-criteria
+  - key: write-feature-criteria
     area: operations.product-ops
-    path: ../../operations/product-ops/skills/write-subissue-criteria.skill.md
+    path: ../../operations/product-ops/skills/write-feature-criteria.skill.md
   - key: define-delivery-boundaries
     area: operations.product-ops
     path: ../../operations/product-ops/skills/define-delivery-boundaries.skill.md

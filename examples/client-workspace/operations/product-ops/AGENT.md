@@ -17,7 +17,7 @@ Route delivery scope, epic shaping, issue readiness and delivery-boundary work b
 
 Choose the smallest specialist role for the request:
 
-- Product Owner: `roles/product-owner.role.md` - use when MVP scope needs definition; acceptance criteria are unclear; delivery scope needs coordination; an epic needs to be broken into sub-issues.
+- Product Owner: `roles/product-owner.role.md` - use when MVP scope needs definition; acceptance criteria are unclear; delivery scope needs coordination; an epic needs to be broken into features.
 - Delivery Architect: `roles/delivery-architect.role.md` - use when delivery boundaries are unclear; technical constraints affect scope; implementation readiness needs review; technical decisions need recording.
 
 ## Routing Rules

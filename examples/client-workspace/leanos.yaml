@@ -162,7 +162,7 @@ skills:
       - write-acceptance-criteria
       - check-delivery-coherence
       - shape-epic
-      - write-subissue-criteria
+      - write-feature-criteria
       - define-delivery-boundaries
     operations.design:
       - user-research
@@ -222,7 +222,7 @@ playbooks:
     operations.product-ops:
       - delivery-scope-planning
       - mvp-delivery
-      - epic-to-subissues
+      - epic-to-features
       - delivery-readiness
     operations.design:
       - design-foundation

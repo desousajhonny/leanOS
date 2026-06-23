@@ -13,12 +13,12 @@ area:
     - write-acceptance-criteria
     - check-delivery-coherence
     - shape-epic
-    - write-subissue-criteria
+    - write-feature-criteria
     - define-delivery-boundaries
   playbooks:
     - delivery-scope-planning
     - mvp-delivery
-    - epic-to-subissues
+    - epic-to-features
     - delivery-readiness
   source_of_truth:
     - knowledge/overview.md

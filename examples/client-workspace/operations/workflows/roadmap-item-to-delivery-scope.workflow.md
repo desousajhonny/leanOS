@@ -22,7 +22,7 @@ All required areas are active in this department.
 5. Route Security only when data, auth, privacy, abuse, API, compliance or AI-generated-code risk is involved
 6. Route DevOps only when environments, deploy, GitHub project, observability or release readiness are affected
 7. Ask for confirmation before updating delivery scope or MVP files
-8. Stop before GitHub epics, sub-issues, branches or code
+8. Stop before GitHub epics, features, branches or code
 
 ## Continuation Bridge
 

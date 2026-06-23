@@ -15,7 +15,6 @@ client-workspace/
 |   |   |-- experiment.yml
 |   |   |-- feature.yml
 |   |   |-- research.yml
-|   |   |-- sub-issue.yml
 |   |   |-- task.yml
 |   |   `-- validation.yml
 |   |-- leanos/
@@ -110,7 +109,7 @@ client-workspace/
 |   |   |   `-- README.md
 |   |   |-- github/
 |   |   |   |-- example-github-epic.md
-|   |   |   |-- example-github-subissue.md
+|   |   |   |-- example-github-feature.md
 |   |   |   |-- example-pull-request.md
 |   |   |   `-- README.md
 |   |   |-- review/
@@ -164,8 +163,8 @@ client-workspace/
 |   |   |   |-- branch-name-template.md
 |   |   |   |-- delivery-readiness-matrix-template.md
 |   |   |   |-- github-epic-template.md
+|   |   |   |-- github-feature-template.md
 |   |   |   |-- github-issue-template.md
-|   |   |   |-- github-subissue-template.md
 |   |   |   |-- pull-request-template.md
 |   |   |   `-- README.md
 |   |   |-- review/
@@ -373,7 +372,7 @@ client-workspace/
 |   |   |-- playbooks/
 |   |   |   |-- delivery-readiness.playbook.md
 |   |   |   |-- delivery-scope-planning.playbook.md
-|   |   |   |-- epic-to-subissues.playbook.md
+|   |   |   |-- epic-to-features.playbook.md
 |   |   |   |-- mvp-delivery.playbook.md
 |   |   |   `-- README.md
 |   |   |-- roles/
@@ -388,7 +387,7 @@ client-workspace/
 |   |   |   |-- README.md
 |   |   |   |-- shape-epic.skill.md
 |   |   |   |-- write-acceptance-criteria.skill.md
-|   |   |   `-- write-subissue-criteria.skill.md
+|   |   |   `-- write-feature-criteria.skill.md
 |   |   |-- AGENT.md
 |   |   |-- area.yaml
 |   |   `-- README.md

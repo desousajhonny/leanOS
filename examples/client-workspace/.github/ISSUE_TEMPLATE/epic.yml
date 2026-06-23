@@ -32,7 +32,7 @@ body:
     validations:
       required: true
   - type: textarea
-    id: subissue-breakdown
+    id: feature-breakdown
     attributes:
-      label: Sub-issue breakdown
-      description: Expected sub-issues, dependencies and open questions.
+      label: Feature breakdown
+      description: Expected features, dependencies and open questions.

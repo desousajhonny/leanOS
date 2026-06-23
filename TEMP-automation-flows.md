@@ -13,7 +13,7 @@ npx lean-os ai
   -> /start-leanos
   -> Idea-to-roadmap
   -> Roadmap-sync-to-GitHub-Projects
-  -> Epic-to-sub-issues
+  -> Epic-to-features
   -> Issue implementation
   -> Branch creation
   -> Code quality checks
@@ -163,22 +163,22 @@ Resultado esperado:
 - sync state sem segredos;
 - nada remoto executado sem confirmacao.
 
-### 4. Epic-to-sub-issues
+### 4. Epic-to-features
 
 Intencao inicial:
 
-Quebrar um epic grande em sub-issues pequenas, implementaveis e com criterios claros.
+Quebrar um epic grande em Features pequenas, implementaveis e com criterios claros.
 
 Fluxo aplicado:
 
-- `Epic-to-sub-issues`
+- `Epic-to-features`
 - matriz Product / Design / Engineering / Security
 
 O que acontece:
 
 - o modelo le o epic, roadmap item, milestone, MVP scope e acceptance criteria;
 - aplica matriz de prontidao;
-- cria sub-issues com escopo, non-goals, criterios e riscos;
+- cria Features com escopo, non-goals, criterios e riscos;
 - inclui Design apenas quando ha UX, telas, estados, copy ou interacao;
 - inclui Security apenas quando ha dados, auth, permissoes, privacidade, abuso ou compliance;
 - pede confirmacao antes de criar issues via capability futura.
@@ -196,7 +196,7 @@ Areas e roles:
 
 Resultado esperado:
 
-- sub-issues GitHub-ready;
+- Features GitHub-ready;
 - labels, milestone e parent epic;
 - criterios Product/Engineering sempre presentes;
 - Design/Security presentes quando aplicavel;
@@ -352,7 +352,7 @@ O fundador deve operar o LeanOS principalmente por conversa:
 ```text
 configure meu GitHub
 sincronize o roadmap
-crie as sub-issues do epic #654
+crie as Features do epic #654
 implemente a issue #554
 ```
 
@@ -395,7 +395,7 @@ Regras:
 0. LeanOS install mode
 1. Idea-to-roadmap
 2. Roadmap-sync-to-GitHub-Projects
-2.1 Epic-to-sub-issues
+2.1 Epic-to-features
 3. Issue implementation
 3.0 Branch creation
 3.1 Code quality and internal engineering checks
@@ -527,9 +527,9 @@ Spec temporaria:
 
 - `TEMP-github-roadmap-flow.md`
 
-## 2.1 Epic-to-sub-issues
+## 2.1 Epic-to-features
 
-Objetivo: quebrar um epic em sub-issues prontas para implementacao.
+Objetivo: quebrar um epic em Features prontas para implementacao.
 
 Entrada:
 
@@ -548,7 +548,7 @@ Areas envolvidas:
 - `operations/security/`
 - `operations/engineering/`
 
-Matriz 3D obrigatoria:
+Delivery Readiness Matrix obrigatoria:
 
 - Product: valor, usuario, problema, outcome, acceptance criteria.
 - Design: fluxo, telas, estados, UX, acessibilidade.
@@ -556,8 +556,8 @@ Matriz 3D obrigatoria:
 
 Resultado esperado:
 
-- sub-issues propostas;
-- criterios de aceite por sub-issue;
+- Features propostas;
+- criterios de aceite por feature;
 - labels, milestone e project fields;
 - dependencias;
 - riscos;
@@ -567,12 +567,12 @@ Resultado esperado:
 Comando de chat futuro:
 
 ```text
-/create subissues
+/create issues
 ```
 
 Capability futura:
 
-- criar sub-issues confirmadas para um epic;
+- criar Features confirmadas para um epic;
 - associar milestone/project;
 - atualizar sync state.
 
@@ -584,7 +584,7 @@ Entrada:
 
 - numero da issue;
 - parent epic, se houver;
-- sub-issues relacionadas;
+- Features relacionadas;
 - MVP scope;
 - acceptance criteria;
 - codebase context.
@@ -820,7 +820,7 @@ Fluxos que provavelmente serao detalhados depois:
 
 1. `Idea-to-roadmap`
 2. `Roadmap-sync-to-GitHub-Projects`
-3. `Epic-to-sub-issues`
+3. `Epic-to-features`
 4. `Issue implementation`
 5. `Branch creation`
 6. `Model code review`

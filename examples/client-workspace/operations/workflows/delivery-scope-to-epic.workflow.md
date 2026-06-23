@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Turn confirmed delivery scope into GitHub-ready epic drafts without creating sub-issues, branches or code.
+Turn confirmed delivery scope into GitHub-ready epic drafts without creating features, branches or code.
 
 ## Required Areas
 
@@ -22,7 +22,7 @@ All required areas are active in this department.
 5. Route DevOps only when GitHub Project configuration, labels, milestones or sync state need validation
 6. Route Engineering only when epic boundaries need technical feasibility review
 7. Ask for confirmation before any GitHub API write or project sync
-8. Stop before sub-issues, branches, code or PR work
+8. Stop before features, branches, code or PR work
 
 ## Continuation Bridge
 
@@ -31,28 +31,28 @@ At the end of this workflow, offer one clear next-step bridge when a safe next f
 Immediate bridge:
 
 ```text
-O epic draft esta pronto.
-Quer que eu quebre esse epic em sub-issues usando a Delivery Readiness Matrix?
+O epic esta pronto.
+Quer que eu quebre esse epic em features usando a Delivery Readiness Matrix?
 ```
 
 Later-session triggers:
 
-- "quebre esse epic em sub-issues"
-- "crie as sub-issues desse epic"
+- "quebre esse epic em features"
+- "crie as features desse epic"
 - "vamos fatiar esse epic"
-- "prepara as issues de implementacao"
+- "prepara as features de implementacao"
 - "quebre o epic #123"
 
 Next route:
 
-`epic-to-subissues`
+`epic-to-features`
 
 Rules:
 
-- Do not automatically start sub-issue creation without founder confirmation.
-- If the founder says yes, declare the new route and load Product Ops epic-to-subissues assets before drafting sub-issues.
+- Do not automatically start feature creation without founder confirmation.
+- If the founder says yes, declare the new route and load Product Ops epic-to-features assets before drafting features.
 - If the founder says no, explain the epic draft outcome and stop without writing anything else.
-- If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `epic-to-subissues`.
+- If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `epic-to-features`.
 
 
 ## Navigation

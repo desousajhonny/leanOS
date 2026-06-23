@@ -111,7 +111,7 @@ function departmentJourneySignals(department: RootDepartmentDefinition): string 
     ],
     operations: [
       "turning delivery scope into executable work",
-      "shaping epics or sub-issues before implementation",
+      "shaping epics or features before implementation",
       "coordinating design, engineering, security or DevOps handoffs",
       "moving from issue to implementation, PR or post-merge follow-up"
     ],

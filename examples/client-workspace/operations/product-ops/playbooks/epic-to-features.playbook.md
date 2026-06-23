@@ -1,27 +1,29 @@
-# Epic To Subissues
+# Epic To Features
 
 ## Purpose
 
-Break a GitHub epic into implementation-ready sub-issues using the Delivery Readiness Matrix (DRM) before Engineering starts work.
+Break a LeanOS epic into implementation-ready features with internal tasks using the Delivery Readiness Matrix (DRM) before Engineering starts work.
 
 ## When to Use
 
-- The founder asks to break an epic into sub-issues.
-- A roadmap epic needs GitHub-ready implementation slices.
+- The founder asks to break an epic into features.
+- A roadmap epic needs implementation-ready feature slices.
 - The team needs Product Ops, Design, Engineering, Security and DevOps criteria before work starts.
 
 ## Before Acting
 
 - `../AGENT.md`
 - `../knowledge/overview.md`
+- `../knowledge/work-taxonomy.md`
 - `../knowledge/issue-readiness.md`
+- `../knowledge/ready-to-develop.md`
 - `../mvp/prd.md`
 - `../mvp/scope.md`
 - `../mvp/acceptance-criteria.md`
 - `../../../strategy/product/AGENT.md`
 - `../../../strategy/roadmap/AGENT.md`
 - `../../../ai-standard/templates/github/github-epic-template.md`
-- `../../../ai-standard/templates/github/github-subissue-template.md`
+- `../../../ai-standard/templates/github/github-feature-template.md`
 - `../../../ai-standard/templates/github/delivery-readiness-matrix-template.md`
 
 ## Inputs
@@ -41,14 +43,15 @@ Break a GitHub epic into implementation-ready sub-issues using the Delivery Read
 
 1. Load Product Ops AGENT and choose `roles/product-owner.role.md`.
 2. Load `skills/shape-epic.skill.md` and confirm the epic outcome, scope boundary and non-goals.
-3. Load `skills/write-subissue-criteria.skill.md` and apply the Delivery Readiness Matrix (DRM).
-4. Write Product Ops criteria for every sub-issue.
-5. Add Design criteria only when UX, UI, flow, copy, accessibility or interaction is affected.
-6. Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
-7. Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.
-8. Ask Engineering to validate implementation boundaries, dependencies, test approach and issue size.
-9. Mark non-applicable dimensions explicitly and explain why.
-10. Prepare GitHub-ready sub-issue drafts and ask for confirmation before any remote write.
+3. Load `skills/write-feature-criteria.skill.md` and apply the Delivery Readiness Matrix (DRM).
+4. Write Product Ops criteria for every feature.
+5. Add internal tasks inside each feature.
+6. Add Design criteria only when UX, UI, flow, copy, accessibility or interaction is affected.
+7. Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
+8. Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.
+9. Ask Engineering to validate implementation boundaries, dependencies, test approach and feature size.
+10. Mark non-applicable dimensions explicitly and explain why.
+11. Prepare local feature drafts and ask for confirmation before any remote write.
 
 ## Security Gate
 
@@ -58,8 +61,9 @@ Break a GitHub epic into implementation-ready sub-issues using the Delivery Read
 ## Output
 
 - Epic readiness summary
-- Sub-issue draft list
-- DRM criteria for each sub-issue
+- Feature draft list
+- Internal task checklist per feature
+- DRM criteria for each feature
 - Product Ops criteria
 - Design criteria or not applicable with reason
 - Engineering criteria

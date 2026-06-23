@@ -46,9 +46,9 @@ export function aiStandardFiles(): FileEntry[] {
     {
       key: "github",
       title: "GitHub Templates",
-      purpose: "Templates for GitHub issues, epics, sub-issues, branch naming, PRs and readiness matrices.",
+      purpose: "Templates for GitHub issues, epics, features, branch naming, PRs and readiness matrices.",
       use: "Use when shaping GitHub-ready work items or repository collaboration artifacts.",
-      files: ["github-issue-template.md", "github-epic-template.md", "github-subissue-template.md", "delivery-readiness-matrix-template.md", "branch-name-template.md", "pull-request-template.md"]
+      files: ["github-issue-template.md", "github-epic-template.md", "github-feature-template.md", "delivery-readiness-matrix-template.md", "branch-name-template.md", "pull-request-template.md"]
     },
     {
       key: "review",
@@ -92,9 +92,9 @@ export function aiStandardFiles(): FileEntry[] {
     {
       key: "github",
       title: "GitHub Examples",
-      purpose: "Examples of GitHub epics, sub-issues and pull requests.",
+      purpose: "Examples of GitHub epics, features and pull requests.",
       use: "Use when reviewing GitHub-ready collaboration artifacts.",
-      files: ["example-github-epic.md", "example-github-subissue.md", "example-pull-request.md"]
+      files: ["example-github-epic.md", "example-github-feature.md", "example-pull-request.md"]
     },
     {
       key: "review",
@@ -138,7 +138,7 @@ function templateContent(fileName: string): string {
     "playbook-template.md": playbookTemplate(),
     "playbook-template.yaml": playbookYamlTemplate(),
     "github-epic-template.md": githubEpicTemplate(),
-    "github-subissue-template.md": githubSubissueTemplate(),
+    "github-feature-template.md": githubFeatureTemplate(),
     "delivery-readiness-matrix-template.md": deliveryReadinessMatrixTemplate(),
     "branch-name-template.md": branchNameTemplate(),
     "pull-request-template.md": pullRequestTemplate(),
@@ -295,7 +295,7 @@ function exampleContent(_groupKey: string, fileName: string): string {
     "example-workflow-issue-delivery-cycle.md": exampleWorkflowIssueDeliveryCycle(),
     "example-command-define-design.md": exampleCommandDefineDesign(),
     "example-github-epic.md": exampleGithubEpic(),
-    "example-github-subissue.md": exampleGithubSubissue(),
+    "example-github-feature.md": exampleGithubFeature(),
     "example-pull-request.md": examplePullRequest(),
     "example-code-review.md": exampleCodeReview()
   };
@@ -530,12 +530,12 @@ Clinic owners can capture structured patient intake before the appointment.
 ## Sub-issue Breakdown
 
 - Status: ready_for_breakdown
-- Expected sub-issues: intake form, draft persistence, staff review, security controls
+- Expected features: intake form, draft persistence, staff review, security controls
 - Open questions: retention policy
 `;
 }
 
-function exampleGithubSubissue(): string {
+function exampleGithubFeature(): string {
   return `# Build patient intake form flow
 
 ## Parent Epic
@@ -2550,16 +2550,16 @@ If not applicable, write: "Not applicable; no security-sensitive surface identif
 - Engineering:
 - Security:
 
-## Sub-issue Breakdown
+## Feature Breakdown
 
 - Status: not_started
-- Expected sub-issues:
+- Expected features:
 - Open questions:
 `;
 }
 
-function githubSubissueTemplate(): string {
-  return `# <sub-issue title>
+function githubFeatureTemplate(): string {
+  return `# <feature title>
 
 ## Parent Epic
 
@@ -2569,7 +2569,7 @@ function githubSubissueTemplate(): string {
 
 ## Purpose
 
-Why this issue exists.
+Why this feature exists.
 
 ## Scope
 
@@ -2585,9 +2585,20 @@ What should not be implemented.
 - Acceptance criteria:
 - Success or learning signal:
 
+## Tasks
+
+Use tasks as an internal checklist for this feature.
+
+~~~text
+Create model
+Create UI
+Add validation
+Add tests
+~~~
+
 ## Design Criteria
 
-Use only when this sub-issue changes a user-facing flow, screen, state, copy or interaction.
+Use only when this feature changes a user-facing flow, screen, state, copy or interaction.
 
 - Flow:
 - Screens or states:
@@ -2607,7 +2618,7 @@ If not applicable, write: "Not applicable; no user-facing design change."
 
 ## Security Criteria
 
-Use when this sub-issue touches data, auth, permissions, privacy, abuse risk or compliance.
+Use when this feature touches data, auth, permissions, privacy, abuse risk or compliance.
 
 - Data:
 - Permissions:
@@ -2631,9 +2642,9 @@ If not applicable, write: "Not applicable; no security-sensitive surface identif
 function deliveryReadinessMatrixTemplate(): string {
   return `# Delivery Readiness Matrix (DRM)
 
-Use this before creating epics, sub-issues or implementation plans.
+Use this before creating epics, features or implementation plans.
 
-The DRM shapes work before development starts. It prevents the model from coding before the issue has enough Product, Design, Engineering, Security and DevOps clarity.
+The DRM shapes work before development starts. It prevents the model from coding before the feature or issue has enough Product, Design, Engineering, Security and DevOps clarity.
 
 | Dimension | Required When | Required Output | Status |
 | --- | --- | --- | --- |
@@ -2645,7 +2656,7 @@ The DRM shapes work before development starts. It prevents the model from coding
 
 ## Readiness Rule
 
-Do not create implementation-ready sub-issues until Product Ops and Engineering are clear.
+Do not create implementation-ready features or GitHub issues until Product Ops and Engineering are clear.
 
 Design is required only when user experience is affected.
 

@@ -65,14 +65,14 @@ Files:
 
 ### `github/`
 
-Templates for GitHub issues, epics, sub-issues, branch naming, PRs and readiness matrices.
+Templates for GitHub issues, epics, features, branch naming, PRs and readiness matrices.
 
 Use when: Use when shaping GitHub-ready work items or repository collaboration artifacts.
 
 Files:
 - `github/github-issue-template.md`
 - `github/github-epic-template.md`
-- `github/github-subissue-template.md`
+- `github/github-feature-template.md`
 - `github/delivery-readiness-matrix-template.md`
 - `github/branch-name-template.md`
 - `github/pull-request-template.md`

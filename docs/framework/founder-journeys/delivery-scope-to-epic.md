@@ -2,7 +2,7 @@
 
 This journey starts when a delivery scope is already confirmed and the founder wants to turn it into one or more GitHub-ready epics.
 
-The purpose is not to create sub-issues, branches, PRs or code. The purpose is to transform a confirmed delivery scope into epic drafts that can be reviewed, confirmed and then synced to GitHub when the GitHub setup is ready.
+The purpose is not to create features, branches, PRs or code. The purpose is to transform a confirmed delivery scope into epic drafts that can be reviewed, confirmed and then synced to GitHub when the GitHub setup is ready.
 
 ## Human Overview
 
@@ -11,7 +11,7 @@ The purpose is not to create sub-issues, branches, PRs or code. The purpose is t
 - **Starts at:** Root `AGENT.md`, then `operations/AGENT.md`.
 - **Passes through:** `delivery-scope-to-epic.workflow.md`, Product Ops, Product Owner, GitHub templates and conditional DevOps/Engineering checks.
 - **Ends with:** founder-confirmed epic draft or a clear gap explaining why epic creation is premature.
-- **Does not do:** create sub-issues, create branches, write code, open PRs or call GitHub API without confirmation.
+- **Does not do:** create features, create branches, write code, open PRs or call GitHub API without confirmation.
 
 ## Flow Diagram
 
@@ -34,7 +34,7 @@ flowchart TD
   O["Prepare GitHub payload / update sync draft"]
   P["Explain outcome to founder"]
   Q["Stop without remote write"]
-  R["Next: epic-to-subissues"]
+  R["Next: epic-to-features"]
 
   A --> B --> C --> D --> E
   E -->|Yes| F --> G --> H --> I
@@ -65,7 +65,7 @@ Real phrases that can start this journey:
 
 ## Moment
 
-This happens after `roadmap-item-to-delivery-scope` and before `epic-to-subissues`.
+This happens after `roadmap-item-to-delivery-scope` and before `epic-to-features`.
 
 It can happen:
 
@@ -89,7 +89,7 @@ This journey starts when:
 - a delivery scope exists;
 - `scope_type`, `milestone` and `release_goal` are known or explicitly being confirmed;
 - the founder asks to create or prepare epics;
-- the work is not yet split into sub-issues;
+- the work is not yet split into features;
 - implementation has not started.
 
 ## End Condition
@@ -99,7 +99,7 @@ This journey ends when:
 - the model produces an epic draft with outcome, context, scope, non-goals, risks, milestone and readiness notes;
 - missing GitHub setup or delivery context is clearly explained;
 - the founder confirms or rejects the proposed epic draft;
-- no sub-issues, branches, code or PRs have started.
+- no features, branches, code or PRs have started.
 
 ## Owner
 
@@ -138,7 +138,7 @@ Rules:
 - Design enters only when the epic affects UX, UI, copy, accessibility, screens, states or user flows.
 - Security enters only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk exists.
 - The model must draft and ask for confirmation before any GitHub API write.
-- The model must not create sub-issues in this journey.
+- The model must not create features in this journey.
 - If a route file does not exist, the model stops and reports the missing path.
 
 ## What The Model Does In Practice
@@ -163,7 +163,7 @@ Navigation Evidence:
 What the model understands here:
 
 - This is not a code request.
-- This is not sub-issue creation yet.
+- This is not feature creation yet.
 - This belongs to Operations.
 
 Next step:
@@ -231,7 +231,7 @@ The model opens:
 Why:
 
 - The workflow defines the safe sequence for epic planning.
-- The workflow says to stop before sub-issues, branches, code or PR work.
+- The workflow says to stop before features, branches, code or PR work.
 
 Navigation Evidence:
 
@@ -263,7 +263,7 @@ Why:
 Navigation Evidence:
 
 - Product Ops AGENT routes epic/scoping work to Product Owner.
-- Product Ops has `knowledge/delivery-scope.md`, `knowledge/ready-to-develop.md` and epic/sub-issue playbooks.
+- Product Ops has `knowledge/delivery-scope.md`, `knowledge/ready-to-develop.md` and epic/feature playbooks.
 
 What the model understands here:
 
@@ -288,11 +288,11 @@ Why:
 Navigation Evidence:
 
 - Product Owner role points to delivery scope, issue readiness, ready-to-develop and GitHub DRM context.
-- Product Owner owns `shape-epic` and `write-subissue-criteria`, but this journey uses epic shaping only.
+- Product Owner owns `shape-epic` and `write-feature-criteria`, but this journey uses epic shaping only.
 
 What the model understands here:
 
-- It should shape the epic, not create sub-issues yet.
+- It should shape the epic, not create features yet.
 - It should check readiness and missing criteria.
 
 Next step:
@@ -422,7 +422,7 @@ Navigation Evidence:
 
 What the model understands here:
 
-- Whether the epic is coherent enough to later break into sub-issues.
+- Whether the epic is coherent enough to later break into features.
 - Whether technical risks should be called out before GitHub creation.
 
 Next step:
@@ -441,7 +441,7 @@ Minha sugestao:
 - usar o milestone <milestone>;
 - manter fora do epic <non-goals>;
 - marcar Design/Security/DevOps como <applicability>;
-- deixar sub-issues para o proximo passo.
+- deixar features para o proximo passo.
 
 Quer que eu prepare esse epic para o GitHub?
 ```
@@ -460,23 +460,23 @@ Next step:
 
 If confirmed, prepare payload/draft. If not confirmed, explain outcome and stop.
 
-### Step 12 - Handoff to Epic To Subissues
+### Step 12 - Handoff to Epic To Features
 
 If the epic draft is confirmed, the model offers the next bridge:
 
 ```text
 O epic draft esta pronto.
-Quer que eu quebre esse epic em sub-issues usando a Delivery Readiness Matrix?
+Quer que eu quebre esse epic em features usando a Delivery Readiness Matrix?
 ```
 
 Why:
 
 - `delivery-scope-to-epic` ends at epic draft.
-- Sub-issue creation is a separate journey.
+- Feature creation is a separate journey.
 
 Next route:
 
-`epic-to-subissues`
+`epic-to-features`
 
 ## Active Roles
 
@@ -514,7 +514,7 @@ Founder-friendly questions:
 - "Esse epic pertence ao MVP, release, beta, experimento ou trabalho interno?"
 - "Qual milestone deve receber esse epic?"
 - "O que fica fora desse epic?"
-- "Existe alguma parte de Design, Security ou DevOps que precisa entrar antes das sub-issues?"
+- "Existe alguma parte de Design, Security ou DevOps que precisa entrar antes das features?"
 - "Quer que eu prepare o draft para GitHub agora ou deixar como plano local?"
 
 Do not ask as a rigid form. Ask only what is missing.
@@ -549,7 +549,7 @@ Milestone:
 Fora do escopo:
 <non-goals>
 
-Checks antes de sub-issues:
+Checks antes de features:
 - Product Ops: ok / falta
 - Design: aplicavel / nao aplicavel
 - Security: aplicavel / nao aplicavel
@@ -557,7 +557,7 @@ Checks antes de sub-issues:
 - Engineering: ok / falta
 
 Proximo passo:
-<epic-to-subissues or GitHub setup>
+<epic-to-features or GitHub setup>
 
 Quer que eu prepare isso para o GitHub?
 ```
@@ -574,7 +574,7 @@ Stop and explain the gap when:
 - the GitHub target is required but not configured;
 - the route file is missing;
 - the founder does not confirm remote write;
-- the request tries to jump to sub-issues, code, branch or PR before the epic exists.
+- the request tries to jump to features, code, branch or PR before the epic exists.
 
 ## Continuation Bridge
 
@@ -584,20 +584,20 @@ Immediate bridge:
 
 ```text
 O epic draft esta pronto.
-Quer que eu quebre esse epic em sub-issues usando a Delivery Readiness Matrix?
+Quer que eu quebre esse epic em features usando a Delivery Readiness Matrix?
 ```
 
 Next route:
 
-`epic-to-subissues`
+`epic-to-features`
 
 Rules:
 
-- Do not start `epic-to-subissues` automatically.
-- Do not create sub-issues inside this journey.
-- If the founder says yes, declare the new route before loading Product Ops epic-to-subissues assets.
+- Do not start `epic-to-features` automatically.
+- Do not create features inside this journey.
+- If the founder says yes, declare the new route before loading Product Ops epic-to-features assets.
 - If the founder says no, explain the epic outcome and stop.
-- If the founder returns later with "quebre o epic #123", restart from Root `AGENT.md`, route to Operations and load `epic-to-subissues`.
+- If the founder returns later with "quebre o epic #123", restart from Root `AGENT.md`, route to Operations and load `epic-to-features`.
 
 ## Route Validation Checklist
 
@@ -614,11 +614,11 @@ Before considering this journey complete, verify:
 - [ ] `.github/leanos/project-sync.yaml` exists when GitHub sync is requested.
 - [ ] DevOps is conditional, not mandatory.
 - [ ] Engineering is conditional, not mandatory.
-- [ ] The workflow stops before sub-issues, branch, code and PR.
-- [ ] The continuation bridge offers `epic-to-subissues` without starting it automatically.
+- [ ] The workflow stops before features, branch, code and PR.
+- [ ] The continuation bridge offers `epic-to-features` without starting it automatically.
 
 ## Notes For Framework Improvement
 
 - If GitHub setup remains too vague, improve DevOps GitHub readiness assets before automating remote writes.
 - If epic drafts vary too much, strengthen `ai-standard/templates/github/github-epic-template.md`.
-- If this journey starts getting too many implementation checks, move them to `epic-to-subissues` or `issue-delivery-cycle`.
+- If this journey starts getting too many implementation checks, move them to `epic-to-features` or `issue-delivery-cycle`.

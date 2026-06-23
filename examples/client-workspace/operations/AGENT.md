@@ -28,7 +28,7 @@ Use this department for delivery scope, issue readiness, design, engineering, im
 Use `workflows/README.md` when the founder asks for a multi-step decision or transition, such as:
 
 - turning delivery scope into executable work
-- shaping epics or sub-issues before implementation
+- shaping epics or features before implementation
 - coordinating design, engineering, security or DevOps handoffs
 - moving from issue to implementation, PR or post-merge follow-up
 

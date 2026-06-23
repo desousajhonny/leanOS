@@ -590,7 +590,7 @@ During this journey, the model cannot:
 
 - mark the item as delivery scope;
 - create GitHub epics, issues or milestones;
-- create sub-issues;
+- create features;
 - create branches or write code;
 - modify Operations or Growth files;
 - commit dates, milestones or scope without founder confirmation;

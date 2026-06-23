@@ -16,7 +16,7 @@ Use when a selected role points to a playbook.
 
 - `delivery-scope-planning.playbook.md`
 - `mvp-delivery.playbook.md`
-- `epic-to-subissues.playbook.md`
+- `epic-to-features.playbook.md`
 - `delivery-readiness.playbook.md`
 
 ## Related Folders

@@ -1,6 +1,6 @@
 # TEMP GitHub Roadmap Flow
 
-Este arquivo e temporario. Ele documenta o fluxo Roadmap -> GitHub Project -> Epic -> Sub-issues -> Implementation antes da implementacao definitiva em comandos de chat, workflows, templates, skills e capabilities/scripts.
+Este arquivo e temporario. Ele documenta o fluxo Roadmap -> GitHub Project -> Epic -> Features -> Implementation antes da implementacao definitiva em comandos de chat, workflows, templates, skills e capabilities/scripts.
 
 Quando esse fluxo for incorporado ao LeanOS, este arquivo deve ser removido ou convertido em documentacao oficial.
 
@@ -11,7 +11,7 @@ O LeanOS deve transformar estrategia e roadmap em execucao rastreavel no GitHub.
 A cadeia operacional desejada e:
 
 ```text
-Strategy -> MVP Scope -> Roadmap -> GitHub Project Sync -> Epic Issues -> 3D Issue Matrix -> Sub-issues -> Implementation Workflow
+Strategy -> MVP Scope -> Roadmap -> GitHub Project Sync -> Epic Issues -> Delivery Readiness Matrix -> Features -> Implementation Workflow
 ```
 
 O objetivo nao e apenas gerar issues. O objetivo e garantir que cada issue criada tenha origem clara em estrategia, MVP, roadmap, validacao e criterios cross-area.
@@ -35,7 +35,7 @@ A capability/script deve:
 
 - autenticar;
 - chamar GitHub API;
-- criar ou atualizar projects, milestones, issues e sub-issues;
+- criar ou atualizar projects, milestones, issues e Features;
 - registrar sync state sem segredos;
 - reportar sucesso, falha ou conflito.
 
@@ -98,7 +98,7 @@ Responsabilidade:
 - selecionar ou criar GitHub Project v2;
 - mapear campos do project;
 - configurar labels LeanOS;
-- validar acesso a milestones, issues, projects e sub-issues;
+- validar acesso a milestones, issues, projects e Features;
 - salvar configuracao sem segredos.
 
 Role principal:
@@ -146,7 +146,7 @@ github:
   labels:
     - leanos
     - epic
-    - sub-issue
+    - feature
     - product
     - design
     - security
@@ -285,19 +285,19 @@ What is explicitly excluded.
 - Design:
 - Security:
 
-## Sub-issue Breakdown
+## feature Breakdown
 
 - Status: not_started
-- Expected sub-issues:
+- Expected Features:
 - Open questions:
 ```
 
-## Fase 5: Sub-issue Creation
+## Fase 5: feature Creation
 
 Usuario pede no chat:
 
 ```text
-crie as sub-issues do epic #654
+crie as Features do epic #654
 ```
 
 LeanOS Chief deve carregar:
@@ -316,9 +316,9 @@ LeanOS Chief deve carregar:
 
 Se Design, Security ou Engineering nao estiverem ativos, o agente deve avisar e pedir confirmacao antes de criar uma decomposicao incompleta.
 
-## Matriz 3D da Issue
+## Delivery Readiness Matrix da Issue
 
-Toda sub-issue gerada a partir de epic deve passar por uma matriz 3D:
+Toda feature gerada a partir de epic deve passar por uma Delivery Readiness Matrix:
 
 ### Product
 
@@ -374,12 +374,12 @@ Output Security:
 - abuse cases;
 - security acceptance criteria.
 
-## Sub-issue Template
+## feature Template
 
-Template minimo de sub-issue:
+Template minimo de feature:
 
 ```md
-# <sub-issue title>
+# <feature title>
 
 ## Parent Epic
 
@@ -436,29 +436,29 @@ What should not be implemented.
 
 ## Fase 6: Criacao via API
 
-Depois que o usuario confirma as sub-issues propostas, a capability/script deve:
+Depois que o usuario confirma as Features propostas, a capability/script deve:
 
 1. criar cada issue;
 2. associar milestone;
 3. adicionar labels;
 4. adicionar ao GitHub Project;
 5. preencher campos do project;
-6. ligar como sub-issue da epic pai;
+6. ligar como feature da epic pai;
 7. atualizar sync state;
 8. responder com resumo e links.
 
 Comando de chat futuro:
 
 ```text
-crie as sub-issues do epic #654
-/create subissues
+crie as Features do epic #654
+/create issues
 ```
 
 O agente gera o plano, pede confirmacao e aciona a capability segura quando ela estiver disponivel. Se a capability ainda nao existir, ele entrega o payload/draft e explica o que falta sem fingir que criou as issues.
 
 ## Fase 7: Implementation Handoff
 
-Depois das sub-issues criadas, o usuario pode pedir:
+Depois das Features criadas, o usuario pode pedir:
 
 ```text
 implemente a issue #554
@@ -485,7 +485,7 @@ Esse workflow sera definido separadamente. Ele deve carregar:
 Adicionar ou fortalecer:
 
 - `.leanos/workflows/roadmap-to-github-project.workflow.md`
-- `.leanos/workflows/epic-to-subissues.workflow.md`
+- `.leanos/workflows/epic-to-features.workflow.md`
 - `.leanos/workflows/issue-to-implementation.workflow.md`
 
 Esses workflows devem ser cross-area e apontar para areas especificas:
@@ -502,7 +502,7 @@ Esses workflows devem ser cross-area e apontar para areas especificas:
 Adicionar:
 
 - `ai-standard/templates/github/github-epic-template.md`
-- `ai-standard/templates/github/github-subissue-template.md`
+- `ai-standard/templates/github/github-feature-template.md`
 - `ai-standard/templates/github/issue-readiness-matrix-template.md`
 
 Esses templates devem ser usados pelo modelo antes de qualquer chamada API.
@@ -533,7 +533,7 @@ Capabilities esperadas:
 - `github.configure`: valida owner, repo, project, fields, labels e token source.
 - `github.status`: mostra conexao, repo, project, fields e ultimo sync.
 - `github.syncRoadmap`: sincroniza roadmap Markdown para milestones e epics.
-- `github.createSubissues`: cria sub-issues confirmadas para um epic.
+- `github.createFeatures`: cria Features confirmadas para um epic.
 - `github.issueContext`: carrega issue, parent epic, milestone e project fields.
 
 ## Comandos Futuros de Chat
@@ -542,7 +542,7 @@ Capabilities esperadas:
 /configure github
 /sync roadmap
 /sync-roadmap
-/create subissues
+/create issues
 /plan issue
 /implement issue
 ```
@@ -556,7 +556,7 @@ Usar GitHub REST API oficial como padrao inicial:
 - Projects v2 REST endpoints para project, fields, items e field values.
 - Issues REST endpoints para criar/atualizar issues.
 - Milestones REST endpoints para criar/atualizar milestones.
-- Sub-issues REST endpoints para relacionar sub-issues ao epic pai.
+- Features REST endpoints para relacionar Features ao epic pai.
 
 Referencias oficiais:
 
@@ -564,7 +564,7 @@ Referencias oficiais:
 - https://docs.github.com/en/rest/projects/items
 - https://docs.github.com/rest/issues
 - https://docs.github.com/v3/issues/milestones
-- https://docs.github.com/en/rest/issues/sub-issues
+- https://docs.github.com/en/rest/issues/Features
 
 GraphQL fica como fallback se algum campo de Projects v2 nao for coberto de forma suficiente pelo REST API.
 
@@ -573,7 +573,7 @@ GraphQL fica como fallback se algum campo de Projects v2 nao for coberto de form
 - Nunca salvar token no workspace.
 - Nunca chamar API sem confirmacao explicita do usuario.
 - Sempre oferecer dry-run antes de escrita remota.
-- Sempre mostrar quantos milestones, epics e sub-issues serao criados ou atualizados.
+- Sempre mostrar quantos milestones, epics e Features serao criados ou atualizados.
 - Sempre detectar duplicatas por stable key antes de criar.
 - Sempre registrar sync state sem segredos.
 - Nunca deixar o modelo inventar GitHub IDs, issue numbers ou project item IDs.
@@ -589,7 +589,7 @@ Este fluxo estara pronto para implementacao quando houver decisao sobre:
 - labels padrao;
 - milestone naming;
 - template de epic;
-- template de sub-issue;
+- template de feature;
 - formato de sync state;
 - comandos de chat;
 - capabilities/scripts necessarios;
@@ -602,7 +602,7 @@ Quando implementar:
 
 - teste de parse de roadmap Markdown;
 - teste de geracao de epic payload;
-- teste de geracao de sub-issue payload;
+- teste de geracao de feature payload;
 - teste de matriz Product/Design/Security;
 - teste de dry-run sem GitHub;
 - teste de idempotencia para nao criar duplicatas;

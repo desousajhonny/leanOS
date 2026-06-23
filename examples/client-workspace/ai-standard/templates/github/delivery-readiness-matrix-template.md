@@ -1,8 +1,8 @@
 # Delivery Readiness Matrix (DRM)
 
-Use this before creating epics, sub-issues or implementation plans.
+Use this before creating epics, features or implementation plans.
 
-The DRM shapes work before development starts. It prevents the model from coding before the issue has enough Product, Design, Engineering, Security and DevOps clarity.
+The DRM shapes work before development starts. It prevents the model from coding before the feature or issue has enough Product, Design, Engineering, Security and DevOps clarity.
 
 | Dimension | Required When | Required Output | Status |
 | --- | --- | --- | --- |
@@ -14,7 +14,7 @@ The DRM shapes work before development starts. It prevents the model from coding
 
 ## Readiness Rule
 
-Do not create implementation-ready sub-issues until Product Ops and Engineering are clear.
+Do not create implementation-ready features or GitHub issues until Product Ops and Engineering are clear.
 
 Design is required only when user experience is affected.
 

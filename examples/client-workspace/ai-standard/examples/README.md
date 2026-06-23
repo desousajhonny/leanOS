@@ -55,13 +55,13 @@ Files:
 
 ### `github/`
 
-Examples of GitHub epics, sub-issues and pull requests.
+Examples of GitHub epics, features and pull requests.
 
 Use when: Use when reviewing GitHub-ready collaboration artifacts.
 
 Files:
 - `github/example-github-epic.md`
-- `github/example-github-subissue.md`
+- `github/example-github-feature.md`
 - `github/example-pull-request.md`
 
 ### `review/`

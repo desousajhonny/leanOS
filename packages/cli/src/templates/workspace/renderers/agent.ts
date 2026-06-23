@@ -240,7 +240,7 @@ Classify the current moment as one of:
 - Delivery scope missing
 - Delivery scope ready
 - GitHub planning missing
-- Epics or sub-issues missing
+- Epics or features missing
 - Ready for implementation
 - In implementation
 - Ready for PR/review
@@ -271,7 +271,7 @@ If these are missing, explain the gap and recommend the next LeanOS route instea
 - Roadmap missing -> \`idea-to-roadmap\` or Strategy Roadmap through \`strategy/AGENT.md\`
 - Delivery scope missing -> \`roadmap-item-to-delivery-scope\`
 - GitHub epics missing -> \`delivery-scope-to-epic\` when available
-- Sub-issues missing -> \`epic-to-subissues\` when available
+- Features missing -> \`epic-to-features\` when available
 - Implementation ready -> \`issue-delivery-cycle\`
 - PR/review needed -> Engineering PR validation route
 - Launch/readiness needed -> Growth or DevOps based on the gap

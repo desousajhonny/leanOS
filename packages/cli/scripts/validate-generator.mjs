@@ -127,6 +127,7 @@ async function validateWorkspaceFiles() {
     "ai-standard/templates/commands/command-template.md",
     "ai-standard/templates/github/README.md",
     "ai-standard/templates/github/github-epic-template.md",
+    "ai-standard/templates/github/github-feature-template.md",
     "ai-standard/templates/github/delivery-readiness-matrix-template.md",
     "ai-standard/templates/review/README.md",
     "ai-standard/templates/review/code-review-template.md",
@@ -165,7 +166,7 @@ async function validateWorkspaceFiles() {
     "ai-standard/examples/commands/example-command-define-design.md",
     "ai-standard/examples/github/README.md",
     "ai-standard/examples/github/example-github-epic.md",
-    "ai-standard/examples/github/example-github-subissue.md",
+    "ai-standard/examples/github/example-github-feature.md",
     "ai-standard/examples/github/example-pull-request.md",
     "ai-standard/examples/review/README.md",
     "ai-standard/examples/review/example-code-review.md",
@@ -220,9 +221,9 @@ async function validateWorkspaceFiles() {
     "operations/product-ops/mvp/README.md",
     "operations/product-ops/mvp/prd.md",
     "operations/product-ops/skills/shape-epic.skill.md",
-    "operations/product-ops/skills/write-subissue-criteria.skill.md",
+    "operations/product-ops/skills/write-feature-criteria.skill.md",
     "operations/product-ops/skills/define-delivery-boundaries.skill.md",
-    "operations/product-ops/playbooks/epic-to-subissues.playbook.md",
+    "operations/product-ops/playbooks/epic-to-features.playbook.md",
     "operations/product-ops/playbooks/delivery-readiness.playbook.md",
     "operations/workflows/issue-delivery-cycle.workflow.md",
     "operations/workflows/post-merge-continuation.workflow.md",
@@ -364,7 +365,7 @@ async function validateWorkspaceFiles() {
     ".github/leanos/sync-state.yaml",
     ".github/leanos/labels.yaml",
     ".github/ISSUE_TEMPLATE/epic.yml",
-    ".github/ISSUE_TEMPLATE/sub-issue.yml",
+    ".github/ISSUE_TEMPLATE/feature.yml",
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/leanos/branch-rules.md",
     ".github/leanos/pr-validation-rules.md",
@@ -449,7 +450,7 @@ async function validateWorkspaceFiles() {
     ".leanos/workflows/launch-and-learn.workflow.md",
     ".leanos/commands/evaluate-idea.md",
     ".leanos/commands/sync-roadmap.md",
-    ".leanos/commands/create-subissues.md",
+    ".leanos/commands/create-features.md",
     ".leanos/commands/implement-issue.md",
     ".leanos/commands/post-merge.md",
     "strategy/company/README.md",
@@ -497,7 +498,7 @@ async function validateWorkspaceFiles() {
     "ai-standard/templates/workflow-template.md",
     "ai-standard/templates/command-template.md",
     "ai-standard/templates/github-epic-template.md",
-    "ai-standard/templates/github-subissue-template.md",
+    "ai-standard/templates/github-feature-template.md",
     "ai-standard/templates/issue-readiness-matrix-template.md",
     "ai-standard/templates/branch-name-template.md",
     "ai-standard/templates/pull-request-template.md",
@@ -565,9 +566,9 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "technical-decisions.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "mvp", "README.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "skills", "shape-epic.skill.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "skills", "write-subissue-criteria.skill.md"));
+  await assertExists(join(rootDir, "operations", "product-ops", "skills", "write-feature-criteria.skill.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "skills", "define-delivery-boundaries.skill.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "playbooks", "epic-to-subissues.playbook.md"));
+  await assertExists(join(rootDir, "operations", "product-ops", "playbooks", "epic-to-features.playbook.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "playbooks", "delivery-readiness.playbook.md"));
   assert.equal(await exists(join(rootDir, "operations", "core")), false, "Old operations/core area should not be generated");
   assert.equal(await exists(join(rootDir, "operations", "product-ops", "api-contract.md")), false, "Product Ops should not generate premature API contract files");
@@ -584,7 +585,7 @@ async function validateWorkspaceFiles() {
   assert(deliveryScopeToEpicWorkflow.includes("Turn confirmed delivery scope into GitHub-ready epic drafts"), "Delivery scope to epic workflow should define its planning purpose");
   assert(deliveryScopeToEpicWorkflow.includes("Read work taxonomy"), "Delivery scope to epic workflow should load Product Ops work taxonomy");
   assert(deliveryScopeToEpicWorkflow.includes("Ask for confirmation before any GitHub API write"), "Delivery scope to epic workflow should require confirmation before GitHub writes");
-  assert(deliveryScopeToEpicWorkflow.includes("Next route:\n\n`epic-to-subissues`"), "Delivery scope to epic workflow should bridge to epic-to-subissues");
+  assert(deliveryScopeToEpicWorkflow.includes("Next route:\n\n`epic-to-features`"), "Delivery scope to epic workflow should bridge to epic-to-features");
   await assertExists(join(rootDir, ".leanos", "commands", "define-design.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "README.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "design-system.md"));
@@ -759,7 +760,7 @@ async function validateWorkspaceFiles() {
     "ai-standard/templates/workflow-template.md",
     "ai-standard/templates/command-template.md",
     "ai-standard/templates/github-epic-template.md",
-    "ai-standard/templates/github-subissue-template.md",
+    "ai-standard/templates/github-feature-template.md",
     "ai-standard/templates/issue-readiness-matrix-template.md",
     "ai-standard/templates/branch-name-template.md",
     "ai-standard/templates/pull-request-template.md",
@@ -829,9 +830,9 @@ async function validateClientWorkspaceFixture() {
     "operations/product-ops/mvp/README.md",
     "operations/product-ops/mvp/prd.md",
     "operations/product-ops/skills/shape-epic.skill.md",
-    "operations/product-ops/skills/write-subissue-criteria.skill.md",
+    "operations/product-ops/skills/write-feature-criteria.skill.md",
     "operations/product-ops/skills/define-delivery-boundaries.skill.md",
-    "operations/product-ops/playbooks/epic-to-subissues.playbook.md",
+    "operations/product-ops/playbooks/epic-to-features.playbook.md",
     "operations/product-ops/playbooks/delivery-readiness.playbook.md",
     "operations/design/knowledge/README.md",
     "operations/design/knowledge/design-system.md",
@@ -922,7 +923,7 @@ async function validateClientWorkspaceFixture() {
     ".github/leanos/project-sync.yaml",
     ".github/leanos/sync-state.yaml",
     ".github/ISSUE_TEMPLATE/epic.yml",
-    ".github/ISSUE_TEMPLATE/sub-issue.yml",
+    ".github/ISSUE_TEMPLATE/feature.yml",
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/leanos/branch-rules.md",
     ".github/leanos/pr-validation-rules.md",
@@ -1318,7 +1319,7 @@ async function assertGitHubReadiness(rootDir) {
   assert.equal(projectSyncYaml.github.rules.require_confirmation_before_api_write, true, "GitHub project sync should require confirmation before API writes");
   assert(syncState.includes("must never store tokens"), "GitHub sync state should warn against storing tokens");
   assert(labels.includes("name: epic"), "GitHub labels should include epic");
-  assert(labels.includes("name: sub-issue"), "GitHub labels should include sub-issue");
+  assert(labels.includes("name: feature"), "GitHub labels should include feature");
   assert(githubReadme.includes("Route GitHub setup through `../../operations/devops/AGENT.md`"), "GitHub README should route setup through DevOps when active");
   assert(githubReadme.includes("Vercel readiness is guidance-only"), "GitHub README should document Vercel readiness without execution");
   assert(githubRole.includes("Guide safe GitHub repository, Project, labels and sync configuration"), "GitHub DevOps role should describe GitHub setup ownership");
@@ -1330,17 +1331,17 @@ async function assertGitHubReadiness(rootDir) {
 
 async function assertGitHubIssuePrWorkflow(rootDir) {
   const epicTemplate = await readFile(join(rootDir, ".github", "ISSUE_TEMPLATE", "epic.yml"), "utf8");
-  const subIssueTemplate = await readFile(join(rootDir, ".github", "ISSUE_TEMPLATE", "sub-issue.yml"), "utf8");
+  const featureTemplate = await readFile(join(rootDir, ".github", "ISSUE_TEMPLATE", "feature.yml"), "utf8");
   const prTemplate = await readFile(join(rootDir, ".github", "PULL_REQUEST_TEMPLATE.md"), "utf8");
   const branchRules = await readFile(join(rootDir, ".github", "leanos", "branch-rules.md"), "utf8");
   const prRules = await readFile(join(rootDir, ".github", "leanos", "pr-validation-rules.md"), "utf8");
   const aiEpicTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "github-epic-template.md"), "utf8");
-  const aiSubIssueTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "github-subissue-template.md"), "utf8");
+  const aiFeatureTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "github-feature-template.md"), "utf8");
   const issueMatrix = await readFile(join(rootDir, "ai-standard", "templates", "github", "delivery-readiness-matrix-template.md"), "utf8");
   const branchTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "branch-name-template.md"), "utf8");
   const aiPrTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "pull-request-template.md"), "utf8");
   const codeReviewTemplate = await readFile(join(rootDir, "ai-standard", "templates", "review", "code-review-template.md"), "utf8");
-  const epicToSubissuesPlaybook = await readFile(join(rootDir, "operations", "product-ops", "playbooks", "epic-to-subissues.playbook.md"), "utf8");
+  const epicToFeaturesPlaybook = await readFile(join(rootDir, "operations", "product-ops", "playbooks", "epic-to-features.playbook.md"), "utf8");
   const branchSkill = await readFile(join(rootDir, "operations", "engineering", "skills", "create-branch.skill.md"), "utf8");
   const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-from-issue.playbook.md"), "utf8");
   const issueToPrPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "issue-to-pr.playbook.md"), "utf8");
@@ -1352,9 +1353,9 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   const reviewPrCommand = await readFile(join(rootDir, ".leanos", "commands", "review-pr.md"), "utf8");
 
   assert(epicTemplate.includes("Product / Design / Engineering / Security criteria"), "Epic issue template should include cross-functional criteria");
-  assert(subIssueTemplate.includes("Parent epic"), "Sub-issue template should require parent epic linkage");
-  assert(subIssueTemplate.includes("Required only when user-facing UX"), "Sub-issue template should make Design conditional");
-  assert(subIssueTemplate.includes("Required only when data, auth, permissions, privacy, abuse or compliance"), "Sub-issue template should make Security conditional");
+  assert(featureTemplate.includes("Parent epic"), "Feature template should require parent epic linkage");
+  assert(featureTemplate.includes("Required only when user-facing UX"), "Feature template should make Design conditional");
+  assert(featureTemplate.includes("Required only when data, auth, permissions, privacy, abuse or compliance"), "Feature template should make Security conditional");
   assert(prTemplate.includes("## Linked Issue"), "PR template should include linked issue");
   assert(prTemplate.includes("## Parent Epic"), "PR template should include parent epic");
   assert(prTemplate.includes("## Design Notes"), "PR template should include design notes");
@@ -1366,7 +1367,7 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(prRules.includes("Design: required only when user-facing UX changed"), "PR validation rules should make Design conditional");
   assert(prRules.includes("Security: required when data, auth, permissions, privacy, abuse or compliance is involved"), "PR validation rules should make Security conditional");
 
-  for (const templateContent of [aiEpicTemplate, aiSubIssueTemplate, issueMatrix, branchTemplate, aiPrTemplate, codeReviewTemplate]) {
+  for (const templateContent of [aiEpicTemplate, aiFeatureTemplate, issueMatrix, branchTemplate, aiPrTemplate, codeReviewTemplate]) {
     assert(templateContent.includes("# "), "AI Standard GitHub templates should have markdown content");
   }
 
@@ -1376,13 +1377,13 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(issueMatrix.includes("Engineering | Always for implementation work"), "Issue readiness matrix should require Engineering for implementation");
   assert(issueMatrix.includes("Security | Data, auth, permissions, privacy, abuse"), "Issue readiness matrix should make Security conditional");
   assert(issueMatrix.includes("DevOps | Environment, deploy, CI/CD"), "Delivery readiness matrix should make DevOps conditional");
-  assert(epicToSubissuesPlaybook.includes("Break a GitHub epic into implementation-ready sub-issues"), "Product Ops should own epic-to-subissues playbook");
-  assert(epicToSubissuesPlaybook.includes("Delivery Readiness Matrix (DRM)"), "Epic breakdown should use the DRM");
-  assert(epicToSubissuesPlaybook.includes("Write Product Ops criteria for every sub-issue"), "Epic breakdown should require Product Ops criteria");
-  assert(epicToSubissuesPlaybook.includes("Add Design criteria only when"), "Epic breakdown should make Design conditional");
-  assert(epicToSubissuesPlaybook.includes("Add Security criteria only when"), "Epic breakdown should make Security conditional");
-  assert(epicToSubissuesPlaybook.includes("Add DevOps criteria only when"), "Epic breakdown should make DevOps conditional");
-  assert(epicToSubissuesPlaybook.includes("Stop before any GitHub API write until the user explicitly confirms"), "Epic breakdown should require confirmation before GitHub writes");
+  assert(epicToFeaturesPlaybook.includes("Break a LeanOS epic into implementation-ready features"), "Product Ops should own epic-to-features playbook");
+  assert(epicToFeaturesPlaybook.includes("Delivery Readiness Matrix (DRM)"), "Epic breakdown should use the DRM");
+  assert(epicToFeaturesPlaybook.includes("Write Product Ops criteria for every feature"), "Epic breakdown should require Product Ops criteria");
+  assert(epicToFeaturesPlaybook.includes("Add Design criteria only when"), "Epic breakdown should make Design conditional");
+  assert(epicToFeaturesPlaybook.includes("Add Security criteria only when"), "Epic breakdown should make Security conditional");
+  assert(epicToFeaturesPlaybook.includes("Add DevOps criteria only when"), "Epic breakdown should make DevOps conditional");
+  assert(epicToFeaturesPlaybook.includes("Stop before any GitHub API write until the user explicitly confirms"), "Epic breakdown should require confirmation before GitHub writes");
   assert(branchSkill.includes("safe issue-linked branch name"), "Engineering should include create-branch skill");
   assert(branchPlaybook.includes("Load `.github/leanos/branch-rules.md`"), "Branch playbook should load branch rules");
   assert(issueToPrPlaybook.includes("Check whether Design criteria are required for user-facing UX"), "Issue-to-PR playbook should conditionally check Design");
@@ -1390,7 +1391,7 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(prValidationPlaybook.includes("List findings by severity"), "PR validation playbook should output findings by severity");
 
   assert(createIssuesCommand.includes("Delivery Readiness Matrix (DRM)"), "Create issues command should use the DRM");
-  assert(createIssuesCommand.includes("operations/product-ops/playbooks/epic-to-subissues.playbook.md"), "Create issues command should load the epic-to-subissues playbook");
+  assert(createIssuesCommand.includes("operations/product-ops/playbooks/epic-to-features.playbook.md"), "Create issues command should load the epic-to-features playbook");
   assert(createIssuesCommand.includes("Add Design criteria only when user-facing UX, UI, flow, accessibility, copy or interaction is affected"), "Create issues command should make Design conditional");
   assert(createIssuesCommand.includes("Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved"), "Create issues command should make Security conditional");
   assert(createIssuesCommand.includes("Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected"), "Create issues command should make DevOps conditional");
@@ -1622,6 +1623,7 @@ async function assertAiStandardTemplates(rootDir) {
   assert(playbookTemplate.includes("../../../ai-standard/foundation/guided-conversation.md"), "Playbook template should point to guided conversation foundation");
   assert(commandsReadme.includes("command-template.md"), "Command templates README should list command template");
   assert(githubReadme.includes("github-epic-template.md"), "GitHub templates README should list epic template");
+  assert(githubReadme.includes("github-feature-template.md"), "GitHub templates README should list feature template");
   assert(githubReadme.includes("pull-request-template.md"), "GitHub templates README should list PR template");
   assert(reviewReadme.includes("code-review-template.md"), "Review templates README should list code review template");
 }
@@ -1758,7 +1760,7 @@ async function assertAiStandardExamples(rootDir) {
   const workflowExample = await readFile(join(examplesRoot, "execution", "example-workflow-issue-delivery-cycle.md"), "utf8");
   const commandExample = await readFile(join(examplesRoot, "commands", "example-command-define-design.md"), "utf8");
   const epicExample = await readFile(join(examplesRoot, "github", "example-github-epic.md"), "utf8");
-  const subissueExample = await readFile(join(examplesRoot, "github", "example-github-subissue.md"), "utf8");
+  const featureExample = await readFile(join(examplesRoot, "github", "example-github-feature.md"), "utf8");
   const prExample = await readFile(join(examplesRoot, "github", "example-pull-request.md"), "utf8");
   const codeReviewExample = await readFile(join(examplesRoot, "review", "example-code-review.md"), "utf8");
 
@@ -1781,7 +1783,7 @@ async function assertAiStandardExamples(rootDir) {
   assert(executionReadme.includes("example-workflow-issue-delivery-cycle.md"), "Execution examples README should list workflow example");
   assert(commandsReadme.includes("example-command-define-design.md"), "Command examples README should list command example");
   assert(githubReadme.includes("example-github-epic.md"), "GitHub examples README should list epic example");
-  assert(githubReadme.includes("example-github-subissue.md"), "GitHub examples README should list sub-issue example");
+  assert(githubReadme.includes("example-github-feature.md"), "GitHub examples README should list feature example");
   assert(githubReadme.includes("example-pull-request.md"), "GitHub examples README should list PR example");
   assert(reviewReadme.includes("example-code-review.md"), "Review examples README should list code review example");
 
@@ -1801,7 +1803,7 @@ async function assertAiStandardExamples(rootDir) {
   assert(epicExample.includes("## Product Criteria"), "Epic example should include Product criteria");
   assert(epicExample.includes("## Design Criteria"), "Epic example should include Design criteria");
   assert(epicExample.includes("## Security Criteria"), "Epic example should include Security criteria");
-  assert(subissueExample.includes("## Definition of Done"), "Sub-issue example should include Definition of Done");
+  assert(featureExample.includes("## Definition of Done"), "Feature example should include Definition of Done");
   assert(prExample.includes("## LeanOS Context"), "PR example should include LeanOS context");
   assert(codeReviewExample.includes("## Findings"), "Code review example should include findings");
 
@@ -1835,7 +1837,7 @@ async function assertNoOldAiStandardReferences(rootDir) {
     "ai-standard/templates/workflow-template.md",
     "ai-standard/templates/command-template.md",
     "ai-standard/templates/github-epic-template.md",
-    "ai-standard/templates/github-subissue-template.md",
+    "ai-standard/templates/github-feature-template.md",
     "ai-standard/templates/issue-readiness-matrix-template.md",
     "ai-standard/templates/branch-name-template.md",
     "ai-standard/templates/pull-request-template.md",
@@ -2645,7 +2647,7 @@ async function assertOperationalPlaybookSections(rootDir) {
     "strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md",
     "strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md",
     "operations/product-ops/playbooks/mvp-delivery.playbook.md",
-    "operations/product-ops/playbooks/epic-to-subissues.playbook.md",
+    "operations/product-ops/playbooks/epic-to-features.playbook.md",
     "operations/product-ops/playbooks/delivery-readiness.playbook.md",
     "operations/design/playbooks/design-foundation.playbook.md",
     "operations/engineering/playbooks/test-planning.playbook.md",

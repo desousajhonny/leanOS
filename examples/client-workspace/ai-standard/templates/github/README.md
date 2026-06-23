@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Templates for GitHub issues, epics, sub-issues, branch naming, PRs and readiness matrices.
+Templates for GitHub issues, epics, features, branch naming, PRs and readiness matrices.
 
 ## When to Use
 
@@ -12,7 +12,7 @@ Use when shaping GitHub-ready work items or repository collaboration artifacts.
 
 - `github-issue-template.md`
 - `github-epic-template.md`
-- `github-subissue-template.md`
+- `github-feature-template.md`
 - `delivery-readiness-matrix-template.md`
 - `branch-name-template.md`
 - `pull-request-template.md`

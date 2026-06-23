@@ -19,7 +19,7 @@ Use when a selected role points to a skill.
 - `write-acceptance-criteria.skill.md`
 - `check-delivery-coherence.skill.md`
 - `shape-epic.skill.md`
-- `write-subissue-criteria.skill.md`
+- `write-feature-criteria.skill.md`
 - `define-delivery-boundaries.skill.md`
 
 ## Related Folders

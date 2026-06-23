@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Turn a roadmap epic into an implementation-ready scope boundary before sub-issues are created.
+Turn a roadmap epic into an implementation-ready scope boundary before features are created.
 
 ## Use When
 
@@ -38,7 +38,7 @@ Turn a roadmap epic into an implementation-ready scope boundary before sub-issue
 2. Confirm the user, problem and business value.
 3. Identify scope boundaries and non-goals.
 4. Map the epic to MVP scope, PRD and roadmap milestone.
-5. List likely sub-issue slices without creating them yet.
+5. List likely feature slices without creating them yet.
 6. Mark missing context explicitly instead of inventing it.
 
 ## Checks
@@ -53,7 +53,7 @@ Turn a roadmap epic into an implementation-ready scope boundary before sub-issue
 - Epic readiness summary
 - Scope boundary
 - Non-goals
-- Likely sub-issue groups
+- Likely feature groups
 - Missing context
 - Recommendation to proceed, refine or block
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Capture the MVP user stories that can later become epics, sub-issues or acceptance criteria.
+Capture the MVP user stories that can later become epics, features or acceptance criteria.
 
 ## Current State
 

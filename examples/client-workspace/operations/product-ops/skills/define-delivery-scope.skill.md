@@ -66,4 +66,4 @@ Decide whether a roadmap item becomes a concrete delivery scope and capture scop
 
 - Do not treat roadmap priority as delivery commitment.
 - Do not mark an item as MVP just because it is important.
-- Do not create epics or sub-issues in this step.
+- Do not create epics or features in this step.

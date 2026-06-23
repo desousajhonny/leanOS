@@ -77,8 +77,8 @@ If not applicable, write: "Not applicable; no security-sensitive surface identif
 - Engineering:
 - Security:
 
-## Sub-issue Breakdown
+## Feature Breakdown
 
 - Status: not_started
-- Expected sub-issues:
+- Expected features:
 - Open questions:

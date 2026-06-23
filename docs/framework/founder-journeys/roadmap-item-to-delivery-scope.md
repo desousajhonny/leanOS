@@ -2,7 +2,7 @@
 
 This journey starts when a roadmap item is already worth tracking and the founder asks whether it should become part of a real delivery scope.
 
-The purpose is not to create GitHub epics, sub-issues, branches or code. The purpose is to decide whether a roadmap item becomes a committed delivery scope with `scope_type`, `milestone` and `release_goal`.
+The purpose is not to create GitHub epics, features, branches or code. The purpose is to decide whether a roadmap item becomes a committed delivery scope with `scope_type`, `milestone` and `release_goal`.
 
 ## Human Overview
 
@@ -11,7 +11,7 @@ The purpose is not to create GitHub epics, sub-issues, branches or code. The pur
 - **Starts at:** Root `AGENT.md`, then `operations/AGENT.md`.
 - **Passes through:** `roadmap-item-to-delivery-scope.workflow.md`, Product Ops, Product Owner, `define-delivery-scope.skill.md` and `delivery-scope-planning.playbook.md`.
 - **Ends with:** a founder-confirmed delivery scope proposal or a decision to keep the item in roadmap/backlog.
-- **Does not do:** create GitHub epics, create sub-issues, create branches, write code or start implementation.
+- **Does not do:** create GitHub epics, create features, create branches, write code or start implementation.
 
 ## Flow Diagram
 
@@ -96,7 +96,7 @@ This journey ends when:
 - the model recommends `scope_type`, `milestone` and `release_goal`, or recommends keeping the item out of delivery scope;
 - Design, Security or DevOps applicability is called out when relevant;
 - the founder confirms or rejects the proposed update;
-- no GitHub epic, sub-issue, branch or code work has started.
+- no GitHub epic, feature, branch or code work has started.
 
 ## Owner
 
@@ -233,7 +233,7 @@ Navigation Evidence:
 - The workflow requires Product Ops.
 - The workflow says to confirm the roadmap item exists and has product context.
 - The workflow says to decide `scope_type`, `milestone` and `release_goal`.
-- The workflow says to stop before GitHub epics, sub-issues, branches or code.
+- The workflow says to stop before GitHub epics, features, branches or code.
 
 What the model understands here:
 
@@ -309,7 +309,7 @@ Navigation Evidence:
 
 - The skill asks for `scope_type`, `milestone` and `release_goal`.
 - The skill says MVP is one possible scope type.
-- The skill says not to create epics or sub-issues in this step.
+- The skill says not to create epics or features in this step.
 
 What the model understands here:
 
@@ -514,7 +514,7 @@ During this journey, the model cannot:
 - treat roadmap priority as delivery commitment;
 - mark an item as MVP just because it is important;
 - create GitHub epics, issues or milestones;
-- create sub-issues;
+- create features;
 - create branches or write code;
 - skip Product Ops;
 - skip confirmation before file updates;

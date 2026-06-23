@@ -1,4 +1,4 @@
-# <sub-issue title>
+# <feature title>
 
 ## Parent Epic
 
@@ -8,7 +8,7 @@
 
 ## Purpose
 
-Why this issue exists.
+Why this feature exists.
 
 ## Scope
 
@@ -24,9 +24,20 @@ What should not be implemented.
 - Acceptance criteria:
 - Success or learning signal:
 
+## Tasks
+
+Use tasks as an internal checklist for this feature.
+
+~~~text
+Create model
+Create UI
+Add validation
+Add tests
+~~~
+
 ## Design Criteria
 
-Use only when this sub-issue changes a user-facing flow, screen, state, copy or interaction.
+Use only when this feature changes a user-facing flow, screen, state, copy or interaction.
 
 - Flow:
 - Screens or states:
@@ -46,7 +57,7 @@ If not applicable, write: "Not applicable; no user-facing design change."
 
 ## Security Criteria
 
-Use when this sub-issue touches data, auth, permissions, privacy, abuse risk or compliance.
+Use when this feature touches data, auth, permissions, privacy, abuse risk or compliance.
 
 - Data:
 - Permissions:

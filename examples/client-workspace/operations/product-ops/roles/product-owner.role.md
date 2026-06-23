@@ -9,7 +9,7 @@ Own MVP execution clarity with supervision from Product and PM strategy.
 - MVP scope needs definition
 - acceptance criteria are unclear
 - delivery scope needs coordination
-- an epic needs to be broken into sub-issues
+- an epic needs to be broken into features
 
 ## Before Acting
 
@@ -35,13 +35,13 @@ Read:
 - `../skills/write-acceptance-criteria.skill.md`
 - `../skills/check-delivery-coherence.skill.md`
 - `../skills/shape-epic.skill.md`
-- `../skills/write-subissue-criteria.skill.md`
+- `../skills/write-feature-criteria.skill.md`
 
 ## Playbooks
 
 - `../playbooks/delivery-scope-planning.playbook.md`
 - `../playbooks/mvp-delivery.playbook.md`
-- `../playbooks/epic-to-subissues.playbook.md`
+- `../playbooks/epic-to-features.playbook.md`
 
 ## Output Style
 

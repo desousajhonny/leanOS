@@ -23,8 +23,8 @@ export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefiniti
     { path: ".github/copilot-instructions.md", content: "# LeanOS Instructions\n\nStart from `../AGENT.md` and follow the LeanOS Navigation Chain before implementing product work.\n" },
     { path: ".github/PULL_REQUEST_TEMPLATE.md", content: pullRequestTemplate() },
     { path: ".github/ISSUE_TEMPLATE/epic.yml", content: epicIssueTemplate() },
-    { path: ".github/ISSUE_TEMPLATE/sub-issue.yml", content: subIssueTemplate() },
-    ...["feature", "bug", "experiment", "validation", "research", "task"].map((name) => issueTemplate(`${name}.yml`, toTitle(name), `LeanOS ${name} issue.`)),
+    { path: ".github/ISSUE_TEMPLATE/feature.yml", content: featureIssueTemplate() },
+    ...["bug", "experiment", "validation", "research", "task"].map((name) => issueTemplate(`${name}.yml`, toTitle(name), `LeanOS ${name} issue.`)),
     { path: ".github/workflows/pr-validation.yml", content: prValidationWorkflow() },
     { path: ".github/leanos/README.md", content: folderReadme("GitHub LeanOS", "GitHub support files for LeanOS workflow conventions.", "Use when configuring labels, GitHub Projects sync, branch rules, PR validation guidance, security automation or deploy readiness.", "project-sync.yaml", ["github-settings.example.json", "project-sync.yaml", "sync-state.yaml", "labels.yaml", "branch-rules.md", "pr-validation-rules.md", "security-automation.md"], ["../ISSUE_TEMPLATE/", "../../operations/devops/", "../../operations/engineering/", "../../operations/security/"], `${devopsNote}\n\n${engineeringNote}\n\n${securityNote}\n\nVercel readiness is guidance-only in this scaffold. Vercel can detect frameworks automatically after product code exists; create \`vercel.json\` only when a real app/framework needs overrides.`) },
     { path: ".github/leanos/github-settings.example.json", content: githubSettingsExampleJson() },
@@ -72,18 +72,18 @@ body:
     validations:
       required: true
   - type: textarea
-    id: subissue-breakdown
+    id: feature-breakdown
     attributes:
-      label: Sub-issue breakdown
-      description: Expected sub-issues, dependencies and open questions.
+      label: Feature breakdown
+      description: Expected features, dependencies and open questions.
 `;
 }
 
-function subIssueTemplate(): string {
-  return `name: Sub-issue
-description: Implementation-ready child issue derived from an epic.
-title: "[Sub-issue]: "
-labels: ["leanos", "sub-issue"]
+function featureIssueTemplate(): string {
+  return `name: Feature
+description: Implementation-ready feature derived from an epic.
+title: "[FEATURE]: "
+labels: ["leanos", "feature"]
 body:
   - type: input
     id: parent-epic
@@ -97,7 +97,7 @@ body:
     id: purpose-scope
     attributes:
       label: Purpose and scope
-      description: Why this issue exists, what is included and what is explicitly excluded.
+      description: Why this feature exists, what is included and what is explicitly excluded.
     validations:
       required: true
   - type: textarea
@@ -105,6 +105,13 @@ body:
     attributes:
       label: Product criteria
       description: User value, acceptance criteria and success or learning signal.
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      description: Internal implementation checklist for this feature.
     validations:
       required: true
   - type: textarea
@@ -502,9 +509,9 @@ function labelsYaml(): string {
   - name: epic
     color: "7057ff"
     description: Roadmap epic
-  - name: sub-issue
+  - name: feature
     color: "bfd4f2"
-    description: Child issue created from an epic
+    description: Feature created from an epic
   - name: validation
     color: "0e8a16"
     description: Validation or learning task
