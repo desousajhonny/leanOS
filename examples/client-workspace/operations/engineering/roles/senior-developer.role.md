@@ -41,6 +41,7 @@ Read:
 
 ## Playbooks
 
+- `../playbooks/engineering-delivery.playbook.md`
 - `../playbooks/branch-from-issue.playbook.md`
 - `../playbooks/component-implementation.playbook.md`
 - `../playbooks/issue-to-pr.playbook.md`

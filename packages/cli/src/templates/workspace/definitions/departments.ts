@@ -3438,7 +3438,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             useWhen: ["implement an issue", "fix a bug", "modify code", "write tests", "prepare implementation for a PR"],
             beforeActing: ["../../../.leanos/context/current-focus.md", "../../product-ops/mvp/scope.md", "../../product-ops/mvp/prd.md", "../../product-ops/mvp/acceptance-criteria.md", "../../product-ops/knowledge/issue-readiness.md", "../knowledge/implementation-rules.md", "../knowledge/code-standards.md", "../knowledge/component-guidelines.md", "../knowledge/data-guidelines.md", "../knowledge/testing-strategy.md", "../../../.github/leanos/branch-rules.md", "../knowledge/implementation-notes.md"],
             skills: ["plan-implementation", "follow-code-standards", "implement-component", "create-branch", "write-tests", "review-data-change", "create-pr"],
-            playbooks: ["branch-from-issue", "component-implementation", "issue-to-pr", "test-planning", "pr-validation"]
+            playbooks: ["engineering-delivery", "branch-from-issue", "component-implementation", "issue-to-pr", "test-planning", "pr-validation"]
           },
           {
             slug: "test-engineer",

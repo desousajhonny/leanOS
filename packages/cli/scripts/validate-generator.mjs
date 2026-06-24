@@ -2504,6 +2504,7 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(reviewCriteria.includes("## Merge Recommendation"), "Review criteria should include merge recommendation");
   assert(seniorDeveloper.includes("../knowledge/code-standards.md"), "Senior Developer should read code standards");
   assert(seniorDeveloper.includes("../knowledge/component-guidelines.md"), "Senior Developer should read component guidelines");
+  assert(seniorDeveloper.includes("../playbooks/engineering-delivery.playbook.md"), "Senior Developer should use engineering delivery playbook");
   assert(seniorDeveloper.includes("../skills/implement-component.skill.md"), "Senior Developer should use implement-component skill");
   assert(seniorDeveloper.includes("../playbooks/component-implementation.playbook.md"), "Senior Developer should use component implementation playbook");
   assert(testEngineer.includes("../knowledge/testing-strategy.md"), "Test Engineer should read testing strategy");
