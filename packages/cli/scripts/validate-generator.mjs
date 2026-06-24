@@ -1651,6 +1651,7 @@ async function assertFounderIntentRouting(rootDir) {
   const whereWeAreProtocol = await readFile(join(rootDir, ".leanos", "agent", "protocols", "where-we-are.md"), "utf8");
   const commandsReadme = await readFile(join(rootDir, ".leanos", "commands", "README.md"), "utf8");
   const statusLeanOSCommand = await readFile(join(rootDir, ".leanos", "commands", "status-leanos.md"), "utf8");
+  const checkCoherenceCommand = await readFile(join(rootDir, ".leanos", "commands", "check-coherence.md"), "utf8");
   const defineMvpCommand = await readFile(join(rootDir, ".leanos", "commands", "define-mvp.md"), "utf8");
   const vscodeAgent = await readFile(join(rootDir, ".github", "agents", "leanos-chief.agent.md"), "utf8");
   const workflowsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "workflows.yaml"), "utf8"));
@@ -1679,6 +1680,12 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("Loaded Context:"), "Root AGENT.md should require loaded context in response header");
   assert(rootAgent.includes("## Natural Language Handling"), "Root AGENT.md should route natural-language requests");
   assert(rootAgent.includes("If a natural-language request clearly matches an existing LeanOS command"), "Root AGENT.md should map natural language to commands when clear");
+  assert(rootAgent.includes("## Natural Intent Map"), "Root AGENT.md should include a compact natural intent map");
+  assert(rootAgent.includes("Use this map as routing guidance, not as execution detail"), "Root AGENT.md should keep intent map lightweight");
+  assert(rootAgent.includes("New idea or feature evaluation: `strategy/AGENT.md`"), "Root AGENT.md should route idea evaluation through Strategy AGENT");
+  assert(rootAgent.includes("Roadmap item to Epic or Epic to Features: `operations/AGENT.md`"), "Root AGENT.md should route delivery planning through Operations AGENT");
+  assert(rootAgent.includes("Feature implementation: `.leanos/commands/workon-feature.md`"), "Root AGENT.md should map implementation intent to /workon-feature");
+  assert(rootAgent.includes("GitHub sync: `.leanos/commands/github-sync.md`"), "Root AGENT.md should map GitHub sync intent to /github-sync");
   assert(rootAgent.includes("## Status And Readiness Questions"), "Root AGENT.md should handle status and readiness questions");
   assert(rootAgent.includes("`.leanos/agent/protocols/where-we-are.md`"), "Root AGENT.md should route status and readiness questions to the where-we-are protocol");
   assert(rootAgent.includes("do not answer from memory"), "Root AGENT.md should avoid memory-only status answers");
@@ -1735,7 +1742,16 @@ async function assertFounderIntentRouting(rootDir) {
   assert(statusLeanOSCommand.includes("../agent/protocols/where-we-are.md"), "Status LeanOS command should load where-we-are protocol");
   assert(statusLeanOSCommand.includes("Treat `/status-leanos` as a request to run the `where-we-are` protocol"), "Status LeanOS command should be a where-we-are entrypoint");
   assert(statusLeanOSCommand.includes("None by default"), "Status LeanOS command should be diagnostic by default");
+  assert(statusLeanOSCommand.includes("`/status-leanos` is diagnostic"), "Status LeanOS command should explicitly forbid writes by default");
   assert(statusLeanOSCommand.includes("mark work as ready to develop without checking `where-we-are.md` and `ready-to-develop.md`"), "Status LeanOS command should guard development readiness");
+  assert(checkCoherenceCommand.includes("# /check coherence"), "Check coherence command should use /check coherence heading");
+  assert(checkCoherenceCommand.includes("Use a 0-100 score"), "Check coherence command should define a coherence score");
+  assert(checkCoherenceCommand.includes("alignments"), "Check coherence command should report alignments");
+  assert(checkCoherenceCommand.includes("inconsistencies"), "Check coherence command should report inconsistencies");
+  assert(checkCoherenceCommand.includes("risks"), "Check coherence command should report risks");
+  assert(checkCoherenceCommand.includes("Recommended next route"), "Check coherence command should recommend a next route");
+  assert(checkCoherenceCommand.includes("None by default"), "Check coherence command should be diagnostic by default");
+  assert(checkCoherenceCommand.includes("must not write files unless the founder explicitly asks"), "Check coherence command should not write by default");
   assert.equal(await exists(join(rootDir, ".leanos", "commands", "shape-mvp.md")), false, "Shape MVP command should not be generated");
   assert(commandsReadme.includes("define-mvp.md"), "Commands README should list define-mvp.md");
   assert(commandsReadme.includes("/define-mvp"), "Commands README should list /define-mvp");

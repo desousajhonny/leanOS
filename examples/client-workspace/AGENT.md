@@ -63,6 +63,22 @@ Examples:
 - "define the MVP" -> `.leanos/commands/define-mvp.md`
 - "review this PR" -> `.leanos/commands/review-pr.md`
 
+## Natural Intent Map
+
+Use this map as routing guidance, not as execution detail. After selecting the route, load the owning command, department or workflow and let that file decide the next step.
+
+- Setup or restart LeanOS: `.leanos/commands/start-leanos.md`
+- Status, resume or readiness: `.leanos/commands/status-leanos.md`
+- MVP definition: `.leanos/commands/define-mvp.md`
+- Coherence check: `.leanos/commands/check-coherence.md`
+- New idea or feature evaluation: `strategy/AGENT.md`
+- Roadmap/backlog promotion: `strategy/AGENT.md`
+- Roadmap item to Epic or Epic to Features: `operations/AGENT.md`
+- Feature implementation: `.leanos/commands/workon-feature.md`
+- GitHub sync: `.leanos/commands/github-sync.md`
+- PR preparation or review: `operations/AGENT.md`
+- Post-merge continuation: `operations/AGENT.md`
+
 If no command clearly matches, route through the Navigation Chain.
 
 ## Status And Readiness Questions

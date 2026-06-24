@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Prepare a PR summary.
+Prepare a PR summary and Founder Testing Guide.
 
 Prepare a pull request draft that follows LeanOS structure and GitHub conventions.
 

@@ -19,6 +19,7 @@ export function commandFiles(activeAreas: AreaDefinition[]): FileEntry[] {
 function commandContent(command: CommandDefinition, activeAreas: AreaDefinition[], activeKeys: Subarea[]): string {
   if (command.slug === "start-leanos") return startCommand(activeAreas);
   if (command.slug === "status-leanos") return statusLeanOSCommand(command, activeKeys);
+  if (command.slug === "check-coherence") return checkCoherenceCommand(command, activeKeys);
   if (command.assetCreation) return assetCreationCommand(command, activeAreas);
   if (command.slug === "define-mvp") return defineMvpCommand(command, activeKeys);
   if (command.slug === "define-design") return defineDesignCommand(command, activeKeys);
@@ -109,6 +110,188 @@ Quer seguir por esse caminho?
 \`\`\`
 
 After the founder-friendly answer, optionally list the files inspected.
+
+## Active Areas
+
+${activeSubareas.map((area) => `- ${area}`).join("\n")}
+`;
+}
+
+function checkCoherenceCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
+  const active = new Set(activeSubareas);
+  const productLoad = active.has("strategy.product")
+    ? [
+        "- `../../strategy/AGENT.md`",
+        "- `../../strategy/product/AGENT.md`",
+        "- `../../strategy/product/knowledge/brief.md`",
+        "- `../../strategy/product/knowledge/problem.md`",
+        "- `../../strategy/product/knowledge/icp.md`",
+        "- `../../strategy/product/knowledge/value-proposition.md`",
+        "- `../../strategy/product/knowledge/positioning.md`",
+        "- `../../strategy/product/knowledge/business-model-canvas.md`"
+      ].join("\n")
+    : "- `strategy.product` is not active. Do not load missing Strategy Product paths; ask for product context before scoring product coherence.";
+  const roadmapLoad = active.has("strategy.roadmap")
+    ? [
+        "- `../../strategy/roadmap/AGENT.md`",
+        "- `../../strategy/roadmap/knowledge/backlog.md`",
+        "- `../../strategy/roadmap/knowledge/roadmap.md`",
+        "- `../../strategy/roadmap/knowledge/current-cycle.md`"
+      ].join("\n")
+    : "- `strategy.roadmap` is not active. Name roadmap coherence as unavailable instead of inventing roadmap state.";
+  const productOpsLoad = active.has("operations.product-ops")
+    ? [
+        "- `../../operations/AGENT.md`",
+        "- `../../operations/product-ops/AGENT.md`",
+        "- `../../operations/product-ops/knowledge/mvp-decision-gate.md`",
+        "- `../../operations/product-ops/knowledge/ready-to-develop.md`",
+        "- `../../operations/product-ops/mvp/scope.md`",
+        "- `../../operations/product-ops/mvp/prd.md`",
+        "- `../../operations/product-ops/mvp/acceptance-criteria.md`",
+        "- `../../operations/product-ops/epics/README.md`"
+      ].join("\n")
+    : "- `operations.product-ops` is not active. Name MVP and Feature readiness as unavailable instead of inventing delivery coherence.";
+  const designLoad = active.has("operations.design")
+    ? [
+        "- `../../operations/design/AGENT.md`",
+        "- `../../operations/design/knowledge/design-system.md`",
+        "- `../../operations/design/knowledge/accessibility.md`",
+        "- `../../operations/design/knowledge/user-flows.md`",
+        "- `../../operations/design/knowledge/component-inventory.md`"
+      ].join("\n")
+    : "- `operations.design` is not active. Mark Design coherence as not applicable unless the request is user-facing.";
+  const securityLoad = active.has("operations.security")
+    ? [
+        "- `../../operations/security/AGENT.md`",
+        "- `../../operations/security/knowledge/security-baseline.md`",
+        "- `../../operations/security/knowledge/threat-model.md`",
+        "- `../../operations/security/knowledge/data-protection.md`"
+      ].join("\n")
+    : "- `operations.security` is not active. Mark Security coherence as unavailable when data/auth/privacy risk is present.";
+  const engineeringLoad = active.has("operations.engineering")
+    ? [
+        "- `../../operations/engineering/AGENT.md`",
+        "- `../../operations/engineering/knowledge/implementation-rules.md`",
+        "- `../../operations/engineering/knowledge/code-standards.md`",
+        "- `../../operations/engineering/knowledge/testing-strategy.md`"
+      ].join("\n")
+    : "- `operations.engineering` is not active. Mark Engineering coherence as unavailable for implementation readiness.";
+
+  return `# ${formatCommandInvocation(command.slug)}
+
+## Purpose
+
+${command.purpose}
+
+Use this command to diagnose whether Strategy, MVP, Roadmap, Design, Security and Engineering point in the same direction before promoting work, creating Features or starting implementation.
+
+This is a diagnostic command. It should recommend the next safe route, not rewrite the workspace by default.
+
+## Load First
+
+Always read:
+
+- \`../../AGENT.md\`
+- \`../agent/protocols/where-we-are.md\`
+- \`../context/workspace-summary.md\`
+- \`../context/current-focus.md\`
+- \`../context/next-actions.md\`
+- \`../index/routing-map.yaml\`
+- \`../../leanos.yaml\`
+
+Strategy Product:
+
+${productLoad}
+
+Strategy Roadmap:
+
+${roadmapLoad}
+
+Product Ops:
+
+${productOpsLoad}
+
+Design:
+
+${designLoad}
+
+Security:
+
+${securityLoad}
+
+Engineering:
+
+${engineeringLoad}
+
+## Navigation Route
+
+1. \`../../AGENT.md\`
+2. \`../agent/protocols/where-we-are.md\`
+3. Owning department or area \`AGENT.md\` for each active coherence dimension
+4. Output diagnosis and next route
+
+Do not enter roles, skills or playbooks unless the diagnosis shows a specific route is needed after the founder confirms the next step.
+
+## Process
+
+1. Classify the current product moment with \`where-we-are.md\`.
+2. Compare Strategy Product against MVP scope and roadmap direction.
+3. Compare MVP scope against PRD, acceptance criteria, non-goals and delivery scope.
+4. Compare roadmap/backlog items against Epics and Features when Product Ops is active.
+5. Check Design coherence only when UX, UI, copy, accessibility, screens, states, components or flows are relevant.
+6. Check Security coherence only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is relevant.
+7. Check Engineering coherence only when implementation, tests, code standards or delivery readiness are relevant.
+8. Score coherence and explain the reason in founder-friendly language.
+9. Recommend one next safe route; do not recommend several competing routes unless the founder asks for options.
+
+## Scoring Model
+
+Use a 0-100 score:
+
+- 90-100: coherent enough to continue the next workflow.
+- 70-89: mostly coherent, with named gaps to resolve soon.
+- 40-69: risky; resolve the highest-impact gap before delivery work.
+- 0-39: not coherent enough to plan delivery or implementation.
+
+Always include:
+
+- alignments;
+- inconsistencies;
+- risks;
+- missing context;
+- recommended next route.
+
+## Allowed Updates
+
+None by default.
+
+\`/check coherence\` may propose updates, but it must not write files unless the founder explicitly asks to apply a specific correction after the diagnosis.
+
+## Forbidden Updates
+
+During \`/check coherence\`, do not:
+
+- rewrite Strategy, MVP, Roadmap, Design, Security or Engineering files by default;
+- create Epics, Features, branches, commits, PRs or GitHub payloads;
+- call GitHub, deployment or external APIs;
+- mark work as ready to develop without checking \`where-we-are.md\` and \`ready-to-develop.md\`;
+- modify roles, skills, playbooks, workflows, commands or \`ai-standard/\`.
+
+## Confirmation Rule
+
+Ask before writing any file or moving into a workflow that changes product, roadmap, delivery or remote state.
+
+## Expected Output
+
+- Coherence score
+- Current product moment
+- What is aligned
+- What is inconsistent
+- What is missing
+- Risks if the founder skips the gap
+- Recommended next route
+- Files inspected
+- Optional proposed update, only after the plain-language diagnosis
 
 ## Active Areas
 
@@ -1120,7 +1303,7 @@ function reviewPrCommand(command: CommandDefinition, activeSubareas: Subarea[]):
 
 ${command.purpose}
 
-Review a PR against LeanOS issue, MVP, product, design, security and engineering criteria.
+Review a PR against the linked LeanOS Feature or mapped GitHub issue, MVP, product, design, security, testing and engineering criteria.
 
 ## Load First
 
@@ -1134,6 +1317,8 @@ Read:
 - \`../../operations/engineering/knowledge/code-standards.md\`
 - \`../../operations/engineering/skills/review-pr.skill.md\`
 - \`../../operations/engineering/playbooks/pr-validation.playbook.md\`
+- \`../../operations/product-ops/knowledge/ready-to-develop.md\`
+- \`../../operations/product-ops/epics/README.md\`
 - \`../../ai-standard/templates/review/code-review-template.md\`
 - \`../../.github/leanos/pr-validation-rules.md\`
 
@@ -1141,8 +1326,8 @@ If \`operations.engineering\` is not active, do not load missing paths. Ask whet
 
 ## Process
 
-1. Load the PR description, linked issue and diff when available.
-2. Check scope against the issue and MVP acceptance criteria.
+1. Load the PR description, linked Feature or GitHub issue and diff when available.
+2. Check scope against the Feature, parent Epic and MVP acceptance criteria.
 3. Review correctness and likely regressions.
 4. Review tests and manual validation.
 5. Review Product alignment.
@@ -1176,6 +1361,7 @@ Ask before applying review fixes, updating PR text or changing remote PR state.
 
 - Findings by severity
 - File or area references
+- Feature scope result
 - Product alignment result
 - Founder acceptance result
 - Design result or "not applicable"

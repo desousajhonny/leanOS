@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Review a PR.
+Review a PR against Feature scope, tests, founder acceptance and LeanOS criteria.
 
-Review a PR against LeanOS issue, MVP, product, design, security and engineering criteria.
+Review a PR against the linked LeanOS Feature or mapped GitHub issue, MVP, product, design, security, testing and engineering criteria.
 
 ## Load First
 
@@ -18,6 +18,8 @@ Read:
 - `../../operations/engineering/knowledge/code-standards.md`
 - `../../operations/engineering/skills/review-pr.skill.md`
 - `../../operations/engineering/playbooks/pr-validation.playbook.md`
+- `../../operations/product-ops/knowledge/ready-to-develop.md`
+- `../../operations/product-ops/epics/README.md`
 - `../../ai-standard/templates/review/code-review-template.md`
 - `../../.github/leanos/pr-validation-rules.md`
 
@@ -25,8 +27,8 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 
 ## Process
 
-1. Load the PR description, linked issue and diff when available.
-2. Check scope against the issue and MVP acceptance criteria.
+1. Load the PR description, linked Feature or GitHub issue and diff when available.
+2. Check scope against the Feature, parent Epic and MVP acceptance criteria.
 3. Review correctness and likely regressions.
 4. Review tests and manual validation.
 5. Review Product alignment.
@@ -60,6 +62,7 @@ Ask before applying review fixes, updating PR text or changing remote PR state.
 
 - Findings by severity
 - File or area references
+- Feature scope result
 - Product alignment result
 - Founder acceptance result
 - Design result or "not applicable"

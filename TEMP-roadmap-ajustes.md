@@ -319,7 +319,7 @@ O modelo deve entregar:
 
 ### 1. Padronizar Comandos Principais
 
-Status: proximo bloco recomendado agora que os workflows locais foram revisados e protegidos por validacao automatica.
+Status: comandos principais padronizados no scaffold; falta validar em teste externo de Founder Journey.
 
 Objetivo: garantir que os comandos centrais sejam portas de entrada consistentes, previsiveis, confirmaveis e roteadas pela Navigation Chain.
 
@@ -340,14 +340,14 @@ Objetivo: todo comando gerado em `.leanos/commands/` deve ser uma porta de entra
 - [x] Atualizar `validate-generator.mjs` para validar o contrato minimo dos comandos principais.
 - [x] Validar que comandos multi-area carregam o workflow correspondente antes de role/skill/playbook.
 - [x] Validar que comandos de GitHub/API declaram dry-run/payload e confirmacao antes de escrita remota.
-- [ ] Validar que comandos de diagnostico, como `/status-leanos`, nao escrevem arquivos por padrao.
+- [x] Validar que comandos de diagnostico, como `/status-leanos` e `/check coherence`, nao escrevem arquivos por padrao.
 - [x] Validar que comandos ligados a areas inativas mostram aviso em vez de apontar para paths ausentes.
 
 #### Mapa Canonico De Intencoes
 
 Objetivo: garantir que linguagem natural e slash commands equivalentes caiam no mesmo fluxo.
 
-- [ ] Mapear intencoes naturais para workflows:
+- [x] Mapear intencoes naturais para comandos/departamentos/workflows sem poluir o root:
   - "onde paramos?", "o que falta?", "podemos desenvolver agora?" -> `status-leanos` / `where-we-are`
   - "vamos definir o MVP" -> `/define-mvp` -> `operations/workflows/define-mvp.workflow.md`
   - "tenho uma ideia" -> `strategy/workflows/new-idea-intake.workflow.md`
@@ -356,7 +356,10 @@ Objetivo: garantir que linguagem natural e slash commands equivalentes caiam no 
   - "quebre esse epic em features" -> `operations/workflows/epic-to-features.workflow.md`
   - "implemente essa feature" -> `operations/workflows/feature-to-delivery-cycle.workflow.md`
   - "PR mergeado, e agora?" -> `operations/workflows/post-merge-continuation.workflow.md`
-- [ ] Atualizar `AGENT.md` raiz, se necessario, para reforcar que o modelo identifica intencao e roteia para departamento/workflow sem listar tudo no root.
+- [x] Atualizar `AGENT.md` raiz com `Natural Intent Map` curto:
+  - o root aponta para comando/departamento correto;
+  - workflow detalhado continua sendo decisao do department/area `AGENT.md`;
+  - nao lista todos os workflows nem pula a Navigation Chain.
 - [ ] Validar no teste externo que o modelo nao precisa de slash command para chegar ao fluxo correto.
 
 Regras gerais:
@@ -372,28 +375,29 @@ Regras gerais:
   - forbidden updates
   - confirmation rule
   - expected output
-- [ ] Todo comando que altera arquivo deve propor primeiro e escrever somente apos confirmacao.
+- [x] Todo comando que altera arquivo deve propor primeiro e escrever somente apos confirmacao.
 - [x] Todo comando que envolve GitHub/API deve gerar plano ou payload antes de qualquer chamada remota.
 - [x] Nenhum comando deve apontar para area inativa sem aviso explicito.
-- [ ] Slash commands continuam como atalhos; a experiencia principal deve continuar chat-first.
-- [ ] Pedido em linguagem natural e slash command equivalente devem seguir o mesmo workflow.
+- [x] Slash commands continuam como atalhos; a experiencia principal deve continuar chat-first.
+- [x] Pedido em linguagem natural e slash command equivalente devem seguir o mesmo workflow ou o mesmo department owner.
 
 #### `/check coherence`
 
-- [ ] Definir score de coerencia.
-- [ ] Listar alinhamentos.
-- [ ] Listar inconsistencias.
-- [ ] Listar riscos.
-- [ ] Recomendar proximo passo.
-- [ ] Evitar recomendar areas inativas sem aviso.
-- [ ] Verificar coerencia entre Strategy, MVP, Roadmap, Design, Security e Engineering quando essas areas estiverem ativas.
+- [x] Definir score de coerencia.
+- [x] Listar alinhamentos.
+- [x] Listar inconsistencias.
+- [x] Listar riscos.
+- [x] Recomendar proximo passo.
+- [x] Evitar recomendar areas inativas sem aviso.
+- [x] Verificar coerencia entre Strategy, MVP, Roadmap, Design, Security e Engineering quando essas areas estiverem ativas.
+- [x] Manter comando diagnostico, sem escrita por padrao.
 
 #### `/define-mvp`
 
-- [ ] Definir inputs obrigatorios.
-- [ ] Carregar Strategy antes de Operations.
-- [ ] Roteiar para `operations/product-ops/AGENT.md`.
-- [ ] Separar:
+- [x] Definir inputs obrigatorios.
+- [x] Carregar Strategy antes de Operations.
+- [x] Roteiar para `operations/workflows/define-mvp.workflow.md` e depois `operations/product-ops/AGENT.md`.
+- [x] Separar:
   - MVP scope
   - non-goals
   - user stories
@@ -401,8 +405,8 @@ Regras gerais:
   - acceptance criteria
   - release checklist
   - PRD, quando fizer sentido
-- [ ] Evitar definir MVP sem problema, ICP e value proposition minimamente claros.
-- [ ] Pedir confirmacao antes de atualizar arquivos.
+- [x] Evitar definir MVP sem problema, ICP e value proposition minimamente claros.
+- [x] Pedir confirmacao antes de atualizar arquivos.
 
 #### `/create features`
 
@@ -436,13 +440,14 @@ Regras gerais:
 
 #### `/review pr`
 
-- [ ] Validar PR contra escopo da issue.
-- [ ] Validar contra acceptance criteria.
-- [ ] Validar contra MVP scope quando aplicavel.
-- [ ] Validar riscos de produto, design, seguranca e engenharia quando aplicavel.
-- [ ] Separar bugs, riscos, perguntas e sugestoes.
-- [ ] Usar templates e criterios de review em `ai-standard/templates/review/`.
-- [ ] Evitar aprovar mudanca que contradiga contexto aprovado.
+- [x] Validar PR contra escopo da Feature ou GitHub issue mapeada.
+- [x] Validar contra acceptance criteria.
+- [x] Validar contra MVP scope quando aplicavel.
+- [x] Validar riscos de produto, design, seguranca e engenharia quando aplicavel.
+- [x] Separar bugs, riscos, perguntas e sugestoes.
+- [x] Usar templates e criterios de review em `ai-standard/templates/review/`.
+- [x] Validar `Founder Testing Guide` para founder nao tecnico.
+- [x] Evitar aprovar mudanca que contradiga contexto aprovado.
 
 ### 2. Revisar Workflows Locais
 
