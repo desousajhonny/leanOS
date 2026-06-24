@@ -973,6 +973,128 @@ Objetivo: preparar a futura automacao GitHub sem transformar o founder em operad
 
 Decisao: o LeanOS Chief nao chama API diretamente. O modelo entende a intencao, carrega contexto, propoe plano/payload e pede confirmacao. A execucao real fica para capability/script seguro.
 
+#### Direcao Para `/github-sync`
+
+Decisao: `/github-sync` sera a porta unica para GitHub readiness e sync. Ele nao deve assumir que GitHub ja esta pronto.
+
+Fluxo esperado:
+
+1. Founder chama `/github-sync` ou pede em linguagem natural para sincronizar Epics/Features com GitHub.
+2. Root `AGENT.md` carrega `.leanos/commands/github-sync.md`.
+3. O comando inicia por GitHub readiness check, nao por sync.
+4. Se faltar configuracao, o modelo para o sync e guia o founder pela configuracao GitHub.
+5. Depois que GitHub estiver pronto, o comando gera um dry-run de sync.
+6. Apenas depois de confirmacao explicita, uma capability/script futuro executa a escrita real.
+7. O resultado volta para `.github/leanos/sync-state.yaml`, sem segredos.
+
+O comando deve checar:
+
+- [ ] `.github/leanos/project-sync.yaml` existe.
+- [ ] `project-sync.yaml` nao esta com `TODO` em `owner`, `repository`, `project.type`, `project.number` ou `project.url`.
+- [ ] `.github/leanos/sync-state.yaml` existe.
+- [ ] `.github/leanos/work-mapping.md` existe e explica Epic -> Feature -> Task.
+- [ ] `.github/leanos/labels.yaml` declara labels minimas: `leanos`, `epic`, `feature`.
+- [ ] templates de Epic e Feature existem:
+  - `.github/ISSUE_TEMPLATE/epic.yml`
+  - `.github/ISSUE_TEMPLATE/feature.yml`
+  - `ai-standard/templates/github/github-epic-template.md`
+  - `ai-standard/templates/github/github-feature-template.md`
+- [ ] token source esta definido:
+  - `LEANOS_GITHUB_TOKEN`;
+  - `GITHUB_TOKEN`;
+  - `GH_TOKEN`;
+  - ou GitHub CLI autenticado.
+- [ ] `.env.local` existe quando GitHub management foi selecionado no wizard.
+- [ ] `gh` esta instalado/autenticado quando a acao depender de GitHub CLI local.
+- [ ] o repositorio local possui remote quando o modo for `existing-product-repo`.
+- [ ] labels, milestones e Project fields estao definidos ou planejados.
+
+Se readiness falhar:
+
+- [ ] `/github-sync` nao gera payload de sync.
+- [ ] O modelo explica o que esta faltando em linguagem founder-friendly.
+- [ ] O modelo roteia para:
+  - `operations/devops/AGENT.md`
+  - `operations/devops/roles/github-devops.role.md`
+  - `operations/devops/skills/configure-github-project.skill.md`
+  - `operations/devops/playbooks/configure-github-project.playbook.md`
+- [ ] O modelo pode propor atualizacoes em:
+  - `operations/devops/knowledge/github-management.md`
+  - `.github/leanos/project-sync.yaml`
+  - `.github/leanos/labels.yaml`
+- [ ] O modelo nunca pede para o founder colar token no chat ou em arquivo versionado.
+- [ ] O modelo orienta o founder a colocar token apenas em ambiente local/seguro.
+
+Se readiness passar:
+
+- [ ] Product Ops entra para ler Epics e Features locais:
+  - `operations/product-ops/AGENT.md`
+  - `operations/product-ops/epics/README.md`
+  - `operations/product-ops/knowledge/work-taxonomy.md`
+- [ ] DevOps entra para validar GitHub setup e project mapping.
+- [ ] Strategy/Roadmap entra apenas quando o sync depender de roadmap/milestone/ciclo.
+- [ ] Security entra apenas se houver risco de token, segredo, permissao ou automacao insegura.
+- [ ] O modelo compara local com `.github/leanos/sync-state.yaml`.
+- [ ] O modelo classifica cada item como:
+  - `create`;
+  - `update`;
+  - `already_synced`;
+  - `conflict`;
+  - `skip`.
+- [ ] O modelo gera dry-run com:
+  - Epics que seriam criados/atualizados;
+  - Features que seriam criadas/atualizadas;
+  - milestones que seriam criadas/atualizadas;
+  - labels aplicadas;
+  - Project fields preenchidos;
+  - conflitos e riscos.
+
+#### Ownership Do Sync
+
+Quem decide o que sincronizar:
+
+- Product Ops decide se Epic/Feature local esta bem estruturado para sync.
+- Strategy/Roadmap decide milestone, ciclo e relacao com roadmap quando aplicavel.
+- DevOps/GitHub DevOps decide se GitHub esta configurado e seguro para escrita.
+- Security revisa token/permissao/automacao quando houver risco.
+
+Quem executa a escrita real:
+
+- O modelo nao executa GitHub API diretamente.
+- O modelo prepara plano/payload e pede confirmacao.
+- Uma future capability/script executa:
+  - criar/atualizar GitHub Project;
+  - criar/atualizar milestones;
+  - criar/atualizar labels;
+  - criar/atualizar Epic issues;
+  - criar/atualizar Feature issues;
+  - adicionar issues ao GitHub Project;
+  - preencher campos de Project;
+  - devolver IDs/numeros para `sync-state.yaml`.
+
+Token e permissoes:
+
+- [ ] Nao usar a expressao "token global" como padrao recomendado.
+- [ ] Recomendar token com menor escopo suficiente para repositorio/organizacao/projeto escolhido.
+- [ ] Aceitar `LEANOS_GITHUB_TOKEN`, `GITHUB_TOKEN`, `GH_TOKEN` ou `gh auth`.
+- [ ] Registrar que GitHub Projects pode exigir permissao especifica de Projects alem de Issues.
+- [ ] Registrar que GitHub App pode ser uma alternativa futura mais segura para automacao duradoura.
+- [ ] Nunca persistir token em arquivos versionados.
+
+#### GitHub Project Setup No Wizard
+
+Quando o usuario selecionar GitHub management no wizard:
+
+- [ ] Gerar `.env.local` com variaveis vazias e aviso de seguranca.
+- [ ] Gerar `.github/leanos/project-sync.yaml` com TODOs claros.
+- [ ] Gerar `.github/leanos/github-settings.example.json` como exemplo.
+- [ ] Gerar `.github/leanos/sync-state.yaml` vazio/seguro.
+- [ ] Gerar `.github/leanos/labels.yaml`.
+- [ ] Gerar `.github/leanos/work-mapping.md`.
+- [ ] Mostrar no final do CLI que o proximo passo e pedir no chat:
+  - "configure GitHub para o LeanOS";
+  - ou rodar `/github-sync`, que fara o readiness check antes de sincronizar.
+
 Antes de implementar, decidir:
 
 - [ ] Qual e a fonte de verdade primaria para Epics e Features:
@@ -1013,6 +1135,27 @@ Pendencias:
 - [ ] Definir como lidar com repositorio existente vs produto novo.
 - [ ] Documentar quais arquivos `.github/leanos/` sao configuracao, estado e templates.
 - [ ] Garantir que tokens nunca sejam persistidos em arquivos versionados.
+- [ ] Atualizar `.leanos/commands/github-sync.md` para formalizar readiness check como primeira fase obrigatoria.
+- [ ] Atualizar `operations/devops/playbooks/configure-github-project.playbook.md` com guia founder-friendly:
+  - onde achar owner/repository;
+  - como achar Project URL/number;
+  - como escolher user project vs organization project;
+  - como configurar token sem colar segredo no chat;
+  - como validar `gh auth status` quando GitHub CLI estiver disponivel.
+- [ ] Atualizar `operations/devops/skills/configure-github-project.skill.md` para separar:
+  - setup local;
+  - token readiness;
+  - GitHub Project readiness;
+  - labels/milestones readiness;
+  - sync dry-run readiness.
+- [ ] Atualizar `operations/devops/knowledge/github-management.md` para registrar a configuracao confirmada do founder.
+- [ ] Atualizar `validate-generator.mjs` para validar que o comando `/github-sync` contem:
+  - readiness check;
+  - setup fallback;
+  - dry-run;
+  - sync-state;
+  - proibicao de token em arquivos versionados;
+  - proibicao de API direta pelo modelo.
 
 ### 4. Teste Externo da Founder Journey
 
