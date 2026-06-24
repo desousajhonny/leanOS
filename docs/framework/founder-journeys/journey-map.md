@@ -5,7 +5,7 @@ Use this map to track which founder journeys have been designed with `journey-te
 | Status | Etapa | Momento | Journey File | Workflow / Entrada | Intencao do Founder |
 | --- | --- | --- | --- | --- | --- |
 | [ ] | 0 | Setup inicial | `start-leanos.md` | `.leanos/commands/start-leanos.md` + Strategy Baseline | "vamos comecar", "configurar o LeanOS", "iniciar o projeto" |
-| [ ] | 1 | Primeira definicao do produto | `define-mvp.md` | `operations/workflows/define-mvp.workflow.md` ou `operations/product-ops/playbooks/mvp-delivery.playbook.md` | "Defina o MVP", "qual a primeira versao?", "o que entra no MVP?" |
+| [x] | 1 | Primeira definicao do produto | `shape-mvp.md` | `.leanos/commands/shape-mvp.md` + `operations/workflows/define-mvp.workflow.md` | "Defina o MVP", "shape the MVP", "qual a primeira versao?", "o que entra no MVP?" |
 | [x] | 2 | Novas ideias e features | `new-idea-intake.md` | `strategy/workflows/new-idea-intake.workflow.md` | "Tenho uma ideia", "quero avaliar uma feature nova", "isso faz sentido para o produto?" |
 | [x] | 3 | Decisao de roadmap | `idea-to-roadmap.md` | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" |
 | [x] | 4 | Roadmap item para Epic local | `roadmap-item-to-epic.md` | `operations/workflows/roadmap-item-to-epic.workflow.md` | "Isso entra na proxima entrega?", "isso entra no MVP?", "crie um epic para esse item" |
