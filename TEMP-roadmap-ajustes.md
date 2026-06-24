@@ -362,7 +362,7 @@ Checklist de implementacao:
   - `component-implementation.playbook.md`: usado quando existe component spec aprovada;
   - `issue-to-pr.playbook.md`: usado depois de implementacao e testes;
   - `pr-validation.playbook.md`: etapa final antes de recomendar merge.
-- [ ] Garantir que `engineering-delivery` declare gates:
+- [x] Garantir que `engineering-delivery` declare gates:
   - nao editar codigo antes de branch;
   - nao implementar componente novo sem spec de Design quando aplicavel;
   - nao abrir PR sem resumo de testes ou justificativa de gap;

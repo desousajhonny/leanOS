@@ -2532,6 +2532,11 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(engineeringDelivery.includes("skills/write-tests.skill.md"), "Engineering delivery playbook should require tests or test-gap explanation");
   assert(engineeringDelivery.includes("playbooks/issue-to-pr.playbook.md"), "Engineering delivery playbook should prepare PR through issue-to-pr");
   assert(engineeringDelivery.includes("playbooks/pr-validation.playbook.md"), "Engineering delivery playbook should end with PR validation");
+  assert(engineeringDelivery.includes("## Gates"), "Engineering delivery playbook should declare explicit gates");
+  assert(engineeringDelivery.includes("Do not edit code before an issue-linked branch"), "Engineering delivery should gate code behind branch creation");
+  assert(engineeringDelivery.includes("Do not implement a new user-facing component without an approved Design component spec"), "Engineering delivery should gate new components behind Design spec");
+  assert(engineeringDelivery.includes("Do not open or prepare a PR without tests"), "Engineering delivery should gate PR behind tests or validation notes");
+  assert(engineeringDelivery.includes("Do not recommend merge before `playbooks/pr-validation.playbook.md` is complete"), "Engineering delivery should gate merge recommendation behind PR validation");
   assert(engineeringDelivery.includes("Stop Conditions"), "Engineering delivery playbook should include stop conditions");
   assert(componentImplementation.includes("Approved Design component spec"), "Component implementation playbook should require approved Design spec");
   assert(branchPlaybook.includes("branch step of `engineering-delivery.playbook.md`"), "Branch playbook should identify itself as engineering-delivery branch step");

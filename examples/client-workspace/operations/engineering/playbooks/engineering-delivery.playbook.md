@@ -48,6 +48,14 @@ Orchestrate the internal Engineering path from a ready Feature to branch, implem
 9. Use `playbooks/issue-to-pr.playbook.md` to prepare PR scope, test notes, risks and screenshots or UX notes when applicable
 10. Use `playbooks/pr-validation.playbook.md` before recommending merge readiness
 
+## Gates
+
+- Do not edit code before an issue-linked branch is created or confirmed.
+- Do not implement a new user-facing component without an approved Design component spec when component readiness is applicable.
+- Do not open or prepare a PR without tests, manual validation notes or a clear test-gap explanation.
+- Do not recommend merge before `playbooks/pr-validation.playbook.md` is complete.
+- Do not expand beyond the confirmed Feature scope without founder confirmation.
+
 ## Security Gate
 
 - Stop before implementation when Security triggers apply and no Security readiness exists.

@@ -141,6 +141,7 @@ export type PlaybookDefinition = {
   inputs?: string[];
   steps: string[];
   guidedConversation?: string[];
+  gates?: string[];
   securityGate?: string[];
   outputs?: string[];
   filesToUpdate?: string[];

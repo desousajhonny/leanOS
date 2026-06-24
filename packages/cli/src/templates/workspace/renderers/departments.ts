@@ -529,7 +529,7 @@ ${(playbook.inputs ?? ["Area knowledge", "Active role instructions", "User reque
 
 ## Steps
 
-${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}${playbook.guidedConversation ? `\n\n${guidedConversationSection(playbook.guidedConversation)}\n` : "\n"}
+${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}${playbook.guidedConversation ? `\n\n${guidedConversationSection(playbook.guidedConversation)}\n` : "\n"}${playbook.gates ? `\n## Gates\n\n${playbook.gates.map((item) => `- ${item}`).join("\n")}\n` : ""}
 ## Security Gate
 
 ${(playbook.securityGate ?? ["Stop when security context is missing or risk is unclear."]).map((item) => `- ${item}`).join("\n")}
