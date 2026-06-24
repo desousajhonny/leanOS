@@ -17,34 +17,38 @@ flowchart TD
   B["Root AGENT routes to Operations"]
   C["operations/AGENT.md identifies feature shaping"]
   D["operations/workflows/epic-to-features.workflow.md"]
-  E{"Local Epic exists and is scoped?"}
+  E{"Route files exist?"}
   F["Explain missing Epic/scope and stop"]
-  G["operations/product-ops/AGENT.md"]
-  H["Product Owner role"]
-  I["shape-epic.skill.md"]
-  J{"Epic ready for breakdown?"}
-  K["Explain Epic gaps and stop"]
-  L["write-feature-criteria.skill.md"]
-  M["Apply DRM per Feature"]
-  N{"Design/Security/DevOps needed?"}
-  O["Route conditional areas only when applicable"]
-  P["Engineering validates boundaries/tests/size"]
-  Q["Propose Feature files + Tasks"]
-  R{"Founder confirms file updates?"}
-  S["Write local Feature files"]
-  T["Stop without writing"]
-  U["Bridge: ready-to-develop then feature-to-delivery-cycle"]
+  G{"Local Epic exists and is scoped?"}
+  H["Explain missing route/file and stop"]
+  I["operations/product-ops/AGENT.md"]
+  J["Product Owner role"]
+  K["shape-epic.skill.md"]
+  L{"Epic ready for breakdown?"}
+  M["Explain Epic gaps and stop"]
+  N["write-feature-criteria.skill.md"]
+  O["Apply DRM per Feature"]
+  P{"Design/Security/DevOps needed?"}
+  Q["Route conditional areas only when applicable"]
+  R["Engineering validates boundaries/tests/size"]
+  S["Propose Feature files + Tasks"]
+  T{"Founder confirms file updates?"}
+  U["Write local Feature files"]
+  V["Stop without writing"]
+  W["Bridge: ready-to-develop then feature-to-delivery-cycle"]
 
   A --> B --> C --> D --> E
-  E -->|No| F
-  E -->|Yes| G --> H --> I --> J
-  J -->|No| K
-  J -->|Yes| L --> M --> N
-  N -->|Yes| O --> P
-  N -->|No| P
-  P --> Q --> R
-  R -->|Yes| S --> U
-  R -->|No| T
+  E -->|No| H
+  E -->|Yes| G
+  G -->|No| F
+  G -->|Yes| I --> J --> K --> L
+  L -->|No| M
+  L -->|Yes| N --> O --> P
+  P -->|Yes| Q --> R
+  P -->|No| R
+  R --> S --> T
+  T -->|Yes| U --> W
+  T -->|No| V
 ```
 
 ## Flow In Plain Words

@@ -625,23 +625,68 @@ async function validateWorkspaceFiles() {
   assert(roadmapItemToEpicWorkflow.includes("O Epic local esta pronto."), "Roadmap item to epic workflow should bridge from local epic to features");
   const epicToFeaturesWorkflow = await readFile(join(rootDir, "operations", "workflows", "epic-to-features.workflow.md"), "utf8");
   assert(epicToFeaturesWorkflow.includes("Break a confirmed local LeanOS Epic into implementation-ready Feature files"), "Epic to features workflow should define feature shaping purpose");
+  for (const section of [
+    "## Founder Triggers",
+    "## Owner",
+    "## Conditional Areas",
+    "## Load First",
+    "## Navigation Route",
+    "## Confirmation Gates",
+    "## Allowed Updates",
+    "## Forbidden Updates",
+    "## External Capabilities",
+    "## Stop Conditions",
+    "## Expected Output"
+  ]) {
+    assert(epicToFeaturesWorkflow.includes(section), `Epic to features workflow should include ${section}`);
+  }
+  assert(epicToFeaturesWorkflow.includes("operations/product-ops/AGENT.md"), "Epic to features workflow should route through Product Ops AGENT");
+  assert(epicToFeaturesWorkflow.includes("operations/product-ops/roles/product-owner.role.md"), "Epic to features workflow should route through Product Owner role");
+  assert(epicToFeaturesWorkflow.includes("operations/product-ops/skills/shape-epic.skill.md"), "Epic to features workflow should load shape epic skill");
+  assert(epicToFeaturesWorkflow.includes("operations/product-ops/skills/write-feature-criteria.skill.md"), "Epic to features workflow should load write feature criteria skill");
+  assert(epicToFeaturesWorkflow.includes("operations/product-ops/playbooks/epic-to-features.playbook.md"), "Epic to features workflow should load epic-to-features playbook");
   assert(epicToFeaturesWorkflow.includes("Route Design only when UX"), "Epic to features workflow should make Design conditional");
   assert(epicToFeaturesWorkflow.includes("identify component reuse, component adaptation or the need for a future component spec task"), "Epic to features workflow should detect component readiness during feature shaping");
   assert(epicToFeaturesWorkflow.includes("Do not write full component specs in this workflow"), "Epic to features workflow should not write full component specs during shaping");
   assert(epicToFeaturesWorkflow.includes("Route Security only when data, auth"), "Epic to features workflow should make Security conditional");
   assert(epicToFeaturesWorkflow.includes("Ask Engineering to validate implementation boundaries"), "Epic to features workflow should require Engineering validation");
   assert(epicToFeaturesWorkflow.includes("Stop before branch, code, PR or remote write"), "Epic to features workflow should stop before implementation or remote writes");
+  assert(epicToFeaturesWorkflow.includes("Do not create branches, commits, PRs or code changes in this workflow"), "Epic to features workflow should forbid implementation work");
   assert(epicToFeaturesWorkflow.includes("Next route:\n\n`feature-to-delivery-cycle`"), "Epic to features workflow should bridge to feature delivery cycle");
   const featureDeliveryWorkflow = await readFile(join(rootDir, "operations", "workflows", "feature-to-delivery-cycle.workflow.md"), "utf8");
+  for (const section of [
+    "## Founder Triggers",
+    "## Owner",
+    "## Conditional Areas",
+    "## Load First",
+    "## Navigation Route",
+    "## Confirmation Gates",
+    "## Allowed Updates",
+    "## Forbidden Updates",
+    "## External Capabilities",
+    "## Stop Conditions",
+    "## Expected Output",
+    "## Continuation Bridge"
+  ]) {
+    assert(featureDeliveryWorkflow.includes(section), `Feature delivery workflow should include ${section}`);
+  }
   assert(featureDeliveryWorkflow.includes("Accept only a local Feature or GitHub Feature issue as input"), "Feature delivery workflow should start from a Feature, not a loose idea or Epic");
-  assert(featureDeliveryWorkflow.includes("Load Product Ops first"), "Feature delivery workflow should start with Product Ops readiness");
+  assert(featureDeliveryWorkflow.includes("operations/product-ops/AGENT.md"), "Feature delivery workflow should route through Product Ops AGENT");
+  assert(featureDeliveryWorkflow.includes("Load Product Ops through `operations/product-ops/AGENT.md` first"), "Feature delivery workflow should start with Product Ops readiness");
   assert(featureDeliveryWorkflow.includes("ready-to-develop.md"), "Feature delivery workflow should run the ready-to-develop gate");
   assert(featureDeliveryWorkflow.includes("route Design before Engineering"), "Feature delivery workflow should route Design before Engineering when UI is affected");
   assert(featureDeliveryWorkflow.includes("new component spec is needed and no approved spec exists"), "Feature delivery workflow should handle missing component specs");
   assert(featureDeliveryWorkflow.includes("operations/design/playbooks/component-readiness.playbook.md"), "Feature delivery workflow should route missing component specs to Design");
   assert(featureDeliveryWorkflow.includes("before branch or code"), "Feature delivery workflow should stop before branch or code when Design component readiness is missing");
   assert(featureDeliveryWorkflow.includes("Record why Design, Security or DevOps are not applicable"), "Feature delivery workflow should record non-applicable dimensions");
+  assert(featureDeliveryWorkflow.includes("operations/engineering/AGENT.md"), "Feature delivery workflow should route through Engineering AGENT after readiness");
+  assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/branch-from-issue.playbook.md"), "Feature delivery workflow should require branch playbook");
   assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/component-implementation.playbook.md"), "Feature delivery workflow should run component implementation after approved spec");
+  assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/issue-to-pr.playbook.md"), "Feature delivery workflow should require issue to PR playbook");
+  assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/pr-validation.playbook.md"), "Feature delivery workflow should require PR validation playbook");
+  assert(featureDeliveryWorkflow.includes("Do not merge PRs automatically"), "Feature delivery workflow should not auto-merge");
+  assert(featureDeliveryWorkflow.includes("Do not deploy to production from this workflow"), "Feature delivery workflow should not deploy to production");
+  assert(featureDeliveryWorkflow.includes("Next route:\n\n`post-merge-continuation`"), "Feature delivery workflow should bridge to post-merge continuation");
   await assertExists(join(rootDir, ".leanos", "commands", "define-design.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "README.md"));
   await assertExists(join(rootDir, "operations", "design", "knowledge", "design-system.md"));

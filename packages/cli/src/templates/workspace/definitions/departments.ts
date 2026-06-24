@@ -4341,12 +4341,54 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         slug: "epic-to-features",
         purpose: "Break a confirmed local LeanOS Epic into implementation-ready Feature files with internal Tasks and Delivery Readiness Matrix criteria before Engineering starts work.",
         requiredAreas: ["product-ops", "engineering"],
+        founderTriggers: [
+          "quebre esse epic em features",
+          "quais features precisamos para esse epic?",
+          "prepara esse epic para desenvolvimento",
+          "transforma esse epic em trabalho executavel",
+          "quebre o epic #123"
+        ],
+        owner: {
+          department: "operations",
+          primaryArea: "product-ops",
+          supportingAreas: ["engineering"],
+          conditionalAreas: ["design", "security", "devops"]
+        },
+        conditionalAreas: [
+          { area: "design", when: "Enter when the Epic or Feature affects UX, UI, flow, copy, accessibility, screens, states, interaction or reusable components." },
+          { area: "security", when: "Enter when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved." },
+          { area: "devops", when: "Enter when environments, CI/CD, deploy, observability, config, GitHub sync or release readiness are affected." }
+        ],
+        loadFirst: [
+          "AGENT.md",
+          "operations/AGENT.md",
+          "operations/workflows/README.md",
+          "operations/workflows/epic-to-features.workflow.md",
+          "operations/product-ops/AGENT.md",
+          "operations/product-ops/epics/README.md",
+          "operations/product-ops/knowledge/work-taxonomy.md",
+          "operations/product-ops/knowledge/ready-to-develop.md",
+          "ai-standard/templates/product/epic-template.md",
+          "ai-standard/templates/product/feature-template.md"
+        ],
+        navigationRoute: [
+          "AGENT.md",
+          "operations/AGENT.md",
+          "operations/workflows/epic-to-features.workflow.md",
+          "operations/product-ops/AGENT.md",
+          "operations/product-ops/roles/product-owner.role.md",
+          "operations/product-ops/skills/shape-epic.skill.md",
+          "operations/product-ops/skills/write-feature-criteria.skill.md",
+          "operations/product-ops/playbooks/epic-to-features.playbook.md",
+          "operations/product-ops/epics/<epic-slug>/<feature-slug>.md"
+        ],
         steps: [
           "Confirm the local Epic folder exists under `operations/product-ops/epics/` and has outcome, scope, non-goals, ownership and Epic Readiness Matrix",
-          "Load Product Ops and choose Product Owner",
-          "Load `operations/product-ops/playbooks/epic-to-features.playbook.md`",
+          "Load Product Ops through `operations/product-ops/AGENT.md` and let the area owner choose Product Owner",
+          "Load `operations/product-ops/roles/product-owner.role.md` before skills or playbooks",
           "Use `shape-epic.skill.md` to verify the Epic is ready for feature breakdown",
           "Use `write-feature-criteria.skill.md` and the local Product Feature template to draft Feature files inside the Epic folder",
+          "Load `operations/product-ops/playbooks/epic-to-features.playbook.md` to execute Feature Shaping",
           "Route Design only when UX, UI, flow, copy, accessibility, screens, states or interaction are affected",
           "When Design is applicable, identify component reuse, component adaptation or the need for a future component spec task",
           "Do not write full component specs in this workflow; add a Design task for component readiness when a spec is needed",
@@ -4355,6 +4397,54 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Ask Engineering to validate implementation boundaries, dependencies, tests and feature size",
           "Ask for confirmation before writing Feature files, syncing GitHub or starting implementation",
           "Stop before branch, code, PR or remote write"
+        ],
+        confirmationGates: [
+          "Ask before creating or updating local Feature files.",
+          "Ask before changing the parent Epic README.",
+          "Ask before changing delivery scope, MVP files or roadmap context.",
+          "Ask before any GitHub sync, API call or remote write.",
+          "Ask again before routing to implementation after Feature files are created."
+        ],
+        allowedUpdates: [
+          "operations/product-ops/epics/<epic-slug>/README.md",
+          "operations/product-ops/epics/<epic-slug>/<feature-slug>.md",
+          "operations/product-ops/knowledge/issue-readiness.md",
+          "operations/product-ops/knowledge/delivery-context.md"
+        ],
+        forbiddenUpdates: [
+          "src/",
+          "app/",
+          "pages/",
+          "components/",
+          ".github/",
+          ".leanos/commands/",
+          "ai-standard/",
+          "roles/",
+          "skills/",
+          "playbooks/"
+        ],
+        externalCapabilities: [
+          "GitHub sync is optional and separate; this workflow may prepare a payload or note, but must not call GitHub APIs without explicit confirmation.",
+          "Do not create branches, commits, PRs or code changes in this workflow.",
+          "Use local Product templates before GitHub templates."
+        ],
+        stopConditions: [
+          "The parent Epic is missing, ambiguous or not mapped to a local Epic folder.",
+          "The Epic lacks outcome, scope, non-goals, ownership or readiness criteria.",
+          "Product Ops or Engineering criteria cannot be defined.",
+          "Applicable Design, Security or DevOps criteria cannot be determined.",
+          "The founder does not confirm Feature file creation or update.",
+          "The request shifts into branch, code, PR, deployment or GitHub sync execution."
+        ],
+        expectedOutput: [
+          "Epic readiness summary.",
+          "Feature draft list using the local Product Feature template.",
+          "Internal task checklist per Feature.",
+          "Delivery Readiness Matrix criteria for each Feature.",
+          "Design, Security and DevOps applicability notes with reasons.",
+          "Component reuse, adaptation or component-readiness task decision when UI is affected.",
+          "Engineering boundaries, likely dependencies and test notes.",
+          "Founder-friendly confirmation question before writing local Feature files."
         ],
         continuationBridge: {
           immediate: "As features foram definidas.\nQuer que eu verifique se alguma delas ja esta pronta para desenvolvimento?",
@@ -4372,9 +4462,53 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         slug: "feature-to-delivery-cycle",
         purpose: "Coordinate Operations areas from Feature interpretation to readiness, component/design checks, branch, implementation, review and PR.",
         requiredAreas: ["product-ops", "engineering"],
+        founderTriggers: [
+          "vamos comecar essa feature",
+          "implemente a feature",
+          "implemente a issue #554",
+          "podemos iniciar o desenvolvimento?",
+          "essa feature ja pode ir para codigo?"
+        ],
+        owner: {
+          department: "operations",
+          primaryArea: "product-ops",
+          supportingAreas: ["engineering"],
+          conditionalAreas: ["design", "security", "devops"]
+        },
+        conditionalAreas: [
+          { area: "design", when: "Enter before Engineering when the Feature affects UI, screens, flows, copy, accessibility, interaction, design system usage or reusable components." },
+          { area: "security", when: "Enter before Engineering when the Feature touches data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk." },
+          { area: "devops", when: "Enter before Engineering when the Feature touches environments, CI/CD, deploy, observability, config, GitHub sync or release readiness." }
+        ],
+        loadFirst: [
+          "AGENT.md",
+          "operations/AGENT.md",
+          "operations/workflows/README.md",
+          "operations/workflows/feature-to-delivery-cycle.workflow.md",
+          "operations/product-ops/AGENT.md",
+          "operations/product-ops/knowledge/work-taxonomy.md",
+          "operations/product-ops/knowledge/ready-to-develop.md",
+          "operations/product-ops/epics/README.md"
+        ],
+        navigationRoute: [
+          "AGENT.md",
+          "operations/AGENT.md",
+          "operations/workflows/feature-to-delivery-cycle.workflow.md",
+          "operations/product-ops/AGENT.md",
+          "operations/product-ops/knowledge/ready-to-develop.md",
+          "operations/design/AGENT.md when UI, flow, accessibility, copy or component readiness is needed",
+          "operations/security/AGENT.md when security risk is involved",
+          "operations/devops/AGENT.md when delivery infrastructure is involved",
+          "operations/engineering/AGENT.md",
+          "operations/engineering/roles/senior-developer.role.md",
+          "operations/engineering/playbooks/branch-from-issue.playbook.md",
+          "operations/engineering/playbooks/component-implementation.playbook.md when a component spec is approved and needed",
+          "operations/engineering/playbooks/issue-to-pr.playbook.md",
+          "operations/engineering/playbooks/pr-validation.playbook.md"
+        ],
         steps: [
           "Accept only a local Feature or GitHub Feature issue as input; do not start from a loose idea, roadmap item or unsplit Epic",
-          "Load Product Ops first to identify the Feature, parent Epic, delivery scope and readiness state",
+          "Load Product Ops through `operations/product-ops/AGENT.md` first to identify the Feature, parent Epic, delivery scope and readiness state",
           "Run `operations/product-ops/knowledge/ready-to-develop.md` before branch, code or PR work",
           "If the Feature affects UI, screens, flows, copy, accessibility or reusable components, route Design before Engineering",
           "Ask Design to confirm whether the Feature can reuse an existing component, adapt an existing component or needs a new component contract",
@@ -4387,7 +4521,70 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Run tests or explain gaps",
           "Run PR validation",
           "Prepare PR"
-        ]
+        ],
+        confirmationGates: [
+          "Ask before creating or updating local Feature files.",
+          "Ask before creating or changing Design component specs.",
+          "Ask before creating a branch.",
+          "Ask before editing product code.",
+          "Ask before running external GitHub actions, opening a PR or changing remote state.",
+          "Ask before installing dependencies, changing package manager files or adding tooling."
+        ],
+        allowedUpdates: [
+          "operations/product-ops/epics/<epic-slug>/<feature-slug>.md",
+          "operations/design/knowledge/components/<component-slug>.md after Design confirmation",
+          "product source files required by the confirmed Feature after branch confirmation",
+          "tests required by the confirmed Feature",
+          "pull request draft or description after implementation review"
+        ],
+        forbiddenUpdates: [
+          "loose roadmap items or unsplit Epics as implementation input",
+          "roles/",
+          "skills/",
+          "playbooks/",
+          "workflows/",
+          "ai-standard/",
+          ".leanos/",
+          ".github/ without explicit GitHub step confirmation",
+          ".env",
+          ".env.local",
+          "production deployment state"
+        ],
+        externalCapabilities: [
+          "GitHub branch and PR actions are allowed only after Feature readiness and explicit founder confirmation.",
+          "Do not merge PRs automatically.",
+          "Do not deploy to production from this workflow.",
+          "Do not treat GitHub issue presence as proof that the Feature is ready to develop."
+        ],
+        stopConditions: [
+          "The request is a loose idea, roadmap item or unsplit Epic instead of a Feature.",
+          "The Feature cannot be mapped to a local Feature or GitHub Feature issue.",
+          "`ready-to-develop.md` shows missing Product Ops, Design, Security, DevOps or Engineering readiness.",
+          "A required Design component spec is missing.",
+          "Security or DevOps triggers apply and cannot be resolved or marked not applicable with a reason.",
+          "The founder does not confirm branch, code changes, external actions or PR preparation.",
+          "Tests cannot be run or meaningfully replaced with a documented validation plan."
+        ],
+        expectedOutput: [
+          "Feature readiness summary.",
+          "Design, Security and DevOps applicability notes with reasons.",
+          "Component readiness decision before Engineering when UI components are affected.",
+          "Branch name and implementation plan after confirmation.",
+          "Code and test changes summary.",
+          "PR validation summary with risks, gaps and remaining checks.",
+          "Founder-friendly next-step recommendation."
+        ],
+        continuationBridge: {
+          immediate: "A implementacao esta pronta para revisao.\nQuer que eu conduza a validacao do PR antes do merge?",
+          laterTriggers: ["revise o PR", "esta pronto para merge?", "mergeado, vamos para a proxima", "o PR foi aprovado", "o que fazemos depois do merge?"],
+          nextRoute: "post-merge-continuation",
+          rules: [
+            "Do not automatically merge.",
+            "Run PR validation before recommending merge readiness.",
+            "If the founder confirms merge happened, restart from Root `AGENT.md` and route to `post-merge-continuation`.",
+            "If the PR is not ready, explain the gap and stay inside Engineering review assets."
+          ]
+        }
       },
       {
         slug: "post-merge-continuation",

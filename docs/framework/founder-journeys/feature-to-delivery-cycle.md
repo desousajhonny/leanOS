@@ -17,36 +17,40 @@ flowchart TD
   B["Root AGENT routes to Operations"]
   C["operations/AGENT.md chooses workflow"]
   D["operations/workflows/feature-to-delivery-cycle.workflow.md"]
-  E{"Feature input exists?"}
-  F["Explain missing Feature and stop"]
-  G["Product Ops reads parent Epic + readiness"]
-  H{"Ready to develop?"}
-  I["Explain gaps and suggest next route"]
-  J{"UI/component affected?"}
-  K["Design checks component readiness"]
-  L{"Component contract ready?"}
-  M["Route to component-readiness before branch/code"]
-  N{"Security/DevOps needed?"}
-  O["Run conditional Security/DevOps checks"]
-  P["Engineering plans branch and implementation"]
-  Q["Implement component first when needed"]
-  R["Implement Feature"]
-  S["Tests + PR validation"]
-  T["Prepare PR"]
-  U["Bridge: PR review or post-merge continuation"]
+  E{"Route files exist?"}
+  F["Explain missing route/file and stop"]
+  G{"Feature input exists?"}
+  H["Explain missing Feature and stop"]
+  I["Product Ops reads parent Epic + readiness"]
+  J{"Ready to develop?"}
+  K["Explain gaps and suggest next route"]
+  L{"UI/component affected?"}
+  M["Design checks component readiness"]
+  N{"Component contract ready?"}
+  O["Route to component-readiness before branch/code"]
+  P{"Security/DevOps needed?"}
+  Q["Run conditional Security/DevOps checks"]
+  R["Engineering plans branch and implementation"]
+  S["Implement component first when needed"]
+  T["Implement Feature"]
+  U["Tests + PR validation"]
+  V["Prepare PR"]
+  W["Bridge: post-merge continuation after merge"]
 
   A --> B --> C --> D --> E
   E -->|No| F
-  E -->|Yes| G --> H
-  H -->|No| I
-  H -->|Yes| J
-  J -->|Yes| K --> L
-  L -->|No| M
-  L -->|Yes| N
-  J -->|No| N
-  N -->|Yes| O --> P
-  N -->|No| P
-  P --> Q --> R --> S --> T --> U
+  E -->|Yes| G
+  G -->|No| H
+  G -->|Yes| I --> J
+  J -->|No| K
+  J -->|Yes| L
+  L -->|Yes| M --> N
+  N -->|No| O
+  N -->|Yes| P
+  L -->|No| P
+  P -->|Yes| Q --> R
+  P -->|No| R
+  R --> S --> T --> U --> V --> W
 ```
 
 ## Flow In Plain Words
@@ -320,12 +324,12 @@ Later-session triggers:
 
 Next route:
 
-`review-pr` or `post-merge-continuation`
+`post-merge-continuation`
 
 Rules:
 
 - Do not automatically merge.
-- Do not skip PR validation.
+- Do not skip PR validation; PR validation is part of this workflow, not a separate required workflow.
 - If the founder says the PR was merged, restart from Root `AGENT.md` and route to post-merge continuation.
 
 ## Journey Validation Checklist
@@ -337,7 +341,11 @@ Rules:
 - [ ] `operations/workflows/feature-to-delivery-cycle.workflow.md` exists.
 - [ ] `operations/product-ops/AGENT.md` exists.
 - [ ] `operations/product-ops/knowledge/ready-to-develop.md` exists.
+- [ ] `operations/design/playbooks/component-readiness.playbook.md` exists.
 - [ ] `operations/engineering/AGENT.md` exists.
+- [ ] `operations/engineering/playbooks/branch-from-issue.playbook.md` exists.
+- [ ] `operations/engineering/playbooks/issue-to-pr.playbook.md` exists.
+- [ ] `operations/engineering/playbooks/pr-validation.playbook.md` exists.
 - [ ] Engineering roles, skills and playbooks exist.
 - [ ] Conditional Design/Security/DevOps route files exist when those areas are active.
 
