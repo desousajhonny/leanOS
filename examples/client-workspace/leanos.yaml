@@ -234,6 +234,7 @@ playbooks:
       - accessibility-review
       - ux-writing
     operations.engineering:
+      - engineering-delivery
       - branch-from-issue
       - component-implementation
       - issue-to-pr

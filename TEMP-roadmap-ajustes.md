@@ -352,7 +352,7 @@ Ordem esperada:
 
 Checklist de implementacao:
 
-- [ ] Criar `operations/engineering/playbooks/engineering-delivery.playbook.md`.
+- [x] Criar `operations/engineering/playbooks/engineering-delivery.playbook.md`.
 - [ ] Atualizar `operations/engineering/AGENT.md` para roteamento de implementacao apontar primeiro para `engineering-delivery`.
 - [ ] Atualizar `feature-to-delivery-cycle.workflow.md` para, depois de readiness, entrar em Engineering via `engineering-delivery.playbook.md`.
 - [ ] Atualizar `senior-developer.role.md` para incluir `engineering-delivery` como playbook principal de implementacao.
@@ -367,8 +367,8 @@ Checklist de implementacao:
   - nao implementar componente novo sem spec de Design quando aplicavel;
   - nao abrir PR sem resumo de testes ou justificativa de gap;
   - nao recomendar merge sem PR validation.
-- [ ] Atualizar `validate-generator.mjs` para validar existencia e referencias do playbook mestre.
-- [ ] Regenerar `examples/client-workspace/` e `examples/client-workspace-tree.md`.
+- [x] Atualizar `validate-generator.mjs` para validar existencia e referencias do playbook mestre.
+- [x] Regenerar `examples/client-workspace/` e `examples/client-workspace-tree.md`.
 
 #### Validacoes Necessarias
 

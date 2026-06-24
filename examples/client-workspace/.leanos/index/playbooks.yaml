@@ -41,6 +41,9 @@ playbooks:
   - key: ux-writing
     area: operations.design
     path: ../../operations/design/playbooks/ux-writing.playbook.md
+  - key: engineering-delivery
+    area: operations.engineering
+    path: ../../operations/engineering/playbooks/engineering-delivery.playbook.md
   - key: branch-from-issue
     area: operations.engineering
     path: ../../operations/engineering/playbooks/branch-from-issue.playbook.md

@@ -344,6 +344,7 @@ client-workspace/
 |   |   |-- playbooks/
 |   |   |   |-- branch-from-issue.playbook.md
 |   |   |   |-- component-implementation.playbook.md
+|   |   |   |-- engineering-delivery.playbook.md
 |   |   |   |-- issue-to-pr.playbook.md
 |   |   |   |-- pr-validation.playbook.md
 |   |   |   |-- README.md

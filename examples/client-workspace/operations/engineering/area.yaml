@@ -18,6 +18,7 @@ area:
     - create-pr
     - review-pr
   playbooks:
+    - engineering-delivery
     - branch-from-issue
     - component-implementation
     - issue-to-pr

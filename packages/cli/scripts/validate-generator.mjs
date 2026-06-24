@@ -272,6 +272,7 @@ async function validateWorkspaceFiles() {
     "operations/engineering/skills/follow-code-standards.skill.md",
     "operations/engineering/skills/implement-component.skill.md",
     "operations/engineering/skills/review-data-change.skill.md",
+    "operations/engineering/playbooks/engineering-delivery.playbook.md",
     "operations/engineering/playbooks/issue-to-pr.playbook.md",
     "operations/engineering/playbooks/component-implementation.playbook.md",
     "operations/engineering/playbooks/branch-from-issue.playbook.md",
@@ -2449,6 +2450,7 @@ async function assertEngineeringAreaPattern(rootDir) {
   const followCodeStandards = await readFile(join(rootDir, "operations", "engineering", "skills", "follow-code-standards.skill.md"), "utf8");
   const implementComponent = await readFile(join(rootDir, "operations", "engineering", "skills", "implement-component.skill.md"), "utf8");
   const reviewDataChange = await readFile(join(rootDir, "operations", "engineering", "skills", "review-data-change.skill.md"), "utf8");
+  const engineeringDelivery = await readFile(join(rootDir, "operations", "engineering", "playbooks", "engineering-delivery.playbook.md"), "utf8");
   const componentImplementation = await readFile(join(rootDir, "operations", "engineering", "playbooks", "component-implementation.playbook.md"), "utf8");
   const issueToPr = await readFile(join(rootDir, "operations", "engineering", "playbooks", "issue-to-pr.playbook.md"), "utf8");
   const prValidation = await readFile(join(rootDir, "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
@@ -2476,8 +2478,10 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(areaYaml.area.skills.includes("follow-code-standards"), "Engineering area.yaml should list follow-code-standards");
   assert(areaYaml.area.skills.includes("implement-component"), "Engineering area.yaml should list implement-component");
   assert(areaYaml.area.skills.includes("review-data-change"), "Engineering area.yaml should list review-data-change");
+  assert(areaYaml.area.playbooks.includes("engineering-delivery"), "Engineering area.yaml should list engineering-delivery");
   assert(areaYaml.area.playbooks.includes("component-implementation"), "Engineering area.yaml should list component-implementation");
   assert(skillsIndex.skills.some((skill) => skill.key === "implement-component" && skill.path === "../../operations/engineering/skills/implement-component.skill.md"), "Skills index should list implement-component");
+  assert(playbooksIndex.playbooks.some((playbook) => playbook.key === "engineering-delivery" && playbook.path === "../../operations/engineering/playbooks/engineering-delivery.playbook.md"), "Playbooks index should list engineering-delivery");
   assert(playbooksIndex.playbooks.some((playbook) => playbook.key === "component-implementation" && playbook.path === "../../operations/engineering/playbooks/component-implementation.playbook.md"), "Playbooks index should list component-implementation");
 
   for (const content of [codeStandards, implementationRules, componentGuidelines, dataGuidelines, testingStrategy, reviewCriteria]) {
@@ -2515,6 +2519,16 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(implementComponent.includes("../../design/knowledge/component-inventory.md"), "Implement component skill should read Design component inventory");
   assert(implementComponent.includes("../knowledge/component-guidelines.md"), "Implement component skill should read Engineering component guidelines");
   assert(implementComponent.includes("Do not implement a new user-facing component without a Design spec"), "Implement component skill should block component work without Design spec");
+  assert(engineeringDelivery.includes("Orchestrate the internal Engineering path"), "Engineering delivery playbook should define the master Engineering path");
+  assert(engineeringDelivery.includes("playbooks/branch-from-issue.playbook.md"), "Engineering delivery playbook should start with branch playbook");
+  assert(engineeringDelivery.includes("skills/plan-implementation.skill.md"), "Engineering delivery playbook should require implementation planning");
+  assert(engineeringDelivery.includes("playbooks/component-implementation.playbook.md"), "Engineering delivery playbook should include component implementation when needed");
+  assert(engineeringDelivery.includes("skills/follow-code-standards.skill.md"), "Engineering delivery playbook should use code standards skill");
+  assert(engineeringDelivery.includes("skills/review-data-change.skill.md"), "Engineering delivery playbook should use data review when applicable");
+  assert(engineeringDelivery.includes("skills/write-tests.skill.md"), "Engineering delivery playbook should require tests or test-gap explanation");
+  assert(engineeringDelivery.includes("playbooks/issue-to-pr.playbook.md"), "Engineering delivery playbook should prepare PR through issue-to-pr");
+  assert(engineeringDelivery.includes("playbooks/pr-validation.playbook.md"), "Engineering delivery playbook should end with PR validation");
+  assert(engineeringDelivery.includes("Stop Conditions"), "Engineering delivery playbook should include stop conditions");
   assert(componentImplementation.includes("Approved Design component spec"), "Component implementation playbook should require approved Design spec");
   assert(componentImplementation.includes("../../design/knowledge/component-inventory.md"), "Component implementation playbook should read component inventory");
   assert(componentImplementation.includes("Implement the reusable component before the screen or Feature"), "Component implementation playbook should implement component before dependent Feature");
