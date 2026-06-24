@@ -29,7 +29,27 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 5. Ask before reusing an existing branch.
 6. Do not run git commands unless the user explicitly asks in a tool-capable environment.
 
-## Output
+## Allowed Updates
+
+None by default.
+
+This command proposes a safe branch name. Creating the branch requires explicit founder confirmation and a tool-capable environment.
+
+## Forbidden Updates
+
+During `/create branch`, do not:
+
+- edit source code;
+- create commits or PRs;
+- create a branch without issue context;
+- include secrets, customer names or sensitive details in the branch name;
+- modify roles, skills, playbooks, workflows, commands or `ai-standard/`.
+
+## Confirmation Rule
+
+Ask before creating or reusing a branch.
+
+## Expected Output
 
 - Proposed branch name
 - Linked issue

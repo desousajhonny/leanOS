@@ -39,7 +39,27 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 8. Produce an implementation plan and test plan.
 9. Ask for confirmation before modifying product code.
 
-## Output
+## Allowed Updates
+
+None by default.
+
+`/workon issue` plans implementation. Product code, tests, branch creation and PR work require explicit founder confirmation and should proceed through `feature-to-delivery-cycle` and Engineering assets.
+
+## Forbidden Updates
+
+During `/workon issue`, do not:
+
+- edit source code before readiness and branch confirmation;
+- create branches, commits or PRs without explicit confirmation;
+- skip Product Ops, Design, Security or DevOps readiness when applicable;
+- modify roles, skills, playbooks, workflows, commands or `ai-standard/`;
+- treat a GitHub issue number as proof that the Feature is ready to develop.
+
+## Confirmation Rule
+
+Ask the founder to confirm the issue interpretation, readiness summary, branch name and implementation plan before editing code.
+
+## Expected Output
 
 - Issue summary
 - Readiness gaps

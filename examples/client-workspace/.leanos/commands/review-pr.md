@@ -36,7 +36,27 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 9. List findings first, ordered by severity.
 10. Recommend approve, request changes or blocked by missing context.
 
-## Output
+## Allowed Updates
+
+None by default.
+
+`/review pr` reports findings and recommendations. It may propose code changes, test changes or PR description updates, but must not apply them without explicit confirmation.
+
+## Forbidden Updates
+
+During `/review pr`, do not:
+
+- approve or merge PRs automatically;
+- edit source code from review mode without founder confirmation;
+- ignore product, Design, Security or testing gaps when applicable;
+- convert suggestions into changes without approval;
+- modify roles, skills, playbooks, workflows, commands or `ai-standard/`.
+
+## Confirmation Rule
+
+Ask before applying review fixes, updating PR text or changing remote PR state.
+
+## Expected Output
 
 - Findings by severity
 - File or area references

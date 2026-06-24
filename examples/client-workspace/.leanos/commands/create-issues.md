@@ -42,7 +42,28 @@ Read:
 10. Mark missing role input as an explicit gap; do not invent criteria.
 11. Produce drafts first and ask for confirmation before any future GitHub API write.
 
-## Output
+## Allowed Updates
+
+None by default.
+
+`/create issues` may produce local drafts or a future GitHub payload in chat. It must not write local Epic/Feature files or remote GitHub issues unless the founder confirms the proposed output and the next route.
+
+## Forbidden Updates
+
+During `/create issues`, do not:
+
+- create GitHub issues directly from model reasoning;
+- call GitHub APIs;
+- create branches, commits, PRs or code;
+- create one issue per Task by default;
+- write tokens, secrets or credentials;
+- modify roles, skills, playbooks, workflows, commands or `ai-standard/`.
+
+## Confirmation Rule
+
+Ask for explicit founder confirmation before writing local files, generating an API-capable payload or asking a future capability/script to create remote GitHub items.
+
+## Expected Output
 
 - Epic draft or selected parent epic
 - Proposed features

@@ -3265,6 +3265,10 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           primaryArea: "roadmap",
           supportingAreas: ["product"]
         },
+        conditionalAreas: [
+          { area: "operations/product-ops", when: "Enter only after the founder confirms that a roadmap item should become delivery work or a local Epic." },
+          { area: "growth/customer-experience", when: "Enter only when customer evidence, support patterns or launch learning should influence priority." }
+        ],
         loadFirst: [
           "AGENT.md",
           "strategy/AGENT.md",
@@ -3354,13 +3358,212 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         slug: "strategy-validation-cycle",
         purpose: "Coordinate company, product, roadmap and validation work inside Strategy.",
         requiredAreas: ["product", "roadmap", "validation"],
-        steps: ["Read product strategy", "Review roadmap cycle", "Prioritize assumptions", "Plan validation", "Capture learning"]
+        founderTriggers: [
+          "precisamos validar essa hipotese",
+          "como vamos testar essa ideia?",
+          "temos evidencia suficiente?",
+          "o que precisamos aprender antes de priorizar?",
+          "vamos rodar um ciclo de validacao"
+        ],
+        owner: {
+          department: "strategy",
+          primaryArea: "validation",
+          supportingAreas: ["product", "roadmap"]
+        },
+        conditionalAreas: [
+          { area: "growth/customer-experience", when: "Enter only when validation depends on feedback from real customers, support notes or success moments." },
+          { area: "operations/product-ops", when: "Enter only when validation changes the delivery scope, MVP boundary or Epic readiness." }
+        ],
+        loadFirst: [
+          "AGENT.md",
+          "strategy/AGENT.md",
+          "strategy/workflows/strategy-validation-cycle.workflow.md",
+          "strategy/product/AGENT.md",
+          "strategy/product/knowledge/brief.md",
+          "strategy/product/knowledge/problem.md",
+          "strategy/product/knowledge/icp.md",
+          "strategy/product/knowledge/validation-notes.md",
+          "strategy/roadmap/AGENT.md",
+          "strategy/roadmap/knowledge/backlog.md",
+          "strategy/roadmap/knowledge/roadmap.md",
+          "strategy/validation/README.md"
+        ],
+        navigationRoute: [
+          "AGENT.md",
+          "strategy/AGENT.md",
+          "strategy/workflows/strategy-validation-cycle.workflow.md",
+          "strategy/product/AGENT.md",
+          "strategy/product/roles/product-strategist.role.md",
+          "strategy/roadmap/AGENT.md",
+          "strategy/roadmap/roles/roadmap-planner.role.md",
+          "strategy/validation/README.md",
+          "strategy/validation/roles/validation-researcher.role.md",
+          "strategy/validation/skills/define-assumptions.skill.md",
+          "strategy/validation/playbooks/mvp-validation.playbook.md"
+        ],
+        steps: [
+          "Read product strategy before defining what needs validation.",
+          "Review roadmap/backlog context to understand why this assumption matters now.",
+          "Identify the riskiest assumptions and separate known evidence from guesses.",
+          "Choose the smallest validation action that can produce useful learning.",
+          "Define success and failure signals before any experiment is treated as evidence.",
+          "Capture learning only after evidence exists.",
+          "Propose roadmap, backlog or delivery-scope impact only after the founder confirms the learning.",
+          "Route to Product Ops only when confirmed learning changes delivery scope or Epic readiness."
+        ],
+        confirmationGates: [
+          "Ask before creating or changing an experiment plan.",
+          "Ask before recording learning as evidence.",
+          "Ask before changing roadmap or backlog priority.",
+          "Ask before routing to Product Ops or Growth."
+        ],
+        allowedUpdates: [
+          "strategy/validation/assumptions.md",
+          "strategy/validation/riskiest-assumptions.md",
+          "strategy/validation/experiments.md",
+          "strategy/validation/success-metrics.md",
+          "strategy/validation/learning-log.md",
+          "strategy/product/knowledge/validation-notes.md",
+          "strategy/roadmap/knowledge/backlog.md after founder confirmation",
+          "strategy/roadmap/knowledge/roadmap.md after founder confirmation"
+        ],
+        forbiddenUpdates: [
+          "operations/product-ops/epics/",
+          ".github/",
+          ".leanos/",
+          "source code",
+          "branches",
+          "pull requests",
+          "GitHub remote state"
+        ],
+        externalCapabilities: [
+          "No external capability is required by default.",
+          "Do not call survey, CRM, analytics or GitHub APIs from this workflow without a separate confirmed tool-specific flow."
+        ],
+        stopConditions: [
+          "Product context is too weak to identify the assumption.",
+          "The founder wants implementation rather than validation.",
+          "Validation evidence is not available yet.",
+          "The founder does not confirm the proposed validation or learning update.",
+          "The request requires external customer outreach or API execution that is not configured."
+        ],
+        expectedOutput: [
+          "Assumption summary.",
+          "Risk priority and why it matters.",
+          "Validation action or evidence gap.",
+          "Success/failure signals.",
+          "Founder-friendly recommendation for roadmap, backlog, delivery scope or no change."
+        ],
+        continuationBridge: {
+          immediate: "Se essa validacao mudar a prioridade, quer que eu leve o aprendizado para o roadmap ou backlog?",
+          laterTriggers: ["a validacao mudou a prioridade", "vamos atualizar o roadmap com esse aprendizado", "isso entra no escopo agora?", "o que fazemos com esse aprendizado?"],
+          nextRoute: "idea-to-roadmap or roadmap-item-to-epic depending on the founder decision"
+        }
       },
       {
         slug: "roadmap-to-github-project",
         purpose: "Prepare roadmap, milestones and epics for GitHub Project sync.",
         requiredAreas: ["roadmap", "product"],
-        steps: ["Read roadmap and current cycle", "Confirm product outcomes and priorities", "Prepare milestones and epic drafts", "Ask DevOps to validate GitHub project settings when needed", "Produce payload and ask for confirmation before API execution"]
+        founderTriggers: [
+          "sincronize o roadmap com github",
+          "vamos mandar o roadmap para o github projects",
+          "crie os milestones no github",
+          "prepare os epics no github",
+          "github sync do roadmap"
+        ],
+        owner: {
+          department: "strategy",
+          primaryArea: "roadmap",
+          supportingAreas: ["product"],
+          conditionalAreas: ["operations.product-ops", "operations.devops"]
+        },
+        conditionalAreas: [
+          { area: "operations/product-ops", when: "Enter when roadmap items need local Epics/Features before sync or when delivery scope is unclear." },
+          { area: "operations/devops", when: "Enter when GitHub settings, token, repository, project fields, labels or sync state must be checked." }
+        ],
+        loadFirst: [
+          "AGENT.md",
+          "strategy/AGENT.md",
+          "strategy/workflows/roadmap-to-github-project.workflow.md",
+          "strategy/roadmap/AGENT.md",
+          "strategy/roadmap/knowledge/roadmap.md",
+          "strategy/roadmap/knowledge/milestones.md",
+          "strategy/roadmap/knowledge/current-cycle.md",
+          "strategy/product/AGENT.md",
+          "strategy/product/knowledge/brief.md",
+          ".github/leanos/project-sync.yaml",
+          ".github/leanos/sync-state.yaml",
+          ".github/leanos/work-mapping.md"
+        ],
+        navigationRoute: [
+          "AGENT.md",
+          "strategy/AGENT.md",
+          "strategy/workflows/roadmap-to-github-project.workflow.md",
+          "strategy/roadmap/AGENT.md",
+          "strategy/roadmap/roles/roadmap-planner.role.md",
+          "strategy/roadmap/skills/prepare-roadmap-sync.skill.md",
+          "strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md",
+          "operations/product-ops/AGENT.md when local Epic/Feature shape is required",
+          "operations/devops/AGENT.md when GitHub configuration must be checked",
+          ".leanos/commands/github-sync.md when the founder confirms sync execution"
+        ],
+        steps: [
+          "Read roadmap and current cycle before preparing any GitHub payload.",
+          "Confirm product outcomes and priority order from Strategy Product.",
+          "Separate roadmap/backlog items from delivery-ready Epics.",
+          "Ask Product Ops to shape local Epics/Features when a roadmap item is too broad for GitHub sync.",
+          "Ask DevOps to validate GitHub project settings when token, repository, project fields, labels or sync state are missing or unclear.",
+          "Prepare a dry-run summary with milestones, Epic candidates and mapping changes.",
+          "Show the payload in founder-friendly language before any external write.",
+          "Ask for explicit confirmation before routing to the sync command or any API-capable script."
+        ],
+        confirmationGates: [
+          "Ask before changing roadmap or milestone files.",
+          "Ask before changing `.github/leanos/project-sync.yaml` or `.github/leanos/work-mapping.md`.",
+          "Ask before creating or updating local Epics.",
+          "Ask before running any GitHub sync, API-capable script or remote write.",
+          "Ask before marking sync state as completed."
+        ],
+        allowedUpdates: [
+          "strategy/roadmap/knowledge/roadmap.md after founder confirmation",
+          "strategy/roadmap/knowledge/milestones.md after founder confirmation",
+          "strategy/roadmap/knowledge/current-cycle.md after founder confirmation",
+          ".github/leanos/project-sync.yaml after DevOps/founder confirmation",
+          ".github/leanos/work-mapping.md after founder confirmation",
+          ".github/leanos/sync-state.yaml only after a confirmed tool reports successful sync"
+        ],
+        forbiddenUpdates: [
+          ".env.local",
+          "tokens",
+          "source code",
+          "branches",
+          "pull requests",
+          "GitHub remote state without explicit founder confirmation and API-capable command execution"
+        ],
+        externalCapabilities: [
+          "GitHub sync requires an explicit API-capable command or script.",
+          "The model prepares dry-run, payload and confirmation; it does not call GitHub APIs directly.",
+          "If token, repository or project configuration is missing, route to Operations DevOps before execution."
+        ],
+        stopConditions: [
+          "GitHub management is not configured and the founder wants remote sync.",
+          "Token source is unclear or would require storing secrets in workspace files.",
+          "Roadmap items are too broad and need local Epic/Feature shaping first.",
+          "The dry-run suggests duplicate or conflicting GitHub items.",
+          "The founder does not confirm the payload or remote write."
+        ],
+        expectedOutput: [
+          "Readiness status for GitHub sync.",
+          "Dry-run list of milestones, Epic candidates and mapping changes.",
+          "Missing configuration or duplicate/conflict warnings.",
+          "Founder-friendly confirmation question before remote sync.",
+          "Next route to Product Ops, DevOps or the GitHub sync command."
+        ],
+        continuationBridge: {
+          immediate: "O roadmap esta pronto para um dry-run de GitHub sync.\nQuer que eu confira configuracao, payload e possiveis duplicidades antes de qualquer escrita remota?",
+          laterTriggers: ["rode o github sync", "sincronize agora", "vamos atualizar o github project", "crie milestones no github", "envie esses epics para o github"],
+          nextRoute: ".leanos/commands/github-sync.md or operations/devops/AGENT.md when configuration is missing"
+        }
       }
     ]
   },
@@ -4995,7 +5198,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "playbooks/"
         ],
         externalCapabilities: [
-          "GitHub sync is optional and separate; this workflow may prepare a payload or note, but must not call GitHub APIs without explicit confirmation.",
+          "GitHub sync is optional and separate; this workflow may prepare a dry-run payload or note, but must not call GitHub APIs without explicit confirmation.",
           "Do not create branches, commits, PRs or code changes in this workflow.",
           "Use local Product templates before GitHub templates."
         ],
@@ -5581,7 +5784,111 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         slug: "launch-learning-loop",
         purpose: "Coordinate marketing, customer experience and finance after launch.",
         requiredAreas: ["marketing", "customer-experience"],
-        steps: ["Read Marketing AGENT and launch knowledge", "Plan launch", "Read Customer Experience AGENT and capture customer feedback", "Review Finance AGENT when pricing, budget or unit economics are involved", "Recommend next learning loop"]
+        founderTriggers: [
+          "vamos lancar",
+          "como aprendemos com os usuarios?",
+          "o que fazer depois do lancamento?",
+          "vamos analisar feedback dos clientes",
+          "o lancamento rodou, e agora?"
+        ],
+        owner: {
+          department: "growth",
+          primaryArea: "marketing",
+          supportingAreas: ["customer-experience"],
+          conditionalAreas: ["finance", "strategy.product", "operations.product-ops"]
+        },
+        conditionalAreas: [
+          { area: "growth/finance", when: "Enter when pricing, budget, revenue, cost or unit economics are part of the launch decision." },
+          { area: "strategy/product", when: "Enter when launch learning changes positioning, ICP, problem framing or value proposition." },
+          { area: "operations/product-ops", when: "Enter when customer learning should become delivery scope, Epics or Features." }
+        ],
+        loadFirst: [
+          "AGENT.md",
+          "growth/AGENT.md",
+          "growth/workflows/launch-learning-loop.workflow.md",
+          "growth/marketing/AGENT.md",
+          "growth/marketing/knowledge/launch-plan.md",
+          "growth/marketing/knowledge/positioning.md",
+          "growth/customer-experience/AGENT.md",
+          "growth/customer-experience/knowledge/customer-feedback.md",
+          "growth/customer-experience/knowledge/success-moments.md",
+          "growth/customer-experience/knowledge/churn-reasons.md"
+        ],
+        navigationRoute: [
+          "AGENT.md",
+          "growth/AGENT.md",
+          "growth/workflows/launch-learning-loop.workflow.md",
+          "growth/marketing/AGENT.md",
+          "growth/marketing/roles/growth-lead.role.md",
+          "growth/marketing/skills/create-launch-plan.skill.md",
+          "growth/marketing/playbooks/mvp-launch.playbook.md",
+          "growth/customer-experience/AGENT.md",
+          "growth/customer-experience/roles/cx-lead.role.md",
+          "growth/customer-experience/skills/map-customer-feedback.skill.md",
+          "growth/customer-experience/playbooks/customer-learning-loop.playbook.md",
+          "growth/finance/AGENT.md when pricing, budget or unit economics are involved",
+          "strategy/product/AGENT.md when positioning or ICP should change",
+          "operations/product-ops/AGENT.md when learning should become delivery work"
+        ],
+        steps: [
+          "Read Marketing AGENT and launch knowledge before planning or summarizing launch work.",
+          "Read Customer Experience AGENT and customer feedback before claiming what users learned or felt.",
+          "Separate launch activity, customer evidence, founder interpretation and next decision.",
+          "Review Finance AGENT only when pricing, budget, revenue, cost or unit economics are involved.",
+          "Route to Strategy Product only when learning changes ICP, positioning, problem framing or value proposition.",
+          "Route to Product Ops only when learning should become delivery scope, Epics or Features.",
+          "Recommend the next learning loop in founder-friendly language.",
+          "Ask for confirmation before updating launch, feedback, finance, strategy or delivery files."
+        ],
+        confirmationGates: [
+          "Ask before updating launch plan or positioning.",
+          "Ask before recording feedback as learning.",
+          "Ask before changing pricing, revenue, budget or unit economics notes.",
+          "Ask before routing learning into Strategy or Product Ops.",
+          "Ask before creating delivery work from customer learning."
+        ],
+        allowedUpdates: [
+          "growth/marketing/knowledge/launch-plan.md",
+          "growth/marketing/knowledge/positioning.md after founder confirmation",
+          "growth/customer-experience/knowledge/customer-feedback.md",
+          "growth/customer-experience/knowledge/success-moments.md",
+          "growth/customer-experience/knowledge/churn-reasons.md",
+          "growth/finance/knowledge/pricing.md when Finance is involved and founder confirms",
+          "growth/finance/knowledge/unit-economics.md when Finance is involved and founder confirms"
+        ],
+        forbiddenUpdates: [
+          "operations/product-ops/epics/ without Product Ops route and founder confirmation",
+          "strategy/roadmap/knowledge/roadmap.md without Strategy route and founder confirmation",
+          ".github/",
+          ".leanos/",
+          "source code",
+          "branches",
+          "pull requests"
+        ],
+        externalCapabilities: [
+          "No external capability is required by default.",
+          "Do not call analytics, CRM, email, payment, GitHub or deployment APIs from this workflow without a separate confirmed tool-specific flow.",
+          "When external evidence is missing, ask the founder for the available signal instead of inventing it."
+        ],
+        stopConditions: [
+          "There is no launch activity or customer evidence to review.",
+          "The founder asks for implementation rather than learning-loop planning.",
+          "Customer feedback is too vague to turn into learning.",
+          "The founder does not confirm updates or next routing.",
+          "External analytics or CRM access is required but not available."
+        ],
+        expectedOutput: [
+          "Launch status summary.",
+          "Customer evidence summary separated from interpretation.",
+          "Learning, risk and opportunity list.",
+          "Recommended next loop: marketing, CX, finance, strategy or delivery.",
+          "Founder-friendly confirmation question before any update."
+        ],
+        continuationBridge: {
+          immediate: "Esse aprendizado parece apontar para o proximo ciclo.\nQuer que eu transforme isso em ajuste de marketing/CX, revisao de estrategia ou trabalho de produto?",
+          laterTriggers: ["o que aprendemos com o lancamento?", "transforme feedback em proximos passos", "isso vira roadmap?", "isso muda o posicionamento?", "isso vira feature?"],
+          nextRoute: "strategy/product/AGENT.md or operations/product-ops/AGENT.md depending on the founder decision"
+        }
       }
     ]
   }

@@ -317,16 +317,52 @@ O modelo deve entregar:
 
 ### 1. Padronizar Comandos Principais
 
-Status: importante, mas deve ser executado depois da revisao dos workflows.
+Status: proximo bloco recomendado agora que os workflows locais foram revisados e protegidos por validacao automatica.
 
 Objetivo: garantir que os comandos centrais sejam portas de entrada consistentes, previsiveis, confirmaveis e roteadas pela Navigation Chain.
 
+#### Command Contract Standard
+
+Objetivo: todo comando gerado em `.leanos/commands/` deve ser uma porta de entrada segura, nao o dono completo do processo.
+
+- [x] Definir contrato minimo para comandos:
+  - Purpose
+  - Load First
+  - Navigation Route ou Routing
+  - Process
+  - Allowed Updates
+  - Forbidden Updates
+  - Confirmation Rule ou Confirmation Gates
+  - Expected Output
+- [x] Atualizar os comandos principais para seguir o contrato sem duplicar workflow.
+- [x] Atualizar `validate-generator.mjs` para validar o contrato minimo dos comandos principais.
+- [ ] Validar que comandos multi-area carregam o workflow correspondente antes de role/skill/playbook.
+- [x] Validar que comandos de GitHub/API declaram dry-run/payload e confirmacao antes de escrita remota.
+- [ ] Validar que comandos de diagnostico, como `/status-leanos`, nao escrevem arquivos por padrao.
+- [x] Validar que comandos ligados a areas inativas mostram aviso em vez de apontar para paths ausentes.
+
+#### Mapa Canonico De Intencoes
+
+Objetivo: garantir que linguagem natural e slash commands equivalentes caiam no mesmo fluxo.
+
+- [ ] Mapear intencoes naturais para workflows:
+  - "onde paramos?", "o que falta?", "podemos desenvolver agora?" -> `status-leanos` / `where-we-are`
+  - "vamos definir o MVP" -> `/define-mvp` -> `operations/workflows/define-mvp.workflow.md`
+  - "tenho uma ideia" -> `strategy/workflows/new-idea-intake.workflow.md`
+  - "coloque essa ideia no roadmap" -> `strategy/workflows/idea-to-roadmap.workflow.md`
+  - "transforme esse item em epic" -> `operations/workflows/roadmap-item-to-epic.workflow.md`
+  - "quebre esse epic em features" -> `operations/workflows/epic-to-features.workflow.md`
+  - "implemente essa feature" -> `operations/workflows/feature-to-delivery-cycle.workflow.md`
+  - "PR mergeado, e agora?" -> `operations/workflows/post-merge-continuation.workflow.md`
+- [ ] Atualizar `AGENT.md` raiz, se necessario, para reforcar que o modelo identifica intencao e roteia para departamento/workflow sem listar tudo no root.
+- [ ] Validar no teste externo que o modelo nao precisa de slash command para chegar ao fluxo correto.
+
 Regras gerais:
 
-- [ ] Todo comando deve carregar contexto minimo antes de agir.
+- [x] Todo comando deve carregar contexto minimo antes de agir.
 - [ ] Todo comando que aciona trabalho multi-area deve carregar o workflow correspondente antes de entrar em roles, skills ou playbooks.
 - [ ] O comando nao deve duplicar a logica completa do workflow; ele deve normalizar a intencao, carregar contexto e apontar para o processo correto.
-- [ ] Todo comando deve declarar:
+- [x] Todo comando deve declarar:
   - purpose
   - load first
   - routing
@@ -335,8 +371,8 @@ Regras gerais:
   - confirmation rule
   - expected output
 - [ ] Todo comando que altera arquivo deve propor primeiro e escrever somente apos confirmacao.
-- [ ] Todo comando que envolve GitHub/API deve gerar plano ou payload antes de qualquer chamada remota.
-- [ ] Nenhum comando deve apontar para area inativa sem aviso explicito.
+- [x] Todo comando que envolve GitHub/API deve gerar plano ou payload antes de qualquer chamada remota.
+- [x] Nenhum comando deve apontar para area inativa sem aviso explicito.
 - [ ] Slash commands continuam como atalhos; a experiencia principal deve continuar chat-first.
 - [ ] Pedido em linguagem natural e slash command equivalente devem seguir o mesmo workflow.
 
@@ -508,10 +544,10 @@ Comecar por Operations porque e onde a entrega acontece e onde mais existe risco
   - aplicar Workflow Contract Standard;
   - garantir que nao marca automaticamente como delivery/MVP;
   - ponte para `roadmap-item-to-epic`.
-- [ ] `strategy/workflows/roadmap-to-github-project.workflow.md`
+- [x] `strategy/workflows/roadmap-to-github-project.workflow.md`
   - revisar se continua em Strategy ou se deve virar camada GitHub/DevOps posterior;
   - tratar GitHub como dry-run/payload antes de escrita remota.
-- [ ] `growth/workflows/launch-learning-loop.workflow.md`
+- [x] `growth/workflows/launch-learning-loop.workflow.md`
   - aplicar Workflow Contract Standard de forma lean;
   - manter como pos-lancamento, nao bloqueador do MVP inicial.
 
@@ -600,13 +636,13 @@ Checklist de implementacao:
 
 #### Validacoes Necessarias
 
-- [ ] Atualizar `validate-generator.mjs` para validar o contrato minimo dos workflows principais.
-- [ ] Validar que `.leanos/index/workflows.yaml` aponta apenas para workflows existentes.
-- [ ] Validar que nenhum workflow de negocio e gerado em `.leanos/workflows/`.
-- [ ] Validar que workflow nao referencia area inativa sem aviso de disponibilidade.
-- [ ] Validar que workflows multi-area carregam area `AGENT.md` antes de role/skill/playbook.
-- [ ] Validar que workflows com GitHub/API declaram dry-run, payload e confirmacao antes de escrita remota.
-- [ ] Validar que cada workflow tem `Stop Conditions` e `Continuation Bridge`.
+- [x] Atualizar `validate-generator.mjs` para validar o contrato minimo dos workflows principais.
+- [x] Validar que `.leanos/index/workflows.yaml` aponta apenas para workflows existentes.
+- [x] Validar que nenhum workflow de negocio e gerado em `.leanos/workflows/`.
+- [x] Validar que workflow nao referencia area inativa sem aviso de disponibilidade.
+- [x] Validar que workflows multi-area carregam area `AGENT.md` antes de role/skill/playbook.
+- [x] Validar que workflows com GitHub/API declaram dry-run, payload e confirmacao antes de escrita remota.
+- [x] Validar que cada workflow tem `Stop Conditions` e `Continuation Bridge`.
 
 #### Readiness Criteria / Gates
 
@@ -900,7 +936,7 @@ Workflows a revisar:
   - deve parar antes de branch, codigo, PR, deploy ou GitHub sync;
   - jornada criada em `docs/framework/founder-journeys/epic-to-features.md`;
   - ponte oficial para `feature-to-delivery-cycle`.
-- [ ] `strategy/workflows/roadmap-to-github-project.workflow.md`
+- [x] `strategy/workflows/roadmap-to-github-project.workflow.md`
   - deve preparar sync de roadmap para GitHub;
   - deve focar em itens de delivery scope, current cycle e itens explicitamente selecionados para delivery;
   - deve tratar GitHub como plano/payload/dry-run antes de chamada real;
@@ -914,16 +950,32 @@ Workflows a revisar:
   - orienta retorno pos-merge: atualizar contexto, proxima Feature, riscos e follow-up;
   - nao inicia proxima Feature automaticamente;
   - roteia DevOps, Security, Growth ou Strategy apenas quando aplicavel.
-- [ ] `growth/workflows/launch-learning-loop.workflow.md`
+- [x] `growth/workflows/launch-learning-loop.workflow.md`
   - deve continuar lean e usar area AGENTs/knowledge paths atualizados.
 
 ### 3. Camada GitHub Chat-First
 
-Status: importante.
+Status: importante, mas deve ser definido conceitualmente antes de implementacao.
 
 Objetivo: preparar a futura automacao GitHub sem transformar o founder em operador de terminal.
 
 Decisao: o LeanOS Chief nao chama API diretamente. O modelo entende a intencao, carrega contexto, propoe plano/payload e pede confirmacao. A execucao real fica para capability/script seguro.
+
+Antes de implementar, decidir:
+
+- [ ] Qual e a fonte de verdade primaria para Epics e Features:
+  - local LeanOS primeiro;
+  - GitHub como espelho/sync opcional;
+  - ou GitHub como fonte primaria apos sync.
+- [ ] Como o modelo identifica o que ja foi sincronizado sem reler todos os Epics sempre.
+- [ ] Se `sync-state.yaml` e suficiente ou se precisamos de uma estrutura adicional.
+- [ ] Como representar itens locais que ainda nao foram enviados ao GitHub.
+- [ ] Como representar itens que existem no GitHub mas nao existem localmente.
+- [ ] Como tratar conflitos entre Epic/Feature local e GitHub issue.
+- [ ] Como evitar duplicidade de milestones, Epics e Features.
+- [ ] Como o fundador confirma o payload antes da execucao real.
+- [ ] Quais capabilities/scripts executam a chamada real, sem o modelo chamar API diretamente.
+- [ ] Como preservar a experiencia chat-first para founder iniciante.
 
 Pendencias:
 
@@ -1047,12 +1099,12 @@ Objetivo: publicar uma versao confiavel para usuarios reais.
 
 ## Ordem Recomendada Atual
 
-1. Revisar workflows locais.
-2. Mapear intents naturais e comandos para esses workflows.
-3. Padronizar comandos principais como portas de entrada, nao como donos do processo.
-4. Formalizar camada GitHub chat-first como etapa final confirmada dos workflows.
-5. Rodar teste externo da Founder Journey.
-6. Ajustar lacunas descobertas no teste.
+1. Padronizar comandos principais como portas de entrada, nao como donos do processo.
+2. Mapear intents naturais e comandos para os workflows locais.
+3. Discutir e definir a camada GitHub chat-first antes de implementar capability/script.
+4. Rodar teste externo da Founder Journey.
+5. Ajustar lacunas descobertas no teste.
+6. Criar `ready-for-launch` quando a cadeia de entrega estiver validada.
 7. Preparar release publica do MVP.
 8. Planejar update/migration.
 9. Planejar `/bootstrap product`.

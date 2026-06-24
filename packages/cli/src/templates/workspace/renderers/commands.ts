@@ -145,7 +145,7 @@ function defineMvpCommand(command: CommandDefinition, activeSubareas: Subarea[])
         "- `../../strategy/product/knowledge/problem.md`",
         "- `../../strategy/product/knowledge/icp.md`",
         "- `../../strategy/product/knowledge/value-proposition.md`",
-        "- `../../strategy/product/knowledge/business-model.md`"
+        "- `../../strategy/product/knowledge/business-model-canvas.md`"
       ].join("\n")
     : "- `strategy.product` is not active. Ask for enough product strategy context before shaping MVP scope.";
   const roadmapLoad = roadmapActive
@@ -684,7 +684,28 @@ Read:
 10. Mark missing role input as an explicit gap; do not invent criteria.
 11. Produce drafts first and ask for confirmation before any future GitHub API write.
 
-## Output
+## Allowed Updates
+
+None by default.
+
+\`/create issues\` may produce local drafts or a future GitHub payload in chat. It must not write local Epic/Feature files or remote GitHub issues unless the founder confirms the proposed output and the next route.
+
+## Forbidden Updates
+
+During \`/create issues\`, do not:
+
+- create GitHub issues directly from model reasoning;
+- call GitHub APIs;
+- create branches, commits, PRs or code;
+- create one issue per Task by default;
+- write tokens, secrets or credentials;
+- modify roles, skills, playbooks, workflows, commands or \`ai-standard/\`.
+
+## Confirmation Rule
+
+Ask for explicit founder confirmation before writing local files, generating an API-capable payload or asking a future capability/script to create remote GitHub items.
+
+## Expected Output
 
 - Epic draft or selected parent epic
 - Proposed features
@@ -863,7 +884,27 @@ If \`operations.engineering\` is not active, do not load missing paths. Ask whet
 8. Produce an implementation plan and test plan.
 9. Ask for confirmation before modifying product code.
 
-## Output
+## Allowed Updates
+
+None by default.
+
+\`/workon issue\` plans implementation. Product code, tests, branch creation and PR work require explicit founder confirmation and should proceed through \`feature-to-delivery-cycle\` and Engineering assets.
+
+## Forbidden Updates
+
+During \`/workon issue\`, do not:
+
+- edit source code before readiness and branch confirmation;
+- create branches, commits or PRs without explicit confirmation;
+- skip Product Ops, Design, Security or DevOps readiness when applicable;
+- modify roles, skills, playbooks, workflows, commands or \`ai-standard/\`;
+- treat a GitHub issue number as proof that the Feature is ready to develop.
+
+## Confirmation Rule
+
+Ask the founder to confirm the issue interpretation, readiness summary, branch name and implementation plan before editing code.
+
+## Expected Output
 
 - Issue summary
 - Readiness gaps
@@ -912,7 +953,27 @@ If \`operations.engineering\` is not active, do not load missing paths. Ask whet
 5. Ask before reusing an existing branch.
 6. Do not run git commands unless the user explicitly asks in a tool-capable environment.
 
-## Output
+## Allowed Updates
+
+None by default.
+
+This command proposes a safe branch name. Creating the branch requires explicit founder confirmation and a tool-capable environment.
+
+## Forbidden Updates
+
+During \`/create branch\`, do not:
+
+- edit source code;
+- create commits or PRs;
+- create a branch without issue context;
+- include secrets, customer names or sensitive details in the branch name;
+- modify roles, skills, playbooks, workflows, commands or \`ai-standard/\`.
+
+## Confirmation Rule
+
+Ask before creating or reusing a branch.
+
+## Expected Output
 
 - Proposed branch name
 - Linked issue
@@ -963,7 +1024,27 @@ If \`operations.engineering\` is not active, do not load missing paths. Ask whet
 8. Include a Founder Testing Guide with where to test, how to test and expected result.
 9. Produce a PR body draft first and ask for confirmation before any remote PR creation.
 
-## Output
+## Allowed Updates
+
+None by default.
+
+This command may draft a PR body in chat. Remote PR creation requires explicit founder confirmation and a future tool/script capability.
+
+## Forbidden Updates
+
+During \`/create pr\`, do not:
+
+- create or update a remote PR directly from model reasoning;
+- mark the PR merge-ready without PR validation;
+- omit the Founder Testing Guide;
+- hide missing tests, security checks or review gaps;
+- modify roles, skills, playbooks, workflows, commands or \`ai-standard/\`.
+
+## Confirmation Rule
+
+Ask before any remote PR creation or PR update.
+
+## Expected Output
 
 - PR title
 - PR body
@@ -1023,7 +1104,27 @@ If \`operations.engineering\` is not active, do not load missing paths. Ask whet
 9. List findings first, ordered by severity.
 10. Recommend approve, request changes or blocked by missing context.
 
-## Output
+## Allowed Updates
+
+None by default.
+
+\`/review pr\` reports findings and recommendations. It may propose code changes, test changes or PR description updates, but must not apply them without explicit confirmation.
+
+## Forbidden Updates
+
+During \`/review pr\`, do not:
+
+- approve or merge PRs automatically;
+- edit source code from review mode without founder confirmation;
+- ignore product, Design, Security or testing gaps when applicable;
+- convert suggestions into changes without approval;
+- modify roles, skills, playbooks, workflows, commands or \`ai-standard/\`.
+
+## Confirmation Rule
+
+Ask before applying review fixes, updating PR text or changing remote PR state.
+
+## Expected Output
 
 - Findings by severity
 - File or area references
@@ -1055,7 +1156,7 @@ function routingCommand(command: CommandDefinition, activeSubareas: Subarea[]): 
 
 ${command.purpose}
 
-## Before Acting
+## Load First
 
 Read:
 
@@ -1079,6 +1180,34 @@ Read:
 - If the request affects roadmap, MVP or issue scope, identify whether evidence exists.
 - If evidence is missing, propose a validation step before committing roadmap or implementation changes.
 
+## Allowed Updates
+
+None by default.
+
+This command may propose updates after routing to the correct area. It must not write files unless the founder confirms the proposed change.
+
+## Forbidden Updates
+
+Do not:
+
+- skip the department or area route;
+- load missing inactive-area paths;
+- create branches, commits, PRs or remote GitHub writes;
+- modify roles, skills, playbooks, workflows, commands or \`ai-standard/\` unless this is an explicit asset-creation command;
+- invent evidence, learning or roadmap decisions.
+
+## Confirmation Rule
+
+Ask before writing any file or moving to a workflow that changes product, roadmap, delivery or remote state.
+
+## Expected Output
+
+- Route selected
+- Context loaded
+- Relevant role, skill or playbook recommendation
+- Output requested by the founder
+- Missing context or inactive-area warning when applicable
+
 ## Active Areas
 
 ${activeSubareas.map((area) => `- ${area}`).join("\n")}
@@ -1094,7 +1223,7 @@ function assetCreationCommand(command: CommandDefinition, activeAreas: AreaDefin
 
 ${command.purpose}
 
-## Before Acting
+## Load First
 
 First consult:
 
@@ -1110,6 +1239,39 @@ First consult:
 Create role, skill and playbook assets inside the correct active area:
 
 ${getAllAreas().map((area) => `- ${area.name} assets: \`../../${area.path}/\`${activeKeys.has(area.key) ? "" : " (not active; ask before activating or creating it)"}`).join("\n")}
+
+## Process
+
+1. Identify the correct department and active area.
+2. Load the area README or AGENT.md before creating assets.
+3. Load the relevant AI Standard taxonomy, instructions, template and checklist.
+4. Propose the asset path, name and purpose.
+5. Ask for confirmation before writing files.
+6. Create only the requested asset type and keep it inside the owning area.
+
+## Allowed Updates
+
+Only after explicit founder confirmation:
+
+- new or updated role files inside an active area \`roles/\`;
+- new or updated skill files inside an active area \`skills/\`;
+- new or updated playbook files inside an active area \`playbooks/\`;
+- related README or area index updates when needed and confirmed.
+
+## Forbidden Updates
+
+Do not:
+
+- create assets at department root;
+- create assets inside inactive areas without explicit activation or confirmation;
+- modify product source code;
+- write secrets or credentials;
+- modify unrelated roles, skills, playbooks, workflows, commands or \`ai-standard/\`;
+- use examples as active workspace context.
+
+## Confirmation Rule
+
+Ask before creating or updating any asset file.
 
 ## Expected Output
 

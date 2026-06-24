@@ -34,7 +34,27 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 8. Include a Founder Testing Guide with where to test, how to test and expected result.
 9. Produce a PR body draft first and ask for confirmation before any remote PR creation.
 
-## Output
+## Allowed Updates
+
+None by default.
+
+This command may draft a PR body in chat. Remote PR creation requires explicit founder confirmation and a future tool/script capability.
+
+## Forbidden Updates
+
+During `/create pr`, do not:
+
+- create or update a remote PR directly from model reasoning;
+- mark the PR merge-ready without PR validation;
+- omit the Founder Testing Guide;
+- hide missing tests, security checks or review gaps;
+- modify roles, skills, playbooks, workflows, commands or `ai-standard/`.
+
+## Confirmation Rule
+
+Ask before any remote PR creation or PR update.
+
+## Expected Output
 
 - PR title
 - PR body

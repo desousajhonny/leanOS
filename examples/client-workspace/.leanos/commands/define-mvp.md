@@ -28,7 +28,7 @@ Then load Strategy context:
 - `../../strategy/product/knowledge/problem.md`
 - `../../strategy/product/knowledge/icp.md`
 - `../../strategy/product/knowledge/value-proposition.md`
-- `../../strategy/product/knowledge/business-model.md`
+- `../../strategy/product/knowledge/business-model-canvas.md`
 
 Roadmap context:
 

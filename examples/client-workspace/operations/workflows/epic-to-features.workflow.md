@@ -106,7 +106,7 @@ All required areas are active in this department.
 
 ## External Capabilities
 
-- GitHub sync is optional and separate; this workflow may prepare a payload or note, but must not call GitHub APIs without explicit confirmation.
+- GitHub sync is optional and separate; this workflow may prepare a dry-run payload or note, but must not call GitHub APIs without explicit confirmation.
 - Do not create branches, commits, PRs or code changes in this workflow.
 - Use local Product templates before GitHub templates.
 

@@ -23,6 +23,11 @@ Promote a qualified idea into a roadmap or backlog item without assuming deliver
 - product
 - roadmap
 
+## Conditional Areas
+
+- `operations/product-ops`: Enter only after the founder confirms that a roadmap item should become delivery work or a local Epic.
+- `growth/customer-experience`: Enter only when customer evidence, support patterns or launch learning should influence priority.
+
 ## Availability
 
 All required areas are active in this department.
