@@ -1,10 +1,10 @@
-# /shape-mvp
+# /define-mvp
 
 ## Purpose
 
-Shape MVP scope with the LeanOS MVP decision gate.
+Define MVP scope with the LeanOS MVP decision gate.
 
-Use this command when the founder asks to shape the first version of the product, decide what enters the MVP or clarify what must stay out before delivery planning.
+Use this command when the founder asks to define the first version of the product, decide what enters the MVP or clarify what must stay out before delivery planning.
 
 This command routes into the local Operations workflow. It does not create Epics, Features, GitHub issues, branches, PRs or code.
 
@@ -66,7 +66,7 @@ Then load Product Ops:
 
 ## Process
 
-1. Treat `/shape-mvp` as the safe entrypoint for MVP scope definition.
+1. Treat `/define-mvp` as the safe entrypoint for MVP scope definition.
 2. Run the `where-we-are` protocol if the current product moment is unclear.
 3. Load Strategy Product context before Product Ops decides scope.
 4. Use `define-mvp.workflow.md` to preserve department-level ownership.
@@ -93,7 +93,7 @@ Only after explicit founder confirmation:
 
 ## Forbidden Updates
 
-During `/shape-mvp`, do not:
+During `/define-mvp`, do not:
 
 - create or update local Epics or Features;
 - create GitHub issues, GitHub Project items or GitHub payloads;

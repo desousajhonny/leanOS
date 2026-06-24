@@ -6,7 +6,7 @@ Run a lightweight security checklist before MVP implementation or issue breakdow
 
 ## When to Use
 
-- before `/shape-mvp` output becomes implementation work
+- before `/define-mvp` output becomes implementation work
 - before creating implementation-ready issues
 - when Product Ops asks for security criteria
 

@@ -6,8 +6,8 @@ Turn product strategy into executable MVP scope.
 
 ## When to Use
 
-- the founder asks to shape MVP scope
-- `/shape-mvp` routes into Product Ops
+- the founder asks to define MVP scope
+- `/define-mvp` routes into Product Ops
 - strategy is ready enough to decide a first delivery scope
 - the MVP boundary needs founder confirmation before roadmap-to-Epic planning
 

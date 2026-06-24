@@ -20,7 +20,7 @@ function commandContent(command: CommandDefinition, activeAreas: AreaDefinition[
   if (command.slug === "start-leanos") return startCommand(activeAreas);
   if (command.slug === "status-leanos") return statusLeanOSCommand(command, activeKeys);
   if (command.assetCreation) return assetCreationCommand(command, activeAreas);
-  if (command.slug === "shape-mvp") return shapeMvpCommand(command, activeKeys);
+  if (command.slug === "define-mvp") return defineMvpCommand(command, activeKeys);
   if (command.slug === "define-design") return defineDesignCommand(command, activeKeys);
   if (command.slug === "create-issues") return createIssuesCommand(command, activeKeys);
   if (command.slug === "github-sync") return githubSyncCommand(command, activeKeys);
@@ -116,7 +116,7 @@ ${activeSubareas.map((area) => `- ${area}`).join("\n")}
 `;
 }
 
-function shapeMvpCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
+function defineMvpCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
   const active = new Set(activeSubareas);
   const productOpsActive = active.has("operations.product-ops");
   const productActive = active.has("strategy.product");
@@ -163,7 +163,7 @@ function shapeMvpCommand(command: CommandDefinition, activeSubareas: Subarea[]):
 
 ${command.purpose}
 
-Use this command when the founder asks to shape the first version of the product, decide what enters the MVP or clarify what must stay out before delivery planning.
+Use this command when the founder asks to define the first version of the product, decide what enters the MVP or clarify what must stay out before delivery planning.
 
 This command routes into the local Operations workflow. It does not create Epics, Features, GitHub issues, branches, PRs or code.
 
@@ -205,7 +205,7 @@ ${productOpsLoad}
 
 ## Process
 
-1. Treat \`/shape-mvp\` as the safe entrypoint for MVP scope definition.
+1. Treat \`/define-mvp\` as the safe entrypoint for MVP scope definition.
 2. Run the \`where-we-are\` protocol if the current product moment is unclear.
 3. Load Strategy Product context before Product Ops decides scope.
 4. Use \`define-mvp.workflow.md\` to preserve department-level ownership.
@@ -232,7 +232,7 @@ Only after explicit founder confirmation:
 
 ## Forbidden Updates
 
-During \`/shape-mvp\`, do not:
+During \`/define-mvp\`, do not:
 
 - create or update local Epics or Features;
 - create GitHub issues, GitHub Project items or GitHub payloads;

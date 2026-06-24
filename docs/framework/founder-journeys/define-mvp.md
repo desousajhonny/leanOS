@@ -1,10 +1,10 @@
-# Journey: Shape MVP
+# Journey: Define MVP
 
 ## Human Overview
 
 - **Trigger:** founder asks what should enter the first version, MVP or initial delivery.
 - **Goal:** decide the smallest coherent MVP scope using fixed LeanOS criteria.
-- **Starts at:** Root `AGENT.md`, or `.leanos/commands/shape-mvp.md` when the founder uses the command.
+- **Starts at:** Root `AGENT.md`, or `.leanos/commands/define-mvp.md` when the founder uses the command.
 - **Passes through:** `operations/workflows/define-mvp.workflow.md`, Product Ops, Product Owner, MVP Decision Gate, `define-mvp.skill.md` and `mvp-delivery.playbook.md`.
 - **Ends with:** a founder-confirmed MVP scope proposal or a clear explanation of what is missing before MVP can be defined.
 - **Does not do:** create Epics, Features, GitHub issues, branches, PRs, source code or design component specs.
@@ -16,7 +16,7 @@ flowchart TD
   A["Founder: o que entra no MVP?"]
   B["Root AGENT"]
   C{"Command or natural language?"}
-  D[".leanos/commands/shape-mvp.md"]
+  D[".leanos/commands/define-mvp.md"]
   E["Operations AGENT"]
   F["define-mvp workflow"]
   G{"Route files exist?"}
@@ -52,14 +52,13 @@ flowchart TD
 
 ## Flow In Plain Words
 
-The model starts at Root `AGENT.md` because the founder speaks naturally or invokes `/shape-mvp`. It enters Operations because shaping MVP is a delivery-scope decision, not implementation. If the command is used, the model reads `.leanos/commands/shape-mvp.md` first because command handling requires command files before action. It then opens `operations/workflows/define-mvp.workflow.md` because MVP shaping can involve Strategy context plus Product Ops and conditional Design, Security, Engineering or DevOps checks. Product Ops leads the decision through the Product Owner role. The model uses `mvp-decision-gate.md` as the fixed gate, then `define-mvp.skill.md` and `mvp-delivery.playbook.md` to guide the founder, propose scope and ask for confirmation before writing.
+The model starts at Root `AGENT.md` because the founder speaks naturally or invokes `/define-mvp`. It enters Operations because defining MVP is a delivery-scope decision, not implementation. If the command is used, the model reads `.leanos/commands/define-mvp.md` first because command handling requires command files before action. It then opens `operations/workflows/define-mvp.workflow.md` because MVP definition can involve Strategy context plus Product Ops and conditional Design, Security, Engineering or DevOps checks. Product Ops leads the decision through the Product Owner role. The model uses `mvp-decision-gate.md` as the fixed gate, then `define-mvp.skill.md` and `mvp-delivery.playbook.md` to guide the founder, propose scope and ask for confirmation before writing.
 
 ## Founder Trigger
 
 - "defina o MVP"
 - "qual a primeira versao?"
 - "o que entra no MVP?"
-- "shape the MVP"
 - "vamos definir a primeira entrega"
 - "isso entra no MVP?"
 
@@ -94,7 +93,7 @@ This journey ends when:
 - Department: Operations
 - Area: Product Ops
 - Workflow: `operations/workflows/define-mvp.workflow.md`
-- Command: `.leanos/commands/shape-mvp.md`
+- Command: `.leanos/commands/define-mvp.md`
 - Primary role: `operations/product-ops/roles/product-owner.role.md`
 - Gate: `operations/product-ops/knowledge/mvp-decision-gate.md`
 - Primary skill: `operations/product-ops/skills/define-mvp.skill.md`
@@ -104,7 +103,7 @@ This journey ends when:
 
 ```text
 Root AGENT.md
--> .leanos/commands/shape-mvp.md when command is used
+-> .leanos/commands/define-mvp.md when command is used
 -> operations/AGENT.md
 -> operations/workflows/define-mvp.workflow.md
 -> operations/product-ops/AGENT.md
@@ -139,27 +138,27 @@ Why:
 
 Navigation Evidence:
 
-- `AGENT.md` maps "define the MVP" or "shape the MVP" to `.leanos/commands/shape-mvp.md`.
+- `AGENT.md` maps "define the MVP" to `.leanos/commands/define-mvp.md`.
 - `AGENT.md` routes Operations requests through `operations/AGENT.md`.
 
 Next step:
 
-`.leanos/commands/shape-mvp.md` when the command or matching intent is clear.
+`.leanos/commands/define-mvp.md` when the command or matching intent is clear.
 
 ### Step 2 - Load Command Entrypoint
 
 The model opens:
 
-`.leanos/commands/shape-mvp.md`
+`.leanos/commands/define-mvp.md`
 
 Why:
 
-- The command file states that `/shape-mvp` routes into the local Operations workflow.
+- The command file states that `/define-mvp` routes into the local Operations workflow.
 - It tells the model not to create Epics, Features, GitHub issues, branches, PRs or code.
 
 Navigation Evidence:
 
-- `.leanos/commands/shape-mvp.md` points to `operations/workflows/define-mvp.workflow.md`.
+- `.leanos/commands/define-mvp.md` points to `operations/workflows/define-mvp.workflow.md`.
 - It lists `mvp-decision-gate.md`, `define-mvp.skill.md` and `mvp-delivery.playbook.md`.
 
 Next step:
@@ -219,7 +218,7 @@ The model opens:
 
 Why:
 
-- The workflow says Product Ops cannot responsibly shape MVP without product, user, problem and value context.
+- The workflow says Product Ops cannot responsibly define MVP without product, user, problem and value context.
 - MVP scope without Strategy baseline would be guessing.
 
 Navigation Evidence:
@@ -370,7 +369,7 @@ Do not ask as a rigid form. Ask only what is missing.
 | Step 5 | Fill missing Strategy/Product context | `define-mvp.workflow.md` |
 | Step 7 | Decide risk state | `mvp-decision-gate.md` |
 | Step 8 | Ask concise options and refine scope | `mvp-delivery.playbook.md` |
-| Step 9 | Confirm before durable updates | `.leanos/commands/shape-mvp.md` and workflow |
+| Step 9 | Confirm before durable updates | `.leanos/commands/define-mvp.md` and workflow |
 
 ## Confirmation Checkpoints
 
@@ -482,7 +481,7 @@ After this journey, the next flow can be:
 ### Files Exist
 
 - [x] `AGENT.md` exists.
-- [x] `.leanos/commands/shape-mvp.md` exists.
+- [x] `.leanos/commands/define-mvp.md` exists.
 - [x] `operations/AGENT.md` exists.
 - [x] `operations/workflows/define-mvp.workflow.md` exists.
 - [x] `operations/product-ops/AGENT.md` exists.
@@ -494,7 +493,7 @@ After this journey, the next flow can be:
 
 ### Files Point To Each Other
 
-- [x] Root `AGENT.md` routes MVP language to `.leanos/commands/shape-mvp.md`.
+- [x] Root `AGENT.md` routes MVP language to `.leanos/commands/define-mvp.md`.
 - [x] Command points to `operations/workflows/define-mvp.workflow.md`.
 - [x] Workflow points to Product Ops `AGENT.md`.
 - [x] Product Owner role points to `define-mvp.skill.md` and `mvp-delivery.playbook.md`.
@@ -519,6 +518,6 @@ After this journey, the next flow can be:
 
 ## Notes For Framework Design
 
-- The public command is `/shape-mvp`, but the internal workflow and skill can stay `define-mvp` because they define the decision inside Product Ops.
+- The public command, workflow and skill use `define-mvp` to keep naming consistent for the founder and the framework.
 - MVP shaping should remain before Epic creation; otherwise the model can create detailed work for a weak product scope.
 - This journey should be revisited when `/bootstrap-app` becomes a real workflow.

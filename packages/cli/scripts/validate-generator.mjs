@@ -1646,7 +1646,7 @@ async function assertFounderIntentRouting(rootDir) {
   const whereWeAreProtocol = await readFile(join(rootDir, ".leanos", "agent", "protocols", "where-we-are.md"), "utf8");
   const commandsReadme = await readFile(join(rootDir, ".leanos", "commands", "README.md"), "utf8");
   const statusLeanOSCommand = await readFile(join(rootDir, ".leanos", "commands", "status-leanos.md"), "utf8");
-  const shapeMvpCommand = await readFile(join(rootDir, ".leanos", "commands", "shape-mvp.md"), "utf8");
+  const defineMvpCommand = await readFile(join(rootDir, ".leanos", "commands", "define-mvp.md"), "utf8");
   const vscodeAgent = await readFile(join(rootDir, ".github", "agents", "leanos-chief.agent.md"), "utf8");
   const workflowsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "workflows.yaml"), "utf8"));
   const rootAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "agents", "root-agent-template.md"), "utf8");
@@ -1731,17 +1731,17 @@ async function assertFounderIntentRouting(rootDir) {
   assert(statusLeanOSCommand.includes("Treat `/status-leanos` as a request to run the `where-we-are` protocol"), "Status LeanOS command should be a where-we-are entrypoint");
   assert(statusLeanOSCommand.includes("None by default"), "Status LeanOS command should be diagnostic by default");
   assert(statusLeanOSCommand.includes("mark work as ready to develop without checking `where-we-are.md` and `ready-to-develop.md`"), "Status LeanOS command should guard development readiness");
-  assert.equal(await exists(join(rootDir, ".leanos", "commands", "define-mvp.md")), false, "Legacy define-mvp command should not be generated");
-  assert(commandsReadme.includes("shape-mvp.md"), "Commands README should list shape-mvp.md");
-  assert(commandsReadme.includes("/shape-mvp"), "Commands README should list /shape-mvp");
-  assert(shapeMvpCommand.includes("# /shape-mvp"), "Shape MVP command should use /shape-mvp heading");
-  assert(shapeMvpCommand.includes("../../operations/workflows/define-mvp.workflow.md"), "Shape MVP command should load define-mvp workflow");
-  assert(shapeMvpCommand.includes("../../operations/product-ops/knowledge/mvp-decision-gate.md"), "Shape MVP command should load MVP decision gate");
-  assert(shapeMvpCommand.includes("Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk"), "Shape MVP command should use MVP gate risk criteria");
-  assert(shapeMvpCommand.includes("create or update local Epics or Features"), "Shape MVP command should not create Epics or Features");
-  assert(shapeMvpCommand.includes("Do not write files until the founder confirms"), "Shape MVP command should require confirmation before writes");
-  assert(rootAgent.includes("\"define the MVP\" or \"shape the MVP\" -> `.leanos/commands/shape-mvp.md`"), "Root AGENT should route MVP language to /shape-mvp");
-  assert(whereWeAreProtocol.includes("MVP missing or weak -> `/shape-mvp`"), "Where-we-are protocol should recommend /shape-mvp for missing MVP");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands", "shape-mvp.md")), false, "Shape MVP command should not be generated");
+  assert(commandsReadme.includes("define-mvp.md"), "Commands README should list define-mvp.md");
+  assert(commandsReadme.includes("/define-mvp"), "Commands README should list /define-mvp");
+  assert(defineMvpCommand.includes("# /define-mvp"), "Define MVP command should use /define-mvp heading");
+  assert(defineMvpCommand.includes("../../operations/workflows/define-mvp.workflow.md"), "Define MVP command should load define-mvp workflow");
+  assert(defineMvpCommand.includes("../../operations/product-ops/knowledge/mvp-decision-gate.md"), "Define MVP command should load MVP decision gate");
+  assert(defineMvpCommand.includes("Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk"), "Define MVP command should use MVP gate risk criteria");
+  assert(defineMvpCommand.includes("create or update local Epics or Features"), "Define MVP command should not create Epics or Features");
+  assert(defineMvpCommand.includes("Do not write files until the founder confirms"), "Define MVP command should require confirmation before writes");
+  assert(rootAgent.includes("\"define the MVP\" -> `.leanos/commands/define-mvp.md`"), "Root AGENT should route MVP language to /define-mvp");
+  assert(whereWeAreProtocol.includes("MVP missing or weak -> `/define-mvp`"), "Where-we-are protocol should recommend /define-mvp for missing MVP");
   const defineMvpWorkflow = await readFile(join(rootDir, "operations", "workflows", "define-mvp.workflow.md"), "utf8");
   const mvpDecisionGate = await readFile(join(rootDir, "operations", "product-ops", "knowledge", "mvp-decision-gate.md"), "utf8");
   const defineMvpSkill = await readFile(join(rootDir, "operations", "product-ops", "skills", "define-mvp.skill.md"), "utf8");
@@ -3295,7 +3295,7 @@ async function assertInitialContextCoherence(rootDir, selectedSubareas) {
 
   const commandRequirements = [
     { command: "/define icp", area: "strategy.product" },
-    { command: "/shape-mvp", area: "operations.product-ops" },
+    { command: "/define-mvp", area: "operations.product-ops" },
     { command: "/check coherence", area: "strategy.product" },
     { command: "/create roadmap", area: "strategy.roadmap" },
     { command: "/create issues", area: "operations.product-ops" },

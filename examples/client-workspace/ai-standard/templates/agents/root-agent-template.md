@@ -60,7 +60,7 @@ If a natural-language request clearly matches an existing LeanOS command, load t
 Examples:
 
 - "help me define the ICP" -> `.leanos/commands/define-icp.md`
-- "define the MVP" or "shape the MVP" -> `.leanos/commands/shape-mvp.md`
+- "define the MVP" -> `.leanos/commands/define-mvp.md`
 - "review this PR" -> `.leanos/commands/review-pr.md`
 
 If no command clearly matches, route through the Navigation Chain.

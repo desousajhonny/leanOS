@@ -591,7 +591,7 @@ After this journey, the next flow can be:
 
 - `idea-to-roadmap` when the idea should become a roadmap/backlog item.
 - `roadmap-item-to-epic` when an existing roadmap item may enter MVP, a release, an experiment or another delivery scope.
-- `/shape-mvp` when the MVP itself is still undefined.
+- `/define-mvp` when the MVP itself is still undefined.
 - `start-leanos` when the workspace does not have enough strategy baseline.
 
 ## Journey Validation Checklist

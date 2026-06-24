@@ -8,7 +8,7 @@ Apply the MVP Decision Gate to turn strategy into the smallest coherent first de
 
 - the founder asks what enters the MVP
 - the first product version needs scope
-- `/shape-mvp` routes into Product Ops
+- `/define-mvp` routes into Product Ops
 - strategy exists but the MVP boundary is unclear
 
 ## Required Context

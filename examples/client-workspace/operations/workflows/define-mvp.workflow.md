@@ -7,7 +7,7 @@ Shape the first MVP scope from Strategy context using the MVP Decision Gate befo
 ## Founder Triggers
 
 - "defina o MVP"
-- "shape the MVP"
+- "define the MVP"
 - "qual a primeira versao?"
 - "o que entra no MVP?"
 - "vamos definir a primeira entrega"
@@ -41,7 +41,7 @@ All required areas are active in this department.
 ## Load First
 
 - `AGENT.md`
-- `.leanos/commands/shape-mvp.md when slash command is used`
+- `.leanos/commands/define-mvp.md when slash command is used`
 - `.leanos/agent/protocols/where-we-are.md when the current product moment is unclear`
 - `operations/AGENT.md`
 - `operations/workflows/README.md`
@@ -59,7 +59,7 @@ All required areas are active in this department.
 ## Navigation Route
 
 1. `AGENT.md`
-2. `.leanos/commands/shape-mvp.md when slash command is used`
+2. `.leanos/commands/define-mvp.md when slash command is used`
 3. `operations/AGENT.md`
 4. `operations/workflows/define-mvp.workflow.md`
 5. `operations/product-ops/AGENT.md`
@@ -74,7 +74,7 @@ All required areas are active in this department.
 
 1. Declare the route and explain that this workflow shapes MVP scope; it does not create Epics, Features, GitHub issues, branches, PRs or code.
 2. Confirm there is enough Strategy Product context to evaluate the target user, problem, value proposition and business assumption.
-3. If Strategy context is missing, stop and recommend `/start-leanos` or Strategy Product before MVP shaping.
+3. If Strategy context is missing, stop and recommend `/start-leanos` or Strategy Product before MVP definition.
 4. Load Product Ops through `operations/product-ops/AGENT.md` and choose `roles/product-owner.role.md`.
 5. Load `operations/product-ops/knowledge/mvp-decision-gate.md` before deciding any item.
 6. Use `skills/define-mvp.skill.md` and `playbooks/mvp-delivery.playbook.md` to evaluate Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk.
@@ -176,7 +176,7 @@ Next route:
 
 Rules:
 
-- Do not automatically create Epics after MVP shaping.
+- Do not automatically create Epics after MVP definition.
 - If the founder says yes, declare the `roadmap-item-to-epic` route before loading the next workflow.
 - If the founder says no, summarize the MVP decision and stop without writing anything else.
 - If the founder returns later with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `roadmap-item-to-epic`.

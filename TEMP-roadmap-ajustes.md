@@ -127,7 +127,7 @@ Diagnostico:
 
 - O LeanOS esta forte depois que ja existe Roadmap, Epic e Feature.
 - A lacuna principal esta antes disso: transformar Strategy Baseline em MVP claro, pequeno, coerente e defensavel.
-- `/shape-mvp`, `define-mvp.skill.md` e `mvp-delivery.playbook.md` foram fortalecidos para guiar essa decisao.
+- `/define-mvp`, `define-mvp.skill.md` e `mvp-delivery.playbook.md` foram fortalecidos para guiar essa decisao.
 
 Principio:
 
@@ -140,7 +140,7 @@ Principio:
 
 Comando:
 
-- [x] `.leanos/commands/shape-mvp.md`
+- [x] `.leanos/commands/define-mvp.md`
   - virou porta de entrada para o workflow;
   - nao duplica toda a logica;
   - carrega Strategy primeiro;
@@ -167,7 +167,7 @@ Knowledge / Gate:
 - [x] `operations/product-ops/knowledge/mvp-decision-gate.md`
   - criado como criterio fixo de decisao, semelhante ao `ready-to-develop.md`;
   - nao e status log do produto;
-  - e usado por `/shape-mvp`, `define-mvp.workflow.md`, `define-mvp.skill.md` e `mvp-delivery.playbook.md`;
+  - e usado por `/define-mvp`, `define-mvp.workflow.md`, `define-mvp.skill.md` e `mvp-delivery.playbook.md`;
   - classifica risco e readiness do MVP.
 
 Skill:
@@ -193,11 +193,11 @@ Playbook:
 
 Jornada interna:
 
-- [x] `docs/framework/founder-journeys/shape-mvp.md`
+- [x] `docs/framework/founder-journeys/define-mvp.md`
   - criado com Mermaid e passo a passo;
   - provar Navigation Chain:
     - Root `AGENT.md`
-    - `.leanos/commands/shape-mvp.md` quando slash command for usado
+    - `.leanos/commands/define-mvp.md` quando slash command for usado
     - `operations/AGENT.md`
     - `operations/workflows/define-mvp.workflow.md`
     - `operations/product-ops/AGENT.md`
@@ -298,7 +298,7 @@ O modelo deve entregar:
 #### Relacao Com Outros Fluxos
 
 - [x] `/start-leanos` cria Strategy Baseline minima, nao MVP completo.
-- [x] `/status-leanos` pode diagnosticar "MVP missing" e recomendar `/shape-mvp`.
+- [x] `/status-leanos` pode diagnosticar "MVP missing" e recomendar `/define-mvp`.
 - [x] `new-idea-intake` e `idea-to-roadmap` podem gerar candidatos futuros, mas nao alteram MVP automaticamente.
 - [x] `roadmap-item-to-epic` so deve ser sugerido depois que um item estiver claro e houver delivery/MVP decision suficiente.
 - [x] `epic-to-features` depende de Epic local, nao de MVP cru.
@@ -306,13 +306,13 @@ O modelo deve entregar:
 
 #### Validacoes Necessarias
 
-- [x] `shape-mvp.md` carrega `define-mvp.workflow.md`.
+- [x] `define-mvp.md` carrega `define-mvp.workflow.md`.
 - [x] `define-mvp.workflow.md` segue Workflow Contract Standard.
 - [x] `define-mvp.workflow.md` carrega `mvp-decision-gate.md`.
 - [x] `define-mvp.skill.md` contem Value, Usability, Feasibility e Business Viability Risk.
 - [x] `mvp-delivery.playbook.md` usa conversa guiada e confirmacao antes de escrita.
 - [x] `mvp-decision-gate.md` existe e nao e placeholder.
-- [x] `/status-leanos` recomenda `/shape-mvp` quando o MVP estiver faltando.
+- [x] `/status-leanos` recomenda `/define-mvp` quando o MVP estiver faltando.
 - [x] Nenhum arquivo de Epic, Feature, GitHub ou codigo e gerado no fluxo de define MVP.
 
 ### 1. Padronizar Comandos Principais
@@ -350,7 +350,7 @@ Regras gerais:
 - [ ] Evitar recomendar areas inativas sem aviso.
 - [ ] Verificar coerencia entre Strategy, MVP, Roadmap, Design, Security e Engineering quando essas areas estiverem ativas.
 
-#### `/shape-mvp`
+#### `/define-mvp`
 
 - [ ] Definir inputs obrigatorios.
 - [ ] Carregar Strategy antes de Operations.
@@ -795,7 +795,7 @@ Jornadas internas devem ser criadas em `docs/framework/founder-journeys/` usando
 | Etapa | Scaffold atualizado | Jornada criada | Momento | Workflow / Entrada | Intencao do Founder | Dono | Roles Principais | Playbooks Principais | Estado |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0 | [ ] | [ ] `docs/framework/founder-journeys/start-leanos.md` | Setup inicial | `.leanos/commands/start-leanos.md` + Strategy Baseline | "vamos comecar", "configurar o LeanOS", "iniciar o projeto" | LeanOS Chief + Strategy | Business Strategist, Product Strategist | `business-foundation`, `product-strategy` | Existe, garantir Strategy Baseline minima |
-| 1 | [x] | [x] `docs/framework/founder-journeys/shape-mvp.md` | Primeira definicao do produto | `.leanos/commands/shape-mvp.md` + `operations/workflows/define-mvp.workflow.md` | "Defina o MVP", "shape the MVP", "qual a primeira versao?", "o que entra no MVP?" | Product Ops | Product Owner, Delivery Architect, Product Designer quando aplicavel, Security Reviewer quando aplicavel | `mvp-delivery`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada; scaffold atualizado com MVP Decision Gate, conversa guiada, confirmacao e ponte para `roadmap-item-to-epic` |
+| 1 | [x] | [x] `docs/framework/founder-journeys/define-mvp.md` | Primeira definicao do produto | `.leanos/commands/define-mvp.md` + `operations/workflows/define-mvp.workflow.md` | "Defina o MVP", "qual a primeira versao?", "o que entra no MVP?" | Product Ops | Product Owner, Delivery Architect, Product Designer quando aplicavel, Security Reviewer quando aplicavel | `mvp-delivery`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada; scaffold atualizado com MVP Decision Gate, conversa guiada, confirmacao e ponte para `roadmap-item-to-epic` |
 | 2 | [x] | [x] `docs/framework/founder-journeys/new-idea-intake.md` | Novas ideias e features | `strategy/workflows/new-idea-intake.workflow.md` | "Tenho uma ideia", "quero avaliar uma feature nova", "isso faz sentido para o produto?" | Strategy | Product Strategist, Product Manager, Business Strategist, Roadmap Planner | `product-strategy`, `business-foundation`, `roadmap-cycle-planning`, `mvp-delivery` | Jornada criada e scaffold ajustado para separar intake de roadmap |
 | 3 | [x] | [x] `docs/framework/founder-journeys/idea-to-roadmap.md` | Decisao de roadmap | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" | Strategy / Roadmap | Product Strategist, Product Manager, Roadmap Planner | `roadmap-cycle-planning`, `product-strategy` | Jornada criada; scaffold existente validado; gap futuro: delivery scope deve ser contexto opcional no Roadmap Planner |
 | 4 | [x] | [x] `docs/framework/founder-journeys/roadmap-item-to-epic.md` | Roadmap item para Epic local | `operations/workflows/roadmap-item-to-epic.workflow.md` | "Isso entra na proxima entrega?", "isso entra no MVP?", "crie um epic para esse item" | Product Ops + Strategy | Product Owner, Product Strategist, Delivery Architect, Product Designer/Security/DevOps/Engineering quando aplicavel | `delivery-scope-planning`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada; consolidou os dois passos antigos; GitHub write fica opcional e posterior |
@@ -841,7 +841,7 @@ MVP continua sendo o nome principal da etapa. O criterio de qualidade deve inclu
 5. `operations/workflows/feature-to-delivery-cycle.workflow.md`
 6. Workflow legado MVP-to-PR removido/absorvido por `feature-to-delivery-cycle`
 7. `operations/workflows/post-merge-continuation.workflow.md` - concluido
-8. `operations/workflows/define-mvp.workflow.md` - concluido, acionado por `/shape-mvp`
+8. `operations/workflows/define-mvp.workflow.md` - concluido, acionado por `/define-mvp`
 9. `strategy/workflows/roadmap-to-github-project.workflow.md`
 11. `growth/workflows/launch-learning-loop.workflow.md`
 
@@ -965,7 +965,7 @@ Cenario minimo:
 - [ ] Selecionar LeanOS Chief quando aplicavel.
 - [ ] Rodar `/start-leanos`.
 - [ ] Definir Business/Product/Roadmap com confirmacao.
-- [ ] Rodar `/shape-mvp`.
+- [ ] Rodar `/define-mvp`.
 - [ ] Rodar `/define design` quando Design estiver ativo.
 - [ ] Rodar `/check coherence`.
 - [ ] Gerar plano de issues ou execucao.

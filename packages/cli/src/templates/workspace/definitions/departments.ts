@@ -3442,7 +3442,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "define-mvp",
             title: "Define MVP",
             purpose: "Apply the MVP Decision Gate to turn strategy into the smallest coherent first delivery scope.",
-            useWhen: ["the founder asks what enters the MVP", "the first product version needs scope", "`/shape-mvp` routes into Product Ops", "strategy exists but the MVP boundary is unclear"],
+            useWhen: ["the founder asks what enters the MVP", "the first product version needs scope", "`/define-mvp` routes into Product Ops", "strategy exists but the MVP boundary is unclear"],
             requiredContext: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/mvp-decision-gate.md", "../knowledge/delivery-scope.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/product/knowledge/problem.md", "../../../strategy/product/knowledge/icp.md", "../../../strategy/product/knowledge/value-proposition.md", "../../../strategy/product/knowledge/business-model.md", "../../../strategy/roadmap/knowledge/backlog.md", "../../../strategy/roadmap/knowledge/roadmap.md"],
             inputs: ["Founder intent", "Product brief", "Problem", "ICP", "Value proposition", "Business model or business assumption", "Roadmap/backlog context when available", "Existing MVP scope and PRD"],
             process: ["Restate the intended product outcome.", "Identify the smallest useful version that can validate or deliver the core value.", "Apply Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk from `mvp-decision-gate.md`.", "Classify items as in MVP now, later/backlog, needs discovery, needs specialist check or not now.", "Name Design, Security, Engineering or DevOps risks only when applicable.", "Draft founder-friendly MVP scope before mentioning file updates.", "Ask for confirmation before writing MVP files."],
@@ -3495,7 +3495,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "mvp-delivery",
             title: "MVP Delivery",
             purpose: "Turn product strategy into executable MVP scope.",
-            useWhen: ["the founder asks to shape MVP scope", "`/shape-mvp` routes into Product Ops", "strategy is ready enough to decide a first delivery scope", "the MVP boundary needs founder confirmation before roadmap-to-Epic planning"],
+            useWhen: ["the founder asks to define MVP scope", "`/define-mvp` routes into Product Ops", "strategy is ready enough to decide a first delivery scope", "the MVP boundary needs founder confirmation before roadmap-to-Epic planning"],
             beforeActing: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/mvp-decision-gate.md", "../knowledge/delivery-scope.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/AGENT.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/product/knowledge/problem.md", "../../../strategy/product/knowledge/icp.md", "../../../strategy/product/knowledge/value-proposition.md", "../../../strategy/roadmap/knowledge/backlog.md", "../../../strategy/roadmap/knowledge/roadmap.md"],
             inputs: ["Product brief", "Problem", "ICP", "Value proposition", "Business model or assumption", "Roadmap/backlog context when available", "Existing MVP scope", "Existing PRD when available", "MVP Decision Gate"],
             steps: ["Read Product Ops AGENT and choose the Product Owner role.", "Read product strategy and existing MVP knowledge.", "Load `../knowledge/mvp-decision-gate.md` before deciding scope.", "Use `skills/define-mvp.skill.md` to classify candidate items by Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk.", "Use guided conversation only for missing inputs.", "Define the smallest coherent MVP scope.", "Write or refine the MVP PRD draft.", "Write or refine user stories.", "Define acceptance criteria.", "Confirm non-goals.", "Identify Design, Security, Engineering or DevOps dependencies.", "Explain the recommendation in founder-friendly language.", "Propose file updates and wait for confirmation before writing.", "After confirmation, offer the bridge to `roadmap-item-to-epic` only when the founder wants delivery planning."],
@@ -3531,7 +3531,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         commonPaths: [
           "Product Ops request: area lead `AGENT.md` -> choose Product Owner or Delivery Architect -> load only the required skills and playbook.",
           "Delivery scope request: role `roles/product-owner.role.md` -> skill `skills/define-delivery-scope.skill.md` -> playbook `playbooks/delivery-scope-planning.playbook.md`.",
-          "MVP request: command `.leanos/commands/shape-mvp.md` -> workflow `../workflows/define-mvp.workflow.md` -> area lead `AGENT.md` -> role `roles/product-owner.role.md` -> gate `knowledge/mvp-decision-gate.md` -> skill `skills/define-mvp.skill.md` -> playbook `playbooks/mvp-delivery.playbook.md`.",
+          "MVP request: command `.leanos/commands/define-mvp.md` -> workflow `../workflows/define-mvp.workflow.md` -> area lead `AGENT.md` -> role `roles/product-owner.role.md` -> gate `knowledge/mvp-decision-gate.md` -> skill `skills/define-mvp.skill.md` -> playbook `playbooks/mvp-delivery.playbook.md`.",
           "Epic breakdown request: role `roles/product-owner.role.md` -> skills `skills/shape-epic.skill.md` and `skills/write-feature-criteria.skill.md` -> playbook `playbooks/epic-to-features.playbook.md`.",
           "Delivery readiness request: role `roles/delivery-architect.role.md` -> skill `skills/define-delivery-boundaries.skill.md` -> playbook `playbooks/delivery-readiness.playbook.md`."
         ]
@@ -4523,7 +4523,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "pre-mvp-security-checklist",
             title: "Pre-MVP Security Checklist",
             purpose: "Run a lightweight security checklist before MVP implementation or issue breakdown.",
-            useWhen: ["before `/shape-mvp` output becomes implementation work", "before creating implementation-ready issues", "when Product Ops asks for security criteria"],
+            useWhen: ["before `/define-mvp` output becomes implementation work", "before creating implementation-ready issues", "when Product Ops asks for security criteria"],
             beforeActing: ["../AGENT.md", "../knowledge/security-baseline.md", "../knowledge/threat-model.md", "../knowledge/access-control.md", "../knowledge/data-protection.md"],
             inputs: ["MVP scope", "PRD", "User stories", "Acceptance criteria", "Known sensitive data", "Auth expectations"],
             steps: ["Load Security Reviewer", "Check baseline red lines", "Review access-control needs", "Review data-protection needs", "Review database and API risk if present", "List security acceptance criteria for Product Ops or Engineering"],
@@ -4653,7 +4653,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         purpose: "Shape the first MVP scope from Strategy context using the MVP Decision Gate before Epics, Features, GitHub sync, branch, code or PR work.",
         founderTriggers: [
           "defina o MVP",
-          "shape the MVP",
+          "define the MVP",
           "qual a primeira versao?",
           "o que entra no MVP?",
           "vamos definir a primeira entrega",
@@ -4676,7 +4676,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         ],
         loadFirst: [
           "AGENT.md",
-          ".leanos/commands/shape-mvp.md when slash command is used",
+          ".leanos/commands/define-mvp.md when slash command is used",
           ".leanos/agent/protocols/where-we-are.md when the current product moment is unclear",
           "operations/AGENT.md",
           "operations/workflows/README.md",
@@ -4693,7 +4693,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         ],
         navigationRoute: [
           "AGENT.md",
-          ".leanos/commands/shape-mvp.md when slash command is used",
+          ".leanos/commands/define-mvp.md when slash command is used",
           "operations/AGENT.md",
           "operations/workflows/define-mvp.workflow.md",
           "operations/product-ops/AGENT.md",
@@ -4707,7 +4707,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         steps: [
           "Declare the route and explain that this workflow shapes MVP scope; it does not create Epics, Features, GitHub issues, branches, PRs or code.",
           "Confirm there is enough Strategy Product context to evaluate the target user, problem, value proposition and business assumption.",
-          "If Strategy context is missing, stop and recommend `/start-leanos` or Strategy Product before MVP shaping.",
+          "If Strategy context is missing, stop and recommend `/start-leanos` or Strategy Product before MVP definition.",
           "Load Product Ops through `operations/product-ops/AGENT.md` and choose `roles/product-owner.role.md`.",
           "Load `operations/product-ops/knowledge/mvp-decision-gate.md` before deciding any item.",
           "Use `skills/define-mvp.skill.md` and `playbooks/mvp-delivery.playbook.md` to evaluate Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk.",
@@ -4783,7 +4783,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           laterTriggers: ["vamos transformar esse item do MVP em epic", "isso vira epic?", "crie um epic para esse item do MVP", "vamos planejar a entrega desse item", "isso entra na proxima entrega?"],
           nextRoute: "roadmap-item-to-epic",
           rules: [
-            "Do not automatically create Epics after MVP shaping.",
+            "Do not automatically create Epics after MVP definition.",
             "If the founder says yes, declare the `roadmap-item-to-epic` route before loading the next workflow.",
             "If the founder says no, summarize the MVP decision and stop without writing anything else.",
             "If the founder returns later with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `roadmap-item-to-epic`."

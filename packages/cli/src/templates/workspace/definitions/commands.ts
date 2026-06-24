@@ -4,7 +4,7 @@ export const commandDefinitions: CommandDefinition[] = [
   { slug: "start-leanos", purpose: "Start LeanOS by reading AGENT.md, leanos.yaml, current focus and next actions." },
   { slug: "status-leanos", purpose: "Diagnose where the LeanOS workspace is and recommend the next safe route." },
   { slug: "define-icp", purpose: "Define ICP.", area: "strategy.product" },
-  { slug: "shape-mvp", purpose: "Shape MVP scope with the LeanOS MVP decision gate.", area: "operations.product-ops" },
+  { slug: "define-mvp", purpose: "Define MVP scope with the LeanOS MVP decision gate.", area: "operations.product-ops" },
   { slug: "define-design", purpose: "Define the MVP design foundation.", area: "operations.design" },
   { slug: "check-coherence", purpose: "Check coherence across strategy, MVP, roadmap and issue.", area: "strategy.product" },
   { slug: "create-roadmap", purpose: "Create a validation-first roadmap.", area: "strategy.roadmap" },

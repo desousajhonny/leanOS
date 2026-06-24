@@ -57,10 +57,10 @@ client-workspace/
 |   |   |-- create-skill.md
 |   |   |-- define-design.md
 |   |   |-- define-icp.md
+|   |   |-- define-mvp.md
 |   |   |-- github-sync.md
 |   |   |-- README.md
 |   |   |-- review-pr.md
-|   |   |-- shape-mvp.md
 |   |   |-- start-leanos.md
 |   |   |-- status-leanos.md
 |   |   `-- workon-issue.md
