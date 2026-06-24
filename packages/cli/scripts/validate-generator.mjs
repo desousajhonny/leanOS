@@ -564,8 +564,17 @@ async function validateWorkspaceFiles() {
   const ideaToRoadmapWorkflow = await readFile(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"), "utf8");
   assert(newIdeaWorkflow.includes("## Continuation Bridge"), "New idea intake workflow should offer a continuation bridge");
   assert(newIdeaWorkflow.includes("Next route:\n\n`idea-to-roadmap`"), "New idea intake workflow should bridge to idea-to-roadmap");
+  assert(newIdeaWorkflow.includes("## Founder Triggers"), "New idea intake workflow should define founder triggers");
+  assert(newIdeaWorkflow.includes("## Confirmation Gates"), "New idea intake workflow should define confirmation gates");
+  assert(newIdeaWorkflow.includes("## Allowed Updates"), "New idea intake workflow should define allowed updates");
+  assert(newIdeaWorkflow.includes("## Forbidden Updates"), "New idea intake workflow should define forbidden updates");
+  assert(newIdeaWorkflow.includes("Use Validation only when it exists"), "New idea intake workflow should not require Validation by default");
   assert(ideaToRoadmapWorkflow.includes("## Continuation Bridge"), "Idea-to-roadmap workflow should offer a continuation bridge");
   assert(ideaToRoadmapWorkflow.includes("Next route:\n\n`roadmap-item-to-epic`"), "Idea-to-roadmap workflow should bridge to roadmap-item-to-epic");
+  assert(ideaToRoadmapWorkflow.includes("## Founder Triggers"), "Idea-to-roadmap workflow should define founder triggers");
+  assert(ideaToRoadmapWorkflow.includes("## Confirmation Gates"), "Idea-to-roadmap workflow should define confirmation gates");
+  assert(ideaToRoadmapWorkflow.includes("Do not mark as delivery scope, MVP, Epic or GitHub work"), "Idea-to-roadmap should not automatically promote roadmap items to delivery");
+  assert(ideaToRoadmapWorkflow.includes("## Stop Conditions"), "Idea-to-roadmap workflow should define stop conditions");
   await assertExists(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"));
   await assertExists(join(rootDir, "strategy", "product", "skills", "evaluate-idea.skill.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync.skill.md"));

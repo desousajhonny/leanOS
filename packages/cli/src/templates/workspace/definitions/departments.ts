@@ -2963,7 +2963,92 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         slug: "new-idea-intake",
         purpose: "Capture, qualify and decide the next destination of a founder idea before it becomes roadmap, delivery scope or implementation work.",
         requiredAreas: ["product", "roadmap"],
-        steps: ["Read product strategy", "Restate the founder idea in plain language", "Evaluate idea against ICP, problem, value proposition, evidence and current focus", "Identify assumptions, evidence gaps and opportunity cost", "Route to Roadmap only if backlog or sequencing impact needs review", "Recommend reject, park, validation note, backlog candidate or roadmap candidate", "Ask for confirmation before recording the idea anywhere"],
+        founderTriggers: [
+          "tenho uma ideia",
+          "quero avaliar uma feature nova",
+          "isso faz sentido para o produto?",
+          "pensei em uma melhoria",
+          "vale a pena fazer isso?"
+        ],
+        owner: {
+          department: "strategy",
+          primaryArea: "product",
+          supportingAreas: ["roadmap"],
+          conditionalAreas: ["validation"]
+        },
+        conditionalAreas: [
+          { area: "validation", when: "Enter only when the active workspace includes Validation and the idea depends on risky assumptions that need explicit evidence planning." }
+        ],
+        loadFirst: [
+          "AGENT.md",
+          "strategy/AGENT.md",
+          "strategy/workflows/README.md",
+          "strategy/workflows/new-idea-intake.workflow.md",
+          "strategy/product/AGENT.md",
+          "strategy/product/knowledge/brief.md",
+          "strategy/product/knowledge/icp.md",
+          "strategy/product/knowledge/problem.md",
+          "strategy/product/knowledge/value-proposition.md",
+          "strategy/product/knowledge/validation-notes.md"
+        ],
+        navigationRoute: [
+          "AGENT.md",
+          "strategy/AGENT.md",
+          "strategy/workflows/new-idea-intake.workflow.md",
+          "strategy/product/AGENT.md",
+          "strategy/product/roles/product-strategist.role.md",
+          "strategy/product/skills/evaluate-idea.skill.md",
+          "strategy/product/playbooks/product-strategy.playbook.md",
+          "strategy/roadmap/AGENT.md only after founder confirms roadmap or backlog promotion"
+        ],
+        steps: [
+          "Read product strategy before judging the idea",
+          "Restate the founder idea in plain language and ask only the minimum guided questions needed to remove ambiguity",
+          "Evaluate idea against ICP, problem, value proposition, evidence, current focus and opportunity cost",
+          "Identify assumptions, evidence gaps, dependencies and why this idea may or may not matter now",
+          "Use Validation only when it exists and risky assumptions need explicit experiment planning; do not require Validation for the default MVP path",
+          "Recommend one outcome: reject, refine, park, validation note, backlog candidate or roadmap candidate",
+          "Explain the recommendation in founder-friendly language",
+          "Ask for confirmation before recording the idea anywhere or starting the roadmap promotion workflow"
+        ],
+        confirmationGates: [
+          "Ask before recording the idea as a note.",
+          "Ask before updating product knowledge.",
+          "Ask before routing to Roadmap.",
+          "Ask before starting `idea-to-roadmap`."
+        ],
+        allowedUpdates: [
+          "strategy/product/knowledge/validation-notes.md"
+        ],
+        forbiddenUpdates: [
+          "strategy/roadmap/knowledge/roadmap.md",
+          "strategy/roadmap/knowledge/backlog.md",
+          "operations/product-ops/",
+          "operations/product-ops/epics/",
+          ".github/",
+          ".leanos/",
+          "source code",
+          "branches",
+          "pull requests"
+        ],
+        externalCapabilities: [
+          "No external capability is required.",
+          "Do not call GitHub APIs.",
+          "Do not create branches, commits, code or PRs."
+        ],
+        stopConditions: [
+          "The idea is too vague to evaluate after guided questions.",
+          "Product strategy is missing enough context to judge fit.",
+          "The founder does not confirm recording the note or moving to Roadmap.",
+          "The request shifts into delivery scope, Epic creation, GitHub sync, branch, code or PR work."
+        ],
+        expectedOutput: [
+          "Plain-language restatement of the idea.",
+          "Fit assessment against product strategy.",
+          "Risks, assumptions and evidence gaps.",
+          "Recommendation: reject, refine, park, validation note, backlog candidate or roadmap candidate.",
+          "Founder-friendly confirmation question for the next step."
+        ],
         continuationBridge: {
           immediate: "Essa ideia parece forte o bastante para ser acompanhada.\nQuer que eu transforme isso em um item de roadmap ou backlog para decidirmos prioridade e momento?",
           laterTriggers: ["vamos colocar aquela ideia no roadmap", "quero salvar essa ideia no backlog", "vamos priorizar a ideia que discutimos", "essa ideia merece entrar no produto?"],
@@ -2974,7 +3059,97 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         slug: "idea-to-roadmap",
         purpose: "Promote a qualified idea into a roadmap or backlog item without assuming delivery scope or GitHub execution.",
         requiredAreas: ["product", "roadmap"],
-        steps: ["Confirm the idea already passed intake", "Read product strategy and roadmap context", "Define problem, user, expected value, dependencies and evidence level", "Classify the item as backlog, Now, Next, Later or Not Planned", "Do not mark as MVP unless the next workflow confirms it", "Propose roadmap or backlog updates and wait for confirmation before writing"],
+        founderTriggers: [
+          "vamos colocar essa ideia no roadmap",
+          "salve isso no backlog",
+          "isso entra no backlog do produto?",
+          "vamos priorizar essa ideia",
+          "essa ideia entra no roadmap?"
+        ],
+        owner: {
+          department: "strategy",
+          primaryArea: "roadmap",
+          supportingAreas: ["product"]
+        },
+        loadFirst: [
+          "AGENT.md",
+          "strategy/AGENT.md",
+          "strategy/workflows/README.md",
+          "strategy/workflows/idea-to-roadmap.workflow.md",
+          "strategy/product/AGENT.md",
+          "strategy/product/knowledge/brief.md",
+          "strategy/product/knowledge/icp.md",
+          "strategy/product/knowledge/problem.md",
+          "strategy/product/knowledge/value-proposition.md",
+          "strategy/product/knowledge/validation-notes.md",
+          "strategy/roadmap/AGENT.md",
+          "strategy/roadmap/knowledge/backlog.md",
+          "strategy/roadmap/knowledge/roadmap.md",
+          "strategy/roadmap/knowledge/current-cycle.md"
+        ],
+        navigationRoute: [
+          "AGENT.md",
+          "strategy/AGENT.md",
+          "strategy/workflows/idea-to-roadmap.workflow.md",
+          "strategy/product/AGENT.md",
+          "strategy/product/roles/product-strategist.role.md",
+          "strategy/roadmap/AGENT.md",
+          "strategy/roadmap/roles/roadmap-planner.role.md",
+          "strategy/roadmap/skills/prioritize-backlog.skill.md",
+          "strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md"
+        ],
+        steps: [
+          "Confirm the idea already passed `new-idea-intake` or that the founder explicitly asked for roadmap or backlog promotion",
+          "Read product strategy and roadmap context before classifying the item",
+          "Preserve the qualified idea context; do not redo the entire intake unless key context is missing",
+          "Define problem, user, expected value, dependencies, evidence level and opportunity cost",
+          "Classify the item as backlog, Now, Next, Later or Not Planned",
+          "Do not mark as delivery scope, MVP, Epic or GitHub work in this workflow",
+          "Propose roadmap or backlog updates in founder-friendly language and wait for confirmation before writing",
+          "After confirmation, update only the appropriate roadmap or backlog knowledge files"
+        ],
+        confirmationGates: [
+          "Ask before writing to backlog or roadmap.",
+          "Ask before changing current cycle or milestone language.",
+          "Ask before starting `roadmap-item-to-epic`.",
+          "Ask before changing anything outside Strategy."
+        ],
+        allowedUpdates: [
+          "strategy/roadmap/knowledge/backlog.md",
+          "strategy/roadmap/knowledge/roadmap.md",
+          "strategy/roadmap/knowledge/current-cycle.md",
+          "strategy/product/knowledge/validation-notes.md"
+        ],
+        forbiddenUpdates: [
+          "operations/product-ops/epics/",
+          "operations/product-ops/knowledge/delivery-scope.md",
+          "operations/product-ops/mvp/",
+          ".github/",
+          ".leanos/",
+          "source code",
+          "branches",
+          "pull requests",
+          "GitHub remote state"
+        ],
+        externalCapabilities: [
+          "No external capability is required.",
+          "Do not call GitHub APIs.",
+          "Do not create Epics, Features, branches, commits, code or PRs."
+        ],
+        stopConditions: [
+          "The idea did not pass intake and the founder has not explicitly asked for roadmap or backlog promotion.",
+          "Product fit, user, problem or expected value is still unclear.",
+          "Roadmap context is missing enough to classify the item.",
+          "The founder does not confirm the proposed roadmap or backlog update.",
+          "The request shifts into delivery scope, Epic creation, GitHub sync, branch, code or PR work."
+        ],
+        expectedOutput: [
+          "Roadmap/backlog classification with reason.",
+          "Founder-friendly summary of why the item belongs in backlog, Now, Next, Later or Not Planned.",
+          "Proposed update to roadmap or backlog knowledge.",
+          "Explicit statement that delivery/MVP/Epic status is not decided here.",
+          "Clear next-step bridge to `roadmap-item-to-epic` when the founder wants to plan delivery."
+        ],
         continuationBridge: {
           immediate: "Esse item agora esta organizado como roadmap/backlog.\nQuer que eu prepare isso para virar um Epic local com escopo, milestone e criterios iniciais?",
           laterTriggers: ["isso entra no MVP?", "isso entra na proxima entrega?", "vamos planejar a entrega desse item", "vamos transformar esse item do roadmap em epic", "qual milestone recebe esse item?"],

@@ -370,6 +370,35 @@ Checklist de implementacao:
 - [x] Atualizar `validate-generator.mjs` para validar existencia e referencias do playbook mestre.
 - [x] Regenerar `examples/client-workspace/` e `examples/client-workspace-tree.md`.
 
+#### Founder Acceptance Guide No PR
+
+Status: pendente, recomendado antes de `post-merge-continuation`.
+
+Objetivo: garantir que, quando o modelo abre ou prepara um PR, o founder consiga testar o que foi entregue sem precisar entender codigo, diff ou detalhes tecnicos avancados.
+
+Decisao: nao colocar isso na Feature como regra principal. A Feature define o que deve ser entregue; o PR deve traduzir a entrega em um guia pratico de teste para o founder.
+
+Checklist de implementacao:
+
+- [ ] Atualizar o template de PR em `ai-standard/templates/github/` para incluir uma secao obrigatoria `Founder Testing Guide`.
+- [ ] A secao deve conter:
+  - o que mudou em linguagem simples;
+  - onde testar: preview URL, rota local, tela, conta ou dados de teste;
+  - como testar passo a passo;
+  - resultado esperado;
+  - o que esta fora de escopo;
+  - riscos, limitacoes ou gaps conhecidos.
+- [ ] Atualizar `operations/engineering/playbooks/issue-to-pr.playbook.md` para exigir o `Founder Testing Guide` ao preparar o PR.
+- [ ] Atualizar `operations/engineering/playbooks/engineering-delivery.playbook.md` para tratar esse guia como gate antes de considerar o PR pronto para founder review.
+- [ ] Atualizar `operations/engineering/playbooks/pr-validation.playbook.md` para validar:
+  - guia existe;
+  - passos batem com acceptance criteria da Feature;
+  - ha preview/rota/instrucao alternativa;
+  - o escopo e os limites estao claros;
+  - founder consegue testar sem ler codigo.
+- [ ] Atualizar `feature-to-delivery-cycle.workflow.md` para deixar claro que PR aberto nao significa pronto para merge sem founder acceptance.
+- [ ] Atualizar validacoes do generator para proteger a existencia da secao no template de PR e referencias nos playbooks.
+
 #### Validacoes Necessarias
 
 - [ ] Atualizar `validate-generator.mjs` para validar o contrato minimo dos workflows principais.
