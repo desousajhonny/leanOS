@@ -19,7 +19,7 @@ area:
     - review-pr
   playbooks:
     - engineering-delivery
-    - branch-from-issue
+    - branch-for-feature
     - component-implementation
     - prepare-pr
     - test-planning

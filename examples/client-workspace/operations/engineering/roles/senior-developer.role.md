@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Implement roadmap issues with maintainable code, tests and MVP alignment.
+Implement ready Features with maintainable code, tests and MVP alignment.
 
 ## Use When
 
-- implement an issue
+- implement a Feature
 - fix a bug
 - modify code
 - write tests
@@ -42,7 +42,7 @@ Read:
 ## Playbooks
 
 - `../playbooks/engineering-delivery.playbook.md`
-- `../playbooks/branch-from-issue.playbook.md`
+- `../playbooks/branch-for-feature.playbook.md`
 - `../playbooks/component-implementation.playbook.md`
 - `../playbooks/prepare-pr.playbook.md`
 - `../playbooks/test-planning.playbook.md`

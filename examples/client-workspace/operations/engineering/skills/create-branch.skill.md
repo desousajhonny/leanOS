@@ -2,38 +2,40 @@
 
 ## Purpose
 
-Define a safe issue-linked branch name and creation checklist before code changes.
+Define a safe Feature-linked branch name and creation checklist before code changes.
 
 ## Use When
 
 - implementation is about to start
-- a GitHub issue has been selected
+- a local Feature or mapped GitHub issue has been selected
 - branch naming needs validation
 
 ## Required Context
 
-- GitHub issue number
-- Issue title
+- Local Feature slug or GitHub issue number
+- Feature title
 - Branch rules
 
 ## Inputs
 
-- Issue number
-- Issue title
+- Feature slug or issue number
+- Feature title
 - Branch type
 - Existing branch names when available
 
 ## Process
 
 1. Load branch rules
-2. Generate an issue-linked branch name
-3. Keep the branch name short and descriptive
-4. Check for conflicting branch names
-5. Ask before reusing or replacing a branch
+2. Generate a Feature-linked branch name
+3. Use `feature/...` for local-only Features and `issue/...` for mapped GitHub issues
+4. Keep the branch name short and descriptive
+5. Check for conflicting branch names
+6. Ask before reusing or replacing a branch
 
 ## Checks
 
 - Branch includes the issue number when available
+- Branch uses the Feature slug when no issue number exists
 - Branch name does not include secrets or vague wording
 - Branch matches repository convention
 

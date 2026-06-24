@@ -26,7 +26,7 @@ Implement a reusable component from an approved Design spec before the screen or
 6. Load `knowledge/component-guidelines.md`, `knowledge/code-standards.md` and `knowledge/testing-strategy.md`
 7. Use `skills/implement-component.skill.md` to plan component implementation
 8. Inspect existing component patterns before creating a new file
-9. Create or confirm an issue-linked branch before editing code
+9. Create or confirm a Feature-linked branch before editing code
 10. Implement the reusable component before the screen or Feature that consumes it
 11. Validate required states, keyboard behavior, focus behavior and accessibility notes
 12. Add tests, examples, stories or manual validation notes when the repository supports them

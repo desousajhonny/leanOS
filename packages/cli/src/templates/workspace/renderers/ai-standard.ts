@@ -402,11 +402,11 @@ function exampleWorkflowFeatureToDeliveryCycle(): string {
 
 ## Purpose
 
-Move a confirmed GitHub issue from understanding to branch, implementation, review and PR readiness.
+Move a confirmed local Feature or mapped GitHub issue from understanding to branch, implementation, review and PR readiness.
 
 ## Trigger
 
-The founder asks to implement a specific GitHub issue.
+The founder asks to implement a specific Feature, or a GitHub issue that represents a Feature.
 
 ## Participating Areas
 
@@ -417,12 +417,12 @@ The founder asks to implement a specific GitHub issue.
 
 ## Sequence
 
-1. Load the issue, parent epic and MVP context.
-2. Summarize the issue in chat and ask for confirmation.
+1. Load the Feature, parent Epic and MVP context.
+2. Summarize the Feature in chat and ask for confirmation.
 3. Check Product and Engineering readiness.
 4. Add Design criteria only when user-facing UX changes.
 5. Add Security criteria only when the issue has a security-sensitive surface.
-6. Create an issue-linked branch plan.
+6. Create a Feature-linked branch plan.
 7. Implement only after confirmation.
 8. Run tests or explain why they cannot run.
 9. Prepare a PR draft using the PR template.
@@ -430,7 +430,7 @@ The founder asks to implement a specific GitHub issue.
 
 ## Output
 
-- Confirmed issue summary
+- Confirmed Feature summary
 - Implementation plan
 - Branch name
 - Test plan
@@ -3179,27 +3179,31 @@ List the visible and structural parts of the component.
 function branchNameTemplate(): string {
   return `# Branch Name Template
 
-Use focused branches tied to a GitHub issue.
+Use focused branches tied to a local LeanOS Feature or mapped GitHub issue.
 
-## Format
+## Formats
 
 \`\`\`text
+feature/<feature-slug>-<short-kebab-slug>
 issue/<issue-number>-<short-kebab-slug>
 \`\`\`
 
 ## Examples
 
 \`\`\`text
+feature/customer-import-add-csv-upload
 issue/554-add-login-rate-limit
 issue/598-fix-onboarding-empty-state
 \`\`\`
 
 ## Rules
 
-- Always include the real issue number.
+- Use \`feature/...\` when the Feature exists only in the local LeanOS workspace.
+- Use \`issue/...\` when the Feature is mapped to a real GitHub issue.
+- Always include the real issue number when using the \`issue/...\` format.
 - Use a short kebab-case slug.
 - Do not include secrets, customer names or sensitive details.
-- Do not implement issue work on the default branch.
+- Do not implement Feature work on the default branch.
 - If the branch already exists, ask before continuing.
 `;
 }

@@ -3986,10 +3986,10 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         routingKey: "engineering",
         requestTypes: "code, implementation, bugs, tests, issues or pull requests",
         purpose: "Own implementation, tests, code quality and PR readiness.",
-        whenToUse: ["implement a feature", "fix a bug", "modify code", "create or review a PR", "write tests", "work on a GitHub issue"],
+        whenToUse: ["implement a feature", "fix a bug", "modify code", "create or review a PR", "write tests", "work on a local Feature or mapped GitHub issue"],
         operatingRules: [
-          "Read the issue, PRD, MVP scope and acceptance criteria before planning implementation.",
-          "Create or confirm an issue-linked branch before changing code.",
+          "Read the Feature or mapped GitHub issue, PRD, MVP scope and acceptance criteria before planning implementation.",
+          "Create or confirm a Feature-linked branch before changing code.",
           "Follow existing repository patterns before introducing new abstractions.",
           "Route user-facing UI work through Design when the design foundation or flow is missing.",
           "Read the approved Design component spec before implementing a new reusable component.",
@@ -3999,7 +3999,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "For implementation work that arrives from `feature-to-delivery-cycle`, route to Senior Developer and use `playbooks/engineering-delivery.playbook.md` as the master execution path before sub-playbooks."
         ],
         redLines: [
-          "Do not implement outside the confirmed issue or PRD scope.",
+          "Do not implement outside the confirmed Feature or PRD scope.",
           "Do not create new user-facing components before Design defines the structure or confirms the component spec.",
           "Do not hardcode secrets, configuration, business rules, copy or design values.",
           "Do not create large unstructured files, components or functions when modular composition is possible.",
@@ -4023,11 +4023,11 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           {
             slug: "senior-developer",
             title: "Senior Developer",
-            purpose: "Implement roadmap issues with maintainable code, tests and MVP alignment.",
-            useWhen: ["implement an issue", "fix a bug", "modify code", "write tests", "prepare implementation for a PR"],
+            purpose: "Implement ready Features with maintainable code, tests and MVP alignment.",
+            useWhen: ["implement a Feature", "fix a bug", "modify code", "write tests", "prepare implementation for a PR"],
             beforeActing: ["../../../.leanos/context/current-focus.md", "../../product-ops/mvp/scope.md", "../../product-ops/mvp/prd.md", "../../product-ops/mvp/acceptance-criteria.md", "../../product-ops/knowledge/issue-readiness.md", "../knowledge/implementation-rules.md", "../knowledge/code-standards.md", "../knowledge/component-guidelines.md", "../knowledge/data-guidelines.md", "../knowledge/testing-strategy.md", "../../../.github/leanos/branch-rules.md", "../knowledge/implementation-notes.md"],
             skills: ["plan-implementation", "follow-code-standards", "implement-component", "create-branch", "write-tests", "review-data-change", "create-pr"],
-            playbooks: ["engineering-delivery", "branch-from-issue", "component-implementation", "prepare-pr", "test-planning", "pr-validation"]
+            playbooks: ["engineering-delivery", "branch-for-feature", "component-implementation", "prepare-pr", "test-planning", "pr-validation"]
           },
           {
             slug: "test-engineer",
@@ -4052,13 +4052,13 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           {
             slug: "plan-implementation",
             title: "Plan Implementation",
-            purpose: "Turn an issue into a scoped technical implementation plan before code changes.",
-            useWhen: ["a GitHub issue should be implemented", "a bug fix needs scope", "implementation work needs sequencing"],
-            requiredContext: ["Issue body", "PRD", "MVP scope", "Acceptance criteria", "Engineering implementation rules", "Code standards"],
-            inputs: ["Issue", "Linked epic or PRD", "Acceptance criteria", "Current repository patterns", "Known risks"],
-            process: ["Summarize the issue in the chat", "Identify files or modules likely involved", "Classify Design, Security and data impact", "Plan the smallest safe implementation steps", "Identify tests and validation", "Ask for confirmation before code changes when scope is unclear"],
-            checks: ["Implementation plan stays inside issue scope", "Existing repository patterns are preferred", "Dependencies and risks are explicit", "Design/Security/Data routing is explicit when applicable"],
-            outputs: ["Issue summary", "Implementation plan", "Files likely involved", "Tests to run or add", "Risks", "Confirmation question when needed"],
+            purpose: "Turn a ready Feature into a scoped technical implementation plan before code changes.",
+            useWhen: ["a local Feature or mapped GitHub issue should be implemented", "a bug fix needs scope", "implementation work needs sequencing"],
+            requiredContext: ["Feature body or mapped GitHub issue body", "PRD", "MVP scope", "Acceptance criteria", "Engineering implementation rules", "Code standards"],
+            inputs: ["Feature", "Linked Epic or PRD", "Acceptance criteria", "Current repository patterns", "Known risks"],
+            process: ["Summarize the Feature in the chat", "Identify files or modules likely involved", "Classify Design, Security and data impact", "Plan the smallest safe implementation steps", "Identify tests and validation", "Ask for confirmation before code changes when scope is unclear"],
+            checks: ["Implementation plan stays inside Feature scope", "Existing repository patterns are preferred", "Dependencies and risks are explicit", "Design/Security/Data routing is explicit when applicable"],
+            outputs: ["Feature summary", "Implementation plan", "Files likely involved", "Tests to run or add", "Risks", "Confirmation question when needed"],
             filesToUpdate: ["Update `../knowledge/implementation-notes.md` only when implementation decisions should persist."],
             redLines: ["Do not begin code changes without branch context", "Do not expand scope silently", "Do not skip Design/Security/Data classification."]
           },
@@ -4091,12 +4091,12 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           {
             slug: "create-branch",
             title: "Create Branch",
-            purpose: "Define a safe issue-linked branch name and creation checklist before code changes.",
-            useWhen: ["implementation is about to start", "a GitHub issue has been selected", "branch naming needs validation"],
-            requiredContext: ["GitHub issue number", "Issue title", "Branch rules"],
-            inputs: ["Issue number", "Issue title", "Branch type", "Existing branch names when available"],
-            process: ["Load branch rules", "Generate an issue-linked branch name", "Keep the branch name short and descriptive", "Check for conflicting branch names", "Ask before reusing or replacing a branch"],
-            checks: ["Branch includes the issue number when available", "Branch name does not include secrets or vague wording", "Branch matches repository convention"],
+            purpose: "Define a safe Feature-linked branch name and creation checklist before code changes.",
+            useWhen: ["implementation is about to start", "a local Feature or mapped GitHub issue has been selected", "branch naming needs validation"],
+            requiredContext: ["Local Feature slug or GitHub issue number", "Feature title", "Branch rules"],
+            inputs: ["Feature slug or issue number", "Feature title", "Branch type", "Existing branch names when available"],
+            process: ["Load branch rules", "Generate a Feature-linked branch name", "Use `feature/...` for local-only Features and `issue/...` for mapped GitHub issues", "Keep the branch name short and descriptive", "Check for conflicting branch names", "Ask before reusing or replacing a branch"],
+            checks: ["Branch includes the issue number when available", "Branch uses the Feature slug when no issue number exists", "Branch name does not include secrets or vague wording", "Branch matches repository convention"],
             outputs: ["Proposed branch name", "Branch command or plan", "Safety notes"],
             filesToUpdate: ["Do not update files just to create a branch plan."]
           },
@@ -4160,7 +4160,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             steps: [
               "Confirm the request is a ready Feature, not a loose idea, roadmap item or unsplit Epic",
               "Confirm Product Ops readiness from `../../product-ops/knowledge/ready-to-develop.md`",
-              "Use `playbooks/branch-from-issue.playbook.md` before editing code",
+              "Use `playbooks/branch-for-feature.playbook.md` before editing code",
               "Use `skills/plan-implementation.skill.md` to summarize the Feature, likely files, risks and tests",
               "If a new reusable component is required, confirm the approved Design component spec before code and run `playbooks/component-implementation.playbook.md` first",
               "Use `skills/follow-code-standards.skill.md` during implementation to preserve modularity, local patterns and no-hardcoding rules",
@@ -4170,7 +4170,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
               "Use `playbooks/pr-validation.playbook.md` before recommending merge readiness"
             ],
             gates: [
-              "Do not edit code before an issue-linked branch is created or confirmed.",
+              "Do not edit code before a Feature-linked branch is created or confirmed.",
               "Do not implement a new user-facing component without an approved Design component spec when component readiness is applicable.",
               "Do not open or prepare a PR without tests, manual validation notes or a clear test-gap explanation.",
               "Do not mark a PR ready for founder review without a Founder Testing Guide that explains where and how to test the change.",
@@ -4186,7 +4186,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             filesToUpdate: ["Update `../knowledge/implementation-notes.md` when implementation decisions should persist.", "Update `../knowledge/pr-log.md` after PR creation or when the user asks for persistent PR records."],
             stopConditions: [
               "Feature readiness is missing or blocked.",
-              "No issue-linked branch can be created or confirmed.",
+              "No Feature-linked branch can be created or confirmed.",
               "A required Design component spec is missing.",
               "Security or DevOps readiness is required and missing.",
               "The implementation would exceed the confirmed Feature scope.",
@@ -4195,12 +4195,12 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             ]
           },
           {
-            slug: "branch-from-issue",
-            title: "Branch From Issue",
+            slug: "branch-for-feature",
+            title: "Branch For Feature",
             purpose: "Create a safe branch plan before implementation starts.",
-            inputs: ["GitHub issue number", "Issue title", "Current default branch", "Existing branch list when available", "Branch rules", "Skill: create-branch"],
-            steps: ["Use this as the branch step of `engineering-delivery.playbook.md`; return to engineering-delivery after branch status is clear", "Read the issue context and title", "Load `.github/leanos/branch-rules.md`", "Use `skills/create-branch.skill.md` to generate a branch name using the required issue format", "Check for sensitive words or unnecessary scope", "Ask before using an existing branch or creating a new one"],
-            outputs: ["Proposed branch name", "Linked issue", "Branch safety notes", "Next implementation step"],
+            inputs: ["Local Feature slug or GitHub issue number", "Feature title", "Current default branch", "Existing branch list when available", "Branch rules", "Skill: create-branch"],
+            steps: ["Use this as the branch step of `engineering-delivery.playbook.md`; return to engineering-delivery after branch status is clear", "Read the Feature context and title", "Load `.github/leanos/branch-rules.md`", "Use `skills/create-branch.skill.md` to generate a branch name using the required Feature/GitHub branch format", "Use `feature/...` for local-only Features and `issue/...` for mapped GitHub issues", "Check for sensitive words or unnecessary scope", "Ask before using an existing branch or creating a new one"],
+            outputs: ["Proposed branch name", "Linked Feature or GitHub issue", "Branch safety notes", "Next implementation step"],
             filesToUpdate: ["Do not update files just to create a branch plan. Record branch decisions in `../knowledge/implementation-notes.md` only when the user asks for persistent notes."]
           },
           {
@@ -4208,7 +4208,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Component Implementation",
             purpose: "Implement a reusable component from an approved Design spec before the screen or Feature that depends on it.",
             inputs: ["Feature or GitHub Feature issue", "Approved Design component spec", "Design component inventory", "Design system", "Accessibility baseline", "Engineering component guidelines", "Code standards", "Testing strategy", "Skill: implement-component"],
-            steps: ["Use this as the component step of `engineering-delivery.playbook.md`; return to engineering-delivery before implementing the dependent screen or Feature", "Read Engineering AGENT and choose the Senior Developer role", "Read the Feature and confirm that a reusable component is required", "Load the Design component spec before changing code", "Load `../../design/knowledge/component-inventory.md`, `../../design/knowledge/design-system.md` and `../../design/knowledge/accessibility.md`", "Load `knowledge/component-guidelines.md`, `knowledge/code-standards.md` and `knowledge/testing-strategy.md`", "Use `skills/implement-component.skill.md` to plan component implementation", "Inspect existing component patterns before creating a new file", "Create or confirm an issue-linked branch before editing code", "Implement the reusable component before the screen or Feature that consumes it", "Validate required states, keyboard behavior, focus behavior and accessibility notes", "Add tests, examples, stories or manual validation notes when the repository supports them", "Summarize component readiness before continuing to the dependent screen or Feature"],
+            steps: ["Use this as the component step of `engineering-delivery.playbook.md`; return to engineering-delivery before implementing the dependent screen or Feature", "Read Engineering AGENT and choose the Senior Developer role", "Read the Feature and confirm that a reusable component is required", "Load the Design component spec before changing code", "Load `../../design/knowledge/component-inventory.md`, `../../design/knowledge/design-system.md` and `../../design/knowledge/accessibility.md`", "Load `knowledge/component-guidelines.md`, `knowledge/code-standards.md` and `knowledge/testing-strategy.md`", "Use `skills/implement-component.skill.md` to plan component implementation", "Inspect existing component patterns before creating a new file", "Create or confirm a Feature-linked branch before editing code", "Implement the reusable component before the screen or Feature that consumes it", "Validate required states, keyboard behavior, focus behavior and accessibility notes", "Add tests, examples, stories or manual validation notes when the repository supports them", "Summarize component readiness before continuing to the dependent screen or Feature"],
             outputs: ["Component implementation plan", "Branch used", "Files changed", "States implemented", "Accessibility validation", "Tests or manual validation", "Known gaps", "Decision to continue to screen or Feature implementation"],
             filesToUpdate: ["Update `../knowledge/implementation-notes.md` when component implementation decisions should persist.", "Do not update Design component specs unless routed back to Design and confirmed by the user."]
           },
@@ -4217,7 +4217,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Prepare PR",
             purpose: "Prepare a reviewable pull request from a confirmed Feature implementation.",
             inputs: ["GitHub issue body", "Parent epic when available", "MVP scope", "PRD", "Acceptance criteria", "Product, Design, Engineering and Security criteria", "Branch name", "Engineering knowledge"],
-            steps: ["Use this as the PR preparation step of `engineering-delivery.playbook.md`; do not use it before implementation and test status are clear", "Read Engineering AGENT and choose the Senior Developer role", "Read Feature or mapped GitHub issue, PRD, MVP scope and acceptance criteria", "Confirm Feature readiness with Product and Engineering criteria", "Check whether Design criteria are required for user-facing UX", "Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance", "Create or confirm an issue-linked branch before code changes", "Use `skills/plan-implementation.skill.md` to plan implementation", "Run `playbooks/component-implementation.playbook.md` before screen or Feature work when a new reusable component is required", "Use `skills/follow-code-standards.skill.md` while changing code", "Use `skills/review-data-change.skill.md` when data/API/persistence is involved", "Use `skills/write-tests.skill.md` to update tests or explain gaps", "Use `skills/create-pr.skill.md` to prepare PR using the PR template", "Fill the `Founder Testing Guide` with plain-language steps, where to test, expected result, out-of-scope notes and known limits", "If there is no preview URL, provide the local route, command or manual fallback the founder can realistically use"],
+            steps: ["Use this as the PR preparation step of `engineering-delivery.playbook.md`; do not use it before implementation and test status are clear", "Read Engineering AGENT and choose the Senior Developer role", "Read Feature or mapped GitHub issue, PRD, MVP scope and acceptance criteria", "Confirm Feature readiness with Product and Engineering criteria", "Check whether Design criteria are required for user-facing UX", "Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance", "Create or confirm a Feature-linked branch before code changes", "Use `skills/plan-implementation.skill.md` to plan implementation", "Run `playbooks/component-implementation.playbook.md` before screen or Feature work when a new reusable component is required", "Use `skills/follow-code-standards.skill.md` while changing code", "Use `skills/review-data-change.skill.md` when data/API/persistence is involved", "Use `skills/write-tests.skill.md` to update tests or explain gaps", "Use `skills/create-pr.skill.md` to prepare PR using the PR template", "Fill the `Founder Testing Guide` with plain-language steps, where to test, expected result, out-of-scope notes and known limits", "If there is no preview URL, provide the local route, command or manual fallback the founder can realistically use"],
             outputs: ["Implementation summary", "Branch used", "Files changed", "Tests run or proposed", "Founder Testing Guide", "PR draft", "Known risks"],
             filesToUpdate: ["Update `../knowledge/implementation-notes.md` when implementation decisions should persist.", "Update `../knowledge/pr-log.md` after PR creation or when the user asks for a persistent PR record."]
           },
@@ -4241,9 +4241,9 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           }
         ],
         commonPaths: [
-          "Branch request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/create-branch.skill.md` -> playbook `playbooks/branch-from-issue.playbook.md`.",
+          "Branch request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/create-branch.skill.md` -> playbook `playbooks/branch-for-feature.playbook.md`.",
           "Component implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/implement-component.skill.md` -> playbook `playbooks/component-implementation.playbook.md`.",
-          "Implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> playbook `playbooks/engineering-delivery.playbook.md` -> sub-playbooks `playbooks/branch-from-issue.playbook.md`, conditional `playbooks/component-implementation.playbook.md`, `playbooks/prepare-pr.playbook.md` and `playbooks/pr-validation.playbook.md`.",
+          "Implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> playbook `playbooks/engineering-delivery.playbook.md` -> sub-playbooks `playbooks/branch-for-feature.playbook.md`, conditional `playbooks/component-implementation.playbook.md`, `playbooks/prepare-pr.playbook.md` and `playbooks/pr-validation.playbook.md`.",
           "Data change request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` or `roles/pr-reviewer.role.md` -> skill `skills/review-data-change.skill.md` -> route Security when sensitive risk exists.",
           "Test request: area lead `AGENT.md` -> role `roles/test-engineer.role.md` -> skill `skills/write-tests.skill.md` -> playbook `playbooks/test-planning.playbook.md`.",
           "PR review request: area lead `AGENT.md` -> role `roles/pr-reviewer.role.md` -> skills `skills/review-pr.skill.md`, `skills/follow-code-standards.skill.md` and conditional `skills/review-data-change.skill.md` -> playbook `playbooks/pr-validation.playbook.md`."
@@ -5276,7 +5276,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "operations/engineering/AGENT.md",
           "operations/engineering/roles/senior-developer.role.md",
           "operations/engineering/playbooks/engineering-delivery.playbook.md",
-          "operations/engineering/playbooks/branch-from-issue.playbook.md through engineering-delivery",
+          "operations/engineering/playbooks/branch-for-feature.playbook.md through engineering-delivery",
           "operations/engineering/playbooks/component-implementation.playbook.md through engineering-delivery when a component spec is approved and needed",
           "operations/engineering/playbooks/prepare-pr.playbook.md through engineering-delivery",
           "operations/engineering/playbooks/pr-validation.playbook.md through engineering-delivery"
@@ -5292,7 +5292,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Route DevOps only when environments, CI/CD, deploy, observability, configuration, GitHub sync or release readiness are affected",
           "Record why Design, Security or DevOps are not applicable when they do not enter the flow",
           "After Product Ops, Design, Security and DevOps readiness are ready or explicitly not applicable, route to `operations/engineering/AGENT.md` and load `operations/engineering/playbooks/engineering-delivery.playbook.md`",
-          "Let `engineering-delivery.playbook.md` create the issue-linked branch, plan implementation, run component implementation when needed, execute tests, prepare PR and run PR validation",
+          "Let `engineering-delivery.playbook.md` create the Feature-linked branch, plan implementation, run component implementation when needed, execute tests, prepare PR and run PR validation",
           "Run tests or explain gaps",
           "Prepare the Founder Testing Guide before asking the founder to review the PR",
           "Run PR validation",

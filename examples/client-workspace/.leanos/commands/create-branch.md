@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Prepare a safe branch name and branch creation plan for an issue.
+Prepare a safe branch name and branch creation plan for a Feature or mapped GitHub issue.
 
 Prepare a safe branch name before any implementation work.
 
@@ -14,7 +14,7 @@ Read:
 - `../../operations/engineering/AGENT.md`
 - `../../operations/engineering/README.md`
 - `../../operations/engineering/skills/create-branch.skill.md`
-- `../../operations/engineering/playbooks/branch-from-issue.playbook.md`
+- `../../operations/engineering/playbooks/branch-for-feature.playbook.md`
 - `../../ai-standard/templates/github/branch-name-template.md`
 - `../../.github/leanos/branch-rules.md`
 
@@ -22,12 +22,13 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 
 ## Process
 
-1. Confirm the issue number and issue title.
-2. Use the required format: `issue/<issue-number>-<short-kebab-slug>`.
-3. Keep the slug short and scoped to the issue.
-4. Avoid secrets, customer names and sensitive details.
-5. Ask before reusing an existing branch.
-6. Do not run git commands unless the user explicitly asks in a tool-capable environment.
+1. Confirm the local Feature slug or mapped GitHub issue number.
+2. Use `feature/<feature-slug>-<short-kebab-slug>` for local-only Features.
+3. Use `issue/<issue-number>-<short-kebab-slug>` only when the Feature is mapped to a real GitHub issue.
+4. Keep the slug short and scoped to the Feature.
+5. Avoid secrets, customer names and sensitive details.
+6. Ask before reusing an existing branch.
+7. Do not run git commands unless the user explicitly asks in a tool-capable environment.
 
 ## Allowed Updates
 
@@ -41,7 +42,7 @@ During `/create branch`, do not:
 
 - edit source code;
 - create commits or PRs;
-- create a branch without issue context;
+- create a branch without Feature or mapped GitHub issue context;
 - include secrets, customer names or sensitive details in the branch name;
 - modify roles, skills, playbooks, workflows, commands or `ai-standard/`.
 
@@ -52,7 +53,7 @@ Ask before creating or reusing a branch.
 ## Expected Output
 
 - Proposed branch name
-- Linked issue
+- Linked Feature or GitHub issue
 - Naming rationale
 - Safety checks
 - Next command recommendation

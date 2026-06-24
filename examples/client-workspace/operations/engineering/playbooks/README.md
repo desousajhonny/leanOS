@@ -15,7 +15,7 @@ Use when a selected role points to a playbook.
 ## Files
 
 - `engineering-delivery.playbook.md`
-- `branch-from-issue.playbook.md`
+- `branch-for-feature.playbook.md`
 - `component-implementation.playbook.md`
 - `prepare-pr.playbook.md`
 - `test-planning.playbook.md`

@@ -23,7 +23,7 @@ Prepare a reviewable pull request from a confirmed Feature implementation.
 4. Confirm Feature readiness with Product and Engineering criteria
 5. Check whether Design criteria are required for user-facing UX
 6. Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance
-7. Create or confirm an issue-linked branch before code changes
+7. Create or confirm a Feature-linked branch before code changes
 8. Use `skills/plan-implementation.skill.md` to plan implementation
 9. Run `playbooks/component-implementation.playbook.md` before screen or Feature work when a new reusable component is required
 10. Use `skills/follow-code-standards.skill.md` while changing code

@@ -11,7 +11,7 @@ Own implementation, tests, code quality and PR readiness.
 - modify code
 - create or review a PR
 - write tests
-- work on a GitHub issue
+- work on a local Feature or mapped GitHub issue
 
 ## Source of Truth
 
@@ -27,8 +27,8 @@ Own implementation, tests, code quality and PR readiness.
 
 ## Operating Rules
 
-- Read the issue, PRD, MVP scope and acceptance criteria before planning implementation.
-- Create or confirm an issue-linked branch before changing code.
+- Read the Feature or mapped GitHub issue, PRD, MVP scope and acceptance criteria before planning implementation.
+- Create or confirm a Feature-linked branch before changing code.
 - Follow existing repository patterns before introducing new abstractions.
 - Route user-facing UI work through Design when the design foundation or flow is missing.
 - Read the approved Design component spec before implementing a new reusable component.
@@ -39,7 +39,7 @@ Own implementation, tests, code quality and PR readiness.
 
 ## Red Lines
 
-- Do not implement outside the confirmed issue or PRD scope.
+- Do not implement outside the confirmed Feature or PRD scope.
 - Do not create new user-facing components before Design defines the structure or confirms the component spec.
 - Do not hardcode secrets, configuration, business rules, copy or design values.
 - Do not create large unstructured files, components or functions when modular composition is possible.
@@ -65,9 +65,9 @@ Own implementation, tests, code quality and PR readiness.
 
 ## Common Paths
 
-- Branch request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/create-branch.skill.md` -> playbook `playbooks/branch-from-issue.playbook.md`.
+- Branch request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/create-branch.skill.md` -> playbook `playbooks/branch-for-feature.playbook.md`.
 - Component implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/implement-component.skill.md` -> playbook `playbooks/component-implementation.playbook.md`.
-- Implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> playbook `playbooks/engineering-delivery.playbook.md` -> sub-playbooks `playbooks/branch-from-issue.playbook.md`, conditional `playbooks/component-implementation.playbook.md`, `playbooks/prepare-pr.playbook.md` and `playbooks/pr-validation.playbook.md`.
+- Implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> playbook `playbooks/engineering-delivery.playbook.md` -> sub-playbooks `playbooks/branch-for-feature.playbook.md`, conditional `playbooks/component-implementation.playbook.md`, `playbooks/prepare-pr.playbook.md` and `playbooks/pr-validation.playbook.md`.
 - Data change request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` or `roles/pr-reviewer.role.md` -> skill `skills/review-data-change.skill.md` -> route Security when sensitive risk exists.
 - Test request: area lead `AGENT.md` -> role `roles/test-engineer.role.md` -> skill `skills/write-tests.skill.md` -> playbook `playbooks/test-planning.playbook.md`.
 - PR review request: area lead `AGENT.md` -> role `roles/pr-reviewer.role.md` -> skills `skills/review-pr.skill.md`, `skills/follow-code-standards.skill.md` and conditional `skills/review-data-change.skill.md` -> playbook `playbooks/pr-validation.playbook.md`.

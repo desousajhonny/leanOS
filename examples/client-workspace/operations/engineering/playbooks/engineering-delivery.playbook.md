@@ -39,7 +39,7 @@ Orchestrate the internal Engineering path from a ready Feature to branch, implem
 
 1. Confirm the request is a ready Feature, not a loose idea, roadmap item or unsplit Epic
 2. Confirm Product Ops readiness from `../../product-ops/knowledge/ready-to-develop.md`
-3. Use `playbooks/branch-from-issue.playbook.md` before editing code
+3. Use `playbooks/branch-for-feature.playbook.md` before editing code
 4. Use `skills/plan-implementation.skill.md` to summarize the Feature, likely files, risks and tests
 5. If a new reusable component is required, confirm the approved Design component spec before code and run `playbooks/component-implementation.playbook.md` first
 6. Use `skills/follow-code-standards.skill.md` during implementation to preserve modularity, local patterns and no-hardcoding rules
@@ -50,7 +50,7 @@ Orchestrate the internal Engineering path from a ready Feature to branch, implem
 
 ## Gates
 
-- Do not edit code before an issue-linked branch is created or confirmed.
+- Do not edit code before a Feature-linked branch is created or confirmed.
 - Do not implement a new user-facing component without an approved Design component spec when component readiness is applicable.
 - Do not open or prepare a PR without tests, manual validation notes or a clear test-gap explanation.
 - Do not mark a PR ready for founder review without a Founder Testing Guide that explains where and how to test the change.
@@ -83,7 +83,7 @@ Orchestrate the internal Engineering path from a ready Feature to branch, implem
 ## Stop Conditions
 
 - Feature readiness is missing or blocked.
-- No issue-linked branch can be created or confirmed.
+- No Feature-linked branch can be created or confirmed.
 - A required Design component spec is missing.
 - Security or DevOps readiness is required and missing.
 - The implementation would exceed the confirmed Feature scope.

@@ -48,7 +48,7 @@ client-workspace/
 |   |-- commands/
 |   |   |-- check-coherence.md
 |   |   |-- create-branch.md
-|   |   |-- create-issues.md
+|   |   |-- create-features.md
 |   |   |-- create-playbook.md
 |   |   |-- create-pr.md
 |   |   |-- create-roadmap.md
@@ -63,7 +63,7 @@ client-workspace/
 |   |   |-- review-pr.md
 |   |   |-- start-leanos.md
 |   |   |-- status-leanos.md
-|   |   `-- workon-issue.md
+|   |   `-- workon-feature.md
 |   |-- context/
 |   |   |-- active-workflow.md
 |   |   |-- current-focus.md
@@ -342,7 +342,7 @@ client-workspace/
 |   |   |   |-- review-criteria.md
 |   |   |   `-- testing-strategy.md
 |   |   |-- playbooks/
-|   |   |   |-- branch-from-issue.playbook.md
+|   |   |   |-- branch-for-feature.playbook.md
 |   |   |   |-- component-implementation.playbook.md
 |   |   |   |-- engineering-delivery.playbook.md
 |   |   |   |-- pr-validation.playbook.md

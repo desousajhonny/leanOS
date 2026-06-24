@@ -105,7 +105,7 @@ AGENT.md
 -> operations/engineering/AGENT.md
 -> operations/engineering/roles/senior-developer.role.md
 -> operations/engineering/playbooks/engineering-delivery.playbook.md
--> operations/engineering/playbooks/branch-from-issue.playbook.md through engineering-delivery
+-> operations/engineering/playbooks/branch-for-feature.playbook.md through engineering-delivery
 -> operations/engineering/playbooks/prepare-pr.playbook.md through engineering-delivery
 -> operations/engineering/playbooks/pr-validation.playbook.md through engineering-delivery
 ```
@@ -233,7 +233,7 @@ If a reusable component is part of the work and the Design spec is approved, Eng
 
 Engineering follows:
 
-- `operations/engineering/playbooks/branch-from-issue.playbook.md`
+- `operations/engineering/playbooks/branch-for-feature.playbook.md`
 - `operations/engineering/playbooks/prepare-pr.playbook.md`
 - `operations/engineering/playbooks/pr-validation.playbook.md`
 
@@ -354,7 +354,7 @@ Rules:
 - [ ] `operations/design/playbooks/component-readiness.playbook.md` exists.
 - [ ] `operations/engineering/AGENT.md` exists.
 - [ ] `operations/engineering/playbooks/engineering-delivery.playbook.md` exists.
-- [ ] `operations/engineering/playbooks/branch-from-issue.playbook.md` exists.
+- [ ] `operations/engineering/playbooks/branch-for-feature.playbook.md` exists.
 - [ ] `operations/engineering/playbooks/prepare-pr.playbook.md` exists.
 - [ ] `operations/engineering/playbooks/pr-validation.playbook.md` exists.
 - [ ] Engineering roles, skills and playbooks exist.

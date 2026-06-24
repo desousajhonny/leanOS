@@ -451,7 +451,7 @@ Comando de chat futuro:
 
 ```text
 crie as Features do epic #654
-/create issues
+/create features
 ```
 
 O agente gera o plano, pede confirmacao e aciona a capability segura quando ela estiver disponivel. Se a capability ainda nao existir, ele entrega o payload/draft e explica o que falta sem fingir que criou as issues.
@@ -542,7 +542,7 @@ Capabilities esperadas:
 /configure github
 /sync roadmap
 /sync-roadmap
-/create issues
+/create features
 /plan issue
 /implement issue
 ```

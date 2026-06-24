@@ -567,7 +567,7 @@ Resultado esperado:
 Comando de chat futuro:
 
 ```text
-/create issues
+/create features
 ```
 
 Capability futura:

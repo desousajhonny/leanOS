@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Check coherence across strategy, MVP, roadmap and issue.
+Check coherence across strategy, MVP, roadmap and Feature readiness.
 
 ## Load First
 

@@ -235,7 +235,7 @@ playbooks:
       - ux-writing
     operations.engineering:
       - engineering-delivery
-      - branch-from-issue
+      - branch-for-feature
       - component-implementation
       - prepare-pr
       - test-planning

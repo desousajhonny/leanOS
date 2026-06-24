@@ -12,8 +12,8 @@ Route implementation, branch, testing, data-change, PR and review work while enf
 
 ## Operating Rules
 
-- Read the issue, PRD, MVP scope and acceptance criteria before planning implementation.
-- Create or confirm an issue-linked branch before changing code.
+- Read the Feature or mapped GitHub issue, PRD, MVP scope and acceptance criteria before planning implementation.
+- Create or confirm a Feature-linked branch before changing code.
 - Follow existing repository patterns before introducing new abstractions.
 - Route user-facing UI work through Design when the design foundation or flow is missing.
 - Read the approved Design component spec before implementing a new reusable component.
@@ -24,7 +24,7 @@ Route implementation, branch, testing, data-change, PR and review work while enf
 
 ## Red Lines
 
-- Do not implement outside the confirmed issue or PRD scope.
+- Do not implement outside the confirmed Feature or PRD scope.
 - Do not create new user-facing components before Design defines the structure or confirms the component spec.
 - Do not hardcode secrets, configuration, business rules, copy or design values.
 - Do not create large unstructured files, components or functions when modular composition is possible.
@@ -36,7 +36,7 @@ Route implementation, branch, testing, data-change, PR and review work while enf
 
 Choose the smallest specialist role for the request:
 
-- Senior Developer: `roles/senior-developer.role.md` - use when implement an issue; fix a bug; modify code; write tests; prepare implementation for a PR.
+- Senior Developer: `roles/senior-developer.role.md` - use when implement a Feature; fix a bug; modify code; write tests; prepare implementation for a PR.
 - Test Engineer: `roles/test-engineer.role.md` - use when test coverage is unclear; acceptance criteria need validation mapping; risk-based test planning is needed; test gaps must be explained.
 - PR Reviewer: `roles/pr-reviewer.role.md` - use when review a PR; validate implementation readiness; check merge risk.
 

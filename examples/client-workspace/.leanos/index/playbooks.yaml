@@ -44,9 +44,9 @@ playbooks:
   - key: engineering-delivery
     area: operations.engineering
     path: ../../operations/engineering/playbooks/engineering-delivery.playbook.md
-  - key: branch-from-issue
+  - key: branch-for-feature
     area: operations.engineering
-    path: ../../operations/engineering/playbooks/branch-from-issue.playbook.md
+    path: ../../operations/engineering/playbooks/branch-for-feature.playbook.md
   - key: component-implementation
     area: operations.engineering
     path: ../../operations/engineering/playbooks/component-implementation.playbook.md

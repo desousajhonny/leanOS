@@ -274,7 +274,7 @@ async function validateWorkspaceFiles() {
     "operations/engineering/playbooks/engineering-delivery.playbook.md",
     "operations/engineering/playbooks/prepare-pr.playbook.md",
     "operations/engineering/playbooks/component-implementation.playbook.md",
-    "operations/engineering/playbooks/branch-from-issue.playbook.md",
+    "operations/engineering/playbooks/branch-for-feature.playbook.md",
     "operations/engineering/playbooks/test-planning.playbook.md",
     "operations/engineering/skills/create-branch.skill.md",
     "operations/devops/AGENT.md",
@@ -386,7 +386,7 @@ async function validateWorkspaceFiles() {
     ".github/prompts/start-leanos.prompt.md",
     ".github/prompts/leanos-init.prompt.md",
     ".leanos/commands/start-leanos.md",
-    ".leanos/commands/create-issues.md",
+    ".leanos/commands/create-features.md",
     ".leanos/commands/github-sync.md",
     ".leanos/commands/create-branch.md",
     ".leanos/commands/create-pr.md",
@@ -463,7 +463,8 @@ async function validateWorkspaceFiles() {
     ".leanos/workflows/launch-and-learn.workflow.md",
     ".leanos/commands/evaluate-idea.md",
     ".leanos/commands/sync-roadmap.md",
-    ".leanos/commands/create-features.md",
+    ".leanos/commands/create-issues.md",
+    ".leanos/commands/workon-issue.md",
     ".leanos/commands/implement-issue.md",
     ".leanos/commands/post-merge.md",
     "strategy/company/README.md",
@@ -690,7 +691,7 @@ async function validateWorkspaceFiles() {
   assert(featureDeliveryWorkflow.includes("Record why Design, Security or DevOps are not applicable"), "Feature delivery workflow should record non-applicable dimensions");
   assert(featureDeliveryWorkflow.includes("operations/engineering/AGENT.md"), "Feature delivery workflow should route through Engineering AGENT after readiness");
   assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/engineering-delivery.playbook.md"), "Feature delivery workflow should enter Engineering through engineering-delivery");
-  assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/branch-from-issue.playbook.md"), "Feature delivery workflow should require branch playbook");
+  assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/branch-for-feature.playbook.md"), "Feature delivery workflow should require branch playbook");
   assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/component-implementation.playbook.md"), "Feature delivery workflow should run component implementation after approved spec");
   assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/prepare-pr.playbook.md"), "Feature delivery workflow should require prepare PR playbook");
   assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/pr-validation.playbook.md"), "Feature delivery workflow should require PR validation playbook");
@@ -1015,7 +1016,7 @@ async function validateClientWorkspaceFixture() {
     "operations/engineering/skills/implement-component.skill.md",
     "operations/engineering/skills/review-data-change.skill.md",
     "operations/engineering/skills/create-branch.skill.md",
-    "operations/engineering/playbooks/branch-from-issue.playbook.md",
+    "operations/engineering/playbooks/branch-for-feature.playbook.md",
     "operations/engineering/playbooks/component-implementation.playbook.md",
     "operations/devops/AGENT.md",
     "operations/devops/knowledge/README.md",
@@ -1095,7 +1096,7 @@ async function validateClientWorkspaceFixture() {
     ".github/prompts/leanos-init.prompt.md",
     ".leanos/commands/start-leanos.md",
     ".leanos/commands/define-design.md",
-    ".leanos/commands/create-issues.md",
+    ".leanos/commands/create-features.md",
     ".leanos/commands/github-sync.md",
     ".leanos/commands/create-branch.md",
     ".leanos/commands/create-pr.md",
@@ -1293,7 +1294,7 @@ async function validateEngineeringOnlyContext() {
   assert.equal(nextActions.includes("/define icp"), false, "Engineering-only workspace should not suggest Product ICP command");
   assert.equal(nextActions.includes("/define mvp"), false, "Engineering-only workspace should not suggest Product Ops MVP command");
   assert.equal(nextActions.includes("/check coherence"), false, "Engineering-only workspace should not suggest Product coherence command");
-  assert(nextActions.includes("/workon issue"), "Engineering-only workspace should suggest Engineering issue work");
+  assert(nextActions.includes("/workon feature"), "Engineering-only workspace should suggest Engineering Feature work");
   assert.equal(activeWorkflow.includes("- feature-to-delivery-cycle"), false, "Engineering-only workspace should not activate feature delivery without Product Ops");
   assert(workspaceSummary.includes("Active departments: operations"), "Workspace summary should list Operations");
   assert(workspaceSummary.includes("Active areas: operations.engineering"), "Workspace summary should list the active Engineering area");
@@ -1351,7 +1352,7 @@ async function validateGrowthValidationContext() {
   assert.equal(activeWorkflow.includes("- idea-to-roadmap"), false, "Growth + Validation workspace should not activate Strategy idea-to-roadmap workflow");
   assert.equal(activeWorkflow.includes("- feature-to-delivery-cycle"), false, "Growth + Validation workspace should not activate Engineering workflow");
   assert.equal(nextActions.includes("/define icp"), false, "Growth + Validation workspace should not suggest Product commands");
-  assert.equal(nextActions.includes("/workon issue"), false, "Growth + Validation workspace should not suggest Engineering commands");
+  assert.equal(nextActions.includes("/workon feature"), false, "Growth + Validation workspace should not suggest Engineering commands");
   assert(workspaceSummary.includes("Active departments: strategy, growth"), "Workspace summary should use active department order from definitions");
   assert.equal(routingMap.routing.departments.strategy.agent, "../../strategy/AGENT.md");
   assert.equal(routingMap.routing.departments.strategy.readme, "../../strategy/README.md");
@@ -1537,11 +1538,11 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   const epicToFeaturesPlaybook = await readFile(join(rootDir, "operations", "product-ops", "playbooks", "epic-to-features.playbook.md"), "utf8");
   const shapeEpicSkill = await readFile(join(rootDir, "operations", "product-ops", "skills", "shape-epic.skill.md"), "utf8");
   const branchSkill = await readFile(join(rootDir, "operations", "engineering", "skills", "create-branch.skill.md"), "utf8");
-  const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-from-issue.playbook.md"), "utf8");
+  const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
   const preparePrPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
   const prValidationPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
-  const createIssuesCommand = await readFile(join(rootDir, ".leanos", "commands", "create-issues.md"), "utf8");
-  const workonIssueCommand = await readFile(join(rootDir, ".leanos", "commands", "workon-issue.md"), "utf8");
+  const createFeaturesCommand = await readFile(join(rootDir, ".leanos", "commands", "create-features.md"), "utf8");
+  const workonFeatureCommand = await readFile(join(rootDir, ".leanos", "commands", "workon-feature.md"), "utf8");
   const createBranchCommand = await readFile(join(rootDir, ".leanos", "commands", "create-branch.md"), "utf8");
   const createPrCommand = await readFile(join(rootDir, ".leanos", "commands", "create-pr.md"), "utf8");
   const reviewPrCommand = await readFile(join(rootDir, ".leanos", "commands", "review-pr.md"), "utf8");
@@ -1561,8 +1562,9 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(prTemplate.includes("## Founder Testing Guide"), "PR template should include founder testing guide");
   assert(prTemplate.includes("## LeanOS Review Checklist"), "PR template should include LeanOS review checklist");
   assert(prTemplate.includes("Founder Testing Guide is clear enough for a non-technical founder"), "PR template should include founder testing review checkbox");
-  assert(branchRules.includes("issue/<issue-number>-<short-kebab-slug>"), "Branch rules should define the required issue branch format");
-  assert(branchRules.includes("Do not implement issue work on the default branch"), "Branch rules should forbid default-branch implementation");
+  assert(branchRules.includes("feature/<feature-slug>-<short-kebab-slug>"), "Branch rules should define the local Feature branch format");
+  assert(branchRules.includes("issue/<issue-number>-<short-kebab-slug>"), "Branch rules should define the mapped GitHub issue branch format");
+  assert(branchRules.includes("Do not implement Feature work on the default branch"), "Branch rules should forbid default-branch Feature implementation");
   assert(prRules.includes("Product alignment"), "PR validation rules should require Product alignment");
   assert(prRules.includes("Founder acceptance"), "PR validation rules should require Founder acceptance");
   assert(prRules.includes("Founder Testing Guide"), "PR validation rules should validate Founder Testing Guide");
@@ -1617,21 +1619,22 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(epicToFeaturesPlaybook.includes("Add Security criteria only when"), "Epic breakdown should make Security conditional");
   assert(epicToFeaturesPlaybook.includes("Add DevOps criteria only when"), "Epic breakdown should make DevOps conditional");
   assert(epicToFeaturesPlaybook.includes("Stop before any GitHub API write until the user explicitly confirms"), "Epic breakdown should require confirmation before GitHub writes");
-  assert(branchSkill.includes("safe issue-linked branch name"), "Engineering should include create-branch skill");
+  assert(branchSkill.includes("safe Feature-linked branch name"), "Engineering should include create-branch skill");
   assert(branchPlaybook.includes("Load `.github/leanos/branch-rules.md`"), "Branch playbook should load branch rules");
   assert(preparePrPlaybook.includes("Check whether Design criteria are required for user-facing UX"), "Prepare PR playbook should conditionally check Design");
   assert(preparePrPlaybook.includes("Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance"), "Prepare PR playbook should conditionally check Security/Data");
   assert(prValidationPlaybook.includes("List findings by severity"), "PR validation playbook should output findings by severity");
 
-  assert(createIssuesCommand.includes("Delivery Readiness Matrix (DRM)"), "Create issues command should use the DRM");
-  assert(createIssuesCommand.includes("operations/product-ops/playbooks/epic-to-features.playbook.md"), "Create issues command should load the epic-to-features playbook");
-  assert(createIssuesCommand.includes("Add Design criteria only when user-facing UX, UI, flow, accessibility, copy or interaction is affected"), "Create issues command should make Design conditional");
-  assert(createIssuesCommand.includes("Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved"), "Create issues command should make Security conditional");
-  assert(createIssuesCommand.includes("Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected"), "Create issues command should make DevOps conditional");
-  assert(createIssuesCommand.includes("../../operations/devops/AGENT.md"), "Create issues command should route DevOps through AGENT.md when applicable");
-  assert(createIssuesCommand.includes("Do not call GitHub API directly from the model"), "Create issues command should forbid direct model API writes");
-  assert(workonIssueCommand.includes("Propose the required issue-linked branch name before code changes"), "Workon issue should require branch proposal before code changes");
-  assert(createBranchCommand.includes("issue/<issue-number>-<short-kebab-slug>"), "Create branch command should require LeanOS branch format");
+  assert(createFeaturesCommand.includes("Delivery Readiness Matrix (DRM)"), "Create features command should use the DRM");
+  assert(createFeaturesCommand.includes("operations/product-ops/playbooks/epic-to-features.playbook.md"), "Create features command should load the epic-to-features playbook");
+  assert(createFeaturesCommand.includes("Add Design criteria only when user-facing UX, UI, flow, accessibility, copy or interaction is affected"), "Create features command should make Design conditional");
+  assert(createFeaturesCommand.includes("Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved"), "Create features command should make Security conditional");
+  assert(createFeaturesCommand.includes("Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected"), "Create features command should make DevOps conditional");
+  assert(createFeaturesCommand.includes("../../operations/devops/AGENT.md"), "Create features command should route DevOps through AGENT.md when applicable");
+  assert(createFeaturesCommand.includes("Do not call GitHub API directly from the model"), "Create features command should forbid direct model API writes");
+  assert(workonFeatureCommand.includes("Propose the required Feature-linked branch name before code changes"), "Workon feature should require branch proposal before code changes");
+  assert(createBranchCommand.includes("feature/<feature-slug>-<short-kebab-slug>"), "Create branch command should support local Feature branches");
+  assert(createBranchCommand.includes("issue/<issue-number>-<short-kebab-slug>"), "Create branch command should support mapped GitHub issue branches");
   assert(createPrCommand.includes("Founder Testing Guide"), "Create PR command should require Founder Testing Guide");
   assert(createPrCommand.includes("A future CLI/script capability performs the actual GitHub write"), "Create PR command should keep remote writes out of the model");
   assert(reviewPrCommand.includes("Founder Testing Guide"), "Review PR command should validate Founder Testing Guide");
@@ -2396,6 +2399,7 @@ async function assertCommandContract(rootDir) {
     const content = await readFile(commandPath, "utf8");
 
     assertCommandRequiredSections(content, commandRelativePath);
+    assertCommandWorkflowRouting(commandFile, content, commandRelativePath);
     assertCommandExternalSafety(content, commandRelativePath);
     await assertCommandPathReferences(rootDir, commandsDir, commandRelativePath, content);
   }
@@ -2424,6 +2428,50 @@ function assertCommandRequiredSections(content, commandRelativePath) {
     content.includes("## Expected Output\n") || content.includes("## Output\n"),
     `Command should define Expected Output or Output: ${commandRelativePath}`
   );
+}
+
+function assertCommandWorkflowRouting(commandFile, content, commandRelativePath) {
+  const workflowRequirements = {
+    "define-mvp.md": ["../../operations/workflows/define-mvp.workflow.md"],
+    "create-features.md": [
+      "../../operations/workflows/roadmap-item-to-epic.workflow.md",
+      "../../operations/workflows/epic-to-features.workflow.md"
+    ],
+    "workon-feature.md": ["../../operations/workflows/feature-to-delivery-cycle.workflow.md"]
+  };
+  const requiredWorkflows = workflowRequirements[commandFile] ?? [];
+
+  if (requiredWorkflows.length === 0) {
+    return;
+  }
+
+  const navigationRoute = extractMarkdownSection(content, "Navigation Route") || content;
+  const firstExecutionAssetIndex = firstPositiveIndex([
+    navigationRoute.indexOf("/roles/"),
+    navigationRoute.indexOf("/skills/"),
+    navigationRoute.indexOf("/playbooks/")
+  ]);
+
+  for (const workflowPath of requiredWorkflows) {
+    const workflowIndex = navigationRoute.indexOf(workflowPath);
+
+    assert(
+      workflowIndex !== -1,
+      `Command should load required workflow ${workflowPath}: ${commandRelativePath}`
+    );
+
+    if (firstExecutionAssetIndex !== -1) {
+      assert(
+        workflowIndex < firstExecutionAssetIndex,
+        `Command should load workflow before role/skill/playbook: ${commandRelativePath}`
+      );
+    }
+  }
+}
+
+function firstPositiveIndex(indexes) {
+  const positives = indexes.filter((index) => index !== -1);
+  return positives.length === 0 ? -1 : Math.min(...positives);
 }
 
 function assertCommandExternalSafety(content, commandRelativePath) {
@@ -2879,11 +2927,11 @@ async function assertEngineeringAreaPattern(rootDir) {
   const implementComponent = await readFile(join(rootDir, "operations", "engineering", "skills", "implement-component.skill.md"), "utf8");
   const reviewDataChange = await readFile(join(rootDir, "operations", "engineering", "skills", "review-data-change.skill.md"), "utf8");
   const engineeringDelivery = await readFile(join(rootDir, "operations", "engineering", "playbooks", "engineering-delivery.playbook.md"), "utf8");
-  const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-from-issue.playbook.md"), "utf8");
+  const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
   const componentImplementation = await readFile(join(rootDir, "operations", "engineering", "playbooks", "component-implementation.playbook.md"), "utf8");
   const preparePr = await readFile(join(rootDir, "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
   const prValidation = await readFile(join(rootDir, "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
-  const workonIssueCommand = await readFile(join(rootDir, ".leanos", "commands", "workon-issue.md"), "utf8");
+  const workonFeatureCommand = await readFile(join(rootDir, ".leanos", "commands", "workon-feature.md"), "utf8");
 
   await assertExists(join(rootDir, "operations", "engineering", "AGENT.md"));
   await assertExists(join(rootDir, "operations", "engineering", "knowledge", "README.md"));
@@ -2898,7 +2946,7 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(engineeringAgent.includes("Senior Developer: `roles/senior-developer.role.md`"), "Engineering AGENT should route Senior Developer work");
   assert(engineeringAgent.includes("Test Engineer: `roles/test-engineer.role.md`"), "Engineering AGENT should route Test Engineer work");
   assert(engineeringAgent.includes("PR Reviewer: `roles/pr-reviewer.role.md`"), "Engineering AGENT should route PR Reviewer work");
-  assert(engineeringAgent.includes("Create or confirm an issue-linked branch before changing code"), "Engineering AGENT should require branch before code changes");
+  assert(engineeringAgent.includes("Create or confirm a Feature-linked branch before changing code"), "Engineering AGENT should require branch before code changes");
   assert(engineeringAgent.includes("Implement reusable component work before the screen or Feature that depends on it"), "Engineering AGENT should implement reusable component before dependent Feature");
   assert(engineeringAgent.includes("playbooks/engineering-delivery.playbook.md"), "Engineering AGENT should route implementation through engineering-delivery");
   assert(engineeringAgent.includes("Do not hardcode secrets, configuration, business rules, copy or design values"), "Engineering AGENT should forbid hardcoding");
@@ -2951,7 +2999,7 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(implementComponent.includes("../knowledge/component-guidelines.md"), "Implement component skill should read Engineering component guidelines");
   assert(implementComponent.includes("Do not implement a new user-facing component without a Design spec"), "Implement component skill should block component work without Design spec");
   assert(engineeringDelivery.includes("Orchestrate the internal Engineering path"), "Engineering delivery playbook should define the master Engineering path");
-  assert(engineeringDelivery.includes("playbooks/branch-from-issue.playbook.md"), "Engineering delivery playbook should start with branch playbook");
+  assert(engineeringDelivery.includes("playbooks/branch-for-feature.playbook.md"), "Engineering delivery playbook should start with branch playbook");
   assert(engineeringDelivery.includes("skills/plan-implementation.skill.md"), "Engineering delivery playbook should require implementation planning");
   assert(engineeringDelivery.includes("playbooks/component-implementation.playbook.md"), "Engineering delivery playbook should include component implementation when needed");
   assert(engineeringDelivery.includes("skills/follow-code-standards.skill.md"), "Engineering delivery playbook should use code standards skill");
@@ -2961,7 +3009,7 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(engineeringDelivery.includes("playbooks/pr-validation.playbook.md"), "Engineering delivery playbook should end with PR validation");
   assert(engineeringDelivery.includes("Founder Testing Guide"), "Engineering delivery should require Founder Testing Guide before founder review");
   assert(engineeringDelivery.includes("## Gates"), "Engineering delivery playbook should declare explicit gates");
-  assert(engineeringDelivery.includes("Do not edit code before an issue-linked branch"), "Engineering delivery should gate code behind branch creation");
+  assert(engineeringDelivery.includes("Do not edit code before a Feature-linked branch"), "Engineering delivery should gate code behind branch creation");
   assert(engineeringDelivery.includes("Do not implement a new user-facing component without an approved Design component spec"), "Engineering delivery should gate new components behind Design spec");
   assert(engineeringDelivery.includes("Do not open or prepare a PR without tests"), "Engineering delivery should gate PR behind tests or validation notes");
   assert(engineeringDelivery.includes("Do not recommend merge before `playbooks/pr-validation.playbook.md` is complete"), "Engineering delivery should gate merge recommendation behind PR validation");
@@ -2984,8 +3032,8 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(prValidation.includes("Founder Testing Guide"), "PR validation should validate Founder Testing Guide");
   assert(prValidation.includes("non-technical founder can test"), "PR validation should require founder-testable instructions");
   assert(prValidation.includes("Security/Data review result or not applicable"), "PR validation should classify Security/Data result");
-  assert(workonIssueCommand.includes("../../operations/engineering/AGENT.md"), "Workon issue command should load Engineering AGENT");
-  assert(workonIssueCommand.includes("../../operations/engineering/knowledge/code-standards.md"), "Workon issue command should load code standards");
+  assert(workonFeatureCommand.includes("../../operations/engineering/AGENT.md"), "Workon feature command should load Engineering AGENT");
+  assert(workonFeatureCommand.includes("../../operations/engineering/knowledge/code-standards.md"), "Workon feature command should load code standards");
 }
 
 async function assertDevOpsAreaPattern(rootDir) {
@@ -3108,7 +3156,7 @@ async function assertSecurityAreaPattern(rootDir) {
   const aiGeneratedReview = await readFile(join(rootDir, "operations", "security", "playbooks", "ai-generated-code-security-review.playbook.md"), "utf8");
   const securityAutomationPlaybook = await readFile(join(rootDir, "operations", "security", "playbooks", "security-automation-readiness.playbook.md"), "utf8");
   const githubSecurityAutomation = await readFile(join(rootDir, ".github", "leanos", "security-automation.md"), "utf8");
-  const createIssuesCommand = await readFile(join(rootDir, ".leanos", "commands", "create-issues.md"), "utf8");
+  const createFeaturesCommand = await readFile(join(rootDir, ".leanos", "commands", "create-features.md"), "utf8");
 
   for (const oldPath of ["threat-model.md", "access-control.md", "data-protection.md"]) {
     assert.equal(await exists(join(rootDir, "operations", "security", oldPath)), false, `Security ${oldPath} should live in knowledge/`);
@@ -3215,8 +3263,8 @@ async function assertSecurityAreaPattern(rootDir) {
     assert(preDeployReview.includes(blocker), `Pre-deploy security review should block ${blocker}`);
   }
 
-  assert(createIssuesCommand.includes("../../operations/security/AGENT.md"), "Create issues command should route Security through AGENT.md");
-  assert.equal(createIssuesCommand.includes("../../operations/security/README.md` only when"), false, "Create issues command should not route Security directly to README");
+  assert(createFeaturesCommand.includes("../../operations/security/AGENT.md"), "Create features command should route Security through AGENT.md");
+  assert.equal(createFeaturesCommand.includes("../../operations/security/README.md` only when"), false, "Create features command should not route Security directly to README");
   assert(securityAutomationReadiness.includes("Secret scanning status is explicit"), "Security automation skill should check secret scanning status");
   assert(securityAutomationReadiness.includes("Dependency audit status is explicit"), "Security automation skill should check dependency audit status");
   assert(securityAutomationReadiness.includes("No scanner workflow is created without stable commands"), "Security automation skill should avoid fragile scanner workflows");
@@ -3607,8 +3655,8 @@ async function assertInitialContextCoherence(rootDir, selectedSubareas) {
     { command: "/define-mvp", area: "operations.product-ops" },
     { command: "/check coherence", area: "strategy.product" },
     { command: "/create roadmap", area: "strategy.roadmap" },
-    { command: "/create issues", area: "operations.product-ops" },
-    { command: "/workon issue", area: "operations.engineering" },
+    { command: "/create features", area: "operations.product-ops" },
+    { command: "/workon feature", area: "operations.engineering" },
     { command: "/create branch", area: "operations.engineering" },
     { command: "/create pr", area: "operations.engineering" },
     { command: "/review pr", area: "operations.engineering" }

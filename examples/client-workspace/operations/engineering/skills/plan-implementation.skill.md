@@ -2,17 +2,17 @@
 
 ## Purpose
 
-Turn an issue into a scoped technical implementation plan before code changes.
+Turn a ready Feature into a scoped technical implementation plan before code changes.
 
 ## Use When
 
-- a GitHub issue should be implemented
+- a local Feature or mapped GitHub issue should be implemented
 - a bug fix needs scope
 - implementation work needs sequencing
 
 ## Required Context
 
-- Issue body
+- Feature body or mapped GitHub issue body
 - PRD
 - MVP scope
 - Acceptance criteria
@@ -21,15 +21,15 @@ Turn an issue into a scoped technical implementation plan before code changes.
 
 ## Inputs
 
-- Issue
-- Linked epic or PRD
+- Feature
+- Linked Epic or PRD
 - Acceptance criteria
 - Current repository patterns
 - Known risks
 
 ## Process
 
-1. Summarize the issue in the chat
+1. Summarize the Feature in the chat
 2. Identify files or modules likely involved
 3. Classify Design, Security and data impact
 4. Plan the smallest safe implementation steps
@@ -38,14 +38,14 @@ Turn an issue into a scoped technical implementation plan before code changes.
 
 ## Checks
 
-- Implementation plan stays inside issue scope
+- Implementation plan stays inside Feature scope
 - Existing repository patterns are preferred
 - Dependencies and risks are explicit
 - Design/Security/Data routing is explicit when applicable
 
 ## Output
 
-- Issue summary
+- Feature summary
 - Implementation plan
 - Files likely involved
 - Tests to run or add

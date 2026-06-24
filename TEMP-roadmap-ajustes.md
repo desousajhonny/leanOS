@@ -80,7 +80,9 @@ O LeanOS ja tem um MVP forte de framework e scaffold:
 
 - [x] Templates de issue, epic, feature, PR, branch e readiness matrix criados no `ai-standard`.
   - atualizar depois para linguagem product-first: Epic -> Feature -> Tasks, com GitHub issue como representacao remota.
-- [x] Regras de branch por issue definidas.
+- [x] Regras de branch product-first definidas:
+  - `feature/<feature-slug>-<short-kebab-slug>` para Features locais;
+  - `issue/<issue-number>-<short-kebab-slug>` apenas quando a Feature estiver mapeada para uma GitHub issue real.
 - [x] Regras de PR e PR review definidas.
 - [x] `.github/leanos/` preparado sem segredos.
 - [x] `.env.local` gerado apenas quando o usuario escolhe preparar GitHub management.
@@ -336,7 +338,7 @@ Objetivo: todo comando gerado em `.leanos/commands/` deve ser uma porta de entra
   - Expected Output
 - [x] Atualizar os comandos principais para seguir o contrato sem duplicar workflow.
 - [x] Atualizar `validate-generator.mjs` para validar o contrato minimo dos comandos principais.
-- [ ] Validar que comandos multi-area carregam o workflow correspondente antes de role/skill/playbook.
+- [x] Validar que comandos multi-area carregam o workflow correspondente antes de role/skill/playbook.
 - [x] Validar que comandos de GitHub/API declaram dry-run/payload e confirmacao antes de escrita remota.
 - [ ] Validar que comandos de diagnostico, como `/status-leanos`, nao escrevem arquivos por padrao.
 - [x] Validar que comandos ligados a areas inativas mostram aviso em vez de apontar para paths ausentes.
@@ -360,8 +362,8 @@ Objetivo: garantir que linguagem natural e slash commands equivalentes caiam no 
 Regras gerais:
 
 - [x] Todo comando deve carregar contexto minimo antes de agir.
-- [ ] Todo comando que aciona trabalho multi-area deve carregar o workflow correspondente antes de entrar em roles, skills ou playbooks.
-- [ ] O comando nao deve duplicar a logica completa do workflow; ele deve normalizar a intencao, carregar contexto e apontar para o processo correto.
+- [x] Todo comando que aciona trabalho multi-area deve carregar o workflow correspondente antes de entrar em roles, skills ou playbooks.
+- [x] O comando nao deve duplicar a logica completa do workflow; ele deve normalizar a intencao, carregar contexto e apontar para o processo correto.
 - [x] Todo comando deve declarar:
   - purpose
   - load first
@@ -402,30 +404,35 @@ Regras gerais:
 - [ ] Evitar definir MVP sem problema, ICP e value proposition minimamente claros.
 - [ ] Pedir confirmacao antes de atualizar arquivos.
 
-#### `/create issues`
+#### `/create features`
 
-- [ ] Converter delivery scope em Epics locais e, depois, Features com Tasks internas.
-- [ ] Usar templates de Epic e Feature; GitHub templates ficam como representacao remota opcional.
-- [ ] Aplicar Delivery Readiness Matrix (DRM) com Product Ops, Design, Engineering, Security e DevOps conforme necessidade da issue.
-- [ ] Design participa apenas quando houver UX, UI, fluxo, acessibilidade, copy ou experiencia de tela.
-- [ ] Security participa quando houver dados, auth, privacidade, API, banco, secrets, compliance, infra ou risco de abuso.
-- [ ] Incluir acceptance criteria.
-- [ ] Incluir links para arquivos de contexto.
-- [ ] Marcar dependencias, riscos e perguntas abertas.
-- [ ] Gerar payload/draft antes de criar qualquer issue real.
-- [ ] Exigir confirmacao antes de qualquer chamada GitHub.
+- [x] Substituir o comando antigo `/create issues` por `/create features`.
+- [x] Converter delivery scope em Epics locais e, depois, Features com Tasks internas.
+- [x] Usar templates de Epic e Feature; GitHub templates ficam como representacao remota opcional.
+- [x] Aplicar Delivery Readiness Matrix (DRM) com Product Ops, Design, Engineering, Security e DevOps conforme necessidade da Feature.
+- [x] Design participa apenas quando houver UX, UI, fluxo, acessibilidade, copy ou experiencia de tela.
+- [x] Security participa quando houver dados, auth, privacidade, API, banco, secrets, compliance, infra ou risco de abuso.
+- [x] Incluir acceptance criteria.
+- [x] Incluir links para arquivos de contexto.
+- [x] Marcar dependencias, riscos e perguntas abertas.
+- [x] Gerar payload/draft antes de criar qualquer GitHub issue real.
+- [x] Exigir confirmacao antes de qualquer chamada GitHub.
 
-#### `/workon issue`
+#### `/workon feature`
 
-- [ ] Carregar issue do GitHub ou draft local antes de planejar implementacao.
-- [ ] Resumir a issue no chat para confirmacao do usuario.
-- [ ] Roteiar para `operations/engineering/AGENT.md`.
-- [ ] Exigir branch obrigatoria antes de editar codigo.
-- [ ] Seguir naming convention de branch alinhada a issue.
-- [ ] Definir plano de implementacao.
-- [ ] Definir plano de testes.
-- [ ] Identificar arquivos provaveis de mudanca.
-- [ ] Respeitar Design e Security quando a issue exigir.
+- [x] Substituir o comando antigo `/workon issue` por `/workon feature`.
+- [x] Carregar Feature local ou GitHub issue mapeada antes de planejar implementacao.
+- [x] Resumir a Feature no chat para confirmacao do usuario.
+- [x] Roteiar para `operations/workflows/feature-to-delivery-cycle.workflow.md` antes de Engineering.
+- [x] Roteiar para `operations/engineering/AGENT.md` quando a Feature estiver pronta para implementacao.
+- [x] Exigir branch obrigatoria antes de editar codigo.
+- [x] Seguir naming convention de branch alinhada a Feature:
+  - `feature/...` para Feature local;
+  - `issue/...` para GitHub issue mapeada.
+- [x] Definir plano de implementacao.
+- [x] Definir plano de testes.
+- [x] Identificar arquivos provaveis de mudanca.
+- [x] Respeitar Design e Security quando a Feature exigir.
 
 #### `/review pr`
 
@@ -567,7 +574,7 @@ Ordem esperada:
 
 1. Confirmar Feature input e readiness herdado do `feature-to-delivery-cycle`.
 2. Criar/confirmar branch obrigatoria.
-   - `operations/engineering/playbooks/branch-from-issue.playbook.md`
+   - `operations/engineering/playbooks/branch-for-feature.playbook.md`
 3. Planejar implementacao antes de editar arquivos.
    - `operations/engineering/skills/plan-implementation.skill.md`
 4. Implementar componente primeiro, se a Feature depender de componente novo/aprovado.
@@ -593,7 +600,7 @@ Checklist de implementacao:
 - [x] Atualizar `senior-developer.role.md` para incluir `engineering-delivery` como playbook principal de implementacao.
 - [x] Revisar `pr-reviewer.role.md` e `test-engineer.role.md`: sem mudanca necessaria; eles continuam especialistas de review/teste e nao devem duplicar o playbook mestre.
 - [x] Adicionar notas de contexto nos playbooks menores:
-  - `branch-from-issue.playbook.md`: etapa inicial do `engineering-delivery`;
+  - `branch-for-feature.playbook.md`: etapa inicial do `engineering-delivery`;
   - `component-implementation.playbook.md`: usado quando existe component spec aprovada;
   - `prepare-pr.playbook.md`: usado depois de implementacao e testes;
   - `pr-validation.playbook.md`: etapa final antes de recomendar merge.
@@ -836,9 +843,9 @@ Jornadas internas devem ser criadas em `docs/framework/founder-journeys/` usando
 | 3 | [x] | [x] `docs/framework/founder-journeys/idea-to-roadmap.md` | Decisao de roadmap | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" | Strategy / Roadmap | Product Strategist, Product Manager, Roadmap Planner | `roadmap-cycle-planning`, `product-strategy` | Jornada criada; scaffold existente validado; gap futuro: delivery scope deve ser contexto opcional no Roadmap Planner |
 | 4 | [x] | [x] `docs/framework/founder-journeys/roadmap-item-to-epic.md` | Roadmap item para Epic local | `operations/workflows/roadmap-item-to-epic.workflow.md` | "Isso entra na proxima entrega?", "isso entra no MVP?", "crie um epic para esse item" | Product Ops + Strategy | Product Owner, Product Strategist, Delivery Architect, Product Designer/Security/DevOps/Engineering quando aplicavel | `delivery-scope-planning`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada; consolidou os dois passos antigos; GitHub write fica opcional e posterior |
 | 5 | [x] | [x] `docs/framework/founder-journeys/epic-to-features.md` | Feature Shaping | `operations/workflows/epic-to-features.workflow.md` | "Quebre esse epic em features", "quais features precisamos para esse epic?" | Operations / Product Ops | Product Owner, Product Designer, Security Reviewer, DevOps Engineer, Senior Developer | `epic-to-features`, `delivery-readiness`, `mvp-ux-flow`, `accessibility-review`, `pre-mvp-security-checklist`, `api-security-review`, `setup-ci-cd` | Jornada criada; scaffold atualizado com Workflow Contract Standard e DRM completa |
-| 6 | [x] | [x] `docs/framework/founder-journeys/feature-to-delivery-cycle.md` | Implementacao | `operations/workflows/feature-to-delivery-cycle.workflow.md` | "Implemente a feature", "implemente a issue #554", "vamos comecar essa feature" | Operations / Engineering | Product Owner, Product Designer quando UI/componente for afetado, Senior Developer, Test Engineer, PR Reviewer, Security Reviewer quando aplicavel | `delivery-readiness`, `component-readiness`, `branch-from-issue`, `prepare-pr`, `test-planning`, `pr-validation`, `ai-generated-code-security-review` | Jornada criada; scaffold atualizado com Workflow Contract Standard, ready-to-develop, component readiness, branch, PR e post-merge bridge |
+| 6 | [x] | [x] `docs/framework/founder-journeys/feature-to-delivery-cycle.md` | Implementacao | `operations/workflows/feature-to-delivery-cycle.workflow.md` | "Implemente a feature", "implemente a issue #554", "vamos comecar essa feature" | Operations / Engineering | Product Owner, Product Designer quando UI/componente for afetado, Senior Developer, Test Engineer, PR Reviewer, Security Reviewer quando aplicavel | `delivery-readiness`, `component-readiness`, `branch-for-feature`, `prepare-pr`, `test-planning`, `pr-validation`, `ai-generated-code-security-review` | Jornada criada; scaffold atualizado com Workflow Contract Standard, ready-to-develop, component readiness, branch local `feature/...`, branch GitHub `issue/...`, PR e post-merge bridge |
 | 7 | [x] | N/A | Review e PR | Dentro de `feature-to-delivery-cycle` | "Revise o PR", "esta pronto para merge?" | Engineering + Security/DevOps quando aplicavel | PR Reviewer, Test Engineer, Security Reviewer, Release Manager | `pr-validation`, `pre-deploy-security-review`, `security-automation-readiness`, `release-operations` | Nao criar workflow separado por enquanto; PR validation e parte do feature delivery cycle |
-| 8 | [x] | [x] `docs/framework/founder-journeys/post-merge-continuation.md` | Pos-merge | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a proxima issue", "o que atualizamos depois do merge?" | Operations | Product Owner, Senior Developer, Release Manager, CX Lead quando aplicavel | `release-operations`, `delivery-readiness`, `customer-learning-loop` | Jornada criada; scaffold fortalecido com Workflow Contract Standard, status/context update, conditional DevOps/Security/Growth/Strategy e ponte para proxima rota |
+| 8 | [x] | [x] `docs/framework/founder-journeys/post-merge-continuation.md` | Pos-merge | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a proxima Feature", "o que atualizamos depois do merge?" | Operations | Product Owner, Senior Developer, Release Manager, CX Lead quando aplicavel | `release-operations`, `delivery-readiness`, `customer-learning-loop` | Jornada criada; scaffold fortalecido com Workflow Contract Standard, status/context update, conditional DevOps/Security/Growth/Strategy e ponte para proxima rota |
 | 9 | [ ] | [ ] `docs/framework/founder-journeys/launch-learning-loop.md` | Lancamento e aprendizado | `growth/workflows/launch-learning-loop.workflow.md` | "Lancamos, o que aprendemos?", "como melhorar aquisicao/conversao?" | Growth | Growth Lead, CX Lead, Finance Operator | `mvp-launch`, `customer-learning-loop`, `finance-review` | Existe, pode ficar lean para depois |
 
 MVP continua sendo o nome principal da etapa. O criterio de qualidade deve incluir uma Lovable Baseline:
@@ -1021,7 +1028,7 @@ Cenario minimo:
 - [ ] Rodar `/define design` quando Design estiver ativo.
 - [ ] Rodar `/check coherence`.
 - [ ] Gerar plano de issues ou execucao.
-- [ ] Simular `workon issue`.
+- [ ] Simular `Workon feature`.
 - [ ] Simular `review pr`.
 - [ ] Continuar o trabalho em uma nova sessao sem perder contexto.
 

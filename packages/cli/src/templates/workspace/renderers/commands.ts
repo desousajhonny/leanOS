@@ -22,9 +22,9 @@ function commandContent(command: CommandDefinition, activeAreas: AreaDefinition[
   if (command.assetCreation) return assetCreationCommand(command, activeAreas);
   if (command.slug === "define-mvp") return defineMvpCommand(command, activeKeys);
   if (command.slug === "define-design") return defineDesignCommand(command, activeKeys);
-  if (command.slug === "create-issues") return createIssuesCommand(command, activeKeys);
+  if (command.slug === "create-features") return createFeaturesCommand(command, activeKeys);
   if (command.slug === "github-sync") return githubSyncCommand(command, activeKeys);
-  if (command.slug === "workon-issue") return workonIssueCommand(command, activeKeys);
+  if (command.slug === "workon-feature") return workonFeatureCommand(command, activeKeys);
   if (command.slug === "create-branch") return createBranchCommand(command, activeKeys);
   if (command.slug === "create-pr") return createPrCommand(command, activeKeys);
   if (command.slug === "review-pr") return reviewPrCommand(command, activeKeys);
@@ -619,26 +619,26 @@ function getInitStrategySourceFiles(activeAreas: AreaDefinition[]): string[] {
   return files;
 }
 
-function createIssuesCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
+function createFeaturesCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
   const active = new Set(activeSubareas);
   const productOpsNote = active.has("operations.product-ops")
-    ? "Load `../../operations/product-ops/AGENT.md`, `../../operations/product-ops/README.md` and MVP knowledge files before drafting issues."
-    : "`operations.product-ops` is not active. Do not draft implementation-ready issues until delivery scope and acceptance criteria are available or the user explicitly activates the area.";
+    ? "Route through `../../operations/AGENT.md`, then load `../../operations/workflows/roadmap-item-to-epic.workflow.md` or `../../operations/workflows/epic-to-features.workflow.md` before Product Ops roles, skills or playbooks."
+    : "`operations.product-ops` is not active. Do not draft implementation-ready Features until delivery scope and acceptance criteria are available or the user explicitly activates the area.";
   const productNote = active.has("strategy.product")
     ? "Load `../../strategy/product/README.md` for product value, ICP, problem and acceptance quality."
-    : "`strategy.product` is not active. Ask for product context before creating product-ready issues.";
+    : "`strategy.product` is not active. Ask for product context before creating product-ready Features.";
   const engineeringNote = active.has("operations.engineering")
     ? "Load `../../operations/engineering/AGENT.md` and `../../operations/engineering/README.md` when features require implementation criteria."
-    : "`operations.engineering` is not active. Draft only planning-level issues unless the user activates Engineering.";
+    : "`operations.engineering` is not active. Draft only planning-level Features unless the user activates Engineering.";
   const designNote = active.has("operations.design")
     ? "Use `../../operations/design/AGENT.md` only when the epic or feature changes user-facing UX, screens, states, copy or interactions; use the README as the area map."
-    : "Design is inactive. If the issue has UX impact, flag the gap and ask before adding Design criteria.";
+    : "Design is inactive. If the Feature has UX impact, flag the gap and ask before adding Design criteria.";
   const securityNote = active.has("operations.security")
-    ? "Use `../../operations/security/AGENT.md` only when the issue touches data, auth, permissions, privacy, abuse risk, compliance, API security, database security, secrets, infrastructure or AI-generated-code risk."
-    : "Security is inactive. If the issue has a security-sensitive surface, flag the gap and ask before adding Security criteria.";
+    ? "Use `../../operations/security/AGENT.md` only when the Feature touches data, auth, permissions, privacy, abuse risk, compliance, API security, database security, secrets, infrastructure or AI-generated-code risk."
+    : "Security is inactive. If the Feature has a security-sensitive surface, flag the gap and ask before adding Security criteria.";
   const devopsNote = active.has("operations.devops")
-    ? "Use `../../operations/devops/AGENT.md` only when the issue touches environments, CI/CD, deploy, observability, GitHub Project, config or release readiness."
-    : "DevOps is inactive. If the issue has delivery, environment or release impact, flag the gap and ask before adding DevOps criteria.";
+    ? "Use `../../operations/devops/AGENT.md` only when the Feature touches environments, CI/CD, deploy, observability, GitHub Project, config or release readiness."
+    : "DevOps is inactive. If the Feature has delivery, environment or release impact, flag the gap and ask before adding DevOps criteria.";
 
   return `# ${formatCommandInvocation(command.slug)}
 
@@ -646,7 +646,9 @@ function createIssuesCommand(command: CommandDefinition, activeSubareas: Subarea
 
 ${command.purpose}
 
-Draft GitHub-ready epics and features from roadmap, delivery scope and issue readiness criteria.
+Use this command to turn a confirmed local Epic into local LeanOS Features, or to route a roadmap/delivery item into the Epic-first flow before Feature creation.
+
+This command must route through the local Operations workflows before roles, skills or playbooks. GitHub issue payloads are optional and come only after local Epic/Feature structure is clear.
 
 ## Load First
 
@@ -654,12 +656,32 @@ Read:
 
 - \`../../AGENT.md\`
 - \`../index/routing-map.yaml\`
+- \`../../operations/AGENT.md\`
+- \`../../operations/workflows/roadmap-item-to-epic.workflow.md\`
+- \`../../operations/workflows/epic-to-features.workflow.md\`
+- \`../../operations/product-ops/AGENT.md\`
+- \`../../operations/product-ops/knowledge/work-taxonomy.md\`
+- \`../../operations/product-ops/epics/README.md\`
+- \`../../strategy/roadmap/AGENT.md\`
+- \`../../strategy/roadmap/knowledge/roadmap.md\`
+- \`../../strategy/roadmap/knowledge/backlog.md\`
 - \`../../ai-standard/templates/github/github-epic-template.md\`
 - \`../../ai-standard/templates/github/github-feature-template.md\`
 - \`../../ai-standard/templates/github/delivery-readiness-matrix-template.md\`
 - \`../../.github/ISSUE_TEMPLATE/epic.yml\`
 - \`../../.github/ISSUE_TEMPLATE/feature.yml\`
-- \`../../operations/product-ops/playbooks/epic-to-features.playbook.md\`
+
+## Navigation Route
+
+1. \`../../AGENT.md\`
+2. \`../../operations/AGENT.md\`
+3. \`../../operations/workflows/roadmap-item-to-epic.workflow.md\` when starting from roadmap/backlog/delivery scope
+4. \`../../operations/workflows/epic-to-features.workflow.md\` when starting from a confirmed local Epic
+5. \`../../operations/product-ops/AGENT.md\`
+6. \`../../operations/product-ops/roles/product-owner.role.md\`
+7. \`../../operations/product-ops/skills/shape-epic.skill.md\` or \`../../operations/product-ops/skills/write-feature-criteria.skill.md\`
+8. \`../../operations/product-ops/playbooks/delivery-scope-planning.playbook.md\` or \`../../operations/product-ops/playbooks/epic-to-features.playbook.md\`
+9. Optional GitHub payload only after local Epic/Feature structure is clear and founder confirms
 
 ## Area Routing
 
@@ -672,27 +694,28 @@ Read:
 
 ## Process
 
-1. Identify the roadmap item, delivery scope, milestone and parent epic context.
-2. Route through Product Ops and load \`../../operations/product-ops/playbooks/epic-to-features.playbook.md\`.
-3. Apply the Delivery Readiness Matrix (DRM) before drafting work.
-4. Use Product Ops criteria for every epic and feature.
-5. Use Engineering criteria for implementation-ready features.
-6. Add Design criteria only when user-facing UX, UI, flow, accessibility, copy or interaction is affected.
-7. Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
-8. Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.
-9. Split epics into features only when the parent epic has enough context.
-10. Mark missing role input as an explicit gap; do not invent criteria.
-11. Produce drafts first and ask for confirmation before any future GitHub API write.
+1. Identify whether the founder is asking for roadmap item to Epic, Epic to Features, or optional GitHub issue payload.
+2. If input is a roadmap/backlog/delivery item, load \`../../operations/workflows/roadmap-item-to-epic.workflow.md\` before Product Ops execution assets.
+3. If input is a confirmed local Epic, load \`../../operations/workflows/epic-to-features.workflow.md\` before Product Ops execution assets.
+4. If input is only a loose idea, stop and route to \`../../strategy/workflows/new-idea-intake.workflow.md\` or \`../../strategy/workflows/idea-to-roadmap.workflow.md\`.
+5. Apply the Delivery Readiness Matrix (DRM) before drafting GitHub-ready work.
+6. Use Product Ops criteria for every Epic and Feature.
+7. Use Engineering criteria for implementation-ready Features.
+8. Add Design criteria only when user-facing UX, UI, flow, accessibility, copy or interaction is affected.
+9. Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
+10. Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.
+11. Mark missing role input as an explicit gap; do not invent criteria.
+12. Produce local drafts or a GitHub payload first and ask for confirmation before any future GitHub API write.
 
 ## Allowed Updates
 
 None by default.
 
-\`/create issues\` may produce local drafts or a future GitHub payload in chat. It must not write local Epic/Feature files or remote GitHub issues unless the founder confirms the proposed output and the next route.
+\`/create features\` may produce local Feature drafts or a future GitHub payload in chat. It must not write local Epic/Feature files or remote GitHub issues unless the founder confirms the proposed output and the next route.
 
 ## Forbidden Updates
 
-During \`/create issues\`, do not:
+During \`/create features\`, do not:
 
 - create GitHub issues directly from model reasoning;
 - call GitHub APIs;
@@ -842,14 +865,16 @@ ${activeSubareas.map((area) => `- ${area}`).join("\n")}
 `;
 }
 
-function workonIssueCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
+function workonFeatureCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
   return `# ${formatCommandInvocation(command.slug)}
 
 ## Purpose
 
 ${command.purpose}
 
-Plan implementation from a GitHub issue before changing code.
+Use this command to start Feature delivery from a local Feature or mapped GitHub Feature issue.
+
+This command must route through \`feature-to-delivery-cycle\` before Engineering implementation assets. A GitHub issue number alone is not enough to start coding.
 
 ## Load First
 
@@ -857,6 +882,12 @@ Read:
 
 - \`../../AGENT.md\`
 - \`../index/routing-map.yaml\`
+- \`../../operations/AGENT.md\`
+- \`../../operations/workflows/feature-to-delivery-cycle.workflow.md\`
+- \`../../operations/product-ops/AGENT.md\`
+- \`../../operations/product-ops/knowledge/work-taxonomy.md\`
+- \`../../operations/product-ops/knowledge/ready-to-develop.md\`
+- \`../../operations/product-ops/epics/README.md\`
 - \`../../operations/engineering/AGENT.md\`
 - \`../../operations/engineering/README.md\`
 - \`../../operations/engineering/roles/senior-developer.role.md\`
@@ -872,27 +903,43 @@ Read:
 
 If \`operations.engineering\` is not active, do not load missing paths. Ask whether to activate or create Engineering before planning implementation.
 
+## Navigation Route
+
+1. \`../../AGENT.md\`
+2. \`../../operations/AGENT.md\`
+3. \`../../operations/workflows/feature-to-delivery-cycle.workflow.md\`
+4. \`../../operations/product-ops/AGENT.md\`
+5. \`../../operations/product-ops/knowledge/ready-to-develop.md\`
+6. \`../../operations/design/AGENT.md when UI, flow, accessibility, copy or component readiness is needed\`
+7. \`../../operations/security/AGENT.md when security risk is involved\`
+8. \`../../operations/devops/AGENT.md when delivery infrastructure is involved\`
+9. \`../../operations/engineering/AGENT.md\`
+10. \`../../operations/engineering/roles/senior-developer.role.md\`
+11. \`../../operations/engineering/playbooks/engineering-delivery.playbook.md\`
+
 ## Process
 
-1. Read or request the full GitHub issue body.
-2. Summarize the issue in the chat and ask the user to confirm the interpretation.
-3. Check Product Ops and Engineering readiness with the Delivery Readiness Matrix (DRM).
-4. Check Design only when UX, UI, flow, accessibility, copy or interaction is affected.
-5. Check Security only when data, auth, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
-6. Check DevOps only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.
-7. Propose the required issue-linked branch name before code changes.
-8. Produce an implementation plan and test plan.
-9. Ask for confirmation before modifying product code.
+1. Read or request the full local Feature or mapped GitHub Feature issue body.
+2. Summarize the Feature in the chat and ask the founder to confirm the interpretation.
+3. Load \`../../operations/workflows/feature-to-delivery-cycle.workflow.md\` before Engineering execution assets.
+4. Check Product Ops and Engineering readiness with the Delivery Readiness Matrix (DRM).
+5. Check Design only when UX, UI, flow, accessibility, copy or interaction is affected.
+6. Check Security only when data, auth, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
+7. Check DevOps only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.
+8. Stop before code if Feature readiness is missing.
+9. Propose the required Feature-linked branch name before code changes.
+10. Produce an implementation plan and test plan.
+11. Ask for confirmation before modifying product code.
 
 ## Allowed Updates
 
 None by default.
 
-\`/workon issue\` plans implementation. Product code, tests, branch creation and PR work require explicit founder confirmation and should proceed through \`feature-to-delivery-cycle\` and Engineering assets.
+\`/workon feature\` plans implementation. Product code, tests, branch creation and PR work require explicit founder confirmation and should proceed through \`feature-to-delivery-cycle\` and Engineering assets.
 
 ## Forbidden Updates
 
-During \`/workon issue\`, do not:
+During \`/workon feature\`, do not:
 
 - edit source code before readiness and branch confirmation;
 - create branches, commits or PRs without explicit confirmation;
@@ -902,11 +949,11 @@ During \`/workon issue\`, do not:
 
 ## Confirmation Rule
 
-Ask the founder to confirm the issue interpretation, readiness summary, branch name and implementation plan before editing code.
+Ask the founder to confirm the Feature interpretation, readiness summary, branch name and implementation plan before editing code.
 
 ## Expected Output
 
-- Issue summary
+- Feature summary
 - Readiness gaps
 - Branch name proposal
 - Implementation plan
@@ -938,7 +985,7 @@ Read:
 - \`../../operations/engineering/AGENT.md\`
 - \`../../operations/engineering/README.md\`
 - \`../../operations/engineering/skills/create-branch.skill.md\`
-- \`../../operations/engineering/playbooks/branch-from-issue.playbook.md\`
+- \`../../operations/engineering/playbooks/branch-for-feature.playbook.md\`
 - \`../../ai-standard/templates/github/branch-name-template.md\`
 - \`../../.github/leanos/branch-rules.md\`
 
@@ -946,12 +993,13 @@ If \`operations.engineering\` is not active, do not load missing paths. Ask whet
 
 ## Process
 
-1. Confirm the issue number and issue title.
-2. Use the required format: \`issue/<issue-number>-<short-kebab-slug>\`.
-3. Keep the slug short and scoped to the issue.
-4. Avoid secrets, customer names and sensitive details.
-5. Ask before reusing an existing branch.
-6. Do not run git commands unless the user explicitly asks in a tool-capable environment.
+1. Confirm the local Feature slug or mapped GitHub issue number.
+2. Use \`feature/<feature-slug>-<short-kebab-slug>\` for local-only Features.
+3. Use \`issue/<issue-number>-<short-kebab-slug>\` only when the Feature is mapped to a real GitHub issue.
+4. Keep the slug short and scoped to the Feature.
+5. Avoid secrets, customer names and sensitive details.
+6. Ask before reusing an existing branch.
+7. Do not run git commands unless the user explicitly asks in a tool-capable environment.
 
 ## Allowed Updates
 
@@ -965,7 +1013,7 @@ During \`/create branch\`, do not:
 
 - edit source code;
 - create commits or PRs;
-- create a branch without issue context;
+- create a branch without Feature or mapped GitHub issue context;
 - include secrets, customer names or sensitive details in the branch name;
 - modify roles, skills, playbooks, workflows, commands or \`ai-standard/\`.
 
@@ -976,7 +1024,7 @@ Ask before creating or reusing a branch.
 ## Expected Output
 
 - Proposed branch name
-- Linked issue
+- Linked Feature or GitHub issue
 - Naming rationale
 - Safety checks
 - Next command recommendation

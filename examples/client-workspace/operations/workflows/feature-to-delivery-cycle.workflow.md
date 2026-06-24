@@ -59,7 +59,7 @@ All required areas are active in this department.
 9. `operations/engineering/AGENT.md`
 10. `operations/engineering/roles/senior-developer.role.md`
 11. `operations/engineering/playbooks/engineering-delivery.playbook.md`
-12. `operations/engineering/playbooks/branch-from-issue.playbook.md through engineering-delivery`
+12. `operations/engineering/playbooks/branch-for-feature.playbook.md through engineering-delivery`
 13. `operations/engineering/playbooks/component-implementation.playbook.md through engineering-delivery when a component spec is approved and needed`
 14. `operations/engineering/playbooks/prepare-pr.playbook.md through engineering-delivery`
 15. `operations/engineering/playbooks/pr-validation.playbook.md through engineering-delivery`
@@ -76,7 +76,7 @@ All required areas are active in this department.
 8. Route DevOps only when environments, CI/CD, deploy, observability, configuration, GitHub sync or release readiness are affected
 9. Record why Design, Security or DevOps are not applicable when they do not enter the flow
 10. After Product Ops, Design, Security and DevOps readiness are ready or explicitly not applicable, route to `operations/engineering/AGENT.md` and load `operations/engineering/playbooks/engineering-delivery.playbook.md`
-11. Let `engineering-delivery.playbook.md` create the issue-linked branch, plan implementation, run component implementation when needed, execute tests, prepare PR and run PR validation
+11. Let `engineering-delivery.playbook.md` create the Feature-linked branch, plan implementation, run component implementation when needed, execute tests, prepare PR and run PR validation
 12. Run tests or explain gaps
 13. Prepare the Founder Testing Guide before asking the founder to review the PR
 14. Run PR validation
