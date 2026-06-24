@@ -316,6 +316,60 @@ Comecar por Operations porque e onde a entrega acontece e onde mais existe risco
   - aplicar Workflow Contract Standard de forma lean;
   - manter como pos-lancamento, nao bloqueador do MVP inicial.
 
+#### Engineering Delivery Assets Review
+
+Status: importante, proximo bloco recomendado antes de `post-merge-continuation`.
+
+Objetivo: garantir que, quando `feature-to-delivery-cycle` entrega uma Feature pronta para Engineering, o modelo siga uma trilha tecnica segura e nao pule direto para codigo, PR ou merge.
+
+Decisao: nao criar `engineering-delivery.workflow.md` agora. Como a execucao acontece dentro da area Engineering, o asset correto e um playbook mestre:
+
+`operations/engineering/playbooks/engineering-delivery.playbook.md`
+
+Esse playbook deve orquestrar os playbooks e skills tecnicos existentes, sem duplicar todo o conteudo deles.
+
+Ordem esperada:
+
+1. Confirmar Feature input e readiness herdado do `feature-to-delivery-cycle`.
+2. Criar/confirmar branch obrigatoria.
+   - `operations/engineering/playbooks/branch-from-issue.playbook.md`
+3. Planejar implementacao antes de editar arquivos.
+   - `operations/engineering/skills/plan-implementation.skill.md`
+4. Implementar componente primeiro, se a Feature depender de componente novo/aprovado.
+   - `operations/engineering/playbooks/component-implementation.playbook.md`
+   - `operations/engineering/skills/implement-component.skill.md`
+5. Implementar a Feature seguindo padroes de codigo.
+   - `operations/engineering/skills/follow-code-standards.skill.md`
+6. Revisar dados/API/banco quando aplicavel.
+   - `operations/engineering/skills/review-data-change.skill.md`
+7. Criar/atualizar testes ou explicar gap de teste.
+   - `operations/engineering/skills/write-tests.skill.md`
+8. Preparar PR.
+   - `operations/engineering/playbooks/issue-to-pr.playbook.md`
+9. Validar PR antes de recomendar merge.
+   - `operations/engineering/playbooks/pr-validation.playbook.md`
+   - `operations/engineering/skills/review-pr.skill.md`
+
+Checklist de implementacao:
+
+- [ ] Criar `operations/engineering/playbooks/engineering-delivery.playbook.md`.
+- [ ] Atualizar `operations/engineering/AGENT.md` para roteamento de implementacao apontar primeiro para `engineering-delivery`.
+- [ ] Atualizar `feature-to-delivery-cycle.workflow.md` para, depois de readiness, entrar em Engineering via `engineering-delivery.playbook.md`.
+- [ ] Atualizar `senior-developer.role.md` para incluir `engineering-delivery` como playbook principal de implementacao.
+- [ ] Atualizar `pr-reviewer.role.md` e `test-engineer.role.md` somente se necessario, sem duplicar responsabilidades.
+- [ ] Adicionar notas de contexto nos playbooks menores:
+  - `branch-from-issue.playbook.md`: etapa inicial do `engineering-delivery`;
+  - `component-implementation.playbook.md`: usado quando existe component spec aprovada;
+  - `issue-to-pr.playbook.md`: usado depois de implementacao e testes;
+  - `pr-validation.playbook.md`: etapa final antes de recomendar merge.
+- [ ] Garantir que `engineering-delivery` declare gates:
+  - nao editar codigo antes de branch;
+  - nao implementar componente novo sem spec de Design quando aplicavel;
+  - nao abrir PR sem resumo de testes ou justificativa de gap;
+  - nao recomendar merge sem PR validation.
+- [ ] Atualizar `validate-generator.mjs` para validar existencia e referencias do playbook mestre.
+- [ ] Regenerar `examples/client-workspace/` e `examples/client-workspace-tree.md`.
+
 #### Validacoes Necessarias
 
 - [ ] Atualizar `validate-generator.mjs` para validar o contrato minimo dos workflows principais.
