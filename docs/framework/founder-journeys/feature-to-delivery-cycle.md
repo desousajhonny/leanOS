@@ -30,7 +30,7 @@ flowchart TD
   O["Route to component-readiness before branch/code"]
   P{"Security/DevOps needed?"}
   Q["Run conditional Security/DevOps checks"]
-  R["Engineering plans branch and implementation"]
+  R["Engineering loads engineering-delivery playbook"]
   S["Implement component first when needed"]
   T["Implement Feature"]
   U["Tests + PR validation"]
@@ -104,9 +104,10 @@ AGENT.md
 -> conditional area checks
 -> operations/engineering/AGENT.md
 -> operations/engineering/roles/senior-developer.role.md
--> operations/engineering/playbooks/branch-from-issue.playbook.md
--> operations/engineering/playbooks/issue-to-pr.playbook.md
--> operations/engineering/playbooks/pr-validation.playbook.md
+-> operations/engineering/playbooks/engineering-delivery.playbook.md
+-> operations/engineering/playbooks/branch-from-issue.playbook.md through engineering-delivery
+-> operations/engineering/playbooks/issue-to-pr.playbook.md through engineering-delivery
+-> operations/engineering/playbooks/pr-validation.playbook.md through engineering-delivery
 ```
 
 Rules:
@@ -217,7 +218,16 @@ Why:
 - Conditional readiness gaps are closed or explicitly not applicable.
 - Engineering now owns branch, implementation, tests and PR preparation.
 
-If a reusable component is part of the work and the Design spec is approved, Engineering runs `operations/engineering/playbooks/component-implementation.playbook.md`, implements the component first, validates states/accessibility/tests, and only then implements the screen or Feature that depends on it.
+Engineering loads:
+
+`operations/engineering/playbooks/engineering-delivery.playbook.md`
+
+Why:
+
+- This playbook is the internal Engineering track for branch, planning, implementation, tests, PR and PR validation.
+- It prevents the model from jumping directly from readiness into code or PR.
+
+If a reusable component is part of the work and the Design spec is approved, Engineering runs `operations/engineering/playbooks/component-implementation.playbook.md` through `engineering-delivery`, implements the component first, validates states/accessibility/tests, and only then implements the screen or Feature that depends on it.
 
 ### Step 7 - PR Preparation
 
@@ -343,6 +353,7 @@ Rules:
 - [ ] `operations/product-ops/knowledge/ready-to-develop.md` exists.
 - [ ] `operations/design/playbooks/component-readiness.playbook.md` exists.
 - [ ] `operations/engineering/AGENT.md` exists.
+- [ ] `operations/engineering/playbooks/engineering-delivery.playbook.md` exists.
 - [ ] `operations/engineering/playbooks/branch-from-issue.playbook.md` exists.
 - [ ] `operations/engineering/playbooks/issue-to-pr.playbook.md` exists.
 - [ ] `operations/engineering/playbooks/pr-validation.playbook.md` exists.

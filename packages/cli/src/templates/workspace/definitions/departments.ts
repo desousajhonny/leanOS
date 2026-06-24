@@ -4538,10 +4538,11 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "operations/devops/AGENT.md when delivery infrastructure is involved",
           "operations/engineering/AGENT.md",
           "operations/engineering/roles/senior-developer.role.md",
-          "operations/engineering/playbooks/branch-from-issue.playbook.md",
-          "operations/engineering/playbooks/component-implementation.playbook.md when a component spec is approved and needed",
-          "operations/engineering/playbooks/issue-to-pr.playbook.md",
-          "operations/engineering/playbooks/pr-validation.playbook.md"
+          "operations/engineering/playbooks/engineering-delivery.playbook.md",
+          "operations/engineering/playbooks/branch-from-issue.playbook.md through engineering-delivery",
+          "operations/engineering/playbooks/component-implementation.playbook.md through engineering-delivery when a component spec is approved and needed",
+          "operations/engineering/playbooks/issue-to-pr.playbook.md through engineering-delivery",
+          "operations/engineering/playbooks/pr-validation.playbook.md through engineering-delivery"
         ],
         steps: [
           "Accept only a local Feature or GitHub Feature issue as input; do not start from a loose idea, roadmap item or unsplit Epic",
@@ -4553,8 +4554,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Route Security only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved",
           "Route DevOps only when environments, CI/CD, deploy, observability, configuration, GitHub sync or release readiness are affected",
           "Record why Design, Security or DevOps are not applicable when they do not enter the flow",
-          "After Product Ops, Design, Security and DevOps readiness are ready or explicitly not applicable, create the issue-linked branch",
-          "Plan implementation in Engineering; if a component spec was approved, run `operations/engineering/playbooks/component-implementation.playbook.md` before the screen or Feature that depends on it",
+          "After Product Ops, Design, Security and DevOps readiness are ready or explicitly not applicable, route to `operations/engineering/AGENT.md` and load `operations/engineering/playbooks/engineering-delivery.playbook.md`",
+          "Let `engineering-delivery.playbook.md` create the issue-linked branch, plan implementation, run component implementation when needed, execute tests, prepare PR and run PR validation",
           "Run tests or explain gaps",
           "Run PR validation",
           "Prepare PR"

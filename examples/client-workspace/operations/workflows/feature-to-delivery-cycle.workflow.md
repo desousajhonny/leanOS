@@ -58,10 +58,11 @@ All required areas are active in this department.
 8. `operations/devops/AGENT.md when delivery infrastructure is involved`
 9. `operations/engineering/AGENT.md`
 10. `operations/engineering/roles/senior-developer.role.md`
-11. `operations/engineering/playbooks/branch-from-issue.playbook.md`
-12. `operations/engineering/playbooks/component-implementation.playbook.md when a component spec is approved and needed`
-13. `operations/engineering/playbooks/issue-to-pr.playbook.md`
-14. `operations/engineering/playbooks/pr-validation.playbook.md`
+11. `operations/engineering/playbooks/engineering-delivery.playbook.md`
+12. `operations/engineering/playbooks/branch-from-issue.playbook.md through engineering-delivery`
+13. `operations/engineering/playbooks/component-implementation.playbook.md through engineering-delivery when a component spec is approved and needed`
+14. `operations/engineering/playbooks/issue-to-pr.playbook.md through engineering-delivery`
+15. `operations/engineering/playbooks/pr-validation.playbook.md through engineering-delivery`
 
 ## Sequence
 
@@ -74,8 +75,8 @@ All required areas are active in this department.
 7. Route Security only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved
 8. Route DevOps only when environments, CI/CD, deploy, observability, configuration, GitHub sync or release readiness are affected
 9. Record why Design, Security or DevOps are not applicable when they do not enter the flow
-10. After Product Ops, Design, Security and DevOps readiness are ready or explicitly not applicable, create the issue-linked branch
-11. Plan implementation in Engineering; if a component spec was approved, run `operations/engineering/playbooks/component-implementation.playbook.md` before the screen or Feature that depends on it
+10. After Product Ops, Design, Security and DevOps readiness are ready or explicitly not applicable, route to `operations/engineering/AGENT.md` and load `operations/engineering/playbooks/engineering-delivery.playbook.md`
+11. Let `engineering-delivery.playbook.md` create the issue-linked branch, plan implementation, run component implementation when needed, execute tests, prepare PR and run PR validation
 12. Run tests or explain gaps
 13. Run PR validation
 14. Prepare PR

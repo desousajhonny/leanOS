@@ -681,6 +681,7 @@ async function validateWorkspaceFiles() {
   assert(featureDeliveryWorkflow.includes("before branch or code"), "Feature delivery workflow should stop before branch or code when Design component readiness is missing");
   assert(featureDeliveryWorkflow.includes("Record why Design, Security or DevOps are not applicable"), "Feature delivery workflow should record non-applicable dimensions");
   assert(featureDeliveryWorkflow.includes("operations/engineering/AGENT.md"), "Feature delivery workflow should route through Engineering AGENT after readiness");
+  assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/engineering-delivery.playbook.md"), "Feature delivery workflow should enter Engineering through engineering-delivery");
   assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/branch-from-issue.playbook.md"), "Feature delivery workflow should require branch playbook");
   assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/component-implementation.playbook.md"), "Feature delivery workflow should run component implementation after approved spec");
   assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/issue-to-pr.playbook.md"), "Feature delivery workflow should require issue to PR playbook");
