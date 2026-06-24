@@ -39,6 +39,7 @@ client-workspace/
 |-- .leanos/
 |   |-- agent/
 |   |   |-- protocols/
+|   |   |   |-- chief-trace.md
 |   |   |   |-- README.md
 |   |   |   `-- where-we-are.md
 |   |   |-- chief-agent.md
@@ -82,6 +83,10 @@ client-workspace/
 |   |   |-- routing-map.yaml
 |   |   |-- skills.yaml
 |   |   `-- workflows.yaml
+|   |-- traces/
+|   |   |-- README.md
+|   |   |-- trace-index.yaml
+|   |   `-- trace-template.md
 |   |-- vscode/
 |   |   `-- README.md
 |   `-- README.md

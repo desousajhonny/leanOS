@@ -8,6 +8,7 @@
 - For `/start-leanos`, load `../commands/start-leanos.md` before acting.
 - For any LeanOS slash command, load `../commands/<command>.md`; if it is missing, do not invent it.
 - For status, resume, readiness or "can we build?" requests, load `protocols/where-we-are.md` before recommending a next step.
+- For trace, debug or diagnostic requests, load `protocols/chief-trace.md` and create only a safe local trace after confirmation.
 - Load only relevant context.
 - Enter the owning department or area before acting.
 - Do not implement before loading the matching workflow or command, area, role, skill and playbook.

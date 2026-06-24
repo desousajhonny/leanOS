@@ -177,6 +177,10 @@ async function validateWorkspaceFiles() {
     "ai-standard/examples/review/example-code-review.md",
     ".leanos/index/areas.yaml",
     ".leanos/index/routing-map.yaml",
+    ".leanos/agent/protocols/chief-trace.md",
+    ".leanos/traces/README.md",
+    ".leanos/traces/trace-index.yaml",
+    ".leanos/traces/trace-template.md",
     "strategy/AGENT.md",
     "operations/AGENT.md",
     "growth/AGENT.md",
@@ -846,6 +850,7 @@ async function validateWorkspaceFiles() {
   await assertAiStandardReadiness(rootDir);
   await assertInitCommandRules(rootDir);
   await assertRootAgentMutationRules(rootDir);
+  await assertTraceDiagnostics(rootDir);
   await assertOperationalPlaybookSections(rootDir);
   await assertSourceScaffoldSections(rootDir);
   await assertProductOpsPrdSections(rootDir);
@@ -1719,9 +1724,11 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("New idea or feature evaluation: `strategy/AGENT.md`"), "Root AGENT.md should route idea evaluation through Strategy AGENT");
   assert(rootAgent.includes("Roadmap item to Epic or Epic to Features: `operations/AGENT.md`"), "Root AGENT.md should route delivery planning through Operations AGENT");
   assert(rootAgent.includes("Feature implementation: `.leanos/commands/workon-feature.md`"), "Root AGENT.md should map implementation intent to /workon-feature");
-  assert(rootAgent.includes("GitHub sync: `.leanos/commands/github-sync.md`"), "Root AGENT.md should map GitHub sync intent to /github-sync");
+  assert(rootAgent.includes("GitHub setup, GitHub Projects configuration or GitHub sync: `.leanos/commands/github-sync.md`"), "Root AGENT.md should map GitHub setup and sync intent to /github-sync");
   assert(rootAgent.includes("## Status And Readiness Questions"), "Root AGENT.md should handle status and readiness questions");
   assert(rootAgent.includes("`.leanos/agent/protocols/where-we-are.md`"), "Root AGENT.md should route status and readiness questions to the where-we-are protocol");
+  assert(rootAgent.includes("## Trace And Diagnostics"), "Root AGENT.md should handle trace and diagnostic questions");
+  assert(rootAgent.includes("`.leanos/agent/protocols/chief-trace.md`"), "Root AGENT.md should route trace diagnostics to the chief-trace protocol");
   assert(rootAgent.includes("do not answer from memory"), "Root AGENT.md should avoid memory-only status answers");
   assert(rootAgent.includes("## Framework Standards Routing"), "Root AGENT.md should route framework standards through AI Standard");
   assert(rootAgent.includes("Use `ai-standard/README.md` only when the user asks to create, change, review or validate LeanOS framework assets"), "Root AGENT.md should load AI Standard only for framework asset work");
@@ -1904,6 +1911,8 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgentTemplate.includes("## Natural Language Handling"), "Root agent template should include natural language handling");
   assert(rootAgentTemplate.includes("## Status And Readiness Questions"), "Root agent template should include status and readiness handling");
   assert(rootAgentTemplate.includes("`.leanos/agent/protocols/where-we-are.md`"), "Root agent template should point to where-we-are protocol");
+  assert(rootAgentTemplate.includes("## Trace And Diagnostics"), "Root agent template should include trace diagnostics handling");
+  assert(rootAgentTemplate.includes("`.leanos/agent/protocols/chief-trace.md`"), "Root agent template should point to chief-trace protocol");
   assert(rootAgentTemplate.includes("## Framework Standards Routing"), "Root agent template should include framework standards routing");
   assert(rootAgentTemplate.includes("Use `ai-standard/README.md` only when the user asks to create, change, review or validate LeanOS framework assets"), "Root agent template should route framework standards through AI Standard README");
   assert(rootAgentTemplate.includes("Do not guess the correct template, checklist or instruction from memory"), "Root agent template should prevent framework asset hallucination");
@@ -3475,13 +3484,40 @@ async function assertRootAgentMutationRules(rootDir) {
   assert(rootAgent.includes("## Framework Standards Routing"), "AGENT.md should include Framework Standards Routing");
   assert(rootAgent.includes("During `/start-leanos`, do not enrich roles, skills, playbooks, workflows, commands or `ai-standard/`"), "AGENT.md should protect framework assets during init from Red Lines");
   assert(rootAgent.includes("Ask before modifying knowledge, decision or framework files"), "AGENT.md should require confirmation before file mutation");
+  assert(rootAgent.includes("## Trace And Diagnostics"), "AGENT.md should include Trace And Diagnostics");
+  assert(rootAgent.includes("`.leanos/agent/protocols/chief-trace.md`"), "AGENT.md should route trace diagnostics to chief-trace protocol");
+  assert(rootAgent.includes("GitHub setup, GitHub Projects configuration or GitHub sync"), "AGENT.md should route natural GitHub setup requests to github-sync");
   assert.equal(rootAgent.includes("Source-of-truth files describe what the company knows"), false, "AGENT.md should avoid old source-of-truth taxonomy");
   assert.equal(rootAgent.includes("Operating assets describe how LeanOS works"), false, "AGENT.md should avoid old operating-assets taxonomy");
   assert(operatingRules.includes("LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface"), "operating rules should make commands model-agnostic");
   assert(operatingRules.includes("For `/start-leanos`, load `../commands/start-leanos.md` before acting"), "operating rules should map /start-leanos to its command file");
+  assert(operatingRules.includes("For trace, debug or diagnostic requests, load `protocols/chief-trace.md`"), "operating rules should route trace diagnostics");
   assert(operatingRules.includes("During `/start-leanos`, propose updates first"), "operating rules should require propose-first start");
   assert(operatingRules.includes("Treat `/leanos-init` as a legacy alias for `/start-leanos`"), "operating rules should document the legacy init alias");
   assert(operatingRules.includes("Do not modify roles, skills, playbooks, workflows, commands, `ai-standard/` or `.github/` during init"), "operating rules should protect operating assets during init");
+}
+
+async function assertTraceDiagnostics(rootDir) {
+  const runtimeReadme = await readFile(join(rootDir, ".leanos", "README.md"), "utf8");
+  const protocolReadme = await readFile(join(rootDir, ".leanos", "agent", "protocols", "README.md"), "utf8");
+  const traceReadme = await readFile(join(rootDir, ".leanos", "traces", "README.md"), "utf8");
+  const traceTemplate = await readFile(join(rootDir, ".leanos", "traces", "trace-template.md"), "utf8");
+  const chiefTrace = await readFile(join(rootDir, ".leanos", "agent", "protocols", "chief-trace.md"), "utf8");
+  const traceIndex = parse(await readFile(join(rootDir, ".leanos", "traces", "trace-index.yaml"), "utf8"));
+
+  assert(runtimeReadme.includes("traces/"), "LeanOS runtime README should list traces folder");
+  assert(runtimeReadme.includes("Traces are local diagnostics, not telemetry"), "LeanOS runtime README should explain trace scope");
+  assert(protocolReadme.includes("chief-trace.md"), "Agent protocols README should list chief-trace protocol");
+  assert(traceReadme.includes("Traces are local, opt-in and safe-by-default"), "Trace README should explain local opt-in diagnostics");
+  assert(traceReadme.includes("Do not store full transcripts, secrets, tokens"), "Trace README should forbid sensitive trace content");
+  assert(Array.isArray(traceIndex.traces), "trace-index.yaml should expose a traces array");
+  assert(traceTemplate.includes("## Detected Route"), "Trace template should capture detected route");
+  assert(traceTemplate.includes("## Navigation Chain Check"), "Trace template should capture Navigation Chain check");
+  assert(traceTemplate.includes("## Sensitive Data Review"), "Trace template should capture sensitive data review");
+  assert(chiefTrace.includes("Ask before writing a trace file"), "Chief trace protocol should require confirmation before writing");
+  assert(chiefTrace.includes("Do not store full chat transcripts"), "Chief trace protocol should forbid full transcript storage");
+  assert(chiefTrace.includes(".leanos/traces/YYYY-MM-DD-<short-kebab-intent>.trace.md"), "Chief trace protocol should define trace naming");
+  assert(chiefTrace.includes("Do not update:"), "Chief trace protocol should forbid product/runtime mutations outside traces");
 }
 
 async function assertOperationalPlaybookSections(rootDir) {

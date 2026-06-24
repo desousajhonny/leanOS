@@ -1,0 +1,5 @@
+# LeanOS local trace index.
+# This file is safe to version while it contains only examples or non-sensitive summaries.
+# Add real trace entries only after founder confirmation.
+
+traces: []

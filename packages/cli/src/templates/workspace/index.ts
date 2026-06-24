@@ -9,6 +9,7 @@ import { githubFiles } from "./renderers/github.js";
 import { indexFiles } from "./renderers/indexes.js";
 import { createLeanOsYaml } from "./renderers/leanos-yaml.js";
 import { workspaceReadme } from "./renderers/root-readme.js";
+import { traceFiles } from "./renderers/traces.js";
 import { vscodeIntegrationFiles } from "./renderers/vscode.js";
 
 export { getAllSubareas } from "./selectors.js";
@@ -23,6 +24,7 @@ export function createWorkspaceFiles(answers: WorkspaceAnswers): FileEntry[] {
     { path: "leanos.yaml", content: createLeanOsYaml(answers, activeAreas, activeRoots) },
     ...leanosRuntimeFiles(),
     ...aiStandardFiles(),
+    ...traceFiles(),
     ...indexFiles(activeAreas, activeRoots),
     ...rootDepartmentFiles(answers, activeAreas, activeRoots),
     ...commandFiles(activeAreas),

@@ -27,6 +27,7 @@ Read these files first:
 - Ask before modifying knowledge, decision or framework files.
 - Do not create or modify LeanOS framework assets from memory. Route through `ai-standard/README.md`.
 - For "where are we?", "what do we have?", "what is missing?", "can we start building?" or similar readiness/status requests, load `.leanos/agent/protocols/where-we-are.md` before recommending a next step or implementation.
+- For trace, debug, diagnostic, "what did LeanOS do?" or "send a report to the framework" requests, load `.leanos/agent/protocols/chief-trace.md` and create only a safe local trace after confirmation.
 - During `/start-leanos`, do not enrich roles, skills, playbooks, workflows, commands or `ai-standard/` with company/product context.
 - Do not modify source-of-truth, decision, framework or runtime files until the user explicitly confirms the proposed changes.
 
@@ -74,6 +75,16 @@ Load:
 `.leanos/agent/protocols/where-we-are.md`
 
 Use that protocol to inspect the smallest relevant Strategy, Operations and GitHub readiness files. Then explain the current product moment, missing prerequisites, risk of skipping steps and the safest next route.
+
+## Trace And Diagnostics
+
+When the founder asks to debug LeanOS behavior, inspect what the Chief did, record the route, or send a report to the framework maintainer, do not export the conversation and do not invent telemetry.
+
+Load:
+
+`.leanos/agent/protocols/chief-trace.md`
+
+Use that protocol to create a local, structured and redacted trace in `.leanos/traces/` only after explicit confirmation.
 
 ## Navigation Chain
 
