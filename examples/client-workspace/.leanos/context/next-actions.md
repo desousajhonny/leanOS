@@ -4,12 +4,12 @@ Start by using `/start-leanos` to define strategy and MVP before any future app/
 
 GitHub management was prepared. Add a local token to `.env.local` only when running a future `/configure github` or GitHub sync flow.
 
-## 1. Status
+## 1. Status Leanos
 
 Command:
 
 ```text
-/status
+/status-leanos
 ```
 
 ## 2. Define Icp

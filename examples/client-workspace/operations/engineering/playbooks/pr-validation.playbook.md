@@ -14,6 +14,7 @@ Validate implementation before merge.
 - Acceptance criteria
 - Changed files
 - Tests or validation evidence
+- Founder Testing Guide
 - Review criteria
 
 ## Process
@@ -26,17 +27,19 @@ Validate implementation before merge.
 6. Use `skills/follow-code-standards.skill.md` to check code quality
 7. Use `skills/review-data-change.skill.md` when data/API/persistence is involved
 8. Validate Product criteria and acceptance criteria
-9. Review Design criteria only when UX changed
-10. Review Security criteria only when data, auth, privacy, abuse or compliance is involved
-11. Review tests and manual validation
-12. List findings by severity
-13. Recommend merge, changes or blocked-by-context
+9. Review the Founder Testing Guide and confirm a non-technical founder can test the PR
+10. Review Design criteria only when UX changed
+11. Review Security criteria only when data, auth, privacy, abuse or compliance is involved
+12. Review tests and manual validation
+13. List findings by severity
+14. Recommend merge, changes or blocked-by-context
 
 ## Output
 
 - Findings by severity
 - Product alignment
 - Code quality result
+- Founder acceptance result
 - Design review result or not applicable
 - Security/Data review result or not applicable
 - Test confidence

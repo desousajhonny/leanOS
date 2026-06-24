@@ -237,7 +237,7 @@ playbooks:
       - engineering-delivery
       - branch-from-issue
       - component-implementation
-      - issue-to-pr
+      - prepare-pr
       - test-planning
       - pr-validation
     operations.devops:

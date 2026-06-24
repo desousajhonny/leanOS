@@ -91,7 +91,6 @@ All required areas are active in this department.
 - `operations/product-ops/epics/`
 - `operations/product-ops/knowledge/delivery-scope.md`
 - `operations/product-ops/knowledge/issue-readiness.md`
-- `operations/product-ops/knowledge/delivery-context.md`
 - `strategy/roadmap/knowledge/roadmap.md`
 - `strategy/roadmap/knowledge/current-cycle.md`
 

@@ -41,7 +41,7 @@ Use when: Use when reviewing area-level execution assets or department/area work
 Files:
 - `execution/example-role-senior-developer.md`
 - `execution/example-skill-check-coherence.md`
-- `execution/example-playbook-issue-to-pr.md`
+- `execution/example-playbook-prepare-pr.md`
 - `execution/example-workflow-feature-to-delivery-cycle.md`
 
 ### `commands/`

@@ -1,8 +1,8 @@
-# Issue to PR
+# Prepare PR
 
 ## Purpose
 
-Move from a scoped issue to a reviewable pull request.
+Prepare a reviewable pull request from a confirmed Feature implementation.
 
 ## Inputs
 
@@ -19,8 +19,8 @@ Move from a scoped issue to a reviewable pull request.
 
 1. Use this as the PR preparation step of `engineering-delivery.playbook.md`; do not use it before implementation and test status are clear
 2. Read Engineering AGENT and choose the Senior Developer role
-3. Read issue, PRD, MVP scope and acceptance criteria
-4. Confirm issue readiness with Product and Engineering criteria
+3. Read Feature or mapped GitHub issue, PRD, MVP scope and acceptance criteria
+4. Confirm Feature readiness with Product and Engineering criteria
 5. Check whether Design criteria are required for user-facing UX
 6. Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance
 7. Create or confirm an issue-linked branch before code changes
@@ -30,6 +30,8 @@ Move from a scoped issue to a reviewable pull request.
 11. Use `skills/review-data-change.skill.md` when data/API/persistence is involved
 12. Use `skills/write-tests.skill.md` to update tests or explain gaps
 13. Use `skills/create-pr.skill.md` to prepare PR using the PR template
+14. Fill the `Founder Testing Guide` with plain-language steps, where to test, expected result, out-of-scope notes and known limits
+15. If there is no preview URL, provide the local route, command or manual fallback the founder can realistically use
 
 ## Output
 
@@ -37,6 +39,7 @@ Move from a scoped issue to a reviewable pull request.
 - Branch used
 - Files changed
 - Tests run or proposed
+- Founder Testing Guide
 - PR draft
 - Known risks
 

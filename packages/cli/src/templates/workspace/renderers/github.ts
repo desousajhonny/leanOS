@@ -274,6 +274,38 @@ State "Not applicable" when no security-sensitive surface exists.
 - [ ] Build or test command run
 - [ ] Manual validation completed
 
+## Founder Testing Guide
+
+Explain how a non-technical founder can test this PR before merge.
+
+### What Changed
+
+Plain-language summary of the user-facing or business behavior delivered.
+
+### Where to Test
+
+- Preview URL:
+- Local route or screen:
+- Test account or data:
+
+### How to Test
+
+1. Open...
+2. Do...
+3. Confirm...
+
+### Expected Result
+
+What the founder should see when the PR works.
+
+### Out of Scope
+
+What this PR intentionally does not cover.
+
+### Known Risks or Limits
+
+Anything the founder should know before approving.
+
 ## Risks
 
 - Scope risk:
@@ -287,6 +319,7 @@ State "Not applicable" when no security-sensitive surface exists.
 - [ ] Branch follows LeanOS naming
 - [ ] Acceptance criteria addressed
 - [ ] Tests run or explained
+- [ ] Founder Testing Guide is clear enough for a non-technical founder
 - [ ] Design criteria addressed or not applicable
 - [ ] Security criteria addressed or not applicable
 - [ ] No unrelated scope added
@@ -331,12 +364,14 @@ function prValidationRules(): string {
 - Acceptance criteria.
 - Relevant Product, Design, Engineering and Security criteria.
 - Tests or manual validation evidence.
+- Founder Testing Guide from the PR description.
 
 ## Review Dimensions
 
 - Correctness: does the change work?
 - Scope control: does it avoid unrelated work?
 - Product alignment: does it satisfy user value and acceptance criteria?
+- Founder acceptance: can a non-technical founder test the change from the PR?
 - Design: required only when user-facing UX changed.
 - Security: required when data, auth, permissions, privacy, abuse or compliance is involved.
 - Tests: are automated or manual checks sufficient?
@@ -344,8 +379,9 @@ function prValidationRules(): string {
 
 ## Decision
 
-- Approve only when acceptance criteria are addressed and risks are clear.
+- Approve only when acceptance criteria are addressed, risks are clear and the Founder Testing Guide is usable.
 - Request changes for bugs, missing tests, scope drift or security/design gaps.
+- Request changes when the PR cannot be tested by the founder from the provided steps or preview/local route instructions.
 - Mark "blocked by missing context" when issue, MVP or criteria are unclear.
 `;
 }

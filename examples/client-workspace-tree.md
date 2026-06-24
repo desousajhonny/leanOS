@@ -62,7 +62,7 @@ client-workspace/
 |   |   |-- README.md
 |   |   |-- review-pr.md
 |   |   |-- start-leanos.md
-|   |   |-- status.md
+|   |   |-- status-leanos.md
 |   |   `-- workon-issue.md
 |   |-- context/
 |   |   |-- active-workflow.md
@@ -104,7 +104,7 @@ client-workspace/
 |   |   |   |-- example-command-define-design.md
 |   |   |   `-- README.md
 |   |   |-- execution/
-|   |   |   |-- example-playbook-issue-to-pr.md
+|   |   |   |-- example-playbook-prepare-pr.md
 |   |   |   |-- example-role-senior-developer.md
 |   |   |   |-- example-skill-check-coherence.md
 |   |   |   |-- example-workflow-feature-to-delivery-cycle.md
@@ -345,8 +345,8 @@ client-workspace/
 |   |   |   |-- branch-from-issue.playbook.md
 |   |   |   |-- component-implementation.playbook.md
 |   |   |   |-- engineering-delivery.playbook.md
-|   |   |   |-- issue-to-pr.playbook.md
 |   |   |   |-- pr-validation.playbook.md
+|   |   |   |-- prepare-pr.playbook.md
 |   |   |   |-- README.md
 |   |   |   `-- test-planning.playbook.md
 |   |   |-- roles/
@@ -371,7 +371,6 @@ client-workspace/
 |   |   |-- epics/
 |   |   |   `-- README.md
 |   |   |-- knowledge/
-|   |   |   |-- delivery-context.md
 |   |   |   |-- delivery-scope.md
 |   |   |   |-- issue-readiness.md
 |   |   |   |-- overview.md

@@ -117,6 +117,204 @@ Plano passo a passo:
 - [ ] Depois, conectar GitHub/capabilities apenas como etapa final confirmada do workflow.
 - [ ] Por fim, rodar a Founder Journey completa para validar se o modelo navega sem pular etapas.
 
+### 0. MVP Decision System
+
+Status: proximo bloco recomendado.
+
+Objetivo: fortalecer a decisao central do LeanOS: o que entra na primeira versao do produto e por que.
+
+Diagnostico:
+
+- O LeanOS esta forte depois que ja existe Roadmap, Epic e Feature.
+- A lacuna principal esta antes disso: transformar Strategy Baseline em MVP claro, pequeno, coerente e defensavel.
+- `/define mvp`, `define-mvp.skill.md` e `mvp-delivery.playbook.md` ainda nao sao fortes o bastante para guiar essa decisao.
+
+Principio:
+
+- MVP nao e uma lista de tudo que seria bom construir.
+- MVP e o menor escopo coerente para provar valor, reduzir risco e entregar uma primeira experiencia digna.
+- Importancia nao significa entrada automatica no MVP.
+- Ideia validada ainda precisa passar por criterio de escopo antes de virar Epic/Feature.
+
+#### Arquivos Envolvidos
+
+Comando:
+
+- [ ] `.leanos/commands/define-mvp.md`
+  - deve virar porta de entrada para o workflow;
+  - nao deve duplicar toda a logica;
+  - deve carregar Strategy primeiro;
+  - deve pedir confirmacao antes de atualizar Product Ops.
+
+Workflow:
+
+- [ ] `operations/workflows/define-mvp.workflow.md`
+  - criar ou formalizar como workflow local de Operations;
+  - aplicar Workflow Contract Standard;
+  - dono: Operations / Product Ops;
+  - areas requeridas: `product-ops`;
+  - areas condicionais:
+    - Strategy/Product quando Strategy Baseline estiver fraca;
+    - Strategy/Roadmap quando ja houver backlog/roadmap;
+    - Design quando UX, fluxo, acessibilidade ou lovable baseline impactar escopo;
+    - Security quando dados, auth, permissoes, privacidade, API, banco, secrets ou abuso impactarem escopo;
+    - Engineering quando feasibility, stack, integrações ou risco tecnico impactarem escopo;
+    - DevOps quando ambientes, deploy, config ou release readiness impactarem escopo.
+  - deve terminar em proposta de MVP scope, nao em implementacao.
+
+Knowledge / Gate:
+
+- [ ] `operations/product-ops/knowledge/mvp-decision-gate.md`
+  - criar como criterio fixo de decisao, semelhante ao `ready-to-develop.md`;
+  - nao deve ser status log do produto;
+  - deve ser usado por `/define mvp`, `define-mvp.workflow.md`, `define-mvp.skill.md` e `mvp-delivery.playbook.md`;
+  - deve classificar risco e readiness do MVP.
+
+Skill:
+
+- [ ] `operations/product-ops/skills/define-mvp.skill.md`
+  - deixar de ser placeholder;
+  - ensinar como decidir MVP;
+  - usar `mvp-decision-gate.md`;
+  - separar:
+    - must-have now;
+    - should-have later;
+    - not-now;
+    - unknown / needs discovery;
+  - nao deve criar Epic, Feature, branch, PR ou GitHub issue.
+
+Playbook:
+
+- [ ] `operations/product-ops/playbooks/mvp-delivery.playbook.md`
+  - transformar em conversa guiada para founder;
+  - fazer perguntas progressivas, com opcoes quando possivel;
+  - produzir proposta clara de MVP antes de escrever;
+  - atualizar arquivos apenas apos confirmacao.
+
+Jornada interna:
+
+- [ ] `docs/framework/founder-journeys/define-mvp.md`
+  - criar com Mermaid e passo a passo;
+  - provar Navigation Chain:
+    - Root `AGENT.md`
+    - `.leanos/commands/define-mvp.md` quando slash command for usado
+    - `operations/AGENT.md`
+    - `operations/workflows/define-mvp.workflow.md`
+    - `operations/product-ops/AGENT.md`
+    - Product Owner
+    - `define-mvp.skill.md`
+    - `mvp-delivery.playbook.md`
+    - `mvp-decision-gate.md`
+    - Output / confirmaçao
+
+#### Inputs Obrigatorios
+
+Antes de definir MVP, o modelo deve verificar:
+
+- [ ] produto/ideia principal;
+- [ ] usuario ou ICP inicial;
+- [ ] problema/dor;
+- [ ] promessa de valor;
+- [ ] alternativa atual do usuario;
+- [ ] risco mais importante;
+- [ ] objetivo da primeira versao;
+- [ ] criterio de sucesso minimo;
+- [ ] restricoes de tempo, equipe, custo, stack ou compliance.
+
+Se faltar base:
+
+- [ ] voltar para Strategy Product ou `/start-leanos`;
+- [ ] explicar ao founder por que definir MVP agora seria chute;
+- [ ] fazer perguntas guiadas em vez de inventar contexto.
+
+#### MVP Decision Gate
+
+Criar criterio com quatro riscos principais:
+
+- [ ] Value Risk:
+  - o usuario tem dor real?
+  - a promessa de valor e clara?
+  - o escopo resolve algo importante o suficiente?
+- [ ] Usability Risk:
+  - o fluxo principal e compreensivel?
+  - o usuario consegue completar a tarefa principal?
+  - precisa de Design Foundation ou user-flow antes?
+- [ ] Feasibility Risk:
+  - e possivel construir com a stack/time/contexto atual?
+  - ha dependencia tecnica, integracao, banco, IA, infra ou API critica?
+  - precisa de technical spike antes de entrar no MVP?
+- [ ] Business Viability Risk:
+  - isso ajuda o negocio a aprender, vender, reter ou validar?
+  - o escopo esta alinhado com modelo de negocio ou posicionamento?
+  - ha risco de custo, operacao ou suporte que inviabiliza a primeira versao?
+
+Estados sugeridos:
+
+- [ ] `ready-for-mvp`
+- [ ] `needs-value-discovery`
+- [ ] `needs-usability-flow`
+- [ ] `needs-technical-spike`
+- [ ] `needs-business-viability-check`
+- [ ] `too-large-for-mvp`
+- [ ] `not-a-fit-now`
+
+#### Arquivos Que Podem Ser Atualizados
+
+Somente apos confirmacao:
+
+- [ ] `operations/product-ops/mvp/scope.md`
+- [ ] `operations/product-ops/mvp/prd.md`
+- [ ] `operations/product-ops/mvp/user-stories.md`
+- [ ] `operations/product-ops/mvp/user-flows.md`
+- [ ] `operations/product-ops/mvp/acceptance-criteria.md`
+- [ ] `operations/product-ops/mvp/non-goals.md`
+- [ ] `operations/product-ops/mvp/release-checklist.md`
+- [ ] `operations/product-ops/knowledge/overview.md`, apenas se o resumo Product Ops mudar.
+
+Nao atualizar durante este fluxo:
+
+- [ ] `operations/product-ops/epics/`
+- [ ] `operations/engineering/`
+- [ ] `operations/design/knowledge/components/`
+- [ ] `.github/`
+- [ ] codigo fonte;
+- [ ] branches, commits, PRs ou issues remotas;
+- [ ] roles, skills, playbooks, workflows, commands ou `ai-standard/`.
+
+#### Output Esperado
+
+O modelo deve entregar:
+
+- [ ] resumo founder-friendly do MVP recomendado;
+- [ ] o que entra;
+- [ ] o que fica fora;
+- [ ] por que esse escopo e pequeno o suficiente;
+- [ ] quais riscos ainda existem;
+- [ ] quais perguntas continuam abertas;
+- [ ] quais arquivos ele propoe atualizar;
+- [ ] pergunta de confirmacao antes de escrever;
+- [ ] ponte para `roadmap-item-to-epic` somente depois do MVP scope confirmado.
+
+#### Relacao Com Outros Fluxos
+
+- [ ] `/start-leanos` cria Strategy Baseline minima, nao MVP completo.
+- [ ] `/status-leanos` pode diagnosticar "MVP missing" e recomendar `define-mvp`.
+- [ ] `new-idea-intake` e `idea-to-roadmap` podem gerar candidatos futuros, mas nao alteram MVP automaticamente.
+- [ ] `roadmap-item-to-epic` so deve ser sugerido depois que um item estiver claro e houver delivery/MVP decision suficiente.
+- [ ] `epic-to-features` depende de Epic local, nao de MVP cru.
+- [ ] `feature-to-delivery-cycle` nunca deve iniciar de MVP scope direto.
+
+#### Validacoes Necessarias
+
+- [ ] `define-mvp.md` carrega `define-mvp.workflow.md`.
+- [ ] `define-mvp.workflow.md` segue Workflow Contract Standard.
+- [ ] `define-mvp.workflow.md` carrega `mvp-decision-gate.md`.
+- [ ] `define-mvp.skill.md` contem Value, Usability, Feasibility e Business Viability Risk.
+- [ ] `mvp-delivery.playbook.md` usa conversa guiada e confirmacao antes de escrita.
+- [ ] `mvp-decision-gate.md` existe e nao e placeholder.
+- [ ] `/status-leanos` recomenda `define-mvp` quando o MVP estiver faltando.
+- [ ] Nenhum arquivo de Epic, Feature, GitHub ou codigo e gerado no fluxo de define MVP.
+
 ### 1. Padronizar Comandos Principais
 
 Status: importante, mas deve ser executado depois da revisao dos workflows.
@@ -292,20 +490,21 @@ Comecar por Operations porque e onde a entrega acontece e onde mais existe risco
   - Engineering so entra depois de readiness;
   - garantir PR validation dentro do ciclo e ponte para post-merge.
   - contrato aplicado e validacao adicionada.
-- [ ] `operations/workflows/post-merge-continuation.workflow.md`
+- [x] `operations/workflows/post-merge-continuation.workflow.md`
   - aplicar Workflow Contract Standard;
   - orientar o que atualizar apos merge;
   - sugerir proxima Feature/issue sem inventar prioridade;
   - conectar aprendizado com Product Ops, Growth ou Roadmap quando aplicavel.
+  - contrato aplicado, jornada criada e validacao adicionada.
 - [x] Workflow legado MVP-to-PR
   - removido do scaffold;
   - responsabilidade absorvida por `feature-to-delivery-cycle`;
   - evita workflow legado que incentive pular Epic/Feature Shaping.
-- [ ] `strategy/workflows/new-idea-intake.workflow.md`
+- [x] `strategy/workflows/new-idea-intake.workflow.md`
   - aplicar Workflow Contract Standard;
   - garantir intake antes de roadmap;
   - nao exigir `strategy/validation` no MVP padrao.
-- [ ] `strategy/workflows/idea-to-roadmap.workflow.md`
+- [x] `strategy/workflows/idea-to-roadmap.workflow.md`
   - aplicar Workflow Contract Standard;
   - garantir que nao marca automaticamente como delivery/MVP;
   - ponte para `roadmap-item-to-epic`.
@@ -345,7 +544,7 @@ Ordem esperada:
 7. Criar/atualizar testes ou explicar gap de teste.
    - `operations/engineering/skills/write-tests.skill.md`
 8. Preparar PR.
-   - `operations/engineering/playbooks/issue-to-pr.playbook.md`
+   - `operations/engineering/playbooks/prepare-pr.playbook.md`
 9. Validar PR antes de recomendar merge.
    - `operations/engineering/playbooks/pr-validation.playbook.md`
    - `operations/engineering/skills/review-pr.skill.md`
@@ -360,7 +559,7 @@ Checklist de implementacao:
 - [x] Adicionar notas de contexto nos playbooks menores:
   - `branch-from-issue.playbook.md`: etapa inicial do `engineering-delivery`;
   - `component-implementation.playbook.md`: usado quando existe component spec aprovada;
-  - `issue-to-pr.playbook.md`: usado depois de implementacao e testes;
+  - `prepare-pr.playbook.md`: usado depois de implementacao e testes;
   - `pr-validation.playbook.md`: etapa final antes de recomendar merge.
 - [x] Garantir que `engineering-delivery` declare gates:
   - nao editar codigo antes de branch;
@@ -372,7 +571,7 @@ Checklist de implementacao:
 
 #### Founder Acceptance Guide No PR
 
-Status: pendente, recomendado antes de `post-merge-continuation`.
+Status: concluido.
 
 Objetivo: garantir que, quando o modelo abre ou prepara um PR, o founder consiga testar o que foi entregue sem precisar entender codigo, diff ou detalhes tecnicos avancados.
 
@@ -380,24 +579,24 @@ Decisao: nao colocar isso na Feature como regra principal. A Feature define o qu
 
 Checklist de implementacao:
 
-- [ ] Atualizar o template de PR em `ai-standard/templates/github/` para incluir uma secao obrigatoria `Founder Testing Guide`.
-- [ ] A secao deve conter:
+- [x] Atualizar o template de PR em `ai-standard/templates/github/` para incluir uma secao obrigatoria `Founder Testing Guide`.
+- [x] A secao deve conter:
   - o que mudou em linguagem simples;
   - onde testar: preview URL, rota local, tela, conta ou dados de teste;
   - como testar passo a passo;
   - resultado esperado;
   - o que esta fora de escopo;
   - riscos, limitacoes ou gaps conhecidos.
-- [ ] Atualizar `operations/engineering/playbooks/issue-to-pr.playbook.md` para exigir o `Founder Testing Guide` ao preparar o PR.
-- [ ] Atualizar `operations/engineering/playbooks/engineering-delivery.playbook.md` para tratar esse guia como gate antes de considerar o PR pronto para founder review.
-- [ ] Atualizar `operations/engineering/playbooks/pr-validation.playbook.md` para validar:
+- [x] Atualizar `operations/engineering/playbooks/prepare-pr.playbook.md` para exigir o `Founder Testing Guide` ao preparar o PR.
+- [x] Atualizar `operations/engineering/playbooks/engineering-delivery.playbook.md` para tratar esse guia como gate antes de considerar o PR pronto para founder review.
+- [x] Atualizar `operations/engineering/playbooks/pr-validation.playbook.md` para validar:
   - guia existe;
   - passos batem com acceptance criteria da Feature;
   - ha preview/rota/instrucao alternativa;
   - o escopo e os limites estao claros;
   - founder consegue testar sem ler codigo.
-- [ ] Atualizar `feature-to-delivery-cycle.workflow.md` para deixar claro que PR aberto nao significa pronto para merge sem founder acceptance.
-- [ ] Atualizar validacoes do generator para proteger a existencia da secao no template de PR e referencias nos playbooks.
+- [x] Atualizar `feature-to-delivery-cycle.workflow.md` para deixar claro que PR aberto nao significa pronto para merge sem founder acceptance.
+- [x] Atualizar validacoes do generator para proteger a existencia da secao no template de PR e referencias nos playbooks.
 
 #### Validacoes Necessarias
 
@@ -601,9 +800,9 @@ Jornadas internas devem ser criadas em `docs/framework/founder-journeys/` usando
 | 3 | [x] | [x] `docs/framework/founder-journeys/idea-to-roadmap.md` | Decisao de roadmap | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" | Strategy / Roadmap | Product Strategist, Product Manager, Roadmap Planner | `roadmap-cycle-planning`, `product-strategy` | Jornada criada; scaffold existente validado; gap futuro: delivery scope deve ser contexto opcional no Roadmap Planner |
 | 4 | [x] | [x] `docs/framework/founder-journeys/roadmap-item-to-epic.md` | Roadmap item para Epic local | `operations/workflows/roadmap-item-to-epic.workflow.md` | "Isso entra na proxima entrega?", "isso entra no MVP?", "crie um epic para esse item" | Product Ops + Strategy | Product Owner, Product Strategist, Delivery Architect, Product Designer/Security/DevOps/Engineering quando aplicavel | `delivery-scope-planning`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada; consolidou os dois passos antigos; GitHub write fica opcional e posterior |
 | 5 | [x] | [x] `docs/framework/founder-journeys/epic-to-features.md` | Feature Shaping | `operations/workflows/epic-to-features.workflow.md` | "Quebre esse epic em features", "quais features precisamos para esse epic?" | Operations / Product Ops | Product Owner, Product Designer, Security Reviewer, DevOps Engineer, Senior Developer | `epic-to-features`, `delivery-readiness`, `mvp-ux-flow`, `accessibility-review`, `pre-mvp-security-checklist`, `api-security-review`, `setup-ci-cd` | Jornada criada; scaffold atualizado com Workflow Contract Standard e DRM completa |
-| 6 | [x] | [x] `docs/framework/founder-journeys/feature-to-delivery-cycle.md` | Implementacao | `operations/workflows/feature-to-delivery-cycle.workflow.md` | "Implemente a feature", "implemente a issue #554", "vamos comecar essa feature" | Operations / Engineering | Product Owner, Product Designer quando UI/componente for afetado, Senior Developer, Test Engineer, PR Reviewer, Security Reviewer quando aplicavel | `delivery-readiness`, `component-readiness`, `branch-from-issue`, `issue-to-pr`, `test-planning`, `pr-validation`, `ai-generated-code-security-review` | Jornada criada; scaffold atualizado com Workflow Contract Standard, ready-to-develop, component readiness, branch, PR e post-merge bridge |
+| 6 | [x] | [x] `docs/framework/founder-journeys/feature-to-delivery-cycle.md` | Implementacao | `operations/workflows/feature-to-delivery-cycle.workflow.md` | "Implemente a feature", "implemente a issue #554", "vamos comecar essa feature" | Operations / Engineering | Product Owner, Product Designer quando UI/componente for afetado, Senior Developer, Test Engineer, PR Reviewer, Security Reviewer quando aplicavel | `delivery-readiness`, `component-readiness`, `branch-from-issue`, `prepare-pr`, `test-planning`, `pr-validation`, `ai-generated-code-security-review` | Jornada criada; scaffold atualizado com Workflow Contract Standard, ready-to-develop, component readiness, branch, PR e post-merge bridge |
 | 7 | [x] | N/A | Review e PR | Dentro de `feature-to-delivery-cycle` | "Revise o PR", "esta pronto para merge?" | Engineering + Security/DevOps quando aplicavel | PR Reviewer, Test Engineer, Security Reviewer, Release Manager | `pr-validation`, `pre-deploy-security-review`, `security-automation-readiness`, `release-operations` | Nao criar workflow separado por enquanto; PR validation e parte do feature delivery cycle |
-| 8 | [ ] | [ ] `docs/framework/founder-journeys/post-merge-continuation.md` | Pos-merge | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a proxima issue", "o que atualizamos depois do merge?" | Operations | Product Owner, Senior Developer, Release Manager, CX Lead quando aplicavel | `release-operations`, `delivery-readiness`, `customer-learning-loop` | Existe, precisa fortalecer |
+| 8 | [x] | [x] `docs/framework/founder-journeys/post-merge-continuation.md` | Pos-merge | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a proxima issue", "o que atualizamos depois do merge?" | Operations | Product Owner, Senior Developer, Release Manager, CX Lead quando aplicavel | `release-operations`, `delivery-readiness`, `customer-learning-loop` | Jornada criada; scaffold fortalecido com Workflow Contract Standard, status/context update, conditional DevOps/Security/Growth/Strategy e ponte para proxima rota |
 | 9 | [ ] | [ ] `docs/framework/founder-journeys/launch-learning-loop.md` | Lancamento e aprendizado | `growth/workflows/launch-learning-loop.workflow.md` | "Lancamos, o que aprendemos?", "como melhorar aquisicao/conversao?" | Growth | Growth Lead, CX Lead, Finance Operator | `mvp-launch`, `customer-learning-loop`, `finance-review` | Existe, pode ficar lean para depois |
 
 MVP continua sendo o nome principal da etapa. O criterio de qualidade deve incluir uma Lovable Baseline:
@@ -641,7 +840,7 @@ MVP continua sendo o nome principal da etapa. O criterio de qualidade deve inclu
 4. `operations/workflows/epic-to-features.workflow.md`
 5. `operations/workflows/feature-to-delivery-cycle.workflow.md`
 6. Workflow legado MVP-to-PR removido/absorvido por `feature-to-delivery-cycle`
-7. `operations/workflows/post-merge-continuation.workflow.md`
+7. `operations/workflows/post-merge-continuation.workflow.md` - concluido
 8. `operations/workflows/define-mvp.workflow.md` ou manter como playbook em Product Ops
 9. `strategy/workflows/roadmap-to-github-project.workflow.md`
 11. `growth/workflows/launch-learning-loop.workflow.md`
@@ -711,8 +910,10 @@ Workflows a revisar:
 - [x] Workflow legado MVP-to-PR
   - removido por redundancia;
   - fluxo de implementacao oficial e `feature-to-delivery-cycle`.
-- [ ] `operations/workflows/post-merge-continuation.workflow.md`
-  - deve orientar retorno pos-merge: atualizar contexto, proxima issue, riscos e follow-up.
+- [x] `operations/workflows/post-merge-continuation.workflow.md`
+  - orienta retorno pos-merge: atualizar contexto, proxima Feature, riscos e follow-up;
+  - nao inicia proxima Feature automaticamente;
+  - roteia DevOps, Security, Growth ou Strategy apenas quando aplicavel.
 - [ ] `growth/workflows/launch-learning-loop.workflow.md`
   - deve continuar lean e usar area AGENTs/knowledge paths atualizados.
 

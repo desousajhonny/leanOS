@@ -17,7 +17,7 @@ Use when a selected role points to a playbook.
 - `engineering-delivery.playbook.md`
 - `branch-from-issue.playbook.md`
 - `component-implementation.playbook.md`
-- `issue-to-pr.playbook.md`
+- `prepare-pr.playbook.md`
 - `test-planning.playbook.md`
 - `pr-validation.playbook.md`
 

@@ -35,7 +35,7 @@ Confirm that an issue or MVP slice has enough product, technical and operational
 
 ## Files to Update
 
-- Update `../knowledge/issue-readiness.md`, `../knowledge/delivery-context.md` or `../knowledge/technical-decisions.md` only after explicit confirmation.
+- Update `../knowledge/issue-readiness.md` or `../knowledge/technical-decisions.md` only after explicit confirmation.
 
 ## Navigation
 

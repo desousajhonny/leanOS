@@ -61,7 +61,7 @@ All required areas are active in this department.
 11. `operations/engineering/playbooks/engineering-delivery.playbook.md`
 12. `operations/engineering/playbooks/branch-from-issue.playbook.md through engineering-delivery`
 13. `operations/engineering/playbooks/component-implementation.playbook.md through engineering-delivery when a component spec is approved and needed`
-14. `operations/engineering/playbooks/issue-to-pr.playbook.md through engineering-delivery`
+14. `operations/engineering/playbooks/prepare-pr.playbook.md through engineering-delivery`
 15. `operations/engineering/playbooks/pr-validation.playbook.md through engineering-delivery`
 
 ## Sequence
@@ -78,8 +78,9 @@ All required areas are active in this department.
 10. After Product Ops, Design, Security and DevOps readiness are ready or explicitly not applicable, route to `operations/engineering/AGENT.md` and load `operations/engineering/playbooks/engineering-delivery.playbook.md`
 11. Let `engineering-delivery.playbook.md` create the issue-linked branch, plan implementation, run component implementation when needed, execute tests, prepare PR and run PR validation
 12. Run tests or explain gaps
-13. Run PR validation
-14. Prepare PR
+13. Prepare the Founder Testing Guide before asking the founder to review the PR
+14. Run PR validation
+15. Prepare PR and make clear that PR opened does not mean merge-ready until founder acceptance and PR validation are complete
 
 ## Confirmation Gates
 
@@ -87,6 +88,7 @@ All required areas are active in this department.
 - Ask before creating or changing Design component specs.
 - Ask before creating a branch.
 - Ask before editing product code.
+- Ask before marking the PR ready for founder review when the Founder Testing Guide is incomplete.
 - Ask before running external GitHub actions, opening a PR or changing remote state.
 - Ask before installing dependencies, changing package manager files or adding tooling.
 
@@ -136,6 +138,7 @@ All required areas are active in this department.
 - Component readiness decision before Engineering when UI components are affected.
 - Branch name and implementation plan after confirmation.
 - Code and test changes summary.
+- Founder Testing Guide with where to test, how to test and expected result.
 - PR validation summary with risks, gaps and remaining checks.
 - Founder-friendly next-step recommendation.
 

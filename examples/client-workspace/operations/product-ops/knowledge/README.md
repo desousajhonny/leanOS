@@ -17,7 +17,6 @@ Use when turning strategy and roadmap into delivery scope, issue readiness and d
 - `overview.md`
 - `work-taxonomy.md`
 - `delivery-scope.md`
-- `delivery-context.md`
 - `issue-readiness.md`
 - `ready-to-develop.md`
 - `technical-decisions.md`
@@ -38,4 +37,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-Keep this folder focused on delivery context. Do not move full architecture, API contracts or data models here before the product stack exists.
+Keep this folder focused on delivery criteria and scope. The current delivery state should live in Epics/Features, while PR and implementation memory live in Engineering knowledge.

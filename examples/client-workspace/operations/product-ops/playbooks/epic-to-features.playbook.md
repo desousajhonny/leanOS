@@ -86,7 +86,7 @@ Break a LeanOS epic into implementation-ready features with internal tasks using
 
 - Do not update GitHub directly from the model.
 - Do not update source code.
-- Update `../knowledge/issue-readiness.md`, `../knowledge/delivery-context.md` or MVP files only when the user explicitly confirms a scope or criteria change.
+- Update `../knowledge/issue-readiness.md` or MVP files only when the user explicitly confirms a scope or criteria change.
 
 ## Stop Conditions
 

@@ -21,7 +21,7 @@ area:
     - engineering-delivery
     - branch-from-issue
     - component-implementation
-    - issue-to-pr
+    - prepare-pr
     - test-planning
     - pr-validation
   source_of_truth:

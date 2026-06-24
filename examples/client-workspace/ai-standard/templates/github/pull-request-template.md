@@ -40,6 +40,38 @@ State "Not applicable" when no security-sensitive surface exists.
 - [ ] Automated tests run or updated
 - [ ] Manual validation completed or explained
 
+## Founder Testing Guide
+
+Explain how a non-technical founder can test this PR before merge.
+
+### What Changed
+
+Plain-language summary of the user-facing or business behavior delivered.
+
+### Where to Test
+
+- Preview URL:
+- Local route or screen:
+- Test account or data:
+
+### How to Test
+
+1. Open...
+2. Do...
+3. Confirm...
+
+### Expected Result
+
+What the founder should see when the PR works.
+
+### Out of Scope
+
+What this PR intentionally does not cover.
+
+### Known Risks or Limits
+
+Anything the founder should know before approving.
+
 ## Risks
 
 - Scope risk:
@@ -53,6 +85,7 @@ State "Not applicable" when no security-sensitive surface exists.
 - [ ] Branch follows LeanOS naming
 - [ ] Acceptance criteria addressed
 - [ ] Tests run or explained
+- [ ] Founder Testing Guide is clear enough for a non-technical founder
 - [ ] Design criteria addressed or not applicable
 - [ ] Security criteria addressed or not applicable
 - [ ] No unrelated scope added

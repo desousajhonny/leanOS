@@ -597,48 +597,91 @@ Do not use \`synced\` as a product status.
 `;
 }
 
-function deliveryContextKnowledge(): string {
-  return `# Delivery Context
+function implementationNotesKnowledge(): string {
+  return `# Implementation Notes
 
 ## Purpose
 
-Capture the delivery assumptions, constraints and operating context needed before Engineering starts work.
+Capture durable technical lessons learned during implementation so future model sessions can reuse decisions instead of rediscovering them.
 
-## Current State
+Use this file for implementation memory, not delivery status.
 
-TBD
+## How To Use
 
-## Repository Context
+- Add a note only when the decision or learning should survive the current session.
+- Prefer concrete lessons tied to a Feature, PR, component, module or data change.
+- Keep notes short enough for future agents to scan quickly.
+- Do not duplicate PR status; use \`pr-log.md\` for PR/merge summaries.
 
-TBD
-
-## Product Constraints
-
-TBD
-
-## Technical Constraints
+## Current Technical Context
 
 TBD
 
-## Dependencies
+## Lessons Learned
+
+| Date | Feature / PR | Lesson | Why It Matters | Reuse / Warning |
+| --- | --- | --- | --- | --- |
+| TBD | TBD | TBD | TBD | TBD |
+
+## Implementation Decisions
+
+| Date | Feature / PR | Decision | Reason | Follow-up |
+| --- | --- | --- | --- | --- |
+| TBD | TBD | TBD | TBD | TBD |
+
+## Reusable Patterns
 
 TBD
 
-## Risks
+## Risks Or Technical Debt
 
 TBD
 
-## Decisions
+## Do Not Use For
+
+- PR status, merge status or founder testing results.
+- Product scope decisions.
+- Design component specs.
+- Secrets, credentials or private customer data.
+`;
+}
+
+function prLogKnowledge(): string {
+  return `# PR Log
+
+## Purpose
+
+Keep a lightweight delivery log of PRs, reviews and merges so the founder and future agents can understand what shipped without rereading every code change.
+
+Use this file for quick delivery summaries. Use \`implementation-notes.md\` for technical lessons learned.
+
+## How To Use
+
+- Add an entry after PR creation, review, founder testing or merge when a persistent record is useful.
+- Keep each entry founder-readable.
+- Link each PR back to its Feature or Epic when possible.
+- Record risks accepted, test gaps and follow-ups clearly.
+
+## PR Summary Log
+
+| Date | PR | Feature / Epic | Status | What Shipped | Validation | Founder Testing | Follow-up |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+
+## Latest Merge Summary
 
 TBD
 
-## Open Questions
+## Open Follow-Ups
 
 TBD
 
-## Next Update
+## Do Not Use For
 
-TBD
+- Deep technical lessons learned.
+- Product roadmap priority.
+- Design specs.
+- Secrets, credentials or private customer data.
 `;
 }
 
@@ -3190,13 +3233,12 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         requestTypes: "delivery scope, acceptance criteria, epics, features, issue readiness or delivery boundaries",
         purpose: "Turn Strategy and Roadmap into delivery scope, acceptance criteria and implementation-ready work.",
         whenToUse: ["define MVP", "shape acceptance criteria", "break epics into features", "check issue readiness", "coordinate delivery scope"],
-        sourceOfTruth: ["knowledge/overview.md", "knowledge/work-taxonomy.md", "knowledge/delivery-scope.md", "knowledge/delivery-context.md", "knowledge/issue-readiness.md", "knowledge/ready-to-develop.md", "knowledge/technical-decisions.md", "mvp/scope.md", "mvp/prd.md", "mvp/user-stories.md", "mvp/acceptance-criteria.md", "epics/README.md"],
+        sourceOfTruth: ["knowledge/overview.md", "knowledge/work-taxonomy.md", "knowledge/delivery-scope.md", "knowledge/issue-readiness.md", "knowledge/ready-to-develop.md", "knowledge/technical-decisions.md", "mvp/scope.md", "mvp/prd.md", "mvp/user-stories.md", "mvp/acceptance-criteria.md", "epics/README.md"],
         files: [
-          { path: "knowledge/README.md", content: () => folderReadme("Product Ops Knowledge", "Durable operational context produced by Product Ops.", "Use when turning strategy and roadmap into delivery scope, issue readiness and delivery boundaries.", "overview.md", ["overview.md", "work-taxonomy.md", "delivery-scope.md", "delivery-context.md", "issue-readiness.md", "ready-to-develop.md", "technical-decisions.md"], ["../roles/", "../skills/", "../playbooks/", "../mvp/", "../epics/", "../../../strategy/product/", "../../../strategy/roadmap/"], "Keep this folder focused on delivery context. Do not move full architecture, API contracts or data models here before the product stack exists.") },
+          { path: "knowledge/README.md", content: () => folderReadme("Product Ops Knowledge", "Durable operational context produced by Product Ops.", "Use when turning strategy and roadmap into delivery scope, issue readiness and delivery boundaries.", "overview.md", ["overview.md", "work-taxonomy.md", "delivery-scope.md", "issue-readiness.md", "ready-to-develop.md", "technical-decisions.md"], ["../roles/", "../skills/", "../playbooks/", "../mvp/", "../epics/", "../../../strategy/product/", "../../../strategy/roadmap/"], "Keep this folder focused on delivery criteria and scope. The current delivery state should live in Epics/Features, while PR and implementation memory live in Engineering knowledge.") },
           { path: "knowledge/overview.md", content: productOpsOverviewKnowledge },
           { path: "knowledge/work-taxonomy.md", content: workTaxonomyKnowledge },
           { path: "knowledge/delivery-scope.md", content: deliveryScopeKnowledge },
-          { path: "knowledge/delivery-context.md", content: deliveryContextKnowledge },
           { path: "knowledge/issue-readiness.md", content: issueReadinessKnowledge },
           { path: "knowledge/ready-to-develop.md", content: readyToDevelopKnowledge },
           { path: "knowledge/technical-decisions.md", content: () => decisionLog("Technical Decisions") },
@@ -3225,7 +3267,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Delivery Architect",
             purpose: "Define delivery boundaries, technical constraints and implementation readiness without overdesigning architecture too early.",
             useWhen: ["delivery boundaries are unclear", "technical constraints affect scope", "implementation readiness needs review", "technical decisions need recording"],
-            beforeActing: ["../knowledge/overview.md", "../knowledge/delivery-context.md", "../knowledge/ready-to-develop.md", "../knowledge/technical-decisions.md", "../mvp/scope.md"],
+            beforeActing: ["../knowledge/overview.md", "../knowledge/delivery-scope.md", "../knowledge/issue-readiness.md", "../knowledge/ready-to-develop.md", "../knowledge/technical-decisions.md", "../mvp/scope.md"],
             skills: ["define-delivery-boundaries", "check-delivery-coherence"],
             playbooks: ["delivery-readiness"]
           }
@@ -3257,7 +3299,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             process: ["Restate the epic outcome in one sentence.", "Confirm the user, problem and business value.", "Identify scope boundaries and non-goals.", "Map the epic to delivery scope, PRD and roadmap milestone.", "Use the Epic Readiness Matrix to decide which specialists must participate.", "List likely feature slices without creating them yet.", "Mark missing context explicitly instead of inventing it."],
             checks: ["Outcome is clear.", "Scope and non-goals are explicit.", "The epic can be split without losing product intent.", "Missing Product, Design, Security, DevOps or Engineering input is called out."],
             outputs: ["Epic readiness summary", "Decision ownership", "Scope boundary", "Non-goals", "Epic readiness matrix", "Likely feature groups", "Missing context", "Recommendation to proceed, refine or block"],
-            filesToUpdate: ["Update `../knowledge/issue-readiness.md` or `../knowledge/delivery-context.md` only after explicit confirmation.", "Do not update GitHub directly from the model."],
+            filesToUpdate: ["Update `../knowledge/issue-readiness.md` only after explicit confirmation.", "Do not update GitHub directly from the model."],
             redLines: ["Do not split an epic that lacks outcome or scope.", "Do not invent acceptance criteria.", "Do not bypass Design, Security or DevOps when their criteria are applicable."]
           },
           {
@@ -3292,7 +3334,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             inputs: ["Product brief", "Problem", "ICP", "Value proposition", "Roadmap or current cycle when available", "Existing MVP scope", "Existing PRD when available"],
             steps: ["Read Product Ops AGENT and choose the Product Owner role", "Read product strategy and existing MVP knowledge", "Define the smallest coherent MVP scope", "Write or refine the MVP PRD", "Write or refine user stories", "Define acceptance criteria", "Confirm non-goals", "Identify Design, Security, Engineering or DevOps dependencies", "Propose file updates and wait for confirmation before writing"],
             outputs: ["MVP scope proposal", "PRD proposal", "User stories", "Acceptance criteria", "Non-goals", "Dependencies", "Open questions"],
-            filesToUpdate: ["Update `../mvp/scope.md`, `../mvp/prd.md`, `../mvp/user-stories.md`, `../mvp/acceptance-criteria.md` and `../mvp/non-goals.md` only after explicit confirmation.", "Update `../knowledge/overview.md` or `../knowledge/delivery-context.md` when delivery context changes."]
+            filesToUpdate: ["Update `../mvp/scope.md`, `../mvp/prd.md`, `../mvp/user-stories.md`, `../mvp/acceptance-criteria.md` and `../mvp/non-goals.md` only after explicit confirmation.", "Update `../knowledge/overview.md` when Product Ops summary changes."]
           },
           {
             slug: "epic-to-features",
@@ -3304,7 +3346,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             steps: ["Load Product Ops AGENT and choose `roles/product-owner.role.md`.", "Load the local Product Epic and Feature templates from `../../../ai-standard/templates/product/` before preparing any GitHub issue.", "Load `skills/shape-epic.skill.md` and confirm the epic outcome, decision ownership, scope boundary, non-goals and Epic Readiness Matrix.", "Load `skills/write-feature-criteria.skill.md` and apply the Feature-level Delivery Readiness Matrix (DRM).", "Write Product Ops criteria for every feature.", "Add internal tasks inside each feature.", "Add Design criteria only when UX, UI, flow, copy, accessibility, screens, states, components or interaction is affected.", "When a Feature depends on UI components, check whether it can reuse an approved component, adapt one or needs a new component spec.", "Do not create the full component spec during Feature Shaping; add a Design task for `operations/design/playbooks/component-readiness.playbook.md` when a component spec is needed.", "Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.", "Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.", "Ask Engineering to validate implementation boundaries, dependencies, test approach and feature size.", "Mark non-applicable dimensions explicitly and explain why.", "Prepare local feature drafts and ask for confirmation before any remote write."],
             securityGate: ["Stop if the epic touches data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk and Security criteria are missing.", "Do not downgrade a Security dimension to not applicable without explaining why."],
             outputs: ["Epic readiness summary", "Feature draft list", "Internal task checklist per feature", "DRM criteria for each feature", "Product Ops criteria", "Design criteria or not applicable with reason", "Component reuse/adaptation/spec decision when UI is affected", "Design task for component spec when needed", "Engineering criteria", "Security criteria or not applicable with reason", "DevOps criteria or not applicable with reason", "Dependencies and risks", "Missing context", "Confirmation question before remote issue creation"],
-            filesToUpdate: ["Do not update GitHub directly from the model.", "Do not update source code.", "Update `../knowledge/issue-readiness.md`, `../knowledge/delivery-context.md` or MVP files only when the user explicitly confirms a scope or criteria change."],
+            filesToUpdate: ["Do not update GitHub directly from the model.", "Do not update source code.", "Update `../knowledge/issue-readiness.md` or MVP files only when the user explicitly confirms a scope or criteria change."],
             stopConditions: ["Stop if the parent epic is missing outcome, scope or non-goals.", "Stop if Product Ops or Engineering criteria are missing.", "Stop if applicable Design, Security or DevOps criteria cannot be determined.", "Stop before any GitHub API write until the user explicitly confirms."]
           },
           {
@@ -3314,7 +3356,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             inputs: ["Issue or MVP slice", "Product Ops overview", "Ready To Develop criteria", "MVP scope", "PRD", "Acceptance criteria", "Issue readiness notes", "Design and Security context when applicable"],
             steps: ["Read Product Ops AGENT and choose the Delivery Architect role", "Review MVP scope, PRD and acceptance criteria", "Identify dependencies and technical constraints", "Check Design and Security applicability", "Capture only confirmed technical decisions", "Recommend ready, needs product shaping, needs design, needs security or blocked"],
             outputs: ["Delivery readiness result", "Missing criteria", "Dependencies", "Design or Security applicability", "Technical decision notes", "Recommended next action"],
-            filesToUpdate: ["Update `../knowledge/issue-readiness.md`, `../knowledge/delivery-context.md` or `../knowledge/technical-decisions.md` only after explicit confirmation."]
+            filesToUpdate: ["Update `../knowledge/issue-readiness.md` or `../knowledge/technical-decisions.md` only after explicit confirmation."]
           }
         ],
         commonPaths: [
@@ -3601,9 +3643,9 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           { path: "knowledge/data-guidelines.md", content: engineeringDataGuidelinesKnowledge },
           { path: "knowledge/testing-strategy.md", content: engineeringTestingStrategyKnowledge },
           { path: "knowledge/review-criteria.md", content: engineeringReviewCriteriaKnowledge },
-          { path: "knowledge/implementation-notes.md", content: () => stateDraft("Implementation Notes", "Capture implementation context and decisions.") },
+          { path: "knowledge/implementation-notes.md", content: implementationNotesKnowledge },
           { path: "knowledge/code-review-notes.md", content: () => stateDraft("Code Review Notes", "Capture review observations and risks.") },
-          { path: "knowledge/pr-log.md", content: () => decisionLog("PR Log") }
+          { path: "knowledge/pr-log.md", content: prLogKnowledge }
         ],
         roles: [
           {
@@ -3613,7 +3655,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             useWhen: ["implement an issue", "fix a bug", "modify code", "write tests", "prepare implementation for a PR"],
             beforeActing: ["../../../.leanos/context/current-focus.md", "../../product-ops/mvp/scope.md", "../../product-ops/mvp/prd.md", "../../product-ops/mvp/acceptance-criteria.md", "../../product-ops/knowledge/issue-readiness.md", "../knowledge/implementation-rules.md", "../knowledge/code-standards.md", "../knowledge/component-guidelines.md", "../knowledge/data-guidelines.md", "../knowledge/testing-strategy.md", "../../../.github/leanos/branch-rules.md", "../knowledge/implementation-notes.md"],
             skills: ["plan-implementation", "follow-code-standards", "implement-component", "create-branch", "write-tests", "review-data-change", "create-pr"],
-            playbooks: ["engineering-delivery", "branch-from-issue", "component-implementation", "issue-to-pr", "test-planning", "pr-validation"]
+            playbooks: ["engineering-delivery", "branch-from-issue", "component-implementation", "prepare-pr", "test-planning", "pr-validation"]
           },
           {
             slug: "test-engineer",
@@ -3715,11 +3757,11 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Create PR",
             purpose: "Prepare a PR summary tied to issue scope, tests and review criteria.",
             useWhen: ["implementation is ready for review", "PR description needs structure", "merge risk needs communication"],
-            requiredContext: ["PR template", "Linked issue", "Implementation notes", "Tests run", "Known risks"],
-            inputs: ["Branch", "Linked issue", "Changed files", "Tests", "Risks", "Screenshots or UX notes when applicable"],
-            process: ["Load PR template", "Summarize scope", "List implementation notes", "List tests and manual validation", "Flag Design/Security/Data applicability", "List known risks and follow-up"],
-            checks: ["PR references the issue", "Tests or gaps are explicit", "Description does not hide known risk"],
-            outputs: ["PR title", "PR body", "Test summary", "Risk notes"],
+            requiredContext: ["PR template", "Linked issue", "Implementation notes", "Tests run", "Known risks", "Founder Testing Guide requirements"],
+            inputs: ["Branch", "Linked issue", "Changed files", "Tests", "Risks", "Screenshots or UX notes when applicable", "Preview URL or local route when available"],
+            process: ["Load PR template", "Summarize scope", "List implementation notes", "List tests and manual validation", "Write the Founder Testing Guide in plain language", "Include where to test, how to test and expected result", "Flag Design/Security/Data applicability", "List known risks and follow-up"],
+            checks: ["PR references the issue", "Tests or gaps are explicit", "Founder Testing Guide is usable by a non-technical founder", "Description does not hide known risk"],
+            outputs: ["PR title", "PR body", "Founder Testing Guide", "Test summary", "Risk notes"],
             filesToUpdate: ["Update `../knowledge/pr-log.md` after PR creation or when the user asks for a persistent PR record."]
           },
           {
@@ -3729,9 +3771,9 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             useWhen: ["review a PR", "validate implementation readiness", "check merge risk", "perform code review"],
             requiredContext: ["Review criteria", "PR validation rules", "Linked issue", "PRD", "Acceptance criteria", "Changed files"],
             inputs: ["PR description", "Diff", "Linked issue", "Tests", "Known risks"],
-            process: ["Check scope against issue and PRD", "Review code standards", "Review tests", "Review Design applicability", "Review Security/Data applicability", "List findings by severity", "Recommend merge, changes or blocked"],
-            checks: ["Findings are actionable", "Severity is clear", "Design/Security/Data are not forced when not applicable", "Merge recommendation is justified"],
-            outputs: ["Findings by severity", "Scope result", "Code result", "Test result", "Design result or not applicable", "Security/Data result or not applicable", "Merge recommendation"],
+            process: ["Check scope against issue and PRD", "Review code standards", "Review tests", "Review Founder Testing Guide usability", "Review Design applicability", "Review Security/Data applicability", "List findings by severity", "Recommend merge, changes or blocked"],
+            checks: ["Findings are actionable", "Severity is clear", "Founder can test the PR without reading code", "Design/Security/Data are not forced when not applicable", "Merge recommendation is justified"],
+            outputs: ["Findings by severity", "Scope result", "Code result", "Founder acceptance result", "Test result", "Design result or not applicable", "Security/Data result or not applicable", "Merge recommendation"],
             filesToUpdate: ["Update `../knowledge/code-review-notes.md` or `../knowledge/pr-log.md` only when the user asks for persistent review notes."]
           }
         ],
@@ -3752,13 +3794,14 @@ export const rootDepartments: RootDepartmentDefinition[] = [
               "Use `skills/follow-code-standards.skill.md` during implementation to preserve modularity, local patterns and no-hardcoding rules",
               "Use `skills/review-data-change.skill.md` when data, API, persistence, auth, permissions or privacy are involved",
               "Use `skills/write-tests.skill.md` to add or update tests, or explain the test gap clearly",
-              "Use `playbooks/issue-to-pr.playbook.md` to prepare PR scope, test notes, risks and screenshots or UX notes when applicable",
+              "Use `playbooks/prepare-pr.playbook.md` to prepare PR scope, test notes, risks, Founder Testing Guide and screenshots or UX notes when applicable",
               "Use `playbooks/pr-validation.playbook.md` before recommending merge readiness"
             ],
             gates: [
               "Do not edit code before an issue-linked branch is created or confirmed.",
               "Do not implement a new user-facing component without an approved Design component spec when component readiness is applicable.",
               "Do not open or prepare a PR without tests, manual validation notes or a clear test-gap explanation.",
+              "Do not mark a PR ready for founder review without a Founder Testing Guide that explains where and how to test the change.",
               "Do not recommend merge before `playbooks/pr-validation.playbook.md` is complete.",
               "Do not expand beyond the confirmed Feature scope without founder confirmation."
             ],
@@ -3767,7 +3810,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
               "Stop before data migration, destructive data changes or permission changes without explicit confirmation and rollback notes.",
               "Do not commit secrets, tokens, credentials or sensitive customer data."
             ],
-            outputs: ["Branch name and branch status", "Implementation plan", "Files changed", "Component implementation summary when applicable", "Tests run or test-gap explanation", "PR draft summary", "PR validation result", "Remaining risks and next step"],
+            outputs: ["Branch name and branch status", "Implementation plan", "Files changed", "Component implementation summary when applicable", "Tests run or test-gap explanation", "PR draft summary", "Founder Testing Guide", "PR validation result", "Remaining risks and next step"],
             filesToUpdate: ["Update `../knowledge/implementation-notes.md` when implementation decisions should persist.", "Update `../knowledge/pr-log.md` after PR creation or when the user asks for persistent PR records."],
             stopConditions: [
               "Feature readiness is missing or blocked.",
@@ -3798,12 +3841,12 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             filesToUpdate: ["Update `../knowledge/implementation-notes.md` when component implementation decisions should persist.", "Do not update Design component specs unless routed back to Design and confirmed by the user."]
           },
           {
-            slug: "issue-to-pr",
-            title: "Issue to PR",
-            purpose: "Move from a scoped issue to a reviewable pull request.",
+            slug: "prepare-pr",
+            title: "Prepare PR",
+            purpose: "Prepare a reviewable pull request from a confirmed Feature implementation.",
             inputs: ["GitHub issue body", "Parent epic when available", "MVP scope", "PRD", "Acceptance criteria", "Product, Design, Engineering and Security criteria", "Branch name", "Engineering knowledge"],
-            steps: ["Use this as the PR preparation step of `engineering-delivery.playbook.md`; do not use it before implementation and test status are clear", "Read Engineering AGENT and choose the Senior Developer role", "Read issue, PRD, MVP scope and acceptance criteria", "Confirm issue readiness with Product and Engineering criteria", "Check whether Design criteria are required for user-facing UX", "Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance", "Create or confirm an issue-linked branch before code changes", "Use `skills/plan-implementation.skill.md` to plan implementation", "Run `playbooks/component-implementation.playbook.md` before screen or Feature work when a new reusable component is required", "Use `skills/follow-code-standards.skill.md` while changing code", "Use `skills/review-data-change.skill.md` when data/API/persistence is involved", "Use `skills/write-tests.skill.md` to update tests or explain gaps", "Use `skills/create-pr.skill.md` to prepare PR using the PR template"],
-            outputs: ["Implementation summary", "Branch used", "Files changed", "Tests run or proposed", "PR draft", "Known risks"],
+            steps: ["Use this as the PR preparation step of `engineering-delivery.playbook.md`; do not use it before implementation and test status are clear", "Read Engineering AGENT and choose the Senior Developer role", "Read Feature or mapped GitHub issue, PRD, MVP scope and acceptance criteria", "Confirm Feature readiness with Product and Engineering criteria", "Check whether Design criteria are required for user-facing UX", "Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance", "Create or confirm an issue-linked branch before code changes", "Use `skills/plan-implementation.skill.md` to plan implementation", "Run `playbooks/component-implementation.playbook.md` before screen or Feature work when a new reusable component is required", "Use `skills/follow-code-standards.skill.md` while changing code", "Use `skills/review-data-change.skill.md` when data/API/persistence is involved", "Use `skills/write-tests.skill.md` to update tests or explain gaps", "Use `skills/create-pr.skill.md` to prepare PR using the PR template", "Fill the `Founder Testing Guide` with plain-language steps, where to test, expected result, out-of-scope notes and known limits", "If there is no preview URL, provide the local route, command or manual fallback the founder can realistically use"],
+            outputs: ["Implementation summary", "Branch used", "Files changed", "Tests run or proposed", "Founder Testing Guide", "PR draft", "Known risks"],
             filesToUpdate: ["Update `../knowledge/implementation-notes.md` when implementation decisions should persist.", "Update `../knowledge/pr-log.md` after PR creation or when the user asks for a persistent PR record."]
           },
           {
@@ -3819,16 +3862,16 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "pr-validation",
             title: "PR Validation",
             purpose: "Validate implementation before merge.",
-            inputs: ["PR description", "Linked issue", "Parent epic when available", "MVP scope", "PRD", "Acceptance criteria", "Changed files", "Tests or validation evidence", "Review criteria"],
-            steps: ["Use this as the final validation step of `engineering-delivery.playbook.md`; do not recommend merge before this review is complete", "Read Engineering AGENT and choose PR Reviewer or Test Engineer as needed", "Read PR context", "Load `.github/leanos/pr-validation-rules.md` and `knowledge/review-criteria.md`", "Use `skills/review-pr.skill.md` to check scope against issue, PRD and MVP", "Use `skills/follow-code-standards.skill.md` to check code quality", "Use `skills/review-data-change.skill.md` when data/API/persistence is involved", "Validate Product criteria and acceptance criteria", "Review Design criteria only when UX changed", "Review Security criteria only when data, auth, privacy, abuse or compliance is involved", "Review tests and manual validation", "List findings by severity", "Recommend merge, changes or blocked-by-context"],
-            outputs: ["Findings by severity", "Product alignment", "Code quality result", "Design review result or not applicable", "Security/Data review result or not applicable", "Test confidence", "Merge recommendation"],
+            inputs: ["PR description", "Linked issue", "Parent epic when available", "MVP scope", "PRD", "Acceptance criteria", "Changed files", "Tests or validation evidence", "Founder Testing Guide", "Review criteria"],
+            steps: ["Use this as the final validation step of `engineering-delivery.playbook.md`; do not recommend merge before this review is complete", "Read Engineering AGENT and choose PR Reviewer or Test Engineer as needed", "Read PR context", "Load `.github/leanos/pr-validation-rules.md` and `knowledge/review-criteria.md`", "Use `skills/review-pr.skill.md` to check scope against issue, PRD and MVP", "Use `skills/follow-code-standards.skill.md` to check code quality", "Use `skills/review-data-change.skill.md` when data/API/persistence is involved", "Validate Product criteria and acceptance criteria", "Review the Founder Testing Guide and confirm a non-technical founder can test the PR", "Review Design criteria only when UX changed", "Review Security criteria only when data, auth, privacy, abuse or compliance is involved", "Review tests and manual validation", "List findings by severity", "Recommend merge, changes or blocked-by-context"],
+            outputs: ["Findings by severity", "Product alignment", "Code quality result", "Founder acceptance result", "Design review result or not applicable", "Security/Data review result or not applicable", "Test confidence", "Merge recommendation"],
             filesToUpdate: ["Update `../knowledge/code-review-notes.md` or `../knowledge/pr-log.md` only when the user asks for persistent review notes."]
           }
         ],
         commonPaths: [
           "Branch request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/create-branch.skill.md` -> playbook `playbooks/branch-from-issue.playbook.md`.",
           "Component implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/implement-component.skill.md` -> playbook `playbooks/component-implementation.playbook.md`.",
-          "Implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> playbook `playbooks/engineering-delivery.playbook.md` -> sub-playbooks `playbooks/branch-from-issue.playbook.md`, conditional `playbooks/component-implementation.playbook.md`, `playbooks/issue-to-pr.playbook.md` and `playbooks/pr-validation.playbook.md`.",
+          "Implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> playbook `playbooks/engineering-delivery.playbook.md` -> sub-playbooks `playbooks/branch-from-issue.playbook.md`, conditional `playbooks/component-implementation.playbook.md`, `playbooks/prepare-pr.playbook.md` and `playbooks/pr-validation.playbook.md`.",
           "Data change request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` or `roles/pr-reviewer.role.md` -> skill `skills/review-data-change.skill.md` -> route Security when sensitive risk exists.",
           "Test request: area lead `AGENT.md` -> role `roles/test-engineer.role.md` -> skill `skills/write-tests.skill.md` -> playbook `playbooks/test-planning.playbook.md`.",
           "PR review request: area lead `AGENT.md` -> role `roles/pr-reviewer.role.md` -> skills `skills/review-pr.skill.md`, `skills/follow-code-standards.skill.md` and conditional `skills/review-data-change.skill.md` -> playbook `playbooks/pr-validation.playbook.md`."
@@ -4510,7 +4553,6 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "operations/product-ops/epics/",
           "operations/product-ops/knowledge/delivery-scope.md",
           "operations/product-ops/knowledge/issue-readiness.md",
-          "operations/product-ops/knowledge/delivery-context.md",
           "strategy/roadmap/knowledge/roadmap.md",
           "strategy/roadmap/knowledge/current-cycle.md"
         ],
@@ -4627,8 +4669,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         allowedUpdates: [
           "operations/product-ops/epics/<epic-slug>/README.md",
           "operations/product-ops/epics/<epic-slug>/<feature-slug>.md",
-          "operations/product-ops/knowledge/issue-readiness.md",
-          "operations/product-ops/knowledge/delivery-context.md"
+          "operations/product-ops/knowledge/issue-readiness.md"
         ],
         forbiddenUpdates: [
           "src/",
@@ -4723,7 +4764,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "operations/engineering/playbooks/engineering-delivery.playbook.md",
           "operations/engineering/playbooks/branch-from-issue.playbook.md through engineering-delivery",
           "operations/engineering/playbooks/component-implementation.playbook.md through engineering-delivery when a component spec is approved and needed",
-          "operations/engineering/playbooks/issue-to-pr.playbook.md through engineering-delivery",
+          "operations/engineering/playbooks/prepare-pr.playbook.md through engineering-delivery",
           "operations/engineering/playbooks/pr-validation.playbook.md through engineering-delivery"
         ],
         steps: [
@@ -4739,14 +4780,16 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "After Product Ops, Design, Security and DevOps readiness are ready or explicitly not applicable, route to `operations/engineering/AGENT.md` and load `operations/engineering/playbooks/engineering-delivery.playbook.md`",
           "Let `engineering-delivery.playbook.md` create the issue-linked branch, plan implementation, run component implementation when needed, execute tests, prepare PR and run PR validation",
           "Run tests or explain gaps",
+          "Prepare the Founder Testing Guide before asking the founder to review the PR",
           "Run PR validation",
-          "Prepare PR"
+          "Prepare PR and make clear that PR opened does not mean merge-ready until founder acceptance and PR validation are complete"
         ],
         confirmationGates: [
           "Ask before creating or updating local Feature files.",
           "Ask before creating or changing Design component specs.",
           "Ask before creating a branch.",
           "Ask before editing product code.",
+          "Ask before marking the PR ready for founder review when the Founder Testing Guide is incomplete.",
           "Ask before running external GitHub actions, opening a PR or changing remote state.",
           "Ask before installing dependencies, changing package manager files or adding tooling."
         ],
@@ -4791,6 +4834,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Component readiness decision before Engineering when UI components are affected.",
           "Branch name and implementation plan after confirmation.",
           "Code and test changes summary.",
+          "Founder Testing Guide with where to test, how to test and expected result.",
           "PR validation summary with risks, gaps and remaining checks.",
           "Founder-friendly next-step recommendation."
         ],
@@ -4808,9 +4852,131 @@ export const rootDepartments: RootDepartmentDefinition[] = [
       },
       {
         slug: "post-merge-continuation",
-        purpose: "Continue delivery after a founder confirms a merge.",
+        purpose: "Continue delivery after a founder confirms a merge without losing product, engineering, release or learning context.",
+        founderTriggers: [
+          "mergeado, vamos para a proxima",
+          "o PR foi mergeado",
+          "terminamos essa feature",
+          "o que fazemos depois do merge?",
+          "atualiza o contexto depois do merge",
+          "qual a proxima feature?"
+        ],
+        owner: {
+          department: "operations",
+          primaryArea: "product-ops",
+          supportingAreas: ["engineering"],
+          conditionalAreas: ["devops", "security", "growth/customer-experience", "strategy/roadmap"]
+        },
         requiredAreas: ["product-ops", "engineering"],
-        steps: ["Confirm merge evidence or founder confirmation", "Record relevant implementation notes", "Identify learning or roadmap impact if any", "Load the next issue", "Restart feature delivery"]
+        conditionalAreas: [
+          { area: "devops", when: "the merged Feature needs release notes, deployment, environment checks, rollback notes or observability follow-up" },
+          { area: "security", when: "the merged Feature touched auth, permissions, data exposure, payments, privacy, API boundaries or abuse risk" },
+          { area: "growth/customer-experience", when: "the merged Feature affects onboarding, activation, customer learning, support, launch notes or feedback collection" },
+          { area: "strategy/roadmap", when: "the merge changes roadmap priority, milestone status, delivery scope or learning that affects product direction" }
+        ],
+        loadFirst: [
+          "AGENT.md",
+          "operations/AGENT.md",
+          "operations/workflows/README.md",
+          "operations/workflows/post-merge-continuation.workflow.md",
+          "operations/product-ops/AGENT.md",
+          "operations/product-ops/knowledge/work-taxonomy.md",
+          "operations/product-ops/knowledge/issue-readiness.md",
+          "operations/product-ops/epics/README.md",
+          "operations/engineering/AGENT.md",
+          "operations/engineering/knowledge/pr-log.md",
+          "operations/engineering/knowledge/implementation-notes.md"
+        ],
+        navigationRoute: [
+          "AGENT.md",
+          "operations/AGENT.md",
+          "operations/workflows/post-merge-continuation.workflow.md",
+          "operations/product-ops/AGENT.md",
+          "operations/product-ops/roles/product-owner.role.md",
+          "operations/engineering/AGENT.md",
+          "operations/engineering/roles/pr-reviewer.role.md",
+          "operations/devops/AGENT.md when release, deployment or observability follow-up is needed",
+          "operations/security/AGENT.md when the merged Feature has security-sensitive impact",
+          "growth/AGENT.md when customer learning, support or launch feedback should be captured",
+          "strategy/AGENT.md when roadmap, milestone or delivery-scope decisions changed"
+        ],
+        steps: [
+          "Confirm the merged PR, local Feature or GitHub Feature issue. If the founder only says \"mergeado\", ask which PR or Feature before writing.",
+          "Map the merge back to the local Epic and Feature in `operations/product-ops/epics/` or to the confirmed GitHub Feature issue.",
+          "Summarize what shipped in founder-friendly language: user impact, technical scope, tests, risks and what did not ship.",
+          "Compare the merged work against the Feature acceptance criteria, PR validation result and Founder Testing Guide.",
+          "Propose the smallest local status/context updates before writing anything.",
+          "Ask whether release, deployment, environment or observability follow-up is needed. If yes, route DevOps through `operations/devops/AGENT.md` before any deploy action.",
+          "Ask whether the merge touched auth, permissions, data, privacy, payments, APIs or abuse risk. If yes, route Security through `operations/security/AGENT.md` before declaring the Feature fully safe.",
+          "Ask whether customer learning, support notes or launch feedback should be captured. If yes, bridge to Growth after the Operations update.",
+          "Identify remaining Features in the same Epic and the next likely route, but do not choose priority automatically.",
+          "Offer the founder one clear next step: release/deploy follow-up, next Feature in the Epic, roadmap review or customer learning loop."
+        ],
+        confirmationGates: [
+          "Ask before updating local Epic or Feature status.",
+          "Ask before updating Product Ops Epic/Feature status, Engineering PR log or implementation notes.",
+          "Ask before routing into DevOps, Security, Growth or Strategy follow-up.",
+          "Ask before starting the next Feature delivery cycle.",
+          "Ask before any GitHub write, deployment, release action, branch, code change or PR action."
+        ],
+        allowedUpdates: [
+          "operations/product-ops/epics/<epic-slug>/<feature-slug>.md",
+          "operations/product-ops/knowledge/issue-readiness.md",
+          "operations/engineering/knowledge/pr-log.md",
+          "operations/engineering/knowledge/implementation-notes.md",
+          "operations/devops/knowledge/release-notes.md only after DevOps routing and founder confirmation",
+          "growth/customer-experience/knowledge/customer-feedback.md only after Growth routing and founder confirmation",
+          "strategy/roadmap/knowledge/current-cycle.md only after Strategy/Roadmap routing and founder confirmation"
+        ],
+        forbiddenUpdates: [
+          "source code, components, tests or product files",
+          "branches, commits, PR creation, PR merge or deploy actions",
+          ".github/ or GitHub remote state without an explicit GitHub sync/release step",
+          "roadmap priority or delivery-scope changes without Strategy/Roadmap handoff",
+          "parent Epic completion when only one Feature was merged",
+          "new Features, Epics or roadmap items without routing to the proper workflow",
+          "roles/, skills/, playbooks/, workflows/, commands/ or ai-standard/"
+        ],
+        externalCapabilities: [
+          "GitHub may be read only when the founder provides or confirms a PR, issue or repository reference.",
+          "Do not write to GitHub from this workflow unless a future GitHub sync/release workflow is explicitly confirmed.",
+          "Do not deploy, merge, create branches, create PRs or run release automation from this workflow.",
+          "If external evidence is unavailable, rely on the founder confirmation and clearly mark it as founder-confirmed."
+        ],
+        stopConditions: [
+          "The merged PR, Feature or issue cannot be identified.",
+          "The founder has not confirmed that merge happened.",
+          "Local Feature state and GitHub state conflict and cannot be reconciled safely.",
+          "PR validation was blocked, tests failed or founder testing was not accepted.",
+          "The request shifts into new implementation, deploy, roadmap reprioritization or GitHub write without confirmation.",
+          "A required route file is missing."
+        ],
+        expectedOutput: [
+          "Founder-friendly shipped summary.",
+          "Feature/Epic state update proposal.",
+          "Engineering PR log or implementation note proposal.",
+          "Release, DevOps, Security, Growth and Strategy follow-up applicability with reasons.",
+          "Remaining Epic progress summary.",
+          "One clear next-step bridge."
+        ],
+        continuationBridge: {
+          immediate: "Essa feature foi mergeada.\nQuer que eu prepare o proximo passo: release/deploy, proxima feature do mesmo Epic, revisao de prioridade ou aprendizado com usuarios?",
+          laterTriggers: [
+            "mergeado, vamos para a proxima",
+            "o PR foi mergeado",
+            "qual a proxima feature?",
+            "atualiza depois do merge",
+            "terminamos essa feature"
+          ],
+          nextRoute: "feature-to-delivery-cycle",
+          rules: [
+            "Do not automatically start the next Feature.",
+            "If release or deploy is chosen, route to DevOps first.",
+            "If roadmap priority changed, route to Strategy/Roadmap first.",
+            "If customer learning is chosen, route to Growth/Customer Experience first.",
+            "If the founder chooses the next Feature, restart from Root `AGENT.md` and route to `feature-to-delivery-cycle`."
+          ]
+        }
       }
     ]
   },

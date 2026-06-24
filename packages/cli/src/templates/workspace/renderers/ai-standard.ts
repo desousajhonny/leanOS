@@ -94,7 +94,7 @@ export function aiStandardFiles(): FileEntry[] {
       title: "Execution Examples",
       purpose: "Examples of roles, skills, playbooks and workflows.",
       use: "Use when reviewing area-level execution assets or department/area workflows.",
-      files: ["example-role-senior-developer.md", "example-skill-check-coherence.md", "example-playbook-issue-to-pr.md", "example-workflow-feature-to-delivery-cycle.md"]
+      files: ["example-role-senior-developer.md", "example-skill-check-coherence.md", "example-playbook-prepare-pr.md", "example-workflow-feature-to-delivery-cycle.md"]
     },
     {
       key: "commands",
@@ -300,7 +300,7 @@ function exampleContent(_groupKey: string, fileName: string): string {
   const product = getArea("strategy.product");
   const seniorDeveloper = engineering.roles.find((role) => role.slug === "senior-developer") ?? engineering.roles[0];
   const checkCoherence = product.skills.find((skill) => skill.slug === "check-coherence") ?? product.skills[0];
-  const issueToPr = engineering.playbooks.find((playbook) => playbook.slug === "issue-to-pr") ?? engineering.playbooks[0];
+  const preparePr = engineering.playbooks.find((playbook) => playbook.slug === "prepare-pr") ?? engineering.playbooks[0];
   const examples: Record<string, string> = {
     "example-root-agent.md": rootAgent(getAllAreas(), rootDepartments),
     "example-area-agent.md": exampleAreaAgent(),
@@ -308,7 +308,7 @@ function exampleContent(_groupKey: string, fileName: string): string {
     "example-area-readme.md": exampleAreaReadme(),
     "example-role-senior-developer.md": roleFile(engineering, seniorDeveloper),
     "example-skill-check-coherence.md": skillFile(product, checkCoherence),
-    "example-playbook-issue-to-pr.md": playbookFile(engineering, issueToPr),
+    "example-playbook-prepare-pr.md": playbookFile(engineering, preparePr),
     "example-workflow-feature-to-delivery-cycle.md": exampleWorkflowFeatureToDeliveryCycle(),
     "example-command-define-design.md": exampleCommandDefineDesign(),
     "example-github-epic.md": exampleGithubEpic(),
@@ -632,7 +632,7 @@ Epic #123
 - Area: Engineering
 - Role: Senior Developer
 - Skills: plan-implementation, create-pr
-- Playbook: issue-to-pr
+- Playbook: prepare-pr
 
 ## Product / Delivery Scope Alignment
 
@@ -653,6 +653,38 @@ Avoids logging intake field values.
 
 - [x] Form validation tests
 - [x] Manual keyboard navigation check
+
+## Founder Testing Guide
+
+### What Changed
+
+Patients can now complete the first intake form flow, review answers and submit the intake.
+
+### Where to Test
+
+- Preview URL: use the PR preview URL when available
+- Local route or screen: /intake
+- Test account or data: use a test patient profile only
+
+### How to Test
+
+1. Open the intake route.
+2. Complete the required questions.
+3. Try submitting with one required answer missing.
+4. Review the answers.
+5. Submit the form.
+
+### Expected Result
+
+The founder should see validation for missing required answers, a review state and a final submitted state without exposing intake data in logs.
+
+### Out of Scope
+
+Staff review dashboard and diagnosis are not included in this PR.
+
+### Known Risks or Limits
+
+Question order still needs usability validation.
 
 ## Risks
 
@@ -3215,6 +3247,38 @@ State "Not applicable" when no security-sensitive surface exists.
 - [ ] Automated tests run or updated
 - [ ] Manual validation completed or explained
 
+## Founder Testing Guide
+
+Explain how a non-technical founder can test this PR before merge.
+
+### What Changed
+
+Plain-language summary of the user-facing or business behavior delivered.
+
+### Where to Test
+
+- Preview URL:
+- Local route or screen:
+- Test account or data:
+
+### How to Test
+
+1. Open...
+2. Do...
+3. Confirm...
+
+### Expected Result
+
+What the founder should see when the PR works.
+
+### Out of Scope
+
+What this PR intentionally does not cover.
+
+### Known Risks or Limits
+
+Anything the founder should know before approving.
+
 ## Risks
 
 - Scope risk:
@@ -3228,6 +3292,7 @@ State "Not applicable" when no security-sensitive surface exists.
 - [ ] Branch follows LeanOS naming
 - [ ] Acceptance criteria addressed
 - [ ] Tests run or explained
+- [ ] Founder Testing Guide is clear enough for a non-technical founder
 - [ ] Design criteria addressed or not applicable
 - [ ] Security criteria addressed or not applicable
 - [ ] No unrelated scope added

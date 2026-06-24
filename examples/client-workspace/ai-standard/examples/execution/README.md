@@ -12,7 +12,7 @@ Use when reviewing area-level execution assets or department/area workflows.
 
 - `example-role-senior-developer.md`
 - `example-skill-check-coherence.md`
-- `example-playbook-issue-to-pr.md`
+- `example-playbook-prepare-pr.md`
 - `example-workflow-feature-to-delivery-cycle.md`
 
 ## Related Folders

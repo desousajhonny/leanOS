@@ -17,7 +17,6 @@ Turn Strategy and Roadmap into delivery scope, acceptance criteria and implement
 - `knowledge/overview.md`
 - `knowledge/work-taxonomy.md`
 - `knowledge/delivery-scope.md`
-- `knowledge/delivery-context.md`
 - `knowledge/issue-readiness.md`
 - `knowledge/ready-to-develop.md`
 - `knowledge/technical-decisions.md`

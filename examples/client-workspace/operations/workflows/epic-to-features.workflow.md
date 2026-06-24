@@ -90,7 +90,6 @@ All required areas are active in this department.
 - `operations/product-ops/epics/<epic-slug>/README.md`
 - `operations/product-ops/epics/<epic-slug>/<feature-slug>.md`
 - `operations/product-ops/knowledge/issue-readiness.md`
-- `operations/product-ops/knowledge/delivery-context.md`
 
 ## Forbidden Updates
 

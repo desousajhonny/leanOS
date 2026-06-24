@@ -18,6 +18,7 @@ export function commandFiles(activeAreas: AreaDefinition[]): FileEntry[] {
 
 function commandContent(command: CommandDefinition, activeAreas: AreaDefinition[], activeKeys: Subarea[]): string {
   if (command.slug === "start-leanos") return startCommand(activeAreas);
+  if (command.slug === "status-leanos") return statusLeanOSCommand(command, activeKeys);
   if (command.assetCreation) return assetCreationCommand(command, activeAreas);
   if (command.slug === "define-design") return defineDesignCommand(command, activeKeys);
   if (command.slug === "create-issues") return createIssuesCommand(command, activeKeys);
@@ -28,6 +29,90 @@ function commandContent(command: CommandDefinition, activeAreas: AreaDefinition[
   if (command.slug === "review-pr") return reviewPrCommand(command, activeKeys);
 
   return routingCommand(command, activeKeys);
+}
+
+function statusLeanOSCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
+  return `# ${formatCommandInvocation(command.slug)}
+
+## Purpose
+
+${command.purpose}
+
+Use this command as the explicit LeanOS status and readiness diagnosis entrypoint.
+
+It must load the \`where-we-are\` protocol before recommending implementation, roadmap changes, GitHub work or the next workflow.
+
+## Load First
+
+Read:
+
+- \`../../AGENT.md\`
+- \`../agent/protocols/where-we-are.md\`
+- \`../context/workspace-summary.md\`
+- \`../context/current-focus.md\`
+- \`../context/next-actions.md\`
+- \`../index/workflows.yaml\`
+- \`../index/routing-map.yaml\`
+- \`../../leanos.yaml\`
+
+Then follow the reading order inside:
+
+- \`../agent/protocols/where-we-are.md\`
+
+## Process
+
+1. Treat \`/status-leanos\` as a request to run the \`where-we-are\` protocol.
+2. Do not route directly to a department, role, skill or playbook before reading the protocol.
+3. Use the protocol to classify the current moment of the product/workspace.
+4. Inspect only the smallest set of files needed to answer the founder.
+5. Explain what exists, what is missing, the risk of skipping steps and the next safe LeanOS route.
+6. If the founder asks to continue, declare the next route before loading its workflow or command.
+
+## Allowed Updates
+
+None by default.
+
+\`/status-leanos\` is diagnostic. It may propose updates, but it must not write files unless the founder explicitly asks to update something after the diagnosis.
+
+## Forbidden Updates
+
+During \`/status-leanos\`, do not:
+
+- write product, strategy, roadmap, Epic, Feature, Design, Engineering, Growth or framework files;
+- create branches, commits, PRs, issues or GitHub payloads;
+- call GitHub, deployment or external APIs;
+- mark work as ready to develop without checking \`where-we-are.md\` and \`ready-to-develop.md\`;
+- invent completed work from empty or placeholder files.
+
+## Expected Output
+
+Use founder-friendly language first:
+
+\`\`\`text
+Onde estamos:
+<current product/workspace moment>
+
+O que ja temos:
+- <confirmed thing>
+
+O que falta:
+- <missing prerequisite>
+
+Risco de pular etapa:
+<short explanation>
+
+Proximo passo recomendado:
+<route or workflow>
+
+Quer seguir por esse caminho?
+\`\`\`
+
+After the founder-friendly answer, optionally list the files inspected.
+
+## Active Areas
+
+${activeSubareas.map((area) => `- ${area}`).join("\n")}
+`;
 }
 
 function defineDesignCommand(command: CommandDefinition, activeSubareas: Subarea[]): string {
@@ -602,7 +687,7 @@ Read:
 - \`../../operations/engineering/skills/plan-implementation.skill.md\`
 - \`../../operations/engineering/skills/create-branch.skill.md\`
 - \`../../operations/engineering/skills/follow-code-standards.skill.md\`
-- \`../../operations/engineering/playbooks/issue-to-pr.playbook.md\`
+- \`../../operations/engineering/playbooks/prepare-pr.playbook.md\`
 - \`../../ai-standard/templates/github/delivery-readiness-matrix-template.md\`
 - \`../../.github/leanos/branch-rules.md\`
 
@@ -701,7 +786,7 @@ Read:
 - \`../../operations/engineering/README.md\`
 - \`../../operations/engineering/knowledge/review-criteria.md\`
 - \`../../operations/engineering/skills/create-pr.skill.md\`
-- \`../../operations/engineering/playbooks/issue-to-pr.playbook.md\`
+- \`../../operations/engineering/playbooks/prepare-pr.playbook.md\`
 - \`../../ai-standard/templates/github/pull-request-template.md\`
 - \`../../.github/PULL_REQUEST_TEMPLATE.md\`
 - \`../../.github/leanos/pr-validation-rules.md\`
@@ -717,7 +802,8 @@ If \`operations.engineering\` is not active, do not load missing paths. Ask whet
 5. Include Design notes only when user-facing UX changed.
 6. Include Security notes only when data, auth, privacy, abuse or compliance is involved.
 7. Include tests run or explain why they were not run.
-8. Produce a PR body draft first and ask for confirmation before any remote PR creation.
+8. Include a Founder Testing Guide with where to test, how to test and expected result.
+9. Produce a PR body draft first and ask for confirmation before any remote PR creation.
 
 ## Output
 
@@ -726,6 +812,7 @@ If \`operations.engineering\` is not active, do not load missing paths. Ask whet
 - Linked issue and parent epic
 - Checklist state
 - Tests
+- Founder Testing Guide
 - Risks
 - Confirmation question before remote PR creation
 
@@ -774,14 +861,16 @@ If \`operations.engineering\` is not active, do not load missing paths. Ask whet
 5. Review Product alignment.
 6. Review Design only when UX changed.
 7. Review Security only when data, auth, permissions, privacy, abuse or compliance is involved.
-8. List findings first, ordered by severity.
-9. Recommend approve, request changes or blocked by missing context.
+8. Validate that the Founder Testing Guide lets a non-technical founder test the PR.
+9. List findings first, ordered by severity.
+10. Recommend approve, request changes or blocked by missing context.
 
 ## Output
 
 - Findings by severity
 - File or area references
 - Product alignment result
+- Founder acceptance result
 - Design result or "not applicable"
 - Security result or "not applicable"
 - Test confidence

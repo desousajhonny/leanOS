@@ -21,7 +21,7 @@ Read:
 - `../../operations/engineering/skills/plan-implementation.skill.md`
 - `../../operations/engineering/skills/create-branch.skill.md`
 - `../../operations/engineering/skills/follow-code-standards.skill.md`
-- `../../operations/engineering/playbooks/issue-to-pr.playbook.md`
+- `../../operations/engineering/playbooks/prepare-pr.playbook.md`
 - `../../ai-standard/templates/github/delivery-readiness-matrix-template.md`
 - `../../.github/leanos/branch-rules.md`
 

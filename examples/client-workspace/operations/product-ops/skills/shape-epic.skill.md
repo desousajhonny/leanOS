@@ -64,7 +64,7 @@ Turn a roadmap epic into an implementation-ready scope boundary before features 
 
 ## Files to Update
 
-- Update `../knowledge/issue-readiness.md` or `../knowledge/delivery-context.md` only after explicit confirmation.
+- Update `../knowledge/issue-readiness.md` only after explicit confirmation.
 - Do not update GitHub directly from the model.
 
 ## Red Lines

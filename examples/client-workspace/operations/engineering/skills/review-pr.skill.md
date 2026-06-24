@@ -33,15 +33,17 @@ Review PR changes for correctness, scope and LeanOS coherence.
 1. Check scope against issue and PRD
 2. Review code standards
 3. Review tests
-4. Review Design applicability
-5. Review Security/Data applicability
-6. List findings by severity
-7. Recommend merge, changes or blocked
+4. Review Founder Testing Guide usability
+5. Review Design applicability
+6. Review Security/Data applicability
+7. List findings by severity
+8. Recommend merge, changes or blocked
 
 ## Checks
 
 - Findings are actionable
 - Severity is clear
+- Founder can test the PR without reading code
 - Design/Security/Data are not forced when not applicable
 - Merge recommendation is justified
 
@@ -50,6 +52,7 @@ Review PR changes for correctness, scope and LeanOS coherence.
 - Findings by severity
 - Scope result
 - Code result
+- Founder acceptance result
 - Test result
 - Design result or not applicable
 - Security/Data result or not applicable

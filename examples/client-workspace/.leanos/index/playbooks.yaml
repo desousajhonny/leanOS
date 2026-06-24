@@ -50,9 +50,9 @@ playbooks:
   - key: component-implementation
     area: operations.engineering
     path: ../../operations/engineering/playbooks/component-implementation.playbook.md
-  - key: issue-to-pr
+  - key: prepare-pr
     area: operations.engineering
-    path: ../../operations/engineering/playbooks/issue-to-pr.playbook.md
+    path: ../../operations/engineering/playbooks/prepare-pr.playbook.md
   - key: test-planning
     area: operations.engineering
     path: ../../operations/engineering/playbooks/test-planning.playbook.md

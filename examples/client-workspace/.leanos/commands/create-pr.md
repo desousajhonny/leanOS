@@ -15,7 +15,7 @@ Read:
 - `../../operations/engineering/README.md`
 - `../../operations/engineering/knowledge/review-criteria.md`
 - `../../operations/engineering/skills/create-pr.skill.md`
-- `../../operations/engineering/playbooks/issue-to-pr.playbook.md`
+- `../../operations/engineering/playbooks/prepare-pr.playbook.md`
 - `../../ai-standard/templates/github/pull-request-template.md`
 - `../../.github/PULL_REQUEST_TEMPLATE.md`
 - `../../.github/leanos/pr-validation-rules.md`
@@ -31,7 +31,8 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 5. Include Design notes only when user-facing UX changed.
 6. Include Security notes only when data, auth, privacy, abuse or compliance is involved.
 7. Include tests run or explain why they were not run.
-8. Produce a PR body draft first and ask for confirmation before any remote PR creation.
+8. Include a Founder Testing Guide with where to test, how to test and expected result.
+9. Produce a PR body draft first and ask for confirmation before any remote PR creation.
 
 ## Output
 
@@ -40,6 +41,7 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 - Linked issue and parent epic
 - Checklist state
 - Tests
+- Founder Testing Guide
 - Risks
 - Confirmation question before remote PR creation
 

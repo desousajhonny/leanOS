@@ -84,7 +84,7 @@ export function getNextActions(answers: WorkspaceAnswers, activeAreas: AreaDefin
         return activeKeys.has("operations.design") && activeKeys.has("strategy.product") && activeKeys.has("operations.product-ops");
       }
 
-      return ["status", "define-icp", "define-mvp", "check-coherence", "workon-issue"].includes(command.slug);
+      return ["status-leanos", "define-icp", "define-mvp", "check-coherence", "workon-issue"].includes(command.slug);
     })
     .slice(0, 5);
 
@@ -96,10 +96,10 @@ export function getNextActions(answers: WorkspaceAnswers, activeAreas: AreaDefin
 Command:
 
 \`\`\`text
-/status
+/status-leanos
 \`\`\`
 
-No area-specific command is active yet. Use the active area READMEs and ask before activating missing areas.
+No area-specific command is active yet. Use \`/status-leanos\` to run the LeanOS status protocol before activating missing areas.
 `;
   }
 

@@ -32,14 +32,16 @@ If `operations.engineering` is not active, do not load missing paths. Ask whethe
 5. Review Product alignment.
 6. Review Design only when UX changed.
 7. Review Security only when data, auth, permissions, privacy, abuse or compliance is involved.
-8. List findings first, ordered by severity.
-9. Recommend approve, request changes or blocked by missing context.
+8. Validate that the Founder Testing Guide lets a non-technical founder test the PR.
+9. List findings first, ordered by severity.
+10. Recommend approve, request changes or blocked by missing context.
 
 ## Output
 
 - Findings by severity
 - File or area references
 - Product alignment result
+- Founder acceptance result
 - Design result or "not applicable"
 - Security result or "not applicable"
 - Test confidence

@@ -45,7 +45,7 @@ Orchestrate the internal Engineering path from a ready Feature to branch, implem
 6. Use `skills/follow-code-standards.skill.md` during implementation to preserve modularity, local patterns and no-hardcoding rules
 7. Use `skills/review-data-change.skill.md` when data, API, persistence, auth, permissions or privacy are involved
 8. Use `skills/write-tests.skill.md` to add or update tests, or explain the test gap clearly
-9. Use `playbooks/issue-to-pr.playbook.md` to prepare PR scope, test notes, risks and screenshots or UX notes when applicable
+9. Use `playbooks/prepare-pr.playbook.md` to prepare PR scope, test notes, risks, Founder Testing Guide and screenshots or UX notes when applicable
 10. Use `playbooks/pr-validation.playbook.md` before recommending merge readiness
 
 ## Gates
@@ -53,6 +53,7 @@ Orchestrate the internal Engineering path from a ready Feature to branch, implem
 - Do not edit code before an issue-linked branch is created or confirmed.
 - Do not implement a new user-facing component without an approved Design component spec when component readiness is applicable.
 - Do not open or prepare a PR without tests, manual validation notes or a clear test-gap explanation.
+- Do not mark a PR ready for founder review without a Founder Testing Guide that explains where and how to test the change.
 - Do not recommend merge before `playbooks/pr-validation.playbook.md` is complete.
 - Do not expand beyond the confirmed Feature scope without founder confirmation.
 
@@ -70,6 +71,7 @@ Orchestrate the internal Engineering path from a ready Feature to branch, implem
 - Component implementation summary when applicable
 - Tests run or test-gap explanation
 - PR draft summary
+- Founder Testing Guide
 - PR validation result
 - Remaining risks and next step
 

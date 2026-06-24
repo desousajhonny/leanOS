@@ -311,7 +311,7 @@ Files that can be created or updated:
 - `operations/product-ops/epics/<epic-slug>/README.md`
 - `operations/product-ops/epics/<epic-slug>/<feature-slug>.md`
 - `operations/product-ops/knowledge/issue-readiness.md`
-- `operations/product-ops/knowledge/delivery-context.md`
+- `operations/product-ops/knowledge/issue-readiness.md`
 
 ## Forbidden Actions
 

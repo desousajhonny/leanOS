@@ -39,7 +39,7 @@ Turn product strategy into executable MVP scope.
 ## Files to Update
 
 - Update `../mvp/scope.md`, `../mvp/prd.md`, `../mvp/user-stories.md`, `../mvp/acceptance-criteria.md` and `../mvp/non-goals.md` only after explicit confirmation.
-- Update `../knowledge/overview.md` or `../knowledge/delivery-context.md` when delivery context changes.
+- Update `../knowledge/overview.md` when Product Ops summary changes.
 
 ## Navigation
 
