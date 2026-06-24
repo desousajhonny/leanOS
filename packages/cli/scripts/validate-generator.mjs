@@ -2452,6 +2452,7 @@ async function assertEngineeringAreaPattern(rootDir) {
   const implementComponent = await readFile(join(rootDir, "operations", "engineering", "skills", "implement-component.skill.md"), "utf8");
   const reviewDataChange = await readFile(join(rootDir, "operations", "engineering", "skills", "review-data-change.skill.md"), "utf8");
   const engineeringDelivery = await readFile(join(rootDir, "operations", "engineering", "playbooks", "engineering-delivery.playbook.md"), "utf8");
+  const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-from-issue.playbook.md"), "utf8");
   const componentImplementation = await readFile(join(rootDir, "operations", "engineering", "playbooks", "component-implementation.playbook.md"), "utf8");
   const issueToPr = await readFile(join(rootDir, "operations", "engineering", "playbooks", "issue-to-pr.playbook.md"), "utf8");
   const prValidation = await readFile(join(rootDir, "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
@@ -2533,14 +2534,18 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(engineeringDelivery.includes("playbooks/pr-validation.playbook.md"), "Engineering delivery playbook should end with PR validation");
   assert(engineeringDelivery.includes("Stop Conditions"), "Engineering delivery playbook should include stop conditions");
   assert(componentImplementation.includes("Approved Design component spec"), "Component implementation playbook should require approved Design spec");
+  assert(branchPlaybook.includes("branch step of `engineering-delivery.playbook.md`"), "Branch playbook should identify itself as engineering-delivery branch step");
   assert(componentImplementation.includes("../../design/knowledge/component-inventory.md"), "Component implementation playbook should read component inventory");
+  assert(componentImplementation.includes("component step of `engineering-delivery.playbook.md`"), "Component implementation playbook should identify itself as engineering-delivery component step");
   assert(componentImplementation.includes("Implement the reusable component before the screen or Feature"), "Component implementation playbook should implement component before dependent Feature");
   assert(componentImplementation.includes("skills/implement-component.skill.md"), "Component implementation playbook should use implement-component skill");
   assert(reviewDataChange.includes("No destructive change without confirmation"), "Data review skill should block destructive changes");
   assert(issueToPr.includes("skills/follow-code-standards.skill.md"), "Issue-to-PR playbook should use code standards skill");
+  assert(issueToPr.includes("PR preparation step of `engineering-delivery.playbook.md`"), "Issue-to-PR playbook should identify itself as engineering-delivery PR preparation step");
   assert(issueToPr.includes("playbooks/component-implementation.playbook.md"), "Issue-to-PR playbook should run component implementation when needed");
   assert(issueToPr.includes("skills/review-data-change.skill.md"), "Issue-to-PR playbook should use data review when applicable");
   assert(prValidation.includes("knowledge/review-criteria.md"), "PR validation should load review criteria");
+  assert(prValidation.includes("final validation step of `engineering-delivery.playbook.md`"), "PR validation playbook should identify itself as engineering-delivery final validation step");
   assert(prValidation.includes("Security/Data review result or not applicable"), "PR validation should classify Security/Data result");
   assert(workonIssueCommand.includes("../../operations/engineering/AGENT.md"), "Workon issue command should load Engineering AGENT");
   assert(workonIssueCommand.includes("../../operations/engineering/knowledge/code-standards.md"), "Workon issue command should load code standards");

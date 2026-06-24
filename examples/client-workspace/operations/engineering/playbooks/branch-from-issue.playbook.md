@@ -15,11 +15,12 @@ Create a safe branch plan before implementation starts.
 
 ## Process
 
-1. Read the issue context and title
-2. Load `.github/leanos/branch-rules.md`
-3. Use `skills/create-branch.skill.md` to generate a branch name using the required issue format
-4. Check for sensitive words or unnecessary scope
-5. Ask before using an existing branch or creating a new one
+1. Use this as the branch step of `engineering-delivery.playbook.md`; return to engineering-delivery after branch status is clear
+2. Read the issue context and title
+3. Load `.github/leanos/branch-rules.md`
+4. Use `skills/create-branch.skill.md` to generate a branch name using the required issue format
+5. Check for sensitive words or unnecessary scope
+6. Ask before using an existing branch or creating a new one
 
 ## Output
 

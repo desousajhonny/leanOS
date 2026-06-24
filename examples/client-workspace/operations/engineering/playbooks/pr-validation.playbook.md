@@ -18,18 +18,19 @@ Validate implementation before merge.
 
 ## Process
 
-1. Read Engineering AGENT and choose PR Reviewer or Test Engineer as needed
-2. Read PR context
-3. Load `.github/leanos/pr-validation-rules.md` and `knowledge/review-criteria.md`
-4. Use `skills/review-pr.skill.md` to check scope against issue, PRD and MVP
-5. Use `skills/follow-code-standards.skill.md` to check code quality
-6. Use `skills/review-data-change.skill.md` when data/API/persistence is involved
-7. Validate Product criteria and acceptance criteria
-8. Review Design criteria only when UX changed
-9. Review Security criteria only when data, auth, privacy, abuse or compliance is involved
-10. Review tests and manual validation
-11. List findings by severity
-12. Recommend merge, changes or blocked-by-context
+1. Use this as the final validation step of `engineering-delivery.playbook.md`; do not recommend merge before this review is complete
+2. Read Engineering AGENT and choose PR Reviewer or Test Engineer as needed
+3. Read PR context
+4. Load `.github/leanos/pr-validation-rules.md` and `knowledge/review-criteria.md`
+5. Use `skills/review-pr.skill.md` to check scope against issue, PRD and MVP
+6. Use `skills/follow-code-standards.skill.md` to check code quality
+7. Use `skills/review-data-change.skill.md` when data/API/persistence is involved
+8. Validate Product criteria and acceptance criteria
+9. Review Design criteria only when UX changed
+10. Review Security criteria only when data, auth, privacy, abuse or compliance is involved
+11. Review tests and manual validation
+12. List findings by severity
+13. Recommend merge, changes or blocked-by-context
 
 ## Output
 
