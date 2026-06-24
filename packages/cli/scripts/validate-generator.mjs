@@ -1500,6 +1500,13 @@ async function assertGitHubReadiness(rootDir) {
   assert(githubSyncCommand.includes("operations/product-ops/epics/"), "GitHub sync command should read local Epics and Features");
   assert(githubSyncCommand.includes(".github/leanos/work-mapping.md"), "GitHub sync command should load work mapping");
   assert(githubSyncCommand.includes(".github/leanos/sync-state.yaml"), "GitHub sync command should compare sync state");
+  assert(githubSyncCommand.includes("## Phase 1: GitHub Readiness Check"), "GitHub sync command should start with readiness check");
+  assert(githubSyncCommand.includes("## Phase 2: Setup Fallback"), "GitHub sync command should guide setup when readiness fails");
+  assert(githubSyncCommand.includes("## Phase 3: Dry-Run Sync Process"), "GitHub sync command should separate dry-run sync from readiness");
+  assert(githubSyncCommand.includes("## Phase 5: Capability Handoff"), "GitHub sync command should hand off remote writes to a future capability");
+  assert(githubSyncCommand.includes("gh auth status"), "GitHub sync command should mention optional GitHub CLI auth checks");
+  assert(githubSyncCommand.includes("Never ask the founder to paste a token into chat"), "GitHub sync command should protect token handling");
+  assert(githubSyncCommand.includes("assume GitHub is ready before Phase 1 passes"), "GitHub sync command should not assume GitHub is ready");
   assert(githubSyncCommand.includes("dry-run summary"), "GitHub sync command should prepare a dry-run");
   assert(githubSyncCommand.includes("Do not call GitHub API directly from the model"), "GitHub sync command should block direct model API writes");
   assert(githubSyncCommand.includes("Feature Tasks as checklists"), "GitHub sync command should keep tasks as feature checklists by default");
