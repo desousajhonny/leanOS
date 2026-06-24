@@ -6,7 +6,7 @@ Durable operational context produced by Product Ops.
 
 ## When to Use
 
-Use when turning strategy and roadmap into delivery scope, issue readiness and delivery boundaries.
+Use when turning strategy and roadmap into MVP decisions, delivery scope, issue readiness and delivery boundaries.
 
 ## Source of Truth
 
@@ -18,6 +18,7 @@ Use when turning strategy and roadmap into delivery scope, issue readiness and d
 - `work-taxonomy.md`
 - `delivery-scope.md`
 - `issue-readiness.md`
+- `mvp-decision-gate.md`
 - `ready-to-develop.md`
 - `technical-decisions.md`
 

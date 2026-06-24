@@ -20,12 +20,12 @@ Command:
 /define icp
 ```
 
-## 3. Define Mvp
+## 3. Shape Mvp
 
 Command:
 
 ```text
-/define mvp
+/shape-mvp
 ```
 
 ## 4. Define Design

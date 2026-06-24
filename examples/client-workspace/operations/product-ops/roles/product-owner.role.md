@@ -19,6 +19,7 @@ Read:
 - `../knowledge/work-taxonomy.md`
 - `../knowledge/delivery-scope.md`
 - `../knowledge/issue-readiness.md`
+- `../knowledge/mvp-decision-gate.md`
 - `../knowledge/ready-to-develop.md`
 - `../mvp/scope.md`
 - `../mvp/prd.md`

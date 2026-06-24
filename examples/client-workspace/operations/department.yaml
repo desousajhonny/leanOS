@@ -19,6 +19,8 @@ department:
       agent: security/AGENT.md
       readme: security/README.md
   workflows:
+    - key: define-mvp
+      path: workflows/define-mvp.workflow.md
     - key: roadmap-item-to-epic
       path: workflows/roadmap-item-to-epic.workflow.md
     - key: epic-to-features

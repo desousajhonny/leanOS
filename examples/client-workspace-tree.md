@@ -57,10 +57,10 @@ client-workspace/
 |   |   |-- create-skill.md
 |   |   |-- define-design.md
 |   |   |-- define-icp.md
-|   |   |-- define-mvp.md
 |   |   |-- github-sync.md
 |   |   |-- README.md
 |   |   |-- review-pr.md
+|   |   |-- shape-mvp.md
 |   |   |-- start-leanos.md
 |   |   |-- status-leanos.md
 |   |   `-- workon-issue.md
@@ -373,6 +373,7 @@ client-workspace/
 |   |   |-- knowledge/
 |   |   |   |-- delivery-scope.md
 |   |   |   |-- issue-readiness.md
+|   |   |   |-- mvp-decision-gate.md
 |   |   |   |-- overview.md
 |   |   |   |-- README.md
 |   |   |   |-- ready-to-develop.md
@@ -457,6 +458,7 @@ client-workspace/
 |   |   |-- area.yaml
 |   |   `-- README.md
 |   |-- workflows/
+|   |   |-- define-mvp.workflow.md
 |   |   |-- epic-to-features.workflow.md
 |   |   |-- feature-to-delivery-cycle.workflow.md
 |   |   |-- post-merge-continuation.workflow.md

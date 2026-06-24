@@ -270,6 +270,7 @@ workflows:
     - new-idea-intake
     - idea-to-roadmap
     - roadmap-to-github-project
+    - define-mvp
     - roadmap-item-to-epic
     - epic-to-features
     - feature-to-delivery-cycle
@@ -284,6 +285,8 @@ workflows:
       - key: roadmap-to-github-project
         path: strategy/workflows/roadmap-to-github-project.workflow.md
     operations:
+      - key: define-mvp
+        path: operations/workflows/define-mvp.workflow.md
       - key: roadmap-item-to-epic
         path: operations/workflows/roadmap-item-to-epic.workflow.md
       - key: epic-to-features

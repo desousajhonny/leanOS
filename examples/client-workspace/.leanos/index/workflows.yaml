@@ -11,6 +11,10 @@ workflows:
     department: strategy
     path: ../../strategy/workflows/roadmap-to-github-project.workflow.md
     active: true
+  - key: define-mvp
+    department: operations
+    path: ../../operations/workflows/define-mvp.workflow.md
+    active: true
   - key: roadmap-item-to-epic
     department: operations
     path: ../../operations/workflows/roadmap-item-to-epic.workflow.md

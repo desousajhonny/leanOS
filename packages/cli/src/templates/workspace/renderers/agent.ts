@@ -66,7 +66,7 @@ If a natural-language request clearly matches an existing LeanOS command, load t
 Examples:
 
 - "help me define the ICP" -> \`.leanos/commands/define-icp.md\`
-- "define the MVP" -> \`.leanos/commands/define-mvp.md\`
+- "define the MVP" or "shape the MVP" -> \`.leanos/commands/shape-mvp.md\`
 - "review this PR" -> \`.leanos/commands/review-pr.md\`
 
 If no command clearly matches, route through the Navigation Chain.
@@ -268,6 +268,7 @@ If these are missing, explain the gap and recommend the next LeanOS route instea
 
 - Strategy missing -> \`/start-leanos\`
 - Product strategy weak -> Strategy Product through \`strategy/AGENT.md\`
+- MVP missing or weak -> \`/shape-mvp\`
 - Roadmap missing -> \`idea-to-roadmap\` or Strategy Roadmap through \`strategy/AGENT.md\`
 - Local epic missing -> \`roadmap-item-to-epic\`
 - Features missing -> \`epic-to-features\` when available

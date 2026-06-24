@@ -106,6 +106,7 @@ If these are missing, explain the gap and recommend the next LeanOS route instea
 
 - Strategy missing -> `/start-leanos`
 - Product strategy weak -> Strategy Product through `strategy/AGENT.md`
+- MVP missing or weak -> `/shape-mvp`
 - Roadmap missing -> `idea-to-roadmap` or Strategy Roadmap through `strategy/AGENT.md`
 - Local epic missing -> `roadmap-item-to-epic`
 - Features missing -> `epic-to-features` when available

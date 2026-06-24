@@ -1646,6 +1646,7 @@ async function assertFounderIntentRouting(rootDir) {
   const whereWeAreProtocol = await readFile(join(rootDir, ".leanos", "agent", "protocols", "where-we-are.md"), "utf8");
   const commandsReadme = await readFile(join(rootDir, ".leanos", "commands", "README.md"), "utf8");
   const statusLeanOSCommand = await readFile(join(rootDir, ".leanos", "commands", "status-leanos.md"), "utf8");
+  const shapeMvpCommand = await readFile(join(rootDir, ".leanos", "commands", "shape-mvp.md"), "utf8");
   const vscodeAgent = await readFile(join(rootDir, ".github", "agents", "leanos-chief.agent.md"), "utf8");
   const workflowsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "workflows.yaml"), "utf8"));
   const rootAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "agents", "root-agent-template.md"), "utf8");
@@ -1730,6 +1731,60 @@ async function assertFounderIntentRouting(rootDir) {
   assert(statusLeanOSCommand.includes("Treat `/status-leanos` as a request to run the `where-we-are` protocol"), "Status LeanOS command should be a where-we-are entrypoint");
   assert(statusLeanOSCommand.includes("None by default"), "Status LeanOS command should be diagnostic by default");
   assert(statusLeanOSCommand.includes("mark work as ready to develop without checking `where-we-are.md` and `ready-to-develop.md`"), "Status LeanOS command should guard development readiness");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands", "define-mvp.md")), false, "Legacy define-mvp command should not be generated");
+  assert(commandsReadme.includes("shape-mvp.md"), "Commands README should list shape-mvp.md");
+  assert(commandsReadme.includes("/shape-mvp"), "Commands README should list /shape-mvp");
+  assert(shapeMvpCommand.includes("# /shape-mvp"), "Shape MVP command should use /shape-mvp heading");
+  assert(shapeMvpCommand.includes("../../operations/workflows/define-mvp.workflow.md"), "Shape MVP command should load define-mvp workflow");
+  assert(shapeMvpCommand.includes("../../operations/product-ops/knowledge/mvp-decision-gate.md"), "Shape MVP command should load MVP decision gate");
+  assert(shapeMvpCommand.includes("Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk"), "Shape MVP command should use MVP gate risk criteria");
+  assert(shapeMvpCommand.includes("create or update local Epics or Features"), "Shape MVP command should not create Epics or Features");
+  assert(shapeMvpCommand.includes("Do not write files until the founder confirms"), "Shape MVP command should require confirmation before writes");
+  assert(rootAgent.includes("\"define the MVP\" or \"shape the MVP\" -> `.leanos/commands/shape-mvp.md`"), "Root AGENT should route MVP language to /shape-mvp");
+  assert(whereWeAreProtocol.includes("MVP missing or weak -> `/shape-mvp`"), "Where-we-are protocol should recommend /shape-mvp for missing MVP");
+  const defineMvpWorkflow = await readFile(join(rootDir, "operations", "workflows", "define-mvp.workflow.md"), "utf8");
+  const mvpDecisionGate = await readFile(join(rootDir, "operations", "product-ops", "knowledge", "mvp-decision-gate.md"), "utf8");
+  const defineMvpSkill = await readFile(join(rootDir, "operations", "product-ops", "skills", "define-mvp.skill.md"), "utf8");
+  const mvpDeliveryPlaybook = await readFile(join(rootDir, "operations", "product-ops", "playbooks", "mvp-delivery.playbook.md"), "utf8");
+  assert(defineMvpWorkflow.includes("## Purpose"), "Define MVP workflow should follow Workflow Contract Standard");
+  assert(defineMvpWorkflow.includes("## Founder Triggers"), "Define MVP workflow should include founder triggers");
+  assert(defineMvpWorkflow.includes("## Owner"), "Define MVP workflow should include owner");
+  assert(defineMvpWorkflow.includes("## Required Areas"), "Define MVP workflow should include required areas");
+  assert(defineMvpWorkflow.includes("## Conditional Areas"), "Define MVP workflow should include conditional areas");
+  assert(defineMvpWorkflow.includes("## Load First"), "Define MVP workflow should include Load First");
+  assert(defineMvpWorkflow.includes("## Navigation Route"), "Define MVP workflow should include Navigation Route");
+  assert(defineMvpWorkflow.includes("## Confirmation Gates"), "Define MVP workflow should include confirmation gates");
+  assert(defineMvpWorkflow.includes("## Allowed Updates"), "Define MVP workflow should include allowed updates");
+  assert(defineMvpWorkflow.includes("## Forbidden Updates"), "Define MVP workflow should include forbidden updates");
+  assert(defineMvpWorkflow.includes("## External Capabilities"), "Define MVP workflow should include external capabilities");
+  assert(defineMvpWorkflow.includes("## Stop Conditions"), "Define MVP workflow should include stop conditions");
+  assert(defineMvpWorkflow.includes("## Expected Output"), "Define MVP workflow should include expected output");
+  assert(defineMvpWorkflow.includes("## Continuation Bridge"), "Define MVP workflow should include continuation bridge");
+  assert(defineMvpWorkflow.includes("operations/product-ops/AGENT.md"), "Define MVP workflow should route through Product Ops AGENT");
+  assert(defineMvpWorkflow.includes("operations/product-ops/roles/product-owner.role.md"), "Define MVP workflow should route through Product Owner role");
+  assert(defineMvpWorkflow.includes("operations/product-ops/knowledge/mvp-decision-gate.md"), "Define MVP workflow should load MVP decision gate");
+  assert(defineMvpWorkflow.includes("Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk"), "Define MVP workflow should use the four MVP risks");
+  assert(defineMvpWorkflow.includes("operations/product-ops/epics/"), "Define MVP workflow should explicitly forbid Epic updates");
+  assert(defineMvpWorkflow.includes("roadmap-item-to-epic"), "Define MVP workflow should bridge to roadmap-item-to-epic");
+  assert(mvpDecisionGate.includes("# MVP Decision Gate"), "Product Ops should generate MVP decision gate");
+  assert(mvpDecisionGate.includes("## Core Rule"), "MVP decision gate should define core rule");
+  assert(mvpDecisionGate.includes("### Value Risk"), "MVP decision gate should include Value Risk");
+  assert(mvpDecisionGate.includes("### Usability Risk"), "MVP decision gate should include Usability Risk");
+  assert(mvpDecisionGate.includes("### Feasibility Risk"), "MVP decision gate should include Feasibility Risk");
+  assert(mvpDecisionGate.includes("### Business Viability Risk"), "MVP decision gate should include Business Viability Risk");
+  assert(mvpDecisionGate.includes("ready-for-mvp"), "MVP decision gate should include ready-for-mvp state");
+  assert(mvpDecisionGate.includes("too-large-for-mvp"), "MVP decision gate should include too-large-for-mvp state");
+  assert(mvpDecisionGate.includes("Do not create Epics, Features, GitHub issues, branches, PRs or code"), "MVP decision gate should stop before delivery execution");
+  assert(defineMvpSkill.includes("MVP Decision Gate"), "Define MVP skill should reference the MVP decision gate");
+  assert(defineMvpSkill.includes("Value Risk"), "Define MVP skill should check Value Risk");
+  assert(defineMvpSkill.includes("Usability Risk"), "Define MVP skill should check Usability Risk");
+  assert(defineMvpSkill.includes("Feasibility Risk"), "Define MVP skill should check Feasibility Risk");
+  assert(defineMvpSkill.includes("Business Viability Risk"), "Define MVP skill should check Business Viability Risk");
+  assert(defineMvpSkill.includes("Do not create Epics, Features, GitHub issues, branches, PRs or source code"), "Define MVP skill should stop before execution work");
+  assert(mvpDeliveryPlaybook.includes("## Guided Conversation"), "MVP delivery playbook should use guided conversation");
+  assert(mvpDeliveryPlaybook.includes("../knowledge/mvp-decision-gate.md"), "MVP delivery playbook should load MVP decision gate");
+  assert(mvpDeliveryPlaybook.includes("Value Risk is pass"), "MVP delivery playbook should gate Value Risk");
+  assert(mvpDeliveryPlaybook.includes("Founder confirms before files are updated"), "MVP delivery playbook should require confirmation before writing");
   const readyToDevelop = await readFile(join(rootDir, "operations", "product-ops", "knowledge", "ready-to-develop.md"), "utf8");
   assert(readyToDevelop.includes("# Ready To Develop"), "Product Ops should generate a ready-to-develop gate");
   assert(readyToDevelop.includes("## Core Rule"), "Ready-to-develop gate should define the core rule");
@@ -3229,8 +3284,6 @@ function collectPathStrings(value, paths) {
 async function assertInitialContextCoherence(rootDir, selectedSubareas) {
   const activeSubareas = new Set(selectedSubareas);
   const initialFiles = [
-    "README.md",
-    "AGENT.md",
     join(".leanos", "context", "current-focus.md"),
     join(".leanos", "context", "next-actions.md"),
     join(".leanos", "context", "active-workflow.md")
@@ -3242,7 +3295,7 @@ async function assertInitialContextCoherence(rootDir, selectedSubareas) {
 
   const commandRequirements = [
     { command: "/define icp", area: "strategy.product" },
-    { command: "/define mvp", area: "operations.product-ops" },
+    { command: "/shape-mvp", area: "operations.product-ops" },
     { command: "/check coherence", area: "strategy.product" },
     { command: "/create roadmap", area: "strategy.roadmap" },
     { command: "/create issues", area: "operations.product-ops" },
@@ -3256,6 +3309,7 @@ async function assertInitialContextCoherence(rootDir, selectedSubareas) {
     { workflow: "new-idea-intake", subareas: ["strategy.product", "strategy.roadmap"] },
     { workflow: "idea-to-roadmap", subareas: ["strategy.product", "strategy.roadmap"] },
     { workflow: "roadmap-to-github-project", subareas: ["strategy.product", "strategy.roadmap"] },
+    { workflow: "define-mvp", subareas: ["operations.product-ops"] },
     { workflow: "roadmap-item-to-epic", subareas: ["operations.product-ops"] },
     { workflow: "epic-to-features", subareas: ["operations.product-ops", "operations.engineering"] },
     { workflow: "feature-to-delivery-cycle", subareas: ["operations.product-ops", "operations.engineering"] },

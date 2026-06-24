@@ -84,7 +84,7 @@ export function getNextActions(answers: WorkspaceAnswers, activeAreas: AreaDefin
         return activeKeys.has("operations.design") && activeKeys.has("strategy.product") && activeKeys.has("operations.product-ops");
       }
 
-      return ["status-leanos", "define-icp", "define-mvp", "check-coherence", "workon-issue"].includes(command.slug);
+      return ["status-leanos", "define-icp", "shape-mvp", "check-coherence", "workon-issue"].includes(command.slug);
     })
     .slice(0, 5);
 

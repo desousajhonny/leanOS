@@ -21,6 +21,7 @@ Compatible local workflows:
 - new-idea-intake
 - idea-to-roadmap
 - roadmap-to-github-project
+- define-mvp
 - roadmap-item-to-epic
 - epic-to-features
 - feature-to-delivery-cycle

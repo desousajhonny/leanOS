@@ -18,6 +18,7 @@ Turn Strategy and Roadmap into delivery scope, acceptance criteria and implement
 - `knowledge/work-taxonomy.md`
 - `knowledge/delivery-scope.md`
 - `knowledge/issue-readiness.md`
+- `knowledge/mvp-decision-gate.md`
 - `knowledge/ready-to-develop.md`
 - `knowledge/technical-decisions.md`
 - `mvp/scope.md`
@@ -49,6 +50,6 @@ Turn Strategy and Roadmap into delivery scope, acceptance criteria and implement
 
 - Product Ops request: area lead `AGENT.md` -> choose Product Owner or Delivery Architect -> load only the required skills and playbook.
 - Delivery scope request: role `roles/product-owner.role.md` -> skill `skills/define-delivery-scope.skill.md` -> playbook `playbooks/delivery-scope-planning.playbook.md`.
-- MVP request: role `roles/product-owner.role.md` -> skill `skills/define-mvp.skill.md` -> playbook `playbooks/mvp-delivery.playbook.md`.
+- MVP request: command `.leanos/commands/shape-mvp.md` -> workflow `../workflows/define-mvp.workflow.md` -> area lead `AGENT.md` -> role `roles/product-owner.role.md` -> gate `knowledge/mvp-decision-gate.md` -> skill `skills/define-mvp.skill.md` -> playbook `playbooks/mvp-delivery.playbook.md`.
 - Epic breakdown request: role `roles/product-owner.role.md` -> skills `skills/shape-epic.skill.md` and `skills/write-feature-criteria.skill.md` -> playbook `playbooks/epic-to-features.playbook.md`.
 - Delivery readiness request: role `roles/delivery-architect.role.md` -> skill `skills/define-delivery-boundaries.skill.md` -> playbook `playbooks/delivery-readiness.playbook.md`.

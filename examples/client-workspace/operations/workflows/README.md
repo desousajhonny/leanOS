@@ -14,6 +14,7 @@ Use when work spans more than one active area inside this department.
 
 ## Files
 
+- `define-mvp.workflow.md`
 - `roadmap-item-to-epic.workflow.md`
 - `epic-to-features.workflow.md`
 - `feature-to-delivery-cycle.workflow.md`

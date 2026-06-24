@@ -464,6 +464,7 @@ export function formatCommandInvocation(slug: string): string {
   if (slug === "start-leanos") return "/start-leanos";
   if (slug === "status-leanos") return "/status-leanos";
   if (slug === "github-sync") return "/github-sync";
+  if (slug === "shape-mvp") return "/shape-mvp";
 
   return `/${slug.replace(/-/g, " ")}`;
 }
