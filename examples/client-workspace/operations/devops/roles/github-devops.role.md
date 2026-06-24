@@ -16,6 +16,8 @@ Read:
 
 - `../AGENT.md`
 - `../knowledge/github-management.md`
+- `../../../.github/leanos/setup-guide.md`
+- `../../../.github/leanos/capability-contract.md`
 - `../../../.github/leanos/github-settings.example.json`
 - `../../../.github/leanos/project-sync.yaml`
 - `../../../.github/leanos/sync-state.yaml`

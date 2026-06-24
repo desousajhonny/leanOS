@@ -21,17 +21,18 @@ Prepare GitHub settings for roadmap sync without calling the API directly from t
 1. Read DevOps AGENT and choose GitHub DevOps
 2. Read `knowledge/github-management.md`
 3. Read `../../../.github/leanos/setup-guide.md`
-4. Read `../../../.github/leanos/github-settings.example.json`
-5. Review `../../../.github/leanos/project-sync.yaml`
-6. Review `../../../.github/leanos/labels.yaml` and `../../../.github/leanos/sync-state.yaml`
-7. Ask guided questions for missing owner, repository, Project type, Project URL/number and field mapping
-8. Explain where the founder can find owner/repository and Project URL/number
-9. Confirm token source without asking the user to paste secrets into chat or files
-10. If local tools are available and the founder allows it, use `gh auth status` only to validate auth status, not to expose credentials
-11. Document Vercel readiness as guidance only; do not create `.vercel/`, run `vercel link` or add `vercel.json` until a real app/framework needs it
-12. Propose updates to GitHub management knowledge, project-sync and labels before writing
-13. Validate that sync-state remains secret-free
-14. End with whether `/github-sync` is ready for dry-run
+4. Read `../../../.github/leanos/capability-contract.md`
+5. Read `../../../.github/leanos/github-settings.example.json`
+6. Review `../../../.github/leanos/project-sync.yaml`
+7. Review `../../../.github/leanos/labels.yaml` and `../../../.github/leanos/sync-state.yaml`
+8. Ask guided questions for missing owner, repository, Project type, Project URL/number and field mapping
+9. Explain where the founder can find owner/repository and Project URL/number
+10. Confirm token source without asking the user to paste secrets into chat or files
+11. If local tools are available and the founder allows it, use `gh auth status` only to validate auth status, not to expose credentials
+12. Document Vercel readiness as guidance only; do not create `.vercel/`, run `vercel link` or add `vercel.json` until a real app/framework needs it
+13. Propose updates to GitHub management knowledge, project-sync and labels before writing
+14. Validate that sync-state remains secret-free
+15. End with whether `/github-sync` is ready for dry-run
 
 ## Output
 

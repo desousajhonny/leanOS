@@ -372,6 +372,7 @@ async function validateWorkspaceFiles() {
     "growth/finance/playbooks/finance-review.playbook.md",
     ".github/leanos/README.md",
     ".github/leanos/setup-guide.md",
+    ".github/leanos/capability-contract.md",
     ".github/leanos/github-settings.example.json",
     ".github/leanos/work-mapping.md",
     ".github/leanos/project-sync.yaml",
@@ -1084,6 +1085,7 @@ async function validateClientWorkspaceFixture() {
     ".leanos/index/routing-map.yaml",
     ".github/leanos/github-settings.example.json",
     ".github/leanos/setup-guide.md",
+    ".github/leanos/capability-contract.md",
     ".github/leanos/work-mapping.md",
     ".github/leanos/project-sync.yaml",
     ".github/leanos/sync-state.yaml",
@@ -1466,6 +1468,7 @@ async function assertGitHubReadiness(rootDir) {
   const githubSyncCommand = await readFile(join(rootDir, ".leanos", "commands", "github-sync.md"), "utf8");
   const githubReadme = await readFile(join(rootDir, ".github", "leanos", "README.md"), "utf8");
   const githubSetupGuide = await readFile(join(rootDir, ".github", "leanos", "setup-guide.md"), "utf8");
+  const githubCapabilityContract = await readFile(join(rootDir, ".github", "leanos", "capability-contract.md"), "utf8");
   const githubRole = await readFile(join(rootDir, "operations", "devops", "roles", "github-devops.role.md"), "utf8");
   const githubSkill = await readFile(join(rootDir, "operations", "devops", "skills", "configure-github-project.skill.md"), "utf8");
   const githubPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "configure-github-project.playbook.md"), "utf8");
@@ -1509,6 +1512,7 @@ async function assertGitHubReadiness(rootDir) {
   assert(githubSyncCommand.includes("## Phase 2: Setup Fallback"), "GitHub sync command should guide setup when readiness fails");
   assert(githubSyncCommand.includes("## Phase 3: Dry-Run Sync Process"), "GitHub sync command should separate dry-run sync from readiness");
   assert(githubSyncCommand.includes("## Phase 5: Capability Handoff"), "GitHub sync command should hand off remote writes to a future capability");
+  assert(githubSyncCommand.includes(".github/leanos/capability-contract.md"), "GitHub sync command should load capability contract");
   assert(githubSyncCommand.includes("gh auth status"), "GitHub sync command should mention optional GitHub CLI auth checks");
   assert(githubSyncCommand.includes("Never ask the founder to paste a token into chat"), "GitHub sync command should protect token handling");
   assert(githubSyncCommand.includes("assume GitHub is ready before Phase 1 passes"), "GitHub sync command should not assume GitHub is ready");
@@ -1525,6 +1529,7 @@ async function assertGitHubReadiness(rootDir) {
   assert(labels.includes("name: task"), "GitHub labels should include exceptional task issues");
   assert(githubReadme.includes("Route GitHub setup through `../../operations/devops/AGENT.md`"), "GitHub README should route setup through DevOps when active");
   assert(githubReadme.includes("setup-guide.md"), "GitHub README should point to setup guide");
+  assert(githubReadme.includes("capability-contract.md"), "GitHub README should point to capability contract");
   assert(githubReadme.includes("`/github-sync` must check GitHub readiness before preparing any sync payload"), "GitHub README should document readiness-first sync");
   assert(githubReadme.includes("Never ask the founder to paste a token into chat"), "GitHub README should protect token handling");
   assert(githubSetupGuide.includes("## Owner And Repository"), "GitHub setup guide should explain owner/repository");
@@ -1532,11 +1537,19 @@ async function assertGitHubReadiness(rootDir) {
   assert(githubSetupGuide.includes("## Token Source"), "GitHub setup guide should explain token sources");
   assert(githubSetupGuide.includes("gh auth status"), "GitHub setup guide should mention optional GitHub CLI auth check");
   assert(githubSetupGuide.includes("Ready For Dry-Run"), "GitHub setup guide should define dry-run readiness");
+  assert(githubCapabilityContract.includes("The model must not call GitHub APIs directly"), "GitHub capability contract should block direct model API calls");
+  assert(githubCapabilityContract.includes("### github.syncEpicsFeatures"), "GitHub capability contract should define Epic/Feature sync interface");
+  assert(githubCapabilityContract.includes("### github.createBranch"), "GitHub capability contract should define branch interface");
+  assert(githubCapabilityContract.includes("### github.openPullRequest"), "GitHub capability contract should define PR interface");
+  assert(githubCapabilityContract.includes("Sync-State Patch Rules"), "GitHub capability contract should define sync-state patch rules");
+  assert(githubCapabilityContract.includes("The patch must not include"), "GitHub capability contract should forbid secrets in sync-state patches");
   assert(githubReadme.includes("Vercel readiness is guidance-only"), "GitHub README should document Vercel readiness without execution");
   assert(githubRole.includes("Guide safe GitHub repository, Project, labels and sync configuration"), "GitHub DevOps role should describe GitHub setup ownership");
   assert(githubSkill.includes("without storing secrets"), "GitHub setup skill should protect secrets");
   assert(githubSkill.includes("Separate setup local, token readiness, Project readiness, labels/milestones readiness and dry-run readiness"), "GitHub setup skill should separate readiness dimensions");
+  assert(githubSkill.includes(".github/leanos/capability-contract.md"), "GitHub setup skill should load capability contract before remote execution");
   assert(githubPlaybook.includes("Confirm token source without asking the user to paste secrets into chat or files"), "GitHub setup playbook should protect token handling");
+  assert(githubPlaybook.includes("../../../.github/leanos/capability-contract.md"), "GitHub setup playbook should load capability contract");
   assert(githubPlaybook.includes("Propose updates to GitHub management knowledge, project-sync and labels before writing"), "GitHub setup playbook should require propose-first updates");
   assert(githubPlaybook.includes("do not create `.vercel/`, run `vercel link` or add `vercel.json`"), "GitHub setup playbook should keep Vercel readiness guidance-only");
 }
@@ -3133,6 +3146,7 @@ async function assertDevOpsAreaPattern(rootDir) {
   assert(githubManagement.includes("## Dry Run"), "GitHub management knowledge should define dry-run readiness");
   assert(githubManagement.includes("Never store token values in this file"), "GitHub management knowledge should protect token values");
   assert(githubManagement.includes("Owner and repository are known"), "GitHub management knowledge should include readiness checklist");
+  assert(githubManagement.includes("Capability contract reviewed"), "GitHub management knowledge should track capability contract review");
   assert(environments.includes("## Preview / Staging"), "Environments knowledge should separate preview/staging");
   assert(environments.includes("## Secrets"), "Environments knowledge should include secret handling");
   assert(deploymentReadiness.includes("## Vercel Readiness"), "Deployment readiness should include Vercel readiness");
@@ -3150,6 +3164,7 @@ async function assertDevOpsAreaPattern(rootDir) {
   assert(devopsEngineer.includes("../knowledge/environments.md"), "DevOps Engineer should load environments knowledge");
   assert(devopsEngineer.includes("../knowledge/deployment-readiness.md"), "DevOps Engineer should load deployment readiness knowledge");
   assert(githubDevops.includes("../knowledge/github-management.md"), "GitHub DevOps should load GitHub management knowledge");
+  assert(githubDevops.includes("../../../.github/leanos/capability-contract.md"), "GitHub DevOps should load capability contract");
   assert(releaseManager.includes("../knowledge/release-notes.md"), "Release Manager should load release notes knowledge");
 
   for (const skillContent of [configureGithubProject, configureEnvironments, setupCi, planDeployment, defineObservability, prepareRelease]) {
@@ -3168,6 +3183,7 @@ async function assertDevOpsAreaPattern(rootDir) {
   assert(prepareRelease.includes("Rollback is explicit"), "Prepare Release should include rollback checks");
   assert(githubProjectPlaybook.includes("Read DevOps AGENT and choose GitHub DevOps"), "GitHub project playbook should start at DevOps AGENT");
   assert(githubProjectPlaybook.includes("../../../.github/leanos/setup-guide.md"), "GitHub project playbook should load setup guide");
+  assert(githubProjectPlaybook.includes("../../../.github/leanos/capability-contract.md"), "GitHub project playbook should load capability contract");
   assert(githubProjectPlaybook.includes("where the founder can find owner/repository and Project URL/number"), "GitHub project playbook should guide founders to find GitHub details");
   assert(githubProjectPlaybook.includes("End with whether `/github-sync` is ready for dry-run"), "GitHub project playbook should bridge back to /github-sync");
   assert(githubProjectPlaybook.includes("knowledge/github-management.md"), "GitHub project playbook should update GitHub knowledge");

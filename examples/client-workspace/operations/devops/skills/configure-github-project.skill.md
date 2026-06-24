@@ -15,6 +15,7 @@ Guide GitHub repository, Project fields, labels and token source setup without s
 
 - DevOps AGENT
 - GitHub setup guide
+- GitHub capability contract
 - GitHub management knowledge
 - Project sync file
 - Labels file
@@ -38,12 +39,13 @@ Guide GitHub repository, Project fields, labels and token source setup without s
 ## Process
 
 1. Load `.github/leanos/setup-guide.md` before asking setup questions
-2. Check `project-sync.yaml` for TODO owner/repository/project values
-3. Check `labels.yaml` for minimum labels
-4. Check `sync-state.yaml` exists and contains no secrets
-5. Separate setup local, token readiness, Project readiness, labels/milestones readiness and dry-run readiness
-6. Confirm token source without asking for token values
-7. Prepare a readiness summary and proposed updates before writing
+2. Load `.github/leanos/capability-contract.md` before describing remote execution
+3. Check `project-sync.yaml` for TODO owner/repository/project values
+4. Check `labels.yaml` for minimum labels
+5. Check `sync-state.yaml` exists and contains no secrets
+6. Separate setup local, token readiness, Project readiness, labels/milestones readiness and dry-run readiness
+7. Confirm token source without asking for token values
+8. Prepare a readiness summary and proposed updates before writing
 
 ## Checks
 

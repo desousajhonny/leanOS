@@ -18,6 +18,10 @@ Use the setup guide before running `/github-sync` for the first time or whenever
 
 Founder-friendly guide for GitHub owner, repository, Project, token source and GitHub CLI readiness.
 
+`capability-contract.md`
+
+Boundary contract for future scripts/capabilities that perform GitHub reads and writes after dry-run and founder confirmation.
+
 `github-settings.example.json`
 
 Example shape for GitHub setup. It documents fields and token sources, but must not contain a real token.

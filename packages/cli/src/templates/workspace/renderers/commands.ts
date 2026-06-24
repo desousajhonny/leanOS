@@ -971,6 +971,7 @@ Read:
 - \`../../operations/devops/skills/configure-github-project.skill.md\`
 - \`../../operations/devops/playbooks/configure-github-project.playbook.md\`
 - \`../../.github/leanos/work-mapping.md\`
+- \`../../.github/leanos/capability-contract.md\`
 - \`../../.github/leanos/project-sync.yaml\`
 - \`../../.github/leanos/sync-state.yaml\`
 - \`../../.github/leanos/labels.yaml\`
@@ -1072,6 +1073,8 @@ If the founder does not confirm, stop after reporting the dry-run.
 ## Phase 5: Capability Handoff
 
 The model must not perform the GitHub write itself.
+
+Read \`../../.github/leanos/capability-contract.md\` before describing or preparing any execution handoff.
 
 After confirmation, hand the approved payload to a future CLI/script/capability that can:
 

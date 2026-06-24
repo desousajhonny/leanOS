@@ -112,11 +112,11 @@ Racional:
 
 Plano passo a passo:
 
-- [ ] Primeiro, mapear as intencoes principais do founder para workflows locais.
-- [ ] Depois, revisar cada workflow para declarar contexto, participantes, sequencia, checkpoints, handoffs e output.
-- [ ] Depois, ajustar comandos para carregar o workflow certo em vez de conter toda a logica do processo.
-- [ ] Depois, garantir que pedidos em linguagem natural caiam no mesmo workflow que o comando equivalente.
-- [ ] Depois, conectar GitHub/capabilities apenas como etapa final confirmada do workflow.
+- [x] Primeiro, mapear as intencoes principais do founder para workflows locais.
+- [x] Depois, revisar cada workflow para declarar contexto, participantes, sequencia, checkpoints, handoffs e output.
+- [x] Depois, ajustar comandos para carregar o workflow certo em vez de conter toda a logica do processo.
+- [x] Depois, garantir que pedidos em linguagem natural caiam no mesmo workflow que o comando equivalente.
+- [x] Depois, conectar GitHub/capabilities apenas como etapa final confirmada do workflow.
 - [ ] Por fim, rodar a Founder Journey completa para validar se o modelo navega sem pular etapas.
 
 ### 0. MVP Decision System
@@ -864,21 +864,21 @@ MVP continua sendo o nome principal da etapa. O criterio de qualidade deve inclu
 
 #### Regra de Uso
 
-- [ ] Workflow coordena a jornada entre areas.
-- [ ] Playbook executa uma parte pratica dentro de uma area.
-- [ ] Comandos e linguagem natural devem apontar para o workflow correto.
-- [ ] Se uma etapa envolver mais de uma area, preferir workflow.
-- [ ] Se uma etapa for execucao local de uma area, usar playbook.
+- [x] Workflow coordena a jornada entre areas.
+- [x] Playbook executa uma parte pratica dentro de uma area.
+- [x] Comandos e linguagem natural devem apontar para o workflow correto.
+- [x] Se uma etapa envolver mais de uma area, preferir workflow.
+- [x] Se uma etapa for execucao local de uma area, usar playbook.
 
 #### Regra Roadmap, MVP e GitHub
 
-- [ ] Nem todo item de roadmap precisa virar issue, epic ou milestone no GitHub.
-- [ ] Roadmap pode conter direcao estrategica, oportunidades futuras, backlog de produto e ideias ainda nao priorizadas.
-- [ ] Todo item marcado como parte do MVP precisa virar trabalho executavel e rastreavel antes de implementacao.
-- [ ] Um item de roadmap/backlog deve passar por `roadmap-item-to-epic` antes de Engineering iniciar desenvolvimento.
-- [ ] Um epic de MVP deve passar por `epic-to-features` antes de virar trabalho de implementacao.
-- [ ] GitHub Project deve representar principalmente o que esta em execucao, em preparacao para execucao ou explicitamente selecionado para delivery.
-- [ ] O modelo deve pedir confirmacao antes de promover item de roadmap para Epic local e antes de sincronizar Epics/Features com GitHub.
+- [x] Nem todo item de roadmap precisa virar issue, epic ou milestone no GitHub.
+- [x] Roadmap pode conter direcao estrategica, oportunidades futuras, backlog de produto e ideias ainda nao priorizadas.
+- [x] Todo item marcado como parte do MVP precisa virar trabalho executavel e rastreavel antes de implementacao.
+- [x] Um item de roadmap/backlog deve passar por `roadmap-item-to-epic` antes de Engineering iniciar desenvolvimento.
+- [x] Um epic de MVP deve passar por `epic-to-features` antes de virar trabalho de implementacao.
+- [x] GitHub Project deve representar principalmente o que esta em execucao, em preparacao para execucao ou explicitamente selecionado para delivery.
+- [x] O modelo deve pedir confirmacao antes de promover item de roadmap para Epic local e antes de sincronizar Epics/Features com GitHub.
 
 #### Ordem Para Implementar Os Workflows
 
@@ -1110,10 +1110,21 @@ Decisoes implementadas para o MVP:
 - [x] Como o fundador confirma o payload antes da execucao real: `/github-sync` inclui Confirmation Rule.
 - [x] Como preservar a experiencia chat-first para founder iniciante: `/github-sync` faz readiness/setup fallback antes do dry-run.
 
-Decisoes futuras, fora do MVP scaffold:
+Decisoes implementadas como contrato, sem execucao remota real no MVP scaffold:
 
-- [ ] Quais capabilities/scripts executam a chamada real, sem o modelo chamar API diretamente.
-- [ ] Especificar `github.configure`, `github.status`, `github.syncRoadmap`, `github.readIssue`, `github.createBranch` e `github.openPullRequest` como capabilities reais.
+- [x] Quais capabilities/scripts executam a chamada real, sem o modelo chamar API diretamente.
+- [x] Especificar interfaces em `.github/leanos/capability-contract.md`:
+  - `github.status`;
+  - `github.configure`;
+  - `github.syncEpicsFeatures`;
+  - `github.readIssue`;
+  - `github.createBranch`;
+  - `github.openPullRequest`.
+
+Futuro fora do MVP scaffold:
+
+- [ ] Implementar capabilities/scripts reais que chamam GitHub API ou GitHub CLI.
+- [ ] Definir estrategia de autenticacao duradoura para producao, possivelmente GitHub App.
 
 Pendencias:
 
@@ -1125,11 +1136,10 @@ Pendencias:
   - usuario confirma;
   - capability/script executa;
   - resultado volta para contexto.
-- [ ] Definir capabilities futuras:
+- [x] Definir contrato de capabilities futuras:
   - `github.configure`
   - `github.status`
-  - `github.syncRoadmap`
-  - `github.createFeatures` ou equivalente, se decidirmos sincronizar Features como GitHub issues;
+  - `github.syncEpicsFeatures`
   - `github.readIssue`
   - `github.createBranch`
   - `github.openPullRequest`
@@ -1260,13 +1270,12 @@ Objetivo: publicar uma versao confiavel para usuarios reais.
 
 1. Padronizar comandos principais como portas de entrada, nao como donos do processo.
 2. Mapear intents naturais e comandos para os workflows locais.
-3. Discutir e definir a camada GitHub chat-first antes de implementar capability/script.
-4. Rodar teste externo da Founder Journey.
-5. Ajustar lacunas descobertas no teste.
-6. Criar `ready-for-launch` quando a cadeia de entrega estiver validada.
-7. Preparar release publica do MVP.
-8. Planejar update/migration.
-9. Planejar `/bootstrap product`.
+3. Rodar teste externo da Founder Journey.
+4. Ajustar lacunas descobertas no teste.
+5. Criar `ready-for-launch` quando a cadeia de entrega estiver validada.
+6. Preparar release publica do MVP.
+7. Planejar update/migration.
+8. Planejar `/bootstrap product`.
 
 ## Remocao
 

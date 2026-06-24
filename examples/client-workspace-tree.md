@@ -19,6 +19,7 @@ client-workspace/
 |   |   `-- validation.yml
 |   |-- leanos/
 |   |   |-- branch-rules.md
+|   |   |-- capability-contract.md
 |   |   |-- github-settings.example.json
 |   |   |-- labels.yaml
 |   |   |-- pr-validation-rules.md

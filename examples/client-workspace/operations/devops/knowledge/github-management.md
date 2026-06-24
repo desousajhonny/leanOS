@@ -16,6 +16,7 @@ GitHub setup is not confirmed yet. Use Setup Status and the Readiness Checklist 
 - Token source: TBD
 - GitHub CLI status: unknown
 - Ready for dry-run sync: no
+- Capability contract reviewed: no
 
 ## Repository
 
@@ -95,6 +96,7 @@ Use these questions when configuration is missing:
 - [ ] Token source is known without exposing token value.
 - [ ] `../../../.github/leanos/project-sync.yaml` matches the confirmed setup.
 - [ ] `../../../.github/leanos/sync-state.yaml` exists and contains no secrets.
+- [ ] `../../../.github/leanos/capability-contract.md` was reviewed before any remote execution handoff.
 - [ ] `/github-sync` can run dry-run before any remote write.
 
 ## Dry Run
