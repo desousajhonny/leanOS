@@ -3406,7 +3406,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Read the approved Design component spec before implementing a new reusable component.",
           "Implement reusable component work before the screen or Feature that depends on it.",
           "Route data, auth, permissions, privacy, abuse or compliance work through Security when risk is present.",
-          "Use `.github/leanos/branch-rules.md` and `.github/PULL_REQUEST_TEMPLATE.md` for branch and PR conventions."
+          "Use `.github/leanos/branch-rules.md` and `.github/PULL_REQUEST_TEMPLATE.md` for branch and PR conventions.",
+          "For implementation work that arrives from `feature-to-delivery-cycle`, route to Senior Developer and use `playbooks/engineering-delivery.playbook.md` as the master execution path before sub-playbooks."
         ],
         redLines: [
           "Do not implement outside the confirmed issue or PRD scope.",
@@ -3645,7 +3646,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         commonPaths: [
           "Branch request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/create-branch.skill.md` -> playbook `playbooks/branch-from-issue.playbook.md`.",
           "Component implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/implement-component.skill.md` -> playbook `playbooks/component-implementation.playbook.md`.",
-          "Implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skills `skills/plan-implementation.skill.md`, conditional `skills/implement-component.skill.md`, `skills/follow-code-standards.skill.md` and `skills/write-tests.skill.md` -> playbooks `playbooks/component-implementation.playbook.md` when needed, then `playbooks/issue-to-pr.playbook.md`.",
+          "Implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> playbook `playbooks/engineering-delivery.playbook.md` -> sub-playbooks `playbooks/branch-from-issue.playbook.md`, conditional `playbooks/component-implementation.playbook.md`, `playbooks/issue-to-pr.playbook.md` and `playbooks/pr-validation.playbook.md`.",
           "Data change request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` or `roles/pr-reviewer.role.md` -> skill `skills/review-data-change.skill.md` -> route Security when sensitive risk exists.",
           "Test request: area lead `AGENT.md` -> role `roles/test-engineer.role.md` -> skill `skills/write-tests.skill.md` -> playbook `playbooks/test-planning.playbook.md`.",
           "PR review request: area lead `AGENT.md` -> role `roles/pr-reviewer.role.md` -> skills `skills/review-pr.skill.md`, `skills/follow-code-standards.skill.md` and conditional `skills/review-data-change.skill.md` -> playbook `playbooks/pr-validation.playbook.md`."

@@ -2471,6 +2471,7 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(engineeringAgent.includes("PR Reviewer: `roles/pr-reviewer.role.md`"), "Engineering AGENT should route PR Reviewer work");
   assert(engineeringAgent.includes("Create or confirm an issue-linked branch before changing code"), "Engineering AGENT should require branch before code changes");
   assert(engineeringAgent.includes("Implement reusable component work before the screen or Feature that depends on it"), "Engineering AGENT should implement reusable component before dependent Feature");
+  assert(engineeringAgent.includes("playbooks/engineering-delivery.playbook.md"), "Engineering AGENT should route implementation through engineering-delivery");
   assert(engineeringAgent.includes("Do not hardcode secrets, configuration, business rules, copy or design values"), "Engineering AGENT should forbid hardcoding");
   assert.equal(areaYaml.area.agent, "AGENT.md", "Engineering area.yaml should declare AGENT.md");
   assert(areaYaml.area.source_of_truth.includes("knowledge/code-standards.md"), "Engineering area.yaml should list code standards");

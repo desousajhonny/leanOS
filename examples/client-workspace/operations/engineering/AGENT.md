@@ -20,6 +20,7 @@ Route implementation, branch, testing, data-change, PR and review work while enf
 - Implement reusable component work before the screen or Feature that depends on it.
 - Route data, auth, permissions, privacy, abuse or compliance work through Security when risk is present.
 - Use `.github/leanos/branch-rules.md` and `.github/PULL_REQUEST_TEMPLATE.md` for branch and PR conventions.
+- For implementation work that arrives from `feature-to-delivery-cycle`, route to Senior Developer and use `playbooks/engineering-delivery.playbook.md` as the master execution path before sub-playbooks.
 
 ## Red Lines
 
