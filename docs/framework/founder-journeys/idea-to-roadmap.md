@@ -29,7 +29,7 @@ flowchart TD
   J["Backlog / Now / Next / Later / Not Planned"]
   K["Explain outcome to founder"]
   L["Stop without writing"]
-  M["Next: roadmap-item-to-delivery-scope"]
+  M["Next: roadmap-item-to-epic"]
 
   A --> B --> C --> D --> E
   E -->|Yes| F --> G --> H --> I
@@ -453,7 +453,7 @@ What the model understands here:
 
 - The founder owns the final roadmap decision.
 - The model can recommend, but cannot silently commit.
-- If the founder asks whether the item enters MVP, a release, an experiment or a milestone, the next journey is `roadmap-item-to-delivery-scope`, not this one.
+- If the founder asks whether the item enters MVP, a release, an experiment or a milestone, the next journey is `roadmap-item-to-epic`, not this one.
 
 Next step:
 
@@ -540,7 +540,7 @@ The model must ask for confirmation before:
 - changing `strategy/roadmap/knowledge/roadmap.md`;
 - changing `strategy/roadmap/knowledge/current-cycle.md`;
 - tagging the item as Now, Next, Later or Not Planned;
-- starting `roadmap-item-to-delivery-scope`;
+- starting `roadmap-item-to-epic`;
 - starting any GitHub sync or issue creation;
 - touching implementation files.
 
@@ -629,20 +629,20 @@ Later-session triggers:
 
 Next route:
 
-`roadmap-item-to-delivery-scope`
+`roadmap-item-to-epic`
 
 Rules:
 
-- Do not start `roadmap-item-to-delivery-scope` automatically.
+- Do not start `roadmap-item-to-epic` automatically.
 - If the founder says yes, declare the new route before loading Operations or Product Ops files.
 - If the founder says no, explain the roadmap/backlog outcome and stop without writing anything else.
-- If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `roadmap-item-to-delivery-scope`.
+- If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `roadmap-item-to-epic`.
 
 ## Next Recommended Journey
 
 After this journey, the next flow can be:
 
-- `roadmap-item-to-delivery-scope` when the founder asks whether the roadmap item should enter MVP, a release, an experiment or another delivery scope.
+- `roadmap-item-to-epic` when the founder asks whether the roadmap item should enter MVP, a release, an experiment or another delivery scope.
 - `roadmap-to-github-project` when the item is selected for delivery planning and GitHub sync.
 - `new-idea-intake` when the idea needs more qualification.
 
@@ -690,7 +690,7 @@ Use this checklist to test whether the journey really applies the Navigation Cha
 - [x] The model asks for confirmation before updating roadmap/backlog files.
 - [x] The founder-facing output is understandable before technical paths appear.
 - [x] Internal file updates are listed only after the human decision.
-- [x] The continuation bridge offers `roadmap-item-to-delivery-scope` without starting it automatically.
+- [x] The continuation bridge offers `roadmap-item-to-epic` without starting it automatically.
 - [x] Later-session triggers are listed for natural founder language.
 
 ### Conditional Areas
@@ -706,4 +706,4 @@ Use this checklist to test whether the journey really applies the Navigation Cha
 - `roadmap-planner.role.md` and `create-roadmap.skill.md` currently reference `operations/product-ops/mvp/scope.md`.
 - For this journey, MVP scope must be treated as optional delivery context, not a route owner and not permission to modify MVP or any delivery scope.
 - Future scaffold improvement: make Roadmap Planner distinguish "roadmap candidate" from "delivery scope planning" so Strategy-only roadmap work does not depend on Product Ops files.
-- The next journey to design is `roadmap-item-to-delivery-scope`.
+- The next journey to design is `roadmap-item-to-epic`.

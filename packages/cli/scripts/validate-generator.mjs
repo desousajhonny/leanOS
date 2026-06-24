@@ -564,7 +564,7 @@ async function validateWorkspaceFiles() {
   assert(newIdeaWorkflow.includes("## Continuation Bridge"), "New idea intake workflow should offer a continuation bridge");
   assert(newIdeaWorkflow.includes("Next route:\n\n`idea-to-roadmap`"), "New idea intake workflow should bridge to idea-to-roadmap");
   assert(ideaToRoadmapWorkflow.includes("## Continuation Bridge"), "Idea-to-roadmap workflow should offer a continuation bridge");
-  assert(ideaToRoadmapWorkflow.includes("Next route:\n\n`roadmap-item-to-delivery-scope`"), "Idea-to-roadmap workflow should bridge to roadmap-item-to-delivery-scope");
+  assert(ideaToRoadmapWorkflow.includes("Next route:\n\n`roadmap-item-to-epic`"), "Idea-to-roadmap workflow should bridge to roadmap-item-to-epic");
   await assertExists(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"));
   await assertExists(join(rootDir, "strategy", "product", "skills", "evaluate-idea.skill.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync.skill.md"));
@@ -588,22 +588,41 @@ async function validateWorkspaceFiles() {
   assert.equal(await exists(join(rootDir, "operations", "product-ops", "api-contract.md")), false, "Product Ops should not generate premature API contract files");
   assert.equal(await exists(join(rootDir, "operations", "product-ops", "data-model.md")), false, "Product Ops should not generate premature data model files");
   assert.equal(await exists(join(rootDir, "operations", "product-ops", "system-context.md")), false, "Product Ops should not generate premature system context files");
-  await assertExists(join(rootDir, "operations", "workflows", "roadmap-item-to-delivery-scope.workflow.md"));
-  await assertExists(join(rootDir, "operations", "workflows", "delivery-scope-to-epic.workflow.md"));
+  await assertExists(join(rootDir, "operations", "workflows", "roadmap-item-to-epic.workflow.md"));
+  assert.equal(await exists(join(rootDir, "operations", "workflows", "roadmap-item-to-delivery-scope.workflow.md")), false, "Obsolete roadmap item to delivery scope workflow should not be generated");
+  assert.equal(await exists(join(rootDir, "operations", "workflows", "delivery-scope-to-epic.workflow.md")), false, "Obsolete delivery scope to epic workflow should not be generated");
+  assert.equal(await exists(join(rootDir, "operations", "workflows", "mvp-to-pr.workflow.md")), false, "Obsolete MVP to PR workflow should not be generated");
   await assertExists(join(rootDir, "operations", "workflows", "epic-to-features.workflow.md"));
   await assertExists(join(rootDir, "operations", "workflows", "feature-to-delivery-cycle.workflow.md"));
   await assertExists(join(rootDir, "operations", "workflows", "post-merge-continuation.workflow.md"));
   assert.equal(await exists(join(rootDir, "operations", "product-ops", "epics", "example-epic")), false, "Product Ops should not generate fake example epics");
   assert.equal(await exists(join(rootDir, "operations", "product-ops", "epics", "synced")), false, "Product Ops should not generate a synced epics archive folder");
-  const deliveryScopeWorkflow = await readFile(join(rootDir, "operations", "workflows", "roadmap-item-to-delivery-scope.workflow.md"), "utf8");
-  assert(deliveryScopeWorkflow.includes("## Continuation Bridge"), "Roadmap item to delivery scope workflow should offer a continuation bridge");
-  assert(deliveryScopeWorkflow.includes("Next route:\n\n`delivery-scope-to-epic`"), "Roadmap item to delivery scope workflow should bridge to delivery-scope-to-epic");
-  const deliveryScopeToEpicWorkflow = await readFile(join(rootDir, "operations", "workflows", "delivery-scope-to-epic.workflow.md"), "utf8");
-  assert(deliveryScopeToEpicWorkflow.includes("Turn confirmed delivery scope into local LeanOS epic drafts"), "Delivery scope to epic workflow should define its local planning purpose");
-  assert(deliveryScopeToEpicWorkflow.includes("GitHub sync is optional"), "Delivery scope to epic workflow should keep GitHub sync optional");
-  assert(deliveryScopeToEpicWorkflow.includes("Read work taxonomy"), "Delivery scope to epic workflow should load Product Ops work taxonomy");
-  assert(deliveryScopeToEpicWorkflow.includes("Ask for confirmation before any durable write, GitHub API write or project sync"), "Delivery scope to epic workflow should require confirmation before durable or remote writes");
-  assert(deliveryScopeToEpicWorkflow.includes("Next route:\n\n`epic-to-features`"), "Delivery scope to epic workflow should bridge to epic-to-features");
+  const roadmapItemToEpicWorkflow = await readFile(join(rootDir, "operations", "workflows", "roadmap-item-to-epic.workflow.md"), "utf8");
+  assert(roadmapItemToEpicWorkflow.includes("## Continuation Bridge"), "Roadmap item to epic workflow should offer a continuation bridge");
+  assert(roadmapItemToEpicWorkflow.includes("Next route:\n\n`epic-to-features`"), "Roadmap item to epic workflow should bridge to epic-to-features");
+  for (const section of [
+    "## Founder Triggers",
+    "## Owner",
+    "## Conditional Areas",
+    "## Load First",
+    "## Navigation Route",
+    "## Confirmation Gates",
+    "## Allowed Updates",
+    "## Forbidden Updates",
+    "## External Capabilities",
+    "## Stop Conditions",
+    "## Expected Output"
+  ]) {
+    assert(roadmapItemToEpicWorkflow.includes(section), `Roadmap item to epic workflow should include ${section}`);
+  }
+  assert(roadmapItemToEpicWorkflow.includes("operations/product-ops/AGENT.md"), "Roadmap item to epic workflow should route through Product Ops AGENT");
+  assert(roadmapItemToEpicWorkflow.includes("operations/product-ops/roles/product-owner.role.md"), "Roadmap item to epic workflow should route through Product Owner role");
+  assert(roadmapItemToEpicWorkflow.includes("operations/product-ops/skills/define-delivery-scope.skill.md"), "Roadmap item to epic workflow should load define delivery scope skill");
+  assert(roadmapItemToEpicWorkflow.includes("operations/product-ops/skills/shape-epic.skill.md"), "Roadmap item to epic workflow should load shape epic skill");
+  assert(roadmapItemToEpicWorkflow.includes("operations/product-ops/playbooks/delivery-scope-planning.playbook.md"), "Roadmap item to epic workflow should load delivery scope planning playbook");
+  assert(roadmapItemToEpicWorkflow.includes("Stop before Feature files, GitHub issues, branches, code or PR work"), "Roadmap item to epic workflow should stop before downstream delivery work");
+  assert(roadmapItemToEpicWorkflow.includes("Do not call GitHub APIs in this workflow"), "Roadmap item to epic workflow should not call GitHub APIs");
+  assert(roadmapItemToEpicWorkflow.includes("O Epic local esta pronto."), "Roadmap item to epic workflow should bridge from local epic to features");
   const epicToFeaturesWorkflow = await readFile(join(rootDir, "operations", "workflows", "epic-to-features.workflow.md"), "utf8");
   assert(epicToFeaturesWorkflow.includes("Break a confirmed local LeanOS Epic into implementation-ready Feature files"), "Epic to features workflow should define feature shaping purpose");
   assert(epicToFeaturesWorkflow.includes("Route Design only when UX"), "Epic to features workflow should make Design conditional");
@@ -834,7 +853,10 @@ async function validateWorkspaceFiles() {
   assert(yaml.workflows.active.includes("new-idea-intake"), "Expected active local Strategy new-idea-intake workflow");
   assert(yaml.workflows.active.includes("idea-to-roadmap"), "Expected active local Strategy idea-to-roadmap workflow");
   assert(yaml.workflows.active.includes("roadmap-to-github-project"), "Expected active local Strategy GitHub roadmap workflow");
-  assert(yaml.workflows.active.includes("delivery-scope-to-epic"), "Expected active local Operations delivery scope to epic workflow");
+  assert(yaml.workflows.active.includes("roadmap-item-to-epic"), "Expected active local Operations roadmap item to epic workflow");
+  assert.equal(yaml.workflows.active.includes("roadmap-item-to-delivery-scope"), false, "Obsolete roadmap item to delivery scope workflow should not be active");
+  assert.equal(yaml.workflows.active.includes("delivery-scope-to-epic"), false, "Obsolete delivery scope to epic workflow should not be active");
+  assert.equal(yaml.workflows.active.includes("mvp-to-pr"), false, "Obsolete MVP to PR workflow should not be active");
   assert(yaml.workflows.active.includes("epic-to-features"), "Expected active local Operations epic to features workflow");
   assert(yaml.workflows.active.includes("feature-to-delivery-cycle"), "Expected active local Operations feature delivery workflow");
   assert.deepEqual(yaml.departments.active, ["strategy", "operations", "growth"]);
@@ -1595,7 +1617,7 @@ async function assertFounderIntentRouting(rootDir) {
   assert(whereWeAreProtocol.includes("operations/product-ops/knowledge/ready-to-develop.md"), "Where-we-are protocol should load the ready-to-develop gate");
   assert(whereWeAreProtocol.includes("## Development Gate"), "Where-we-are protocol should define a development gate");
   assert(whereWeAreProtocol.includes("local Epic/Feature exists"), "Where-we-are protocol should support local Epic/Feature readiness");
-  assert(whereWeAreProtocol.includes("Local epics missing"), "Where-we-are protocol should route missing local epics");
+  assert(whereWeAreProtocol.includes("Local epic missing -> `roadmap-item-to-epic`"), "Where-we-are protocol should route missing local epic");
   assert(whereWeAreProtocol.includes("## Recommended Routes By Gap"), "Where-we-are protocol should recommend routes by gap");
   assert(whereWeAreProtocol.includes("Ainda nao recomendo comecar pelo codigo"), "Where-we-are protocol should provide founder-friendly early-development feedback");
   const readyToDevelop = await readFile(join(rootDir, "operations", "product-ops", "knowledge", "ready-to-develop.md"), "utf8");
@@ -1647,7 +1669,10 @@ async function assertFounderIntentRouting(rootDir) {
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "new-idea-intake" && workflow.path === "../../strategy/workflows/new-idea-intake.workflow.md"), "Workflows index should point to Strategy new idea intake workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "idea-to-roadmap" && workflow.path === "../../strategy/workflows/idea-to-roadmap.workflow.md"), "Workflows index should point to Strategy idea-to-roadmap workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-to-github-project" && workflow.path === "../../strategy/workflows/roadmap-to-github-project.workflow.md"), "Workflows index should point to Strategy roadmap sync workflow");
-  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "delivery-scope-to-epic" && workflow.path === "../../operations/workflows/delivery-scope-to-epic.workflow.md"), "Workflows index should point to Operations delivery scope to epic workflow");
+  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-item-to-epic" && workflow.path === "../../operations/workflows/roadmap-item-to-epic.workflow.md"), "Workflows index should point to Operations roadmap item to epic workflow");
+  assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-item-to-delivery-scope"), false, "Workflows index should not include obsolete roadmap item to delivery scope workflow");
+  assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "delivery-scope-to-epic"), false, "Workflows index should not include obsolete delivery scope to epic workflow");
+  assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "mvp-to-pr"), false, "Workflows index should not include obsolete MVP to PR workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "epic-to-features" && workflow.path === "../../operations/workflows/epic-to-features.workflow.md"), "Workflows index should point to Operations epic to features workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "feature-to-delivery-cycle" && workflow.path === "../../operations/workflows/feature-to-delivery-cycle.workflow.md"), "Workflows index should point to Operations feature delivery workflow");
   assert(rootAgentTemplate.includes("## Root Routing"), "Root agent template should keep root routing department-level");
@@ -3094,7 +3119,7 @@ async function assertInitialContextCoherence(rootDir, selectedSubareas) {
     { workflow: "new-idea-intake", subareas: ["strategy.product", "strategy.roadmap"] },
     { workflow: "idea-to-roadmap", subareas: ["strategy.product", "strategy.roadmap"] },
     { workflow: "roadmap-to-github-project", subareas: ["strategy.product", "strategy.roadmap"] },
-    { workflow: "delivery-scope-to-epic", subareas: ["operations.product-ops"] },
+    { workflow: "roadmap-item-to-epic", subareas: ["operations.product-ops"] },
     { workflow: "epic-to-features", subareas: ["operations.product-ops", "operations.engineering"] },
     { workflow: "feature-to-delivery-cycle", subareas: ["operations.product-ops", "operations.engineering"] },
     { workflow: "post-merge-continuation", subareas: ["operations.product-ops", "operations.engineering"] },

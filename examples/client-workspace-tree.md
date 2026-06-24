@@ -457,13 +457,11 @@ client-workspace/
 |   |   |-- area.yaml
 |   |   `-- README.md
 |   |-- workflows/
-|   |   |-- delivery-scope-to-epic.workflow.md
 |   |   |-- epic-to-features.workflow.md
 |   |   |-- feature-to-delivery-cycle.workflow.md
-|   |   |-- mvp-to-pr.workflow.md
 |   |   |-- post-merge-continuation.workflow.md
 |   |   |-- README.md
-|   |   `-- roadmap-item-to-delivery-scope.workflow.md
+|   |   `-- roadmap-item-to-epic.workflow.md
 |   |-- AGENT.md
 |   |-- department.yaml
 |   `-- README.md

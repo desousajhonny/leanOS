@@ -11,21 +11,13 @@ workflows:
     department: strategy
     path: ../../strategy/workflows/roadmap-to-github-project.workflow.md
     active: true
-  - key: roadmap-item-to-delivery-scope
+  - key: roadmap-item-to-epic
     department: operations
-    path: ../../operations/workflows/roadmap-item-to-delivery-scope.workflow.md
-    active: true
-  - key: delivery-scope-to-epic
-    department: operations
-    path: ../../operations/workflows/delivery-scope-to-epic.workflow.md
+    path: ../../operations/workflows/roadmap-item-to-epic.workflow.md
     active: true
   - key: epic-to-features
     department: operations
     path: ../../operations/workflows/epic-to-features.workflow.md
-    active: true
-  - key: mvp-to-pr
-    department: operations
-    path: ../../operations/workflows/mvp-to-pr.workflow.md
     active: true
   - key: feature-to-delivery-cycle
     department: operations

@@ -550,7 +550,7 @@ Feature title:
 ## Workflow
 
 1. Confirm Delivery Scope.
-2. Run \`delivery-scope-to-epic\` to create or update the local Epic folder.
+2. Run \`roadmap-item-to-epic\` to create or update the local Epic folder.
 3. Run \`epic-to-features\` to create Feature files inside the Epic folder.
 4. Run \`ready-to-develop.md\` before Engineering starts implementation.
 5. Sync with GitHub only after confirmation.
@@ -2976,9 +2976,9 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         requiredAreas: ["product", "roadmap"],
         steps: ["Confirm the idea already passed intake", "Read product strategy and roadmap context", "Define problem, user, expected value, dependencies and evidence level", "Classify the item as backlog, Now, Next, Later or Not Planned", "Do not mark as MVP unless the next workflow confirms it", "Propose roadmap or backlog updates and wait for confirmation before writing"],
         continuationBridge: {
-          immediate: "Esse item agora esta organizado como roadmap/backlog.\nQuer que eu avalie se ele deve entrar em uma entrega planejada, como MVP, release, experimento ou beta?",
-          laterTriggers: ["isso entra no MVP?", "isso entra na proxima entrega?", "vamos planejar a entrega desse item", "vamos transformar esse item do roadmap em escopo", "qual milestone recebe esse item?"],
-          nextRoute: "roadmap-item-to-delivery-scope"
+          immediate: "Esse item agora esta organizado como roadmap/backlog.\nQuer que eu prepare isso para virar um Epic local com escopo, milestone e criterios iniciais?",
+          laterTriggers: ["isso entra no MVP?", "isso entra na proxima entrega?", "vamos planejar a entrega desse item", "vamos transformar esse item do roadmap em epic", "qual milestone recebe esse item?"],
+          nextRoute: "roadmap-item-to-epic"
         }
       },
       {
@@ -4218,35 +4218,121 @@ export const rootDepartments: RootDepartmentDefinition[] = [
     ],
     workflows: [
       {
-        slug: "roadmap-item-to-delivery-scope",
-        purpose: "Decide whether a roadmap item becomes a concrete delivery scope before epic, issue or implementation work.",
+        slug: "roadmap-item-to-epic",
+        purpose: "Turn a confirmed roadmap or backlog item into a local LeanOS Epic with scope_type, milestone, release_goal, outcome, non-goals, risks and readiness notes before features, GitHub sync, branch or code.",
+        founderTriggers: [
+          "Isso entra no MVP?",
+          "Isso entra na proxima entrega?",
+          "Vamos transformar esse item do roadmap em epic?",
+          "Crie um epic para esse item",
+          "Qual milestone recebe esse item?",
+          "Vamos preparar isso para virar features depois?"
+        ],
+        owner: {
+          department: "operations",
+          primaryArea: "operations/product-ops",
+          supportingAreas: ["strategy/product", "strategy/roadmap"],
+          conditionalAreas: ["operations/design", "operations/security", "operations/devops", "operations/engineering"]
+        },
         requiredAreas: ["product-ops"],
-        steps: ["Confirm the roadmap item exists and has enough product context", "Load Product Ops and choose Product Owner", "Use delivery scope planning to decide scope_type, milestone and release_goal", "Route Design only when user-facing UX is affected", "Route Security only when data, auth, privacy, abuse, API, compliance or AI-generated-code risk is involved", "Route DevOps only when environments, deploy, GitHub project, observability or release readiness are affected", "Ask for confirmation before updating delivery scope or MVP files", "Stop before local epics, features, branches or code"],
+        conditionalAreas: [
+          { area: "operations/design", when: "UX, UI, copy, accessibility, screen, flow, behavior or component implications can affect the Epic scope." },
+          { area: "operations/security", when: "Data, auth, permissions, privacy, abuse, API, database, compliance, infrastructure or AI-generated-code risk affects the Epic." },
+          { area: "operations/devops", when: "GitHub Project, milestone sync, environments, deploy, observability, config or release readiness affect the Epic." },
+          { area: "operations/engineering", when: "Technical feasibility, architecture boundary, dependency, data model or implementation size can change the Epic shape." }
+        ],
+        loadFirst: [
+          "AGENT.md",
+          "operations/AGENT.md",
+          "operations/workflows/README.md",
+          "operations/product-ops/AGENT.md",
+          "operations/product-ops/knowledge/work-taxonomy.md",
+          "operations/product-ops/knowledge/delivery-scope.md",
+          "operations/product-ops/epics/README.md",
+          "strategy/product/knowledge/brief.md",
+          "strategy/roadmap/knowledge/roadmap.md",
+          "strategy/roadmap/knowledge/backlog.md",
+          "ai-standard/templates/product/epic-template.md"
+        ],
+        navigationRoute: [
+          "AGENT.md",
+          "operations/AGENT.md",
+          "operations/workflows/roadmap-item-to-epic.workflow.md",
+          "operations/product-ops/AGENT.md",
+          "operations/product-ops/roles/product-owner.role.md",
+          "operations/product-ops/skills/define-delivery-scope.skill.md",
+          "operations/product-ops/skills/shape-epic.skill.md",
+          "operations/product-ops/playbooks/delivery-scope-planning.playbook.md",
+          "ai-standard/templates/product/epic-template.md",
+          "Output"
+        ],
+        steps: [
+          "Confirm the roadmap or backlog item exists and has enough product context.",
+          "Declare this route before executing so the founder understands this creates or updates a local LeanOS Epic, not implementation.",
+          "Load Product Ops through `operations/product-ops/AGENT.md` and choose `roles/product-owner.role.md`.",
+          "Use `skills/define-delivery-scope.skill.md` to decide `scope_type`, `milestone` and `release_goal` as Epic fields, not as a separate workflow.",
+          "Use `skills/shape-epic.skill.md` to define the Epic outcome, decision ownership, scope boundary, non-goals, risks and likely feature groups.",
+          "Use `playbooks/delivery-scope-planning.playbook.md` only as tactical support for delivery-scope fields.",
+          "Route Design only when UX, UI, copy, accessibility, screen, flow, behavior or component implications can affect the Epic.",
+          "Route Security only when data, auth, privacy, abuse, API, database, compliance, infrastructure or AI-generated-code risk is involved.",
+          "Route DevOps only when GitHub Project, milestone sync, environments, deploy, observability, config or release readiness affect the Epic.",
+          "Route Engineering only when feasibility, architecture boundary, dependency, data model or implementation size can change the Epic shape.",
+          "Explain the recommendation in founder-friendly language before mentioning file updates.",
+          "Ask for confirmation before creating or updating the local Epic folder.",
+          "Stop before Feature files, GitHub issues, branches, code or PR work."
+        ],
+        confirmationGates: [
+          "Ask before promoting a roadmap/backlog item to a local Epic.",
+          "Ask before writing `scope_type`, `milestone` or `release_goal` into the Epic.",
+          "Ask before creating or updating files under `operations/product-ops/epics/`.",
+          "Ask before moving to `epic-to-features`."
+        ],
+        allowedUpdates: [
+          "operations/product-ops/epics/",
+          "operations/product-ops/knowledge/delivery-scope.md",
+          "operations/product-ops/knowledge/issue-readiness.md",
+          "operations/product-ops/knowledge/delivery-context.md",
+          "strategy/roadmap/knowledge/roadmap.md",
+          "strategy/roadmap/knowledge/current-cycle.md"
+        ],
+        forbiddenUpdates: [
+          "Feature files inside the Epic folder",
+          "operations/engineering/",
+          ".github/",
+          ".leanos/index/",
+          "source code",
+          "GitHub remote state",
+          "branches",
+          "pull requests"
+        ],
+        externalCapabilities: [
+          "No external capability is required by default.",
+          "Do not call GitHub APIs in this workflow.",
+          "Do not create branches, commits or PRs in this workflow.",
+          "Prepare GitHub sync notes only as optional future context after the local Epic is confirmed."
+        ],
+        stopConditions: [
+          "The roadmap or backlog item does not exist or cannot be identified.",
+          "The item has no clear product context, user, outcome or value.",
+          "The founder does not confirm Epic creation or update.",
+          "The request shifts into Feature shaping, GitHub sync, branch creation, code or PR work."
+        ],
+        expectedOutput: [
+          "Founder-friendly recommendation: create local Epic, keep in roadmap/backlog, refine first or reject.",
+          "Local Epic title and stable folder slug.",
+          "`scope_type`, `milestone` and `release_goal` as Epic fields.",
+          "Epic outcome, non-goals, risks and likely feature groups.",
+          "Design, Security, DevOps and Engineering applicability notes.",
+          "Clear next-step bridge to `epic-to-features` when the founder wants to continue."
+        ],
         continuationBridge: {
-          immediate: "Esse delivery scope esta definido.\nQuer que eu prepare isso para virar epicos no GitHub Projects?",
-          laterTriggers: ["vamos criar o epico disso", "manda esse scope para o GitHub", "cria os epicos desse delivery item", "vamos quebrar isso em epicos", "vamos atualizar o GitHub Projects com esse delivery item"],
-          nextRoute: "delivery-scope-to-epic",
-          rules: [
-            "Do not automatically start the next journey without founder confirmation.",
-            "If the founder says yes, declare the new route before loading GitHub, DevOps or epic-planning files.",
-            "If the founder says no, explain the delivery-scope outcome and stop without writing anything else.",
-            "If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `delivery-scope-to-epic`."
-          ]
-        }
-      },
-      {
-        slug: "delivery-scope-to-epic",
-        purpose: "Turn confirmed delivery scope into local LeanOS epic drafts without creating features, branches or code. GitHub sync is optional after confirmation.",
-        requiredAreas: ["product-ops"],
-        steps: ["Confirm delivery scope exists and has scope_type, milestone and release_goal", "Load Product Ops and choose Product Owner", "Read work taxonomy, delivery scope, PRD, acceptance criteria and ready-to-develop gate", "Use the local Product Epic template to draft one or more epics with outcome, decision ownership, scope, non-goals, risks and Epic Readiness Matrix", "Route DevOps only when GitHub Project configuration, labels, milestones or sync state need validation", "Route Engineering only when epic boundaries need technical feasibility review", "Ask for confirmation before any durable write, GitHub API write or project sync", "Stop before features, branches, code or PR work"],
-        continuationBridge: {
-          immediate: "O epic esta pronto.\nQuer que eu quebre esse epic em features usando a Delivery Readiness Matrix?",
+          immediate: "O Epic local esta pronto.\nQuer que eu quebre esse Epic em Features usando a Delivery Readiness Matrix?",
           laterTriggers: ["quebre esse epic em features", "crie as features desse epic", "vamos fatiar esse epic", "prepara as features de implementacao", "quebre o epic #123"],
           nextRoute: "epic-to-features",
           rules: [
             "Do not automatically start feature creation without founder confirmation.",
             "If the founder says yes, declare the new route and load Product Ops epic-to-features assets before drafting features.",
-            "If the founder says no, explain the epic draft outcome and stop without writing anything else.",
+            "If the founder says no, explain the local Epic outcome and stop without writing anything else.",
             "If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `epic-to-features`."
           ]
         }
@@ -4281,12 +4367,6 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             "If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `feature-to-delivery-cycle` only after readiness is confirmed."
           ]
         }
-      },
-      {
-        slug: "mvp-to-pr",
-        purpose: "Coordinate Product Ops, Design and Engineering for delivery.",
-        requiredAreas: ["product-ops", "engineering"],
-        steps: ["Read delivery scope", "Check architecture", "Route UX if needed", "Plan implementation", "Prepare PR"]
       },
       {
         slug: "feature-to-delivery-cycle",

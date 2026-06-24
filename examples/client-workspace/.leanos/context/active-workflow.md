@@ -5,10 +5,8 @@ Current compatible local workflows:
 - new-idea-intake
 - idea-to-roadmap
 - roadmap-to-github-project
-- roadmap-item-to-delivery-scope
-- delivery-scope-to-epic
+- roadmap-item-to-epic
 - epic-to-features
-- mvp-to-pr
 - feature-to-delivery-cycle
 - post-merge-continuation
 - launch-learning-loop

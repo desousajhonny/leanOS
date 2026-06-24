@@ -179,21 +179,53 @@ function departmentWorkflowFile(department: RootDepartmentDefinition, activeArea
 
 ${workflow.purpose}
 
-## Required Areas
+${workflow.founderTriggers ? listSection("Founder Triggers", workflow.founderTriggers.map((trigger) => `"${trigger}"`)) : ""}${workflow.owner ? ownerSection(workflow.owner) : ""}## Required Areas
 
 ${workflow.requiredAreas.map((area) => `- ${area}`).join("\n")}
 
-${missingAreas.length > 0 ? `## Availability\n\nThis workflow references areas that are not currently active: ${missingAreas.join(", ")}.\n\nDo not load missing area paths. Ask whether to activate or create the missing area before executing this workflow.\n` : "## Availability\n\nAll required areas are active in this department.\n"}
+${workflow.conditionalAreas ? conditionalAreasSection(workflow.conditionalAreas) : ""}${missingAreas.length > 0 ? `## Availability\n\nThis workflow references areas that are not currently active: ${missingAreas.join(", ")}.\n\nDo not load missing area paths. Ask whether to activate or create the missing area before executing this workflow.\n` : "## Availability\n\nAll required areas are active in this department.\n"}
 
-## Sequence
+${workflow.loadFirst ? listSection("Load First", workflow.loadFirst.map((path) => `\`${path}\``)) : ""}${workflow.navigationRoute ? orderedSection("Navigation Route", workflow.navigationRoute.map((path) => `\`${path}\``)) : ""}## Sequence
 
 ${workflow.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}
 
-${workflow.continuationBridge ? continuationBridgeSection(workflow) : ""}
+${workflow.confirmationGates ? listSection("Confirmation Gates", workflow.confirmationGates) : ""}${workflow.allowedUpdates ? listSection("Allowed Updates", workflow.allowedUpdates.map((path) => `\`${path}\``)) : ""}${workflow.forbiddenUpdates ? listSection("Forbidden Updates", workflow.forbiddenUpdates.map((path) => `\`${path}\``)) : ""}${workflow.externalCapabilities ? listSection("External Capabilities", workflow.externalCapabilities) : ""}${workflow.stopConditions ? listSection("Stop Conditions", workflow.stopConditions) : ""}${workflow.expectedOutput ? listSection("Expected Output", workflow.expectedOutput) : ""}${workflow.continuationBridge ? continuationBridgeSection(workflow) : ""}
 
 ## Navigation
 
 Use ${department.name} area READMEs for each step to preserve area-first ownership.
+`;
+}
+
+function listSection(title: string, items: string[]): string {
+  return `## ${title}
+
+${items.map((item) => `- ${item}`).join("\n")}
+
+`;
+}
+
+function orderedSection(title: string, items: string[]): string {
+  return `## ${title}
+
+${items.map((item, index) => `${index + 1}. ${item}`).join("\n")}
+
+`;
+}
+
+function ownerSection(owner: NonNullable<DepartmentWorkflowDefinition["owner"]>): string {
+  return `## Owner
+
+- Department: \`${owner.department}\`
+${owner.primaryArea ? `- Primary area: \`${owner.primaryArea}\`\n` : ""}${owner.supportingAreas?.length ? `- Supporting areas: ${owner.supportingAreas.map((area) => `\`${area}\``).join(", ")}\n` : ""}${owner.conditionalAreas?.length ? `- Conditional areas: ${owner.conditionalAreas.map((area) => `\`${area}\``).join(", ")}\n` : ""}
+`;
+}
+
+function conditionalAreasSection(conditionalAreas: NonNullable<DepartmentWorkflowDefinition["conditionalAreas"]>): string {
+  return `## Conditional Areas
+
+${conditionalAreas.map((item) => `- \`${item.area}\`: ${item.when}`).join("\n")}
+
 `;
 }
 

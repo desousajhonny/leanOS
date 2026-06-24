@@ -19,14 +19,10 @@ department:
       agent: security/AGENT.md
       readme: security/README.md
   workflows:
-    - key: roadmap-item-to-delivery-scope
-      path: workflows/roadmap-item-to-delivery-scope.workflow.md
-    - key: delivery-scope-to-epic
-      path: workflows/delivery-scope-to-epic.workflow.md
+    - key: roadmap-item-to-epic
+      path: workflows/roadmap-item-to-epic.workflow.md
     - key: epic-to-features
       path: workflows/epic-to-features.workflow.md
-    - key: mvp-to-pr
-      path: workflows/mvp-to-pr.workflow.md
     - key: feature-to-delivery-cycle
       path: workflows/feature-to-delivery-cycle.workflow.md
     - key: post-merge-continuation

@@ -61,7 +61,7 @@ The model starts at Root `AGENT.md` because the founder is speaking naturally. I
 
 ## Moment
 
-Feature Shaping. This happens after `delivery-scope-to-epic` and before `feature-to-delivery-cycle`.
+Feature Shaping. This happens after `roadmap-item-to-epic` and before `feature-to-delivery-cycle`.
 
 ## Start Condition
 

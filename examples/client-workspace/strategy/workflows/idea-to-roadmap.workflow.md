@@ -31,7 +31,7 @@ Immediate bridge:
 
 ```text
 Esse item agora esta organizado como roadmap/backlog.
-Quer que eu avalie se ele deve entrar em uma entrega planejada, como MVP, release, experimento ou beta?
+Quer que eu prepare isso para virar um Epic local com escopo, milestone e criterios iniciais?
 ```
 
 Later-session triggers:
@@ -39,12 +39,12 @@ Later-session triggers:
 - "isso entra no MVP?"
 - "isso entra na proxima entrega?"
 - "vamos planejar a entrega desse item"
-- "vamos transformar esse item do roadmap em escopo"
+- "vamos transformar esse item do roadmap em epic"
 - "qual milestone recebe esse item?"
 
 Next route:
 
-`roadmap-item-to-delivery-scope`
+`roadmap-item-to-epic`
 
 Rules:
 

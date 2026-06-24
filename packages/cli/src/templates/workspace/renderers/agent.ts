@@ -237,8 +237,8 @@ Classify the current moment as one of:
 - Product strategy started
 - Roadmap missing
 - Roadmap ready
-- Delivery scope missing
-- Delivery scope ready
+- Local Epic missing
+- Local Epic ready
 - GitHub planning missing
 - Epics or features missing
 - Ready for implementation
@@ -269,8 +269,7 @@ If these are missing, explain the gap and recommend the next LeanOS route instea
 - Strategy missing -> \`/start-leanos\`
 - Product strategy weak -> Strategy Product through \`strategy/AGENT.md\`
 - Roadmap missing -> \`idea-to-roadmap\` or Strategy Roadmap through \`strategy/AGENT.md\`
-- Delivery scope missing -> \`roadmap-item-to-delivery-scope\`
-- Local epics missing -> \`delivery-scope-to-epic\` when available
+- Local epic missing -> \`roadmap-item-to-epic\`
 - Features missing -> \`epic-to-features\` when available
 - Implementation ready -> \`feature-to-delivery-cycle\`
 - PR/review needed -> Engineering PR validation route

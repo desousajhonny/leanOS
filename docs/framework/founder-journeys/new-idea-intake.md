@@ -95,7 +95,7 @@ The idea can end as:
 - registered as a validation note;
 - moved to product backlog;
 - recommended for `idea-to-roadmap`;
-- recommended for `roadmap-item-to-delivery-scope` only after it already becomes a roadmap item.
+- recommended for `roadmap-item-to-epic` only after it already becomes a roadmap item.
 
 ## Owner
 
@@ -129,7 +129,7 @@ Rules:
 - The model must declare the route before evaluating the idea.
 - The model uses Product first because the first question is product fit, not delivery planning.
 - Roadmap enters only when the Product evaluation says the idea may affect sequencing, backlog or current cycle.
-- Product Ops/Delivery Scope enters only in a later journey, `roadmap-item-to-delivery-scope`, after the idea becomes a roadmap item.
+- Product Ops/Delivery Scope enters only in a later journey, `roadmap-item-to-epic`, after the idea becomes a roadmap item.
 - If `new-idea-intake.workflow.md` is missing, the model should report the gap instead of inventing a replacement workflow.
 
 ## What The Model Does In Practice
@@ -494,7 +494,7 @@ The model must ask for confirmation before:
 - changing `strategy/roadmap/knowledge/roadmap.md`;
 - marking the idea as delivery scope candidate;
 - starting `idea-to-roadmap`;
-- starting `roadmap-item-to-delivery-scope`;
+- starting `roadmap-item-to-epic`;
 - creating issues, epics, branches or code.
 
 ## Founder-facing Output
@@ -590,7 +590,7 @@ Rules:
 After this journey, the next flow can be:
 
 - `idea-to-roadmap` when the idea should become a roadmap/backlog item.
-- `roadmap-item-to-delivery-scope` when an existing roadmap item may enter MVP, a release, an experiment or another delivery scope.
+- `roadmap-item-to-epic` when an existing roadmap item may enter MVP, a release, an experiment or another delivery scope.
 - `define-mvp` when the MVP itself is still undefined.
 - `start-leanos` when the workspace does not have enough strategy baseline.
 

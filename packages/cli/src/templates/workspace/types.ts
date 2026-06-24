@@ -158,7 +158,26 @@ export type DepartmentWorkflowDefinition = {
   slug: string;
   purpose: string;
   requiredAreas: string[];
+  founderTriggers?: string[];
+  owner?: {
+    department: string;
+    primaryArea?: string;
+    supportingAreas?: string[];
+    conditionalAreas?: string[];
+  };
+  loadFirst?: string[];
+  navigationRoute?: string[];
   steps: string[];
+  conditionalAreas?: Array<{
+    area: string;
+    when: string;
+  }>;
+  confirmationGates?: string[];
+  allowedUpdates?: string[];
+  forbiddenUpdates?: string[];
+  externalCapabilities?: string[];
+  stopConditions?: string[];
+  expectedOutput?: string[];
   continuationBridge?: {
     immediate: string;
     laterTriggers: string[];

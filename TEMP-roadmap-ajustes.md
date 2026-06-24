@@ -209,39 +209,120 @@ Status: primeira prioridade da proxima rodada.
 
 Objetivo: transformar workflows em rotas realmente acionaveis pelos modelos, sem duplicar comandos e sem colocar workflow de negocio dentro de `.leanos/`.
 
-Regras:
+#### Workflow Contract Standard
 
-- [ ] Workflow coordena varias areas, etapas ou handoffs.
-- [ ] Playbook executa uma tarefa pratica dentro de uma area.
-- [ ] Workflows de negocio vivem no departamento/area dona do fluxo.
-- [ ] `.leanos/` fica como runtime leve: commands, context, indexes e integracao.
-- [ ] Workflows devem apontar para department/area AGENTs quando eles existirem.
-- [ ] Workflows nao devem pular direto para role quando a area tem `AGENT.md`.
-- [ ] Workflows devem declarar areas requeridas e disponibilidade.
-- [ ] Workflows nao devem apontar para paths ausentes.
+Objetivo: todos os workflows locais devem seguir um contrato comum para preservar a LeanOS Navigation Chain e evitar que o modelo pule de uma intencao direto para codigo, role, skill ou playbook.
 
-Decisao de delivery:
+Status: contrato definido. A aplicacao e validada workflow por workflow na lista de revisao abaixo.
 
-- [ ] Separar Feature Shaping de Feature Delivery.
-- [ ] Feature Shaping acontece antes do desenvolvimento, principalmente em futuro `operations/product-ops/playbooks/epic-to-features.playbook.md`.
-- [ ] Feature Shaping aplica a Delivery Readiness Matrix (DRM) para envolver Product Ops, Design, Engineering, Security e DevOps quando aplicavel.
-- [ ] Feature Delivery assume que a Feature idealmente ja veio pronta; ele faz recheck, atualiza riscos e so entao inicia branch, implementacao, testes, PR e review.
-- [ ] Product Ops, Design, Security e DevOps nao devem redescobrir tudo no momento de implementacao; entram como checkpoint quando a Feature esta incompleta, mudou ou revelou risco novo.
+Regra central:
 
-Cada workflow deve responder:
+- Workflow coordena varias areas, etapas ou handoffs.
+- Playbook executa uma tarefa pratica dentro de uma area.
+- Skill aplica uma capacidade especifica.
+- Role define o chapeu operacional.
+- Knowledge guarda contexto, fatos, criterios e decisoes.
+- Comandos e linguagem natural devem apontar para o workflow correto quando a intencao envolver mais de uma area.
 
-- [ ] Qual intencao do founder dispara este workflow?
-- [ ] Qual comando, se existir, tambem aponta para ele?
-- [ ] Qual departamento e dono do workflow?
-- [ ] Quais areas participam sempre?
-- [ ] Quais areas entram condicionalmente?
-- [ ] Qual contexto deve ser carregado primeiro?
-- [ ] Qual e a sequencia de etapas?
-- [ ] Onde ha checkpoints de confirmacao do usuario?
-- [ ] Quais arquivos podem ser atualizados?
-- [ ] Quais arquivos nao podem ser atualizados?
-- [ ] Quando uma capability/script externo pode ser chamado?
-- [ ] Qual output final esperado?
+Todo workflow deve ter:
+
+- `Purpose`
+- `Founder Triggers`
+- `Owner`
+- `Required Areas`
+- `Conditional Areas`
+- `Load First`
+- `Navigation Route`
+- `Sequence`
+- `Confirmation Gates`
+- `Allowed Updates`
+- `Forbidden Updates`
+- `External Capabilities`
+- `Stop Conditions`
+- `Expected Output`
+- `Continuation Bridge`
+
+Regras de navegacao:
+
+- Workflows de negocio vivem no departamento/area dona do fluxo.
+- `.leanos/` fica como runtime leve: commands, context, indexes e integracao.
+- Workflow deve apontar para department/area `AGENT.md` quando ele existir.
+- Workflow nao deve pular direto para role quando a area tem `AGENT.md`.
+- Workflow nao deve pular direto para skill ou playbook quando existe role responsavel.
+- Workflow deve declarar areas requeridas e disponibilidade.
+- Workflow deve declarar areas condicionais e quando elas entram.
+- Workflow nao deve apontar para paths ausentes.
+- Workflow deve explicar quando parar antes de escrita, API, branch, codigo ou PR.
+- Workflow deve oferecer proxima rota quando concluir ou quando faltar contexto.
+
+Primeira aplicacao concluida:
+
+- [x] `operations/workflows/roadmap-item-to-epic.workflow.md` ja segue este contrato no scaffold gerado.
+
+#### Decisao de Delivery
+
+- [x] Separar Feature Shaping de Feature Delivery.
+- [x] Feature Shaping acontece antes do desenvolvimento em `operations/product-ops/playbooks/epic-to-features.playbook.md`.
+- [x] Feature Shaping aplica a Delivery Readiness Matrix (DRM) para envolver Product Ops, Design, Engineering, Security e DevOps quando aplicavel.
+- [x] Feature Delivery assume que a Feature idealmente ja veio pronta; ele faz recheck, atualiza riscos e so entao inicia branch, implementacao, testes, PR e review.
+- [x] Product Ops, Design, Security e DevOps nao devem redescobrir tudo no momento de implementacao; entram como checkpoint quando a Feature esta incompleta, mudou ou revelou risco novo.
+
+#### Ordem De Revisao Dos Workflows
+
+Comecar por Operations porque e onde a entrega acontece e onde mais existe risco de o modelo pular etapas.
+
+- [x] `operations/workflows/roadmap-item-to-epic.workflow.md`
+  - aplicar Workflow Contract Standard;
+  - garantir que cria/atualiza Epic local, mas nao cria Feature, GitHub issue, branch ou codigo;
+  - manter `scope_type`, `milestone` e `release_goal` como campos do Epic;
+  - garantir ponte para `epic-to-features`.
+  - contrato aplicado e validacao adicionada.
+- [ ] `operations/workflows/epic-to-features.workflow.md`
+  - aplicar Workflow Contract Standard;
+  - garantir Feature Shaping com Product Ops, Engineering e DRM;
+  - Design, Security e DevOps entram condicionalmente;
+  - componentes geram task de Design, nao spec completa nessa etapa;
+  - garantir ponte para `feature-to-delivery-cycle`.
+- [ ] `operations/workflows/feature-to-delivery-cycle.workflow.md`
+  - aplicar Workflow Contract Standard;
+  - aceitar apenas Feature local ou GitHub Feature issue;
+  - Product Ops entra primeiro com `ready-to-develop`;
+  - Design/Security/DevOps entram como checkpoints condicionais;
+  - Engineering so entra depois de readiness;
+  - garantir PR validation e ponte para review/post-merge.
+- [ ] `operations/workflows/post-merge-continuation.workflow.md`
+  - aplicar Workflow Contract Standard;
+  - orientar o que atualizar apos merge;
+  - sugerir proxima Feature/issue sem inventar prioridade;
+  - conectar aprendizado com Product Ops, Growth ou Roadmap quando aplicavel.
+- [x] Workflow legado MVP-to-PR
+  - removido do scaffold;
+  - responsabilidade absorvida por `feature-to-delivery-cycle`;
+  - evita workflow legado que incentive pular Epic/Feature Shaping.
+- [ ] `strategy/workflows/new-idea-intake.workflow.md`
+  - aplicar Workflow Contract Standard;
+  - garantir intake antes de roadmap;
+  - nao exigir `strategy/validation` no MVP padrao.
+- [ ] `strategy/workflows/idea-to-roadmap.workflow.md`
+  - aplicar Workflow Contract Standard;
+  - garantir que nao marca automaticamente como delivery/MVP;
+  - ponte para `roadmap-item-to-epic`.
+- [ ] `strategy/workflows/roadmap-to-github-project.workflow.md`
+  - revisar se continua em Strategy ou se deve virar camada GitHub/DevOps posterior;
+  - tratar GitHub como dry-run/payload antes de escrita remota.
+- [ ] `growth/workflows/launch-learning-loop.workflow.md`
+  - aplicar Workflow Contract Standard de forma lean;
+  - manter como pos-lancamento, nao bloqueador do MVP inicial.
+
+#### Validacoes Necessarias
+
+- [ ] Atualizar `validate-generator.mjs` para validar o contrato minimo dos workflows principais.
+- [ ] Validar que `.leanos/index/workflows.yaml` aponta apenas para workflows existentes.
+- [ ] Validar que nenhum workflow de negocio e gerado em `.leanos/workflows/`.
+- [ ] Validar que workflow nao referencia area inativa sem aviso de disponibilidade.
+- [ ] Validar que workflows multi-area carregam area `AGENT.md` antes de role/skill/playbook.
+- [ ] Validar que workflows com GitHub/API declaram dry-run, payload e confirmacao antes de escrita remota.
+- [ ] Validar que cada workflow tem `Stop Conditions` e `Continuation Bridge`.
 
 #### Readiness Criteria / Gates
 
@@ -419,7 +500,7 @@ Decisao proposta:
   - Tasks ficam dentro de cada Feature;
   - GitHub sync de Features vira etapa opcional posterior.
 - [x] Atualizar workflows e jornadas:
-  - `delivery-scope-to-epic` termina em Epic local, com GitHub sync opcional;
+  - `roadmap-item-to-epic` termina em Epic local, com GitHub sync opcional em fluxo posterior;
   - proximo fluxo passa a ser `epic-to-features`;
   - `feature-to-delivery-cycle` deve aceitar Feature local ou GitHub issue como entrada, desde que passe pelo `ready-to-develop`.
 
@@ -433,13 +514,12 @@ Jornadas internas devem ser criadas em `docs/framework/founder-journeys/` usando
 | 1 | [ ] | [ ] `docs/framework/founder-journeys/define-mvp.md` | Primeira definicao do produto | `operations/workflows/define-mvp.workflow.md` ou `operations/product-ops/playbooks/mvp-delivery.playbook.md` | "Defina o MVP", "qual a primeira versao?", "o que entra no MVP?" | Product Ops | Product Owner, Delivery Architect, Product Designer quando aplicavel, Security Reviewer quando aplicavel | `mvp-delivery`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Playbook existe, decidir se vira workflow |
 | 2 | [x] | [x] `docs/framework/founder-journeys/new-idea-intake.md` | Novas ideias e features | `strategy/workflows/new-idea-intake.workflow.md` | "Tenho uma ideia", "quero avaliar uma feature nova", "isso faz sentido para o produto?" | Strategy | Product Strategist, Product Manager, Business Strategist, Roadmap Planner | `product-strategy`, `business-foundation`, `roadmap-cycle-planning`, `mvp-delivery` | Jornada criada e scaffold ajustado para separar intake de roadmap |
 | 3 | [x] | [x] `docs/framework/founder-journeys/idea-to-roadmap.md` | Decisao de roadmap | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" | Strategy / Roadmap | Product Strategist, Product Manager, Roadmap Planner | `roadmap-cycle-planning`, `product-strategy` | Jornada criada; scaffold existente validado; gap futuro: delivery scope deve ser contexto opcional no Roadmap Planner |
-| 4 | [x] | [x] `docs/framework/founder-journeys/roadmap-item-to-delivery-scope.md` | Decisao de delivery scope | `operations/workflows/roadmap-item-to-delivery-scope.workflow.md` | "Isso entra na proxima entrega?", "isso entra no MVP?", "qual milestone recebe esse item?" | Product Ops + Strategy | Product Owner, Product Strategist, Delivery Architect, Product Designer/Security quando aplicavel | `delivery-scope-planning`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada e scaffold atualizado; MVP e apenas um tipo de delivery scope |
-| 5 | [x] | [x] `docs/framework/founder-journeys/delivery-scope-to-epic.md` | Planning de execucao | `operations/workflows/delivery-scope-to-epic.workflow.md` | "Deseja quebrar esse escopo em epics?", "crie os epics no GitHub" | Product Ops + DevOps | Product Owner, Roadmap Planner, GitHub DevOps, Senior Developer quando aplicavel | `roadmap-sync-prep`, `configure-github-project`, `delivery-readiness` | Jornada criada e scaffold atualizado; GitHub write exige confirmacao |
-| 6 | [x] | [x] `docs/framework/founder-journeys/epic-to-features.md` | Feature Shaping | `operations/workflows/epic-to-features.workflow.md` | "Quebre esse epic em features", "quais features precisamos para esse epic?" | Operations / Product Ops | Product Owner, Product Designer, Security Reviewer, DevOps Engineer, Senior Developer | `epic-to-features`, `delivery-readiness`, `mvp-ux-flow`, `accessibility-review`, `pre-mvp-security-checklist`, `api-security-review`, `setup-ci-cd` | Jornada criada; scaffold deve gerar workflow local e aplicar DRM completa |
-| 7 | [x] | [x] `docs/framework/founder-journeys/feature-to-delivery-cycle.md` | Implementacao | `operations/workflows/feature-to-delivery-cycle.workflow.md` | "Implemente a feature", "implemente a issue #554", "vamos comecar essa feature" | Operations / Engineering | Product Owner, Product Designer quando UI/componente for afetado, Senior Developer, Test Engineer, PR Reviewer, Security Reviewer quando aplicavel | `delivery-readiness`, `component-readiness`, `branch-from-issue`, `issue-to-pr`, `test-planning`, `pr-validation`, `ai-generated-code-security-review` | Scaffold fortalecido com Component Readiness; jornada criada; falta criar assets concretos de component readiness |
-| 8 | [ ] | [ ] `docs/framework/founder-journeys/review-pr.md` | Review e PR | Dentro de `feature-to-delivery-cycle` ou futuro workflow de review | "Revise o PR", "esta pronto para merge?" | Engineering + Security/DevOps quando aplicavel | PR Reviewer, Test Engineer, Security Reviewer, Release Manager | `pr-validation`, `pre-deploy-security-review`, `security-automation-readiness`, `release-operations` | Coberto por playbooks, talvez nao precise workflow separado |
-| 9 | [ ] | [ ] `docs/framework/founder-journeys/post-merge-continuation.md` | Pos-merge | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a proxima issue", "o que atualizamos depois do merge?" | Operations | Product Owner, Senior Developer, Release Manager, CX Lead quando aplicavel | `release-operations`, `delivery-readiness`, `customer-learning-loop` | Existe, precisa fortalecer |
-| 10 | [ ] | [ ] `docs/framework/founder-journeys/launch-learning-loop.md` | Lancamento e aprendizado | `growth/workflows/launch-learning-loop.workflow.md` | "Lancamos, o que aprendemos?", "como melhorar aquisicao/conversao?" | Growth | Growth Lead, CX Lead, Finance Operator | `mvp-launch`, `customer-learning-loop`, `finance-review` | Existe, pode ficar lean para depois |
+| 4 | [x] | [x] `docs/framework/founder-journeys/roadmap-item-to-epic.md` | Roadmap item para Epic local | `operations/workflows/roadmap-item-to-epic.workflow.md` | "Isso entra na proxima entrega?", "isso entra no MVP?", "crie um epic para esse item" | Product Ops + Strategy | Product Owner, Product Strategist, Delivery Architect, Product Designer/Security/DevOps/Engineering quando aplicavel | `delivery-scope-planning`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada; consolidou os dois passos antigos; GitHub write fica opcional e posterior |
+| 5 | [x] | [x] `docs/framework/founder-journeys/epic-to-features.md` | Feature Shaping | `operations/workflows/epic-to-features.workflow.md` | "Quebre esse epic em features", "quais features precisamos para esse epic?" | Operations / Product Ops | Product Owner, Product Designer, Security Reviewer, DevOps Engineer, Senior Developer | `epic-to-features`, `delivery-readiness`, `mvp-ux-flow`, `accessibility-review`, `pre-mvp-security-checklist`, `api-security-review`, `setup-ci-cd` | Jornada criada; scaffold deve gerar workflow local e aplicar DRM completa |
+| 6 | [x] | [x] `docs/framework/founder-journeys/feature-to-delivery-cycle.md` | Implementacao | `operations/workflows/feature-to-delivery-cycle.workflow.md` | "Implemente a feature", "implemente a issue #554", "vamos comecar essa feature" | Operations / Engineering | Product Owner, Product Designer quando UI/componente for afetado, Senior Developer, Test Engineer, PR Reviewer, Security Reviewer quando aplicavel | `delivery-readiness`, `component-readiness`, `branch-from-issue`, `issue-to-pr`, `test-planning`, `pr-validation`, `ai-generated-code-security-review` | Scaffold fortalecido com Component Readiness; jornada criada; falta criar assets concretos de component readiness |
+| 7 | [ ] | [ ] `docs/framework/founder-journeys/review-pr.md` | Review e PR | Dentro de `feature-to-delivery-cycle` ou futuro workflow de review | "Revise o PR", "esta pronto para merge?" | Engineering + Security/DevOps quando aplicavel | PR Reviewer, Test Engineer, Security Reviewer, Release Manager | `pr-validation`, `pre-deploy-security-review`, `security-automation-readiness`, `release-operations` | Coberto por playbooks, talvez nao precise workflow separado |
+| 8 | [ ] | [ ] `docs/framework/founder-journeys/post-merge-continuation.md` | Pos-merge | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a proxima issue", "o que atualizamos depois do merge?" | Operations | Product Owner, Senior Developer, Release Manager, CX Lead quando aplicavel | `release-operations`, `delivery-readiness`, `customer-learning-loop` | Existe, precisa fortalecer |
+| 9 | [ ] | [ ] `docs/framework/founder-journeys/launch-learning-loop.md` | Lancamento e aprendizado | `growth/workflows/launch-learning-loop.workflow.md` | "Lancamos, o que aprendemos?", "como melhorar aquisicao/conversao?" | Growth | Growth Lead, CX Lead, Finance Operator | `mvp-launch`, `customer-learning-loop`, `finance-review` | Existe, pode ficar lean para depois |
 
 MVP continua sendo o nome principal da etapa. O criterio de qualidade deve incluir uma Lovable Baseline:
 
@@ -463,23 +543,22 @@ MVP continua sendo o nome principal da etapa. O criterio de qualidade deve inclu
 - [ ] Nem todo item de roadmap precisa virar issue, epic ou milestone no GitHub.
 - [ ] Roadmap pode conter direcao estrategica, oportunidades futuras, backlog de produto e ideias ainda nao priorizadas.
 - [ ] Todo item marcado como parte do MVP precisa virar trabalho executavel e rastreavel antes de implementacao.
-- [ ] Um item de delivery scope deve passar por `delivery-scope-to-epic` antes de Engineering iniciar desenvolvimento.
+- [ ] Um item de roadmap/backlog deve passar por `roadmap-item-to-epic` antes de Engineering iniciar desenvolvimento.
 - [ ] Um epic de MVP deve passar por `epic-to-features` antes de virar trabalho de implementacao.
 - [ ] GitHub Project deve representar principalmente o que esta em execucao, em preparacao para execucao ou explicitamente selecionado para delivery.
-- [ ] O modelo deve pedir confirmacao antes de promover item de roadmap para delivery scope, antes de criar epic e antes de sincronizar epics/features com GitHub.
+- [ ] O modelo deve pedir confirmacao antes de promover item de roadmap para Epic local e antes de sincronizar Epics/Features com GitHub.
 
 #### Ordem Para Implementar Os Workflows
 
 1. `strategy/workflows/new-idea-intake.workflow.md`
 2. `strategy/workflows/idea-to-roadmap.workflow.md`
-3. `operations/workflows/roadmap-item-to-delivery-scope.workflow.md` ou manter como fase de Product Ops
-4. `operations/workflows/delivery-scope-to-epic.workflow.md`
-5. `operations/workflows/epic-to-features.workflow.md`
-6. `operations/workflows/feature-to-delivery-cycle.workflow.md`
-7. Decidir destino de `operations/workflows/mvp-to-pr.workflow.md`
-8. `operations/workflows/post-merge-continuation.workflow.md`
-9. `operations/workflows/define-mvp.workflow.md` ou manter como playbook em Product Ops
-10. `strategy/workflows/roadmap-to-github-project.workflow.md`
+3. `operations/workflows/roadmap-item-to-epic.workflow.md`
+4. `operations/workflows/epic-to-features.workflow.md`
+5. `operations/workflows/feature-to-delivery-cycle.workflow.md`
+6. Workflow legado MVP-to-PR removido/absorvido por `feature-to-delivery-cycle`
+7. `operations/workflows/post-merge-continuation.workflow.md`
+8. `operations/workflows/define-mvp.workflow.md` ou manter como playbook em Product Ops
+9. `strategy/workflows/roadmap-to-github-project.workflow.md`
 11. `growth/workflows/launch-learning-loop.workflow.md`
 
 Workflows a revisar:
@@ -519,20 +598,15 @@ Workflows a revisar:
   - deve perguntar de forma founder-friendly se a ideia deve entrar no backlog/roadmap;
   - jornada criada em `docs/framework/founder-journeys/idea-to-roadmap.md`;
   - gap futuro: Roadmap Planner deve tratar `operations/product-ops/mvp/scope.md` como contexto opcional, nao como dependencia obrigatoria desta jornada.
-- [x] `operations/workflows/roadmap-item-to-delivery-scope.workflow.md`
-  - deve decidir se um item de roadmap entra em um delivery scope;
-  - deve registrar `scope_type`, `milestone` e `release_goal` quando confirmado;
+- [x] `operations/workflows/roadmap-item-to-epic.workflow.md`
+  - deve transformar item de roadmap/backlog em Epic local rastreavel;
+  - deve registrar `scope_type`, `milestone` e `release_goal` como campos do Epic;
   - deve tratar MVP como um tipo inicial de delivery scope, nao como modelo permanente do roadmap;
-  - deve atualizar scope, PRD, non-goals, riscos e criterios minimos quando confirmado;
-  - deve registrar por que o item entrou ou nao entrou no delivery scope;
-  - deve preparar o item para `delivery-scope-to-epic` quando aprovado;
-  - jornada criada em `docs/framework/founder-journeys/roadmap-item-to-delivery-scope.md`.
-- [x] `operations/workflows/delivery-scope-to-epic.workflow.md`
-  - deve transformar itens de delivery scope em epics rastreaveis;
-  - deve preparar payload/draft para GitHub Project quando configurado;
-  - deve manter fora do GitHub itens de roadmap que nao estao selecionados para delivery;
-  - deve pedir confirmacao antes de criar ou atualizar epics.
-  - jornada criada em `docs/framework/founder-journeys/delivery-scope-to-epic.md`.
+  - deve registrar outcome, non-goals, riscos, provaveis grupos de Features e criterios minimos quando confirmado;
+  - deve manter GitHub sync como opcional e posterior;
+  - deve pedir confirmacao antes de criar ou atualizar o Epic local;
+  - jornada criada em `docs/framework/founder-journeys/roadmap-item-to-epic.md`;
+  - substitui os dois fluxos antigos de delivery-scope intermediario e epic local.
 - [ ] `strategy/workflows/roadmap-to-github-project.workflow.md`
   - deve preparar sync de roadmap para GitHub;
   - deve focar em itens de delivery scope, current cycle e itens explicitamente selecionados para delivery;
@@ -540,8 +614,9 @@ Workflows a revisar:
   - deve envolver Product/Roadmap e DevOps apenas para readiness/configuracao.
 - [ ] `operations/workflows/feature-to-delivery-cycle.workflow.md`
   - deve coordenar Product Ops, Engineering, Design condicional, Security condicional e review.
-- [ ] `operations/workflows/mvp-to-pr.workflow.md`
-  - deve ser revisado para decidir se continua necessario ou se foi absorvido por feature-to-delivery-cycle.
+- [x] Workflow legado MVP-to-PR
+  - removido por redundancia;
+  - fluxo de implementacao oficial e `feature-to-delivery-cycle`.
 - [ ] `operations/workflows/post-merge-continuation.workflow.md`
   - deve orientar retorno pos-merge: atualizar contexto, proxima issue, riscos e follow-up.
 - [ ] `growth/workflows/launch-learning-loop.workflow.md`

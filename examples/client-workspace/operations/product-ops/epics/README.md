@@ -53,7 +53,7 @@ Feature title:
 ## Workflow
 
 1. Confirm Delivery Scope.
-2. Run `delivery-scope-to-epic` to create or update the local Epic folder.
+2. Run `roadmap-item-to-epic` to create or update the local Epic folder.
 3. Run `epic-to-features` to create Feature files inside the Epic folder.
 4. Run `ready-to-develop.md` before Engineering starts implementation.
 5. Sync with GitHub only after confirmation.
