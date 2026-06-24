@@ -989,59 +989,59 @@ Fluxo esperado:
 
 O comando deve checar:
 
-- [ ] `.github/leanos/project-sync.yaml` existe.
-- [ ] `project-sync.yaml` nao esta com `TODO` em `owner`, `repository`, `project.type`, `project.number` ou `project.url`.
-- [ ] `.github/leanos/sync-state.yaml` existe.
-- [ ] `.github/leanos/work-mapping.md` existe e explica Epic -> Feature -> Task.
-- [ ] `.github/leanos/labels.yaml` declara labels minimas: `leanos`, `epic`, `feature`.
-- [ ] templates de Epic e Feature existem:
+- [x] `.github/leanos/project-sync.yaml` existe.
+- [x] `project-sync.yaml` nao esta com `TODO` em `owner`, `repository`, `project.type`, `project.number` ou `project.url`.
+- [x] `.github/leanos/sync-state.yaml` existe.
+- [x] `.github/leanos/work-mapping.md` existe e explica Epic -> Feature -> Task.
+- [x] `.github/leanos/labels.yaml` declara labels minimas: `leanos`, `epic`, `feature`.
+- [x] templates de Epic e Feature existem:
   - `.github/ISSUE_TEMPLATE/epic.yml`
   - `.github/ISSUE_TEMPLATE/feature.yml`
   - `ai-standard/templates/github/github-epic-template.md`
   - `ai-standard/templates/github/github-feature-template.md`
-- [ ] token source esta definido:
+- [x] token source esta definido:
   - `LEANOS_GITHUB_TOKEN`;
   - `GITHUB_TOKEN`;
   - `GH_TOKEN`;
   - ou GitHub CLI autenticado.
-- [ ] `.env.local` existe quando GitHub management foi selecionado no wizard.
-- [ ] `gh` esta instalado/autenticado quando a acao depender de GitHub CLI local.
-- [ ] o repositorio local possui remote quando o modo for `existing-product-repo`.
-- [ ] labels, milestones e Project fields estao definidos ou planejados.
+- [x] `.env.local` existe quando GitHub management foi selecionado no wizard.
+- [x] `gh` esta instalado/autenticado quando a acao depender de GitHub CLI local.
+- [x] o repositorio local possui remote quando o modo for `existing-product-repo`.
+- [x] labels, milestones e Project fields estao definidos ou planejados.
 
 Se readiness falhar:
 
-- [ ] `/github-sync` nao gera payload de sync.
-- [ ] O modelo explica o que esta faltando em linguagem founder-friendly.
-- [ ] O modelo roteia para:
+- [x] `/github-sync` nao gera payload de sync.
+- [x] O modelo explica o que esta faltando em linguagem founder-friendly.
+- [x] O modelo roteia para:
   - `operations/devops/AGENT.md`
   - `operations/devops/roles/github-devops.role.md`
   - `operations/devops/skills/configure-github-project.skill.md`
   - `operations/devops/playbooks/configure-github-project.playbook.md`
-- [ ] O modelo pode propor atualizacoes em:
+- [x] O modelo pode propor atualizacoes em:
   - `operations/devops/knowledge/github-management.md`
   - `.github/leanos/project-sync.yaml`
   - `.github/leanos/labels.yaml`
-- [ ] O modelo nunca pede para o founder colar token no chat ou em arquivo versionado.
-- [ ] O modelo orienta o founder a colocar token apenas em ambiente local/seguro.
+- [x] O modelo nunca pede para o founder colar token no chat ou em arquivo versionado.
+- [x] O modelo orienta o founder a colocar token apenas em ambiente local/seguro.
 
 Se readiness passar:
 
-- [ ] Product Ops entra para ler Epics e Features locais:
+- [x] Product Ops entra para ler Epics e Features locais:
   - `operations/product-ops/AGENT.md`
   - `operations/product-ops/epics/README.md`
   - `operations/product-ops/knowledge/work-taxonomy.md`
-- [ ] DevOps entra para validar GitHub setup e project mapping.
-- [ ] Strategy/Roadmap entra apenas quando o sync depender de roadmap/milestone/ciclo.
-- [ ] Security entra apenas se houver risco de token, segredo, permissao ou automacao insegura.
-- [ ] O modelo compara local com `.github/leanos/sync-state.yaml`.
-- [ ] O modelo classifica cada item como:
+- [x] DevOps entra para validar GitHub setup e project mapping.
+- [x] Strategy/Roadmap entra apenas quando o sync depender de roadmap/milestone/ciclo.
+- [x] Security entra apenas se houver risco de token, segredo, permissao ou automacao insegura.
+- [x] O modelo compara local com `.github/leanos/sync-state.yaml`.
+- [x] O modelo classifica cada item como:
   - `create`;
   - `update`;
   - `already_synced`;
   - `conflict`;
   - `skip`.
-- [ ] O modelo gera dry-run com:
+- [x] O modelo gera dry-run com:
   - Epics que seriam criados/atualizados;
   - Features que seriam criadas/atualizadas;
   - milestones que seriam criadas/atualizadas;
@@ -1074,47 +1074,51 @@ Quem executa a escrita real:
 
 Token e permissoes:
 
-- [ ] Nao usar a expressao "token global" como padrao recomendado.
-- [ ] Recomendar token com menor escopo suficiente para repositorio/organizacao/projeto escolhido.
-- [ ] Aceitar `LEANOS_GITHUB_TOKEN`, `GITHUB_TOKEN`, `GH_TOKEN` ou `gh auth`.
-- [ ] Registrar que GitHub Projects pode exigir permissao especifica de Projects alem de Issues.
-- [ ] Registrar que GitHub App pode ser uma alternativa futura mais segura para automacao duradoura.
-- [ ] Nunca persistir token em arquivos versionados.
+- [x] Nao usar a expressao "token global" como padrao recomendado.
+- [x] Recomendar token com menor escopo suficiente para repositorio/organizacao/projeto escolhido.
+- [x] Aceitar `LEANOS_GITHUB_TOKEN`, `GITHUB_TOKEN`, `GH_TOKEN` ou `gh auth`.
+- [x] Registrar que GitHub Projects pode exigir permissao especifica de Projects alem de Issues.
+- [x] Registrar que GitHub App pode ser uma alternativa futura mais segura para automacao duradoura.
+- [x] Nunca persistir token em arquivos versionados.
 
 #### GitHub Project Setup No Wizard
 
 Quando o usuario selecionar GitHub management no wizard:
 
-- [ ] Gerar `.env.local` com variaveis vazias e aviso de seguranca.
-- [ ] Gerar `.github/leanos/project-sync.yaml` com TODOs claros.
-- [ ] Gerar `.github/leanos/github-settings.example.json` como exemplo.
-- [ ] Gerar `.github/leanos/sync-state.yaml` vazio/seguro.
-- [ ] Gerar `.github/leanos/labels.yaml`.
-- [ ] Gerar `.github/leanos/work-mapping.md`.
-- [ ] Mostrar no final do CLI que o proximo passo e pedir no chat:
+- [x] Gerar `.env.local` com variaveis vazias e aviso de seguranca.
+- [x] Gerar `.github/leanos/project-sync.yaml` com TODOs claros.
+- [x] Gerar `.github/leanos/github-settings.example.json` como exemplo.
+- [x] Gerar `.github/leanos/sync-state.yaml` vazio/seguro.
+- [x] Gerar `.github/leanos/labels.yaml`.
+- [x] Gerar `.github/leanos/work-mapping.md`.
+- [x] Mostrar no final do CLI que o proximo passo e pedir no chat:
   - "configure GitHub para o LeanOS";
   - ou rodar `/github-sync`, que fara o readiness check antes de sincronizar.
 
-Antes de implementar, decidir:
+Decisoes implementadas para o MVP:
 
-- [ ] Qual e a fonte de verdade primaria para Epics e Features:
+- [x] Qual e a fonte de verdade primaria para Epics e Features:
   - local LeanOS primeiro;
   - GitHub como espelho/sync opcional;
-  - ou GitHub como fonte primaria apos sync.
-- [ ] Como o modelo identifica o que ja foi sincronizado sem reler todos os Epics sempre.
-- [ ] Se `sync-state.yaml` e suficiente ou se precisamos de uma estrutura adicional.
-- [ ] Como representar itens locais que ainda nao foram enviados ao GitHub.
-- [ ] Como representar itens que existem no GitHub mas nao existem localmente.
-- [ ] Como tratar conflitos entre Epic/Feature local e GitHub issue.
-- [ ] Como evitar duplicidade de milestones, Epics e Features.
-- [ ] Como o fundador confirma o payload antes da execucao real.
+  - GitHub nao vira fonte primaria automatica apos sync.
+- [x] Como o modelo identifica o que ja foi sincronizado sem reler todos os Epics sempre: usar `sync-state.yaml` como indice.
+- [x] Se `sync-state.yaml` e suficiente ou se precisamos de uma estrutura adicional: suficiente para o MVP; nao criar pasta `synced/`.
+- [x] Como representar itens locais que ainda nao foram enviados ao GitHub: ausencia no `sync-state.yaml` ou estado `not_synced`.
+- [x] Como representar itens que existem no GitHub mas nao existem localmente: estado de conflito/remote-only no dry-run, sem sobrescrever automaticamente.
+- [x] Como tratar conflitos entre Epic/Feature local e GitHub issue: explicar diferencas e pedir confirmacao.
+- [x] Como evitar duplicidade de milestones, Epics e Features: comparar com `sync-state.yaml` e relatar possiveis duplicatas no dry-run.
+- [x] Como o fundador confirma o payload antes da execucao real: `/github-sync` inclui Confirmation Rule.
+- [x] Como preservar a experiencia chat-first para founder iniciante: `/github-sync` faz readiness/setup fallback antes do dry-run.
+
+Decisoes futuras, fora do MVP scaffold:
+
 - [ ] Quais capabilities/scripts executam a chamada real, sem o modelo chamar API diretamente.
-- [ ] Como preservar a experiencia chat-first para founder iniciante.
+- [ ] Especificar `github.configure`, `github.status`, `github.syncRoadmap`, `github.readIssue`, `github.createBranch` e `github.openPullRequest` como capabilities reais.
 
 Pendencias:
 
-- [ ] Reescrever `TEMP-github-roadmap-flow.md` ou mover o conteudo relevante para assets oficiais do workspace.
-- [ ] Definir o fluxo GitHub como chat-first:
+- [x] Reescrever `TEMP-github-roadmap-flow.md` ou mover o conteudo relevante para assets oficiais do workspace.
+- [x] Definir o fluxo GitHub como chat-first:
   - founder pede no chat;
   - modelo carrega contexto;
   - modelo prepara plano/draft/payload;
@@ -1129,27 +1133,27 @@ Pendencias:
   - `github.readIssue`
   - `github.createBranch`
   - `github.openPullRequest`
-- [ ] Definir dry-run obrigatorio antes de escrita remota.
-- [ ] Definir como registrar sync state sem segredos.
-- [ ] Definir como evitar duplicidade em milestones, epics e features/issues sincronizadas.
-- [ ] Definir como lidar com repositorio existente vs produto novo.
-- [ ] Documentar quais arquivos `.github/leanos/` sao configuracao, estado e templates.
-- [ ] Garantir que tokens nunca sejam persistidos em arquivos versionados.
-- [ ] Atualizar `.leanos/commands/github-sync.md` para formalizar readiness check como primeira fase obrigatoria.
-- [ ] Atualizar `operations/devops/playbooks/configure-github-project.playbook.md` com guia founder-friendly:
+- [x] Definir dry-run obrigatorio antes de escrita remota.
+- [x] Definir como registrar sync state sem segredos.
+- [x] Definir como evitar duplicidade em milestones, epics e features/issues sincronizadas.
+- [x] Definir como lidar com repositorio existente vs produto novo.
+- [x] Documentar quais arquivos `.github/leanos/` sao configuracao, estado e templates.
+- [x] Garantir que tokens nunca sejam persistidos em arquivos versionados.
+- [x] Atualizar `.leanos/commands/github-sync.md` para formalizar readiness check como primeira fase obrigatoria.
+- [x] Atualizar `operations/devops/playbooks/configure-github-project.playbook.md` com guia founder-friendly:
   - onde achar owner/repository;
   - como achar Project URL/number;
   - como escolher user project vs organization project;
   - como configurar token sem colar segredo no chat;
   - como validar `gh auth status` quando GitHub CLI estiver disponivel.
-- [ ] Atualizar `operations/devops/skills/configure-github-project.skill.md` para separar:
+- [x] Atualizar `operations/devops/skills/configure-github-project.skill.md` para separar:
   - setup local;
   - token readiness;
   - GitHub Project readiness;
   - labels/milestones readiness;
   - sync dry-run readiness.
-- [ ] Atualizar `operations/devops/knowledge/github-management.md` para registrar a configuracao confirmada do founder.
-- [ ] Atualizar `validate-generator.mjs` para validar que o comando `/github-sync` contem:
+- [x] Atualizar `operations/devops/knowledge/github-management.md` para registrar a configuracao confirmada do founder.
+- [x] Atualizar `validate-generator.mjs` para validar que o comando `/github-sync` contem:
   - readiness check;
   - setup fallback;
   - dry-run;

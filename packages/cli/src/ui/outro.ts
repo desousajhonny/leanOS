@@ -91,8 +91,8 @@ export function printCreatedWorkspaceOutro(answers: WorkspaceAnswers, result: Wo
       ? "Existing product files were preserved unless you explicitly chose overwrite. Start by capturing product and codebase context."
       : "Define strategy and MVP before bootstrapping product app/code. Initial setup does not create source code.",
     answers.prepareGithubManagement
-      ? `GitHub management was prepared. Add a token to ${ui.path(".env.local")} only when you run a future GitHub setup/sync flow.`
-      : `GitHub management was not requested. ${ui.path(".github/leanos/github-settings.example.json")} documents optional future token sources.`,
+      ? `GitHub management was prepared. Start with ${ui.command("/github-sync")} for readiness/setup guidance before any sync. Add a token to ${ui.path(".env.local")} only when you are ready to connect GitHub.`
+      : `GitHub management was not requested. ${ui.path(".github/leanos/setup-guide.md")} documents optional future setup and token sources.`,
     "",
     "To use LeanOS in VS Code:",
     `1. Open this folder in ${ui.title("VS Code")}`,

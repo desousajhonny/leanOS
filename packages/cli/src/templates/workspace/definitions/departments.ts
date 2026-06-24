@@ -1643,39 +1643,115 @@ Define the GitHub repository, Project, labels, milestones and sync readiness wit
 
 ## Current State
 
-TBD
+GitHub setup is not confirmed yet. Use Setup Status and the Readiness Checklist before running \`/github-sync\` dry-run.
+
+## Setup Status
+
+- GitHub management: not configured
+- GitHub owner/repository: TBD
+- GitHub Project: TBD
+- Token source: TBD
+- GitHub CLI status: unknown
+- Ready for dry-run sync: no
 
 ## Repository
 
-TBD
+- Owner or organization: TBD
+- Repository: TBD
+- Remote URL: TBD
+- Existing repo or new repo: TBD
+- Notes: TBD
 
 ## GitHub Project
 
-TBD
+- Type: user | organization | TBD
+- URL: TBD
+- Number: TBD
+- Purpose: track LeanOS Epics and Features selected for delivery.
 
-## Fields
+## Project Fields
 
-TBD
+| LeanOS field | GitHub Project field | Status | Notes |
+| --- | --- | --- | --- |
+| Status | Status | TBD |  |
+| Priority | Priority | TBD |  |
+| Size | Size | TBD |  |
+| Area | Area | TBD |  |
+| Roadmap Item | Roadmap Item | TBD |  |
+| Epic | Epic | TBD |  |
 
 ## Labels
 
-TBD
+Minimum labels:
+
+- \`leanos\`
+- \`epic\`
+- \`feature\`
+
+Optional labels:
+
+- \`task\`
+- \`mvp\`
+- \`strategy\`
+- \`design\`
+- \`security\`
+- \`devops\`
 
 ## Milestones
 
-TBD
+- Source: \`../../../strategy/roadmap/knowledge/milestones.md\`
+- GitHub milestone strategy: TBD
+- Duplicate prevention rule: check existing milestones before proposing creation.
 
 ## Token Source
 
-TBD
+- Never store token values in this file.
+- Accepted sources: \`LEANOS_GITHUB_TOKEN\`, \`GITHUB_TOKEN\`, \`GH_TOKEN\`, GitHub CLI auth, secure prompt or keychain.
+- Recommended rule: use the smallest scope that can access the selected repository and Project.
+- Current selected source: TBD
+
+## Setup Questions
+
+Use these questions when configuration is missing:
+
+1. Which GitHub owner or organization should LeanOS use?
+2. Which repository should receive Epics and Features?
+3. Is the GitHub Project owned by a user or organization?
+4. What is the GitHub Project URL or number?
+5. Do the default fields match your Project, or should LeanOS map to different field names?
+6. Should LeanOS create missing labels/milestones in a future sync capability, or only report them?
+7. Which token source will be used locally?
+
+## Readiness Checklist
+
+- [ ] Owner and repository are known.
+- [ ] Project type and URL or number are known.
+- [ ] Project fields are mapped.
+- [ ] Labels are declared.
+- [ ] Milestone strategy is clear.
+- [ ] Token source is known without exposing token value.
+- [ ] \`../../../.github/leanos/project-sync.yaml\` matches the confirmed setup.
+- [ ] \`../../../.github/leanos/sync-state.yaml\` exists and contains no secrets.
+- [ ] \`/github-sync\` can run dry-run before any remote write.
 
 ## Dry Run
 
-TBD
+Record the latest dry-run summary here only when useful:
+
+- Last dry-run date: TBD
+- Epics to create/update: TBD
+- Features to create/update: TBD
+- Milestones to create/update: TBD
+- Conflicts: TBD
+- Founder decision: TBD
 
 ## Risks
 
-TBD
+- Token pasted into chat or tracked file.
+- Project fields differ from LeanOS defaults.
+- Duplicate milestones, Epics or Features.
+- Local Epic/Feature differs from existing GitHub issue.
+- GitHub appears ready but Product Ops work is not ready for sync.
 
 ## Decisions
 
@@ -4330,12 +4406,12 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Configure GitHub Project",
             purpose: "Guide GitHub repository, Project fields, labels and token source setup without storing secrets.",
             useWhen: ["GitHub Project sync is requested", "repository/project mapping is unclear", "labels or milestones need setup", "a roadmap sync needs readiness checks"],
-            requiredContext: ["GitHub LeanOS settings", "Project sync file", "Repository owner/name", "Token source", "Roadmap sync intent"],
-            inputs: ["Owner or organization", "Repository", "Project URL or number", "Project fields", "Milestone approach", "Token source"],
-            process: ["Read `.github/leanos/github-settings.example.json`", "Read `.github/leanos/project-sync.yaml`", "Check `.github/leanos/labels.yaml`", "Identify missing owner/repository/project fields", "Confirm token source without storing secrets", "Prepare dry-run sync readiness"],
-            checks: ["No token stored in workspace", "Dry-run required before write", "Project fields are mapped", "Duplicate sync risk is visible"],
-            outputs: ["GitHub readiness summary", "Missing configuration", "Proposed project-sync update", "Dry-run readiness", "Next action"],
-            filesToUpdate: ["Update `../knowledge/github-management.md` after confirmation.", "Update `../../../.github/leanos/project-sync.yaml` only after explicit confirmation."]
+            requiredContext: ["DevOps AGENT", "GitHub setup guide", "GitHub management knowledge", "Project sync file", "Labels file", "Sync state file", "Repository owner/name", "Token source", "Roadmap or Epic/Feature sync intent"],
+            inputs: ["Owner or organization", "Repository", "Project type", "Project URL or number", "Project fields", "Labels", "Milestone approach", "Token source", "Optional GitHub CLI auth status"],
+            process: ["Load `.github/leanos/setup-guide.md` before asking setup questions", "Check `project-sync.yaml` for TODO owner/repository/project values", "Check `labels.yaml` for minimum labels", "Check `sync-state.yaml` exists and contains no secrets", "Separate setup local, token readiness, Project readiness, labels/milestones readiness and dry-run readiness", "Confirm token source without asking for token values", "Prepare a readiness summary and proposed updates before writing"],
+            checks: ["No token stored in workspace", "Founder never pastes token into chat", "Owner and repository are known", "Project type and URL or number are known", "Project fields are mapped", "Labels and milestones are declared or planned", "Dry-run required before write", "Duplicate sync risk is visible"],
+            outputs: ["GitHub readiness summary", "Missing configuration", "Founder-friendly setup guidance", "Proposed project-sync update", "Token-source guidance", "Dry-run readiness", "Next action for /github-sync"],
+            filesToUpdate: ["Update `../knowledge/github-management.md` after confirmation.", "Update `../../../.github/leanos/project-sync.yaml` only after explicit confirmation.", "Update `../../../.github/leanos/labels.yaml` only after explicit confirmation."]
           },
           {
             slug: "configure-environments",
@@ -4421,10 +4497,10 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "configure-github-project",
             title: "Configure GitHub Project",
             purpose: "Prepare GitHub settings for roadmap sync without calling the API directly from the model.",
-            inputs: ["Founder GitHub owner or organization", "Repository name", "GitHub Project URL or number", "Desired project fields", "Token source from environment, secure prompt or keychain", "Deployment target such as Vercel when known"],
-            steps: ["Read DevOps AGENT and choose GitHub DevOps", "Read `knowledge/github-management.md`", "Read `.github/leanos/github-settings.example.json`", "Review `.github/leanos/project-sync.yaml`", "Ask for missing owner, repository, project and field mapping", "Confirm token source without asking the user to paste secrets into files", "Document Vercel readiness as guidance only; do not create `.vercel/`, run `vercel link` or add `vercel.json` until a real app/framework needs it", "Propose the project-sync update before writing", "Validate that sync-state remains secret-free"],
-            outputs: ["GitHub readiness summary", "Missing configuration", "Proposed project-sync.yaml updates", "Token-source guidance", "Vercel readiness notes", "Next action for roadmap sync"],
-            filesToUpdate: ["Update `../knowledge/github-management.md` after confirmation.", "Update `../../../.github/leanos/project-sync.yaml` only after explicit confirmation.", "Update `../../../.github/leanos/sync-state.yaml` only with non-secret sync metadata."]
+            inputs: ["Founder GitHub owner or organization", "Repository name", "GitHub Project type", "GitHub Project URL or number", "Desired project fields", "Expected labels", "Milestone strategy", "Token source from environment, GitHub CLI, secure prompt or keychain", "Deployment target such as Vercel when known"],
+            steps: ["Read DevOps AGENT and choose GitHub DevOps", "Read `knowledge/github-management.md`", "Read `../../../.github/leanos/setup-guide.md`", "Read `../../../.github/leanos/github-settings.example.json`", "Review `../../../.github/leanos/project-sync.yaml`", "Review `../../../.github/leanos/labels.yaml` and `../../../.github/leanos/sync-state.yaml`", "Ask guided questions for missing owner, repository, Project type, Project URL/number and field mapping", "Explain where the founder can find owner/repository and Project URL/number", "Confirm token source without asking the user to paste secrets into chat or files", "If local tools are available and the founder allows it, use `gh auth status` only to validate auth status, not to expose credentials", "Document Vercel readiness as guidance only; do not create `.vercel/`, run `vercel link` or add `vercel.json` until a real app/framework needs it", "Propose updates to GitHub management knowledge, project-sync and labels before writing", "Validate that sync-state remains secret-free", "End with whether `/github-sync` is ready for dry-run"],
+            outputs: ["GitHub readiness summary", "Missing configuration", "Founder-friendly setup instructions", "Proposed project-sync.yaml updates", "Proposed labels.yaml updates", "Token-source guidance without token values", "Vercel readiness notes", "Next action for /github-sync"],
+            filesToUpdate: ["Update `../knowledge/github-management.md` after confirmation.", "Update `../../../.github/leanos/project-sync.yaml` only after explicit confirmation.", "Update `../../../.github/leanos/labels.yaml` only after explicit confirmation.", "Update `../../../.github/leanos/sync-state.yaml` only with non-secret sync metadata after a confirmed sync result."]
           },
           {
             slug: "configure-environments",

@@ -1,6 +1,6 @@
 import { getActiveSubareaKeys } from "../selectors.js";
 import type { AreaDefinition, FileEntry, WorkspaceAnswers } from "../types.js";
-import { folderReadme, toTitle } from "../content/shared.js";
+import { toTitle } from "../content/shared.js";
 
 export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefinition[]): FileEntry[] {
   const activeKeys = getActiveSubareaKeys(activeAreas);
@@ -26,7 +26,8 @@ export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefiniti
     { path: ".github/ISSUE_TEMPLATE/feature.yml", content: featureIssueTemplate() },
     ...["bug", "experiment", "validation", "research", "task"].map((name) => issueTemplate(`${name}.yml`, toTitle(name), `LeanOS ${name} issue.`)),
     { path: ".github/workflows/pr-validation.yml", content: prValidationWorkflow() },
-    { path: ".github/leanos/README.md", content: folderReadme("GitHub LeanOS", "GitHub support files for LeanOS workflow conventions.", "Use when configuring labels, GitHub Projects sync, branch rules, PR validation guidance, security automation or deploy readiness.", "project-sync.yaml", ["github-settings.example.json", "work-mapping.md", "project-sync.yaml", "sync-state.yaml", "labels.yaml", "branch-rules.md", "pr-validation-rules.md", "security-automation.md"], ["../ISSUE_TEMPLATE/", "../../operations/devops/", "../../operations/engineering/", "../../operations/security/"], `${devopsNote}\n\n${engineeringNote}\n\n${securityNote}\n\nVercel readiness is guidance-only in this scaffold. Vercel can detect frameworks automatically after product code exists; create \`vercel.json\` only when a real app/framework needs overrides.`) },
+    { path: ".github/leanos/README.md", content: githubLeanOsReadme(devopsNote, engineeringNote, securityNote) },
+    { path: ".github/leanos/setup-guide.md", content: githubSetupGuide() },
     { path: ".github/leanos/github-settings.example.json", content: githubSettingsExampleJson() },
     { path: ".github/leanos/work-mapping.md", content: workMappingRules() },
     { path: ".github/leanos/labels.yaml", content: labelsYaml() },
@@ -199,10 +200,239 @@ body:
 function envLocal(): string {
   return `# LeanOS local environment
 # Local only. Do not commit.
-# Used by future LeanOS GitHub capabilities after /configure github.
+# Used by future LeanOS GitHub capabilities after /github-sync readiness.
 
 LEANOS_GITHUB_TOKEN=
 GITHUB_TOKEN=
+`;
+}
+
+function githubLeanOsReadme(devopsNote: string, engineeringNote: string, securityNote: string): string {
+  return `# GitHub LeanOS
+
+## Purpose
+
+GitHub support files for LeanOS workflow conventions.
+
+Use this folder when configuring GitHub Projects sync, issue labels, branch rules, PR validation guidance, security automation or deploy readiness.
+
+## Start Here
+
+\`setup-guide.md\`
+
+Use the setup guide before running \`/github-sync\` for the first time or whenever GitHub readiness fails.
+
+## Files
+
+\`setup-guide.md\`
+
+Founder-friendly guide for GitHub owner, repository, Project, token source and GitHub CLI readiness.
+
+\`github-settings.example.json\`
+
+Example shape for GitHub setup. It documents fields and token sources, but must not contain a real token.
+
+\`project-sync.yaml\`
+
+Workspace GitHub sync configuration. This is where owner, repository, Project, fields, sources and sync rules are recorded after confirmation.
+
+\`sync-state.yaml\`
+
+Remote sync index. It may store GitHub issue numbers, project item IDs, timestamps and conflict state. It must never store tokens or secrets.
+
+\`work-mapping.md\`
+
+Mapping contract for local LeanOS Epics, Features and Tasks to GitHub issues and checklists.
+
+\`labels.yaml\`
+
+Expected labels for LeanOS GitHub work.
+
+\`branch-rules.md\`
+
+Branch naming and safety rules.
+
+\`pr-validation-rules.md\`
+
+PR review and founder testing expectations.
+
+\`security-automation.md\`
+
+Security automation readiness notes. Guidance only until stack/build/test commands are known.
+
+## Navigation
+
+${devopsNote}
+
+${engineeringNote}
+
+${securityNote}
+
+## Readiness Rule
+
+\`/github-sync\` must check GitHub readiness before preparing any sync payload.
+
+If owner, repository, Project, labels, token source or sync state are incomplete, route to DevOps setup first:
+
+\`\`\`text
+operations/devops/AGENT.md
+-> roles/github-devops.role.md
+-> skills/configure-github-project.skill.md
+-> playbooks/configure-github-project.playbook.md
+\`\`\`
+
+## Secret Rule
+
+- Never store real tokens in this folder.
+- Never ask the founder to paste a token into chat.
+- Use local environment variables, secure prompts, system keychain or GitHub CLI auth.
+- Prefer the smallest token scope that can access the selected repository and Project.
+
+## Vercel Rule
+
+Vercel readiness is guidance-only in this scaffold. Vercel can detect frameworks automatically after product code exists; create \`vercel.json\` only when a real app/framework needs overrides.
+`;
+}
+
+function githubSetupGuide(): string {
+  return `# GitHub Setup Guide
+
+## Purpose
+
+Guide the founder through GitHub setup before \`/github-sync\` creates a dry-run payload.
+
+This guide is for setup and readiness only. It does not authorize remote writes by itself.
+
+## What LeanOS Needs
+
+To sync local Epics and Features to GitHub, LeanOS needs:
+
+- GitHub owner or organization;
+- repository name;
+- GitHub Project type and URL or number;
+- expected Project fields;
+- labels for LeanOS work;
+- token source or GitHub CLI auth;
+- sync state file with no secrets.
+
+## Owner And Repository
+
+Ask the founder which GitHub repository should receive LeanOS work.
+
+Examples:
+
+\`\`\`text
+owner: acme-labs
+repository: customer-portal
+\`\`\`
+
+How to find it:
+
+- In a GitHub URL like \`https://github.com/acme-labs/customer-portal\`, owner is \`acme-labs\` and repository is \`customer-portal\`.
+- In an existing local repo, \`git remote -v\` can reveal the GitHub URL.
+- If no repo exists yet, stop sync and ask the founder whether GitHub should be configured now or later.
+
+## GitHub Project
+
+Ask whether the Project belongs to a user or organization.
+
+Examples:
+
+\`\`\`text
+organization project: https://github.com/orgs/acme-labs/projects/12
+user project: https://github.com/users/jhonny/projects/3
+\`\`\`
+
+Record:
+
+- \`project.type\`: \`organization\` or \`user\`;
+- \`project.number\`: the number at the end of the Project URL;
+- \`project.url\`: the full Project URL.
+
+## Project Fields
+
+Start with these expected fields:
+
+- Status
+- Priority
+- Size
+- Area
+- Roadmap Item
+- Epic
+
+If the founder uses different field names, record the mapping in \`project-sync.yaml\`.
+
+## Labels
+
+Minimum labels:
+
+- \`leanos\`
+- \`epic\`
+- \`feature\`
+
+Optional labels:
+
+- \`task\`
+- \`mvp\`
+- \`strategy\`
+- \`design\`
+- \`security\`
+- \`devops\`
+
+## Token Source
+
+Do not ask the founder to paste a token into chat or markdown.
+
+Accepted token sources:
+
+- \`LEANOS_GITHUB_TOKEN\`
+- \`GITHUB_TOKEN\`
+- \`GH_TOKEN\`
+- GitHub CLI authenticated with \`gh auth login\`
+- secure prompt or system keychain in a future capability
+
+Use the smallest scope that can access the selected repository and Project. GitHub Projects can require Project permissions in addition to issue permissions.
+
+## Optional GitHub CLI Check
+
+When a local tool-capable agent can run commands and the founder allows it:
+
+\`\`\`bash
+gh auth status
+gh repo view OWNER/REPOSITORY
+\`\`\`
+
+Do not require terminal usage when chat guidance is enough.
+
+## Setup Output
+
+After setup, propose updates to:
+
+- \`operations/devops/knowledge/github-management.md\`
+- \`.github/leanos/project-sync.yaml\`
+- \`.github/leanos/labels.yaml\`
+
+Ask for confirmation before writing.
+
+## Ready For Dry-Run
+
+GitHub is ready for \`/github-sync\` dry-run when:
+
+- owner and repository are known;
+- Project URL or number is known;
+- Project fields are mapped;
+- labels are declared;
+- token source is known without exposing token value;
+- \`sync-state.yaml\` exists and contains no secrets;
+- local Epics/Features exist or the founder confirms there is nothing to sync yet.
+
+## Stop Conditions
+
+- Token value is pasted into chat.
+- Token would be written to a tracked file.
+- Project owner/repository is unknown.
+- Project fields are missing and the founder has not approved defaults.
+- Local and remote work conflict and the founder has not chosen which side wins.
 `;
 }
 
@@ -487,6 +717,8 @@ function githubSettingsExampleJson(): string {
     "allowed_token_sources": [
       "env:GITHUB_TOKEN",
       "env:LEANOS_GITHUB_TOKEN",
+      "env:GH_TOKEN",
+      "github_cli_auth",
       "secure_prompt",
       "system_keychain"
     ]

@@ -371,6 +371,7 @@ async function validateWorkspaceFiles() {
     "growth/finance/skills/model-unit-economics.skill.md",
     "growth/finance/playbooks/finance-review.playbook.md",
     ".github/leanos/README.md",
+    ".github/leanos/setup-guide.md",
     ".github/leanos/github-settings.example.json",
     ".github/leanos/work-mapping.md",
     ".github/leanos/project-sync.yaml",
@@ -1082,6 +1083,7 @@ async function validateClientWorkspaceFixture() {
     "operations/engineering/playbooks/test-planning.playbook.md",
     ".leanos/index/routing-map.yaml",
     ".github/leanos/github-settings.example.json",
+    ".github/leanos/setup-guide.md",
     ".github/leanos/work-mapping.md",
     ".github/leanos/project-sync.yaml",
     ".github/leanos/sync-state.yaml",
@@ -1463,6 +1465,7 @@ async function assertGitHubReadiness(rootDir) {
   const labels = await readFile(join(rootDir, ".github", "leanos", "labels.yaml"), "utf8");
   const githubSyncCommand = await readFile(join(rootDir, ".leanos", "commands", "github-sync.md"), "utf8");
   const githubReadme = await readFile(join(rootDir, ".github", "leanos", "README.md"), "utf8");
+  const githubSetupGuide = await readFile(join(rootDir, ".github", "leanos", "setup-guide.md"), "utf8");
   const githubRole = await readFile(join(rootDir, "operations", "devops", "roles", "github-devops.role.md"), "utf8");
   const githubSkill = await readFile(join(rootDir, "operations", "devops", "skills", "configure-github-project.skill.md"), "utf8");
   const githubPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "configure-github-project.playbook.md"), "utf8");
@@ -1479,6 +1482,8 @@ async function assertGitHubReadiness(rootDir) {
   assert.equal(settings.security.store_token_in_workspace, false, "GitHub settings example should forbid token storage");
   assert.equal(settingsExample.includes('"token":'), false, "GitHub settings example should not include a token value field");
   assert(settingsExample.includes("env:LEANOS_GITHUB_TOKEN"), "GitHub settings example should document LEANOS_GITHUB_TOKEN as a token source");
+  assert(settingsExample.includes("env:GH_TOKEN"), "GitHub settings example should document GH_TOKEN as a token source");
+  assert(settingsExample.includes("github_cli_auth"), "GitHub settings example should document GitHub CLI auth as a token source");
   assert.equal(projectSyncYaml.github.status, "pending_user_token", "GitHub project sync should wait for a user token when management is prepared");
   assert.equal(projectSyncYaml.github.project_sync.status, "pending_configuration", "GitHub project sync should record pending configuration when management is prepared");
   assert.equal(projectSyncYaml.github.project_sync.enabled, false, "GitHub project sync should start disabled");
@@ -1519,11 +1524,20 @@ async function assertGitHubReadiness(rootDir) {
   assert(labels.includes("name: feature"), "GitHub labels should include feature");
   assert(labels.includes("name: task"), "GitHub labels should include exceptional task issues");
   assert(githubReadme.includes("Route GitHub setup through `../../operations/devops/AGENT.md`"), "GitHub README should route setup through DevOps when active");
+  assert(githubReadme.includes("setup-guide.md"), "GitHub README should point to setup guide");
+  assert(githubReadme.includes("`/github-sync` must check GitHub readiness before preparing any sync payload"), "GitHub README should document readiness-first sync");
+  assert(githubReadme.includes("Never ask the founder to paste a token into chat"), "GitHub README should protect token handling");
+  assert(githubSetupGuide.includes("## Owner And Repository"), "GitHub setup guide should explain owner/repository");
+  assert(githubSetupGuide.includes("## GitHub Project"), "GitHub setup guide should explain GitHub Project");
+  assert(githubSetupGuide.includes("## Token Source"), "GitHub setup guide should explain token sources");
+  assert(githubSetupGuide.includes("gh auth status"), "GitHub setup guide should mention optional GitHub CLI auth check");
+  assert(githubSetupGuide.includes("Ready For Dry-Run"), "GitHub setup guide should define dry-run readiness");
   assert(githubReadme.includes("Vercel readiness is guidance-only"), "GitHub README should document Vercel readiness without execution");
   assert(githubRole.includes("Guide safe GitHub repository, Project, labels and sync configuration"), "GitHub DevOps role should describe GitHub setup ownership");
   assert(githubSkill.includes("without storing secrets"), "GitHub setup skill should protect secrets");
-  assert(githubPlaybook.includes("Confirm token source without asking the user to paste secrets into files"), "GitHub setup playbook should protect token handling");
-  assert(githubPlaybook.includes("Propose the project-sync update before writing"), "GitHub setup playbook should require propose-first updates");
+  assert(githubSkill.includes("Separate setup local, token readiness, Project readiness, labels/milestones readiness and dry-run readiness"), "GitHub setup skill should separate readiness dimensions");
+  assert(githubPlaybook.includes("Confirm token source without asking the user to paste secrets into chat or files"), "GitHub setup playbook should protect token handling");
+  assert(githubPlaybook.includes("Propose updates to GitHub management knowledge, project-sync and labels before writing"), "GitHub setup playbook should require propose-first updates");
   assert(githubPlaybook.includes("do not create `.vercel/`, run `vercel link` or add `vercel.json`"), "GitHub setup playbook should keep Vercel readiness guidance-only");
 }
 
@@ -3106,14 +3120,19 @@ async function assertDevOpsAreaPattern(rootDir) {
   assert(areaYaml.area.roles.includes("release-manager"), "DevOps area.yaml should list release-manager");
   assert(areaYaml.area.skills.includes("prepare-release"), "DevOps area.yaml should list prepare-release");
 
-  for (const content of [githubManagement, environments, deploymentReadiness, ciCd, observability, releaseNotes]) {
+  for (const content of [environments, deploymentReadiness, ciCd, observability, releaseNotes]) {
     for (const section of ["## Purpose", "## Current State", "## Decisions", "## Open Questions", "## Next Update"]) {
       assert(content.includes(section), `DevOps knowledge should include ${section}`);
     }
   }
 
+  for (const section of ["## Purpose", "## Setup Status", "## Repository", "## GitHub Project", "## Project Fields", "## Token Source", "## Readiness Checklist", "## Dry Run", "## Decisions", "## Open Questions", "## Next Update"]) {
+    assert(githubManagement.includes(section), `GitHub management knowledge should include ${section}`);
+  }
   assert(githubManagement.includes("## Token Source"), "GitHub management knowledge should define token source");
   assert(githubManagement.includes("## Dry Run"), "GitHub management knowledge should define dry-run readiness");
+  assert(githubManagement.includes("Never store token values in this file"), "GitHub management knowledge should protect token values");
+  assert(githubManagement.includes("Owner and repository are known"), "GitHub management knowledge should include readiness checklist");
   assert(environments.includes("## Preview / Staging"), "Environments knowledge should separate preview/staging");
   assert(environments.includes("## Secrets"), "Environments knowledge should include secret handling");
   assert(deploymentReadiness.includes("## Vercel Readiness"), "Deployment readiness should include Vercel readiness");
@@ -3140,12 +3159,17 @@ async function assertDevOpsAreaPattern(rootDir) {
   }
 
   assert(configureGithubProject.includes("No token stored in workspace"), "Configure GitHub Project should protect tokens");
+  assert(configureGithubProject.includes("Founder never pastes token into chat"), "Configure GitHub Project should prevent token paste in chat");
+  assert(configureGithubProject.includes("Dry-run readiness"), "Configure GitHub Project should output dry-run readiness");
   assert(configureEnvironments.includes("Secrets are not written into markdown"), "Configure Environments should protect secrets");
   assert(setupCi.includes("CI does not deploy automatically by default"), "Setup CI should avoid automatic deploy");
   assert(planDeployment.includes("No `.vercel/` creation"), "Plan Deployment should block Vercel metadata creation");
   assert(defineObservability.includes("Post-deploy checks"), "Define Observability should include post-deploy checks");
   assert(prepareRelease.includes("Rollback is explicit"), "Prepare Release should include rollback checks");
   assert(githubProjectPlaybook.includes("Read DevOps AGENT and choose GitHub DevOps"), "GitHub project playbook should start at DevOps AGENT");
+  assert(githubProjectPlaybook.includes("../../../.github/leanos/setup-guide.md"), "GitHub project playbook should load setup guide");
+  assert(githubProjectPlaybook.includes("where the founder can find owner/repository and Project URL/number"), "GitHub project playbook should guide founders to find GitHub details");
+  assert(githubProjectPlaybook.includes("End with whether `/github-sync` is ready for dry-run"), "GitHub project playbook should bridge back to /github-sync");
   assert(githubProjectPlaybook.includes("knowledge/github-management.md"), "GitHub project playbook should update GitHub knowledge");
   assert(setupCiCdPlaybook.includes("skills/setup-ci.skill.md"), "Setup CI/CD playbook should use setup-ci skill");
   assert(planDeploymentPlaybook.includes("do not create `.vercel/`, run `vercel link` or deploy automatically"), "Plan deployment playbook should preserve Vercel safety");

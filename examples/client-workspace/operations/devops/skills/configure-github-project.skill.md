@@ -13,49 +13,64 @@ Guide GitHub repository, Project fields, labels and token source setup without s
 
 ## Required Context
 
-- GitHub LeanOS settings
+- DevOps AGENT
+- GitHub setup guide
+- GitHub management knowledge
 - Project sync file
+- Labels file
+- Sync state file
 - Repository owner/name
 - Token source
-- Roadmap sync intent
+- Roadmap or Epic/Feature sync intent
 
 ## Inputs
 
 - Owner or organization
 - Repository
+- Project type
 - Project URL or number
 - Project fields
+- Labels
 - Milestone approach
 - Token source
+- Optional GitHub CLI auth status
 
 ## Process
 
-1. Read `.github/leanos/github-settings.example.json`
-2. Read `.github/leanos/project-sync.yaml`
-3. Check `.github/leanos/labels.yaml`
-4. Identify missing owner/repository/project fields
-5. Confirm token source without storing secrets
-6. Prepare dry-run sync readiness
+1. Load `.github/leanos/setup-guide.md` before asking setup questions
+2. Check `project-sync.yaml` for TODO owner/repository/project values
+3. Check `labels.yaml` for minimum labels
+4. Check `sync-state.yaml` exists and contains no secrets
+5. Separate setup local, token readiness, Project readiness, labels/milestones readiness and dry-run readiness
+6. Confirm token source without asking for token values
+7. Prepare a readiness summary and proposed updates before writing
 
 ## Checks
 
 - No token stored in workspace
-- Dry-run required before write
+- Founder never pastes token into chat
+- Owner and repository are known
+- Project type and URL or number are known
 - Project fields are mapped
+- Labels and milestones are declared or planned
+- Dry-run required before write
 - Duplicate sync risk is visible
 
 ## Output
 
 - GitHub readiness summary
 - Missing configuration
+- Founder-friendly setup guidance
 - Proposed project-sync update
+- Token-source guidance
 - Dry-run readiness
-- Next action
+- Next action for /github-sync
 
 ## Files to Update
 
 - Update `../knowledge/github-management.md` after confirmation.
 - Update `../../../.github/leanos/project-sync.yaml` only after explicit confirmation.
+- Update `../../../.github/leanos/labels.yaml` only after explicit confirmation.
 
 ## Red Lines
 

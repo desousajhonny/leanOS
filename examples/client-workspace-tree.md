@@ -25,6 +25,7 @@ client-workspace/
 |   |   |-- project-sync.yaml
 |   |   |-- README.md
 |   |   |-- security-automation.md
+|   |   |-- setup-guide.md
 |   |   |-- sync-state.yaml
 |   |   `-- work-mapping.md
 |   |-- prompts/

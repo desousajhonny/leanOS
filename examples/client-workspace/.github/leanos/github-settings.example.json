@@ -23,6 +23,8 @@
     "allowed_token_sources": [
       "env:GITHUB_TOKEN",
       "env:LEANOS_GITHUB_TOKEN",
+      "env:GH_TOKEN",
+      "github_cli_auth",
       "secure_prompt",
       "system_keychain"
     ]
