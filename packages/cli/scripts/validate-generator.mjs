@@ -1947,6 +1947,8 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
   assert(foundationReadme.includes("folder-documentation-rules.md"), "Foundation README should list folder documentation rules");
   assert(aiStandardReadme.includes("foundation/guided-conversation.md"), "AI Standard README should route guided conversation decisions");
   assert(guidedConversation.includes("# Guided Conversation"), "Guided conversation should have expected title");
+  assert(guidedConversation.includes("the host application's native selection UI when available"), "Guided conversation should prefer native selection UI when available");
+  assert(guidedConversation.includes("If no native selection UI is available, write numbered options directly in chat"), "Guided conversation should define numbered fallback");
   assert(guidedConversation.includes("3 to 5 numbered options"), "Guided conversation should define numbered options");
   assert(guidedConversation.includes("not sure / help me decide"), "Guided conversation should include a help-me-decide option");
   assert(guidedConversation.includes("You can reply with the number"), "Guided conversation should support low-friction answers");
@@ -3428,8 +3430,11 @@ async function assertInitCommandRules(rootDir) {
   const requiredSections = [
     "## Purpose",
     "## Load First",
+    "## Internal Reading Rules",
+    "## Guided Question Delivery",
     "## What To Do",
-    "## Required Founder Interview",
+    "## First Response Shape",
+    "## Guided Founder Interview",
     "## Optional Founder Interview",
     "## Response Mapping",
     "## Fact and Uncertainty Rules",
@@ -3460,14 +3465,28 @@ async function assertInitCommandRules(rootDir) {
   }
 
   assert(startCommand.includes("# /start-leanos"), "start-leanos.md should document the primary command");
+  assert(startCommand.includes("This is the beginning of the operating session, not a technical audit report"), "start-leanos.md should avoid technical audit behavior");
+  assert(startCommand.includes("Do not print the full loaded context unless the founder asks for diagnostics"), "start-leanos.md should keep internal context silent by default");
+  assert(startCommand.includes("Do not print all active departments, active areas or compatible workflows during the first response"), "start-leanos.md should avoid first-response dumps");
+  assert(startCommand.includes("Use `leanos.yaml` as the primary seed"), "start-leanos.md should start from leanos.yaml");
+  assert(startCommand.includes("If `leanos.yaml` is mostly empty or generic, ask one short open question first"), "start-leanos.md should handle empty yaml before guided questions");
+  assert(startCommand.includes("Prefer the host application's native selection UI when available"), "start-leanos.md should prefer native selection UI when available");
+  assert(startCommand.includes("If no native selection UI is available, use numbered options in the chat"), "start-leanos.md should fall back to numbered options");
+  assert(startCommand.includes("Do not ask broad open-ended questions when the current context supports useful guided options"), "start-leanos.md should avoid broad open questions when guided options fit");
+  assert(startCommand.includes("Ask one guided question at a time using native selection UI when available, otherwise numbered options"), "start-leanos.md should use guided questions");
+  assert(startCommand.includes("Active Role: not applicable"), "start-leanos.md should avoid fake role activation on first response");
+  assert(startCommand.includes("Para quem esse produto precisa gerar valor primeiro?"), "start-leanos.md should include a founder-friendly first guided question");
+  assert(startCommand.includes("Voce pode responder so com o numero ou do seu jeito"), "start-leanos.md should allow numeric or free-form answers");
   assert(startCommand.includes("Ask only what is missing"), "start-leanos.md should avoid asking already-known founder questions");
-  assert(startCommand.includes("What is the riskiest assumption right now?"), "start-leanos.md should include validation-oriented founder interview questions");
+  assert(startCommand.includes("Riskiest assumption"), "start-leanos.md should include validation-oriented founder interview topics");
   assert(startCommand.includes("Map founder responses to source-of-truth files only when the matching area is active"), "start-leanos.md should map answers only to active areas");
   assert(startCommand.includes("Do not turn assumptions into source-of-truth facts"), "start-leanos.md should protect facts from assumptions");
   assert(startCommand.includes("Put unknowns into `## Open Questions`"), "start-leanos.md should preserve unknowns as open questions");
-  assert(startCommand.includes("Before writing, show a proposed change plan"), "start-leanos.md should require a pre-write change plan");
+  assert(startCommand.includes("Do not write during the first response"), "start-leanos.md should avoid writing in the first response");
+  assert(startCommand.includes("After the guided conversation captures enough context, show a short proposed change plan"), "start-leanos.md should require a pre-write change plan after guided context");
   assert(startCommand.includes("Never write files during init until the user explicitly confirms"), "start-leanos.md should require explicit confirmation before writes");
   assert(startCommand.includes("Operations or Growth area files unless the user explicitly asks after init"), "start-leanos.md should keep Operations/Growth out of init scope");
+  assert.equal(startCommand.includes("- Workspace summary\n- Active departments and areas\n- Compatible workflows"), false, "start-leanos.md should not require a technical dump by default");
   assert.equal(await exists(join(rootDir, ".leanos", "commands", "init-leanos.md")), false, "init-leanos.md should not be generated as an internal command");
 }
 
@@ -3479,7 +3498,7 @@ async function assertRootAgentMutationRules(rootDir) {
   assert(rootAgent.includes("## Command Handling"), "AGENT.md should include portable command handling");
   assert(rootAgent.includes("LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface"), "AGENT.md should make commands model-agnostic");
   assert(rootAgent.includes("`.leanos/commands/start-leanos.md`"), "AGENT.md should map /start-leanos to its command file");
-  assert(rootAgent.includes("When the user invokes legacy `/leanos-init`, treat it as `/start-leanos`"), "AGENT.md should document the legacy init alias");
+  assert(rootAgent.includes("When the user invokes legacy `/leanos-init` or inverted `/leanos-start`, treat it as `/start-leanos`"), "AGENT.md should document the legacy and inverted init aliases");
   assert(rootAgent.includes("Do not create or modify LeanOS framework assets from memory. Route through `ai-standard/README.md`"), "AGENT.md should route framework asset changes through AI Standard README");
   assert(rootAgent.includes("## Framework Standards Routing"), "AGENT.md should include Framework Standards Routing");
   assert(rootAgent.includes("During `/start-leanos`, do not enrich roles, skills, playbooks, workflows, commands or `ai-standard/`"), "AGENT.md should protect framework assets during init from Red Lines");
@@ -3493,7 +3512,7 @@ async function assertRootAgentMutationRules(rootDir) {
   assert(operatingRules.includes("For `/start-leanos`, load `../commands/start-leanos.md` before acting"), "operating rules should map /start-leanos to its command file");
   assert(operatingRules.includes("For trace, debug or diagnostic requests, load `protocols/chief-trace.md`"), "operating rules should route trace diagnostics");
   assert(operatingRules.includes("During `/start-leanos`, propose updates first"), "operating rules should require propose-first start");
-  assert(operatingRules.includes("Treat `/leanos-init` as a legacy alias for `/start-leanos`"), "operating rules should document the legacy init alias");
+  assert(operatingRules.includes("Treat `/leanos-init` and `/leanos-start` as aliases for `/start-leanos`"), "operating rules should document start command aliases");
   assert(operatingRules.includes("Do not modify roles, skills, playbooks, workflows, commands, `ai-standard/` or `.github/` during init"), "operating rules should protect operating assets during init");
 }
 

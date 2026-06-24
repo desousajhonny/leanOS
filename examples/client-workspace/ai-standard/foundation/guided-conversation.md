@@ -12,11 +12,14 @@ When the founder needs to choose between predictable paths, use numbered options
 
 Use:
 
+- the host application's native selection UI when available;
 - 3 to 5 numbered options;
 - one "not sure / help me decide" option;
 - one question at a time when the decision changes state, roadmap, MVP, issue, PR or implementation;
 - plain founder-friendly language before technical paths;
 - free-form answers as valid input.
+
+If no native selection UI is available, write numbered options directly in chat.
 
 Always allow:
 
@@ -122,6 +125,7 @@ Essa ideia envolve dados sensiveis, login, pagamento ou permissoes?
 ## Writing Rules
 
 - Ask one important guided question at a time.
+- Prefer native selectable options when the host supports them; otherwise use numbered options.
 - Do not ask a long questionnaire unless the playbook explicitly requires an intake form.
 - Put the human decision before file paths.
 - Explain the recommendation before asking for confirmation.

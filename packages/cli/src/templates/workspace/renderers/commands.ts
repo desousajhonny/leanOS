@@ -594,7 +594,9 @@ function startCommand(activeAreas: AreaDefinition[]): string {
 
 ## Purpose
 
-Initialize LeanOS safely by loading the workspace map, summarizing active context and proposing Strategy-first source-of-truth updates.
+Start the LeanOS founder onboarding conversation.
+
+Use this command to understand the product context from \`leanos.yaml\`, greet the founder and ask the first guided question. This is the beginning of the operating session, not a technical audit report.
 
 ## Load First
 
@@ -605,34 +607,125 @@ Read:
 - \`../context/workspace-summary.md\`
 - \`../context/current-focus.md\`
 - \`../context/next-actions.md\`
-- \`../context/active-workflow.md\`
 - \`../index/routing-map.yaml\`
+- \`../../ai-standard/foundation/guided-conversation.md\`
+
+## Internal Reading Rules
+
+- Read these files silently.
+- Do not print the full loaded context unless the founder asks for diagnostics.
+- Do not print all active departments, active areas or compatible workflows during the first response.
+- Use \`leanos.yaml\` as the primary seed for company name, product name, description, product status, stage, mode and primary user.
+- Use context files only to avoid asking what is already known.
+- If \`leanos.yaml\` is mostly empty or generic, ask one short open question first. Then move into guided questions once there is enough context.
+- If \`leanos.yaml\` has enough initial context, start directly with a guided question.
+- Match the founder's language. If the founder writes in Portuguese, respond in Portuguese.
+- During \`/start-leanos\`, use \`not applicable\` for Active Role, Loaded Skills and Relevant Playbook unless you actually route into a department/area role after the founder confirms the next path.
+
+## Guided Question Delivery
+
+When asking the founder to choose between known options:
+
+1. Prefer the host application's native selection UI when available.
+2. If no native selection UI is available, use numbered options in the chat.
+3. Always allow a free-form answer.
+4. Ask one decision at a time.
+5. Restate the selected meaning before continuing.
+
+Do not ask broad open-ended questions when the current context supports useful guided options.
+
+Use open-ended questions only when:
+
+- \`leanos.yaml\` is empty or too generic to generate useful options;
+- the founder explicitly asks to brainstorm freely;
+- the options would create fake precision too early.
 
 ## What To Do
 
-1. Summarize the active departments, active areas, compatible workflows and recommended next action.
-2. Check whether there is enough founder context to update Strategy source-of-truth files.
-3. If context is missing, run the Required Founder Interview before proposing file changes.
-4. Identify Strategy source-of-truth files that could receive the user's company/product context.
-5. Propose a concise update plan before editing any file.
-6. Ask for explicit confirmation before writing changes.
-7. If the user does not confirm, return the update plan and next recommended command only.
+1. Read the initial product/company context from \`leanos.yaml\`.
+2. Identify the smallest missing strategic context needed to continue.
+3. Greet the founder in plain language.
+4. Ask one guided question at a time using native selection UI when available, otherwise numbered options.
+5. Accept a number or a free-form answer.
+6. Restate how you interpreted the answer before moving to the next question.
+7. Do not propose file updates in the first response unless the founder explicitly asks to write or continue from an already-confirmed plan.
+8. After enough answers, summarize the proposed source-of-truth updates and ask for confirmation before writing.
 
-## Required Founder Interview
+## First Response Shape
+
+The first response should be short and founder-friendly.
+
+Use this shape:
+
+\`\`\`text
+Active Department: strategy
+Active Area: not applicable
+Active Role: not applicable
+Loaded Skills: not applicable
+Relevant Playbook: not applicable
+Loaded Context: leanos.yaml, workspace-summary.md, current-focus.md, next-actions.md, routing-map.yaml
+
+Ola, Founder!
+Vi que voce esta buscando <goal/product context>. Vamos comecar?
+
+Tenho algumas perguntas rapidas para alinhar o produto antes de qualquer roadmap ou implementacao.
+
+<one guided question>
+
+If the host supports selectable options, present the options as selectable choices.
+If not, use:
+
+1. <option>
+2. <option>
+3. <option>
+4. <option>
+5. Nao sei ainda, me ajude a decidir
+
+Voce pode responder so com o numero ou do seu jeito.
+\`\`\`
+
+Do not include:
+
+- full workspace summary;
+- full list of departments;
+- full list of active areas;
+- full list of compatible workflows;
+- long gap analysis;
+- technical file paths;
+- proposed file update plan;
+- all questions at once.
+
+## Guided Founder Interview
 
 Ask only what is missing. If the answer is already clear from the loaded context, do not ask it again.
 
-Required questions:
+Ask one important guided question at a time. Use numbered options whenever the founder can choose between predictable paths.
 
-1. What company or startup are we operating?
-2. What product, service or idea are we building?
-3. Who is the primary user or customer?
-4. What painful problem are we solving for that user?
-5. What value promise do we believe is compelling?
-6. What is the current stage of the company or product?
-7. What is the riskiest assumption right now?
-8. What would count as useful validation or learning in the next cycle?
-9. What should we avoid building or deciding too early?
+If the host can render a selectable UI, use it for these options. If the host cannot, write the numbered options directly in chat.
+
+Required topics, in order:
+
+1. Primary user / ICP.
+2. Painful problem.
+3. Value promise.
+4. Current stage and immediate goal.
+5. Riskiest assumption.
+6. Useful validation or learning target.
+7. What not to build or decide too early.
+
+Example first guided question:
+
+\`\`\`text
+Para quem esse produto precisa gerar valor primeiro?
+
+1. Founder solo validando uma ideia e buscando clareza antes de construir
+2. Founder solo ou pequeno time que ja tem produto e precisa operar melhor
+3. Startup early-stage tentando organizar roadmap, delivery e crescimento
+4. Negocio existente tentando usar agentes para ganhar eficiencia operacional
+5. Nao sei ainda, me ajude a decidir
+
+Voce pode responder so com o numero ou do seu jeito.
+\`\`\`
 
 ## Optional Founder Interview
 
@@ -678,7 +771,9 @@ Roadmap files may be reviewed as next-step targets, but do not invent roadmap co
 
 ## Write Protocol
 
-Before writing, show a proposed change plan with:
+Do not write during the first response.
+
+After the guided conversation captures enough context, show a short proposed change plan with:
 
 - Files to update
 - What each file will receive
@@ -733,18 +828,20 @@ If confirmation is ambiguous, do not write. Ask a focused follow-up question.
 
 ## Output
 
-Return:
+Default first response:
 
-- Loaded context
-- Workspace summary
-- Active departments and areas
-- Compatible workflows
-- Missing founder context
-- Gaps detected
-- Proposed Strategy source-of-truth updates
-- Files that would change after confirmation
-- Open questions
-- Next recommended command
+- Compact Response Header
+- Friendly founder greeting
+- One short interpretation of the known context
+- One guided question with numbered options
+- Reminder that free-form answers are accepted
+
+Only show technical details, loaded file lists, gap analysis or proposed file updates when:
+
+- the founder asks for diagnostics;
+- the founder asks "where are we?";
+- the founder asks what will be updated;
+- the guided interview has enough answers and you are asking for write confirmation.
 
 ## Active Areas
 

@@ -14,7 +14,7 @@
 - Do not implement before loading the matching workflow or command, area, role, skill and playbook.
 - Business workflows live in root departments or areas, not in `.leanos/`.
 - During `/start-leanos`, propose updates first and write only after explicit user confirmation.
-- Treat `/leanos-init` as a legacy alias for `/start-leanos`.
+- Treat `/leanos-init` and `/leanos-start` as aliases for `/start-leanos`.
 - Do not modify roles, skills, playbooks, workflows, commands, `ai-standard/` or `.github/` during init.
 - Do not write secrets to tracked files.
 - Customize framework files only when the user explicitly asks to change LeanOS itself.

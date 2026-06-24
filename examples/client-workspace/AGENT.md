@@ -48,7 +48,7 @@ LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agent
 
 When the user invokes `/start-leanos`, load `.leanos/commands/start-leanos.md` and follow it.
 
-When the user invokes legacy `/leanos-init`, treat it as `/start-leanos`.
+When the user invokes legacy `/leanos-init` or inverted `/leanos-start`, treat it as `/start-leanos`.
 
 For any LeanOS slash command, normalize the command to kebab-case and load `.leanos/commands/<command>.md` before acting.
 
