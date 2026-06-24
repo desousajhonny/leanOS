@@ -356,7 +356,7 @@ Checklist de implementacao:
 - [x] Atualizar `operations/engineering/AGENT.md` para roteamento de implementacao apontar primeiro para `engineering-delivery`.
 - [x] Atualizar `feature-to-delivery-cycle.workflow.md` para, depois de readiness, entrar em Engineering via `engineering-delivery.playbook.md`.
 - [x] Atualizar `senior-developer.role.md` para incluir `engineering-delivery` como playbook principal de implementacao.
-- [ ] Atualizar `pr-reviewer.role.md` e `test-engineer.role.md` somente se necessario, sem duplicar responsabilidades.
+- [x] Revisar `pr-reviewer.role.md` e `test-engineer.role.md`: sem mudanca necessaria; eles continuam especialistas de review/teste e nao devem duplicar o playbook mestre.
 - [ ] Adicionar notas de contexto nos playbooks menores:
   - `branch-from-issue.playbook.md`: etapa inicial do `engineering-delivery`;
   - `component-implementation.playbook.md`: usado quando existe component spec aprovada;
