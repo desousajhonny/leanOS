@@ -210,7 +210,8 @@ client-workspace/
 |   |   |   |-- validation-notes.md
 |   |   |   `-- value-proposition.md
 |   |   |-- playbooks/
-|   |   |   |-- product-strategy.playbook.md
+|   |   |   |-- idea-calibration.playbook.md
+|   |   |   |-- mvp-validation-scope.playbook.md
 |   |   |   `-- README.md
 |   |   |-- roles/
 |   |   |   |-- product-manager.role.md
@@ -229,9 +230,9 @@ client-workspace/
 |   |   |   |   `-- SKILL.md
 |   |   |   |-- define-value-proposition/
 |   |   |   |   `-- SKILL.md
-|   |   |   |-- diagnose-founder-idea/
-|   |   |   |   `-- SKILL.md
 |   |   |   |-- evaluate-idea/
+|   |   |   |   `-- SKILL.md
+|   |   |   |-- map-business-baseline/
 |   |   |   |   `-- SKILL.md
 |   |   |   `-- README.md
 |   |   |-- AGENT.md
@@ -260,7 +261,7 @@ client-workspace/
 |   |   |-- area.yaml
 |   |   `-- README.md
 |   |-- workflows/
-|   |   |-- founder-diagnosis.workflow.md
+|   |   |-- business-intake.workflow.md
 |   |   |-- idea-to-roadmap.workflow.md
 |   |   |-- new-idea-intake.workflow.md
 |   |   `-- README.md

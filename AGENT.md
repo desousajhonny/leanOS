@@ -18,3 +18,13 @@ Before making or recommending changes to LeanOS framework behavior, generated wo
 4. `docs/framework/source-of-truth/decision-log.md`
 
 Use these files as the canonical basis for analysis. If a proposed change conflicts with them, explain the conflict and either reject the change or update the source of truth and decision log explicitly.
+
+## Framework Inventory Maintenance
+
+When changing LeanOS framework skills, playbooks or workflows, update the matching macro inventory in the same change:
+
+1. `docs/framework/skills/README.md`
+2. `docs/framework/playbooks/README.md`
+3. `docs/framework/workflows/README.md`
+
+These files are the framework-level map for what exists, what each asset is for, which department/area owns it and where it can be activated. Do not add, remove, rename or move generated skills, playbooks or workflows without keeping these inventories aligned.

@@ -1,8 +1,8 @@
-# Founder Diagnosis Workflow
+# Business Intake Workflow
 
 ## Purpose
 
-Diagnose the founder's starting point, build the minimum Strategy Baseline and decide the next safe Strategy route.
+Orient the founder's starting point, map the current business stage, build the minimum Strategy Baseline and decide the next safe Strategy route.
 
 ## Founder Triggers
 
@@ -15,7 +15,7 @@ Diagnose the founder's starting point, build the minimum Strategy Baseline and d
 
 ## Progression Stage
 
-Setup Seed, Strategy Seed, Strategy Baseline or Idea Diagnosis.
+Setup Seed, Strategy Seed, Strategy Baseline or Business Intake.
 
 ## Entry Gate
 
@@ -28,11 +28,11 @@ Setup Seed, Strategy Seed, Strategy Baseline or Idea Diagnosis.
 - Read `leanos.yaml` and active Strategy context first.
 - Use `ai-standard/foundation/founder-progression-model.md` to classify the current stage.
 - Use `ai-standard/foundation/progression-gates.md` to check required context, allowed next stages and blocked next stages.
-- Use Product Strategist with `diagnose-founder-idea` when the missing baseline decision is product-facing.
+- Use Product Strategist with `map-business-baseline` when the missing baseline decision is product-facing.
 
 ## Activation Requirements
 
-- Do not activate Operations, Growth, GitHub or source-code workflows from founder diagnosis.
+- Do not activate Operations, Growth, GitHub or source-code workflows from business intake.
 - Return a later `activation_required` only after Strategy Baseline and roadmap/MVP candidate gates are satisfied.
 
 ## Owner
@@ -63,7 +63,7 @@ All required areas are active in this department.
 - `ai-standard/foundation/progression-gates.md`
 - `strategy/AGENT.md`
 - `strategy/workflows/README.md`
-- `strategy/workflows/founder-diagnosis.workflow.md`
+- `strategy/workflows/business-intake.workflow.md`
 - `strategy/business/knowledge/profile.md`
 - `strategy/product/AGENT.md`
 - `strategy/product/knowledge/brief.md`
@@ -78,13 +78,14 @@ All required areas are active in this department.
 
 1. `AGENT.md`
 2. `strategy/AGENT.md`
-3. `strategy/workflows/founder-diagnosis.workflow.md`
+3. `strategy/workflows/business-intake.workflow.md`
 4. `strategy/product/AGENT.md`
 5. `strategy/product/roles/product-strategist.role.md`
-6. `strategy/product/skills/diagnose-founder-idea/SKILL.md`
-7. `strategy/product/playbooks/product-strategy.playbook.md`
-8. `strategy/business/AGENT.md only when business identity gaps block product diagnosis`
-9. `strategy/roadmap/AGENT.md only after Strategy Baseline is coherent enough for roadmap sequencing`
+6. `strategy/product/skills/map-business-baseline/SKILL.md`
+7. `strategy/product/playbooks/idea-calibration.playbook.md`
+8. `strategy/product/playbooks/mvp-validation-scope.playbook.md when Strategy Baseline is confirmed and the founder wants MVP validation analysis`
+9. `strategy/business/AGENT.md only when business identity gaps block idea calibration`
+10. `strategy/roadmap/AGENT.md only after Strategy Baseline is coherent enough for roadmap sequencing`
 
 ## Phases
 
@@ -92,17 +93,18 @@ All required areas are active in this department.
 - Phase 2: Name the smallest Strategy Baseline gap blocking the next decision.
 - Phase 3: Ask one founder-friendly guided question tied to that gap.
 - Phase 4: Propose Strategy knowledge updates only after enough context exists.
-- Phase 5: Recommend `new-idea-intake` or `idea-to-roadmap` only after Strategy Baseline is ready.
+- Phase 5: Recommend MVP Validation Scope work, `new-idea-intake` or `idea-to-roadmap` only after Strategy Baseline is ready.
 
 ## Skills Used
 
-- `strategy/product/skills/diagnose-founder-idea/SKILL.md`
+- `strategy/product/skills/map-business-baseline/SKILL.md`
 - `strategy/product/skills/define-product/SKILL.md`
 - `strategy/product/skills/define-mvp-validation-scope/SKILL.md when the founder is ready for MVP validation scope`
 
 ## Playbooks Used
 
-- `strategy/product/playbooks/product-strategy.playbook.md`
+- `strategy/product/playbooks/idea-calibration.playbook.md`
+- `strategy/product/playbooks/mvp-validation-scope.playbook.md after calibrated idea confirmation`
 - `strategy/business/playbooks/business-foundation.playbook.md when business identity gaps block the baseline`
 - `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md only after the roadmap gate is satisfied`
 
@@ -113,14 +115,17 @@ All required areas are active in this department.
 3. Identify baseline gaps across user, problem, promise, alternative, riskiest assumption, business model direction, immediate focus and MVP validation target.
 4. Ask one guided question tied to the highest-impact gap; do not ask a generic tell-me-more question.
 5. When enough context exists, propose updates to Strategy knowledge and wait for confirmation before writing.
-6. When Strategy Baseline is coherent, recommend the next route: `new-idea-intake`, `idea-to-roadmap` or MVP Validation Scope work inside Strategy Product.
-7. Stop before roadmap, MVP delivery scope, Epics, Features or implementation work.
+6. When Strategy Baseline is coherent, ask whether the founder wants to start MVP Validation Scope analysis inside Strategy Product.
+7. After MVP Validation Scope is confirmed, offer Product Ops handoff only when the founder wants delivery scope or Epic planning.
+8. Stop before roadmap, MVP delivery scope, Epics, Features or implementation work.
 
 ## Confirmation Gates
 
 - Ask before writing any Strategy knowledge file.
+- Ask before moving into MVP Validation Scope analysis.
 - Ask before moving into `new-idea-intake`.
 - Ask before moving into `idea-to-roadmap`.
+- Ask before offering Product Ops handoff.
 - Ask before recommending activation for any inactive area.
 
 ## Allowed Updates
@@ -175,21 +180,21 @@ At the end of this workflow, offer one clear next-step bridge when a safe next f
 Immediate bridge:
 
 ```text
-A base estrategica minima esta clara o bastante para decidir o proximo passo.
-Quer que eu avalie a proxima ideia, monte o MVP Validation Scope ou transforme isso em um MVP Candidate Roadmap?
+Temos uma ideia calibrada o suficiente para discutir validacao.
+Quer que eu analise agora qual MVP validaria essa tese?
 ```
 
 Later-session triggers:
 
-- "vamos continuar do inicio"
-- "ja temos a base"
-- "qual o proximo passo?"
-- "vamos montar o roadmap"
-- "vamos definir o MVP de validacao"
+- "vamos analisar o MVP"
+- "definir mvp validation scope"
+- "qual menor MVP valida isso?"
+- "vamos definir o escopo de validacao"
+- "continuar idea calibration"
 
 Next route:
 
-`new-idea-intake or idea-to-roadmap when Strategy Baseline is ready`
+`strategy/product/playbooks/mvp-validation-scope.playbook.md, then optional activation_required: operations.product-ops for delivery scope`
 
 Rules:
 

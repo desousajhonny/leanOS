@@ -45,4 +45,5 @@ Own product strategy, ICP, value proposition, MVP validation scope, positioning 
 
 ## Common Paths
 
-- Product strategy request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/check-coherence/SKILL.md` -> playbook `playbooks/product-strategy.playbook.md`.
+- Idea calibration request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/map-business-baseline/SKILL.md` -> playbook `playbooks/idea-calibration.playbook.md`.
+- MVP validation request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/define-mvp-validation-scope/SKILL.md` -> playbook `playbooks/mvp-validation-scope.playbook.md`.

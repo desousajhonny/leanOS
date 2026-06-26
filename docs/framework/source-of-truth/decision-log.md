@@ -93,11 +93,11 @@ Justificativa:
 - A estrutura de issues do GitHub não deve ditar o pensamento de produto.
 - O estado de sync pode mapear artefatos locais para IDs remotos sem tornar o GitHub a fonte da verdade.
 
-## 2026-06-26 - Business Stage Como Diagnóstico Primário
+## 2026-06-26 - Business Stage Como Leitura Primária
 
 Decisão:
 
-- O LeanOS deve diagnosticar o estágio real do negócio antes de qualquer rota.
+- O LeanOS deve mapear o estágio real do negócio antes de qualquer rota.
 - Os estágios canônicos são: `seed`, `strategy_forming`, `mvp_shaping`, `mvp_building`, `mvp_live_learning`, `product_operating` e `growth_scaling`.
 - Toda nova ideia deve entrar por `new-idea-intake`, que avalia a ideia considerando o `business_stage` atual.
 
@@ -107,6 +107,25 @@ Justificativa:
 - Um produto em operação não deve tratar toda ideia nova como MVP.
 - O founder não deve escolher estágios manualmente.
 - Centralizar ideias novas em `new-idea-intake` mantém o framework simples e evita burocracia adicional.
+
+## 2026-06-26 - Business Intake, Idea Calibration E MVP Validation Scope
+
+Decisão:
+
+- O fluxo inicial Strategy deixa de usar `founder-diagnosis` como nome do workflow e passa a usar `business-intake`.
+- A skill `diagnose-founder-idea` passa a ser `map-business-baseline`.
+- O playbook genérico `product-strategy` passa a ser `idea-calibration`.
+- Strategy Product ganha o playbook `mvp-validation-scope`.
+- Strategy calibra a ideia e define o MVP Validation Scope.
+- Product Ops transforma um MVP Validation Scope confirmado em Delivery Scope, Epic e Features quando o founder quiser delivery.
+
+Justificativa:
+
+- `diagnosis` soava pesado demais para a experiência inicial.
+- `product-strategy` era genérico e confundia o papel de playbook, skill e workflow.
+- `idea-calibration` descreve melhor a conversa guiada para chegar a uma Strategy Baseline confirmada.
+- Separar `mvp-validation-scope` evita que a ideia calibrada pule direto para Epic.
+- A sequência fica mais natural para o founder: calibrar ideia -> analisar MVP de validação -> decidir se vira entrega.
 
 ## 2026-06-26 - Skills Como Pastas Com `SKILL.md`
 

@@ -4,7 +4,7 @@ Use este mapa para acompanhar quais jornadas do founder foram desenhadas com `jo
 
 | Status | Etapa | Momento | Arquivo Da Jornada | Workflow / Entrada | Intenção Do Founder |
 | --- | --- | --- | --- | --- | --- |
-| [x] | 0 | Setup inicial | `start-leanos.md` | Root `AGENT.md` + `strategy/workflows/founder-diagnosis.workflow.md` | "vamos começar", "configurar o LeanOS", "iniciar o projeto" |
+| [x] | 0 | Setup inicial | `start-leanos.md` | Root `AGENT.md` + `strategy/workflows/business-intake.workflow.md` | "vamos começar", "configurar o LeanOS", "iniciar o projeto" |
 | [x] | 1 | Primeira definição do produto | `define-mvp.md` | Root `AGENT.md` -> `activation_required: operations.product-ops` -> `operations/workflows/define-mvp.workflow.md` | "Defina o MVP", "qual a primeira versão?", "o que entra no MVP?" |
 | [x] | 2 | Novas ideias e features | `new-idea-intake.md` | `strategy/workflows/new-idea-intake.workflow.md` | "Tenho uma ideia", "quero avaliar uma feature nova", "isso faz sentido para o produto?" |
 | [x] | 3 | Decisão de roadmap | `idea-to-roadmap.md` | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" |

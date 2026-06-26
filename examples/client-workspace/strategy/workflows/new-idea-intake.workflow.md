@@ -61,13 +61,14 @@ All required areas are active in this department.
 8. `strategy/product/roles/product-strategist.role.md`
 9. `strategy/product/skills/evaluate-idea/SKILL.md`
 10. `strategy/product/skills/define-mvp-validation-scope/SKILL.md`
-11. `strategy/product/playbooks/product-strategy.playbook.md`
-12. `strategy/roadmap/AGENT.md only after founder confirms roadmap or backlog promotion`
+11. `strategy/product/playbooks/idea-calibration.playbook.md when the idea needs more baseline clarity`
+12. `strategy/product/playbooks/mvp-validation-scope.playbook.md when the founder wants MVP validation analysis`
+13. `strategy/roadmap/AGENT.md only after founder confirms roadmap or backlog promotion`
 
 ## Sequence
 
 1. Re-check `leanos.yaml` and confirm the Chief's current business-stage diagnosis before evaluating the idea
-2. If the business stage is unclear, ask the smallest diagnostic question or route to `founder-diagnosis`; do not judge the idea yet
+2. If the business stage is unclear, ask the smallest diagnostic question or route to `business-intake`; do not judge the idea yet
 3. Read product strategy before judging the idea
 4. Restate the founder idea in plain language and ask only the minimum guided questions needed to remove ambiguity
 5. Evaluate idea against ICP, problem, value proposition, evidence, current focus and opportunity cost

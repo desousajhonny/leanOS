@@ -110,7 +110,7 @@ Root AGENT.md
 -> strategy/workflows/idea-to-roadmap.workflow.md
 -> strategy/product/AGENT.md
 -> strategy/product/roles/product-strategist.role.md
--> strategy/product/playbooks/product-strategy.playbook.md
+-> strategy/product/playbooks/idea-calibration.playbook.md
 -> strategy/roadmap/AGENT.md
 -> strategy/roadmap/roles/roadmap-planner.role.md
 -> strategy/roadmap/skills/prioritize-backlog/SKILL.md
@@ -278,7 +278,7 @@ Por quê:
 Evidência De Navegação:
 
 - `product-strategist.role.md` lê `brief.md`, `icp.md`, `value-proposition.md`, `validation-notes.md` e o ciclo atual de Roadmap.
-- Ele aponta para `product-strategy.playbook.md`.
+- Ele aponta para `idea-calibration.playbook.md`.
 
 O que o modelo entende aqui:
 
@@ -288,13 +288,13 @@ O que o modelo entende aqui:
 
 Próxima etapa:
 
-`strategy/product/playbooks/product-strategy.playbook.md`
+`strategy/product/playbooks/idea-calibration.playbook.md`
 
-### Etapa 7 - Usar O Playbook De Product Strategy Para O Handoff
+### Etapa 7 - Usar O Playbook De Idea Calibration Para O Handoff
 
 O modelo abre:
 
-`strategy/product/playbooks/product-strategy.playbook.md`
+`strategy/product/playbooks/idea-calibration.playbook.md`
 
 Por quê:
 
@@ -304,7 +304,7 @@ Por quê:
 
 Evidência De Navegação:
 
-- `product-strategy.playbook.md` inclui `Guided Conversation`.
+- `idea-calibration.playbook.md` inclui `Guided Conversation`.
 - Ele aponta para `ai-standard/foundation/guided-conversation.md`.
 - Ele diz para fazer uma pergunta de decisão antes de qualquer handoff de roadmap ou escopo de delivery.
 
@@ -431,7 +431,7 @@ O modelo pausa e pede que o founder escolha um destino de roadmap.
 Por quê:
 
 - Mudanças de roadmap são decisões duráveis.
-- `product-strategy.playbook.md` e `guided-conversation.md` exigem prompts de decisão amigáveis ao founder.
+- `idea-calibration.playbook.md` e `guided-conversation.md` exigem prompts de decisão amigáveis ao founder.
 - `roadmap-cycle-planning.playbook.md` diz para propor updates e aguardar confirmação antes de escrever.
 
 Opções amigáveis ao founder:
@@ -508,7 +508,7 @@ Evidência De Navegação:
 
 | Playbook | Área | Papel Na Jornada | Evidência De Rota |
 | --- | --- | --- | --- |
-| `product-strategy.playbook.md` | `strategy/product` | Handoff de Product e conversa guiada antes de mutação de roadmap. | `product-strategist.role.md` aponta para ele. |
+| `idea-calibration.playbook.md` | `strategy/product` | Handoff de Product e conversa guiada antes de mutação de roadmap. | `product-strategist.role.md` aponta para ele. |
 | `roadmap-cycle-planning.playbook.md` | `strategy/roadmap` | Classificação de roadmap/backlog e proposta de update. | `roadmap-planner.role.md` aponta para ele. |
 
 ## Perguntas Ao Founder
@@ -528,7 +528,7 @@ Não pergunte como formulário rígido. Pergunte apenas o que está faltando.
 
 | Etapa | Propósito | Fonte |
 | --- | --- | --- |
-| Etapa 7 | Confirmar contexto de product-fit antes do handoff para roadmap. | `strategy/product/playbooks/product-strategy.playbook.md` |
+| Etapa 7 | Confirmar contexto de product-fit antes do handoff para roadmap. | `strategy/product/playbooks/idea-calibration.playbook.md` |
 | Etapa 12 | Escolher destino de roadmap/backlog. | `ai-standard/foundation/guided-conversation.md` |
 | Confirmação | Confirmar update durável de roadmap ou backlog. | `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md` |
 
@@ -658,7 +658,7 @@ Use este checklist para testar se a jornada realmente aplica a Navigation Chain.
 - [x] `strategy/workflows/idea-to-roadmap.workflow.md` existe.
 - [x] `strategy/product/AGENT.md` existe.
 - [x] `strategy/product/roles/product-strategist.role.md` existe.
-- [x] `strategy/product/playbooks/product-strategy.playbook.md` existe.
+- [x] `strategy/product/playbooks/idea-calibration.playbook.md` existe.
 - [x] `strategy/roadmap/AGENT.md` existe.
 - [x] `strategy/roadmap/roles/roadmap-planner.role.md` existe.
 - [x] `strategy/roadmap/skills/prioritize-backlog/SKILL.md` existe.
@@ -675,8 +675,8 @@ Use este checklist para testar se a jornada realmente aplica a Navigation Chain.
 - [x] `strategy/workflows/README.md` lista `idea-to-roadmap.workflow.md`.
 - [x] `idea-to-roadmap.workflow.md` exige Product e Roadmap.
 - [x] O AGENT de Product roteia coerência de produto para Product Strategist.
-- [x] Product Strategist aponta para o playbook de Product Strategy.
-- [x] O playbook de Product Strategy inclui Guided Conversation.
+- [x] Product Strategist aponta para o playbook de Idea Calibration.
+- [x] O playbook de Idea Calibration inclui Guided Conversation.
 - [x] O AGENT de Roadmap roteia priorização de backlog para Roadmap Planner.
 - [x] Roadmap Planner aponta para `prioritize-backlog/SKILL.md`.
 - [x] Roadmap Planner aponta para `roadmap-cycle-planning.playbook.md`.

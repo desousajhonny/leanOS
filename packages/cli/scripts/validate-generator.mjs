@@ -215,10 +215,12 @@ async function validateWorkspaceFiles() {
     "strategy/product/knowledge/positioning.md",
     "strategy/product/knowledge/business-model-canvas.md",
     "strategy/product/knowledge/mvp-validation-scope.md",
-    "strategy/product/skills/diagnose-founder-idea/SKILL.md",
+    "strategy/product/skills/map-business-baseline/SKILL.md",
     "strategy/product/skills/define-mvp-validation-scope/SKILL.md",
     "strategy/product/skills/evaluate-idea/SKILL.md",
-    "strategy/workflows/founder-diagnosis.workflow.md",
+    "strategy/product/playbooks/idea-calibration.playbook.md",
+    "strategy/product/playbooks/mvp-validation-scope.playbook.md",
+    "strategy/workflows/business-intake.workflow.md",
     "strategy/workflows/new-idea-intake.workflow.md",
     "strategy/workflows/idea-to-roadmap.workflow.md",
     "strategy/roadmap/AGENT.md",
@@ -580,21 +582,21 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "strategy", "roadmap", "knowledge", "roadmap.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-cycle-planning.playbook.md"));
   assert.equal(await exists(join(rootDir, "strategy", "validation")), false, "Strategy Validation should not be generated");
-  await assertExists(join(rootDir, "strategy", "workflows", "founder-diagnosis.workflow.md"));
+  await assertExists(join(rootDir, "strategy", "workflows", "business-intake.workflow.md"));
   await assertExists(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md"));
   await assertExists(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"));
   assert.equal(await exists(join(rootDir, "strategy", "workflows", "strategy-validation-cycle.workflow.md")), false, "Strategy validation workflow should not be generated");
   assert.equal(await exists(join(rootDir, "strategy", "workflows", "roadmap-to-github-project.workflow.md")), false, "Roadmap-to-GitHub workflow should not be generated");
-  const founderDiagnosisWorkflow = await readFile(join(rootDir, "strategy", "workflows", "founder-diagnosis.workflow.md"), "utf8");
+  const founderDiagnosisWorkflow = await readFile(join(rootDir, "strategy", "workflows", "business-intake.workflow.md"), "utf8");
   const newIdeaWorkflow = await readFile(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md"), "utf8");
   const ideaToRoadmapWorkflow = await readFile(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"), "utf8");
-  assert(founderDiagnosisWorkflow.includes("## Progression Stage"), "Founder diagnosis workflow should declare progression stage");
-  assert(founderDiagnosisWorkflow.includes("## Entry Gate"), "Founder diagnosis workflow should declare an entry gate");
-  assert(founderDiagnosisWorkflow.includes("ai-standard/foundation/progression-gates.md"), "Founder diagnosis workflow should load progression gates");
-  assert(founderDiagnosisWorkflow.includes("Strategy Baseline"), "Founder diagnosis workflow should build Strategy Baseline");
-  assert(founderDiagnosisWorkflow.includes("diagnose-founder-idea"), "Founder diagnosis workflow should use the founder idea diagnosis skill");
-  assert(founderDiagnosisWorkflow.includes("Do not create roadmap, MVP delivery scope, Epics, Features or implementation work"), "Founder diagnosis workflow should stop before roadmap and delivery");
-  assert(founderDiagnosisWorkflow.includes("Next route:\n\n`new-idea-intake or idea-to-roadmap when Strategy Baseline is ready`"), "Founder diagnosis workflow should bridge to the next Strategy route");
+  assert(founderDiagnosisWorkflow.includes("## Progression Stage"), "Business intake workflow should declare progression stage");
+  assert(founderDiagnosisWorkflow.includes("## Entry Gate"), "Business intake workflow should declare an entry gate");
+  assert(founderDiagnosisWorkflow.includes("ai-standard/foundation/progression-gates.md"), "Business intake workflow should load progression gates");
+  assert(founderDiagnosisWorkflow.includes("Strategy Baseline"), "Business intake workflow should build Strategy Baseline");
+  assert(founderDiagnosisWorkflow.includes("map-business-baseline"), "Business intake workflow should use the business baseline mapping skill");
+  assert(founderDiagnosisWorkflow.includes("Do not create roadmap, MVP delivery scope, Epics, Features or implementation work"), "Business intake workflow should stop before roadmap and delivery");
+  assert(founderDiagnosisWorkflow.includes("Next route:\n\n`strategy/product/playbooks/mvp-validation-scope.playbook.md, then optional activation_required: operations.product-ops for delivery scope`"), "Business intake workflow should bridge to MVP validation scope and optional Product Ops handoff");
   assert(newIdeaWorkflow.includes("## Continuation Bridge"), "New idea intake workflow should offer a continuation bridge");
   assert(newIdeaWorkflow.includes("Next route:\n\n`idea-to-roadmap`"), "New idea intake workflow should bridge to idea-to-roadmap");
   assert(newIdeaWorkflow.includes("## Founder Triggers"), "New idea intake workflow should define founder triggers");
@@ -616,7 +618,7 @@ async function validateWorkspaceFiles() {
   assert.equal(ideaToRoadmapWorkflow.includes("Do not mark as delivery scope, MVP, Epic or GitHub work"), false, "Idea-to-roadmap should no longer block Strategy from naming an MVP candidate");
   assert(ideaToRoadmapWorkflow.includes("## Stop Conditions"), "Idea-to-roadmap workflow should define stop conditions");
   await assertExists(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"));
-  await assertExists(join(rootDir, "strategy", "product", "skills", "diagnose-founder-idea/SKILL.md"));
+  await assertExists(join(rootDir, "strategy", "product", "skills", "map-business-baseline/SKILL.md"));
   await assertExists(join(rootDir, "strategy", "product", "skills", "define-mvp-validation-scope/SKILL.md"));
   await assertExists(join(rootDir, "strategy", "product", "skills", "evaluate-idea/SKILL.md"));
   assert.equal(await exists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync/SKILL.md")), false, "Strategy Roadmap should not own GitHub sync skills");
@@ -796,11 +798,11 @@ async function validateClientWorkspaceFixture() {
     "ai-standard/foundation/progression-gates.md",
     "strategy/product/README.md",
     "strategy/product/knowledge/mvp-validation-scope.md",
-    "strategy/product/skills/diagnose-founder-idea/SKILL.md",
+    "strategy/product/skills/map-business-baseline/SKILL.md",
     "strategy/product/skills/define-mvp-validation-scope/SKILL.md",
     "strategy/product/skills/evaluate-idea/SKILL.md",
     "strategy/product/knowledge/validation-notes.md",
-    "strategy/workflows/founder-diagnosis.workflow.md",
+    "strategy/workflows/business-intake.workflow.md",
     "strategy/workflows/new-idea-intake.workflow.md",
     "strategy/workflows/idea-to-roadmap.workflow.md",
     "operations/product-ops/AGENT.md",
@@ -1522,7 +1524,7 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("Read `leanos.yaml` first and distinguish `active_*`, `inactive_*` and `founder_selected_*`"), "Root AGENT.md should distinguish activation state fields");
   assert(rootAgent.includes("Do not load inactive departments"), "Root AGENT.md should forbid inactive department loading");
   assert(rootAgent.includes("Do not treat `available` as `exists`"), "Root AGENT.md should distinguish available from existing workspace assets");
-  assert(rootAgent.includes("Start, restart or idea diagnosis: `strategy/AGENT.md`"), "Root AGENT.md should route start and diagnosis through Strategy AGENT");
+  assert(rootAgent.includes("Start, restart, business intake or idea calibration: `strategy/AGENT.md`"), "Root AGENT.md should route start and idea calibration through Strategy AGENT");
   assert(rootAgent.includes("Initial MVP validation scope, roadmap, prioritization or validation route: `strategy/AGENT.md`"), "Root AGENT.md should route initial MVP validation scope through Strategy");
   assert(rootAgent.includes("MVP validation scope or first MVP roadmap: `strategy/AGENT.md`"), "Root AGENT.md should keep first MVP roadmap in Strategy");
   assert(rootAgent.includes("MVP delivery scope definition: return `activation_required` for `operations.product-ops`"), "Root AGENT.md should gate delivery MVP scope behind Product Ops activation");
@@ -1590,7 +1592,7 @@ async function assertFounderIntentRouting(rootDir) {
   assert.equal(await exists(join(rootDir, ".leanos", "workflows")), false, ".leanos/workflows should not be generated");
 
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "new-idea-intake" && workflow.path === "../../strategy/workflows/new-idea-intake.workflow.md"), "Workflows index should point to Strategy new idea intake workflow");
-  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "founder-diagnosis" && workflow.path === "../../strategy/workflows/founder-diagnosis.workflow.md"), "Workflows index should point to Strategy founder diagnosis workflow");
+  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "business-intake" && workflow.path === "../../strategy/workflows/business-intake.workflow.md"), "Workflows index should point to Strategy business intake workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "idea-to-roadmap" && workflow.path === "../../strategy/workflows/idea-to-roadmap.workflow.md"), "Workflows index should point to Strategy idea-to-roadmap workflow");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "strategy-validation-cycle"), false, "Workflows index should not include removed Strategy validation workflow");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-to-github-project"), false, "Workflows index should not include removed roadmap-to-GitHub workflow");
@@ -2455,11 +2457,12 @@ async function assertProductAreaPattern(rootDir) {
   const mvpValidationScope = await readFile(join(rootDir, "strategy", "product", "knowledge", "mvp-validation-scope.md"), "utf8");
   const productStrategistRole = await readFile(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"), "utf8");
   const productManagerRole = await readFile(join(rootDir, "strategy", "product", "roles", "product-manager.role.md"), "utf8");
-  const diagnoseFounderIdeaSkill = await readFile(join(rootDir, "strategy", "product", "skills", "diagnose-founder-idea/SKILL.md"), "utf8");
+  const diagnoseFounderIdeaSkill = await readFile(join(rootDir, "strategy", "product", "skills", "map-business-baseline/SKILL.md"), "utf8");
   const defineMvpValidationScopeSkill = await readFile(join(rootDir, "strategy", "product", "skills", "define-mvp-validation-scope/SKILL.md"), "utf8");
   const defineProductSkill = await readFile(join(rootDir, "strategy", "product", "skills", "define-product/SKILL.md"), "utf8");
   const evaluateIdeaSkill = await readFile(join(rootDir, "strategy", "product", "skills", "evaluate-idea/SKILL.md"), "utf8");
-  const productStrategyPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "product-strategy.playbook.md"), "utf8");
+  const productStrategyPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "idea-calibration.playbook.md"), "utf8");
+  const mvpValidationScopePlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "mvp-validation-scope.playbook.md"), "utf8");
 
   assert(productAgent.includes("# Product Agent"), "Product should have an area AGENT");
   assert(productAgent.includes("You are the Product Lead"), "Product AGENT should act as Product Lead");
@@ -2492,18 +2495,18 @@ async function assertProductAreaPattern(rootDir) {
   assert(productAreaYaml.area.source_of_truth.includes("knowledge/validation-notes.md"), "Product area.yaml should list validation notes as source of truth");
   assert(productStrategistRole.includes("../knowledge/brief.md"), "Product Strategist should load Product knowledge files");
   assert(productStrategistRole.includes("../knowledge/mvp-validation-scope.md"), "Product Strategist should load MVP validation scope");
-  assert(productStrategistRole.includes("diagnose-founder-idea"), "Product Strategist should expose founder idea diagnosis skill");
+  assert(productStrategistRole.includes("map-business-baseline"), "Product Strategist should expose business baseline mapping skill");
   assert(productStrategistRole.includes("define-mvp-validation-scope"), "Product Strategist should expose MVP validation scope skill");
   assert(productManagerRole.includes("../knowledge/brief.md"), "Product Manager should load Product knowledge files");
-  assertSkillFormat(diagnoseFounderIdeaSkill, "diagnose-founder-idea");
+  assertSkillFormat(diagnoseFounderIdeaSkill, "map-business-baseline");
   assertSkillFormat(defineMvpValidationScopeSkill, "define-mvp-validation-scope");
   assertSkillFormat(defineProductSkill, "define-product");
   assertSkillFormat(evaluateIdeaSkill, "evaluate-idea");
-  assert(diagnoseFounderIdeaSkill.includes("# Diagnose Founder Idea"), "Product should have a dedicated founder idea diagnosis skill");
-  assert(diagnoseFounderIdeaSkill.includes("Strategy Baseline"), "Founder idea diagnosis skill should build Strategy Baseline");
-  assert(diagnoseFounderIdeaSkill.includes("../../../ai-standard/foundation/progression-gates.md"), "Founder idea diagnosis skill should load progression gates");
-  assert(diagnoseFounderIdeaSkill.includes("baseline gaps"), "Founder idea diagnosis skill should identify baseline gaps");
-  assert(diagnoseFounderIdeaSkill.includes("Do not create roadmap, MVP delivery scope, Epics, Features or implementation work"), "Founder idea diagnosis skill should stop before roadmap and delivery");
+  assert(diagnoseFounderIdeaSkill.includes("# Map Business Baseline"), "Product should have a dedicated business baseline mapping skill");
+  assert(diagnoseFounderIdeaSkill.includes("Strategy Baseline"), "Business baseline mapping skill should build Strategy Baseline");
+  assert(diagnoseFounderIdeaSkill.includes("../../../ai-standard/foundation/progression-gates.md"), "Business baseline mapping skill should load progression gates");
+  assert(diagnoseFounderIdeaSkill.includes("baseline gaps"), "Business baseline mapping skill should identify baseline gaps");
+  assert(diagnoseFounderIdeaSkill.includes("Do not create roadmap, MVP delivery scope, Epics, Features or implementation work"), "Business baseline mapping skill should stop before roadmap and delivery");
   assert(defineMvpValidationScopeSkill.includes("# Define MVP Validation Scope"), "Product should have a dedicated MVP validation scope skill");
   assert(defineMvpValidationScopeSkill.includes("Business Thesis"), "MVP validation scope skill should require business thesis");
   assert(defineMvpValidationScopeSkill.includes("MVP Slice"), "MVP validation scope skill should require MVP slice");
@@ -2513,10 +2516,13 @@ async function assertProductAreaPattern(rootDir) {
   assert(defineMvpValidationScopeSkill.includes("Do not create Epics, Features or implementation scope"), "MVP validation scope skill should stop before delivery work");
   assert(defineProductSkill.includes("use MVP Validation Scope for the initial MVP thesis"), "Define product skill should route MVP thesis to Strategy Product");
   assert(evaluateIdeaSkill.includes("MVP validation scope recommendation"), "Evaluate idea skill should produce MVP validation scope recommendation");
-  assert(productStrategyPlaybook.includes("## Guided Conversation"), "Product strategy playbook should include guided conversation");
-  assert(productStrategyPlaybook.includes("../../../ai-standard/foundation/guided-conversation.md"), "Product strategy playbook should point to guided conversation standard");
-  assert(productStrategyPlaybook.includes("Offer numbered choices for idea destination"), "Product strategy playbook should guide idea-destination choices");
-  assert(productStrategyPlaybook.includes("../knowledge/mvp-validation-scope.md"), "Product strategy playbook should use MVP validation scope");
+  assert(productStrategyPlaybook.includes("## Guided Conversation"), "Idea calibration playbook should include guided conversation");
+  assert(productStrategyPlaybook.includes("../../../ai-standard/foundation/guided-conversation.md"), "Idea calibration playbook should point to guided conversation standard");
+  assert(productStrategyPlaybook.includes("Ask one useful question at a time"), "Idea calibration playbook should keep calibration conversational");
+  assert(productStrategyPlaybook.includes("do not create roadmap, Epics, Features or delivery scope here"), "Idea calibration playbook should stop before roadmap and delivery");
+  assert(mvpValidationScopePlaybook.includes("## Guided Conversation"), "MVP validation scope playbook should include guided conversation");
+  assert(mvpValidationScopePlaybook.includes("../knowledge/mvp-validation-scope.md"), "MVP validation scope playbook should use MVP validation scope knowledge");
+  assert(mvpValidationScopePlaybook.includes("Product Ops turns confirmed scope into delivery work"), "MVP validation scope playbook should make the Product Ops handoff explicit");
 
   for (const oldPath of [
     "brief.md",
@@ -3222,19 +3228,20 @@ async function assertGrowthAreaPattern(rootDir) {
 
 async function assertNaturalStartupRules(rootDir) {
   const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
-  const founderDiagnosis = await readFile(join(rootDir, "strategy", "workflows", "founder-diagnosis.workflow.md"), "utf8");
-  const productPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "product-strategy.playbook.md"), "utf8");
+  const founderDiagnosis = await readFile(join(rootDir, "strategy", "workflows", "business-intake.workflow.md"), "utf8");
+  const productPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "idea-calibration.playbook.md"), "utf8");
 
   assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Startup should not depend on generated command files");
   assert(rootAgent.includes("Setup or restart LeanOS: `strategy/AGENT.md`"), "Root AGENT should route startup intent through Strategy");
   assert(rootAgent.includes("Intent -> Current Stage -> Gate -> Active Requirements -> Route"), "Root AGENT should use progression intent routing");
   assert(rootAgent.includes("Do not write during the first response"), "Root AGENT should avoid writing during the first startup response");
   assert(rootAgent.includes("Do not modify roles, skills, playbooks, workflows, `ai-standard/` or `.github/` during startup"), "Root AGENT should protect operating assets during startup");
-  assert(founderDiagnosis.includes("Use `ai-standard/foundation/founder-progression-model.md`"), "Founder diagnosis should use the progression model");
-  assert(founderDiagnosis.includes("Use `ai-standard/foundation/progression-gates.md`"), "Founder diagnosis should use progression gates");
-  assert(founderDiagnosis.includes("Ask one founder-friendly guided question"), "Founder diagnosis should ask one guided question at a time");
-  assert(founderDiagnosis.includes("Do not create roadmap, MVP delivery scope, Epics, Features or implementation work"), "Founder diagnosis should stop before delivery");
-  assert(productPlaybook.includes("Ask one decision question before any roadmap or MVP handoff"), "Product playbook should keep startup guided and incremental");
+  assert(founderDiagnosis.includes("Use `ai-standard/foundation/founder-progression-model.md`"), "Business intake should use the progression model");
+  assert(founderDiagnosis.includes("Use `ai-standard/foundation/progression-gates.md`"), "Business intake should use progression gates");
+  assert(founderDiagnosis.includes("Ask one founder-friendly guided question"), "Business intake should ask one guided question at a time");
+  assert(founderDiagnosis.includes("Do not create roadmap, MVP delivery scope, Epics, Features or implementation work"), "Business intake should stop before delivery");
+  assert(productPlaybook.includes("Ask one useful question at a time"), "Idea calibration playbook should keep startup guided and incremental");
+  assert(productPlaybook.includes("End with a clear confirmation question before file updates"), "Idea calibration playbook should ask for confirmation before writing");
 }
 
 async function assertRootAgentMutationRules(rootDir) {
@@ -3402,7 +3409,7 @@ async function assertProductOpsPrdSections(rootDir) {
 async function assertMvpValidationScopeSections(rootDir) {
   const mvpValidationScope = await readFile(join(rootDir, "strategy", "product", "knowledge", "mvp-validation-scope.md"), "utf8");
   const defineMvpValidationScope = await readFile(join(rootDir, "strategy", "product", "skills", "define-mvp-validation-scope/SKILL.md"), "utf8");
-  const productPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "product-strategy.playbook.md"), "utf8");
+  const productPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "idea-calibration.playbook.md"), "utf8");
 
   assert.equal(await exists(join(rootDir, "strategy", "validation")), false, "Strategy Validation folder should not exist");
   assert(mvpValidationScope.includes("Business Thesis"), "MVP validation scope should capture the business thesis");
@@ -3412,7 +3419,7 @@ async function assertMvpValidationScopeSections(rootDir) {
   assert(mvpValidationScope.includes("does not create Epics, Features or implementation scope"), "MVP validation scope should not become delivery scope");
   assert(defineMvpValidationScope.includes("Do not require interviews or research before proposing an MVP validation scope"), "MVP validation skill should avoid bureaucratic validation gates");
   assert(defineMvpValidationScope.includes("Do not create Epics, Features or implementation scope from Strategy Product"), "MVP validation skill should stop before delivery");
-  assert.equal(productPlaybook.includes("Use Validation only for explicit experiment planning"), false, "Product playbook should not reference removed Strategy Validation area");
+  assert.equal(productPlaybook.includes("Use Validation only for explicit experiment planning"), false, "Idea calibration playbook should not reference removed Strategy Validation area");
 }
 
 async function validateWriterSkipsExistingFiles() {

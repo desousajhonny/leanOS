@@ -6,9 +6,11 @@ O LeanOS opera por meio desta progressão:
 
 ```text
 Ideia / Contexto Inicial
+-> Idea Calibration
 -> Strategy Baseline
+-> MVP Validation Scope
 -> Roadmap Candidate
--> Escopo de MVP
+-> Delivery Scope
 -> Epic
 -> Features
 -> Delivery
@@ -16,9 +18,9 @@ Ideia / Contexto Inicial
 -> Learning Loop
 ```
 
-A sequência nem sempre é linear em produtos maduros, mas os gates continuam valendo. Um founder pode entrar no LeanOS com um produto, codebase ou backlog existente. O LeanOS deve diagnosticar o estágio atual antes de rotear.
+A sequência nem sempre é linear em produtos maduros, mas os gates continuam valendo. Um founder pode entrar no LeanOS com um produto, codebase ou backlog existente. O LeanOS deve mapear o estágio atual antes de rotear.
 
-O estágio atual do negócio é definido em `business-stages.md`. O Chief deve diagnosticar esse estágio antes de qualquer ação, porque uma nova ideia pode aparecer tanto em um negócio recém-iniciado quanto em um produto já operando.
+O estágio atual do negócio é definido em `business-stages.md`. O Chief deve mapear esse estágio antes de qualquer ação, porque uma nova ideia pode aparecer tanto em um negócio recém-iniciado quanto em um produto já operando.
 
 Toda nova ideia entra por `new-idea-intake`, e esse intake deve considerar o estágio atual do negócio.
 
@@ -38,13 +40,29 @@ A CLI captura apenas o contexto suficiente para começar:
 
 Isso não é a verdade final. É um insumo inicial para Strategy.
 
-### 2. Strategy Baseline
+### 2. Idea Calibration E Strategy Baseline
 
-O LeanOS Chief começa em Strategy e esclarece a baseline mínima de negócio/produto.
+O LeanOS Chief começa em Strategy e usa `idea-calibration` para transformar a ideia ou contexto inicial em uma Strategy Baseline mínima de negócio/produto.
 
 O Chief deve fazer uma pergunta útil por vez e evitar a fadiga de entrevistas abertas.
 
-### 3. Roadmap Candidate
+Arquivos de knowledge só devem ser atualizados depois que o founder confirma a baseline calibrada.
+
+### 3. MVP Validation Scope
+
+O MVP Validation Scope traduz a Strategy Baseline confirmada no menor caminho de validação do negócio.
+
+Ele pode ser produto pequeno, landing page, concierge/manual workflow, protótipo ou automação simples.
+
+Strategy é dona desta decisão porque ela responde:
+
+- qual hipótese do negócio queremos validar;
+- qual menor artefato pode ensinar algo real;
+- quais sinais indicam sucesso, pivô ou pausa.
+
+MVP Validation Scope não cria Epic, Feature, GitHub issue, branch ou código.
+
+### 4. Roadmap Candidate
 
 O roadmap começa como oportunidade e foco organizados, não como implementação garantida.
 
@@ -58,31 +76,31 @@ O roadmap pode conter:
 
 O roadmap não deve criar automaticamente Epics, Features ou issues no GitHub.
 
-### 4. Escopo De MVP
+### 5. Delivery Scope
 
-O Escopo de MVP traduz Strategy e a direção selecionada do roadmap em um escopo pequeno de produto orientado a validação.
+Delivery Scope traduz Strategy, MVP Validation Scope e direção selecionada do roadmap em escopo concreto de entrega.
 
-Product Ops é dono do Escopo de MVP. Se Product Ops estiver inativo, o LeanOS retorna `activation_required: operations.product-ops`.
+Product Ops é dono do Delivery Scope. Se Product Ops estiver inativo, o LeanOS retorna `activation_required: operations.product-ops`.
 
-### 5. Epic
+### 6. Epic
 
-Um Epic é um artefato local de Product Ops que transforma um item de roadmap ou escopo de MVP em contexto executável de entrega.
+Um Epic é um artefato local de Product Ops que transforma um item de roadmap ou Delivery Scope em contexto executável de entrega.
 
 Um Epic não é uma issue do GitHub por padrão. O GitHub pode espelhá-lo depois.
 
-### 6. Features
+### 7. Features
 
 Features quebram um Epic em unidades implementáveis.
 
 Cada Feature deve conter critérios de aceite, tasks internas e dimensões de readiness para Product Ops, Engineering e, quando aplicável, Design, Security e DevOps.
 
-### 7. Delivery
+### 8. Delivery
 
 Delivery começa apenas quando uma Feature está pronta para desenvolvimento ou quando um spike técnico explícito foi aprovado.
 
 Engineering entra depois da readiness de Product Ops e de qualquer gate aplicável de Design, Security ou DevOps.
 
-### 8. Ciclo De Aprendizado
+### 9. Ciclo De Aprendizado
 
 Depois da entrega, o LeanOS deve capturar o que mudou, o que foi aprendido, o que continua incerto e qual rota deve acontecer em seguida.
 

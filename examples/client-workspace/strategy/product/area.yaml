@@ -8,7 +8,7 @@ area:
     - product-strategist
     - product-manager
   skills:
-    - diagnose-founder-idea
+    - map-business-baseline
     - define-product
     - define-icp
     - define-value-proposition
@@ -17,7 +17,8 @@ area:
     - evaluate-idea
     - check-coherence
   playbooks:
-    - product-strategy
+    - idea-calibration
+    - mvp-validation-scope
   source_of_truth:
     - knowledge/brief.md
     - knowledge/problem.md

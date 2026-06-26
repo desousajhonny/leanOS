@@ -67,7 +67,7 @@ Intent -> Current Stage -> Gate -> Active Requirements -> Route
 
 Rules:
 
-- Start, restart or idea diagnosis: `strategy/AGENT.md`
+- Start, restart, business intake or idea calibration: `strategy/AGENT.md`
 - Initial MVP validation scope, roadmap, prioritization or validation route: `strategy/AGENT.md`
 - MVP delivery scope, epic, feature or delivery shaping: `operations/AGENT.md` only when the required Operations area is active.
 - Implementation, branch, PR or review: `operations/AGENT.md` only when Engineering is active and delivery readiness is clear.

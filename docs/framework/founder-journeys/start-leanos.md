@@ -6,15 +6,15 @@ Esta jornada desenha como o LeanOS deve lidar com um founder dizendo:
 "Vamos começar."
 ```
 
-O propósito não é construir imediatamente um MVP completo, roadmap ou plano de delivery. O propósito é diagnosticar o estágio atual do founder, construir a Strategy Baseline mínima e identificar a próxima rota segura.
+O propósito não é construir imediatamente um MVP completo, roadmap ou plano de delivery. O propósito é mapear o estágio atual do negócio, calibrar a ideia inicial, construir a Strategy Baseline mínima e identificar a próxima rota segura.
 
 ## Visão Humana
 
 - **Trigger:** founder quer começar, recomeçar ou entender por onde iniciar.
 - **Objetivo:** transformar o contexto inicial em uma lacuna clara de Strategy Baseline e uma próxima pergunta guiada.
 - **Começa em:** `AGENT.md` raiz.
-- **Passa por:** `strategy/AGENT.md`, `strategy/workflows/founder-diagnosis.workflow.md`, Product Strategist e playbook de Product Strategy.
-- **Termina com:** atualizações confirmadas de knowledge em Strategy ou uma próxima rota como `new-idea-intake`, MVP Validation Scope ou `idea-to-roadmap`.
+- **Passa por:** `strategy/AGENT.md`, `strategy/workflows/business-intake.workflow.md`, Product Strategist e playbook de Idea Calibration.
+- **Termina com:** atualizações confirmadas de knowledge em Strategy ou uma próxima rota como `new-idea-intake`, `mvp-validation-scope.playbook.md` ou `idea-to-roadmap`.
 - **Não faz:** criar itens de roadmap, definir escopo de delivery do MVP, criar Epics/Features, ativar Operations/Growth ou iniciar implementação.
 
 ## Diagrama Do Fluxo
@@ -25,10 +25,10 @@ flowchart TD
   B["Root AGENT.md"]
   C["Ler leanos.yaml + indexes ativos"]
   D["Strategy AGENT"]
-  E["workflow founder-diagnosis"]
+  E["workflow business-intake"]
   F["Product Strategist"]
-  G["skill diagnose-founder-idea"]
-  H["playbook Product Strategy"]
+  G["skill map-business-baseline"]
+  H["playbook Idea Calibration"]
   I{"Strategy Baseline pronta?"}
   J["Fazer uma pergunta guiada"]
   K["Propor atualizações em Strategy"]
@@ -43,9 +43,9 @@ flowchart TD
 
 ## Fluxo Em Linguagem Simples
 
-O modelo começa no `AGENT.md` raiz porque o founder fala em linguagem natural. O roteamento raiz lê `leanos.yaml`, fase atual e indexes ativos antes de entrar em Strategy. Depois segue `founder-diagnosis.workflow.md` porque iniciar é uma decisão de estágio de progressão, não trabalho de delivery.
+O modelo começa no `AGENT.md` raiz porque o founder fala em linguagem natural. O roteamento raiz lê `leanos.yaml`, fase atual e indexes ativos antes de entrar em Strategy. Depois segue `business-intake.workflow.md` porque iniciar é uma decisão de estágio de progressão, não trabalho de delivery.
 
-Strategy Product usa `diagnose-founder-idea/SKILL.md` para nomear o estágio atual, as lacunas de baseline e a próxima pergunta guiada. A jornada termina quando o founder confirma atualizações em Strategy ou escolhe uma próxima rota segura.
+Strategy Product usa `map-business-baseline/SKILL.md` para mapear o estágio atual, as lacunas de baseline e a próxima pergunta guiada. `idea-calibration.playbook.md` conduz a conversa até a Strategy Baseline ficar aceitável. A jornada termina quando o founder confirma atualizações em Strategy ou escolhe uma próxima rota segura.
 
 ## Trigger Do Founder
 
@@ -66,11 +66,12 @@ Root AGENT.md
 -> leanos.yaml
 -> active .leanos/index/*
 -> strategy/AGENT.md
--> strategy/workflows/founder-diagnosis.workflow.md
+-> strategy/workflows/business-intake.workflow.md
 -> strategy/product/AGENT.md
 -> strategy/product/roles/product-strategist.role.md
--> strategy/product/skills/diagnose-founder-idea/SKILL.md
--> strategy/product/playbooks/product-strategy.playbook.md
+-> strategy/product/skills/map-business-baseline/SKILL.md
+-> strategy/product/playbooks/idea-calibration.playbook.md
+-> strategy/product/playbooks/mvp-validation-scope.playbook.md quando o founder quiser analisar o MVP de validação
 ```
 
 ## Regras De Parada
@@ -84,7 +85,7 @@ Root AGENT.md
 ## Checklist De Conclusão
 
 - [x] O `AGENT.md` raiz roteia intenção de início para Strategy.
-- [x] Strategy tem um workflow `founder-diagnosis`.
-- [x] Product tem uma skill `diagnose-founder-idea`.
+- [x] Strategy tem um workflow `business-intake`.
+- [x] Product tem uma skill `map-business-baseline`.
 - [x] O workflow nomeia estágio, gate, requisitos ativos e limites de ativação.
 - [x] A jornada para antes de roadmap, escopo de delivery do MVP, Epic, Feature e trabalho de implementação.

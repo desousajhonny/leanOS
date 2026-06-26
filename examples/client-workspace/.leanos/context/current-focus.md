@@ -10,7 +10,7 @@ Operate only through active workspace areas:
 
 Compatible local workflows:
 
-- founder-diagnosis
+- business-intake
 - new-idea-intake
 - idea-to-roadmap
 

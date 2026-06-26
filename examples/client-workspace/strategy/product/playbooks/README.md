@@ -14,7 +14,8 @@ Use when a selected role points to a playbook.
 
 ## Files
 
-- `product-strategy.playbook.md`
+- `idea-calibration.playbook.md`
+- `mvp-validation-scope.playbook.md`
 
 ## Related Folders
 

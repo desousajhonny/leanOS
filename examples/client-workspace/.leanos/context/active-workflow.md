@@ -2,7 +2,7 @@
 
 Current compatible local workflows:
 
-- founder-diagnosis
+- business-intake
 - new-idea-intake
 - idea-to-roadmap
 

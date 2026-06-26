@@ -6,7 +6,7 @@ O estágio do negócio é a leitura durável do momento real da empresa/produto 
 
 ## Regra Central
 
-Antes de qualquer ação, o LeanOS Chief deve diagnosticar:
+Antes de qualquer ação, o LeanOS Chief deve mapear:
 
 ```text
 Qual é o estágio real do negócio agora?
@@ -44,15 +44,16 @@ Sinais:
 
 Trabalho principal do Chief:
 
-- iniciar diagnóstico em Strategy;
+- iniciar business intake em Strategy;
 - entender usuário inicial, dor, alternativa atual, promessa e premissa mais arriscada;
 - fazer uma pergunta útil por vez;
 - evitar roadmap, MVP delivery scope, Epic, Feature e código.
 
 Rotas típicas:
 
-- `strategy/workflows/founder-diagnosis.workflow.md`
-- `strategy/product/skills/diagnose-founder-idea/SKILL.md`
+- `strategy/workflows/business-intake.workflow.md`
+- `strategy/product/skills/map-business-baseline/SKILL.md`
+- `strategy/product/playbooks/idea-calibration.playbook.md`
 
 Próximo estágio saudável:
 
@@ -111,6 +112,7 @@ Trabalho principal do Chief:
 Rotas típicas:
 
 - Strategy Product para MVP validation scope;
+- `strategy/product/playbooks/mvp-validation-scope.playbook.md`;
 - Strategy Roadmap para roadmap candidate;
 - `activation_required: operations.product-ops` quando o founder entra em escopo de entrega.
 

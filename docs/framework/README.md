@@ -16,6 +16,9 @@ Para decisões sobre o framework, comece por aqui:
 
 - `source-of-truth/`: definição canônica do framework, modelo operacional, regras de decisão, glossário e registro de decisões.
 - `founder-journeys/`: jornadas voltadas ao founder que aplicam a doutrina em fluxos concretos.
+- `skills/`: inventário macro das skills do catálogo do framework.
+- `playbooks/`: inventário macro dos playbooks do catálogo do framework.
+- `workflows/`: inventário macro dos workflows do catálogo do framework.
 - `screen-spec-template-plan.md`: nota de planejamento de design para um futuro template de especificação de telas.
 
 ## Regra

@@ -52,6 +52,10 @@ O LeanOS tem um MVP de framework local com:
 - [x] Preview `examples/client-workspace/` regenerado apos as mudancas estruturais relevantes.
 - [x] `docs/framework/source-of-truth/` criado como base normativa do LeanOS.
 - [x] Root `AGENT.md` aponta para a source of truth antes de decisoes de framework.
+- [x] Skills migradas para pastas `skills/<skill-slug>/SKILL.md`.
+- [x] Inventarios macro de skills, playbooks e workflows criados em `docs/framework/`.
+- [x] Jornada inicial redesenhada como `business-intake -> idea-calibration -> mvp-validation-scope -> Product Ops handoff`.
+- [x] Fluxo inicial validado com `npm test` e `git diff --check`.
 
 ## Pendencias Ativas
 
@@ -84,23 +88,7 @@ Perguntas a resolver:
 - O que conta como Strategy Baseline suficiente?
 - Qual e o menor caminho agradavel para o founder nao sentir burocracia?
 
-### 2. `skills/<skill-slug>/SKILL.md`
-
-Status: planejado, nao bloqueia a conversa do fluxo inicial.
-
-Decisao atual:
-
-- [x] Manter `AGENT.md` no MVP.
-- [ ] Migrar skills para pastas `skills/<skill-slug>/SKILL.md` em uma tarefa propria.
-
-Escopo futuro:
-
-- Atualizar gerador.
-- Atualizar referencias internas.
-- Atualizar validacao.
-- Regenerar preview.
-
-### 3. LeanOS Asset Contract v2
+### 2. LeanOS Asset Contract v2
 
 Status: planejado.
 
@@ -114,7 +102,7 @@ Ordem recomendada:
 4. Atualizar `validate-generator.mjs`.
 5. Regenerar preview.
 
-### 4. Launch Readiness
+### 3. Launch Readiness
 
 Status: planejado.
 
@@ -134,13 +122,13 @@ Deve cobrir:
 - go-to-market;
 - aprendizado pos-lancamento.
 
-### 5. `launch-learning-loop`
+### 4. `launch-learning-loop`
 
 Status: planejado.
 
 Objetivo: manter Growth enxuto, mas pronto para lancamento, feedback, learning loop e decisao de proximo ciclo.
 
-### 6. Localizacao PT-BR
+### 5. Localizacao PT-BR
 
 Status: planejado depois do Asset Contract v2.
 
@@ -154,7 +142,7 @@ Nao traduzir:
 - chaves YAML/JSON;
 - enums e IDs internos.
 
-### 7. Teste Externo Da Founder Journey
+### 6. Teste Externo Da Founder Journey
 
 Status: importante antes de release.
 
@@ -170,7 +158,7 @@ Cenario minimo:
 - simular implementacao/review;
 - retomar em nova sessao sem perder contexto.
 
-### 8. Release Publica Do MVP
+### 7. Release Publica Do MVP
 
 Status: pendente.
 

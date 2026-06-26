@@ -1,19 +1,19 @@
 ---
-name: diagnose-founder-idea
-description: Use when the founder is starting LeanOS; the product idea is raw; the Chief needs to identify the current progression stage before roadmap or MVP validation scope
+name: map-business-baseline
+description: Use when the founder is starting LeanOS; the product idea is raw; the Chief needs to identify the current business stage before roadmap or MVP validation scope
 ---
 
-# Diagnose Founder Idea
+# Map Business Baseline
 
 ## Overview
 
-Diagnose a raw founder idea into a Strategy Baseline gap, next guided question and safe next route.
+Map a raw founder idea or current business context into known facts, Strategy Baseline gaps, next guided question and safe next route.
 
 ## Use When
 
 - the founder is starting LeanOS
 - the product idea is raw
-- the Chief needs to identify the current progression stage before roadmap or MVP validation scope
+- the Chief needs to identify the current business stage before roadmap or MVP validation scope
 
 ## Required Context
 
@@ -49,7 +49,7 @@ Restate what is known from seed context and Product knowledge.
 
 ### Step 3
 
-Classify the current founder progression stage using the Founder Progression Model.
+Classify the current business stage using the Founder Progression Model.
 
 ### Step 4
 
@@ -76,7 +76,7 @@ Recommend the next route only when the gate is satisfied.
 
 ## Output
 
-- Current progression stage
+- Current business stage
 - Known context summary
 - Strategy Baseline gaps
 - Next guided question
@@ -96,4 +96,4 @@ Recommend the next route only when the gate is satisfied.
 
 - Do not ask broad empty questions such as tell me more.
 - Do not create roadmap, MVP delivery scope, Epics, Features or implementation work.
-- Do not activate Operations, Growth or GitHub from founder diagnosis.
+- Do not activate Operations, Growth or GitHub from business intake.

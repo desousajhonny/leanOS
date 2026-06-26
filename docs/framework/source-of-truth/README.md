@@ -19,7 +19,7 @@ Use estes arquivos antes de alterar:
 
 - `leanos-doctrine.md`: o que o LeanOS é, o que ele não é e os princípios não negociáveis.
 - `operating-model.md`: como o LeanOS opera da ideia ao ciclo de aprendizado.
-- `business-stages.md`: estágios canônicos do negócio e como o Chief deve diagnosticar o momento real antes de rotear.
+- `business-stages.md`: estágios canônicos do negócio e como o Chief deve mapear o momento real antes de rotear.
 - `decision-rules.md`: como avaliar mudanças futuras.
 - `glossary.md`: termos e significados canônicos.
 - `decision-log.md`: decisões aceitas do framework e suas justificativas.

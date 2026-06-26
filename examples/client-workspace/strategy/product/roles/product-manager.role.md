@@ -28,7 +28,8 @@ Read:
 
 ## Playbooks
 
-- `../playbooks/product-strategy.playbook.md`
+- `../playbooks/idea-calibration.playbook.md`
+- `../playbooks/mvp-validation-scope.playbook.md`
 
 ## Output Style
 

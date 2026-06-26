@@ -65,7 +65,7 @@ Análise do framework:
 
 ```text
 Estágio: Ideia / Contexto Inicial
-Rota: Root AGENT -> Strategy -> founder-diagnosis -> Product Strategist
+Rota: Root AGENT -> Strategy -> business-intake -> Product Strategist
 Área ativa: Strategy
 Operations/Product Ops: não ativa
 Roadmap: ainda não nasce
@@ -107,7 +107,7 @@ Análise do framework:
 
 ```text
 Estágio: Strategy Baseline em formação
-Rota: Strategy -> Product Strategist -> diagnose-founder-idea/product-strategy
+Rota: Strategy -> Product Strategist -> map-business-baseline/idea-calibration
 Área ativa: Strategy
 Operations/Product Ops: ainda não ativa
 Roadmap: ainda não nasce

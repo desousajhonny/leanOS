@@ -60,6 +60,7 @@ O LeanOS opera como:
 ```text
 Ideia de negócio
 -> hipótese de cliente/problema/valor
+-> Idea Calibration
 -> Strategy Baseline mínima
 -> primeiro escopo de validação do negócio
 -> MVP ou artefato operacional necessário para validar
@@ -90,7 +91,7 @@ No LeanOS, essa primeira versão do negócio começa normalmente por Strategy, p
 
 Depois disso, outras capacidades do negócio vão nascendo conforme o estágio real exige:
 
-- Product Ops nasce quando Strategy precisa virar escopo de MVP, Epic, Feature, critérios ou planejamento de entrega;
+- Product Ops nasce quando Strategy e MVP Validation Scope precisam virar Delivery Scope, Epic, Feature, critérios ou planejamento de entrega;
 - Design nasce quando a experiência do produto precisa de fluxos, telas, componentes, UX, acessibilidade ou copy;
 - Engineering nasce quando uma Feature está pronta para implementação ou quando um spike técnico foi explicitamente aprovado;
 - DevOps nasce quando a entrega precisa de ambientes, CI/CD, deploy, observabilidade, release ou sincronização com GitHub;

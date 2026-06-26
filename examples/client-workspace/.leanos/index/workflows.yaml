@@ -1,7 +1,7 @@
 workflows:
-  - key: founder-diagnosis
+  - key: business-intake
     department: strategy
-    path: ../../strategy/workflows/founder-diagnosis.workflow.md
+    path: ../../strategy/workflows/business-intake.workflow.md
     active: true
   - key: new-idea-intake
     department: strategy

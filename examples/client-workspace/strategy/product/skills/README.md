@@ -14,7 +14,7 @@ Use when a selected role points to a skill.
 
 ## Files
 
-- `diagnose-founder-idea/SKILL.md`
+- `map-business-baseline/SKILL.md`
 - `define-product/SKILL.md`
 - `define-icp/SKILL.md`
 - `define-value-proposition/SKILL.md`

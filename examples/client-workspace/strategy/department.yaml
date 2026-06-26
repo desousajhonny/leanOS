@@ -13,8 +13,8 @@ department:
       agent: roadmap/AGENT.md
       readme: roadmap/README.md
   workflows:
-    - key: founder-diagnosis
-      path: workflows/founder-diagnosis.workflow.md
+    - key: business-intake
+      path: workflows/business-intake.workflow.md
     - key: new-idea-intake
       path: workflows/new-idea-intake.workflow.md
     - key: idea-to-roadmap
