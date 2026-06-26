@@ -460,15 +460,6 @@ export function creationInstructions(assetName: string): string {
 `;
 }
 
-export function formatCommandInvocation(slug: string): string {
-  if (slug === "start-leanos") return "/start-leanos";
-  if (slug === "status-leanos") return "/status-leanos";
-  if (slug === "github-sync") return "/github-sync";
-  if (slug === "define-mvp") return "/define-mvp";
-
-  return `/${slug.replace(/-/g, " ")}`;
-}
-
 export function toTitle(value: string): string {
   return value
     .split("-")

@@ -90,7 +90,6 @@ For any new LeanOS asset:
 ## Related Folders
 
 - `../AGENT.md`
-- `../.leanos/commands/`
 
 ## Agent Notes
 

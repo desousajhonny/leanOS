@@ -136,8 +136,6 @@ async function validateWorkspaceFiles() {
     "ai-standard/templates/structure/area-template.yaml",
     "ai-standard/templates/execution/README.md",
     "ai-standard/templates/execution/role-template.md",
-    "ai-standard/templates/commands/README.md",
-    "ai-standard/templates/commands/command-template.md",
     "ai-standard/templates/github/README.md",
     "ai-standard/templates/github/github-epic-template.md",
     "ai-standard/templates/github/github-feature-template.md",
@@ -151,7 +149,6 @@ async function validateWorkspaceFiles() {
     "ai-standard/templates/review/code-review-template.md",
     "ai-standard/checklists/agent-quality-checklist.md",
     "ai-standard/checklists/area-quality-checklist.md",
-    "ai-standard/checklists/command-quality-checklist.md",
     "ai-standard/checklists/department-quality-checklist.md",
     "ai-standard/checklists/playbook-quality-checklist.md",
     "ai-standard/checklists/readme-quality-checklist.md",
@@ -161,7 +158,6 @@ async function validateWorkspaceFiles() {
     "ai-standard/instructions/README.md",
     "ai-standard/instructions/create-agent-instructions.md",
     "ai-standard/instructions/create-area-instructions.md",
-    "ai-standard/instructions/create-command-instructions.md",
     "ai-standard/instructions/create-department-instructions.md",
     "ai-standard/instructions/create-playbook-instructions.md",
     "ai-standard/instructions/create-readme-instructions.md",
@@ -180,8 +176,6 @@ async function validateWorkspaceFiles() {
     "ai-standard/examples/execution/example-skill-check-coherence.md",
     "ai-standard/examples/execution/example-playbook-prepare-pr.md",
     "ai-standard/examples/execution/example-workflow-feature-to-delivery-cycle.md",
-    "ai-standard/examples/commands/README.md",
-    "ai-standard/examples/commands/example-command-define-design.md",
     "ai-standard/examples/github/README.md",
     "ai-standard/examples/github/example-github-epic.md",
     "ai-standard/examples/github/example-github-feature.md",
@@ -1726,7 +1720,7 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
   assert(assetTaxonomy.includes("### Playbook"), "Asset taxonomy should explain playbooks");
   assert(assetTaxonomy.includes("### Knowledge"), "Asset taxonomy should explain knowledge");
   assert(assetTaxonomy.includes("### Workflow"), "Asset taxonomy should explain workflows");
-  assert(assetTaxonomy.includes("### Command"), "Asset taxonomy should explain commands");
+  assert.equal(assetTaxonomy.includes("### Command"), false, "Asset taxonomy should not present slash commands as a generated asset type");
   assert(assetTaxonomy.includes("operations/design/AGENT.md"), "Asset taxonomy should include Design AGENT example");
   assert(assetTaxonomy.includes("operations/design/skills/accessibility.skill.md"), "Asset taxonomy should include Design skill example");
   assert(assetTaxonomy.includes("operations/design/playbooks/design-foundation.playbook.md"), "Asset taxonomy should include Design playbook example");
@@ -1749,7 +1743,6 @@ async function assertAiStandardTemplates(rootDir) {
   const agentsReadme = await readFile(join(rootDir, "ai-standard", "templates", "agents", "README.md"), "utf8");
   const structureReadme = await readFile(join(rootDir, "ai-standard", "templates", "structure", "README.md"), "utf8");
   const executionReadme = await readFile(join(rootDir, "ai-standard", "templates", "execution", "README.md"), "utf8");
-  const commandsReadme = await readFile(join(rootDir, "ai-standard", "templates", "commands", "README.md"), "utf8");
   const githubReadme = await readFile(join(rootDir, "ai-standard", "templates", "github", "README.md"), "utf8");
   const designReadme = await readFile(join(rootDir, "ai-standard", "templates", "design", "README.md"), "utf8");
   const reviewReadme = await readFile(join(rootDir, "ai-standard", "templates", "review", "README.md"), "utf8");
@@ -1759,7 +1752,8 @@ async function assertAiStandardTemplates(rootDir) {
   assert(templatesReadme.includes("agents/"), "Templates README should route to agents");
   assert(templatesReadme.includes("structure/"), "Templates README should route to structure");
   assert(templatesReadme.includes("execution/"), "Templates README should route to execution");
-  assert(templatesReadme.includes("commands/"), "Templates README should route to commands");
+  assert.equal(templatesReadme.includes("commands/"), false, "Templates README should not route to command templates");
+  assert.equal(await exists(join(rootDir, "ai-standard", "templates", "commands")), false, "Command templates should not be generated");
   assert(templatesReadme.includes("github/"), "Templates README should route to GitHub");
   assert(templatesReadme.includes("design/"), "Templates README should route to Design templates");
   assert(templatesReadme.includes("review/"), "Templates README should route to review");
@@ -1771,7 +1765,6 @@ async function assertAiStandardTemplates(rootDir) {
   assert(executionReadme.includes("workflow-template.md"), "Execution templates README should list workflow template");
   assert(playbookTemplate.includes("## Guided Conversation"), "Playbook template should include guided conversation section");
   assert(playbookTemplate.includes("../../../ai-standard/foundation/guided-conversation.md"), "Playbook template should point to guided conversation foundation");
-  assert(commandsReadme.includes("command-template.md"), "Command templates README should list command template");
   assert(githubReadme.includes("github-epic-template.md"), "GitHub templates README should list epic template");
   assert(githubReadme.includes("github-feature-template.md"), "GitHub templates README should list feature template");
   assert(githubReadme.includes("pull-request-template.md"), "GitHub templates README should list PR template");
@@ -1792,9 +1785,9 @@ async function assertAiStandardChecklists(rootDir) {
   const skillChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "skill-quality-checklist.md"), "utf8");
   const playbookChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "playbook-quality-checklist.md"), "utf8");
   const workflowChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "workflow-quality-checklist.md"), "utf8");
-  const commandChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "command-quality-checklist.md"), "utf8");
-
   assert(checklistsReadme.includes("workflow-quality-checklist.md"), "Checklists README should list workflow checklist");
+  assert.equal(checklistsReadme.includes("command-quality-checklist.md"), false, "Checklists README should not list command checklist");
+  assert.equal(await exists(join(rootDir, "ai-standard", "checklists", "command-quality-checklist.md")), false, "Command checklist should not be generated");
   assert(checklistsReadme.includes("Do not treat all checklists as interchangeable"), "Checklists README should explain checklist specificity");
   assert(agentChecklist.includes("Root agents route only to departments"), "Agent checklist should validate root routing boundaries");
   assert(agentChecklist.includes("does not try to be a full inventory"), "Agent checklist should prevent giant inventories");
@@ -1814,8 +1807,6 @@ async function assertAiStandardChecklists(rootDir) {
   assert(playbookChecklist.includes("numbered options"), "Playbook checklist should validate guided numbered options");
   assert(workflowChecklist.includes("does not live in `.leanos/workflows/`"), "Workflow checklist should keep workflows local to departments or areas");
   assert(workflowChecklist.includes("defines handoffs between owners"), "Workflow checklist should validate handoffs");
-  assert(commandChecklist.includes("Allowed updates are explicit"), "Command checklist should validate allowed updates");
-  assert(commandChecklist.includes("Remote writes require confirmation"), "Command checklist should validate remote write safety");
 }
 
 async function assertAiStandardInstructions(rootDir) {
@@ -1824,7 +1815,6 @@ async function assertAiStandardInstructions(rootDir) {
   const instructionFiles = [
     "create-agent",
     "create-area",
-    "create-command",
     "create-department",
     "create-playbook",
     "create-readme",
@@ -1841,6 +1831,8 @@ async function assertAiStandardInstructions(rootDir) {
   assert(instructionsReadme.includes("../foundation/creation-rules.md"), "Instructions README should point to creation rules");
   assert(instructionsReadme.includes("../templates/"), "Instructions README should point to templates");
   assert(instructionsReadme.includes("../checklists/"), "Instructions README should point to checklists");
+  assert.equal(instructionsReadme.includes("create-command-instructions.md"), false, "Instructions README should not list command creation instructions");
+  assert.equal(await exists(join(instructionsRoot, "create-command-instructions.md")), false, "Command creation instructions should not be generated");
 
   assert(contents["create-agent"].includes("../templates/agents/root-agent-template.md"), "Create agent instructions should point to root agent template");
   assert(contents["create-agent"].includes("../templates/agents/department-agent-template.md"), "Create agent instructions should point to department agent template");
@@ -1885,11 +1877,6 @@ async function assertAiStandardInstructions(rootDir) {
   assert(contents["create-workflow"].includes("spans multiple areas, roles or stages"), "Create workflow instructions should explain workflow scope");
   assert(contents["create-workflow"].includes("Do not place business workflows in `.leanos/workflows/`"), "Create workflow instructions should keep business workflows local");
 
-  assert(contents["create-command"].includes("../templates/commands/command-template.md"), "Create command instructions should point to command template");
-  assert(contents["create-command"].includes("../checklists/command-quality-checklist.md"), "Create command instructions should point to command checklist");
-  assert(contents["create-command"].includes("Require confirmation before durable or remote changes"), "Create command instructions should require confirmation");
-  assert(contents["create-command"].includes("Do not ask the model to perform remote writes directly"), "Create command instructions should protect remote writes");
-
   for (const [name, content] of Object.entries(contents)) {
     assert.equal(content.includes("Choose the active department and area"), false, `${name} instructions should not use the old generic body`);
   }
@@ -1903,7 +1890,6 @@ async function assertAiStandardExamples(rootDir) {
   const agentsReadme = await readFile(join(examplesRoot, "agents", "README.md"), "utf8");
   const structureReadme = await readFile(join(examplesRoot, "structure", "README.md"), "utf8");
   const executionReadme = await readFile(join(examplesRoot, "execution", "README.md"), "utf8");
-  const commandsReadme = await readFile(join(examplesRoot, "commands", "README.md"), "utf8");
   const githubReadme = await readFile(join(examplesRoot, "github", "README.md"), "utf8");
   const reviewReadme = await readFile(join(examplesRoot, "review", "README.md"), "utf8");
   const areaAgentExample = await readFile(join(examplesRoot, "agents", "example-area-agent.md"), "utf8");
@@ -1912,7 +1898,6 @@ async function assertAiStandardExamples(rootDir) {
   const skillExample = await readFile(join(examplesRoot, "execution", "example-skill-check-coherence.md"), "utf8");
   const playbookExample = await readFile(join(examplesRoot, "execution", "example-playbook-prepare-pr.md"), "utf8");
   const workflowExample = await readFile(join(examplesRoot, "execution", "example-workflow-feature-to-delivery-cycle.md"), "utf8");
-  const commandExample = await readFile(join(examplesRoot, "commands", "example-command-define-design.md"), "utf8");
   const epicExample = await readFile(join(examplesRoot, "github", "example-github-epic.md"), "utf8");
   const featureExample = await readFile(join(examplesRoot, "github", "example-github-feature.md"), "utf8");
   const prExample = await readFile(join(examplesRoot, "github", "example-pull-request.md"), "utf8");
@@ -1923,7 +1908,8 @@ async function assertAiStandardExamples(rootDir) {
   assert(examplesReadme.includes("agents/"), "Examples README should route to agents examples");
   assert(examplesReadme.includes("structure/"), "Examples README should route to structure examples");
   assert(examplesReadme.includes("execution/"), "Examples README should route to execution examples");
-  assert(examplesReadme.includes("commands/"), "Examples README should route to command examples");
+  assert.equal(examplesReadme.includes("commands/"), false, "Examples README should not route to command examples");
+  assert.equal(await exists(join(examplesRoot, "commands")), false, "Command examples should not be generated");
   assert(examplesReadme.includes("github/"), "Examples README should route to GitHub examples");
   assert(examplesReadme.includes("review/"), "Examples README should route to review examples");
 
@@ -1935,7 +1921,6 @@ async function assertAiStandardExamples(rootDir) {
   assert(executionReadme.includes("example-skill-check-coherence.md"), "Execution examples README should list skill example");
   assert(executionReadme.includes("example-playbook-prepare-pr.md"), "Execution examples README should list playbook example");
   assert(executionReadme.includes("example-workflow-feature-to-delivery-cycle.md"), "Execution examples README should list workflow example");
-  assert(commandsReadme.includes("example-command-define-design.md"), "Command examples README should list command example");
   assert(githubReadme.includes("example-github-epic.md"), "GitHub examples README should list epic example");
   assert(githubReadme.includes("example-github-feature.md"), "GitHub examples README should list feature example");
   assert(githubReadme.includes("example-pull-request.md"), "GitHub examples README should list PR example");
@@ -1951,9 +1936,6 @@ async function assertAiStandardExamples(rootDir) {
   assert(workflowExample.includes("Participating Areas"), "Workflow example should show participating areas");
   assert(workflowExample.includes("Design: conditional"), "Workflow example should mark Design as conditional");
   assert(workflowExample.includes("Security: conditional"), "Workflow example should mark Security as conditional");
-  assert(commandExample.includes("## Load First"), "Command example should define Load First");
-  assert(commandExample.includes("## Allowed Updates"), "Command example should define allowed updates");
-  assert(commandExample.includes("## Forbidden Updates"), "Command example should define forbidden updates");
   assert(epicExample.includes("## Product Criteria"), "Epic example should include Product criteria");
   assert(epicExample.includes("## Design Criteria"), "Epic example should include Design criteria");
   assert(epicExample.includes("## Security Criteria"), "Epic example should include Security criteria");

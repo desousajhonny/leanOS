@@ -11,7 +11,7 @@ export function traceFiles(): FileEntry[] {
         "Use only when the founder asks to debug, inspect or share how LeanOS routed a session.",
         "../agent/protocols/chief-trace.md",
         ["trace-index.yaml", "trace-template.md"],
-        ["../agent/protocols/chief-trace.md", "../commands/", "../index/", "../../AGENT.md"],
+        ["../agent/protocols/chief-trace.md", "../index/", "../../AGENT.md"],
         "Traces are local, opt-in and safe-by-default. They summarize routing, files loaded, questions, decisions, confirmations and stop reasons. Do not store full transcripts, secrets, tokens, .env values, private code or unnecessary customer data."
       )
     },
@@ -173,7 +173,7 @@ Summarize the founder request in one sentence.
 
 \`\`\`text
 Root AGENT.md
--> <command/workflow/department>
+-> <intent/workflow/department>
 -> <area AGENT/README>
 -> <role>
 -> <skill>
@@ -234,6 +234,6 @@ Explain why LeanOS stopped, continued or handed off.
 
 ## Next Suggested Route
 
-\`<next command/workflow/department/area>\`
+\`<next intent/workflow/department/area>\`
 `;
 }

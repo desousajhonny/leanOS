@@ -75,7 +75,6 @@ client-workspace/
 |   |-- checklists/
 |   |   |-- agent-quality-checklist.md
 |   |   |-- area-quality-checklist.md
-|   |   |-- command-quality-checklist.md
 |   |   |-- department-quality-checklist.md
 |   |   |-- playbook-quality-checklist.md
 |   |   |-- readme-quality-checklist.md
@@ -87,9 +86,6 @@ client-workspace/
 |   |   |-- agents/
 |   |   |   |-- example-area-agent.md
 |   |   |   |-- example-root-agent.md
-|   |   |   `-- README.md
-|   |   |-- commands/
-|   |   |   |-- example-command-define-design.md
 |   |   |   `-- README.md
 |   |   |-- execution/
 |   |   |   |-- example-playbook-prepare-pr.md
@@ -124,7 +120,6 @@ client-workspace/
 |   |-- instructions/
 |   |   |-- create-agent-instructions.md
 |   |   |-- create-area-instructions.md
-|   |   |-- create-command-instructions.md
 |   |   |-- create-department-instructions.md
 |   |   |-- create-playbook-instructions.md
 |   |   |-- create-readme-instructions.md
@@ -139,9 +134,6 @@ client-workspace/
 |   |   |   |-- department-agent-template.md
 |   |   |   |-- README.md
 |   |   |   `-- root-agent-template.md
-|   |   |-- commands/
-|   |   |   |-- command-template.md
-|   |   |   `-- README.md
 |   |   |-- design/
 |   |   |   |-- component-spec-template.md
 |   |   |   `-- README.md

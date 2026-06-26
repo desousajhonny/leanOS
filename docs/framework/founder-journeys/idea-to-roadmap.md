@@ -643,7 +643,7 @@ Rules:
 After this journey, the next flow can be:
 
 - `roadmap-item-to-epic` when the founder asks whether the roadmap item should enter MVP, a release, an experiment or another delivery scope.
-- `roadmap-to-github-project` when the item is selected for delivery planning and GitHub sync.
+- GitHub sync through DevOps/Product Ops readiness when confirmed local Epics and Features should be mirrored to GitHub Projects.
 - `new-idea-intake` when the idea needs more qualification.
 
 ## Journey Validation Checklist

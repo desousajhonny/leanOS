@@ -92,7 +92,7 @@ LeanOS has three layers:
    Stores the company, product, validation, MVP, roadmap, architecture, GitHub, skills, and playbooks.
 
 3. LeanOS Agent
-   Operates through the editor chat using natural language and slash commands.
+   Operates through the editor chat using natural-language intent routing.
 
 ## The LeanOS Agent
 

@@ -44,15 +44,6 @@ Files:
 - `execution/example-playbook-prepare-pr.md`
 - `execution/example-workflow-feature-to-delivery-cycle.md`
 
-### `commands/`
-
-Examples of portable LeanOS chat command behavior.
-
-Use when: Use when reviewing command loading, allowed updates, forbidden updates and confirmation rules.
-
-Files:
-- `commands/example-command-define-design.md`
-
 ### `github/`
 
 Examples of GitHub epics, features and pull requests.
@@ -86,4 +77,4 @@ Files:
 - Do not copy examples blindly.
 - Do not treat example company, product, issue or PR content as real workspace context.
 - Do not use examples instead of templates.
-- Do not let examples override the active department, area, role, skill, playbook or command.
+- Do not let examples override the active department, area, role, skill, playbook or workflow.

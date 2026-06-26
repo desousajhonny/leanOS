@@ -12,7 +12,6 @@ Use before accepting a newly created or modified asset.
 
 - `agent-quality-checklist.md`
 - `area-quality-checklist.md`
-- `command-quality-checklist.md`
 - `department-quality-checklist.md`
 - `playbook-quality-checklist.md`
 - `readme-quality-checklist.md`

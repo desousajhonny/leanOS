@@ -51,7 +51,6 @@ Do not create an asset when:
 - Area `AGENT.md`, `README.md`, `area.yaml`, `knowledge/`, `roles/`, `skills/` and `playbooks/` live inside the area.
 - Roles, skills and playbooks do not live directly under root departments.
 - Business workflows live in departments or areas, not in `.leanos/`.
-- Runtime command instructions live in `.leanos/commands/`.
 - Framework standards, templates, checklists, instructions and examples live in `ai-standard/`.
 
 ## Responsibility Rules
@@ -64,7 +63,6 @@ Do not create an asset when:
 - Playbook files define execution sequence.
 - Knowledge files store confirmed facts and decisions.
 - Workflow files coordinate multi-step work across owners.
-- Command files define portable chat command behavior.
 
 ## Confirmation Rule
 
@@ -78,10 +76,10 @@ Before writing or changing framework assets:
 
 ## Red Lines
 
-- Do not invent missing roles, skills, playbooks, workflows, commands or templates.
+- Do not invent missing roles, skills, playbooks, workflows or templates.
 - Do not create assets outside the owning department or area.
 - Do not place product or company facts inside framework operating assets.
-- Do not update `ai-standard/`, `.leanos/commands/`, roles, skills, playbooks or workflows during `/start-leanos`.
+- Do not update `ai-standard/`, roles, skills, playbooks or workflows during startup.
 - Do not create a broad asset when a narrow one would be clearer.
 - Do not create files just to make the workspace look complete.
 

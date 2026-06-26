@@ -4,7 +4,7 @@
 
 Make LeanOS feel guided for founders without turning workflows into rigid forms.
 
-Use this foundation when an agent, workflow, playbook or command needs to ask the founder for context, classification, prioritization, confirmation or a decision.
+Use this foundation when an agent, workflow or playbook needs to ask the founder for context, classification, prioritization, confirmation or a decision.
 
 ## Core Rule
 

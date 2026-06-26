@@ -8,10 +8,10 @@ Run:
 npx lean-os ai
 ```
 
-The CLI creates the initial LeanOS workspace. After setup, open your editor chat and type:
+The CLI creates the initial LeanOS workspace. After setup, open your editor chat and type a natural-language startup request:
 
 ```text
-/start-leanos
+Quero iniciar o LeanOS.
 ```
 
 After LeanOS Chief proposes and the founder confirms a progressive activation, run:
@@ -20,4 +20,4 @@ After LeanOS Chief proposes and the founder confirms a progressive activation, r
 npx lean-os activate operations.product-ops
 ```
 
-The activation command updates `leanos.yaml`, context, indexes, commands and the minimal files for the requested area.
+The activation command updates `leanos.yaml`, context, indexes and the minimal files for the requested area.

@@ -8,7 +8,7 @@ Reusable starting structures for LeanOS framework assets and GitHub collaboratio
 
 Use after selecting the asset type with `../foundation/asset-taxonomy.md` and before drafting a new file.
 
-Templates are starting structures. They are not active workspace context and should not override the owning AGENT, role, skill, playbook, workflow or command.
+Templates are starting structures. They are not active workspace context and should not override the owning AGENT, role, skill, playbook or workflow.
 
 ## Categories
 
@@ -53,15 +53,6 @@ Files:
 - `execution/playbook-template.md`
 - `execution/playbook-template.yaml`
 - `execution/workflow-template.md`
-
-### `commands/`
-
-Templates for portable LeanOS chat command files.
-
-Use when: Use when creating a stable slash-command behavior in .leanos/commands/.
-
-Files:
-- `commands/command-template.md`
 
 ### `github/`
 

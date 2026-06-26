@@ -37,13 +37,6 @@ export function aiStandardFiles(): FileEntry[] {
       files: ["role-template.md", "role-template.yaml", "skill-template.md", "skill-template.yaml", "playbook-template.md", "playbook-template.yaml", "workflow-template.md"]
     },
     {
-      key: "commands",
-      title: "Command Templates",
-      purpose: "Templates for portable LeanOS chat command files.",
-      use: "Use when creating a stable slash-command behavior in .leanos/commands/.",
-      files: ["command-template.md"]
-    },
-    {
       key: "github",
       title: "GitHub Templates",
       purpose: "Templates for GitHub issues, epics, features, branch naming, PRs and readiness matrices.",
@@ -72,8 +65,8 @@ export function aiStandardFiles(): FileEntry[] {
       files: ["code-review-template.md"]
     }
   ];
-  const checklists = ["agent", "area", "command", "department", "playbook", "readme", "role", "skill", "workflow"];
-  const instructions = ["create-agent", "create-area", "create-command", "create-department", "create-playbook", "create-readme", "create-role", "create-skill", "create-workflow"];
+  const checklists = ["agent", "area", "department", "playbook", "readme", "role", "skill", "workflow"];
+  const instructions = ["create-agent", "create-area", "create-department", "create-playbook", "create-readme", "create-role", "create-skill", "create-workflow"];
   const exampleGroups = [
     {
       key: "agents",
@@ -95,13 +88,6 @@ export function aiStandardFiles(): FileEntry[] {
       purpose: "Examples of roles, skills, playbooks and workflows.",
       use: "Use when reviewing area-level execution assets or department/area workflows.",
       files: ["example-role-senior-developer.md", "example-skill-check-coherence.md", "example-playbook-prepare-pr.md", "example-workflow-feature-to-delivery-cycle.md"]
-    },
-    {
-      key: "commands",
-      title: "Command Examples",
-      purpose: "Examples of portable LeanOS chat command behavior.",
-      use: "Use when reviewing command loading, allowed updates, forbidden updates and confirmation rules.",
-      files: ["example-command-define-design.md"]
     },
     {
       key: "github",
@@ -178,7 +164,7 @@ Reusable starting structures for LeanOS framework assets and GitHub collaboratio
 
 Use after selecting the asset type with \`../foundation/asset-taxonomy.md\` and before drafting a new file.
 
-Templates are starting structures. They are not active workspace context and should not override the owning AGENT, role, skill, playbook, workflow or command.
+Templates are starting structures. They are not active workspace context and should not override the owning AGENT, role, skill, playbook or workflow.
 
 ## Categories
 
@@ -264,7 +250,7 @@ ${groups.map((group) => `### \`${group.key}/\`\n\n${group.purpose}\n\nUse when: 
 - Do not copy examples blindly.
 - Do not treat example company, product, issue or PR content as real workspace context.
 - Do not use examples instead of templates.
-- Do not let examples override the active department, area, role, skill, playbook or command.
+- Do not let examples override the active department, area, role, skill, playbook or workflow.
 `;
 }
 
@@ -312,7 +298,6 @@ function exampleContent(_groupKey: string, fileName: string): string {
     "example-skill-check-coherence.md": skillFile(product, checkCoherence),
     "example-playbook-prepare-pr.md": playbookFile(engineering, preparePr),
     "example-workflow-feature-to-delivery-cycle.md": exampleWorkflowFeatureToDeliveryCycle(),
-    "example-command-define-design.md": exampleCommandDefineDesign(),
     "example-github-epic.md": exampleGithubEpic(),
     "example-github-feature.md": exampleGithubFeature(),
     "example-pull-request.md": examplePullRequest(),
@@ -438,58 +423,6 @@ The founder asks to implement a specific Feature, or a GitHub issue that represe
 - Test plan
 - PR draft
 - Review readiness notes
-`;
-}
-
-function exampleCommandDefineDesign(): string {
-  return `# /define design
-
-## Purpose
-
-Prepare the MVP Design foundation before implementation.
-
-## Load First
-
-- \`../../AGENT.md\`
-- \`../../operations/AGENT.md\`
-- \`../../operations/design/AGENT.md\`
-- \`../../operations/design/roles/product-designer.role.md\`
-- \`../../operations/design/skills/design-system.skill.md\`
-- \`../../operations/design/skills/accessibility.skill.md\`
-- \`../../operations/design/skills/user-flow-mapping.skill.md\`
-- \`../../operations/design/playbooks/design-foundation.playbook.md\`
-- \`../../strategy/product/README.md\`
-- \`../../operations/product-ops/mvp/scope.md\`
-
-## Process
-
-1. Confirm product, ICP, problem, value proposition and delivery scope.
-2. Define the design system baseline.
-3. Define accessibility baseline.
-4. Map primary user flows.
-5. Propose updates to Design knowledge files.
-6. Write only after explicit confirmation.
-
-## Allowed Updates
-
-- \`../../operations/design/knowledge/design-system.md\`
-- \`../../operations/design/knowledge/accessibility.md\`
-- \`../../operations/design/knowledge/user-flows.md\`
-
-## Forbidden Updates
-
-- product code
-- roles, skills, playbooks or workflows
-- \`ai-standard/\`
-- remote systems
-
-## Output
-
-- Loaded context
-- Design foundation proposal
-- Files to update
-- Open questions
-- Confirmation question
 `;
 }
 
@@ -986,34 +919,6 @@ Use this checklist before accepting a \`.workflow.md\` file.
 - [ ] The workflow identifies follow-up routes.
 - [ ] The workflow does not duplicate area playbooks.
 `,
-    command: `# Command Quality Checklist
-
-Use this checklist before accepting a \`.leanos/commands/<command>.md\` file.
-
-## Intent
-
-- [ ] The command maps to a stable user intent.
-- [ ] The command is portable across VS Code, Claude, Codex, terminal agents and chat interfaces.
-- [ ] The command does not duplicate natural-language routing unless stable loading rules are needed.
-
-## Loading
-
-- [ ] The command defines \`Load First\` or equivalent context.
-- [ ] The command loads only necessary context.
-- [ ] The command does not require missing or inactive paths without warning.
-
-## Safety
-
-- [ ] Allowed updates are explicit.
-- [ ] Forbidden updates are explicit.
-- [ ] Remote writes require confirmation and should be delegated to tool-capable scripts/capabilities.
-- [ ] Secrets are never requested into tracked files.
-
-## Output
-
-- [ ] The command defines expected output.
-- [ ] The command asks for confirmation before durable changes.
-`
   };
 
   return checklists[name] ?? `# ${toTitle(name)} Quality Checklist
@@ -1035,7 +940,7 @@ Step-by-step creation procedures for LeanOS assets.
 
 ## When to Use
 
-Use when the user asks to create or update framework assets such as agents, departments, areas, roles, skills, playbooks, workflows, commands or READMEs.
+Use when the user asks to create or update framework assets such as agents, departments, areas, roles, skills, playbooks, workflows or READMEs.
 
 ## Files
 
@@ -1068,7 +973,7 @@ function guidedConversation(): string {
 
 Make LeanOS feel guided for founders without turning workflows into rigid forms.
 
-Use this foundation when an agent, workflow, playbook or command needs to ask the founder for context, classification, prioritization, confirmation or a decision.
+Use this foundation when an agent, workflow or playbook needs to ask the founder for context, classification, prioritization, confirmation or a decision.
 
 ## Core Rule
 
@@ -1505,41 +1410,6 @@ Use \`../checklists/workflow-quality-checklist.md\`.
 - Do not duplicate area playbooks.
 - Do not require inactive areas without warning.
 `,
-    "create-command": `# Create Command Instructions
-
-Use when creating a portable chat command in \`.leanos/commands/\`.
-
-## Before Creating
-
-1. Confirm the command maps to a stable user intent.
-2. Check whether natural-language routing is enough.
-3. Confirm allowed updates, forbidden updates and confirmation rules.
-
-## Choose Template
-
-- Command: \`../templates/commands/command-template.md\`
-
-## Process
-
-1. Define invocation.
-2. Define purpose.
-3. Define Load First.
-4. Define process.
-5. Define allowed updates.
-6. Define forbidden updates.
-7. Define output.
-8. Require confirmation before durable or remote changes.
-
-## Validate
-
-Use \`../checklists/command-quality-checklist.md\`.
-
-## Red Lines
-
-- Do not create commands for every possible workflow.
-- Do not ask the model to perform remote writes directly.
-- Do not request secrets into tracked files.
-`
   };
 
   return instructions[name] ?? `# ${toTitle(name.replace("create-", ""))} Instructions
@@ -1904,7 +1774,6 @@ For any new LeanOS asset:
 ## Related Folders
 
 - \`../AGENT.md\`
-- \`../.leanos/commands/\`
 
 ## Agent Notes
 
@@ -1968,7 +1837,6 @@ Do not create an asset when:
 - Area \`AGENT.md\`, \`README.md\`, \`area.yaml\`, \`knowledge/\`, \`roles/\`, \`skills/\` and \`playbooks/\` live inside the area.
 - Roles, skills and playbooks do not live directly under root departments.
 - Business workflows live in departments or areas, not in \`.leanos/\`.
-- Runtime command instructions live in \`.leanos/commands/\`.
 - Framework standards, templates, checklists, instructions and examples live in \`ai-standard/\`.
 
 ## Responsibility Rules
@@ -1981,7 +1849,6 @@ Do not create an asset when:
 - Playbook files define execution sequence.
 - Knowledge files store confirmed facts and decisions.
 - Workflow files coordinate multi-step work across owners.
-- Command files define portable chat command behavior.
 
 ## Confirmation Rule
 
@@ -1995,10 +1862,10 @@ Before writing or changing framework assets:
 
 ## Red Lines
 
-- Do not invent missing roles, skills, playbooks, workflows, commands or templates.
+- Do not invent missing roles, skills, playbooks, workflows or templates.
 - Do not create assets outside the owning department or area.
 - Do not place product or company facts inside framework operating assets.
-- Do not update \`ai-standard/\`, \`.leanos/commands/\`, roles, skills, playbooks or workflows during \`/start-leanos\`.
+- Do not update \`ai-standard/\`, roles, skills, playbooks or workflows during startup.
 - Do not create a broad asset when a narrow one would be clearer.
 - Do not create files just to make the workspace look complete.
 
@@ -2377,18 +2244,6 @@ A workflow coordinates multiple areas, stages or handoffs.
 - Agents should use workflows to coordinate owners, then enter the relevant area and role.
 
 Example: \`operations/workflows/feature-to-delivery-cycle.workflow.md\` can coordinate Product Ops, Design, Engineering and Security for feature delivery.
-
-### Command
-
-A command is a portable chat instruction for a known user intent.
-
-- Lives in \`.leanos/commands/<command>.md\`.
-- Answers: "What should happen when the user invokes this command?"
-- Create when a common chat intent needs stable loading rules.
-- Do not create commands for every possible workflow; natural language can route through AGENT.md.
-- Agents should load the command file before acting on a matching slash command.
-
-Example: \`.leanos/commands/define-design.md\` tells the agent how to prepare Design foundation safely.
 
 ## Design Example
 

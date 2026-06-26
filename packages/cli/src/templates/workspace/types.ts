@@ -192,10 +192,3 @@ export type DepartmentWorkflowDefinition = {
     rules?: string[];
   };
 };
-
-export type CommandDefinition = {
-  slug: string;
-  purpose: string;
-  area?: Subarea;
-  assetCreation?: boolean;
-};

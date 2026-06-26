@@ -156,18 +156,6 @@ A workflow coordinates multiple areas, stages or handoffs.
 
 Example: `operations/workflows/feature-to-delivery-cycle.workflow.md` can coordinate Product Ops, Design, Engineering and Security for feature delivery.
 
-### Command
-
-A command is a portable chat instruction for a known user intent.
-
-- Lives in `.leanos/commands/<command>.md`.
-- Answers: "What should happen when the user invokes this command?"
-- Create when a common chat intent needs stable loading rules.
-- Do not create commands for every possible workflow; natural language can route through AGENT.md.
-- Agents should load the command file before acting on a matching slash command.
-
-Example: `.leanos/commands/define-design.md` tells the agent how to prepare Design foundation safely.
-
 ## Design Example
 
 If the founder says, "define the design before implementation":

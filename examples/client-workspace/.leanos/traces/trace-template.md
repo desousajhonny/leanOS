@@ -16,7 +16,7 @@ Summarize the founder request in one sentence.
 
 ```text
 Root AGENT.md
--> <command/workflow/department>
+-> <intent/workflow/department>
 -> <area AGENT/README>
 -> <role>
 -> <skill>
@@ -77,4 +77,4 @@ Explain why LeanOS stopped, continued or handed off.
 
 ## Next Suggested Route
 
-`<next command/workflow/department/area>`
+`<next intent/workflow/department/area>`

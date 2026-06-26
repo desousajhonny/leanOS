@@ -20,7 +20,6 @@ Use only when the founder asks to debug, inspect or share how LeanOS routed a se
 ## Related Folders
 
 - `../agent/protocols/chief-trace.md`
-- `../commands/`
 - `../index/`
 - `../../AGENT.md`
 

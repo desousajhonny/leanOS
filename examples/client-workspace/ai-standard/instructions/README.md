@@ -6,13 +6,12 @@ Step-by-step creation procedures for LeanOS assets.
 
 ## When to Use
 
-Use when the user asks to create or update framework assets such as agents, departments, areas, roles, skills, playbooks, workflows, commands or READMEs.
+Use when the user asks to create or update framework assets such as agents, departments, areas, roles, skills, playbooks, workflows or READMEs.
 
 ## Files
 
 - `create-agent-instructions.md`
 - `create-area-instructions.md`
-- `create-command-instructions.md`
 - `create-department-instructions.md`
 - `create-playbook-instructions.md`
 - `create-readme-instructions.md`
