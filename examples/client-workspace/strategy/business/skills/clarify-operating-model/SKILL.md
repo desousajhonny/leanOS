@@ -1,6 +1,11 @@
+---
+name: clarify-operating-model
+description: Use when operating model needs definition; AI/human collaboration is unclear; decision ownership is ambiguous
+---
+
 # Clarify Operating Model
 
-## Purpose
+## Overview
 
 Define how humans and AI models collaborate in the business.
 
@@ -25,10 +30,21 @@ Define how humans and AI models collaborate in the business.
 
 ## Process
 
-1. Define what humans own.
-2. Define what AI agents can assist with.
-3. Name decisions that require founder confirmation.
-4. Record durable decisions in the decision log.
+### Step 1
+
+Define what humans own.
+
+### Step 2
+
+Define what AI agents can assist with.
+
+### Step 3
+
+Name decisions that require founder confirmation.
+
+### Step 4
+
+Record durable decisions in the decision log.
 
 ## Checks
 

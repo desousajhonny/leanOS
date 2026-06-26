@@ -104,19 +104,19 @@ A role is an operating persona and responsibility boundary.
 - Do not create a role for a one-off task or a simple capability.
 - Agents should select one role before loading skills or playbooks.
 
-Example: `operations/design/roles/product-designer.role.md` owns product design decisions and points to `design-system.skill.md`, `user-flow-mapping.skill.md`, `screen-specification.skill.md` and `design-review.skill.md`.
+Example: `operations/design/roles/product-designer.role.md` owns product design decisions and points to `design-system/SKILL.md`, `user-flow-mapping/SKILL.md`, `screen-specification/SKILL.md` and `design-review/SKILL.md`.
 
 ### Skill
 
 A skill is a reusable capability.
 
-- Lives in `<area>/skills/<direct-name>.skill.md`.
+- Lives in `<area>/skills/<direct-name>/SKILL.md`.
 - Answers: "Which capability should be applied?"
 - Create when the same capability is reused by one or more roles or playbooks.
 - Do not make a skill a full process; that belongs in a playbook.
 - Agents should load only the skills required by the active role and task.
 
-Example: `operations/design/skills/accessibility.skill.md` defines how to apply accessibility checks and WCAG 2.2 AA expectations.
+Example: `operations/design/skills/accessibility/SKILL.md` defines how to apply accessibility checks and WCAG 2.2 AA expectations.
 
 ### Playbook
 
@@ -164,9 +164,9 @@ If the founder says, "define the design before implementation":
 2. Operations routes to `operations/design/AGENT.md`.
 3. Design area AGENT chooses `roles/product-designer.role.md`.
 4. The role loads skills:
-   - `skills/design-system.skill.md`
-   - `skills/accessibility.skill.md`
-   - `skills/user-flow-mapping.skill.md`
+   - `skills/design-system/SKILL.md`
+   - `skills/accessibility/SKILL.md`
+   - `skills/user-flow-mapping/SKILL.md`
 5. The work follows `playbooks/design-foundation.playbook.md`.
 6. Confirmed outputs update:
    - `knowledge/design-system.md`

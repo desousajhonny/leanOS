@@ -71,7 +71,7 @@ If owner, repository, Project, labels, token source or sync state are incomplete
 ```text
 operations/devops/AGENT.md
 -> roles/github-devops.role.md
--> skills/configure-github-project.skill.md
+-> skills/configure-github-project/SKILL.md
 -> playbooks/configure-github-project.playbook.md
 ```
 

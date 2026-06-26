@@ -1,12 +1,13 @@
 # Create Skill Instructions
 
-Use when creating a `.skill.md` file inside an area.
+Use when creating a skill folder inside an area.
 
 ## Before Creating
 
 1. Confirm the active area.
 2. Confirm which role or playbook will use the skill.
 3. Check whether an existing skill already covers the capability.
+4. Create `skills/<skill-name>/SKILL.md`.
 
 ## Choose Template
 
@@ -16,11 +17,13 @@ Use when creating a `.skill.md` file inside an area.
 ## Process
 
 1. Define one reusable capability.
-2. Define when to use it.
-3. Define required context and inputs.
-4. Define checks and outputs.
-5. Define red lines.
-6. Avoid turning the skill into a full ordered process.
+2. Add YAML frontmatter with `name` and a trigger-only `description` that starts with "Use when".
+3. Define when to use it.
+4. Define required context and inputs.
+5. Use `### Step N` headings inside `## Process`.
+6. Define checks and outputs.
+7. Define red lines.
+8. Avoid turning the skill into a full ordered process.
 
 ## Validate
 

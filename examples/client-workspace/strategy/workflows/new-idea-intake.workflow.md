@@ -59,8 +59,8 @@ All required areas are active in this department.
 6. `new-idea-intake state re-check before Product evaluation`
 7. `strategy/product/AGENT.md`
 8. `strategy/product/roles/product-strategist.role.md`
-9. `strategy/product/skills/evaluate-idea.skill.md`
-10. `strategy/product/skills/define-mvp-validation-scope.skill.md`
+9. `strategy/product/skills/evaluate-idea/SKILL.md`
+10. `strategy/product/skills/define-mvp-validation-scope/SKILL.md`
 11. `strategy/product/playbooks/product-strategy.playbook.md`
 12. `strategy/roadmap/AGENT.md only after founder confirms roadmap or backlog promotion`
 

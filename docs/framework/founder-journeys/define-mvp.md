@@ -49,7 +49,7 @@ O modelo começa no `AGENT.md` raiz porque o founder fala em linguagem natural. 
 
 Se a Strategy Baseline estiver fraca, o modelo para e nomeia o input de Strategy ausente. Se Product Ops estiver inativo, o modelo não abre paths de `operations/`. Ele explica que escopo de MVP é trabalho de delivery e retorna `activation_required: operations.product-ops` com uma proposta de ativação amigável para o founder.
 
-Somente depois que Product Ops está ativo a jornada entra em `operations/workflows/define-mvp.workflow.md`. Product Ops conduz a decisão por meio da role Product Owner, `mvp-decision-gate.md`, `define-mvp.skill.md` e `mvp-delivery.playbook.md`.
+Somente depois que Product Ops está ativo a jornada entra em `operations/workflows/define-mvp.workflow.md`. Product Ops conduz a decisão por meio da role Product Owner, `mvp-decision-gate.md`, `define-mvp/SKILL.md` e `mvp-delivery.playbook.md`.
 
 ## Trigger Do Founder
 
@@ -76,7 +76,7 @@ Se a baseline de Strategy estiver fraca demais, o modelo roteia de volta para tr
 - Workflow: `operations/workflows/define-mvp.workflow.md`
 - Role primária: `operations/product-ops/roles/product-owner.role.md`
 - Gate: `operations/product-ops/knowledge/mvp-decision-gate.md`
-- Skill primária: `operations/product-ops/skills/define-mvp.skill.md`
+- Skill primária: `operations/product-ops/skills/define-mvp/SKILL.md`
 - Playbook primário: `operations/product-ops/playbooks/mvp-delivery.playbook.md`
 
 ## Contrato De Rota
@@ -100,7 +100,7 @@ Root AGENT.md
 -> operations/product-ops/AGENT.md
 -> operations/product-ops/roles/product-owner.role.md
 -> operations/product-ops/knowledge/mvp-decision-gate.md
--> operations/product-ops/skills/define-mvp.skill.md
+-> operations/product-ops/skills/define-mvp/SKILL.md
 -> operations/product-ops/playbooks/mvp-delivery.playbook.md
 -> operations/product-ops/mvp/*
 -> Output

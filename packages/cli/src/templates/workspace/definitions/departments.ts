@@ -866,7 +866,7 @@ Required when a Feature includes UI that depends on a reusable component.
 - Reuse an approved component when it satisfies the Feature.
 - If an existing component needs adaptation, Design must state whether the change belongs in the reusable component or only in this Feature.
 - If a new component is required, the Feature is not \`ready-to-code\` until Design creates or confirms a component spec.
-- Engineering must read the component spec before using \`operations/engineering/skills/implement-component.skill.md\` or \`operations/engineering/playbooks/component-implementation.playbook.md\`.
+- Engineering must read the component spec before using \`operations/engineering/skills/implement-component/SKILL.md\` or \`operations/engineering/playbooks/component-implementation.playbook.md\`.
 - A missing component spec should create a Design task or route to \`operations/design/playbooks/component-readiness.playbook.md\`, not trigger immediate code.
 
 ## Security Readiness
@@ -3021,7 +3021,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           }
         ],
         commonPaths: [
-          "Business request: `AGENT.md` -> role `roles/business-strategist.role.md` -> skill `skills/define-business-identity.skill.md` or `skills/clarify-operating-model.skill.md` -> playbook `playbooks/business-foundation.playbook.md`."
+          "Business request: `AGENT.md` -> role `roles/business-strategist.role.md` -> skill `skills/define-business-identity/SKILL.md` or `skills/clarify-operating-model/SKILL.md` -> playbook `playbooks/business-foundation.playbook.md`."
         ]
       },
       {
@@ -3190,7 +3190,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           }
         ],
         commonPaths: [
-          "Product strategy request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/check-coherence.skill.md` -> playbook `playbooks/product-strategy.playbook.md`."
+          "Product strategy request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/check-coherence/SKILL.md` -> playbook `playbooks/product-strategy.playbook.md`."
         ]
       },
       {
@@ -3266,7 +3266,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           }
         ],
         commonPaths: [
-          "Roadmap request: `AGENT.md` -> role `roles/roadmap-planner.role.md` -> skill `skills/create-roadmap.skill.md` -> playbook `playbooks/roadmap-cycle-planning.playbook.md`."
+          "Roadmap request: `AGENT.md` -> role `roles/roadmap-planner.role.md` -> skill `skills/create-roadmap/SKILL.md` -> playbook `playbooks/roadmap-cycle-planning.playbook.md`."
         ]
       }
     ],
@@ -3331,7 +3331,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "strategy/workflows/founder-diagnosis.workflow.md",
           "strategy/product/AGENT.md",
           "strategy/product/roles/product-strategist.role.md",
-          "strategy/product/skills/diagnose-founder-idea.skill.md",
+          "strategy/product/skills/diagnose-founder-idea/SKILL.md",
           "strategy/product/playbooks/product-strategy.playbook.md",
           "strategy/business/AGENT.md only when business identity gaps block product diagnosis",
           "strategy/roadmap/AGENT.md only after Strategy Baseline is coherent enough for roadmap sequencing"
@@ -3343,7 +3343,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Phase 4: Propose Strategy knowledge updates only after enough context exists.",
           "Phase 5: Recommend `new-idea-intake` or `idea-to-roadmap` only after Strategy Baseline is ready."
         ],
-        skillsUsed: ["strategy/product/skills/diagnose-founder-idea.skill.md", "strategy/product/skills/define-product.skill.md", "strategy/product/skills/define-mvp-validation-scope.skill.md when the founder is ready for MVP validation scope"],
+        skillsUsed: ["strategy/product/skills/diagnose-founder-idea/SKILL.md", "strategy/product/skills/define-product/SKILL.md", "strategy/product/skills/define-mvp-validation-scope/SKILL.md when the founder is ready for MVP validation scope"],
         playbooksUsed: ["strategy/product/playbooks/product-strategy.playbook.md", "strategy/business/playbooks/business-foundation.playbook.md when business identity gaps block the baseline", "strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md only after the roadmap gate is satisfied"],
         steps: [
           "Read seed context and active Strategy context before asking questions.",
@@ -3450,8 +3450,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "new-idea-intake state re-check before Product evaluation",
           "strategy/product/AGENT.md",
           "strategy/product/roles/product-strategist.role.md",
-          "strategy/product/skills/evaluate-idea.skill.md",
-          "strategy/product/skills/define-mvp-validation-scope.skill.md",
+          "strategy/product/skills/evaluate-idea/SKILL.md",
+          "strategy/product/skills/define-mvp-validation-scope/SKILL.md",
           "strategy/product/playbooks/product-strategy.playbook.md",
           "strategy/roadmap/AGENT.md only after founder confirms roadmap or backlog promotion"
         ],
@@ -3559,10 +3559,10 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "strategy/workflows/idea-to-roadmap.workflow.md",
           "strategy/product/AGENT.md",
           "strategy/product/roles/product-strategist.role.md",
-          "strategy/product/skills/define-mvp-validation-scope.skill.md",
+          "strategy/product/skills/define-mvp-validation-scope/SKILL.md",
           "strategy/roadmap/AGENT.md",
           "strategy/roadmap/roles/roadmap-planner.role.md",
-          "strategy/roadmap/skills/prioritize-backlog.skill.md",
+          "strategy/roadmap/skills/prioritize-backlog/SKILL.md",
           "strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md"
         ],
         steps: [
@@ -3751,7 +3751,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Delivery Scope Planning",
             purpose: "Turn a roadmap item into a confirmed delivery scope without creating epics, issues or code.",
             inputs: ["Roadmap item", "Product brief", "Backlog and roadmap status", "Existing delivery scope", "MVP scope when scope_type is MVP", "Known constraints"],
-            steps: ["Read Product Ops AGENT and choose the Product Owner role.", "Read roadmap item, product brief and current delivery scope.", "Use `skills/define-delivery-scope.skill.md` to decide whether the item becomes delivery scope.", "Set `scope_type`, `milestone` and `release_goal` only after the founder confirms.", "Define non-goals, dependencies and applicability for Design, Security and DevOps.", "If `scope_type` is MVP, map the decision to MVP files.", "Propose file updates and wait for confirmation before writing."],
+            steps: ["Read Product Ops AGENT and choose the Product Owner role.", "Read roadmap item, product brief and current delivery scope.", "Use `skills/define-delivery-scope/SKILL.md` to decide whether the item becomes delivery scope.", "Set `scope_type`, `milestone` and `release_goal` only after the founder confirms.", "Define non-goals, dependencies and applicability for Design, Security and DevOps.", "If `scope_type` is MVP, map the decision to MVP files.", "Propose file updates and wait for confirmation before writing."],
             outputs: ["Delivery scope proposal", "scope_type", "milestone", "release_goal", "Non-goals", "Design/Security/DevOps applicability", "Recommended next workflow"],
             filesToUpdate: ["Update `../knowledge/delivery-scope.md` only after explicit confirmation.", "Update `../mvp/scope.md`, `../mvp/prd.md`, `../mvp/non-goals.md` and `../mvp/acceptance-criteria.md` only when `scope_type` is MVP and the founder confirms.", "Do not update GitHub from this playbook."]
           },
@@ -3762,7 +3762,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             useWhen: ["the founder asks to define MVP delivery scope", "a natural-language MVP delivery request routes into Product Ops", "strategy is ready enough to decide a first delivery scope", "the MVP boundary needs founder confirmation before roadmap-to-Epic planning"],
             beforeActing: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/mvp-decision-gate.md", "../knowledge/delivery-scope.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/AGENT.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/product/knowledge/problem.md", "../../../strategy/product/knowledge/icp.md", "../../../strategy/product/knowledge/value-proposition.md", "../../../strategy/roadmap/knowledge/backlog.md", "../../../strategy/roadmap/knowledge/roadmap.md"],
             inputs: ["Product brief", "Problem", "ICP", "Value proposition", "Business model or assumption", "Roadmap/backlog context when available", "Existing MVP scope", "Existing PRD when available", "MVP Decision Gate"],
-            steps: ["Read Product Ops AGENT and choose the Product Owner role.", "Read product strategy and existing MVP knowledge.", "Load `../knowledge/mvp-decision-gate.md` before deciding scope.", "Use `skills/define-mvp.skill.md` to classify candidate items by Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk.", "Use guided conversation only for missing inputs.", "Define the smallest coherent MVP scope.", "Write or refine the MVP PRD draft.", "Write or refine user stories.", "Define acceptance criteria.", "Confirm non-goals.", "Identify Design, Security, Engineering or DevOps dependencies.", "Explain the recommendation in founder-friendly language.", "Propose file updates and wait for confirmation before writing.", "After confirmation, offer the bridge to `roadmap-item-to-epic` only when the founder wants delivery planning."],
+            steps: ["Read Product Ops AGENT and choose the Product Owner role.", "Read product strategy and existing MVP knowledge.", "Load `../knowledge/mvp-decision-gate.md` before deciding scope.", "Use `skills/define-mvp/SKILL.md` to classify candidate items by Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk.", "Use guided conversation only for missing inputs.", "Define the smallest coherent MVP scope.", "Write or refine the MVP PRD draft.", "Write or refine user stories.", "Define acceptance criteria.", "Confirm non-goals.", "Identify Design, Security, Engineering or DevOps dependencies.", "Explain the recommendation in founder-friendly language.", "Propose file updates and wait for confirmation before writing.", "After confirmation, offer the bridge to `roadmap-item-to-epic` only when the founder wants delivery planning."],
             guidedConversation: ["Ask at most two questions at a time.", "Offer short options when the founder may not know how to answer.", "Prefer questions that reduce Value Risk, Usability Risk, Feasibility Risk or Business Viability Risk.", "Stop the questionnaire when the gate decision is clear enough."],
             gates: ["Value Risk is pass, explicit gap or discovery-needed.", "Usability Risk is pass, explicit gap or design-needed.", "Feasibility Risk is pass, explicit gap or spike-needed.", "Business Viability Risk is pass, explicit gap or viability-check-needed.", "Founder confirms before files are updated."],
             outputs: ["MVP scope proposal", "PRD proposal", "User stories", "Acceptance criteria", "Non-goals", "Dependencies", "Open questions"],
@@ -3776,7 +3776,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             useWhen: ["The founder asks to break an epic into features.", "A roadmap epic needs implementation-ready feature slices.", "The team needs Product Ops, Design, Engineering, Security and DevOps criteria before work starts."],
             beforeActing: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/issue-readiness.md", "../knowledge/ready-to-develop.md", "../mvp/prd.md", "../mvp/scope.md", "../mvp/acceptance-criteria.md", "../epics/README.md", "../../../strategy/product/AGENT.md", "../../../strategy/roadmap/AGENT.md", "../../../ai-standard/templates/product/epic-template.md", "../../../ai-standard/templates/product/feature-template.md", "../../../ai-standard/templates/github/github-epic-template.md", "../../../ai-standard/templates/github/github-feature-template.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md"],
             inputs: ["Parent epic or roadmap item", "Milestone/current cycle", "MVP scope", "PRD", "Acceptance criteria", "Delivery Readiness Matrix (DRM)", "Design context when UX is affected", "Component inventory when UI components are affected", "Security context when sensitive surfaces are involved", "DevOps context when delivery or environment impact exists", "Engineering constraints and dependencies"],
-            steps: ["Load Product Ops AGENT and choose `roles/product-owner.role.md`.", "Load the local Product Epic and Feature templates from `../../../ai-standard/templates/product/` before preparing any GitHub issue.", "Load `skills/shape-epic.skill.md` and confirm the epic outcome, decision ownership, scope boundary, non-goals and Epic Readiness Matrix.", "Load `skills/write-feature-criteria.skill.md` and apply the Feature-level Delivery Readiness Matrix (DRM).", "Write Product Ops criteria for every feature.", "Add internal tasks inside each feature.", "Add Design criteria only when UX, UI, flow, copy, accessibility, screens, states, components or interaction is affected.", "When a Feature depends on UI components, check whether it can reuse an approved component, adapt one or needs a new component spec.", "Do not create the full component spec during Feature Shaping; add a Design task for `operations/design/playbooks/component-readiness.playbook.md` when a component spec is needed.", "Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.", "Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.", "Ask Engineering to validate implementation boundaries, dependencies, test approach and feature size.", "Mark non-applicable dimensions explicitly and explain why.", "Prepare local feature drafts and ask for confirmation before any remote write."],
+            steps: ["Load Product Ops AGENT and choose `roles/product-owner.role.md`.", "Load the local Product Epic and Feature templates from `../../../ai-standard/templates/product/` before preparing any GitHub issue.", "Load `skills/shape-epic/SKILL.md` and confirm the epic outcome, decision ownership, scope boundary, non-goals and Epic Readiness Matrix.", "Load `skills/write-feature-criteria/SKILL.md` and apply the Feature-level Delivery Readiness Matrix (DRM).", "Write Product Ops criteria for every feature.", "Add internal tasks inside each feature.", "Add Design criteria only when UX, UI, flow, copy, accessibility, screens, states, components or interaction is affected.", "When a Feature depends on UI components, check whether it can reuse an approved component, adapt one or needs a new component spec.", "Do not create the full component spec during Feature Shaping; add a Design task for `operations/design/playbooks/component-readiness.playbook.md` when a component spec is needed.", "Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.", "Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected.", "Ask Engineering to validate implementation boundaries, dependencies, test approach and feature size.", "Mark non-applicable dimensions explicitly and explain why.", "Prepare local feature drafts and ask for confirmation before any remote write."],
             securityGate: ["Stop if the epic touches data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk and Security criteria are missing.", "Do not downgrade a Security dimension to not applicable without explaining why."],
             outputs: ["Epic readiness summary", "Feature draft list", "Internal task checklist per feature", "DRM criteria for each feature", "Product Ops criteria", "Design criteria or not applicable with reason", "Component reuse/adaptation/spec decision when UI is affected", "Design task for component spec when needed", "Engineering criteria", "Security criteria or not applicable with reason", "DevOps criteria or not applicable with reason", "Dependencies and risks", "Missing context", "Confirmation question before remote issue creation"],
             filesToUpdate: ["Do not update GitHub directly from the model.", "Do not update source code.", "Update `../knowledge/issue-readiness.md` or MVP files only when the user explicitly confirms a scope or criteria change."],
@@ -3794,10 +3794,10 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         ],
         commonPaths: [
           "Product Ops request: area lead `AGENT.md` -> choose Product Owner or Delivery Architect -> load only the required skills and playbook.",
-          "Delivery scope request: role `roles/product-owner.role.md` -> skill `skills/define-delivery-scope.skill.md` -> playbook `playbooks/delivery-scope-planning.playbook.md`.",
-          "MVP delivery request: `operations/AGENT.md` -> workflow `../workflows/define-mvp.workflow.md` -> area lead `AGENT.md` -> role `roles/product-owner.role.md` -> gate `knowledge/mvp-decision-gate.md` -> skill `skills/define-mvp.skill.md` -> playbook `playbooks/mvp-delivery.playbook.md`.",
-          "Epic breakdown request: role `roles/product-owner.role.md` -> skills `skills/shape-epic.skill.md` and `skills/write-feature-criteria.skill.md` -> playbook `playbooks/epic-to-features.playbook.md`.",
-          "Delivery readiness request: role `roles/delivery-architect.role.md` -> skill `skills/define-delivery-boundaries.skill.md` -> playbook `playbooks/delivery-readiness.playbook.md`."
+          "Delivery scope request: role `roles/product-owner.role.md` -> skill `skills/define-delivery-scope/SKILL.md` -> playbook `playbooks/delivery-scope-planning.playbook.md`.",
+          "MVP delivery request: `operations/AGENT.md` -> workflow `../workflows/define-mvp.workflow.md` -> area lead `AGENT.md` -> role `roles/product-owner.role.md` -> gate `knowledge/mvp-decision-gate.md` -> skill `skills/define-mvp/SKILL.md` -> playbook `playbooks/mvp-delivery.playbook.md`.",
+          "Epic breakdown request: role `roles/product-owner.role.md` -> skills `skills/shape-epic/SKILL.md` and `skills/write-feature-criteria/SKILL.md` -> playbook `playbooks/epic-to-features.playbook.md`.",
+          "Delivery readiness request: role `roles/delivery-architect.role.md` -> skill `skills/define-delivery-boundaries/SKILL.md` -> playbook `playbooks/delivery-readiness.playbook.md`."
         ]
       },
       {
@@ -3973,7 +3973,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Design Foundation",
             purpose: "Create the MVP design foundation from product strategy and MVP scope before implementation.",
             inputs: ["Product brief", "ICP", "MVP scope", "Primary user flows", "Accessibility needs", "Brand or product constraints", "Skills: design-system, accessibility, user-flow-mapping"],
-            steps: ["Read Product and MVP context", "Use `skills/design-system.skill.md` to define the design system baseline", "Use `skills/accessibility.skill.md` to define accessibility expectations for the MVP audience", "Use `skills/user-flow-mapping.skill.md` to map primary user flows", "Identify missing context", "Propose updates to Design knowledge files before writing"],
+            steps: ["Read Product and MVP context", "Use `skills/design-system/SKILL.md` to define the design system baseline", "Use `skills/accessibility/SKILL.md` to define accessibility expectations for the MVP audience", "Use `skills/user-flow-mapping/SKILL.md` to map primary user flows", "Identify missing context", "Propose updates to Design knowledge files before writing"],
             outputs: ["Design system baseline", "Accessibility baseline", "Primary user flows", "Open questions", "Confirmation question before file updates"],
             filesToUpdate: ["Update `../knowledge/design-system.md` only after explicit confirmation.", "Update `../knowledge/accessibility.md` only after explicit confirmation.", "Update `../knowledge/user-flows.md` only after explicit confirmation."]
           },
@@ -3982,7 +3982,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Component Readiness",
             purpose: "Prepare a Design component decision or component spec when a Feature needs UI/component clarity before Engineering.",
             inputs: ["Feature or GitHub Feature issue", "Parent Epic when available", "Design system knowledge", "Accessibility knowledge", "User-flow knowledge", "Component inventory", "Template: ../../../ai-standard/templates/design/component-spec-template.md", "Skill: component-analysis"],
-            steps: ["Read the Feature goal, acceptance criteria and UI impact.", "Read `../knowledge/design-system.md`, `../knowledge/accessibility.md`, `../knowledge/user-flows.md` and `../knowledge/component-inventory.md`.", "Use `skills/component-analysis.skill.md` to classify reuse, adapt, create-new, not-applicable or blocked.", "If reuse is enough, document the chosen component and usage notes.", "If adaptation is needed, define what changes and who must approve them.", "If a new component is needed, use `../../../ai-standard/templates/design/component-spec-template.md` to draft the component contract.", "Update `../knowledge/component-inventory.md` after confirmation.", "Return the Design readiness result to Product Ops and Engineering."],
+            steps: ["Read the Feature goal, acceptance criteria and UI impact.", "Read `../knowledge/design-system.md`, `../knowledge/accessibility.md`, `../knowledge/user-flows.md` and `../knowledge/component-inventory.md`.", "Use `skills/component-analysis/SKILL.md` to classify reuse, adapt, create-new, not-applicable or blocked.", "If reuse is enough, document the chosen component and usage notes.", "If adaptation is needed, define what changes and who must approve them.", "If a new component is needed, use `../../../ai-standard/templates/design/component-spec-template.md` to draft the component contract.", "Update `../knowledge/component-inventory.md` after confirmation.", "Return the Design readiness result to Product Ops and Engineering."],
             securityGate: ["Stop if accessibility, focus, keyboard behavior, contrast or error-state risk is unclear for a new user-facing component.", "Stop if the component would collect, display or modify sensitive user data and Security has not reviewed the relevant risk."],
             outputs: ["Component readiness result", "Reuse/adapt/create-new decision", "Component spec draft when required", "Inventory update proposal", "Engineering handoff notes", "Blocking gaps"],
             filesToUpdate: ["Update `../knowledge/component-inventory.md` only after explicit confirmation.", "Create or update `../knowledge/components/<component-name>.md` only for a real Feature after confirmation."],
@@ -3993,7 +3993,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "User Research",
             purpose: "Clarify design-relevant user evidence before making UX decisions.",
             inputs: ["Product brief", "ICP", "Validation assumptions", "Known user behavior", "Open design questions", "Skill: user-research"],
-            steps: ["Read product and validation context", "Use `skills/user-research.skill.md` to separate evidence from assumptions", "Identify design-relevant user needs", "Identify open research questions", "Recommend the smallest next research step"],
+            steps: ["Read product and validation context", "Use `skills/user-research/SKILL.md` to separate evidence from assumptions", "Identify design-relevant user needs", "Identify open research questions", "Recommend the smallest next research step"],
             outputs: ["User evidence summary", "Design assumptions", "Open research questions", "Recommended next step"],
             filesToUpdate: ["Update `../knowledge/user-flows.md` only when the user confirms a design-relevant flow change."]
           },
@@ -4002,7 +4002,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "MVP UX Flow",
             purpose: "Create a usable flow for the first validation cycle.",
             inputs: ["ICP", "MVP scope", "User-flow knowledge", "Accessibility baseline", "Skills: user-flow-mapping, screen-specification when a concrete screen exists"],
-            steps: ["Read ICP and MVP scope", "Use `skills/user-flow-mapping.skill.md` to map the primary flow", "Check accessibility expectations", "Use `skills/screen-specification.skill.md` only when a concrete screen, page, form or modal needs definition", "Record proposed Design knowledge updates"],
+            steps: ["Read ICP and MVP scope", "Use `skills/user-flow-mapping/SKILL.md` to map the primary flow", "Check accessibility expectations", "Use `skills/screen-specification/SKILL.md` only when a concrete screen, page, form or modal needs definition", "Record proposed Design knowledge updates"],
             outputs: ["Primary UX flow", "Edge cases", "Required screens", "Screen-specification needs when applicable", "Open questions"],
             filesToUpdate: ["Update `../knowledge/user-flows.md` only after explicit confirmation."]
           },
@@ -4011,7 +4011,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Accessibility Review",
             purpose: "Review design foundation or UX flow for accessibility expectations.",
             inputs: ["Accessibility knowledge", "Design system baseline", "User flows", "MVP audience and constraints", "Skills: accessibility, design-review when general UX evaluation is needed"],
-            steps: ["Read accessibility baseline", "Use `skills/accessibility.skill.md` to check audience needs, keyboard, focus, contrast, forms, errors and screen-reader implications", "Use `skills/design-review.skill.md` when the request needs a broader UX/design result", "List accessibility gaps"],
+            steps: ["Read accessibility baseline", "Use `skills/accessibility/SKILL.md` to check audience needs, keyboard, focus, contrast, forms, errors and screen-reader implications", "Use `skills/design-review/SKILL.md` when the request needs a broader UX/design result", "List accessibility gaps"],
             outputs: ["Accessibility review", "Gaps", "Required follow-up", "Not applicable notes when justified"],
             filesToUpdate: ["Update `../knowledge/accessibility.md` only after explicit confirmation."]
           },
@@ -4020,18 +4020,18 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "UX Writing",
             purpose: "Define clear interface language for MVP flows.",
             inputs: ["Product positioning", "User flows", "Accessibility expectations", "Target user context", "Skill: microcopy"],
-            steps: ["Read product and flow context", "Use `skills/microcopy.skill.md` to identify labels, helper text, empty states, errors, success messages and onboarding hints", "Draft concise copy", "Check clarity and accessibility", "List open copy questions"],
+            steps: ["Read product and flow context", "Use `skills/microcopy/SKILL.md` to identify labels, helper text, empty states, errors, success messages and onboarding hints", "Draft concise copy", "Check clarity and accessibility", "List open copy questions"],
             outputs: ["Microcopy draft", "Tone notes", "Accessibility notes", "Open questions"],
             filesToUpdate: ["Do not create screen-specific copy files until a concrete screen or feature requires them."]
           }
         ],
         commonPaths: [
-          "Design foundation request: area lead `AGENT.md` -> role `roles/product-designer.role.md` -> skills `skills/design-system.skill.md`, `skills/accessibility.skill.md` and `skills/user-flow-mapping.skill.md` -> playbook `playbooks/design-foundation.playbook.md`.",
-          "Component readiness request: area lead `AGENT.md` -> role `roles/product-designer.role.md` -> skill `skills/component-analysis.skill.md` -> playbook `playbooks/component-readiness.playbook.md`.",
-          "Research request: area lead `AGENT.md` -> role `roles/ux-researcher.role.md` -> skill `skills/user-research.skill.md` -> playbook `playbooks/user-research.playbook.md`.",
-          "Accessibility request: area lead `AGENT.md` -> role `roles/accessibility-specialist.role.md` -> skills `skills/accessibility.skill.md` and `skills/design-review.skill.md` when general UX evaluation is needed -> playbook `playbooks/accessibility-review.playbook.md`.",
-          "UX writing request: area lead `AGENT.md` -> role `roles/ux-writer.role.md` -> skill `skills/microcopy.skill.md` -> playbook `playbooks/ux-writing.playbook.md`.",
-          "Design review request: area lead `AGENT.md` -> role `roles/product-designer.role.md` or applicable specialist -> skill `skills/design-review.skill.md` -> output findings without creating a review playbook."
+          "Design foundation request: area lead `AGENT.md` -> role `roles/product-designer.role.md` -> skills `skills/design-system/SKILL.md`, `skills/accessibility/SKILL.md` and `skills/user-flow-mapping/SKILL.md` -> playbook `playbooks/design-foundation.playbook.md`.",
+          "Component readiness request: area lead `AGENT.md` -> role `roles/product-designer.role.md` -> skill `skills/component-analysis/SKILL.md` -> playbook `playbooks/component-readiness.playbook.md`.",
+          "Research request: area lead `AGENT.md` -> role `roles/ux-researcher.role.md` -> skill `skills/user-research/SKILL.md` -> playbook `playbooks/user-research.playbook.md`.",
+          "Accessibility request: area lead `AGENT.md` -> role `roles/accessibility-specialist.role.md` -> skills `skills/accessibility/SKILL.md` and `skills/design-review/SKILL.md` when general UX evaluation is needed -> playbook `playbooks/accessibility-review.playbook.md`.",
+          "UX writing request: area lead `AGENT.md` -> role `roles/ux-writer.role.md` -> skill `skills/microcopy/SKILL.md` -> playbook `playbooks/ux-writing.playbook.md`.",
+          "Design review request: area lead `AGENT.md` -> role `roles/product-designer.role.md` or applicable specialist -> skill `skills/design-review/SKILL.md` -> output findings without creating a review playbook."
         ]
       },
       {
@@ -4222,11 +4222,11 @@ export const rootDepartments: RootDepartmentDefinition[] = [
               "Confirm the request is a ready Feature, not a loose idea, roadmap item or unsplit Epic",
               "Confirm Product Ops readiness from `../../product-ops/knowledge/ready-to-develop.md`",
               "Use `playbooks/branch-for-feature.playbook.md` before editing code",
-              "Use `skills/plan-implementation.skill.md` to summarize the Feature, likely files, risks and tests",
+              "Use `skills/plan-implementation/SKILL.md` to summarize the Feature, likely files, risks and tests",
               "If a new reusable component is required, confirm the approved Design component spec before code and run `playbooks/component-implementation.playbook.md` first",
-              "Use `skills/follow-code-standards.skill.md` during implementation to preserve modularity, local patterns and no-hardcoding rules",
-              "Use `skills/review-data-change.skill.md` when data, API, persistence, auth, permissions or privacy are involved",
-              "Use `skills/write-tests.skill.md` to add or update tests, or explain the test gap clearly",
+              "Use `skills/follow-code-standards/SKILL.md` during implementation to preserve modularity, local patterns and no-hardcoding rules",
+              "Use `skills/review-data-change/SKILL.md` when data, API, persistence, auth, permissions or privacy are involved",
+              "Use `skills/write-tests/SKILL.md` to add or update tests, or explain the test gap clearly",
               "Use `playbooks/prepare-pr.playbook.md` to prepare PR scope, test notes, risks, Founder Testing Guide and screenshots or UX notes when applicable",
               "Use `playbooks/pr-validation.playbook.md` before recommending merge readiness"
             ],
@@ -4260,7 +4260,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Branch For Feature",
             purpose: "Create a safe branch plan before implementation starts.",
             inputs: ["Local Feature slug or GitHub issue number", "Feature title", "Current default branch", "Existing branch list when available", "Branch rules", "Skill: create-branch"],
-            steps: ["Use this as the branch step of `engineering-delivery.playbook.md`; return to engineering-delivery after branch status is clear", "Read the Feature context and title", "Load `.github/leanos/branch-rules.md`", "Use `skills/create-branch.skill.md` to generate a branch name using the required Feature/GitHub branch format", "Use `feature/...` for local-only Features and `issue/...` for mapped GitHub issues", "Check for sensitive words or unnecessary scope", "Ask before using an existing branch or creating a new one"],
+            steps: ["Use this as the branch step of `engineering-delivery.playbook.md`; return to engineering-delivery after branch status is clear", "Read the Feature context and title", "Load `.github/leanos/branch-rules.md`", "Use `skills/create-branch/SKILL.md` to generate a branch name using the required Feature/GitHub branch format", "Use `feature/...` for local-only Features and `issue/...` for mapped GitHub issues", "Check for sensitive words or unnecessary scope", "Ask before using an existing branch or creating a new one"],
             outputs: ["Proposed branch name", "Linked Feature or GitHub issue", "Branch safety notes", "Next implementation step"],
             filesToUpdate: ["Do not update files just to create a branch plan. Record branch decisions in `../knowledge/implementation-notes.md` only when the user asks for persistent notes."]
           },
@@ -4269,7 +4269,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Component Implementation",
             purpose: "Implement a reusable component from an approved Design spec before the screen or Feature that depends on it.",
             inputs: ["Feature or GitHub Feature issue", "Approved Design component spec", "Design component inventory", "Design system", "Accessibility baseline", "Engineering component guidelines", "Code standards", "Testing strategy", "Skill: implement-component"],
-            steps: ["Use this as the component step of `engineering-delivery.playbook.md`; return to engineering-delivery before implementing the dependent screen or Feature", "Read Engineering AGENT and choose the Senior Developer role", "Read the Feature and confirm that a reusable component is required", "Load the Design component spec before changing code", "Load `../../design/knowledge/component-inventory.md`, `../../design/knowledge/design-system.md` and `../../design/knowledge/accessibility.md`", "Load `knowledge/component-guidelines.md`, `knowledge/code-standards.md` and `knowledge/testing-strategy.md`", "Use `skills/implement-component.skill.md` to plan component implementation", "Inspect existing component patterns before creating a new file", "Create or confirm a Feature-linked branch before editing code", "Implement the reusable component before the screen or Feature that consumes it", "Validate required states, keyboard behavior, focus behavior and accessibility notes", "Add tests, examples, stories or manual validation notes when the repository supports them", "Summarize component readiness before continuing to the dependent screen or Feature"],
+            steps: ["Use this as the component step of `engineering-delivery.playbook.md`; return to engineering-delivery before implementing the dependent screen or Feature", "Read Engineering AGENT and choose the Senior Developer role", "Read the Feature and confirm that a reusable component is required", "Load the Design component spec before changing code", "Load `../../design/knowledge/component-inventory.md`, `../../design/knowledge/design-system.md` and `../../design/knowledge/accessibility.md`", "Load `knowledge/component-guidelines.md`, `knowledge/code-standards.md` and `knowledge/testing-strategy.md`", "Use `skills/implement-component/SKILL.md` to plan component implementation", "Inspect existing component patterns before creating a new file", "Create or confirm a Feature-linked branch before editing code", "Implement the reusable component before the screen or Feature that consumes it", "Validate required states, keyboard behavior, focus behavior and accessibility notes", "Add tests, examples, stories or manual validation notes when the repository supports them", "Summarize component readiness before continuing to the dependent screen or Feature"],
             outputs: ["Component implementation plan", "Branch used", "Files changed", "States implemented", "Accessibility validation", "Tests or manual validation", "Known gaps", "Decision to continue to screen or Feature implementation"],
             filesToUpdate: ["Update `../knowledge/implementation-notes.md` when component implementation decisions should persist.", "Do not update Design component specs unless routed back to Design and confirmed by the user."]
           },
@@ -4278,7 +4278,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Prepare PR",
             purpose: "Prepare a reviewable pull request from a confirmed Feature implementation.",
             inputs: ["GitHub issue body", "Parent epic when available", "MVP scope", "PRD", "Acceptance criteria", "Product, Design, Engineering and Security criteria", "Branch name", "Engineering knowledge"],
-            steps: ["Use this as the PR preparation step of `engineering-delivery.playbook.md`; do not use it before implementation and test status are clear", "Read Engineering AGENT and choose the Senior Developer role", "Read Feature or mapped GitHub issue, PRD, MVP scope and acceptance criteria", "Confirm Feature readiness with Product and Engineering criteria", "Check whether Design criteria are required for user-facing UX", "Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance", "Create or confirm a Feature-linked branch before code changes", "Use `skills/plan-implementation.skill.md` to plan implementation", "Run `playbooks/component-implementation.playbook.md` before screen or Feature work when a new reusable component is required", "Use `skills/follow-code-standards.skill.md` while changing code", "Use `skills/review-data-change.skill.md` when data/API/persistence is involved", "Use `skills/write-tests.skill.md` to update tests or explain gaps", "Use `skills/create-pr.skill.md` to prepare PR using the PR template", "Fill the `Founder Testing Guide` with plain-language steps, where to test, expected result, out-of-scope notes and known limits", "If there is no preview URL, provide the local route, command or manual fallback the founder can realistically use"],
+            steps: ["Use this as the PR preparation step of `engineering-delivery.playbook.md`; do not use it before implementation and test status are clear", "Read Engineering AGENT and choose the Senior Developer role", "Read Feature or mapped GitHub issue, PRD, MVP scope and acceptance criteria", "Confirm Feature readiness with Product and Engineering criteria", "Check whether Design criteria are required for user-facing UX", "Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance", "Create or confirm a Feature-linked branch before code changes", "Use `skills/plan-implementation/SKILL.md` to plan implementation", "Run `playbooks/component-implementation.playbook.md` before screen or Feature work when a new reusable component is required", "Use `skills/follow-code-standards/SKILL.md` while changing code", "Use `skills/review-data-change/SKILL.md` when data/API/persistence is involved", "Use `skills/write-tests/SKILL.md` to update tests or explain gaps", "Use `skills/create-pr/SKILL.md` to prepare PR using the PR template", "Fill the `Founder Testing Guide` with plain-language steps, where to test, expected result, out-of-scope notes and known limits", "If there is no preview URL, provide the local route, command or manual fallback the founder can realistically use"],
             outputs: ["Implementation summary", "Branch used", "Files changed", "Tests run or proposed", "Founder Testing Guide", "PR draft", "Known risks"],
             filesToUpdate: ["Update `../knowledge/implementation-notes.md` when implementation decisions should persist.", "Update `../knowledge/pr-log.md` after PR creation or when the user asks for a persistent PR record."]
           },
@@ -4287,7 +4287,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Test Planning",
             purpose: "Plan validation for implementation work without storing procedural test instructions as loose area files.",
             inputs: ["Implementation scope", "PRD", "Acceptance criteria", "Changed behavior", "Known risks", "Testing strategy", "Skill: write-tests"],
-            steps: ["Read `knowledge/testing-strategy.md`", "Identify changed behavior", "Use `skills/write-tests.skill.md` to choose automated and manual validation", "Map tests to acceptance criteria", "Identify risky gaps", "Summarize validation readiness"],
+            steps: ["Read `knowledge/testing-strategy.md`", "Identify changed behavior", "Use `skills/write-tests/SKILL.md` to choose automated and manual validation", "Map tests to acceptance criteria", "Identify risky gaps", "Summarize validation readiness"],
             outputs: ["Test strategy", "Validation gaps", "Manual checks", "Next action"],
             filesToUpdate: ["Update `../knowledge/implementation-notes.md` or PR notes if the workspace needs a persistent test decision."]
           },
@@ -4296,18 +4296,18 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "PR Validation",
             purpose: "Validate implementation before merge.",
             inputs: ["PR description", "Linked issue", "Parent epic when available", "MVP scope", "PRD", "Acceptance criteria", "Changed files", "Tests or validation evidence", "Founder Testing Guide", "Review criteria"],
-            steps: ["Use this as the final validation step of `engineering-delivery.playbook.md`; do not recommend merge before this review is complete", "Read Engineering AGENT and choose PR Reviewer or Test Engineer as needed", "Read PR context", "Load `.github/leanos/pr-validation-rules.md` and `knowledge/review-criteria.md`", "Use `skills/review-pr.skill.md` to check scope against issue, PRD and MVP", "Use `skills/follow-code-standards.skill.md` to check code quality", "Use `skills/review-data-change.skill.md` when data/API/persistence is involved", "Validate Product criteria and acceptance criteria", "Review the Founder Testing Guide and confirm a non-technical founder can test the PR", "Review Design criteria only when UX changed", "Review Security criteria only when data, auth, privacy, abuse or compliance is involved", "Review tests and manual validation", "List findings by severity", "Recommend merge, changes or blocked-by-context"],
+            steps: ["Use this as the final validation step of `engineering-delivery.playbook.md`; do not recommend merge before this review is complete", "Read Engineering AGENT and choose PR Reviewer or Test Engineer as needed", "Read PR context", "Load `.github/leanos/pr-validation-rules.md` and `knowledge/review-criteria.md`", "Use `skills/review-pr/SKILL.md` to check scope against issue, PRD and MVP", "Use `skills/follow-code-standards/SKILL.md` to check code quality", "Use `skills/review-data-change/SKILL.md` when data/API/persistence is involved", "Validate Product criteria and acceptance criteria", "Review the Founder Testing Guide and confirm a non-technical founder can test the PR", "Review Design criteria only when UX changed", "Review Security criteria only when data, auth, privacy, abuse or compliance is involved", "Review tests and manual validation", "List findings by severity", "Recommend merge, changes or blocked-by-context"],
             outputs: ["Findings by severity", "Product alignment", "Code quality result", "Founder acceptance result", "Design review result or not applicable", "Security/Data review result or not applicable", "Test confidence", "Merge recommendation"],
             filesToUpdate: ["Update `../knowledge/code-review-notes.md` or `../knowledge/pr-log.md` only when the user asks for persistent review notes."]
           }
         ],
         commonPaths: [
-          "Branch request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/create-branch.skill.md` -> playbook `playbooks/branch-for-feature.playbook.md`.",
-          "Component implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/implement-component.skill.md` -> playbook `playbooks/component-implementation.playbook.md`.",
+          "Branch request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/create-branch/SKILL.md` -> playbook `playbooks/branch-for-feature.playbook.md`.",
+          "Component implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> skill `skills/implement-component/SKILL.md` -> playbook `playbooks/component-implementation.playbook.md`.",
           "Implementation request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` -> playbook `playbooks/engineering-delivery.playbook.md` -> sub-playbooks `playbooks/branch-for-feature.playbook.md`, conditional `playbooks/component-implementation.playbook.md`, `playbooks/prepare-pr.playbook.md` and `playbooks/pr-validation.playbook.md`.",
-          "Data change request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` or `roles/pr-reviewer.role.md` -> skill `skills/review-data-change.skill.md` -> route Security when sensitive risk exists.",
-          "Test request: area lead `AGENT.md` -> role `roles/test-engineer.role.md` -> skill `skills/write-tests.skill.md` -> playbook `playbooks/test-planning.playbook.md`.",
-          "PR review request: area lead `AGENT.md` -> role `roles/pr-reviewer.role.md` -> skills `skills/review-pr.skill.md`, `skills/follow-code-standards.skill.md` and conditional `skills/review-data-change.skill.md` -> playbook `playbooks/pr-validation.playbook.md`."
+          "Data change request: area lead `AGENT.md` -> role `roles/senior-developer.role.md` or `roles/pr-reviewer.role.md` -> skill `skills/review-data-change/SKILL.md` -> route Security when sensitive risk exists.",
+          "Test request: area lead `AGENT.md` -> role `roles/test-engineer.role.md` -> skill `skills/write-tests/SKILL.md` -> playbook `playbooks/test-planning.playbook.md`.",
+          "PR review request: area lead `AGENT.md` -> role `roles/pr-reviewer.role.md` -> skills `skills/review-pr/SKILL.md`, `skills/follow-code-standards/SKILL.md` and conditional `skills/review-data-change/SKILL.md` -> playbook `playbooks/pr-validation.playbook.md`."
         ]
       },
       {
@@ -4465,7 +4465,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Setup CI/CD",
             purpose: "Plan build, test and release automation for the workspace.",
             inputs: ["Repository structure", "Build command", "Test command", "Deployment target", "Required validation gates", "Skill: setup-ci"],
-            steps: ["Read DevOps AGENT and choose DevOps Engineer", "Read `knowledge/ci-cd.md` and `.github/leanos/pr-validation-rules.md`", "Use `skills/setup-ci.skill.md` to identify build, test and validation gates", "Separate validation workflows from deployment automation", "Document secrets or environment needs without storing values", "Define failure handling and ask before changing workflow files"],
+            steps: ["Read DevOps AGENT and choose DevOps Engineer", "Read `knowledge/ci-cd.md` and `.github/leanos/pr-validation-rules.md`", "Use `skills/setup-ci/SKILL.md` to identify build, test and validation gates", "Separate validation workflows from deployment automation", "Document secrets or environment needs without storing values", "Define failure handling and ask before changing workflow files"],
             outputs: ["CI/CD readiness", "Required checks", "Automation gaps", "Next action"],
             filesToUpdate: ["Update `../knowledge/ci-cd.md` after confirmation.", "Update `.github/workflows/*` only after explicit user confirmation."]
           },
@@ -4474,7 +4474,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Plan Deployment",
             purpose: "Plan a safe deployment path.",
             inputs: ["Release scope", "Target environment", "Current validation status", "Known risks", "Environment plan", "Skill: plan-deployment"],
-            steps: ["Read DevOps AGENT and choose DevOps Engineer", "Read `knowledge/environments.md` and `knowledge/deployment-readiness.md`", "Confirm product code/framework exists before provider-specific deployment planning", "Use `skills/plan-deployment.skill.md` to define release gates, rollback and smoke checks", "Document Vercel readiness as guidance only; do not create `.vercel/`, run `vercel link` or deploy automatically", "Ask before creating provider config or remote state"],
+            steps: ["Read DevOps AGENT and choose DevOps Engineer", "Read `knowledge/environments.md` and `knowledge/deployment-readiness.md`", "Confirm product code/framework exists before provider-specific deployment planning", "Use `skills/plan-deployment/SKILL.md` to define release gates, rollback and smoke checks", "Document Vercel readiness as guidance only; do not create `.vercel/`, run `vercel link` or deploy automatically", "Ask before creating provider config or remote state"],
             outputs: ["Deployment readiness", "Deployment steps", "Risks", "Rollback notes", "Next action"],
             filesToUpdate: ["Update `../knowledge/deployment-readiness.md` after confirmation."]
           },
@@ -4492,7 +4492,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Configure Environments",
             purpose: "Plan environment boundaries and configuration without inventing project-specific infrastructure.",
             inputs: ["Product stage", "Runtime requirements", "Secrets or integration needs", "Deployment target"],
-            steps: ["Read DevOps AGENT and choose DevOps Engineer", "Read `knowledge/environments.md`", "Use `skills/configure-environments.skill.md` to separate local, preview/staging and production", "List configuration needs", "Identify secrets and access boundaries without writing secret values", "Capture open questions"],
+            steps: ["Read DevOps AGENT and choose DevOps Engineer", "Read `knowledge/environments.md`", "Use `skills/configure-environments/SKILL.md` to separate local, preview/staging and production", "List configuration needs", "Identify secrets and access boundaries without writing secret values", "Capture open questions"],
             outputs: ["Environment plan", "Configuration needs", "Access risks", "Open questions"],
             filesToUpdate: ["Update `../knowledge/environments.md` after explicit confirmation."]
           },
@@ -4501,7 +4501,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Define Observability",
             purpose: "Define runtime visibility for logs, metrics, alerts and traces.",
             inputs: ["Critical user flows", "Failure modes", "Runtime architecture", "Support needs"],
-            steps: ["Read DevOps AGENT and choose DevOps Engineer", "Read `knowledge/observability.md`", "Use `skills/define-observability.skill.md` to identify logs, errors, metrics and alert candidates", "Define post-deploy checks", "List observability gaps"],
+            steps: ["Read DevOps AGENT and choose DevOps Engineer", "Read `knowledge/observability.md`", "Use `skills/define-observability/SKILL.md` to identify logs, errors, metrics and alert candidates", "Define post-deploy checks", "List observability gaps"],
             outputs: ["Observability plan", "Critical signals", "Alert candidates", "Instrumentation gaps", "Next action"],
             filesToUpdate: ["Update `../knowledge/observability.md` after explicit confirmation."]
           },
@@ -4510,18 +4510,18 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Release Operations",
             purpose: "Prepare a release-ready operational path.",
             inputs: ["Release scope", "CI/CD readiness", "Environment plan", "Deployment plan", "Observability plan", "Skill: prepare-release"],
-            steps: ["Read DevOps AGENT and choose Release Manager", "Read `knowledge/release-notes.md`, `knowledge/ci-cd.md`, `knowledge/deployment-readiness.md` and `knowledge/observability.md`", "Use `skills/prepare-release.skill.md` to summarize release scope and linked issues", "Check CI/CD readiness", "Confirm environment target", "Review deployment path and rollback", "Confirm observability and post-deploy checks", "Summarize release readiness"],
+            steps: ["Read DevOps AGENT and choose Release Manager", "Read `knowledge/release-notes.md`, `knowledge/ci-cd.md`, `knowledge/deployment-readiness.md` and `knowledge/observability.md`", "Use `skills/prepare-release/SKILL.md` to summarize release scope and linked issues", "Check CI/CD readiness", "Confirm environment target", "Review deployment path and rollback", "Confirm observability and post-deploy checks", "Summarize release readiness"],
             outputs: ["Release readiness", "Blocking risks", "Rollback notes", "Post-release checks", "Next action"],
             filesToUpdate: ["Update `../knowledge/release-notes.md` after explicit confirmation."]
           }
         ],
         commonPaths: [
-          "GitHub setup request: area lead `AGENT.md` -> role `roles/github-devops.role.md` -> skill `skills/configure-github-project.skill.md` -> playbook `playbooks/configure-github-project.playbook.md`.",
-          "Environment request: area lead `AGENT.md` -> role `roles/devops-engineer.role.md` -> skill `skills/configure-environments.skill.md` -> playbook `playbooks/configure-environments.playbook.md`.",
-          "Deployment request: area lead `AGENT.md` -> role `roles/devops-engineer.role.md` -> skill `skills/plan-deployment.skill.md` -> playbook `playbooks/plan-deployment.playbook.md`.",
-          "CI request: area lead `AGENT.md` -> role `roles/devops-engineer.role.md` -> skill `skills/setup-ci.skill.md` -> playbook `playbooks/setup-ci-cd.playbook.md`.",
-          "Observability request: area lead `AGENT.md` -> role `roles/devops-engineer.role.md` -> skill `skills/define-observability.skill.md` -> playbook `playbooks/define-observability.playbook.md`.",
-          "Release request: area lead `AGENT.md` -> role `roles/release-manager.role.md` -> skill `skills/prepare-release.skill.md` -> playbook `playbooks/release-operations.playbook.md`."
+          "GitHub setup request: area lead `AGENT.md` -> role `roles/github-devops.role.md` -> skill `skills/configure-github-project/SKILL.md` -> playbook `playbooks/configure-github-project.playbook.md`.",
+          "Environment request: area lead `AGENT.md` -> role `roles/devops-engineer.role.md` -> skill `skills/configure-environments/SKILL.md` -> playbook `playbooks/configure-environments.playbook.md`.",
+          "Deployment request: area lead `AGENT.md` -> role `roles/devops-engineer.role.md` -> skill `skills/plan-deployment/SKILL.md` -> playbook `playbooks/plan-deployment.playbook.md`.",
+          "CI request: area lead `AGENT.md` -> role `roles/devops-engineer.role.md` -> skill `skills/setup-ci/SKILL.md` -> playbook `playbooks/setup-ci-cd.playbook.md`.",
+          "Observability request: area lead `AGENT.md` -> role `roles/devops-engineer.role.md` -> skill `skills/define-observability/SKILL.md` -> playbook `playbooks/define-observability.playbook.md`.",
+          "Release request: area lead `AGENT.md` -> role `roles/release-manager.role.md` -> skill `skills/prepare-release/SKILL.md` -> playbook `playbooks/release-operations.playbook.md`."
         ]
       },
       {
@@ -4803,7 +4803,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             useWhen: ["before production readiness", "before adding security CI workflows", "when stack and repository commands become clear", "when DevOps prepares release gates"],
             beforeActing: ["../AGENT.md", "../knowledge/security-automation.md", "../knowledge/security-baseline.md", "../../devops/AGENT.md", "../../devops/knowledge/ci-cd.md", "../../../.github/leanos/security-automation.md"],
             inputs: ["Repository stack", "Package manager", "Build/test/lint commands", "Existing CI/CD", "Deployment target", "Security baseline", "Known GitHub/security features"],
-            steps: ["Load Security Lead and Cloud Security Reviewer", "Use `skills/security-automation-readiness.skill.md`", "Classify secret scanning, dependency audit, SAST/code scanning, IaC/config scanning and API/security checks", "Mark each item as enable now, defer with reason or not applicable", "Define whether each check should block PR, block deploy or warn only", "Ask before editing CI, GitHub settings or scanner configuration"],
+            steps: ["Load Security Lead and Cloud Security Reviewer", "Use `skills/security-automation-readiness/SKILL.md`", "Classify secret scanning, dependency audit, SAST/code scanning, IaC/config scanning and API/security checks", "Mark each item as enable now, defer with reason or not applicable", "Define whether each check should block PR, block deploy or warn only", "Ask before editing CI, GitHub settings or scanner configuration"],
             securityGate: ["Production deploy requires explicit security automation status.", "Block production readiness if secret scanning and dependency audit are neither enabled nor explicitly deferred with reason.", "Block creating scanner workflows when stack, package manager or commands are unknown."],
             outputs: ["Security automation readiness matrix", "Required security gates", "Deferred checks and reasons", "Suggested next file changes", "Safe-to-continue decision"],
             filesToUpdate: ["Update `../knowledge/security-automation.md` after explicit confirmation.", "Update `../../../.github/leanos/security-automation.md` after explicit confirmation."],
@@ -4902,12 +4902,12 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           }
         ],
         commonPaths: [
-          "Baseline request: area lead `AGENT.md` -> role `roles/security-reviewer.role.md` -> skill `skills/threat-modeling.skill.md` -> playbook `playbooks/security-foundation.playbook.md`.",
-          "API request: area lead `AGENT.md` -> role `roles/application-security-engineer.role.md` -> skill `skills/api-security-review.skill.md` -> playbook `playbooks/api-security-review.playbook.md`.",
-          "Database request: area lead `AGENT.md` -> role `roles/data-protection-reviewer.role.md` -> skill `skills/database-security-review.skill.md` -> playbook `playbooks/database-security-review.playbook.md`.",
-          "Security automation request: area lead `AGENT.md` -> role `roles/cloud-security-reviewer.role.md` or `roles/security-reviewer.role.md` -> skill `skills/security-automation-readiness.skill.md` -> playbook `playbooks/security-automation-readiness.playbook.md`.",
-          "Pre-deploy request: area lead `AGENT.md` -> role `roles/cloud-security-reviewer.role.md` or `roles/security-reviewer.role.md` -> skills `skills/infra-hardening-review.skill.md`, `skills/secrets-management.skill.md` and conditional specialist skills -> playbook `playbooks/pre-deploy-security-review.playbook.md`.",
-          "AI-generated-code request: area lead `AGENT.md` -> role `roles/application-security-engineer.role.md` -> skill `skills/ai-generated-code-security.skill.md` -> playbook `playbooks/ai-generated-code-security-review.playbook.md`."
+          "Baseline request: area lead `AGENT.md` -> role `roles/security-reviewer.role.md` -> skill `skills/threat-modeling/SKILL.md` -> playbook `playbooks/security-foundation.playbook.md`.",
+          "API request: area lead `AGENT.md` -> role `roles/application-security-engineer.role.md` -> skill `skills/api-security-review/SKILL.md` -> playbook `playbooks/api-security-review.playbook.md`.",
+          "Database request: area lead `AGENT.md` -> role `roles/data-protection-reviewer.role.md` -> skill `skills/database-security-review/SKILL.md` -> playbook `playbooks/database-security-review.playbook.md`.",
+          "Security automation request: area lead `AGENT.md` -> role `roles/cloud-security-reviewer.role.md` or `roles/security-reviewer.role.md` -> skill `skills/security-automation-readiness/SKILL.md` -> playbook `playbooks/security-automation-readiness.playbook.md`.",
+          "Pre-deploy request: area lead `AGENT.md` -> role `roles/cloud-security-reviewer.role.md` or `roles/security-reviewer.role.md` -> skills `skills/infra-hardening-review/SKILL.md`, `skills/secrets-management/SKILL.md` and conditional specialist skills -> playbook `playbooks/pre-deploy-security-review.playbook.md`.",
+          "AI-generated-code request: area lead `AGENT.md` -> role `roles/application-security-engineer.role.md` -> skill `skills/ai-generated-code-security/SKILL.md` -> playbook `playbooks/ai-generated-code-security-review.playbook.md`."
         ]
       }
     ],
@@ -4963,7 +4963,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "operations/product-ops/AGENT.md",
           "operations/product-ops/roles/product-owner.role.md",
           "operations/product-ops/knowledge/mvp-decision-gate.md",
-          "operations/product-ops/skills/define-mvp.skill.md",
+          "operations/product-ops/skills/define-mvp/SKILL.md",
           "operations/product-ops/playbooks/mvp-delivery.playbook.md",
           "operations/product-ops/mvp/*",
           "Output"
@@ -4974,7 +4974,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "If Strategy context is missing, stop and recommend Strategy Product startup before MVP definition.",
           "Load Product Ops through `operations/product-ops/AGENT.md` and choose `roles/product-owner.role.md`.",
           "Load `operations/product-ops/knowledge/mvp-decision-gate.md` before deciding any item.",
-          "Use `skills/define-mvp.skill.md` and `playbooks/mvp-delivery.playbook.md` to evaluate Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk.",
+          "Use `skills/define-mvp/SKILL.md` and `playbooks/mvp-delivery.playbook.md` to evaluate Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk.",
           "Ask guided questions only for missing inputs; use short options when the founder is unsure.",
           "Separate candidates into in MVP now, later/backlog, needs discovery, needs specialist check or not now.",
           "Route Design only when usability, accessibility, UI or flow uncertainty can change the MVP boundary.",
@@ -5097,8 +5097,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "operations/workflows/roadmap-item-to-epic.workflow.md",
           "operations/product-ops/AGENT.md",
           "operations/product-ops/roles/product-owner.role.md",
-          "operations/product-ops/skills/define-delivery-scope.skill.md",
-          "operations/product-ops/skills/shape-epic.skill.md",
+          "operations/product-ops/skills/define-delivery-scope/SKILL.md",
+          "operations/product-ops/skills/shape-epic/SKILL.md",
           "operations/product-ops/playbooks/delivery-scope-planning.playbook.md",
           "ai-standard/templates/product/epic-template.md",
           "Output"
@@ -5107,8 +5107,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Confirm the roadmap or backlog item exists and has enough product context.",
           "Declare this route before executing so the founder understands this creates or updates a local LeanOS Epic, not implementation.",
           "Load Product Ops through `operations/product-ops/AGENT.md` and choose `roles/product-owner.role.md`.",
-          "Use `skills/define-delivery-scope.skill.md` to decide `scope_type`, `milestone` and `release_goal` as Epic fields, not as a separate workflow.",
-          "Use `skills/shape-epic.skill.md` to define the Epic outcome, decision ownership, scope boundary, non-goals, risks and likely feature groups.",
+          "Use `skills/define-delivery-scope/SKILL.md` to decide `scope_type`, `milestone` and `release_goal` as Epic fields, not as a separate workflow.",
+          "Use `skills/shape-epic/SKILL.md` to define the Epic outcome, decision ownership, scope boundary, non-goals, risks and likely feature groups.",
           "Use `playbooks/delivery-scope-planning.playbook.md` only as tactical support for delivery-scope fields.",
           "Route Design only when UX, UI, copy, accessibility, screen, flow, behavior or component implications can affect the Epic.",
           "Route Security only when data, auth, privacy, abuse, API, database, compliance, infrastructure or AI-generated-code risk is involved.",
@@ -5213,8 +5213,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "operations/workflows/epic-to-features.workflow.md",
           "operations/product-ops/AGENT.md",
           "operations/product-ops/roles/product-owner.role.md",
-          "operations/product-ops/skills/shape-epic.skill.md",
-          "operations/product-ops/skills/write-feature-criteria.skill.md",
+          "operations/product-ops/skills/shape-epic/SKILL.md",
+          "operations/product-ops/skills/write-feature-criteria/SKILL.md",
           "operations/product-ops/playbooks/epic-to-features.playbook.md",
           "operations/product-ops/epics/<epic-slug>/<feature-slug>.md"
         ],
@@ -5222,8 +5222,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Confirm the local Epic folder exists under `operations/product-ops/epics/` and has outcome, scope, non-goals, ownership and Epic Readiness Matrix",
           "Load Product Ops through `operations/product-ops/AGENT.md` and let the area owner choose Product Owner",
           "Load `operations/product-ops/roles/product-owner.role.md` before skills or playbooks",
-          "Use `shape-epic.skill.md` to verify the Epic is ready for feature breakdown",
-          "Use `write-feature-criteria.skill.md` and the local Product Feature template to draft Feature files inside the Epic folder",
+          "Use `shape-epic/SKILL.md` to verify the Epic is ready for feature breakdown",
+          "Use `write-feature-criteria/SKILL.md` and the local Product Feature template to draft Feature files inside the Epic folder",
           "Load `operations/product-ops/playbooks/epic-to-features.playbook.md` to execute Feature Shaping",
           "Route Design only when UX, UI, flow, copy, accessibility, screens, states or interaction are affected",
           "When Design is applicable, identify component reuse, component adaptation or the need for a future component spec task",
@@ -5640,13 +5640,13 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Customer Learning Loop",
             purpose: "Turn customer experience signals into next actions without overbuilding process.",
             inputs: ["Customer feedback", "Support notes", "Success moments", "Churn reasons", "Current product/roadmap context when available"],
-            steps: ["Read Customer Experience AGENT and choose CX Lead", "Use `skills/map-customer-feedback.skill.md` to cluster feedback", "Use `skills/synthesize-support-patterns.skill.md` when support patterns exist", "Identify friction, success moments and churn risks", "Route product changes to Strategy/Product or Product Ops when needed", "Route messaging/launch implications to Marketing when needed"],
+            steps: ["Read Customer Experience AGENT and choose CX Lead", "Use `skills/map-customer-feedback/SKILL.md` to cluster feedback", "Use `skills/synthesize-support-patterns/SKILL.md` when support patterns exist", "Identify friction, success moments and churn risks", "Route product changes to Strategy/Product or Product Ops when needed", "Route messaging/launch implications to Marketing when needed"],
             outputs: ["Learning summary", "Customer signal clusters", "Recommended product/growth/support follow-up", "Open questions"],
             filesToUpdate: ["Update `../knowledge/customer-feedback.md`, `../knowledge/support-notes.md`, `../knowledge/success-moments.md` or `../knowledge/churn-reasons.md` after explicit confirmation."]
           }
         ],
         commonPaths: [
-          "Customer experience request: area lead `AGENT.md` -> role `roles/cx-lead.role.md` -> skills `skills/map-customer-feedback.skill.md` and conditional `skills/synthesize-support-patterns.skill.md` -> playbook `playbooks/customer-learning-loop.playbook.md`."
+          "Customer experience request: area lead `AGENT.md` -> role `roles/cx-lead.role.md` -> skills `skills/map-customer-feedback/SKILL.md` and conditional `skills/synthesize-support-patterns/SKILL.md` -> playbook `playbooks/customer-learning-loop.playbook.md`."
         ]
       },
       {
@@ -5741,13 +5741,13 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "MVP Launch",
             purpose: "Launch the MVP into a focused learning loop.",
             inputs: ["Product positioning", "Landing page copy", "Acquisition channels", "Launch goal", "Customer feedback plan"],
-            steps: ["Read Marketing AGENT and choose Growth Lead", "Use `skills/define-positioning.skill.md` if positioning is unclear", "Use `skills/create-landing-page-copy.skill.md` to prepare launch copy", "Use `skills/create-launch-plan.skill.md` to choose channels and learning metrics", "Route visual design to Operations Design when needed", "Route budget/pricing implications to Growth Finance when needed", "Plan how Customer Experience will capture feedback"],
+            steps: ["Read Marketing AGENT and choose Growth Lead", "Use `skills/define-positioning/SKILL.md` if positioning is unclear", "Use `skills/create-landing-page-copy/SKILL.md` to prepare launch copy", "Use `skills/create-launch-plan/SKILL.md` to choose channels and learning metrics", "Route visual design to Operations Design when needed", "Route budget/pricing implications to Growth Finance when needed", "Plan how Customer Experience will capture feedback"],
             outputs: ["Launch plan", "Landing page copy", "Acquisition experiment", "Learning loop", "Open risks"],
             filesToUpdate: ["Update `../knowledge/positioning.md`, `../knowledge/landing-page.md`, `../knowledge/acquisition-channels.md` or `../knowledge/launch-plan.md` after explicit confirmation."]
           }
         ],
         commonPaths: [
-          "Launch request: area lead `AGENT.md` -> role `roles/growth-lead.role.md` -> skills `skills/define-positioning.skill.md`, `skills/create-landing-page-copy.skill.md` and `skills/create-launch-plan.skill.md` -> playbook `playbooks/mvp-launch.playbook.md`."
+          "Launch request: area lead `AGENT.md` -> role `roles/growth-lead.role.md` -> skills `skills/define-positioning/SKILL.md`, `skills/create-landing-page-copy/SKILL.md` and `skills/create-launch-plan/SKILL.md` -> playbook `playbooks/mvp-launch.playbook.md`."
         ]
       },
       {
@@ -5830,13 +5830,13 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Finance Review",
             purpose: "Review business assumptions and financial risk.",
             inputs: ["Pricing", "Revenue model", "Unit economics", "Budget", "Finance risks"],
-            steps: ["Read Finance AGENT and choose Finance Operator", "Use `skills/review-pricing.skill.md` when pricing or packaging is involved", "Use `skills/model-unit-economics.skill.md` when costs, margins or spend are involved", "Separate assumptions from evidence", "Identify founder decisions needed", "Route product value questions to Strategy Product when needed"],
+            steps: ["Read Finance AGENT and choose Finance Operator", "Use `skills/review-pricing/SKILL.md` when pricing or packaging is involved", "Use `skills/model-unit-economics/SKILL.md` when costs, margins or spend are involved", "Separate assumptions from evidence", "Identify founder decisions needed", "Route product value questions to Strategy Product when needed"],
             outputs: ["Finance review", "Assumptions", "Risks", "Decisions needed", "Validation needs"],
             filesToUpdate: ["Update `../knowledge/pricing.md`, `../knowledge/revenue-model.md`, `../knowledge/unit-economics.md`, `../knowledge/budget.md` or `../knowledge/finance-risks.md` after explicit confirmation."]
           }
         ],
         commonPaths: [
-          "Finance request: area lead `AGENT.md` -> role `roles/finance-operator.role.md` -> skills `skills/review-pricing.skill.md` and conditional `skills/model-unit-economics.skill.md` -> playbook `playbooks/finance-review.playbook.md`."
+          "Finance request: area lead `AGENT.md` -> role `roles/finance-operator.role.md` -> skills `skills/review-pricing/SKILL.md` and conditional `skills/model-unit-economics/SKILL.md` -> playbook `playbooks/finance-review.playbook.md`."
         ]
       }
     ],
@@ -5881,11 +5881,11 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "growth/workflows/launch-learning-loop.workflow.md",
           "growth/marketing/AGENT.md",
           "growth/marketing/roles/growth-lead.role.md",
-          "growth/marketing/skills/create-launch-plan.skill.md",
+          "growth/marketing/skills/create-launch-plan/SKILL.md",
           "growth/marketing/playbooks/mvp-launch.playbook.md",
           "growth/customer-experience/AGENT.md",
           "growth/customer-experience/roles/cx-lead.role.md",
-          "growth/customer-experience/skills/map-customer-feedback.skill.md",
+          "growth/customer-experience/skills/map-customer-feedback/SKILL.md",
           "growth/customer-experience/playbooks/customer-learning-loop.playbook.md",
           "growth/finance/AGENT.md when pricing, budget or unit economics are involved",
           "strategy/product/AGENT.md when positioning or ICP should change",

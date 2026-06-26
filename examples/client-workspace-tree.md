@@ -189,8 +189,10 @@ client-workspace/
 |   |   |   |-- business-strategist.role.md
 |   |   |   `-- README.md
 |   |   |-- skills/
-|   |   |   |-- clarify-operating-model.skill.md
-|   |   |   |-- define-business-identity.skill.md
+|   |   |   |-- clarify-operating-model/
+|   |   |   |   `-- SKILL.md
+|   |   |   |-- define-business-identity/
+|   |   |   |   `-- SKILL.md
 |   |   |   `-- README.md
 |   |   |-- AGENT.md
 |   |   |-- area.yaml
@@ -215,14 +217,22 @@ client-workspace/
 |   |   |   |-- product-strategist.role.md
 |   |   |   `-- README.md
 |   |   |-- skills/
-|   |   |   |-- check-coherence.skill.md
-|   |   |   |-- define-business-model.skill.md
-|   |   |   |-- define-icp.skill.md
-|   |   |   |-- define-mvp-validation-scope.skill.md
-|   |   |   |-- define-product.skill.md
-|   |   |   |-- define-value-proposition.skill.md
-|   |   |   |-- diagnose-founder-idea.skill.md
-|   |   |   |-- evaluate-idea.skill.md
+|   |   |   |-- check-coherence/
+|   |   |   |   `-- SKILL.md
+|   |   |   |-- define-business-model/
+|   |   |   |   `-- SKILL.md
+|   |   |   |-- define-icp/
+|   |   |   |   `-- SKILL.md
+|   |   |   |-- define-mvp-validation-scope/
+|   |   |   |   `-- SKILL.md
+|   |   |   |-- define-product/
+|   |   |   |   `-- SKILL.md
+|   |   |   |-- define-value-proposition/
+|   |   |   |   `-- SKILL.md
+|   |   |   |-- diagnose-founder-idea/
+|   |   |   |   `-- SKILL.md
+|   |   |   |-- evaluate-idea/
+|   |   |   |   `-- SKILL.md
 |   |   |   `-- README.md
 |   |   |-- AGENT.md
 |   |   |-- area.yaml
@@ -241,8 +251,10 @@ client-workspace/
 |   |   |   |-- README.md
 |   |   |   `-- roadmap-planner.role.md
 |   |   |-- skills/
-|   |   |   |-- create-roadmap.skill.md
-|   |   |   |-- prioritize-backlog.skill.md
+|   |   |   |-- create-roadmap/
+|   |   |   |   `-- SKILL.md
+|   |   |   |-- prioritize-backlog/
+|   |   |   |   `-- SKILL.md
 |   |   |   `-- README.md
 |   |   |-- AGENT.md
 |   |   |-- area.yaml

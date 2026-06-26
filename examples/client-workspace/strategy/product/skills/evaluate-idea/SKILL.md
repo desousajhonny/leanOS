@@ -1,6 +1,11 @@
+---
+name: evaluate-idea
+description: Use when the founder proposes a new idea; a feature request may change direction; roadmap priority needs product judgment
+---
+
 # Evaluate Idea
 
-## Purpose
+## Overview
 
 Evaluate a founder idea against user value, evidence, MVP validation fit and roadmap impact.
 
@@ -28,11 +33,25 @@ Evaluate a founder idea against user value, evidence, MVP validation fit and roa
 
 ## Process
 
-1. Restate the idea.
-2. Identify the user and problem it serves.
-3. Check fit with ICP and value proposition.
-4. Name assumptions and evidence gaps.
-5. Recommend reject, refine, park, validation note, MVP validation scope update or roadmap candidate.
+### Step 1
+
+Restate the idea.
+
+### Step 2
+
+Identify the user and problem it serves.
+
+### Step 3
+
+Check fit with ICP and value proposition.
+
+### Step 4
+
+Name assumptions and evidence gaps.
+
+### Step 5
+
+Recommend reject, refine, park, validation note, MVP validation scope update or roadmap candidate.
 
 ## Checks
 

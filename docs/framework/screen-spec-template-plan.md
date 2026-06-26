@@ -94,7 +94,7 @@ Quando isso virar parte do scaffold, atualize:
 
 - `ai-standard/templates/design/README.md`
 - `operations/design/knowledge/README.md`
-- `operations/design/skills/screen-specification.skill.md`
+- `operations/design/skills/screen-specification/SKILL.md`
 - `operations/design/playbooks/component-readiness.playbook.md` or a future screen-readiness playbook
 - `operations/workflows/feature-to-delivery-cycle.workflow.md`
 - `operations/engineering/knowledge/component-guidelines.md`

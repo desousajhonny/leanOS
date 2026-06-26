@@ -22,8 +22,8 @@ Read:
 
 ## Skills
 
-- `../skills/create-roadmap.skill.md`
-- `../skills/prioritize-backlog.skill.md`
+- `../skills/create-roadmap/SKILL.md`
+- `../skills/prioritize-backlog/SKILL.md`
 
 ## Playbooks
 

@@ -89,6 +89,6 @@ If Design needs a reusable capability for evaluating PRs:
 
 - Asset type: skill.
 - Owner: `operations/design/skills/`.
-- File: `design-review.skill.md`.
+- File: `design-review/SKILL.md`.
 - Role usage: Product Designer, Accessibility Specialist or UX Writer can load it when relevant.
 - Do not create `design-review.playbook.md` unless there is a repeatable execution sequence beyond the skill itself.

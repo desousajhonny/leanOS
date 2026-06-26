@@ -81,7 +81,7 @@ All required areas are active in this department.
 3. `strategy/workflows/founder-diagnosis.workflow.md`
 4. `strategy/product/AGENT.md`
 5. `strategy/product/roles/product-strategist.role.md`
-6. `strategy/product/skills/diagnose-founder-idea.skill.md`
+6. `strategy/product/skills/diagnose-founder-idea/SKILL.md`
 7. `strategy/product/playbooks/product-strategy.playbook.md`
 8. `strategy/business/AGENT.md only when business identity gaps block product diagnosis`
 9. `strategy/roadmap/AGENT.md only after Strategy Baseline is coherent enough for roadmap sequencing`
@@ -96,9 +96,9 @@ All required areas are active in this department.
 
 ## Skills Used
 
-- `strategy/product/skills/diagnose-founder-idea.skill.md`
-- `strategy/product/skills/define-product.skill.md`
-- `strategy/product/skills/define-mvp-validation-scope.skill.md when the founder is ready for MVP validation scope`
+- `strategy/product/skills/diagnose-founder-idea/SKILL.md`
+- `strategy/product/skills/define-product/SKILL.md`
+- `strategy/product/skills/define-mvp-validation-scope/SKILL.md when the founder is ready for MVP validation scope`
 
 ## Playbooks Used
 

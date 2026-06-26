@@ -89,8 +89,8 @@ Root AGENT.md
 -> operations/workflows/roadmap-item-to-epic.workflow.md
 -> operations/product-ops/AGENT.md
 -> operations/product-ops/roles/product-owner.role.md
--> operations/product-ops/skills/define-delivery-scope.skill.md
--> operations/product-ops/skills/shape-epic.skill.md
+-> operations/product-ops/skills/define-delivery-scope/SKILL.md
+-> operations/product-ops/skills/shape-epic/SKILL.md
 -> operations/product-ops/playbooks/delivery-scope-planning.playbook.md
 -> ai-standard/templates/product/epic-template.md
 -> Output
@@ -176,8 +176,8 @@ Próxima etapa:
 
 O modelo abre:
 
-- `operations/product-ops/skills/define-delivery-scope.skill.md`
-- `operations/product-ops/skills/shape-epic.skill.md`
+- `operations/product-ops/skills/define-delivery-scope/SKILL.md`
+- `operations/product-ops/skills/shape-epic/SKILL.md`
 - `operations/product-ops/playbooks/delivery-scope-planning.playbook.md`
 - `ai-standard/templates/product/epic-template.md`
 
@@ -242,8 +242,8 @@ Próxima rota:
 - [ ] Nenhum workflow separado existe entre escopo de delivery e criação de Epic local.
 - [ ] `strategy/workflows/idea-to-roadmap.workflow.md` faz bridge para `roadmap-item-to-epic`.
 - [ ] `operations/product-ops/AGENT.md` roteia shaping de Epic para Product Owner.
-- [ ] `operations/product-ops/skills/define-delivery-scope.skill.md` existe.
-- [ ] `operations/product-ops/skills/shape-epic.skill.md` existe.
+- [ ] `operations/product-ops/skills/define-delivery-scope/SKILL.md` existe.
+- [ ] `operations/product-ops/skills/shape-epic/SKILL.md` existe.
 - [ ] `operations/product-ops/playbooks/delivery-scope-planning.playbook.md` existe.
 - [ ] `ai-standard/templates/product/epic-template.md` existe.
 - [ ] O workflow para antes de arquivos de Feature, issues do GitHub, branch, código ou trabalho de PR.

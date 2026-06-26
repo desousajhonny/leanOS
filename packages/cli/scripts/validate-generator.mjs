@@ -201,8 +201,8 @@ async function validateWorkspaceFiles() {
     "strategy/business/knowledge/operating-model.md",
     "strategy/business/knowledge/decision-log.md",
     "strategy/business/roles/business-strategist.role.md",
-    "strategy/business/skills/define-business-identity.skill.md",
-    "strategy/business/skills/clarify-operating-model.skill.md",
+    "strategy/business/skills/define-business-identity/SKILL.md",
+    "strategy/business/skills/clarify-operating-model/SKILL.md",
     "strategy/business/playbooks/business-foundation.playbook.md",
     "strategy/product/AGENT.md",
     "strategy/product/README.md",
@@ -215,9 +215,9 @@ async function validateWorkspaceFiles() {
     "strategy/product/knowledge/positioning.md",
     "strategy/product/knowledge/business-model-canvas.md",
     "strategy/product/knowledge/mvp-validation-scope.md",
-    "strategy/product/skills/diagnose-founder-idea.skill.md",
-    "strategy/product/skills/define-mvp-validation-scope.skill.md",
-    "strategy/product/skills/evaluate-idea.skill.md",
+    "strategy/product/skills/diagnose-founder-idea/SKILL.md",
+    "strategy/product/skills/define-mvp-validation-scope/SKILL.md",
+    "strategy/product/skills/evaluate-idea/SKILL.md",
     "strategy/workflows/founder-diagnosis.workflow.md",
     "strategy/workflows/new-idea-intake.workflow.md",
     "strategy/workflows/idea-to-roadmap.workflow.md",
@@ -237,9 +237,9 @@ async function validateWorkspaceFiles() {
     "operations/product-ops/epics/README.md",
     "operations/product-ops/mvp/README.md",
     "operations/product-ops/mvp/prd.md",
-    "operations/product-ops/skills/shape-epic.skill.md",
-    "operations/product-ops/skills/write-feature-criteria.skill.md",
-    "operations/product-ops/skills/define-delivery-boundaries.skill.md",
+    "operations/product-ops/skills/shape-epic/SKILL.md",
+    "operations/product-ops/skills/write-feature-criteria/SKILL.md",
+    "operations/product-ops/skills/define-delivery-boundaries/SKILL.md",
     "operations/product-ops/playbooks/epic-to-features.playbook.md",
     "operations/product-ops/playbooks/delivery-readiness.playbook.md",
     "operations/workflows/epic-to-features.workflow.md",
@@ -256,13 +256,13 @@ async function validateWorkspaceFiles() {
     "operations/design/roles/product-designer.role.md",
     "operations/design/roles/accessibility-specialist.role.md",
     "operations/design/roles/ux-writer.role.md",
-    "operations/design/skills/design-system.skill.md",
-    "operations/design/skills/accessibility.skill.md",
-    "operations/design/skills/user-research.skill.md",
-    "operations/design/skills/user-flow-mapping.skill.md",
-    "operations/design/skills/screen-specification.skill.md",
-    "operations/design/skills/microcopy.skill.md",
-    "operations/design/skills/design-review.skill.md",
+    "operations/design/skills/design-system/SKILL.md",
+    "operations/design/skills/accessibility/SKILL.md",
+    "operations/design/skills/user-research/SKILL.md",
+    "operations/design/skills/user-flow-mapping/SKILL.md",
+    "operations/design/skills/screen-specification/SKILL.md",
+    "operations/design/skills/microcopy/SKILL.md",
+    "operations/design/skills/design-review/SKILL.md",
     "operations/design/playbooks/design-foundation.playbook.md",
     "operations/design/playbooks/user-research.playbook.md",
     "operations/design/playbooks/accessibility-review.playbook.md",
@@ -279,15 +279,15 @@ async function validateWorkspaceFiles() {
     "operations/engineering/knowledge/code-review-notes.md",
     "operations/engineering/knowledge/pr-log.md",
     "operations/engineering/roles/test-engineer.role.md",
-    "operations/engineering/skills/follow-code-standards.skill.md",
-    "operations/engineering/skills/implement-component.skill.md",
-    "operations/engineering/skills/review-data-change.skill.md",
+    "operations/engineering/skills/follow-code-standards/SKILL.md",
+    "operations/engineering/skills/implement-component/SKILL.md",
+    "operations/engineering/skills/review-data-change/SKILL.md",
     "operations/engineering/playbooks/engineering-delivery.playbook.md",
     "operations/engineering/playbooks/prepare-pr.playbook.md",
     "operations/engineering/playbooks/component-implementation.playbook.md",
     "operations/engineering/playbooks/branch-for-feature.playbook.md",
     "operations/engineering/playbooks/test-planning.playbook.md",
-    "operations/engineering/skills/create-branch.skill.md",
+    "operations/engineering/skills/create-branch/SKILL.md",
     "operations/devops/AGENT.md",
     "operations/devops/knowledge/README.md",
     "operations/devops/knowledge/github-management.md",
@@ -301,12 +301,12 @@ async function validateWorkspaceFiles() {
     "operations/devops/roles/devops-engineer.role.md",
     "operations/devops/roles/github-devops.role.md",
     "operations/devops/roles/release-manager.role.md",
-    "operations/devops/skills/setup-ci.skill.md",
-    "operations/devops/skills/plan-deployment.skill.md",
-    "operations/devops/skills/configure-github-project.skill.md",
-    "operations/devops/skills/configure-environments.skill.md",
-    "operations/devops/skills/define-observability.skill.md",
-    "operations/devops/skills/prepare-release.skill.md",
+    "operations/devops/skills/setup-ci/SKILL.md",
+    "operations/devops/skills/plan-deployment/SKILL.md",
+    "operations/devops/skills/configure-github-project/SKILL.md",
+    "operations/devops/skills/configure-environments/SKILL.md",
+    "operations/devops/skills/define-observability/SKILL.md",
+    "operations/devops/skills/prepare-release/SKILL.md",
     "operations/devops/playbooks/configure-github-project.playbook.md",
     "operations/devops/playbooks/configure-environments.playbook.md",
     "operations/devops/playbooks/define-observability.playbook.md",
@@ -328,17 +328,17 @@ async function validateWorkspaceFiles() {
     "operations/security/roles/application-security-engineer.role.md",
     "operations/security/roles/cloud-security-reviewer.role.md",
     "operations/security/roles/data-protection-reviewer.role.md",
-    "operations/security/skills/threat-modeling.skill.md",
-    "operations/security/skills/access-control-review.skill.md",
-    "operations/security/skills/api-security-review.skill.md",
-    "operations/security/skills/database-security-review.skill.md",
-    "operations/security/skills/secrets-management.skill.md",
-    "operations/security/skills/secure-code-review.skill.md",
-    "operations/security/skills/dependency-supply-chain-review.skill.md",
-    "operations/security/skills/infra-hardening-review.skill.md",
-    "operations/security/skills/incident-response.skill.md",
-    "operations/security/skills/ai-generated-code-security.skill.md",
-    "operations/security/skills/security-automation-readiness.skill.md",
+    "operations/security/skills/threat-modeling/SKILL.md",
+    "operations/security/skills/access-control-review/SKILL.md",
+    "operations/security/skills/api-security-review/SKILL.md",
+    "operations/security/skills/database-security-review/SKILL.md",
+    "operations/security/skills/secrets-management/SKILL.md",
+    "operations/security/skills/secure-code-review/SKILL.md",
+    "operations/security/skills/dependency-supply-chain-review/SKILL.md",
+    "operations/security/skills/infra-hardening-review/SKILL.md",
+    "operations/security/skills/incident-response/SKILL.md",
+    "operations/security/skills/ai-generated-code-security/SKILL.md",
+    "operations/security/skills/security-automation-readiness/SKILL.md",
     "operations/security/playbooks/security-foundation.playbook.md",
     "operations/security/playbooks/pre-mvp-security-checklist.playbook.md",
     "operations/security/playbooks/pre-deploy-security-review.playbook.md",
@@ -356,8 +356,8 @@ async function validateWorkspaceFiles() {
     "growth/customer-experience/knowledge/success-moments.md",
     "growth/customer-experience/knowledge/churn-reasons.md",
     "growth/customer-experience/roles/cx-lead.role.md",
-    "growth/customer-experience/skills/map-customer-feedback.skill.md",
-    "growth/customer-experience/skills/synthesize-support-patterns.skill.md",
+    "growth/customer-experience/skills/map-customer-feedback/SKILL.md",
+    "growth/customer-experience/skills/synthesize-support-patterns/SKILL.md",
     "growth/customer-experience/playbooks/customer-learning-loop.playbook.md",
     "growth/marketing/AGENT.md",
     "growth/marketing/knowledge/README.md",
@@ -366,9 +366,9 @@ async function validateWorkspaceFiles() {
     "growth/marketing/knowledge/acquisition-channels.md",
     "growth/marketing/knowledge/launch-plan.md",
     "growth/marketing/roles/growth-lead.role.md",
-    "growth/marketing/skills/define-positioning.skill.md",
-    "growth/marketing/skills/create-landing-page-copy.skill.md",
-    "growth/marketing/skills/create-launch-plan.skill.md",
+    "growth/marketing/skills/define-positioning/SKILL.md",
+    "growth/marketing/skills/create-landing-page-copy/SKILL.md",
+    "growth/marketing/skills/create-launch-plan/SKILL.md",
     "growth/marketing/playbooks/mvp-launch.playbook.md",
     "growth/finance/AGENT.md",
     "growth/finance/knowledge/README.md",
@@ -378,8 +378,8 @@ async function validateWorkspaceFiles() {
     "growth/finance/knowledge/budget.md",
     "growth/finance/knowledge/finance-risks.md",
     "growth/finance/roles/finance-operator.role.md",
-    "growth/finance/skills/review-pricing.skill.md",
-    "growth/finance/skills/model-unit-economics.skill.md",
+    "growth/finance/skills/review-pricing/SKILL.md",
+    "growth/finance/skills/model-unit-economics/SKILL.md",
     "growth/finance/playbooks/finance-review.playbook.md",
     ".github/leanos/README.md",
     ".github/leanos/setup-guide.md",
@@ -425,7 +425,7 @@ async function validateWorkspaceFiles() {
     "strategy/validation",
     "strategy/workflows/strategy-validation-cycle.workflow.md",
     "strategy/workflows/roadmap-to-github-project.workflow.md",
-    "strategy/roadmap/skills/prepare-roadmap-sync.skill.md",
+    "strategy/roadmap/skills/prepare-roadmap-sync/SKILL.md",
     "strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md",
     "operations/devops/environments.md",
     "operations/devops/deployment.md",
@@ -444,8 +444,8 @@ async function validateWorkspaceFiles() {
     "operations/security/infra-hardening.md",
     "operations/security/secure-coding.md",
     "operations/security/incident-response.md",
-    "operations/security/skills/threat-model.skill.md",
-    "operations/security/skills/review-security.skill.md",
+    "operations/security/skills/threat-model/SKILL.md",
+    "operations/security/skills/review-security/SKILL.md",
     "operations/security/playbooks/security-review.playbook.md",
     "operations/security/playbooks/security-checklist.playbook.md",
     "growth/customer-experience/customer-feedback.md",
@@ -471,9 +471,9 @@ async function validateWorkspaceFiles() {
     "operations/design/ux-decisions.md",
     "operations/design/usability-notes.md",
     "operations/design/roles/ux-lead.role.md",
-    "operations/design/skills/map-user-flow.skill.md",
-    "operations/design/skills/create-screen-spec.skill.md",
-    "operations/design/skills/define-ux-states.skill.md",
+    "operations/design/skills/map-user-flow/SKILL.md",
+    "operations/design/skills/create-screen-spec/SKILL.md",
+    "operations/design/skills/define-ux-states/SKILL.md",
     ".leanos/workflows/README.md",
     ".leanos/workflows/idea-to-roadmap.workflow.md",
     ".leanos/workflows/roadmap-to-github-project.workflow.md",
@@ -495,7 +495,7 @@ async function validateWorkspaceFiles() {
     "strategy/company/operating-model.md",
     "strategy/company/decision-log.md",
     "strategy/company/roles/company-strategist.role.md",
-    "strategy/company/skills/define-company.skill.md",
+    "strategy/company/skills/define-company/SKILL.md",
     "strategy/company/playbooks/company-foundation.playbook.md",
     "strategy/product/brief.md",
     "strategy/product/problem.md",
@@ -616,10 +616,10 @@ async function validateWorkspaceFiles() {
   assert.equal(ideaToRoadmapWorkflow.includes("Do not mark as delivery scope, MVP, Epic or GitHub work"), false, "Idea-to-roadmap should no longer block Strategy from naming an MVP candidate");
   assert(ideaToRoadmapWorkflow.includes("## Stop Conditions"), "Idea-to-roadmap workflow should define stop conditions");
   await assertExists(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"));
-  await assertExists(join(rootDir, "strategy", "product", "skills", "diagnose-founder-idea.skill.md"));
-  await assertExists(join(rootDir, "strategy", "product", "skills", "define-mvp-validation-scope.skill.md"));
-  await assertExists(join(rootDir, "strategy", "product", "skills", "evaluate-idea.skill.md"));
-  assert.equal(await exists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync.skill.md")), false, "Strategy Roadmap should not own GitHub sync skills");
+  await assertExists(join(rootDir, "strategy", "product", "skills", "diagnose-founder-idea/SKILL.md"));
+  await assertExists(join(rootDir, "strategy", "product", "skills", "define-mvp-validation-scope/SKILL.md"));
+  await assertExists(join(rootDir, "strategy", "product", "skills", "evaluate-idea/SKILL.md"));
+  assert.equal(await exists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync/SKILL.md")), false, "Strategy Roadmap should not own GitHub sync skills");
   assert.equal(await exists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md")), false, "Strategy Roadmap should not own GitHub sync playbooks");
   await assertExists(join(rootDir, ".github", "agents", "leanos-chief.agent.md"));
   await assertExists(join(rootDir, ".github", "leanos", "github-settings.example.json"));
@@ -691,8 +691,8 @@ async function validateWorkspaceFiles() {
     "operations/security/infra-hardening.md",
     "operations/security/secure-coding.md",
     "operations/security/incident-response.md",
-    "operations/security/skills/threat-model.skill.md",
-    "operations/security/skills/review-security.skill.md",
+    "operations/security/skills/threat-model/SKILL.md",
+    "operations/security/skills/review-security/SKILL.md",
     "operations/security/playbooks/security-review.playbook.md",
     "operations/security/playbooks/security-checklist.playbook.md",
     "operations/engineering/test-plan.md",
@@ -796,9 +796,9 @@ async function validateClientWorkspaceFixture() {
     "ai-standard/foundation/progression-gates.md",
     "strategy/product/README.md",
     "strategy/product/knowledge/mvp-validation-scope.md",
-    "strategy/product/skills/diagnose-founder-idea.skill.md",
-    "strategy/product/skills/define-mvp-validation-scope.skill.md",
-    "strategy/product/skills/evaluate-idea.skill.md",
+    "strategy/product/skills/diagnose-founder-idea/SKILL.md",
+    "strategy/product/skills/define-mvp-validation-scope/SKILL.md",
+    "strategy/product/skills/evaluate-idea/SKILL.md",
     "strategy/product/knowledge/validation-notes.md",
     "strategy/workflows/founder-diagnosis.workflow.md",
     "strategy/workflows/new-idea-intake.workflow.md",
@@ -809,9 +809,9 @@ async function validateClientWorkspaceFixture() {
     "operations/product-ops/knowledge/issue-readiness.md",
     "operations/product-ops/mvp/README.md",
     "operations/product-ops/mvp/prd.md",
-    "operations/product-ops/skills/shape-epic.skill.md",
-    "operations/product-ops/skills/write-feature-criteria.skill.md",
-    "operations/product-ops/skills/define-delivery-boundaries.skill.md",
+    "operations/product-ops/skills/shape-epic/SKILL.md",
+    "operations/product-ops/skills/write-feature-criteria/SKILL.md",
+    "operations/product-ops/skills/define-delivery-boundaries/SKILL.md",
     "operations/product-ops/playbooks/epic-to-features.playbook.md",
     "operations/product-ops/playbooks/delivery-readiness.playbook.md",
     "ai-standard/templates/design/component-spec-template.md",
@@ -822,9 +822,9 @@ async function validateClientWorkspaceFixture() {
     "operations/design/knowledge/component-inventory.md",
     "operations/design/knowledge/components/README.md",
     "operations/design/roles/README.md",
-    "operations/design/skills/design-system.skill.md",
-    "operations/design/skills/accessibility.skill.md",
-    "operations/design/skills/component-analysis.skill.md",
+    "operations/design/skills/design-system/SKILL.md",
+    "operations/design/skills/accessibility/SKILL.md",
+    "operations/design/skills/component-analysis/SKILL.md",
     "operations/design/playbooks/design-foundation.playbook.md",
     "operations/design/playbooks/component-readiness.playbook.md",
     "operations/workflows/feature-to-delivery-cycle.workflow.md",
@@ -837,10 +837,10 @@ async function validateClientWorkspaceFixture() {
     "operations/engineering/knowledge/testing-strategy.md",
     "operations/engineering/knowledge/review-criteria.md",
     "operations/engineering/roles/test-engineer.role.md",
-    "operations/engineering/skills/follow-code-standards.skill.md",
-    "operations/engineering/skills/implement-component.skill.md",
-    "operations/engineering/skills/review-data-change.skill.md",
-    "operations/engineering/skills/create-branch.skill.md",
+    "operations/engineering/skills/follow-code-standards/SKILL.md",
+    "operations/engineering/skills/implement-component/SKILL.md",
+    "operations/engineering/skills/review-data-change/SKILL.md",
+    "operations/engineering/skills/create-branch/SKILL.md",
     "operations/engineering/playbooks/branch-for-feature.playbook.md",
     "operations/engineering/playbooks/component-implementation.playbook.md",
     "operations/devops/AGENT.md",
@@ -856,12 +856,12 @@ async function validateClientWorkspaceFixture() {
     "operations/devops/roles/devops-engineer.role.md",
     "operations/devops/roles/github-devops.role.md",
     "operations/devops/roles/release-manager.role.md",
-    "operations/devops/skills/setup-ci.skill.md",
-    "operations/devops/skills/plan-deployment.skill.md",
-    "operations/devops/skills/configure-github-project.skill.md",
-    "operations/devops/skills/configure-environments.skill.md",
-    "operations/devops/skills/define-observability.skill.md",
-    "operations/devops/skills/prepare-release.skill.md",
+    "operations/devops/skills/setup-ci/SKILL.md",
+    "operations/devops/skills/plan-deployment/SKILL.md",
+    "operations/devops/skills/configure-github-project/SKILL.md",
+    "operations/devops/skills/configure-environments/SKILL.md",
+    "operations/devops/skills/define-observability/SKILL.md",
+    "operations/devops/skills/prepare-release/SKILL.md",
     "operations/devops/playbooks/configure-github-project.playbook.md",
     "operations/devops/playbooks/configure-environments.playbook.md",
     "operations/devops/playbooks/define-observability.playbook.md",
@@ -880,8 +880,8 @@ async function validateClientWorkspaceFixture() {
     "operations/security/roles/application-security-engineer.role.md",
     "operations/security/roles/cloud-security-reviewer.role.md",
     "operations/security/roles/data-protection-reviewer.role.md",
-    "operations/security/skills/ai-generated-code-security.skill.md",
-    "operations/security/skills/security-automation-readiness.skill.md",
+    "operations/security/skills/ai-generated-code-security/SKILL.md",
+    "operations/security/skills/security-automation-readiness/SKILL.md",
     "operations/security/playbooks/pre-deploy-security-review.playbook.md",
     "operations/security/playbooks/ai-generated-code-security-review.playbook.md",
     "operations/security/playbooks/security-automation-readiness.playbook.md",
@@ -953,8 +953,8 @@ async function validateClientWorkspaceFixture() {
     "operations/security/threat-model.md",
     "operations/security/access-control.md",
     "operations/security/data-protection.md",
-    "operations/security/skills/threat-model.skill.md",
-    "operations/security/skills/review-security.skill.md",
+    "operations/security/skills/threat-model/SKILL.md",
+    "operations/security/skills/review-security/SKILL.md",
     "operations/security/playbooks/security-review.playbook.md",
     "operations/security/playbooks/security-checklist.playbook.md",
     "growth/customer-experience/customer-feedback.md",
@@ -1294,7 +1294,7 @@ async function assertGitHubReadiness(rootDir) {
   const githubSetupGuide = await readFile(join(rootDir, ".github", "leanos", "setup-guide.md"), "utf8");
   const githubCapabilityContract = await readFile(join(rootDir, ".github", "leanos", "capability-contract.md"), "utf8");
   const githubRole = await readFile(join(rootDir, "operations", "devops", "roles", "github-devops.role.md"), "utf8");
-  const githubSkill = await readFile(join(rootDir, "operations", "devops", "skills", "configure-github-project.skill.md"), "utf8");
+  const githubSkill = await readFile(join(rootDir, "operations", "devops", "skills", "configure-github-project/SKILL.md"), "utf8");
   const githubPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "configure-github-project.playbook.md"), "utf8");
   const settings = JSON.parse(settingsExample);
   const projectSyncYaml = parse(projectSync);
@@ -1381,8 +1381,8 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   const aiPrTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "pull-request-template.md"), "utf8");
   const codeReviewTemplate = await readFile(join(rootDir, "ai-standard", "templates", "review", "code-review-template.md"), "utf8");
   const epicToFeaturesPlaybook = await readFile(join(rootDir, "operations", "product-ops", "playbooks", "epic-to-features.playbook.md"), "utf8");
-  const shapeEpicSkill = await readFile(join(rootDir, "operations", "product-ops", "skills", "shape-epic.skill.md"), "utf8");
-  const branchSkill = await readFile(join(rootDir, "operations", "engineering", "skills", "create-branch.skill.md"), "utf8");
+  const shapeEpicSkill = await readFile(join(rootDir, "operations", "product-ops", "skills", "shape-epic/SKILL.md"), "utf8");
+  const branchSkill = await readFile(join(rootDir, "operations", "engineering", "skills", "create-branch/SKILL.md"), "utf8");
   const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
   const preparePrPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
   const prValidationPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
@@ -1475,7 +1475,7 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(branchRules.includes("feature/<feature-slug>-<short-kebab-slug>"), "Branch rules should support local Feature branches");
   assert(branchRules.includes("issue/<issue-number>-<short-kebab-slug>"), "Branch rules should support mapped GitHub issue branches");
   assert(preparePrPlaybook.includes("Founder Testing Guide"), "Prepare PR playbook should require Founder Testing Guide");
-  assert(preparePrPlaybook.includes("Use `skills/create-pr.skill.md` to prepare PR using the PR template"), "Prepare PR playbook should keep PR write as a prepared output");
+  assert(preparePrPlaybook.includes("Use `skills/create-pr/SKILL.md` to prepare PR using the PR template"), "Prepare PR playbook should keep PR write as a prepared output");
   assert(prValidationPlaybook.includes("Founder Testing Guide"), "PR validation playbook should validate Founder Testing Guide");
   assert(prValidationPlaybook.includes("List findings by severity"), "PR validation playbook should enforce code review output shape");
 }
@@ -1722,7 +1722,7 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
   assert(assetTaxonomy.includes("### Workflow"), "Asset taxonomy should explain workflows");
   assert.equal(assetTaxonomy.includes("### Command"), false, "Asset taxonomy should not present slash commands as a generated asset type");
   assert(assetTaxonomy.includes("operations/design/AGENT.md"), "Asset taxonomy should include Design AGENT example");
-  assert(assetTaxonomy.includes("operations/design/skills/accessibility.skill.md"), "Asset taxonomy should include Design skill example");
+  assert(assetTaxonomy.includes("operations/design/skills/accessibility/SKILL.md"), "Asset taxonomy should include Design skill example");
   assert(assetTaxonomy.includes("operations/design/playbooks/design-foundation.playbook.md"), "Asset taxonomy should include Design playbook example");
   assert(assetTaxonomy.includes("operations/design/knowledge/design-system.md"), "Asset taxonomy should include Design knowledge example");
   assert(creationRules.includes("## Creation Decision"), "Creation rules should explain creation decisions");
@@ -2396,7 +2396,7 @@ async function assertAiStandardReadiness(rootDir) {
     ["ai-standard/checklists/agent-quality-checklist.md", ["Root agents route only to departments", "does not try to be a full inventory"]],
     ["ai-standard/checklists/skill-quality-checklist.md", ["one reusable capability", "does not become a full process sequence"]],
     ["ai-standard/instructions/create-skill-instructions.md", ["Define one reusable capability", "../templates/execution/skill-template.md", "../checklists/skill-quality-checklist.md"]],
-    ["ai-standard/templates/execution/skill-template.md", ["# Skill Template", "## Required", "Purpose", "Navigation"]],
+    ["ai-standard/templates/execution/skill-template.md", ["name: <skill-name>", "description: Use when", "## Overview", "### Step 1"]],
     ["ai-standard/examples/README.md", ["They are not active workspace context, not templates and not instructions"]]
   ];
 
@@ -2416,8 +2416,8 @@ async function assertBusinessAreaPattern(rootDir) {
   const knowledgeReadme = await readFile(join(rootDir, "strategy", "business", "knowledge", "README.md"), "utf8");
   const profile = await readFile(join(rootDir, "strategy", "business", "knowledge", "profile.md"), "utf8");
   const role = await readFile(join(rootDir, "strategy", "business", "roles", "business-strategist.role.md"), "utf8");
-  const identitySkill = await readFile(join(rootDir, "strategy", "business", "skills", "define-business-identity.skill.md"), "utf8");
-  const operatingModelSkill = await readFile(join(rootDir, "strategy", "business", "skills", "clarify-operating-model.skill.md"), "utf8");
+  const identitySkill = await readFile(join(rootDir, "strategy", "business", "skills", "define-business-identity/SKILL.md"), "utf8");
+  const operatingModelSkill = await readFile(join(rootDir, "strategy", "business", "skills", "clarify-operating-model/SKILL.md"), "utf8");
   const playbook = await readFile(join(rootDir, "strategy", "business", "playbooks", "business-foundation.playbook.md"), "utf8");
 
   assert(businessAgent.includes("# Business Agent"), "Business should have an area AGENT");
@@ -2430,6 +2430,8 @@ async function assertBusinessAreaPattern(rootDir) {
   assert(profile.includes("# Business Profile"), "Business profile should use Business naming");
   assert(role.includes("# Business Strategist"), "Business should use Business Strategist role");
   assert(role.includes("../knowledge/profile.md"), "Business Strategist should load Business knowledge files");
+  assertSkillFormat(identitySkill, "define-business-identity");
+  assertSkillFormat(operatingModelSkill, "clarify-operating-model");
   assert(identitySkill.includes("## Required Context"), "Business identity skill should use rich skill structure");
   assert(identitySkill.includes("../knowledge/profile.md"), "Business identity skill should update Business knowledge");
   assert(operatingModelSkill.includes("Human approval points are explicit"), "Operating model skill should preserve human approval points");
@@ -2453,10 +2455,10 @@ async function assertProductAreaPattern(rootDir) {
   const mvpValidationScope = await readFile(join(rootDir, "strategy", "product", "knowledge", "mvp-validation-scope.md"), "utf8");
   const productStrategistRole = await readFile(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"), "utf8");
   const productManagerRole = await readFile(join(rootDir, "strategy", "product", "roles", "product-manager.role.md"), "utf8");
-  const diagnoseFounderIdeaSkill = await readFile(join(rootDir, "strategy", "product", "skills", "diagnose-founder-idea.skill.md"), "utf8");
-  const defineMvpValidationScopeSkill = await readFile(join(rootDir, "strategy", "product", "skills", "define-mvp-validation-scope.skill.md"), "utf8");
-  const defineProductSkill = await readFile(join(rootDir, "strategy", "product", "skills", "define-product.skill.md"), "utf8");
-  const evaluateIdeaSkill = await readFile(join(rootDir, "strategy", "product", "skills", "evaluate-idea.skill.md"), "utf8");
+  const diagnoseFounderIdeaSkill = await readFile(join(rootDir, "strategy", "product", "skills", "diagnose-founder-idea/SKILL.md"), "utf8");
+  const defineMvpValidationScopeSkill = await readFile(join(rootDir, "strategy", "product", "skills", "define-mvp-validation-scope/SKILL.md"), "utf8");
+  const defineProductSkill = await readFile(join(rootDir, "strategy", "product", "skills", "define-product/SKILL.md"), "utf8");
+  const evaluateIdeaSkill = await readFile(join(rootDir, "strategy", "product", "skills", "evaluate-idea/SKILL.md"), "utf8");
   const productStrategyPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "product-strategy.playbook.md"), "utf8");
 
   assert(productAgent.includes("# Product Agent"), "Product should have an area AGENT");
@@ -2493,6 +2495,10 @@ async function assertProductAreaPattern(rootDir) {
   assert(productStrategistRole.includes("diagnose-founder-idea"), "Product Strategist should expose founder idea diagnosis skill");
   assert(productStrategistRole.includes("define-mvp-validation-scope"), "Product Strategist should expose MVP validation scope skill");
   assert(productManagerRole.includes("../knowledge/brief.md"), "Product Manager should load Product knowledge files");
+  assertSkillFormat(diagnoseFounderIdeaSkill, "diagnose-founder-idea");
+  assertSkillFormat(defineMvpValidationScopeSkill, "define-mvp-validation-scope");
+  assertSkillFormat(defineProductSkill, "define-product");
+  assertSkillFormat(evaluateIdeaSkill, "evaluate-idea");
   assert(diagnoseFounderIdeaSkill.includes("# Diagnose Founder Idea"), "Product should have a dedicated founder idea diagnosis skill");
   assert(diagnoseFounderIdeaSkill.includes("Strategy Baseline"), "Founder idea diagnosis skill should build Strategy Baseline");
   assert(diagnoseFounderIdeaSkill.includes("../../../ai-standard/foundation/progression-gates.md"), "Founder idea diagnosis skill should load progression gates");
@@ -2535,8 +2541,8 @@ async function assertRoadmapAreaPattern(rootDir) {
   const currentCycle = await readFile(join(rootDir, "strategy", "roadmap", "knowledge", "current-cycle.md"), "utf8");
   const backlog = await readFile(join(rootDir, "strategy", "roadmap", "knowledge", "backlog.md"), "utf8");
   const role = await readFile(join(rootDir, "strategy", "roadmap", "roles", "roadmap-planner.role.md"), "utf8");
-  const createRoadmapSkill = await readFile(join(rootDir, "strategy", "roadmap", "skills", "create-roadmap.skill.md"), "utf8");
-  const prioritizeBacklogSkill = await readFile(join(rootDir, "strategy", "roadmap", "skills", "prioritize-backlog.skill.md"), "utf8");
+  const createRoadmapSkill = await readFile(join(rootDir, "strategy", "roadmap", "skills", "create-roadmap/SKILL.md"), "utf8");
+  const prioritizeBacklogSkill = await readFile(join(rootDir, "strategy", "roadmap", "skills", "prioritize-backlog/SKILL.md"), "utf8");
   const cyclePlaybook = await readFile(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-cycle-planning.playbook.md"), "utf8");
   const projectSync = await readFile(join(rootDir, ".github", "leanos", "project-sync.yaml"), "utf8");
 
@@ -2567,7 +2573,7 @@ async function assertRoadmapAreaPattern(rootDir) {
   assert(createRoadmapSkill.includes("MVP Candidate Roadmap"), "Create roadmap should support MVP Candidate Roadmap");
   assert.equal(createRoadmapSkill.includes("../../../operations/product-ops/mvp/scope.md"), false, "Create roadmap should not depend on inactive Product Ops MVP scope");
   assert(prioritizeBacklogSkill.includes("Large items are flagged for epic breakdown"), "Prioritize backlog skill should identify large items");
-  assert.equal(await exists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync.skill.md")), false, "Roadmap should not generate prepare-roadmap-sync skill");
+  assert.equal(await exists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync/SKILL.md")), false, "Roadmap should not generate prepare-roadmap-sync skill");
   assert(cyclePlaybook.includes("Roadmap Cycle Planning"), "Roadmap cycle playbook should replace validation cycle planning");
   assert(cyclePlaybook.includes("../knowledge/current-cycle.md"), "Roadmap cycle playbook should update current-cycle knowledge");
   assert(cyclePlaybook.includes("../../product/knowledge/mvp-validation-scope.md"), "Roadmap cycle playbook should use Product MVP validation scope");
@@ -2599,14 +2605,14 @@ async function assertDesignFoundation(rootDir) {
   const userFlowsKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "user-flows.md"), "utf8");
   const componentInventoryKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "component-inventory.md"), "utf8");
   const componentSpecsReadme = await readFile(join(rootDir, "operations", "design", "knowledge", "components", "README.md"), "utf8");
-  const userResearchSkill = await readFile(join(rootDir, "operations", "design", "skills", "user-research.skill.md"), "utf8");
-  const userFlowMappingSkill = await readFile(join(rootDir, "operations", "design", "skills", "user-flow-mapping.skill.md"), "utf8");
-  const designSystemSkill = await readFile(join(rootDir, "operations", "design", "skills", "design-system.skill.md"), "utf8");
-  const componentAnalysisSkill = await readFile(join(rootDir, "operations", "design", "skills", "component-analysis.skill.md"), "utf8");
-  const screenSpecificationSkill = await readFile(join(rootDir, "operations", "design", "skills", "screen-specification.skill.md"), "utf8");
-  const microcopySkill = await readFile(join(rootDir, "operations", "design", "skills", "microcopy.skill.md"), "utf8");
-  const accessibilitySkill = await readFile(join(rootDir, "operations", "design", "skills", "accessibility.skill.md"), "utf8");
-  const designReviewSkill = await readFile(join(rootDir, "operations", "design", "skills", "design-review.skill.md"), "utf8");
+  const userResearchSkill = await readFile(join(rootDir, "operations", "design", "skills", "user-research/SKILL.md"), "utf8");
+  const userFlowMappingSkill = await readFile(join(rootDir, "operations", "design", "skills", "user-flow-mapping/SKILL.md"), "utf8");
+  const designSystemSkill = await readFile(join(rootDir, "operations", "design", "skills", "design-system/SKILL.md"), "utf8");
+  const componentAnalysisSkill = await readFile(join(rootDir, "operations", "design", "skills", "component-analysis/SKILL.md"), "utf8");
+  const screenSpecificationSkill = await readFile(join(rootDir, "operations", "design", "skills", "screen-specification/SKILL.md"), "utf8");
+  const microcopySkill = await readFile(join(rootDir, "operations", "design", "skills", "microcopy/SKILL.md"), "utf8");
+  const accessibilitySkill = await readFile(join(rootDir, "operations", "design", "skills", "accessibility/SKILL.md"), "utf8");
+  const designReviewSkill = await readFile(join(rootDir, "operations", "design", "skills", "design-review/SKILL.md"), "utf8");
   const componentReadinessPlaybook = await readFile(join(rootDir, "operations", "design", "playbooks", "component-readiness.playbook.md"), "utf8");
 
   await assertExists(join(rootDir, "operations", "design", "AGENT.md"));
@@ -2620,14 +2626,14 @@ async function assertDesignFoundation(rootDir) {
   await assertExists(join(rootDir, "operations", "design", "roles", "product-designer.role.md"));
   await assertExists(join(rootDir, "operations", "design", "roles", "accessibility-specialist.role.md"));
   await assertExists(join(rootDir, "operations", "design", "roles", "ux-writer.role.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "design-system.skill.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "accessibility.skill.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "user-research.skill.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "user-flow-mapping.skill.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "component-analysis.skill.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "screen-specification.skill.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "microcopy.skill.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "design-review.skill.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "design-system/SKILL.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "accessibility/SKILL.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "user-research/SKILL.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "user-flow-mapping/SKILL.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "component-analysis/SKILL.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "screen-specification/SKILL.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "microcopy/SKILL.md"));
+  await assertExists(join(rootDir, "operations", "design", "skills", "design-review/SKILL.md"));
   await assertExists(join(rootDir, "operations", "design", "playbooks", "user-research.playbook.md"));
   await assertExists(join(rootDir, "operations", "design", "playbooks", "component-readiness.playbook.md"));
   await assertExists(join(rootDir, "operations", "design", "playbooks", "accessibility-review.playbook.md"));
@@ -2638,12 +2644,12 @@ async function assertDesignFoundation(rootDir) {
   assert.equal(await exists(join(rootDir, "operations", "design", "ux-decisions.md")), false, "UX decisions should not be generated in the initial Design scaffold");
   assert.equal(await exists(join(rootDir, "operations", "design", "usability-notes.md")), false, "Usability notes should not be generated in the initial Design scaffold");
   assert.equal(await exists(join(rootDir, "operations", "design", "roles", "ux-lead.role.md")), false, "UX Lead should be the area AGENT, not a specialist role file");
-  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-design-system.skill.md")), false, "Design skill should use direct naming without define- prefix");
-  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-accessibility.skill.md")), false, "Accessibility skill should use direct naming without define- prefix");
-  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "map-user-flow.skill.md")), false, "User flow skill should use direct naming");
-  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "create-screen-spec.skill.md")), false, "Screen spec skill should use direct naming");
-  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "ux-states.skill.md")), false, "UX states should be incorporated into screen specification");
-  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-ux-states.skill.md")), false, "UX states skill should use direct naming");
+  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-design-system/SKILL.md")), false, "Design skill should use direct naming without define- prefix");
+  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-accessibility/SKILL.md")), false, "Accessibility skill should use direct naming without define- prefix");
+  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "map-user-flow/SKILL.md")), false, "User flow skill should use direct naming");
+  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "create-screen-spec/SKILL.md")), false, "Screen spec skill should use direct naming");
+  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "ux-states/SKILL.md")), false, "UX states should be incorporated into screen specification");
+  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-ux-states/SKILL.md")), false, "UX states skill should use direct naming");
 
   for (const heading of ["## Tokens", "## Typography", "## Color Intent", "## Spacing", "## Components", "## Interaction Principles", "## Do Not Do", "## Open Questions"]) {
     assert(designSystemKnowledge.includes(heading), `Design system knowledge should include ${heading}`);
@@ -2669,7 +2675,11 @@ async function assertDesignFoundation(rootDir) {
   assert.deepEqual(componentSpecEntries, ["README.md"], "Component specs folder should not generate concrete component specs in the initial scaffold");
 
   for (const skillContent of [userResearchSkill, userFlowMappingSkill, designSystemSkill, componentAnalysisSkill, screenSpecificationSkill, microcopySkill, accessibilitySkill, designReviewSkill]) {
-    for (const heading of ["## Purpose", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output", "## Files to Update", "## Red Lines"]) {
+    assert(skillContent.includes("---\nname:"), "Design skill should include YAML frontmatter");
+    assert(skillContent.includes("description: Use when"), "Design skill should include trigger-only description");
+    assert(skillContent.includes("### Step 1"), "Design skill should use Step headings inside Process");
+
+    for (const heading of ["## Overview", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output", "## Files to Update", "## Red Lines"]) {
       assert(skillContent.includes(heading), `Design skill should include ${heading}`);
     }
   }
@@ -2703,30 +2713,30 @@ async function assertDesignFoundation(rootDir) {
   assert(areaYaml.area.skills.includes("component-analysis"), "Design area YAML should list component-analysis skill");
   assert(areaYaml.area.playbooks.includes("component-readiness"), "Design area YAML should list component-readiness playbook");
   assert.equal(areaYaml.area.skills.includes("ux-states"), false, "Design area YAML should not list ux-states skill");
-  assert(skillsIndex.skills.some((skill) => skill.key === "design-review" && skill.path === "../../operations/design/skills/design-review.skill.md"), "Skills index should list design-review");
-  assert(skillsIndex.skills.some((skill) => skill.key === "component-analysis" && skill.path === "../../operations/design/skills/component-analysis.skill.md"), "Skills index should list component-analysis");
+  assert(skillsIndex.skills.some((skill) => skill.key === "design-review" && skill.path === "../../operations/design/skills/design-review/SKILL.md"), "Skills index should list design-review");
+  assert(skillsIndex.skills.some((skill) => skill.key === "component-analysis" && skill.path === "../../operations/design/skills/component-analysis/SKILL.md"), "Skills index should list component-analysis");
   assert.equal(skillsIndex.skills.some((skill) => skill.key === "ux-states"), false, "Skills index should not list ux-states");
   assert.deepEqual(areaYaml.area.source_of_truth, ["knowledge/design-system.md", "knowledge/accessibility.md", "knowledge/user-flows.md", "knowledge/component-inventory.md"]);
   assert(productDesigner.includes("../knowledge/design-system.md"), "Product Designer should read design-system knowledge");
   assert(productDesigner.includes("../knowledge/user-flows.md"), "Product Designer should read user-flow knowledge");
   assert(productDesigner.includes("../knowledge/component-inventory.md"), "Product Designer should read component inventory");
-  assert(productDesigner.includes("../skills/component-analysis.skill.md"), "Product Designer should point to component-analysis skill");
+  assert(productDesigner.includes("../skills/component-analysis/SKILL.md"), "Product Designer should point to component-analysis skill");
   assert(productDesigner.includes("../playbooks/component-readiness.playbook.md"), "Product Designer should point to component-readiness playbook");
-  assert(productDesigner.includes("../skills/design-review.skill.md"), "Product Designer should point to design-review skill");
+  assert(productDesigner.includes("../skills/design-review/SKILL.md"), "Product Designer should point to design-review skill");
   assert(uxResearcher.includes("../knowledge/user-flows.md"), "UX Researcher should read user-flow knowledge");
   assert(accessibilitySpecialist.includes("../knowledge/accessibility.md"), "Accessibility Specialist should read accessibility knowledge");
-  assert(accessibilitySpecialist.includes("../skills/design-review.skill.md"), "Accessibility Specialist should point to design-review skill");
+  assert(accessibilitySpecialist.includes("../skills/design-review/SKILL.md"), "Accessibility Specialist should point to design-review skill");
   assert(uxWriter.includes("../knowledge/user-flows.md"), "UX Writer should read user-flow knowledge");
-  assert(uxWriter.includes("../skills/design-review.skill.md"), "UX Writer should point to design-review skill");
+  assert(uxWriter.includes("../skills/design-review/SKILL.md"), "UX Writer should point to design-review skill");
 
   assert.equal(await exists(join(rootDir, ".leanos", "commands", "define-design.md")), false, "Define design command should not be generated");
   assert(designAgent.includes("Product Designer: `roles/product-designer.role.md`"), "Design AGENT should route Product Designer");
-  assert(productDesigner.includes("../skills/design-system.skill.md"), "Product Designer should load the direct design-system skill name");
-  assert(productDesigner.includes("../skills/accessibility.skill.md"), "Product Designer should load the direct accessibility skill name");
-  assert(productDesigner.includes("../skills/user-flow-mapping.skill.md"), "Product Designer should load user-flow-mapping skill");
+  assert(productDesigner.includes("../skills/design-system/SKILL.md"), "Product Designer should load the direct design-system skill name");
+  assert(productDesigner.includes("../skills/accessibility/SKILL.md"), "Product Designer should load the direct accessibility skill name");
+  assert(productDesigner.includes("../skills/user-flow-mapping/SKILL.md"), "Product Designer should load user-flow-mapping skill");
   assert.equal(productDesigner.includes("../roles/ux-lead.role.md"), false, "Design foundation route should not load old UX Lead role file");
-  assert.equal(productDesigner.includes("../skills/define-design-system.skill.md"), false, "Design foundation route should not load define-prefixed design-system skill");
-  assert.equal(productDesigner.includes("../skills/define-accessibility.skill.md"), false, "Design foundation route should not load define-prefixed accessibility skill");
+  assert.equal(productDesigner.includes("../skills/define-design-system/SKILL.md"), false, "Design foundation route should not load define-prefixed design-system skill");
+  assert.equal(productDesigner.includes("../skills/define-accessibility/SKILL.md"), false, "Design foundation route should not load define-prefixed accessibility skill");
   assert(designFoundationPlaybook.includes("../knowledge/design-system.md"), "Design foundation should update design-system knowledge");
   assert(designFoundationPlaybook.includes("Leave screen-specific artifacts for later feature or screen-specific work"), "Design foundation should defer screen-specific files");
   assert.equal(designFoundationPlaybook.includes("screen-specs.md"), false, "Design foundation should not reference removed screen specs file");
@@ -2756,10 +2766,10 @@ async function assertEngineeringAreaPattern(rootDir) {
   const seniorDeveloper = await readFile(join(rootDir, "operations", "engineering", "roles", "senior-developer.role.md"), "utf8");
   const testEngineer = await readFile(join(rootDir, "operations", "engineering", "roles", "test-engineer.role.md"), "utf8");
   const prReviewer = await readFile(join(rootDir, "operations", "engineering", "roles", "pr-reviewer.role.md"), "utf8");
-  const planImplementation = await readFile(join(rootDir, "operations", "engineering", "skills", "plan-implementation.skill.md"), "utf8");
-  const followCodeStandards = await readFile(join(rootDir, "operations", "engineering", "skills", "follow-code-standards.skill.md"), "utf8");
-  const implementComponent = await readFile(join(rootDir, "operations", "engineering", "skills", "implement-component.skill.md"), "utf8");
-  const reviewDataChange = await readFile(join(rootDir, "operations", "engineering", "skills", "review-data-change.skill.md"), "utf8");
+  const planImplementation = await readFile(join(rootDir, "operations", "engineering", "skills", "plan-implementation/SKILL.md"), "utf8");
+  const followCodeStandards = await readFile(join(rootDir, "operations", "engineering", "skills", "follow-code-standards/SKILL.md"), "utf8");
+  const implementComponent = await readFile(join(rootDir, "operations", "engineering", "skills", "implement-component/SKILL.md"), "utf8");
+  const reviewDataChange = await readFile(join(rootDir, "operations", "engineering", "skills", "review-data-change/SKILL.md"), "utf8");
   const engineeringDelivery = await readFile(join(rootDir, "operations", "engineering", "playbooks", "engineering-delivery.playbook.md"), "utf8");
   const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
   const componentImplementation = await readFile(join(rootDir, "operations", "engineering", "playbooks", "component-implementation.playbook.md"), "utf8");
@@ -2791,7 +2801,7 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(areaYaml.area.skills.includes("review-data-change"), "Engineering area.yaml should list review-data-change");
   assert(areaYaml.area.playbooks.includes("engineering-delivery"), "Engineering area.yaml should list engineering-delivery");
   assert(areaYaml.area.playbooks.includes("component-implementation"), "Engineering area.yaml should list component-implementation");
-  assert(skillsIndex.skills.some((skill) => skill.key === "implement-component" && skill.path === "../../operations/engineering/skills/implement-component.skill.md"), "Skills index should list implement-component");
+  assert(skillsIndex.skills.some((skill) => skill.key === "implement-component" && skill.path === "../../operations/engineering/skills/implement-component/SKILL.md"), "Skills index should list implement-component");
   assert(playbooksIndex.playbooks.some((playbook) => playbook.key === "engineering-delivery" && playbook.path === "../../operations/engineering/playbooks/engineering-delivery.playbook.md"), "Playbooks index should list engineering-delivery");
   assert(playbooksIndex.playbooks.some((playbook) => playbook.key === "component-implementation" && playbook.path === "../../operations/engineering/playbooks/component-implementation.playbook.md"), "Playbooks index should list component-implementation");
 
@@ -2814,13 +2824,17 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(seniorDeveloper.includes("../knowledge/code-standards.md"), "Senior Developer should read code standards");
   assert(seniorDeveloper.includes("../knowledge/component-guidelines.md"), "Senior Developer should read component guidelines");
   assert(seniorDeveloper.includes("../playbooks/engineering-delivery.playbook.md"), "Senior Developer should use engineering delivery playbook");
-  assert(seniorDeveloper.includes("../skills/implement-component.skill.md"), "Senior Developer should use implement-component skill");
+  assert(seniorDeveloper.includes("../skills/implement-component/SKILL.md"), "Senior Developer should use implement-component skill");
   assert(seniorDeveloper.includes("../playbooks/component-implementation.playbook.md"), "Senior Developer should use component implementation playbook");
   assert(testEngineer.includes("../knowledge/testing-strategy.md"), "Test Engineer should read testing strategy");
   assert(prReviewer.includes("../knowledge/review-criteria.md"), "PR Reviewer should read review criteria");
 
   for (const skillContent of [planImplementation, followCodeStandards, implementComponent, reviewDataChange]) {
-    for (const heading of ["## Purpose", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output"]) {
+    assert(skillContent.includes("---\nname:"), "Engineering skill should include YAML frontmatter");
+    assert(skillContent.includes("description: Use when"), "Engineering skill should include trigger-only description");
+    assert(skillContent.includes("### Step 1"), "Engineering skill should use Step headings inside Process");
+
+    for (const heading of ["## Overview", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output"]) {
       assert(skillContent.includes(heading), `Engineering skill should include ${heading}`);
     }
   }
@@ -2833,11 +2847,11 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(implementComponent.includes("Do not implement a new user-facing component without a Design spec"), "Implement component skill should block component work without Design spec");
   assert(engineeringDelivery.includes("Orchestrate the internal Engineering path"), "Engineering delivery playbook should define the master Engineering path");
   assert(engineeringDelivery.includes("playbooks/branch-for-feature.playbook.md"), "Engineering delivery playbook should start with branch playbook");
-  assert(engineeringDelivery.includes("skills/plan-implementation.skill.md"), "Engineering delivery playbook should require implementation planning");
+  assert(engineeringDelivery.includes("skills/plan-implementation/SKILL.md"), "Engineering delivery playbook should require implementation planning");
   assert(engineeringDelivery.includes("playbooks/component-implementation.playbook.md"), "Engineering delivery playbook should include component implementation when needed");
-  assert(engineeringDelivery.includes("skills/follow-code-standards.skill.md"), "Engineering delivery playbook should use code standards skill");
-  assert(engineeringDelivery.includes("skills/review-data-change.skill.md"), "Engineering delivery playbook should use data review when applicable");
-  assert(engineeringDelivery.includes("skills/write-tests.skill.md"), "Engineering delivery playbook should require tests or test-gap explanation");
+  assert(engineeringDelivery.includes("skills/follow-code-standards/SKILL.md"), "Engineering delivery playbook should use code standards skill");
+  assert(engineeringDelivery.includes("skills/review-data-change/SKILL.md"), "Engineering delivery playbook should use data review when applicable");
+  assert(engineeringDelivery.includes("skills/write-tests/SKILL.md"), "Engineering delivery playbook should require tests or test-gap explanation");
   assert(engineeringDelivery.includes("playbooks/prepare-pr.playbook.md"), "Engineering delivery playbook should prepare PR through prepare-pr");
   assert(engineeringDelivery.includes("playbooks/pr-validation.playbook.md"), "Engineering delivery playbook should end with PR validation");
   assert(engineeringDelivery.includes("Founder Testing Guide"), "Engineering delivery should require Founder Testing Guide before founder review");
@@ -2852,12 +2866,12 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(componentImplementation.includes("../../design/knowledge/component-inventory.md"), "Component implementation playbook should read component inventory");
   assert(componentImplementation.includes("component step of `engineering-delivery.playbook.md`"), "Component implementation playbook should identify itself as engineering-delivery component step");
   assert(componentImplementation.includes("Implement the reusable component before the screen or Feature"), "Component implementation playbook should implement component before dependent Feature");
-  assert(componentImplementation.includes("skills/implement-component.skill.md"), "Component implementation playbook should use implement-component skill");
+  assert(componentImplementation.includes("skills/implement-component/SKILL.md"), "Component implementation playbook should use implement-component skill");
   assert(reviewDataChange.includes("No destructive change without confirmation"), "Data review skill should block destructive changes");
-  assert(preparePr.includes("skills/follow-code-standards.skill.md"), "Prepare PR playbook should use code standards skill");
+  assert(preparePr.includes("skills/follow-code-standards/SKILL.md"), "Prepare PR playbook should use code standards skill");
   assert(preparePr.includes("PR preparation step of `engineering-delivery.playbook.md`"), "Prepare PR playbook should identify itself as engineering-delivery PR preparation step");
   assert(preparePr.includes("playbooks/component-implementation.playbook.md"), "Prepare PR playbook should run component implementation when needed");
-  assert(preparePr.includes("skills/review-data-change.skill.md"), "Prepare PR playbook should use data review when applicable");
+  assert(preparePr.includes("skills/review-data-change/SKILL.md"), "Prepare PR playbook should use data review when applicable");
   assert(preparePr.includes("Founder Testing Guide"), "Prepare PR playbook should prepare Founder Testing Guide");
   assert(preparePr.includes("where to test"), "Prepare PR playbook should tell the founder where to test");
   assert(prValidation.includes("knowledge/review-criteria.md"), "PR validation should load review criteria");
@@ -2883,12 +2897,12 @@ async function assertDevOpsAreaPattern(rootDir) {
   const devopsEngineer = await readFile(join(rootDir, "operations", "devops", "roles", "devops-engineer.role.md"), "utf8");
   const githubDevops = await readFile(join(rootDir, "operations", "devops", "roles", "github-devops.role.md"), "utf8");
   const releaseManager = await readFile(join(rootDir, "operations", "devops", "roles", "release-manager.role.md"), "utf8");
-  const configureGithubProject = await readFile(join(rootDir, "operations", "devops", "skills", "configure-github-project.skill.md"), "utf8");
-  const configureEnvironments = await readFile(join(rootDir, "operations", "devops", "skills", "configure-environments.skill.md"), "utf8");
-  const setupCi = await readFile(join(rootDir, "operations", "devops", "skills", "setup-ci.skill.md"), "utf8");
-  const planDeployment = await readFile(join(rootDir, "operations", "devops", "skills", "plan-deployment.skill.md"), "utf8");
-  const defineObservability = await readFile(join(rootDir, "operations", "devops", "skills", "define-observability.skill.md"), "utf8");
-  const prepareRelease = await readFile(join(rootDir, "operations", "devops", "skills", "prepare-release.skill.md"), "utf8");
+  const configureGithubProject = await readFile(join(rootDir, "operations", "devops", "skills", "configure-github-project/SKILL.md"), "utf8");
+  const configureEnvironments = await readFile(join(rootDir, "operations", "devops", "skills", "configure-environments/SKILL.md"), "utf8");
+  const setupCi = await readFile(join(rootDir, "operations", "devops", "skills", "setup-ci/SKILL.md"), "utf8");
+  const planDeployment = await readFile(join(rootDir, "operations", "devops", "skills", "plan-deployment/SKILL.md"), "utf8");
+  const defineObservability = await readFile(join(rootDir, "operations", "devops", "skills", "define-observability/SKILL.md"), "utf8");
+  const prepareRelease = await readFile(join(rootDir, "operations", "devops", "skills", "prepare-release/SKILL.md"), "utf8");
   const githubProjectPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "configure-github-project.playbook.md"), "utf8");
   const setupCiCdPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "setup-ci-cd.playbook.md"), "utf8");
   const planDeploymentPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "plan-deployment.playbook.md"), "utf8");
@@ -2952,7 +2966,11 @@ async function assertDevOpsAreaPattern(rootDir) {
   assert(releaseManager.includes("../knowledge/release-notes.md"), "Release Manager should load release notes knowledge");
 
   for (const skillContent of [configureGithubProject, configureEnvironments, setupCi, planDeployment, defineObservability, prepareRelease]) {
-    for (const heading of ["## Purpose", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output"]) {
+    assert(skillContent.includes("---\nname:"), "DevOps skill should include YAML frontmatter");
+    assert(skillContent.includes("description: Use when"), "DevOps skill should include trigger-only description");
+    assert(skillContent.includes("### Step 1"), "DevOps skill should use Step headings inside Process");
+
+    for (const heading of ["## Overview", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output"]) {
       assert(skillContent.includes(heading), `DevOps skill should include ${heading}`);
     }
   }
@@ -2971,9 +2989,9 @@ async function assertDevOpsAreaPattern(rootDir) {
   assert(githubProjectPlaybook.includes("where the founder can find owner/repository and Project URL/number"), "GitHub project playbook should guide founders to find GitHub details");
   assert(githubProjectPlaybook.includes("End with whether GitHub Epics/Features sync is ready for dry-run"), "GitHub project playbook should bridge back to Epics/Features sync");
   assert(githubProjectPlaybook.includes("knowledge/github-management.md"), "GitHub project playbook should update GitHub knowledge");
-  assert(setupCiCdPlaybook.includes("skills/setup-ci.skill.md"), "Setup CI/CD playbook should use setup-ci skill");
+  assert(setupCiCdPlaybook.includes("skills/setup-ci/SKILL.md"), "Setup CI/CD playbook should use setup-ci skill");
   assert(planDeploymentPlaybook.includes("do not create `.vercel/`, run `vercel link` or deploy automatically"), "Plan deployment playbook should preserve Vercel safety");
-  assert(releaseOperationsPlaybook.includes("skills/prepare-release.skill.md"), "Release operations should use prepare-release skill");
+  assert(releaseOperationsPlaybook.includes("skills/prepare-release/SKILL.md"), "Release operations should use prepare-release skill");
   assert(releaseOperationsPlaybook.includes("knowledge/release-notes.md"), "Release operations should update release notes");
 }
 
@@ -2995,10 +3013,10 @@ async function assertSecurityAreaPattern(rootDir) {
   const appSecEngineer = await readFile(join(rootDir, "operations", "security", "roles", "application-security-engineer.role.md"), "utf8");
   const cloudSecurityReviewer = await readFile(join(rootDir, "operations", "security", "roles", "cloud-security-reviewer.role.md"), "utf8");
   const dataProtectionReviewer = await readFile(join(rootDir, "operations", "security", "roles", "data-protection-reviewer.role.md"), "utf8");
-  const aiGeneratedCodeSecurity = await readFile(join(rootDir, "operations", "security", "skills", "ai-generated-code-security.skill.md"), "utf8");
-  const securityAutomationReadiness = await readFile(join(rootDir, "operations", "security", "skills", "security-automation-readiness.skill.md"), "utf8");
-  const apiSecurityReview = await readFile(join(rootDir, "operations", "security", "skills", "api-security-review.skill.md"), "utf8");
-  const databaseSecurityReview = await readFile(join(rootDir, "operations", "security", "skills", "database-security-review.skill.md"), "utf8");
+  const aiGeneratedCodeSecurity = await readFile(join(rootDir, "operations", "security", "skills", "ai-generated-code-security/SKILL.md"), "utf8");
+  const securityAutomationReadiness = await readFile(join(rootDir, "operations", "security", "skills", "security-automation-readiness/SKILL.md"), "utf8");
+  const apiSecurityReview = await readFile(join(rootDir, "operations", "security", "skills", "api-security-review/SKILL.md"), "utf8");
+  const databaseSecurityReview = await readFile(join(rootDir, "operations", "security", "skills", "database-security-review/SKILL.md"), "utf8");
   const preDeployReview = await readFile(join(rootDir, "operations", "security", "playbooks", "pre-deploy-security-review.playbook.md"), "utf8");
   const aiGeneratedReview = await readFile(join(rootDir, "operations", "security", "playbooks", "ai-generated-code-security-review.playbook.md"), "utf8");
   const securityAutomationPlaybook = await readFile(join(rootDir, "operations", "security", "playbooks", "security-automation-readiness.playbook.md"), "utf8");
@@ -3068,7 +3086,11 @@ async function assertSecurityAreaPattern(rootDir) {
   }
 
   for (const skillContent of [aiGeneratedCodeSecurity, apiSecurityReview, databaseSecurityReview, securityAutomationReadiness]) {
-    for (const section of ["## Purpose", "## Use When", "## Required Context", "## Process", "## Checks", "## Output", "## Files to Update", "## Red Lines"]) {
+    assert(skillContent.includes("---\nname:"), "Security skill should include YAML frontmatter");
+    assert(skillContent.includes("description: Use when"), "Security skill should include trigger-only description");
+    assert(skillContent.includes("### Step 1"), "Security skill should use Step headings inside Process");
+
+    for (const section of ["## Overview", "## Use When", "## Required Context", "## Process", "## Checks", "## Output", "## Files to Update", "## Red Lines"]) {
       assert(skillContent.includes(section), `Security skill should include ${section}`);
     }
   }
@@ -3188,7 +3210,7 @@ async function assertGrowthAreaPattern(rootDir) {
   assert(cxRole.includes("## Red Lines"), "CX role should include red lines");
   assert(growthLead.includes("## Red Lines"), "Growth Lead should include red lines");
   assert(financeOperator.includes("## Red Lines"), "Finance Operator should include red lines");
-  assert(customerLearningLoop.includes("skills/map-customer-feedback.skill.md"), "Customer learning loop should use feedback mapping skill");
+  assert(customerLearningLoop.includes("skills/map-customer-feedback/SKILL.md"), "Customer learning loop should use feedback mapping skill");
   assert(customerLearningLoop.includes("Strategy/Product or Product Ops"), "Customer learning loop should route product changes back to product owners");
   assert(mvpLaunch.includes("Route visual design to Operations Design"), "MVP launch should route design work to Operations Design");
   assert(mvpLaunch.includes("Route budget/pricing implications to Growth Finance"), "MVP launch should route finance work to Finance");
@@ -3379,7 +3401,7 @@ async function assertProductOpsPrdSections(rootDir) {
 
 async function assertMvpValidationScopeSections(rootDir) {
   const mvpValidationScope = await readFile(join(rootDir, "strategy", "product", "knowledge", "mvp-validation-scope.md"), "utf8");
-  const defineMvpValidationScope = await readFile(join(rootDir, "strategy", "product", "skills", "define-mvp-validation-scope.skill.md"), "utf8");
+  const defineMvpValidationScope = await readFile(join(rootDir, "strategy", "product", "skills", "define-mvp-validation-scope/SKILL.md"), "utf8");
   const productPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "product-strategy.playbook.md"), "utf8");
 
   assert.equal(await exists(join(rootDir, "strategy", "validation")), false, "Strategy Validation folder should not exist");
@@ -3606,6 +3628,15 @@ function failOutOfDate(details) {
 
 async function assertExists(path) {
   assert.equal(await exists(path), true, `Expected path to exist: ${path}`);
+}
+
+function assertSkillFormat(content, expectedName) {
+  assert(content.startsWith("---\n"), `${expectedName} skill should start with YAML frontmatter`);
+  assert(content.includes(`name: ${expectedName}`), `${expectedName} skill frontmatter should declare name`);
+  assert(content.includes("description: Use when"), `${expectedName} skill frontmatter should declare trigger description`);
+  assert(content.includes("## Overview"), `${expectedName} skill should use Overview section`);
+  assert(content.includes("## Process"), `${expectedName} skill should include Process section`);
+  assert(content.includes("### Step 1"), `${expectedName} skill should use Step headings inside Process`);
 }
 
 async function exists(path) {

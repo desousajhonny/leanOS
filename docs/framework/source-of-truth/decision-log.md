@@ -107,3 +107,17 @@ Justificativa:
 - Um produto em operação não deve tratar toda ideia nova como MVP.
 - O founder não deve escolher estágios manualmente.
 - Centralizar ideias novas em `new-idea-intake` mantém o framework simples e evita burocracia adicional.
+
+## 2026-06-26 - Skills Como Pastas Com `SKILL.md`
+
+Decisão:
+
+- As skills geradas pelo LeanOS passam a viver em `skills/<skill-name>/SKILL.md`.
+- Cada `SKILL.md` deve ter frontmatter YAML com `name` e `description`.
+- A seção `## Process` deve usar headings `### Step N` em vez de lista numerada simples.
+
+Justificativa:
+
+- O formato fica mais próximo do padrão de skills usado pelo Superpowers.
+- `SKILL.md` melhora descoberta, leitura e evolução futura das skills.
+- Steps com headings permitem detalhar capacidades complexas sem transformar a skill em playbook.

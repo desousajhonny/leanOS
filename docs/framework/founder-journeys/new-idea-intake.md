@@ -168,7 +168,7 @@ Root AGENT.md
 -> revalidação de leanos.yaml e estágio no workflow
 -> strategy/product/AGENT.md
 -> strategy/product/roles/product-strategist.role.md
--> strategy/product/skills/evaluate-idea.skill.md
+-> strategy/product/skills/evaluate-idea/SKILL.md
 -> strategy/product/playbooks/product-strategy.playbook.md
 -> strategy/roadmap/AGENT.md only if roadmap impact needs review
 -> Output
@@ -351,24 +351,24 @@ Por quê:
 Evidência De Navegação:
 
 - `product-strategist.role.md` diz que conecta cliente, problema, proposta de valor, modelo de negócio, roadmap e lógica de validação.
-- Ele lista `evaluate-idea.skill.md` como uma de suas skills.
+- Ele lista `evaluate-idea/SKILL.md` como uma de suas skills.
 - Ele lista `product-strategy.playbook.md` como seu playbook.
 
 O que o modelo entende aqui:
 
 - Ele deve ler apenas o knowledge necessário de Product.
-- Ele deve usar `evaluate-idea.skill.md`.
+- Ele deve usar `evaluate-idea/SKILL.md`.
 - Ele deve usar `product-strategy.playbook.md` para sequência e estilo de output.
 
 Próxima etapa:
 
-`strategy/product/skills/evaluate-idea.skill.md`
+`strategy/product/skills/evaluate-idea/SKILL.md`
 
 ### Etapa 7 - Avaliar A Ideia
 
 O modelo abre:
 
-`strategy/product/skills/evaluate-idea.skill.md`
+`strategy/product/skills/evaluate-idea/SKILL.md`
 
 Por quê:
 
@@ -377,7 +377,7 @@ Por quê:
 
 Evidência De Navegação:
 
-- `evaluate-idea.skill.md` exige product brief, problema, proposta de valor e backlog de roadmap.
+- `evaluate-idea/SKILL.md` exige product brief, problema, proposta de valor e backlog de roadmap.
 - Ela instrui o modelo a reafirmar a ideia, identificar usuário/problema, verificar fit, nomear premissas e recomendar aceitar, estacionar, validar ou rejeitar.
 - Ela diz explicitamente para não adicionar ideias diretamente ao roadmap como trabalho comprometido.
 
@@ -427,7 +427,7 @@ Em vez disso, ele pausa e fala com o founder em linguagem simples.
 Por quê:
 
 - `product-strategy.playbook.md` diz para propor updates e aguardar confirmação antes de escrever.
-- `evaluate-idea.skill.md` diz para não adicionar ideias diretamente ao roadmap como trabalho comprometido.
+- `evaluate-idea/SKILL.md` diz para não adicionar ideias diretamente ao roadmap como trabalho comprometido.
 - `new-idea-intake` é uma jornada de intake, não uma jornada de mutação de roadmap.
 - O founder deve decidir se a ideia deve ser rejeitada, refinada, acompanhada ou promovida.
 
@@ -516,7 +516,7 @@ Você quer que eu siga para a etapa de roadmap e registre isso como candidata pa
 Por quê:
 
 - Product Strategy diz para propor updates e aguardar confirmação.
-- `evaluate-idea.skill.md` diz para não adicionar ideias diretamente ao roadmap como trabalho comprometido.
+- `evaluate-idea/SKILL.md` diz para não adicionar ideias diretamente ao roadmap como trabalho comprometido.
 - O `AGENT.md` raiz diz para perguntar antes de modificar arquivos de knowledge, decisão ou framework.
 
 Evidência De Navegação:
@@ -537,9 +537,9 @@ Evidência De Navegação:
 
 | Skill | Usada Por | Propósito | Evidência De Rota |
 | --- | --- | --- | --- |
-| `evaluate-idea.skill.md` | Product Strategist | Julgar valor para usuário, evidência, impacto no MVP e impacto no roadmap. | `product-strategist.role.md` aponta para ela. |
-| `check-coherence.skill.md` | Product Strategist | Verificar se a ideia conflita com ICP, proposta de valor ou foco atual. | `product-strategist.role.md` aponta para ela. |
-| `prioritize-backlog.skill.md` | Roadmap Planner | Não usada durante o intake; usada apenas se a próxima jornada promover a ideia para backlog ou roadmap. | `roadmap-planner.role.md` aponta para ela. |
+| `evaluate-idea/SKILL.md` | Product Strategist | Julgar valor para usuário, evidência, impacto no MVP e impacto no roadmap. | `product-strategist.role.md` aponta para ela. |
+| `check-coherence/SKILL.md` | Product Strategist | Verificar se a ideia conflita com ICP, proposta de valor ou foco atual. | `product-strategist.role.md` aponta para ela. |
+| `prioritize-backlog/SKILL.md` | Roadmap Planner | Não usada durante o intake; usada apenas se a próxima jornada promover a ideia para backlog ou roadmap. | `roadmap-planner.role.md` aponta para ela. |
 
 ## Playbooks Ativos
 
@@ -566,7 +566,7 @@ Não pergunte como formulário rígido. Pergunte apenas o que está faltando.
 
 | Etapa | Propósito | Fonte |
 | --- | --- | --- |
-| Etapa 7 | Perguntar apenas contexto de product-fit ausente antes de avaliar a ideia. | `strategy/product/skills/evaluate-idea.skill.md` |
+| Etapa 7 | Perguntar apenas contexto de product-fit ausente antes de avaliar a ideia. | `strategy/product/skills/evaluate-idea/SKILL.md` |
 | Etapa 9 | Ajudar o founder a escolher o destino da ideia antes de qualquer handoff para roadmap. | `strategy/product/playbooks/product-strategy.playbook.md` |
 | Confirmação | Confirmar se deve registrar uma nota ou iniciar `idea-to-roadmap`. | `ai-standard/foundation/guided-conversation.md` |
 
@@ -696,7 +696,7 @@ Use este checklist para testar se a jornada realmente aplica a Navigation Chain.
 - [x] `strategy/product/AGENT.md` existe.
 - [x] `strategy/product/area.yaml` existe.
 - [x] `strategy/product/roles/product-strategist.role.md` existe.
-- [x] `strategy/product/skills/evaluate-idea.skill.md` existe.
+- [x] `strategy/product/skills/evaluate-idea/SKILL.md` existe.
 - [x] `strategy/product/playbooks/product-strategy.playbook.md` existe.
 - [x] `strategy/product/knowledge/validation-notes.md` existe.
 - [x] `strategy/roadmap/AGENT.md` existe.
@@ -709,9 +709,9 @@ Use este checklist para testar se a jornada realmente aplica a Navigation Chain.
 - [x] `strategy/AGENT.md` roteia solicitações de Strategy entre áreas para `workflows/README.md`.
 - [x] `strategy/workflows/README.md` aponta para `new-idea-intake.workflow.md`.
 - [x] `strategy/product/AGENT.md` roteia ambiguidade de product strategy para Product Strategist.
-- [x] Product Strategist aponta para `evaluate-idea.skill.md`.
+- [x] Product Strategist aponta para `evaluate-idea/SKILL.md`.
 - [x] Product Strategist aponta para `product-strategy.playbook.md`.
-- [x] `evaluate-idea.skill.md` diz para não adicionar ideias diretamente ao roadmap como trabalho comprometido.
+- [x] `evaluate-idea/SKILL.md` diz para não adicionar ideias diretamente ao roadmap como trabalho comprometido.
 - [x] Roadmap Planner aponta para assets de priorização de roadmap.
 
 ### Execução Da Jornada

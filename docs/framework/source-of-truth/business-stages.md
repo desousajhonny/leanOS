@@ -52,7 +52,7 @@ Trabalho principal do Chief:
 Rotas típicas:
 
 - `strategy/workflows/founder-diagnosis.workflow.md`
-- `strategy/product/skills/diagnose-founder-idea.skill.md`
+- `strategy/product/skills/diagnose-founder-idea/SKILL.md`
 
 Próximo estágio saudável:
 

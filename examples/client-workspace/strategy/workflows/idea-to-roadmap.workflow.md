@@ -58,10 +58,10 @@ All required areas are active in this department.
 3. `strategy/workflows/idea-to-roadmap.workflow.md`
 4. `strategy/product/AGENT.md`
 5. `strategy/product/roles/product-strategist.role.md`
-6. `strategy/product/skills/define-mvp-validation-scope.skill.md`
+6. `strategy/product/skills/define-mvp-validation-scope/SKILL.md`
 7. `strategy/roadmap/AGENT.md`
 8. `strategy/roadmap/roles/roadmap-planner.role.md`
-9. `strategy/roadmap/skills/prioritize-backlog.skill.md`
+9. `strategy/roadmap/skills/prioritize-backlog/SKILL.md`
 10. `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md`
 
 ## Sequence

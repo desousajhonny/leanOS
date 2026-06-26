@@ -23,10 +23,10 @@ flowchart TD
   H["Explicar rota/arquivo ausente e parar"]
   I["operations/product-ops/AGENT.md"]
   J["role Product Owner"]
-  K["shape-epic.skill.md"]
+  K["shape-epic/SKILL.md"]
   L{"Epic pronto para quebra?"}
   M["Explicar lacunas do Epic e parar"]
-  N["write-feature-criteria.skill.md"]
+  N["write-feature-criteria/SKILL.md"]
   O["Aplicar DRM por Feature"]
   P{"Design/Security/DevOps necessário?"}
   Q["Rotear áreas condicionais apenas quando aplicável"]
@@ -53,7 +53,7 @@ flowchart TD
 
 ## Fluxo Em Linguagem Simples
 
-O modelo começa no `AGENT.md` raiz porque o founder fala naturalmente. Ele entra em Operations porque converter um Epic em Features prontas para implementação é delivery shaping, não estratégia ou código. Ele lê `operations/workflows/epic-to-features.workflow.md` porque a solicitação coordena Product Ops, Engineering e review condicional de Design/Security/DevOps. Ele entra em Product Ops porque Product Ops é dono do shaping de Epic e Feature. Ele usa o julgamento do Product Owner, verifica o Epic com `shape-epic.skill.md`, rascunha Features por meio de `write-feature-criteria.skill.md` e só então pergunta ao founder se deve escrever os arquivos locais de Feature.
+O modelo começa no `AGENT.md` raiz porque o founder fala naturalmente. Ele entra em Operations porque converter um Epic em Features prontas para implementação é delivery shaping, não estratégia ou código. Ele lê `operations/workflows/epic-to-features.workflow.md` porque a solicitação coordena Product Ops, Engineering e review condicional de Design/Security/DevOps. Ele entra em Product Ops porque Product Ops é dono do shaping de Epic e Feature. Ele usa o julgamento do Product Owner, verifica o Epic com `shape-epic/SKILL.md`, rascunha Features por meio de `write-feature-criteria/SKILL.md` e só então pergunta ao founder se deve escrever os arquivos locais de Feature.
 
 ## Trigger Do Founder
 
@@ -99,8 +99,8 @@ AGENT.md
 -> operations/workflows/epic-to-features.workflow.md
 -> operations/product-ops/AGENT.md
 -> operations/product-ops/roles/product-owner.role.md
--> operations/product-ops/skills/shape-epic.skill.md
--> operations/product-ops/skills/write-feature-criteria.skill.md
+-> operations/product-ops/skills/shape-epic/SKILL.md
+-> operations/product-ops/skills/write-feature-criteria/SKILL.md
 -> operations/product-ops/playbooks/epic-to-features.playbook.md
 -> operations/product-ops/epics/<epic-slug>/<feature-slug>.md
 ```
@@ -180,7 +180,7 @@ Próxima etapa:
 
 O modelo abre:
 
-`operations/product-ops/skills/shape-epic.skill.md`
+`operations/product-ops/skills/shape-epic/SKILL.md`
 
 Por quê:
 
@@ -189,17 +189,17 @@ Por quê:
 
 Evidência De Navegação:
 
-- `shape-epic.skill.md` exige `work-taxonomy.md`, `ready-to-develop.md`, `epics/README.md` e `epic-template.md`.
+- `shape-epic/SKILL.md` exige `work-taxonomy.md`, `ready-to-develop.md`, `epics/README.md` e `epic-template.md`.
 
 Próxima etapa:
 
-`operations/product-ops/skills/write-feature-criteria.skill.md`
+`operations/product-ops/skills/write-feature-criteria/SKILL.md`
 
 ### Etapa 5 - Rascunhar Features Com DRM
 
 O modelo abre:
 
-`operations/product-ops/skills/write-feature-criteria.skill.md`
+`operations/product-ops/skills/write-feature-criteria/SKILL.md`
 
 Por quê:
 
@@ -369,8 +369,8 @@ Regras:
 - [ ] `operations/product-ops/area.yaml` existe.
 - [ ] `operations/product-ops/epics/README.md` existe.
 - [ ] `operations/product-ops/roles/product-owner.role.md` existe.
-- [ ] `operations/product-ops/skills/shape-epic.skill.md` existe.
-- [ ] `operations/product-ops/skills/write-feature-criteria.skill.md` existe.
+- [ ] `operations/product-ops/skills/shape-epic/SKILL.md` existe.
+- [ ] `operations/product-ops/skills/write-feature-criteria/SKILL.md` existe.
 - [ ] `operations/product-ops/playbooks/epic-to-features.playbook.md` existe.
 - [ ] `ai-standard/templates/product/epic-template.md` existe.
 - [ ] `ai-standard/templates/product/feature-template.md` existe.

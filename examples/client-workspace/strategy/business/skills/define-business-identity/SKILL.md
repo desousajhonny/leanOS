@@ -1,6 +1,11 @@
+---
+name: define-business-identity
+description: Use when business identity is unclear; mission or principles need definition; product work lacks business context
+---
+
 # Define Business Identity
 
-## Purpose
+## Overview
 
 Clarify business context, mission, principles and identity.
 
@@ -26,11 +31,25 @@ Clarify business context, mission, principles and identity.
 
 ## Process
 
-1. Summarize what the business is.
-2. Clarify why it exists.
-3. Identify principles that should guide product and operational decisions.
-4. Separate founder beliefs from validated facts.
-5. Propose updates before writing.
+### Step 1
+
+Summarize what the business is.
+
+### Step 2
+
+Clarify why it exists.
+
+### Step 3
+
+Identify principles that should guide product and operational decisions.
+
+### Step 4
+
+Separate founder beliefs from validated facts.
+
+### Step 5
+
+Propose updates before writing.
 
 ## Checks
 

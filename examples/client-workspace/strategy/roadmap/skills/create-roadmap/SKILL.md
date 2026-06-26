@@ -1,6 +1,11 @@
+---
+name: create-roadmap
+description: Use when the founder needs a roadmap; product strategy needs an MVP Candidate Roadmap; delivery scope needs a planning path after Strategy
+---
+
 # Create Roadmap
 
-## Purpose
+## Overview
 
 Sequence roadmap work by business outcome, product value, MVP validation scope and delivery constraints.
 
@@ -27,13 +32,33 @@ Sequence roadmap work by business outcome, product value, MVP validation scope a
 
 ## Process
 
-1. Clarify the roadmap objective.
-2. When the product is at idea stage, produce an MVP Candidate Roadmap from the MVP Validation Scope.
-3. Separate Now, Next, Later and Not Planned.
-4. Connect items to outcomes and validation signals.
-5. Identify delivery scope type, milestone and release goal only when confirmed later by Product Ops.
-6. Identify dependencies and risks.
-7. Propose updates before writing.
+### Step 1
+
+Clarify the roadmap objective.
+
+### Step 2
+
+When the product is at idea stage, produce an MVP Candidate Roadmap from the MVP Validation Scope.
+
+### Step 3
+
+Separate Now, Next, Later and Not Planned.
+
+### Step 4
+
+Connect items to outcomes and validation signals.
+
+### Step 5
+
+Identify delivery scope type, milestone and release goal only when confirmed later by Product Ops.
+
+### Step 6
+
+Identify dependencies and risks.
+
+### Step 7
+
+Propose updates before writing.
 
 ## Checks
 

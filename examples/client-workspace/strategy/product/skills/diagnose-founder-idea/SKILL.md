@@ -1,6 +1,11 @@
+---
+name: diagnose-founder-idea
+description: Use when the founder is starting LeanOS; the product idea is raw; the Chief needs to identify the current progression stage before roadmap or MVP validation scope
+---
+
 # Diagnose Founder Idea
 
-## Purpose
+## Overview
 
 Diagnose a raw founder idea into a Strategy Baseline gap, next guided question and safe next route.
 
@@ -34,13 +39,33 @@ Diagnose a raw founder idea into a Strategy Baseline gap, next guided question a
 
 ## Process
 
-1. Read only active Strategy context.
-2. Restate what is known from seed context and Product knowledge.
-3. Classify the current founder progression stage using the Founder Progression Model.
-4. Check `progression-gates.md` for required context, allowed next stages and blocked next stages.
-5. Identify Strategy Baseline gaps: target user, problem, promise, alternative, riskiest assumption, immediate focus and MVP validation target.
-6. Choose the smallest next guided question.
-7. Recommend the next route only when the gate is satisfied.
+### Step 1
+
+Read only active Strategy context.
+
+### Step 2
+
+Restate what is known from seed context and Product knowledge.
+
+### Step 3
+
+Classify the current founder progression stage using the Founder Progression Model.
+
+### Step 4
+
+Check `progression-gates.md` for required context, allowed next stages and blocked next stages.
+
+### Step 5
+
+Identify Strategy Baseline gaps: target user, problem, promise, alternative, riskiest assumption, immediate focus and MVP validation target.
+
+### Step 6
+
+Choose the smallest next guided question.
+
+### Step 7
+
+Recommend the next route only when the gate is satisfied.
 
 ## Checks
 

@@ -60,4 +60,4 @@ Do not ask a rigid questionnaire. Ask only what is missing.
 
 ## Navigation
 
-`../AGENT.md -> roles/<role>.role.md -> skills/<skill>.skill.md -> playbooks/<this-playbook>.playbook.md -> Output`
+`../AGENT.md -> roles/<role>.role.md -> skills/<skill>/SKILL.md -> playbooks/<this-playbook>.playbook.md -> Output`

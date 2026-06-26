@@ -1,6 +1,11 @@
+---
+name: define-business-model
+description: Use when pricing or revenue logic is unclear; financial assumptions affect MVP scope; go-to-market needs a business model baseline
+---
+
 # Define Business Model
 
-## Purpose
+## Overview
 
 Draft revenue, channels, costs and delivery model.
 
@@ -26,10 +31,21 @@ Draft revenue, channels, costs and delivery model.
 
 ## Process
 
-1. Draft the simplest viable revenue model.
-2. List cost and delivery assumptions.
-3. Identify pricing risks.
-4. Route detailed finance modeling to Growth Finance when needed.
+### Step 1
+
+Draft the simplest viable revenue model.
+
+### Step 2
+
+List cost and delivery assumptions.
+
+### Step 3
+
+Identify pricing risks.
+
+### Step 4
+
+Route detailed finance modeling to Growth Finance when needed.
 
 ## Checks
 

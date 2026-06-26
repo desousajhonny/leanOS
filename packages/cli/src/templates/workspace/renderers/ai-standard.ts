@@ -115,7 +115,7 @@ export function aiStandardFiles(): FileEntry[] {
     { path: "ai-standard/foundation/asset-taxonomy.md", content: assetTaxonomy() },
     { path: "ai-standard/foundation/creation-rules.md", content: creationRules() },
     { path: "ai-standard/foundation/quality-criteria.md", content: qualityCriteria() },
-    { path: "ai-standard/foundation/naming-conventions.md", content: "# Naming Conventions\n\n- Use lowercase kebab-case for folders and file basenames.\n- Use direct, singular asset names: `<direct-name>.role.md`, `<direct-name>.skill.md`, `<direct-name>.playbook.md`, `<direct-name>.workflow.md`.\n- Roles end with `.role.md`.\n- Skills end with `.skill.md`.\n- Playbooks end with `.playbook.md`.\n- Workflows end with `.workflow.md`.\n- Prefer domain capability names such as `accessibility.skill.md` or `design-system.skill.md` over generic action names such as `define-accessibility.skill.md`.\n- Use action verbs only when the asset is truly procedural, such as `create-branch.skill.md`.\n- Knowledge files do not use asset suffixes; use names such as `knowledge/design-system.md`.\n" },
+    { path: "ai-standard/foundation/naming-conventions.md", content: "# Naming Conventions\n\n- Use lowercase kebab-case for folders and file basenames.\n- Use direct, singular asset names: `<direct-name>.role.md`, `<direct-name>/SKILL.md`, `<direct-name>.playbook.md`, `<direct-name>.workflow.md`.\n- Roles end with `.role.md`.\n- Skill folders use kebab-case and their main file is `SKILL.md`.\n- Playbooks end with `.playbook.md`.\n- Workflows end with `.workflow.md`.\n- Prefer domain capability names such as `accessibility/SKILL.md` or `design-system/SKILL.md` over generic action names such as `define-accessibility/SKILL.md`.\n- Use action verbs only when the asset is truly procedural, such as `create-branch/SKILL.md`.\n- Knowledge files do not use asset suffixes; use names such as `knowledge/design-system.md`.\n" },
     { path: "ai-standard/foundation/folder-documentation-rules.md", content: folderDocumentationRules() },
     { path: "ai-standard/templates/README.md", content: templatesReadme(templateGroups) },
     ...templateGroups.map((group) => ({ path: `ai-standard/templates/${group.key}/README.md`, content: templateGroupReadme(group) })),
@@ -137,6 +137,8 @@ function templateContent(fileName: string): string {
     "department-agent-template.md": departmentAgentTemplate(),
     "area-agent-template.md": areaAgentTemplate(),
     "area-readme-template.md": areaReadmeTemplate(),
+    "skill-template.md": skillTemplate(),
+    "skill-template.yaml": skillYamlTemplate(),
     "playbook-template.md": playbookTemplate(),
     "playbook-template.yaml": playbookYamlTemplate(),
     "epic-template.md": productEpicTemplate(),
@@ -839,7 +841,7 @@ Use this checklist before accepting a \`.role.md\` file.
 `,
     skill: `# Skill Quality Checklist
 
-Use this checklist before accepting a \`.skill.md\` file.
+Use this checklist before accepting a skill folder with \`SKILL.md\`.
 
 ## Capability
 
@@ -847,12 +849,16 @@ Use this checklist before accepting a \`.skill.md\` file.
 - [ ] The skill answers "which capability should be applied?"
 - [ ] The skill is reusable by one or more roles or playbooks.
 - [ ] The skill does not become a full process sequence.
+- [ ] The skill lives at \`skills/<skill-name>/SKILL.md\`.
+- [ ] The skill has YAML frontmatter with \`name\` and \`description\`.
+- [ ] The \`description\` starts with "Use when" and describes triggering conditions.
 
 ## Operating Detail
 
 - [ ] The skill states when to use it.
 - [ ] The skill states required context.
 - [ ] The skill states inputs.
+- [ ] The skill uses \`### Step N\` headings inside \`## Process\`.
 - [ ] The skill states checks.
 - [ ] The skill states outputs.
 - [ ] The skill states red lines.
@@ -1308,13 +1314,14 @@ Use \`../checklists/role-quality-checklist.md\`.
 `,
     "create-skill": `# Create Skill Instructions
 
-Use when creating a \`.skill.md\` file inside an area.
+Use when creating a skill folder inside an area.
 
 ## Before Creating
 
 1. Confirm the active area.
 2. Confirm which role or playbook will use the skill.
 3. Check whether an existing skill already covers the capability.
+4. Create \`skills/<skill-name>/SKILL.md\`.
 
 ## Choose Template
 
@@ -1324,11 +1331,13 @@ Use when creating a \`.skill.md\` file inside an area.
 ## Process
 
 1. Define one reusable capability.
-2. Define when to use it.
-3. Define required context and inputs.
-4. Define checks and outputs.
-5. Define red lines.
-6. Avoid turning the skill into a full ordered process.
+2. Add YAML frontmatter with \`name\` and a trigger-only \`description\` that starts with "Use when".
+3. Define when to use it.
+4. Define required context and inputs.
+5. Use \`### Step N\` headings inside \`## Process\`.
+6. Define checks and outputs.
+7. Define red lines.
+8. Avoid turning the skill into a full ordered process.
 
 ## Validate
 
@@ -1875,7 +1884,7 @@ If Design needs a reusable capability for evaluating PRs:
 
 - Asset type: skill.
 - Owner: \`operations/design/skills/\`.
-- File: \`design-review.skill.md\`.
+- File: \`design-review/SKILL.md\`.
 - Role usage: Product Designer, Accessibility Specialist or UX Writer can load it when relevant.
 - Do not create \`design-review.playbook.md\` unless there is a repeatable execution sequence beyond the skill itself.
 `;
@@ -2193,19 +2202,19 @@ A role is an operating persona and responsibility boundary.
 - Do not create a role for a one-off task or a simple capability.
 - Agents should select one role before loading skills or playbooks.
 
-Example: \`operations/design/roles/product-designer.role.md\` owns product design decisions and points to \`design-system.skill.md\`, \`user-flow-mapping.skill.md\`, \`screen-specification.skill.md\` and \`design-review.skill.md\`.
+Example: \`operations/design/roles/product-designer.role.md\` owns product design decisions and points to \`design-system/SKILL.md\`, \`user-flow-mapping/SKILL.md\`, \`screen-specification/SKILL.md\` and \`design-review/SKILL.md\`.
 
 ### Skill
 
 A skill is a reusable capability.
 
-- Lives in \`<area>/skills/<direct-name>.skill.md\`.
+- Lives in \`<area>/skills/<direct-name>/SKILL.md\`.
 - Answers: "Which capability should be applied?"
 - Create when the same capability is reused by one or more roles or playbooks.
 - Do not make a skill a full process; that belongs in a playbook.
 - Agents should load only the skills required by the active role and task.
 
-Example: \`operations/design/skills/accessibility.skill.md\` defines how to apply accessibility checks and WCAG 2.2 AA expectations.
+Example: \`operations/design/skills/accessibility/SKILL.md\` defines how to apply accessibility checks and WCAG 2.2 AA expectations.
 
 ### Playbook
 
@@ -2253,9 +2262,9 @@ If the founder says, "define the design before implementation":
 2. Operations routes to \`operations/design/AGENT.md\`.
 3. Design area AGENT chooses \`roles/product-designer.role.md\`.
 4. The role loads skills:
-   - \`skills/design-system.skill.md\`
-   - \`skills/accessibility.skill.md\`
-   - \`skills/user-flow-mapping.skill.md\`
+   - \`skills/design-system/SKILL.md\`
+   - \`skills/accessibility/SKILL.md\`
+   - \`skills/user-flow-mapping/SKILL.md\`
 5. The work follows \`playbooks/design-foundation.playbook.md\`.
 6. Confirmed outputs update:
    - \`knowledge/design-system.md\`
@@ -2543,7 +2552,94 @@ What this area owns.
 
 ## Common Paths
 
-- <request>: role \`roles/<role>.role.md\` -> skill \`skills/<skill>.skill.md\` -> playbook \`playbooks/<playbook>.playbook.md\`.
+- <request>: role \`roles/<role>.role.md\` -> skill \`skills/<skill>/SKILL.md\` -> playbook \`playbooks/<playbook>.playbook.md\`.
+`;
+}
+
+function skillTemplate(): string {
+  return `---
+name: <skill-name>
+description: Use when <specific trigger or situation>
+---
+
+# <Skill Name>
+
+## Overview
+
+Define one reusable capability in one or two sentences.
+
+## Use When
+
+- <trigger>
+- <symptom>
+- <situation>
+
+## Required Context
+
+- \`../knowledge/<file>.md\`
+- Active role instructions
+- Founder request
+
+## Inputs
+
+- <input>
+- <input>
+
+## Process
+
+### Step 1
+
+Confirm this skill applies to the active request.
+
+### Step 2
+
+Load only the required context.
+
+### Step 3
+
+Apply the capability and produce the smallest useful output.
+
+### Step 4
+
+Check red lines before recommending file updates or handoffs.
+
+## Checks
+
+- <check>
+- <check>
+
+## Output
+
+- <output>
+- <output>
+
+## Files to Update
+
+- Update relevant area knowledge only after explicit confirmation.
+
+## Red Lines
+
+- Do not invent product-specific facts.
+- Do not turn this skill into a playbook or workflow.
+- Ask before modifying durable files.
+`;
+}
+
+function skillYamlTemplate(): string {
+  return `skill:
+  slug: <skill-name>
+  title: <Skill Name>
+  purpose: <One reusable capability>
+  use_when:
+    - <trigger>
+  required_context:
+    - <context file>
+  process:
+    - <step>
+  checks:
+    - <check>
+  outputs:
+    - <output>
 `;
 }
 
@@ -2610,7 +2706,7 @@ Do not ask a rigid questionnaire. Ask only what is missing.
 
 ## Navigation
 
-\`../AGENT.md -> roles/<role>.role.md -> skills/<skill>.skill.md -> playbooks/<this-playbook>.playbook.md -> Output\`
+\`../AGENT.md -> roles/<role>.role.md -> skills/<skill>/SKILL.md -> playbooks/<this-playbook>.playbook.md -> Output\`
 `;
 }
 

@@ -15,7 +15,7 @@ export function indexFiles(activeAreas: AreaDefinition[], activeRoots: RootDepar
     { path: ".leanos/index/departments.yaml", content: stringifyYaml({ departments: activeRoots.map((department) => ({ key: department.key, agent: `../../${department.key}/AGENT.md`, readme: `../../${department.key}/README.md` })) }) },
     { path: ".leanos/index/areas.yaml", content: stringifyYaml({ areas: activeAreas.map((area) => ({ key: area.key, department: area.root, agent: area.lead ? `../../${area.path}/AGENT.md` : null, readme: `../../${area.path}/README.md` })) }) },
     { path: ".leanos/index/roles.yaml", content: stringifyYaml({ roles: activeAreas.flatMap((area) => area.roles.map((role) => ({ key: role.slug, area: area.key, path: `../../${area.path}/roles/${role.slug}.role.md` }))) }) },
-    { path: ".leanos/index/skills.yaml", content: stringifyYaml({ skills: activeAreas.flatMap((area) => area.skills.map((skill) => ({ key: skill.slug, area: area.key, path: `../../${area.path}/skills/${skill.slug}.skill.md` }))) }) },
+    { path: ".leanos/index/skills.yaml", content: stringifyYaml({ skills: activeAreas.flatMap((area) => area.skills.map((skill) => ({ key: skill.slug, area: area.key, path: `../../${area.path}/skills/${skill.slug}/SKILL.md` }))) }) },
     { path: ".leanos/index/playbooks.yaml", content: stringifyYaml({ playbooks: activeAreas.flatMap((area) => area.playbooks.map((playbook) => ({ key: playbook.slug, area: area.key, path: `../../${area.path}/playbooks/${playbook.slug}.playbook.md` }))) }) },
     { path: ".leanos/index/workflows.yaml", content: stringifyYaml({ workflows: localWorkflowIndex(activeAreas, activeRoots) }) },
     {

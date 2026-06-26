@@ -41,4 +41,4 @@ Keep business identity, principles, mission and operating decisions coherent.
 
 ## Common Paths
 
-- Business request: `AGENT.md` -> role `roles/business-strategist.role.md` -> skill `skills/define-business-identity.skill.md` or `skills/clarify-operating-model.skill.md` -> playbook `playbooks/business-foundation.playbook.md`.
+- Business request: `AGENT.md` -> role `roles/business-strategist.role.md` -> skill `skills/define-business-identity/SKILL.md` or `skills/clarify-operating-model/SKILL.md` -> playbook `playbooks/business-foundation.playbook.md`.

@@ -1,6 +1,11 @@
+---
+name: check-coherence
+description: Use when strategy feels inconsistent; MVP validation scope may not match the problem; roadmap or issue work needs product review
+---
+
 # Check Coherence
 
-## Purpose
+## Overview
 
 Check alignment between ICP, problem, value proposition, MVP validation scope, roadmap and issue.
 
@@ -28,11 +33,25 @@ Check alignment between ICP, problem, value proposition, MVP validation scope, r
 
 ## Process
 
-1. Check ICP/problem fit.
-2. Check value proposition/problem fit.
-3. Check MVP validation scope/value fit.
-4. Check roadmap/MVP validation scope fit.
-5. List contradictions and next fixes.
+### Step 1
+
+Check ICP/problem fit.
+
+### Step 2
+
+Check value proposition/problem fit.
+
+### Step 3
+
+Check MVP validation scope/value fit.
+
+### Step 4
+
+Check roadmap/MVP validation scope fit.
+
+### Step 5
+
+List contradictions and next fixes.
 
 ## Checks
 

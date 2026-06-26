@@ -1,6 +1,11 @@
+---
+name: define-mvp-validation-scope
+description: Use when a founder has a raw idea and wants the first MVP direction; the roadmap needs a simple MVP validation source; validation should happen through an MVP, landing page, manual workflow or concierge slice
+---
+
 # Define MVP Validation Scope
 
-## Purpose
+## Overview
 
 Define the smallest MVP validation path that can test the business thesis and produce an MVP Candidate Roadmap.
 
@@ -32,14 +37,37 @@ Define the smallest MVP validation path that can test the business thesis and pr
 
 ## Process
 
-1. Restate the business thesis and target user.
-2. Name the core problem and promise.
-3. Define the MVP validation goal.
-4. Choose the smallest MVP Slice that can validate the thesis.
-5. Separate In Scope, Out of Scope, Manual / Concierge Parts and Productized Parts.
-6. Define Success Signals and Pivot Signals.
-7. Draft the Initial MVP Roadmap Candidate without creating Epics or Features.
-8. Record open risks and whether the scope is ready for Roadmap.
+### Step 1
+
+Restate the business thesis and target user.
+
+### Step 2
+
+Name the core problem and promise.
+
+### Step 3
+
+Define the MVP validation goal.
+
+### Step 4
+
+Choose the smallest MVP Slice that can validate the thesis.
+
+### Step 5
+
+Separate In Scope, Out of Scope, Manual / Concierge Parts and Productized Parts.
+
+### Step 6
+
+Define Success Signals and Pivot Signals.
+
+### Step 7
+
+Draft the Initial MVP Roadmap Candidate without creating Epics or Features.
+
+### Step 8
+
+Record open risks and whether the scope is ready for Roadmap.
 
 ## Checks
 

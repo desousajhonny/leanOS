@@ -119,7 +119,7 @@ Root AGENT.md
 -> <department>/workflows/<workflow>.workflow.md
 -> <area>/AGENT.md or README.md
 -> <area>/roles/<role>.role.md
--> <area>/skills/<skill>.skill.md
+-> <area>/skills/<skill>/SKILL.md
 -> <area>/playbooks/<playbook>.playbook.md
 -> Output
 ```

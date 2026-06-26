@@ -74,7 +74,7 @@ O modelo nunca realiza escritas remotas no GitHub por conta própria. Ele prepar
 
 - Área primária para setup: `operations/devops/`
 - Role primária para setup: `operations/devops/roles/github-devops.role.md`
-- Skill primária: `operations/devops/skills/configure-github-project.skill.md`
+- Skill primária: `operations/devops/skills/configure-github-project/SKILL.md`
 - Playbook primário: `operations/devops/playbooks/configure-github-project.playbook.md`
 - Owner do trabalho de produto: `operations/product-ops/AGENT.md`
 - Limite de capability: `.github/leanos/capability-contract.md`
@@ -96,7 +96,7 @@ Quando DevOps está ativo:
 Root AGENT.md
 -> operations/devops/AGENT.md
 -> operations/devops/roles/github-devops.role.md
--> operations/devops/skills/configure-github-project.skill.md
+-> operations/devops/skills/configure-github-project/SKILL.md
 -> operations/devops/playbooks/configure-github-project.playbook.md
 -> .github/leanos/setup-guide.md
 -> .github/leanos/project-sync.yaml

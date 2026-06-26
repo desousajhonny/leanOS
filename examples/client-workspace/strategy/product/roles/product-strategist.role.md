@@ -25,14 +25,14 @@ Read:
 
 ## Skills
 
-- `../skills/diagnose-founder-idea.skill.md`
-- `../skills/define-product.skill.md`
-- `../skills/define-icp.skill.md`
-- `../skills/define-value-proposition.skill.md`
-- `../skills/define-business-model.skill.md`
-- `../skills/define-mvp-validation-scope.skill.md`
-- `../skills/evaluate-idea.skill.md`
-- `../skills/check-coherence.skill.md`
+- `../skills/diagnose-founder-idea/SKILL.md`
+- `../skills/define-product/SKILL.md`
+- `../skills/define-icp/SKILL.md`
+- `../skills/define-value-proposition/SKILL.md`
+- `../skills/define-business-model/SKILL.md`
+- `../skills/define-mvp-validation-scope/SKILL.md`
+- `../skills/evaluate-idea/SKILL.md`
+- `../skills/check-coherence/SKILL.md`
 
 ## Playbooks
 

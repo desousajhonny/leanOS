@@ -45,7 +45,7 @@ flowchart TD
 
 O modelo começa no `AGENT.md` raiz porque o founder fala em linguagem natural. O roteamento raiz lê `leanos.yaml`, fase atual e indexes ativos antes de entrar em Strategy. Depois segue `founder-diagnosis.workflow.md` porque iniciar é uma decisão de estágio de progressão, não trabalho de delivery.
 
-Strategy Product usa `diagnose-founder-idea.skill.md` para nomear o estágio atual, as lacunas de baseline e a próxima pergunta guiada. A jornada termina quando o founder confirma atualizações em Strategy ou escolhe uma próxima rota segura.
+Strategy Product usa `diagnose-founder-idea/SKILL.md` para nomear o estágio atual, as lacunas de baseline e a próxima pergunta guiada. A jornada termina quando o founder confirma atualizações em Strategy ou escolhe uma próxima rota segura.
 
 ## Trigger Do Founder
 
@@ -69,7 +69,7 @@ Root AGENT.md
 -> strategy/workflows/founder-diagnosis.workflow.md
 -> strategy/product/AGENT.md
 -> strategy/product/roles/product-strategist.role.md
--> strategy/product/skills/diagnose-founder-idea.skill.md
+-> strategy/product/skills/diagnose-founder-idea/SKILL.md
 -> strategy/product/playbooks/product-strategy.playbook.md
 ```
 

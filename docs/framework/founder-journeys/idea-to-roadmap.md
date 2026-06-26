@@ -113,7 +113,7 @@ Root AGENT.md
 -> strategy/product/playbooks/product-strategy.playbook.md
 -> strategy/roadmap/AGENT.md
 -> strategy/roadmap/roles/roadmap-planner.role.md
--> strategy/roadmap/skills/prioritize-backlog.skill.md
+-> strategy/roadmap/skills/prioritize-backlog/SKILL.md
 -> strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md
 -> Output
 ```
@@ -357,25 +357,25 @@ Por quê:
 
 Evidência De Navegação:
 
-- `roadmap-planner.role.md` aponta para `prioritize-backlog.skill.md`.
+- `roadmap-planner.role.md` aponta para `prioritize-backlog/SKILL.md`.
 - `roadmap-planner.role.md` aponta para `roadmap-cycle-planning.playbook.md`.
 - Ele lê Roadmap, ciclo atual, backlog e Product brief.
 
 O que o modelo entende aqui:
 
-- Ele deve usar `prioritize-backlog.skill.md` para classificação da candidata.
+- Ele deve usar `prioritize-backlog/SKILL.md` para classificação da candidata.
 - Ele deve usar `roadmap-cycle-planning.playbook.md` para limites de Now, Next, Later e Not Planned.
 - A role atualmente referencia `operations/product-ops/mvp/scope.md`; isso deve ser tratado como contexto opcional de delivery para esta jornada, não como permissão para mudar MVP ou qualquer escopo de delivery.
 
 Próxima etapa:
 
-`strategy/roadmap/skills/prioritize-backlog.skill.md`
+`strategy/roadmap/skills/prioritize-backlog/SKILL.md`
 
 ### Etapa 10 - Priorizar A Candidata
 
 O modelo abre:
 
-`strategy/roadmap/skills/prioritize-backlog.skill.md`
+`strategy/roadmap/skills/prioritize-backlog/SKILL.md`
 
 Por quê:
 
@@ -384,7 +384,7 @@ Por quê:
 
 Evidência De Navegação:
 
-- `prioritize-backlog.skill.md` agrupa trabalho candidato, pontua valor de outcome/risco/esforço/dependência e recomenda manter, estacionar, quebrar ou descartar.
+- `prioritize-backlog/SKILL.md` agrupa trabalho candidato, pontua valor de outcome/risco/esforço/dependência e recomenda manter, estacionar, quebrar ou descartar.
 - Ela diz para não usar prioridade como permissão para implementar.
 - Ela diz para não remover itens de backlog sem confirmação.
 
@@ -501,8 +501,8 @@ Evidência De Navegação:
 
 | Skill | Usada Por | Propósito | Evidência De Rota |
 | --- | --- | --- | --- |
-| `prioritize-backlog.skill.md` | Roadmap Planner | Classificar trabalho candidato por valor, risco, evidência, esforço e fit com ciclo atual. | `roadmap-planner.role.md` aponta para ela. |
-| `check-coherence.skill.md` | Product Strategist | Check opcional se a ideia conflita com ICP, proposta de valor ou foco atual. | `product-strategist.role.md` aponta para ela. |
+| `prioritize-backlog/SKILL.md` | Roadmap Planner | Classificar trabalho candidato por valor, risco, evidência, esforço e fit com ciclo atual. | `roadmap-planner.role.md` aponta para ela. |
+| `check-coherence/SKILL.md` | Product Strategist | Check opcional se a ideia conflita com ICP, proposta de valor ou foco atual. | `product-strategist.role.md` aponta para ela. |
 
 ## Playbooks Ativos
 
@@ -661,7 +661,7 @@ Use este checklist para testar se a jornada realmente aplica a Navigation Chain.
 - [x] `strategy/product/playbooks/product-strategy.playbook.md` existe.
 - [x] `strategy/roadmap/AGENT.md` existe.
 - [x] `strategy/roadmap/roles/roadmap-planner.role.md` existe.
-- [x] `strategy/roadmap/skills/prioritize-backlog.skill.md` existe.
+- [x] `strategy/roadmap/skills/prioritize-backlog/SKILL.md` existe.
 - [x] `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md` existe.
 - [x] `strategy/roadmap/knowledge/backlog.md` existe.
 - [x] `strategy/roadmap/knowledge/roadmap.md` existe.
@@ -678,7 +678,7 @@ Use este checklist para testar se a jornada realmente aplica a Navigation Chain.
 - [x] Product Strategist aponta para o playbook de Product Strategy.
 - [x] O playbook de Product Strategy inclui Guided Conversation.
 - [x] O AGENT de Roadmap roteia priorização de backlog para Roadmap Planner.
-- [x] Roadmap Planner aponta para `prioritize-backlog.skill.md`.
+- [x] Roadmap Planner aponta para `prioritize-backlog/SKILL.md`.
 - [x] Roadmap Planner aponta para `roadmap-cycle-planning.playbook.md`.
 
 ### Execução Da Jornada
@@ -703,7 +703,7 @@ Use este checklist para testar se a jornada realmente aplica a Navigation Chain.
 
 ## Notas Para Design Do Framework
 
-- `roadmap-planner.role.md` e `create-roadmap.skill.md` atualmente referenciam `operations/product-ops/mvp/scope.md`.
+- `roadmap-planner.role.md` e `create-roadmap/SKILL.md` atualmente referenciam `operations/product-ops/mvp/scope.md`.
 - Para esta jornada, escopo de MVP deve ser tratado como contexto opcional de delivery, não como owner de rota e não como permissão para modificar MVP ou qualquer escopo de delivery.
 - Melhoria futura do scaffold: fazer Roadmap Planner distinguir "candidato de roadmap" de "planejamento de escopo de delivery" para que trabalho de roadmap somente de Strategy não dependa de arquivos de Product Ops.
 - A próxima jornada a desenhar é `roadmap-item-to-epic`.

@@ -1,11 +1,14 @@
-# Skill Template
-
-Use this template as a starting point.
-
-## Required
-
-- Purpose
-- Inputs
-- Process
-- Output
-- Navigation
+skill:
+  slug: <skill-name>
+  title: <Skill Name>
+  purpose: <One reusable capability>
+  use_when:
+    - <trigger>
+  required_context:
+    - <context file>
+  process:
+    - <step>
+  checks:
+    - <check>
+  outputs:
+    - <output>

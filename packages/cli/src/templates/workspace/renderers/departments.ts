@@ -33,8 +33,8 @@ function areaFiles(area: AreaDefinition, answers: WorkspaceAnswers): FileEntry[]
     { path: `${area.path}/area.yaml`, content: areaYaml(area) },
     { path: `${area.path}/roles/README.md`, content: folderReadme(`${area.name} Roles`, `Roles owned by the ${area.name} area.`, area.lead ? "Use after the area AGENT selects a role." : "Use after the area README selects a role.", area.lead ? "../AGENT.md" : "../README.md", area.roles.map((role) => `${role.slug}.role.md`), ["../skills/", "../playbooks/"], "Load one role, then follow its skills and playbooks.") },
     ...area.roles.map((role) => ({ path: `${area.path}/roles/${role.slug}.role.md`, content: roleFile(area, role) })),
-    { path: `${area.path}/skills/README.md`, content: folderReadme(`${area.name} Skills`, `Skills owned by the ${area.name} area.`, "Use when a selected role points to a skill.", area.lead ? "../AGENT.md" : "../README.md", area.skills.map((skill) => `${skill.slug}.skill.md`), ["../roles/", "../playbooks/"], "Load only skills needed for the active task.") },
-    ...area.skills.map((skill) => ({ path: `${area.path}/skills/${skill.slug}.skill.md`, content: skillFile(area, skill) })),
+    { path: `${area.path}/skills/README.md`, content: folderReadme(`${area.name} Skills`, `Skills owned by the ${area.name} area.`, "Use when a selected role points to a skill.", area.lead ? "../AGENT.md" : "../README.md", area.skills.map((skill) => `${skill.slug}/SKILL.md`), ["../roles/", "../playbooks/"], "Load only skills needed for the active task.") },
+    ...area.skills.map((skill) => ({ path: `${area.path}/skills/${skill.slug}/SKILL.md`, content: skillFile(area, skill) })),
     { path: `${area.path}/playbooks/README.md`, content: folderReadme(`${area.name} Playbooks`, `Execution sequences owned by the ${area.name} area.`, "Use when a selected role points to a playbook.", area.lead ? "../AGENT.md" : "../README.md", area.playbooks.map((playbook) => `${playbook.slug}.playbook.md`), ["../roles/", "../skills/"], "Use playbooks for sequencing, not for duplicating skill details.") },
     ...area.playbooks.map((playbook) => ({ path: `${area.path}/playbooks/${playbook.slug}.playbook.md`, content: playbookFile(area, playbook) })),
     ...area.files.map((file) => ({ path: `${area.path}/${file.path}`, content: file.content(answers) }))
@@ -377,7 +377,7 @@ ${role.beforeActing.map((file) => `- \`${file}\``).join("\n")}
 
 ## Required Skills
 
-${role.skills.map((skill) => `- \`../skills/${skill}.skill.md\``).join("\n")}
+${role.skills.map((skill) => `- \`../skills/${skill}/SKILL.md\``).join("\n")}
 
 ## Relevant Playbooks
 
@@ -415,7 +415,7 @@ ${role.beforeActing.map((file) => `- \`${file}\``).join("\n")}
 
 ## Skills
 
-${role.skills.map((skill) => `- \`../skills/${skill}.skill.md\``).join("\n")}
+${role.skills.map((skill) => `- \`../skills/${skill}/SKILL.md\``).join("\n")}
 
 ## Playbooks
 
@@ -434,10 +434,14 @@ Start from \`${areaOwner}\`, then load only the required skill and playbook.
 }
 
 export function skillFile(area: AreaDefinition, skill: SkillDefinition): string {
-  if (skill.useWhen || skill.requiredContext || skill.inputs || skill.process || skill.checks || skill.outputs || skill.filesToUpdate || skill.redLines) {
-    return `# ${skill.title}
+  const frontmatter = skillFrontmatter(skill);
 
-## Purpose
+  if (skill.useWhen || skill.requiredContext || skill.inputs || skill.process || skill.checks || skill.outputs || skill.filesToUpdate || skill.redLines) {
+    return `${frontmatter}
+
+# ${skill.title}
+
+## Overview
 
 ${skill.purpose}
 
@@ -455,7 +459,7 @@ ${(skill.inputs ?? ["Relevant area knowledge", "Active role instructions", "User
 
 ## Process
 
-${(skill.process ?? ["Read the minimum relevant context.", "Apply this skill to the request.", "Prepare a concise output or file update."]).map((item, index) => `${index + 1}. ${item}`).join("\n")}
+${renderSkillProcess(skill.process ?? ["Read the minimum relevant context.", "Apply this skill to the request.", "Prepare a concise output or file update."])}
 
 ## Checks
 
@@ -475,9 +479,11 @@ ${(skill.redLines ?? ["Do not invent product-specific facts.", "Ask before modif
 `;
   }
 
-  return `# ${skill.title}
+  return `${frontmatter}
 
-## Purpose
+# ${skill.title}
+
+## Overview
 
 ${skill.purpose}
 
@@ -493,9 +499,7 @@ ${skill.purpose}
 
 ## Process
 
-1. Read the minimum relevant source-of-truth files.
-2. Apply this skill to the user request.
-3. Prepare a concise output or file update.
+${renderSkillProcess(["Read the minimum relevant source-of-truth files.", "Apply this skill to the user request.", "Prepare a concise output or file update."])}
 
 ## Output
 
@@ -503,6 +507,24 @@ ${skill.purpose}
 - Decisions
 - Suggested file updates
 `;
+}
+
+function skillFrontmatter(skill: SkillDefinition): string {
+  return `---
+${stringifyYaml({
+  name: skill.slug,
+  description: skillDescription(skill)
+}).trimEnd()}
+---`;
+}
+
+function skillDescription(skill: SkillDefinition): string {
+  const triggers = skill.useWhen?.length ? skill.useWhen.join("; ") : `${skill.title.toLowerCase()} is required for the active request`;
+  return `Use when ${triggers}`;
+}
+
+function renderSkillProcess(steps: string[]): string {
+  return steps.map((step, index) => `### Step ${index + 1}\n\n${step}`).join("\n\n");
 }
 
 export function playbookFile(area: AreaDefinition, playbook: PlaybookDefinition): string {

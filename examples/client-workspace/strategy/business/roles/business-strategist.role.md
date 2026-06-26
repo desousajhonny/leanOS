@@ -21,8 +21,8 @@ Read:
 
 ## Skills
 
-- `../skills/define-business-identity.skill.md`
-- `../skills/clarify-operating-model.skill.md`
+- `../skills/define-business-identity/SKILL.md`
+- `../skills/clarify-operating-model/SKILL.md`
 
 ## Playbooks
 

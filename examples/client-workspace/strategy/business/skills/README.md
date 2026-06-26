@@ -14,8 +14,8 @@ Use when a selected role points to a skill.
 
 ## Files
 
-- `define-business-identity.skill.md`
-- `clarify-operating-model.skill.md`
+- `define-business-identity/SKILL.md`
+- `clarify-operating-model/SKILL.md`
 
 ## Related Folders
 

@@ -1,6 +1,11 @@
+---
+name: define-value-proposition
+description: Use when the product promise is unclear; positioning or landing page work needs a sharper value proposition; roadmap work needs value alignment
+---
+
 # Define Value Proposition
 
-## Purpose
+## Overview
 
 Articulate the promise, outcome, proof and differentiation.
 
@@ -26,11 +31,25 @@ Articulate the promise, outcome, proof and differentiation.
 
 ## Process
 
-1. State the promise.
-2. Describe the before and after.
-3. Name differentiation versus alternatives.
-4. Separate proof from assumptions.
-5. List risks and open questions.
+### Step 1
+
+State the promise.
+
+### Step 2
+
+Describe the before and after.
+
+### Step 3
+
+Name differentiation versus alternatives.
+
+### Step 4
+
+Separate proof from assumptions.
+
+### Step 5
+
+List risks and open questions.
 
 ## Checks
 

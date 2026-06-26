@@ -24,12 +24,12 @@ Prepare a reviewable pull request from a confirmed Feature implementation.
 5. Check whether Design criteria are required for user-facing UX
 6. Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance
 7. Create or confirm a Feature-linked branch before code changes
-8. Use `skills/plan-implementation.skill.md` to plan implementation
+8. Use `skills/plan-implementation/SKILL.md` to plan implementation
 9. Run `playbooks/component-implementation.playbook.md` before screen or Feature work when a new reusable component is required
-10. Use `skills/follow-code-standards.skill.md` while changing code
-11. Use `skills/review-data-change.skill.md` when data/API/persistence is involved
-12. Use `skills/write-tests.skill.md` to update tests or explain gaps
-13. Use `skills/create-pr.skill.md` to prepare PR using the PR template
+10. Use `skills/follow-code-standards/SKILL.md` while changing code
+11. Use `skills/review-data-change/SKILL.md` when data/API/persistence is involved
+12. Use `skills/write-tests/SKILL.md` to update tests or explain gaps
+13. Use `skills/create-pr/SKILL.md` to prepare PR using the PR template
 14. Fill the `Founder Testing Guide` with plain-language steps, where to test, expected result, out-of-scope notes and known limits
 15. If there is no preview URL, provide the local route, command or manual fallback the founder can realistically use
 

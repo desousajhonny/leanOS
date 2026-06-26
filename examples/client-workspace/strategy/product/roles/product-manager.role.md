@@ -21,10 +21,10 @@ Read:
 
 ## Skills
 
-- `../skills/define-product.skill.md`
-- `../skills/define-mvp-validation-scope.skill.md`
-- `../skills/evaluate-idea.skill.md`
-- `../skills/check-coherence.skill.md`
+- `../skills/define-product/SKILL.md`
+- `../skills/define-mvp-validation-scope/SKILL.md`
+- `../skills/evaluate-idea/SKILL.md`
+- `../skills/check-coherence/SKILL.md`
 
 ## Playbooks
 

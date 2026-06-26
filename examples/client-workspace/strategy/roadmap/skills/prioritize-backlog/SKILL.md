@@ -1,6 +1,11 @@
+---
+name: prioritize-backlog
+description: Use when backlog is unordered; a new idea needs placement; the current cycle needs sharper priority
+---
+
 # Prioritize Backlog
 
-## Purpose
+## Overview
 
 Prioritize candidate work by value, risk, evidence, effort and current cycle fit.
 
@@ -27,10 +32,21 @@ Prioritize candidate work by value, risk, evidence, effort and current cycle fit
 
 ## Process
 
-1. Group candidate work.
-2. Score by outcome value, risk reduction, effort and dependency.
-3. Recommend keep, park, split or discard.
-4. Update only after confirmation.
+### Step 1
+
+Group candidate work.
+
+### Step 2
+
+Score by outcome value, risk reduction, effort and dependency.
+
+### Step 3
+
+Recommend keep, park, split or discard.
+
+### Step 4
+
+Update only after confirmation.
 
 ## Checks
 

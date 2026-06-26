@@ -1,6 +1,11 @@
+---
+name: define-icp
+description: Use when the target customer is too broad; validation needs a first segment; marketing or design needs a clearer audience
+---
+
 # Define ICP
 
-## Purpose
+## Overview
 
 Define the first customer segment with pains, triggers and exclusions.
 
@@ -26,10 +31,21 @@ Define the first customer segment with pains, triggers and exclusions.
 
 ## Process
 
-1. Choose the narrowest useful first segment.
-2. Clarify buyer, user and decision maker.
-3. List qualification criteria and exclusions.
-4. Connect ICP to assumptions that need validation.
+### Step 1
+
+Choose the narrowest useful first segment.
+
+### Step 2
+
+Clarify buyer, user and decision maker.
+
+### Step 3
+
+List qualification criteria and exclusions.
+
+### Step 4
+
+Connect ICP to assumptions that need validation.
 
 ## Checks
 

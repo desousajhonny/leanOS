@@ -30,4 +30,4 @@ What this area owns.
 
 ## Common Paths
 
-- <request>: role `roles/<role>.role.md` -> skill `skills/<skill>.skill.md` -> playbook `playbooks/<playbook>.playbook.md`.
+- <request>: role `roles/<role>.role.md` -> skill `skills/<skill>/SKILL.md` -> playbook `playbooks/<playbook>.playbook.md`.

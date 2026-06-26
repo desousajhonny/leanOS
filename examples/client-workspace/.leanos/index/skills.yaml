@@ -1,37 +1,37 @@
 skills:
   - key: define-business-identity
     area: strategy.business
-    path: ../../strategy/business/skills/define-business-identity.skill.md
+    path: ../../strategy/business/skills/define-business-identity/SKILL.md
   - key: clarify-operating-model
     area: strategy.business
-    path: ../../strategy/business/skills/clarify-operating-model.skill.md
+    path: ../../strategy/business/skills/clarify-operating-model/SKILL.md
   - key: diagnose-founder-idea
     area: strategy.product
-    path: ../../strategy/product/skills/diagnose-founder-idea.skill.md
+    path: ../../strategy/product/skills/diagnose-founder-idea/SKILL.md
   - key: define-product
     area: strategy.product
-    path: ../../strategy/product/skills/define-product.skill.md
+    path: ../../strategy/product/skills/define-product/SKILL.md
   - key: define-icp
     area: strategy.product
-    path: ../../strategy/product/skills/define-icp.skill.md
+    path: ../../strategy/product/skills/define-icp/SKILL.md
   - key: define-value-proposition
     area: strategy.product
-    path: ../../strategy/product/skills/define-value-proposition.skill.md
+    path: ../../strategy/product/skills/define-value-proposition/SKILL.md
   - key: define-business-model
     area: strategy.product
-    path: ../../strategy/product/skills/define-business-model.skill.md
+    path: ../../strategy/product/skills/define-business-model/SKILL.md
   - key: define-mvp-validation-scope
     area: strategy.product
-    path: ../../strategy/product/skills/define-mvp-validation-scope.skill.md
+    path: ../../strategy/product/skills/define-mvp-validation-scope/SKILL.md
   - key: evaluate-idea
     area: strategy.product
-    path: ../../strategy/product/skills/evaluate-idea.skill.md
+    path: ../../strategy/product/skills/evaluate-idea/SKILL.md
   - key: check-coherence
     area: strategy.product
-    path: ../../strategy/product/skills/check-coherence.skill.md
+    path: ../../strategy/product/skills/check-coherence/SKILL.md
   - key: create-roadmap
     area: strategy.roadmap
-    path: ../../strategy/roadmap/skills/create-roadmap.skill.md
+    path: ../../strategy/roadmap/skills/create-roadmap/SKILL.md
   - key: prioritize-backlog
     area: strategy.roadmap
-    path: ../../strategy/roadmap/skills/prioritize-backlog.skill.md
+    path: ../../strategy/roadmap/skills/prioritize-backlog/SKILL.md

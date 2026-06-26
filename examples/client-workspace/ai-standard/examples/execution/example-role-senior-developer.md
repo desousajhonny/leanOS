@@ -31,13 +31,13 @@ Read:
 
 ## Skills
 
-- `../skills/plan-implementation.skill.md`
-- `../skills/follow-code-standards.skill.md`
-- `../skills/implement-component.skill.md`
-- `../skills/create-branch.skill.md`
-- `../skills/write-tests.skill.md`
-- `../skills/review-data-change.skill.md`
-- `../skills/create-pr.skill.md`
+- `../skills/plan-implementation/SKILL.md`
+- `../skills/follow-code-standards/SKILL.md`
+- `../skills/implement-component/SKILL.md`
+- `../skills/create-branch/SKILL.md`
+- `../skills/write-tests/SKILL.md`
+- `../skills/review-data-change/SKILL.md`
+- `../skills/create-pr/SKILL.md`
 
 ## Playbooks
 

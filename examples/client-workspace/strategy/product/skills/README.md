@@ -14,14 +14,14 @@ Use when a selected role points to a skill.
 
 ## Files
 
-- `diagnose-founder-idea.skill.md`
-- `define-product.skill.md`
-- `define-icp.skill.md`
-- `define-value-proposition.skill.md`
-- `define-business-model.skill.md`
-- `define-mvp-validation-scope.skill.md`
-- `evaluate-idea.skill.md`
-- `check-coherence.skill.md`
+- `diagnose-founder-idea/SKILL.md`
+- `define-product/SKILL.md`
+- `define-icp/SKILL.md`
+- `define-value-proposition/SKILL.md`
+- `define-business-model/SKILL.md`
+- `define-mvp-validation-scope/SKILL.md`
+- `evaluate-idea/SKILL.md`
+- `check-coherence/SKILL.md`
 
 ## Related Folders
 

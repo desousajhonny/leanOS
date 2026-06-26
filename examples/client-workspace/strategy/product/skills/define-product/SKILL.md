@@ -1,6 +1,11 @@
+---
+name: define-product
+description: Use when the product is vague; the founder has raw context but no product brief; MVP or roadmap work needs a product baseline
+---
+
 # Define Product
 
-## Purpose
+## Overview
 
 Clarify product brief, problem, target user and product status.
 
@@ -26,11 +31,25 @@ Clarify product brief, problem, target user and product status.
 
 ## Process
 
-1. Summarize the product in plain language.
-2. Separate facts from assumptions.
-3. Name the primary user and problem.
-4. Identify what is still unknown.
-5. Propose updates before writing.
+### Step 1
+
+Summarize the product in plain language.
+
+### Step 2
+
+Separate facts from assumptions.
+
+### Step 3
+
+Name the primary user and problem.
+
+### Step 4
+
+Identify what is still unknown.
+
+### Step 5
+
+Propose updates before writing.
 
 ## Checks
 
