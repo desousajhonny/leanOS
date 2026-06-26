@@ -25,7 +25,6 @@ Use when sequencing product work, planning milestones, choosing the current cycl
 - `../skills/`
 - `../playbooks/`
 - `../../product/`
-- `../../../operations/product-ops/mvp/`
 - `../../../.github/leanos/`
 
 ## Navigation

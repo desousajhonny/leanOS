@@ -1582,8 +1582,9 @@ If the next step needs an inactive workspace area, return an \`activation_requir
 | Strategy Seed | Strategy only | There is a rough idea, but problem, customer and value are incomplete. | Ask guided diagnosis questions and fill the minimum Strategy knowledge. | Problem, ICP, value proposition and assumptions are minimally clear. |
 | Strategy Baseline | Strategy only | The business direction is coherent enough to compare options. | Confirm positioning, business model, validation risk and current constraints. | Founder confirms a baseline worth turning into a roadmap. |
 | Idea Diagnosis | Strategy only | The founder needs to know what the idea is, for whom and why now. | Diagnose clarity, risk and evidence without jumping to execution. | One clear opportunity or validation path is selected. |
-| Roadmap Inicial | Strategy only | The founder has a validated-enough direction but no sequence. | Convert Strategy into first roadmap options and prioritization. | Founder chooses a near-term roadmap item or validation path. |
-| MVP Decision | Strategy plus Product Ops activation when needed | The founder wants to build or validate a first product slice. | Decide whether the next step is MVP, experiment, concierge test, landing page or more discovery. | If MVP/product shaping is needed, return \`activation_required\` for Product Ops/Operations. |
+| MVP Validation Scope | Strategy only | The founder wants to validate the business through a first MVP path. | Define business thesis, target user, core problem, MVP slice, manual/concierge parts, productized parts, success signals and pivot signals. | Founder confirms the MVP validation scope is ready for roadmap sequencing. |
+| Roadmap Inicial | Strategy only | The founder has a validated-enough direction or MVP Validation Scope but no sequence. | Convert Strategy into first roadmap options, prioritization and MVP Candidate Roadmap. | Founder chooses a near-term roadmap item or validation path. |
+| MVP Delivery Decision | Strategy plus Product Ops activation when needed | The founder wants to turn a chosen roadmap/MVP item into executable scope. | Decide delivery boundary, PRD, non-goals, acceptance criteria and dependencies. | If Product Ops is missing, return \`activation_required\` for Product Ops/Operations. |
 | Product Shaping | Product Ops active | A roadmap item needs scope, non-goals and acceptance criteria. | Shape epic/feature candidates and delivery readiness. | Feature scope has Product and Engineering readiness inputs. |
 | Delivery Readiness | Product Ops plus required supporting areas | Work is nearly implementation-ready. | Check Design, Security and DevOps applicability before Engineering starts. | Required criteria are ready or explicitly not applicable. |
 | Implementation | Engineering active | The founder approved a ready feature or issue. | Route to delivery workflow, implementation plan, tests and PR readiness. | Feature is merged, shipped or explicitly stopped. |
@@ -1601,7 +1602,7 @@ When the founder says "quero começar", "como começar", "iniciar leanos", "quer
 4. Identify the smallest missing Strategy decision.
 5. Ask one guided question with useful options.
 6. Do not ask empty questions such as "tell me more".
-7. Do not create roadmap, MVP, feature or implementation files until the Strategy gate is satisfied.
+7. Do not create roadmap, delivery MVP, feature or implementation files until the Strategy gate is satisfied.
 
 Use this response shape:
 
@@ -1643,7 +1644,7 @@ Activation creates workspace surface area only when the founder's stage needs it
 
 | Activation | Required When | Must Be True First |
 | --- | --- | --- |
-| Product Ops / Operations | MVP, product scope, epics, features or delivery shaping begins. | Strategy Baseline is coherent and a roadmap item or MVP decision exists. |
+| Product Ops / Operations | MVP delivery scope, product scope, epics, features or delivery shaping begins. | Strategy Baseline is coherent and a roadmap item or MVP Candidate Roadmap item exists. |
 | Design | User-facing flow, screen, copy, accessibility or design system decisions are needed. | A feature, experiment or MVP scope has UX impact. |
 | Engineering | Implementation, technical planning, branch, tests or PR work begins. | Feature is delivery-ready or an explicitly approved technical spike exists. |
 | Security | Data, auth, permissions, privacy, abuse, API or compliance risk appears. | The active feature or workflow has a security-sensitive surface. |
@@ -1676,8 +1677,8 @@ Then include the structured activation decision:
 \`\`\`yaml
 activation_required:
   target: operations/product-ops
-  reason: MVP scope needs Product Ops ownership before epics or features exist.
-  prerequisite_met: Strategy Baseline confirmed
+  reason: executable MVP delivery scope needs Product Ops ownership before epics or features exist.
+  prerequisite_met: MVP Candidate Roadmap item confirmed
   next_action: create the minimal Product Ops workspace and route to define-mvp.workflow.md
 \`\`\`
 
@@ -1701,7 +1702,8 @@ If the prerequisite is not met, say what Strategy decision must happen first.
 | "Quero começar agora" | Setup Seed or Strategy Seed | Active Strategy founder diagnosis workflow. |
 | "Minha ideia faz sentido?" | Strategy Seed or Idea Diagnosis | Diagnose problem, ICP, promise, evidence and risk before roadmap. |
 | "Vamos montar o roadmap" | Strategy Baseline | Strategy roadmap workflow if baseline gate is met. |
-| "Vamos definir o MVP" | Roadmap Inicial or MVP Decision | Return \`activation_required\` for Product Ops if not active; then route to MVP definition. |
+| "Vamos definir o MVP" | Idea Diagnosis or MVP Validation Scope | Strategy Product defines MVP Validation Scope, then Strategy Roadmap creates the MVP Candidate Roadmap. |
+| "Vamos transformar esse item do MVP em entrega" | Roadmap Inicial or MVP Delivery Decision | Return \`activation_required\` for Product Ops if not active; then route to MVP delivery scope definition. |
 | "Quebre isso em features" | Product Shaping | Require Product Ops active and delivery scope confirmed. |
 | "Implemente essa feature" | Delivery Readiness or Implementation | Return \`activation_required\` for Engineering if not active; then route to delivery cycle. |
 | "Lance isso" | Launch | Activate market-facing departments only as needed. |
@@ -1709,11 +1711,12 @@ If the prerequisite is not met, say what Strategy decision must happen first.
 
 ## Minimum Strategy Gate
 
-Before Roadmap Inicial or MVP Decision, Strategy should contain at least:
+Before MVP Validation Scope, Roadmap Inicial or MVP Delivery Decision, Strategy should contain at least:
 
 - problem statement
 - ICP or first user segment
 - value proposition
+- MVP validation scope when the founder is asking for the first MVP path
 - key assumptions
 - evidence level
 - business model direction or explicit uncertainty
@@ -2408,7 +2411,8 @@ If a natural-language request clearly matches an existing LeanOS command, load t
 Examples:
 
 - "help me define the ICP" -> \`.leanos/commands/define-icp.md\`
-- "define the MVP" -> \`.leanos/commands/define-mvp.md\`
+- "define the MVP validation scope" -> route to active Strategy Product before delivery scope exists
+- "turn this roadmap item into executable MVP scope" -> \`.leanos/commands/define-mvp.md\` when Product Ops is active
 - "review this PR" -> \`.leanos/commands/review-pr.md\`
 
 If no command clearly matches, route through the Navigation Chain.

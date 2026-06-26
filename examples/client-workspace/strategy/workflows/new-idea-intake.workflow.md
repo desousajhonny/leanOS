@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Capture, qualify and decide the next destination of a founder idea before it becomes roadmap, delivery scope or implementation work.
+Capture, qualify and decide whether a founder idea should refine strategy, update MVP Validation Scope or become a roadmap candidate.
 
 ## Founder Triggers
 
@@ -44,6 +44,7 @@ All required areas are active in this department.
 - `strategy/product/knowledge/icp.md`
 - `strategy/product/knowledge/problem.md`
 - `strategy/product/knowledge/value-proposition.md`
+- `strategy/product/knowledge/mvp-validation-scope.md`
 - `strategy/product/knowledge/validation-notes.md`
 
 ## Navigation Route
@@ -54,8 +55,9 @@ All required areas are active in this department.
 4. `strategy/product/AGENT.md`
 5. `strategy/product/roles/product-strategist.role.md`
 6. `strategy/product/skills/evaluate-idea.skill.md`
-7. `strategy/product/playbooks/product-strategy.playbook.md`
-8. `strategy/roadmap/AGENT.md only after founder confirms roadmap or backlog promotion`
+7. `strategy/product/skills/define-mvp-validation-scope.skill.md`
+8. `strategy/product/playbooks/product-strategy.playbook.md`
+9. `strategy/roadmap/AGENT.md only after founder confirms roadmap or backlog promotion`
 
 ## Sequence
 
@@ -64,9 +66,10 @@ All required areas are active in this department.
 3. Evaluate idea against ICP, problem, value proposition, evidence, current focus and opportunity cost
 4. Identify assumptions, evidence gaps, dependencies and why this idea may or may not matter now
 5. Use Validation only when it exists and risky assumptions need explicit experiment planning; do not require Validation for the default MVP path
-6. Recommend one outcome: reject, refine, park, validation note, backlog candidate or roadmap candidate
-7. Explain the recommendation in founder-friendly language
-8. Ask for confirmation before recording the idea anywhere or starting the roadmap promotion workflow
+6. When the founder wants speed, treat MVP as the default business validation path and decide whether to define or update MVP Validation Scope
+7. Recommend one outcome: reject, refine, park, validation note, MVP Validation Scope update, backlog candidate or roadmap candidate
+8. Explain the recommendation in founder-friendly language
+9. Ask for confirmation before recording the idea anywhere or starting the roadmap promotion workflow
 
 ## Confirmation Gates
 
@@ -77,6 +80,7 @@ All required areas are active in this department.
 
 ## Allowed Updates
 
+- `strategy/product/knowledge/mvp-validation-scope.md`
 - `strategy/product/knowledge/validation-notes.md`
 
 ## Forbidden Updates
@@ -109,7 +113,8 @@ All required areas are active in this department.
 - Plain-language restatement of the idea.
 - Fit assessment against product strategy.
 - Risks, assumptions and evidence gaps.
-- Recommendation: reject, refine, park, validation note, backlog candidate or roadmap candidate.
+- Recommendation: reject, refine, park, validation note, MVP Validation Scope update, backlog candidate or roadmap candidate.
+- MVP Validation Scope recommendation when the idea is strong enough for an MVP validation path.
 - Founder-friendly confirmation question for the next step.
 
 ## Continuation Bridge
@@ -119,8 +124,8 @@ At the end of this workflow, offer one clear next-step bridge when a safe next f
 Immediate bridge:
 
 ```text
-Essa ideia parece forte o bastante para ser acompanhada.
-Quer que eu transforme isso em um item de roadmap ou backlog para decidirmos prioridade e momento?
+Essa ideia parece forte o bastante para virar um MVP de validacao.
+Quer que eu transforme isso em MVP Validation Scope e depois em um MVP Candidate Roadmap?
 ```
 
 Later-session triggers:

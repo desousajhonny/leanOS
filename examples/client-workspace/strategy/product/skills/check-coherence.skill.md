@@ -2,12 +2,12 @@
 
 ## Purpose
 
-Check alignment between ICP, problem, value proposition, MVP, roadmap and issue.
+Check alignment between ICP, problem, value proposition, MVP validation scope, roadmap and issue.
 
 ## Use When
 
 - strategy feels inconsistent
-- delivery scope may not match the problem
+- MVP validation scope may not match the problem
 - roadmap or issue work needs product review
 
 ## Required Context
@@ -15,7 +15,7 @@ Check alignment between ICP, problem, value proposition, MVP, roadmap and issue.
 - ../knowledge/icp.md
 - ../knowledge/problem.md
 - ../knowledge/value-proposition.md
-- ../../../operations/product-ops/mvp/scope.md
+- ../knowledge/mvp-validation-scope.md
 - ../../roadmap/knowledge/roadmap.md
 
 ## Inputs
@@ -23,15 +23,15 @@ Check alignment between ICP, problem, value proposition, MVP, roadmap and issue.
 - ICP
 - Problem
 - Value proposition
-- Delivery scope
+- MVP Validation Scope
 - Roadmap or issue
 
 ## Process
 
 1. Check ICP/problem fit.
 2. Check value proposition/problem fit.
-3. Check MVP/value fit.
-4. Check roadmap/MVP fit.
+3. Check MVP validation scope/value fit.
+4. Check roadmap/MVP validation scope fit.
 5. List contradictions and next fixes.
 
 ## Checks

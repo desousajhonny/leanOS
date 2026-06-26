@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Turn business, product and MVP context into a coherent roadmap and cycle plan.
+Turn business, product and MVP validation context into a coherent roadmap and cycle plan.
 
 ## Use When
 
@@ -18,7 +18,7 @@ Read:
 - `../knowledge/current-cycle.md`
 - `../knowledge/backlog.md`
 - `../../product/knowledge/brief.md`
-- `../../../operations/product-ops/mvp/scope.md`
+- `../../product/knowledge/mvp-validation-scope.md`
 
 ## Skills
 

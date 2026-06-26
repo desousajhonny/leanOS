@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Promote a qualified idea into a roadmap or backlog item without assuming delivery scope or GitHub execution.
+Promote a qualified idea or MVP Validation Scope into an MVP Candidate Roadmap or backlog item without creating delivery scope or GitHub execution.
 
 ## Founder Triggers
 
@@ -44,6 +44,7 @@ All required areas are active in this department.
 - `strategy/product/knowledge/icp.md`
 - `strategy/product/knowledge/problem.md`
 - `strategy/product/knowledge/value-proposition.md`
+- `strategy/product/knowledge/mvp-validation-scope.md`
 - `strategy/product/knowledge/validation-notes.md`
 - `strategy/roadmap/AGENT.md`
 - `strategy/roadmap/knowledge/backlog.md`
@@ -57,21 +58,23 @@ All required areas are active in this department.
 3. `strategy/workflows/idea-to-roadmap.workflow.md`
 4. `strategy/product/AGENT.md`
 5. `strategy/product/roles/product-strategist.role.md`
-6. `strategy/roadmap/AGENT.md`
-7. `strategy/roadmap/roles/roadmap-planner.role.md`
-8. `strategy/roadmap/skills/prioritize-backlog.skill.md`
-9. `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md`
+6. `strategy/product/skills/define-mvp-validation-scope.skill.md`
+7. `strategy/roadmap/AGENT.md`
+8. `strategy/roadmap/roles/roadmap-planner.role.md`
+9. `strategy/roadmap/skills/prioritize-backlog.skill.md`
+10. `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md`
 
 ## Sequence
 
 1. Confirm the idea already passed `new-idea-intake` or that the founder explicitly asked for roadmap or backlog promotion
-2. Read product strategy and roadmap context before classifying the item
+2. Read product strategy, MVP Validation Scope and roadmap context before classifying the item
 3. Preserve the qualified idea context; do not redo the entire intake unless key context is missing
-4. Define problem, user, expected value, dependencies, evidence level and opportunity cost
-5. Classify the item as backlog, Now, Next, Later or Not Planned
-6. Do not mark as delivery scope, MVP, Epic or GitHub work in this workflow
-7. Propose roadmap or backlog updates in founder-friendly language and wait for confirmation before writing
-8. After confirmation, update only the appropriate roadmap or backlog knowledge files
+4. Define problem, user, expected value, dependencies, evidence level, MVP validation goal and opportunity cost
+5. When this is the first product path, create an MVP Candidate Roadmap from the MVP Validation Scope
+6. Classify the item as backlog, Now, Next, Later or Not Planned
+7. Do not create Epics, Features or implementation work in this workflow
+8. Propose roadmap or backlog updates in founder-friendly language and wait for confirmation before writing
+9. After confirmation, update only the appropriate roadmap or backlog knowledge files
 
 ## Confirmation Gates
 
@@ -85,6 +88,7 @@ All required areas are active in this department.
 - `strategy/roadmap/knowledge/backlog.md`
 - `strategy/roadmap/knowledge/roadmap.md`
 - `strategy/roadmap/knowledge/current-cycle.md`
+- `strategy/product/knowledge/mvp-validation-scope.md`
 - `strategy/product/knowledge/validation-notes.md`
 
 ## Forbidden Updates
@@ -115,10 +119,11 @@ All required areas are active in this department.
 
 ## Expected Output
 
+- MVP Candidate Roadmap when the item is the initial MVP validation path.
 - Roadmap/backlog classification with reason.
 - Founder-friendly summary of why the item belongs in backlog, Now, Next, Later or Not Planned.
 - Proposed update to roadmap or backlog knowledge.
-- Explicit statement that delivery/MVP/Epic status is not decided here.
+- Explicit statement that Epic, Feature and implementation status is not decided here.
 - Clear next-step bridge to activation_required for operations.product-ops when the founder wants to plan delivery.
 
 ## Continuation Bridge
@@ -128,8 +133,8 @@ At the end of this workflow, offer one clear next-step bridge when a safe next f
 Immediate bridge:
 
 ```text
-Esse item agora esta organizado como roadmap/backlog.
-Quer que eu prepare isso para virar um Epic local com escopo, milestone e criterios iniciais?
+Esse item agora esta organizado como MVP Candidate Roadmap ou backlog.
+Quer que eu ative Product Ops para transformar o item escolhido em um Epic local com escopo, milestone e criterios iniciais?
 ```
 
 Later-session triggers:

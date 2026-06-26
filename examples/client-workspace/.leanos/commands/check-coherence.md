@@ -30,6 +30,7 @@ Strategy Product:
 - `../../strategy/product/knowledge/value-proposition.md`
 - `../../strategy/product/knowledge/positioning.md`
 - `../../strategy/product/knowledge/business-model-canvas.md`
+- `../../strategy/product/knowledge/mvp-validation-scope.md`
 
 Strategy Roadmap:
 
@@ -66,8 +67,8 @@ Do not enter roles, skills or playbooks unless the diagnosis shows a specific ro
 ## Process
 
 1. Classify the current product moment with `where-we-are.md`.
-2. Compare Strategy Product against MVP scope and roadmap direction.
-3. Compare MVP scope against PRD, acceptance criteria, non-goals and delivery scope.
+2. Compare Strategy Product against MVP Validation Scope and roadmap direction.
+3. Compare MVP delivery scope against PRD, acceptance criteria, non-goals and delivery scope when Product Ops is active.
 4. Compare roadmap/backlog items against Epics and Features when Product Ops is active.
 5. Check Design coherence only when UX, UI, copy, accessibility, screens, states, components or flows are relevant.
 6. Check Security coherence only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is relevant.

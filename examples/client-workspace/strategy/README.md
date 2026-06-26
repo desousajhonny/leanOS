@@ -13,7 +13,7 @@ Use for business, product strategy, roadmap, validation, ICP or assumptions.
 - `department.yaml`: machine-readable structure for active areas and workflows.
 - `workflows/`: cross-area workflows owned by this department.
 - `business/`: Keep business identity, principles, mission and operating decisions coherent.
-- `product/`: Own product strategy, ICP, value proposition, positioning and business model coherence.
+- `product/`: Own product strategy, ICP, value proposition, MVP validation scope, positioning and business model coherence.
 - `roadmap/`: Own roadmap sequence, milestones, backlog and planning-cycle prioritization.
 - `validation/`: Own assumptions, experiments, interviews, success metrics and learning capture.
 

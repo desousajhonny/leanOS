@@ -14,7 +14,9 @@ TBD
 
 ## Delivery Scope Model
 
-Backlog guarda possibilidades. Roadmap organiza intenção de implementação. Delivery scope transforma intenção em compromisso de entrega.
+Backlog guarda possibilidades. Roadmap organiza uma sequencia candidata de validacao ou implementacao. Delivery scope transforma um item confirmado em compromisso de entrega.
+
+For a new founder idea, the initial roadmap is usually an MVP Candidate Roadmap. It sequences what must exist to validate the business thesis, without creating Epics, Features or implementation work.
 
 Use this lightweight header when a roadmap item becomes delivery-ready:
 

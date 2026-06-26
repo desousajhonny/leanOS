@@ -12,6 +12,7 @@ area:
     - define-icp
     - define-value-proposition
     - define-business-model
+    - define-mvp-validation-scope
     - evaluate-idea
     - check-coherence
   playbooks:
@@ -24,4 +25,5 @@ area:
     - knowledge/value-proposition.md
     - knowledge/positioning.md
     - knowledge/business-model-canvas.md
+    - knowledge/mvp-validation-scope.md
     - knowledge/validation-notes.md

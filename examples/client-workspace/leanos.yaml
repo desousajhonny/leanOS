@@ -140,6 +140,7 @@ skills:
       - define-icp
       - define-value-proposition
       - define-business-model
+      - define-mvp-validation-scope
       - evaluate-idea
       - check-coherence
     strategy.roadmap:

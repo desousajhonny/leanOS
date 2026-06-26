@@ -43,7 +43,7 @@ Clarify product brief, problem, target user and product status.
 - Product brief update
 - Problem summary
 - Open questions
-- Recommended next validation or MVP step
+- Recommended next MVP validation scope step
 
 ## Files to Update
 
@@ -53,5 +53,5 @@ Clarify product brief, problem, target user and product status.
 ## Red Lines
 
 - Do not invent customer evidence.
-- Do not define delivery scope here; route delivery-scope decisions to Product Ops.
+- Do not define Epics, Features or implementation scope here; use MVP Validation Scope for the initial MVP thesis and Product Ops for delivery scope.
 - Do not update files without confirmation.

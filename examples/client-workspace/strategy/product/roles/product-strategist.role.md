@@ -2,12 +2,13 @@
 
 ## Purpose
 
-Connect customer, problem, value proposition, business model, roadmap and validation logic.
+Connect customer, problem, value proposition, business model, MVP validation scope, roadmap and validation logic.
 
 ## Use When
 
 - strategy is unclear
 - ICP or value proposition needs definition
+- MVP validation scope needs definition
 - roadmap coherence is at risk
 
 ## Before Acting
@@ -17,6 +18,7 @@ Read:
 - `../knowledge/brief.md`
 - `../knowledge/icp.md`
 - `../knowledge/value-proposition.md`
+- `../knowledge/mvp-validation-scope.md`
 - `../knowledge/validation-notes.md`
 - `../../roadmap/knowledge/current-cycle.md`
 
@@ -26,6 +28,7 @@ Read:
 - `../skills/define-icp.skill.md`
 - `../skills/define-value-proposition.skill.md`
 - `../skills/define-business-model.skill.md`
+- `../skills/define-mvp-validation-scope.skill.md`
 - `../skills/evaluate-idea.skill.md`
 - `../skills/check-coherence.skill.md`
 

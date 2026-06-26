@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Evaluate a founder idea against user value, evidence, delivery-scope risk and roadmap impact.
+Evaluate a founder idea against user value, evidence, MVP validation fit and roadmap impact.
 
 ## Use When
 
@@ -15,6 +15,7 @@ Evaluate a founder idea against user value, evidence, delivery-scope risk and ro
 - ../knowledge/brief.md
 - ../knowledge/problem.md
 - ../knowledge/value-proposition.md
+- ../knowledge/mvp-validation-scope.md
 - ../../roadmap/knowledge/backlog.md
 
 ## Inputs
@@ -22,7 +23,7 @@ Evaluate a founder idea against user value, evidence, delivery-scope risk and ro
 - Idea
 - Expected user value
 - Evidence
-- MVP impact
+- MVP validation impact
 - Roadmap impact
 
 ## Process
@@ -31,23 +32,26 @@ Evaluate a founder idea against user value, evidence, delivery-scope risk and ro
 2. Identify the user and problem it serves.
 3. Check fit with ICP and value proposition.
 4. Name assumptions and evidence gaps.
-5. Recommend accept, park, validate or reject.
+5. Recommend reject, refine, park, validation note, MVP validation scope update or roadmap candidate.
 
 ## Checks
 
 - Idea is tied to a user outcome.
 - Roadmap impact is explicit.
-- Validation need is clear.
+- MVP validation need is clear.
+- The recommendation does not skip from idea to implementation.
 
 ## Output
 
 - Idea evaluation
 - Assumptions
 - Recommended decision
+- MVP validation scope recommendation
 - Roadmap or validation follow-up
 
 ## Files to Update
 
+- ../knowledge/mvp-validation-scope.md
 - ../../roadmap/knowledge/backlog.md
 - ../knowledge/validation-notes.md
 

@@ -2,26 +2,27 @@
 
 ## Purpose
 
-Translate strategy into coherent scope, stories and priorities with Product Ops.
+Translate strategy into coherent MVP validation context, roadmap candidates and priorities before Product Ops creates delivery assets.
 
 ## Use When
 
-- scope needs definition
-- roadmap work needs issue-ready shape
-- acceptance criteria are missing
+- MVP validation scope needs refinement
+- roadmap work needs product judgment
+- delivery readiness questions need Strategy Product context
 
 ## Before Acting
 
 Read:
 
 - `../knowledge/brief.md`
+- `../knowledge/mvp-validation-scope.md`
 - `../../roadmap/knowledge/backlog.md`
-- `../../../operations/product-ops/mvp/scope.md`
-- `../../../operations/product-ops/mvp/acceptance-criteria.md`
+- `../../roadmap/knowledge/roadmap.md`
 
 ## Skills
 
 - `../skills/define-product.skill.md`
+- `../skills/define-mvp-validation-scope.skill.md`
 - `../skills/evaluate-idea.skill.md`
 - `../skills/check-coherence.skill.md`
 

@@ -68,7 +68,8 @@ If a natural-language request clearly matches an existing LeanOS command, load t
 Examples:
 
 - "help me define the ICP" -> \`.leanos/commands/define-icp.md\`
-- "define the MVP" -> return \`activation_required\` for \`operations.product-ops\` when Product Ops is inactive
+- "define the MVP validation scope" or "what should the first MVP validate?" -> \`strategy/AGENT.md\`
+- "turn this roadmap item into executable MVP scope" -> return \`activation_required\` for \`operations.product-ops\` when Product Ops is inactive
 - "review this PR" -> return \`activation_required\` for \`operations.engineering\` when Engineering is inactive
 
 ## Progression Intent Routing
@@ -84,8 +85,8 @@ Intent -> Current Stage -> Gate -> Active Requirements -> Route
 Rules:
 
 - Start, restart or idea diagnosis: \`strategy/AGENT.md\`
-- Roadmap, prioritization or validation route: \`strategy/AGENT.md\`
-- MVP, epic, feature or delivery shaping: \`operations/AGENT.md\` only when the required Operations area is active.
+- Initial MVP validation scope, roadmap, prioritization or validation route: \`strategy/AGENT.md\`
+- MVP delivery scope, epic, feature or delivery shaping: \`operations/AGENT.md\` only when the required Operations area is active.
 - Implementation, branch, PR or review: \`operations/AGENT.md\` only when Engineering is active and delivery readiness is clear.
 - Launch, acquisition, onboarding or learning loop: \`growth/AGENT.md\` only when the required Growth area is active.
 - If the next step requires an inactive or missing department or area, return \`activation_required\` instead of opening or inventing paths.
@@ -121,7 +122,8 @@ Use this map as routing guidance, not as execution detail. After selecting the r
 
 - Setup or restart LeanOS: \`.leanos/commands/start-leanos.md\`
 - Status, resume or readiness: \`.leanos/commands/status-leanos.md\`
-- MVP definition: return \`activation_required\` for \`operations.product-ops\` until Product Ops is active
+- MVP validation scope or first MVP roadmap: \`strategy/AGENT.md\`
+- MVP delivery scope definition: return \`activation_required\` for \`operations.product-ops\` until Product Ops is active
 - Coherence check: \`.leanos/commands/check-coherence.md\`
 - New idea or feature evaluation: \`strategy/AGENT.md\`
 - Roadmap/backlog promotion: \`strategy/AGENT.md\`
@@ -341,7 +343,8 @@ If these are missing, explain the gap and recommend the next LeanOS route instea
 
 - Strategy missing -> \`/start-leanos\`
 - Product strategy weak -> Strategy Product through \`strategy/AGENT.md\`
-- MVP missing or weak -> \`/define-mvp\`
+- MVP validation scope missing or weak -> Strategy Product through \`strategy/AGENT.md\`
+- MVP delivery scope missing after roadmap item is chosen -> \`/define-mvp\` when Product Ops is active, otherwise activate \`operations.product-ops\`
 - Roadmap missing -> \`idea-to-roadmap\` or Strategy Roadmap through \`strategy/AGENT.md\`
 - Local epic missing -> \`roadmap-item-to-epic\`
 - Features missing -> \`epic-to-features\` when available

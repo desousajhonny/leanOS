@@ -129,7 +129,8 @@ function checkCoherenceCommand(command: CommandDefinition, activeSubareas: Subar
         "- `../../strategy/product/knowledge/icp.md`",
         "- `../../strategy/product/knowledge/value-proposition.md`",
         "- `../../strategy/product/knowledge/positioning.md`",
-        "- `../../strategy/product/knowledge/business-model-canvas.md`"
+        "- `../../strategy/product/knowledge/business-model-canvas.md`",
+        "- `../../strategy/product/knowledge/mvp-validation-scope.md`"
       ].join("\n")
     : "- `strategy.product` is not active. Do not load missing Strategy Product paths; ask for product context before scoring product coherence.";
   const roadmapLoad = active.has("strategy.roadmap")
@@ -236,8 +237,8 @@ Do not enter roles, skills or playbooks unless the diagnosis shows a specific ro
 ## Process
 
 1. Classify the current product moment with \`where-we-are.md\`.
-2. Compare Strategy Product against MVP scope and roadmap direction.
-3. Compare MVP scope against PRD, acceptance criteria, non-goals and delivery scope.
+2. Compare Strategy Product against MVP Validation Scope and roadmap direction.
+3. Compare MVP delivery scope against PRD, acceptance criteria, non-goals and delivery scope when Product Ops is active.
 4. Compare roadmap/backlog items against Epics and Features when Product Ops is active.
 5. Check Design coherence only when UX, UI, copy, accessibility, screens, states, components or flows are relevant.
 6. Check Security coherence only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is relevant.
@@ -329,7 +330,8 @@ function defineMvpCommand(command: CommandDefinition, activeSubareas: Subarea[])
         "- `../../strategy/product/knowledge/problem.md`",
         "- `../../strategy/product/knowledge/icp.md`",
         "- `../../strategy/product/knowledge/value-proposition.md`",
-        "- `../../strategy/product/knowledge/business-model-canvas.md`"
+        "- `../../strategy/product/knowledge/business-model-canvas.md`",
+        "- `../../strategy/product/knowledge/mvp-validation-scope.md`"
       ].join("\n")
     : "- `strategy.product` is not active. Ask for enough product strategy context before shaping MVP scope.";
   const roadmapLoad = roadmapActive
@@ -590,6 +592,9 @@ function startCommand(activeAreas: AreaDefinition[]): string {
   const validationMapping = activeKeys.has("strategy.validation")
     ? "- Assumptions, experiments, success metrics and learning -> `strategy/validation/`"
     : "- Lightweight assumptions, evidence, learning and validation needs -> `strategy/product/knowledge/validation-notes.md`";
+  const mvpValidationScopeMapping = activeKeys.has("strategy.product")
+    ? "- MVP validation thesis, MVP slice, manual/concierge parts, productized parts, success signals and pivot signals -> `strategy/product/knowledge/mvp-validation-scope.md`"
+    : "- MVP validation scope -> Strategy Product when the area is active";
 
   return `# /start-leanos
 
@@ -711,7 +716,7 @@ Required topics, in order:
 3. Value promise.
 4. Current stage and immediate goal.
 5. Riskiest assumption.
-6. Useful validation or learning target.
+6. Useful MVP validation or learning target.
 7. What not to build or decide too early.
 
 Example first guided question:
@@ -745,12 +750,13 @@ Map founder responses to source-of-truth files only when the matching area is ac
 
 - Business identity, brand logic, mission, vision, principles and operating model -> \`strategy/business/\`
 - Product description, problem, ICP, value proposition, positioning and business model -> \`strategy/product/\`
+${mvpValidationScopeMapping}
 ${validationMapping}
 - Roadmap, milestones, current cycle and backlog -> \`strategy/roadmap/knowledge/\`
 
 If a Strategy area is not active, do not propose writes to its missing path. Mention that the area is inactive and ask before activating or creating it.
 
-Roadmap files may be reviewed as next-step targets, but do not invent roadmap content before company, product and validation context are coherent.
+Roadmap files may be reviewed as next-step targets, but do not invent roadmap content before company, product and MVP validation context are coherent.
 
 ## Fact and Uncertainty Rules
 
@@ -874,6 +880,7 @@ function getInitStrategySourceFiles(activeAreas: AreaDefinition[]): string[] {
       "strategy/product/knowledge/value-proposition.md",
       "strategy/product/knowledge/positioning.md",
       "strategy/product/knowledge/business-model-canvas.md",
+      "strategy/product/knowledge/mvp-validation-scope.md",
       "strategy/product/knowledge/validation-notes.md"
     );
   }

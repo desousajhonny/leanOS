@@ -118,7 +118,7 @@ Required topics, in order:
 3. Value promise.
 4. Current stage and immediate goal.
 5. Riskiest assumption.
-6. Useful validation or learning target.
+6. Useful MVP validation or learning target.
 7. What not to build or decide too early.
 
 Example first guided question:
@@ -152,12 +152,13 @@ Map founder responses to source-of-truth files only when the matching area is ac
 
 - Business identity, brand logic, mission, vision, principles and operating model -> `strategy/business/`
 - Product description, problem, ICP, value proposition, positioning and business model -> `strategy/product/`
+- MVP validation thesis, MVP slice, manual/concierge parts, productized parts, success signals and pivot signals -> `strategy/product/knowledge/mvp-validation-scope.md`
 - Assumptions, experiments, success metrics and learning -> `strategy/validation/`
 - Roadmap, milestones, current cycle and backlog -> `strategy/roadmap/knowledge/`
 
 If a Strategy area is not active, do not propose writes to its missing path. Mention that the area is inactive and ask before activating or creating it.
 
-Roadmap files may be reviewed as next-step targets, but do not invent roadmap content before company, product and validation context are coherent.
+Roadmap files may be reviewed as next-step targets, but do not invent roadmap content before company, product and MVP validation context are coherent.
 
 ## Fact and Uncertainty Rules
 
@@ -219,6 +220,7 @@ Only after explicit confirmation, `/start-leanos` may update:
 - `../../strategy/product/knowledge/value-proposition.md`
 - `../../strategy/product/knowledge/positioning.md`
 - `../../strategy/product/knowledge/business-model-canvas.md`
+- `../../strategy/product/knowledge/mvp-validation-scope.md`
 - `../../strategy/product/knowledge/validation-notes.md`
 - `../../strategy/validation/assumptions.md`
 - `../../strategy/validation/riskiest-assumptions.md`

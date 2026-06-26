@@ -61,7 +61,8 @@ If a natural-language request clearly matches an existing LeanOS command, load t
 Examples:
 
 - "help me define the ICP" -> `.leanos/commands/define-icp.md`
-- "define the MVP" -> `.leanos/commands/define-mvp.md`
+- "define the MVP validation scope" -> route to active Strategy Product before delivery scope exists
+- "turn this roadmap item into executable MVP scope" -> `.leanos/commands/define-mvp.md` when Product Ops is active
 - "review this PR" -> `.leanos/commands/review-pr.md`
 
 If no command clearly matches, route through the Navigation Chain.

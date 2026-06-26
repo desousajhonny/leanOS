@@ -17,6 +17,9 @@ skills:
   - key: define-business-model
     area: strategy.product
     path: ../../strategy/product/skills/define-business-model.skill.md
+  - key: define-mvp-validation-scope
+    area: strategy.product
+    path: ../../strategy/product/skills/define-mvp-validation-scope.skill.md
   - key: evaluate-idea
     area: strategy.product
     path: ../../strategy/product/skills/evaluate-idea.skill.md

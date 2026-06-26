@@ -15,7 +15,7 @@ Prepare roadmap epics, milestones and sync payload before GitHub Project updates
 - ../knowledge/roadmap.md
 - ../knowledge/milestones.md
 - ../knowledge/current-cycle.md
-- ../../../operations/product-ops/mvp/scope.md
+- ../../product/knowledge/mvp-validation-scope.md
 - ../../../.github/leanos/project-sync.yaml
 
 ## Inputs
@@ -23,14 +23,14 @@ Prepare roadmap epics, milestones and sync payload before GitHub Project updates
 - Roadmap
 - Milestones
 - Current cycle
-- Delivery scope
+- MVP Validation Scope
 - GitHub project settings
 
 ## Process
 
 1. Check GitHub readiness.
 2. Map roadmap items to milestone candidates.
-3. Identify epic candidates.
+3. Identify epic candidates and request Product Ops activation when local delivery assets are missing.
 4. Prepare dry-run sync payload.
 5. Ask for confirmation before any remote write.
 

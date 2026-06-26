@@ -2,13 +2,14 @@
 
 ## Purpose
 
-Own product strategy, ICP, value proposition, positioning and business model coherence.
+Own product strategy, ICP, value proposition, MVP validation scope, positioning and business model coherence.
 
 ## When to Use
 
 - define strategy
 - clarify ICP
 - shape value proposition
+- define MVP validation scope
 - check product coherence
 
 ## Source of Truth
@@ -20,6 +21,7 @@ Own product strategy, ICP, value proposition, positioning and business model coh
 - `knowledge/value-proposition.md`
 - `knowledge/positioning.md`
 - `knowledge/business-model-canvas.md`
+- `knowledge/mvp-validation-scope.md`
 - `knowledge/validation-notes.md`
 
 

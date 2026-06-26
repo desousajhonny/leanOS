@@ -41,7 +41,7 @@ Then start from:
 ## Active Areas
 
 - `strategy/business/` Keep business identity, principles, mission and operating decisions coherent.
-- `strategy/product/` Own product strategy, ICP, value proposition, positioning and business model coherence.
+- `strategy/product/` Own product strategy, ICP, value proposition, MVP validation scope, positioning and business model coherence.
 - `strategy/roadmap/` Own roadmap sequence, milestones, backlog and planning-cycle prioritization.
 - `strategy/validation/` Own assumptions, experiments, interviews, success metrics and learning capture.
 

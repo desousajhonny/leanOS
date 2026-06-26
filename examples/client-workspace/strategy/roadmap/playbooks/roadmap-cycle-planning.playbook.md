@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Plan the next coherent roadmap cycle from strategy, delivery scope, constraints and known risks.
+Plan the next coherent roadmap cycle from strategy, MVP validation scope, constraints and known risks.
 
 ## Inputs
 
@@ -10,19 +10,21 @@ Plan the next coherent roadmap cycle from strategy, delivery scope, constraints 
 - ../knowledge/current-cycle.md
 - ../knowledge/backlog.md
 - ../../product/knowledge/brief.md
-- ../../../operations/product-ops/mvp/scope.md
+- ../../product/knowledge/mvp-validation-scope.md
 
 ## Process
 
 1. Load the Roadmap AGENT and Roadmap Planner role.
-2. Review product strategy and delivery scope context. Treat MVP scope as optional when this is the first product delivery.
-3. Review backlog candidates.
-4. Choose Now, Next, Later and Not Planned boundaries.
-5. Define current cycle goal and success criteria.
-6. Propose updates and wait for confirmation before writing.
+2. Review product strategy and MVP Validation Scope context.
+3. When this is a new product idea, produce or refine the MVP Candidate Roadmap first.
+4. Review backlog candidates.
+5. Choose Now, Next, Later and Not Planned boundaries.
+6. Define current cycle goal and success criteria.
+7. Propose updates and wait for confirmation before writing.
 
 ## Output
 
+- MVP Candidate Roadmap summary
 - Roadmap cycle summary
 - Current cycle proposal
 - Backlog changes
