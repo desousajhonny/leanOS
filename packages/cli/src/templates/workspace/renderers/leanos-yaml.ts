@@ -1,8 +1,16 @@
 import { stringifyYaml } from "../../../utils/yaml.js";
-import { getActiveWorkflowKeys } from "../selectors.js";
+import { rootDepartments } from "../definitions/departments.js";
+import { getActiveWorkflowKeys, getAllAreas } from "../selectors.js";
 import type { AreaDefinition, RootDepartmentDefinition, WorkspaceAnswers } from "../types.js";
 
 export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDefinition[], activeRoots: RootDepartmentDefinition[]): string {
+  const activeDepartmentKeys = activeRoots.map((department) => department.key);
+  const activeAreaKeys = activeAreas.map((area) => area.key);
+  const activeDepartmentSet = new Set(activeDepartmentKeys);
+  const activeAreaSet = new Set(activeAreaKeys);
+  const availableDepartmentKeys = rootDepartments.map((department) => department.key);
+  const availableAreaKeys = getAllAreas().map((area) => area.key);
+
   return stringifyYaml({
     leanos: {
       version: "0.1.0",
@@ -24,6 +32,19 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
             git_remote_origin: answers.detectedProject.gitRemoteOrigin ?? null
           }
         : null
+    },
+    activation: {
+      mode: "progressive",
+      current_stage: "setup-seed",
+      progression_model: "ai-standard/foundation/founder-progression-model.md",
+      active_departments: activeDepartmentKeys,
+      inactive_departments: availableDepartmentKeys.filter((department) => !activeDepartmentSet.has(department)),
+      available_departments: availableDepartmentKeys,
+      active_areas: activeAreaKeys,
+      inactive_areas: availableAreaKeys.filter((area) => !activeAreaSet.has(area)),
+      available_areas: availableAreaKeys,
+      available_means: "can_be_activated_later_not_path_exists",
+      missing_asset_behavior: "return_activation_required"
     },
     company: {
       name: answers.companyName,

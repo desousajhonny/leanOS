@@ -11,6 +11,48 @@ workspace:
     has_github_dir: false
     has_vercel_config: false
     git_remote_origin: null
+activation:
+  mode: progressive
+  current_stage: setup-seed
+  progression_model: ai-standard/foundation/founder-progression-model.md
+  active_departments:
+    - strategy
+    - operations
+    - growth
+  inactive_departments: []
+  available_departments:
+    - strategy
+    - operations
+    - growth
+  active_areas:
+    - strategy.business
+    - strategy.product
+    - strategy.roadmap
+    - operations.product-ops
+    - operations.design
+    - operations.engineering
+    - operations.devops
+    - operations.security
+    - growth.customer-experience
+    - growth.marketing
+    - growth.finance
+  inactive_areas:
+    - strategy.validation
+  available_areas:
+    - strategy.business
+    - strategy.product
+    - strategy.roadmap
+    - strategy.validation
+    - operations.product-ops
+    - operations.design
+    - operations.engineering
+    - operations.devops
+    - operations.security
+    - growth.customer-experience
+    - growth.marketing
+    - growth.finance
+  available_means: can_be_activated_later_not_path_exists
+  missing_asset_behavior: return_activation_required
 company:
   name: LeanOS Example Company
   stage: idea

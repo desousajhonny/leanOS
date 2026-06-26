@@ -962,6 +962,14 @@ async function validateWorkspaceFiles() {
   assert(yaml.workflows.active.includes("epic-to-features"), "Expected active local Operations epic to features workflow");
   assert(yaml.workflows.active.includes("feature-to-delivery-cycle"), "Expected active local Operations feature delivery workflow");
   assert.deepEqual(yaml.departments.active, ["strategy", "operations", "growth"]);
+  assert.equal(yaml.activation.mode, "progressive", "leanos.yaml should declare progressive activation mode");
+  assert.equal(yaml.activation.current_stage, "setup-seed", "leanos.yaml should start at setup seed");
+  assert.equal(yaml.activation.progression_model, "ai-standard/foundation/founder-progression-model.md", "leanos.yaml should point to the Founder Progression Model");
+  assert.deepEqual(yaml.activation.available_departments, ["strategy", "operations", "growth"], "leanos.yaml should list departments that can be activated later");
+  assert.deepEqual(yaml.activation.active_departments, yaml.departments.active, "leanos.yaml activation state should mirror active departments");
+  assert.deepEqual(yaml.activation.active_areas, yaml.subareas.active.map((subarea) => subarea.key), "leanos.yaml activation state should mirror active areas");
+  assert.equal(yaml.activation.available_means, "can_be_activated_later_not_path_exists", "leanos.yaml should explain available does not mean path exists");
+  assert.equal(yaml.activation.missing_asset_behavior, "return_activation_required", "leanos.yaml should require activation_required for missing inactive assets");
 
   for (const subarea of yaml.subareas.active) {
     await assertExists(join(rootDir, subarea.path));
@@ -1237,6 +1245,12 @@ async function validatePartialAreaSelection() {
 
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
   assert.deepEqual(yaml.departments.active, ["strategy", "operations"]);
+  assert.deepEqual(yaml.activation.active_departments, ["strategy", "operations"]);
+  assert.deepEqual(yaml.activation.inactive_departments, ["growth"]);
+  assert(yaml.activation.inactive_areas.includes("strategy.validation"), "Activation state should mark inactive Strategy areas");
+  assert(yaml.activation.inactive_areas.includes("operations.product-ops"), "Activation state should mark inactive Product Ops");
+  assert(yaml.activation.inactive_areas.includes("operations.design"), "Activation state should mark inactive Design");
+  assert(yaml.activation.inactive_areas.includes("growth.marketing"), "Activation state should mark inactive Growth areas");
   assert.deepEqual(yaml.workflows.active, []);
   assert.deepEqual(Object.keys(yaml.roles.active), ["strategy.product", "operations.engineering"]);
   assert.equal(yaml.roles.active["growth.marketing"], undefined);
