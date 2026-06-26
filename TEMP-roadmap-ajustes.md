@@ -25,12 +25,17 @@ O LeanOS ja tem um MVP forte de framework e scaffold:
 - [x] Nao expandir a arvore de pastas agora; a estrutura atual ja e suficiente para o MVP.
 - [x] Manter `Company as a Product` como conceito de posicionamento e logica do framework.
 - [x] Nao mover `Company as a Product` para dentro de `strategy/business/` como se fosse contexto operacional da empresa do usuario final.
-- [x] Focar em profundidade operacional dos comandos, workflows e assets principais, nao em mais scaffolding.
+- [x] Focar em profundidade operacional das intencoes naturais, workflows e assets principais, nao em mais scaffolding.
 - [x] Usar `TEMP-automation-flows.md` apenas como mapa historico/temporario dos fluxos.
 - [x] Usar `TEMP-github-roadmap-flow.md` apenas como especificacao temporaria da futura camada GitHub.
 - [x] Tratar `new-product-workspace` e `existing-product-repo` como modos oficiais de instalacao.
 - [x] Manter GitHub/Vercel como readiness no MVP; nada de deploy automatico ou chamada remota sem confirmacao.
 - [x] Manter UX chat-first: o founder fala a intencao no chat, e o LeanOS roteia para workflows, roles, skills e playbooks.
+- [x] Remover comandos slash como interface do framework; manter as intencoes no `AGENTS.md` e nos workflows.
+- [x] Planejar migração das instruções de agentes simulados para `AGENTS.md` e das skills para `skills/<skill-slug>/SKILL.md`.
+- [x] Evoluir o scaffold para ativação progressiva: setup inicial com Strategy e departamentos ativados conforme maturidade do negócio.
+- [x] Formalizar o Founder Progression Model como espinha dorsal da experiência do Chief, da primeira conversa até operação contínua.
+- [x] Reestruturar workflows como máquinas de progressão, gates e handoffs, não como listas longas de skills.
 
 ## Concluido
 
@@ -100,12 +105,13 @@ O LeanOS ja tem um MVP forte de framework e scaffold:
 
 ### Regra de Execucao Para Esta Fase
 
-Antes de padronizar comandos, fortalecer os workflows.
+Antes de remover comandos slash e mudar o scaffold inicial, consolidar o modelo de ativação progressiva e o roteamento por intencao natural no arquivo de agentes (`AGENTS.md`) e nos workflows.
 
 Racional:
 
-- Comandos sao portas de entrada estaveis para intents conhecidas.
-- Intencoes naturais do founder podem acionar o mesmo caminho sem slash command.
+- O `AGENTS.md` deve ser a porta de entrada estavel para intents conhecidas.
+- Intencoes naturais do founder devem acionar o fluxo correto sem slash command.
+- O workspace inicial deve começar enxuto, com Strategy ativa e os demais departamentos disponíveis para ativação.
 - Workflows sao donos do processo quando ha varias etapas, areas ou handoffs.
 - Playbooks executam tarefas praticas dentro de uma area.
 - Capabilities/scripts entram apenas no fim, quando houver confirmacao e necessidade de acao externa.
@@ -113,11 +119,13 @@ Racional:
 Plano passo a passo:
 
 - [x] Primeiro, mapear as intencoes principais do founder para workflows locais.
+- [ ] Depois, definir os gates de ativação progressiva por departamento/área.
 - [x] Depois, revisar cada workflow para declarar contexto, participantes, sequencia, checkpoints, handoffs e output.
-- [x] Depois, ajustar comandos para carregar o workflow certo em vez de conter toda a logica do processo.
-- [x] Depois, garantir que pedidos em linguagem natural caiam no mesmo workflow que o comando equivalente.
-- [x] Depois, conectar GitHub/capabilities apenas como etapa final confirmada do workflow.
-- [ ] Por fim, rodar a Founder Journey completa para validar se o modelo navega sem pular etapas.
+- [ ] Depois, mover o roteamento de intents para `AGENTS.md` e remover dependencia de `.leanos/commands/`.
+- [ ] Depois, remover comandos slash gerados, prompts e validacoes que tratam comandos como interface primaria.
+- [ ] Depois, garantir que pedidos em linguagem natural caiam no workflow ou department owner correto.
+- [ ] Depois, conectar GitHub/capabilities apenas como etapa final confirmada do workflow.
+- [ ] Por fim, rodar a Founder Journey completa sem comandos slash para validar se o modelo navega sem pular etapas.
 
 ### 0. MVP Decision System
 
@@ -317,11 +325,963 @@ O modelo deve entregar:
 - [x] `/status-leanos` recomenda `/define-mvp` quando o MVP estiver faltando.
 - [x] Nenhum arquivo de Epic, Feature, GitHub ou codigo e gerado no fluxo de define MVP.
 
-### 1. Padronizar Comandos Principais
+### 1. Progressive Workspace Activation
 
-Status: comandos principais padronizados no scaffold; falta validar em teste externo de Founder Journey.
+Status: planejado; mudança estrutural de produto/framework.
 
-Objetivo: garantir que os comandos centrais sejam portas de entrada consistentes, previsiveis, confirmaveis e roteadas pela Navigation Chain.
+Objetivo: trocar o scaffold inicial completo por uma progressão operacional em que o LeanOS começa com Strategy e ativa novos departamentos conforme o negócio do founder amadurece.
+
+Avaliação:
+
+- [x] A ideia faz sentido para o LeanOS porque reduz sobrecarga inicial para founders iniciantes.
+- [x] O wizard deve capturar apenas o contexto semente do produto, não tentar decidir toda a estrutura operacional no primeiro minuto.
+- [x] O LeanOS Chief deve usar `leanos.yaml` e os arquivos de Strategy para diagnosticar o ponto de partida antes de propor novos departamentos.
+- [x] A criação posterior de Operations, Growth, Security, DevOps ou outras áreas deve ser tratada como ativação progressiva do sistema operacional, não como improviso do modelo.
+- [x] A ativação deve acontecer a partir de intenção natural do founder e de gates claros de maturidade.
+- [x] Mesmo quando a ativação for iniciada pelo Chief, ela deve mostrar plano de arquivos e pedir confirmação antes de escrever.
+
+Modelo proposto:
+
+- Setup inicial cria somente:
+  - `AGENTS.md` raiz;
+  - `README.md`;
+  - `leanos.yaml`;
+  - `.leanos/` mínimo com índices, contexto e activation state;
+  - `ai-standard/` necessário para regras, templates e activation recipes;
+  - `strategy/` com Business, Product e Roadmap mínimos;
+  - integração opcional do LeanOS Chief.
+- O wizard deixa de perguntar quais áreas completas preparar agora.
+- O wizard pergunta o suficiente para gerar um `seed_context` no `leanos.yaml`:
+  - nome da empresa/produto;
+  - tipo de produto;
+  - descrição curta da ideia;
+  - usuário alvo inicial;
+  - estágio;
+  - modo de operação;
+  - se existe repo/produto atual.
+- O Chief inicia por perguntas guiadas, nunca perguntas vazias.
+- Strategy decide o próximo passo:
+  - continuar diagnosticando ideia;
+  - preencher Business/Product/Roadmap;
+  - avaliar se existe base para MVP;
+  - ativar Operations quando houver intenção real de MVP/delivery;
+  - ativar Growth quando houver launch, aquisição, feedback, retenção, pricing ou aprendizado pós-lançamento.
+
+Estados novos em `leanos.yaml`:
+
+```yaml
+workspace:
+  activation_policy: progressive
+  current_phase: strategy-discovery
+  seed_context:
+    description: ...
+departments:
+  active:
+    - strategy
+  available:
+    - operations
+    - growth
+  activation_history: []
+  pending_activation: []
+```
+
+Gates de ativação:
+
+- Strategy é criada no setup inicial.
+- Operations / Product Ops é ativada quando o founder pede MVP, escopo de entrega, Epic, Feature, acceptance criteria ou planejamento de implementação.
+- Operations / Design é ativada quando surgem fluxo de usuário, telas, componente, UX, acessibilidade ou design system.
+- Operations / Engineering é ativada quando existe Feature pronta para implementação, análise de código, PR, testes ou mudança técnica.
+- Operations / DevOps é ativada quando há GitHub, CI/CD, deploy, ambiente, Vercel, secrets ou observabilidade.
+- Operations / Security é ativada quando há dados sensíveis, auth, permissões, API, privacidade, banco, secrets, abuso ou compliance.
+- Growth / Marketing é ativada quando há posicionamento externo, landing page, lançamento ou aquisição.
+- Growth / Customer Experience é ativada quando há feedback, suporte, retenção, churn, onboarding ou learning loop.
+- Growth / Finance é ativada quando há pricing, revenue model, unit economics, orçamento ou custo de aquisição.
+
+Regra forte para o Chief:
+
+- [ ] O Chief nunca deve tentar abrir, carregar, resumir ou executar arquivo, role, skill, playbook, workflow ou knowledge de departamento/área que não esteja ativo.
+- [ ] `available` significa que o LeanOS sabe criar ou ativar depois; não significa que o caminho existe no workspace atual.
+- [ ] Antes de qualquer roteamento fora de Strategy, o Chief deve checar `leanos.yaml`, activation state e índices ativos.
+- [ ] Se o asset necessário não existir, o Chief deve parar, explicar que a área ainda não está ativa e propor ativação com lista de arquivos que serão criados.
+- [ ] O Chief não deve inventar substituto para role, skill, playbook ou knowledge ausente.
+- [ ] O Chief não deve usar templates de `ai-standard/` como se fossem assets ativos do cliente.
+- [ ] O Chief só pode criar pastas novas por meio de uma activation recipe oficial e depois de confirmação do founder.
+- [ ] Workflows devem declarar dependências inativas como `activation_required`, não como paths carregáveis.
+- [ ] Índices devem separar claramente `active`, `available`, `not_active`, `pending_activation` e `missing`.
+- [ ] A resposta founder-friendly deve dizer: "essa área ainda não está ativa" antes de qualquer proposta de criação.
+
+Mudanças necessárias:
+
+- [ ] Alterar o wizard CLI para remover a seleção inicial de todos os departamentos/áreas.
+- [ ] Reposicionar a pergunta de áreas como intenção futura opcional, se for mantida, sem gerar pastas ativas.
+- [ ] Alterar `WorkspaceAnswers` para separar `seed_context`, `active_departments`, `available_departments` e `activation_policy`.
+- [ ] Alterar `createWorkspaceFiles()` para gerar Strategy-only no setup inicial.
+- [ ] Separar catálogo de áreas disponíveis de áreas ativas no gerador.
+- [ ] Criar activation recipes para gerar departamentos/áreas depois do setup inicial.
+- [ ] Criar ou atualizar `.leanos/activation/state.yaml` ou campo equivalente em `leanos.yaml`.
+- [ ] Atualizar `.leanos/index/*.yaml` para listar apenas paths ativos e declarar áreas disponíveis como `not_active`.
+- [ ] Atualizar o Chief para, ao receber "quero começar", "como começar", "iniciar LeanOS" ou similares, ler `leanos.yaml`, entrar em Strategy e iniciar diagnóstico guiado.
+- [ ] Criar ou fortalecer um workflow de Strategy para diagnóstico inicial da ideia, por exemplo `strategy/workflows/founder-diagnosis.workflow.md`.
+- [ ] Criar ou fortalecer skill de diagnóstico de ideia do founder, por exemplo `strategy/product/skills/diagnose-founder-idea/SKILL.md`.
+- [ ] Garantir que as perguntas do Chief venham de lacunas reais no `leanos.yaml` e nos arquivos de Strategy.
+- [ ] Atualizar workflows para declarar quando exigem departamento/área inativa e como propor ativação.
+- [ ] Atualizar validações para impedir routing para paths ainda não criados.
+- [ ] Atualizar validações para falhar quando `available` ou `not_active` aparecer como path carregável.
+- [ ] Atualizar validações para falhar quando role, skill, playbook, workflow ou knowledge apontar para arquivo inexistente.
+- [ ] Regenerar `examples/client-workspace/` como preview Strategy-only.
+- [ ] Criar teste de jornada em que o founder começa só com Strategy e ativa Operations ao definir MVP.
+
+Critérios de aceite:
+
+- [ ] O workspace inicial não cria `operations/` nem `growth/` por padrão.
+- [ ] O workspace inicial contém Strategy suficiente para diagnóstico e primeira evolução do negócio.
+- [ ] `leanos.yaml` registra que o workspace usa ativação progressiva.
+- [ ] O Chief usa o contexto do wizard como semente, não como verdade final.
+- [ ] O Chief faz perguntas guiadas baseadas em lacunas reais.
+- [ ] O Chief propõe ativação de departamento/área antes de criar novas pastas.
+- [ ] A ativação mostra quais arquivos serão criados e por quê.
+- [ ] Nenhum workflow aponta para arquivo ausente sem declarar ativação necessária.
+- [ ] Nenhum asset ativo aponta para role, skill, playbook, workflow ou knowledge inexistente.
+- [ ] O Chief trata áreas disponíveis como capacidades futuras, não como arquivos carregáveis.
+- [ ] O preview e a validação cobrem tanto setup inicial quanto ativação de Operations.
+
+### 2. Founder Progression Model
+
+Status: urgente; bloqueador da Founder Experience progressiva.
+
+Objetivo: definir a progressão guiada do founder desde o primeiro "quero começar" até estágios avançados da startup, garantindo que o Chief conduza a interação com naturalidade, sem perguntas vazias, sem ativar departamentos cedo demais e sem gerar ruído operacional.
+
+Princípio central:
+
+- [x] O founder nunca escolhe o departamento.
+- [x] O founder fala intenção; o Chief identifica estágio, lacuna e próximo passo.
+- [x] O Chief deve conduzir uma pergunta útil por vez, baseada em contexto já existente.
+- [x] O Chief deve sempre puxar para o próximo passo natural, mas nunca avançar sem cumprir o gate do estágio atual.
+- [x] Strategy deve ficar minimamente preenchida antes de roadmap, MVP, delivery ou Growth.
+- [x] Roadmap não é MVP; MVP não é implementação; implementação não começa sem delivery readiness.
+- [x] Ativação de departamento é consequência de maturidade, não escolha inicial de scaffold.
+
+Formato base de toda resposta do Chief:
+
+```text
+O que já temos:
+<resumo curto baseado em leanos.yaml e arquivos ativos>
+
+O que ainda falta:
+<lacuna principal, uma de cada vez>
+
+Próximo passo recomendado:
+<ação ou estágio>
+
+Pergunta:
+<pergunta guiada com opções quando fizer sentido>
+```
+
+Comportamento quando o founder diz "quero começar agora":
+
+```text
+🧭 LeanOS Chief: vou começar por Strategy, porque ainda estamos formando a base do negócio. Vou usar o que você já informou no setup e preencher só o mínimo necessário para decidir o próximo passo sem criar ruído.
+```
+
+O Chief deve carregar somente:
+
+- `leanos.yaml`;
+- `AGENTS.md`;
+- activation state;
+- índices ativos;
+- arquivos ativos de `strategy/`.
+
+O Chief deve responder com contexto lido e uma pergunta guiada:
+
+```text
+Tenho até aqui:
+- Produto: <nome>
+- Ideia inicial: <descrição curta>
+- Usuário provável: <target_user>
+- Estágio: <stage>
+
+Antes de falar de roadmap ou MVP, preciso fechar a hipótese central do negócio.
+
+Qual dessas opções descreve melhor o problema que você quer resolver agora?
+
+1. O usuário perde tempo em um processo manual.
+2. O usuário toma decisões ruins por falta de clareza.
+3. O usuário precisa vender, operar ou entregar melhor.
+4. O usuário tem um problema técnico/operacional recorrente.
+5. Nenhuma dessas; quero explicar do meu jeito.
+```
+
+#### Estágio 0: Setup Seed
+
+Objetivo: capturar apenas o contexto semente no wizard, sem forçar decisões operacionais.
+
+Ativo:
+
+- `AGENTS.md`;
+- `leanos.yaml`;
+- `.leanos/` mínimo;
+- `ai-standard/` mínimo;
+- `strategy/`.
+
+Inputs mínimos do wizard:
+
+- nome da empresa/produto;
+- tipo de produto;
+- descrição curta da ideia;
+- usuário alvo inicial;
+- estágio atual;
+- modo de operação;
+- se existe repo/produto atual.
+
+Gate de saída:
+
+- `leanos.yaml` contém `seed_context`;
+- Strategy está ativa;
+- Operations e Growth estão apenas como `available`, não como paths carregáveis.
+
+#### Estágio 1: Strategy Seed
+
+Objetivo: transformar a ideia do wizard em hipótese inicial clara.
+
+Ativo:
+
+- Strategy / Business;
+- Strategy / Product;
+- Strategy / Roadmap apenas como destino futuro leve, não como plano de execução.
+
+Perguntas guiadas:
+
+- "Quem sente essa dor com mais frequência?"
+- "Em que momento esse problema aparece?"
+- "Como essa pessoa resolve isso hoje?"
+- "O que faria essa pessoa dizer: isso vale a pena?"
+- "Qual parte da ideia ainda é mais chute do que certeza?"
+
+Artefatos mínimos:
+
+- product brief;
+- problem statement;
+- ICP inicial;
+- value proposition inicial;
+- riskiest assumptions;
+- business profile mínimo.
+
+Gate antes de avançar:
+
+- usuário inicial nomeado;
+- problema claro;
+- alternativa atual descrita;
+- promessa de valor inicial;
+- principal incerteza registrada.
+
+Gancho:
+
+```text
+Com isso eu consigo montar a primeira versão da Strategy Baseline. Depois disso, a gente decide se faz sentido validar melhor a ideia ou começar a organizar um roadmap inicial.
+```
+
+#### Estágio 2: Strategy Baseline
+
+Objetivo: sair de ideia solta para negócio minimamente explicável.
+
+O Chief deve preencher minimamente:
+
+- `strategy/business/knowledge/profile.md`;
+- `strategy/business/knowledge/mission.md`;
+- `strategy/business/knowledge/vision.md`;
+- `strategy/business/knowledge/principles.md` quando aplicável;
+- `strategy/product/knowledge/brief.md`;
+- `strategy/product/knowledge/problem.md`;
+- `strategy/product/knowledge/icp.md`;
+- `strategy/product/knowledge/value-proposition.md`;
+- `strategy/product/knowledge/business-model-canvas.md` quando houver base suficiente.
+
+Gates antes de roadmap:
+
+- ICP inicial existe.
+- Problema está claro.
+- Alternativa atual existe.
+- Promessa de valor existe.
+- Risco principal está nomeado.
+- O founder confirmou a baseline.
+
+Comportamento se faltar base:
+
+```text
+Ainda não vou abrir roadmap porque falta clareza sobre <lacuna>. Posso resolver isso com uma pergunta agora.
+```
+
+#### Estágio 3: Idea Diagnosis / Validation
+
+Objetivo: decidir se a ideia merece virar candidata de roadmap, precisa de validação ou deve ficar em espera.
+
+Classificações:
+
+- clara o suficiente;
+- promissora, mas com risco;
+- grande demais;
+- ainda vaga;
+- não prioritária agora.
+
+Perguntas guiadas:
+
+- "O que precisa ser verdade para essa ideia valer a pena?"
+- "Qual evidência você já tem?"
+- "Isso resolve uma dor frequente, cara ou urgente?"
+- "Você quer validar isso com conversa, protótipo, landing page ou MVP pequeno?"
+
+Gate de saída:
+
+- ideia classificada;
+- risco principal registrado;
+- destino recomendado: validar, roadmap candidate, not-now ou reformular.
+
+Gancho:
+
+```text
+Essa ideia já tem base para entrar como candidata no roadmap, mas ainda não como escopo de MVP.
+```
+
+#### Estágio 4: Roadmap Inicial
+
+Objetivo: organizar oportunidades, não prometer entrega.
+
+Ativo:
+
+- Strategy / Product;
+- Strategy / Roadmap.
+
+Perguntas guiadas:
+
+- "Essa ideia é para aprender, vender, reter ou operar melhor?"
+- "Ela precisa acontecer agora ou pode esperar?"
+- "Qual risco ela reduz?"
+- "Se fizermos só uma parte pequena, qual seria?"
+
+Artefatos:
+
+- backlog;
+- roadmap candidate;
+- Now / Next / Later;
+- not-now;
+- dependências e riscos.
+
+Gate antes de MVP:
+
+- problema prioritário existe;
+- usuário inicial existe;
+- objetivo da primeira versão existe;
+- critério mínimo de sucesso existe;
+- noção do que fica fora existe.
+
+#### Estágio 5: MVP Decision
+
+Objetivo: sair de Strategy e entrar em escopo de entrega somente quando houver maturidade.
+
+Gatilho:
+
+- "vamos definir o MVP";
+- "qual a primeira versão?";
+- "o que entra no MVP?";
+- "quero transformar isso em produto";
+- "vamos construir a primeira versão".
+
+Comportamento obrigatório:
+
+```text
+🧭 LeanOS Chief: agora estamos saindo de Strategy e entrando em escopo de entrega. Para definir MVP com segurança, preciso ativar Operations / Product Ops. Essa área vai criar os arquivos de escopo, critérios e limites da primeira versão. Posso preparar essa ativação?
+```
+
+Regra:
+
+- não carregar `operations/` antes de ativar;
+- não criar MVP scope antes de ativar Product Ops;
+- não ativar Engineering ainda.
+
+Perguntas guiadas:
+
+- "Qual é a primeira vitória que o usuário precisa ter?"
+- "O que pode ficar fora sem quebrar a promessa?"
+- "Qual comportamento prova que o MVP funcionou?"
+- "Qual risco pode matar essa primeira versão?"
+
+Gate de saída:
+
+- MVP scope confirmado;
+- non-goals definidos;
+- critério mínimo de sucesso;
+- riscos principais;
+- Product Ops ativo.
+
+#### Estágio 6: Product Shaping
+
+Objetivo: transformar MVP em trabalho preparável.
+
+Ativo:
+
+- Operations / Product Ops;
+- Design, Security e DevOps apenas quando aplicável.
+
+Comportamento:
+
+```text
+Temos escopo de MVP. Agora vou checar quais áreas são realmente necessárias para preparar a entrega sem criar departamentos desnecessários.
+```
+
+Ativar Design quando houver:
+
+- fluxo de usuário;
+- telas;
+- componente;
+- experiência;
+- acessibilidade;
+- design system.
+
+Ativar Security quando houver:
+
+- dados sensíveis;
+- autenticação;
+- permissões;
+- API;
+- privacidade;
+- banco;
+- secrets;
+- abuso;
+- compliance.
+
+Ativar DevOps quando houver:
+
+- GitHub;
+- CI/CD;
+- deploy;
+- ambiente;
+- Vercel;
+- observabilidade;
+- secrets operacionais.
+
+Gate de saída:
+
+- Epic ou delivery scope claro;
+- critérios de aceite iniciais;
+- dependências mapeadas;
+- áreas condicionais ativadas ou marcadas como não aplicáveis.
+
+#### Estágio 7: Delivery Readiness
+
+Objetivo: criar Epic/Features apenas quando o escopo está pronto.
+
+Perguntas guiadas:
+
+- "Essa entrega já tem critério de pronto?"
+- "Tem fluxo de usuário?"
+- "Tem dependência técnica?"
+- "Tem risco de dados, login, permissão ou privacidade?"
+
+Gate antes de Engineering:
+
+- Epic existe;
+- Features foram quebradas;
+- ready-to-develop passou ou falhas foram registradas;
+- Design/Security/DevOps estão prontos ou explicitamente não aplicáveis.
+
+#### Estágio 8: Implementation
+
+Objetivo: executar Feature pronta sem pular planejamento, testes e PR.
+
+Ativar:
+
+- Operations / Engineering;
+- Test Engineer;
+- PR Reviewer;
+- DevOps quando deploy/CI exigir.
+
+Comportamento:
+
+```text
+Agora sim existe uma Feature pronta para implementação. Vou ativar Engineering para planejar execução, testes e PR.
+```
+
+Outputs:
+
+- implementation plan;
+- branch;
+- tasks;
+- tests;
+- PR;
+- review;
+- post-merge continuation.
+
+#### Estágio 9: Launch
+
+Objetivo: colocar o MVP no mundo e aprender.
+
+Ativar Growth quando houver:
+
+- landing page;
+- aquisição;
+- posicionamento externo;
+- feedback;
+- pricing;
+- launch plan.
+
+Perguntas guiadas:
+
+- "Quem precisa ver isso primeiro?"
+- "Qual canal faz mais sentido agora?"
+- "Que sinal mostra aprendizado real?"
+- "Como vamos capturar feedback?"
+- "Isso muda posicionamento, roadmap ou produto?"
+
+Gate de saída:
+
+- plano de lançamento;
+- canal inicial;
+- sinal de aprendizado;
+- mecanismo de feedback;
+- risco de pricing ou aquisição tratado quando aplicável.
+
+#### Estágio 10: Learning Loop
+
+Objetivo: transformar uso real em decisão.
+
+O Chief deve separar:
+
+- evidência;
+- interpretação;
+- decisão;
+- próximo experimento;
+- mudança de produto.
+
+Gancho:
+
+```text
+Esse aprendizado parece apontar para uma mudança de produto. Quer que eu trate isso como ajuste de Strategy, novo item de roadmap ou melhoria de MVP?
+```
+
+Gate de saída:
+
+- aprendizado registrado;
+- decisão recomendada;
+- próximo loop escolhido;
+- Strategy/Roadmap/Product Ops atualizados somente com confirmação.
+
+#### Estágio 11: Scaling / Operating Cadence
+
+Objetivo: transformar LeanOS em sistema operacional contínuo.
+
+Ritmos possíveis:
+
+- weekly review;
+- roadmap review;
+- customer learning loop;
+- release planning;
+- finance/pricing review;
+- security review;
+- post-merge continuation.
+
+Ativar ou fortalecer:
+
+- Growth;
+- Finance;
+- DevOps;
+- Security;
+- Customer Experience;
+- Roadmap cadence;
+- Release cadence.
+
+Critério de maturidade:
+
+- há produto lançado ou em uso;
+- há feedback recorrente;
+- há releases, aquisição, pricing, suporte ou operação contínua;
+- o founder precisa cadência, não apenas definição inicial.
+
+#### O Que Já Temos
+
+Workflows existentes:
+
+- `strategy/workflows/new-idea-intake.workflow.md` cobre entrada de novas ideias.
+- `strategy/workflows/idea-to-roadmap.workflow.md` cobre transição de ideia para roadmap.
+- `strategy/workflows/roadmap-to-github-project.workflow.md` cobre preparação estratégica para sync remoto.
+- `operations/workflows/define-mvp.workflow.md` cobre decisão de MVP.
+- `operations/workflows/roadmap-item-to-epic.workflow.md` cobre roadmap para Epic.
+- `operations/workflows/epic-to-features.workflow.md` cobre Feature Shaping.
+- `operations/workflows/feature-to-delivery-cycle.workflow.md` cobre entrega/implementação.
+- `operations/workflows/post-merge-continuation.workflow.md` cobre continuação pós-merge.
+- `growth/workflows/launch-learning-loop.workflow.md` cobre lançamento e aprendizado.
+
+Skills existentes úteis para a progressão:
+
+- Strategy / Product: `evaluate-idea`, `define-product`, `define-icp`, `define-value-proposition`, `define-business-model`, `check-coherence`.
+- Strategy / Business: `define-business-identity`, `clarify-operating-model`.
+- Strategy / Roadmap: `create-roadmap`, `prioritize-backlog`, `prepare-roadmap-sync`.
+- Product Ops: `define-mvp`, `define-delivery-scope`, `define-delivery-boundaries`, `shape-epic`, `write-acceptance-criteria`, `write-feature-criteria`, `check-delivery-coherence`.
+- Design: `user-flow-mapping`, `screen-specification`, `component-analysis`, `design-review`, `accessibility`, `microcopy`.
+- Engineering: `plan-implementation`, `create-branch`, `implement-component`, `write-tests`, `create-pr`, `review-pr`.
+- DevOps: `configure-github-project`, `configure-environments`, `setup-ci`, `plan-deployment`, `prepare-release`, `define-observability`.
+- Security: `threat-modeling`, `access-control-review`, `api-security-review`, `database-security-review`, `secrets-management`, `secure-code-review`, `ai-generated-code-security`.
+- Growth: `define-positioning`, `create-landing-page-copy`, `create-launch-plan`, `map-customer-feedback`, `synthesize-support-patterns`, `review-pricing`, `model-unit-economics`.
+
+Playbooks existentes úteis:
+
+- Strategy: `business-foundation`, `product-strategy`, `roadmap-cycle-planning`, `roadmap-sync-prep`.
+- Product Ops: `mvp-delivery`, `delivery-scope-planning`, `delivery-readiness`, `epic-to-features`.
+- Design: `design-foundation`, `mvp-ux-flow`, `component-readiness`, `accessibility-review`, `ux-writing`, `user-research`.
+- Engineering: `engineering-delivery`, `branch-for-feature`, `component-implementation`, `test-planning`, `prepare-pr`, `pr-validation`.
+- DevOps: `configure-github-project`, `configure-environments`, `setup-ci-cd`, `plan-deployment`, `release-operations`, `define-observability`.
+- Security: `security-foundation`, `pre-mvp-security-checklist`, `api-security-review`, `database-security-review`, `pre-deploy-security-review`, `ai-generated-code-security-review`.
+- Growth: `mvp-launch`, `customer-learning-loop`, `finance-review`.
+
+Founder Journeys existentes:
+
+- `new-idea-intake`;
+- `idea-to-roadmap`;
+- `define-mvp`;
+- `roadmap-item-to-epic`;
+- `epic-to-features`;
+- `feature-to-delivery-cycle`;
+- `post-merge-continuation`;
+- `github-sync`.
+
+#### O Que Falta Para Ficar Natural
+
+- [ ] Criar um `Founder Progression Model` formal como fonte de verdade.
+- [ ] Criar seção canônica `Progression Intent Routing` no root `AGENTS.md`.
+  - mapear intenção natural -> estágio da progressão -> gate -> requisito ativo -> workflow ou `activation_required`;
+  - deixar claro que o root `AGENTS.md` escolhe estágio/rota, não executa skill/playbook diretamente;
+  - impedir que o Chief carregue departamento, área ou workflow inativo antes da checagem de activation state.
+- [ ] Criar `strategy/workflows/founder-diagnosis.workflow.md`.
+- [ ] Criar skill `strategy/product/skills/diagnose-founder-idea/SKILL.md`.
+- [ ] Criar playbook `strategy/product/playbooks/founder-discovery.playbook.md` ou fortalecer `product-strategy.playbook.md` para cobrir o início guiado.
+- [ ] Criar `strategy/knowledge/progression-state.md` ou registrar progressão em `leanos.yaml` / activation state.
+- [ ] Criar uma matriz de gates por estágio: required context, allowed next stages, blocked next stages.
+- [ ] Atualizar `new-idea-intake` para entrar no Progression Model em vez de virar fluxo isolado.
+- [ ] Atualizar `idea-to-roadmap` para exigir Strategy Baseline mínima antes de roadmap.
+- [ ] Atualizar `define-mvp` para exigir gate de Strategy/Roadmap e propor ativação de Operations/Product Ops.
+- [ ] Atualizar `roadmap-item-to-epic` para exigir Operations ativo e delivery scope confirmado.
+- [ ] Atualizar `launch-learning-loop` para exigir Growth ativo ou propor ativação.
+- [ ] Criar exemplos de respostas founder-friendly para cada estágio.
+- [ ] Criar perguntas guiadas canônicas por estágio, com opções e fallback "explicar do meu jeito".
+- [ ] Criar ganchos de continuidade por estágio.
+- [ ] Atualizar validação para garantir que nenhum estágio pula gate obrigatório.
+- [ ] Atualizar `examples/client-workspace/` para demonstrar jornada Strategy-only até ativação de Operations.
+- [ ] Criar Founder Journey `docs/framework/founder-journeys/founder-progression-model.md`.
+
+#### Como Vai Funcionar Na Prática
+
+1. CLI cria workspace Strategy-only com `seed_context`.
+2. Founder abre o agente e diz "quero começar".
+3. Chief lê somente arquivos ativos e resume o que já sabe.
+4. Chief identifica o estágio atual pelo `current_phase` e pelas lacunas de Strategy.
+5. Chief faz uma pergunta guiada, com opções, para preencher a próxima lacuna.
+6. Ao final de cada mini-bloco, Chief propõe atualizar arquivos de Strategy e pede confirmação.
+7. Quando Strategy Baseline atinge o gate mínimo, Chief oferece o próximo estágio: validação, roadmap ou MVP.
+8. Se o founder pedir MVP, Chief propõe ativar Operations/Product Ops com lista de arquivos.
+9. Depois da confirmação, activation recipe cria as pastas e atualiza activation state.
+10. Chief continua a jornada no novo estágio, carregando apenas assets ativos.
+11. Em cada transição futura, Chief repete o padrão: contexto, lacuna, próximo passo, pergunta guiada, confirmação.
+
+Critérios de aceite:
+
+- [ ] O founder nunca recebe uma pergunta genérica como "me fale mais".
+- [ ] Toda pergunta do Chief está ligada a uma lacuna específica.
+- [ ] O Chief sempre explica por que aquele é o próximo passo.
+- [ ] Strategy Baseline mínima vem antes de roadmap.
+- [ ] Roadmap candidate vem antes de MVP scope.
+- [ ] MVP scope vem antes de Epic/Feature.
+- [ ] Feature readiness vem antes de Engineering.
+- [ ] Launch vem depois de MVP planejado ou entregue.
+- [ ] Learning Loop separa evidência, interpretação e decisão.
+- [ ] Scaling cadence só aparece quando há produto, uso, release, feedback ou operação recorrente.
+- [ ] O modelo progressivo funciona sem comandos slash.
+
+### 3. Workflow Contract v3 Phase-Based
+
+Status: urgente; necessário para o modelo progressivo funcionar sem ruído.
+
+Objetivo: simplificar e reestruturar os workflows para que eles sejam máquinas de progressão, gates e handoffs, sem virar documentos longos de execução nem meras listas sequenciais de skills.
+
+Diagnóstico:
+
+- [x] Os workflows atuais têm boa base estrutural: purpose, triggers, owner, required areas, conditional areas, load first, navigation, gates, allowed/forbidden updates, stop conditions, expected output e continuation bridge.
+- [x] Eles estão mais fortes que simples prompts ou comandos.
+- [x] O risco é estarem completos demais e repetirem detalhes que deveriam viver em skills, playbooks ou knowledge.
+- [x] Para Founder Experience, o Chief não deve soar como se estivesse executando um documento grande; ele deve conduzir uma conversa guiada com fases claras.
+- [x] Para o modelo progressivo, o workflow precisa controlar estágio, gate e ativação, não apenas mandar carregar arquivos.
+
+Decisão:
+
+- [x] Workflow não deve ser apenas `Skill A -> Skill B -> Skill C`.
+- [x] Workflow deve ter regras próprias de sequência, gates, branches, ativação e handoff.
+- [x] Skills são capacidades específicas usadas dentro de uma fase.
+- [x] Playbooks conduzem execução prática ou conversa guiada dentro de uma área.
+- [x] Roles decidem ownership e limites.
+- [x] Knowledge guarda fatos, critérios e decisões.
+- [x] O workflow deve ser menor, mais claro e phase-based.
+
+Responsabilidade por tipo de asset:
+
+```text
+Founder Progression Model = jornada macro da startup
+Workflow = transição entre estágios, gates, ativação e handoff
+Role = dono operacional da decisão
+Skill = capacidade específica e reutilizável
+Playbook = conversa ou execução guiada
+Knowledge = fonte de verdade persistente
+```
+
+Novo formato recomendado para workflows:
+
+```md
+# <Workflow Name>
+
+## Purpose
+## Founder Triggers
+## Progression Stage
+## Entry Gate
+## Active Requirements
+## Activation Requirements
+## Phases
+## Skills Used
+## Playbooks Used
+## Confirmation Gates
+## Allowed Updates
+## Forbidden Updates
+## Stop Conditions
+## Expected Output
+## Continuation
+```
+
+Modelo de fase:
+
+```md
+### Phase 1: Diagnose Stage
+
+- Owner: LeanOS Chief / Strategy
+- Load: active context only
+- Use Skill: diagnose-founder-idea
+- Use Playbook: founder-discovery
+- Gate: Strategy Baseline gap identified
+- Output: current stage, missing context and next guided question
+- Stop if: required active files are missing or requested area is not active
+```
+
+Regras para `Phases`:
+
+- [ ] Cada fase deve declarar owner, contexto mínimo, skill/playbook opcional, gate de saída e output.
+- [ ] Cada fase deve produzir uma decisão ou lacuna, não apenas "ler arquivos".
+- [ ] Skills e playbooks entram como ferramentas da fase, não como substitutos do workflow.
+- [ ] Se uma fase precisar de área inativa, declarar `activation_required`, não path carregável.
+- [ ] Se a fase não puder continuar, usar `Stop Conditions` e explicar o próximo passo founder-friendly.
+- [ ] Fases devem ser curtas o suficiente para o Chief transformar em conversa natural.
+
+Exemplo de workflow enxuto para MVP:
+
+```text
+Entrada: founder quer definir primeira versão.
+Gate: Strategy Baseline mínima existe?
+Se não: voltar para Strategy.
+Se sim: propor ativação de Operations/Product Ops quando inativa.
+Phase 1: carregar contexto mínimo.
+Phase 2: usar define-mvp skill para decisão.
+Phase 3: usar mvp-delivery playbook para conversa guiada.
+Phase 4: propor arquivos.
+Phase 5: pedir confirmação.
+Saída: MVP scope confirmado ou lacunas nomeadas.
+```
+
+Novos workflows necessários:
+
+- [ ] Criar `strategy/workflows/founder-diagnosis.workflow.md`.
+  - Aciona quando o founder diz "quero começar", "como começar", "iniciar LeanOS" ou equivalente.
+  - Lê `leanos.yaml`, activation state e Strategy ativa.
+  - Identifica estágio atual da progressão.
+  - Decide a próxima lacuna de Strategy.
+  - Usa `diagnose-founder-idea` e playbook de descoberta guiada.
+  - Nunca ativa Operations/Growth diretamente; apenas recomenda próximo estágio quando os gates permitem.
+- [ ] Avaliar se `strategy/workflows/strategy-baseline.workflow.md` precisa existir.
+  - Criar somente se `founder-diagnosis` ficar grande demais.
+  - Caso contrário, manter Strategy Baseline como fase dentro de `founder-diagnosis`.
+- [ ] Não criar `activate-department.workflow.md` agora.
+  - Ativação deve ser activation recipe/protocolo de runtime, não workflow de negócio.
+- [ ] Não criar `strategy-to-mvp.workflow.md` agora.
+  - A transição deve ser gate do `define-mvp.workflow.md` com `activation_required: operations.product-ops`.
+- [ ] Não criar workflow separado de PR review agora.
+  - PR review continua dentro de `feature-to-delivery-cycle` e playbooks de Engineering.
+
+Workflows existentes a reestruturar para v3:
+
+- [ ] `strategy/workflows/new-idea-intake.workflow.md`
+  - Transformar em fluxo phase-based de qualificação de ideia.
+  - Conectar ao Founder Progression Model.
+  - Não promover ideia para roadmap sem baseline mínima.
+- [ ] `strategy/workflows/idea-to-roadmap.workflow.md`
+  - Exigir gate de Strategy Baseline.
+  - Deixar claro que roadmap candidate não é MVP scope.
+  - Usar `prioritize-backlog` e `roadmap-cycle-planning` como ferramentas, não como sequência rígida.
+- [ ] `operations/workflows/define-mvp.workflow.md`
+  - Tratar Product Ops inativo como `activation_required`.
+  - Exigir Strategy/Roadmap gate antes de MVP.
+  - Usar `define-mvp` e `mvp-delivery` dentro de fases.
+- [ ] `operations/workflows/roadmap-item-to-epic.workflow.md`
+  - Exigir Operations/Product Ops ativo.
+  - Separar gate de delivery scope de criação de Epic.
+  - Não criar Feature nem GitHub issue.
+- [ ] `operations/workflows/epic-to-features.workflow.md`
+  - Declarar fases de shaping, DRM, conditional areas e output de Features.
+  - Parar antes de branch, código, PR ou GitHub sync.
+- [ ] `operations/workflows/feature-to-delivery-cycle.workflow.md`
+  - Manter como workflow de execução multiárea.
+  - Declarar Engineering como fase final, só após readiness.
+  - Não deixar Engineering começar antes de Product Ops/Design/Security/DevOps gates.
+- [ ] `operations/workflows/post-merge-continuation.workflow.md`
+  - Manter como workflow de continuação.
+  - Separar atualização de contexto, decisão de próxima Feature e handoff para Growth/Strategy.
+- [ ] `growth/workflows/launch-learning-loop.workflow.md`
+  - Reestruturar para fases: launch, feedback, learning, decision, next loop.
+  - Exigir Growth ativo ou `activation_required`.
+- [ ] `strategy/workflows/roadmap-to-github-project.workflow.md`
+  - Rebaixar prioridade.
+  - Manter como readiness/dry-run quando GitHub estiver ativo, não como etapa central da progressão.
+
+O que remover ou reduzir dos workflows:
+
+- [ ] Reduzir repetição de detalhes que já estão em skills e playbooks.
+- [ ] Evitar longas listas de paths quando a fase só precisa de owner/contexto mínimo.
+- [ ] Evitar que `Load First` carregue skills/playbooks cedo demais.
+- [ ] Evitar duplicar lógica de decisão que pertence a knowledge gates.
+- [ ] Evitar duplicar perguntas guiadas que pertencem aos playbooks.
+- [ ] Evitar `Navigation Route` rígido quando o modelo progressivo exige branch condicional.
+
+Critérios de aceite:
+
+- [ ] Todo workflow principal tem `Progression Stage`.
+- [ ] Todo workflow principal tem `Entry Gate`.
+- [ ] Todo workflow principal tem `Activation Requirements`.
+- [ ] Todo workflow principal tem `Phases` com owner, skill/playbook opcional, gate e output.
+- [ ] Nenhum workflow trata área `available` como path carregável.
+- [ ] Nenhum workflow é apenas uma lista sequencial de skills.
+- [ ] Nenhum workflow duplica toda a lógica de uma skill ou playbook.
+- [ ] Workflows são curtos o suficiente para orientar o Chief sem gerar ruído para o founder.
+- [ ] O Chief consegue transformar cada fase em uma resposta founder-friendly.
+- [ ] A validação do gerador falha quando workflow v3 aponta para asset inexistente ou área inativa sem `activation_required`.
+
+Ordem de implementação específica dos workflows:
+
+1. Definir template v3 em `ai-standard/templates/workflows/`.
+2. Atualizar checklist e instruction de criação de workflow para v3.
+3. Criar `strategy/workflows/founder-diagnosis.workflow.md`.
+4. Criar ou adaptar `diagnose-founder-idea` e o playbook de descoberta guiada.
+5. Reestruturar `new-idea-intake` para phase-based.
+6. Reestruturar `idea-to-roadmap` para respeitar Strategy Baseline gate.
+7. Reestruturar `define-mvp` com `activation_required: operations.product-ops`.
+8. Reestruturar `roadmap-item-to-epic`.
+9. Reestruturar `epic-to-features`.
+10. Reestruturar `feature-to-delivery-cycle`.
+11. Reestruturar `post-merge-continuation`.
+12. Reestruturar `launch-learning-loop`.
+13. Reavaliar `roadmap-to-github-project` depois da camada GitHub chat-first.
+14. Atualizar validações do gerador para Workflow Contract v3.
+15. Regenerar preview Strategy-only e testar a Founder Journey progressiva.
+
+### 4. Remover Comandos Slash e Preservar Intenções No `AGENTS.md`
+
+Status: planejado; substitui a direcao anterior de padronizar comandos como atalhos.
+
+Objetivo: remover os comandos slash gerados pelo framework, como `/start-leanos`, `/status-leanos`, `/define-mvp`, `/github-sync` e equivalentes, sem perder as intencoes operacionais que hoje eles representam.
+
+Decisão:
+
+- [x] A experiencia principal deve ser conversa natural com o agente.
+- [x] O `AGENTS.md` raiz continua sendo o ponto de entrada e deve manter um mapa curto de intencoes naturais.
+- [x] Department `AGENTS.md`, Area `AGENTS.md`, workflows, roles, skills e playbooks continuam donos do processo.
+- [x] `.leanos/commands/` deixa de ser interface gerada do framework.
+- [x] O modelo nao deve depender de slash command para iniciar, diagnosticar, definir MVP, sincronizar GitHub, trabalhar em Feature ou revisar PR.
+
+Escopo:
+
+- [ ] Remover a geração de `.leanos/commands/` no workspace cliente.
+- [ ] Remover prompts ou instruções que mandem o usuário digitar comandos slash como primeiro passo.
+- [ ] Atualizar o `AGENTS.md` raiz para conter o `Natural Intent Map` como interface principal.
+- [ ] Criar a seção `Progression Intent Routing` no `AGENTS.md` raiz.
+  - formato: `Intent -> Current Stage -> Gate -> Active Requirements -> Route`;
+  - quando a rota exigir área inativa, retornar `activation_required`, não path carregável;
+  - quando a rota estiver ativa, apontar para o menor workflow compatível;
+  - nunca apontar direto para role, skill, playbook ou knowledge a partir do root;
+  - nunca apontar para `.leanos/commands/`.
+- [ ] Atualizar LeanOS Chief e integrações VS Code/Copilot para iniciar pelo `AGENTS.md` e por linguagem natural, sem `/start-leanos`.
+- [ ] Atualizar workflows e jornadas internas que ainda apontam para `.leanos/commands/*.md`.
+- [ ] Atualizar `validate-generator.mjs` para validar intents no `AGENTS.md` e ausência de comandos gerados.
+- [ ] Regenerar `examples/client-workspace/` depois da remoção.
+
+Contrato mínimo de `Progression Intent Routing`:
+
+```text
+1. Identificar intenção natural do founder.
+2. Ler `current_phase`, `active`, `available` e `pending_activation`.
+3. Checar gate do estágio atual.
+4. Se o departamento/área necessária estiver inativa, responder com `activation_required`.
+5. Se a rota estiver ativa, apontar para o menor workflow compatível.
+6. Não carregar role, skill, playbook ou knowledge antes do workflow/owner confirmar a rota.
+7. Não carregar paths ausentes.
+```
+
+Exemplos esperados:
+
+```text
+"quero começar", "como começar", "iniciar LeanOS"
+-> Stage: Strategy Seed
+-> Route: strategy/workflows/founder-diagnosis.workflow.md
+-> Requires: strategy active
+-> Do not load: operations/, growth/
+```
+
+```text
+"vamos definir o MVP", "qual a primeira versão?"
+-> Stage: MVP Decision
+-> Gate: Strategy Baseline complete
+-> If Operations/Product Ops inactive: activation_required: operations.product-ops
+-> After activation: operations/workflows/define-mvp.workflow.md
+```
+
+```text
+"implemente essa feature"
+-> Stage: Implementation
+-> Gate: Feature ready-to-develop
+-> If Engineering inactive: activation_required: operations.engineering
+-> After activation: operations/workflows/feature-to-delivery-cycle.workflow.md
+```
+
+Intencoes que devem continuar existindo:
+
+- [ ] "vamos começar", "configurar o LeanOS", "iniciar o projeto" -> Strategy Baseline inicial.
+- [ ] "onde paramos?", "qual o status?", "o que falta?" -> diagnóstico do workspace.
+- [ ] "vamos definir o MVP", "qual a primeira versão?", "o que entra no MVP?" -> `operations/workflows/define-mvp.workflow.md`.
+- [ ] "tenho uma ideia", "quero avaliar uma feature nova" -> `strategy/workflows/new-idea-intake.workflow.md`.
+- [ ] "coloque isso no roadmap" -> `strategy/workflows/idea-to-roadmap.workflow.md`.
+- [ ] "transforme esse item em epic" -> `operations/workflows/roadmap-item-to-epic.workflow.md`.
+- [ ] "quebre esse epic em features" -> `operations/workflows/epic-to-features.workflow.md`.
+- [ ] "sincronize com GitHub", "configure GitHub" -> GitHub readiness/sync via DevOps e workflow/capability segura.
+- [ ] "implemente essa feature" -> `operations/workflows/feature-to-delivery-cycle.workflow.md`.
+- [ ] "revise este PR" -> Engineering review dentro do fluxo de delivery.
+- [ ] "mergeado, e agora?" -> `operations/workflows/post-merge-continuation.workflow.md`.
+
+Critérios de aceite:
+
+- [ ] O workspace gerado não contém `.leanos/commands/` como interface operacional.
+- [ ] O preview não instrui o founder a usar comandos slash.
+- [ ] `AGENTS.md` contém intents naturais suficientes para rotear sem comandos.
+- [ ] `AGENTS.md` contém `Progression Intent Routing` com estágio, gate, rota e `activation_required`.
+- [ ] O root `AGENTS.md` nunca aponta direto para role, skill, playbook ou knowledge.
+- [ ] O root `AGENTS.md` nunca aponta para path de área inativa.
+- [ ] Nenhuma jornada principal depende de `.leanos/commands/*.md`.
+- [ ] GitHub readiness/sync continua exigindo dry-run e confirmação antes de escrita remota.
+- [ ] A Founder Journey externa funciona com linguagem natural.
+- [ ] A validação do gerador passa após a remoção.
+
+#### Histórico Da Direção Anterior A Remover Ou Atualizar
+
+Os itens abaixo documentam o estado anterior de padronização de comandos. Eles devem ser usados como inventário do que precisa ser removido, migrado para intents naturais ou revalidado no `AGENTS.md`, não como direção futura.
 
 #### Command Contract Standard
 
@@ -449,11 +1409,13 @@ Regras gerais:
 - [x] Validar `Founder Testing Guide` para founder nao tecnico.
 - [x] Evitar aprovar mudanca que contradiga contexto aprovado.
 
-### 2. Revisar Workflows Locais
+### 5. Revisar Workflows Locais
 
-Status: primeira prioridade da proxima rodada.
+Status: reorientar pelo Workflow Contract v3 phase-based antes de novas revisões pontuais.
 
-Objetivo: transformar workflows em rotas realmente acionaveis pelos modelos, sem duplicar comandos e sem colocar workflow de negocio dentro de `.leanos/`.
+Objetivo: transformar workflows em rotas realmente acionaveis pelos modelos, sem duplicar comandos, sem colocar workflow de negocio dentro de `.leanos/` e sem transformar workflow em lista longa de skills.
+
+Nota: esta seção preserva o inventário histórico de revisão. A direção nova é o Workflow Contract v3: workflows como máquinas de progressão, gates, ativação e handoffs.
 
 #### Workflow Contract Standard
 
@@ -811,7 +1773,7 @@ Decisao proposta:
   - Feature local -> GitHub issue com label `feature`;
   - Tasks -> checklist interna dentro da Feature issue por padrao;
   - criar issue separada para Task somente se houver necessidade operacional clara.
-- [x] Planejar comando/chat intent `/github-sync`:
+- [x] Planejar intencao natural de GitHub readiness/sync:
   - o modelo deve ler `operations/product-ops/epics/`;
   - identificar Epics/Features ainda nao sincronizados;
   - preparar payload/dry-run;
@@ -842,13 +1804,13 @@ Jornadas internas devem ser criadas em `docs/framework/founder-journeys/` usando
 
 | Etapa | Scaffold atualizado | Jornada criada | Momento | Workflow / Entrada | Intencao do Founder | Dono | Roles Principais | Playbooks Principais | Estado |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 0 | [ ] | [ ] `docs/framework/founder-journeys/start-leanos.md` | Setup inicial | `.leanos/commands/start-leanos.md` + Strategy Baseline | "vamos comecar", "configurar o LeanOS", "iniciar o projeto" | LeanOS Chief + Strategy | Business Strategist, Product Strategist | `business-foundation`, `product-strategy` | Existe, garantir Strategy Baseline minima |
-| 1 | [x] | [x] `docs/framework/founder-journeys/define-mvp.md` | Primeira definicao do produto | `.leanos/commands/define-mvp.md` + `operations/workflows/define-mvp.workflow.md` | "Defina o MVP", "qual a primeira versao?", "o que entra no MVP?" | Product Ops | Product Owner, Delivery Architect, Product Designer quando aplicavel, Security Reviewer quando aplicavel | `mvp-delivery`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada; scaffold atualizado com MVP Decision Gate, conversa guiada, confirmacao e ponte para `roadmap-item-to-epic` |
+| 0 | [ ] | [ ] `docs/framework/founder-journeys/start-leanos.md` | Setup inicial | `AGENT.md` + Strategy Baseline | "vamos comecar", "configurar o LeanOS", "iniciar o projeto" | LeanOS Chief + Strategy | Business Strategist, Product Strategist | `business-foundation`, `product-strategy` | Existe, garantir Strategy Baseline minima sem comando slash |
+| 1 | [x] | [x] `docs/framework/founder-journeys/define-mvp.md` | Primeira definicao do produto | `operations/workflows/define-mvp.workflow.md` | "Defina o MVP", "qual a primeira versao?", "o que entra no MVP?" | Product Ops | Product Owner, Delivery Architect, Product Designer quando aplicavel, Security Reviewer quando aplicavel | `mvp-delivery`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada; precisa remover dependencia de comando slash e manter conversa guiada, confirmacao e ponte para `roadmap-item-to-epic` |
 | 2 | [x] | [x] `docs/framework/founder-journeys/new-idea-intake.md` | Novas ideias e features | `strategy/workflows/new-idea-intake.workflow.md` | "Tenho uma ideia", "quero avaliar uma feature nova", "isso faz sentido para o produto?" | Strategy | Product Strategist, Product Manager, Business Strategist, Roadmap Planner | `product-strategy`, `business-foundation`, `roadmap-cycle-planning`, `mvp-delivery` | Jornada criada e scaffold ajustado para separar intake de roadmap |
 | 3 | [x] | [x] `docs/framework/founder-journeys/idea-to-roadmap.md` | Decisao de roadmap | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" | Strategy / Roadmap | Product Strategist, Product Manager, Roadmap Planner | `roadmap-cycle-planning`, `product-strategy` | Jornada criada; scaffold existente validado; gap futuro: delivery scope deve ser contexto opcional no Roadmap Planner |
 | 4 | [x] | [x] `docs/framework/founder-journeys/roadmap-item-to-epic.md` | Roadmap item para Epic local | `operations/workflows/roadmap-item-to-epic.workflow.md` | "Isso entra na proxima entrega?", "isso entra no MVP?", "crie um epic para esse item" | Product Ops + Strategy | Product Owner, Product Strategist, Delivery Architect, Product Designer/Security/DevOps/Engineering quando aplicavel | `delivery-scope-planning`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada; consolidou os dois passos antigos; GitHub write fica opcional e posterior |
 | 5 | [x] | [x] `docs/framework/founder-journeys/epic-to-features.md` | Feature Shaping | `operations/workflows/epic-to-features.workflow.md` | "Quebre esse epic em features", "quais features precisamos para esse epic?" | Operations / Product Ops | Product Owner, Product Designer, Security Reviewer, DevOps Engineer, Senior Developer | `epic-to-features`, `delivery-readiness`, `mvp-ux-flow`, `accessibility-review`, `pre-mvp-security-checklist`, `api-security-review`, `setup-ci-cd` | Jornada criada; scaffold atualizado com Workflow Contract Standard e DRM completa |
-| 6 | [x] | [x] `docs/framework/founder-journeys/github-sync.md` | GitHub tracking opcional | `.leanos/commands/github-sync.md` | "Sincronize Epics/Features com GitHub", "configura GitHub para o LeanOS" | DevOps + Product Ops | GitHub DevOps, Product Owner, Security Reviewer quando token/permissions importarem | `configure-github-project`, `epic-to-features` como fonte local, `capability-contract` como handoff | Jornada criada; scaffold atualizado com readiness check, setup fallback, dry-run, capability contract e sync-state seguro |
+| 6 | [x] | [x] `docs/framework/founder-journeys/github-sync.md` | GitHub tracking opcional | Intencao natural no `AGENT.md` + DevOps/Product Ops | "Sincronize Epics/Features com GitHub", "configura GitHub para o LeanOS" | DevOps + Product Ops | GitHub DevOps, Product Owner, Security Reviewer quando token/permissions importarem | `configure-github-project`, `epic-to-features` como fonte local, `capability-contract` como handoff | Jornada criada; precisa remover dependencia de comando slash mantendo readiness check, setup fallback, dry-run, capability contract e sync-state seguro |
 | 7 | [x] | [x] `docs/framework/founder-journeys/feature-to-delivery-cycle.md` | Implementacao | `operations/workflows/feature-to-delivery-cycle.workflow.md` | "Implemente a feature", "implemente a issue #554", "vamos comecar essa feature" | Operations / Engineering | Product Owner, Product Designer quando UI/componente for afetado, Senior Developer, Test Engineer, PR Reviewer, Security Reviewer quando aplicavel | `delivery-readiness`, `component-readiness`, `branch-for-feature`, `prepare-pr`, `test-planning`, `pr-validation`, `ai-generated-code-security-review` | Jornada criada; scaffold atualizado com Workflow Contract Standard, ready-to-develop, component readiness, branch local `feature/...`, branch GitHub `issue/...`, PR e post-merge bridge |
 | 8 | [x] | N/A | Review e PR | Dentro de `feature-to-delivery-cycle` | "Revise o PR", "esta pronto para merge?" | Engineering + Security/DevOps quando aplicavel | PR Reviewer, Test Engineer, Security Reviewer, Release Manager | `pr-validation`, `pre-deploy-security-review`, `security-automation-readiness`, `release-operations` | Nao criar workflow separado por enquanto; PR validation e parte do feature delivery cycle |
 | 9 | [x] | [x] `docs/framework/founder-journeys/post-merge-continuation.md` | Pos-merge | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a proxima Feature", "o que atualizamos depois do merge?" | Operations | Product Owner, Senior Developer, Release Manager, CX Lead quando aplicavel | `release-operations`, `delivery-readiness`, `customer-learning-loop` | Jornada criada; scaffold fortalecido com Workflow Contract Standard, status/context update, conditional DevOps/Security/Growth/Strategy e ponte para proxima rota |
@@ -905,7 +1867,7 @@ Workflows a revisar:
   - deve tratar GitHub sync como opcional;
   - deve parar antes de qualquer GitHub API write sem confirmacao.
 
-- [ ] `.leanos/commands/start-leanos.md`
+- [ ] Intencao natural de iniciar/configurar LeanOS no `AGENTS.md`
   - deve criar Strategy Baseline minima, nao MVP completo;
   - baseline minima: negocio, produto/ideia principal, usuario alvo, problema/dor, promessa de valor, alternativa atual, hipotese mais arriscada e foco imediato;
   - deve deixar MVP scope como proximo passo quando ainda nao estiver definido.
@@ -964,9 +1926,9 @@ Workflows a revisar:
   - nao inicia proxima Feature automaticamente;
   - roteia DevOps, Security, Growth ou Strategy apenas quando aplicavel.
 - [x] `growth/workflows/launch-learning-loop.workflow.md`
-  - deve continuar lean e usar area AGENTs/knowledge paths atualizados.
+  - deve continuar lean e usar `AGENTS.md` de area e knowledge paths atualizados.
 
-### 3. Camada GitHub Chat-First
+### 6. Camada GitHub Chat-First
 
 Status: importante, mas deve ser definido conceitualmente antes de implementacao.
 
@@ -974,15 +1936,15 @@ Objetivo: preparar a futura automacao GitHub sem transformar o founder em operad
 
 Decisao: o LeanOS Chief nao chama API diretamente. O modelo entende a intencao, carrega contexto, propoe plano/payload e pede confirmacao. A execucao real fica para capability/script seguro.
 
-#### Direcao Para `/github-sync`
+#### Direcao Para GitHub Readiness/Sync Sem Comando Slash
 
-Decisao: `/github-sync` sera a porta unica para GitHub readiness e sync. Ele nao deve assumir que GitHub ja esta pronto.
+Decisao: GitHub readiness e sync devem ser acionados por intencao natural no chat, roteada pelo `AGENTS.md` para DevOps, Product Ops e capability segura quando aplicavel. O fluxo nao deve assumir que GitHub ja esta pronto.
 
 Fluxo esperado:
 
-1. Founder chama `/github-sync` ou pede em linguagem natural para sincronizar Epics/Features com GitHub.
-2. Root `AGENT.md` carrega `.leanos/commands/github-sync.md`.
-3. O comando inicia por GitHub readiness check, nao por sync.
+1. Founder pede em linguagem natural para configurar GitHub, checar GitHub readiness ou sincronizar Epics/Features.
+2. Root `AGENTS.md` reconhece a intencao e roteia para DevOps/Product Ops sem carregar comando slash.
+3. O fluxo inicia por GitHub readiness check, nao por sync.
 4. Se faltar configuracao, o modelo para o sync e guia o founder pela configuracao GitHub.
 5. Depois que GitHub estiver pronto, o comando gera um dry-run de sync.
 6. Apenas depois de confirmacao explicita, uma capability/script futuro executa a escrita real.
@@ -1150,7 +2112,7 @@ Pendencias:
 - [x] Definir como lidar com repositorio existente vs produto novo.
 - [x] Documentar quais arquivos `.github/leanos/` sao configuracao, estado e templates.
 - [x] Garantir que tokens nunca sejam persistidos em arquivos versionados.
-- [x] Atualizar `.leanos/commands/github-sync.md` para formalizar readiness check como primeira fase obrigatoria.
+- [ ] Migrar GitHub readiness check de `.leanos/commands/github-sync.md` para intencao natural no `AGENTS.md`, workflow/DevOps e capability segura.
 - [x] Atualizar `operations/devops/playbooks/configure-github-project.playbook.md` com guia founder-friendly:
   - onde achar owner/repository;
   - como achar Project URL/number;
@@ -1172,7 +2134,284 @@ Pendencias:
   - proibicao de token em arquivos versionados;
   - proibicao de API direta pelo modelo.
 
-### 4. Teste Externo da Founder Journey
+### 7. Padronizar `AGENTS.md` e `skills/<skill-slug>/SKILL.md`
+
+Status: planejado.
+
+Objetivo: alinhar a estrutura do LeanOS com uma convenção mais clara para agentes simulados e skills reutilizáveis antes de aplicar o Asset Contract v2 e antes da localização PT-BR.
+
+Decisão:
+
+- [x] Usar `AGENTS.md` para instruções operacionais de agentes simulados, porque o LeanOS trabalha com múltiplas personas/roles como LeanOS Chief, Product Owner, Product Strategist, Engineering e Growth.
+- [x] Evitar `AGENT.md` como nome final para arquivos que representam um sistema multiagente.
+- [x] Manter roles como arquivos próprios em `roles/<role-slug>.role.md`, porque role é identidade, ownership e limite de atuação.
+- [x] Migrar skills de arquivos planos como `prioritize-backlog.skill.md` para pastas como `skills/prioritize-backlog/SKILL.md`.
+- [x] Usar slugs completos e específicos, como `prioritize-backlog`, `diagnose-founder-idea` e `define-mvp`, não pastas genéricas como `prioritize/`.
+- [x] Corrigir nomenclaturas com typo durante a migração, por exemplo `backglog` -> `backlog`, se existirem.
+- [x] Tratar caminhos antigos apenas como compatibilidade temporária de migração, não como fonte de verdade permanente.
+
+Racional:
+
+- `AGENTS.md` comunica melhor que o arquivo coordena vários agentes simulados, não um único agente.
+- `skills/<skill-slug>/SKILL.md` aproxima o LeanOS da estrutura forte do Superpowers e permite adicionar `references/`, `scripts/`, exemplos e testes por skill sem poluir a área.
+- A estrutura em pasta favorece frontmatter claro, gatilhos, gates, red flags e recursos auxiliares por skill.
+- Fazer isso antes do Asset Contract v2 evita aplicar contrato e tradução em arquivos que logo mudariam de caminho.
+
+Escopo:
+
+- [ ] Atualizar o gerador para emitir `AGENTS.md` onde hoje emite instruções operacionais `AGENT.md`.
+- [ ] Atualizar templates, renderers, índices e mapas de navegação que apontam para `AGENT.md`.
+- [ ] Atualizar `ai-standard/templates/agents/`, `ai-standard/instructions/`, `ai-standard/checklists/` e exemplos.
+- [ ] Migrar skills geradas para `skills/<skill-slug>/SKILL.md`.
+- [ ] Atualizar referências de workflows, roles, playbooks, knowledge e routing maps para os novos paths de skill.
+- [ ] Atualizar `leanos.yaml`, `.leanos/index/*.yaml` e qualquer índice gerado que liste arquivos de agentes ou skills.
+- [ ] Atualizar documentação e jornadas founder-facing que ainda mencionam `AGENT.md` como arquivo operacional final.
+- [ ] Atualizar `validate-generator.mjs` para validar a nova convenção.
+- [ ] Regenerar `examples/client-workspace/` depois da mudança estrutural.
+
+Critérios de aceite:
+
+- [ ] O preview gerado usa `AGENTS.md` para instruções operacionais de agentes simulados.
+- [ ] Não existem skills LeanOS geradas como arquivos planos `*.skill.md` quando a skill for parte da árvore operacional principal.
+- [ ] Cada skill principal vive em `skills/<skill-slug>/SKILL.md`.
+- [ ] Slugs de skill são verb-object claros, por exemplo `prioritize-backlog`, não nomes genéricos ambíguos.
+- [ ] Roles, playbooks e knowledge mantêm caminhos estáveis, salvo mudança intencional documentada.
+- [ ] Índices, routing maps e referências internas apontam para os novos paths.
+- [ ] A validação do gerador passa após a migração.
+
+### 8. LeanOS Asset Contract v2 Inspirado No Rigor Do Superpowers
+
+Status: planejado.
+
+Objetivo: fortalecer a estrutura dos assets operacionais gerados pelo LeanOS antes da tradução, aproveitando o que o Superpowers faz bem: frontmatter claro, gatilhos fortes, steps acionáveis, regras explícitas, gates, red flags e critérios de parada.
+
+Decisão:
+
+- [x] Não copiar a arquitetura do Superpowers integralmente.
+- [x] Manter a arquitetura LeanOS com `workflow -> role -> skill -> playbook -> knowledge`.
+- [x] Aplicar o rigor estrutural do Superpowers aos templates, checklists, instructions e assets gerados do LeanOS.
+- [x] Fazer esta correção antes da localização PT-BR para evitar retrabalho de tradução.
+
+Escopo:
+
+- [ ] Criar/atualizar contrato v2 para `skill`.
+- [ ] Criar/atualizar contrato v2 para `role`.
+- [ ] Criar/atualizar contrato v2 para `playbook`.
+- [ ] Criar/atualizar contrato v2 para `knowledge`.
+- [ ] Avaliar se `workflow` também deve receber reforço leve de frontmatter, gates e red flags, mantendo o Workflow Contract Standard existente.
+- [ ] Atualizar templates em `ai-standard/templates/`.
+- [ ] Atualizar checklists em `ai-standard/checklists/`.
+- [ ] Atualizar instructions em `ai-standard/instructions/`.
+- [ ] Atualizar exemplos em `ai-standard/examples/`.
+- [ ] Aplicar o contrato v2 aos assets gerados mais importantes do preview.
+- [ ] Atualizar `validate-generator.mjs` para validar os campos mínimos do contrato v2 quando possível.
+- [ ] Regenerar `examples/client-workspace/` depois da alteração estrutural.
+
+Contrato mínimo proposto para `skill`:
+
+- `frontmatter` com `type`, `name`, `description`, `owner` e `status`.
+- `Overview`.
+- `Use When`.
+- `Do Not Use When`.
+- `Required Context`.
+- `Inputs`.
+- `Core Rule`.
+- `Process`.
+- `Gates`.
+- `Output`.
+- `Allowed Updates`.
+- `Forbidden Updates`.
+- `Stop Conditions`.
+- `Red Flags`.
+- `Common Mistakes`.
+- `Navigation`.
+
+Contrato mínimo proposto para `role`:
+
+- `frontmatter` com `type`, `name`, `description`, `badge`, `owner` e `status`.
+- `Mission`.
+- `Owns`.
+- `Does Not Own`.
+- `Load First`.
+- `Skills`.
+- `Playbooks`.
+- `Decision Rules`.
+- `Output Style`.
+- `Red Flags`.
+- `Navigation`.
+
+Contrato mínimo proposto para `playbook`:
+
+- `frontmatter` com `type`, `name`, `description`, `owner` e `status`.
+- `Purpose`.
+- `Use When`.
+- `Required Context`.
+- `Guided Conversation Rules`.
+- `Steps`.
+- `Gates`.
+- `Allowed Updates`.
+- `Forbidden Updates`.
+- `Stop Conditions`.
+- `Output`.
+- `Continuation Bridge`.
+- `Red Flags`.
+
+Contrato mínimo proposto para `knowledge`:
+
+- `frontmatter` com `type`, `name`, `description`, `owner`, `status` e `update_policy`.
+- `Purpose`.
+- `Core Rule` quando for regra de framework.
+- `Required Inputs` quando aplicável.
+- `Criteria` ou `Reference`.
+- `Decision States` quando aplicável.
+- `Model Behavior`.
+- `Update Policy`.
+
+Critérios de aceite:
+
+- [ ] Os templates novos deixam claro quando usar e quando não usar cada asset.
+- [ ] Skills deixam de ser apenas "o que fazer" e passam a declarar gatilho, contexto, regra central, gates, red flags e stop conditions.
+- [ ] Roles declaram ownership, limites e `badge` com clareza.
+- [ ] Playbooks declaram steps, gates, confirmação, stop conditions e continuation bridge.
+- [ ] Knowledge continua sendo fonte de verdade, não vira skill nem playbook.
+- [ ] O preview gerado reflete os novos contratos.
+- [ ] A validação do gerador passa após a mudança estrutural.
+
+### 9. Substituir Response Header Técnico Por Routing Narration Founder-Friendly
+
+Status: planejado.
+
+Objetivo: trocar o `Response Header` técnico obrigatório por uma narrativa curta, clara e founder-friendly que mostre quem está conduzindo o trabalho, qual rota será usada e quando arquivos serão propostos ou alterados.
+
+Decisão:
+
+- [x] Remover a obrigação de abrir toda tarefa LeanOS com o bloco técnico `Response Header`.
+- [x] Manter a regra de nunca executar tarefa roteada sem mostrar a rota.
+- [x] Usar uma narração operacional condicional, não uma tabela fixa.
+- [x] Usar `Role Badge` com emoji + nome da role para identificação rápida.
+- [x] Nunca dizer que um arquivo foi alterado antes de confirmação e escrita real.
+- [x] Manter detalhes técnicos disponíveis quando o founder pedir diagnóstico, status, trace ou auditoria.
+
+Quando usar:
+
+- [ ] Antes de uma rota que envolve workflow, decisão de produto, atualização de arquivo, implementação, PR review, GitHub readiness/sync, diagnóstico ou trace.
+- [ ] Antes de propor atualização em arquivos source-of-truth.
+- [ ] Depois de modificar arquivos, resumindo role, workflow e arquivos alterados.
+- [ ] Quando houver handoff entre LeanOS Chief, departamento, área e role.
+
+Quando não usar:
+
+- [ ] Perguntas simples sobre conceito.
+- [ ] Respostas rápidas sem roteamento operacional.
+- [ ] Conversas exploratórias em que o próximo passo ainda não envolve rota, workflow ou arquivo.
+
+Formato esperado:
+
+```text
+🧭 LeanOS Chief: vou rotear esse ajuste para Operations / Product Ops, porque envolve escopo de MVP e atualização de arquivo. Antes de escrever qualquer coisa, vou revisar o contexto e te mostrar a proposta.
+```
+
+```text
+📌 Product Owner: preparei a alteração em `operations/product-ops/mvp/scope.md` usando o workflow `define-mvp`. Vou aplicar somente depois da sua confirmação.
+```
+
+```text
+📌 Product Owner: atualizei `operations/product-ops/mvp/scope.md` usando o workflow `define-mvp`. A mudança registrada foi: <resumo curto>.
+```
+
+Role Badges iniciais:
+
+- [ ] `🧭 LeanOS Chief`
+- [ ] `🏛️ Business Strategist`
+- [ ] `🎯 Product Strategist`
+- [ ] `🧩 Product Manager`
+- [ ] `🗺️ Roadmap Planner`
+- [ ] `📌 Product Owner`
+- [ ] `🏗️ Delivery Architect`
+- [ ] `🎨 Product Designer`
+- [ ] `🔎 UX Researcher`
+- [ ] `✍️ UX Writer`
+- [ ] `♿ Accessibility Specialist`
+- [ ] `🛠️ Senior Developer`
+- [ ] `🧪 Test Engineer`
+- [ ] `👀 PR Reviewer`
+- [ ] `⚙️ DevOps Engineer`
+- [ ] `🔗 GitHub DevOps`
+- [ ] `🚀 Release Manager`
+- [ ] `🛡️ Security Reviewer`
+- [ ] `🔐 Application Security Engineer`
+- [ ] `☁️ Cloud Security Reviewer`
+- [ ] `🔒 Data Protection Reviewer`
+- [ ] `📈 Growth Lead`
+- [ ] `💬 CX Lead`
+- [ ] `💰 Finance Operator`
+
+Escopo:
+
+- [ ] Atualizar o root `AGENTS.md` gerado para substituir `Response Header` por `Routing Narration`.
+- [ ] Atualizar `ai-standard/templates/agents/root-agent-template.md`.
+- [ ] Atualizar exemplos de root agent em `ai-standard/examples/agents/`.
+- [ ] Atualizar checklists de agent/role para exigir narração de rota quando relevante.
+- [ ] Adicionar `badge` nos roles gerados.
+- [ ] Atualizar role templates e examples para incluir `badge`.
+- [ ] Atualizar qualquer referência a `Compact Response Header`.
+- [ ] Atualizar `validate-generator.mjs` para validar ausência do header técnico obrigatório e presença do novo contrato quando possível.
+- [ ] Regenerar `examples/client-workspace/` após a mudança.
+
+Critérios de aceite:
+
+- [ ] O preview não exige mais `Active Department`, `Active Area`, `Active Role`, `Loaded Skills`, `Relevant Playbook` e `Loaded Context` no início de toda tarefa.
+- [ ] A rota continua visível antes de ações relevantes.
+- [ ] Cada role gerada tem um `badge` estável.
+- [ ] A narração é curta, natural e útil para founder iniciante.
+- [ ] Detalhes técnicos continuam disponíveis sob pedido ou em fluxo de diagnóstico/status/trace.
+- [ ] A validação do gerador passa após a mudança.
+
+### 10. Localização PT-BR Dos Ativos Operacionais Gerados
+
+Status: planejado.
+
+Objetivo: entregar a experiência gerada pelo LeanOS em português brasileiro, com acentos UTF-8, preservando contratos técnicos estáveis e usando o LeanOS Asset Contract v2.
+
+Decisão:
+
+- [x] Usar a abordagem recomendada: traduzir na fonte geradora em `packages/cli/src/templates/workspace/**`.
+- [x] Regenerar `examples/client-workspace/` a partir da CLI depois da tradução.
+- [x] Não traduzir manualmente o preview como fonte de verdade.
+- [x] Traduzir depois da correção estrutural dos assets, não antes.
+
+Escopo:
+
+- [ ] Traduzir textos humanos dos arquivos gerados de `skills`.
+- [ ] Traduzir textos humanos dos arquivos gerados de `playbooks`.
+- [ ] Traduzir textos humanos dos arquivos gerados de `workflows`.
+- [ ] Traduzir textos humanos dos arquivos gerados de `roles`.
+- [ ] Traduzir textos humanos dos arquivos gerados de `knowledge`.
+- [ ] Priorizar os textos que aparecem em `examples/client-workspace/`.
+
+Fora de escopo nesta etapa:
+
+- [ ] Não traduzir nomes de pastas.
+- [ ] Não traduzir nomes de arquivos.
+- [ ] Não traduzir paths.
+- [ ] Não traduzir comandos slash legados; eles serão removidos em etapa própria.
+- [ ] Não traduzir chaves YAML/JSON, enums, IDs internos, package names ou contratos usados por geração, roteamento e validação.
+
+Arquivos e áreas impactadas:
+
+- `packages/cli/src/templates/workspace/**` como fonte de verdade.
+- `examples/client-workspace/**` como preview regenerado.
+- `examples/client-workspace-tree.md` quando a geração alterar árvore, descrições ou metadados exibidos.
+
+Critérios de aceite:
+
+- [ ] `examples/client-workspace/` é regenerado a partir da fonte traduzida.
+- [ ] O preview não contém textos humanos em inglês nos arquivos de `skills`, `playbooks`, `workflows`, `roles` e `knowledge`, exceto termos técnicos preservados por contrato.
+- [ ] A tradução usa português brasileiro natural, com acentos UTF-8.
+- [ ] Nomes de pastas, nomes de arquivos, paths, comandos, chaves e contratos técnicos continuam estáveis.
+- [ ] A validação do gerador passa após a tradução.
+
+### 11. Teste Externo da Founder Journey
 
 Status: importante.
 
@@ -1182,29 +2421,35 @@ Cenario minimo:
 
 - [ ] Rodar `npx lean-os ai`.
 - [ ] Criar workspace novo.
+- [ ] Confirmar que o workspace inicial cria Strategy, runtime mínimo e activation state, mas não cria `operations/` nem `growth/`.
 - [ ] Instalar LeanOS em repo/produto existente sem sobrescrever arquivos importantes.
 - [ ] Abrir workspace em VS Code, Codex, Claude ou outro agente.
 - [ ] Selecionar LeanOS Chief quando aplicavel.
-- [ ] Rodar `/start-leanos`.
+- [ ] Pedir em linguagem natural para começar/configurar o LeanOS.
+- [ ] Confirmar que o Chief lê `leanos.yaml`, usa o contexto semente do wizard e inicia diagnóstico guiado em Strategy.
 - [ ] Definir Business/Product/Roadmap com confirmacao.
-- [ ] Rodar `/define-mvp`.
-- [ ] Rodar `/define design` quando Design estiver ativo.
-- [ ] Rodar `/check coherence`.
+- [ ] Pedir em linguagem natural para definir o MVP.
+- [ ] Confirmar que o Chief propõe ativar Operations/Product Ops antes de criar `operations/`.
+- [ ] Confirmar que `operations/` só aparece depois da confirmação de ativação.
+- [ ] Pedir em linguagem natural para definir design quando Design estiver ativo.
+- [ ] Pedir em linguagem natural para checar coerencia.
 - [ ] Gerar plano de issues ou execucao.
-- [ ] Simular `Workon feature`.
-- [ ] Simular `review pr`.
+- [ ] Simular intenção natural de trabalhar em uma Feature.
+- [ ] Simular intenção natural de revisar um PR.
 - [ ] Continuar o trabalho em uma nova sessao sem perder contexto.
 
 Critérios de aceite:
 
 - [ ] O usuario entende o proximo passo sem ler o template interno.
 - [ ] O modelo navega pela cadeia correta.
-- [ ] O modelo nao pula AGENTs de departamento/area.
+- [ ] O modelo nao pula `AGENTS.md` de departamento/area.
 - [ ] O modelo nao inventa workflow, role, skill ou playbook.
+- [ ] O modelo não roteia para departamentos ou áreas ainda inativas sem propor ativação.
+- [ ] O modelo não cria pastas novas sem explicar a ativação e pedir confirmação.
 - [ ] O modelo nao modifica arquivos sensiveis sem confirmacao.
 - [ ] O preview `examples/client-workspace/` representa exatamente o que o CLI gera.
 
-### 5. Planejar Update/Migration de Workspaces
+### 12. Planejar Update/Migration de Workspaces
 
 Status: futuro, nao bloqueia o MVP inicial.
 
@@ -1221,7 +2466,7 @@ Objetivo: preparar o caminho para evoluir workspaces ja criados sem destruir tra
   - criar diff antes de aplicar.
 - [ ] Nao implementar sem uma especificacao propria.
 
-### 6. Preparar Release Publica do MVP
+### 13. Preparar Release Publica do MVP
 
 Status: pendente.
 
@@ -1262,21 +2507,42 @@ Objetivo: publicar uma versao confiavel para usuarios reais.
 ### `strategy/validation`
 
 - [ ] Reintroduzir como area opcional quando houver necessidade de discovery formal.
-- [ ] Criar `AGENT.md` como Validation Lead.
+- [ ] Criar `AGENTS.md` como Validation Lead.
 - [ ] Criar `knowledge/` para evidencias, entrevistas, experimentos e aprendizado.
 - [ ] Revisar roles, skills e playbooks de validacao formal.
 - [ ] Garantir que ela nao volte a ser requisito do MVP padrao sem decisao explicita.
 
 ## Ordem Recomendada Atual
 
-1. Padronizar comandos principais como portas de entrada, nao como donos do processo.
-2. Mapear intents naturais e comandos para os workflows locais.
-3. Rodar teste externo da Founder Journey.
-4. Ajustar lacunas descobertas no teste.
-5. Criar `ready-for-launch` quando a cadeia de entrega estiver validada.
-6. Preparar release publica do MVP.
-7. Planejar update/migration.
-8. Planejar `/bootstrap product`.
+1. Fechar o Founder Progression Model com estágios, perguntas guiadas, ganchos e gates.
+2. Definir Workflow Contract v3 phase-based em templates, checklists e instructions.
+3. Fechar o modelo de Progressive Workspace Activation e os gates de ativação por departamento/área.
+4. Padronizar `AGENTS.md` e `skills/<skill-slug>/SKILL.md` antes de mudar a geração.
+5. Definir `Progression Intent Routing` no root `AGENTS.md`.
+6. Remover comandos slash como interface do framework.
+7. Consolidar intents naturais no `AGENTS.md`, começando por "quero começar", "como começar" e "iniciar LeanOS".
+8. Criar `founder-diagnosis.workflow.md`, `diagnose-founder-idea` e o playbook de descoberta guiada usando Workflow Contract v3.
+9. Reestruturar `new-idea-intake` e `idea-to-roadmap` como workflows phase-based.
+10. Alterar wizard e gerador para scaffold inicial Strategy-only com `seed_context` no `leanos.yaml`.
+11. Criar activation state, activation recipes e índices separados entre `active` e `available`.
+12. Reestruturar `define-mvp` com Strategy gate e `activation_required: operations.product-ops`.
+13. Reestruturar `roadmap-item-to-epic`, `epic-to-features` e `feature-to-delivery-cycle` para Workflow Contract v3.
+14. Reestruturar `post-merge-continuation` e `launch-learning-loop` para Workflow Contract v3.
+15. Reavaliar `roadmap-to-github-project` depois da camada GitHub chat-first.
+16. Regenerar e validar `examples/client-workspace/` Strategy-only, sem `.leanos/commands/`.
+17. Rodar jornada progressiva: começar -> diagnóstico -> Strategy Baseline -> roadmap candidate -> definir MVP -> ativar Operations.
+18. Aplicar LeanOS Asset Contract v2 inspirado no rigor estrutural do Superpowers.
+19. Regenerar e validar `examples/client-workspace/` com os novos contratos.
+20. Substituir `Response Header` técnico por `Routing Narration` founder-friendly com Role Badges.
+21. Regenerar e validar `examples/client-workspace/` com a nova UX de roteamento.
+22. Localizar os ativos operacionais gerados em português brasileiro na fonte geradora.
+23. Regenerar e validar `examples/client-workspace/` localizado.
+24. Rodar teste externo da Founder Journey no modelo progressivo.
+25. Ajustar lacunas descobertas no teste.
+26. Criar `ready-for-launch` quando a cadeia de entrega estiver validada.
+27. Preparar release publica do MVP.
+28. Planejar update/migration.
+29. Planejar `/bootstrap product`.
 
 ## Remocao
 
