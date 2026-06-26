@@ -85,7 +85,7 @@ Root AGENT.md
 ## Próximas Rotas Possíveis
 
 - `strategy/product/playbooks/mvp-validation-scope.playbook.md`: quando o negócio está em `seed`, `strategy_forming` ou `mvp_shaping` e a ideia já está calibrada para analisar o menor MVP de validação.
-- `activation_required: operations.product-ops`: quando o negócio está em `mvp_building` ou `mvp_live_learning` e a ideia afeta o MVP atual, backlog de entrega ou escopo executável.
+- `activation_required: operations.product-ops`: quando o negócio está em `mvp_building` ou `mvp_live_learning` e a ideia afeta o MVP atual, MVP backlog ou escopo de delivery.
 - `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md`: quando o negócio está em `product_operating` ou `growth_scaling`, ou quando o founder pede explicitamente ciclo, backlog ou priorização entre múltiplas frentes.
 - Parar sem escrever: quando a ideia ainda está vaga, foi descartada ou o founder não confirmou updates.
 

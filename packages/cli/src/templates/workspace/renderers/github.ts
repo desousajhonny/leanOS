@@ -1155,7 +1155,7 @@ function labelsYaml(): string {
     description: Validation or learning task
   - name: mvp
     color: "1d76db"
-    description: MVP delivery scope work
+    description: MVP backlog and delivery scope work
   - name: strategy
     color: "fbca04"
     description: Strategy or product definition

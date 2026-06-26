@@ -52,7 +52,7 @@ Examples:
 
 - "help me define the ICP" -> `strategy/AGENT.md`
 - "define the MVP validation scope" -> route to active Strategy Product before delivery scope exists
-- "turn this roadmap item into executable MVP scope" -> return `activation_required` for `operations.product-ops` when Product Ops is inactive
+- "turn this MVP item into backlog or an Epic" -> return `activation_required` for `operations.product-ops` when Product Ops is inactive
 - "review this PR" -> return `activation_required` for `operations.engineering` when Engineering is inactive
 
 If no route clearly matches, route through the Navigation Chain.

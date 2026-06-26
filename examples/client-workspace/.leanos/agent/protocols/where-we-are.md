@@ -107,9 +107,9 @@ If these are missing, explain the gap and recommend the next LeanOS route instea
 - Strategy missing -> `strategy/AGENT.md`
 - Product strategy weak -> Strategy Product through `strategy/AGENT.md`
 - MVP validation scope missing or weak -> Strategy Product through `strategy/AGENT.md`
-- MVP delivery scope missing after roadmap item is chosen -> Product Ops `define-mvp` workflow when Product Ops is active, otherwise activate `operations.product-ops`
+- MVP backlog missing after Strategy MVP Validation Scope is approved -> Product Ops `mvp-backlog-planning` playbook when Product Ops is active, otherwise activate `operations.product-ops`
 - Roadmap missing for an operating product -> Strategy Roadmap through `strategy/AGENT.md`
-- Local epic missing -> Product Ops `roadmap-item-to-epic` workflow
+- Local epic missing -> Product Ops `delivery-item-to-epic` workflow
 - Features missing -> Product Ops `epic-to-features` workflow when available
 - Implementation ready -> Engineering `feature-to-delivery-cycle` workflow
 - PR/review needed -> Engineering PR validation route

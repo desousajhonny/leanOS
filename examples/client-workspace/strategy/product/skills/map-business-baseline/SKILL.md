@@ -93,5 +93,5 @@ Recommend the next route only when the gate is satisfied.
 ## Red Lines
 
 - Do not ask broad empty questions such as tell me more.
-- Do not create roadmap, MVP delivery scope, Epics, Features or implementation work.
+- Do not create roadmap, MVP backlog, Epics, Features or implementation work.
 - Do not activate Operations, Growth or GitHub from idea calibration.

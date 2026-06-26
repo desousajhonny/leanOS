@@ -65,7 +65,7 @@ O modelo começa no `AGENT.md` raiz porque o founder fala naturalmente. Ele entr
 
 ## Moment
 
-Feature Shaping. Isso acontece depois de `roadmap-item-to-epic` e antes de `feature-to-delivery-cycle`.
+Feature Shaping. Isso acontece depois de `delivery-item-to-epic` e antes de `feature-to-delivery-cycle`.
 
 ## Condição De Início
 

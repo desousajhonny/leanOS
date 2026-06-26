@@ -550,7 +550,7 @@ Feature title:
 ## Workflow
 
 1. Confirm Delivery Scope.
-2. Run \`roadmap-item-to-epic\` to create or update the local Epic folder.
+2. Run \`delivery-item-to-epic\` to create or update the local Epic folder.
 3. Run \`epic-to-features\` to create Feature files inside the Epic folder.
 4. Run \`ready-to-develop.md\` before Engineering starts implementation.
 5. Sync with GitHub only after confirmation.
@@ -1118,6 +1118,63 @@ TBD
 TBD
 
 ## Risks
+
+TBD
+
+## Decisions
+
+TBD
+
+## Open Questions
+
+TBD
+
+## Next Update
+
+TBD
+`;
+}
+
+function mvpBacklogKnowledge(): string {
+  return `# MVP Backlog
+
+## Purpose
+
+Hold the operational MVP backlog owned by Product Ops after the founder approves the Strategy Product MVP Validation Scope.
+
+This backlog is not Strategy Roadmap and is not implementation work. Each approved item must become a local Epic before it can be split into Features or sent to Engineering.
+
+## Current State
+
+TBD
+
+## Source Strategy Context
+
+- Strategy Product MVP Validation Scope: ../../../strategy/product/knowledge/mvp-validation-scope.md
+- Product brief: ../../../strategy/product/knowledge/brief.md
+
+## Status Model
+
+- candidate
+- approved_for_mvp
+- needs_discovery
+- needs_specialist_check
+- epic_created
+- split_into_features
+- deferred
+- done
+
+## MVP Items
+
+| Item | Validates | Status | Risk / Specialist Check | Next Step |
+| --- | --- | --- | --- | --- |
+| TBD | TBD | candidate | TBD | TBD |
+
+## Approved For Epic
+
+TBD
+
+## Deferred
 
 TBD
 
@@ -3096,7 +3153,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             checks: ["The output names baseline gaps instead of asking a generic question.", "The next question is tied to one missing decision.", "Roadmap and MVP validation are recommended only after Strategy Baseline is minimally coherent.", "activation_required is used only for inactive areas after the gate permits it."],
             outputs: ["Current business stage", "Known context summary", "Strategy Baseline gaps", "Next guided question", "Safe next route"],
             filesToUpdate: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/mvp-validation-scope.md", "../knowledge/validation-notes.md"],
-            redLines: ["Do not ask broad empty questions such as tell me more.", "Do not create roadmap, MVP delivery scope, Epics, Features or implementation work.", "Do not activate Operations, Growth or GitHub from idea calibration."]
+            redLines: ["Do not ask broad empty questions such as tell me more.", "Do not create roadmap, MVP backlog, Epics, Features or implementation work.", "Do not activate Operations, Growth or GitHub from idea calibration."]
           },
           {
             slug: "define-product-core",
@@ -3109,7 +3166,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             checks: ["Product Core can be summarized in one coherent paragraph.", "Primary user, Core problem and Product promise support each other.", "Evidence is not invented or overstated.", "Do not write Product Core when primary user, core problem and promise are still guesswork.", "Pricing, revenue or delivery-model questions are routed to Strategy Business when they block the decision."],
             outputs: ["Product in one sentence", "Primary user", "Core problem", "Existing alternative", "Product promise", "Differentiation", "Evidence", "Assumptions", "Riskiest assumption", "Main open question", "Recommended next route"],
             filesToUpdate: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/validation-notes.md"],
-            redLines: ["Do not run a rigid discovery interview.", "Do not invent customer evidence or validation.", "Do not force a Product Core from weak signal; return gaps instead.", "Do not create roadmap, MVP delivery scope, Epics, Features or implementation work.", "Route pricing, revenue or delivery-model decisions to Strategy Business."]
+            redLines: ["Do not run a rigid discovery interview.", "Do not invent customer evidence or validation.", "Do not force a Product Core from weak signal; return gaps instead.", "Do not create roadmap, MVP backlog, Epics, Features or implementation work.", "Route pricing, revenue or delivery-model decisions to Strategy Business."]
           },
           {
             slug: "define-mvp-validation-scope",
@@ -3142,7 +3199,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           {
             slug: "idea-calibration",
             title: "Idea Calibration",
-            purpose: "Calibrate any founder idea against the current business stage, from first seed idea to product-operating change, without jumping into roadmap, MVP delivery scope or implementation.",
+            purpose: "Calibrate any founder idea against the current business stage, from first seed idea to product-operating change, without jumping into roadmap, MVP backlog or implementation.",
             inputs: ["../../../leanos.yaml", "../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/validation-notes.md", "../../business/knowledge/business-model-canvas.md"],
             steps: ["Load the Product AGENT and choose Product Strategist or Product Manager.", "Use `skills/map-business-baseline/SKILL.md` first to read `leanos.yaml`, active Strategy context, business stage and Strategy Baseline gaps.", "Choose the calibration path from the business stage: `seed` or `strategy_forming` builds baseline; `mvp_shaping` compares against MVP Validation Scope; `mvp_building` protects current delivery focus; `mvp_live_learning` checks learning signals; `product_operating` and `growth_scaling` evaluate fit with existing product, customers, roadmap, risks and timing.", "Ask only the discovery questions needed to mature the idea for the current business stage.", "Use `skills/define-product-core/SKILL.md` when there is enough signal to consolidate product, primary user, core problem, promise, differentiation and riskiest assumption.", "Evaluate fit, assumptions, evidence, MVP impact and roadmap impact inside this playbook when the idea affects an existing MVP, product, roadmap, customer signal or operating cadence.", "Route pricing, revenue, channel or delivery-model decisions to `../../business/skills/define-business-model/SKILL.md` only when they block the Product decision.", "Separate facts, assumptions, open questions and founder decisions.", "Present the calibrated idea with current business-stage reading, Product Core, fit assessment and smallest safe next route.", "Ask the founder to confirm, correct or keep calibrating before writing knowledge files.", "After confirmation, choose the bridge by business stage: `seed`, `strategy_forming` or `mvp_shaping` -> `playbooks/mvp-validation-scope.playbook.md`; `mvp_building` or `mvp_live_learning` -> `activation_required: operations.product-ops`; `product_operating` or `growth_scaling` -> `../../roadmap/playbooks/roadmap-cycle-planning.playbook.md`. Use a validation note when the idea is not ready. Do not create roadmap, Epics, Features or delivery scope here."],
             guidedConversation: ["Ask one useful question at a time, tied to the biggest Strategy Baseline or fit gap for the current business stage.", "Avoid interview fatigue; do not force every skill when the idea is already clear enough.", "Do not treat every new idea as MVP when the business is already building, validating, operating or scaling.", "Use numbered choices only when they make the founder's decision easier.", "Let the founder answer with a number or free-form text.", "End with a clear confirmation question before file updates."],
@@ -3261,12 +3318,12 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           purpose: "Route delivery scope, epic shaping, issue readiness and delivery-boundary work before Engineering starts implementation."
         },
         routingKey: "product_ops",
-        requestTypes: "delivery scope, acceptance criteria, epics, features, issue readiness or delivery boundaries",
-        purpose: "Turn Strategy and Roadmap into delivery scope, acceptance criteria and implementation-ready work.",
-        whenToUse: ["define MVP", "shape acceptance criteria", "break epics into features", "check issue readiness", "coordinate delivery scope"],
-        sourceOfTruth: ["knowledge/overview.md", "knowledge/work-taxonomy.md", "knowledge/delivery-scope.md", "knowledge/issue-readiness.md", "knowledge/mvp-decision-gate.md", "knowledge/ready-to-develop.md", "knowledge/technical-decisions.md", "mvp/scope.md", "mvp/prd.md", "mvp/user-stories.md", "mvp/acceptance-criteria.md", "epics/README.md"],
+        requestTypes: "MVP backlog, delivery scope, acceptance criteria, epics, features, issue readiness or delivery boundaries",
+        purpose: "Turn approved Strategy validation plans into MVP backlog, delivery scope, acceptance criteria and implementation-ready work.",
+        whenToUse: ["record MVP backlog", "shape acceptance criteria", "break epics into features", "check issue readiness", "coordinate delivery scope"],
+        sourceOfTruth: ["knowledge/overview.md", "knowledge/work-taxonomy.md", "knowledge/delivery-scope.md", "knowledge/issue-readiness.md", "knowledge/mvp-decision-gate.md", "knowledge/ready-to-develop.md", "knowledge/technical-decisions.md", "mvp/backlog.md", "mvp/scope.md", "mvp/prd.md", "mvp/user-stories.md", "mvp/acceptance-criteria.md", "epics/README.md"],
         files: [
-          { path: "knowledge/README.md", content: () => folderReadme("Product Ops Knowledge", "Durable operational context produced by Product Ops.", "Use when turning strategy and roadmap into MVP decisions, delivery scope, issue readiness and delivery boundaries.", "overview.md", ["overview.md", "work-taxonomy.md", "delivery-scope.md", "issue-readiness.md", "mvp-decision-gate.md", "ready-to-develop.md", "technical-decisions.md"], ["../roles/", "../skills/", "../playbooks/", "../mvp/", "../epics/", "../../../strategy/product/", "../../../strategy/roadmap/"], "Keep this folder focused on delivery criteria and scope. The current delivery state should live in Epics/Features, while PR and implementation memory live in Engineering knowledge.") },
+          { path: "knowledge/README.md", content: () => folderReadme("Product Ops Knowledge", "Durable operational context produced by Product Ops.", "Use when turning strategy and roadmap into MVP backlog, delivery scope, issue readiness and delivery boundaries.", "overview.md", ["overview.md", "work-taxonomy.md", "delivery-scope.md", "issue-readiness.md", "mvp-decision-gate.md", "ready-to-develop.md", "technical-decisions.md"], ["../roles/", "../skills/", "../playbooks/", "../mvp/", "../epics/", "../../../strategy/product/", "../../../strategy/roadmap/"], "Keep this folder focused on delivery criteria and scope. The current delivery state should live in MVP backlog, Epics/Features, while PR and implementation memory live in Engineering knowledge.") },
           { path: "knowledge/overview.md", content: productOpsOverviewKnowledge },
           { path: "knowledge/work-taxonomy.md", content: workTaxonomyKnowledge },
           { path: "knowledge/delivery-scope.md", content: deliveryScopeKnowledge },
@@ -3274,7 +3331,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           { path: "knowledge/mvp-decision-gate.md", content: mvpDecisionGateKnowledge },
           { path: "knowledge/ready-to-develop.md", content: readyToDevelopKnowledge },
           { path: "knowledge/technical-decisions.md", content: () => decisionLog("Technical Decisions") },
-          { path: "mvp/README.md", content: () => folderReadme("MVP", "MVP execution knowledge owned by Product Ops.", "Use for MVP scope, PRD, stories, flows, acceptance criteria and release readiness.", "scope.md", ["scope.md", "prd.md", "user-stories.md", "user-flows.md", "acceptance-criteria.md", "non-goals.md", "release-checklist.md"], ["../knowledge/", "../roles/", "../skills/", "../playbooks/", "../../../strategy/product/", "../../../strategy/roadmap/"], "MVP work is owned by Product Ops with Product/PM supervision. Keep implementation details out until Engineering starts.") },
+          { path: "mvp/README.md", content: () => folderReadme("MVP", "MVP execution knowledge owned by Product Ops.", "Use for MVP backlog, operational scope, PRD, stories, flows, acceptance criteria and release readiness.", "backlog.md", ["backlog.md", "scope.md", "prd.md", "user-stories.md", "user-flows.md", "acceptance-criteria.md", "non-goals.md", "release-checklist.md"], ["../knowledge/", "../roles/", "../skills/", "../playbooks/", "../../../strategy/product/", "../../../strategy/roadmap/"], "MVP work is owned by Product Ops with Product/PM supervision. Keep implementation details out until Engineering starts. Every approved MVP backlog item must become an Epic before Feature work.") },
+          { path: "mvp/backlog.md", content: mvpBacklogKnowledge },
           { path: "mvp/scope.md", content: mvpScopeKnowledge },
           { path: "mvp/prd.md", content: mvpPrdKnowledge },
           { path: "mvp/user-stories.md", content: mvpUserStoriesKnowledge },
@@ -3289,10 +3347,10 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "product-owner",
             title: "Product Owner",
             purpose: "Own MVP execution clarity with supervision from Product and PM strategy.",
-            useWhen: ["MVP scope needs definition", "acceptance criteria are unclear", "delivery scope needs coordination", "an epic needs to be broken into features"],
-            beforeActing: ["../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/delivery-scope.md", "../knowledge/issue-readiness.md", "../knowledge/mvp-decision-gate.md", "../knowledge/ready-to-develop.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../epics/README.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../ai-standard/templates/product/epic-template.md", "../../../ai-standard/templates/product/feature-template.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md"],
-            skills: ["define-delivery-scope", "define-mvp", "write-acceptance-criteria", "check-delivery-coherence", "shape-epic", "write-feature-criteria"],
-            playbooks: ["delivery-scope-planning", "mvp-delivery", "epic-to-features"]
+            useWhen: ["MVP backlog needs planning", "acceptance criteria are unclear", "delivery scope needs coordination", "an epic needs to be broken into features"],
+            beforeActing: ["../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/delivery-scope.md", "../knowledge/issue-readiness.md", "../knowledge/mvp-decision-gate.md", "../knowledge/ready-to-develop.md", "../mvp/backlog.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../epics/README.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/product/knowledge/mvp-validation-scope.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../ai-standard/templates/product/epic-template.md", "../../../ai-standard/templates/product/feature-template.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md"],
+            skills: ["define-delivery-scope", "write-acceptance-criteria", "check-delivery-coherence", "shape-epic", "write-feature-criteria"],
+            playbooks: ["mvp-backlog-planning", "delivery-scope-planning", "epic-to-features"]
           },
           {
             slug: "delivery-architect",
@@ -3308,38 +3366,25 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           {
             slug: "define-delivery-scope",
             title: "Define Delivery Scope",
-            purpose: "Decide whether a roadmap item becomes a concrete delivery scope and capture scope_type, milestone and release_goal.",
-            useWhen: ["a roadmap item may enter the next delivery", "the founder asks whether something enters MVP, release, beta or experiment scope", "a roadmap item needs Product Ops shaping before epic creation"],
-            requiredContext: ["../knowledge/delivery-scope.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../strategy/roadmap/knowledge/backlog.md", "../../../strategy/product/knowledge/brief.md"],
-            inputs: ["Roadmap item", "Product outcome", "User/business value", "Evidence level", "Scope type", "Milestone", "Release goal", "Known constraints"],
-            process: ["Restate the roadmap item and outcome.", "Confirm whether the item is ready for delivery scope or should remain roadmap/backlog.", "Choose scope_type: MVP, Release, Experiment, Beta or Internal.", "Define milestone and release_goal.", "Identify non-goals, dependencies and risks.", "Check Design, Security and DevOps applicability.", "Propose file updates and wait for confirmation before writing."],
-            checks: ["The roadmap item is clear enough to scope.", "The scope_type is explicit.", "Milestone and release_goal are not invented silently.", "Non-goals are visible.", "The item is not sent to GitHub before delivery scope is confirmed."],
+            purpose: "Decide whether an MVP backlog, roadmap or delivery candidate becomes concrete delivery scope and capture scope_type, milestone and release_goal.",
+            useWhen: ["an MVP backlog item may become an Epic", "a roadmap item may enter the next delivery", "the founder asks whether something enters MVP, release, beta or experiment scope", "a delivery item needs Product Ops shaping before epic creation"],
+            requiredContext: ["../knowledge/delivery-scope.md", "../mvp/backlog.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../strategy/roadmap/knowledge/backlog.md", "../../../strategy/product/knowledge/brief.md"],
+            inputs: ["MVP backlog item, roadmap item or delivery candidate", "Product outcome", "User/business value", "Evidence level", "Scope type", "Milestone", "Release goal", "Known constraints"],
+            process: ["Restate the delivery item and outcome.", "Confirm whether the item is ready for delivery scope or should remain in MVP backlog, roadmap or backlog.", "Choose scope_type: MVP, Release, Experiment, Beta or Internal.", "Define milestone and release_goal.", "Identify non-goals, dependencies and risks.", "Check Design, Security and DevOps applicability.", "Propose file updates and wait for confirmation before writing."],
+            checks: ["The delivery item is clear enough to scope.", "The scope_type is explicit.", "Milestone and release_goal are not invented silently.", "Non-goals are visible.", "The item is not sent to GitHub before delivery scope is confirmed."],
             outputs: ["Delivery scope recommendation", "scope_type", "milestone", "release_goal", "Non-goals", "Dependencies", "Next workflow recommendation"],
             filesToUpdate: ["Update `../knowledge/delivery-scope.md` only after explicit confirmation.", "Update `../mvp/scope.md` only when `scope_type` is MVP and the founder confirms.", "Do not create GitHub issues from this skill."],
             redLines: ["Do not treat roadmap priority as delivery commitment.", "Do not mark an item as MVP just because it is important.", "Do not create epics or features in this step."]
-          },
-          {
-            slug: "define-mvp",
-            title: "Define MVP",
-            purpose: "Apply the MVP Decision Gate to turn strategy into the smallest coherent first delivery scope.",
-            useWhen: ["the founder asks what enters the MVP", "the first product version needs scope", "a natural-language MVP delivery request routes into Product Ops", "strategy exists but the MVP boundary is unclear"],
-            requiredContext: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/mvp-decision-gate.md", "../knowledge/delivery-scope.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/product/knowledge/problem.md", "../../../strategy/product/knowledge/icp.md", "../../../strategy/product/knowledge/value-proposition.md", "../../../strategy/business/knowledge/business-model-canvas.md", "../../../strategy/roadmap/knowledge/backlog.md", "../../../strategy/roadmap/knowledge/roadmap.md"],
-            inputs: ["Founder intent", "Product brief", "Problem", "ICP", "Value proposition", "Business model or business assumption", "Roadmap/backlog context when available", "Existing MVP scope and PRD"],
-            process: ["Restate the intended product outcome.", "Identify the smallest useful version that can validate or deliver the core value.", "Apply Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk from `mvp-decision-gate.md`.", "Classify items as in MVP now, later/backlog, needs discovery, needs specialist check or not now.", "Name Design, Security, Engineering or DevOps risks only when applicable.", "Draft founder-friendly MVP scope before mentioning file updates.", "Ask for confirmation before writing MVP files."],
-            checks: ["Value Risk is explicit.", "Usability Risk is explicit.", "Feasibility Risk is explicit.", "Business Viability Risk is explicit.", "The MVP is small enough to explain and later break into Epics/Features.", "Non-goals are visible.", "The skill does not create Epics, Features, GitHub issues, branches, PRs or code."],
-            outputs: ["MVP decision summary", "In MVP now", "Later/backlog", "Needs discovery", "Needs specialist check", "Not now", "Non-goals", "Risks", "Proposed file updates", "Next safe LeanOS route"],
-            filesToUpdate: ["Update `../mvp/scope.md` only after confirmation.", "Update `../mvp/prd.md` only after confirmation.", "Update `../mvp/user-stories.md` only after confirmation.", "Update `../mvp/acceptance-criteria.md` only after confirmation.", "Update `../mvp/non-goals.md` only after confirmation.", "Update `../knowledge/delivery-scope.md` only when MVP scope creates delivery-scope context."],
-            redLines: ["Do not mark an item as MVP because it is interesting or urgent.", "Do not create Epics, Features, GitHub issues, branches, PRs or source code.", "Do not bypass `mvp-decision-gate.md`.", "Do not write before founder confirmation."]
           },
           { slug: "write-acceptance-criteria", title: "Write Acceptance Criteria", purpose: "Define completion criteria for MVP work." },
           { slug: "check-delivery-coherence", title: "Check Delivery Coherence", purpose: "Check that delivery scope matches strategy, roadmap and acceptance criteria." },
           {
             slug: "shape-epic",
             title: "Shape Epic",
-            purpose: "Turn a roadmap epic into an implementation-ready scope boundary before features are created.",
-            useWhen: ["a roadmap item needs to become a local LeanOS Epic", "an existing epic needs enough clarity to be broken down", "the team needs to confirm outcome, scope and non-goals before features or remote sync"],
-            requiredContext: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/issue-readiness.md", "../knowledge/ready-to-develop.md", "../mvp/prd.md", "../mvp/scope.md", "../epics/README.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../ai-standard/templates/product/epic-template.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md"],
-            inputs: ["Parent epic or roadmap item", "Product outcome", "MVP scope", "Non-goals", "Milestone or current cycle", "Known dependencies"],
+            purpose: "Turn an approved delivery item into an implementation-ready Epic scope boundary before features are created.",
+            useWhen: ["an approved MVP backlog item needs to become a local LeanOS Epic", "a roadmap item needs to become a local LeanOS Epic", "an existing epic needs enough clarity to be broken down", "the team needs to confirm outcome, scope and non-goals before features or remote sync"],
+            requiredContext: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/issue-readiness.md", "../knowledge/ready-to-develop.md", "../mvp/backlog.md", "../mvp/prd.md", "../mvp/scope.md", "../epics/README.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/roadmap/knowledge/roadmap.md", "../../../ai-standard/templates/product/epic-template.md", "../../../ai-standard/templates/github/delivery-readiness-matrix-template.md"],
+            inputs: ["Approved delivery item, MVP backlog item or roadmap item", "Product outcome", "MVP scope", "Non-goals", "Milestone or current cycle", "Known dependencies"],
             process: ["Restate the epic outcome in one sentence.", "Confirm the user, problem and business value.", "Identify scope boundaries and non-goals.", "Map the epic to delivery scope, PRD and roadmap milestone.", "Use the Epic Readiness Matrix to decide which specialists must participate.", "List likely feature slices without creating them yet.", "Mark missing context explicitly instead of inventing it."],
             checks: ["Outcome is clear.", "Scope and non-goals are explicit.", "The epic can be split without losing product intent.", "Missing Product, Design, Security, DevOps or Engineering input is called out."],
             outputs: ["Epic readiness summary", "Decision ownership", "Scope boundary", "Non-goals", "Epic readiness matrix", "Likely feature groups", "Missing context", "Recommendation to proceed, refine or block"],
@@ -3365,25 +3410,25 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           {
             slug: "delivery-scope-planning",
             title: "Delivery Scope Planning",
-            purpose: "Turn a roadmap item into a confirmed delivery scope without creating epics, issues or code.",
-            inputs: ["Roadmap item", "Product brief", "Backlog and roadmap status", "Existing delivery scope", "MVP scope when scope_type is MVP", "Known constraints"],
-            steps: ["Read Product Ops AGENT and choose the Product Owner role.", "Read roadmap item, product brief and current delivery scope.", "Use `skills/define-delivery-scope/SKILL.md` to decide whether the item becomes delivery scope.", "Set `scope_type`, `milestone` and `release_goal` only after the founder confirms.", "Define non-goals, dependencies and applicability for Design, Security and DevOps.", "If `scope_type` is MVP, map the decision to MVP files.", "Propose file updates and wait for confirmation before writing."],
+            purpose: "Turn an MVP backlog, roadmap, backlog or delivery candidate into confirmed delivery scope without creating epics, issues or code.",
+            inputs: ["MVP backlog item, roadmap item, backlog item or delivery candidate", "Product brief", "Backlog and roadmap status", "Existing delivery scope", "MVP scope when scope_type is MVP", "Known constraints"],
+            steps: ["Read Product Ops AGENT and choose the Product Owner role.", "Read the delivery item, product brief and current delivery scope.", "Use `skills/define-delivery-scope/SKILL.md` to decide whether the item becomes delivery scope.", "Set `scope_type`, `milestone` and `release_goal` only after the founder confirms.", "Define non-goals, dependencies and applicability for Design, Security and DevOps.", "If `scope_type` is MVP, map the decision to MVP files.", "Propose file updates and wait for confirmation before writing."],
             outputs: ["Delivery scope proposal", "scope_type", "milestone", "release_goal", "Non-goals", "Design/Security/DevOps applicability", "Recommended next workflow"],
             filesToUpdate: ["Update `../knowledge/delivery-scope.md` only after explicit confirmation.", "Update `../mvp/scope.md`, `../mvp/prd.md`, `../mvp/non-goals.md` and `../mvp/acceptance-criteria.md` only when `scope_type` is MVP and the founder confirms.", "Do not update GitHub from this playbook."]
           },
           {
-            slug: "mvp-delivery",
-            title: "MVP Delivery",
-            purpose: "Turn product strategy into executable MVP scope.",
-            useWhen: ["the founder asks to define MVP delivery scope", "a natural-language MVP delivery request routes into Product Ops", "strategy is ready enough to decide a first delivery scope", "the MVP boundary needs founder confirmation before roadmap-to-Epic planning"],
-            beforeActing: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/mvp-decision-gate.md", "../knowledge/delivery-scope.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/AGENT.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/product/knowledge/problem.md", "../../../strategy/product/knowledge/icp.md", "../../../strategy/product/knowledge/value-proposition.md", "../../../strategy/roadmap/knowledge/backlog.md", "../../../strategy/roadmap/knowledge/roadmap.md"],
-            inputs: ["Product brief", "Problem", "ICP", "Value proposition", "Business model or assumption", "Roadmap/backlog context when available", "Existing MVP scope", "Existing PRD when available", "MVP Decision Gate"],
-            steps: ["Read Product Ops AGENT and choose the Product Owner role.", "Read product strategy and existing MVP knowledge.", "Load `../knowledge/mvp-decision-gate.md` before deciding scope.", "Use `skills/define-mvp/SKILL.md` to classify candidate items by Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk.", "Use guided conversation only for missing inputs.", "Define the smallest coherent MVP scope.", "Write or refine the MVP PRD draft.", "Write or refine user stories.", "Define acceptance criteria.", "Confirm non-goals.", "Identify Design, Security, Engineering or DevOps dependencies.", "Explain the recommendation in founder-friendly language.", "Propose file updates and wait for confirmation before writing.", "After confirmation, offer the bridge to `roadmap-item-to-epic` only when the founder wants delivery planning."],
-            guidedConversation: ["Ask at most two questions at a time.", "Offer short options when the founder may not know how to answer.", "Prefer questions that reduce Value Risk, Usability Risk, Feasibility Risk or Business Viability Risk.", "Stop the questionnaire when the gate decision is clear enough."],
-            gates: ["Value Risk is pass, explicit gap or discovery-needed.", "Usability Risk is pass, explicit gap or design-needed.", "Feasibility Risk is pass, explicit gap or spike-needed.", "Business Viability Risk is pass, explicit gap or viability-check-needed.", "Founder confirms before files are updated."],
-            outputs: ["MVP scope proposal", "PRD proposal", "User stories", "Acceptance criteria", "Non-goals", "Dependencies", "Open questions"],
-            filesToUpdate: ["Update `../mvp/scope.md`, `../mvp/prd.md`, `../mvp/user-stories.md`, `../mvp/acceptance-criteria.md` and `../mvp/non-goals.md` only after explicit confirmation.", "Update `../knowledge/overview.md` when Product Ops summary changes.", "Update `../knowledge/delivery-scope.md` only after founder confirms the MVP delivery-scope decision."],
-            stopConditions: ["Stop if product strategy is too unclear to evaluate Value Risk.", "Stop if the founder does not confirm the proposed MVP scope.", "Stop before Epics, Features, GitHub sync, branches, PRs or code.", "Stop if the request becomes implementation work before MVP scope is confirmed."]
+            slug: "mvp-backlog-planning",
+            title: "MVP Backlog Planning",
+            purpose: "Turn the founder-approved Strategy Product MVP Validation Scope into Product Ops MVP backlog items before any Epic or Feature exists.",
+            useWhen: ["the founder approved the MVP validation plan", "Strategy Product is ready to hand off MVP validation scope to Product Ops", "Product Ops needs to record candidate and approved MVP items before Epic planning"],
+            beforeActing: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/mvp-decision-gate.md", "../knowledge/delivery-scope.md", "../mvp/backlog.md", "../mvp/scope.md", "../mvp/prd.md", "../../../strategy/product/AGENT.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/product/knowledge/problem.md", "../../../strategy/product/knowledge/icp.md", "../../../strategy/product/knowledge/value-proposition.md", "../../../strategy/product/knowledge/mvp-validation-scope.md"],
+            inputs: ["Founder-approved MVP Validation Scope", "Product brief", "Problem", "ICP", "Value proposition", "Business model or assumption", "Existing MVP backlog", "MVP Decision Gate"],
+            steps: ["Read Product Ops AGENT and choose the Product Owner role.", "Read Strategy Product MVP Validation Scope and confirm it was approved by the founder.", "Load `../knowledge/mvp-decision-gate.md` to keep Value, Usability, Feasibility and Business Viability risks visible.", "Translate the approved validation plan into MVP backlog items.", "Classify each item as candidate, approved_for_mvp, needs_discovery, needs_specialist_check, deferred or not_now.", "Record which items are approved for Epic creation and which remain parked.", "Identify Design, Security, Engineering or DevOps checks only when they affect an item entering the MVP backlog.", "Explain the MVP backlog proposal in founder-friendly language.", "Propose updates and wait for confirmation before writing.", "After confirmation, ask whether the founder wants to transform an approved item into an Epic now or keep refining the MVP backlog."],
+            guidedConversation: ["Ask only when the approved Strategy plan lacks enough detail to create backlog items.", "Prefer package approval for the backlog proposal, then item-by-item confirmation only before Epic creation.", "Do not re-open Strategy discovery unless the validation plan is inconsistent."],
+            gates: ["Strategy Product MVP Validation Scope exists.", "Founder approved the MVP validation plan.", "Each backlog item has a validation reason or product outcome.", "Items needing specialists are marked before Epic creation.", "Founder confirms before files are updated."],
+            outputs: ["MVP backlog proposal", "Approved for MVP", "Candidate items", "Needs discovery", "Needs specialist check", "Deferred items", "Recommended first Epic candidate", "Open questions"],
+            filesToUpdate: ["Update `../mvp/backlog.md` only after explicit confirmation.", "Update `../knowledge/overview.md` when Product Ops summary changes.", "Update `../knowledge/delivery-scope.md` only after founder confirms a delivery-scope decision."],
+            stopConditions: ["Stop if Strategy Product MVP Validation Scope is missing.", "Stop if the founder has not approved the MVP validation plan.", "Stop before creating Epics, Features, GitHub sync, branches, PRs or code.", "Stop if the request becomes implementation work before an Epic exists."]
           },
           {
             slug: "epic-to-features",
@@ -3411,7 +3456,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         commonPaths: [
           "Product Ops request: area lead `AGENT.md` -> choose Product Owner or Delivery Architect -> load only the required skills and playbook.",
           "Delivery scope request: role `roles/product-owner.role.md` -> skill `skills/define-delivery-scope/SKILL.md` -> playbook `playbooks/delivery-scope-planning.playbook.md`.",
-          "MVP delivery request: `operations/AGENT.md` -> workflow `../workflows/define-mvp.workflow.md` -> area lead `AGENT.md` -> role `roles/product-owner.role.md` -> gate `knowledge/mvp-decision-gate.md` -> skill `skills/define-mvp/SKILL.md` -> playbook `playbooks/mvp-delivery.playbook.md`.",
+          "MVP backlog request: area lead `AGENT.md` -> role `roles/product-owner.role.md` -> gate `knowledge/mvp-decision-gate.md` -> playbook `playbooks/mvp-backlog-planning.playbook.md` -> `mvp/backlog.md`.",
           "Epic breakdown request: role `roles/product-owner.role.md` -> skills `skills/shape-epic/SKILL.md` and `skills/write-feature-criteria/SKILL.md` -> playbook `playbooks/epic-to-features.playbook.md`.",
           "Delivery readiness request: role `roles/delivery-architect.role.md` -> skill `skills/define-delivery-boundaries/SKILL.md` -> playbook `playbooks/delivery-readiness.playbook.md`."
         ]
@@ -4529,153 +4574,12 @@ export const rootDepartments: RootDepartmentDefinition[] = [
     ],
     workflows: [
       {
-        slug: "define-mvp",
-        purpose: "Shape the first MVP scope from Strategy context using the MVP Decision Gate before Epics, Features, GitHub sync, branch, code or PR work.",
-        founderTriggers: [
-          "defina o MVP",
-          "define the MVP",
-          "qual a primeira versao?",
-          "o que entra no MVP?",
-          "vamos definir a primeira entrega",
-          "quero saber o que fica dentro e fora do MVP"
-        ],
-        owner: {
-          department: "operations",
-          primaryArea: "operations/product-ops",
-          supportingAreas: ["strategy/product", "strategy/roadmap"],
-          conditionalAreas: ["operations/design", "operations/security", "operations/engineering", "operations/devops"]
-        },
-        requiredAreas: ["product-ops"],
-        conditionalAreas: [
-          { area: "strategy/product", when: "Always inspect product strategy context before deciding MVP scope." },
-          { area: "strategy/roadmap", when: "Enter when roadmap, backlog or current-cycle context exists or when the founder starts from an existing roadmap item." },
-          { area: "operations/design", when: "Enter when MVP scope depends on UX, UI, flows, copy, accessibility, screens, states, interaction or design foundation." },
-          { area: "operations/security", when: "Enter when MVP scope touches data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk." },
-          { area: "operations/engineering", when: "Enter for a small feasibility check when scope size, architecture, data model, AI behavior or integration risk can change the MVP boundary." },
-          { area: "operations/devops", when: "Enter when environments, deploy, GitHub, observability, config or release constraints can change the MVP boundary." }
-        ],
-        loadFirst: [
-          "AGENT.md",
-          "Natural-language MVP delivery request from Root `AGENT.md`",
-          ".leanos/agent/protocols/where-we-are.md when the current product moment is unclear",
-          "operations/AGENT.md",
-          "operations/workflows/README.md",
-          "operations/workflows/define-mvp.workflow.md",
-          "strategy/product/AGENT.md",
-          "strategy/product/knowledge/brief.md",
-          "strategy/product/knowledge/problem.md",
-          "strategy/product/knowledge/icp.md",
-          "strategy/product/knowledge/value-proposition.md",
-          "operations/product-ops/AGENT.md",
-          "operations/product-ops/knowledge/mvp-decision-gate.md",
-          "operations/product-ops/mvp/scope.md",
-          "operations/product-ops/mvp/prd.md"
-        ],
-        navigationRoute: [
-          "AGENT.md",
-          "Natural-language MVP delivery request from Root `AGENT.md`",
-          "operations/AGENT.md",
-          "operations/workflows/define-mvp.workflow.md",
-          "operations/product-ops/AGENT.md",
-          "operations/product-ops/roles/product-owner.role.md",
-          "operations/product-ops/knowledge/mvp-decision-gate.md",
-          "operations/product-ops/skills/define-mvp/SKILL.md",
-          "operations/product-ops/playbooks/mvp-delivery.playbook.md",
-          "operations/product-ops/mvp/*",
-          "Output"
-        ],
-        steps: [
-          "Declare the route and explain that this workflow shapes MVP scope; it does not create Epics, Features, GitHub issues, branches, PRs or code.",
-          "Confirm there is enough Strategy Product context to evaluate the target user, problem, value proposition and business assumption.",
-          "If Strategy context is missing, stop and recommend Strategy Product startup before MVP definition.",
-          "Load Product Ops through `operations/product-ops/AGENT.md` and choose `roles/product-owner.role.md`.",
-          "Load `operations/product-ops/knowledge/mvp-decision-gate.md` before deciding any item.",
-          "Use `skills/define-mvp/SKILL.md` and `playbooks/mvp-delivery.playbook.md` to evaluate Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk.",
-          "Ask guided questions only for missing inputs; use short options when the founder is unsure.",
-          "Separate candidates into in MVP now, later/backlog, needs discovery, needs specialist check or not now.",
-          "Route Design only when usability, accessibility, UI or flow uncertainty can change the MVP boundary.",
-          "Route Security only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk can change the MVP boundary.",
-          "Route Engineering only for a small feasibility check that can change scope, not for implementation.",
-          "Route DevOps only when environment, deploy, GitHub, observability, config or release constraints can change scope.",
-          "Explain the MVP recommendation in founder-friendly language before mentioning file updates.",
-          "Ask for confirmation before writing MVP files.",
-          "After confirmation, offer the bridge to `roadmap-item-to-epic` only when the founder wants delivery planning."
-        ],
-        confirmationGates: [
-          "Ask before deciding that an item enters the MVP.",
-          "Ask before writing MVP scope, PRD, stories, acceptance criteria, non-goals or release checklist.",
-          "Ask before updating Product Ops overview or delivery scope.",
-          "Ask before moving to `roadmap-item-to-epic`."
-        ],
-        allowedUpdates: [
-          "operations/product-ops/mvp/scope.md",
-          "operations/product-ops/mvp/prd.md",
-          "operations/product-ops/mvp/user-stories.md",
-          "operations/product-ops/mvp/user-flows.md",
-          "operations/product-ops/mvp/acceptance-criteria.md",
-          "operations/product-ops/mvp/non-goals.md",
-          "operations/product-ops/mvp/release-checklist.md",
-          "operations/product-ops/knowledge/overview.md",
-          "operations/product-ops/knowledge/delivery-scope.md"
-        ],
-        forbiddenUpdates: [
-          "operations/product-ops/epics/",
-          "Feature files",
-          "operations/engineering/",
-          "operations/design/knowledge/components/",
-          ".github/",
-          ".leanos/index/",
-          "roles/",
-          "skills/",
-          "playbooks/",
-          "workflows/",
-          "ai-standard/",
-          "source code",
-          "branches",
-          "pull requests"
-        ],
-        externalCapabilities: [
-          "No external capability is required.",
-          "Do not call GitHub APIs in this workflow.",
-          "Do not create branches, commits, PRs or code in this workflow."
-        ],
-        stopConditions: [
-          "Product strategy is too unclear to evaluate Value Risk.",
-          "The founder cannot identify the primary user, problem or first outcome.",
-          "The MVP scope is too broad and needs splitting before a decision.",
-          "Design, Security, Engineering or DevOps risk can change the MVP boundary and cannot be resolved or marked not applicable.",
-          "The founder does not confirm the proposed MVP scope.",
-          "The request shifts into Epic creation, Feature shaping, GitHub sync, branch, code or PR work."
-        ],
-        expectedOutput: [
-          "Founder-friendly MVP recommendation.",
-          "In MVP now.",
-          "Later/backlog.",
-          "Needs discovery.",
-          "Needs specialist check.",
-          "Not now.",
-          "Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk result.",
-          "Proposed MVP file updates.",
-          "Clear next-step bridge to `roadmap-item-to-epic` when the founder wants delivery planning."
-        ],
-        continuationBridge: {
-          immediate: "O escopo inicial do MVP esta definido.\nQuer que eu transforme um item confirmado desse MVP em um Epic local com milestone, release_goal e criterios iniciais?",
-          laterTriggers: ["vamos transformar esse item do MVP em epic", "isso vira epic?", "crie um epic para esse item do MVP", "vamos planejar a entrega desse item", "isso entra na proxima entrega?"],
-          nextRoute: "roadmap-item-to-epic",
-          rules: [
-            "Do not automatically create Epics after MVP definition.",
-            "If the founder says yes, declare the `roadmap-item-to-epic` route before loading the next workflow.",
-            "If the founder says no, summarize the MVP decision and stop without writing anything else.",
-            "If the founder returns later with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `roadmap-item-to-epic`."
-          ]
-        }
-      },
-      {
-        slug: "roadmap-item-to-epic",
-        purpose: "Turn a confirmed roadmap or backlog item into a local LeanOS Epic with scope_type, milestone, release_goal, outcome, non-goals, risks and readiness notes before features, GitHub sync, branch or code.",
+        slug: "delivery-item-to-epic",
+        purpose: "Turn an approved MVP backlog, roadmap, backlog or delivery-scope item into a local LeanOS Epic with scope_type, milestone, release_goal, outcome, non-goals, risks and readiness notes before features, GitHub sync, branch or code.",
         founderTriggers: [
           "Isso entra no MVP?",
           "Isso entra na proxima entrega?",
+          "Vamos transformar esse item do MVP em epic?",
           "Vamos transformar esse item do roadmap em epic?",
           "Crie um epic para esse item",
           "Qual milestone recebe esse item?",
@@ -4701,6 +4605,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "operations/product-ops/AGENT.md",
           "operations/product-ops/knowledge/work-taxonomy.md",
           "operations/product-ops/knowledge/delivery-scope.md",
+          "operations/product-ops/mvp/backlog.md",
           "operations/product-ops/epics/README.md",
           "strategy/product/knowledge/brief.md",
           "strategy/roadmap/knowledge/roadmap.md",
@@ -4710,7 +4615,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         navigationRoute: [
           "AGENT.md",
           "operations/AGENT.md",
-          "operations/workflows/roadmap-item-to-epic.workflow.md",
+          "operations/workflows/delivery-item-to-epic.workflow.md",
           "operations/product-ops/AGENT.md",
           "operations/product-ops/roles/product-owner.role.md",
           "operations/product-ops/skills/define-delivery-scope/SKILL.md",
@@ -4720,7 +4625,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Output"
         ],
         steps: [
-          "Confirm the roadmap or backlog item exists and has enough product context.",
+          "Confirm the MVP backlog, roadmap, backlog or delivery-scope item exists and has enough product context.",
           "Declare this route before executing so the founder understands this creates or updates a local LeanOS Epic, not implementation.",
           "Load Product Ops through `operations/product-ops/AGENT.md` and choose `roles/product-owner.role.md`.",
           "Use `skills/define-delivery-scope/SKILL.md` to decide `scope_type`, `milestone` and `release_goal` as Epic fields, not as a separate workflow.",
@@ -4735,12 +4640,13 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Stop before Feature files, GitHub issues, branches, code or PR work."
         ],
         confirmationGates: [
-          "Ask before promoting a roadmap/backlog item to a local Epic.",
+          "Ask before promoting an MVP backlog, roadmap, backlog or delivery-scope item to a local Epic.",
           "Ask before writing `scope_type`, `milestone` or `release_goal` into the Epic.",
           "Ask before creating or updating files under `operations/product-ops/epics/`.",
           "Ask before moving to `epic-to-features`."
         ],
         allowedUpdates: [
+          "operations/product-ops/mvp/backlog.md",
           "operations/product-ops/epics/",
           "operations/product-ops/knowledge/delivery-scope.md",
           "operations/product-ops/knowledge/issue-readiness.md",
@@ -4764,13 +4670,13 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Prepare GitHub sync notes only as optional future context after the local Epic is confirmed."
         ],
         stopConditions: [
-          "The roadmap or backlog item does not exist or cannot be identified.",
+          "The MVP backlog, roadmap, backlog or delivery-scope item does not exist or cannot be identified.",
           "The item has no clear product context, user, outcome or value.",
           "The founder does not confirm Epic creation or update.",
           "The request shifts into Feature shaping, GitHub sync, branch creation, code or PR work."
         ],
         expectedOutput: [
-          "Founder-friendly recommendation: create local Epic, keep in roadmap/backlog, refine first or reject.",
+          "Founder-friendly recommendation: create local Epic, keep in MVP backlog/roadmap/backlog, refine first or reject.",
           "Local Epic title and stable folder slug.",
           "`scope_type`, `milestone` and `release_goal` as Epic fields.",
           "Epic outcome, non-goals, risks and likely feature groups.",

@@ -103,5 +103,5 @@ Propose file updates only after the founder confirms the product core.
 - Do not run a rigid discovery interview.
 - Do not invent customer evidence or validation.
 - Do not force a Product Core from weak signal; return gaps instead.
-- Do not create roadmap, MVP delivery scope, Epics, Features or implementation work.
+- Do not create roadmap, MVP backlog, Epics, Features or implementation work.
 - Route pricing, revenue or delivery-model decisions to Strategy Business.

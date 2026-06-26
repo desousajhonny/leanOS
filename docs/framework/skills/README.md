@@ -53,11 +53,10 @@ Ativação padrão: `AGENT.md` -> `operations/AGENT.md` -> `operations/product-o
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
-| `define-delivery-scope` | Decidir se item de roadmap vira escopo concreto de entrega com `scope_type`, milestone e release goal. | Workflow `roadmap-item-to-epic`; role `product-owner`; playbook `delivery-scope-planning`. |
-| `define-mvp` | Aplicar o gate de decisão do MVP e transformar Strategy em menor escopo coerente de primeira entrega. | Workflow `define-mvp`; role `product-owner`; playbook `mvp-delivery`; rotas vindas de Strategy quando Product Ops estiver ativo. |
+| `define-delivery-scope` | Decidir se item de MVP backlog, roadmap, backlog ou delivery candidate vira escopo concreto de entrega com `scope_type`, milestone e release goal. | Workflow `delivery-item-to-epic`; role `product-owner`; playbook `delivery-scope-planning`. |
 | `write-acceptance-criteria` | Definir critérios de aceite para trabalho de MVP. | Role `product-owner`; playbooks de Product Ops quando critérios forem necessários. |
-| `check-delivery-coherence` | Checar se escopo de entrega combina com Strategy, roadmap e critérios de aceite. | Roles `product-owner` e `delivery-architect`; playbooks `delivery-scope-planning`, `mvp-delivery` ou `delivery-readiness`. |
-| `shape-epic` | Transformar item de roadmap em Epic local com fronteiras, outcome, escopo e não objetivos. | Workflows `roadmap-item-to-epic` e `epic-to-features`; role `product-owner`; playbook `epic-to-features`. |
+| `check-delivery-coherence` | Checar se escopo de entrega combina com Strategy, MVP backlog, roadmap e critérios de aceite. | Roles `product-owner` e `delivery-architect`; playbooks `mvp-backlog-planning`, `delivery-scope-planning` ou `delivery-readiness`. |
+| `shape-epic` | Transformar item aprovado de MVP backlog, roadmap, backlog ou delivery scope em Epic local com fronteiras, outcome, escopo e não objetivos. | Workflows `delivery-item-to-epic` e `epic-to-features`; role `product-owner`; playbook `epic-to-features`. |
 | `write-feature-criteria` | Aplicar a Delivery Readiness Matrix e escrever Features com critérios e tasks internas. | Workflow `epic-to-features`; role `product-owner`; playbook `epic-to-features`. |
 | `define-delivery-boundaries` | Definir limites técnicos e operacionais mínimos para implementação segura sem arquitetura prematura. | Role `delivery-architect`; playbook `delivery-readiness`; pedidos sobre boundaries de entrega. |
 
@@ -73,7 +72,7 @@ Ativação padrão: `AGENT.md` -> `operations/AGENT.md` -> `operations/design/AG
 | `component-analysis` | Decidir se uma Feature reutiliza componente, adapta componente ou precisa de spec de componente. | Role `product-designer`; playbook `component-readiness`; gates de Feature com UI. |
 | `screen-specification` | Definir tela, estado, interação e notas de handoff para Engineering. | Role `product-designer`; playbook `mvp-ux-flow`; Features com tela concreta. |
 | `microcopy` | Escrever labels, helper texts, estados vazios, erros e mensagens de sucesso. | Role `ux-writer`; playbook `ux-writing`; Features com texto de interface. |
-| `accessibility` | Definir baseline de acessibilidade, teclado, foco, contraste, forms e screen reader. | Role `accessibility-specialist`; playbooks de Design; workflows `define-mvp`, `roadmap-item-to-epic`, `epic-to-features` e `feature-to-delivery-cycle` quando aplicável. |
+| `accessibility` | Definir baseline de acessibilidade, teclado, foco, contraste, forms e screen reader. | Role `accessibility-specialist`; playbooks de Design; workflows `delivery-item-to-epic`, `epic-to-features` e `feature-to-delivery-cycle` quando aplicável. |
 | `design-review` | Avaliar impacto de UX/design em issues, PRs, telas, fluxos ou decisões. | Roles `product-designer`, `accessibility-specialist` e `ux-writer`; playbook `accessibility-review`; revisões de Design. |
 
 ### Engineering

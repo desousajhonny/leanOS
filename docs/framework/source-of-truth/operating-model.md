@@ -10,7 +10,7 @@ Ideia / Contexto Inicial
 -> Strategy Baseline
 -> MVP Validation Scope
 -> MVP Validation Sequence
--> Product Ops / Delivery Scope
+-> Product Ops / MVP Backlog
 -> Epic
 -> Features
 -> Delivery
@@ -86,15 +86,26 @@ O roadmap pode conter:
 
 O roadmap não deve criar automaticamente Epics, Features ou issues no GitHub.
 
-### 6. Delivery Scope
+### 6. MVP Backlog
 
-Delivery Scope traduz Strategy, MVP Validation Scope, sequência de validação ou direção selecionada do roadmap em escopo concreto de entrega.
+MVP Backlog traduz o MVP Validation Scope aprovado em itens operacionais de Product Ops.
 
-Product Ops é dono do Delivery Scope. Se Product Ops estiver inativo, o LeanOS retorna `activation_required: operations.product-ops`.
+Product Ops é dono do MVP Backlog. Se Product Ops estiver inativo, o LeanOS retorna `activation_required: operations.product-ops`.
 
-### 7. Epic
+O MVP Backlog responde:
 
-Um Epic é um artefato local de Product Ops que transforma um item de roadmap ou Delivery Scope em contexto executável de entrega.
+- o que entra;
+- o que fica fora;
+- qual hipótese cada item valida;
+- quais sinais indicam que funcionou;
+- quais riscos precisam de Design, Security, Engineering ou DevOps;
+- quais itens estão aprovados para virar Epic.
+
+### 7. Delivery Scope E Epic
+
+Delivery Scope é uma decisão dentro de Product Ops que confirma `scope_type`, milestone, release goal, não objetivos e fronteiras de entrega.
+
+Um Epic é um artefato local de Product Ops que transforma um item aprovado de MVP Backlog, roadmap, backlog ou Delivery Scope em contexto executável de entrega.
 
 Um Epic não é uma issue do GitHub por padrão. O GitHub pode espelhá-lo depois.
 
@@ -136,7 +147,7 @@ O Chief nunca deve tratar `available` como carregável.
 
 ### Operations
 
-É dono do escopo de MVP, Epics, Features, readiness de entrega, design, engineering, security, DevOps e continuação pós-merge.
+É dono do MVP Backlog, Delivery Scope, Epics, Features, readiness de entrega, design, engineering, security, DevOps e continuação pós-merge.
 
 Operations é ativado apenas quando o founder chega ao trabalho de entrega.
 

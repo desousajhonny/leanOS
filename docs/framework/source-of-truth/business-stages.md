@@ -47,7 +47,7 @@ Trabalho principal do Chief:
 - iniciar `idea-calibration` em Strategy Product;
 - entender usuário inicial, dor, alternativa atual, promessa e premissa mais arriscada;
 - fazer uma pergunta útil por vez;
-- evitar roadmap, MVP delivery scope, Epic, Feature e código.
+- evitar roadmap, MVP backlog operacional, Epic, Feature e código.
 
 Rotas típicas:
 
@@ -99,13 +99,13 @@ Sinais:
 - Strategy Baseline mínima existe;
 - o founder quer definir o que validar primeiro;
 - existe direção de MVP validation scope ou sequência mínima de validação;
-- ainda não existe necessariamente escopo executável de entrega.
+- ainda não existe necessariamente MVP backlog operacional ou escopo executável de entrega.
 
 Trabalho principal do Chief:
 
 - transformar Strategy em MVP validation scope;
 - organizar MVP Validation Sequence sem virar backlog de implementação;
-- decidir se Product Ops precisa ser ativado para escopo de entrega;
+- decidir se Product Ops precisa ser ativado para MVP backlog ou escopo de entrega;
 - manter Design, Engineering, Security, DevOps e Growth inativos até seus gates.
 
 Rotas típicas:
@@ -113,7 +113,7 @@ Rotas típicas:
 - Strategy Product para MVP validation scope;
 - `strategy/product/playbooks/mvp-validation-scope.playbook.md`;
 - Strategy Roadmap apenas quando o founder precisa ordenar ciclo, backlog ou múltiplas prioridades;
-- `activation_required: operations.product-ops` quando o founder entra em escopo de entrega.
+- `activation_required: operations.product-ops` quando o founder entra em MVP backlog, Epic ou escopo de entrega.
 
 Próximo estágio saudável:
 
@@ -126,21 +126,21 @@ O negócio está construindo o primeiro MVP, experimento ou superfície de valid
 Sinais:
 
 - Product Ops está ativo ou precisa ser ativado;
-- existe escopo de MVP ou delivery scope;
+- existe MVP backlog, escopo de MVP ou delivery scope;
 - Epics e Features começam a ser estruturados;
 - Engineering só entra depois de readiness de Feature ou spike técnico aprovado.
 
 Trabalho principal do Chief:
 
-- proteger a taxonomia Roadmap -> Escopo de MVP -> Epic -> Feature -> Task;
+- proteger a taxonomia MVP Backlog ou Roadmap -> Epic -> Feature -> Task;
 - garantir readiness antes de implementação;
 - ativar Design, Security, DevOps ou Engineering apenas quando o escopo exige;
 - impedir que ideias novas entrem direto no MVP sem intake.
 
 Rotas típicas:
 
-- `operations/workflows/define-mvp.workflow.md`
-- `operations/workflows/roadmap-item-to-epic.workflow.md`
+- `operations/product-ops/playbooks/mvp-backlog-planning.playbook.md`
+- `operations/workflows/delivery-item-to-epic.workflow.md`
 - `operations/workflows/epic-to-features.workflow.md`
 - `operations/workflows/feature-to-delivery-cycle.workflow.md`
 

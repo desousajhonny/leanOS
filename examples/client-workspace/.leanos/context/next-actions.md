@@ -18,7 +18,7 @@ Use this before recommending implementation, branch, PR, launch or GitHub sync.
 
 ## 3. Delivery Planning
 
-Product Ops is not active. If the founder wants MVP delivery scope, local Epics or Features, ask to activate `operations.product-ops` before creating delivery assets.
+Product Ops is not active. If the founder wants MVP backlog planning, local Epics or Features, ask to activate `operations.product-ops` before creating delivery assets.
 
 ## 4. Implementation Readiness
 

@@ -100,7 +100,7 @@ Use this before recommending implementation, branch, PR, launch or GitHub sync.
 
 ## 3. Delivery Planning
 
-${productOpsActive ? "Product Ops is active. Route MVP delivery scope, roadmap-item-to-epic and epic-to-features work through `operations/AGENT.md` -> `operations/product-ops/AGENT.md`." : "Product Ops is not active. If the founder wants MVP delivery scope, local Epics or Features, ask to activate `operations.product-ops` before creating delivery assets."}
+${productOpsActive ? "Product Ops is active. Route MVP backlog planning, delivery-item-to-epic and epic-to-features work through `operations/AGENT.md` -> `operations/product-ops/AGENT.md`." : "Product Ops is not active. If the founder wants MVP backlog planning, local Epics or Features, ask to activate `operations.product-ops` before creating delivery assets."}
 
 ## 4. Implementation Readiness
 

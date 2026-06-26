@@ -2,6 +2,25 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-26 - MVP Backlog Como Fonte Operacional Do MVP
+
+Decisão:
+
+- Remover `operations/workflows/define-mvp.workflow.md`.
+- Remover `operations/product-ops/skills/define-mvp/SKILL.md`.
+- Substituir o playbook `mvp-delivery` por `mvp-backlog-planning`.
+- Criar `operations/product-ops/mvp/backlog.md` como fonte operacional dos itens do MVP.
+- Renomear `roadmap-item-to-epic` para `delivery-item-to-epic`.
+- Um item aprovado de MVP backlog, roadmap, backlog ou delivery scope deve virar Epic local antes de ser quebrado em Features.
+
+Justificativa:
+
+- Strategy Product define o MVP Validation Scope: hipótese, menor artefato de validação, sinais de sucesso, sinais de pivô e riscos.
+- Product Ops não deve "definir MVP" de forma ampla; ele transforma uma decisão aprovada de Strategy em backlog operacional.
+- O backlog do MVP evita forçar Roadmap no estágio `mvp_building`.
+- `delivery-item-to-epic` descreve melhor o fluxo real, porque a origem do item pode ser MVP backlog, roadmap, backlog ou delivery scope.
+- A ordem oficial fica: MVP Validation Scope aprovado -> MVP Backlog -> Epic -> Features -> Delivery.
+
 ## 2026-06-26 - Núcleo De Produto E Dono Do Modelo De Negócio
 
 Decisão:

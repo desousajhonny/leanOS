@@ -242,7 +242,7 @@ posso ativar Operations/Product Ops e criar os arquivos mínimos para definir o 
 Análise do framework:
 
 ```text
-Estágio: transição de Strategy para Delivery Scope de MVP
+Estágio: transição de Strategy para MVP Backlog operacional
 Rota 1: Strategy/Product para registrar baseline e MVP Validation Scope
 Rota 2: activation_required: operations.product-ops
 Área ativa atual: Strategy
@@ -263,7 +263,7 @@ Pode ativar Product Ops.
 Resposta esperada do LeanOS Chief:
 
 ```text
-LeanOS Chief: ativando Operations/Product Ops porque agora o trabalho saiu de Strategy e entrou em definição de escopo de entrega.
+LeanOS Chief: ativando Operations/Product Ops porque agora o trabalho saiu de Strategy e entrou em planejamento operacional do MVP Backlog.
 
 O que já temos:
 - Strategy Baseline mínima;
@@ -273,7 +273,7 @@ O que já temos:
 O que vou criar:
 - estrutura mínima de Operations;
 - área Product Ops;
-- arquivos necessários para Escopo de MVP, Epic e Feature readiness;
+- arquivos necessários para MVP Backlog, Epic e Feature readiness;
 - indexes atualizados para que Product Ops passe a ser uma área ativa.
 
 O que não vou criar agora:
@@ -285,7 +285,7 @@ O que não vou criar agora:
 - código;
 - GitHub issues.
 
-Depois da ativação, vou conduzir a definição do MVP.
+Depois da ativação, vou transformar o MVP Validation Scope aprovado em MVP Backlog.
 ```
 
 Análise do framework:
@@ -295,7 +295,7 @@ Estágio: ativação progressiva
 Rota: Root AGENT -> activation_required -> workspace activation helper
 Área ativada: operations.product-ops
 Áreas não ativadas: design, engineering, security, devops, growth
-MVP Scope: próximo passo
+MVP Backlog: próximo passo
 Escrita de arquivo: sim, ativação estrutural confirmada
 ```
 
@@ -304,42 +304,39 @@ Escrita de arquivo: sim, ativação estrutural confirmada
 LeanOS Chief continua após a ativação:
 
 ```text
-LeanOS Chief: Product Ops está ativo. Agora vou definir o MVP como validação prática do negócio.
+LeanOS Chief: Product Ops está ativo. Agora vou transformar o MVP Validation Scope aprovado em MVP Backlog operacional.
 
-Minha proposta de MVP:
-- um painel simples de consultas;
-- cada consulta tem status: pendente, confirmada, pediu remarcação, precisa de ação;
-- a recepcionista consegue atualizar o status manualmente;
-- a clínica consegue ver rapidamente o que precisa de follow-up;
-- não inclui envio automático de WhatsApp nesta primeira versão;
-- não inclui IA de remarcação nesta primeira versão.
+Minha proposta de MVP Backlog:
+- Item 1: painel simples de consultas com status visível;
+- Item 2: atualização manual de status pela recepcionista;
+- Item 3: lista de consultas que precisam de follow-up;
+- fora do MVP: envio automático de WhatsApp, IA de remarcação, agenda médica completa, billing, multiunidade e relatórios avançados.
 
-Critério de sucesso do MVP:
+Hipótese validada:
+se a recepcionista enxergar rapidamente quais consultas precisam de ação, a clínica reduz confusão operacional sem precisar automatizar mensagens agora.
+
+Sinal de sucesso:
 se uma recepcionista conseguir reduzir confusão e acompanhar confirmações sem depender da memória ou de conversas soltas, o MVP valida a primeira hipótese.
 
-Fora do MVP:
-- envio automático de mensagens;
-- integração oficial com WhatsApp;
-- IA conversacional;
-- agenda médica completa;
-- billing;
-- multiunidade;
-- relatórios avançados.
+Riscos que precisam de especialista:
+- Design: fluxo e estados do painel;
+- Engineering: modelo mínimo de dados para consulta e status;
+- Security: apenas se houver dados sensíveis reais de paciente nesta primeira versão.
 
 Pergunta:
-esse escopo parece pequeno o suficiente para validar e útil o suficiente para uma primeira experiência?
+posso registrar esses itens em `operations/product-ops/mvp/backlog.md` e depois você decide se transformamos o primeiro item em Epic?
 ```
 
 Análise do framework:
 
 ```text
-Estágio: Escopo de MVP
-Rota: Operations -> define-mvp workflow -> Product Ops -> Product Owner
-MVP Scope: nasce agora
+Estágio: MVP Backlog operacional
+Rota: Operations -> Product Ops -> Product Owner -> mvp-backlog-planning
+MVP Backlog: nasce agora a partir do MVP Validation Scope aprovado
 Epic: ainda não
 Features: ainda não
 Design/Engineering: ainda não
-Escrita de arquivo: só depois da confirmação do founder sobre o escopo
+Escrita de arquivo: só depois da confirmação do founder sobre o backlog
 ```
 
 ## Regras Extraídas Da Simulação
@@ -349,11 +346,11 @@ Escrita de arquivo: só depois da confirmação do founder sobre o escopo
 3. O Chief deve fazer uma pergunta útil por vez.
 4. MVP Validation Scope nasce quando usuário, dor, alternativa atual, promessa e premissa mais arriscada estão minimamente claros.
 5. MVP Validation Scope não é backlog, Roadmap ou implementação.
-6. Delivery Scope não deve ser escrito enquanto Product Ops estiver inativo.
+6. MVP Backlog ou Delivery Scope não devem ser escritos enquanto Product Ops estiver inativo.
 7. Product Ops deve ser ativado por `activation_required`, com explicação e confirmação.
 8. Ativar Product Ops não ativa Design, Engineering, Security, DevOps ou Growth automaticamente.
 9. O Chief pode registrar Strategy depois de confirmação explícita, mas não deve ativar áreas novas sem confirmação separada.
-10. Epic, Features, branch, PR, GitHub issue e código ficam fora deste fluxo inicial.
+10. Epic, Features, branch, PR, GitHub issue e código ficam fora deste fluxo inicial até o founder pedir a próxima rota.
 
 ## Pontos Para Análise Posterior
 
@@ -361,6 +358,6 @@ Escrita de arquivo: só depois da confirmação do founder sobre o escopo
 - O Turno 3 já deveria propor escrita de Strategy ou esperar o Turno 4?
 - O MVP Validation Scope deve nascer antes ou depois da confirmação de Strategy Baseline?
 - A ativação de Product Ops deve acontecer imediatamente após o founder pedir MVP, ou o Chief deve explicar uma vez e aguardar confirmação separada?
-- O Turno 7 deve propor MVP em texto livre ou já usar campos estruturados do template de MVP?
+- O Turno 7 deve propor MVP Backlog item por item ou em um bloco único para aprovação?
 - O Critério de sucesso do MVP está suficientemente mensurável ou ainda está qualitativo demais?
 - Esse exemplo deve entrar no `ai-standard` no futuro como transcript completo, ou apenas como versão condensada de comportamento?

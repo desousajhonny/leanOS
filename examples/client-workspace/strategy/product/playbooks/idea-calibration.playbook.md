@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Calibrate any founder idea against the current business stage, from first seed idea to product-operating change, without jumping into roadmap, MVP delivery scope or implementation.
+Calibrate any founder idea against the current business stage, from first seed idea to product-operating change, without jumping into roadmap, MVP backlog or implementation.
 
 ## Inputs
 
