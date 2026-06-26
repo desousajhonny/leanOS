@@ -17,16 +17,8 @@ Use when the user invokes or describes a LeanOS command.
 - `start-leanos.md`
 - `status-leanos.md`
 - `define-icp.md`
-- `define-mvp.md`
-- `define-design.md`
 - `check-coherence.md`
 - `create-roadmap.md`
-- `create-features.md`
-- `github-sync.md`
-- `workon-feature.md`
-- `create-branch.md`
-- `create-pr.md`
-- `review-pr.md`
 - `create-role.md`
 - `create-skill.md`
 - `create-playbook.md`
@@ -44,4 +36,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-Available now: /start-leanos, /status-leanos, /define icp, /define-mvp, /define design, /check coherence, /create roadmap, /create features, /github-sync, /workon feature, /create branch, /create pr, /review pr, /create role, /create skill, /create playbook, /create skill role playbook. Commands tied to inactive areas include a warning and require explicit activation before use.
+Available now: /start-leanos, /status-leanos, /define icp, /check coherence, /create roadmap, /create role, /create skill, /create playbook, /create skill role playbook. Commands tied to inactive areas are not generated until activation.

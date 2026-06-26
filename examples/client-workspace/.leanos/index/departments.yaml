@@ -2,9 +2,3 @@ departments:
   - key: strategy
     agent: ../../strategy/AGENT.md
     readme: ../../strategy/README.md
-  - key: operations
-    agent: ../../operations/AGENT.md
-    readme: ../../operations/README.md
-  - key: growth
-    agent: ../../growth/AGENT.md
-    readme: ../../growth/README.md

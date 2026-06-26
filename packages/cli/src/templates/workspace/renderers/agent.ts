@@ -68,8 +68,8 @@ If a natural-language request clearly matches an existing LeanOS command, load t
 Examples:
 
 - "help me define the ICP" -> \`.leanos/commands/define-icp.md\`
-- "define the MVP" -> \`.leanos/commands/define-mvp.md\`
-- "review this PR" -> \`.leanos/commands/review-pr.md\`
+- "define the MVP" -> return \`activation_required\` for \`operations.product-ops\` when Product Ops is inactive
+- "review this PR" -> return \`activation_required\` for \`operations.engineering\` when Engineering is inactive
 
 ## Progression Intent Routing
 
@@ -99,15 +99,15 @@ Use this map as routing guidance, not as execution detail. After selecting the r
 
 - Setup or restart LeanOS: \`.leanos/commands/start-leanos.md\`
 - Status, resume or readiness: \`.leanos/commands/status-leanos.md\`
-- MVP definition: \`.leanos/commands/define-mvp.md\`
+- MVP definition: return \`activation_required\` for \`operations.product-ops\` until Product Ops is active
 - Coherence check: \`.leanos/commands/check-coherence.md\`
 - New idea or feature evaluation: \`strategy/AGENT.md\`
 - Roadmap/backlog promotion: \`strategy/AGENT.md\`
-- Roadmap item to Epic or Epic to Features: \`operations/AGENT.md\`
-- Feature implementation: \`.leanos/commands/workon-feature.md\`
-- GitHub setup, GitHub Projects configuration or GitHub sync: \`.leanos/commands/github-sync.md\`
-- PR preparation or review: \`operations/AGENT.md\`
-- Post-merge continuation: \`operations/AGENT.md\`
+- Roadmap item to Epic or Epic to Features: return \`activation_required\` for \`operations.product-ops\` until Operations is active
+- Feature implementation: return \`activation_required\` for \`operations.engineering\` until Engineering is active
+- GitHub setup, GitHub Projects configuration or GitHub sync: return \`activation_required\` for \`operations.devops\` until DevOps is active
+- PR preparation or review: return \`activation_required\` for \`operations.engineering\` until Engineering is active
+- Post-merge continuation: return \`activation_required\` for \`operations.product-ops\` until Operations is active
 
 If no command clearly matches, route through the Navigation Chain.
 

@@ -7,31 +7,11 @@ workflows:
     department: strategy
     path: ../../strategy/workflows/idea-to-roadmap.workflow.md
     active: true
+  - key: strategy-validation-cycle
+    department: strategy
+    path: ../../strategy/workflows/strategy-validation-cycle.workflow.md
+    active: true
   - key: roadmap-to-github-project
     department: strategy
     path: ../../strategy/workflows/roadmap-to-github-project.workflow.md
-    active: true
-  - key: define-mvp
-    department: operations
-    path: ../../operations/workflows/define-mvp.workflow.md
-    active: true
-  - key: roadmap-item-to-epic
-    department: operations
-    path: ../../operations/workflows/roadmap-item-to-epic.workflow.md
-    active: true
-  - key: epic-to-features
-    department: operations
-    path: ../../operations/workflows/epic-to-features.workflow.md
-    active: true
-  - key: feature-to-delivery-cycle
-    department: operations
-    path: ../../operations/workflows/feature-to-delivery-cycle.workflow.md
-    active: true
-  - key: post-merge-continuation
-    department: operations
-    path: ../../operations/workflows/post-merge-continuation.workflow.md
-    active: true
-  - key: launch-learning-loop
-    department: growth
-    path: ../../growth/workflows/launch-learning-loop.workflow.md
     active: true

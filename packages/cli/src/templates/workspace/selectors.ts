@@ -11,6 +11,10 @@ export function getActiveAreas(answers: WorkspaceAnswers): AreaDefinition[] {
   return getAllAreas().filter((area) => selectedSubareas.has(area.key));
 }
 
+export function getInitialActiveAreas(_answers: WorkspaceAnswers): AreaDefinition[] {
+  return getAllAreas().filter((area) => area.root === "strategy");
+}
+
 export function getAllAreas(): AreaDefinition[] {
   return rootDepartments.flatMap((department) => department.areas);
 }

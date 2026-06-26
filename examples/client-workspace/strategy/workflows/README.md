@@ -16,6 +16,7 @@ Use when work spans more than one active area inside this department.
 
 - `new-idea-intake.workflow.md`
 - `idea-to-roadmap.workflow.md`
+- `strategy-validation-cycle.workflow.md`
 - `roadmap-to-github-project.workflow.md`
 
 ## Related Folders
@@ -23,6 +24,7 @@ Use when work spans more than one active area inside this department.
 - `../business/`
 - `../product/`
 - `../roadmap/`
+- `../validation/`
 
 ## Navigation
 

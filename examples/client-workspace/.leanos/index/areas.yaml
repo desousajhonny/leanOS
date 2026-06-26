@@ -11,35 +11,7 @@ areas:
     department: strategy
     agent: ../../strategy/roadmap/AGENT.md
     readme: ../../strategy/roadmap/README.md
-  - key: operations.product-ops
-    department: operations
-    agent: ../../operations/product-ops/AGENT.md
-    readme: ../../operations/product-ops/README.md
-  - key: operations.design
-    department: operations
-    agent: ../../operations/design/AGENT.md
-    readme: ../../operations/design/README.md
-  - key: operations.engineering
-    department: operations
-    agent: ../../operations/engineering/AGENT.md
-    readme: ../../operations/engineering/README.md
-  - key: operations.devops
-    department: operations
-    agent: ../../operations/devops/AGENT.md
-    readme: ../../operations/devops/README.md
-  - key: operations.security
-    department: operations
-    agent: ../../operations/security/AGENT.md
-    readme: ../../operations/security/README.md
-  - key: growth.customer-experience
-    department: growth
-    agent: ../../growth/customer-experience/AGENT.md
-    readme: ../../growth/customer-experience/README.md
-  - key: growth.marketing
-    department: growth
-    agent: ../../growth/marketing/AGENT.md
-    readme: ../../growth/marketing/README.md
-  - key: growth.finance
-    department: growth
-    agent: ../../growth/finance/AGENT.md
-    readme: ../../growth/finance/README.md
+  - key: strategy.validation
+    department: strategy
+    agent: null
+    readme: ../../strategy/validation/README.md

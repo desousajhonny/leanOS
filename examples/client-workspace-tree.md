@@ -50,23 +50,15 @@ client-workspace/
 |   |   `-- role-activation.md
 |   |-- commands/
 |   |   |-- check-coherence.md
-|   |   |-- create-branch.md
-|   |   |-- create-features.md
 |   |   |-- create-playbook.md
-|   |   |-- create-pr.md
 |   |   |-- create-roadmap.md
 |   |   |-- create-role.md
 |   |   |-- create-skill-role-playbook.md
 |   |   |-- create-skill.md
-|   |   |-- define-design.md
 |   |   |-- define-icp.md
-|   |   |-- define-mvp.md
-|   |   |-- github-sync.md
 |   |   |-- README.md
-|   |   |-- review-pr.md
 |   |   |-- start-leanos.md
-|   |   |-- status-leanos.md
-|   |   `-- workon-feature.md
+|   |   `-- status-leanos.md
 |   |-- context/
 |   |   |-- active-workflow.md
 |   |   |-- current-focus.md
@@ -198,283 +190,6 @@ client-workspace/
 |   |   |   `-- root-readme-template.md
 |   |   `-- README.md
 |   `-- README.md
-|-- growth/
-|   |-- customer-experience/
-|   |   |-- knowledge/
-|   |   |   |-- churn-reasons.md
-|   |   |   |-- customer-feedback.md
-|   |   |   |-- README.md
-|   |   |   |-- success-moments.md
-|   |   |   `-- support-notes.md
-|   |   |-- playbooks/
-|   |   |   |-- customer-learning-loop.playbook.md
-|   |   |   `-- README.md
-|   |   |-- roles/
-|   |   |   |-- cx-lead.role.md
-|   |   |   `-- README.md
-|   |   |-- skills/
-|   |   |   |-- map-customer-feedback.skill.md
-|   |   |   |-- README.md
-|   |   |   `-- synthesize-support-patterns.skill.md
-|   |   |-- AGENT.md
-|   |   |-- area.yaml
-|   |   `-- README.md
-|   |-- finance/
-|   |   |-- knowledge/
-|   |   |   |-- budget.md
-|   |   |   |-- finance-risks.md
-|   |   |   |-- pricing.md
-|   |   |   |-- README.md
-|   |   |   |-- revenue-model.md
-|   |   |   `-- unit-economics.md
-|   |   |-- playbooks/
-|   |   |   |-- finance-review.playbook.md
-|   |   |   `-- README.md
-|   |   |-- roles/
-|   |   |   |-- finance-operator.role.md
-|   |   |   `-- README.md
-|   |   |-- skills/
-|   |   |   |-- model-unit-economics.skill.md
-|   |   |   |-- README.md
-|   |   |   `-- review-pricing.skill.md
-|   |   |-- AGENT.md
-|   |   |-- area.yaml
-|   |   `-- README.md
-|   |-- marketing/
-|   |   |-- knowledge/
-|   |   |   |-- acquisition-channels.md
-|   |   |   |-- landing-page.md
-|   |   |   |-- launch-plan.md
-|   |   |   |-- positioning.md
-|   |   |   `-- README.md
-|   |   |-- playbooks/
-|   |   |   |-- mvp-launch.playbook.md
-|   |   |   `-- README.md
-|   |   |-- roles/
-|   |   |   |-- growth-lead.role.md
-|   |   |   `-- README.md
-|   |   |-- skills/
-|   |   |   |-- create-landing-page-copy.skill.md
-|   |   |   |-- create-launch-plan.skill.md
-|   |   |   |-- define-positioning.skill.md
-|   |   |   `-- README.md
-|   |   |-- AGENT.md
-|   |   |-- area.yaml
-|   |   `-- README.md
-|   |-- workflows/
-|   |   |-- launch-learning-loop.workflow.md
-|   |   `-- README.md
-|   |-- AGENT.md
-|   |-- department.yaml
-|   `-- README.md
-|-- operations/
-|   |-- design/
-|   |   |-- knowledge/
-|   |   |   |-- components/
-|   |   |   |   `-- README.md
-|   |   |   |-- accessibility.md
-|   |   |   |-- component-inventory.md
-|   |   |   |-- design-system.md
-|   |   |   |-- README.md
-|   |   |   `-- user-flows.md
-|   |   |-- playbooks/
-|   |   |   |-- accessibility-review.playbook.md
-|   |   |   |-- component-readiness.playbook.md
-|   |   |   |-- design-foundation.playbook.md
-|   |   |   |-- mvp-ux-flow.playbook.md
-|   |   |   |-- README.md
-|   |   |   |-- user-research.playbook.md
-|   |   |   `-- ux-writing.playbook.md
-|   |   |-- roles/
-|   |   |   |-- accessibility-specialist.role.md
-|   |   |   |-- product-designer.role.md
-|   |   |   |-- README.md
-|   |   |   |-- ux-researcher.role.md
-|   |   |   `-- ux-writer.role.md
-|   |   |-- skills/
-|   |   |   |-- accessibility.skill.md
-|   |   |   |-- component-analysis.skill.md
-|   |   |   |-- design-review.skill.md
-|   |   |   |-- design-system.skill.md
-|   |   |   |-- microcopy.skill.md
-|   |   |   |-- README.md
-|   |   |   |-- screen-specification.skill.md
-|   |   |   |-- user-flow-mapping.skill.md
-|   |   |   `-- user-research.skill.md
-|   |   |-- AGENT.md
-|   |   |-- area.yaml
-|   |   `-- README.md
-|   |-- devops/
-|   |   |-- knowledge/
-|   |   |   |-- ci-cd.md
-|   |   |   |-- deployment-readiness.md
-|   |   |   |-- environments.md
-|   |   |   |-- github-management.md
-|   |   |   |-- observability.md
-|   |   |   |-- README.md
-|   |   |   `-- release-notes.md
-|   |   |-- playbooks/
-|   |   |   |-- configure-environments.playbook.md
-|   |   |   |-- configure-github-project.playbook.md
-|   |   |   |-- define-observability.playbook.md
-|   |   |   |-- plan-deployment.playbook.md
-|   |   |   |-- README.md
-|   |   |   |-- release-operations.playbook.md
-|   |   |   `-- setup-ci-cd.playbook.md
-|   |   |-- roles/
-|   |   |   |-- devops-engineer.role.md
-|   |   |   |-- github-devops.role.md
-|   |   |   |-- README.md
-|   |   |   `-- release-manager.role.md
-|   |   |-- skills/
-|   |   |   |-- configure-environments.skill.md
-|   |   |   |-- configure-github-project.skill.md
-|   |   |   |-- define-observability.skill.md
-|   |   |   |-- plan-deployment.skill.md
-|   |   |   |-- prepare-release.skill.md
-|   |   |   |-- README.md
-|   |   |   `-- setup-ci.skill.md
-|   |   |-- AGENT.md
-|   |   |-- area.yaml
-|   |   `-- README.md
-|   |-- engineering/
-|   |   |-- knowledge/
-|   |   |   |-- code-review-notes.md
-|   |   |   |-- code-standards.md
-|   |   |   |-- component-guidelines.md
-|   |   |   |-- data-guidelines.md
-|   |   |   |-- implementation-notes.md
-|   |   |   |-- implementation-rules.md
-|   |   |   |-- pr-log.md
-|   |   |   |-- README.md
-|   |   |   |-- review-criteria.md
-|   |   |   `-- testing-strategy.md
-|   |   |-- playbooks/
-|   |   |   |-- branch-for-feature.playbook.md
-|   |   |   |-- component-implementation.playbook.md
-|   |   |   |-- engineering-delivery.playbook.md
-|   |   |   |-- pr-validation.playbook.md
-|   |   |   |-- prepare-pr.playbook.md
-|   |   |   |-- README.md
-|   |   |   `-- test-planning.playbook.md
-|   |   |-- roles/
-|   |   |   |-- pr-reviewer.role.md
-|   |   |   |-- README.md
-|   |   |   |-- senior-developer.role.md
-|   |   |   `-- test-engineer.role.md
-|   |   |-- skills/
-|   |   |   |-- create-branch.skill.md
-|   |   |   |-- create-pr.skill.md
-|   |   |   |-- follow-code-standards.skill.md
-|   |   |   |-- implement-component.skill.md
-|   |   |   |-- plan-implementation.skill.md
-|   |   |   |-- README.md
-|   |   |   |-- review-data-change.skill.md
-|   |   |   |-- review-pr.skill.md
-|   |   |   `-- write-tests.skill.md
-|   |   |-- AGENT.md
-|   |   |-- area.yaml
-|   |   `-- README.md
-|   |-- product-ops/
-|   |   |-- epics/
-|   |   |   `-- README.md
-|   |   |-- knowledge/
-|   |   |   |-- delivery-scope.md
-|   |   |   |-- issue-readiness.md
-|   |   |   |-- mvp-decision-gate.md
-|   |   |   |-- overview.md
-|   |   |   |-- README.md
-|   |   |   |-- ready-to-develop.md
-|   |   |   |-- technical-decisions.md
-|   |   |   `-- work-taxonomy.md
-|   |   |-- mvp/
-|   |   |   |-- acceptance-criteria.md
-|   |   |   |-- non-goals.md
-|   |   |   |-- prd.md
-|   |   |   |-- README.md
-|   |   |   |-- release-checklist.md
-|   |   |   |-- scope.md
-|   |   |   |-- user-flows.md
-|   |   |   `-- user-stories.md
-|   |   |-- playbooks/
-|   |   |   |-- delivery-readiness.playbook.md
-|   |   |   |-- delivery-scope-planning.playbook.md
-|   |   |   |-- epic-to-features.playbook.md
-|   |   |   |-- mvp-delivery.playbook.md
-|   |   |   `-- README.md
-|   |   |-- roles/
-|   |   |   |-- delivery-architect.role.md
-|   |   |   |-- product-owner.role.md
-|   |   |   `-- README.md
-|   |   |-- skills/
-|   |   |   |-- check-delivery-coherence.skill.md
-|   |   |   |-- define-delivery-boundaries.skill.md
-|   |   |   |-- define-delivery-scope.skill.md
-|   |   |   |-- define-mvp.skill.md
-|   |   |   |-- README.md
-|   |   |   |-- shape-epic.skill.md
-|   |   |   |-- write-acceptance-criteria.skill.md
-|   |   |   `-- write-feature-criteria.skill.md
-|   |   |-- AGENT.md
-|   |   |-- area.yaml
-|   |   `-- README.md
-|   |-- security/
-|   |   |-- knowledge/
-|   |   |   |-- access-control.md
-|   |   |   |-- data-protection.md
-|   |   |   |-- database-security.md
-|   |   |   |-- incident-response.md
-|   |   |   |-- infra-hardening.md
-|   |   |   |-- README.md
-|   |   |   |-- secrets-management.md
-|   |   |   |-- secure-coding.md
-|   |   |   |-- security-automation.md
-|   |   |   |-- security-baseline.md
-|   |   |   `-- threat-model.md
-|   |   |-- playbooks/
-|   |   |   |-- ai-generated-code-security-review.playbook.md
-|   |   |   |-- api-security-review.playbook.md
-|   |   |   |-- database-security-review.playbook.md
-|   |   |   |-- incident-response.playbook.md
-|   |   |   |-- pre-deploy-security-review.playbook.md
-|   |   |   |-- pre-mvp-security-checklist.playbook.md
-|   |   |   |-- README.md
-|   |   |   |-- secrets-rotation.playbook.md
-|   |   |   |-- security-automation-readiness.playbook.md
-|   |   |   |-- security-foundation.playbook.md
-|   |   |   `-- vulnerability-response.playbook.md
-|   |   |-- roles/
-|   |   |   |-- application-security-engineer.role.md
-|   |   |   |-- cloud-security-reviewer.role.md
-|   |   |   |-- data-protection-reviewer.role.md
-|   |   |   |-- README.md
-|   |   |   `-- security-reviewer.role.md
-|   |   |-- skills/
-|   |   |   |-- access-control-review.skill.md
-|   |   |   |-- ai-generated-code-security.skill.md
-|   |   |   |-- api-security-review.skill.md
-|   |   |   |-- database-security-review.skill.md
-|   |   |   |-- dependency-supply-chain-review.skill.md
-|   |   |   |-- incident-response.skill.md
-|   |   |   |-- infra-hardening-review.skill.md
-|   |   |   |-- README.md
-|   |   |   |-- secrets-management.skill.md
-|   |   |   |-- secure-code-review.skill.md
-|   |   |   |-- security-automation-readiness.skill.md
-|   |   |   `-- threat-modeling.skill.md
-|   |   |-- AGENT.md
-|   |   |-- area.yaml
-|   |   `-- README.md
-|   |-- workflows/
-|   |   |-- define-mvp.workflow.md
-|   |   |-- epic-to-features.workflow.md
-|   |   |-- feature-to-delivery-cycle.workflow.md
-|   |   |-- post-merge-continuation.workflow.md
-|   |   |-- README.md
-|   |   `-- roadmap-item-to-epic.workflow.md
-|   |-- AGENT.md
-|   |-- department.yaml
-|   `-- README.md
 |-- strategy/
 |   |-- business/
 |   |   |-- knowledge/
@@ -549,11 +264,32 @@ client-workspace/
 |   |   |-- AGENT.md
 |   |   |-- area.yaml
 |   |   `-- README.md
+|   |-- validation/
+|   |   |-- playbooks/
+|   |   |   |-- mvp-validation.playbook.md
+|   |   |   `-- README.md
+|   |   |-- roles/
+|   |   |   |-- README.md
+|   |   |   `-- validation-researcher.role.md
+|   |   |-- skills/
+|   |   |   |-- create-interview-script.skill.md
+|   |   |   |-- define-assumptions.skill.md
+|   |   |   |-- define-success-metrics.skill.md
+|   |   |   `-- README.md
+|   |   |-- area.yaml
+|   |   |-- assumptions.md
+|   |   |-- experiments.md
+|   |   |-- interview-script.md
+|   |   |-- learning-log.md
+|   |   |-- README.md
+|   |   |-- riskiest-assumptions.md
+|   |   `-- success-metrics.md
 |   |-- workflows/
 |   |   |-- idea-to-roadmap.workflow.md
 |   |   |-- new-idea-intake.workflow.md
 |   |   |-- README.md
-|   |   `-- roadmap-to-github-project.workflow.md
+|   |   |-- roadmap-to-github-project.workflow.md
+|   |   `-- strategy-validation-cycle.workflow.md
 |   |-- AGENT.md
 |   |-- department.yaml
 |   `-- README.md

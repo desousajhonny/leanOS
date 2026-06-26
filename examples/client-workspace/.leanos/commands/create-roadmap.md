@@ -61,11 +61,4 @@ Ask before writing any file or moving to a workflow that changes product, roadma
 - strategy.business
 - strategy.product
 - strategy.roadmap
-- operations.product-ops
-- operations.design
-- operations.engineering
-- operations.devops
-- operations.security
-- growth.customer-experience
-- growth.marketing
-- growth.finance
+- strategy.validation

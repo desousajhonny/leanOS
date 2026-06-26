@@ -26,8 +26,8 @@ Prepare roadmap, milestones and epics for GitHub Project sync.
 
 ## Conditional Areas
 
-- `operations/product-ops`: Enter when roadmap items need local Epics/Features before sync or when delivery scope is unclear.
-- `operations/devops`: Enter when GitHub settings, token, repository, project fields, labels or sync state must be checked.
+- `operations.product-ops`: Use activation_required when roadmap items need local Epics/Features before sync or when delivery scope is unclear.
+- `operations.devops`: Use activation_required when GitHub settings, token, repository, project fields, labels or sync state must be checked.
 
 ## Availability
 
@@ -58,9 +58,9 @@ All required areas are active in this department.
 5. `strategy/roadmap/roles/roadmap-planner.role.md`
 6. `strategy/roadmap/skills/prepare-roadmap-sync.skill.md`
 7. `strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md`
-8. `operations/product-ops/AGENT.md when local Epic/Feature shape is required`
-9. `operations/devops/AGENT.md when GitHub configuration must be checked`
-10. `.leanos/commands/github-sync.md when the founder confirms sync execution`
+8. `activation_required: operations.product-ops when local Epic/Feature shape is required`
+9. `activation_required: operations.devops when GitHub configuration must be checked`
+10. `activation_required: operations.devops before github-sync execution`
 
 ## Sequence
 
@@ -142,7 +142,7 @@ Later-session triggers:
 
 Next route:
 
-`.leanos/commands/github-sync.md or operations/devops/AGENT.md when configuration is missing`
+`activation_required: operations.devops before github-sync execution`
 
 Rules:
 

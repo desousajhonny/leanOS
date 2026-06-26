@@ -3295,8 +3295,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         forbiddenUpdates: [
           "strategy/roadmap/knowledge/roadmap.md",
           "strategy/roadmap/knowledge/backlog.md",
-          "operations/product-ops/",
-          "operations/product-ops/epics/",
+          "Product Ops delivery assets until operations.product-ops is activated",
+          "local Epic assets until operations.product-ops is activated",
           ".github/",
           ".leanos/",
           "source code",
@@ -3344,8 +3344,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           supportingAreas: ["product"]
         },
         conditionalAreas: [
-          { area: "operations/product-ops", when: "Enter only after the founder confirms that a roadmap item should become delivery work or a local Epic." },
-          { area: "growth/customer-experience", when: "Enter only when customer evidence, support patterns or launch learning should influence priority." }
+          { area: "operations.product-ops", when: "Use activation_required only after the founder confirms that a roadmap item should become delivery work or a local Epic." },
+          { area: "growth.customer-experience", when: "Use activation_required only when customer evidence, support patterns or launch learning should influence priority." }
         ],
         loadFirst: [
           "AGENT.md",
@@ -3387,7 +3387,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         confirmationGates: [
           "Ask before writing to backlog or roadmap.",
           "Ask before changing current cycle or milestone language.",
-          "Ask before starting `roadmap-item-to-epic`.",
+          "Ask before requesting activation for operations.product-ops and the `roadmap-item-to-epic` route.",
           "Ask before changing anything outside Strategy."
         ],
         allowedUpdates: [
@@ -3397,9 +3397,9 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "strategy/product/knowledge/validation-notes.md"
         ],
         forbiddenUpdates: [
-          "operations/product-ops/epics/",
-          "operations/product-ops/knowledge/delivery-scope.md",
-          "operations/product-ops/mvp/",
+          "Product Ops Epic assets until operations.product-ops is activated",
+          "Product Ops delivery-scope knowledge until operations.product-ops is activated",
+          "Product Ops MVP assets until operations.product-ops is activated",
           ".github/",
           ".leanos/",
           "source code",
@@ -3424,12 +3424,12 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Founder-friendly summary of why the item belongs in backlog, Now, Next, Later or Not Planned.",
           "Proposed update to roadmap or backlog knowledge.",
           "Explicit statement that delivery/MVP/Epic status is not decided here.",
-          "Clear next-step bridge to `roadmap-item-to-epic` when the founder wants to plan delivery."
+          "Clear next-step bridge to activation_required for operations.product-ops when the founder wants to plan delivery."
         ],
         continuationBridge: {
           immediate: "Esse item agora esta organizado como roadmap/backlog.\nQuer que eu prepare isso para virar um Epic local com escopo, milestone e criterios iniciais?",
           laterTriggers: ["isso entra no MVP?", "isso entra na proxima entrega?", "vamos planejar a entrega desse item", "vamos transformar esse item do roadmap em epic", "qual milestone recebe esse item?"],
-          nextRoute: "roadmap-item-to-epic"
+          nextRoute: "activation_required: operations.product-ops, then roadmap-item-to-epic"
         }
       },
       {
@@ -3449,8 +3449,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           supportingAreas: ["product", "roadmap"]
         },
         conditionalAreas: [
-          { area: "growth/customer-experience", when: "Enter only when validation depends on feedback from real customers, support notes or success moments." },
-          { area: "operations/product-ops", when: "Enter only when validation changes the delivery scope, MVP boundary or Epic readiness." }
+          { area: "growth.customer-experience", when: "Use activation_required only when validation depends on feedback from real customers, support notes or success moments." },
+          { area: "operations.product-ops", when: "Use activation_required only when validation changes the delivery scope, MVP boundary or Epic readiness." }
         ],
         loadFirst: [
           "AGENT.md",
@@ -3506,7 +3506,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "strategy/roadmap/knowledge/roadmap.md after founder confirmation"
         ],
         forbiddenUpdates: [
-          "operations/product-ops/epics/",
+          "Product Ops Epic assets until operations.product-ops is activated",
           ".github/",
           ".leanos/",
           "source code",
@@ -3535,7 +3535,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         continuationBridge: {
           immediate: "Se essa validacao mudar a prioridade, quer que eu leve o aprendizado para o roadmap ou backlog?",
           laterTriggers: ["a validacao mudou a prioridade", "vamos atualizar o roadmap com esse aprendizado", "isso entra no escopo agora?", "o que fazemos com esse aprendizado?"],
-          nextRoute: "idea-to-roadmap or roadmap-item-to-epic depending on the founder decision"
+          nextRoute: "idea-to-roadmap or activation_required: operations.product-ops depending on the founder decision"
         }
       },
       {
@@ -3556,8 +3556,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           conditionalAreas: ["operations.product-ops", "operations.devops"]
         },
         conditionalAreas: [
-          { area: "operations/product-ops", when: "Enter when roadmap items need local Epics/Features before sync or when delivery scope is unclear." },
-          { area: "operations/devops", when: "Enter when GitHub settings, token, repository, project fields, labels or sync state must be checked." }
+          { area: "operations.product-ops", when: "Use activation_required when roadmap items need local Epics/Features before sync or when delivery scope is unclear." },
+          { area: "operations.devops", when: "Use activation_required when GitHub settings, token, repository, project fields, labels or sync state must be checked." }
         ],
         loadFirst: [
           "AGENT.md",
@@ -3581,9 +3581,9 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "strategy/roadmap/roles/roadmap-planner.role.md",
           "strategy/roadmap/skills/prepare-roadmap-sync.skill.md",
           "strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md",
-          "operations/product-ops/AGENT.md when local Epic/Feature shape is required",
-          "operations/devops/AGENT.md when GitHub configuration must be checked",
-          ".leanos/commands/github-sync.md when the founder confirms sync execution"
+          "activation_required: operations.product-ops when local Epic/Feature shape is required",
+          "activation_required: operations.devops when GitHub configuration must be checked",
+          "activation_required: operations.devops before github-sync execution"
         ],
         steps: [
           "Read roadmap and current cycle before preparing any GitHub payload.",
@@ -3640,7 +3640,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         continuationBridge: {
           immediate: "O roadmap esta pronto para um dry-run de GitHub sync.\nQuer que eu confira configuracao, payload e possiveis duplicidades antes de qualquer escrita remota?",
           laterTriggers: ["rode o github sync", "sincronize agora", "vamos atualizar o github project", "crie milestones no github", "envie esses epics para o github"],
-          nextRoute: ".leanos/commands/github-sync.md or operations/devops/AGENT.md when configuration is missing"
+          nextRoute: "activation_required: operations.devops before github-sync execution"
         }
       }
     ]

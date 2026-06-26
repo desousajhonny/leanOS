@@ -25,8 +25,8 @@ Promote a qualified idea into a roadmap or backlog item without assuming deliver
 
 ## Conditional Areas
 
-- `operations/product-ops`: Enter only after the founder confirms that a roadmap item should become delivery work or a local Epic.
-- `growth/customer-experience`: Enter only when customer evidence, support patterns or launch learning should influence priority.
+- `operations.product-ops`: Use activation_required only after the founder confirms that a roadmap item should become delivery work or a local Epic.
+- `growth.customer-experience`: Use activation_required only when customer evidence, support patterns or launch learning should influence priority.
 
 ## Availability
 
@@ -77,7 +77,7 @@ All required areas are active in this department.
 
 - Ask before writing to backlog or roadmap.
 - Ask before changing current cycle or milestone language.
-- Ask before starting `roadmap-item-to-epic`.
+- Ask before requesting activation for operations.product-ops and the `roadmap-item-to-epic` route.
 - Ask before changing anything outside Strategy.
 
 ## Allowed Updates
@@ -89,9 +89,9 @@ All required areas are active in this department.
 
 ## Forbidden Updates
 
-- `operations/product-ops/epics/`
-- `operations/product-ops/knowledge/delivery-scope.md`
-- `operations/product-ops/mvp/`
+- `Product Ops Epic assets until operations.product-ops is activated`
+- `Product Ops delivery-scope knowledge until operations.product-ops is activated`
+- `Product Ops MVP assets until operations.product-ops is activated`
 - `.github/`
 - `.leanos/`
 - `source code`
@@ -119,7 +119,7 @@ All required areas are active in this department.
 - Founder-friendly summary of why the item belongs in backlog, Now, Next, Later or Not Planned.
 - Proposed update to roadmap or backlog knowledge.
 - Explicit statement that delivery/MVP/Epic status is not decided here.
-- Clear next-step bridge to `roadmap-item-to-epic` when the founder wants to plan delivery.
+- Clear next-step bridge to activation_required for operations.product-ops when the founder wants to plan delivery.
 
 ## Continuation Bridge
 
@@ -142,7 +142,7 @@ Later-session triggers:
 
 Next route:
 
-`roadmap-item-to-epic`
+`activation_required: operations.product-ops, then roadmap-item-to-epic`
 
 Rules:
 

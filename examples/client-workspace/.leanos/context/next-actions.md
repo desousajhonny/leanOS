@@ -20,23 +20,7 @@ Command:
 /define icp
 ```
 
-## 3. Define Mvp
-
-Command:
-
-```text
-/define-mvp
-```
-
-## 4. Define Design
-
-Command:
-
-```text
-/define design
-```
-
-## 5. Check Coherence
+## 3. Check Coherence
 
 Command:
 

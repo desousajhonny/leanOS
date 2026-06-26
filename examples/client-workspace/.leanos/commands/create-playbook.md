@@ -22,15 +22,15 @@ Create role, skill and playbook assets inside the correct active area:
 - Business assets: `../../strategy/business/`
 - Product assets: `../../strategy/product/`
 - Roadmap assets: `../../strategy/roadmap/`
-- Validation assets: `../../strategy/validation/` (not active; ask before activating or creating it)
-- Product Ops assets: `../../operations/product-ops/`
-- Design assets: `../../operations/design/`
-- Engineering assets: `../../operations/engineering/`
-- DevOps assets: `../../operations/devops/`
-- Security assets: `../../operations/security/`
-- Customer Experience assets: `../../growth/customer-experience/`
-- Marketing assets: `../../growth/marketing/`
-- Finance assets: `../../growth/finance/`
+- Validation assets: `../../strategy/validation/`
+- Product Ops assets: `../../operations/product-ops/` (not active; ask before activating or creating it)
+- Design assets: `../../operations/design/` (not active; ask before activating or creating it)
+- Engineering assets: `../../operations/engineering/` (not active; ask before activating or creating it)
+- DevOps assets: `../../operations/devops/` (not active; ask before activating or creating it)
+- Security assets: `../../operations/security/` (not active; ask before activating or creating it)
+- Customer Experience assets: `../../growth/customer-experience/` (not active; ask before activating or creating it)
+- Marketing assets: `../../growth/marketing/` (not active; ask before activating or creating it)
+- Finance assets: `../../growth/finance/` (not active; ask before activating or creating it)
 
 ## Process
 
@@ -78,11 +78,4 @@ Ask before creating or updating any asset file.
 - strategy.business
 - strategy.product
 - strategy.roadmap
-- operations.product-ops
-- operations.design
-- operations.engineering
-- operations.devops
-- operations.security
-- growth.customer-experience
-- growth.marketing
-- growth.finance
+- strategy.validation

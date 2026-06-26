@@ -83,8 +83,8 @@ All required areas are active in this department.
 
 - `strategy/roadmap/knowledge/roadmap.md`
 - `strategy/roadmap/knowledge/backlog.md`
-- `operations/product-ops/`
-- `operations/product-ops/epics/`
+- `Product Ops delivery assets until operations.product-ops is activated`
+- `local Epic assets until operations.product-ops is activated`
 - `.github/`
 - `.leanos/`
 - `source code`

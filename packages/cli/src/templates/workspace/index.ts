@@ -1,4 +1,4 @@
-import { getActiveAreas, getActiveRootDepartments } from "./selectors.js";
+import { getActiveRootDepartments, getInitialActiveAreas } from "./selectors.js";
 import type { FileEntry, WorkspaceAnswers } from "./types.js";
 import { aiStandardFiles } from "./renderers/ai-standard.js";
 import { leanosRuntimeFiles, rootAgent } from "./renderers/agent.js";
@@ -15,7 +15,7 @@ import { vscodeIntegrationFiles } from "./renderers/vscode.js";
 export { getAllSubareas } from "./selectors.js";
 
 export function createWorkspaceFiles(answers: WorkspaceAnswers): FileEntry[] {
-  const activeAreas = getActiveAreas(answers);
+  const activeAreas = getInitialActiveAreas(answers);
   const activeRoots = getActiveRootDepartments(activeAreas);
 
   return [

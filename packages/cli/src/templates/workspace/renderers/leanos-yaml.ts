@@ -10,6 +10,11 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
   const activeAreaSet = new Set(activeAreaKeys);
   const availableDepartmentKeys = rootDepartments.map((department) => department.key);
   const availableAreaKeys = getAllAreas().map((area) => area.key);
+  const founderSelectedAreaKeys = answers.subareas;
+  const founderSelectedAreaSet = new Set(founderSelectedAreaKeys);
+  const founderSelectedDepartmentKeys = rootDepartments
+    .filter((department) => department.areas.some((area) => founderSelectedAreaSet.has(area.key)))
+    .map((department) => department.key);
 
   return stringifyYaml({
     leanos: {
@@ -43,6 +48,8 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
       active_areas: activeAreaKeys,
       inactive_areas: availableAreaKeys.filter((area) => !activeAreaSet.has(area)),
       available_areas: availableAreaKeys,
+      founder_selected_departments: founderSelectedDepartmentKeys,
+      founder_selected_areas: founderSelectedAreaKeys,
       available_means: "can_be_activated_later_not_path_exists",
       missing_asset_behavior: "return_activation_required"
     },

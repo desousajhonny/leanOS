@@ -80,11 +80,4 @@ After the founder-friendly answer, optionally list the files inspected.
 - strategy.business
 - strategy.product
 - strategy.roadmap
-- operations.product-ops
-- operations.design
-- operations.engineering
-- operations.devops
-- operations.security
-- growth.customer-experience
-- growth.marketing
-- growth.finance
+- strategy.validation

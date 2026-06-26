@@ -56,11 +56,11 @@ Security automation readiness notes. Guidance only until stack/build/test comman
 
 ## Navigation
 
-Route GitHub setup through `../../operations/devops/AGENT.md` before configuring project sync.
+Operations DevOps is not active in this workspace. Ask before configuring GitHub Project sync.
 
-Route GitHub branch, PR and validation work through `../../operations/engineering/AGENT.md` before changing GitHub workflow files.
+Operations Engineering is not active in this workspace. Ask before activating it or changing GitHub workflow files.
 
-Route security automation readiness through `../../operations/security/AGENT.md` before adding scanner workflows or security gates.
+Operations Security is not active in this workspace. Ask before adding security automation or scanner workflows.
 
 ## Readiness Rule
 

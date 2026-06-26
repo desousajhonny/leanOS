@@ -17,9 +17,9 @@ activation:
   progression_model: ai-standard/foundation/founder-progression-model.md
   active_departments:
     - strategy
+  inactive_departments:
     - operations
     - growth
-  inactive_departments: []
   available_departments:
     - strategy
     - operations
@@ -28,6 +28,8 @@ activation:
     - strategy.business
     - strategy.product
     - strategy.roadmap
+    - strategy.validation
+  inactive_areas:
     - operations.product-ops
     - operations.design
     - operations.engineering
@@ -36,13 +38,27 @@ activation:
     - growth.customer-experience
     - growth.marketing
     - growth.finance
-  inactive_areas:
-    - strategy.validation
   available_areas:
     - strategy.business
     - strategy.product
     - strategy.roadmap
     - strategy.validation
+    - operations.product-ops
+    - operations.design
+    - operations.engineering
+    - operations.devops
+    - operations.security
+    - growth.customer-experience
+    - growth.marketing
+    - growth.finance
+  founder_selected_departments:
+    - strategy
+    - operations
+    - growth
+  founder_selected_areas:
+    - strategy.business
+    - strategy.product
+    - strategy.roadmap
     - operations.product-ops
     - operations.design
     - operations.engineering
@@ -75,18 +91,10 @@ agent:
 departments:
   active:
     - strategy
-    - operations
-    - growth
   routes:
     strategy:
       agent: strategy/AGENT.md
       readme: strategy/README.md
-    operations:
-      agent: operations/AGENT.md
-      readme: operations/README.md
-    growth:
-      agent: growth/AGENT.md
-      readme: growth/README.md
 subareas:
   active:
     - key: strategy.business
@@ -104,46 +112,11 @@ subareas:
       path: strategy/roadmap/README.md
       agent: strategy/roadmap/AGENT.md
       readme: strategy/roadmap/README.md
-    - key: operations.product-ops
-      department: operations
-      path: operations/product-ops/README.md
-      agent: operations/product-ops/AGENT.md
-      readme: operations/product-ops/README.md
-    - key: operations.design
-      department: operations
-      path: operations/design/README.md
-      agent: operations/design/AGENT.md
-      readme: operations/design/README.md
-    - key: operations.engineering
-      department: operations
-      path: operations/engineering/README.md
-      agent: operations/engineering/AGENT.md
-      readme: operations/engineering/README.md
-    - key: operations.devops
-      department: operations
-      path: operations/devops/README.md
-      agent: operations/devops/AGENT.md
-      readme: operations/devops/README.md
-    - key: operations.security
-      department: operations
-      path: operations/security/README.md
-      agent: operations/security/AGENT.md
-      readme: operations/security/README.md
-    - key: growth.customer-experience
-      department: growth
-      path: growth/customer-experience/README.md
-      agent: growth/customer-experience/AGENT.md
-      readme: growth/customer-experience/README.md
-    - key: growth.marketing
-      department: growth
-      path: growth/marketing/README.md
-      agent: growth/marketing/AGENT.md
-      readme: growth/marketing/README.md
-    - key: growth.finance
-      department: growth
-      path: growth/finance/README.md
-      agent: growth/finance/AGENT.md
-      readme: growth/finance/README.md
+    - key: strategy.validation
+      department: strategy
+      path: strategy/validation/README.md
+      agent: null
+      readme: strategy/validation/README.md
 roles:
   ownership: area-first
   active:
@@ -154,33 +127,8 @@ roles:
       - product-manager
     strategy.roadmap:
       - roadmap-planner
-    operations.product-ops:
-      - product-owner
-      - delivery-architect
-    operations.design:
-      - ux-researcher
-      - product-designer
-      - accessibility-specialist
-      - ux-writer
-    operations.engineering:
-      - senior-developer
-      - test-engineer
-      - pr-reviewer
-    operations.devops:
-      - devops-engineer
-      - github-devops
-      - release-manager
-    operations.security:
-      - security-reviewer
-      - application-security-engineer
-      - cloud-security-reviewer
-      - data-protection-reviewer
-    growth.customer-experience:
-      - cx-lead
-    growth.marketing:
-      - growth-lead
-    growth.finance:
-      - finance-operator
+    strategy.validation:
+      - validation-researcher
 skills:
   ownership: area-first
   active:
@@ -198,61 +146,10 @@ skills:
       - create-roadmap
       - prioritize-backlog
       - prepare-roadmap-sync
-    operations.product-ops:
-      - define-delivery-scope
-      - define-mvp
-      - write-acceptance-criteria
-      - check-delivery-coherence
-      - shape-epic
-      - write-feature-criteria
-      - define-delivery-boundaries
-    operations.design:
-      - user-research
-      - user-flow-mapping
-      - design-system
-      - component-analysis
-      - screen-specification
-      - microcopy
-      - accessibility
-      - design-review
-    operations.engineering:
-      - plan-implementation
-      - follow-code-standards
-      - implement-component
-      - create-branch
-      - write-tests
-      - review-data-change
-      - create-pr
-      - review-pr
-    operations.devops:
-      - configure-github-project
-      - configure-environments
-      - setup-ci
-      - plan-deployment
-      - define-observability
-      - prepare-release
-    operations.security:
-      - threat-modeling
-      - access-control-review
-      - api-security-review
-      - database-security-review
-      - secrets-management
-      - secure-code-review
-      - dependency-supply-chain-review
-      - infra-hardening-review
-      - incident-response
-      - security-automation-readiness
-      - ai-generated-code-security
-    growth.customer-experience:
-      - map-customer-feedback
-      - synthesize-support-patterns
-    growth.marketing:
-      - define-positioning
-      - create-landing-page-copy
-      - create-launch-plan
-    growth.finance:
-      - model-unit-economics
-      - review-pricing
+    strategy.validation:
+      - define-assumptions
+      - create-interview-script
+      - define-success-metrics
 playbooks:
   ownership: area-first
   active:
@@ -263,83 +160,25 @@ playbooks:
     strategy.roadmap:
       - roadmap-cycle-planning
       - roadmap-sync-prep
-    operations.product-ops:
-      - delivery-scope-planning
-      - mvp-delivery
-      - epic-to-features
-      - delivery-readiness
-    operations.design:
-      - design-foundation
-      - component-readiness
-      - user-research
-      - mvp-ux-flow
-      - accessibility-review
-      - ux-writing
-    operations.engineering:
-      - engineering-delivery
-      - branch-for-feature
-      - component-implementation
-      - prepare-pr
-      - test-planning
-      - pr-validation
-    operations.devops:
-      - setup-ci-cd
-      - plan-deployment
-      - configure-github-project
-      - configure-environments
-      - define-observability
-      - release-operations
-    operations.security:
-      - security-foundation
-      - pre-mvp-security-checklist
-      - security-automation-readiness
-      - pre-deploy-security-review
-      - api-security-review
-      - database-security-review
-      - secrets-rotation
-      - vulnerability-response
-      - incident-response
-      - ai-generated-code-security-review
-    growth.customer-experience:
-      - customer-learning-loop
-    growth.marketing:
-      - mvp-launch
-    growth.finance:
-      - finance-review
+    strategy.validation:
+      - mvp-validation
 workflows:
   ownership: department-local
   active:
     - new-idea-intake
     - idea-to-roadmap
+    - strategy-validation-cycle
     - roadmap-to-github-project
-    - define-mvp
-    - roadmap-item-to-epic
-    - epic-to-features
-    - feature-to-delivery-cycle
-    - post-merge-continuation
-    - launch-learning-loop
   by_department:
     strategy:
       - key: new-idea-intake
         path: strategy/workflows/new-idea-intake.workflow.md
       - key: idea-to-roadmap
         path: strategy/workflows/idea-to-roadmap.workflow.md
+      - key: strategy-validation-cycle
+        path: strategy/workflows/strategy-validation-cycle.workflow.md
       - key: roadmap-to-github-project
         path: strategy/workflows/roadmap-to-github-project.workflow.md
-    operations:
-      - key: define-mvp
-        path: operations/workflows/define-mvp.workflow.md
-      - key: roadmap-item-to-epic
-        path: operations/workflows/roadmap-item-to-epic.workflow.md
-      - key: epic-to-features
-        path: operations/workflows/epic-to-features.workflow.md
-      - key: feature-to-delivery-cycle
-        path: operations/workflows/feature-to-delivery-cycle.workflow.md
-      - key: post-merge-continuation
-        path: operations/workflows/post-merge-continuation.workflow.md
-    growth:
-      - key: launch-learning-loop
-        path: growth/workflows/launch-learning-loop.workflow.md
 ai_standard:
   path: ai-standard/README.md
   foundation: ai-standard/foundation

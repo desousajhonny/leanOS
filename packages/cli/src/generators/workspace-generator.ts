@@ -28,7 +28,15 @@ export async function generateWorkspace(rootDir: string, answers: WorkspaceAnswe
   });
 
   return {
-    createdGroups: [
+    createdGroups: createdGroupsFromFiles(files.map((file) => file.path)),
+    writtenPaths: writeResult.writtenPaths,
+    skippedPaths: writeResult.skippedPaths,
+    mode: options.mode ?? (overwriteExisting ? "create" : "missing-only")
+  };
+}
+
+function createdGroupsFromFiles(paths: string[]): string[] {
+  return [
       "AGENT.md",
       "README.md",
       "leanos.yaml",
@@ -46,9 +54,13 @@ export async function generateWorkspace(rootDir: string, answers: WorkspaceAnswe
       ".github/agents",
       ".github/prompts",
       ".leanos/vscode"
-    ],
-    writtenPaths: writeResult.writtenPaths,
-    skippedPaths: writeResult.skippedPaths,
-    mode: options.mode ?? (overwriteExisting ? "create" : "missing-only")
-  };
+    ].filter((group) => hasGeneratedGroup(paths, group));
+}
+
+function hasGeneratedGroup(paths: string[], group: string): boolean {
+  if (group.endsWith("/")) {
+    return paths.some((path) => path.startsWith(group));
+  }
+
+  return paths.includes(group) || paths.some((path) => path.startsWith(`${group}/`));
 }

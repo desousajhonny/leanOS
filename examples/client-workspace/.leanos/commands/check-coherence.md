@@ -40,36 +40,19 @@ Strategy Roadmap:
 
 Product Ops:
 
-- `../../operations/AGENT.md`
-- `../../operations/product-ops/AGENT.md`
-- `../../operations/product-ops/knowledge/mvp-decision-gate.md`
-- `../../operations/product-ops/knowledge/ready-to-develop.md`
-- `../../operations/product-ops/mvp/scope.md`
-- `../../operations/product-ops/mvp/prd.md`
-- `../../operations/product-ops/mvp/acceptance-criteria.md`
-- `../../operations/product-ops/epics/README.md`
+- `operations.product-ops` is not active. Name MVP and Feature readiness as unavailable instead of inventing delivery coherence.
 
 Design:
 
-- `../../operations/design/AGENT.md`
-- `../../operations/design/knowledge/design-system.md`
-- `../../operations/design/knowledge/accessibility.md`
-- `../../operations/design/knowledge/user-flows.md`
-- `../../operations/design/knowledge/component-inventory.md`
+- `operations.design` is not active. Mark Design coherence as not applicable unless the request is user-facing.
 
 Security:
 
-- `../../operations/security/AGENT.md`
-- `../../operations/security/knowledge/security-baseline.md`
-- `../../operations/security/knowledge/threat-model.md`
-- `../../operations/security/knowledge/data-protection.md`
+- `operations.security` is not active. Mark Security coherence as unavailable when data/auth/privacy risk is present.
 
 Engineering:
 
-- `../../operations/engineering/AGENT.md`
-- `../../operations/engineering/knowledge/implementation-rules.md`
-- `../../operations/engineering/knowledge/code-standards.md`
-- `../../operations/engineering/knowledge/testing-strategy.md`
+- `operations.engineering` is not active. Mark Engineering coherence as unavailable for implementation readiness.
 
 ## Navigation Route
 
@@ -146,11 +129,4 @@ Ask before writing any file or moving into a workflow that changes product, road
 - strategy.business
 - strategy.product
 - strategy.roadmap
-- operations.product-ops
-- operations.design
-- operations.engineering
-- operations.devops
-- operations.security
-- growth.customer-experience
-- growth.marketing
-- growth.finance
+- strategy.validation

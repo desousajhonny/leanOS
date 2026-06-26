@@ -31,6 +31,13 @@ const allSubareas = [
   "growth.finance"
 ];
 
+const initialStrategySubareas = [
+  "strategy.business",
+  "strategy.product",
+  "strategy.roadmap",
+  "strategy.validation"
+];
+
 const answers = {
   workspaceMode: "new-product-workspace",
   detectedProject: {
@@ -104,7 +111,7 @@ async function validateWorkspaceFiles() {
   const files = createWorkspaceFiles(answers);
   const paths = new Set(files.map((file) => file.path));
 
-  for (const expectedPath of [
+  const expectedWorkspacePaths = [
     "AGENT.md",
     ".env.local",
     ".gitignore",
@@ -399,7 +406,9 @@ async function validateWorkspaceFiles() {
     ".leanos/commands/create-pr.md",
     ".leanos/commands/review-pr.md",
     ".leanos/vscode/README.md"
-  ]) {
+  ];
+
+  for (const expectedPath of expectedWorkspacePaths.filter(isInitialStrategyWorkspacePath)) {
     assert(paths.has(expectedPath), `Expected generated path missing: ${expectedPath}`);
   }
 
@@ -414,6 +423,11 @@ async function validateWorkspaceFiles() {
     "strategy/roles/README.md",
     "operations/skills/README.md",
     "growth/playbooks/README.md",
+    "operations/AGENT.md",
+    "operations/product-ops/README.md",
+    "operations/engineering/README.md",
+    "growth/AGENT.md",
+    "growth/marketing/README.md",
     "operations/devops/environments.md",
     "operations/devops/deployment.md",
     "operations/devops/deployment-readiness.md",
@@ -551,8 +565,8 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "ai-standard", "foundation", "quality-criteria.md"));
   await assertExists(join(rootDir, "ai-standard", "foundation", "folder-documentation-rules.md"));
   await assertExists(join(rootDir, "strategy", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "AGENT.md"));
-  await assertExists(join(rootDir, "growth", "AGENT.md"));
+  assert.equal(await exists(join(rootDir, "operations")), false, "Operations should not be generated during initial Strategy-only setup");
+  assert.equal(await exists(join(rootDir, "growth")), false, "Growth should not be generated during initial Strategy-only setup");
   await assertExists(join(rootDir, "strategy", "business", "AGENT.md"));
   await assertExists(join(rootDir, "strategy", "business", "knowledge", "profile.md"));
   await assertExists(join(rootDir, "strategy", "business", "roles", "business-strategist.role.md"));
@@ -564,6 +578,9 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "strategy", "roadmap", "AGENT.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "knowledge", "roadmap.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-cycle-planning.playbook.md"));
+  await assertExists(join(rootDir, "strategy", "validation", "README.md"));
+  await assertExists(join(rootDir, "strategy", "validation", "assumptions.md"));
+  await assertExists(join(rootDir, "strategy", "validation", "experiments.md"));
   await assertExists(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md"));
   await assertExists(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"));
   await assertExists(join(rootDir, "strategy", "workflows", "roadmap-to-github-project.workflow.md"));
@@ -577,7 +594,10 @@ async function validateWorkspaceFiles() {
   assert(newIdeaWorkflow.includes("## Forbidden Updates"), "New idea intake workflow should define forbidden updates");
   assert(newIdeaWorkflow.includes("Use Validation only when it exists"), "New idea intake workflow should not require Validation by default");
   assert(ideaToRoadmapWorkflow.includes("## Continuation Bridge"), "Idea-to-roadmap workflow should offer a continuation bridge");
-  assert(ideaToRoadmapWorkflow.includes("Next route:\n\n`roadmap-item-to-epic`"), "Idea-to-roadmap workflow should bridge to roadmap-item-to-epic");
+  assert(
+    ideaToRoadmapWorkflow.includes("Next route:\n\n`activation_required: operations.product-ops, then roadmap-item-to-epic`"),
+    "Idea-to-roadmap workflow should request Product Ops activation before roadmap-item-to-epic"
+  );
   assert(ideaToRoadmapWorkflow.includes("## Founder Triggers"), "Idea-to-roadmap workflow should define founder triggers");
   assert(ideaToRoadmapWorkflow.includes("## Confirmation Gates"), "Idea-to-roadmap workflow should define confirmation gates");
   assert(ideaToRoadmapWorkflow.includes("Do not mark as delivery scope, MVP, Epic or GitHub work"), "Idea-to-roadmap should not automatically promote roadmap items to delivery");
@@ -586,232 +606,6 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "strategy", "product", "skills", "evaluate-idea.skill.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync.skill.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "README.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "overview.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "work-taxonomy.md"));
-  assert.equal(await exists(join(rootDir, "operations", "product-ops", "knowledge", "delivery-context.md")), false, "Product Ops delivery context should not be generated; state should live in Epics/Features and Engineering logs");
-  await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "issue-readiness.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "ready-to-develop.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "technical-decisions.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "mvp", "README.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "epics", "README.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "skills", "shape-epic.skill.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "skills", "write-feature-criteria.skill.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "skills", "define-delivery-boundaries.skill.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "playbooks", "epic-to-features.playbook.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "playbooks", "delivery-readiness.playbook.md"));
-  assert.equal(await exists(join(rootDir, "operations", "core")), false, "Old operations/core area should not be generated");
-  assert.equal(await exists(join(rootDir, "operations", "product-ops", "api-contract.md")), false, "Product Ops should not generate premature API contract files");
-  assert.equal(await exists(join(rootDir, "operations", "product-ops", "data-model.md")), false, "Product Ops should not generate premature data model files");
-  assert.equal(await exists(join(rootDir, "operations", "product-ops", "system-context.md")), false, "Product Ops should not generate premature system context files");
-  await assertExists(join(rootDir, "operations", "workflows", "roadmap-item-to-epic.workflow.md"));
-  assert.equal(await exists(join(rootDir, "operations", "workflows", "roadmap-item-to-delivery-scope.workflow.md")), false, "Obsolete roadmap item to delivery scope workflow should not be generated");
-  assert.equal(await exists(join(rootDir, "operations", "workflows", "delivery-scope-to-epic.workflow.md")), false, "Obsolete delivery scope to epic workflow should not be generated");
-  assert.equal(await exists(join(rootDir, "operations", "workflows", "mvp-to-pr.workflow.md")), false, "Obsolete MVP to PR workflow should not be generated");
-  await assertExists(join(rootDir, "operations", "workflows", "epic-to-features.workflow.md"));
-  await assertExists(join(rootDir, "operations", "workflows", "feature-to-delivery-cycle.workflow.md"));
-  await assertExists(join(rootDir, "operations", "workflows", "post-merge-continuation.workflow.md"));
-  assert.equal(await exists(join(rootDir, "operations", "product-ops", "epics", "example-epic")), false, "Product Ops should not generate fake example epics");
-  assert.equal(await exists(join(rootDir, "operations", "product-ops", "epics", "synced")), false, "Product Ops should not generate a synced epics archive folder");
-  const roadmapItemToEpicWorkflow = await readFile(join(rootDir, "operations", "workflows", "roadmap-item-to-epic.workflow.md"), "utf8");
-  assert(roadmapItemToEpicWorkflow.includes("## Continuation Bridge"), "Roadmap item to epic workflow should offer a continuation bridge");
-  assert(roadmapItemToEpicWorkflow.includes("Next route:\n\n`epic-to-features`"), "Roadmap item to epic workflow should bridge to epic-to-features");
-  for (const section of [
-    "## Founder Triggers",
-    "## Owner",
-    "## Conditional Areas",
-    "## Load First",
-    "## Navigation Route",
-    "## Confirmation Gates",
-    "## Allowed Updates",
-    "## Forbidden Updates",
-    "## External Capabilities",
-    "## Stop Conditions",
-    "## Expected Output"
-  ]) {
-    assert(roadmapItemToEpicWorkflow.includes(section), `Roadmap item to epic workflow should include ${section}`);
-  }
-  assert(roadmapItemToEpicWorkflow.includes("operations/product-ops/AGENT.md"), "Roadmap item to epic workflow should route through Product Ops AGENT");
-  assert(roadmapItemToEpicWorkflow.includes("operations/product-ops/roles/product-owner.role.md"), "Roadmap item to epic workflow should route through Product Owner role");
-  assert(roadmapItemToEpicWorkflow.includes("operations/product-ops/skills/define-delivery-scope.skill.md"), "Roadmap item to epic workflow should load define delivery scope skill");
-  assert(roadmapItemToEpicWorkflow.includes("operations/product-ops/skills/shape-epic.skill.md"), "Roadmap item to epic workflow should load shape epic skill");
-  assert(roadmapItemToEpicWorkflow.includes("operations/product-ops/playbooks/delivery-scope-planning.playbook.md"), "Roadmap item to epic workflow should load delivery scope planning playbook");
-  assert(roadmapItemToEpicWorkflow.includes("Stop before Feature files, GitHub issues, branches, code or PR work"), "Roadmap item to epic workflow should stop before downstream delivery work");
-  assert(roadmapItemToEpicWorkflow.includes("Do not call GitHub APIs in this workflow"), "Roadmap item to epic workflow should not call GitHub APIs");
-  assert(roadmapItemToEpicWorkflow.includes("O Epic local esta pronto."), "Roadmap item to epic workflow should bridge from local epic to features");
-  const epicToFeaturesWorkflow = await readFile(join(rootDir, "operations", "workflows", "epic-to-features.workflow.md"), "utf8");
-  assert(epicToFeaturesWorkflow.includes("Break a confirmed local LeanOS Epic into implementation-ready Feature files"), "Epic to features workflow should define feature shaping purpose");
-  for (const section of [
-    "## Founder Triggers",
-    "## Owner",
-    "## Conditional Areas",
-    "## Load First",
-    "## Navigation Route",
-    "## Confirmation Gates",
-    "## Allowed Updates",
-    "## Forbidden Updates",
-    "## External Capabilities",
-    "## Stop Conditions",
-    "## Expected Output"
-  ]) {
-    assert(epicToFeaturesWorkflow.includes(section), `Epic to features workflow should include ${section}`);
-  }
-  assert(epicToFeaturesWorkflow.includes("operations/product-ops/AGENT.md"), "Epic to features workflow should route through Product Ops AGENT");
-  assert(epicToFeaturesWorkflow.includes("operations/product-ops/roles/product-owner.role.md"), "Epic to features workflow should route through Product Owner role");
-  assert(epicToFeaturesWorkflow.includes("operations/product-ops/skills/shape-epic.skill.md"), "Epic to features workflow should load shape epic skill");
-  assert(epicToFeaturesWorkflow.includes("operations/product-ops/skills/write-feature-criteria.skill.md"), "Epic to features workflow should load write feature criteria skill");
-  assert(epicToFeaturesWorkflow.includes("operations/product-ops/playbooks/epic-to-features.playbook.md"), "Epic to features workflow should load epic-to-features playbook");
-  assert(epicToFeaturesWorkflow.includes("Route Design only when UX"), "Epic to features workflow should make Design conditional");
-  assert(epicToFeaturesWorkflow.includes("identify component reuse, component adaptation or the need for a future component spec task"), "Epic to features workflow should detect component readiness during feature shaping");
-  assert(epicToFeaturesWorkflow.includes("Do not write full component specs in this workflow"), "Epic to features workflow should not write full component specs during shaping");
-  assert(epicToFeaturesWorkflow.includes("Route Security only when data, auth"), "Epic to features workflow should make Security conditional");
-  assert(epicToFeaturesWorkflow.includes("Ask Engineering to validate implementation boundaries"), "Epic to features workflow should require Engineering validation");
-  assert(epicToFeaturesWorkflow.includes("Stop before branch, code, PR or remote write"), "Epic to features workflow should stop before implementation or remote writes");
-  assert(epicToFeaturesWorkflow.includes("Do not create branches, commits, PRs or code changes in this workflow"), "Epic to features workflow should forbid implementation work");
-  assert(epicToFeaturesWorkflow.includes("Next route:\n\n`feature-to-delivery-cycle`"), "Epic to features workflow should bridge to feature delivery cycle");
-  const featureDeliveryWorkflow = await readFile(join(rootDir, "operations", "workflows", "feature-to-delivery-cycle.workflow.md"), "utf8");
-  for (const section of [
-    "## Founder Triggers",
-    "## Owner",
-    "## Conditional Areas",
-    "## Load First",
-    "## Navigation Route",
-    "## Confirmation Gates",
-    "## Allowed Updates",
-    "## Forbidden Updates",
-    "## External Capabilities",
-    "## Stop Conditions",
-    "## Expected Output",
-    "## Continuation Bridge"
-  ]) {
-    assert(featureDeliveryWorkflow.includes(section), `Feature delivery workflow should include ${section}`);
-  }
-  assert(featureDeliveryWorkflow.includes("Accept only a local Feature or GitHub Feature issue as input"), "Feature delivery workflow should start from a Feature, not a loose idea or Epic");
-  assert(featureDeliveryWorkflow.includes("operations/product-ops/AGENT.md"), "Feature delivery workflow should route through Product Ops AGENT");
-  assert(featureDeliveryWorkflow.includes("Load Product Ops through `operations/product-ops/AGENT.md` first"), "Feature delivery workflow should start with Product Ops readiness");
-  assert(featureDeliveryWorkflow.includes("ready-to-develop.md"), "Feature delivery workflow should run the ready-to-develop gate");
-  assert(featureDeliveryWorkflow.includes("route Design before Engineering"), "Feature delivery workflow should route Design before Engineering when UI is affected");
-  assert(featureDeliveryWorkflow.includes("new component spec is needed and no approved spec exists"), "Feature delivery workflow should handle missing component specs");
-  assert(featureDeliveryWorkflow.includes("operations/design/playbooks/component-readiness.playbook.md"), "Feature delivery workflow should route missing component specs to Design");
-  assert(featureDeliveryWorkflow.includes("before branch or code"), "Feature delivery workflow should stop before branch or code when Design component readiness is missing");
-  assert(featureDeliveryWorkflow.includes("Record why Design, Security or DevOps are not applicable"), "Feature delivery workflow should record non-applicable dimensions");
-  assert(featureDeliveryWorkflow.includes("operations/engineering/AGENT.md"), "Feature delivery workflow should route through Engineering AGENT after readiness");
-  assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/engineering-delivery.playbook.md"), "Feature delivery workflow should enter Engineering through engineering-delivery");
-  assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/branch-for-feature.playbook.md"), "Feature delivery workflow should require branch playbook");
-  assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/component-implementation.playbook.md"), "Feature delivery workflow should run component implementation after approved spec");
-  assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/prepare-pr.playbook.md"), "Feature delivery workflow should require prepare PR playbook");
-  assert(featureDeliveryWorkflow.includes("operations/engineering/playbooks/pr-validation.playbook.md"), "Feature delivery workflow should require PR validation playbook");
-  assert(featureDeliveryWorkflow.includes("Founder Testing Guide"), "Feature delivery workflow should require Founder Testing Guide before PR review");
-  assert(featureDeliveryWorkflow.includes("PR opened does not mean merge-ready"), "Feature delivery workflow should separate opened PR from merge readiness");
-  assert(featureDeliveryWorkflow.includes("Do not merge PRs automatically"), "Feature delivery workflow should not auto-merge");
-  assert(featureDeliveryWorkflow.includes("Do not deploy to production from this workflow"), "Feature delivery workflow should not deploy to production");
-  assert(featureDeliveryWorkflow.includes("Next route:\n\n`post-merge-continuation`"), "Feature delivery workflow should bridge to post-merge continuation");
-  const postMergeWorkflow = await readFile(join(rootDir, "operations", "workflows", "post-merge-continuation.workflow.md"), "utf8");
-  for (const section of [
-    "## Founder Triggers",
-    "## Owner",
-    "## Conditional Areas",
-    "## Load First",
-    "## Navigation Route",
-    "## Confirmation Gates",
-    "## Allowed Updates",
-    "## Forbidden Updates",
-    "## External Capabilities",
-    "## Stop Conditions",
-    "## Expected Output",
-    "## Continuation Bridge"
-  ]) {
-    assert(postMergeWorkflow.includes(section), `Post-merge workflow should include ${section}`);
-  }
-  assert(postMergeWorkflow.includes("Confirm the merged PR, local Feature or GitHub Feature issue"), "Post-merge workflow should confirm merged work before writing");
-  assert(postMergeWorkflow.includes("Map the merge back to the local Epic and Feature"), "Post-merge workflow should map merge to local Epic/Feature state");
-  assert(postMergeWorkflow.includes("Summarize what shipped in founder-friendly language"), "Post-merge workflow should produce founder-friendly shipped summary");
-  assert(postMergeWorkflow.includes("Do not write to GitHub from this workflow"), "Post-merge workflow should avoid GitHub writes");
-  assert(postMergeWorkflow.includes("Do not deploy, merge, create branches, create PRs or run release automation"), "Post-merge workflow should avoid external delivery actions");
-  assert(postMergeWorkflow.includes("Do not automatically start the next Feature"), "Post-merge workflow should not auto-start next feature");
-  assert(postMergeWorkflow.includes("operations/devops/AGENT.md"), "Post-merge workflow should route DevOps conditionally");
-  assert(postMergeWorkflow.includes("operations/security/AGENT.md"), "Post-merge workflow should route Security conditionally");
-  assert(postMergeWorkflow.includes("growth/AGENT.md"), "Post-merge workflow should bridge to Growth when needed");
-  assert(postMergeWorkflow.includes("strategy/AGENT.md"), "Post-merge workflow should bridge to Strategy when needed");
-  assert(postMergeWorkflow.includes("Next route:\n\n`feature-to-delivery-cycle`"), "Post-merge workflow should bridge back to feature delivery cycle when founder chooses next feature");
-  await assertExists(join(rootDir, ".leanos", "commands", "define-design.md"));
-  await assertExists(join(rootDir, "operations", "design", "knowledge", "README.md"));
-  await assertExists(join(rootDir, "operations", "design", "knowledge", "design-system.md"));
-  await assertExists(join(rootDir, "operations", "design", "knowledge", "accessibility.md"));
-  await assertExists(join(rootDir, "operations", "design", "knowledge", "user-flows.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "design-system.skill.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "accessibility.skill.md"));
-  await assertExists(join(rootDir, "operations", "design", "playbooks", "design-foundation.playbook.md"));
-  await assertExists(join(rootDir, "operations", "design", "playbooks", "mvp-ux-flow.playbook.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "knowledge", "README.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "knowledge", "code-standards.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "knowledge", "implementation-rules.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "knowledge", "component-guidelines.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "knowledge", "data-guidelines.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "knowledge", "testing-strategy.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "knowledge", "review-criteria.md"));
-  const implementationNotes = await readFile(join(rootDir, "operations", "engineering", "knowledge", "implementation-notes.md"), "utf8");
-  assert(implementationNotes.includes("## Lessons Learned"), "Implementation notes should capture lessons learned");
-  assert(implementationNotes.includes("## Implementation Decisions"), "Implementation notes should capture implementation decisions");
-  assert(implementationNotes.includes("Do not duplicate PR status; use `pr-log.md`"), "Implementation notes should not duplicate PR log");
-  const prLog = await readFile(join(rootDir, "operations", "engineering", "knowledge", "pr-log.md"), "utf8");
-  assert(prLog.includes("## PR Summary Log"), "PR log should include a quick PR summary table");
-  assert(prLog.includes("## Latest Merge Summary"), "PR log should include latest merge summary");
-  assert(prLog.includes("Use `implementation-notes.md` for technical lessons learned"), "PR log should separate delivery summary from implementation lessons");
-  await assertExists(join(rootDir, "operations", "engineering", "roles", "test-engineer.role.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "skills", "plan-implementation.skill.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "skills", "follow-code-standards.skill.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "skills", "review-data-change.skill.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "playbooks", "test-planning.playbook.md"));
-  assert.equal(await exists(join(rootDir, "operations", "engineering", "implementation-notes.md")), false, "Engineering implementation notes should live in knowledge/");
-  assert.equal(await exists(join(rootDir, "operations", "engineering", "code-review-notes.md")), false, "Engineering code review notes should live in knowledge/");
-  assert.equal(await exists(join(rootDir, "operations", "engineering", "pr-log.md")), false, "Engineering PR log should live in knowledge/");
-  await assertExists(join(rootDir, "operations", "devops", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "devops", "knowledge", "README.md"));
-  await assertExists(join(rootDir, "operations", "devops", "knowledge", "github-management.md"));
-  await assertExists(join(rootDir, "operations", "devops", "knowledge", "environments.md"));
-  await assertExists(join(rootDir, "operations", "devops", "knowledge", "deployment-readiness.md"));
-  await assertExists(join(rootDir, "operations", "devops", "knowledge", "ci-cd.md"));
-  await assertExists(join(rootDir, "operations", "devops", "knowledge", "observability.md"));
-  await assertExists(join(rootDir, "operations", "devops", "knowledge", "release-notes.md"));
-  await assertExists(join(rootDir, "operations", "devops", "playbooks", "setup-ci-cd.playbook.md"));
-  await assertExists(join(rootDir, "operations", "devops", "playbooks", "plan-deployment.playbook.md"));
-  await assertExists(join(rootDir, "operations", "devops", "roles", "devops-engineer.role.md"));
-  await assertExists(join(rootDir, "operations", "devops", "roles", "github-devops.role.md"));
-  await assertExists(join(rootDir, "operations", "devops", "roles", "release-manager.role.md"));
-  await assertExists(join(rootDir, "operations", "devops", "skills", "configure-github-project.skill.md"));
-  await assertExists(join(rootDir, "operations", "devops", "skills", "configure-environments.skill.md"));
-  await assertExists(join(rootDir, "operations", "devops", "skills", "setup-ci.skill.md"));
-  await assertExists(join(rootDir, "operations", "devops", "skills", "plan-deployment.skill.md"));
-  await assertExists(join(rootDir, "operations", "devops", "skills", "define-observability.skill.md"));
-  await assertExists(join(rootDir, "operations", "devops", "skills", "prepare-release.skill.md"));
-  await assertExists(join(rootDir, "operations", "devops", "playbooks", "configure-github-project.playbook.md"));
-  await assertExists(join(rootDir, "operations", "devops", "playbooks", "configure-environments.playbook.md"));
-  await assertExists(join(rootDir, "operations", "devops", "playbooks", "define-observability.playbook.md"));
-  await assertExists(join(rootDir, "operations", "devops", "playbooks", "release-operations.playbook.md"));
-  await assertExists(join(rootDir, "operations", "security", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "security", "knowledge", "README.md"));
-  await assertExists(join(rootDir, "operations", "security", "knowledge", "security-baseline.md"));
-  await assertExists(join(rootDir, "operations", "security", "knowledge", "threat-model.md"));
-  await assertExists(join(rootDir, "operations", "security", "knowledge", "access-control.md"));
-  await assertExists(join(rootDir, "operations", "security", "knowledge", "data-protection.md"));
-  await assertExists(join(rootDir, "operations", "security", "knowledge", "database-security.md"));
-  await assertExists(join(rootDir, "operations", "security", "knowledge", "secrets-management.md"));
-  await assertExists(join(rootDir, "operations", "security", "knowledge", "infra-hardening.md"));
-  await assertExists(join(rootDir, "operations", "security", "knowledge", "secure-coding.md"));
-  await assertExists(join(rootDir, "operations", "security", "knowledge", "incident-response.md"));
-  await assertExists(join(rootDir, "operations", "security", "knowledge", "security-automation.md"));
-  await assertExists(join(rootDir, "operations", "security", "roles", "application-security-engineer.role.md"));
-  await assertExists(join(rootDir, "operations", "security", "roles", "cloud-security-reviewer.role.md"));
-  await assertExists(join(rootDir, "operations", "security", "roles", "data-protection-reviewer.role.md"));
-  await assertExists(join(rootDir, "operations", "security", "skills", "ai-generated-code-security.skill.md"));
-  await assertExists(join(rootDir, "operations", "security", "skills", "security-automation-readiness.skill.md"));
-  await assertExists(join(rootDir, "operations", "security", "playbooks", "pre-deploy-security-review.playbook.md"));
-  await assertExists(join(rootDir, "operations", "security", "playbooks", "ai-generated-code-security-review.playbook.md"));
-  await assertExists(join(rootDir, "operations", "security", "playbooks", "security-automation-readiness.playbook.md"));
-  await assertExists(join(rootDir, "growth", "marketing", "skills", "create-launch-plan.skill.md"));
   await assertExists(join(rootDir, ".github", "agents", "leanos-chief.agent.md"));
   await assertExists(join(rootDir, ".github", "leanos", "github-settings.example.json"));
   await assertExists(join(rootDir, ".github", "leanos", "work-mapping.md"));
@@ -821,28 +615,21 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, ".github", "prompts", "start-leanos.prompt.md"));
   await assertExists(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"));
   await assertExists(join(rootDir, ".leanos", "commands", "start-leanos.md"));
-  await assertExists(join(rootDir, ".leanos", "commands", "github-sync.md"));
+  assert.equal(await exists(join(rootDir, ".leanos", "commands", "github-sync.md")), false, "GitHub sync command should wait for DevOps activation");
   await assertExists(join(rootDir, ".leanos", "vscode", "README.md"));
   assert.equal(await exists(join(rootDir, ".leanos", "workflows")), false, "Business workflows should not be generated under .leanos/workflows");
 
   assert(result.createdGroups.includes("ai-standard/"), "Expected created groups to mention root AI Standard");
   assert(result.createdGroups.includes("strategy/"), "Expected created groups to mention Strategy");
-  assert(result.createdGroups.includes("operations/"), "Expected created groups to mention Operations");
-  assert(result.createdGroups.includes("growth/"), "Expected created groups to mention Growth");
+  assert.equal(result.createdGroups.includes("operations/"), false, "Initial setup should not mention Operations as created");
+  assert.equal(result.createdGroups.includes("growth/"), false, "Initial setup should not mention Growth as created");
   assert(result.createdGroups.includes(".github/leanos"), "Expected created groups to mention GitHub LeanOS support files");
 
   await assertVsCodeIntegration(rootDir);
-  await assertGitHubReadiness(rootDir);
-  await assertGitHubIssuePrWorkflow(rootDir);
   await assertFounderIntentRouting(rootDir);
   await assertBusinessAreaPattern(rootDir);
   await assertProductAreaPattern(rootDir);
   await assertRoadmapAreaPattern(rootDir);
-  await assertDesignFoundation(rootDir);
-  await assertEngineeringAreaPattern(rootDir);
-  await assertDevOpsAreaPattern(rootDir);
-  await assertSecurityAreaPattern(rootDir);
-  await assertGrowthAreaPattern(rootDir);
   await assertAiStandardAssetTaxonomy(rootDir);
   await assertAiStandardTemplates(rootDir);
   await assertAiStandardChecklists(rootDir);
@@ -852,9 +639,6 @@ async function validateWorkspaceFiles() {
   await assertInitCommandRules(rootDir);
   await assertRootAgentMutationRules(rootDir);
   await assertTraceDiagnostics(rootDir);
-  await assertOperationalPlaybookSections(rootDir);
-  await assertSourceScaffoldSections(rootDir);
-  await assertProductOpsPrdSections(rootDir);
   await assertValidationLoopSections(rootDir);
   await assertNoOldAiStandardReferences(rootDir);
 
@@ -950,23 +734,30 @@ async function validateWorkspaceFiles() {
   assert.equal(yaml.workflows.ownership, "department-local");
   assert.equal(yaml.departments.routes.strategy.agent, "strategy/AGENT.md");
   assert.equal(yaml.departments.routes.strategy.readme, "strategy/README.md");
-  assert.equal(yaml.departments.routes.operations.agent, "operations/AGENT.md");
-  assert.equal(yaml.departments.routes.growth.readme, "growth/README.md");
+  assert.equal(yaml.departments.routes.operations, undefined, "Operations should not be an active route during initial setup");
+  assert.equal(yaml.departments.routes.growth, undefined, "Growth should not be an active route during initial setup");
   assert(yaml.workflows.active.includes("new-idea-intake"), "Expected active local Strategy new-idea-intake workflow");
   assert(yaml.workflows.active.includes("idea-to-roadmap"), "Expected active local Strategy idea-to-roadmap workflow");
   assert(yaml.workflows.active.includes("roadmap-to-github-project"), "Expected active local Strategy GitHub roadmap workflow");
-  assert(yaml.workflows.active.includes("roadmap-item-to-epic"), "Expected active local Operations roadmap item to epic workflow");
+  assert.equal(yaml.workflows.active.includes("roadmap-item-to-epic"), false, "Operations workflows should not be active during initial setup");
   assert.equal(yaml.workflows.active.includes("roadmap-item-to-delivery-scope"), false, "Obsolete roadmap item to delivery scope workflow should not be active");
   assert.equal(yaml.workflows.active.includes("delivery-scope-to-epic"), false, "Obsolete delivery scope to epic workflow should not be active");
   assert.equal(yaml.workflows.active.includes("mvp-to-pr"), false, "Obsolete MVP to PR workflow should not be active");
-  assert(yaml.workflows.active.includes("epic-to-features"), "Expected active local Operations epic to features workflow");
-  assert(yaml.workflows.active.includes("feature-to-delivery-cycle"), "Expected active local Operations feature delivery workflow");
-  assert.deepEqual(yaml.departments.active, ["strategy", "operations", "growth"]);
+  assert.equal(yaml.workflows.active.includes("epic-to-features"), false, "Operations workflows should not be active during initial setup");
+  assert.equal(yaml.workflows.active.includes("feature-to-delivery-cycle"), false, "Operations workflows should not be active during initial setup");
+  assert.deepEqual(yaml.departments.active, ["strategy"]);
   assert.equal(yaml.activation.mode, "progressive", "leanos.yaml should declare progressive activation mode");
   assert.equal(yaml.activation.current_stage, "setup-seed", "leanos.yaml should start at setup seed");
   assert.equal(yaml.activation.progression_model, "ai-standard/foundation/founder-progression-model.md", "leanos.yaml should point to the Founder Progression Model");
+  assert.deepEqual(yaml.activation.inactive_departments, ["operations", "growth"], "leanos.yaml should mark Operations and Growth inactive at setup");
   assert.deepEqual(yaml.activation.available_departments, ["strategy", "operations", "growth"], "leanos.yaml should list departments that can be activated later");
   assert.deepEqual(yaml.activation.active_departments, yaml.departments.active, "leanos.yaml activation state should mirror active departments");
+  assert.deepEqual(yaml.activation.active_areas, ["strategy.business", "strategy.product", "strategy.roadmap", "strategy.validation"], "Initial setup should activate only Strategy areas");
+  assert(yaml.activation.inactive_areas.includes("operations.product-ops"), "Initial setup should keep Product Ops inactive");
+  assert(yaml.activation.inactive_areas.includes("operations.engineering"), "Initial setup should keep Engineering inactive");
+  assert(yaml.activation.inactive_areas.includes("growth.marketing"), "Initial setup should keep Growth areas inactive");
+  assert.deepEqual(yaml.activation.founder_selected_departments, ["strategy", "operations", "growth"], "leanos.yaml should preserve founder-selected departments for later activation");
+  assert.deepEqual(yaml.activation.founder_selected_areas, answers.subareas, "leanos.yaml should preserve founder-selected areas for later activation");
   assert.deepEqual(yaml.activation.active_areas, yaml.subareas.active.map((subarea) => subarea.key), "leanos.yaml activation state should mirror active areas");
   assert.equal(yaml.activation.available_means, "can_be_activated_later_not_path_exists", "leanos.yaml should explain available does not mean path exists");
   assert.equal(yaml.activation.missing_asset_behavior, "return_activation_required", "leanos.yaml should require activation_required for missing inactive assets");
@@ -1122,7 +913,7 @@ async function validateClientWorkspaceFixture() {
     ".leanos/vscode/README.md"
   ];
 
-  for (const requiredPath of requiredPaths) {
+  for (const requiredPath of requiredPaths.filter(isInitialStrategyWorkspacePath)) {
     if (!(await exists(resolveFixturePath(requiredPath)))) {
       failOutOfDate([`Missing fixture file: ${requiredPath}`]);
     }
@@ -1137,7 +928,8 @@ async function validateClientWorkspaceFixture() {
     "package.json",
     "vercel.json",
     ".leanos/ai-standard",
-    "strategy/validation",
+    "operations",
+    "growth",
     "operations/devops/environments.md",
     "operations/devops/deployment.md",
     "operations/devops/deployment-readiness.md",
@@ -1230,167 +1022,85 @@ async function validatePartialAreaSelection() {
   const rootDir = await mkdtemp(join(tmpdir(), "leanos-partial-"));
   await generateWorkspace(rootDir, partialAreaAnswers);
 
-  await assertExists(join(rootDir, "strategy", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "AGENT.md"));
-  await assertExists(join(rootDir, "strategy", "product", "AGENT.md"));
-  await assertExists(join(rootDir, "strategy", "product", "README.md"));
-  await assertExists(join(rootDir, "strategy", "product", "knowledge", "brief.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "README.md"));
-  assert.equal(await exists(join(rootDir, "growth", "AGENT.md")), false, "Growth department should not be generated when no Growth area is active");
-  assert.equal(await exists(join(rootDir, "strategy", "validation", "README.md")), false, "Inactive validation area should not be generated");
-  assert.equal(await exists(join(rootDir, "operations", "design", "README.md")), false, "Inactive design area should not be generated");
-  assert.equal(await exists(join(rootDir, "operations", "product-ops", "README.md")), false, "Inactive Product Ops area should not be generated");
-  assert.equal(await exists(join(rootDir, "strategy", "roles")), false, "Root Strategy should not own roles directly");
-  assert.equal(await exists(join(rootDir, "operations", "playbooks")), false, "Root Operations should not own playbooks directly");
-
-  const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
-  assert.deepEqual(yaml.departments.active, ["strategy", "operations"]);
-  assert.deepEqual(yaml.activation.active_departments, ["strategy", "operations"]);
-  assert.deepEqual(yaml.activation.inactive_departments, ["growth"]);
-  assert(yaml.activation.inactive_areas.includes("strategy.validation"), "Activation state should mark inactive Strategy areas");
-  assert(yaml.activation.inactive_areas.includes("operations.product-ops"), "Activation state should mark inactive Product Ops");
-  assert(yaml.activation.inactive_areas.includes("operations.design"), "Activation state should mark inactive Design");
-  assert(yaml.activation.inactive_areas.includes("growth.marketing"), "Activation state should mark inactive Growth areas");
-  assert.deepEqual(yaml.workflows.active, []);
-  assert.deepEqual(Object.keys(yaml.roles.active), ["strategy.product", "operations.engineering"]);
-  assert.equal(yaml.roles.active["growth.marketing"], undefined);
-  assert.equal(yaml.roles.active["strategy.validation"], undefined);
-  assert.equal(yaml.roles.active["operations.design"], undefined);
-
-  const rolesIndex = parse(await readFile(join(rootDir, ".leanos", "index", "roles.yaml"), "utf8"));
-  const skillsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "skills.yaml"), "utf8"));
-  const playbooksIndex = parse(await readFile(join(rootDir, ".leanos", "index", "playbooks.yaml"), "utf8"));
-  const routingMap = parse(await readFile(join(rootDir, ".leanos", "index", "routing-map.yaml"), "utf8"));
-  const activeWorkflow = await readFile(join(rootDir, ".leanos", "context", "active-workflow.md"), "utf8");
-  const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
-
-  assert(rolesIndex.roles.some((role) => role.key === "product-strategist"), "Product role should be indexed");
-  assert(rolesIndex.roles.some((role) => role.key === "senior-developer"), "Engineering role should be indexed");
-  assert.equal(rolesIndex.roles.some((role) => role.key === "growth-lead"), false, "Inactive marketing role should not be indexed");
-  assert.equal(rolesIndex.roles.some((role) => role.key === "validation-researcher"), false, "Inactive validation role should not be indexed");
-  assert.equal(rolesIndex.roles.some((role) => role.key === "ux-lead"), false, "Inactive design role should not be indexed");
-  assert.equal(rolesIndex.roles.some((role) => role.key === "product-designer"), false, "Inactive design specialist role should not be indexed");
-
-  assert.equal(skillsIndex.skills.some((skill) => skill.key === "create-launch-plan"), false, "Inactive marketing skill should not be indexed");
-  assert.equal(playbooksIndex.playbooks.some((playbook) => playbook.key === "mvp-validation"), false, "Inactive validation playbook should not be indexed");
-
-  assert.equal(routingMap.routing.areas.product.agent, "../../strategy/product/AGENT.md");
-  assert.equal(routingMap.routing.areas.product.readme, "../../strategy/product/README.md");
-  assert.equal(routingMap.routing.areas.engineering.agent, "../../operations/engineering/AGENT.md");
-  assert.equal(routingMap.routing.areas.engineering.readme, "../../operations/engineering/README.md");
-  assert.equal(routingMap.routing.departments.strategy.agent, "../../strategy/AGENT.md");
-  assert.equal(routingMap.routing.departments.strategy.readme, "../../strategy/README.md");
-  assert.equal(routingMap.routing.departments.operations.agent, "../../operations/AGENT.md");
-  assert.equal(routingMap.routing.departments.operations.readme, "../../operations/README.md");
-  assert.equal(routingMap.routing.departments.growth, undefined);
-  assert.equal(routingMap.routing.asset_creation, "../../ai-standard/README.md");
-  assert.equal(routingMap.routing.areas.marketing, undefined);
-  assert.equal(routingMap.routing.areas.validation, undefined);
-  assert.equal(routingMap.routing.areas.design, undefined);
-  assert.equal(activeWorkflow.includes("- new-idea-intake"), false, "Product + Engineering alone should not activate Strategy idea workflow without Roadmap");
-  assert.equal(activeWorkflow.includes("- idea-to-roadmap"), false, "Product + Engineering alone should not activate Strategy roadmap workflow without Roadmap");
-  assert(nextActions.includes("/define icp"), "Product-compatible next action should remain when Product is active");
-  assert.equal(nextActions.includes("/define mvp"), false, "Product Ops command should not appear when Product Ops is inactive");
-
-  const defineDesignCommand = await readFile(join(rootDir, ".leanos", "commands", "define-design.md"), "utf8");
-  assert(defineDesignCommand.includes("`operations.design` is not active"), "Define design command should warn when Design is inactive");
-  assert.equal(defineDesignCommand.includes("../../operations/design/AGENT.md"), false, "Inactive Design command should not point to missing Design AGENT");
-  assert.equal(defineDesignCommand.includes("../../operations/design/README.md"), false, "Inactive Design command should not point to missing Design README");
-  assert.equal(defineDesignCommand.includes("../../operations/design/knowledge/design-system.md"), false, "Inactive Design command should not point to missing Design knowledge paths");
-
-  await assertIndexPathsExist(rootDir);
-  await assertInitialContextCoherence(rootDir, partialAreaAnswers.subareas);
+  await assertProgressiveStrategyOnlyWorkspace(rootDir, partialAreaAnswers.subareas);
 }
 
 async function validateEngineeringOnlyContext() {
   const rootDir = await mkdtemp(join(tmpdir(), "leanos-engineering-only-"));
   await generateWorkspace(rootDir, engineeringOnlyAnswers);
 
-  const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
-  const activeWorkflow = await readFile(join(rootDir, ".leanos", "context", "active-workflow.md"), "utf8");
-  const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
-  const workspaceSummary = await readFile(join(rootDir, ".leanos", "context", "workspace-summary.md"), "utf8");
-
-  assert.deepEqual(yaml.departments.active, ["operations"]);
-  assert.deepEqual(yaml.workflows.active, []);
-  assert.equal(await exists(join(rootDir, "strategy")), false, "Strategy should not be generated when no Strategy area is active");
-  assert.equal(await exists(join(rootDir, "growth")), false, "Growth should not be generated when no Growth area is active");
-  assert.equal(nextActions.includes("/define icp"), false, "Engineering-only workspace should not suggest Product ICP command");
-  assert.equal(nextActions.includes("/define mvp"), false, "Engineering-only workspace should not suggest Product Ops MVP command");
-  assert.equal(nextActions.includes("/check coherence"), false, "Engineering-only workspace should not suggest Product coherence command");
-  assert(nextActions.includes("/workon feature"), "Engineering-only workspace should suggest Engineering Feature work");
-  assert.equal(activeWorkflow.includes("- feature-to-delivery-cycle"), false, "Engineering-only workspace should not activate feature delivery without Product Ops");
-  assert(workspaceSummary.includes("Active departments: operations"), "Workspace summary should list Operations");
-  assert(workspaceSummary.includes("Active areas: operations.engineering"), "Workspace summary should list the active Engineering area");
-
-  const routingMap = parse(await readFile(join(rootDir, ".leanos", "index", "routing-map.yaml"), "utf8"));
-  assert.equal(routingMap.routing.departments.operations.agent, "../../operations/AGENT.md");
-  assert.equal(routingMap.routing.departments.operations.readme, "../../operations/README.md");
-  assert.equal(routingMap.routing.departments.strategy, undefined);
-  assert.equal(routingMap.routing.departments.growth, undefined);
-
-  await assertInitialContextCoherence(rootDir, engineeringOnlyAnswers.subareas);
+  await assertProgressiveStrategyOnlyWorkspace(rootDir, engineeringOnlyAnswers.subareas);
 }
 
 async function validateDesignOnlyContext() {
   const rootDir = await mkdtemp(join(tmpdir(), "leanos-design-only-"));
   await generateWorkspace(rootDir, designOnlyAnswers);
 
-  const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
-  const defineDesignCommand = await readFile(join(rootDir, ".leanos", "commands", "define-design.md"), "utf8");
-  const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
-
-  assert.deepEqual(yaml.departments.active, ["operations"]);
-  assert.deepEqual(yaml.subareas.active.map((subarea) => subarea.key), ["operations.design"]);
-  assert.equal(yaml.subareas.active[0].agent, "operations/design/AGENT.md");
-  await assertExists(join(rootDir, "operations", "design", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "design", "knowledge", "design-system.md"));
-  await assertExists(join(rootDir, "operations", "design", "knowledge", "accessibility.md"));
-  await assertExists(join(rootDir, "operations", "design", "knowledge", "user-flows.md"));
-  assert.equal(await exists(join(rootDir, "strategy")), false, "Strategy should not be generated in Design-only workspace");
-  assert(defineDesignCommand.includes("`strategy.product` is not active"), "Define design should ask for Product context when Product is inactive");
-  assert(defineDesignCommand.includes("`operations.product-ops` is not active"), "Define design should ask for MVP context when Product Ops is inactive");
-  assert(defineDesignCommand.includes("../../operations/design/AGENT.md"), "Active Design command should point to Design area AGENT");
-  assert(defineDesignCommand.includes("../../operations/design/knowledge/design-system.md"), "Active Design command should point to Design knowledge files");
-  assert.equal(nextActions.includes("/define design"), false, "Design-only workspace should not recommend /define design before Product and MVP context exist");
-
-  await assertInitialContextCoherence(rootDir, designOnlyAnswers.subareas);
+  await assertProgressiveStrategyOnlyWorkspace(rootDir, designOnlyAnswers.subareas);
 }
 
 async function validateGrowthValidationContext() {
   const rootDir = await mkdtemp(join(tmpdir(), "leanos-growth-validation-"));
   await generateWorkspace(rootDir, growthValidationAnswers);
 
-  const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
-  const activeWorkflow = await readFile(join(rootDir, ".leanos", "context", "active-workflow.md"), "utf8");
-  const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
-  const workspaceSummary = await readFile(join(rootDir, ".leanos", "context", "workspace-summary.md"), "utf8");
-  const routingMap = parse(await readFile(join(rootDir, ".leanos", "index", "routing-map.yaml"), "utf8"));
-
-  assert.deepEqual(yaml.departments.active, ["strategy", "growth"]);
-  assert.deepEqual(yaml.workflows.active, []);
-  assert.equal(await exists(join(rootDir, "strategy", "product", "README.md")), false, "Product area should not be generated when not active");
-  assert.equal(await exists(join(rootDir, "operations")), false, "Operations department should not be generated when not active");
-  assert.equal(activeWorkflow.includes("- launch-learning-loop"), false, "Growth Marketing without Customer Experience should not activate launch workflow");
-  assert.equal(activeWorkflow.includes("- new-idea-intake"), false, "Growth + Validation workspace should not activate Strategy idea intake workflow");
-  assert.equal(activeWorkflow.includes("- idea-to-roadmap"), false, "Growth + Validation workspace should not activate Strategy idea-to-roadmap workflow");
-  assert.equal(activeWorkflow.includes("- feature-to-delivery-cycle"), false, "Growth + Validation workspace should not activate Engineering workflow");
-  assert.equal(nextActions.includes("/define icp"), false, "Growth + Validation workspace should not suggest Product commands");
-  assert.equal(nextActions.includes("/workon feature"), false, "Growth + Validation workspace should not suggest Engineering commands");
-  assert(workspaceSummary.includes("Active departments: strategy, growth"), "Workspace summary should use active department order from definitions");
-  assert.equal(routingMap.routing.departments.strategy.agent, "../../strategy/AGENT.md");
-  assert.equal(routingMap.routing.departments.strategy.readme, "../../strategy/README.md");
-  assert.equal(routingMap.routing.departments.growth.agent, "../../growth/AGENT.md");
-  assert.equal(routingMap.routing.departments.growth.readme, "../../growth/README.md");
-  assert.equal(routingMap.routing.departments.operations, undefined);
-  assert.equal(routingMap.routing.areas.marketing.agent, "../../growth/marketing/AGENT.md");
-  assert.equal(routingMap.routing.areas.marketing.readme, "../../growth/marketing/README.md");
-  assert.equal(routingMap.routing.areas.validation, "../../strategy/validation/README.md");
-  assert.equal(routingMap.routing.areas.product, undefined);
-  assert.equal(routingMap.routing.areas.engineering, undefined);
+  await assertProgressiveStrategyOnlyWorkspace(rootDir, growthValidationAnswers.subareas);
   assert.equal(await exists(join(rootDir, ".env.local")), false, "Workspace should not generate .env.local when GitHub management was not requested");
+}
 
-  await assertInitialContextCoherence(rootDir, growthValidationAnswers.subareas);
+async function assertProgressiveStrategyOnlyWorkspace(rootDir, founderSelectedSubareas) {
+  const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
+  const rolesIndex = parse(await readFile(join(rootDir, ".leanos", "index", "roles.yaml"), "utf8"));
+  const skillsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "skills.yaml"), "utf8"));
+  const playbooksIndex = parse(await readFile(join(rootDir, ".leanos", "index", "playbooks.yaml"), "utf8"));
+  const routingMap = parse(await readFile(join(rootDir, ".leanos", "index", "routing-map.yaml"), "utf8"));
+  const workspaceSummary = await readFile(join(rootDir, ".leanos", "context", "workspace-summary.md"), "utf8");
+
+  await assertExists(join(rootDir, "strategy", "AGENT.md"));
+  await assertExists(join(rootDir, "strategy", "business", "AGENT.md"));
+  await assertExists(join(rootDir, "strategy", "product", "AGENT.md"));
+  await assertExists(join(rootDir, "strategy", "roadmap", "AGENT.md"));
+  await assertExists(join(rootDir, "strategy", "validation", "README.md"));
+  assert.equal(await exists(join(rootDir, "operations")), false, "Operations should wait for progressive activation");
+  assert.equal(await exists(join(rootDir, "growth")), false, "Growth should wait for progressive activation");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands", "define-mvp.md")), false, "Product Ops command should wait for activation");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands", "define-design.md")), false, "Design command should wait for activation");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands", "workon-feature.md")), false, "Engineering command should wait for activation");
+
+  assert.deepEqual(yaml.departments.active, ["strategy"]);
+  assert.deepEqual(yaml.activation.active_departments, ["strategy"]);
+  assert.deepEqual(yaml.activation.inactive_departments, ["operations", "growth"]);
+  assert.deepEqual(yaml.activation.active_areas, initialStrategySubareas);
+  assert.deepEqual(yaml.subareas.active.map((subarea) => subarea.key), initialStrategySubareas);
+  assert.deepEqual(yaml.activation.founder_selected_areas, founderSelectedSubareas);
+  assert.deepEqual(yaml.activation.founder_selected_departments, selectedDepartmentsFromSubareas(founderSelectedSubareas));
+  assert(yaml.activation.inactive_areas.includes("operations.product-ops"), "Product Ops should start inactive");
+  assert(yaml.activation.inactive_areas.includes("operations.engineering"), "Engineering should start inactive");
+  assert(yaml.activation.inactive_areas.includes("growth.marketing"), "Growth should start inactive");
+
+  assert(rolesIndex.roles.some((role) => role.key === "product-strategist"), "Product role should be indexed in initial Strategy");
+  assert(rolesIndex.roles.some((role) => role.key === "validation-researcher"), "Validation role should be indexed in initial Strategy");
+  assert.equal(rolesIndex.roles.some((role) => role.key === "senior-developer"), false, "Engineering role should wait for Operations activation");
+  assert.equal(rolesIndex.roles.some((role) => role.key === "growth-lead"), false, "Growth role should wait for Growth activation");
+  assert.equal(skillsIndex.skills.some((skill) => skill.key === "create-launch-plan"), false, "Growth skill should wait for Growth activation");
+  assert.equal(playbooksIndex.playbooks.some((playbook) => playbook.key === "mvp-delivery"), false, "Product Ops playbook should wait for Operations activation");
+
+  assert.equal(routingMap.routing.departments.strategy.agent, "../../strategy/AGENT.md");
+  assert.equal(routingMap.routing.departments.operations, undefined);
+  assert.equal(routingMap.routing.departments.growth, undefined);
+  assert.equal(routingMap.routing.areas.product.agent, "../../strategy/product/AGENT.md");
+  assert.equal(routingMap.routing.areas.validation, "../../strategy/validation/README.md");
+  assert.equal(routingMap.routing.areas.engineering, undefined);
+  assert.equal(routingMap.routing.areas.marketing, undefined);
+  assert(workspaceSummary.includes("Active departments: strategy"), "Workspace summary should list only Strategy as active");
+  assert(workspaceSummary.includes("Active areas: strategy.business, strategy.product, strategy.roadmap, strategy.validation"), "Workspace summary should list initial Strategy areas");
+
+  await assertIndexPathsExist(rootDir);
+  await assertInitialContextCoherence(rootDir, founderSelectedSubareas);
+}
+
+function selectedDepartmentsFromSubareas(subareas) {
+  const selected = new Set(subareas.map((subarea) => subarea.split(".")[0]));
+  return ["strategy", "operations", "growth"].filter((department) => selected.has(department));
 }
 
 async function validateExistingProductRepoMode() {
@@ -1698,15 +1408,12 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
 async function assertFounderIntentRouting(rootDir) {
   const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
   const strategyAgent = await readFile(join(rootDir, "strategy", "AGENT.md"), "utf8");
-  const operationsAgent = await readFile(join(rootDir, "operations", "AGENT.md"), "utf8");
-  const growthAgent = await readFile(join(rootDir, "growth", "AGENT.md"), "utf8");
   const runtimeReadme = await readFile(join(rootDir, ".leanos", "README.md"), "utf8");
   const operatingRules = await readFile(join(rootDir, ".leanos", "agent", "operating-rules.md"), "utf8");
   const whereWeAreProtocol = await readFile(join(rootDir, ".leanos", "agent", "protocols", "where-we-are.md"), "utf8");
   const commandsReadme = await readFile(join(rootDir, ".leanos", "commands", "README.md"), "utf8");
   const statusLeanOSCommand = await readFile(join(rootDir, ".leanos", "commands", "status-leanos.md"), "utf8");
   const checkCoherenceCommand = await readFile(join(rootDir, ".leanos", "commands", "check-coherence.md"), "utf8");
-  const defineMvpCommand = await readFile(join(rootDir, ".leanos", "commands", "define-mvp.md"), "utf8");
   const vscodeAgent = await readFile(join(rootDir, ".github", "agents", "leanos-chief.agent.md"), "utf8");
   const workflowsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "workflows.yaml"), "utf8"));
   const rootAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "agents", "root-agent-template.md"), "utf8");
@@ -1744,9 +1451,9 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("## Natural Intent Map"), "Root AGENT.md should include a compact natural intent map");
   assert(rootAgent.includes("Use this map as routing guidance, not as execution detail"), "Root AGENT.md should keep intent map lightweight");
   assert(rootAgent.includes("New idea or feature evaluation: `strategy/AGENT.md`"), "Root AGENT.md should route idea evaluation through Strategy AGENT");
-  assert(rootAgent.includes("Roadmap item to Epic or Epic to Features: `operations/AGENT.md`"), "Root AGENT.md should route delivery planning through Operations AGENT");
-  assert(rootAgent.includes("Feature implementation: `.leanos/commands/workon-feature.md`"), "Root AGENT.md should map implementation intent to /workon-feature");
-  assert(rootAgent.includes("GitHub setup, GitHub Projects configuration or GitHub sync: `.leanos/commands/github-sync.md`"), "Root AGENT.md should map GitHub setup and sync intent to /github-sync");
+  assert(rootAgent.includes("Roadmap item to Epic or Epic to Features: return `activation_required` for `operations.product-ops`"), "Root AGENT.md should gate delivery planning behind Product Ops activation");
+  assert(rootAgent.includes("Feature implementation: return `activation_required` for `operations.engineering`"), "Root AGENT.md should gate implementation behind Engineering activation");
+  assert(rootAgent.includes("GitHub setup, GitHub Projects configuration or GitHub sync: return `activation_required` for `operations.devops`"), "Root AGENT.md should gate GitHub sync behind DevOps activation");
   assert(rootAgent.includes("## Status And Readiness Questions"), "Root AGENT.md should handle status and readiness questions");
   assert(rootAgent.includes("`.leanos/agent/protocols/where-we-are.md`"), "Root AGENT.md should route status and readiness questions to the where-we-are protocol");
   assert(rootAgent.includes("## Trace And Diagnostics"), "Root AGENT.md should handle trace and diagnostic questions");
@@ -1767,8 +1474,8 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("Do not invent missing workflows, roles, skills, playbooks, commands or templates"), "Root AGENT.md should prevent asset invention");
   assert(rootAgent.includes("## Root Routing"), "Root AGENT.md should have a single root routing section");
   assert(rootAgent.includes("Strategy: `strategy/AGENT.md`"), "Root AGENT.md should route Strategy through its AGENT");
-  assert(rootAgent.includes("Operations: `operations/AGENT.md`"), "Root AGENT.md should route Operations through its AGENT");
-  assert(rootAgent.includes("Growth: `growth/AGENT.md`"), "Root AGENT.md should route Growth through its AGENT");
+  assert.equal(rootAgent.includes("Operations: `operations/AGENT.md`"), false, "Root AGENT.md should not expose inactive Operations as an active route");
+  assert.equal(rootAgent.includes("Growth: `growth/AGENT.md`"), false, "Root AGENT.md should not expose inactive Growth as an active route");
   assert.equal(rootAgent.includes("## Active Root Departments"), false, "Root AGENT.md should not duplicate active departments and routing");
   assert.equal(rootAgent.includes("## Routing"), false, "Root AGENT.md should use Root Routing instead of a separate Routing section");
   assert.equal(rootAgent.includes("## Workspace Mutation Rules"), false, "Root AGENT.md should not keep the old mutation rules section");
@@ -1779,12 +1486,6 @@ async function assertFounderIntentRouting(rootDir) {
   assert(strategyAgent.includes("## Routing Rules"), "Strategy AGENT should define department-level routing rules");
   assert(strategyAgent.includes("workflows/README.md"), "Strategy AGENT should point to workflow index instead of enumerating workflows");
   assert.equal(strategyAgent.includes("workflows/idea-to-roadmap.workflow.md"), false, "Strategy AGENT should not enumerate every workflow path");
-  assert(operationsAgent.includes("CTO / Operations Lead"), "Operations AGENT should define its executive operating owner");
-  assert(operationsAgent.includes("## Routing Rules"), "Operations AGENT should define department-level routing rules");
-  assert(operationsAgent.includes("workflows/README.md"), "Operations AGENT should point to workflow index instead of enumerating workflows");
-  assert.equal(operationsAgent.includes("workflows/feature-to-delivery-cycle.workflow.md"), false, "Operations AGENT should not enumerate every workflow path");
-  assert(growthAgent.includes("Growth / Marketing / Finance Lead"), "Growth AGENT should define its executive operating owner");
-  assert(growthAgent.includes("## Routing Rules"), "Growth AGENT should define department-level routing rules");
   assert(runtimeReadme.includes("Business workflows live in departments or areas"), ".leanos README should keep workflows local to departments or areas");
   assert(operatingRules.includes("Natural language founder requests are first-class"), "Operating rules should support natural-language founder intent");
   assert(operatingRules.includes("Root AGENT.md routes to the correct department; department AGENT.md files route to workflows or areas"), "Operating rules should route workflow selection through department agents");
@@ -1816,94 +1517,10 @@ async function assertFounderIntentRouting(rootDir) {
   assert(checkCoherenceCommand.includes("None by default"), "Check coherence command should be diagnostic by default");
   assert(checkCoherenceCommand.includes("must not write files unless the founder explicitly asks"), "Check coherence command should not write by default");
   assert.equal(await exists(join(rootDir, ".leanos", "commands", "shape-mvp.md")), false, "Shape MVP command should not be generated");
-  assert(commandsReadme.includes("define-mvp.md"), "Commands README should list define-mvp.md");
-  assert(commandsReadme.includes("/define-mvp"), "Commands README should list /define-mvp");
-  assert(defineMvpCommand.includes("# /define-mvp"), "Define MVP command should use /define-mvp heading");
-  assert(defineMvpCommand.includes("../../operations/workflows/define-mvp.workflow.md"), "Define MVP command should load define-mvp workflow");
-  assert(defineMvpCommand.includes("../../operations/product-ops/knowledge/mvp-decision-gate.md"), "Define MVP command should load MVP decision gate");
-  assert(defineMvpCommand.includes("Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk"), "Define MVP command should use MVP gate risk criteria");
-  assert(defineMvpCommand.includes("create or update local Epics or Features"), "Define MVP command should not create Epics or Features");
-  assert(defineMvpCommand.includes("Do not write files until the founder confirms"), "Define MVP command should require confirmation before writes");
-  assert(rootAgent.includes("\"define the MVP\" -> `.leanos/commands/define-mvp.md`"), "Root AGENT should route MVP language to /define-mvp");
-  assert(whereWeAreProtocol.includes("MVP missing or weak -> `/define-mvp`"), "Where-we-are protocol should recommend /define-mvp for missing MVP");
-  const defineMvpWorkflow = await readFile(join(rootDir, "operations", "workflows", "define-mvp.workflow.md"), "utf8");
-  const mvpDecisionGate = await readFile(join(rootDir, "operations", "product-ops", "knowledge", "mvp-decision-gate.md"), "utf8");
-  const defineMvpSkill = await readFile(join(rootDir, "operations", "product-ops", "skills", "define-mvp.skill.md"), "utf8");
-  const mvpDeliveryPlaybook = await readFile(join(rootDir, "operations", "product-ops", "playbooks", "mvp-delivery.playbook.md"), "utf8");
-  assert(defineMvpWorkflow.includes("## Purpose"), "Define MVP workflow should follow Workflow Contract Standard");
-  assert(defineMvpWorkflow.includes("## Founder Triggers"), "Define MVP workflow should include founder triggers");
-  assert(defineMvpWorkflow.includes("## Owner"), "Define MVP workflow should include owner");
-  assert(defineMvpWorkflow.includes("## Required Areas"), "Define MVP workflow should include required areas");
-  assert(defineMvpWorkflow.includes("## Conditional Areas"), "Define MVP workflow should include conditional areas");
-  assert(defineMvpWorkflow.includes("## Load First"), "Define MVP workflow should include Load First");
-  assert(defineMvpWorkflow.includes("## Navigation Route"), "Define MVP workflow should include Navigation Route");
-  assert(defineMvpWorkflow.includes("## Confirmation Gates"), "Define MVP workflow should include confirmation gates");
-  assert(defineMvpWorkflow.includes("## Allowed Updates"), "Define MVP workflow should include allowed updates");
-  assert(defineMvpWorkflow.includes("## Forbidden Updates"), "Define MVP workflow should include forbidden updates");
-  assert(defineMvpWorkflow.includes("## External Capabilities"), "Define MVP workflow should include external capabilities");
-  assert(defineMvpWorkflow.includes("## Stop Conditions"), "Define MVP workflow should include stop conditions");
-  assert(defineMvpWorkflow.includes("## Expected Output"), "Define MVP workflow should include expected output");
-  assert(defineMvpWorkflow.includes("## Continuation Bridge"), "Define MVP workflow should include continuation bridge");
-  assert(defineMvpWorkflow.includes("operations/product-ops/AGENT.md"), "Define MVP workflow should route through Product Ops AGENT");
-  assert(defineMvpWorkflow.includes("operations/product-ops/roles/product-owner.role.md"), "Define MVP workflow should route through Product Owner role");
-  assert(defineMvpWorkflow.includes("operations/product-ops/knowledge/mvp-decision-gate.md"), "Define MVP workflow should load MVP decision gate");
-  assert(defineMvpWorkflow.includes("Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk"), "Define MVP workflow should use the four MVP risks");
-  assert(defineMvpWorkflow.includes("operations/product-ops/epics/"), "Define MVP workflow should explicitly forbid Epic updates");
-  assert(defineMvpWorkflow.includes("roadmap-item-to-epic"), "Define MVP workflow should bridge to roadmap-item-to-epic");
-  assert(mvpDecisionGate.includes("# MVP Decision Gate"), "Product Ops should generate MVP decision gate");
-  assert(mvpDecisionGate.includes("## Core Rule"), "MVP decision gate should define core rule");
-  assert(mvpDecisionGate.includes("### Value Risk"), "MVP decision gate should include Value Risk");
-  assert(mvpDecisionGate.includes("### Usability Risk"), "MVP decision gate should include Usability Risk");
-  assert(mvpDecisionGate.includes("### Feasibility Risk"), "MVP decision gate should include Feasibility Risk");
-  assert(mvpDecisionGate.includes("### Business Viability Risk"), "MVP decision gate should include Business Viability Risk");
-  assert(mvpDecisionGate.includes("ready-for-mvp"), "MVP decision gate should include ready-for-mvp state");
-  assert(mvpDecisionGate.includes("too-large-for-mvp"), "MVP decision gate should include too-large-for-mvp state");
-  assert(mvpDecisionGate.includes("Do not create Epics, Features, GitHub issues, branches, PRs or code"), "MVP decision gate should stop before delivery execution");
-  assert(defineMvpSkill.includes("MVP Decision Gate"), "Define MVP skill should reference the MVP decision gate");
-  assert(defineMvpSkill.includes("Value Risk"), "Define MVP skill should check Value Risk");
-  assert(defineMvpSkill.includes("Usability Risk"), "Define MVP skill should check Usability Risk");
-  assert(defineMvpSkill.includes("Feasibility Risk"), "Define MVP skill should check Feasibility Risk");
-  assert(defineMvpSkill.includes("Business Viability Risk"), "Define MVP skill should check Business Viability Risk");
-  assert(defineMvpSkill.includes("Do not create Epics, Features, GitHub issues, branches, PRs or source code"), "Define MVP skill should stop before execution work");
-  assert(mvpDeliveryPlaybook.includes("## Guided Conversation"), "MVP delivery playbook should use guided conversation");
-  assert(mvpDeliveryPlaybook.includes("../knowledge/mvp-decision-gate.md"), "MVP delivery playbook should load MVP decision gate");
-  assert(mvpDeliveryPlaybook.includes("Value Risk is pass"), "MVP delivery playbook should gate Value Risk");
-  assert(mvpDeliveryPlaybook.includes("Founder confirms before files are updated"), "MVP delivery playbook should require confirmation before writing");
-  const readyToDevelop = await readFile(join(rootDir, "operations", "product-ops", "knowledge", "ready-to-develop.md"), "utf8");
-  assert(readyToDevelop.includes("# Ready To Develop"), "Product Ops should generate a ready-to-develop gate");
-  assert(readyToDevelop.includes("## Core Rule"), "Ready-to-develop gate should define the core rule");
-  assert(readyToDevelop.includes("## Local Feature Rule"), "Ready-to-develop gate should define local Feature readiness");
-  assert(readyToDevelop.includes("A GitHub issue is optional for readiness"), "Ready-to-develop gate should not require GitHub for local readiness");
-  assert(readyToDevelop.includes("## Feature Definition of Ready"), "Ready-to-develop gate should define Feature Definition of Ready");
-  assert(readyToDevelop.includes("needs-epic-breakdown"), "Ready-to-develop gate should block unsplit Epics before coding");
-  assert(readyToDevelop.includes("feature-to-delivery-cycle"), "Ready-to-develop gate should guard the implementation workflow");
-  assert(readyToDevelop.includes("## Design Readiness"), "Ready-to-develop gate should include design readiness");
-  assert(readyToDevelop.includes("## Component Readiness"), "Ready-to-develop gate should include component readiness");
-  assert(readyToDevelop.includes("operations/design/knowledge/component-inventory.md"), "Ready-to-develop gate should read component inventory");
-  assert(readyToDevelop.includes("needs-component-spec"), "Ready-to-develop gate should block missing component specs");
-  assert(readyToDevelop.includes("operations/design/playbooks/component-readiness.playbook.md"), "Ready-to-develop gate should route missing component specs to Design");
-  assert(readyToDevelop.includes("operations/engineering/playbooks/component-implementation.playbook.md"), "Ready-to-develop gate should point to Engineering component implementation after Design spec");
-  assert(readyToDevelop.includes("## Security Readiness"), "Ready-to-develop gate should include security readiness");
-  assert(readyToDevelop.includes("## Ready States"), "Ready-to-develop gate should define ready states");
-  const workTaxonomy = await readFile(join(rootDir, "operations", "product-ops", "knowledge", "work-taxonomy.md"), "utf8");
-  assert(workTaxonomy.includes("# Work Taxonomy"), "Product Ops should generate work taxonomy");
-  assert(workTaxonomy.includes("Backlog"), "Work taxonomy should define Backlog");
-  assert(workTaxonomy.includes("Delivery Scope"), "Work taxonomy should define Delivery Scope");
-  assert(workTaxonomy.includes("Epic"), "Work taxonomy should define Epic");
-  assert(workTaxonomy.includes("Feature"), "Work taxonomy should define Feature");
-  assert(workTaxonomy.includes("Task"), "Work taxonomy should define Task");
-  assert(workTaxonomy.includes("[FEATURE: Customer Management]"), "Work taxonomy should define Feature naming convention");
-  assert(workTaxonomy.includes("## Lifecycle Status"), "Work taxonomy should define lifecycle status");
-  assert(workTaxonomy.includes("| scoped | Delivery boundaries"), "Work taxonomy should explain scoped status");
-  assert(workTaxonomy.includes("| blocked | Cannot move forward"), "Work taxonomy should explain blocked status");
-  assert(workTaxonomy.includes("## Sync Status"), "Work taxonomy should define remote sync status separately");
-  assert(workTaxonomy.includes("## Sync State Decision"), "Work taxonomy should define the sync-state decision");
-  assert(workTaxonomy.includes("Do not move synced Epics or Features into a separate `synced/` folder"), "Work taxonomy should avoid a synced archive folder");
-  assert(workTaxonomy.includes("not_synced"), "Work taxonomy should include not_synced sync status");
-  assert(workTaxonomy.includes("sync_ready"), "Work taxonomy should include sync_ready sync status");
-  assert(workTaxonomy.includes("conflict"), "Work taxonomy should include conflict sync status");
-  assert(workTaxonomy.includes("Product status and sync status are separate"), "Work taxonomy should separate product and sync status");
-  assert(workTaxonomy.includes("## Transition Ownership"), "Work taxonomy should define transition ownership");
+  assert.equal(commandsReadme.includes("define-mvp.md"), false, "Commands README should not list inactive define-mvp command during setup");
+  assert.equal(commandsReadme.includes("/define-mvp"), false, "Commands README should not advertise inactive /define-mvp during setup");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands", "define-mvp.md")), false, "Define MVP command should wait for Product Ops activation");
+  assert.equal(rootAgent.includes("\"define the MVP\" -> `.leanos/commands/define-mvp.md`"), false, "Root AGENT should not route MVP language to an inactive command");
   assert(operatingRules.includes("`AGENT.md` is the operating owner for its level; `README.md` is the directory map"), "Operating rules should define AGENT and README responsibilities");
   assert(operatingRules.includes("Area `AGENT.md` files, when present, choose the specialist role"), "Operating rules should define area AGENT responsibility");
   assert.equal(operatingRules.includes("Root AGENT.md must not bypass department AGENT.md"), false, "Operating rules should avoid narrow workflow-bypass prohibitions");
@@ -1918,12 +1535,12 @@ async function assertFounderIntentRouting(rootDir) {
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "new-idea-intake" && workflow.path === "../../strategy/workflows/new-idea-intake.workflow.md"), "Workflows index should point to Strategy new idea intake workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "idea-to-roadmap" && workflow.path === "../../strategy/workflows/idea-to-roadmap.workflow.md"), "Workflows index should point to Strategy idea-to-roadmap workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-to-github-project" && workflow.path === "../../strategy/workflows/roadmap-to-github-project.workflow.md"), "Workflows index should point to Strategy roadmap sync workflow");
-  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-item-to-epic" && workflow.path === "../../operations/workflows/roadmap-item-to-epic.workflow.md"), "Workflows index should point to Operations roadmap item to epic workflow");
+  assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-item-to-epic"), false, "Workflows index should not include inactive Operations workflows during setup");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-item-to-delivery-scope"), false, "Workflows index should not include obsolete roadmap item to delivery scope workflow");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "delivery-scope-to-epic"), false, "Workflows index should not include obsolete delivery scope to epic workflow");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "mvp-to-pr"), false, "Workflows index should not include obsolete MVP to PR workflow");
-  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "epic-to-features" && workflow.path === "../../operations/workflows/epic-to-features.workflow.md"), "Workflows index should point to Operations epic to features workflow");
-  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "feature-to-delivery-cycle" && workflow.path === "../../operations/workflows/feature-to-delivery-cycle.workflow.md"), "Workflows index should point to Operations feature delivery workflow");
+  assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "epic-to-features"), false, "Workflows index should not include inactive Operations epic workflow during setup");
+  assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "feature-to-delivery-cycle"), false, "Workflows index should not include inactive Operations delivery workflow during setup");
   assert(rootAgentTemplate.includes("## Root Routing"), "Root agent template should keep root routing department-level");
   assert(rootAgentTemplate.includes("Use this section only to choose the owning department"), "Root agent template should keep routing scoped to departments");
   assert(rootAgentTemplate.includes("LeanOS uses owner-first navigation"), "Root agent template should explain owner-first navigation");
@@ -3800,8 +3417,9 @@ function collectPathStrings(value, paths) {
   }
 }
 
-async function assertInitialContextCoherence(rootDir, selectedSubareas) {
-  const activeSubareas = new Set(selectedSubareas);
+async function assertInitialContextCoherence(rootDir) {
+  const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
+  const activeSubareas = new Set(yaml.activation?.active_areas ?? yaml.subareas.active.map((subarea) => subarea.key));
   const initialFiles = [
     join(".leanos", "context", "current-focus.md"),
     join(".leanos", "context", "next-actions.md"),
@@ -3892,6 +3510,25 @@ function assertPathInside(parentPath, childPath) {
   }
 
   throw new Error(`Unexpected fixture path outside ${parentPath}: ${childPath}`);
+}
+
+function isInitialStrategyWorkspacePath(path) {
+  const inactiveCommandPaths = new Set([
+    ".leanos/commands/define-mvp.md",
+    ".leanos/commands/define-design.md",
+    ".leanos/commands/create-features.md",
+    ".leanos/commands/github-sync.md",
+    ".leanos/commands/workon-feature.md",
+    ".leanos/commands/create-branch.md",
+    ".leanos/commands/create-pr.md",
+    ".leanos/commands/review-pr.md"
+  ]);
+
+  if (inactiveCommandPaths.has(path)) {
+    return false;
+  }
+
+  return !path.startsWith("operations/") && !path.startsWith("growth/");
 }
 
 function ensureTrailingNewline(content) {

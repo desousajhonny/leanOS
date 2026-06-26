@@ -6,10 +6,11 @@ import { folderReadme, formatCommandInvocation } from "../content/shared.js";
 export function commandFiles(activeAreas: AreaDefinition[]): FileEntry[] {
   const activeKeys = activeAreas.map((area) => area.key);
   const availableCommands = getAvailableCommands(activeAreas);
+  const generatedCommands = commandDefinitions.filter((command) => !command.area || activeKeys.includes(command.area));
 
   return [
-    { path: ".leanos/commands/README.md", content: folderReadme("Commands", "Slash command instructions for LeanOS agent chats.", "Use when the user invokes or describes a LeanOS command.", "../index/routing-map.yaml", commandDefinitions.map((command) => `${command.slug}.md`), ["../context/", "../index/", "../../ai-standard/"], `Available now: ${availableCommands.map((command) => formatCommandInvocation(command.slug)).join(", ")}. Commands tied to inactive areas include a warning and require explicit activation before use.`) },
-    ...commandDefinitions.map((command) => ({
+    { path: ".leanos/commands/README.md", content: folderReadme("Commands", "Slash command instructions for LeanOS agent chats.", "Use when the user invokes or describes a LeanOS command.", "../index/routing-map.yaml", generatedCommands.map((command) => `${command.slug}.md`), ["../context/", "../index/", "../../ai-standard/"], `Available now: ${availableCommands.map((command) => formatCommandInvocation(command.slug)).join(", ")}. Commands tied to inactive areas are not generated until activation.`) },
+    ...generatedCommands.map((command) => ({
       path: `.leanos/commands/${command.slug}.md`,
       content: commandContent(command, activeAreas, activeKeys)
     }))

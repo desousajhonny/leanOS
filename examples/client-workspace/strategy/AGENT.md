@@ -37,6 +37,7 @@ Use `workflows/README.md` when the founder asks for a multi-step decision or tra
 - Business: `business/AGENT.md` - Keep business identity, principles, mission and operating decisions coherent.
 - Product: `product/AGENT.md` - Own product strategy, ICP, value proposition, positioning and business model coherence.
 - Roadmap: `roadmap/AGENT.md` - Own roadmap sequence, milestones, backlog and planning-cycle prioritization.
+- Validation: `validation/README.md` - Own assumptions, experiments, interviews, success metrics and learning capture.
 
 ## Workflow Entry
 

@@ -24,8 +24,6 @@ Then start from:
 - `.leanos/` LeanOS runtime, commands, context and indexes.
 - `ai-standard/` templates, checklists and instructions for creating LeanOS assets.
 - `strategy/` Strategy department.
-- `operations/` Operations department.
-- `growth/` Growth department.
 
 ## Product Snapshot
 
@@ -45,14 +43,7 @@ Then start from:
 - `strategy/business/` Keep business identity, principles, mission and operating decisions coherent.
 - `strategy/product/` Own product strategy, ICP, value proposition, positioning and business model coherence.
 - `strategy/roadmap/` Own roadmap sequence, milestones, backlog and planning-cycle prioritization.
-- `operations/product-ops/` Turn Strategy and Roadmap into delivery scope, acceptance criteria and implementation-ready work.
-- `operations/design/` Own the MVP design foundation, accessibility baseline and user-flow clarity before implementation.
-- `operations/engineering/` Own implementation, tests, code quality and PR readiness.
-- `operations/devops/` Own delivery infrastructure, environments, deployment, GitHub workflow setup and observability notes.
-- `operations/security/` Own the mandatory security baseline for implementation, PR and deploy readiness.
-- `growth/customer-experience/` Own customer learning loops, support notes and experience feedback.
-- `growth/marketing/` Own positioning, landing page copy, acquisition channels and launch loops.
-- `growth/finance/` Own pricing, revenue model, unit economics, budget and financial risks.
+- `strategy/validation/` Own assumptions, experiments, interviews, success metrics and learning capture.
 
 ## Next Step
 
