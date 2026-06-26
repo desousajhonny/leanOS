@@ -589,9 +589,7 @@ ${activeSubareas.map((area) => `- ${area}`).join("\n")}
 function startCommand(activeAreas: AreaDefinition[]): string {
   const strategyFiles = getInitStrategySourceFiles(activeAreas);
   const activeKeys = new Set(activeAreas.map((area) => area.key));
-  const validationMapping = activeKeys.has("strategy.validation")
-    ? "- Assumptions, experiments, success metrics and learning -> `strategy/validation/`"
-    : "- Lightweight assumptions, evidence, learning and validation needs -> `strategy/product/knowledge/validation-notes.md`";
+  const validationMapping = "- Lightweight assumptions, evidence, learning and validation needs -> `strategy/product/knowledge/validation-notes.md`";
   const mvpValidationScopeMapping = activeKeys.has("strategy.product")
     ? "- MVP validation thesis, MVP slice, manual/concierge parts, productized parts, success signals and pivot signals -> `strategy/product/knowledge/mvp-validation-scope.md`"
     : "- MVP validation scope -> Strategy Product when the area is active";
@@ -887,16 +885,6 @@ function getInitStrategySourceFiles(activeAreas: AreaDefinition[]): string[] {
       "strategy/product/knowledge/business-model-canvas.md",
       "strategy/product/knowledge/mvp-validation-scope.md",
       "strategy/product/knowledge/validation-notes.md"
-    );
-  }
-
-  if (activeKeys.has("strategy.validation")) {
-    files.push(
-      "strategy/validation/assumptions.md",
-      "strategy/validation/riskiest-assumptions.md",
-      "strategy/validation/experiments.md",
-      "strategy/validation/success-metrics.md",
-      "strategy/validation/learning-log.md"
     );
   }
 

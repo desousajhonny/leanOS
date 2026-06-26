@@ -6,7 +6,7 @@ Durable roadmap context produced by Strategy Roadmap.
 
 ## When to Use
 
-Use when sequencing product work, planning milestones, choosing the current cycle or preparing GitHub sync.
+Use when sequencing product work, planning milestones, choosing the current cycle or preparing Product Ops handoff.
 
 ## Source of Truth
 

@@ -43,7 +43,6 @@ function createdGroupsFromFiles(paths: string[]): string[] {
       "ai-standard/",
       ".leanos/agent",
       ".leanos/workflows",
-      ".leanos/commands",
       ".leanos/context",
       ".leanos/index",
       "strategy/",

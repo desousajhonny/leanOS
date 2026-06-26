@@ -17,16 +17,11 @@ Capture, qualify and decide whether a founder idea should refine strategy, updat
 - Department: `strategy`
 - Primary area: `product`
 - Supporting areas: `roadmap`
-- Conditional areas: `validation`
 
 ## Required Areas
 
 - product
 - roadmap
-
-## Conditional Areas
-
-- `validation`: Enter only when the active workspace includes Validation and the idea depends on risky assumptions that need explicit evidence planning.
 
 ## Availability
 
@@ -65,7 +60,7 @@ All required areas are active in this department.
 2. Restate the founder idea in plain language and ask only the minimum guided questions needed to remove ambiguity
 3. Evaluate idea against ICP, problem, value proposition, evidence, current focus and opportunity cost
 4. Identify assumptions, evidence gaps, dependencies and why this idea may or may not matter now
-5. Use Validation only when it exists and risky assumptions need explicit experiment planning; do not require Validation for the default MVP path
+5. Use `validation-notes.md` for lightweight assumptions and evidence gaps; do not route to a formal Strategy Validation area
 6. When the founder wants speed, treat MVP as the default business validation path and decide whether to define or update MVP Validation Scope
 7. Recommend one outcome: reject, refine, park, validation note, MVP Validation Scope update, backlog candidate or roadmap candidate
 8. Explain the recommendation in founder-friendly language

@@ -13,5 +13,4 @@ routing:
     roadmap:
       agent: ../../strategy/roadmap/AGENT.md
       readme: ../../strategy/roadmap/README.md
-    validation: ../../strategy/validation/README.md
   asset_creation: ../../ai-standard/README.md

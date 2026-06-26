@@ -11,10 +11,10 @@ ${workspaceModeIntro(answers)}
 
 ## Start
 
-For any AI model:
+For any AI model, start in natural language:
 
 \`\`\`text
-/start-leanos
+Quero iniciar o LeanOS.
 \`\`\`
 
 Then start from:
@@ -24,7 +24,7 @@ Then start from:
 ## Main Structure
 
 - \`.github/\` VS Code and GitHub integration files.
-- \`.leanos/\` LeanOS runtime, commands, context and indexes.
+- \`.leanos/\` LeanOS runtime, context and indexes.
 - \`ai-standard/\` templates, checklists and instructions for creating LeanOS assets.
 ${activeRoots.map((department) => `- \`${department.key}/\` ${department.name} department.`).join("\n")}
 
@@ -39,7 +39,7 @@ ${activeRoots.map((department) => `- \`${department.key}/\` ${department.name} d
 - Mode: ${answers.mode}
 - Primary user: ${answers.targetUser}
 - Description: ${answers.description}
-- GitHub management: ${answers.prepareGithubManagement ? "prepared; add a local token only when configuring GitHub sync" : "not requested yet"}
+- GitHub management: ${answers.prepareGithubManagement ? "prepared; add a local token only when configuring GitHub Projects or Epics/Features sync" : "not requested yet"}
 
 ## Active Areas
 
@@ -47,10 +47,10 @@ ${activeAreas.map((area) => `- \`${area.path}/\` ${area.purpose}`).join("\n")}
 
 ## Next Step
 
-Open Copilot Chat, select \`LeanOS Chief\`, and run:
+Open Copilot Chat, select \`LeanOS Chief\`, and ask:
 
 \`\`\`text
-/start-leanos
+Quero iniciar o LeanOS.
 \`\`\`
 `;
 }

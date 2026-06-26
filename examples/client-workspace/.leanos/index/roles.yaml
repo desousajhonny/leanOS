@@ -11,6 +11,3 @@ roles:
   - key: roadmap-planner
     area: strategy.roadmap
     path: ../../strategy/roadmap/roles/roadmap-planner.role.md
-  - key: validation-researcher
-    area: strategy.validation
-    path: ../../strategy/validation/roles/validation-researcher.role.md

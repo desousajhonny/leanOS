@@ -23,51 +23,41 @@ Read these files first:
 
 ## Red Lines / Non-Negotiable Rules
 
-- For every LeanOS task, command, workflow, file update, strategy decision, product decision, implementation request or review request, always start with the Response Header.
+- Before every routed LeanOS task, workflow, file update, strategy decision, product decision, implementation request or review request, show the route in one short founder-friendly sentence.
+- Do not use a fixed technical routing table unless the founder asks for trace, debug or diagnostic detail.
 - Never execute a routed LeanOS task before showing the route.
-- Use \`not applicable\` only when a Response Header field truly does not apply.
 - Enter the owning department or area before acting.
 - When an area has its own \`AGENT.md\`, use it as the area operating owner before loading roles, skills or playbooks.
-- Do not invent missing workflows, roles, skills, playbooks, commands or templates.
+- Do not invent missing workflows, roles, skills, playbooks or templates.
 - Do not load the whole workspace when a smaller route exists.
 - Do not write secrets to tracked files.
 - Ask before modifying knowledge, decision or framework files.
 - Do not create or modify LeanOS framework assets from memory. Route through \`ai-standard/README.md\`.
 - For "where are we?", "what do we have?", "what is missing?", "can we start building?" or similar readiness/status requests, load \`.leanos/agent/protocols/where-we-are.md\` before recommending a next step or implementation.
 - For trace, debug, diagnostic, "what did LeanOS do?" or "send a report to the framework" requests, load \`.leanos/agent/protocols/chief-trace.md\` and create only a safe local trace after confirmation.
-- During \`/start-leanos\`, do not enrich roles, skills, playbooks, workflows, commands or \`ai-standard/\` with company/product context.
+- During startup, do not enrich roles, skills, playbooks, workflows, \`ai-standard/\` or \`.github/\` with company/product context.
+- Do not modify roles, skills, playbooks, workflows, \`ai-standard/\` or \`.github/\` during startup.
+- During startup, propose updates first and write only after explicit user confirmation.
+- Do not write during the first response.
 - Do not modify source-of-truth, decision, framework or runtime files until the user explicitly confirms the proposed changes.
 
-## Response Header
+## Routing Narration
 
-For every routed LeanOS task, start with:
-
-Active Department:
-Active Area:
-Active Role:
-Loaded Skills:
-Relevant Playbook:
-Loaded Context:
-
-## Command Handling
-
-LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface.
-
-When the user invokes \`/start-leanos\`, load \`.leanos/commands/start-leanos.md\` and follow it.
-
-When the user invokes legacy \`/leanos-init\` or inverted \`/leanos-start\`, treat it as \`/start-leanos\`.
-
-For any LeanOS slash command, normalize the command to kebab-case and load \`.leanos/commands/<command>.md\` before acting.
-
-If the command file is missing, do not invent the command. Explain what is missing and route through the active context instead.
-
-## Natural Language Handling
-
-If a natural-language request clearly matches an existing LeanOS command, load the matching command file before acting.
+For every routed LeanOS task, show the route in one short founder-friendly sentence before acting.
 
 Examples:
 
-- "help me define the ICP" -> \`.leanos/commands/define-icp.md\`
+- "Vou começar por Strategy Product para organizar a tese do MVP antes do roadmap."
+- "Isso já é trabalho de entrega; preciso ativar Product Ops antes de criar Epic ou Feature."
+- "Vou usar o protocolo de status para checar o que existe antes de recomendar implementação."
+
+## Natural Language Handling
+
+Natural language is the primary interface. Route founder requests through Progression Intent Routing, then through the owning department, workflow, area, role, skill and playbook.
+
+Examples:
+
+- "help me define the ICP" -> \`strategy/AGENT.md\`
 - "define the MVP validation scope" or "what should the first MVP validate?" -> \`strategy/AGENT.md\`
 - "turn this roadmap item into executable MVP scope" -> return \`activation_required\` for \`operations.product-ops\` when Product Ops is inactive
 - "review this PR" -> return \`activation_required\` for \`operations.engineering\` when Engineering is inactive
@@ -118,22 +108,22 @@ activation_required: operations.product-ops
 
 ## Natural Intent Map
 
-Use this map as routing guidance, not as execution detail. After selecting the route, load the owning command, department or workflow and let that file decide the next step.
+Use this map as routing guidance, not as execution detail. After selecting the route, load the owning department or workflow and let that file decide the next step.
 
-- Setup or restart LeanOS: \`.leanos/commands/start-leanos.md\`
-- Status, resume or readiness: \`.leanos/commands/status-leanos.md\`
+- Setup or restart LeanOS: \`strategy/AGENT.md\`
+- Status, resume or readiness: \`.leanos/agent/protocols/where-we-are.md\`
 - MVP validation scope or first MVP roadmap: \`strategy/AGENT.md\`
 - MVP delivery scope definition: return \`activation_required\` for \`operations.product-ops\` until Product Ops is active
-- Coherence check: \`.leanos/commands/check-coherence.md\`
+- Coherence check: \`strategy/AGENT.md\`
 - New idea or feature evaluation: \`strategy/AGENT.md\`
 - Roadmap/backlog promotion: \`strategy/AGENT.md\`
 - Roadmap item to Epic or Epic to Features: return \`activation_required\` for \`operations.product-ops\` until Operations is active
 - Feature implementation: return \`activation_required\` for \`operations.engineering\` until Engineering is active
-- GitHub setup, GitHub Projects configuration or GitHub sync: return \`activation_required\` for \`operations.devops\` until DevOps is active
+- GitHub setup, GitHub Projects configuration or Epics/Features sync: return \`activation_required\` for \`operations.devops\` until DevOps is active
 - PR preparation or review: return \`activation_required\` for \`operations.engineering\` until Engineering is active
 - Post-merge continuation: return \`activation_required\` for \`operations.product-ops\` until Operations is active
 
-If no command clearly matches, route through the Navigation Chain.
+If no route clearly matches, route through the Navigation Chain.
 
 ## Status And Readiness Questions
 
@@ -189,7 +179,7 @@ ${routingLines.join("\n\n")}
 
 ## LeanOS Runtime
 
-\`.leanos/\` contains runtime files for commands, context, indexes and VS Code integration.
+\`.leanos/\` contains runtime files for context, indexes, local traces and VS Code integration.
 \`.leanos/\` does not own business workflows. Operational workflows live in root departments or their areas, such as \`strategy/workflows/\` and \`operations/workflows/\`.
 
 \`ai-standard/\` is the framework standards router for creating, changing, reviewing or validating LeanOS assets.
@@ -200,7 +190,7 @@ Use \`ai-standard/README.md\` only when the user asks to create, change, review 
 
 Framework assets include:
 
-- roles, skills, playbooks, workflows and commands
+- roles, skills, playbooks and workflows
 - \`AGENT.md\` files and README files
 - templates, checklists and instructions
 - \`department.yaml\` and \`area.yaml\`
@@ -221,13 +211,13 @@ Do not use \`ai-standard/\` to define product strategy, MVP, roadmap, design, en
 
 export function leanosRuntimeFiles(): FileEntry[] {
   return [
-    { path: ".leanos/README.md", content: folderReadme("LeanOS Runtime", "Runtime files for LeanOS Chief.", "Use for commands, context, indexes, local traces and VS Code integration.", "context/current-focus.md", ["agent/", "commands/", "context/", "index/", "traces/", "vscode/"], ["../AGENT.md", "../ai-standard/", "../strategy/", "../operations/", "../growth/"], "This folder is runtime support. Business workflows live in departments or areas such as `strategy/workflows/` and `operations/workflows/`. Operational roles, skills and playbooks live in workspace areas. Traces are local diagnostics, not telemetry.") },
-    { path: ".leanos/agent/README.md", content: folderReadme("Agent", "Chief Agent operating guidance.", "Use when defining how LeanOS Chief loads context, activates routes and formats output.", "chief-agent.md", ["chief-agent.md", "operating-rules.md", "context-loading.md", "role-activation.md", "output-standards.md", "protocols/"], ["../../ai-standard/", "../commands/", "../context/"], "Keep this folder concise. Route product work to root departments and areas. Protocols are internal agent procedures, not product workflows.") },
+    { path: ".leanos/README.md", content: folderReadme("LeanOS Runtime", "Runtime files for LeanOS Chief.", "Use for context, indexes, local traces and VS Code integration.", "context/current-focus.md", ["agent/", "context/", "index/", "traces/", "vscode/"], ["../AGENT.md", "../ai-standard/", "../strategy/", "../operations/", "../growth/"], "This folder is runtime support. Business workflows live in departments or areas such as `strategy/workflows/` and `operations/workflows/`. Operational roles, skills and playbooks live in workspace areas. Traces are local diagnostics, not telemetry.") },
+    { path: ".leanos/agent/README.md", content: folderReadme("Agent", "Chief Agent operating guidance.", "Use when defining how LeanOS Chief loads context, activates routes and formats output.", "chief-agent.md", ["chief-agent.md", "operating-rules.md", "context-loading.md", "role-activation.md", "output-standards.md", "protocols/"], ["../../ai-standard/", "../context/"], "Keep this folder concise. Route product work to root departments and areas. Protocols are internal agent procedures, not product workflows.") },
     { path: ".leanos/agent/chief-agent.md", content: "# Chief Agent\n\nLeanOS Chief is the bootloader and dispatcher for the workspace.\n\nIt should load AGENT.md, leanos.yaml, context files and the routing map before acting.\n" },
-    { path: ".leanos/agent/operating-rules.md", content: "# Operating Rules\n\n- Start from `../../AGENT.md`.\n- LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface.\n- Natural language founder requests are first-class. Root AGENT.md routes to the correct department; department AGENT.md files route to workflows or areas.\n- `AGENT.md` is the operating owner for its level; `README.md` is the directory map.\n- Area `AGENT.md` files, when present, choose the specialist role before skills and playbooks are loaded.\n- For `/start-leanos`, load `../commands/start-leanos.md` before acting.\n- For any LeanOS slash command, load `../commands/<command>.md`; if it is missing, do not invent it.\n- For status, resume, readiness or \"can we build?\" requests, load `protocols/where-we-are.md` before recommending a next step.\n- For trace, debug or diagnostic requests, load `protocols/chief-trace.md` and create only a safe local trace after confirmation.\n- Load only relevant context.\n- Enter the owning department or area before acting.\n- Do not implement before loading the matching workflow or command, area, role, skill and playbook.\n- Business workflows live in root departments or areas, not in `.leanos/`.\n- During `/start-leanos`, propose updates first and write only after explicit user confirmation.\n- Treat `/leanos-init` and `/leanos-start` as aliases for `/start-leanos`.\n- Do not modify roles, skills, playbooks, workflows, commands, `ai-standard/` or `.github/` during init.\n- Do not write secrets to tracked files.\n- Customize framework files only when the user explicitly asks to change LeanOS itself.\n" },
+    { path: ".leanos/agent/operating-rules.md", content: "# Operating Rules\n\n- Start from `../../AGENT.md`.\n- Natural language founder requests are first-class and the primary interface. Root AGENT.md routes to the correct department; department AGENT.md files route to workflows or areas.\n- `AGENT.md` is the operating owner for its level; `README.md` is the directory map.\n- Area `AGENT.md` files, when present, choose the specialist role before skills and playbooks are loaded.\n- For startup requests, route through `../../AGENT.md` and `../../strategy/AGENT.md`.\n- For status, resume, readiness or \"can we build?\" requests, load `protocols/where-we-are.md` before recommending a next step.\n- For trace, debug or diagnostic requests, load `protocols/chief-trace.md` and create only a safe local trace after confirmation.\n- Load only relevant context.\n- Enter the owning department or area before acting.\n- Do not implement before loading the matching workflow, area, role, skill and playbook.\n- Business workflows live in root departments or areas, not in `.leanos/`.\n- During startup, propose updates first and write only after explicit user confirmation.\n- Do not write during the first response.\n- Do not modify roles, skills, playbooks, workflows, `ai-standard/` or `.github/` during startup.\n- Do not write secrets to tracked files.\n- Customize framework files only when the user explicitly asks to change LeanOS itself.\n" },
     { path: ".leanos/agent/context-loading.md", content: "# Context Loading\n\nLeanOS uses lazy context loading.\n\nLoad `../context/` first, then use `../index/` to choose the smallest relevant path.\n" },
     { path: ".leanos/agent/role-activation.md", content: "# Role Activation\n\nRoles live inside active workspace areas.\n\nDo not activate a role from an inactive or missing area without asking the user.\n" },
-    { path: ".leanos/agent/output-standards.md", content: "# Output Standards\n\nEvery output should include:\n\n- What was loaded\n- Decision or result\n- Files to update, if any\n- Next recommended command or route\n" },
+    { path: ".leanos/agent/output-standards.md", content: "# Output Standards\n\nEvery output should include:\n\n- What was loaded\n- Decision or result\n- Files to update, if any\n- Next recommended route\n" },
     { path: ".leanos/agent/protocols/README.md", content: folderReadme("Agent Protocols", "Internal LeanOS Chief procedures for session status, routing support, readiness diagnosis and local trace diagnostics.", "Use when the user asks a meta-question about the workspace rather than asking to execute a product workflow.", "where-we-are.md", ["where-we-are.md", "chief-trace.md"], ["../", "../../context/", "../../index/", "../../traces/"], "Protocols do not own product decisions. They inspect existing sources, record safe diagnostics when asked and recommend the next safe route.") },
     { path: ".leanos/agent/protocols/where-we-are.md", content: whereWeAreProtocol() },
     { path: ".leanos/agent/protocols/chief-trace.md", content: chiefTraceProtocol() }
@@ -341,14 +331,14 @@ If these are missing, explain the gap and recommend the next LeanOS route instea
 
 ## Recommended Routes By Gap
 
-- Strategy missing -> \`/start-leanos\`
+- Strategy missing -> \`strategy/AGENT.md\`
 - Product strategy weak -> Strategy Product through \`strategy/AGENT.md\`
 - MVP validation scope missing or weak -> Strategy Product through \`strategy/AGENT.md\`
-- MVP delivery scope missing after roadmap item is chosen -> \`/define-mvp\` when Product Ops is active, otherwise activate \`operations.product-ops\`
-- Roadmap missing -> \`idea-to-roadmap\` or Strategy Roadmap through \`strategy/AGENT.md\`
-- Local epic missing -> \`roadmap-item-to-epic\`
-- Features missing -> \`epic-to-features\` when available
-- Implementation ready -> \`feature-to-delivery-cycle\`
+- MVP delivery scope missing after roadmap item is chosen -> Product Ops \`define-mvp\` workflow when Product Ops is active, otherwise activate \`operations.product-ops\`
+- Roadmap missing -> Strategy \`idea-to-roadmap\` workflow or Strategy Roadmap through \`strategy/AGENT.md\`
+- Local epic missing -> Product Ops \`roadmap-item-to-epic\` workflow
+- Features missing -> Product Ops \`epic-to-features\` workflow when available
+- Implementation ready -> Engineering \`feature-to-delivery-cycle\` workflow
 - PR/review needed -> Engineering PR validation route
 - Launch/readiness needed -> Growth or DevOps based on the gap
 

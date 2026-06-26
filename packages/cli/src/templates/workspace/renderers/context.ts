@@ -1,6 +1,6 @@
-import { getActiveSubareaKeys, getActiveWorkflowKeys, getAvailableCommands } from "../selectors.js";
+import { getActiveSubareaKeys, getActiveWorkflowKeys } from "../selectors.js";
 import type { AreaDefinition, FileEntry, RootDepartmentDefinition, WorkspaceAnswers } from "../types.js";
-import { folderReadme, formatCommandInvocation, toTitle } from "../content/shared.js";
+import { folderReadme } from "../content/shared.js";
 
 export function contextFiles(answers: WorkspaceAnswers, activeAreas: AreaDefinition[], activeRoots: RootDepartmentDefinition[]): FileEntry[] {
   const activeWorkflows = getActiveWorkflowKeys(activeAreas);
@@ -23,7 +23,7 @@ No complete local workflow is active yet.
 
 The currently active areas do not satisfy any full department workflow requirements.
 
-Use active area READMEs and available commands until the user activates more areas.
+Use active area READMEs and routing protocols until the user activates more areas.
 `;
   }
 
@@ -71,45 +71,44 @@ ${activeAreas.map((area) => `- ${area.key}: \`${area.path}/${area.lead ? "AGENT.
 
 ${activeWorkflows.length > 0 ? `Compatible local workflows:\n\n${activeWorkflows.map((workflow) => `- ${workflow}`).join("\n")}` : "No complete local workflow is active yet."}
 
-${activeKeys.has("strategy.product") ? "Product strategy commands are available." : "Product strategy commands are not active. Ask before activating Strategy Product or creating product-specific assets."}
+${activeKeys.has("strategy.product") ? "Product strategy routes are available." : "Product strategy routes are not active. Ask before activating Strategy Product or creating product-specific assets."}
 `;
 }
 
 export function getNextActions(answers: WorkspaceAnswers, activeAreas: AreaDefinition[]): string {
   const activeKeys = getActiveSubareaKeys(activeAreas);
-  const availableCommands = getAvailableCommands(activeAreas)
-    .filter((command) => !command.assetCreation)
-    .filter((command) => {
-      if (command.slug === "define-design") {
-        return activeKeys.has("operations.design") && activeKeys.has("strategy.product") && activeKeys.has("operations.product-ops");
-      }
-
-      return ["status-leanos", "define-icp", "define-mvp", "check-coherence", "workon-feature"].includes(command.slug);
-    })
-    .slice(0, 5);
-
-  if (availableCommands.length === 0) {
-    return `# Next Actions
-
-## 1. Check Status
-
-Command:
-
-\`\`\`text
-/status-leanos
-\`\`\`
-
-No area-specific command is active yet. Use \`/status-leanos\` to run the LeanOS status protocol before activating missing areas.
-`;
-  }
+  const productOpsActive = activeKeys.has("operations.product-ops");
+  const engineeringActive = activeKeys.has("operations.engineering");
 
   return `# Next Actions
 
-${answers.workspaceMode === "existing-product-repo" ? "Start by using `/start-leanos` to capture current product and codebase context before planning new implementation work." : "Start by using `/start-leanos` to define strategy and MVP before any future app/code bootstrap."}
+## 1. Start Or Continue Strategy
 
-${answers.prepareGithubManagement ? "GitHub management was prepared. Add a local token to `.env.local` only when running a future `/configure github` or GitHub sync flow." : "GitHub management was not requested yet. Ask before creating `.env.local` or configuring GitHub sync."}
+Route:
 
-${availableCommands.map((command, index) => `## ${index + 1}. ${toTitle(command.slug)}\n\nCommand:\n\n\`\`\`text\n${formatCommandInvocation(command.slug)}\n\`\`\``).join("\n\n")}
+\`AGENT.md\` -> \`strategy/AGENT.md\`
+
+Use this when the founder is starting, restarting, defining ICP, clarifying the MVP Validation Scope, evaluating an idea or shaping the first MVP Candidate Roadmap.
+
+## 2. Check Status Or Readiness
+
+Route:
+
+\`.leanos/agent/protocols/where-we-are.md\`
+
+Use this before recommending implementation, branch, PR, launch or GitHub sync.
+
+## 3. Delivery Planning
+
+${productOpsActive ? "Product Ops is active. Route MVP delivery scope, roadmap-item-to-epic and epic-to-features work through `operations/AGENT.md` -> `operations/product-ops/AGENT.md`." : "Product Ops is not active. If the founder wants MVP delivery scope, local Epics or Features, ask to activate `operations.product-ops` before creating delivery assets."}
+
+## 4. Implementation Readiness
+
+${engineeringActive ? "Engineering is active. Route implementation, branch, PR and review work through `operations/AGENT.md` after Product Ops readiness is clear." : "Engineering is not active. Do not implement product code until delivery scope and Engineering activation are ready."}
+
+## GitHub
+
+${answers.prepareGithubManagement ? "GitHub management was prepared. Add a local token to `.env.local` only when configuring GitHub Projects or running a future Epics/Features sync flow." : "GitHub management was not requested yet. Ask before creating `.env.local` or configuring GitHub Projects sync."}
 
 ## Future App Bootstrap
 

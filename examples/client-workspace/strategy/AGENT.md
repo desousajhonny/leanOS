@@ -30,14 +30,13 @@ Use `workflows/README.md` when the founder asks for a multi-step decision or tra
 - evaluating a new idea before roadmap or MVP
 - deciding whether an idea should enter roadmap
 - changing product direction, priority or sequencing
-- preparing roadmap sync or strategic handoff
+- preparing Product Ops handoff or strategic handoff
 
 ## Active Areas
 
 - Business: `business/AGENT.md` - Keep business identity, principles, mission and operating decisions coherent.
 - Product: `product/AGENT.md` - Own product strategy, ICP, value proposition, MVP validation scope, positioning and business model coherence.
 - Roadmap: `roadmap/AGENT.md` - Own roadmap sequence, milestones, backlog and planning-cycle prioritization.
-- Validation: `validation/README.md` - Own assumptions, experiments, interviews, success metrics and learning capture.
 
 ## Workflow Entry
 

@@ -48,17 +48,6 @@ client-workspace/
 |   |   |-- output-standards.md
 |   |   |-- README.md
 |   |   `-- role-activation.md
-|   |-- commands/
-|   |   |-- check-coherence.md
-|   |   |-- create-playbook.md
-|   |   |-- create-roadmap.md
-|   |   |-- create-role.md
-|   |   |-- create-skill-role-playbook.md
-|   |   |-- create-skill.md
-|   |   |-- define-icp.md
-|   |   |-- README.md
-|   |   |-- start-leanos.md
-|   |   `-- status-leanos.md
 |   |-- context/
 |   |   |-- active-workflow.md
 |   |   |-- current-focus.md
@@ -255,46 +244,22 @@ client-workspace/
 |   |   |   `-- roadmap.md
 |   |   |-- playbooks/
 |   |   |   |-- README.md
-|   |   |   |-- roadmap-cycle-planning.playbook.md
-|   |   |   `-- roadmap-sync-prep.playbook.md
+|   |   |   `-- roadmap-cycle-planning.playbook.md
 |   |   |-- roles/
 |   |   |   |-- README.md
 |   |   |   `-- roadmap-planner.role.md
 |   |   |-- skills/
 |   |   |   |-- create-roadmap.skill.md
-|   |   |   |-- prepare-roadmap-sync.skill.md
 |   |   |   |-- prioritize-backlog.skill.md
 |   |   |   `-- README.md
 |   |   |-- AGENT.md
 |   |   |-- area.yaml
 |   |   `-- README.md
-|   |-- validation/
-|   |   |-- playbooks/
-|   |   |   |-- mvp-validation.playbook.md
-|   |   |   `-- README.md
-|   |   |-- roles/
-|   |   |   |-- README.md
-|   |   |   `-- validation-researcher.role.md
-|   |   |-- skills/
-|   |   |   |-- create-interview-script.skill.md
-|   |   |   |-- define-assumptions.skill.md
-|   |   |   |-- define-success-metrics.skill.md
-|   |   |   `-- README.md
-|   |   |-- area.yaml
-|   |   |-- assumptions.md
-|   |   |-- experiments.md
-|   |   |-- interview-script.md
-|   |   |-- learning-log.md
-|   |   |-- README.md
-|   |   |-- riskiest-assumptions.md
-|   |   `-- success-metrics.md
 |   |-- workflows/
 |   |   |-- founder-diagnosis.workflow.md
 |   |   |-- idea-to-roadmap.workflow.md
 |   |   |-- new-idea-intake.workflow.md
-|   |   |-- README.md
-|   |   |-- roadmap-to-github-project.workflow.md
-|   |   `-- strategy-validation-cycle.workflow.md
+|   |   `-- README.md
 |   |-- AGENT.md
 |   |-- department.yaml
 |   `-- README.md

@@ -3,7 +3,6 @@ import { join } from "node:path";
 import { parse } from "yaml";
 import { writeWorkspaceFiles, type WriteWorkspaceResult } from "./file-writer.js";
 import { getActiveRootDepartments, getAllAreas, getArea } from "../templates/workspace/selectors.js";
-import { commandFiles } from "../templates/workspace/renderers/commands.js";
 import { contextFiles } from "../templates/workspace/renderers/context.js";
 import { rootDepartmentFiles } from "../templates/workspace/renderers/departments.js";
 import { indexFiles } from "../templates/workspace/renderers/indexes.js";
@@ -70,7 +69,6 @@ export function createWorkspaceActivationFiles(answers: WorkspaceAnswers, active
     { path: "leanos.yaml", content: createLeanOsYaml(answers, activeAreas, activeRoots) },
     ...indexFiles(activeAreas, activeRoots),
     ...contextFiles(answers, activeAreas, activeRoots),
-    ...commandFiles(activeAreas),
     ...activatedRootFiles
   ];
 }

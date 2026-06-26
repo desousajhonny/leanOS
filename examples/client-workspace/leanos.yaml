@@ -29,7 +29,6 @@ activation:
     - strategy.business
     - strategy.product
     - strategy.roadmap
-    - strategy.validation
   inactive_areas:
     - operations.product-ops
     - operations.design
@@ -43,7 +42,6 @@ activation:
     - strategy.business
     - strategy.product
     - strategy.roadmap
-    - strategy.validation
     - operations.product-ops
     - operations.design
     - operations.engineering
@@ -83,7 +81,7 @@ product:
 agent:
   entrypoint: AGENT.md
   chief_agent: enabled
-  command_style: slash-and-natural-language
+  command_style: natural-language
   context_loading: lazy
   navigation_chain:
     enabled: true
@@ -113,11 +111,6 @@ subareas:
       path: strategy/roadmap/README.md
       agent: strategy/roadmap/AGENT.md
       readme: strategy/roadmap/README.md
-    - key: strategy.validation
-      department: strategy
-      path: strategy/validation/README.md
-      agent: null
-      readme: strategy/validation/README.md
 roles:
   ownership: area-first
   active:
@@ -128,8 +121,6 @@ roles:
       - product-manager
     strategy.roadmap:
       - roadmap-planner
-    strategy.validation:
-      - validation-researcher
 skills:
   ownership: area-first
   active:
@@ -148,11 +139,6 @@ skills:
     strategy.roadmap:
       - create-roadmap
       - prioritize-backlog
-      - prepare-roadmap-sync
-    strategy.validation:
-      - define-assumptions
-      - create-interview-script
-      - define-success-metrics
 playbooks:
   ownership: area-first
   active:
@@ -162,17 +148,12 @@ playbooks:
       - product-strategy
     strategy.roadmap:
       - roadmap-cycle-planning
-      - roadmap-sync-prep
-    strategy.validation:
-      - mvp-validation
 workflows:
   ownership: department-local
   active:
     - founder-diagnosis
     - new-idea-intake
     - idea-to-roadmap
-    - strategy-validation-cycle
-    - roadmap-to-github-project
   by_department:
     strategy:
       - key: founder-diagnosis
@@ -181,10 +162,6 @@ workflows:
         path: strategy/workflows/new-idea-intake.workflow.md
       - key: idea-to-roadmap
         path: strategy/workflows/idea-to-roadmap.workflow.md
-      - key: strategy-validation-cycle
-        path: strategy/workflows/strategy-validation-cycle.workflow.md
-      - key: roadmap-to-github-project
-        path: strategy/workflows/roadmap-to-github-project.workflow.md
 ai_standard:
   path: ai-standard/README.md
   foundation: ai-standard/foundation

@@ -8,7 +8,7 @@ Use `README.md` as the directory map. Use `area.yaml` when machine-readable stru
 
 ## Operating Scope
 
-Route roadmap planning, prioritization, cycle planning and GitHub sync preparation.
+Route roadmap planning, prioritization and cycle planning.
 
 
 

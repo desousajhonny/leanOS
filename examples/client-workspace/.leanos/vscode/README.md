@@ -12,16 +12,10 @@ VS Code detects workspace custom agents from `.github/agents`.
 
 ## Bootstrap
 
-Open Copilot Chat, select `LeanOS Chief`, then start with:
+Open Copilot Chat, select `LeanOS Chief`, then use linguagem natural:
 
 ```text
-/start-leanos
-```
-
-Legacy workspaces may still use:
-
-```text
-/leanos-init
+Quero iniciar o LeanOS.
 ```
 
 The primary prompt file is:

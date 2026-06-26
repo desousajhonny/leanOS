@@ -69,7 +69,7 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
     agent: {
       entrypoint: "AGENT.md",
       chief_agent: "enabled",
-      command_style: "slash-and-natural-language",
+      command_style: "natural-language",
       context_loading: "lazy",
       navigation_chain: {
         enabled: true,

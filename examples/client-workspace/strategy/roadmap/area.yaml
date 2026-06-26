@@ -9,10 +9,8 @@ area:
   skills:
     - create-roadmap
     - prioritize-backlog
-    - prepare-roadmap-sync
   playbooks:
     - roadmap-cycle-planning
-    - roadmap-sync-prep
   source_of_truth:
     - knowledge/roadmap.md
     - knowledge/milestones.md

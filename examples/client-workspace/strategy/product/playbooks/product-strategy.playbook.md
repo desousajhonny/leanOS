@@ -23,7 +23,7 @@ Move from raw product context to coherent strategy and MVP validation scope.
 4. When the founder is starting from an idea, define or update the MVP Validation Scope before Roadmap.
 5. Separate decisions, assumptions and open questions.
 6. Use Roadmap when the MVP Validation Scope needs an MVP Candidate Roadmap.
-7. Use Validation only for explicit experiment planning, not as a mandatory pre-MVP interview gate.
+7. Use `validation-notes.md` only for lightweight assumptions and learning notes; MVP Validation Scope is the default validation path.
 8. Propose file updates and wait for confirmation before writing.
 
 ## Guided Conversation

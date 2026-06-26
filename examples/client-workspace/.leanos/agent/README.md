@@ -24,7 +24,6 @@ Use when defining how LeanOS Chief loads context, activates routes and formats o
 ## Related Folders
 
 - `../../ai-standard/`
-- `../commands/`
 - `../context/`
 
 ## Navigation

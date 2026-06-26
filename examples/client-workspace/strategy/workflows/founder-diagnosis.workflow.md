@@ -40,17 +40,12 @@ Setup Seed, Strategy Seed, Strategy Baseline or Idea Diagnosis.
 - Department: `strategy`
 - Primary area: `product`
 - Supporting areas: `business`, `roadmap`
-- Conditional areas: `validation`
 
 ## Required Areas
 
 - business
 - product
 - roadmap
-
-## Conditional Areas
-
-- `validation`: Use only when the active Strategy Validation area is needed for explicit experiment planning; do not make it a blocker for the first MVP validation path.
 
 ## Availability
 

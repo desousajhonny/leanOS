@@ -10,7 +10,7 @@ Use this folder when configuring GitHub Projects sync, issue labels, branch rule
 
 `setup-guide.md`
 
-Use the setup guide before running `/github-sync` for the first time or whenever GitHub readiness fails.
+Use the setup guide before the first GitHub Epics/Features sync dry-run or whenever GitHub readiness fails.
 
 ## Files
 
@@ -64,7 +64,7 @@ Operations Security is not active in this workspace. Ask before adding security 
 
 ## Readiness Rule
 
-`/github-sync` must check GitHub readiness before preparing any sync payload.
+GitHub Epics/Features sync must check GitHub readiness before preparing any sync payload.
 
 If owner, repository, Project, labels, token source or sync state are incomplete, route to DevOps setup first:
 

@@ -8,9 +8,3 @@ playbooks:
   - key: roadmap-cycle-planning
     area: strategy.roadmap
     path: ../../strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md
-  - key: roadmap-sync-prep
-    area: strategy.roadmap
-    path: ../../strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md
-  - key: mvp-validation
-    area: strategy.validation
-    path: ../../strategy/validation/playbooks/mvp-validation.playbook.md

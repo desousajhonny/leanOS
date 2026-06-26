@@ -63,7 +63,6 @@ const subareaLabels: Record<Subarea, string> = {
   "strategy.business": "Business",
   "strategy.product": "Product",
   "strategy.roadmap": "Roadmap",
-  "strategy.validation": "Validation (formal discovery)",
   "operations.product-ops": "Product Ops",
   "operations.design": "Design",
   "operations.engineering": "Engineering",
@@ -78,7 +77,6 @@ const subareaHints: Record<Subarea, string> = {
   "strategy.business": "brand, mission, principles and operating model",
   "strategy.product": "ICP, problem, value proposition and business model",
   "strategy.roadmap": "cycles, milestones and backlog priority",
-  "strategy.validation": "optional interviews, experiments and evidence loops",
   "operations.product-ops": "delivery scope, acceptance criteria and issue readiness",
   "operations.design": "flows, screens, UX states and usability",
   "operations.engineering": "implementation, tests, issues and PRs",
@@ -89,7 +87,7 @@ const subareaHints: Record<Subarea, string> = {
   "growth.finance": "pricing, unit economics, budget and revenue model"
 };
 
-const defaultSubareas: Subarea[] = getAllSubareas().filter((subarea) => subarea !== "strategy.validation");
+const defaultSubareas: Subarea[] = getAllSubareas();
 
 export async function runAiPrompts(): Promise<AiPromptResult> {
   const detectedProject = await detectProject(process.cwd());
@@ -197,7 +195,7 @@ export async function runAiPrompts(): Promise<AiPromptResult> {
   const subareas = await groupMultiselect({
     message: "Which workspace areas should LeanOS prepare?",
     options: {
-      Strategy: toOptionsForSubareas(["strategy.business", "strategy.product", "strategy.roadmap", "strategy.validation"]),
+      Strategy: toOptionsForSubareas(["strategy.business", "strategy.product", "strategy.roadmap"]),
       Operations: toOptionsForSubareas(["operations.product-ops", "operations.design", "operations.engineering", "operations.devops", "operations.security"]),
       Growth: toOptionsForSubareas(["growth.customer-experience", "growth.marketing", "growth.finance"])
     },
@@ -239,7 +237,7 @@ export async function runAiPrompts(): Promise<AiPromptResult> {
   note(
     [
       `VS Code agent: ${ui.path(".github/agents/leanos-chief.agent.md")}`,
-      `Start command: ${ui.command("/start-leanos")}`,
+      "Start by asking LeanOS Chief, in natural language, to begin or continue the workspace.",
       "LeanOS Chief only dispatches to the framework files generated in this workspace."
     ].join("\n"),
     stepLabel(4, 5, "LeanOS Chief")

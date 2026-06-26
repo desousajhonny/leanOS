@@ -6,7 +6,7 @@ Runtime files for LeanOS Chief.
 
 ## When to Use
 
-Use for commands, context, indexes, local traces and VS Code integration.
+Use for context, indexes, local traces and VS Code integration.
 
 ## Source of Truth
 
@@ -15,7 +15,6 @@ Use for commands, context, indexes, local traces and VS Code integration.
 ## Files
 
 - `agent/`
-- `commands/`
 - `context/`
 - `index/`
 - `traces/`

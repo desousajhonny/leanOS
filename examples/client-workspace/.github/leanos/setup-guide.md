@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Guide the founder through GitHub setup before `/github-sync` creates a dry-run payload.
+Guide the founder through GitHub setup before GitHub Epics/Features sync creates a dry-run payload.
 
 This guide is for setup and readiness only. It does not authorize remote writes by itself.
 
@@ -119,7 +119,7 @@ Ask for confirmation before writing.
 
 ## Ready For Dry-Run
 
-GitHub is ready for `/github-sync` dry-run when:
+GitHub is ready for an Epics/Features sync dry-run when:
 
 - owner and repository are known;
 - Project URL or number is known;

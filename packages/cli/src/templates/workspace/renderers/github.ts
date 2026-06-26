@@ -201,7 +201,7 @@ body:
 function envLocal(): string {
   return `# LeanOS local environment
 # Local only. Do not commit.
-# Used by future LeanOS GitHub capabilities after /github-sync readiness.
+# Used by future LeanOS GitHub capabilities after Epics/Features sync readiness.
 
 LEANOS_GITHUB_TOKEN=
 GITHUB_TOKEN=
@@ -221,7 +221,7 @@ Use this folder when configuring GitHub Projects sync, issue labels, branch rule
 
 \`setup-guide.md\`
 
-Use the setup guide before running \`/github-sync\` for the first time or whenever GitHub readiness fails.
+Use the setup guide before the first GitHub Epics/Features sync dry-run or whenever GitHub readiness fails.
 
 ## Files
 
@@ -275,7 +275,7 @@ ${securityNote}
 
 ## Readiness Rule
 
-\`/github-sync\` must check GitHub readiness before preparing any sync payload.
+GitHub Epics/Features sync must check GitHub readiness before preparing any sync payload.
 
 If owner, repository, Project, labels, token source or sync state are incomplete, route to DevOps setup first:
 
@@ -304,7 +304,7 @@ function githubSetupGuide(): string {
 
 ## Purpose
 
-Guide the founder through GitHub setup before \`/github-sync\` creates a dry-run payload.
+Guide the founder through GitHub setup before GitHub Epics/Features sync creates a dry-run payload.
 
 This guide is for setup and readiness only. It does not authorize remote writes by itself.
 
@@ -421,7 +421,7 @@ Ask for confirmation before writing.
 
 ## Ready For Dry-Run
 
-GitHub is ready for \`/github-sync\` dry-run when:
+GitHub is ready for an Epics/Features sync dry-run when:
 
 - owner and repository are known;
 - Project URL or number is known;
@@ -535,7 +535,7 @@ Purpose: sync local LeanOS Epics and Features to GitHub issues and Project items
 
 Inputs:
 
-- approved dry-run payload from \`/github-sync\`;
+- approved dry-run payload from GitHub Epics/Features sync;
 - local Epic and Feature source paths;
 - current sync-state;
 - target repository and Project;
@@ -1014,7 +1014,7 @@ Reason: synced work is still product context. Moving it to an archive folder can
 
 ## Required Sync Behavior
 
-Use \`/github-sync\` as the chat intent for this flow.
+Use a natural-language GitHub Epics/Features sync request as the chat intent for this flow.
 
 Before creating or updating GitHub:
 
@@ -1072,12 +1072,8 @@ function projectSyncYaml(answers: WorkspaceAnswers): string {
     status: ${answers.prepareGithubManagement ? "pending_configuration" : "not_requested"}
     enabled: false
     source:
-      roadmap: ../../strategy/roadmap/knowledge/roadmap.md
-      milestones: ../../strategy/roadmap/knowledge/milestones.md
-      current_cycle: ../../strategy/roadmap/knowledge/current-cycle.md
-      mvp_scope: ../../operations/product-ops/mvp/scope.md
-      acceptance_criteria: ../../operations/product-ops/mvp/acceptance-criteria.md
       epics: ../../operations/product-ops/epics/
+      work_mapping: ../../.github/leanos/work-mapping.md
   work_mapping:
     epic:
       local_source: operations/product-ops/epics/<epic-slug>/README.md

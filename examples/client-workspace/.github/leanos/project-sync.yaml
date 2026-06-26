@@ -18,12 +18,8 @@ github:
     status: pending_configuration
     enabled: false
     source:
-      roadmap: ../../strategy/roadmap/knowledge/roadmap.md
-      milestones: ../../strategy/roadmap/knowledge/milestones.md
-      current_cycle: ../../strategy/roadmap/knowledge/current-cycle.md
-      mvp_scope: ../../operations/product-ops/mvp/scope.md
-      acceptance_criteria: ../../operations/product-ops/mvp/acceptance-criteria.md
       epics: ../../operations/product-ops/epics/
+      work_mapping: ../../.github/leanos/work-mapping.md
   work_mapping:
     epic:
       local_source: operations/product-ops/epics/<epic-slug>/README.md

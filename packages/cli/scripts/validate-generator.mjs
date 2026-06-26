@@ -24,7 +24,6 @@ const allSubareas = [
   "strategy.business",
   "strategy.product",
   "strategy.roadmap",
-  "strategy.validation",
   "operations.product-ops",
   "operations.design",
   "operations.engineering",
@@ -38,8 +37,7 @@ const allSubareas = [
 const initialStrategySubareas = [
   "strategy.business",
   "strategy.product",
-  "strategy.roadmap",
-  "strategy.validation"
+  "strategy.roadmap"
 ];
 
 const answers = {
@@ -81,7 +79,7 @@ const designOnlyAnswers = {
 const growthValidationAnswers = {
   ...answers,
   prepareGithubManagement: false,
-  subareas: ["growth.marketing", "strategy.validation"]
+  subareas: ["growth.marketing"]
 };
 
 const existingProductRepoAnswers = {
@@ -229,16 +227,13 @@ async function validateWorkspaceFiles() {
     "strategy/workflows/founder-diagnosis.workflow.md",
     "strategy/workflows/new-idea-intake.workflow.md",
     "strategy/workflows/idea-to-roadmap.workflow.md",
-    "strategy/workflows/roadmap-to-github-project.workflow.md",
     "strategy/roadmap/AGENT.md",
     "strategy/roadmap/knowledge/README.md",
     "strategy/roadmap/knowledge/roadmap.md",
     "strategy/roadmap/knowledge/milestones.md",
     "strategy/roadmap/knowledge/current-cycle.md",
     "strategy/roadmap/knowledge/backlog.md",
-    "strategy/roadmap/skills/prepare-roadmap-sync.skill.md",
     "strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md",
-    "strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md",
     "operations/product-ops/AGENT.md",
     "operations/product-ops/README.md",
     "operations/product-ops/knowledge/README.md",
@@ -256,7 +251,6 @@ async function validateWorkspaceFiles() {
     "operations/workflows/epic-to-features.workflow.md",
     "operations/workflows/feature-to-delivery-cycle.workflow.md",
     "operations/workflows/post-merge-continuation.workflow.md",
-    ".leanos/commands/define-design.md",
     "operations/design/knowledge/README.md",
     "operations/design/knowledge/design-system.md",
     "operations/design/knowledge/accessibility.md",
@@ -410,12 +404,6 @@ async function validateWorkspaceFiles() {
     ".github/agents/leanos-chief.agent.md",
     ".github/prompts/start-leanos.prompt.md",
     ".github/prompts/leanos-init.prompt.md",
-    ".leanos/commands/start-leanos.md",
-    ".leanos/commands/create-features.md",
-    ".leanos/commands/github-sync.md",
-    ".leanos/commands/create-branch.md",
-    ".leanos/commands/create-pr.md",
-    ".leanos/commands/review-pr.md",
     ".leanos/vscode/README.md"
   ];
 
@@ -439,6 +427,12 @@ async function validateWorkspaceFiles() {
     "operations/engineering/README.md",
     "growth/AGENT.md",
     "growth/marketing/README.md",
+    ".leanos/commands",
+    "strategy/validation",
+    "strategy/workflows/strategy-validation-cycle.workflow.md",
+    "strategy/workflows/roadmap-to-github-project.workflow.md",
+    "strategy/roadmap/skills/prepare-roadmap-sync.skill.md",
+    "strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md",
     "operations/devops/environments.md",
     "operations/devops/deployment.md",
     "operations/devops/deployment-readiness.md",
@@ -591,13 +585,12 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "strategy", "roadmap", "AGENT.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "knowledge", "roadmap.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-cycle-planning.playbook.md"));
-  await assertExists(join(rootDir, "strategy", "validation", "README.md"));
-  await assertExists(join(rootDir, "strategy", "validation", "assumptions.md"));
-  await assertExists(join(rootDir, "strategy", "validation", "experiments.md"));
+  assert.equal(await exists(join(rootDir, "strategy", "validation")), false, "Strategy Validation should not be generated");
   await assertExists(join(rootDir, "strategy", "workflows", "founder-diagnosis.workflow.md"));
   await assertExists(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md"));
   await assertExists(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"));
-  await assertExists(join(rootDir, "strategy", "workflows", "roadmap-to-github-project.workflow.md"));
+  assert.equal(await exists(join(rootDir, "strategy", "workflows", "strategy-validation-cycle.workflow.md")), false, "Strategy validation workflow should not be generated");
+  assert.equal(await exists(join(rootDir, "strategy", "workflows", "roadmap-to-github-project.workflow.md")), false, "Roadmap-to-GitHub workflow should not be generated");
   const founderDiagnosisWorkflow = await readFile(join(rootDir, "strategy", "workflows", "founder-diagnosis.workflow.md"), "utf8");
   const newIdeaWorkflow = await readFile(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md"), "utf8");
   const ideaToRoadmapWorkflow = await readFile(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"), "utf8");
@@ -614,7 +607,7 @@ async function validateWorkspaceFiles() {
   assert(newIdeaWorkflow.includes("## Confirmation Gates"), "New idea intake workflow should define confirmation gates");
   assert(newIdeaWorkflow.includes("## Allowed Updates"), "New idea intake workflow should define allowed updates");
   assert(newIdeaWorkflow.includes("## Forbidden Updates"), "New idea intake workflow should define forbidden updates");
-  assert(newIdeaWorkflow.includes("Use Validation only when it exists"), "New idea intake workflow should not require Validation by default");
+  assert.equal(newIdeaWorkflow.includes("Use Validation only when it exists"), false, "New idea intake workflow should not mention removed Strategy Validation");
   assert(newIdeaWorkflow.includes("MVP Validation Scope"), "New idea intake workflow should route strong initial ideas into MVP validation scope");
   assert(newIdeaWorkflow.includes("strategy/product/knowledge/mvp-validation-scope.md"), "New idea intake workflow should allow Product MVP validation scope updates after confirmation");
   assert(ideaToRoadmapWorkflow.includes("## Continuation Bridge"), "Idea-to-roadmap workflow should offer a continuation bridge");
@@ -632,8 +625,8 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "strategy", "product", "skills", "diagnose-founder-idea.skill.md"));
   await assertExists(join(rootDir, "strategy", "product", "skills", "define-mvp-validation-scope.skill.md"));
   await assertExists(join(rootDir, "strategy", "product", "skills", "evaluate-idea.skill.md"));
-  await assertExists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync.skill.md"));
-  await assertExists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md"));
+  assert.equal(await exists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync.skill.md")), false, "Strategy Roadmap should not own GitHub sync skills");
+  assert.equal(await exists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md")), false, "Strategy Roadmap should not own GitHub sync playbooks");
   await assertExists(join(rootDir, ".github", "agents", "leanos-chief.agent.md"));
   await assertExists(join(rootDir, ".github", "leanos", "github-settings.example.json"));
   await assertExists(join(rootDir, ".github", "leanos", "work-mapping.md"));
@@ -642,8 +635,7 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, ".github", "leanos", "security-automation.md"));
   await assertExists(join(rootDir, ".github", "prompts", "start-leanos.prompt.md"));
   await assertExists(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"));
-  await assertExists(join(rootDir, ".leanos", "commands", "start-leanos.md"));
-  assert.equal(await exists(join(rootDir, ".leanos", "commands", "github-sync.md")), false, "GitHub sync command should wait for DevOps activation");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Generated workspaces should not use slash-command files as an interface");
   await assertExists(join(rootDir, ".leanos", "vscode", "README.md"));
   assert.equal(await exists(join(rootDir, ".leanos", "workflows")), false, "Business workflows should not be generated under .leanos/workflows");
 
@@ -664,10 +656,10 @@ async function validateWorkspaceFiles() {
   await assertAiStandardInstructions(rootDir);
   await assertAiStandardExamples(rootDir);
   await assertAiStandardReadiness(rootDir);
-  await assertInitCommandRules(rootDir);
+  await assertNaturalStartupRules(rootDir);
   await assertRootAgentMutationRules(rootDir);
   await assertTraceDiagnostics(rootDir);
-  await assertValidationLoopSections(rootDir);
+  await assertMvpValidationScopeSections(rootDir);
   await assertNoOldAiStandardReferences(rootDir);
 
   for (const forbiddenPath of [
@@ -766,7 +758,8 @@ async function validateWorkspaceFiles() {
   assert.equal(yaml.departments.routes.growth, undefined, "Growth should not be an active route during initial setup");
   assert(yaml.workflows.active.includes("new-idea-intake"), "Expected active local Strategy new-idea-intake workflow");
   assert(yaml.workflows.active.includes("idea-to-roadmap"), "Expected active local Strategy idea-to-roadmap workflow");
-  assert(yaml.workflows.active.includes("roadmap-to-github-project"), "Expected active local Strategy GitHub roadmap workflow");
+  assert.equal(yaml.workflows.active.includes("strategy-validation-cycle"), false, "Strategy validation workflow should not be active");
+  assert.equal(yaml.workflows.active.includes("roadmap-to-github-project"), false, "Strategy should not expose roadmap-to-GitHub workflow");
   assert.equal(yaml.workflows.active.includes("roadmap-item-to-epic"), false, "Operations workflows should not be active during initial setup");
   assert.equal(yaml.workflows.active.includes("roadmap-item-to-delivery-scope"), false, "Obsolete roadmap item to delivery scope workflow should not be active");
   assert.equal(yaml.workflows.active.includes("delivery-scope-to-epic"), false, "Obsolete delivery scope to epic workflow should not be active");
@@ -781,7 +774,7 @@ async function validateWorkspaceFiles() {
   assert.deepEqual(yaml.activation.inactive_departments, ["operations", "growth"], "leanos.yaml should mark Operations and Growth inactive at setup");
   assert.deepEqual(yaml.activation.available_departments, ["strategy", "operations", "growth"], "leanos.yaml should list departments that can be activated later");
   assert.deepEqual(yaml.activation.active_departments, yaml.departments.active, "leanos.yaml activation state should mirror active departments");
-  assert.deepEqual(yaml.activation.active_areas, ["strategy.business", "strategy.product", "strategy.roadmap", "strategy.validation"], "Initial setup should activate only Strategy areas");
+  assert.deepEqual(yaml.activation.active_areas, initialStrategySubareas, "Initial setup should activate only core Strategy areas");
   assert(yaml.activation.inactive_areas.includes("operations.product-ops"), "Initial setup should keep Product Ops inactive");
   assert(yaml.activation.inactive_areas.includes("operations.engineering"), "Initial setup should keep Engineering inactive");
   assert(yaml.activation.inactive_areas.includes("growth.marketing"), "Initial setup should keep Growth areas inactive");
@@ -816,9 +809,6 @@ async function validateClientWorkspaceFixture() {
     "strategy/workflows/founder-diagnosis.workflow.md",
     "strategy/workflows/new-idea-intake.workflow.md",
     "strategy/workflows/idea-to-roadmap.workflow.md",
-    "strategy/workflows/roadmap-to-github-project.workflow.md",
-    "strategy/roadmap/skills/prepare-roadmap-sync.skill.md",
-    "strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md",
     "operations/product-ops/AGENT.md",
     "operations/product-ops/knowledge/README.md",
     "operations/product-ops/knowledge/overview.md",
@@ -937,13 +927,6 @@ async function validateClientWorkspaceFixture() {
     ".github/agents/leanos-chief.agent.md",
     ".github/prompts/start-leanos.prompt.md",
     ".github/prompts/leanos-init.prompt.md",
-    ".leanos/commands/start-leanos.md",
-    ".leanos/commands/define-design.md",
-    ".leanos/commands/create-features.md",
-    ".leanos/commands/github-sync.md",
-    ".leanos/commands/create-branch.md",
-    ".leanos/commands/create-pr.md",
-    ".leanos/commands/review-pr.md",
     ".leanos/vscode/README.md"
   ];
 
@@ -1092,7 +1075,7 @@ async function validateProductOpsActivation() {
   assert.equal(result.activatedDepartment, "operations");
   assert(result.writtenPaths.includes("operations/AGENT.md"), "Product Ops activation should create Operations");
   assert(result.writtenPaths.includes("operations/product-ops/AGENT.md"), "Product Ops activation should create Product Ops");
-  assert(result.writtenPaths.includes(".leanos/commands/define-mvp.md"), "Product Ops activation should create define-mvp command");
+  assert.equal(result.writtenPaths.some((writtenPath) => writtenPath.startsWith(".leanos/commands/")), false, "Activation should not create slash-command files");
   assert(result.writtenPaths.includes("leanos.yaml"), "Product Ops activation should update leanos.yaml");
   assert.equal(result.writtenPaths.some((writtenPath) => writtenPath.startsWith("ai-standard/")), false, "Activation should not regenerate AI Standard");
   assert.equal(result.writtenPaths.some((writtenPath) => writtenPath.startsWith(".github/")), false, "Activation should not regenerate GitHub support files");
@@ -1107,9 +1090,7 @@ async function validateProductOpsActivation() {
   await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "mvp-decision-gate.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "ready-to-develop.md"));
   await assertExists(join(rootDir, "operations", "product-ops", "mvp", "prd.md"));
-  await assertExists(join(rootDir, ".leanos", "commands", "define-mvp.md"));
-  assert.equal(await exists(join(rootDir, ".leanos", "commands", "define-design.md")), false, "Design command should wait for Design activation");
-  assert.equal(await exists(join(rootDir, ".leanos", "commands", "workon-feature.md")), false, "Engineering command should wait for Engineering activation");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Product Ops activation should not create commands");
 
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
   assert.deepEqual(yaml.departments.active, ["strategy", "operations"]);
@@ -1136,7 +1117,7 @@ async function validateProductOpsActivation() {
   assert(playbooksIndex.playbooks.some((playbook) => playbook.key === "mvp-delivery"), "MVP delivery playbook should be indexed after Product Ops activation");
   assert(workspaceSummary.includes("Active departments: strategy, operations"), "Workspace summary should include active Operations");
   assert(workspaceSummary.includes("operations.product-ops"), "Workspace summary should include Product Ops");
-  assert(nextActions.includes("/define-mvp"), "Next actions should expose define-mvp after Product Ops activation");
+  assert(nextActions.includes("Product Ops"), "Next actions should mention active Product Ops without exposing slash commands");
   assert(rootAgent.includes("- Operations: `operations/AGENT.md`"), "Root AGENT should route to Operations after activation");
 
   await assertIndexPathsExist(rootDir);
@@ -1156,13 +1137,13 @@ async function validateActivationCliCommand() {
 
   assert(stdout.includes("Activated operations.product-ops"), "Activation CLI should report the activated area");
   assert(stdout.includes("operations/AGENT.md"), "Activation CLI should report created Operations files");
-  assert(stdout.includes(".leanos/commands/define-mvp.md"), "Activation CLI should report activated command files");
+  assert.equal(stdout.includes(".leanos/commands/"), false, "Activation CLI should not report command files");
 
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
 
   assert(yaml.activation.active_areas.includes("operations.product-ops"), "Activation CLI should update leanos.yaml");
   await assertExists(join(rootDir, "operations", "product-ops", "AGENT.md"));
-  await assertExists(join(rootDir, ".leanos", "commands", "define-mvp.md"));
+  assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Activation CLI should not create commands");
   assert.equal(await exists(join(rootDir, "operations", "engineering")), false, "Activation CLI should not activate Engineering with Product Ops");
 }
 
@@ -1178,12 +1159,10 @@ async function assertProgressiveStrategyOnlyWorkspace(rootDir, founderSelectedSu
   await assertExists(join(rootDir, "strategy", "business", "AGENT.md"));
   await assertExists(join(rootDir, "strategy", "product", "AGENT.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "AGENT.md"));
-  await assertExists(join(rootDir, "strategy", "validation", "README.md"));
+  assert.equal(await exists(join(rootDir, "strategy", "validation")), false, "Strategy Validation should not be generated");
   assert.equal(await exists(join(rootDir, "operations")), false, "Operations should wait for progressive activation");
   assert.equal(await exists(join(rootDir, "growth")), false, "Growth should wait for progressive activation");
-  assert.equal(await exists(join(rootDir, ".leanos", "commands", "define-mvp.md")), false, "Product Ops command should wait for activation");
-  assert.equal(await exists(join(rootDir, ".leanos", "commands", "define-design.md")), false, "Design command should wait for activation");
-  assert.equal(await exists(join(rootDir, ".leanos", "commands", "workon-feature.md")), false, "Engineering command should wait for activation");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Progressive workspaces should not generate slash-command files");
 
   assert.deepEqual(yaml.departments.active, ["strategy"]);
   assert.deepEqual(yaml.activation.active_departments, ["strategy"]);
@@ -1197,7 +1176,8 @@ async function assertProgressiveStrategyOnlyWorkspace(rootDir, founderSelectedSu
   assert(yaml.activation.inactive_areas.includes("growth.marketing"), "Growth should start inactive");
 
   assert(rolesIndex.roles.some((role) => role.key === "product-strategist"), "Product role should be indexed in initial Strategy");
-  assert(rolesIndex.roles.some((role) => role.key === "validation-researcher"), "Validation role should be indexed in initial Strategy");
+  assert.equal(rolesIndex.roles.some((role) => role.key === "validation-researcher"), false, "Validation role should not be generated");
+  assert(skillsIndex.skills.some((skill) => skill.key === "define-mvp-validation-scope"), "MVP Validation Scope skill should be indexed in initial Strategy");
   assert.equal(rolesIndex.roles.some((role) => role.key === "senior-developer"), false, "Engineering role should wait for Operations activation");
   assert.equal(rolesIndex.roles.some((role) => role.key === "growth-lead"), false, "Growth role should wait for Growth activation");
   assert.equal(skillsIndex.skills.some((skill) => skill.key === "create-launch-plan"), false, "Growth skill should wait for Growth activation");
@@ -1207,11 +1187,11 @@ async function assertProgressiveStrategyOnlyWorkspace(rootDir, founderSelectedSu
   assert.equal(routingMap.routing.departments.operations, undefined);
   assert.equal(routingMap.routing.departments.growth, undefined);
   assert.equal(routingMap.routing.areas.product.agent, "../../strategy/product/AGENT.md");
-  assert.equal(routingMap.routing.areas.validation, "../../strategy/validation/README.md");
+  assert.equal(routingMap.routing.areas.validation, undefined);
   assert.equal(routingMap.routing.areas.engineering, undefined);
   assert.equal(routingMap.routing.areas.marketing, undefined);
   assert(workspaceSummary.includes("Active departments: strategy"), "Workspace summary should list only Strategy as active");
-  assert(workspaceSummary.includes("Active areas: strategy.business, strategy.product, strategy.roadmap, strategy.validation"), "Workspace summary should list initial Strategy areas");
+  assert(workspaceSummary.includes("Active areas: strategy.business, strategy.product, strategy.roadmap"), "Workspace summary should list initial Strategy areas");
 
   await assertIndexPathsExist(rootDir);
   await assertInitialContextCoherence(rootDir, founderSelectedSubareas);
@@ -1260,7 +1240,7 @@ async function validateExistingProductRepoMode() {
   assert.equal(projectSync.github.repository, "example-repo");
   assert.equal(await exists(join(rootDir, ".env.local")), true, "Existing repo should generate .env.local when GitHub management is requested and the file is missing");
   assert(workspaceSummary.includes("LeanOS is installed as an operating layer over an existing product repository"), "Existing repo summary should describe LeanOS as an operating layer");
-  assert(nextActions.includes("capture current product and codebase context"), "Existing repo next actions should start with product/codebase context intake");
+  assert(nextActions.includes("Start Or Continue Strategy"), "Existing repo next actions should start with natural Strategy routing");
 }
 
 async function assertVsCodeIntegration(rootDir) {
@@ -1276,12 +1256,12 @@ async function assertVsCodeIntegration(rootDir) {
   assert(agentFile.includes("Respect active departments and areas in `leanos.yaml`"), "LeanOS Chief agent should respect active departments and areas");
   assert(agentFile.includes("Do not load missing area paths"), "LeanOS Chief agent should avoid missing area paths");
   assert(agentFile.includes("propose-first mode"), "LeanOS Chief agent should use propose-first mode during init");
-  assert(agentFile.includes("Do not enrich roles, skills, playbooks, workflows, commands, `ai-standard/` or `.github/`"), "LeanOS Chief agent should protect operating assets during init");
+  assert(agentFile.includes("Do not enrich roles, skills, playbooks, workflows, `ai-standard/` or `.github/`"), "LeanOS Chief agent should protect operating assets during init");
+  assert.equal(agentFile.includes(".leanos/commands"), false, "LeanOS Chief agent should not depend on generated command files");
 
   for (const expectedLink of [
     "../../AGENT.md",
     "../../leanos.yaml",
-    "../../.leanos/commands/start-leanos.md",
     "../../.leanos/context/workspace-summary.md",
     "../../.leanos/context/current-focus.md",
     "../../.leanos/context/next-actions.md",
@@ -1293,16 +1273,18 @@ async function assertVsCodeIntegration(rootDir) {
 
   assert(startPromptFile.includes("name: start-leanos"), "LeanOS start prompt should use the primary slash command name");
   assert(startPromptFile.includes("agent: 'LeanOS Chief'"), "LeanOS start prompt should target LeanOS Chief");
-  assert(startPromptFile.includes("Then follow `.leanos/commands/start-leanos.md`"), "LeanOS start prompt should defer to the command file");
+  assert.equal(startPromptFile.includes(".leanos/commands"), false, "LeanOS start prompt should not defer to command files");
   assert(startPromptFile.includes("Ask the Required Founder Interview questions only when the loaded context does not already answer them"), "LeanOS start prompt should avoid duplicate founder questions");
   assert(startPromptFile.includes("Use propose-first mode"), "LeanOS start prompt should use propose-first mode");
   assert(startPromptFile.includes("Write only after explicit user confirmation"), "LeanOS start prompt should require confirmation before writes");
-  assert(startPromptFile.includes("Do not modify roles, skills, playbooks, workflows, commands, `ai-standard/`, `.github/`"), "LeanOS start prompt should protect operating assets");
+  assert(startPromptFile.includes("Do not modify roles, skills, playbooks, workflows, `ai-standard/`, `.github/`"), "LeanOS start prompt should protect operating assets");
   assert(aliasPromptFile.includes("name: leanos-init"), "LeanOS init alias prompt should keep the legacy slash command name");
-  assert(aliasPromptFile.includes("Prefer `/start-leanos`"), "LeanOS init alias prompt should point users to /start-leanos");
+  assert(aliasPromptFile.includes("compatibility alias"), "LeanOS init alias prompt should be compatibility-only");
+  assert.equal(aliasPromptFile.includes(".leanos/commands"), false, "LeanOS init alias prompt should not defer to command files");
   assert(vscodeReadme.includes(".github/agents/leanos-chief.agent.md"), "VS Code README should document the agent path");
-  assert(vscodeReadme.includes("/start-leanos"), "VS Code README should document the primary start command");
-  assert(vscodeReadme.includes("/leanos-init"), "VS Code README should document the legacy alias command");
+  assert(vscodeReadme.includes("linguagem natural"), "VS Code README should document natural-language startup");
+  assert.equal(vscodeReadme.includes("\n/start-leanos\n"), false, "VS Code README should not advertise slash commands");
+  assert.equal(vscodeReadme.includes("\n/leanos-init\n"), false, "VS Code README should not advertise legacy slash commands");
   assert.equal(await exists(join(rootDir, ".vscode", "settings.json")), false, "Generator should not write VS Code workspace settings");
 }
 
@@ -1314,7 +1296,6 @@ async function assertGitHubReadiness(rootDir) {
   const projectSync = await readFile(join(rootDir, ".github", "leanos", "project-sync.yaml"), "utf8");
   const syncState = await readFile(join(rootDir, ".github", "leanos", "sync-state.yaml"), "utf8");
   const labels = await readFile(join(rootDir, ".github", "leanos", "labels.yaml"), "utf8");
-  const githubSyncCommand = await readFile(join(rootDir, ".leanos", "commands", "github-sync.md"), "utf8");
   const githubReadme = await readFile(join(rootDir, ".github", "leanos", "README.md"), "utf8");
   const githubSetupGuide = await readFile(join(rootDir, ".github", "leanos", "setup-guide.md"), "utf8");
   const githubCapabilityContract = await readFile(join(rootDir, ".github", "leanos", "capability-contract.md"), "utf8");
@@ -1350,25 +1331,12 @@ async function assertGitHubReadiness(rootDir) {
   assert(workMapping.includes("Feature markdown file"), "GitHub work mapping should map local Feature files");
   assert(workMapping.includes("Feature Tasks"), "GitHub work mapping should keep Feature tasks as checklists");
   assert(workMapping.includes("Exceptional Task"), "GitHub work mapping should define task issue exceptions");
-  assert(workMapping.includes("Use `/github-sync` as the chat intent for this flow"), "GitHub work mapping should route sync through /github-sync");
+  assert(workMapping.includes("Use a natural-language GitHub Epics/Features sync request as the chat intent for this flow"), "GitHub work mapping should route sync through natural-language Epics/Features sync");
   assert(workMapping.includes("Do not create or depend on `operations/product-ops/epics/synced/`"), "GitHub work mapping should avoid a synced archive folder");
   assert(workMapping.includes("use `sync-state.yaml` as the index"), "GitHub work mapping should use sync-state as the sync index");
-  assert(githubSyncCommand.includes("# /github-sync"), "GitHub sync command should be generated");
-  assert(githubSyncCommand.includes("operations/product-ops/epics/"), "GitHub sync command should read local Epics and Features");
-  assert(githubSyncCommand.includes(".github/leanos/work-mapping.md"), "GitHub sync command should load work mapping");
-  assert(githubSyncCommand.includes(".github/leanos/sync-state.yaml"), "GitHub sync command should compare sync state");
-  assert(githubSyncCommand.includes("## Phase 1: GitHub Readiness Check"), "GitHub sync command should start with readiness check");
-  assert(githubSyncCommand.includes("## Phase 2: Setup Fallback"), "GitHub sync command should guide setup when readiness fails");
-  assert(githubSyncCommand.includes("## Phase 3: Dry-Run Sync Process"), "GitHub sync command should separate dry-run sync from readiness");
-  assert(githubSyncCommand.includes("## Phase 5: Capability Handoff"), "GitHub sync command should hand off remote writes to a future capability");
-  assert(githubSyncCommand.includes(".github/leanos/capability-contract.md"), "GitHub sync command should load capability contract");
-  assert(githubSyncCommand.includes("gh auth status"), "GitHub sync command should mention optional GitHub CLI auth checks");
-  assert(githubSyncCommand.includes("Never ask the founder to paste a token into chat"), "GitHub sync command should protect token handling");
-  assert(githubSyncCommand.includes("assume GitHub is ready before Phase 1 passes"), "GitHub sync command should not assume GitHub is ready");
-  assert(githubSyncCommand.includes("dry-run summary"), "GitHub sync command should prepare a dry-run");
-  assert(githubSyncCommand.includes("Do not call GitHub API directly from the model"), "GitHub sync command should block direct model API writes");
-  assert(githubSyncCommand.includes("Feature Tasks as checklists"), "GitHub sync command should keep tasks as feature checklists by default");
-  assert(githubSyncCommand.includes("may store GitHub issue numbers"), "GitHub sync command should allow only non-secret sync-state updates");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands", "github-sync.md")), false, "GitHub sync command should not be generated");
+  assert.equal(projectSyncYaml.github.project_sync.source.epics, "../../operations/product-ops/epics/", "GitHub project sync should read local Epics and Features");
+  assert.equal(projectSyncYaml.github.project_sync.source.work_mapping, "../../.github/leanos/work-mapping.md", "GitHub project sync should reference work mapping");
   assert(syncState.includes("must never store tokens"), "GitHub sync state should warn against storing tokens");
   assert(syncState.includes("features: {}"), "GitHub sync state should track features");
   assert(syncState.includes("task_issues: {}"), "GitHub sync state should track exceptional task issues");
@@ -1379,7 +1347,7 @@ async function assertGitHubReadiness(rootDir) {
   assert(githubReadme.includes("Route GitHub setup through `../../operations/devops/AGENT.md`"), "GitHub README should route setup through DevOps when active");
   assert(githubReadme.includes("setup-guide.md"), "GitHub README should point to setup guide");
   assert(githubReadme.includes("capability-contract.md"), "GitHub README should point to capability contract");
-  assert(githubReadme.includes("`/github-sync` must check GitHub readiness before preparing any sync payload"), "GitHub README should document readiness-first sync");
+  assert(githubReadme.includes("GitHub Epics/Features sync must check GitHub readiness before preparing any sync payload"), "GitHub README should document readiness-first sync");
   assert(githubReadme.includes("Never ask the founder to paste a token into chat"), "GitHub README should protect token handling");
   assert(githubSetupGuide.includes("## Owner And Repository"), "GitHub setup guide should explain owner/repository");
   assert(githubSetupGuide.includes("## GitHub Project"), "GitHub setup guide should explain GitHub Project");
@@ -1424,11 +1392,7 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
   const preparePrPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
   const prValidationPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
-  const createFeaturesCommand = await readFile(join(rootDir, ".leanos", "commands", "create-features.md"), "utf8");
-  const workonFeatureCommand = await readFile(join(rootDir, ".leanos", "commands", "workon-feature.md"), "utf8");
-  const createBranchCommand = await readFile(join(rootDir, ".leanos", "commands", "create-branch.md"), "utf8");
-  const createPrCommand = await readFile(join(rootDir, ".leanos", "commands", "create-pr.md"), "utf8");
-  const reviewPrCommand = await readFile(join(rootDir, ".leanos", "commands", "review-pr.md"), "utf8");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Fully activated workspace should not generate command files");
 
   assert(epicTemplate.includes('title: "[EPIC] "'), "Epic issue form should use canonical EPIC title prefix");
   assert(featureTemplate.includes('title: "[FEATURE: <epic>] "'), "Feature issue form should use canonical FEATURE title prefix");
@@ -1508,20 +1472,18 @@ async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(preparePrPlaybook.includes("Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance"), "Prepare PR playbook should conditionally check Security/Data");
   assert(prValidationPlaybook.includes("List findings by severity"), "PR validation playbook should output findings by severity");
 
-  assert(createFeaturesCommand.includes("Delivery Readiness Matrix (DRM)"), "Create features command should use the DRM");
-  assert(createFeaturesCommand.includes("operations/product-ops/playbooks/epic-to-features.playbook.md"), "Create features command should load the epic-to-features playbook");
-  assert(createFeaturesCommand.includes("Add Design criteria only when user-facing UX, UI, flow, accessibility, copy or interaction is affected"), "Create features command should make Design conditional");
-  assert(createFeaturesCommand.includes("Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved"), "Create features command should make Security conditional");
-  assert(createFeaturesCommand.includes("Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected"), "Create features command should make DevOps conditional");
-  assert(createFeaturesCommand.includes("../../operations/devops/AGENT.md"), "Create features command should route DevOps through AGENT.md when applicable");
-  assert(createFeaturesCommand.includes("Do not call GitHub API directly from the model"), "Create features command should forbid direct model API writes");
-  assert(workonFeatureCommand.includes("Propose the required Feature-linked branch name before code changes"), "Workon feature should require branch proposal before code changes");
-  assert(createBranchCommand.includes("feature/<feature-slug>-<short-kebab-slug>"), "Create branch command should support local Feature branches");
-  assert(createBranchCommand.includes("issue/<issue-number>-<short-kebab-slug>"), "Create branch command should support mapped GitHub issue branches");
-  assert(createPrCommand.includes("Founder Testing Guide"), "Create PR command should require Founder Testing Guide");
-  assert(createPrCommand.includes("A future CLI/script capability performs the actual GitHub write"), "Create PR command should keep remote writes out of the model");
-  assert(reviewPrCommand.includes("Founder Testing Guide"), "Review PR command should validate Founder Testing Guide");
-  assert(reviewPrCommand.includes("List findings first, ordered by severity"), "Review PR command should enforce code review output shape");
+  assert(epicToFeaturesPlaybook.includes("Delivery Readiness Matrix (DRM)"), "Epic-to-features playbook should use the DRM");
+  assert(epicToFeaturesPlaybook.includes("Add Design criteria only when user-facing UX, UI, flow, accessibility, copy or interaction is affected"), "Epic-to-features playbook should make Design conditional");
+  assert(epicToFeaturesPlaybook.includes("Add Security criteria only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved"), "Epic-to-features playbook should make Security conditional");
+  assert(epicToFeaturesPlaybook.includes("Add DevOps criteria only when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are affected"), "Epic-to-features playbook should make DevOps conditional");
+  assert(epicToFeaturesPlaybook.includes("Stop before any GitHub API write until the user explicitly confirms"), "Epic-to-features playbook should forbid direct model API writes");
+  assert(preparePrPlaybook.includes("Create or confirm a Feature-linked branch before code changes"), "Engineering delivery should require branch proposal before code changes");
+  assert(branchRules.includes("feature/<feature-slug>-<short-kebab-slug>"), "Branch rules should support local Feature branches");
+  assert(branchRules.includes("issue/<issue-number>-<short-kebab-slug>"), "Branch rules should support mapped GitHub issue branches");
+  assert(preparePrPlaybook.includes("Founder Testing Guide"), "Prepare PR playbook should require Founder Testing Guide");
+  assert(preparePrPlaybook.includes("Use `skills/create-pr.skill.md` to prepare PR using the PR template"), "Prepare PR playbook should keep PR write as a prepared output");
+  assert(prValidationPlaybook.includes("Founder Testing Guide"), "PR validation playbook should validate Founder Testing Guide");
+  assert(prValidationPlaybook.includes("List findings by severity"), "PR validation playbook should enforce code review output shape");
 }
 
 async function assertFounderIntentRouting(rootDir) {
@@ -1530,9 +1492,6 @@ async function assertFounderIntentRouting(rootDir) {
   const runtimeReadme = await readFile(join(rootDir, ".leanos", "README.md"), "utf8");
   const operatingRules = await readFile(join(rootDir, ".leanos", "agent", "operating-rules.md"), "utf8");
   const whereWeAreProtocol = await readFile(join(rootDir, ".leanos", "agent", "protocols", "where-we-are.md"), "utf8");
-  const commandsReadme = await readFile(join(rootDir, ".leanos", "commands", "README.md"), "utf8");
-  const statusLeanOSCommand = await readFile(join(rootDir, ".leanos", "commands", "status-leanos.md"), "utf8");
-  const checkCoherenceCommand = await readFile(join(rootDir, ".leanos", "commands", "check-coherence.md"), "utf8");
   const vscodeAgent = await readFile(join(rootDir, ".github", "agents", "leanos-chief.agent.md"), "utf8");
   const workflowsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "workflows.yaml"), "utf8"));
   const rootAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "agents", "root-agent-template.md"), "utf8");
@@ -1551,15 +1510,12 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("Area chooses the specialist role when it has `AGENT.md`"), "Root AGENT.md should explain area-level navigation");
   assert(rootAgent.includes("Output updates only the smallest relevant knowledge, decision or project file"), "Root AGENT.md should keep output scope narrow");
   assert(rootAgent.includes("## Red Lines / Non-Negotiable Rules"), "Root AGENT.md should define scalable red lines");
-  assert(rootAgent.includes("## Response Header"), "Root AGENT.md should define the response header");
-  assert(rootAgent.includes("Active Department:"), "Root AGENT.md should require active department in response header");
-  assert(rootAgent.includes("Active Area:"), "Root AGENT.md should require active area in response header");
-  assert(rootAgent.includes("Active Role:"), "Root AGENT.md should require active role in response header");
-  assert(rootAgent.includes("Loaded Skills:"), "Root AGENT.md should require loaded skills in response header");
-  assert(rootAgent.includes("Relevant Playbook:"), "Root AGENT.md should require relevant playbook in response header");
-  assert(rootAgent.includes("Loaded Context:"), "Root AGENT.md should require loaded context in response header");
+  assert.equal(rootAgent.includes("## Response Header"), false, "Root AGENT.md should not require the old technical response header");
+  assert.equal(rootAgent.includes("Active Department:"), false, "Root AGENT.md should not require technical header fields");
+  assert(rootAgent.includes("## Routing Narration"), "Root AGENT.md should define founder-friendly routing narration");
+  assert(rootAgent.includes("show the route in one short founder-friendly sentence"), "Root AGENT.md should keep routing visible without a fixed table");
   assert(rootAgent.includes("## Natural Language Handling"), "Root AGENT.md should route natural-language requests");
-  assert(rootAgent.includes("If a natural-language request clearly matches an existing LeanOS command"), "Root AGENT.md should map natural language to commands when clear");
+  assert.equal(rootAgent.includes("If a natural-language request clearly matches an existing LeanOS command"), false, "Root AGENT.md should not route natural language through command files");
   assert(rootAgent.includes("## Progression Intent Routing"), "Root AGENT.md should include progression intent routing");
   assert(rootAgent.includes("`ai-standard/foundation/founder-progression-model.md`"), "Root AGENT.md should reference the Founder Progression Model");
   assert(rootAgent.includes("`ai-standard/foundation/progression-gates.md`"), "Root AGENT.md should reference progression gates");
@@ -1581,7 +1537,7 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("New idea or feature evaluation: `strategy/AGENT.md`"), "Root AGENT.md should route idea evaluation through Strategy AGENT");
   assert(rootAgent.includes("Roadmap item to Epic or Epic to Features: return `activation_required` for `operations.product-ops`"), "Root AGENT.md should gate delivery planning behind Product Ops activation");
   assert(rootAgent.includes("Feature implementation: return `activation_required` for `operations.engineering`"), "Root AGENT.md should gate implementation behind Engineering activation");
-  assert(rootAgent.includes("GitHub setup, GitHub Projects configuration or GitHub sync: return `activation_required` for `operations.devops`"), "Root AGENT.md should gate GitHub sync behind DevOps activation");
+  assert(rootAgent.includes("GitHub setup, GitHub Projects configuration or Epics/Features sync: return `activation_required` for `operations.devops`"), "Root AGENT.md should gate GitHub sync behind DevOps activation");
   assert(rootAgent.includes("## Status And Readiness Questions"), "Root AGENT.md should handle status and readiness questions");
   assert(rootAgent.includes("`.leanos/agent/protocols/where-we-are.md`"), "Root AGENT.md should route status and readiness questions to the where-we-are protocol");
   assert(rootAgent.includes("## Trace And Diagnostics"), "Root AGENT.md should handle trace and diagnostic questions");
@@ -1599,13 +1555,13 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("`README.md`: directory map and explanation"), "Root AGENT.md should define README responsibility");
   assert(rootAgent.includes("Enter the owning department or area before acting"), "Root AGENT.md should use owner-first red lines");
   assert(rootAgent.includes("When an area has its own `AGENT.md`, use it as the area operating owner"), "Root AGENT.md should understand area-level agents");
-  assert(rootAgent.includes("Do not invent missing workflows, roles, skills, playbooks, commands or templates"), "Root AGENT.md should prevent asset invention");
+  assert(rootAgent.includes("Do not invent missing workflows, roles, skills, playbooks or templates"), "Root AGENT.md should prevent asset invention");
   assert(rootAgent.includes("## Root Routing"), "Root AGENT.md should have a single root routing section");
   assert(rootAgent.includes("Strategy: `strategy/AGENT.md`"), "Root AGENT.md should route Strategy through its AGENT");
   assert.equal(rootAgent.includes("Operations: `operations/AGENT.md`"), false, "Root AGENT.md should not expose inactive Operations as an active route");
   assert.equal(rootAgent.includes("Growth: `growth/AGENT.md`"), false, "Root AGENT.md should not expose inactive Growth as an active route");
   assert.equal(rootAgent.includes("## Active Root Departments"), false, "Root AGENT.md should not duplicate active departments and routing");
-  assert.equal(rootAgent.includes("## Routing"), false, "Root AGENT.md should use Root Routing instead of a separate Routing section");
+  assert.equal(rootAgent.includes("## Routing\n"), false, "Root AGENT.md should use Root Routing instead of a separate Routing section");
   assert.equal(rootAgent.includes("## Workspace Mutation Rules"), false, "Root AGENT.md should not keep the old mutation rules section");
   assert.equal(rootAgent.includes("`strategy/product/README.md`"), false, "Root AGENT.md should not route directly to Strategy Product area");
   assert.equal(rootAgent.includes("`operations/engineering/README.md`"), false, "Root AGENT.md should not route directly to Operations Engineering area");
@@ -1623,31 +1579,10 @@ async function assertFounderIntentRouting(rootDir) {
   assert(whereWeAreProtocol.includes("operations/product-ops/knowledge/ready-to-develop.md"), "Where-we-are protocol should load the ready-to-develop gate");
   assert(whereWeAreProtocol.includes("## Development Gate"), "Where-we-are protocol should define a development gate");
   assert(whereWeAreProtocol.includes("local Epic/Feature exists"), "Where-we-are protocol should support local Epic/Feature readiness");
-  assert(whereWeAreProtocol.includes("Local epic missing -> `roadmap-item-to-epic`"), "Where-we-are protocol should route missing local epic");
+  assert(whereWeAreProtocol.includes("Local epic missing -> Product Ops `roadmap-item-to-epic` workflow"), "Where-we-are protocol should route missing local epic");
   assert(whereWeAreProtocol.includes("## Recommended Routes By Gap"), "Where-we-are protocol should recommend routes by gap");
   assert(whereWeAreProtocol.includes("Ainda nao recomendo comecar pelo codigo"), "Where-we-are protocol should provide founder-friendly early-development feedback");
-  assert.equal(await exists(join(rootDir, ".leanos", "commands", "status.md")), false, "Legacy /status command should not be generated");
-  assert(commandsReadme.includes("status-leanos.md"), "Commands README should list status-leanos.md");
-  assert(commandsReadme.includes("/status-leanos"), "Commands README should list /status-leanos");
-  assert.equal(commandsReadme.includes("/status,"), false, "Commands README should not advertise legacy /status");
-  assert(statusLeanOSCommand.includes("# /status-leanos"), "Status LeanOS command should use /status-leanos heading");
-  assert(statusLeanOSCommand.includes("../agent/protocols/where-we-are.md"), "Status LeanOS command should load where-we-are protocol");
-  assert(statusLeanOSCommand.includes("Treat `/status-leanos` as a request to run the `where-we-are` protocol"), "Status LeanOS command should be a where-we-are entrypoint");
-  assert(statusLeanOSCommand.includes("None by default"), "Status LeanOS command should be diagnostic by default");
-  assert(statusLeanOSCommand.includes("`/status-leanos` is diagnostic"), "Status LeanOS command should explicitly forbid writes by default");
-  assert(statusLeanOSCommand.includes("mark work as ready to develop without checking `where-we-are.md` and `ready-to-develop.md`"), "Status LeanOS command should guard development readiness");
-  assert(checkCoherenceCommand.includes("# /check coherence"), "Check coherence command should use /check coherence heading");
-  assert(checkCoherenceCommand.includes("Use a 0-100 score"), "Check coherence command should define a coherence score");
-  assert(checkCoherenceCommand.includes("alignments"), "Check coherence command should report alignments");
-  assert(checkCoherenceCommand.includes("inconsistencies"), "Check coherence command should report inconsistencies");
-  assert(checkCoherenceCommand.includes("risks"), "Check coherence command should report risks");
-  assert(checkCoherenceCommand.includes("Recommended next route"), "Check coherence command should recommend a next route");
-  assert(checkCoherenceCommand.includes("None by default"), "Check coherence command should be diagnostic by default");
-  assert(checkCoherenceCommand.includes("must not write files unless the founder explicitly asks"), "Check coherence command should not write by default");
-  assert.equal(await exists(join(rootDir, ".leanos", "commands", "shape-mvp.md")), false, "Shape MVP command should not be generated");
-  assert.equal(commandsReadme.includes("define-mvp.md"), false, "Commands README should not list inactive define-mvp command during setup");
-  assert.equal(commandsReadme.includes("/define-mvp"), false, "Commands README should not advertise inactive /define-mvp during setup");
-  assert.equal(await exists(join(rootDir, ".leanos", "commands", "define-mvp.md")), false, "Define MVP command should wait for Product Ops activation");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Generated workspace should not contain .leanos/commands");
   assert.equal(rootAgent.includes("\"define the MVP\" -> `.leanos/commands/define-mvp.md`"), false, "Root AGENT should not route MVP language to an inactive command");
   assert(operatingRules.includes("`AGENT.md` is the operating owner for its level; `README.md` is the directory map"), "Operating rules should define AGENT and README responsibilities");
   assert(operatingRules.includes("Area `AGENT.md` files, when present, choose the specialist role"), "Operating rules should define area AGENT responsibility");
@@ -1663,7 +1598,8 @@ async function assertFounderIntentRouting(rootDir) {
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "new-idea-intake" && workflow.path === "../../strategy/workflows/new-idea-intake.workflow.md"), "Workflows index should point to Strategy new idea intake workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "founder-diagnosis" && workflow.path === "../../strategy/workflows/founder-diagnosis.workflow.md"), "Workflows index should point to Strategy founder diagnosis workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "idea-to-roadmap" && workflow.path === "../../strategy/workflows/idea-to-roadmap.workflow.md"), "Workflows index should point to Strategy idea-to-roadmap workflow");
-  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-to-github-project" && workflow.path === "../../strategy/workflows/roadmap-to-github-project.workflow.md"), "Workflows index should point to Strategy roadmap sync workflow");
+  assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "strategy-validation-cycle"), false, "Workflows index should not include removed Strategy validation workflow");
+  assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-to-github-project"), false, "Workflows index should not include removed roadmap-to-GitHub workflow");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-item-to-epic"), false, "Workflows index should not include inactive Operations workflows during setup");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-item-to-delivery-scope"), false, "Workflows index should not include obsolete roadmap item to delivery scope workflow");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "delivery-scope-to-epic"), false, "Workflows index should not include obsolete delivery scope to epic workflow");
@@ -1675,7 +1611,8 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgentTemplate.includes("LeanOS uses owner-first navigation"), "Root agent template should explain owner-first navigation");
   assert(rootAgentTemplate.includes("Do not skip levels because a later file looks relevant"), "Root agent template should prevent route skipping");
   assert(rootAgentTemplate.includes("## Red Lines / Non-Negotiable Rules"), "Root agent template should include scalable red lines");
-  assert(rootAgentTemplate.includes("## Response Header"), "Root agent template should include response header");
+  assert.equal(rootAgentTemplate.includes("## Response Header"), false, "Root agent template should not include the old response header");
+  assert(rootAgentTemplate.includes("## Routing Narration"), "Root agent template should include routing narration");
   assert(rootAgentTemplate.includes("## Natural Language Handling"), "Root agent template should include natural language handling");
   assert(rootAgentTemplate.includes("## Status And Readiness Questions"), "Root agent template should include status and readiness handling");
   assert(rootAgentTemplate.includes("`.leanos/agent/protocols/where-we-are.md`"), "Root agent template should point to where-we-are protocol");
@@ -2125,7 +2062,6 @@ function assertWorkflowRequiredSections(content, workflowRelativePath) {
     "Founder Triggers",
     "Owner",
     "Required Areas",
-    "Conditional Areas",
     "Availability",
     "Load First",
     "Navigation Route",
@@ -2267,6 +2203,9 @@ function extractMarkdownSection(content, title) {
 
 async function assertCommandContract(rootDir) {
   const commandsDir = join(rootDir, ".leanos", "commands");
+  assert.equal(await exists(commandsDir), false, "Generated workspaces should not contain .leanos/commands");
+  return;
+
   const commandFiles = (await readdir(commandsDir, { withFileTypes: true }))
     .filter((entry) => entry.isFile() && entry.name.endsWith(".md") && entry.name !== "README.md")
     .map((entry) => entry.name)
@@ -2616,9 +2555,7 @@ async function assertRoadmapAreaPattern(rootDir) {
   const role = await readFile(join(rootDir, "strategy", "roadmap", "roles", "roadmap-planner.role.md"), "utf8");
   const createRoadmapSkill = await readFile(join(rootDir, "strategy", "roadmap", "skills", "create-roadmap.skill.md"), "utf8");
   const prioritizeBacklogSkill = await readFile(join(rootDir, "strategy", "roadmap", "skills", "prioritize-backlog.skill.md"), "utf8");
-  const prepareSyncSkill = await readFile(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync.skill.md"), "utf8");
   const cyclePlaybook = await readFile(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-cycle-planning.playbook.md"), "utf8");
-  const syncPlaybook = await readFile(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md"), "utf8");
   const projectSync = await readFile(join(rootDir, ".github", "leanos", "project-sync.yaml"), "utf8");
 
   assert(roadmapAgent.includes("# Roadmap Agent"), "Roadmap should have an area AGENT");
@@ -2629,6 +2566,8 @@ async function assertRoadmapAreaPattern(rootDir) {
   assert(roadmapAreaYaml.area.source_of_truth.includes("knowledge/roadmap.md"), "Roadmap area.yaml should list knowledge source files");
   assert(roadmapAreaYaml.area.playbooks.includes("roadmap-cycle-planning"), "Roadmap area.yaml should list roadmap-cycle-planning");
   assert.equal(roadmapAreaYaml.area.playbooks.includes("validation-cycle-planning"), false, "Roadmap area.yaml should not list validation-cycle-planning");
+  assert.equal(roadmapAreaYaml.area.skills.includes("prepare-roadmap-sync"), false, "Roadmap area.yaml should not list GitHub sync skills");
+  assert.equal(roadmapAreaYaml.area.playbooks.includes("roadmap-sync-prep"), false, "Roadmap area.yaml should not list GitHub sync playbooks");
   assert(knowledgeReadme.includes("# Roadmap Knowledge"), "Roadmap knowledge folder should include a README");
   assert(roadmap.includes("## Now"), "Roadmap knowledge should include Now");
   assert(roadmap.includes("## Next"), "Roadmap knowledge should include Next");
@@ -2640,22 +2579,19 @@ async function assertRoadmapAreaPattern(rootDir) {
   assert(role.includes("../knowledge/roadmap.md"), "Roadmap Planner should load Roadmap knowledge files");
   assert(role.includes("../../product/knowledge/mvp-validation-scope.md"), "Roadmap Planner should load Product MVP validation scope");
   assert.equal(role.includes("../../../operations/product-ops/mvp/scope.md"), false, "Roadmap Planner should not depend on inactive Product Ops MVP scope");
+  assert.equal(role.includes("prepare-roadmap-sync"), false, "Roadmap Planner should not own GitHub sync preparation");
   assert(createRoadmapSkill.includes("## Required Context"), "Create roadmap skill should use rich skill structure");
   assert(createRoadmapSkill.includes("../../product/knowledge/mvp-validation-scope.md"), "Create roadmap should use Product MVP validation scope");
   assert(createRoadmapSkill.includes("MVP Candidate Roadmap"), "Create roadmap should support MVP Candidate Roadmap");
   assert.equal(createRoadmapSkill.includes("../../../operations/product-ops/mvp/scope.md"), false, "Create roadmap should not depend on inactive Product Ops MVP scope");
   assert(prioritizeBacklogSkill.includes("Large items are flagged for epic breakdown"), "Prioritize backlog skill should identify large items");
-  assert(prepareSyncSkill.includes("Do not call GitHub API directly from the model"), "Prepare roadmap sync skill should block direct API calls");
-  assert(prepareSyncSkill.includes("../../product/knowledge/mvp-validation-scope.md"), "Prepare roadmap sync should use Product MVP validation scope before Product Ops exists");
-  assert.equal(prepareSyncSkill.includes("../../../operations/product-ops/mvp/scope.md"), false, "Prepare roadmap sync should not depend on inactive Product Ops MVP scope");
+  assert.equal(await exists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync.skill.md")), false, "Roadmap should not generate prepare-roadmap-sync skill");
   assert(cyclePlaybook.includes("Roadmap Cycle Planning"), "Roadmap cycle playbook should replace validation cycle planning");
   assert(cyclePlaybook.includes("../knowledge/current-cycle.md"), "Roadmap cycle playbook should update current-cycle knowledge");
   assert(cyclePlaybook.includes("../../product/knowledge/mvp-validation-scope.md"), "Roadmap cycle playbook should use Product MVP validation scope");
   assert.equal(cyclePlaybook.includes("../../../operations/product-ops/mvp/scope.md"), false, "Roadmap cycle playbook should not depend on inactive Product Ops MVP scope");
-  assert(syncPlaybook.includes("../knowledge/milestones.md"), "Roadmap sync playbook should use knowledge milestones");
-  assert(syncPlaybook.includes("../../product/knowledge/mvp-validation-scope.md"), "Roadmap sync playbook should use Product MVP validation scope");
-  assert.equal(syncPlaybook.includes("../../../operations/product-ops/mvp/scope.md"), false, "Roadmap sync playbook should not depend on inactive Product Ops MVP scope");
-  assert(projectSync.includes("../../strategy/roadmap/knowledge/roadmap.md"), "GitHub project sync should point to roadmap knowledge");
+  assert.equal(await exists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md")), false, "Roadmap should not generate roadmap-sync-prep playbook");
+  assert(projectSync.includes("operations/product-ops/epics/"), "GitHub project sync should point to local Epics/Features");
 
   for (const oldPath of ["roadmap.md", "milestones.md", "current-cycle.md", "backlog.md"]) {
     assert.equal(await exists(join(rootDir, "strategy", "roadmap", oldPath)), false, `Roadmap should not generate loose root file ${oldPath}`);
@@ -2673,7 +2609,6 @@ async function assertDesignFoundation(rootDir) {
   const uxResearcher = await readFile(join(rootDir, "operations", "design", "roles", "ux-researcher.role.md"), "utf8");
   const accessibilitySpecialist = await readFile(join(rootDir, "operations", "design", "roles", "accessibility-specialist.role.md"), "utf8");
   const uxWriter = await readFile(join(rootDir, "operations", "design", "roles", "ux-writer.role.md"), "utf8");
-  const defineDesignCommand = await readFile(join(rootDir, ".leanos", "commands", "define-design.md"), "utf8");
   const designFoundationPlaybook = await readFile(join(rootDir, "operations", "design", "playbooks", "design-foundation.playbook.md"), "utf8");
   const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
   const skillsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "skills.yaml"), "utf8"));
@@ -2802,30 +2737,26 @@ async function assertDesignFoundation(rootDir) {
   assert(uxWriter.includes("../knowledge/user-flows.md"), "UX Writer should read user-flow knowledge");
   assert(uxWriter.includes("../skills/design-review.skill.md"), "UX Writer should point to design-review skill");
 
-  assert(defineDesignCommand.includes("# /define design"), "Define design command should use the expected invocation");
-  assert(defineDesignCommand.includes("Prepare the MVP design foundation before implementation"), "Define design command should explain the design foundation purpose");
-  assert(defineDesignCommand.includes("../../operations/design/AGENT.md"), "Define design should load Design area AGENT");
-  assert(defineDesignCommand.includes("../../operations/design/roles/product-designer.role.md"), "Define design should load Product Designer role");
-  assert(defineDesignCommand.includes("../../strategy/product/README.md"), "Define design should load Product context when active");
-  assert(defineDesignCommand.includes("../../operations/product-ops/mvp/scope.md"), "Define design should load MVP context when active");
-  assert(defineDesignCommand.includes("../../operations/design/skills/design-system.skill.md"), "Define design should load the direct design-system skill name");
-  assert(defineDesignCommand.includes("../../operations/design/skills/accessibility.skill.md"), "Define design should load the direct accessibility skill name");
-  assert(defineDesignCommand.includes("../../operations/design/skills/user-flow-mapping.skill.md"), "Define design should load user-flow-mapping skill");
-  assert.equal(defineDesignCommand.includes("../../operations/design/roles/ux-lead.role.md"), false, "Define design should not load old UX Lead role file");
-  assert.equal(defineDesignCommand.includes("../../operations/design/skills/define-design-system.skill.md"), false, "Define design should not load define-prefixed design-system skill");
-  assert.equal(defineDesignCommand.includes("../../operations/design/skills/define-accessibility.skill.md"), false, "Define design should not load define-prefixed accessibility skill");
-  assert(defineDesignCommand.includes("../../operations/design/knowledge/design-system.md"), "Define design should update design-system knowledge");
-  assert(defineDesignCommand.includes("Leave screen-specific artifacts for later feature or screen-specific work"), "Define design should defer screen-specific files");
-  assert.equal(defineDesignCommand.includes("screen-specs.md"), false, "Define design should not reference removed screen specs file");
-  assert.equal(defineDesignCommand.includes("usability-notes.md"), false, "Define design should not reference removed usability notes file");
-  assert.equal(defineDesignCommand.includes("ux-decisions.md"), false, "Define design should not reference removed UX decisions file");
-  assert(defineDesignCommand.includes("Write only after explicit user confirmation"), "Define design should use propose-first writes");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands", "define-design.md")), false, "Define design command should not be generated");
+  assert(designAgent.includes("Product Designer: `roles/product-designer.role.md`"), "Design AGENT should route Product Designer");
+  assert(productDesigner.includes("../skills/design-system.skill.md"), "Product Designer should load the direct design-system skill name");
+  assert(productDesigner.includes("../skills/accessibility.skill.md"), "Product Designer should load the direct accessibility skill name");
+  assert(productDesigner.includes("../skills/user-flow-mapping.skill.md"), "Product Designer should load user-flow-mapping skill");
+  assert.equal(productDesigner.includes("../roles/ux-lead.role.md"), false, "Design foundation route should not load old UX Lead role file");
+  assert.equal(productDesigner.includes("../skills/define-design-system.skill.md"), false, "Design foundation route should not load define-prefixed design-system skill");
+  assert.equal(productDesigner.includes("../skills/define-accessibility.skill.md"), false, "Design foundation route should not load define-prefixed accessibility skill");
+  assert(designFoundationPlaybook.includes("../knowledge/design-system.md"), "Design foundation should update design-system knowledge");
+  assert(designFoundationPlaybook.includes("Leave screen-specific artifacts for later feature or screen-specific work"), "Design foundation should defer screen-specific files");
+  assert.equal(designFoundationPlaybook.includes("screen-specs.md"), false, "Design foundation should not reference removed screen specs file");
+  assert.equal(designFoundationPlaybook.includes("usability-notes.md"), false, "Design foundation should not reference removed usability notes file");
+  assert.equal(designFoundationPlaybook.includes("ux-decisions.md"), false, "Design foundation should not reference removed UX decisions file");
+  assert(designFoundationPlaybook.includes("wait for confirmation before writing"), "Design foundation should use propose-first writes");
   assert(designFoundationPlaybook.includes("Design system baseline"), "Design foundation playbook should output a design system baseline");
   assert(designFoundationPlaybook.includes("Accessibility baseline"), "Design foundation playbook should output an accessibility baseline");
   assert(componentReadinessPlaybook.includes("Component readiness result"), "Component readiness playbook should output a readiness result");
   assert(componentReadinessPlaybook.includes("component-spec-template.md"), "Component readiness playbook should use the component spec template");
   assert(componentReadinessPlaybook.includes("Return the Design readiness result to Product Ops and Engineering"), "Component readiness should hand off to Product Ops and Engineering");
-  assert(nextActions.includes("/define design"), "Full workspace should recommend /define design when Product, Product Ops and Design are active");
+  assert(nextActions.includes("Product Ops is active"), "Full workspace should recommend natural delivery routes when Product Ops is active");
 }
 
 async function assertEngineeringAreaPattern(rootDir) {
@@ -2852,7 +2783,6 @@ async function assertEngineeringAreaPattern(rootDir) {
   const componentImplementation = await readFile(join(rootDir, "operations", "engineering", "playbooks", "component-implementation.playbook.md"), "utf8");
   const preparePr = await readFile(join(rootDir, "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
   const prValidation = await readFile(join(rootDir, "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
-  const workonFeatureCommand = await readFile(join(rootDir, ".leanos", "commands", "workon-feature.md"), "utf8");
 
   await assertExists(join(rootDir, "operations", "engineering", "AGENT.md"));
   await assertExists(join(rootDir, "operations", "engineering", "knowledge", "README.md"));
@@ -2953,8 +2883,9 @@ async function assertEngineeringAreaPattern(rootDir) {
   assert(prValidation.includes("Founder Testing Guide"), "PR validation should validate Founder Testing Guide");
   assert(prValidation.includes("non-technical founder can test"), "PR validation should require founder-testable instructions");
   assert(prValidation.includes("Security/Data review result or not applicable"), "PR validation should classify Security/Data result");
-  assert(workonFeatureCommand.includes("../../operations/engineering/AGENT.md"), "Workon feature command should load Engineering AGENT");
-  assert(workonFeatureCommand.includes("../../operations/engineering/knowledge/code-standards.md"), "Workon feature command should load code standards");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands", "workon-feature.md")), false, "Workon feature command should not be generated");
+  assert(engineeringAgent.includes("Senior Developer: `roles/senior-developer.role.md`"), "Engineering AGENT should own feature work routing");
+  assert(seniorDeveloper.includes("../knowledge/code-standards.md"), "Senior Developer should load code standards");
 }
 
 async function assertDevOpsAreaPattern(rootDir) {
@@ -3056,7 +2987,7 @@ async function assertDevOpsAreaPattern(rootDir) {
   assert(githubProjectPlaybook.includes("../../../.github/leanos/setup-guide.md"), "GitHub project playbook should load setup guide");
   assert(githubProjectPlaybook.includes("../../../.github/leanos/capability-contract.md"), "GitHub project playbook should load capability contract");
   assert(githubProjectPlaybook.includes("where the founder can find owner/repository and Project URL/number"), "GitHub project playbook should guide founders to find GitHub details");
-  assert(githubProjectPlaybook.includes("End with whether `/github-sync` is ready for dry-run"), "GitHub project playbook should bridge back to /github-sync");
+  assert(githubProjectPlaybook.includes("End with whether GitHub Epics/Features sync is ready for dry-run"), "GitHub project playbook should bridge back to Epics/Features sync");
   assert(githubProjectPlaybook.includes("knowledge/github-management.md"), "GitHub project playbook should update GitHub knowledge");
   assert(setupCiCdPlaybook.includes("skills/setup-ci.skill.md"), "Setup CI/CD playbook should use setup-ci skill");
   assert(planDeploymentPlaybook.includes("do not create `.vercel/`, run `vercel link` or deploy automatically"), "Plan deployment playbook should preserve Vercel safety");
@@ -3090,7 +3021,7 @@ async function assertSecurityAreaPattern(rootDir) {
   const aiGeneratedReview = await readFile(join(rootDir, "operations", "security", "playbooks", "ai-generated-code-security-review.playbook.md"), "utf8");
   const securityAutomationPlaybook = await readFile(join(rootDir, "operations", "security", "playbooks", "security-automation-readiness.playbook.md"), "utf8");
   const githubSecurityAutomation = await readFile(join(rootDir, ".github", "leanos", "security-automation.md"), "utf8");
-  const createFeaturesCommand = await readFile(join(rootDir, ".leanos", "commands", "create-features.md"), "utf8");
+  const epicToFeaturesPlaybook = await readFile(join(rootDir, "operations", "product-ops", "playbooks", "epic-to-features.playbook.md"), "utf8");
 
   for (const oldPath of ["threat-model.md", "access-control.md", "data-protection.md"]) {
     assert.equal(await exists(join(rootDir, "operations", "security", oldPath)), false, `Security ${oldPath} should live in knowledge/`);
@@ -3197,8 +3128,8 @@ async function assertSecurityAreaPattern(rootDir) {
     assert(preDeployReview.includes(blocker), `Pre-deploy security review should block ${blocker}`);
   }
 
-  assert(createFeaturesCommand.includes("../../operations/security/AGENT.md"), "Create features command should route Security through AGENT.md");
-  assert.equal(createFeaturesCommand.includes("../../operations/security/README.md` only when"), false, "Create features command should not route Security directly to README");
+  assert(epicToFeaturesPlaybook.includes("Add Security criteria only when"), "Epic-to-features playbook should route Security criteria conditionally");
+  assert.equal(epicToFeaturesPlaybook.includes("../../operations/security/README.md` only when"), false, "Epic-to-features playbook should not route Security directly to README");
   assert(securityAutomationReadiness.includes("Secret scanning status is explicit"), "Security automation skill should check secret scanning status");
   assert(securityAutomationReadiness.includes("Dependency audit status is explicit"), "Security automation skill should check dependency audit status");
   assert(securityAutomationReadiness.includes("No scanner workflow is created without stable commands"), "Security automation skill should avoid fragile scanner workflows");
@@ -3285,74 +3216,21 @@ async function assertGrowthAreaPattern(rootDir) {
   assert(growthWorkflow.includes("growth/finance/AGENT.md when pricing, budget or unit economics are involved"), "Growth workflow should make Finance conditional");
 }
 
-async function assertInitCommandRules(rootDir) {
-  const startCommand = await readFile(join(rootDir, ".leanos", "commands", "start-leanos.md"), "utf8");
-  const requiredSections = [
-    "## Purpose",
-    "## Load First",
-    "## Internal Reading Rules",
-    "## Guided Question Delivery",
-    "## What To Do",
-    "## First Response Shape",
-    "## Guided Founder Interview",
-    "## Optional Founder Interview",
-    "## Response Mapping",
-    "## Fact and Uncertainty Rules",
-    "## Write Protocol",
-    "## Allowed Updates",
-    "## Forbidden Updates",
-    "## Confirmation Rule",
-    "## Output"
-  ];
-  const forbiddenTargets = ["`roles/`", "`skills/`", "`playbooks/`", "`workflows/`", "`../../ai-standard/`", "`../commands/`", "`../../.github/`"];
-  const strategyTargets = [
-    "../../strategy/business/knowledge/profile.md",
-    "../../strategy/product/knowledge/brief.md",
-    "../../strategy/product/knowledge/mvp-validation-scope.md",
-    "../../strategy/validation/assumptions.md",
-    "../../strategy/roadmap/knowledge/roadmap.md"
-  ];
+async function assertNaturalStartupRules(rootDir) {
+  const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
+  const founderDiagnosis = await readFile(join(rootDir, "strategy", "workflows", "founder-diagnosis.workflow.md"), "utf8");
+  const productPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "product-strategy.playbook.md"), "utf8");
 
-  for (const section of requiredSections) {
-    assert(startCommand.includes(section), `start-leanos.md should include ${section}`);
-  }
-
-  for (const target of forbiddenTargets) {
-    assert(startCommand.includes(target), `start-leanos.md should forbid ${target}`);
-  }
-
-  for (const target of strategyTargets) {
-    assert(startCommand.includes(target), `start-leanos.md should mention Strategy source-of-truth target ${target}`);
-  }
-
-  assert(startCommand.includes("# /start-leanos"), "start-leanos.md should document the primary command");
-  assert(startCommand.includes("This is the beginning of the operating session, not a technical audit report"), "start-leanos.md should avoid technical audit behavior");
-  assert(startCommand.includes("Do not print the full loaded context unless the founder asks for diagnostics"), "start-leanos.md should keep internal context silent by default");
-  assert(startCommand.includes("Do not print all active departments, active areas or compatible workflows during the first response"), "start-leanos.md should avoid first-response dumps");
-  assert(startCommand.includes("Use `leanos.yaml` as the primary seed"), "start-leanos.md should start from leanos.yaml");
-  assert(startCommand.includes("strategy/workflows/founder-diagnosis.workflow.md"), "start-leanos.md should route startup continuation to founder diagnosis");
-  assert(startCommand.includes("founder-diagnosis"), "start-leanos.md should name founder diagnosis as the startup workflow");
-  assert(startCommand.includes("If `leanos.yaml` is mostly empty or generic, ask one short open question first"), "start-leanos.md should handle empty yaml before guided questions");
-  assert(startCommand.includes("Prefer the host application's native selection UI when available"), "start-leanos.md should prefer native selection UI when available");
-  assert(startCommand.includes("If no native selection UI is available, use numbered options in the chat"), "start-leanos.md should fall back to numbered options");
-  assert(startCommand.includes("Do not ask broad open-ended questions when the current context supports useful guided options"), "start-leanos.md should avoid broad open questions when guided options fit");
-  assert(startCommand.includes("Ask one guided question at a time using native selection UI when available, otherwise numbered options"), "start-leanos.md should use guided questions");
-  assert(startCommand.includes("Active Role: not applicable"), "start-leanos.md should avoid fake role activation on first response");
-  assert(startCommand.includes("Para quem esse produto precisa gerar valor primeiro?"), "start-leanos.md should include a founder-friendly first guided question");
-  assert(startCommand.includes("Voce pode responder so com o numero ou do seu jeito"), "start-leanos.md should allow numeric or free-form answers");
-  assert(startCommand.includes("Ask only what is missing"), "start-leanos.md should avoid asking already-known founder questions");
-  assert(startCommand.includes("Riskiest assumption"), "start-leanos.md should include validation-oriented founder interview topics");
-  assert(startCommand.includes("Useful MVP validation or learning target"), "start-leanos.md should ask for MVP validation target");
-  assert(startCommand.includes("MVP validation thesis, MVP slice, manual/concierge parts"), "start-leanos.md should map MVP validation responses to Product scope");
-  assert(startCommand.includes("Map founder responses to source-of-truth files only when the matching area is active"), "start-leanos.md should map answers only to active areas");
-  assert(startCommand.includes("Do not turn assumptions into source-of-truth facts"), "start-leanos.md should protect facts from assumptions");
-  assert(startCommand.includes("Put unknowns into `## Open Questions`"), "start-leanos.md should preserve unknowns as open questions");
-  assert(startCommand.includes("Do not write during the first response"), "start-leanos.md should avoid writing in the first response");
-  assert(startCommand.includes("After the guided conversation captures enough context, show a short proposed change plan"), "start-leanos.md should require a pre-write change plan after guided context");
-  assert(startCommand.includes("Never write files during init until the user explicitly confirms"), "start-leanos.md should require explicit confirmation before writes");
-  assert(startCommand.includes("Operations or Growth area files unless the user explicitly asks after init"), "start-leanos.md should keep Operations/Growth out of init scope");
-  assert.equal(startCommand.includes("- Workspace summary\n- Active departments and areas\n- Compatible workflows"), false, "start-leanos.md should not require a technical dump by default");
-  assert.equal(await exists(join(rootDir, ".leanos", "commands", "init-leanos.md")), false, "init-leanos.md should not be generated as an internal command");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Startup should not depend on generated command files");
+  assert(rootAgent.includes("Setup or restart LeanOS: `strategy/AGENT.md`"), "Root AGENT should route startup intent through Strategy");
+  assert(rootAgent.includes("Intent -> Current Stage -> Gate -> Active Requirements -> Route"), "Root AGENT should use progression intent routing");
+  assert(rootAgent.includes("Do not write during the first response"), "Root AGENT should avoid writing during the first startup response");
+  assert(rootAgent.includes("Do not modify roles, skills, playbooks, workflows, `ai-standard/` or `.github/` during startup"), "Root AGENT should protect operating assets during startup");
+  assert(founderDiagnosis.includes("Use `ai-standard/foundation/founder-progression-model.md`"), "Founder diagnosis should use the progression model");
+  assert(founderDiagnosis.includes("Use `ai-standard/foundation/progression-gates.md`"), "Founder diagnosis should use progression gates");
+  assert(founderDiagnosis.includes("Ask one founder-friendly guided question"), "Founder diagnosis should ask one guided question at a time");
+  assert(founderDiagnosis.includes("Do not create roadmap, MVP delivery scope, Epics, Features or implementation work"), "Founder diagnosis should stop before delivery");
+  assert(productPlaybook.includes("Ask one decision question before any roadmap or MVP handoff"), "Product playbook should keep startup guided and incremental");
 }
 
 async function assertRootAgentMutationRules(rootDir) {
@@ -3360,25 +3238,23 @@ async function assertRootAgentMutationRules(rootDir) {
   const operatingRules = await readFile(join(rootDir, ".leanos", "agent", "operating-rules.md"), "utf8");
 
   assert.equal(rootAgent.includes("## Workspace Mutation Rules"), false, "AGENT.md should not include the old Workspace Mutation Rules section");
-  assert(rootAgent.includes("## Command Handling"), "AGENT.md should include portable command handling");
-  assert(rootAgent.includes("LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface"), "AGENT.md should make commands model-agnostic");
-  assert(rootAgent.includes("`.leanos/commands/start-leanos.md`"), "AGENT.md should map /start-leanos to its command file");
-  assert(rootAgent.includes("When the user invokes legacy `/leanos-init` or inverted `/leanos-start`, treat it as `/start-leanos`"), "AGENT.md should document the legacy and inverted init aliases");
+  assert.equal(rootAgent.includes("## Command Handling"), false, "AGENT.md should not include generated slash-command handling");
+  assert.equal(rootAgent.includes("LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface"), false, "AGENT.md should not present slash commands as the interface");
+  assert.equal(rootAgent.includes("`.leanos/commands/start-leanos.md`"), false, "AGENT.md should not map startup to command files");
   assert(rootAgent.includes("Do not create or modify LeanOS framework assets from memory. Route through `ai-standard/README.md`"), "AGENT.md should route framework asset changes through AI Standard README");
   assert(rootAgent.includes("## Framework Standards Routing"), "AGENT.md should include Framework Standards Routing");
-  assert(rootAgent.includes("During `/start-leanos`, do not enrich roles, skills, playbooks, workflows, commands or `ai-standard/`"), "AGENT.md should protect framework assets during init from Red Lines");
+  assert(rootAgent.includes("Do not modify roles, skills, playbooks, workflows, `ai-standard/` or `.github/` during startup"), "AGENT.md should protect framework assets during startup from Red Lines");
   assert(rootAgent.includes("Ask before modifying knowledge, decision or framework files"), "AGENT.md should require confirmation before file mutation");
   assert(rootAgent.includes("## Trace And Diagnostics"), "AGENT.md should include Trace And Diagnostics");
   assert(rootAgent.includes("`.leanos/agent/protocols/chief-trace.md`"), "AGENT.md should route trace diagnostics to chief-trace protocol");
-  assert(rootAgent.includes("GitHub setup, GitHub Projects configuration or GitHub sync"), "AGENT.md should route natural GitHub setup requests to github-sync");
+  assert(rootAgent.includes("GitHub setup, GitHub Projects configuration or Epics/Features sync"), "AGENT.md should route natural GitHub sync requests to DevOps");
   assert.equal(rootAgent.includes("Source-of-truth files describe what the company knows"), false, "AGENT.md should avoid old source-of-truth taxonomy");
   assert.equal(rootAgent.includes("Operating assets describe how LeanOS works"), false, "AGENT.md should avoid old operating-assets taxonomy");
-  assert(operatingRules.includes("LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface"), "operating rules should make commands model-agnostic");
-  assert(operatingRules.includes("For `/start-leanos`, load `../commands/start-leanos.md` before acting"), "operating rules should map /start-leanos to its command file");
+  assert.equal(operatingRules.includes("LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface"), false, "operating rules should not promote slash commands");
+  assert.equal(operatingRules.includes("For `/start-leanos`, load `../commands/start-leanos.md` before acting"), false, "operating rules should not map startup to command files");
   assert(operatingRules.includes("For trace, debug or diagnostic requests, load `protocols/chief-trace.md`"), "operating rules should route trace diagnostics");
-  assert(operatingRules.includes("During `/start-leanos`, propose updates first"), "operating rules should require propose-first start");
-  assert(operatingRules.includes("Treat `/leanos-init` and `/leanos-start` as aliases for `/start-leanos`"), "operating rules should document start command aliases");
-  assert(operatingRules.includes("Do not modify roles, skills, playbooks, workflows, commands, `ai-standard/` or `.github/` during init"), "operating rules should protect operating assets during init");
+  assert(operatingRules.includes("During startup, propose updates first"), "operating rules should require propose-first startup");
+  assert(operatingRules.includes("Do not modify roles, skills, playbooks, workflows, `ai-standard/` or `.github/` during startup"), "operating rules should protect operating assets during startup");
 }
 
 async function assertTraceDiagnostics(rootDir) {
@@ -3519,31 +3395,20 @@ async function assertProductOpsPrdSections(rootDir) {
   }
 }
 
-async function assertValidationLoopSections(rootDir) {
-  const assumptions = await readFile(join(rootDir, "strategy", "validation", "assumptions.md"), "utf8");
-  const riskiestAssumptions = await readFile(join(rootDir, "strategy", "validation", "riskiest-assumptions.md"), "utf8");
-  const experiments = await readFile(join(rootDir, "strategy", "validation", "experiments.md"), "utf8");
-  const successMetrics = await readFile(join(rootDir, "strategy", "validation", "success-metrics.md"), "utf8");
-  const learningLog = await readFile(join(rootDir, "strategy", "validation", "learning-log.md"), "utf8");
-  const validationPlaybook = await readFile(join(rootDir, "strategy", "validation", "playbooks", "mvp-validation.playbook.md"), "utf8");
-  const startCommand = await readFile(join(rootDir, ".leanos", "commands", "start-leanos.md"), "utf8");
-  const createRoadmapCommand = await readFile(join(rootDir, ".leanos", "commands", "create-roadmap.md"), "utf8");
+async function assertMvpValidationScopeSections(rootDir) {
+  const mvpValidationScope = await readFile(join(rootDir, "strategy", "product", "knowledge", "mvp-validation-scope.md"), "utf8");
+  const defineMvpValidationScope = await readFile(join(rootDir, "strategy", "product", "skills", "define-mvp-validation-scope.skill.md"), "utf8");
+  const productPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "product-strategy.playbook.md"), "utf8");
 
-  assert(assumptions.includes("assumption -> experiment -> evidence -> decision -> roadmap impact"), "assumptions.md should state the validation loop");
-  assert(assumptions.includes("## Assumption Types"), "assumptions.md should explain assumption types");
-  assert(assumptions.includes("Evidence Status"), "assumptions.md should track evidence status");
-  assert(assumptions.includes("## Entry Template"), "assumptions.md should provide an entry template");
-  assert(assumptions.includes("## Promotion Checklist"), "assumptions.md should include a promotion checklist");
-  assert(riskiestAssumptions.includes("Importance"), "riskiest-assumptions.md should define prioritization criteria");
-  assert(experiments.includes("Every experiment must link to an assumption"), "experiments.md should link experiments to assumptions");
-  assert(successMetrics.includes("A signal is not a decision"), "success-metrics.md should separate signals from decisions");
-  assert(learningLog.includes("Assumption | Experiment | Evidence | Insight | Decision | Roadmap Impact"), "learning-log.md should capture the full validation chain");
-  assert(learningLog.includes("Do not record an assumption as validated learning without evidence"), "learning-log.md should prevent assumptions becoming learning");
-  assert(validationPlaybook.includes("Run the validation loop from assumption to roadmap impact"), "mvp-validation playbook should state the validation loop purpose");
-  assert(validationPlaybook.includes("Separate evidence from insight"), "mvp-validation playbook should separate evidence from insight");
-  assert(validationPlaybook.includes("Update `../learning-log.md` only when evidence supports learning"), "mvp-validation playbook should protect learning-log quality");
-  assert(startCommand.includes("## Validation Evidence Rules"), "start-leanos should include validation evidence rules");
-  assert(createRoadmapCommand.includes("Do not treat assumptions as validated learning"), "roadmap command should not treat assumptions as validated learning");
+  assert.equal(await exists(join(rootDir, "strategy", "validation")), false, "Strategy Validation folder should not exist");
+  assert(mvpValidationScope.includes("Business Thesis"), "MVP validation scope should capture the business thesis");
+  assert(mvpValidationScope.includes("MVP Slice"), "MVP validation scope should define the validation slice");
+  assert(mvpValidationScope.includes("Success Signals"), "MVP validation scope should define success signals");
+  assert(mvpValidationScope.includes("Pivot Signals"), "MVP validation scope should define pivot signals");
+  assert(mvpValidationScope.includes("does not create Epics, Features or implementation scope"), "MVP validation scope should not become delivery scope");
+  assert(defineMvpValidationScope.includes("Do not require interviews or research before proposing an MVP validation scope"), "MVP validation skill should avoid bureaucratic validation gates");
+  assert(defineMvpValidationScope.includes("Do not create Epics, Features or implementation scope from Strategy Product"), "MVP validation skill should stop before delivery");
+  assert.equal(productPlaybook.includes("Use Validation only for explicit experiment planning"), false, "Product playbook should not reference removed Strategy Validation area");
 }
 
 async function validateWriterSkipsExistingFiles() {
@@ -3650,7 +3515,6 @@ async function assertInitialContextCoherence(rootDir) {
   const workflowRequirements = [
     { workflow: "new-idea-intake", subareas: ["strategy.product", "strategy.roadmap"] },
     { workflow: "idea-to-roadmap", subareas: ["strategy.product", "strategy.roadmap"] },
-    { workflow: "roadmap-to-github-project", subareas: ["strategy.product", "strategy.roadmap"] },
     { workflow: "define-mvp", subareas: ["operations.product-ops"] },
     { workflow: "roadmap-item-to-epic", subareas: ["operations.product-ops"] },
     { workflow: "epic-to-features", subareas: ["operations.product-ops", "operations.engineering"] },
@@ -3729,7 +3593,7 @@ function isInitialStrategyWorkspacePath(path) {
     ".leanos/commands/review-pr.md"
   ]);
 
-  if (inactiveCommandPaths.has(path)) {
+  if (path.startsWith(".leanos/commands/") || inactiveCommandPaths.has(path)) {
     return false;
   }
 

@@ -91,7 +91,7 @@ Purpose: sync local LeanOS Epics and Features to GitHub issues and Project items
 
 Inputs:
 
-- approved dry-run payload from `/github-sync`;
+- approved dry-run payload from GitHub Epics/Features sync;
 - local Epic and Feature source paths;
 - current sync-state;
 - target repository and Project;

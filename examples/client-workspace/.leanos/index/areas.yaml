@@ -11,7 +11,3 @@ areas:
     department: strategy
     agent: ../../strategy/roadmap/AGENT.md
     readme: ../../strategy/roadmap/README.md
-  - key: strategy.validation
-    department: strategy
-    agent: null
-    readme: ../../strategy/validation/README.md

@@ -107,7 +107,7 @@ function departmentJourneySignals(department: RootDepartmentDefinition): string 
       "evaluating a new idea before roadmap or MVP",
       "deciding whether an idea should enter roadmap",
       "changing product direction, priority or sequencing",
-      "preparing roadmap sync or strategic handoff"
+      "preparing Product Ops handoff or strategic handoff"
     ],
     operations: [
       "turning delivery scope into executable work",

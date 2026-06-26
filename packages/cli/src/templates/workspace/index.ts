@@ -2,7 +2,6 @@ import { getActiveRootDepartments, getInitialActiveAreas } from "./selectors.js"
 import type { FileEntry, WorkspaceAnswers } from "./types.js";
 import { aiStandardFiles } from "./renderers/ai-standard.js";
 import { leanosRuntimeFiles, rootAgent } from "./renderers/agent.js";
-import { commandFiles } from "./renderers/commands.js";
 import { contextFiles } from "./renderers/context.js";
 import { rootDepartmentFiles } from "./renderers/departments.js";
 import { githubFiles } from "./renderers/github.js";
@@ -27,7 +26,6 @@ export function createWorkspaceFiles(answers: WorkspaceAnswers): FileEntry[] {
     ...traceFiles(),
     ...indexFiles(activeAreas, activeRoots),
     ...rootDepartmentFiles(answers, activeAreas, activeRoots),
-    ...commandFiles(activeAreas),
     ...contextFiles(answers, activeAreas, activeRoots),
     ...githubFiles(answers, activeAreas),
     ...vscodeIntegrationFiles()

@@ -64,7 +64,7 @@ Reason: synced work is still product context. Moving it to an archive folder can
 
 ## Required Sync Behavior
 
-Use `/github-sync` as the chat intent for this flow.
+Use a natural-language GitHub Epics/Features sync request as the chat intent for this flow.
 
 Before creating or updating GitHub:
 

@@ -1,5 +1,5 @@
 import type { RootDepartmentDefinition } from "../types.js";
-import { assumptionsRegister, businessProfile, checklist, decisionLog, folderReadme, learningLog, productBrief, riskiestAssumptions, stateDraft, titledDraft, validationExperiments, validationSuccessMetrics } from "../content/shared.js";
+import { businessProfile, checklist, decisionLog, folderReadme, productBrief, stateDraft, titledDraft } from "../content/shared.js";
 
 function designSystemKnowledge(): string {
   return `# Design System
@@ -1643,7 +1643,7 @@ Define the GitHub repository, Project, labels, milestones and sync readiness wit
 
 ## Current State
 
-GitHub setup is not confirmed yet. Use Setup Status and the Readiness Checklist before running \`/github-sync\` dry-run.
+GitHub setup is not confirmed yet. Use Setup Status and the Readiness Checklist before any GitHub Epics/Features sync dry-run.
 
 ## Setup Status
 
@@ -1734,7 +1734,7 @@ Use these questions when configuration is missing:
 - [ ] \`../../../.github/leanos/project-sync.yaml\` matches the confirmed setup.
 - [ ] \`../../../.github/leanos/sync-state.yaml\` exists and contains no secrets.
 - [ ] \`../../../.github/leanos/capability-contract.md\` was reviewed before any remote execution handoff.
-- [ ] \`/github-sync\` can run dry-run before any remote write.
+- [ ] GitHub Epics/Features sync can run dry-run before any remote write.
 
 ## Dry Run
 
@@ -3183,7 +3183,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Product Strategy",
             purpose: "Move from raw product context to coherent strategy and MVP validation scope.",
             inputs: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/business-model-canvas.md", "../knowledge/mvp-validation-scope.md", "../knowledge/validation-notes.md"],
-            steps: ["Load the Product AGENT and choose Product Strategist or Product Manager.", "Read the minimum Product knowledge files for the request.", "Clarify ICP, problem and value proposition before touching roadmap or delivery scope.", "When the founder is starting from an idea, define or update the MVP Validation Scope before Roadmap.", "Separate decisions, assumptions and open questions.", "Use Roadmap when the MVP Validation Scope needs an MVP Candidate Roadmap.", "Use Validation only for explicit experiment planning, not as a mandatory pre-MVP interview gate.", "Propose file updates and wait for confirmation before writing."],
+            steps: ["Load the Product AGENT and choose Product Strategist or Product Manager.", "Read the minimum Product knowledge files for the request.", "Clarify ICP, problem and value proposition before touching roadmap or delivery scope.", "When the founder is starting from an idea, define or update the MVP Validation Scope before Roadmap.", "Separate decisions, assumptions and open questions.", "Use Roadmap when the MVP Validation Scope needs an MVP Candidate Roadmap.", "Use `validation-notes.md` only for lightweight assumptions and learning notes; MVP Validation Scope is the default validation path.", "Propose file updates and wait for confirmation before writing."],
             guidedConversation: ["Use guided questions when the founder proposes a new idea, unclear product direction or a roadmap-impacting change.", "Offer numbered choices for idea destination: refine, MVP validation scope, validation note, roadmap candidate, discard or help me decide.", "Ask one decision question before any roadmap or MVP handoff.", "Let the founder answer with a number or free-form text."],
             outputs: ["Product strategy summary", "Updated Product knowledge proposal", "MVP Validation Scope proposal", "Assumptions or validation follow-up", "MVP Candidate Roadmap handoff when applicable"],
             filesToUpdate: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/business-model-canvas.md", "../knowledge/mvp-validation-scope.md", "../knowledge/validation-notes.md"]
@@ -3201,7 +3201,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         path: "strategy/roadmap",
         lead: {
           title: "Roadmap Lead",
-          purpose: "Route roadmap planning, prioritization, cycle planning and GitHub sync preparation."
+          purpose: "Route roadmap planning, prioritization and cycle planning."
         },
         routingKey: "roadmap",
         requestTypes: "roadmap, milestones, backlog, cycle planning or prioritization",
@@ -3209,7 +3209,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         whenToUse: ["sequence product work", "prioritize backlog", "define current cycle", "plan milestones"],
         sourceOfTruth: ["knowledge/roadmap.md", "knowledge/milestones.md", "knowledge/current-cycle.md", "knowledge/backlog.md"],
         files: [
-          { path: "knowledge/README.md", content: () => folderReadme("Roadmap Knowledge", "Durable roadmap context produced by Strategy Roadmap.", "Use when sequencing product work, planning milestones, choosing the current cycle or preparing GitHub sync.", "roadmap.md", ["roadmap.md", "milestones.md", "current-cycle.md", "backlog.md"], ["../roles/", "../skills/", "../playbooks/", "../../product/", "../../../.github/leanos/"], "Keep roadmap planning context here. Do not turn candidate backlog items into committed scope without explicit confirmation.") },
+          { path: "knowledge/README.md", content: () => folderReadme("Roadmap Knowledge", "Durable roadmap context produced by Strategy Roadmap.", "Use when sequencing product work, planning milestones, choosing the current cycle or preparing Product Ops handoff.", "roadmap.md", ["roadmap.md", "milestones.md", "current-cycle.md", "backlog.md"], ["../roles/", "../skills/", "../playbooks/", "../../product/", "../../../.github/leanos/"], "Keep roadmap planning context here. Do not turn candidate backlog items into committed scope without explicit confirmation.") },
           { path: "knowledge/roadmap.md", content: roadmapKnowledge },
           { path: "knowledge/milestones.md", content: roadmapMilestonesKnowledge },
           { path: "knowledge/current-cycle.md", content: roadmapCurrentCycleKnowledge },
@@ -3222,8 +3222,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             purpose: "Turn business, product and MVP validation context into a coherent roadmap and cycle plan.",
             useWhen: ["roadmap order is unclear", "backlog needs prioritization", "cycle planning is needed"],
             beforeActing: ["../knowledge/roadmap.md", "../knowledge/current-cycle.md", "../knowledge/backlog.md", "../../product/knowledge/brief.md", "../../product/knowledge/mvp-validation-scope.md"],
-            skills: ["create-roadmap", "prioritize-backlog", "prepare-roadmap-sync"],
-            playbooks: ["roadmap-cycle-planning", "roadmap-sync-prep"]
+            skills: ["create-roadmap", "prioritize-backlog"],
+            playbooks: ["roadmap-cycle-planning"]
           }
         ],
         skills: [
@@ -3252,19 +3252,6 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             outputs: ["Prioritized backlog", "Parked items", "Items needing epic breakdown"],
             filesToUpdate: ["../knowledge/backlog.md", "../knowledge/current-cycle.md"],
             redLines: ["Do not use priority as permission to implement.", "Do not hide uncertainty.", "Do not remove backlog items without confirmation."]
-          },
-          {
-            slug: "prepare-roadmap-sync",
-            title: "Prepare Roadmap Sync",
-            purpose: "Prepare roadmap epics, milestones and sync payload before GitHub Project updates.",
-            useWhen: ["roadmap should be prepared for GitHub", "milestones need project sync readiness", "epics need draft payloads"],
-            requiredContext: ["../knowledge/roadmap.md", "../knowledge/milestones.md", "../knowledge/current-cycle.md", "../../product/knowledge/mvp-validation-scope.md", "../../../.github/leanos/project-sync.yaml"],
-            inputs: ["Roadmap", "Milestones", "Current cycle", "MVP Validation Scope", "GitHub project settings"],
-            process: ["Check GitHub readiness.", "Map roadmap items to milestone candidates.", "Identify epic candidates and request Product Ops activation when local delivery assets are missing.", "Prepare dry-run sync payload.", "Ask for confirmation before any remote write."],
-            checks: ["No GitHub token is stored in workspace files.", "Remote writes require dry-run and confirmation.", "Duplicate epic risk is visible."],
-            outputs: ["Sync readiness summary", "Milestone mapping", "Epic draft list", "Missing configuration"],
-            filesToUpdate: ["../knowledge/roadmap.md", "../knowledge/milestones.md", "../knowledge/current-cycle.md", "../../../.github/leanos/project-sync.yaml"],
-            redLines: ["Do not call GitHub API directly from the model.", "Do not store tokens.", "Do not create remote items without explicit confirmation."]
           }
         ],
         playbooks: [
@@ -3276,69 +3263,10 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             steps: ["Load the Roadmap AGENT and Roadmap Planner role.", "Review product strategy and MVP Validation Scope context.", "When this is a new product idea, produce or refine the MVP Candidate Roadmap first.", "Review backlog candidates.", "Choose Now, Next, Later and Not Planned boundaries.", "Define current cycle goal and success criteria.", "Propose updates and wait for confirmation before writing."],
             outputs: ["MVP Candidate Roadmap summary", "Roadmap cycle summary", "Current cycle proposal", "Backlog changes", "Milestone follow-up"],
             filesToUpdate: ["../knowledge/roadmap.md", "../knowledge/current-cycle.md", "../knowledge/backlog.md"]
-          },
-          {
-            slug: "roadmap-sync-prep",
-            title: "Roadmap Sync Prep",
-            purpose: "Prepare roadmap items for GitHub Project sync without calling the API directly.",
-            inputs: ["../knowledge/roadmap.md", "../knowledge/milestones.md", "../knowledge/current-cycle.md", "../knowledge/backlog.md", "../../product/knowledge/mvp-validation-scope.md", "../../../.github/leanos/project-sync.yaml"],
-            steps: ["Read roadmap and milestones", "Identify candidate epics and Product Ops activation needs", "Check MVP Validation Scope and validation linkage", "Ask DevOps to confirm GitHub project settings when needed", "Prepare sync payload", "Ask for confirmation before any remote write"],
-            outputs: ["Roadmap sync summary", "Milestone mapping", "Epic draft list", "Missing GitHub configuration", "Confirmation question before API execution"],
-            filesToUpdate: ["Update `../knowledge/roadmap.md`, `../knowledge/milestones.md` or `../knowledge/current-cycle.md` only after explicit confirmation.", "Update `../../../.github/leanos/project-sync.yaml` only through DevOps/GitHub setup guidance."]
           }
         ],
         commonPaths: [
           "Roadmap request: `AGENT.md` -> role `roles/roadmap-planner.role.md` -> skill `skills/create-roadmap.skill.md` -> playbook `playbooks/roadmap-cycle-planning.playbook.md`."
-        ]
-      },
-      {
-        key: "strategy.validation",
-        root: "strategy",
-        slug: "validation",
-        name: "Validation",
-        path: "strategy/validation",
-        routingKey: "validation",
-        requestTypes: "assumptions, experiments, interviews, research or validation",
-        purpose: "Own assumptions, experiments, interviews, success metrics and learning capture.",
-        whenToUse: ["define assumptions", "plan validation", "write interview scripts", "measure success", "capture learning"],
-        sourceOfTruth: ["assumptions.md", "riskiest-assumptions.md", "experiments.md", "interview-script.md", "success-metrics.md", "learning-log.md"],
-        files: [
-          { path: "assumptions.md", content: () => assumptionsRegister() },
-          { path: "riskiest-assumptions.md", content: () => riskiestAssumptions() },
-          { path: "experiments.md", content: () => validationExperiments() },
-          { path: "interview-script.md", content: () => titledDraft("Interview Script", "Prepare customer discovery questions.") },
-          { path: "success-metrics.md", content: () => validationSuccessMetrics() },
-          { path: "learning-log.md", content: () => learningLog() }
-        ],
-        roles: [
-          {
-            slug: "validation-researcher",
-            title: "Validation Researcher",
-            purpose: "Design validation work that tests the riskiest product assumptions.",
-            useWhen: ["research, interviews, assumptions, experiments or learning are involved"],
-            beforeActing: ["../assumptions.md", "../riskiest-assumptions.md", "../experiments.md", "../success-metrics.md"],
-            skills: ["define-assumptions", "create-interview-script", "define-success-metrics"],
-            playbooks: ["mvp-validation"]
-          }
-        ],
-        skills: [
-          { slug: "define-assumptions", title: "Define Assumptions", purpose: "Identify and prioritize risky assumptions." },
-          { slug: "create-interview-script", title: "Create Interview Script", purpose: "Write discovery questions that reduce bias." },
-          { slug: "define-success-metrics", title: "Define Success Metrics", purpose: "Define signals that indicate validation progress." }
-        ],
-        playbooks: [
-          {
-            slug: "mvp-validation",
-            title: "MVP Validation",
-            purpose: "Run the validation loop from assumption to roadmap impact.",
-            inputs: ["Product strategy", "MVP scope", "Assumption register", "Riskiest assumptions", "Experiment plan", "Success metrics"],
-            steps: ["Identify the assumption being tested", "Classify the risk and why it matters", "Design the smallest experiment that can produce evidence", "Define success and failure signals before running the experiment", "Collect evidence without interpreting it as fact too early", "Separate evidence from insight", "Make or defer a decision", "Update roadmap or backlog only when the decision requires it"],
-            outputs: ["Validated learning summary", "Evidence vs insight separation", "Decision or explicit no-decision", "Roadmap or backlog impact", "Next validation action"],
-            filesToUpdate: ["Update `../assumptions.md` when assumptions are added or reclassified.", "Update `../riskiest-assumptions.md` when priority changes.", "Update `../experiments.md` when an experiment is planned or completed.", "Update `../success-metrics.md` when signals are defined or changed.", "Update `../learning-log.md` only when evidence supports learning.", "Propose changes to `../../roadmap/knowledge/roadmap.md` or `../../roadmap/knowledge/backlog.md` only after a decision is confirmed."]
-          }
-        ],
-        commonPaths: [
-          "Validation request: role `roles/validation-researcher.role.md` -> skill `skills/define-assumptions.skill.md` -> playbook `playbooks/mvp-validation.playbook.md`."
         ]
       }
     ],
@@ -3374,12 +3302,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         owner: {
           department: "strategy",
           primaryArea: "product",
-          supportingAreas: ["business", "roadmap"],
-          conditionalAreas: ["validation"]
+          supportingAreas: ["business", "roadmap"]
         },
-        conditionalAreas: [
-          { area: "validation", when: "Use only when the active Strategy Validation area is needed for explicit experiment planning; do not make it a blocker for the first MVP validation path." }
-        ],
         loadFirst: [
           "AGENT.md",
           "leanos.yaml",
@@ -3496,12 +3420,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         owner: {
           department: "strategy",
           primaryArea: "product",
-          supportingAreas: ["roadmap"],
-          conditionalAreas: ["validation"]
+          supportingAreas: ["roadmap"]
         },
-        conditionalAreas: [
-          { area: "validation", when: "Enter only when the active workspace includes Validation and the idea depends on risky assumptions that need explicit evidence planning." }
-        ],
         loadFirst: [
           "AGENT.md",
           "strategy/AGENT.md",
@@ -3531,7 +3451,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Restate the founder idea in plain language and ask only the minimum guided questions needed to remove ambiguity",
           "Evaluate idea against ICP, problem, value proposition, evidence, current focus and opportunity cost",
           "Identify assumptions, evidence gaps, dependencies and why this idea may or may not matter now",
-          "Use Validation only when it exists and risky assumptions need explicit experiment planning; do not require Validation for the default MVP path",
+          "Use `validation-notes.md` for lightweight assumptions and evidence gaps; do not route to a formal Strategy Validation area",
           "When the founder wants speed, treat MVP as the default business validation path and decide whether to define or update MVP Validation Scope",
           "Recommend one outcome: reject, refine, park, validation note, MVP Validation Scope update, backlog candidate or roadmap candidate",
           "Explain the recommendation in founder-friendly language",
@@ -3692,217 +3612,6 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           laterTriggers: ["isso entra no MVP?", "isso entra na proxima entrega?", "vamos planejar a entrega desse item", "vamos transformar esse item do roadmap em epic", "qual milestone recebe esse item?"],
           nextRoute: "activation_required: operations.product-ops, then roadmap-item-to-epic"
         }
-      },
-      {
-        slug: "strategy-validation-cycle",
-        purpose: "Coordinate company, product, roadmap and validation work inside Strategy.",
-        requiredAreas: ["product", "roadmap", "validation"],
-        founderTriggers: [
-          "precisamos validar essa hipotese",
-          "como vamos testar essa ideia?",
-          "temos evidencia suficiente?",
-          "o que precisamos aprender antes de priorizar?",
-          "vamos rodar um ciclo de validacao"
-        ],
-        owner: {
-          department: "strategy",
-          primaryArea: "validation",
-          supportingAreas: ["product", "roadmap"]
-        },
-        conditionalAreas: [
-          { area: "growth.customer-experience", when: "Use activation_required only when validation depends on feedback from real customers, support notes or success moments." },
-          { area: "operations.product-ops", when: "Use activation_required only when validation changes the delivery scope, MVP boundary or Epic readiness." }
-        ],
-        loadFirst: [
-          "AGENT.md",
-          "strategy/AGENT.md",
-          "strategy/workflows/strategy-validation-cycle.workflow.md",
-          "strategy/product/AGENT.md",
-          "strategy/product/knowledge/brief.md",
-          "strategy/product/knowledge/problem.md",
-          "strategy/product/knowledge/icp.md",
-          "strategy/product/knowledge/validation-notes.md",
-          "strategy/roadmap/AGENT.md",
-          "strategy/roadmap/knowledge/backlog.md",
-          "strategy/roadmap/knowledge/roadmap.md",
-          "strategy/validation/README.md"
-        ],
-        navigationRoute: [
-          "AGENT.md",
-          "strategy/AGENT.md",
-          "strategy/workflows/strategy-validation-cycle.workflow.md",
-          "strategy/product/AGENT.md",
-          "strategy/product/roles/product-strategist.role.md",
-          "strategy/roadmap/AGENT.md",
-          "strategy/roadmap/roles/roadmap-planner.role.md",
-          "strategy/validation/README.md",
-          "strategy/validation/roles/validation-researcher.role.md",
-          "strategy/validation/skills/define-assumptions.skill.md",
-          "strategy/validation/playbooks/mvp-validation.playbook.md"
-        ],
-        steps: [
-          "Read product strategy before defining what needs validation.",
-          "Review roadmap/backlog context to understand why this assumption matters now.",
-          "Identify the riskiest assumptions and separate known evidence from guesses.",
-          "Choose the smallest validation action that can produce useful learning.",
-          "Define success and failure signals before any experiment is treated as evidence.",
-          "Capture learning only after evidence exists.",
-          "Propose roadmap, backlog or delivery-scope impact only after the founder confirms the learning.",
-          "Route to Product Ops only when confirmed learning changes delivery scope or Epic readiness."
-        ],
-        confirmationGates: [
-          "Ask before creating or changing an experiment plan.",
-          "Ask before recording learning as evidence.",
-          "Ask before changing roadmap or backlog priority.",
-          "Ask before routing to Product Ops or Growth."
-        ],
-        allowedUpdates: [
-          "strategy/validation/assumptions.md",
-          "strategy/validation/riskiest-assumptions.md",
-          "strategy/validation/experiments.md",
-          "strategy/validation/success-metrics.md",
-          "strategy/validation/learning-log.md",
-          "strategy/product/knowledge/validation-notes.md",
-          "strategy/roadmap/knowledge/backlog.md after founder confirmation",
-          "strategy/roadmap/knowledge/roadmap.md after founder confirmation"
-        ],
-        forbiddenUpdates: [
-          "Product Ops Epic assets until operations.product-ops is activated",
-          ".github/",
-          ".leanos/",
-          "source code",
-          "branches",
-          "pull requests",
-          "GitHub remote state"
-        ],
-        externalCapabilities: [
-          "No external capability is required by default.",
-          "Do not call survey, CRM, analytics or GitHub APIs from this workflow without a separate confirmed tool-specific flow."
-        ],
-        stopConditions: [
-          "Product context is too weak to identify the assumption.",
-          "The founder wants implementation rather than validation.",
-          "Validation evidence is not available yet.",
-          "The founder does not confirm the proposed validation or learning update.",
-          "The request requires external customer outreach or API execution that is not configured."
-        ],
-        expectedOutput: [
-          "Assumption summary.",
-          "Risk priority and why it matters.",
-          "Validation action or evidence gap.",
-          "Success/failure signals.",
-          "Founder-friendly recommendation for roadmap, backlog, delivery scope or no change."
-        ],
-        continuationBridge: {
-          immediate: "Se essa validacao mudar a prioridade, quer que eu leve o aprendizado para o roadmap ou backlog?",
-          laterTriggers: ["a validacao mudou a prioridade", "vamos atualizar o roadmap com esse aprendizado", "isso entra no escopo agora?", "o que fazemos com esse aprendizado?"],
-          nextRoute: "idea-to-roadmap or activation_required: operations.product-ops depending on the founder decision"
-        }
-      },
-      {
-        slug: "roadmap-to-github-project",
-        purpose: "Prepare roadmap, milestones and epics for GitHub Project sync.",
-        requiredAreas: ["roadmap", "product"],
-        founderTriggers: [
-          "sincronize o roadmap com github",
-          "vamos mandar o roadmap para o github projects",
-          "crie os milestones no github",
-          "prepare os epics no github",
-          "github sync do roadmap"
-        ],
-        owner: {
-          department: "strategy",
-          primaryArea: "roadmap",
-          supportingAreas: ["product"],
-          conditionalAreas: ["operations.product-ops", "operations.devops"]
-        },
-        conditionalAreas: [
-          { area: "operations.product-ops", when: "Use activation_required when roadmap items need local Epics/Features before sync or when delivery scope is unclear." },
-          { area: "operations.devops", when: "Use activation_required when GitHub settings, token, repository, project fields, labels or sync state must be checked." }
-        ],
-        loadFirst: [
-          "AGENT.md",
-          "strategy/AGENT.md",
-          "strategy/workflows/roadmap-to-github-project.workflow.md",
-          "strategy/roadmap/AGENT.md",
-          "strategy/roadmap/knowledge/roadmap.md",
-          "strategy/roadmap/knowledge/milestones.md",
-          "strategy/roadmap/knowledge/current-cycle.md",
-          "strategy/product/AGENT.md",
-          "strategy/product/knowledge/brief.md",
-          ".github/leanos/project-sync.yaml",
-          ".github/leanos/sync-state.yaml",
-          ".github/leanos/work-mapping.md"
-        ],
-        navigationRoute: [
-          "AGENT.md",
-          "strategy/AGENT.md",
-          "strategy/workflows/roadmap-to-github-project.workflow.md",
-          "strategy/roadmap/AGENT.md",
-          "strategy/roadmap/roles/roadmap-planner.role.md",
-          "strategy/roadmap/skills/prepare-roadmap-sync.skill.md",
-          "strategy/roadmap/playbooks/roadmap-sync-prep.playbook.md",
-          "activation_required: operations.product-ops when local Epic/Feature shape is required",
-          "activation_required: operations.devops when GitHub configuration must be checked",
-          "activation_required: operations.devops before github-sync execution"
-        ],
-        steps: [
-          "Read roadmap and current cycle before preparing any GitHub payload.",
-          "Confirm product outcomes and priority order from Strategy Product.",
-          "Separate roadmap/backlog items from delivery-ready Epics.",
-          "Ask Product Ops to shape local Epics/Features when a roadmap item is too broad for GitHub sync.",
-          "Ask DevOps to validate GitHub project settings when token, repository, project fields, labels or sync state are missing or unclear.",
-          "Prepare a dry-run summary with milestones, Epic candidates and mapping changes.",
-          "Show the payload in founder-friendly language before any external write.",
-          "Ask for explicit confirmation before routing to the sync command or any API-capable script."
-        ],
-        confirmationGates: [
-          "Ask before changing roadmap or milestone files.",
-          "Ask before changing `.github/leanos/project-sync.yaml` or `.github/leanos/work-mapping.md`.",
-          "Ask before creating or updating local Epics.",
-          "Ask before running any GitHub sync, API-capable script or remote write.",
-          "Ask before marking sync state as completed."
-        ],
-        allowedUpdates: [
-          "strategy/roadmap/knowledge/roadmap.md after founder confirmation",
-          "strategy/roadmap/knowledge/milestones.md after founder confirmation",
-          "strategy/roadmap/knowledge/current-cycle.md after founder confirmation",
-          ".github/leanos/project-sync.yaml after DevOps/founder confirmation",
-          ".github/leanos/work-mapping.md after founder confirmation",
-          ".github/leanos/sync-state.yaml only after a confirmed tool reports successful sync"
-        ],
-        forbiddenUpdates: [
-          ".env.local",
-          "tokens",
-          "source code",
-          "branches",
-          "pull requests",
-          "GitHub remote state without explicit founder confirmation and API-capable command execution"
-        ],
-        externalCapabilities: [
-          "GitHub sync requires an explicit API-capable command or script.",
-          "The model prepares dry-run, payload and confirmation; it does not call GitHub APIs directly.",
-          "If token, repository or project configuration is missing, route to Operations DevOps before execution."
-        ],
-        stopConditions: [
-          "GitHub management is not configured and the founder wants remote sync.",
-          "Token source is unclear or would require storing secrets in workspace files.",
-          "Roadmap items are too broad and need local Epic/Feature shaping first.",
-          "The dry-run suggests duplicate or conflicting GitHub items.",
-          "The founder does not confirm the payload or remote write."
-        ],
-        expectedOutput: [
-          "Readiness status for GitHub sync.",
-          "Dry-run list of milestones, Epic candidates and mapping changes.",
-          "Missing configuration or duplicate/conflict warnings.",
-          "Founder-friendly confirmation question before remote sync.",
-          "Next route to Product Ops, DevOps or the GitHub sync command."
-        ],
-        continuationBridge: {
-          immediate: "O roadmap esta pronto para um dry-run de GitHub sync.\nQuer que eu confira configuracao, payload e possiveis duplicidades antes de qualquer escrita remota?",
-          laterTriggers: ["rode o github sync", "sincronize agora", "vamos atualizar o github project", "crie milestones no github", "envie esses epics para o github"],
-          nextRoute: "activation_required: operations.devops before github-sync execution"
-        }
       }
     ]
   },
@@ -3984,7 +3693,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "define-mvp",
             title: "Define MVP",
             purpose: "Apply the MVP Decision Gate to turn strategy into the smallest coherent first delivery scope.",
-            useWhen: ["the founder asks what enters the MVP", "the first product version needs scope", "`/define-mvp` routes into Product Ops", "strategy exists but the MVP boundary is unclear"],
+            useWhen: ["the founder asks what enters the MVP", "the first product version needs scope", "a natural-language MVP delivery request routes into Product Ops", "strategy exists but the MVP boundary is unclear"],
             requiredContext: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/mvp-decision-gate.md", "../knowledge/delivery-scope.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/product/knowledge/problem.md", "../../../strategy/product/knowledge/icp.md", "../../../strategy/product/knowledge/value-proposition.md", "../../../strategy/product/knowledge/business-model.md", "../../../strategy/roadmap/knowledge/backlog.md", "../../../strategy/roadmap/knowledge/roadmap.md"],
             inputs: ["Founder intent", "Product brief", "Problem", "ICP", "Value proposition", "Business model or business assumption", "Roadmap/backlog context when available", "Existing MVP scope and PRD"],
             process: ["Restate the intended product outcome.", "Identify the smallest useful version that can validate or deliver the core value.", "Apply Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk from `mvp-decision-gate.md`.", "Classify items as in MVP now, later/backlog, needs discovery, needs specialist check or not now.", "Name Design, Security, Engineering or DevOps risks only when applicable.", "Draft founder-friendly MVP scope before mentioning file updates.", "Ask for confirmation before writing MVP files."],
@@ -4037,7 +3746,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "mvp-delivery",
             title: "MVP Delivery",
             purpose: "Turn product strategy into executable MVP scope.",
-            useWhen: ["the founder asks to define MVP scope", "`/define-mvp` routes into Product Ops", "strategy is ready enough to decide a first delivery scope", "the MVP boundary needs founder confirmation before roadmap-to-Epic planning"],
+            useWhen: ["the founder asks to define MVP delivery scope", "a natural-language MVP delivery request routes into Product Ops", "strategy is ready enough to decide a first delivery scope", "the MVP boundary needs founder confirmation before roadmap-to-Epic planning"],
             beforeActing: ["../AGENT.md", "../knowledge/overview.md", "../knowledge/work-taxonomy.md", "../knowledge/mvp-decision-gate.md", "../knowledge/delivery-scope.md", "../mvp/scope.md", "../mvp/prd.md", "../mvp/user-stories.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/AGENT.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/product/knowledge/problem.md", "../../../strategy/product/knowledge/icp.md", "../../../strategy/product/knowledge/value-proposition.md", "../../../strategy/roadmap/knowledge/backlog.md", "../../../strategy/roadmap/knowledge/roadmap.md"],
             inputs: ["Product brief", "Problem", "ICP", "Value proposition", "Business model or assumption", "Roadmap/backlog context when available", "Existing MVP scope", "Existing PRD when available", "MVP Decision Gate"],
             steps: ["Read Product Ops AGENT and choose the Product Owner role.", "Read product strategy and existing MVP knowledge.", "Load `../knowledge/mvp-decision-gate.md` before deciding scope.", "Use `skills/define-mvp.skill.md` to classify candidate items by Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk.", "Use guided conversation only for missing inputs.", "Define the smallest coherent MVP scope.", "Write or refine the MVP PRD draft.", "Write or refine user stories.", "Define acceptance criteria.", "Confirm non-goals.", "Identify Design, Security, Engineering or DevOps dependencies.", "Explain the recommendation in founder-friendly language.", "Propose file updates and wait for confirmation before writing.", "After confirmation, offer the bridge to `roadmap-item-to-epic` only when the founder wants delivery planning."],
@@ -4073,7 +3782,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         commonPaths: [
           "Product Ops request: area lead `AGENT.md` -> choose Product Owner or Delivery Architect -> load only the required skills and playbook.",
           "Delivery scope request: role `roles/product-owner.role.md` -> skill `skills/define-delivery-scope.skill.md` -> playbook `playbooks/delivery-scope-planning.playbook.md`.",
-          "MVP request: command `.leanos/commands/define-mvp.md` -> workflow `../workflows/define-mvp.workflow.md` -> area lead `AGENT.md` -> role `roles/product-owner.role.md` -> gate `knowledge/mvp-decision-gate.md` -> skill `skills/define-mvp.skill.md` -> playbook `playbooks/mvp-delivery.playbook.md`.",
+          "MVP delivery request: `operations/AGENT.md` -> workflow `../workflows/define-mvp.workflow.md` -> area lead `AGENT.md` -> role `roles/product-owner.role.md` -> gate `knowledge/mvp-decision-gate.md` -> skill `skills/define-mvp.skill.md` -> playbook `playbooks/mvp-delivery.playbook.md`.",
           "Epic breakdown request: role `roles/product-owner.role.md` -> skills `skills/shape-epic.skill.md` and `skills/write-feature-criteria.skill.md` -> playbook `playbooks/epic-to-features.playbook.md`.",
           "Delivery readiness request: role `roles/delivery-architect.role.md` -> skill `skills/define-delivery-boundaries.skill.md` -> playbook `playbooks/delivery-readiness.playbook.md`."
         ]
@@ -4648,7 +4357,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "github-devops",
             title: "GitHub DevOps",
             purpose: "Guide safe GitHub repository, Project, labels and sync configuration without storing secrets.",
-            useWhen: ["the founder wants to connect GitHub", "roadmap sync needs setup", "GitHub Project fields or labels need validation"],
+            useWhen: ["the founder wants to connect GitHub", "Epics/Features sync needs setup", "GitHub Project fields or labels need validation"],
             beforeActing: ["../AGENT.md", "../knowledge/github-management.md", "../../../.github/leanos/setup-guide.md", "../../../.github/leanos/capability-contract.md", "../../../.github/leanos/github-settings.example.json", "../../../.github/leanos/project-sync.yaml", "../../../.github/leanos/sync-state.yaml", "../../../.github/leanos/labels.yaml"],
             skills: ["configure-github-project"],
             playbooks: ["configure-github-project"]
@@ -4668,12 +4377,12 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "configure-github-project",
             title: "Configure GitHub Project",
             purpose: "Guide GitHub repository, Project fields, labels and token source setup without storing secrets.",
-            useWhen: ["GitHub Project sync is requested", "repository/project mapping is unclear", "labels or milestones need setup", "a roadmap sync needs readiness checks"],
-            requiredContext: ["DevOps AGENT", "GitHub setup guide", "GitHub capability contract", "GitHub management knowledge", "Project sync file", "Labels file", "Sync state file", "Repository owner/name", "Token source", "Roadmap or Epic/Feature sync intent"],
+            useWhen: ["GitHub Project sync is requested", "repository/project mapping is unclear", "labels or milestones need setup", "local Epics/Features sync needs readiness checks"],
+            requiredContext: ["DevOps AGENT", "GitHub setup guide", "GitHub capability contract", "GitHub management knowledge", "Project sync file", "Labels file", "Sync state file", "Repository owner/name", "Token source", "Epic/Feature sync intent"],
             inputs: ["Owner or organization", "Repository", "Project type", "Project URL or number", "Project fields", "Labels", "Milestone approach", "Token source", "Optional GitHub CLI auth status"],
             process: ["Load `.github/leanos/setup-guide.md` before asking setup questions", "Load `.github/leanos/capability-contract.md` before describing remote execution", "Check `project-sync.yaml` for TODO owner/repository/project values", "Check `labels.yaml` for minimum labels", "Check `sync-state.yaml` exists and contains no secrets", "Separate setup local, token readiness, Project readiness, labels/milestones readiness and dry-run readiness", "Confirm token source without asking for token values", "Prepare a readiness summary and proposed updates before writing"],
             checks: ["No token stored in workspace", "Founder never pastes token into chat", "Owner and repository are known", "Project type and URL or number are known", "Project fields are mapped", "Labels and milestones are declared or planned", "Dry-run required before write", "Duplicate sync risk is visible"],
-            outputs: ["GitHub readiness summary", "Missing configuration", "Founder-friendly setup guidance", "Proposed project-sync update", "Token-source guidance", "Dry-run readiness", "Next action for /github-sync"],
+            outputs: ["GitHub readiness summary", "Missing configuration", "Founder-friendly setup guidance", "Proposed project-sync update", "Token-source guidance", "Dry-run readiness", "Next action for GitHub Epics/Features sync"],
             filesToUpdate: ["Update `../knowledge/github-management.md` after confirmation.", "Update `../../../.github/leanos/project-sync.yaml` only after explicit confirmation.", "Update `../../../.github/leanos/labels.yaml` only after explicit confirmation."]
           },
           {
@@ -4759,10 +4468,10 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           {
             slug: "configure-github-project",
             title: "Configure GitHub Project",
-            purpose: "Prepare GitHub settings for roadmap sync without calling the API directly from the model.",
+            purpose: "Prepare GitHub settings for Epics/Features sync without calling the API directly from the model.",
             inputs: ["Founder GitHub owner or organization", "Repository name", "GitHub Project type", "GitHub Project URL or number", "Desired project fields", "Expected labels", "Milestone strategy", "Token source from environment, GitHub CLI, secure prompt or keychain", "Deployment target such as Vercel when known"],
-            steps: ["Read DevOps AGENT and choose GitHub DevOps", "Read `knowledge/github-management.md`", "Read `../../../.github/leanos/setup-guide.md`", "Read `../../../.github/leanos/capability-contract.md`", "Read `../../../.github/leanos/github-settings.example.json`", "Review `../../../.github/leanos/project-sync.yaml`", "Review `../../../.github/leanos/labels.yaml` and `../../../.github/leanos/sync-state.yaml`", "Ask guided questions for missing owner, repository, Project type, Project URL/number and field mapping", "Explain where the founder can find owner/repository and Project URL/number", "Confirm token source without asking the user to paste secrets into chat or files", "If local tools are available and the founder allows it, use `gh auth status` only to validate auth status, not to expose credentials", "Document Vercel readiness as guidance only; do not create `.vercel/`, run `vercel link` or add `vercel.json` until a real app/framework needs it", "Propose updates to GitHub management knowledge, project-sync and labels before writing", "Validate that sync-state remains secret-free", "End with whether `/github-sync` is ready for dry-run"],
-            outputs: ["GitHub readiness summary", "Missing configuration", "Founder-friendly setup instructions", "Proposed project-sync.yaml updates", "Proposed labels.yaml updates", "Token-source guidance without token values", "Vercel readiness notes", "Next action for /github-sync"],
+            steps: ["Read DevOps AGENT and choose GitHub DevOps", "Read `knowledge/github-management.md`", "Read `../../../.github/leanos/setup-guide.md`", "Read `../../../.github/leanos/capability-contract.md`", "Read `../../../.github/leanos/github-settings.example.json`", "Review `../../../.github/leanos/project-sync.yaml`", "Review `../../../.github/leanos/labels.yaml` and `../../../.github/leanos/sync-state.yaml`", "Ask guided questions for missing owner, repository, Project type, Project URL/number and field mapping", "Explain where the founder can find owner/repository and Project URL/number", "Confirm token source without asking the user to paste secrets into chat or files", "If local tools are available and the founder allows it, use `gh auth status` only to validate auth status, not to expose credentials", "Document Vercel readiness as guidance only; do not create `.vercel/`, run `vercel link` or add `vercel.json` until a real app/framework needs it", "Propose updates to GitHub management knowledge, project-sync and labels before writing", "Validate that sync-state remains secret-free", "End with whether GitHub Epics/Features sync is ready for dry-run"],
+            outputs: ["GitHub readiness summary", "Missing configuration", "Founder-friendly setup instructions", "Proposed project-sync.yaml updates", "Proposed labels.yaml updates", "Token-source guidance without token values", "Vercel readiness notes", "Next action for GitHub Epics/Features sync"],
             filesToUpdate: ["Update `../knowledge/github-management.md` after confirmation.", "Update `../../../.github/leanos/project-sync.yaml` only after explicit confirmation.", "Update `../../../.github/leanos/labels.yaml` only after explicit confirmation.", "Update `../../../.github/leanos/sync-state.yaml` only with non-secret sync metadata after a confirmed sync result."]
           },
           {
@@ -5065,7 +4774,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             slug: "pre-mvp-security-checklist",
             title: "Pre-MVP Security Checklist",
             purpose: "Run a lightweight security checklist before MVP implementation or issue breakdown.",
-            useWhen: ["before `/define-mvp` output becomes implementation work", "before creating implementation-ready issues", "when Product Ops asks for security criteria"],
+            useWhen: ["before MVP delivery-scope output becomes implementation work", "before creating implementation-ready issues", "when Product Ops asks for security criteria"],
             beforeActing: ["../AGENT.md", "../knowledge/security-baseline.md", "../knowledge/threat-model.md", "../knowledge/access-control.md", "../knowledge/data-protection.md"],
             inputs: ["MVP scope", "PRD", "User stories", "Acceptance criteria", "Known sensitive data", "Auth expectations"],
             steps: ["Load Security Reviewer", "Check baseline red lines", "Review access-control needs", "Review data-protection needs", "Review database and API risk if present", "List security acceptance criteria for Product Ops or Engineering"],
@@ -5218,7 +4927,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         ],
         loadFirst: [
           "AGENT.md",
-          ".leanos/commands/define-mvp.md when slash command is used",
+          "Natural-language MVP delivery request from Root `AGENT.md`",
           ".leanos/agent/protocols/where-we-are.md when the current product moment is unclear",
           "operations/AGENT.md",
           "operations/workflows/README.md",
@@ -5235,7 +4944,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         ],
         navigationRoute: [
           "AGENT.md",
-          ".leanos/commands/define-mvp.md when slash command is used",
+          "Natural-language MVP delivery request from Root `AGENT.md`",
           "operations/AGENT.md",
           "operations/workflows/define-mvp.workflow.md",
           "operations/product-ops/AGENT.md",
@@ -5249,7 +4958,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         steps: [
           "Declare the route and explain that this workflow shapes MVP scope; it does not create Epics, Features, GitHub issues, branches, PRs or code.",
           "Confirm there is enough Strategy Product context to evaluate the target user, problem, value proposition and business assumption.",
-          "If Strategy context is missing, stop and recommend `/start-leanos` or Strategy Product before MVP definition.",
+          "If Strategy context is missing, stop and recommend Strategy Product startup before MVP definition.",
           "Load Product Ops through `operations/product-ops/AGENT.md` and choose `roles/product-owner.role.md`.",
           "Load `operations/product-ops/knowledge/mvp-decision-gate.md` before deciding any item.",
           "Use `skills/define-mvp.skill.md` and `playbooks/mvp-delivery.playbook.md` to evaluate Value Risk, Usability Risk, Feasibility Risk and Business Viability Risk.",
@@ -5530,7 +5239,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "pages/",
           "components/",
           ".github/",
-          ".leanos/commands/",
+          ".leanos/runtime command files",
           "ai-standard/",
           "roles/",
           "skills/",

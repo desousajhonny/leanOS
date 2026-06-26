@@ -72,7 +72,7 @@ export function printCreatedWorkspaceOutro(answers: WorkspaceAnswers, result: Wo
     ui.title("Main entrypoints"),
     bullet(`${ui.path("AGENT.md")} ${ui.muted("universal agent entrypoint")}`),
     bullet(`${ui.path("leanos.yaml")} ${ui.muted("workspace configuration")}`),
-    bullet(`${ui.path(".leanos/")} ${ui.muted("LeanOS runtime, commands, context and indexes")}`),
+    bullet(`${ui.path(".leanos/")} ${ui.muted("LeanOS runtime, context and indexes")}`),
     bullet(`${ui.path("ai-standard/")} ${ui.muted("templates, checklists and instructions")}`),
     bullet(`${ui.path(".github/agents/leanos-chief.agent.md")} ${ui.muted("VS Code custom agent")}`),
     bullet(`${ui.path(".github/prompts/start-leanos.prompt.md")} ${ui.muted("VS Code start prompt")}`),
@@ -81,7 +81,6 @@ export function printCreatedWorkspaceOutro(answers: WorkspaceAnswers, result: Wo
     bullet(ui.path("strategy/")),
     bullet(ui.path("operations/")),
     bullet(ui.path("growth/")),
-    bullet(ui.path(".leanos/commands")),
     bullet(ui.path(".leanos/index")),
     bullet(ui.path(".github")),
     "",
@@ -91,16 +90,16 @@ export function printCreatedWorkspaceOutro(answers: WorkspaceAnswers, result: Wo
       ? "Existing product files were preserved unless you explicitly chose overwrite. Start by capturing product and codebase context."
       : "Define strategy and MVP before bootstrapping product app/code. Initial setup does not create source code.",
     answers.prepareGithubManagement
-      ? `GitHub management was prepared. Start with ${ui.command("/github-sync")} for readiness/setup guidance before any sync. Add a token to ${ui.path(".env.local")} only when you are ready to connect GitHub.`
+      ? `GitHub management was prepared. Ask LeanOS Chief to configure GitHub Projects or sync Epics/Features when you are ready. Add a token to ${ui.path(".env.local")} only when you are ready to connect GitHub.`
       : `GitHub management was not requested. ${ui.path(".github/leanos/setup-guide.md")} documents optional future setup and token sources.`,
     "",
     "To use LeanOS in VS Code:",
     `1. Open this folder in ${ui.title("VS Code")}`,
     "2. Open Copilot Chat",
     `3. Select ${ui.title("\"LeanOS Chief\"")}`,
-    `4. Run ${ui.command("/start-leanos")}`,
+    "4. Ask, in natural language: Quero iniciar o LeanOS",
     "",
-    `Legacy workspaces may still use ${ui.command("/leanos-init")}, but ${ui.command("/start-leanos")} is the recommended command.`,
+    "LeanOS still includes VS Code prompt files for compatibility, but the primary interface is natural language.",
     "",
     "Useful first requests:",
     "",

@@ -1,32 +1,32 @@
 # Next Actions
 
-Start by using `/start-leanos` to define strategy and MVP before any future app/code bootstrap.
+## 1. Start Or Continue Strategy
 
-GitHub management was prepared. Add a local token to `.env.local` only when running a future `/configure github` or GitHub sync flow.
+Route:
 
-## 1. Status Leanos
+`AGENT.md` -> `strategy/AGENT.md`
 
-Command:
+Use this when the founder is starting, restarting, defining ICP, clarifying the MVP Validation Scope, evaluating an idea or shaping the first MVP Candidate Roadmap.
 
-```text
-/status-leanos
-```
+## 2. Check Status Or Readiness
 
-## 2. Define Icp
+Route:
 
-Command:
+`.leanos/agent/protocols/where-we-are.md`
 
-```text
-/define icp
-```
+Use this before recommending implementation, branch, PR, launch or GitHub sync.
 
-## 3. Check Coherence
+## 3. Delivery Planning
 
-Command:
+Product Ops is not active. If the founder wants MVP delivery scope, local Epics or Features, ask to activate `operations.product-ops` before creating delivery assets.
 
-```text
-/check coherence
-```
+## 4. Implementation Readiness
+
+Engineering is not active. Do not implement product code until delivery scope and Engineering activation are ready.
+
+## GitHub
+
+GitHub management was prepared. Add a local token to `.env.local` only when configuring GitHub Projects or running a future Epics/Features sync flow.
 
 ## Future App Bootstrap
 
