@@ -17,6 +17,7 @@ Start here when deciding what kind of asset exists, which founder progression st
 - `asset-taxonomy.md`
 - `navigation-chain.md`
 - `founder-progression-model.md`
+- `progression-gates.md`
 - `guided-conversation.md`
 - `creation-rules.md`
 - `quality-criteria.md`

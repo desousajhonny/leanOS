@@ -42,6 +42,7 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
       mode: "progressive",
       current_stage: "setup-seed",
       progression_model: "ai-standard/foundation/founder-progression-model.md",
+      progression_gates: "ai-standard/foundation/progression-gates.md",
       active_departments: activeDepartmentKeys,
       inactive_departments: availableDepartmentKeys.filter((department) => !activeDepartmentSet.has(department)),
       available_departments: availableDepartmentKeys,

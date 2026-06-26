@@ -615,6 +615,7 @@ Read:
 - \`../context/next-actions.md\`
 - \`../index/routing-map.yaml\`
 - \`../../ai-standard/foundation/guided-conversation.md\`
+- \`../../ai-standard/foundation/progression-gates.md\`
 - \`../../strategy/workflows/founder-diagnosis.workflow.md\`
 
 ## Internal Reading Rules

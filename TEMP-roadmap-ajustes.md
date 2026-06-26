@@ -954,7 +954,7 @@ Founder Journeys existentes:
 - [x] Criar skill `strategy/product/skills/diagnose-founder-idea.skill.md`.
 - [x] Criar playbook `strategy/product/playbooks/founder-discovery.playbook.md` ou fortalecer `product-strategy.playbook.md` para cobrir o início guiado.
 - [ ] Criar `strategy/knowledge/progression-state.md` ou registrar progressão em `leanos.yaml` / activation state.
-- [ ] Criar uma matriz de gates por estágio: required context, allowed next stages, blocked next stages.
+- [x] Criar uma matriz de gates por estágio: required context, allowed next stages, blocked next stages.
 - [ ] Atualizar `new-idea-intake` para entrar no Progression Model em vez de virar fluxo isolado.
 - [ ] Atualizar `idea-to-roadmap` para exigir Strategy Baseline mínima antes de roadmap.
 - [ ] Atualizar `define-mvp` para exigir gate de Strategy/Roadmap e propor ativação de Operations/Product Ops.

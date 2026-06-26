@@ -129,6 +129,7 @@ client-workspace/
 |   |   |-- guided-conversation.md
 |   |   |-- naming-conventions.md
 |   |   |-- navigation-chain.md
+|   |   |-- progression-gates.md
 |   |   |-- quality-criteria.md
 |   |   `-- README.md
 |   |-- instructions/

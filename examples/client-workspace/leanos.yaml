@@ -15,6 +15,7 @@ activation:
   mode: progressive
   current_stage: setup-seed
   progression_model: ai-standard/foundation/founder-progression-model.md
+  progression_gates: ai-standard/foundation/progression-gates.md
   active_departments:
     - strategy
   inactive_departments:

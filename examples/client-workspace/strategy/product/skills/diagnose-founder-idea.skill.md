@@ -14,6 +14,7 @@ Diagnose a raw founder idea into a Strategy Baseline gap, next guided question a
 
 - ../../../leanos.yaml
 - ../../../ai-standard/foundation/founder-progression-model.md
+- ../../../ai-standard/foundation/progression-gates.md
 - ../knowledge/brief.md
 - ../knowledge/problem.md
 - ../knowledge/icp.md
@@ -35,10 +36,11 @@ Diagnose a raw founder idea into a Strategy Baseline gap, next guided question a
 
 1. Read only active Strategy context.
 2. Restate what is known from seed context and Product knowledge.
-3. Classify the current founder progression stage.
-4. Identify Strategy Baseline gaps: target user, problem, promise, alternative, riskiest assumption, immediate focus and MVP validation target.
-5. Choose the smallest next guided question.
-6. Recommend the next route only when the gate is satisfied.
+3. Classify the current founder progression stage using the Founder Progression Model.
+4. Check `progression-gates.md` for required context, allowed next stages and blocked next stages.
+5. Identify Strategy Baseline gaps: target user, problem, promise, alternative, riskiest assumption, immediate focus and MVP validation target.
+6. Choose the smallest next guided question.
+7. Recommend the next route only when the gate is satisfied.
 
 ## Checks
 

@@ -28,6 +28,7 @@ Use this route for most asset creation work:
 | Decide what kind of asset something is | `foundation/asset-taxonomy.md` | Defines AGENT, README, YAML, role, skill, playbook, knowledge, workflow and command. |
 | Decide how a model should move through the workspace | `foundation/navigation-chain.md` | Defines owner-first navigation and prevents route skipping. |
 | Decide the next founder progression stage | `foundation/founder-progression-model.md` | Defines Strategy-first progression, gates, activation_required and Chief routing behavior. |
+| Check if a founder progression move is allowed | `foundation/progression-gates.md` | Defines required context, allowed next stages and blocked next stages. |
 | Design founder-friendly questions or decisions | `foundation/guided-conversation.md` | Defines numbered options, decision pauses and confirmation prompts. |
 | Decide whether a new file should exist | `foundation/creation-rules.md` | Prevents asset sprawl and duplicated ownership. |
 | Name a file or folder | `foundation/naming-conventions.md` | Keeps names predictable and machine-readable. |

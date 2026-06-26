@@ -10,6 +10,8 @@ The model keeps the Chief focused on the current startup stage, active files and
 
 Use this file when the founder asks to start, diagnose an idea, continue from an unclear point, create a roadmap, define an MVP, prepare delivery, launch, learn from evidence or activate a new department.
 
+Use `progression-gates.md` for concrete required context, allowed next stages and blocked next stages. This file explains the journey; the gate matrix decides whether the next step is allowed.
+
 Use `guided-conversation.md` for the actual question style after this model identifies the next stage.
 
 ## Core Rule

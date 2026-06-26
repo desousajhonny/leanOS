@@ -74,7 +74,7 @@ Examples:
 
 ## Progression Intent Routing
 
-For founder progression decisions, use \`ai-standard/foundation/founder-progression-model.md\` as the operating rule for stage, gate and activation behavior. Use it for routing discipline only; product decisions still belong to the active department through the Navigation Chain.
+For founder progression decisions, use \`ai-standard/foundation/founder-progression-model.md\` as the operating rule for stage and activation behavior, and \`ai-standard/foundation/progression-gates.md\` as the concrete gate matrix for required context, allowed next stages and blocked next stages. Use them for routing discipline only; product decisions still belong to the active department through the Navigation Chain.
 
 Apply this decision shape:
 

@@ -126,6 +126,7 @@ async function validateWorkspaceFiles() {
     "ai-standard/foundation/README.md",
     "ai-standard/foundation/navigation-chain.md",
     "ai-standard/foundation/founder-progression-model.md",
+    "ai-standard/foundation/progression-gates.md",
     "ai-standard/foundation/guided-conversation.md",
     "ai-standard/foundation/asset-taxonomy.md",
     "ai-standard/foundation/creation-rules.md",
@@ -571,6 +572,7 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "ai-standard", "foundation", "README.md"));
   await assertExists(join(rootDir, "ai-standard", "foundation", "asset-taxonomy.md"));
   await assertExists(join(rootDir, "ai-standard", "foundation", "navigation-chain.md"));
+  await assertExists(join(rootDir, "ai-standard", "foundation", "progression-gates.md"));
   await assertExists(join(rootDir, "ai-standard", "foundation", "creation-rules.md"));
   await assertExists(join(rootDir, "ai-standard", "foundation", "quality-criteria.md"));
   await assertExists(join(rootDir, "ai-standard", "foundation", "folder-documentation-rules.md"));
@@ -601,6 +603,7 @@ async function validateWorkspaceFiles() {
   const ideaToRoadmapWorkflow = await readFile(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"), "utf8");
   assert(founderDiagnosisWorkflow.includes("## Progression Stage"), "Founder diagnosis workflow should declare progression stage");
   assert(founderDiagnosisWorkflow.includes("## Entry Gate"), "Founder diagnosis workflow should declare an entry gate");
+  assert(founderDiagnosisWorkflow.includes("ai-standard/foundation/progression-gates.md"), "Founder diagnosis workflow should load progression gates");
   assert(founderDiagnosisWorkflow.includes("Strategy Baseline"), "Founder diagnosis workflow should build Strategy Baseline");
   assert(founderDiagnosisWorkflow.includes("diagnose-founder-idea"), "Founder diagnosis workflow should use the founder idea diagnosis skill");
   assert(founderDiagnosisWorkflow.includes("Do not create roadmap, MVP delivery scope, Epics, Features or implementation work"), "Founder diagnosis workflow should stop before roadmap and delivery");
@@ -774,6 +777,7 @@ async function validateWorkspaceFiles() {
   assert.equal(yaml.activation.mode, "progressive", "leanos.yaml should declare progressive activation mode");
   assert.equal(yaml.activation.current_stage, "setup-seed", "leanos.yaml should start at setup seed");
   assert.equal(yaml.activation.progression_model, "ai-standard/foundation/founder-progression-model.md", "leanos.yaml should point to the Founder Progression Model");
+  assert.equal(yaml.activation.progression_gates, "ai-standard/foundation/progression-gates.md", "leanos.yaml should point to Progression Gates");
   assert.deepEqual(yaml.activation.inactive_departments, ["operations", "growth"], "leanos.yaml should mark Operations and Growth inactive at setup");
   assert.deepEqual(yaml.activation.available_departments, ["strategy", "operations", "growth"], "leanos.yaml should list departments that can be activated later");
   assert.deepEqual(yaml.activation.active_departments, yaml.departments.active, "leanos.yaml activation state should mirror active departments");
@@ -802,6 +806,7 @@ async function validateClientWorkspaceFixture() {
     ".gitignore",
     "leanos.yaml",
     "ai-standard/README.md",
+    "ai-standard/foundation/progression-gates.md",
     "strategy/product/README.md",
     "strategy/product/knowledge/mvp-validation-scope.md",
     "strategy/product/skills/diagnose-founder-idea.skill.md",
@@ -1557,6 +1562,7 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("If a natural-language request clearly matches an existing LeanOS command"), "Root AGENT.md should map natural language to commands when clear");
   assert(rootAgent.includes("## Progression Intent Routing"), "Root AGENT.md should include progression intent routing");
   assert(rootAgent.includes("`ai-standard/foundation/founder-progression-model.md`"), "Root AGENT.md should reference the Founder Progression Model");
+  assert(rootAgent.includes("`ai-standard/foundation/progression-gates.md`"), "Root AGENT.md should reference progression gates");
   assert(rootAgent.includes("Intent -> Current Stage -> Gate -> Active Requirements -> Route"), "Root AGENT.md should define the progression routing decision shape");
   assert(rootAgent.includes("If the next step requires an inactive or missing department or area, return `activation_required`"), "Root AGENT.md should return activation_required instead of inventing missing areas");
   assert(rootAgent.includes("Do not answer with only `activation_required`"), "Root AGENT.md should require natural activation language");
@@ -1692,6 +1698,7 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
   const aiStandardReadme = await readFile(join(rootDir, "ai-standard", "README.md"), "utf8");
   const foundationReadme = await readFile(join(rootDir, "ai-standard", "foundation", "README.md"), "utf8");
   const founderProgressionModel = await readFile(join(rootDir, "ai-standard", "foundation", "founder-progression-model.md"), "utf8");
+  const progressionGates = await readFile(join(rootDir, "ai-standard", "foundation", "progression-gates.md"), "utf8");
   const assetTaxonomy = await readFile(join(rootDir, "ai-standard", "foundation", "asset-taxonomy.md"), "utf8");
   const guidedConversation = await readFile(join(rootDir, "ai-standard", "foundation", "guided-conversation.md"), "utf8");
   const creationRules = await readFile(join(rootDir, "ai-standard", "foundation", "creation-rules.md"), "utf8");
@@ -1707,9 +1714,11 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
   assert(foundationReadme.includes("asset-taxonomy.md"), "Foundation README should list asset taxonomy");
   assert(foundationReadme.includes("navigation-chain.md"), "Foundation README should list navigation chain");
   assert(foundationReadme.includes("founder-progression-model.md"), "Foundation README should list founder progression model");
+  assert(foundationReadme.includes("progression-gates.md"), "Foundation README should list progression gates");
   assert(foundationReadme.includes("guided-conversation.md"), "Foundation README should list guided conversation");
   assert(foundationReadme.includes("folder-documentation-rules.md"), "Foundation README should list folder documentation rules");
   assert(aiStandardReadme.includes("foundation/founder-progression-model.md"), "AI Standard README should route founder progression decisions");
+  assert(aiStandardReadme.includes("foundation/progression-gates.md"), "AI Standard README should route progression gate decisions");
   assert(aiStandardReadme.includes("foundation/guided-conversation.md"), "AI Standard README should route guided conversation decisions");
   for (const expected of [
     "Setup Seed",
@@ -1737,6 +1746,24 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
   assert(founderProgressionModel.includes("Strategy Product defines MVP Validation Scope"), "Founder Progression Model should route first MVP definition through Strategy Product");
   assert(founderProgressionModel.includes("MVP Candidate Roadmap"), "Founder Progression Model should name the MVP Candidate Roadmap gate");
   assert(founderProgressionModel.includes("executable MVP delivery scope needs Product Ops ownership"), "Founder Progression Model should reserve Product Ops for executable MVP delivery scope");
+  assert(founderProgressionModel.includes("progression-gates.md"), "Founder Progression Model should delegate concrete gate criteria to progression gates");
+  for (const expected of [
+    "# Progression Gates",
+    "## Gate Matrix",
+    "## Required Context",
+    "## Allowed Next Stages",
+    "## Blocked Next Stages",
+    "Setup Seed",
+    "Strategy Baseline",
+    "MVP Validation Scope",
+    "MVP Candidate Roadmap",
+    "MVP Delivery Decision",
+    "Implementation"
+  ]) {
+    assert(progressionGates.includes(expected), `Progression Gates should include ${expected}`);
+  }
+  assert(progressionGates.includes("Do not allow Engineering before Product Ops delivery readiness"), "Progression Gates should block premature Engineering");
+  assert(progressionGates.includes("activation_required"), "Progression Gates should document activation decisions");
   assert(guidedConversation.includes("# Guided Conversation"), "Guided conversation should have expected title");
   assert(guidedConversation.includes("the host application's native selection UI when available"), "Guided conversation should prefer native selection UI when available");
   assert(guidedConversation.includes("If no native selection UI is available, write numbered options directly in chat"), "Guided conversation should define numbered fallback");
@@ -2547,6 +2574,7 @@ async function assertProductAreaPattern(rootDir) {
   assert(productManagerRole.includes("../knowledge/brief.md"), "Product Manager should load Product knowledge files");
   assert(diagnoseFounderIdeaSkill.includes("# Diagnose Founder Idea"), "Product should have a dedicated founder idea diagnosis skill");
   assert(diagnoseFounderIdeaSkill.includes("Strategy Baseline"), "Founder idea diagnosis skill should build Strategy Baseline");
+  assert(diagnoseFounderIdeaSkill.includes("../../../ai-standard/foundation/progression-gates.md"), "Founder idea diagnosis skill should load progression gates");
   assert(diagnoseFounderIdeaSkill.includes("baseline gaps"), "Founder idea diagnosis skill should identify baseline gaps");
   assert(diagnoseFounderIdeaSkill.includes("Do not create roadmap, MVP delivery scope, Epics, Features or implementation work"), "Founder idea diagnosis skill should stop before roadmap and delivery");
   assert(defineMvpValidationScopeSkill.includes("# Define MVP Validation Scope"), "Product should have a dedicated MVP validation scope skill");

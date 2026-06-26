@@ -27,6 +27,7 @@ Setup Seed, Strategy Seed, Strategy Baseline or Idea Diagnosis.
 
 - Read `leanos.yaml` and active Strategy context first.
 - Use `ai-standard/foundation/founder-progression-model.md` to classify the current stage.
+- Use `ai-standard/foundation/progression-gates.md` to check required context, allowed next stages and blocked next stages.
 - Use Product Strategist with `diagnose-founder-idea` when the missing baseline decision is product-facing.
 
 ## Activation Requirements
@@ -64,6 +65,7 @@ All required areas are active in this department.
 - `.leanos/context/current-focus.md`
 - `.leanos/context/next-actions.md`
 - `ai-standard/foundation/founder-progression-model.md`
+- `ai-standard/foundation/progression-gates.md`
 - `strategy/AGENT.md`
 - `strategy/workflows/README.md`
 - `strategy/workflows/founder-diagnosis.workflow.md`

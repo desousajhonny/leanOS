@@ -121,9 +121,10 @@ export function aiStandardFiles(): FileEntry[] {
 
   return [
     { path: "ai-standard/README.md", content: aiStandardReadme() },
-    { path: "ai-standard/foundation/README.md", content: folderReadme("Foundation", "Core LeanOS foundation for asset taxonomy, progression, navigation, naming, guided conversation, creation and quality.", "Start here when deciding what kind of asset exists, which founder progression stage is active, where it belongs, how to talk to the founder or how to judge quality.", "asset-taxonomy.md", ["asset-taxonomy.md", "navigation-chain.md", "founder-progression-model.md", "guided-conversation.md", "creation-rules.md", "quality-criteria.md", "naming-conventions.md", "folder-documentation-rules.md"], ["../templates/", "../checklists/", "../instructions/", "../examples/"], "Load only the foundation file needed for the active decision. Do not load all foundation files by default.") },
+    { path: "ai-standard/foundation/README.md", content: folderReadme("Foundation", "Core LeanOS foundation for asset taxonomy, progression, navigation, naming, guided conversation, creation and quality.", "Start here when deciding what kind of asset exists, which founder progression stage is active, where it belongs, how to talk to the founder or how to judge quality.", "asset-taxonomy.md", ["asset-taxonomy.md", "navigation-chain.md", "founder-progression-model.md", "progression-gates.md", "guided-conversation.md", "creation-rules.md", "quality-criteria.md", "naming-conventions.md", "folder-documentation-rules.md"], ["../templates/", "../checklists/", "../instructions/", "../examples/"], "Load only the foundation file needed for the active decision. Do not load all foundation files by default.") },
     { path: "ai-standard/foundation/navigation-chain.md", content: "# Navigation Chain\n\nLeanOS uses owner-first navigation:\n\n`Root AGENT.md -> Department AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`\n\nUse the chain to choose the next owner, one level at a time.\n\n1. Root chooses the owning department.\n2. Department chooses a workflow or active area.\n3. Area chooses the specialist role when it has `AGENT.md`; otherwise use its `README.md` as the local map.\n4. Role points to the required skills and playbooks.\n5. Skills and playbooks shape the work.\n6. Output updates only the smallest relevant knowledge, decision or project file.\n\nDo not skip levels because a later file looks relevant.\nDo not load the whole workspace when a smaller route exists.\n" },
     { path: "ai-standard/foundation/founder-progression-model.md", content: founderProgressionModel() },
+    { path: "ai-standard/foundation/progression-gates.md", content: progressionGates() },
     { path: "ai-standard/foundation/guided-conversation.md", content: guidedConversation() },
     { path: "ai-standard/foundation/asset-taxonomy.md", content: assetTaxonomy() },
     { path: "ai-standard/foundation/creation-rules.md", content: creationRules() },
@@ -1564,6 +1565,8 @@ The model keeps the Chief focused on the current startup stage, active files and
 
 Use this file when the founder asks to start, diagnose an idea, continue from an unclear point, create a roadmap, define an MVP, prepare delivery, launch, learn from evidence or activate a new department.
 
+Use \`progression-gates.md\` for concrete required context, allowed next stages and blocked next stages. This file explains the journey; the gate matrix decides whether the next step is allowed.
+
 Use \`guided-conversation.md\` for the actual question style after this model identifies the next stage.
 
 ## Core Rule
@@ -1726,6 +1729,88 @@ If any item is missing, ask the smallest guided question that fills it.
 `;
 }
 
+function progressionGates(): string {
+  return `# Progression Gates
+
+## Purpose
+
+Define the concrete gates that decide whether LeanOS can move from one founder progression stage to the next.
+
+Use this file with \`founder-progression-model.md\`. The model explains the journey. This file names the required context, allowed next stages and blocked next stages.
+
+## Gate Matrix
+
+| Stage | Required Context | Allowed Next Stages | Blocked Next Stages |
+| --- | --- | --- | --- |
+| Setup Seed | \`leanos.yaml\` seed context, active Strategy routes, founder start intent | Strategy Seed, Idea Diagnosis | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
+| Strategy Seed | product idea, target user guess, problem guess, value promise guess | Strategy Baseline, Idea Diagnosis | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
+| Strategy Baseline | problem statement, ICP or first user segment, value proposition, alternative, riskiest assumption, business model direction, immediate focus | MVP Validation Scope, Roadmap Inicial, Idea Diagnosis | MVP Delivery Decision, Product Shaping, Implementation |
+| Idea Diagnosis | idea restated, user and problem named, fit with ICP/value checked, evidence and assumptions visible | MVP Validation Scope, Roadmap Inicial, Strategy Baseline | MVP Delivery Decision, Product Shaping, Implementation |
+| MVP Validation Scope | Business Thesis, Target User, Core Problem, Promise, MVP Slice, Success Signals, Pivot Signals, Initial MVP Roadmap Candidate | MVP Candidate Roadmap, Roadmap Inicial | MVP Delivery Decision, Product Shaping, Implementation |
+| MVP Candidate Roadmap | confirmed roadmap/backlog candidate, outcome, validation goal, Now/Next placement, founder confirmation | MVP Delivery Decision, Product Shaping when Product Ops is active | Implementation |
+| MVP Delivery Decision | Product Ops active, delivery scope, PRD or equivalent scope, non-goals, acceptance criteria, dependencies | Product Shaping, Delivery Readiness | Implementation before Feature readiness |
+| Product Shaping | Epic exists, scope type, milestone or release goal, expected Features, readiness gaps | Delivery Readiness, Feature Shaping | Implementation |
+| Delivery Readiness | Feature exists, Product Ops criteria, Engineering criteria, Design/Security/DevOps criteria satisfied or not applicable | Implementation | Launch, Learning Loop without shipped or tested output |
+| Implementation | Engineering active, branch plan, implementation plan, tests or validation plan, PR readiness path | Launch, Learning Loop, Post-Merge Continuation | Scaling / Operating Cadence without usage or recurring operation |
+| Launch | release or MVP is available to users, launch owner, support path, rollback or recovery plan, learning signals | Learning Loop, Scaling / Operating Cadence | Implementation without a new ready Feature |
+| Learning Loop | evidence, insight, decision, roadmap or backlog impact, next learning action | Strategy Baseline, Roadmap Inicial, MVP Validation Scope, Product Shaping | Scaling / Operating Cadence without recurring usage or operating rhythm |
+| Scaling / Operating Cadence | product in use, recurring feedback or operations, metrics, cadence owner, backlog/launch/learning rhythm | Learning Loop, Roadmap Inicial, Delivery Readiness | Setup Seed |
+
+## Required Context
+
+Before moving stages, confirm:
+
+- the current stage is named;
+- required context for the current stage exists in active files or is explicitly unknown;
+- assumptions are not treated as evidence;
+- the next route exists or returns \`activation_required\`;
+- the founder has confirmed any durable file update.
+
+## Allowed Next Stages
+
+Allowed next stages are the only stages LeanOS may recommend without explaining a blocked gate.
+
+When multiple next stages are allowed, choose the smallest one that answers the founder's intent:
+
+- if context is unclear, stay in Strategy Seed or Idea Diagnosis;
+- if the founder wants fast business validation, move to MVP Validation Scope;
+- if the founder wants sequence, move to MVP Candidate Roadmap or Roadmap Inicial;
+- if the founder chose a roadmap item for delivery, request Product Ops activation and move to MVP Delivery Decision.
+
+## Blocked Next Stages
+
+Blocked stages require a founder-friendly explanation and the missing gate.
+
+- Do not allow Engineering before Product Ops delivery readiness.
+- Do not allow Product Ops to create delivery scope before Strategy Baseline and a roadmap/MVP candidate exist.
+- Do not allow Growth launch work before there is a productized, landing-page, concierge or release surface to put in front of users.
+- Do not allow GitHub sync before local delivery assets or GitHub setup readiness exist.
+- Do not allow Scaling / Operating Cadence before usage, feedback, release activity or recurring operations exist.
+
+## Activation Rules
+
+Use \`activation_required\` only when:
+
+- the requested next stage belongs to an inactive area;
+- the current stage gate is satisfied;
+- the founder has been told why the active Strategy files are no longer enough;
+- the founder confirms activation.
+
+Do not use \`activation_required\` as a substitute for missing Strategy context.
+
+## Founder-Friendly Output
+
+When a gate blocks progress, say:
+
+~~~text
+Ainda falta uma decisao antes desse passo.
+Estamos em: <current stage>.
+Falta: <missing gate>.
+Proximo passo seguro: <next route or question>.
+~~~
+`;
+}
+
 function aiStandardReadme(): string {
   return `# AI Standard
 
@@ -1757,6 +1842,7 @@ Use this route for most asset creation work:
 | Decide what kind of asset something is | \`foundation/asset-taxonomy.md\` | Defines AGENT, README, YAML, role, skill, playbook, knowledge, workflow and command. |
 | Decide how a model should move through the workspace | \`foundation/navigation-chain.md\` | Defines owner-first navigation and prevents route skipping. |
 | Decide the next founder progression stage | \`foundation/founder-progression-model.md\` | Defines Strategy-first progression, gates, activation_required and Chief routing behavior. |
+| Check if a founder progression move is allowed | \`foundation/progression-gates.md\` | Defines required context, allowed next stages and blocked next stages. |
 | Design founder-friendly questions or decisions | \`foundation/guided-conversation.md\` | Defines numbered options, decision pauses and confirmation prompts. |
 | Decide whether a new file should exist | \`foundation/creation-rules.md\` | Prevents asset sprawl and duplicated ownership. |
 | Name a file or folder | \`foundation/naming-conventions.md\` | Keeps names predictable and machine-readable. |
