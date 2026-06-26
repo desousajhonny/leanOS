@@ -50,12 +50,20 @@ O LeanOS tem um MVP de framework local com:
 - [x] Root `AGENT.md` usa `Progression Intent Routing`.
 - [x] Root `AGENT.md` usa `Routing Narration` em vez de `Response Header` tecnico obrigatorio.
 - [x] Preview `examples/client-workspace/` regenerado apos as mudancas estruturais relevantes.
+- [x] `docs/framework/source-of-truth/` criado como base normativa do LeanOS.
+- [x] Root `AGENT.md` aponta para a source of truth antes de decisoes de framework.
 
 ## Pendencias Ativas
 
 ### 1. Validar Fluxo Inicial Com Founder
 
 Status: proximo assunto de produto.
+
+Base obrigatoria:
+
+- `docs/framework/source-of-truth/leanos-doctrine.md`
+- `docs/framework/source-of-truth/operating-model.md`
+- `docs/framework/source-of-truth/decision-rules.md`
 
 Objetivo: revisar a jornada real de um founder novo:
 

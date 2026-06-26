@@ -1,117 +1,117 @@
-# Journey: <journey name>
+# Jornada: <nome da jornada>
 
-Each step must explain cause and effect:
+Cada etapa deve explicar causa e efeito:
 
 ```text
-The model does X because it read Y, and Y instructed or allowed X.
+O modelo faz X porque leu Y, e Y instruiu ou permitiu X.
 ```
 
-If the reason cannot be explained, the route is too implicit and should become a clearer AGENT, workflow, role, skill or playbook rule.
+Se a razão não puder ser explicada, a rota está implícita demais e deve virar uma regra mais clara em AGENT, workflow, role, skill ou playbook.
 
-## Human Overview
+## Visão Humana
 
-Short version for the framework owner.
+Versão curta para o dono do framework.
 
-- **Trigger:** what the founder says.
-- **Goal:** what this journey decides or produces.
-- **Starts at:** first route owner.
-- **Passes through:** key workflow, area, role or playbook.
-- **Ends with:** final decision, output or handoff.
-- **Does not do:** boundaries that prevent premature execution.
+- **Trigger:** o que o founder diz.
+- **Objetivo:** o que esta jornada decide ou produz.
+- **Começa em:** primeiro owner da rota.
+- **Passa por:** workflow, área, role ou playbook principal.
+- **Termina com:** decisão final, output ou handoff.
+- **Não faz:** limites que impedem execução prematura.
 
-Keep this section short. The detailed execution contract lives below.
+Mantenha esta seção curta. O contrato detalhado de execução fica abaixo.
 
-## Flow Diagram
+## Diagrama Do Fluxo
 
-Use a vertical Mermaid diagram for readability:
+Use um diagrama Mermaid vertical para facilitar a leitura:
 
 ```mermaid
 flowchart TD
-  A["Founder intent"]
-  B["Root AGENT"]
-  C["Department AGENT"]
+  A["Intenção do founder"]
+  B["AGENT raiz"]
+  C["AGENT do departamento"]
   D["Workflow"]
-  E{"Route files exist?"}
-  F["Area / Role"]
+  E{"Arquivos da rota existem?"}
+  F["Área / Role"]
   G["Playbook / Skill"]
-  H["Guided conversation"]
-  I{"Founder confirms?"}
+  H["Conversa guiada"]
+  I{"Founder confirma?"}
   J["Update / output / handoff"]
-  K["Explain outcome to founder"]
-  L["Stop without writing / map gap"]
+  K["Explicar resultado ao founder"]
+  L["Parar sem escrever / mapear lacuna"]
 
   A --> B --> C --> D --> E
-  E -->|Yes| F --> G --> H --> I
-  E -->|No| K
-  I -->|Yes| J
-  I -->|No| K
+  E -->|Sim| F --> G --> H --> I
+  E -->|Não| K
+  I -->|Sim| J
+  I -->|Não| K
   K --> L
 ```
 
-## Flow In Plain Words
+## Fluxo Em Linguagem Simples
 
-One paragraph explaining the route:
+Um parágrafo explicando a rota:
 
-> The model starts at Root AGENT because..., enters `<department>` because..., reads the workflow because..., activates `<role>` because..., and ends by asking the founder to confirm...
+> O modelo começa no AGENT raiz porque..., entra em `<department>` porque..., lê o workflow porque..., ativa `<role>` porque..., e termina pedindo confirmação ao founder...
 
-## Founder Trigger
+## Trigger Do Founder
 
-Real phrases that can start this journey:
+Frases reais que podem iniciar esta jornada:
 
 - "..."
 - "..."
 - "..."
 
-## Moment
+## Momento
 
-When this journey happens in the product/company lifecycle.
+Quando esta jornada acontece no ciclo de vida do produto/negócio.
 
-Examples:
+Exemplos:
 
-- initial setup;
-- first product definition;
-- new idea or feature;
+- setup inicial;
+- primeira definição de produto;
+- nova ideia ou feature;
 - roadmap;
-- issue shaping;
-- implementation;
-- PR review;
-- post-merge;
-- launch/learning.
+- shaping de issue;
+- implementação;
+- review de PR;
+- pós-merge;
+- lançamento/aprendizado.
 
-## Human Goal
+## Objetivo Humano
 
-Explain in simple language what the founder is trying to solve.
+Explique em linguagem simples o que o founder está tentando resolver.
 
-Example:
+Exemplo:
 
-> The founder wants to understand whether a new idea makes sense before putting it into the roadmap or asking for implementation.
+> O founder quer entender se uma nova ideia faz sentido antes de colocá-la no roadmap ou pedir implementação.
 
-## Start Condition
+## Condição De Início
 
-This journey starts when:
+Esta jornada começa quando:
 
 - ...
 - ...
 
-## End Condition
+## Condição De Fim
 
-This journey ends when:
+Esta jornada termina quando:
 
 - ...
 - ...
 
 ## Owner
 
-Department or area that owns the journey:
+Departamento ou área dona da jornada:
 
-- Department:
-- Area:
+- Departamento:
+- Área:
 - Workflow:
-- Command, if any:
+- Comando, se houver:
 
-## Route Contract
+## Contrato De Rota
 
-The required route is:
+A rota obrigatória é:
 
 ```text
 Root AGENT.md
@@ -124,250 +124,250 @@ Root AGENT.md
 -> Output
 ```
 
-Rules:
+Regras:
 
-- The model cannot skip directly to a role, skill or playbook.
-- The model must declare the route before executing.
-- If a route file does not exist, the model stops and reports the gap.
-- If the workflow says an area is conditional, the model explains why it enters or does not enter.
-- If the route needs to change, the model explains the change before continuing.
+- O modelo não pode pular diretamente para uma role, skill ou playbook.
+- O modelo deve declarar a rota antes de executar.
+- Se um arquivo da rota não existir, o modelo para e reporta a lacuna.
+- Se o workflow diz que uma área é condicional, o modelo explica por que ela entra ou não entra.
+- Se a rota precisar mudar, o modelo explica a mudança antes de continuar.
 
-## What The Model Does In Practice
+## O Que O Modelo Faz Na Prática
 
-### Step 1 - <action>
+### Etapa 1 - <ação>
 
-The model opens:
+O modelo abre:
 
 `<file>`
 
-Why:
+Por quê:
 
-- Which AGENT, workflow, command or playbook instructed this step.
-- What the model understood from the founder intent.
-- Why this is the correct next owner.
+- Qual AGENT, workflow, decisão de ativação ou playbook instruiu esta etapa.
+- O que o modelo entendeu da intenção do founder.
+- Por que este é o próximo owner correto.
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- `<file>` says...
-- `<index or yaml>` confirms...
+- `<file>` diz...
+- `<index or yaml>` confirma...
 
-What the model understands here:
+O que o modelo entende aqui:
 
 - ...
 - ...
 
-Next step:
+Próxima etapa:
 
 `<file>`
 
-### Step 2 - <action>
+### Etapa 2 - <ação>
 
-The model opens:
+O modelo abre:
 
 `<file>`
 
-Why:
+Por quê:
 
 - ...
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- The previous file points to this file.
-- This file exists in the workspace.
-- The README/YAML/index confirms that this asset belongs here.
+- O arquivo anterior aponta para este arquivo.
+- Este arquivo existe no workspace.
+- O README/YAML/index confirma que este asset pertence a este lugar.
 
-What the model understands here:
+O que o modelo entende aqui:
 
 - ...
 
-Next step:
+Próxima etapa:
 
 `<file>`
 
-Repeat until the journey reaches output.
+Repita até a jornada chegar ao output.
 
-## Active Roles
+## Roles Ativas
 
-| Order | Role | When It Enters | Why It Enters | Route Evidence |
+| Ordem | Role | Quando Entra | Por Que Entra | Evidência De Rota |
 | --- | --- | --- | --- | --- |
 | 1 | `<role>` | ... | ... | `<area>/AGENT.md` or `<area>/area.yaml` |
 | 2 | `<role>` | ... | ... | ... |
 
-## Active Skills
+## Skills Ativas
 
-| Skill | Used By | Purpose | Route Evidence |
+| Skill | Usada Por | Propósito | Evidência De Rota |
 | --- | --- | --- | --- |
-| `<skill>` | `<role>` | ... | `<role>.role.md` points to it |
+| `<skill>` | `<role>` | ... | `<role>.role.md` aponta para ela |
 
-## Active Playbooks
+## Playbooks Ativos
 
-| Playbook | Area | Role In The Journey | Route Evidence |
+| Playbook | Área | Papel Na Jornada | Evidência De Rota |
 | --- | --- | --- | --- |
-| `<playbook>` | `<area>` | ... | `<role>.role.md` or workflow points to it |
+| `<playbook>` | `<area>` | ... | `<role>.role.md` ou workflow aponta para ele |
 
-## Founder Questions
+## Perguntas Ao Founder
 
-Founder-friendly questions:
+Perguntas amigáveis para o founder:
 
 - ...
 - ...
 - ...
 
-Do not ask as a rigid form. Ask only what is missing.
+Não pergunte como formulário rígido. Pergunte apenas o que está faltando.
 
-## Guided Conversation Points
+## Pontos De Conversa Guiada
 
-List where the journey uses guided choices without writing the full questionnaire here.
+Liste onde a jornada usa escolhas guiadas sem escrever o questionário completo aqui.
 
-| Step | Purpose | Source |
+| Etapa | Propósito | Fonte |
 | --- | --- | --- |
-| Step ... | Choose between predictable paths | `<area>/playbooks/<playbook>.playbook.md` |
-| Step ... | Confirm before durable updates | `<workflow or playbook>` |
+| Etapa ... | Escolher entre caminhos previsíveis | `<area>/playbooks/<playbook>.playbook.md` |
+| Etapa ... | Confirmar antes de updates duráveis | `<workflow or playbook>` |
 
-Rules:
+Regras:
 
-- Keep detailed guided questions in the owning playbook or command.
-- Use `ai-standard/foundation/guided-conversation.md` as the global rule.
-- Do not turn this journey document into a script.
+- Mantenha perguntas guiadas detalhadas no playbook ou comando dono.
+- Use `ai-standard/foundation/guided-conversation.md` como regra global.
+- Não transforme este documento de jornada em um script.
 
-## Confirmation Checkpoints
+## Checkpoints De Confirmação
 
-The model must ask for confirmation before:
+O modelo deve pedir confirmação antes de:
 
-- updating files;
-- changing roadmap/backlog;
-- creating issues;
-- calling scripts/capabilities;
-- implementing code;
-- opening a PR.
+- atualizar arquivos;
+- mudar roadmap/backlog;
+- criar issues;
+- chamar scripts/capabilities;
+- implementar código;
+- abrir um PR.
 
-## Founder-facing Output
+## Output Voltado Ao Founder
 
-What the model should show the founder in simple language.
+O que o modelo deve mostrar ao founder em linguagem simples.
 
-Example:
+Exemplo:
 
 ```text
-This idea seems promising, but it is not ready for the roadmap yet.
+Essa ideia parece promissora, mas ainda não está pronta para entrar no roadmap.
 
-My recommendation:
-- keep it as a future opportunity;
-- register the main assumption;
-- revisit it after we validate the current problem.
+Minha recomendação:
+- manter como oportunidade futura;
+- registrar a principal premissa;
+- revisitar depois de validar o problema atual.
 
-Do you want me to register this idea so we can track it later?
+Quer que eu registre essa ideia para acompanharmos depois?
 ```
 
-## Internal File Updates After Confirmation
+## Updates Internos De Arquivo Após Confirmação
 
-Files that can be updated if the founder confirms:
+Arquivos que podem ser atualizados se o founder confirmar:
 
 - `<path>`
 - `<path>`
 
-## Forbidden Actions
+## Ações Proibidas
 
-During this journey, the model cannot:
-
-- ...
-- ...
-- ...
-
-## Possible Outcomes
-
-The journey can end with:
+Durante esta jornada, o modelo não pode:
 
 - ...
 - ...
 - ...
 
-## Continuation Bridge
+## Resultados Possíveis
 
-At the end of this journey, the model must offer one clear next-step bridge when a safe next flow exists.
+A jornada pode terminar com:
 
-The bridge must be founder-friendly, not file/path-first.
+- ...
+- ...
+- ...
 
-Immediate bridge:
+## Ponte De Continuação
+
+Ao fim desta jornada, o modelo deve oferecer uma ponte clara para o próximo passo quando existir um próximo fluxo seguro.
+
+A ponte deve ser amigável para o founder, não file/path-first.
+
+Ponte imediata:
 
 ```text
-<simple question that lets the founder continue now>
+<pergunta simples que permite ao founder continuar agora>
 ```
 
-Later-session triggers:
+Triggers em sessão posterior:
 
-- "<natural founder phrase>"
-- "<natural founder phrase>"
-- "<optional command or shortcut if one exists>"
+- "<frase natural do founder>"
+- "<frase natural do founder>"
+- "<comando ou atalho opcional, se existir>"
 
-Next route:
+Próxima rota:
 
 `<next-journey-or-workflow>`
 
-Rules:
+Regras:
 
-- Do not automatically start the next journey without founder confirmation.
-- If the founder says yes, declare the new route before loading the next workflow.
-- If the founder says no, explain the current outcome and stop without writing anything else.
-- If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route normally, and load the next journey.
+- Não inicie automaticamente a próxima jornada sem confirmação do founder.
+- Se o founder disser sim, declare a nova rota antes de carregar o próximo workflow.
+- Se o founder disser não, explique o resultado atual e pare sem escrever mais nada.
+- Se o founder voltar em uma sessão posterior com um trigger compatível, reinicie pelo `AGENT.md` raiz, faça o roteamento normal e carregue a próxima jornada.
 
-## Next Recommended Journey
+## Próxima Jornada Recomendada
 
-After this journey, the next flow can be:
+Depois desta jornada, o próximo fluxo pode ser:
 
-- `<journey>` when ...
-- `<journey>` when ...
+- `<journey>` quando ...
+- `<journey>` quando ...
 
-## Journey Validation Checklist
+## Checklist De Validação Da Jornada
 
-Use this checklist to test whether the journey really applies the Navigation Chain.
+Use este checklist para testar se a jornada realmente aplica a Cadeia de Navegação.
 
-### Files Exist
+### Arquivos Existem
 
-- [ ] `AGENT.md` exists.
-- [ ] `<department>/AGENT.md` exists.
-- [ ] `<department>/workflows/<workflow>.workflow.md` exists when the journey uses a workflow.
-- [ ] `<area>/AGENT.md` or `<area>/README.md` exists.
-- [ ] `<area>/area.yaml` exists.
-- [ ] Referenced roles exist.
-- [ ] Referenced skills exist.
-- [ ] Referenced playbooks exist.
-- [ ] Referenced knowledge files exist.
+- [ ] `AGENT.md` existe.
+- [ ] `<department>/AGENT.md` existe.
+- [ ] `<department>/workflows/<workflow>.workflow.md` existe quando a jornada usa um workflow.
+- [ ] `<area>/AGENT.md` ou `<area>/README.md` existe.
+- [ ] `<area>/area.yaml` existe.
+- [ ] Roles referenciadas existem.
+- [ ] Skills referenciadas existem.
+- [ ] Playbooks referenciados existem.
+- [ ] Arquivos de knowledge referenciados existem.
 
-### Files Point To Each Other
+### Arquivos Apontam Uns Para Os Outros
 
-- [ ] Root `AGENT.md` routes correctly to the department.
-- [ ] Department `AGENT.md` routes correctly to workflow or area.
-- [ ] Workflow points to correct areas, AGENTs or playbooks.
-- [ ] Area `AGENT.md` or README explains when to use each role.
-- [ ] Role points to the correct skills and playbooks.
-- [ ] Skills and playbooks do not depend on missing files.
-- [ ] `.leanos/index/*` confirms the main paths.
+- [ ] `AGENT.md` raiz roteia corretamente para o departamento.
+- [ ] `AGENT.md` do departamento roteia corretamente para workflow ou área.
+- [ ] Workflow aponta para áreas, AGENTs ou playbooks corretos.
+- [ ] `AGENT.md` ou README da área explica quando usar cada role.
+- [ ] Role aponta para as skills e playbooks corretos.
+- [ ] Skills e playbooks não dependem de arquivos ausentes.
+- [ ] `.leanos/index/*` confirma os paths principais.
 
-### Journey Execution
+### Execução Da Jornada
 
-- [ ] The model can explain the route before acting.
-- [ ] The model can say why each next file was loaded.
-- [ ] The model does not skip department or area.
-- [ ] The model does not load the whole workspace without need.
-- [ ] The model asks for confirmation before updating files.
-- [ ] The founder-facing output is understandable before technical paths appear.
-- [ ] Internal file updates are listed only after the human decision.
-- [ ] The continuation bridge offers the next flow without starting it automatically.
-- [ ] Later-session triggers are listed for natural founder language.
+- [ ] O modelo consegue explicar a rota antes de agir.
+- [ ] O modelo consegue dizer por que cada próximo arquivo foi carregado.
+- [ ] O modelo não pula departamento ou área.
+- [ ] O modelo não carrega o workspace inteiro sem necessidade.
+- [ ] O modelo pede confirmação antes de atualizar arquivos.
+- [ ] O output voltado ao founder é compreensível antes de paths técnicos aparecerem.
+- [ ] Updates internos de arquivo são listados apenas depois da decisão humana.
+- [ ] A ponte de continuação oferece o próximo fluxo sem iniciá-lo automaticamente.
+- [ ] Triggers de sessões posteriores estão listados em linguagem natural do founder.
 
-### Conditional Areas
+### Áreas Condicionais
 
-- [ ] Conditional areas explain when they enter.
-- [ ] Conditional areas explain when they do not enter.
-- [ ] Design enters only for UX/UI/flow/accessibility/copy/interaction.
-- [ ] Security enters only for data/auth/permissions/privacy/API/database/secrets/compliance/risk.
-- [ ] DevOps enters only for environment/deploy/CI/CD/observability/config/release.
+- [ ] Áreas condicionais explicam quando entram.
+- [ ] Áreas condicionais explicam quando não entram.
+- [ ] Design entra apenas para UX/UI/fluxo/acessibilidade/copy/interação.
+- [ ] Security entra apenas para dados/auth/permissões/privacidade/API/banco/secrets/compliance/risco.
+- [ ] DevOps entra apenas para ambiente/deploy/CI/CD/observabilidade/config/release.
 
-## Notes For Framework Design
+## Notas Para Design Do Framework
 
-Observations for improving the framework:
+Observações para melhorar o framework:
 
-- What is still confusing.
-- What may become a workflow.
-- What may remain only a playbook.
-- What depends on a future capability/script.
+- O que ainda está confuso.
+- O que pode virar workflow.
+- O que pode permanecer apenas como playbook.
+- O que depende de uma capability/script futura.

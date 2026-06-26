@@ -1,36 +1,36 @@
-# Progressive Workspace Activation Handoff
+# Handoff De Progressive Workspace Activation
 
 ## Branch
 
-Continue on `feature/progressive-workspace-activation`.
+Continuar em `feature/progressive-workspace-activation`.
 
-Do not create a new branch unless the current branch is merged first.
+Não criar uma nova branch a menos que a branch atual seja mergeada primeiro.
 
-## Current Commit State
+## Estado Atual De Commits
 
-Recent commits on this branch:
+Commits recentes nesta branch:
 
 - `8d664d2 feat: add progressive activation state`
 - `2fb5eab feat: generate strategy-only initial workspace`
 
-Working tree was clean when this handoff was written.
+O working tree estava limpo quando este handoff foi escrito.
 
-## What Is Already Done
+## O Que Já Foi Feito
 
-- `leanos.yaml` now includes progressive activation state:
-  - active departments and areas;
-  - inactive departments and areas;
-  - available departments and areas;
-  - founder-selected departments and areas from the wizard;
+- `leanos.yaml` agora inclui estado de ativação progressiva:
+  - departamentos e áreas ativos;
+  - departamentos e áreas inativos;
+  - departamentos e áreas disponíveis;
+  - departamentos e áreas selecionados pelo founder no wizard;
   - `missing_asset_behavior: return_activation_required`.
-- Initial scaffold generation now creates only Strategy.
-- Operations and Growth are not generated during initial setup.
-- Commands tied to inactive areas are not generated during initial setup.
-- Root `AGENT.md` routes inactive-area requests through `activation_required` instead of pointing to missing folders or command files.
-- Strategy workflows were adjusted so they do not reference inactive Operations/Growth paths as loadable assets.
-- `examples/client-workspace` was regenerated as the Strategy-only preview.
+- A geração inicial do scaffold agora cria apenas Strategy.
+- Operations e Growth não são gerados durante o setup inicial.
+- Comandos ligados a áreas inativas não são gerados durante o setup inicial.
+- O `AGENT.md` raiz roteia solicitações de áreas inativas por `activation_required` em vez de apontar para pastas ou arquivos de comando ausentes.
+- Workflows de Strategy foram ajustados para não referenciar paths inativos de Operations/Growth como assets carregáveis.
+- `examples/client-workspace` foi regenerado como preview Strategy-only.
 
-Verified before commit:
+Verificado antes do commit:
 
 ```powershell
 packages\cli\node_modules\.bin\tsc.CMD -p packages\cli\tsconfig.json
@@ -38,89 +38,88 @@ node packages\cli\scripts\validate-generator.mjs
 git diff --check
 ```
 
-## Next Slice
+## Próximo Slice
 
-Implement the practical activation flow: how LeanOS Chief creates the next department or area when the founder reaches the right stage.
+Implementar o fluxo prático de ativação: como o LeanOS Chief cria o próximo departamento ou área quando o founder chega ao estágio correto.
 
-The next implementation should answer:
+A próxima implementação deve responder:
 
-- Where does the activation logic live?
-- How does Chief decide that an inactive area should be activated?
-- How does Chief create the correct files without generating the full framework?
-- How does Chief update `leanos.yaml`, indexes, context files and preview state after activation?
-- How does Chief communicate activation naturally, without sounding mechanical?
+- Onde a lógica de ativação vive?
+- Como o Chief decide que uma área inativa deve ser ativada?
+- Como o Chief cria os arquivos corretos sem gerar o framework inteiro?
+- Como o Chief atualiza `leanos.yaml`, indexes, arquivos de contexto e estado de preview depois da ativação?
+- Como o Chief comunica ativação naturalmente, sem soar mecânico?
 
-## Founder Experience Rules
+## Regras De Experiência Do Founder
 
-Chief should not say only: `activation_required`.
+O Chief não deve dizer apenas: `activation_required`.
 
-Chief should explain the next natural operating step:
-
-```text
-Esse pedido ja passou do ponto de estrategia. Minha sugestao e abrir Product Ops agora para transformar isso em escopo executavel.
-```
-
-Chief should ask for confirmation before creating new departments or areas:
+O Chief deve explicar o próximo passo operacional natural:
 
 ```text
-Posso ativar Operations/Product Ops e criar os arquivos minimos para esse proximo passo?
+Esse pedido já passou do ponto de estratégia. Minha sugestão é abrir Product Ops agora para transformar isso em escopo executável.
 ```
 
-Chief should not load or reference files from inactive departments as if they already exist.
+O Chief deve pedir confirmação antes de criar novos departamentos ou áreas:
 
-Chief should always read `leanos.yaml` first and distinguish:
+```text
+Posso ativar Operations/Product Ops e criar os arquivos mínimos para esse próximo passo?
+```
 
-- `active_*`: exists and can be loaded now;
-- `inactive_*`: available later, but not present yet;
-- `founder_selected_*`: selected in the wizard, but still gated by business maturity.
+O Chief não deve carregar ou referenciar arquivos de departamentos inativos como se eles já existissem.
 
-## Suggested Activation Conditions
+O Chief deve sempre ler `leanos.yaml` primeiro e distinguir:
+
+- `active_*`: existe e pode ser carregado agora;
+- `inactive_*`: disponível depois, mas ainda não presente;
+- `founder_selected_*`: selecionado no wizard, mas ainda bloqueado por maturidade do negócio.
+
+## Condições De Ativação Sugeridas
 
 ### Operations / Product Ops
 
-Activate when Strategy has enough context and the founder wants to turn strategy into delivery:
+Ativar quando Strategy tem contexto suficiente e o founder quer transformar strategy em delivery:
 
-- problem, ICP and value proposition are minimally clear;
-- a roadmap/backlog item exists or is being promoted;
-- founder asks about MVP, scope, Epic, Feature, PRD, criteria, stories or building;
-- Chief can explain why Strategy alone is no longer enough.
+- problema, ICP e proposta de valor estão minimamente claros;
+- um item de roadmap/backlog existe ou está sendo promovido;
+- founder pergunta sobre MVP, escopo, Epic, Feature, PRD, critérios, stories ou construção;
+- Chief consegue explicar por que Strategy sozinha não é mais suficiente.
 
 ### Operations / Design
 
-Activate when delivery needs UX or product experience work:
+Ativar quando delivery precisa de trabalho de UX ou experiência de produto:
 
-- Product Ops or MVP scope exists;
-- founder asks for screens, flows, prototype, design system, copy, accessibility or components;
-- a Feature depends on user interaction clarity.
+- Product Ops ou escopo de MVP existe;
+- founder pede telas, fluxos, protótipo, design system, copy, acessibilidade ou componentes;
+- uma Feature depende de clareza de interação do usuário.
 
 ### Operations / Engineering
 
-Activate when implementation becomes concrete:
+Ativar quando a implementação se torna concreta:
 
-- Feature is defined enough for planning;
-- Product Ops has confirmed scope and criteria;
-- founder asks for code, branch, tests, implementation, PR or review.
+- Feature está definida o suficiente para planejamento;
+- Product Ops confirmou escopo e critérios;
+- founder pede código, branch, testes, implementação, PR ou review.
 
 ### Operations / DevOps
 
-Activate when execution needs infrastructure or external tooling:
+Ativar quando a execução precisa de infraestrutura ou tooling externo:
 
-- GitHub sync, GitHub Projects, CI/CD, deploy, environments, release, observability or repository configuration enters the flow;
-- founder confirms an external or remote action.
+- GitHub sync, GitHub Projects, CI/CD, deploy, ambientes, release, observabilidade ou configuração de repositório entram no fluxo;
+- founder confirma uma ação externa ou remota.
 
 ### Growth
 
-Activate when there is something to launch, test or learn from externally:
+Ativar quando existe algo para lançar, testar ou aprender externamente:
 
-- landing page, positioning, acquisition, launch, customer feedback, pricing, onboarding, churn or success learning becomes relevant;
-- Strategy or Product Ops has produced a concrete hypothesis, MVP scope or learning objective.
+- landing page, posicionamento, aquisição, lançamento, feedback de clientes, pricing, onboarding, churn ou aprendizado de sucesso se tornam relevantes;
+- Strategy ou Product Ops produziu uma hipótese concreta, escopo de MVP ou objetivo de aprendizado.
 
-## Recommended Next Implementation Order
+## Ordem Recomendada Para A Próxima Implementação
 
-1. Define an activation service/helper in the CLI generator layer that can produce files for a requested inactive area.
-2. Add a safe activation state update for `leanos.yaml`.
-3. Regenerate indexes and context files after activation.
-4. Add Chief-facing instructions for activation proposals and confirmation language.
-5. Add validator coverage for activating `operations.product-ops` from a Strategy-only workspace.
-6. Extend the same pattern to Design, Engineering, DevOps and Growth.
-
+1. Definir um service/helper de ativação na camada do generator da CLI que consiga produzir arquivos para uma área inativa solicitada.
+2. Adicionar um update seguro de estado de ativação para `leanos.yaml`.
+3. Regenerar indexes e arquivos de contexto depois da ativação.
+4. Adicionar instruções voltadas ao Chief para propostas de ativação e linguagem de confirmação.
+5. Adicionar cobertura de validator para ativar `operations.product-ops` a partir de um workspace Strategy-only.
+6. Estender o mesmo padrão para Design, Engineering, DevOps e Growth.

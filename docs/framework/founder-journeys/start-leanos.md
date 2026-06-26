@@ -1,65 +1,65 @@
-# Journey: Start LeanOS
+# Jornada: Iniciar O LeanOS
 
-This journey designs how LeanOS should handle a founder saying:
+Esta jornada desenha como o LeanOS deve lidar com um founder dizendo:
 
 ```text
-"Vamos comecar."
+"Vamos começar."
 ```
 
-The purpose is not to build a full MVP, roadmap or delivery plan immediately. The purpose is to diagnose the founder's current stage, build the minimum Strategy Baseline and identify the next safe route.
+O propósito não é construir imediatamente um MVP completo, roadmap ou plano de delivery. O propósito é diagnosticar o estágio atual do founder, construir a Strategy Baseline mínima e identificar a próxima rota segura.
 
-## Human Overview
+## Visão Humana
 
-- **Trigger:** founder wants to start, restart or understand where to begin.
-- **Goal:** turn seed context into a clear Strategy Baseline gap and one guided next question.
-- **Starts at:** root `AGENT.md`.
-- **Passes through:** `strategy/AGENT.md`, `strategy/workflows/founder-diagnosis.workflow.md`, Product Strategist and Product Strategy playbook.
-- **Ends with:** confirmed Strategy knowledge updates or a next route such as `new-idea-intake`, MVP Validation Scope or `idea-to-roadmap`.
-- **Does not do:** create roadmap items, define MVP delivery scope, create Epics/Features, activate Operations/Growth or start implementation.
+- **Trigger:** founder quer começar, recomeçar ou entender por onde iniciar.
+- **Objetivo:** transformar o contexto inicial em uma lacuna clara de Strategy Baseline e uma próxima pergunta guiada.
+- **Começa em:** `AGENT.md` raiz.
+- **Passa por:** `strategy/AGENT.md`, `strategy/workflows/founder-diagnosis.workflow.md`, Product Strategist e playbook de Product Strategy.
+- **Termina com:** atualizações confirmadas de knowledge em Strategy ou uma próxima rota como `new-idea-intake`, MVP Validation Scope ou `idea-to-roadmap`.
+- **Não faz:** criar itens de roadmap, definir escopo de delivery do MVP, criar Epics/Features, ativar Operations/Growth ou iniciar implementação.
 
-## Flow Diagram
+## Diagrama Do Fluxo
 
 ```mermaid
 flowchart TD
-  A["Founder: vamos comecar"]
+  A["Founder: vamos começar"]
   B["Root AGENT.md"]
-  C["Read leanos.yaml + active indexes"]
+  C["Ler leanos.yaml + indexes ativos"]
   D["Strategy AGENT"]
-  E["founder-diagnosis workflow"]
+  E["workflow founder-diagnosis"]
   F["Product Strategist"]
-  G["diagnose-founder-idea skill"]
-  H["Product Strategy playbook"]
-  I{"Strategy Baseline ready?"}
-  J["Ask one guided question"]
-  K["Propose Strategy updates"]
+  G["skill diagnose-founder-idea"]
+  H["playbook Product Strategy"]
+  I{"Strategy Baseline pronta?"}
+  J["Fazer uma pergunta guiada"]
+  K["Propor atualizações em Strategy"]
   L["Handoff: new-idea-intake / MVP Validation Scope / idea-to-roadmap"]
-  M["Stop without writing"]
+  M["Parar sem escrever"]
 
   A --> B --> C --> D --> E --> F --> G --> H --> I
-  I -->|No| J --> K
-  I -->|Yes| L
-  K -->|Founder declines| M
+  I -->|Não| J --> K
+  I -->|Sim| L
+  K -->|Founder recusa| M
 ```
 
-## Flow In Plain Words
+## Fluxo Em Linguagem Simples
 
-The model starts at root `AGENT.md` because the founder speaks in natural language. Root routing reads `leanos.yaml`, current phase and active indexes before entering Strategy. It then follows `founder-diagnosis.workflow.md` because startup is a progression-stage decision, not delivery work.
+O modelo começa no `AGENT.md` raiz porque o founder fala em linguagem natural. O roteamento raiz lê `leanos.yaml`, fase atual e indexes ativos antes de entrar em Strategy. Depois segue `founder-diagnosis.workflow.md` porque iniciar é uma decisão de estágio de progressão, não trabalho de delivery.
 
-Strategy Product uses `diagnose-founder-idea.skill.md` to name the current stage, baseline gaps and next guided question. The journey ends when the founder confirms Strategy updates or chooses a safe next route.
+Strategy Product usa `diagnose-founder-idea.skill.md` para nomear o estágio atual, as lacunas de baseline e a próxima pergunta guiada. A jornada termina quando o founder confirma atualizações em Strategy ou escolhe uma próxima rota segura.
 
-## Founder Trigger
+## Trigger Do Founder
 
-Real phrases that can start this journey:
+Frases reais que podem iniciar esta jornada:
 
-- "Vamos comecar."
-- "Quero comecar agora."
+- "Vamos começar."
+- "Quero começar agora."
 - "Como eu inicio o LeanOS?"
-- "Por onde comecamos?"
+- "Por onde começamos?"
 - "Quero configurar o LeanOS."
 
-## Route Contract
+## Contrato De Rota
 
-The required route is:
+A rota obrigatória é:
 
 ```text
 Root AGENT.md
@@ -73,18 +73,18 @@ Root AGENT.md
 -> strategy/product/playbooks/product-strategy.playbook.md
 ```
 
-## Stop Rules
+## Regras De Parada
 
-- Do not ask a generic "tell me more" question when a specific baseline gap is visible.
-- Do not create roadmap items before Strategy Baseline is minimally coherent.
-- Do not define MVP delivery scope before Product Ops is active.
-- Do not create Epics, Features, branches, PRs or source code.
-- Do not activate Operations or Growth from this journey without a later confirmed gate.
+- Não faça uma pergunta genérica como "me conte mais" quando uma lacuna específica de baseline está visível.
+- Não crie itens de roadmap antes que a Strategy Baseline esteja minimamente coerente.
+- Não defina escopo de delivery do MVP antes de Product Ops estar ativo.
+- Não crie Epics, Features, branches, PRs ou código fonte.
+- Não ative Operations ou Growth a partir desta jornada sem um gate posterior confirmado.
 
-## Completion Checklist
+## Checklist De Conclusão
 
-- [x] Root `AGENT.md` routes startup intent into Strategy.
-- [x] Strategy has a `founder-diagnosis` workflow.
-- [x] Product has a `diagnose-founder-idea` skill.
-- [x] The workflow names stage, gate, active requirements and activation limits.
-- [x] The journey stops before roadmap, MVP delivery scope, Epic, Feature and implementation work.
+- [x] O `AGENT.md` raiz roteia intenção de início para Strategy.
+- [x] Strategy tem um workflow `founder-diagnosis`.
+- [x] Product tem uma skill `diagnose-founder-idea`.
+- [x] O workflow nomeia estágio, gate, requisitos ativos e limites de ativação.
+- [x] A jornada para antes de roadmap, escopo de delivery do MVP, Epic, Feature e trabalho de implementação.

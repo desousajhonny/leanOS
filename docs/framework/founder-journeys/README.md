@@ -1,30 +1,30 @@
-# Founder Journeys
+# Jornadas Do Founder
 
-This folder is internal framework design documentation.
+Esta pasta contém documentação interna de design do framework.
 
-It is not generated into the client workspace and should not be copied into `examples/client-workspace/`.
+Ela não é gerada no workspace do cliente e não deve ser copiada para `examples/client-workspace/`.
 
-## Purpose
+## Propósito
 
-Founder Journeys describe how a founder intent should move through LeanOS before it becomes a workflow, command, playbook or generated asset.
+As Jornadas do Founder descrevem como uma intenção do founder deve passar pelo LeanOS antes de virar workflow, playbook, decisão de ativação ou asset gerado.
 
-Use this folder to design and test the human journey before changing the scaffold.
+Use esta pasta para desenhar e testar a jornada humana antes de alterar o scaffold.
 
-## Files
+## Arquivos
 
-- `journey-template.md`: template for describing a founder intent journey.
-- `journey-map.md`: checklist of journeys that still need to be written.
+- `journey-template.md`: template para descrever uma jornada de intenção do founder.
+- `journey-map.md`: checklist das jornadas que ainda precisam ser escritas.
 
-## Rule
+## Regra
 
-Every journey must be testable.
+Toda jornada deve ser testável.
 
-If a journey says the model should go from one file to another, the workspace must provide evidence:
+Se uma jornada diz que o modelo deve ir de um arquivo para outro, o workspace deve fornecer evidência:
 
-- an `AGENT.md` route;
-- a README explanation;
-- a YAML/index path;
-- a role pointing to a skill or playbook;
-- or a workflow declaring the handoff.
+- uma rota em `AGENT.md`;
+- uma explicação em README;
+- um path em YAML/index;
+- uma role apontando para uma skill ou playbook;
+- ou um workflow declarando o handoff.
 
-If there is no evidence, the framework route is still too implicit.
+Se não houver evidência, a rota do framework ainda está implícita demais.

@@ -1,88 +1,88 @@
-# Journey: Post Merge Continuation
+# Jornada: Continuação Pós-Merge
 
-## Human Overview
+## Visão Humana
 
-- **Trigger:** founder says "mergeado", "o PR foi mergeado", "vamos para a proxima feature" or similar.
-- **Goal:** close the loop after merge, update the smallest useful context and choose the next safe route.
-- **Starts at:** Root `AGENT.md`, then `operations/AGENT.md`.
-- **Passes through:** `post-merge-continuation.workflow.md`, Product Ops, Engineering and conditional DevOps/Security/Growth/Strategy follow-up.
-- **Ends with:** updated Feature/Epic status or Engineering log proposal, a founder-friendly shipped summary and one next-step bridge.
-- **Does not do:** write code, create branches, open PRs, deploy, change roadmap priority or start the next Feature automatically.
+- **Trigger:** founder diz "mergeado", "o PR foi mergeado", "vamos para a próxima feature" ou algo similar.
+- **Objetivo:** fechar o loop depois do merge, atualizar o menor contexto útil e escolher a próxima rota segura.
+- **Começa em:** `AGENT.md` raiz, depois `operations/AGENT.md`.
+- **Passa por:** `post-merge-continuation.workflow.md`, Product Ops, Engineering e follow-up condicional de DevOps/Security/Growth/Strategy.
+- **Termina com:** proposta de status atualizado de Feature/Epic ou log de Engineering, resumo amigável da entrega enviada e uma ponte para o próximo passo.
+- **Não faz:** escrever código, criar branches, abrir PRs, fazer deploy, mudar prioridade do roadmap ou iniciar automaticamente a próxima Feature.
 
-## Flow Diagram
+## Diagrama Do Fluxo
 
 ```mermaid
 flowchart TD
   A["Founder: PR mergeado"]
   B["Root AGENT"]
   C["Operations AGENT"]
-  D["post-merge-continuation workflow"]
-  E{"PR / Feature identified?"}
-  F["Ask which PR or Feature"]
-  G["Product Ops maps Epic + Feature state"]
-  H["Engineering summarizes PR + implementation notes"]
-  I{"Release / Security / Growth / Strategy follow-up?"}
-  J["Route conditional owner"]
-  K["Propose smallest local updates"]
-  L{"Founder confirms updates?"}
-  M["Update context/log/status files"]
-  N["Explain outcome to founder"]
-  O["Offer next route"]
-  P["Stop without writing"]
+  D["workflow post-merge-continuation"]
+  E{"PR / Feature identificada?"}
+  F["Perguntar qual PR ou Feature"]
+  G["Product Ops mapeia estado de Epic + Feature"]
+  H["Engineering resume PR + notas de implementação"]
+  I{"Follow-up de Release / Security / Growth / Strategy?"}
+  J["Rotear owner condicional"]
+  K["Propor menores updates locais úteis"]
+  L{"Founder confirma updates?"}
+  M["Atualizar arquivos de contexto/log/status"]
+  N["Explicar resultado ao founder"]
+  O["Oferecer próxima rota"]
+  P["Parar sem escrever"]
 
   A --> B --> C --> D --> E
-  E -->|No| F --> P
-  E -->|Yes| G --> H --> I
-  I -->|Yes| J --> K
-  I -->|No| K
+  E -->|Não| F --> P
+  E -->|Sim| G --> H --> I
+  I -->|Sim| J --> K
+  I -->|Não| K
   K --> L
-  L -->|Yes| M --> N --> O
-  L -->|No| N --> P
+  L -->|Sim| M --> N --> O
+  L -->|Não| N --> P
 ```
 
-## Flow In Plain Words
+## Fluxo Em Linguagem Simples
 
-The model starts at Root `AGENT.md` because the founder speaks naturally. It enters Operations because a merge is a delivery-state transition, not a new strategy decision by default. It reads `operations/workflows/post-merge-continuation.workflow.md` because the task can touch Product Ops status, Engineering notes, release readiness, security follow-up, customer learning or roadmap impact. Product Ops enters first to map the merged work back to the Epic and Feature. Engineering enters to summarize what was implemented and what was validated. DevOps, Security, Growth or Strategy enter only when their follow-up is relevant.
+O modelo começa no `AGENT.md` raiz porque o founder fala naturalmente. Ele entra em Operations porque um merge é uma transição de estado de delivery, não uma nova decisão de estratégia por padrão. Ele lê `operations/workflows/post-merge-continuation.workflow.md` porque a tarefa pode tocar status de Product Ops, notas de Engineering, readiness de release, follow-up de security, aprendizado de cliente ou impacto no roadmap. Product Ops entra primeiro para mapear o trabalho mergeado de volta ao Epic e à Feature. Engineering entra para resumir o que foi implementado e validado. DevOps, Security, Growth ou Strategy entram apenas quando o follow-up deles é relevante.
 
-## Founder Trigger
+## Trigger Do Founder
 
-- "mergeado, vamos para a proxima"
+- "mergeado, vamos para a próxima"
 - "o PR foi mergeado"
 - "terminamos essa feature"
 - "o que fazemos depois do merge?"
 - "atualiza o contexto depois do merge"
-- "qual a proxima feature?"
+- "qual a próxima feature?"
 
 ## Moment
 
-Post-merge. This happens after a PR or Feature was merged and before the next Feature delivery, release/deploy step, roadmap review or learning loop.
+Pós-merge. Isso acontece depois que um PR ou Feature foi mergeado e antes da próxima entrega de Feature, etapa de release/deploy, revisão de roadmap ou learning loop.
 
-## Start Condition
+## Condição De Início
 
-This journey starts when:
+Esta jornada começa quando:
 
-- the founder confirms a PR or Feature was merged;
-- or the model can identify a merged PR, local Feature or GitHub Feature issue;
-- and the founder asks what to update or what to do next.
+- o founder confirma que um PR ou Feature foi mergeado;
+- ou o modelo consegue identificar um PR mergeado, Feature local ou issue de Feature no GitHub;
+- e o founder pergunta o que atualizar ou o que fazer em seguida.
 
-## End Condition
+## Condição De Fim
 
-This journey ends when:
+Esta jornada termina quando:
 
-- the merge is summarized in founder-friendly language;
-- the smallest useful context/status updates are proposed and optionally applied;
-- the model offers the next route;
-- or the model cannot identify the merged PR/Feature and stops before writing.
+- o merge é resumido em linguagem amigável para o founder;
+- os menores updates úteis de contexto/status são propostos e opcionalmente aplicados;
+- o modelo oferece a próxima rota;
+- ou o modelo não consegue identificar o PR/Feature mergeado e para antes de escrever.
 
 ## Owner
 
-- Department: Operations
+- Departamento: Operations
 - Workflow: `operations/workflows/post-merge-continuation.workflow.md`
-- First area: `operations/product-ops/`
-- Supporting area: `operations/engineering/`
-- Conditional areas: `operations/devops/`, `operations/security/`, `growth/customer-experience/`, `strategy/roadmap/`
+- Primeira área: `operations/product-ops/`
+- Área de suporte: `operations/engineering/`
+- Áreas condicionais: `operations/devops/`, `operations/security/`, `growth/customer-experience/`, `strategy/roadmap/`
 
-## Route Contract
+## Contrato De Rota
 
 ```text
 AGENT.md
@@ -96,138 +96,138 @@ AGENT.md
 -> Output / next route
 ```
 
-Rules:
+Regras:
 
-- The model must declare this route before executing.
-- Product Ops owns Feature/Epic state after merge.
-- Engineering supports the implementation and PR summary.
-- DevOps enters only for release, deploy, environment, rollback or observability follow-up.
-- Security enters only for auth, permissions, data, privacy, payments, APIs or abuse risk.
-- Growth enters only for customer learning, support, onboarding or launch feedback.
-- Strategy/Roadmap enters only if roadmap priority, milestone or delivery-scope decisions changed.
-- The model cannot start the next Feature automatically.
-- If a route file does not exist, the model stops and reports the missing path.
+- O modelo deve declarar esta rota antes de executar.
+- Product Ops é dono do estado de Feature/Epic depois do merge.
+- Engineering apoia o resumo de implementação e PR.
+- DevOps entra apenas para follow-up de release, deploy, ambiente, rollback ou observabilidade.
+- Security entra apenas para auth, permissões, dados, privacidade, pagamentos, APIs ou risco de abuso.
+- Growth entra apenas para aprendizado de cliente, suporte, onboarding ou feedback de lançamento.
+- Strategy/Roadmap entra apenas se decisões de prioridade de roadmap, milestone ou escopo de delivery mudaram.
+- O modelo não pode iniciar a próxima Feature automaticamente.
+- Se um arquivo de rota não existir, o modelo para e reporta o path ausente.
 
-## What The Model Does In Practice
+## O Que O Modelo Faz Na Prática
 
-### Step 1 - Recognize Post-Merge Intent
+### Etapa 1 - Reconhecer Intenção Pós-Merge
 
-The model opens:
+O modelo abre:
 
 `AGENT.md`
 
-Why:
+Por quê:
 
-- The founder says something like "mergeado" or "vamos para a proxima".
-- Root routing sends delivery-state transitions to Operations.
+- O founder diz algo como "mergeado" ou "vamos para a próxima".
+- O roteamento raiz envia transições de estado de delivery para Operations.
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- Root `AGENT.md` routes delivery and post-implementation work to `operations/AGENT.md`.
+- O `AGENT.md` raiz roteia delivery e trabalho pós-implementação para `operations/AGENT.md`.
 
-Next step:
-
-`operations/AGENT.md`
-
-### Step 2 - Choose The Workflow
-
-The model opens:
+Próxima etapa:
 
 `operations/AGENT.md`
 
-Why:
+### Etapa 2 - Escolher O Workflow
 
-- The request is not only Engineering work. It may update Feature status, Engineering logs, release notes, security follow-up or learning loops.
-- Department rules say multi-step journeys use `workflows/README.md` and the smallest matching workflow.
+O modelo abre:
 
-Navigation Evidence:
+`operations/AGENT.md`
 
-- `operations/workflows/README.md` lists `post-merge-continuation.workflow.md`.
+Por quê:
 
-Next step:
+- A solicitação não é apenas trabalho de Engineering. Ela pode atualizar status de Feature, logs de Engineering, release notes, follow-up de security ou learning loops.
+- As regras do departamento dizem que jornadas multi-step usam `workflows/README.md` e o menor workflow compatível.
+
+Evidência De Navegação:
+
+- `operations/workflows/README.md` lista `post-merge-continuation.workflow.md`.
+
+Próxima etapa:
 
 `operations/workflows/post-merge-continuation.workflow.md`
 
-### Step 3 - Confirm The Merged Work
+### Etapa 3 - Confirmar O Trabalho Mergeado
 
-The model opens:
+O modelo abre:
 
 `operations/workflows/post-merge-continuation.workflow.md`
 
-Why:
+Por quê:
 
-- The workflow says to identify the merged PR, local Feature or GitHub Feature issue before writing.
+- O workflow diz para identificar o PR mergeado, Feature local ou issue de Feature no GitHub antes de escrever.
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- The workflow stop conditions prevent updates when the merged work cannot be identified.
+- As condições de parada do workflow impedem updates quando o trabalho mergeado não pode ser identificado.
 
-Next step:
-
-`operations/product-ops/AGENT.md`
-
-### Step 4 - Map Feature And Epic State
-
-The model opens:
+Próxima etapa:
 
 `operations/product-ops/AGENT.md`
 
-Why:
+### Etapa 4 - Mapear Estado Da Feature E Do Epic
 
-- Product Ops owns local Epic/Feature status and issue readiness.
+O modelo abre:
 
-Navigation Evidence:
+`operations/product-ops/AGENT.md`
 
-- The workflow navigation route points to Product Ops before Engineering.
-- Product Ops files include `epics/` and `knowledge/issue-readiness.md`.
+Por quê:
 
-Next step:
+- Product Ops é dono de status local de Epic/Feature e readiness de issue.
+
+Evidência De Navegação:
+
+- A rota de navegação do workflow aponta para Product Ops antes de Engineering.
+- Arquivos de Product Ops incluem `epics/` e `knowledge/issue-readiness.md`.
+
+Próxima etapa:
 
 `operations/engineering/AGENT.md`
 
-### Step 5 - Summarize Engineering Result
+### Etapa 5 - Resumir Resultado De Engineering
 
-The model opens:
+O modelo abre:
 
 `operations/engineering/AGENT.md`
 
-Why:
+Por quê:
 
-- Engineering owns PR notes, implementation notes, tests and review evidence.
+- Engineering é dono de notas de PR, notas de implementação, testes e evidências de review.
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- The workflow route includes Engineering after Product Ops.
-- Engineering knowledge includes `pr-log.md` and `implementation-notes.md`.
+- A rota do workflow inclui Engineering depois de Product Ops.
+- O knowledge de Engineering inclui `pr-log.md` e `implementation-notes.md`.
 
-Next step:
+Próxima etapa:
 
-conditional owner or output proposal.
+owner condicional ou proposta de output.
 
-### Step 6 - Route Conditional Follow-Up
+### Etapa 6 - Rotear Follow-Up Condicional
 
-The model opens only the needed owner:
+O modelo abre apenas o owner necessário:
 
 - `operations/devops/AGENT.md` for release/deploy/observability;
 - `operations/security/AGENT.md` for security-sensitive changes;
 - `growth/AGENT.md` for learning, support or launch feedback;
 - `strategy/AGENT.md` for roadmap or milestone changes.
 
-Why:
+Por quê:
 
-- The workflow declares these areas as conditional, so the model must explain why each one enters or does not enter.
+- O workflow declara essas áreas como condicionais, então o modelo deve explicar por que cada uma entra ou não entra.
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- Conditional Areas in the workflow define when each owner enters.
+- As Áreas Condicionais no workflow definem quando cada owner entra.
 
-Next step:
+Próxima etapa:
 
-founder confirmation.
+confirmação do founder.
 
-### Step 7 - Propose Updates And Next Route
+### Etapa 7 - Propor Updates E Próxima Rota
 
-The model asks the founder before writing:
+O modelo pergunta ao founder antes de escrever:
 
 ```text
 Essa feature foi mergeada e parece fechar o escopo combinado.
@@ -235,50 +235,50 @@ Essa feature foi mergeada e parece fechar o escopo combinado.
 Posso atualizar o status da feature e registrar o resumo da entrega?
 Depois disso, podemos seguir por um destes caminhos:
 1. preparar release/deploy;
-2. iniciar a proxima feature do mesmo Epic;
+2. iniciar a próxima feature do mesmo Epic;
 3. revisar prioridade no roadmap;
-4. capturar aprendizado com usuarios.
+4. capturar aprendizado com usuários.
 ```
 
-Why:
+Por quê:
 
-- The workflow requires confirmation before local updates or next route.
+- O workflow exige confirmação antes de updates locais ou próxima rota.
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- Confirmation Gates define where the model must stop.
-- Continuation Bridge defines safe next routes.
+- Confirmation Gates definem onde o modelo deve parar.
+- A Ponte de Continuação define próximas rotas seguras.
 
-## Active Roles
+## Roles Ativas
 
-| Order | Role | When It Enters | Why It Enters | Route Evidence |
+| Ordem | Role | Quando Entra | Por Que Entra | Evidência De Rota |
 | --- | --- | --- | --- | --- |
-| 1 | Product Owner | After merge is identified | Owns Feature/Epic status and issue readiness | `operations/product-ops/AGENT.md` |
-| 2 | PR Reviewer or Senior Developer | After Product Ops maps the Feature | Summarizes implementation, tests and PR evidence | `operations/engineering/AGENT.md` |
-| 3 | Release Manager | Only when release/deploy is needed | Owns release and deployment follow-up | `operations/devops/AGENT.md` |
-| 4 | Security Reviewer | Only when security-sensitive impact exists | Owns security follow-up | `operations/security/AGENT.md` |
-| 5 | CX Lead | Only when learning/support/launch feedback matters | Owns customer learning loop | `growth/AGENT.md` |
-| 6 | Roadmap Planner | Only when roadmap priority or milestone changed | Owns roadmap follow-up | `strategy/roadmap/AGENT.md` |
+| 1 | Product Owner | Depois que o merge é identificado | É dono de status de Feature/Epic e readiness de issue | `operations/product-ops/AGENT.md` |
+| 2 | PR Reviewer ou Senior Developer | Depois que Product Ops mapeia a Feature | Resume implementação, testes e evidência de PR | `operations/engineering/AGENT.md` |
+| 3 | Release Manager | Apenas quando release/deploy é necessário | É dono de follow-up de release e deployment | `operations/devops/AGENT.md` |
+| 4 | Security Reviewer | Apenas quando existe impacto sensível de security | É dono de follow-up de security | `operations/security/AGENT.md` |
+| 5 | CX Lead | Apenas quando aprendizado/suporte/feedback de lançamento importa | É dono do customer learning loop | `growth/AGENT.md` |
+| 6 | Roadmap Planner | Apenas quando prioridade de roadmap ou milestone mudou | É dono de follow-up de roadmap | `strategy/roadmap/AGENT.md` |
 
-## Active Playbooks
+## Playbooks Ativos
 
-| Playbook | When It Enters | Purpose |
+| Playbook | Quando Entra | Propósito |
 | --- | --- | --- |
-| `release-operations.playbook.md` | Release, deploy or observability follow-up is needed | Prepare release operations safely |
-| `ai-generated-code-security-review.playbook.md` or security review playbook | Security-sensitive changes exist | Check for post-merge security follow-up |
-| `customer-learning-loop.playbook.md` | Customer learning or support feedback should be captured | Turn shipped work into learning |
-| `feature-to-delivery-cycle.workflow.md` | Founder chooses next Feature | Restart delivery from readiness, not from code |
+| `release-operations.playbook.md` | Follow-up de release, deploy ou observabilidade é necessário | Preparar operações de release com segurança |
+| `ai-generated-code-security-review.playbook.md` ou playbook de security review | Existem mudanças sensíveis de security | Verificar follow-up de security pós-merge |
+| `customer-learning-loop.playbook.md` | Aprendizado de cliente ou feedback de suporte deve ser capturado | Transformar trabalho enviado em aprendizado |
+| `feature-to-delivery-cycle.workflow.md` | Founder escolhe a próxima Feature | Reiniciar delivery pela readiness, não pelo código |
 
-## Completion Checklist
+## Checklist De Conclusão
 
-- [ ] Merged PR or Feature identified.
-- [ ] Feature/Epic state mapped.
-- [ ] Shipped work summarized for the founder.
-- [ ] Product Ops update proposal prepared.
-- [ ] Engineering notes/log proposal prepared when useful.
-- [ ] DevOps applicability explained.
-- [ ] Security applicability explained.
-- [ ] Growth/CX applicability explained.
-- [ ] Strategy/Roadmap applicability explained.
-- [ ] Founder confirmed any write.
-- [ ] One next route offered.
+- [ ] PR ou Feature mergeado identificado.
+- [ ] Estado de Feature/Epic mapeado.
+- [ ] Trabalho entregue resumido para o founder.
+- [ ] Proposta de update de Product Ops preparada.
+- [ ] Proposta de notas/log de Engineering preparada quando útil.
+- [ ] Aplicabilidade de DevOps explicada.
+- [ ] Aplicabilidade de Security explicada.
+- [ ] Aplicabilidade de Growth/CX explicada.
+- [ ] Aplicabilidade de Strategy/Roadmap explicada.
+- [ ] Founder confirmou qualquer escrita.
+- [ ] Uma próxima rota oferecida.

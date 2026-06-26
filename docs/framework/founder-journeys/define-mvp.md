@@ -1,87 +1,87 @@
-# Journey: Define MVP
+# Jornada: Definir MVP
 
-## Human Overview
+## Visão Humana
 
-- **Trigger:** founder asks what should enter the first version, MVP or initial delivery.
-- **Goal:** decide the smallest coherent MVP scope using fixed LeanOS criteria.
-- **Starts at:** root `AGENT.md`.
-- **Passes through:** Strategy gate first; then `activation_required: operations.product-ops` when Product Ops is not active; then `operations/workflows/define-mvp.workflow.md` after activation.
-- **Ends with:** a founder-confirmed MVP scope proposal or a clear explanation of what is missing before MVP can be defined.
-- **Does not do:** create Epics, Features, GitHub issues, branches, PRs, source code or design component specs.
+- **Trigger:** founder pergunta o que deve entrar na primeira versão, MVP ou entrega inicial.
+- **Objetivo:** decidir o menor escopo coerente de MVP usando critérios fixos do LeanOS.
+- **Começa em:** `AGENT.md` raiz.
+- **Passa por:** gate de Strategy primeiro; depois `activation_required: operations.product-ops` quando Product Ops não está ativo; depois `operations/workflows/define-mvp.workflow.md` após a ativação.
+- **Termina com:** uma proposta de escopo de MVP confirmada pelo founder ou uma explicação clara do que falta antes de definir o MVP.
+- **Não faz:** criar Epics, Features, issues do GitHub, branches, PRs, código fonte ou specs de componentes de design.
 
-## Flow Diagram
+## Diagrama Do Fluxo
 
 ```mermaid
 flowchart TD
   A["Founder: o que entra no MVP?"]
   B["Root AGENT.md"]
-  C["Read leanos.yaml + active indexes"]
-  D["Check Strategy Baseline"]
-  E{"Strategy baseline enough?"}
-  F["Explain Strategy gap and route back to Strategy"]
-  G{"Product Ops active?"}
-  H["Return activation_required: operations.product-ops"]
+  C["Ler leanos.yaml + indexes ativos"]
+  D["Verificar Strategy Baseline"]
+  E{"Strategy Baseline suficiente?"}
+  F["Explicar lacuna de Strategy e rotear de volta"]
+  G{"Product Ops ativo?"}
+  H["Retornar activation_required: operations.product-ops"]
   I["Operations AGENT"]
-  J["define-mvp workflow"]
+  J["workflow define-mvp"]
   K["Product Ops AGENT"]
   L["Product Owner"]
   M["MVP Decision Gate"]
-  N["define-mvp skill"]
-  O["mvp-delivery playbook"]
-  P["Founder-friendly MVP proposal"]
-  Q{"Founder confirms?"}
-  R["Update MVP files"]
+  N["skill define-mvp"]
+  O["playbook mvp-delivery"]
+  P["Proposta de MVP amigável para o founder"]
+  Q{"Founder confirma?"}
+  R["Atualizar arquivos de MVP"]
   S["Bridge: roadmap-item-to-epic"]
-  T["Stop without writing"]
+  T["Parar sem escrever"]
 
   A --> B --> C --> D --> E
-  E -->|No| F --> T
-  E -->|Yes| G
-  G -->|No| H --> T
-  G -->|Yes| I --> J --> K --> L --> M --> N --> O --> P --> Q
-  Q -->|Yes| R --> S
-  Q -->|No| T
+  E -->|Não| F --> T
+  E -->|Sim| G
+  G -->|Não| H --> T
+  G -->|Sim| I --> J --> K --> L --> M --> N --> O --> P --> Q
+  Q -->|Sim| R --> S
+  Q -->|Não| T
 ```
 
-## Flow In Plain Words
+## Fluxo Em Linguagem Simples
 
-The model starts at root `AGENT.md` because the founder speaks in natural language. It reads `leanos.yaml`, current phase and active indexes before routing.
+O modelo começa no `AGENT.md` raiz porque o founder fala em linguagem natural. Ele lê `leanos.yaml`, fase atual e indexes ativos antes de rotear.
 
-If Strategy Baseline is weak, the model stops and names the missing Strategy input. If Product Ops is inactive, the model does not open `operations/` paths. It explains that MVP scope is delivery work and returns `activation_required: operations.product-ops` with a founder-friendly activation proposal.
+Se a Strategy Baseline estiver fraca, o modelo para e nomeia o input de Strategy ausente. Se Product Ops estiver inativo, o modelo não abre paths de `operations/`. Ele explica que escopo de MVP é trabalho de delivery e retorna `activation_required: operations.product-ops` com uma proposta de ativação amigável para o founder.
 
-Only after Product Ops is active does the journey enter `operations/workflows/define-mvp.workflow.md`. Product Ops leads the decision through the Product Owner role, `mvp-decision-gate.md`, `define-mvp.skill.md` and `mvp-delivery.playbook.md`.
+Somente depois que Product Ops está ativo a jornada entra em `operations/workflows/define-mvp.workflow.md`. Product Ops conduz a decisão por meio da role Product Owner, `mvp-decision-gate.md`, `define-mvp.skill.md` e `mvp-delivery.playbook.md`.
 
-## Founder Trigger
+## Trigger Do Founder
 
 - "defina o MVP"
-- "qual a primeira versao?"
+- "qual a primeira versão?"
 - "o que entra no MVP?"
 - "vamos definir a primeira entrega"
 - "isso entra no MVP?"
 
-## Start Condition
+## Condição De Início
 
-This journey starts when:
+Esta jornada começa quando:
 
-- there is at least a product idea, user/problem hypothesis or Strategy baseline;
-- the founder wants to decide the first version scope;
-- the request is not yet about Epic creation, Feature shaping or implementation.
+- existe pelo menos uma ideia de produto, hipótese de usuário/problema ou baseline de Strategy;
+- o founder quer decidir o escopo da primeira versão;
+- a solicitação ainda não é sobre criação de Epic, shaping de Feature ou implementação.
 
-If Strategy baseline is too weak, the model routes back to Strategy Product work before shaping MVP.
+Se a baseline de Strategy estiver fraca demais, o modelo roteia de volta para trabalho de Strategy Product antes de moldar o MVP.
 
 ## Owner
 
-- Department after activation: Operations
-- Area after activation: Product Ops
+- Departamento após ativação: Operations
+- Área após ativação: Product Ops
 - Workflow: `operations/workflows/define-mvp.workflow.md`
-- Primary role: `operations/product-ops/roles/product-owner.role.md`
+- Role primária: `operations/product-ops/roles/product-owner.role.md`
 - Gate: `operations/product-ops/knowledge/mvp-decision-gate.md`
-- Primary skill: `operations/product-ops/skills/define-mvp.skill.md`
-- Primary playbook: `operations/product-ops/playbooks/mvp-delivery.playbook.md`
+- Skill primária: `operations/product-ops/skills/define-mvp.skill.md`
+- Playbook primário: `operations/product-ops/playbooks/mvp-delivery.playbook.md`
 
-## Route Contract
+## Contrato De Rota
 
-When Product Ops is inactive:
+Quando Product Ops está inativo:
 
 ```text
 Root AGENT.md
@@ -91,7 +91,7 @@ Root AGENT.md
 -> activation_required: operations.product-ops
 ```
 
-After Product Ops is active:
+Depois que Product Ops está ativo:
 
 ```text
 Root AGENT.md
@@ -106,18 +106,18 @@ Root AGENT.md
 -> Output
 ```
 
-## Rules
+## Regras
 
-- The model must declare the route before executing.
-- The model cannot skip directly from founder intent to MVP file writing.
-- Product Ops owns the MVP decision, but Strategy Product context must be checked first.
-- The model cannot create Epics, Features, GitHub issues, branches, PRs or code in this journey.
-- If a required active route file does not exist, the model stops and reports the missing path.
+- O modelo deve declarar a rota antes de executar.
+- O modelo não pode pular diretamente da intenção do founder para escrita de arquivos de MVP.
+- Product Ops é dono da decisão de MVP, mas o contexto de Strategy Product deve ser verificado primeiro.
+- O modelo não pode criar Epics, Features, issues do GitHub, branches, PRs ou código nesta jornada.
+- Se um arquivo ativo obrigatório da rota não existir, o modelo para e reporta o path ausente.
 
-## Completion Checklist
+## Checklist De Conclusão
 
-- [x] Root `AGENT.md` routes MVP language through natural intent routing.
-- [x] Product Ops is required before MVP files are created.
-- [x] Inactive Product Ops returns `activation_required`, not missing paths.
-- [x] `operations/workflows/define-mvp.workflow.md` owns the MVP decision after activation.
-- [x] MVP definition stops before Epic, Feature, GitHub, branch, PR or code work.
+- [x] O `AGENT.md` raiz roteia linguagem de MVP por meio de roteamento de intenção natural.
+- [x] Product Ops é obrigatório antes de arquivos de MVP serem criados.
+- [x] Product Ops inativo retorna `activation_required`, não paths ausentes.
+- [x] `operations/workflows/define-mvp.workflow.md` é dono da decisão de MVP após ativação.
+- [x] A definição de MVP para antes de trabalho de Epic, Feature, GitHub, branch, PR ou código.

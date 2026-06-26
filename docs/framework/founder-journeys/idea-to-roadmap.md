@@ -1,52 +1,52 @@
-# Journey: Idea To Roadmap
+# Jornada: Ideia Para Roadmap
 
-This journey starts after `new-idea-intake` qualifies an idea and the founder confirms that the idea should be tracked as a roadmap or backlog candidate.
+Esta jornada começa depois que `new-idea-intake` qualifica uma ideia e o founder confirma que a ideia deve ser acompanhada como candidata de roadmap ou backlog.
 
-The purpose is not to decide delivery scope, create GitHub issues or start implementation. The purpose is to turn a qualified idea into a structured roadmap/backlog item with clear value, evidence, priority and timing.
+O propósito não é decidir escopo de delivery, criar issues no GitHub ou iniciar implementação. O propósito é transformar uma ideia qualificada em um item estruturado de roadmap/backlog com valor, evidência, prioridade e timing claros.
 
-## Human Overview
+## Visão Humana
 
-- **Trigger:** founder confirms that a qualified idea should be tracked in roadmap or backlog.
-- **Goal:** classify the idea as Backlog, Now, Next, Later or Not Planned.
-- **Starts at:** Root `AGENT.md`, then `strategy/AGENT.md`.
-- **Passes through:** `idea-to-roadmap.workflow.md`, Product Strategist and Roadmap Planner.
-- **Ends with:** a founder-confirmed roadmap/backlog update proposal.
-- **Does not do:** mark as delivery scope, create GitHub issues, create branches or start implementation.
+- **Trigger:** founder confirma que uma ideia qualificada deve ser acompanhada no roadmap ou backlog.
+- **Objetivo:** classificar a ideia como Backlog, Now, Next, Later ou Not Planned.
+- **Começa em:** `AGENT.md` raiz, depois `strategy/AGENT.md`.
+- **Passa por:** `idea-to-roadmap.workflow.md`, Product Strategist e Roadmap Planner.
+- **Termina com:** uma proposta de update de roadmap/backlog confirmada pelo founder.
+- **Não faz:** marcar como escopo de delivery, criar issues no GitHub, criar branches ou iniciar implementação.
 
-## Flow Diagram
+## Diagrama Do Fluxo
 
 ```mermaid
 flowchart TD
   A["Founder: coloca no roadmap"]
   B["Root AGENT"]
   C["Strategy AGENT"]
-  D["idea-to-roadmap workflow"]
-  E{"Idea passed intake?"}
-  F["Product context"]
+  D["workflow idea-to-roadmap"]
+  E{"Ideia passou pelo intake?"}
+  F["Contexto de Product"]
   G["Roadmap Planner"]
-  H["Guided destination choice"]
-  I{"Founder confirms update?"}
+  H["Escolha guiada de destino"]
+  I{"Founder confirma update?"}
   J["Backlog / Now / Next / Later / Not Planned"]
-  K["Explain outcome to founder"]
-  L["Stop without writing"]
-  M["Next: roadmap-item-to-epic"]
+  K["Explicar resultado ao founder"]
+  L["Parar sem escrever"]
+  M["Próximo: roadmap-item-to-epic"]
 
   A --> B --> C --> D --> E
-  E -->|Yes| F --> G --> H --> I
-  E -->|No| K
-  I -->|Yes| J
-  I -->|No| K
+  E -->|Sim| F --> G --> H --> I
+  E -->|Não| K
+  I -->|Sim| J
+  I -->|Não| K
   K --> L
-  J -->|If delivery scope question appears| M
+  J -->|Se aparecer pergunta de escopo de delivery| M
 ```
 
-## Flow In Plain Words
+## Fluxo Em Linguagem Simples
 
-The model starts at Root `AGENT.md` because the founder is confirming a natural-language roadmap decision. It enters Strategy because roadmap/backlog belongs to Strategy, reads `idea-to-roadmap.workflow.md` because the idea already passed intake, checks Product context so the roadmap item keeps product fit, activates Roadmap Planner to classify timing, and ends by asking the founder to confirm where the item should live before any file update.
+O modelo começa no `AGENT.md` raiz porque o founder está confirmando uma decisão de roadmap em linguagem natural. Ele entra em Strategy porque roadmap/backlog pertence a Strategy, lê `idea-to-roadmap.workflow.md` porque a ideia já passou pelo intake, verifica contexto de Product para que o item de roadmap mantenha product fit, ativa Roadmap Planner para classificar timing e termina pedindo que o founder confirme onde o item deve ficar antes de qualquer update de arquivo.
 
-## Founder Trigger
+## Trigger Do Founder
 
-Real phrases that can start this journey:
+Frases reais que podem iniciar esta jornada:
 
 - "Sim, coloca isso no roadmap."
 - "Quero guardar isso no backlog."
@@ -56,53 +56,53 @@ Real phrases that can start this journey:
 
 ## Moment
 
-This happens after idea intake and before delivery scope or GitHub planning.
+Isso acontece depois do intake de ideia e antes de escopo de delivery ou planejamento de GitHub.
 
-It can happen:
+Pode acontecer:
 
-- after `new-idea-intake`;
-- when a founder wants to track an idea without committing it to delivery;
-- when an idea needs backlog or roadmap classification;
-- when product direction changes but implementation should not start yet.
+- depois de `new-idea-intake`;
+- quando um founder quer acompanhar uma ideia sem comprometê-la com delivery;
+- quando uma ideia precisa de classificação de backlog ou roadmap;
+- quando a direção de produto muda, mas a implementação ainda não deve começar.
 
-## Human Goal
+## Objetivo Humano
 
-The founder wants to avoid losing a promising idea, but also wants to avoid turning it into delivery scope or code too early.
+O founder quer evitar perder uma ideia promissora, mas também quer evitar transformá-la em escopo de delivery ou código cedo demais.
 
-In founder-friendly language:
+Em linguagem amigável ao founder:
 
-> "I want this idea to be organized in the roadmap/backlog so we can revisit, prioritize or sequence it later."
+> "Quero que essa ideia fique organizada no roadmap/backlog para que possamos revisitar, priorizar ou sequenciar depois."
 
-## Start Condition
+## Condição De Início
 
-This journey starts when:
+Esta jornada começa quando:
 
-- a qualified idea already exists;
-- `new-idea-intake` recommended roadmap/backlog tracking or the founder explicitly asks for it;
-- the founder confirms that the idea should be promoted from intake to roadmap/backlog consideration.
+- uma ideia qualificada já existe;
+- `new-idea-intake` recomendou acompanhamento em roadmap/backlog ou o founder pediu isso explicitamente;
+- o founder confirma que a ideia deve ser promovida de intake para consideração de roadmap/backlog.
 
-## End Condition
+## Condição De Fim
 
-This journey ends when:
+Esta jornada termina quando:
 
-- the model recommends where the item belongs: backlog, Now, Next, Later or Not Planned;
-- the model proposes the exact roadmap/backlog update;
-- the founder confirms or rejects the update;
-- no delivery scope, GitHub issue or implementation work has started.
+- o modelo recomenda onde o item pertence: backlog, Now, Next, Later ou Not Planned;
+- o modelo propõe o update exato de roadmap/backlog;
+- o founder confirma ou rejeita o update;
+- nenhum escopo de delivery, issue do GitHub ou trabalho de implementação foi iniciado.
 
 ## Owner
 
-Department or area that owns the journey:
+Departamento ou área dona da jornada:
 
-- Department: `strategy/`
-- Primary area: `strategy/roadmap/`
-- Supporting area: `strategy/product/`
+- Departamento: `strategy/`
+- Área primária: `strategy/roadmap/`
+- Área de suporte: `strategy/product/`
 - Workflow: `strategy/workflows/idea-to-roadmap.workflow.md`
-- Command, if any: none required. Natural language should activate this route after `new-idea-intake`.
+- Comando, se houver: nenhum obrigatório. Linguagem natural deve ativar esta rota depois de `new-idea-intake`.
 
-## Route Contract
+## Contrato De Rota
 
-The required route is:
+A rota obrigatória é:
 
 ```text
 Root AGENT.md
@@ -118,592 +118,592 @@ Root AGENT.md
 -> Output
 ```
 
-Rules:
+Regras:
 
-- The model cannot start this journey before the idea has passed intake or the founder explicitly asks for roadmap/backlog promotion.
-- The model must declare the route before executing.
-- Product enters first only to preserve the qualified idea context; it should not redo the entire intake unless context is missing.
-- Roadmap owns the final classification and file update proposal.
-- Product Ops/Delivery Scope does not own this journey.
-- GitHub does not enter this journey.
-- If a route file does not exist, the model stops and reports the missing path.
+- O modelo não pode iniciar esta jornada antes que a ideia tenha passado pelo intake ou que o founder peça explicitamente promoção para roadmap/backlog.
+- O modelo deve declarar a rota antes de executar.
+- Product entra primeiro apenas para preservar o contexto da ideia qualificada; não deve refazer o intake inteiro, a menos que falte contexto.
+- Roadmap é dono da classificação final e da proposta de update de arquivo.
+- Product Ops/Delivery Scope não é dono desta jornada.
+- GitHub não entra nesta jornada.
+- Se um arquivo de rota não existir, o modelo para e reporta o path ausente.
 
-## What The Model Does In Practice
+## O Que O Modelo Faz Na Prática
 
-### Step 1 - Understand the founder confirmation
+### Etapa 1 - Entender A Confirmação Do Founder
 
-The model starts from:
+O modelo começa por:
 
 `AGENT.md`
 
-Why:
+Por quê:
 
-- Root `AGENT.md` says every routed LeanOS task starts with the Response Header.
-- Root `AGENT.md` says natural-language requests should route through the Navigation Chain when no command clearly matches.
-- The founder is asking to promote a qualified idea to roadmap/backlog, not to implement it.
+- O `AGENT.md` raiz diz que toda tarefa roteada do LeanOS começa com o Response Header.
+- O `AGENT.md` raiz diz que solicitações em linguagem natural devem rotear pela Navigation Chain quando nenhum comando combina claramente.
+- O founder está pedindo para promover uma ideia qualificada para roadmap/backlog, não para implementá-la.
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- `AGENT.md` routes product strategy and roadmap requests to `strategy/AGENT.md`.
-- The request contains roadmap/backlog intent, so Strategy is the owning department.
+- `AGENT.md` roteia solicitações de product strategy e roadmap para `strategy/AGENT.md`.
+- A solicitação contém intenção de roadmap/backlog, então Strategy é o departamento owner.
 
-What the model understands here:
+O que o modelo entende aqui:
 
-- This is a Strategy request.
-- This is a roadmap/backlog decision, not delivery scope or Engineering work.
-- The model should not create GitHub issues.
+- Esta é uma solicitação de Strategy.
+- Esta é uma decisão de roadmap/backlog, não trabalho de escopo de delivery ou Engineering.
+- O modelo não deve criar issues no GitHub.
 
-Next step:
-
-`strategy/AGENT.md`
-
-### Step 2 - Enter Strategy and select workflow routing
-
-The model opens:
+Próxima etapa:
 
 `strategy/AGENT.md`
 
-Why:
+### Etapa 2 - Entrar Em Strategy E Selecionar Roteamento De Workflow
 
-- Root `AGENT.md` chose Strategy as the owning department.
-- `strategy/AGENT.md` says founder journeys should open `workflows/README.md`.
-- The request changes roadmap/backlog state, so it is a journey.
+O modelo abre:
 
-Navigation Evidence:
+`strategy/AGENT.md`
 
-- `strategy/AGENT.md` lists Product and Roadmap as active areas.
-- `strategy/AGENT.md` says workflows are for multi-step decisions or transitions.
-- Strategy journey signals include changing product direction, priority or sequencing.
+Por quê:
 
-What the model understands here:
+- O `AGENT.md` raiz escolheu Strategy como departamento owner.
+- `strategy/AGENT.md` diz que jornadas do founder devem abrir `workflows/README.md`.
+- A solicitação muda o estado de roadmap/backlog, então é uma jornada.
 
-- Strategy owns the route.
-- Workflow selection happens before entering Product or Roadmap.
-- Product provides fit/context; Roadmap owns classification.
+Evidência De Navegação:
 
-Next step:
+- `strategy/AGENT.md` lista Product e Roadmap como áreas ativas.
+- `strategy/AGENT.md` diz que workflows servem para decisões ou transições multi-step.
+- Sinais de jornada de Strategy incluem mudar direção de produto, prioridade ou sequência.
+
+O que o modelo entende aqui:
+
+- Strategy é dona da rota.
+- A seleção de workflow acontece antes de entrar em Product ou Roadmap.
+- Product fornece fit/contexto; Roadmap é dono da classificação.
+
+Próxima etapa:
 
 `strategy/workflows/README.md`
 
-### Step 3 - Select Idea To Roadmap workflow
+### Etapa 3 - Selecionar O Workflow Idea To Roadmap
 
-The model opens:
+O modelo abre:
 
 `strategy/workflows/README.md`
 
-Why:
+Por quê:
 
-- `strategy/AGENT.md` instructed workflow selection for Strategy journeys.
-- The founder wants to promote a qualified idea into roadmap/backlog tracking.
+- `strategy/AGENT.md` instruiu seleção de workflow para jornadas de Strategy.
+- O founder quer promover uma ideia qualificada para acompanhamento em roadmap/backlog.
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- `strategy/workflows/README.md` lists `idea-to-roadmap.workflow.md`.
-- `strategy/workflows/idea-to-roadmap.workflow.md` exists.
-- `.leanos/index/workflows.yaml` includes `idea-to-roadmap`.
+- `strategy/workflows/README.md` lista `idea-to-roadmap.workflow.md`.
+- `strategy/workflows/idea-to-roadmap.workflow.md` existe.
+- `.leanos/index/workflows.yaml` inclui `idea-to-roadmap`.
 
-What the model understands here:
+O que o modelo entende aqui:
 
-- `new-idea-intake` is complete.
-- `idea-to-roadmap` is the correct next workflow.
-- The workflow should not assume delivery scope, GitHub or implementation.
+- `new-idea-intake` está completo.
+- `idea-to-roadmap` é o workflow correto seguinte.
+- O workflow não deve assumir escopo de delivery, GitHub ou implementação.
 
-Next step:
-
-`strategy/workflows/idea-to-roadmap.workflow.md`
-
-### Step 4 - Read the workflow contract
-
-The model opens:
+Próxima etapa:
 
 `strategy/workflows/idea-to-roadmap.workflow.md`
 
-Why:
+### Etapa 4 - Ler O Contrato Do Workflow
 
-- The workflow defines the specific sequence for promoting a qualified idea into roadmap/backlog.
+O modelo abre:
 
-Navigation Evidence:
+`strategy/workflows/idea-to-roadmap.workflow.md`
 
-- The workflow purpose says it promotes a qualified idea into a roadmap or backlog item without assuming delivery scope or GitHub execution.
-- The workflow requires Product and Roadmap.
-- The workflow sequence says to confirm the idea passed intake, read product strategy and roadmap context, classify the item and wait for confirmation before writing.
+Por quê:
 
-What the model understands here:
+- O workflow define a sequência específica para promover uma ideia qualificada para roadmap/backlog.
 
-- Product is needed to preserve product fit and evidence.
-- Roadmap is needed to classify timing and priority.
-- Delivery scope and GitHub are explicitly out of scope.
+Evidência De Navegação:
 
-Next step:
+- O propósito do workflow diz que ele promove uma ideia qualificada para item de roadmap ou backlog sem assumir escopo de delivery ou execução no GitHub.
+- O workflow exige Product e Roadmap.
+- A sequência do workflow diz para confirmar que a ideia passou pelo intake, ler product strategy e contexto de roadmap, classificar o item e aguardar confirmação antes de escrever.
+
+O que o modelo entende aqui:
+
+- Product é necessário para preservar product fit e evidência.
+- Roadmap é necessário para classificar timing e prioridade.
+- Escopo de delivery e GitHub estão explicitamente fora de escopo.
+
+Próxima etapa:
 
 `strategy/product/AGENT.md`
 
-### Step 5 - Re-enter Product only to preserve idea context
+### Etapa 5 - Reentrar Em Product Apenas Para Preservar Contexto Da Ideia
 
-The model opens:
+O modelo abre:
 
 `strategy/product/AGENT.md`
 
-Why:
+Por quê:
 
-- The workflow requires Product.
-- Product owns product strategy, ICP, value proposition, positioning and business model coherence.
-- The roadmap item should not be created without product-fit context.
+- O workflow exige Product.
+- Product é dono de product strategy, ICP, proposta de valor, posicionamento e coerência de modelo de negócio.
+- O item de roadmap não deve ser criado sem contexto de product-fit.
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- `strategy/product/AGENT.md` routes unclear strategy, ICP, value proposition and roadmap coherence risk to Product Strategist.
-- `product-strategist.role.md` connects customer, problem, value proposition, roadmap and validation logic.
+- `strategy/product/AGENT.md` roteia strategy incerta, ICP, proposta de valor e risco de coerência de roadmap para Product Strategist.
+- `product-strategist.role.md` conecta cliente, problema, proposta de valor, roadmap e lógica de validação.
 
-What the model understands here:
+O que o modelo entende aqui:
 
-- Product Strategist should confirm or summarize the intake result.
-- Product should not reopen the entire idea evaluation unless the intake summary is missing.
+- Product Strategist deve confirmar ou resumir o resultado do intake.
+- Product não deve reabrir a avaliação inteira da ideia, a menos que o resumo de intake esteja ausente.
 
-Next step:
-
-`strategy/product/roles/product-strategist.role.md`
-
-### Step 6 - Load Product Strategist context
-
-The model opens:
+Próxima etapa:
 
 `strategy/product/roles/product-strategist.role.md`
 
-Why:
+### Etapa 6 - Carregar Contexto De Product Strategist
 
-- Product AGENT routes product-fit and roadmap coherence work to Product Strategist.
-- Product Strategist lists the minimum Product knowledge files to read.
+O modelo abre:
 
-Navigation Evidence:
+`strategy/product/roles/product-strategist.role.md`
 
-- `product-strategist.role.md` reads `brief.md`, `icp.md`, `value-proposition.md`, `validation-notes.md` and Roadmap current cycle.
-- It points to `product-strategy.playbook.md`.
+Por quê:
 
-What the model understands here:
+- O AGENT de Product roteia trabalho de product-fit e coerência de roadmap para Product Strategist.
+- Product Strategist lista os arquivos mínimos de knowledge de Product a ler.
 
-- It should summarize the idea in Product terms.
-- It should verify that the idea has user/problem/value context.
-- It should surface evidence gaps before Roadmap classifies it.
+Evidência De Navegação:
 
-Next step:
+- `product-strategist.role.md` lê `brief.md`, `icp.md`, `value-proposition.md`, `validation-notes.md` e o ciclo atual de Roadmap.
+- Ele aponta para `product-strategy.playbook.md`.
+
+O que o modelo entende aqui:
+
+- Ele deve resumir a ideia em termos de Product.
+- Ele deve verificar se a ideia tem contexto de usuário/problema/valor.
+- Ele deve expor lacunas de evidência antes que Roadmap a classifique.
+
+Próxima etapa:
 
 `strategy/product/playbooks/product-strategy.playbook.md`
 
-### Step 7 - Use Product Strategy playbook for the handoff
+### Etapa 7 - Usar O Playbook De Product Strategy Para O Handoff
 
-The model opens:
+O modelo abre:
 
 `strategy/product/playbooks/product-strategy.playbook.md`
 
-Why:
+Por quê:
 
-- Product Strategist points to this playbook.
-- The playbook says to clarify ICP, problem and value proposition before touching roadmap or delivery scope.
-- The playbook says to use guided conversation for roadmap-impacting changes.
+- Product Strategist aponta para este playbook.
+- O playbook diz para esclarecer ICP, problema e proposta de valor antes de tocar roadmap ou escopo de delivery.
+- O playbook diz para usar conversa guiada para mudanças que impactam roadmap.
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- `product-strategy.playbook.md` includes `Guided Conversation`.
-- It points to `ai-standard/foundation/guided-conversation.md`.
-- It says to ask one decision question before any roadmap or delivery-scope handoff.
+- `product-strategy.playbook.md` inclui `Guided Conversation`.
+- Ele aponta para `ai-standard/foundation/guided-conversation.md`.
+- Ele diz para fazer uma pergunta de decisão antes de qualquer handoff de roadmap ou escopo de delivery.
 
-What the model understands here:
+O que o modelo entende aqui:
 
-- It should ask only missing questions.
-- It should not re-run intake unless the idea lacks enough context.
-- It should explain the product fit before moving into Roadmap.
+- Ele deve perguntar apenas o que está faltando.
+- Ele não deve rodar o intake novamente, a menos que a ideia não tenha contexto suficiente.
+- Ele deve explicar o product fit antes de seguir para Roadmap.
 
-Next step:
-
-`strategy/roadmap/AGENT.md`
-
-### Step 8 - Enter Roadmap for classification
-
-The model opens:
+Próxima etapa:
 
 `strategy/roadmap/AGENT.md`
 
-Why:
+### Etapa 8 - Entrar Em Roadmap Para Classificação
 
-- The workflow requires Roadmap.
-- Roadmap owns roadmap sequence, milestones, backlog and planning-cycle prioritization.
-- Product has handed off a qualified idea.
+O modelo abre:
 
-Navigation Evidence:
+`strategy/roadmap/AGENT.md`
 
-- `strategy/roadmap/AGENT.md` says Roadmap owns planning, prioritization, cycle planning and GitHub sync preparation.
-- `strategy/roadmap/AGENT.md` routes unclear roadmap order, backlog prioritization and cycle planning to Roadmap Planner.
+Por quê:
 
-What the model understands here:
+- O workflow exige Roadmap.
+- Roadmap é dono de sequência de roadmap, milestones, backlog e priorização de planning-cycle.
+- Product fez handoff de uma ideia qualificada.
 
-- The correct role is Roadmap Planner.
-- The task is classification and sequencing, not execution.
+Evidência De Navegação:
 
-Next step:
+- `strategy/roadmap/AGENT.md` diz que Roadmap é dono de planejamento, priorização, cycle planning e preparação de GitHub sync.
+- `strategy/roadmap/AGENT.md` roteia ordem de roadmap incerta, priorização de backlog e cycle planning para Roadmap Planner.
+
+O que o modelo entende aqui:
+
+- A role correta é Roadmap Planner.
+- A tarefa é classificação e sequência, não execução.
+
+Próxima etapa:
 
 `strategy/roadmap/roles/roadmap-planner.role.md`
 
-### Step 9 - Activate Roadmap Planner
+### Etapa 9 - Ativar Roadmap Planner
 
-The model opens:
+O modelo abre:
 
 `strategy/roadmap/roles/roadmap-planner.role.md`
 
-Why:
+Por quê:
 
-- Roadmap AGENT routes backlog prioritization and cycle planning to Roadmap Planner.
-- Roadmap Planner lists the skills and playbooks used to classify and sequence work.
+- O AGENT de Roadmap roteia priorização de backlog e cycle planning para Roadmap Planner.
+- Roadmap Planner lista as skills e playbooks usados para classificar e sequenciar trabalho.
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- `roadmap-planner.role.md` points to `prioritize-backlog.skill.md`.
-- `roadmap-planner.role.md` points to `roadmap-cycle-planning.playbook.md`.
-- It reads Roadmap, current cycle, backlog and Product brief.
+- `roadmap-planner.role.md` aponta para `prioritize-backlog.skill.md`.
+- `roadmap-planner.role.md` aponta para `roadmap-cycle-planning.playbook.md`.
+- Ele lê Roadmap, ciclo atual, backlog e Product brief.
 
-What the model understands here:
+O que o modelo entende aqui:
 
-- It should use `prioritize-backlog.skill.md` for candidate classification.
-- It should use `roadmap-cycle-planning.playbook.md` for Now, Next, Later and Not Planned boundaries.
-- The role currently references `operations/product-ops/mvp/scope.md`; this should be treated as optional delivery context for this journey, not permission to change MVP or any delivery scope.
+- Ele deve usar `prioritize-backlog.skill.md` para classificação da candidata.
+- Ele deve usar `roadmap-cycle-planning.playbook.md` para limites de Now, Next, Later e Not Planned.
+- A role atualmente referencia `operations/product-ops/mvp/scope.md`; isso deve ser tratado como contexto opcional de delivery para esta jornada, não como permissão para mudar MVP ou qualquer escopo de delivery.
 
-Next step:
-
-`strategy/roadmap/skills/prioritize-backlog.skill.md`
-
-### Step 10 - Prioritize the candidate
-
-The model opens:
+Próxima etapa:
 
 `strategy/roadmap/skills/prioritize-backlog.skill.md`
 
-Why:
+### Etapa 10 - Priorizar A Candidata
 
-- Roadmap Planner points to this skill.
-- The skill says to use it when a new idea needs placement.
+O modelo abre:
 
-Navigation Evidence:
+`strategy/roadmap/skills/prioritize-backlog.skill.md`
 
-- `prioritize-backlog.skill.md` groups candidate work, scores outcome value/risk/effort/dependency and recommends keep, park, split or discard.
-- It says not to use priority as permission to implement.
-- It says not to remove backlog items without confirmation.
+Por quê:
 
-What the model understands here:
+- Roadmap Planner aponta para esta skill.
+- A skill diz para usá-la quando uma nova ideia precisa de posicionamento.
 
-- The idea should be classified, not implemented.
-- Large ideas should be flagged for future epic breakdown.
-- Uncertainty should stay visible.
+Evidência De Navegação:
 
-Next step:
+- `prioritize-backlog.skill.md` agrupa trabalho candidato, pontua valor de outcome/risco/esforço/dependência e recomenda manter, estacionar, quebrar ou descartar.
+- Ela diz para não usar prioridade como permissão para implementar.
+- Ela diz para não remover itens de backlog sem confirmação.
+
+O que o modelo entende aqui:
+
+- A ideia deve ser classificada, não implementada.
+- Ideias grandes devem ser marcadas para futura quebra em Epic.
+- Incerteza deve permanecer visível.
+
+Próxima etapa:
 
 `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md`
 
-### Step 11 - Use Roadmap Cycle Planning playbook
+### Etapa 11 - Usar O Playbook De Roadmap Cycle Planning
 
-The model opens:
+O modelo abre:
 
 `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md`
 
-Why:
+Por quê:
 
-- Roadmap Planner points to this playbook.
-- The playbook defines how to choose Now, Next, Later and Not Planned boundaries.
+- Roadmap Planner aponta para este playbook.
+- O playbook define como escolher limites de Now, Next, Later e Not Planned.
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- `roadmap-cycle-planning.playbook.md` says to review product strategy, delivery scope, backlog candidates and define current cycle goal.
-- It says to propose updates and wait for confirmation before writing.
+- `roadmap-cycle-planning.playbook.md` diz para revisar product strategy, escopo de delivery, candidatos de backlog e definir o objetivo do ciclo atual.
+- Ele diz para propor updates e aguardar confirmação antes de escrever.
 
-What the model understands here:
+O que o modelo entende aqui:
 
-- The output should be a roadmap/backlog placement proposal.
-- Current cycle changes need explicit confirmation.
-- Delivery scope still belongs to a later journey.
+- O output deve ser uma proposta de posicionamento em roadmap/backlog.
+- Mudanças no ciclo atual precisam de confirmação explícita.
+- Escopo de delivery ainda pertence a uma jornada posterior.
 
-Next step:
+Próxima etapa:
 
-Decision pause before file updates.
+Pausa de decisão antes de updates de arquivo.
 
-### Step 12 - Guided roadmap decision
+### Etapa 12 - Decisão Guiada De Roadmap
 
-The model pauses and asks the founder to choose a roadmap destination.
+O modelo pausa e pede que o founder escolha um destino de roadmap.
 
-Why:
+Por quê:
 
-- Roadmap changes are durable decisions.
-- `product-strategy.playbook.md` and `guided-conversation.md` require founder-friendly decision prompts.
-- `roadmap-cycle-planning.playbook.md` says to propose updates and wait for confirmation before writing.
+- Mudanças de roadmap são decisões duráveis.
+- `product-strategy.playbook.md` e `guided-conversation.md` exigem prompts de decisão amigáveis ao founder.
+- `roadmap-cycle-planning.playbook.md` diz para propor updates e aguardar confirmação antes de escrever.
 
-Founder-friendly options:
+Opções amigáveis ao founder:
 
 ```text
-Onde voce quer que essa ideia fique agora?
+Onde você quer que essa ideia fique agora?
 
 1. Backlog: guardar para avaliar depois
 2. Now: considerar no ciclo atual
-3. Next: considerar no proximo ciclo
+3. Next: considerar no próximo ciclo
 4. Later: deixar como oportunidade futura
-5. Not Planned: registrar que decidimos nao seguir agora
-6. Nao sei, me ajude a decidir
+5. Not Planned: registrar que decidimos não seguir agora
+6. Não sei, me ajude a decidir
 
-Voce pode responder so com o numero ou do seu jeito.
+Você pode responder só com o número ou do seu jeito.
 ```
 
-What the model understands here:
+O que o modelo entende aqui:
 
-- The founder owns the final roadmap decision.
-- The model can recommend, but cannot silently commit.
-- If the founder asks whether the item enters MVP, a release, an experiment or a milestone, the next journey is `roadmap-item-to-epic`, not this one.
+- O founder é dono da decisão final de roadmap.
+- O modelo pode recomendar, mas não pode comprometer silenciosamente.
+- Se o founder perguntar se o item entra no MVP, em um release, experimento ou milestone, a próxima jornada é `roadmap-item-to-epic`, não esta.
 
-Next step:
+Próxima etapa:
 
-Founder-facing output and update proposal.
+Output voltado ao founder e proposta de update.
 
-### Step 13 - Produce founder-friendly output
+### Etapa 13 - Produzir Output Amigável Ao Founder
 
-The model responds in plain language first.
+O modelo responde primeiro em linguagem simples.
 
 Example:
 
 ```text
 Minha leitura:
-essa ideia esta alinhada com o problema principal e merece ser acompanhada, mas ainda nao parece urgente para o MVP atual.
+essa ideia está alinhada com o problema principal e merece ser acompanhada, mas ainda não parece urgente para o MVP atual.
 
-Minha recomendacao:
+Minha recomendação:
 - colocar como Backlog;
 - registrar o valor esperado;
-- marcar uma dependencia de evidencia;
+- marcar uma dependência de evidência;
 - revisar quando o fluxo principal do MVP estiver mais claro.
 
 Quer que eu registre isso no backlog do roadmap?
 ```
 
-Why:
+Por quê:
 
-- The workflow says to propose roadmap or backlog updates and wait for confirmation before writing.
-- Roadmap playbook says to propose updates before writing.
-- Root AGENT requires confirmation before durable file changes.
+- O workflow diz para propor updates de roadmap ou backlog e aguardar confirmação antes de escrever.
+- O playbook de Roadmap diz para propor updates antes de escrever.
+- O AGENT raiz exige confirmação antes de mudanças duráveis de arquivo.
 
-Navigation Evidence:
+Evidência De Navegação:
 
-- Roadmap skill defines candidate placement.
-- Roadmap playbook defines the update proposal.
-- Guided Conversation defines founder-friendly decision style.
+- A skill de Roadmap define posicionamento de candidata.
+- O playbook de Roadmap define a proposta de update.
+- Guided Conversation define o estilo de decisão amigável ao founder.
 
-## Active Roles
+## Roles Ativas
 
-| Order | Role | When It Enters | Why It Enters | Route Evidence |
+| Ordem | Role | Quando Entra | Por Que Entra | Evidência De Rota |
 | --- | --- | --- | --- | --- |
-| 1 | Product Strategist | Always | Preserves product-fit context from intake and checks product coherence before roadmap mutation. | `strategy/product/AGENT.md`, `product-strategist.role.md` |
-| 2 | Roadmap Planner | Always after Product handoff | Classifies the idea into backlog, Now, Next, Later or Not Planned. | `strategy/roadmap/AGENT.md`, `roadmap-planner.role.md` |
+| 1 | Product Strategist | Sempre | Preserva contexto de product-fit do intake e verifica coerência de produto antes de mutação de roadmap. | `strategy/product/AGENT.md`, `product-strategist.role.md` |
+| 2 | Roadmap Planner | Sempre depois do handoff de Product | Classifica a ideia em backlog, Now, Next, Later ou Not Planned. | `strategy/roadmap/AGENT.md`, `roadmap-planner.role.md` |
 
-## Active Skills
+## Skills Ativas
 
-| Skill | Used By | Purpose | Route Evidence |
+| Skill | Usada Por | Propósito | Evidência De Rota |
 | --- | --- | --- | --- |
-| `prioritize-backlog.skill.md` | Roadmap Planner | Classify candidate work by value, risk, evidence, effort and current-cycle fit. | `roadmap-planner.role.md` points to it. |
-| `check-coherence.skill.md` | Product Strategist | Optional check if the idea conflicts with ICP, value proposition or current focus. | `product-strategist.role.md` points to it. |
+| `prioritize-backlog.skill.md` | Roadmap Planner | Classificar trabalho candidato por valor, risco, evidência, esforço e fit com ciclo atual. | `roadmap-planner.role.md` aponta para ela. |
+| `check-coherence.skill.md` | Product Strategist | Check opcional se a ideia conflita com ICP, proposta de valor ou foco atual. | `product-strategist.role.md` aponta para ela. |
 
-## Active Playbooks
+## Playbooks Ativos
 
-| Playbook | Area | Role In The Journey | Route Evidence |
+| Playbook | Área | Papel Na Jornada | Evidência De Rota |
 | --- | --- | --- | --- |
-| `product-strategy.playbook.md` | `strategy/product` | Product handoff and guided conversation before roadmap mutation. | `product-strategist.role.md` points to it. |
-| `roadmap-cycle-planning.playbook.md` | `strategy/roadmap` | Roadmap/backlog classification and update proposal. | `roadmap-planner.role.md` points to it. |
+| `product-strategy.playbook.md` | `strategy/product` | Handoff de Product e conversa guiada antes de mutação de roadmap. | `product-strategist.role.md` aponta para ele. |
+| `roadmap-cycle-planning.playbook.md` | `strategy/roadmap` | Classificação de roadmap/backlog e proposta de update. | `roadmap-planner.role.md` aponta para ele. |
 
-## Founder Questions
+## Perguntas Ao Founder
 
-Founder-friendly questions:
+Perguntas amigáveis ao founder:
 
-- Should this be tracked, or only remembered as a note?
-- Is this for the current problem or a future opportunity?
-- What user or business outcome should this create?
-- What evidence do we already have?
-- Does this belong in Backlog, Now, Next, Later or Not Planned?
-- Should this stay out of MVP for now?
+- Isso deve ser acompanhado ou apenas lembrado como nota?
+- Isso é para o problema atual ou uma oportunidade futura?
+- Que outcome de usuário ou negócio isso deve criar?
+- Que evidência já temos?
+- Isso pertence a Backlog, Now, Next, Later ou Not Planned?
+- Isso deve ficar fora do MVP por enquanto?
 
-Do not ask as a rigid form. Ask only what is missing.
+Não pergunte como formulário rígido. Pergunte apenas o que está faltando.
 
-## Guided Conversation Points
+## Pontos De Conversa Guiada
 
-| Step | Purpose | Source |
+| Etapa | Propósito | Fonte |
 | --- | --- | --- |
-| Step 7 | Confirm product-fit context before roadmap handoff. | `strategy/product/playbooks/product-strategy.playbook.md` |
-| Step 12 | Choose roadmap/backlog destination. | `ai-standard/foundation/guided-conversation.md` |
-| Confirmation | Confirm durable roadmap or backlog update. | `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md` |
+| Etapa 7 | Confirmar contexto de product-fit antes do handoff para roadmap. | `strategy/product/playbooks/product-strategy.playbook.md` |
+| Etapa 12 | Escolher destino de roadmap/backlog. | `ai-standard/foundation/guided-conversation.md` |
+| Confirmação | Confirmar update durável de roadmap ou backlog. | `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md` |
 
-## Confirmation Checkpoints
+## Checkpoints De Confirmação
 
-The model must ask for confirmation before:
+O modelo deve pedir confirmação antes de:
 
-- adding the item to `strategy/roadmap/knowledge/backlog.md`;
-- changing `strategy/roadmap/knowledge/roadmap.md`;
-- changing `strategy/roadmap/knowledge/current-cycle.md`;
-- tagging the item as Now, Next, Later or Not Planned;
-- starting `roadmap-item-to-epic`;
-- starting any GitHub sync or issue creation;
-- touching implementation files.
+- adicionar o item a `strategy/roadmap/knowledge/backlog.md`;
+- alterar `strategy/roadmap/knowledge/roadmap.md`;
+- alterar `strategy/roadmap/knowledge/current-cycle.md`;
+- marcar o item como Now, Next, Later ou Not Planned;
+- iniciar `roadmap-item-to-epic`;
+- iniciar qualquer GitHub sync ou criação de issue;
+- tocar arquivos de implementação.
 
-## Founder-facing Output
+## Output Voltado Ao Founder
 
-The founder should see a recommendation and decision options before file paths.
+O founder deve ver recomendação e opções de decisão antes de paths de arquivos.
 
-Recommended format:
+Formato recomendado:
 
 ```text
 Minha leitura:
 <short roadmap interpretation>
 
-Recomendacao:
+Recomendação:
 - <Backlog / Now / Next / Later / Not Planned>
 
 Por que:
 - <reason 1>
 - <reason 2>
 
-Proximo passo:
+Próximo passo:
 <one suggested action>
 
 Quer que eu registre isso no roadmap/backlog?
 ```
 
-Only after this should the model show technical file updates.
+Somente depois disso o modelo deve mostrar updates técnicos de arquivo.
 
-## Internal File Updates After Confirmation
+## Updates Internos De Arquivo Após Confirmação
 
-Files that can be updated if the founder confirms:
+Arquivos que podem ser atualizados se o founder confirmar:
 
 - `strategy/roadmap/knowledge/backlog.md`
 - `strategy/roadmap/knowledge/roadmap.md`
-- `strategy/roadmap/knowledge/current-cycle.md` only if the item affects the active cycle
-- `strategy/product/knowledge/validation-notes.md` only if the roadmap decision reveals an evidence gap
+- `strategy/roadmap/knowledge/current-cycle.md` apenas se o item afetar o ciclo ativo
+- `strategy/product/knowledge/validation-notes.md` apenas se a decisão de roadmap revelar uma lacuna de evidência
 
-Files that cannot be updated in this journey:
+Arquivos que não podem ser atualizados nesta jornada:
 
 - `operations/product-ops/mvp/*`
-- GitHub issues, projects or milestones
-- source code
+- issues, projects ou milestones do GitHub
+- código fonte
 
-## Forbidden Actions
+## Ações Proibidas
 
-During this journey, the model cannot:
+Durante esta jornada, o modelo não pode:
 
-- mark the item as delivery scope;
-- create GitHub epics, issues or milestones;
-- create features;
-- create branches or write code;
-- modify Operations or Growth files;
-- commit dates, milestones or scope without founder confirmation;
-- treat backlog priority as permission to implement;
-- remove roadmap/backlog items without confirmation.
+- marcar o item como escopo de delivery;
+- criar epics, issues ou milestones no GitHub;
+- criar features;
+- criar branches ou escrever código;
+- modificar arquivos de Operations ou Growth;
+- comprometer datas, milestones ou escopo sem confirmação do founder;
+- tratar prioridade de backlog como permissão para implementar;
+- remover itens de roadmap/backlog sem confirmação.
 
-## Possible Outcomes
+## Resultados Possíveis
 
-The journey can end with:
+A jornada pode terminar com:
 
-- **Backlog**: track the idea as candidate work.
-- **Now**: propose inclusion in the current roadmap cycle, not delivery scope yet.
-- **Next**: track for the next planning cycle.
-- **Later**: keep as future opportunity.
-- **Not Planned**: record that it should not be pursued now.
-- **Needs more intake**: return to `new-idea-intake` when product context is still too weak.
+- **Backlog**: acompanhar a ideia como trabalho candidato.
+- **Now**: propor inclusão no ciclo atual de roadmap, ainda não como escopo de delivery.
+- **Next**: acompanhar para o próximo ciclo de planejamento.
+- **Later**: manter como oportunidade futura.
+- **Not Planned**: registrar que não deve ser perseguida agora.
+- **Precisa de mais intake**: retornar para `new-idea-intake` quando o contexto de produto ainda estiver fraco demais.
 
-## Continuation Bridge
+## Ponte De Continuação
 
-At the end of this journey, the model must offer one clear next-step bridge when the roadmap/backlog item is ready for delivery consideration.
+Ao fim desta jornada, o modelo deve oferecer uma ponte clara para o próximo passo quando o item de roadmap/backlog estiver pronto para consideração de delivery.
 
-Immediate bridge:
+Ponte imediata:
 
 ```text
-Esse item agora esta organizado como roadmap/backlog.
+Esse item agora está organizado como roadmap/backlog.
 Quer que eu avalie se ele deve entrar em uma entrega planejada, como MVP, release, experimento ou beta?
 ```
 
-Later-session triggers:
+Triggers em sessão posterior:
 
 - "isso entra no MVP?"
-- "isso entra na proxima entrega?"
+- "isso entra na próxima entrega?"
 - "vamos planejar a entrega desse item"
 - "vamos transformar esse item do roadmap em escopo"
 - "qual milestone recebe esse item?"
 
-Next route:
+Próxima rota:
 
 `roadmap-item-to-epic`
 
-Rules:
+Regras:
 
-- Do not start `roadmap-item-to-epic` automatically.
-- If the founder says yes, declare the new route before loading Operations or Product Ops files.
-- If the founder says no, explain the roadmap/backlog outcome and stop without writing anything else.
-- If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md`, route to Operations, and load `roadmap-item-to-epic`.
+- Não inicie `roadmap-item-to-epic` automaticamente.
+- Se o founder disser sim, declare a nova rota antes de carregar arquivos de Operations ou Product Ops.
+- Se o founder disser não, explique o resultado de roadmap/backlog e pare sem escrever mais nada.
+- Se o founder voltar em uma sessão posterior com um trigger compatível, reinicie pelo `AGENT.md` raiz, roteie para Operations e carregue `roadmap-item-to-epic`.
 
-## Next Recommended Journey
+## Próxima Jornada Recomendada
 
-After this journey, the next flow can be:
+Depois desta jornada, o próximo fluxo pode ser:
 
-- `roadmap-item-to-epic` when the founder asks whether the roadmap item should enter MVP, a release, an experiment or another delivery scope.
-- GitHub sync through DevOps/Product Ops readiness when confirmed local Epics and Features should be mirrored to GitHub Projects.
-- `new-idea-intake` when the idea needs more qualification.
+- `roadmap-item-to-epic` quando o founder pergunta se o item de roadmap deve entrar no MVP, em um release, experimento ou outro escopo de delivery.
+- GitHub sync por readiness de DevOps/Product Ops quando Epics e Features locais confirmados devem ser espelhados no GitHub Projects.
+- `new-idea-intake` quando a ideia precisa de mais qualificação.
 
-## Journey Validation Checklist
+## Checklist De Validação Da Jornada
 
-Use this checklist to test whether the journey really applies the Navigation Chain.
+Use este checklist para testar se a jornada realmente aplica a Navigation Chain.
 
-### Files Exist
+### Arquivos Existem
 
-- [x] `AGENT.md` exists.
-- [x] `strategy/AGENT.md` exists.
-- [x] `strategy/workflows/README.md` exists.
-- [x] `strategy/workflows/idea-to-roadmap.workflow.md` exists.
-- [x] `strategy/product/AGENT.md` exists.
-- [x] `strategy/product/roles/product-strategist.role.md` exists.
-- [x] `strategy/product/playbooks/product-strategy.playbook.md` exists.
-- [x] `strategy/roadmap/AGENT.md` exists.
-- [x] `strategy/roadmap/roles/roadmap-planner.role.md` exists.
-- [x] `strategy/roadmap/skills/prioritize-backlog.skill.md` exists.
-- [x] `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md` exists.
-- [x] `strategy/roadmap/knowledge/backlog.md` exists.
-- [x] `strategy/roadmap/knowledge/roadmap.md` exists.
-- [x] `strategy/roadmap/knowledge/current-cycle.md` exists.
-- [x] `.leanos/index/workflows.yaml` includes `idea-to-roadmap`.
+- [x] `AGENT.md` existe.
+- [x] `strategy/AGENT.md` existe.
+- [x] `strategy/workflows/README.md` existe.
+- [x] `strategy/workflows/idea-to-roadmap.workflow.md` existe.
+- [x] `strategy/product/AGENT.md` existe.
+- [x] `strategy/product/roles/product-strategist.role.md` existe.
+- [x] `strategy/product/playbooks/product-strategy.playbook.md` existe.
+- [x] `strategy/roadmap/AGENT.md` existe.
+- [x] `strategy/roadmap/roles/roadmap-planner.role.md` existe.
+- [x] `strategy/roadmap/skills/prioritize-backlog.skill.md` existe.
+- [x] `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md` existe.
+- [x] `strategy/roadmap/knowledge/backlog.md` existe.
+- [x] `strategy/roadmap/knowledge/roadmap.md` existe.
+- [x] `strategy/roadmap/knowledge/current-cycle.md` existe.
+- [x] `.leanos/index/workflows.yaml` inclui `idea-to-roadmap`.
 
-### Files Point To Each Other
+### Arquivos Apontam Uns Para Os Outros
 
-- [x] Root `AGENT.md` routes Strategy requests to `strategy/AGENT.md`.
-- [x] `strategy/AGENT.md` routes journeys to `workflows/README.md`.
-- [x] `strategy/workflows/README.md` lists `idea-to-roadmap.workflow.md`.
-- [x] `idea-to-roadmap.workflow.md` requires Product and Roadmap.
-- [x] Product AGENT routes product coherence to Product Strategist.
-- [x] Product Strategist points to Product Strategy playbook.
-- [x] Product Strategy playbook includes Guided Conversation.
-- [x] Roadmap AGENT routes backlog prioritization to Roadmap Planner.
-- [x] Roadmap Planner points to `prioritize-backlog.skill.md`.
-- [x] Roadmap Planner points to `roadmap-cycle-planning.playbook.md`.
+- [x] `AGENT.md` raiz roteia solicitações de Strategy para `strategy/AGENT.md`.
+- [x] `strategy/AGENT.md` roteia jornadas para `workflows/README.md`.
+- [x] `strategy/workflows/README.md` lista `idea-to-roadmap.workflow.md`.
+- [x] `idea-to-roadmap.workflow.md` exige Product e Roadmap.
+- [x] O AGENT de Product roteia coerência de produto para Product Strategist.
+- [x] Product Strategist aponta para o playbook de Product Strategy.
+- [x] O playbook de Product Strategy inclui Guided Conversation.
+- [x] O AGENT de Roadmap roteia priorização de backlog para Roadmap Planner.
+- [x] Roadmap Planner aponta para `prioritize-backlog.skill.md`.
+- [x] Roadmap Planner aponta para `roadmap-cycle-planning.playbook.md`.
 
-### Journey Execution
+### Execução Da Jornada
 
-- [x] The model can explain the route before acting.
-- [x] The model can say why each next file was loaded.
-- [x] The model does not skip department or area.
-- [x] The model does not load the whole workspace without need.
-- [x] The model asks for confirmation before updating roadmap/backlog files.
-- [x] The founder-facing output is understandable before technical paths appear.
-- [x] Internal file updates are listed only after the human decision.
-- [x] The continuation bridge offers `roadmap-item-to-epic` without starting it automatically.
-- [x] Later-session triggers are listed for natural founder language.
+- [x] O modelo consegue explicar a rota antes de agir.
+- [x] O modelo consegue dizer por que cada próximo arquivo foi carregado.
+- [x] O modelo não pula departamento ou área.
+- [x] O modelo não carrega o workspace inteiro sem necessidade.
+- [x] O modelo pede confirmação antes de atualizar arquivos de roadmap/backlog.
+- [x] O output voltado ao founder é compreensível antes de paths técnicos aparecerem.
+- [x] Updates internos de arquivo são listados apenas depois da decisão humana.
+- [x] A ponte de continuação oferece `roadmap-item-to-epic` sem iniciá-lo automaticamente.
+- [x] Triggers de sessão posterior estão listados em linguagem natural do founder.
 
-### Conditional Areas
+### Áreas Condicionais
 
-- [x] Product Ops/Delivery Scope does not enter this journey.
-- [x] Design does not enter this journey.
-- [x] Security does not enter this journey.
-- [x] DevOps does not enter this journey.
-- [x] GitHub sync does not enter this journey.
+- [x] Product Ops/Delivery Scope não entra nesta jornada.
+- [x] Design não entra nesta jornada.
+- [x] Security não entra nesta jornada.
+- [x] DevOps não entra nesta jornada.
+- [x] GitHub sync não entra nesta jornada.
 
-## Notes For Framework Design
+## Notas Para Design Do Framework
 
-- `roadmap-planner.role.md` and `create-roadmap.skill.md` currently reference `operations/product-ops/mvp/scope.md`.
-- For this journey, MVP scope must be treated as optional delivery context, not a route owner and not permission to modify MVP or any delivery scope.
-- Future scaffold improvement: make Roadmap Planner distinguish "roadmap candidate" from "delivery scope planning" so Strategy-only roadmap work does not depend on Product Ops files.
-- The next journey to design is `roadmap-item-to-epic`.
+- `roadmap-planner.role.md` e `create-roadmap.skill.md` atualmente referenciam `operations/product-ops/mvp/scope.md`.
+- Para esta jornada, escopo de MVP deve ser tratado como contexto opcional de delivery, não como owner de rota e não como permissão para modificar MVP ou qualquer escopo de delivery.
+- Melhoria futura do scaffold: fazer Roadmap Planner distinguir "candidato de roadmap" de "planejamento de escopo de delivery" para que trabalho de roadmap somente de Strategy não dependa de arquivos de Product Ops.
+- A próxima jornada a desenhar é `roadmap-item-to-epic`.

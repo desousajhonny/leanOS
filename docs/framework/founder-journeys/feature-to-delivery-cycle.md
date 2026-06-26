@@ -1,99 +1,99 @@
-# Journey: Feature To Delivery Cycle
+# Jornada: Feature Para Ciclo De Delivery
 
-## Human Overview
+## Visão Humana
 
-- **Trigger:** founder says "vamos comecar essa feature", "implemente a feature", "implemente a issue #554" or similar.
-- **Goal:** move one confirmed Feature from readiness check to branch, implementation, review and PR preparation.
-- **Starts at:** Root `AGENT.md`.
-- **Passes through:** Operations, `feature-to-delivery-cycle.workflow.md`, Product Ops readiness, conditional Design/Security/DevOps checks and Engineering implementation.
-- **Ends with:** PR-ready work, or a founder-friendly explanation of what is missing before code can start.
-- **Does not do:** start from a loose idea, roadmap item or unsplit Epic; bypass Product Ops; create UI components without Design readiness.
+- **Trigger:** founder diz "vamos começar essa feature", "implemente a feature", "implemente a issue #554" ou algo similar.
+- **Objetivo:** mover uma Feature confirmada do check de readiness para branch, implementação, review e preparação de PR.
+- **Começa em:** `AGENT.md` raiz.
+- **Passa por:** Operations, `feature-to-delivery-cycle.workflow.md`, readiness de Product Ops, checks condicionais de Design/Security/DevOps e implementação de Engineering.
+- **Termina com:** trabalho pronto para PR, ou uma explicação amigável ao founder do que falta antes de código começar.
+- **Não faz:** começar a partir de ideia solta, item de roadmap ou Epic não quebrado; contornar Product Ops; criar componentes de UI sem readiness de Design.
 
-## Flow Diagram
+## Diagrama Do Fluxo
 
 ```mermaid
 flowchart TD
   A["Founder: implementar feature"]
-  B["Root AGENT routes to Operations"]
-  C["operations/AGENT.md chooses workflow"]
+  B["AGENT raiz roteia para Operations"]
+  C["operations/AGENT.md escolhe workflow"]
   D["operations/workflows/feature-to-delivery-cycle.workflow.md"]
-  E{"Route files exist?"}
-  F["Explain missing route/file and stop"]
-  G{"Feature input exists?"}
-  H["Explain missing Feature and stop"]
-  I["Product Ops reads parent Epic + readiness"]
-  J{"Ready to develop?"}
-  K["Explain gaps and suggest next route"]
-  L{"UI/component affected?"}
-  M["Design checks component readiness"]
-  N{"Component contract ready?"}
-  O["Route to component-readiness before branch/code"]
-  P{"Security/DevOps needed?"}
-  Q["Run conditional Security/DevOps checks"]
-  R["Engineering loads engineering-delivery playbook"]
-  S["Implement component first when needed"]
-  T["Implement Feature"]
-  U["Tests + PR validation"]
-  V["Prepare PR"]
-  W["Bridge: post-merge continuation after merge"]
+  E{"Arquivos da rota existem?"}
+  F["Explicar rota/arquivo ausente e parar"]
+  G{"Input de Feature existe?"}
+  H["Explicar Feature ausente e parar"]
+  I["Product Ops lê Epic pai + readiness"]
+  J{"Pronta para desenvolvimento?"}
+  K["Explicar lacunas e sugerir próxima rota"]
+  L{"UI/componente afetado?"}
+  M["Design verifica readiness de componente"]
+  N{"Contrato de componente pronto?"}
+  O["Rotear para component-readiness antes de branch/código"]
+  P{"Security/DevOps necessário?"}
+  Q["Rodar checks condicionais de Security/DevOps"]
+  R["Engineering carrega playbook engineering-delivery"]
+  S["Implementar componente primeiro quando necessário"]
+  T["Implementar Feature"]
+  U["Testes + validação de PR"]
+  V["Preparar PR"]
+  W["Bridge: continuação pós-merge depois do merge"]
 
   A --> B --> C --> D --> E
-  E -->|No| F
-  E -->|Yes| G
-  G -->|No| H
-  G -->|Yes| I --> J
-  J -->|No| K
-  J -->|Yes| L
-  L -->|Yes| M --> N
-  N -->|No| O
-  N -->|Yes| P
-  L -->|No| P
-  P -->|Yes| Q --> R
-  P -->|No| R
+  E -->|Não| F
+  E -->|Sim| G
+  G -->|Não| H
+  G -->|Sim| I --> J
+  J -->|Não| K
+  J -->|Sim| L
+  L -->|Sim| M --> N
+  N -->|Não| O
+  N -->|Sim| P
+  L -->|Não| P
+  P -->|Sim| Q --> R
+  P -->|Não| R
   R --> S --> T --> U --> V --> W
 ```
 
-## Flow In Plain Words
+## Fluxo Em Linguagem Simples
 
-The model starts at Root `AGENT.md` because the founder is speaking naturally. It enters Operations because the request is about delivery and implementation. It reads `operations/workflows/feature-to-delivery-cycle.workflow.md` because the work crosses Product Ops, conditional Design/Security/DevOps and Engineering. It enters Product Ops first because a Feature must pass readiness before code. It enters Design only when the Feature touches UI, screens, flows, copy, accessibility or components. If a component spec is required but missing, the model routes to Design component readiness before any branch or code. Engineering starts only after readiness is satisfied or a non-applicable reason is explicit.
+O modelo começa no `AGENT.md` raiz porque o founder fala naturalmente. Ele entra em Operations porque a solicitação é sobre delivery e implementação. Ele lê `operations/workflows/feature-to-delivery-cycle.workflow.md` porque o trabalho cruza Product Ops, Design/Security/DevOps condicionais e Engineering. Ele entra em Product Ops primeiro porque uma Feature deve passar por readiness antes de código. Ele entra em Design apenas quando a Feature toca UI, telas, fluxos, copy, acessibilidade ou componentes. Se uma spec de componente é necessária mas está ausente, o modelo roteia para component readiness de Design antes de qualquer branch ou código. Engineering começa apenas depois que a readiness está satisfeita ou que uma razão de não aplicável está explícita.
 
-## Founder Trigger
+## Trigger Do Founder
 
-- "vamos comecar essa feature"
+- "vamos começar essa feature"
 - "implemente a feature de clientes"
 - "implemente a issue #554"
 - "podemos iniciar o desenvolvimento?"
-- "essa feature ja pode ir para codigo?"
+- "essa feature já pode ir para código?"
 
 ## Moment
 
-Implementation. This happens after `epic-to-features` creates or confirms a Feature and before PR review or post-merge continuation.
+Implementação. Isso acontece depois que `epic-to-features` cria ou confirma uma Feature e antes do review de PR ou continuação pós-merge.
 
-## Start Condition
+## Condição De Início
 
-This journey starts when:
+Esta jornada começa quando:
 
-- a local Feature exists inside `operations/product-ops/epics/<epic-slug>/`; or
-- a GitHub issue represents a Feature and can be mapped back to a local Epic/Feature; and
-- the founder asks to start development or check if development can start.
+- uma Feature local existe dentro de `operations/product-ops/epics/<epic-slug>/`; ou
+- uma issue do GitHub representa uma Feature e pode ser mapeada de volta para um Epic/Feature local; e
+- o founder pede para iniciar desenvolvimento ou verificar se o desenvolvimento pode começar.
 
-## End Condition
+## Condição De Fim
 
-This journey ends when:
+Esta jornada termina quando:
 
-- implementation is PR-ready;
-- or the model explains why the Feature is not ready to develop;
-- or a required route, role, skill, playbook, Design spec or readiness file is missing and the model stops before code.
+- a implementação está pronta para PR;
+- ou o modelo explica por que a Feature não está pronta para desenvolvimento;
+- ou uma rota, role, skill, playbook, spec de Design ou arquivo de readiness obrigatório está ausente e o modelo para antes do código.
 
 ## Owner
 
-- Department: Operations
+- Departamento: Operations
 - Workflow: `operations/workflows/feature-to-delivery-cycle.workflow.md`
-- First area: `operations/product-ops/`
-- Implementation area: `operations/engineering/`
-- Conditional areas: `operations/design/`, `operations/security/`, `operations/devops/`
+- Primeira área: `operations/product-ops/`
+- Área de implementação: `operations/engineering/`
+- Áreas condicionais: `operations/design/`, `operations/security/`, `operations/devops/`
 
-## Route Contract
+## Contrato De Rota
 
 ```text
 AGENT.md
@@ -110,275 +110,275 @@ AGENT.md
 -> operations/engineering/playbooks/pr-validation.playbook.md through engineering-delivery
 ```
 
-Rules:
+Regras:
 
-- The model must declare this route before executing.
-- The model cannot skip Product Ops and go directly to Engineering.
-- The model cannot start from a loose idea, roadmap item or unsplit Epic.
-- If UI/component work is involved, the model must route Design before Engineering.
-- If a required Design component spec is missing, the model routes to `operations/design/playbooks/component-readiness.playbook.md` before branch or code.
-- If Design, Security or DevOps are not applicable, the model says why in the founder-facing summary.
-- If Security or DevOps are not applicable, the model must state why.
+- O modelo deve declarar esta rota antes de executar.
+- O modelo não pode pular Product Ops e ir direto para Engineering.
+- O modelo não pode começar a partir de uma ideia solta, item de roadmap ou Epic não quebrado.
+- Se trabalho de UI/componente estiver envolvido, o modelo deve rotear Design antes de Engineering.
+- Se uma spec obrigatória de componente de Design estiver ausente, o modelo roteia para `operations/design/playbooks/component-readiness.playbook.md` antes de branch ou código.
+- Se Design, Security ou DevOps não forem aplicáveis, o modelo diz por quê no resumo voltado ao founder.
+- Se Security ou DevOps não forem aplicáveis, o modelo deve declarar por quê.
 
-## What The Model Does In Practice
+## O Que O Modelo Faz Na Prática
 
-### Step 1 - Route From Founder Intent
+### Etapa 1 - Rotear A Partir Da Intenção Do Founder
 
-The model opens:
+O modelo abre:
 
 `AGENT.md`
 
-Why:
+Por quê:
 
-- The founder request is natural language.
-- Root `AGENT.md` chooses the owning department, not the final playbook.
-- Implementation belongs to Operations.
+- A solicitação do founder está em linguagem natural.
+- O `AGENT.md` raiz escolhe o departamento owner, não o playbook final.
+- Implementação pertence a Operations.
 
-Next step:
-
-`operations/AGENT.md`
-
-### Step 2 - Choose The Operations Workflow
-
-The model opens:
+Próxima etapa:
 
 `operations/AGENT.md`
 
-Why:
+### Etapa 2 - Escolher O Workflow De Operations
 
-- Department AGENTs choose the workflow or area.
-- A Feature delivery request spans Product Ops, Engineering and conditional Design/Security/DevOps.
+O modelo abre:
 
-Next step:
+`operations/AGENT.md`
+
+Por quê:
+
+- AGENTs de departamento escolhem o workflow ou área.
+- Uma solicitação de delivery de Feature atravessa Product Ops, Engineering e Design/Security/DevOps condicionais.
+
+Próxima etapa:
 
 `operations/workflows/feature-to-delivery-cycle.workflow.md`
 
-### Step 3 - Confirm Feature Readiness
+### Etapa 3 - Confirmar Readiness Da Feature
 
-The model opens:
+O modelo abre:
 
 `operations/workflows/feature-to-delivery-cycle.workflow.md`
 
-Then it enters:
+Depois entra em:
 
 `operations/product-ops/AGENT.md`
 
-Why:
+Por quê:
 
-- The workflow says Product Ops enters first.
-- Product Ops owns Feature readiness before implementation.
+- O workflow diz que Product Ops entra primeiro.
+- Product Ops é dono da readiness da Feature antes da implementação.
 
-The model reads:
+O modelo lê:
 
 - `operations/product-ops/knowledge/ready-to-develop.md`
 - the local Feature or mapped GitHub Feature issue
 - parent Epic and delivery scope when available
 
-If readiness fails, the model explains the gap and recommends the next route instead of coding.
+Se a readiness falhar, o modelo explica a lacuna e recomenda a próxima rota em vez de codar.
 
-### Step 4 - Run Conditional Design Readiness
+### Etapa 4 - Rodar Readiness Condicional De Design
 
-The model enters Design only when the Feature touches UI, screens, flows, copy, accessibility, interaction or reusable components.
+O modelo entra em Design apenas quando a Feature toca UI, telas, fluxos, copy, acessibilidade, interação ou componentes reutilizáveis.
 
-Design checks:
+Design verifica:
 
-- existing Design foundation;
-- component inventory when it exists;
-- whether the Feature can reuse an existing component;
-- whether a new component contract is needed.
+- foundation de Design existente;
+- inventário de componentes quando existir;
+- se a Feature pode reutilizar um componente existente;
+- se um novo contrato de componente é necessário.
 
-If a new component is needed but the concrete component spec does not exist yet, the model routes to Design before branch or code and says:
+Se um novo componente é necessário mas a spec concreta de componente ainda não existe, o modelo roteia para Design antes de branch ou código e diz:
 
 ```text
-Ainda nao recomendo codar essa Feature.
+Ainda não recomendo codar essa Feature.
 
 Ela precisa de uma spec de Design para o componente novo antes da Engenharia implementar.
-O proximo passo seguro e rodar component readiness, criar a spec do componente e atualizar o inventario de componentes.
+O próximo passo seguro é rodar component readiness, criar a spec do componente e atualizar o inventário de componentes.
 
 Quer que eu conduza esse passo de Design agora?
 ```
 
-### Step 5 - Run Conditional Security And DevOps Checks
+### Etapa 5 - Rodar Checks Condicionais De Security E DevOps
 
-Security enters only when the Feature touches data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk.
+Security entra apenas quando a Feature toca dados, auth, permissões, privacidade, abuso, API, banco de dados, secrets, compliance, infraestrutura ou risco de código gerado por IA.
 
-DevOps enters only when the Feature touches environments, CI/CD, deploy, observability, config, GitHub sync or release readiness.
+DevOps entra apenas quando a Feature toca ambientes, CI/CD, deploy, observabilidade, config, GitHub sync ou readiness de release.
 
-If either area is not applicable, the model records the reason in the founder-facing summary.
+Se qualquer área não for aplicável, o modelo registra a razão no resumo voltado ao founder.
 
-### Step 6 - Engineering Implementation
+### Etapa 6 - Implementação De Engineering
 
-The model enters:
+O modelo entra em:
 
 `operations/engineering/AGENT.md`
 
-Why:
+Por quê:
 
-- Product Ops readiness is satisfied.
-- Conditional readiness gaps are closed or explicitly not applicable.
-- Engineering now owns branch, implementation, tests and PR preparation.
+- A readiness de Product Ops está satisfeita.
+- Lacunas condicionais de readiness foram fechadas ou marcadas explicitamente como não aplicáveis.
+- Engineering agora é dono de branch, implementação, testes e preparação de PR.
 
-Engineering loads:
+Engineering carrega:
 
 `operations/engineering/playbooks/engineering-delivery.playbook.md`
 
-Why:
+Por quê:
 
-- This playbook is the internal Engineering track for branch, planning, implementation, tests, PR and PR validation.
-- It prevents the model from jumping directly from readiness into code or PR.
+- Este playbook é a trilha interna de Engineering para branch, planejamento, implementação, testes, PR e validação de PR.
+- Ele impede o modelo de pular diretamente de readiness para código ou PR.
 
-If a reusable component is part of the work and the Design spec is approved, Engineering runs `operations/engineering/playbooks/component-implementation.playbook.md` through `engineering-delivery`, implements the component first, validates states/accessibility/tests, and only then implements the screen or Feature that depends on it.
+Se um componente reutilizável faz parte do trabalho e a spec de Design está aprovada, Engineering roda `operations/engineering/playbooks/component-implementation.playbook.md` por meio de `engineering-delivery`, implementa o componente primeiro, valida estados/acessibilidade/testes e só então implementa a tela ou Feature que depende dele.
 
-### Step 7 - PR Preparation
+### Etapa 7 - Preparação De PR
 
-Engineering follows:
+Engineering segue:
 
 - `operations/engineering/playbooks/branch-for-feature.playbook.md`
 - `operations/engineering/playbooks/prepare-pr.playbook.md`
 - `operations/engineering/playbooks/pr-validation.playbook.md`
 
-The journey ends with PR-ready work or a clear explanation of remaining gaps.
+A jornada termina com trabalho pronto para PR ou uma explicação clara das lacunas restantes.
 
-## Active Roles
+## Roles Ativas
 
-| Order | Role | When It Enters | Why It Enters | Route Evidence |
+| Ordem | Role | Quando Entra | Por Que Entra | Evidência De Rota |
 | --- | --- | --- | --- | --- |
-| 1 | Product Owner | Always first | Confirms Feature readiness and delivery boundary | `operations/product-ops/AGENT.md` and `ready-to-develop.md` |
-| 2 | Product Designer | Conditional | UI, flow, accessibility, copy or component readiness | `operations/design/AGENT.md` |
-| 3 | Security Reviewer | Conditional | Data, auth, privacy, API, database, secrets or risk | `operations/security/AGENT.md` |
-| 4 | DevOps Engineer | Conditional | Environment, CI/CD, deploy, observability or config | `operations/devops/AGENT.md` |
-| 5 | Senior Developer | After readiness | Plans and implements the Feature | `operations/engineering/AGENT.md` |
-| 6 | Test Engineer / PR Reviewer | Before PR | Validates tests and review readiness | Engineering roles/playbooks |
+| 1 | Product Owner | Sempre primeiro | Confirma readiness da Feature e limite de delivery | `operations/product-ops/AGENT.md` e `ready-to-develop.md` |
+| 2 | Product Designer | Condicional | Readiness de UI, fluxo, acessibilidade, copy ou componente | `operations/design/AGENT.md` |
+| 3 | Security Reviewer | Condicional | Dados, auth, privacidade, API, banco de dados, secrets ou risco | `operations/security/AGENT.md` |
+| 4 | DevOps Engineer | Condicional | Ambiente, CI/CD, deploy, observabilidade ou config | `operations/devops/AGENT.md` |
+| 5 | Senior Developer | Depois da readiness | Planeja e implementa a Feature | `operations/engineering/AGENT.md` |
+| 6 | Test Engineer / PR Reviewer | Antes do PR | Valida testes e readiness de review | Roles/playbooks de Engineering |
 
-## Founder Questions
+## Perguntas Ao Founder
 
-Ask only what is missing:
+Pergunte apenas o que está faltando:
 
-- "Essa Feature ja existe localmente ou esta em uma issue do GitHub?"
+- "Essa Feature já existe localmente ou está em uma issue do GitHub?"
 - "Essa tela/fluxo precisa de um componente novo ou podemos reaproveitar um existente?"
-- "Voce quer que eu resolva a pendencia de Design antes de iniciar codigo?"
-- "Posso criar a branch e iniciar a implementacao agora?"
+- "Você quer que eu resolva a pendência de Design antes de iniciar código?"
+- "Posso criar a branch e iniciar a implementação agora?"
 
-## Confirmation Checkpoints
+## Checkpoints De Confirmação
 
-The model must ask for confirmation before:
+O modelo deve pedir confirmação antes de:
 
-- creating or changing local Feature files;
-- creating component specs;
-- creating branches;
-- changing code;
-- running external GitHub actions;
-- opening or preparing a PR.
+- criar ou alterar arquivos locais de Feature;
+- criar specs de componente;
+- criar branches;
+- alterar código;
+- executar ações externas no GitHub;
+- abrir ou preparar um PR.
 
-## Founder-facing Output
+## Output Voltado Ao Founder
 
-When ready:
+Quando pronta:
 
 ```text
 Essa Feature parece pronta para desenvolvimento.
 
-O que ja esta claro:
-- objetivo e criterio de aceite;
+O que já está claro:
+- objetivo e critério de aceite;
 - Epic pai e escopo de entrega;
-- Design/Security/DevOps estao prontos ou nao se aplicam;
-- a branch pode ser criada com seguranca.
+- Design/Security/DevOps estão prontos ou não se aplicam;
+- a branch pode ser criada com segurança.
 
-Posso criar a branch e iniciar o plano de implementacao?
+Posso criar a branch e iniciar o plano de implementação?
 ```
 
-When not ready:
+Quando não pronta:
 
 ```text
-Ainda nao recomendo comecar pelo codigo.
+Ainda não recomendo começar pelo código.
 
-O bloqueio principal e: <gap>.
-Se codarmos agora, o risco e: <risk>.
+O bloqueio principal é: <gap>.
+Se codarmos agora, o risco é: <risk>.
 
-O proximo passo seguro e: <next LeanOS route>.
+O próximo passo seguro é: <next LeanOS route>.
 Quer que eu conduza esse passo agora?
 ```
 
-## Forbidden Actions
+## Ações Proibidas
 
-During this journey, the model cannot:
+Durante esta jornada, o modelo não pode:
 
-- implement from an unsplit Epic or loose idea;
-- bypass `ready-to-develop.md`;
-- create new user-facing components without Design readiness;
-- ignore Security/DevOps when their triggers apply;
-- open a PR without test/review summary;
-- treat GitHub sync as proof of product readiness.
+- implementar a partir de um Epic não quebrado ou ideia solta;
+- contornar `ready-to-develop.md`;
+- criar novos componentes voltados ao usuário sem readiness de Design;
+- ignorar Security/DevOps quando seus triggers se aplicam;
+- abrir um PR sem resumo de testes/review;
+- tratar GitHub sync como prova de readiness de produto.
 
-## Possible Outcomes
+## Resultados Possíveis
 
-- Feature is ready and Engineering starts implementation.
-- Feature is blocked by Product Ops readiness.
-- Feature needs Design component readiness.
-- Feature needs Security or DevOps review.
-- Feature is implemented and PR-ready.
+- Feature está pronta e Engineering inicia implementação.
+- Feature está bloqueada por readiness de Product Ops.
+- Feature precisa de component readiness de Design.
+- Feature precisa de review de Security ou DevOps.
+- Feature está implementada e pronta para PR.
 
-## Continuation Bridge
+## Ponte De Continuação
 
-Immediate bridge after PR is ready:
+Ponte imediata depois que o PR está pronto:
 
 ```text
-A implementacao esta pronta para revisao.
-Quer que eu conduza a validacao do PR antes do merge?
+A implementação está pronta para revisão.
+Quer que eu conduza a validação do PR antes do merge?
 ```
 
-Later-session triggers:
+Triggers em sessão posterior:
 
 - "revise o PR"
-- "esta pronto para merge?"
-- "mergeado, vamos para a proxima"
+- "está pronto para merge?"
+- "mergeado, vamos para a próxima"
 
-Next route:
+Próxima rota:
 
 `post-merge-continuation`
 
-Rules:
+Regras:
 
-- Do not automatically merge.
-- Do not skip PR validation; PR validation is part of this workflow, not a separate required workflow.
-- If the founder says the PR was merged, restart from Root `AGENT.md` and route to post-merge continuation.
+- Não faça merge automaticamente.
+- Não pule a validação de PR; validação de PR faz parte deste workflow, não é um workflow obrigatório separado.
+- Se o founder disser que o PR foi mergeado, reinicie pelo `AGENT.md` raiz e roteie para continuação pós-merge.
 
-## Journey Validation Checklist
+## Checklist De Validação Da Jornada
 
-### Files Exist
+### Arquivos Existem
 
-- [ ] `AGENT.md` exists.
-- [ ] `operations/AGENT.md` exists.
-- [ ] `operations/workflows/feature-to-delivery-cycle.workflow.md` exists.
-- [ ] `operations/product-ops/AGENT.md` exists.
-- [ ] `operations/product-ops/knowledge/ready-to-develop.md` exists.
-- [ ] `operations/design/playbooks/component-readiness.playbook.md` exists.
-- [ ] `operations/engineering/AGENT.md` exists.
-- [ ] `operations/engineering/playbooks/engineering-delivery.playbook.md` exists.
-- [ ] `operations/engineering/playbooks/branch-for-feature.playbook.md` exists.
-- [ ] `operations/engineering/playbooks/prepare-pr.playbook.md` exists.
-- [ ] `operations/engineering/playbooks/pr-validation.playbook.md` exists.
-- [ ] Engineering roles, skills and playbooks exist.
-- [ ] Conditional Design/Security/DevOps route files exist when those areas are active.
+- [ ] `AGENT.md` existe.
+- [ ] `operations/AGENT.md` existe.
+- [ ] `operations/workflows/feature-to-delivery-cycle.workflow.md` existe.
+- [ ] `operations/product-ops/AGENT.md` existe.
+- [ ] `operations/product-ops/knowledge/ready-to-develop.md` existe.
+- [ ] `operations/design/playbooks/component-readiness.playbook.md` existe.
+- [ ] `operations/engineering/AGENT.md` existe.
+- [ ] `operations/engineering/playbooks/engineering-delivery.playbook.md` existe.
+- [ ] `operations/engineering/playbooks/branch-for-feature.playbook.md` existe.
+- [ ] `operations/engineering/playbooks/prepare-pr.playbook.md` existe.
+- [ ] `operations/engineering/playbooks/pr-validation.playbook.md` existe.
+- [ ] Roles, skills e playbooks de Engineering existem.
+- [ ] Arquivos de rota condicionais de Design/Security/DevOps existem quando essas áreas estão ativas.
 
-### Files Point To Each Other
+### Arquivos Apontam Uns Para Os Outros
 
-- [ ] Root `AGENT.md` routes implementation requests to Operations.
-- [ ] Operations `AGENT.md` routes delivery journeys to workflows.
-- [ ] The workflow sends readiness to Product Ops first.
-- [ ] `ready-to-develop.md` guards implementation.
-- [ ] Design enters before Engineering when component readiness is needed.
-- [ ] Engineering playbooks cover branch, implementation, tests and PR.
+- [ ] `AGENT.md` raiz roteia solicitações de implementação para Operations.
+- [ ] `AGENT.md` de Operations roteia jornadas de delivery para workflows.
+- [ ] O workflow envia readiness para Product Ops primeiro.
+- [ ] `ready-to-develop.md` protege a implementação.
+- [ ] Design entra antes de Engineering quando component readiness é necessária.
+- [ ] Playbooks de Engineering cobrem branch, implementação, testes e PR.
 
-### Journey Execution
+### Execução Da Jornada
 
-- [ ] The model can explain why each route is loaded.
-- [ ] The model does not start coding before readiness.
-- [ ] The model stops before code when component spec is missing.
-- [ ] The model asks founder confirmation before writes, branch, code and PR.
-- [ ] Founder-facing output explains gaps before technical paths.
+- [ ] O modelo consegue explicar por que cada rota é carregada.
+- [ ] O modelo não começa a codar antes de readiness.
+- [ ] O modelo para antes de código quando a spec de componente está ausente.
+- [ ] O modelo pede confirmação do founder antes de escritas, branch, código e PR.
+- [ ] O output voltado ao founder explica lacunas antes de paths técnicos.
 
-## Notes For Framework Design
+## Notas Para Design Do Framework
 
-- Component readiness still needs its concrete inventory, template, skill and playbook assets.
-- This journey should be revisited after `component-readiness.playbook.md` exists.
-- GitHub issue language is allowed only as external tracking; the LeanOS unit of delivery is Feature.
+- Component readiness ainda precisa de inventário, template, skill e playbook concretos.
+- Esta jornada deve ser revisitada depois que `component-readiness.playbook.md` existir.
+- Linguagem de issue do GitHub é permitida apenas como tracking externo; a unidade de delivery do LeanOS é Feature.

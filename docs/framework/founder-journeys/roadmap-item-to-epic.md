@@ -1,87 +1,87 @@
-# Journey: Roadmap Item To Epic
+# Jornada: Item De Roadmap Para Epic
 
-## Human Overview
+## Visão Humana
 
-- **Trigger:** founder asks whether a roadmap item enters MVP, release, beta, experiment or the next delivery.
-- **Goal:** create or update a local Epic that can later be broken into Features.
-- **Starts at:** Root `AGENT.md`, then `operations/AGENT.md`.
-- **Passes through:** `roadmap-item-to-epic.workflow.md`, Product Ops, Product Owner, delivery-scope and epic-shaping skills.
-- **Ends with:** a founder-confirmed local Epic or a decision to keep/refine/reject the roadmap item.
-- **Does not do:** create Features, write GitHub issues, create branches, write code or open PRs.
+- **Trigger:** founder pergunta se um item de roadmap entra no MVP, release, beta, experimento ou próxima entrega.
+- **Objetivo:** criar ou atualizar um Epic local que depois poderá ser quebrado em Features.
+- **Começa em:** `AGENT.md` raiz, depois `operations/AGENT.md`.
+- **Passa por:** `roadmap-item-to-epic.workflow.md`, Product Ops, Product Owner, skills de delivery-scope e epic-shaping.
+- **Termina com:** um Epic local confirmado pelo founder ou uma decisão de manter/refinar/rejeitar o item de roadmap.
+- **Não faz:** criar Features, escrever issues no GitHub, criar branches, escrever código ou abrir PRs.
 
-## Flow Diagram
+## Diagrama Do Fluxo
 
 ```mermaid
 flowchart TD
-  A["Founder: isso entra na proxima entrega?"]
+  A["Founder: isso entra na próxima entrega?"]
   B["Root AGENT"]
   C["Operations AGENT"]
-  D["roadmap-item-to-epic workflow"]
-  E{"Route files exist?"}
+  D["workflow roadmap-item-to-epic"]
+  E{"Arquivos da rota existem?"}
   F["Product Ops AGENT"]
   G["Product Owner"]
-  H["define-delivery-scope skill"]
-  I["shape-epic skill"]
-  J{"Need Design / Security / DevOps / Engineering input?"}
-  K["Conditional specialist review"]
-  L["Draft local Epic"]
-  M{"Founder confirms?"}
-  N["Create/update local Epic"]
-  O["Explain outcome to founder"]
-  P["Stop without writing"]
-  Q["Next: epic-to-features"]
+  H["skill define-delivery-scope"]
+  I["skill shape-epic"]
+  J{"Precisa de input de Design / Security / DevOps / Engineering?"}
+  K["Review condicional de especialista"]
+  L["Rascunhar Epic local"]
+  M{"Founder confirma?"}
+  N["Criar/atualizar Epic local"]
+  O["Explicar resultado ao founder"]
+  P["Parar sem escrever"]
+  Q["Próximo: epic-to-features"]
 
   A --> B --> C --> D --> E
-  E -->|Yes| F --> G --> H --> I --> J
-  E -->|No| O --> P
-  J -->|Yes| K --> L
-  J -->|No| L
+  E -->|Sim| F --> G --> H --> I --> J
+  E -->|Não| O --> P
+  J -->|Sim| K --> L
+  J -->|Não| L
   L --> M
-  M -->|Yes| N --> Q
-  M -->|No| O --> P
+  M -->|Sim| N --> Q
+  M -->|Não| O --> P
 ```
 
-## Flow In Plain Words
+## Fluxo Em Linguagem Simples
 
-The model starts at Root `AGENT.md` because the founder speaks naturally. It enters Operations because turning roadmap into executable delivery work belongs to Operations. It reads `operations/workflows/roadmap-item-to-epic.workflow.md` because this is a cross-area planning transition. It enters Product Ops because Product Ops owns delivery scope, Epic shape and issue readiness. It uses Product Owner judgment to decide `scope_type`, milestone, release goal, scope boundary and Epic readiness. It asks Design, Security, DevOps or Engineering only when their criteria can change the Epic. It asks the founder to confirm before creating or updating the local Epic folder.
+O modelo começa no `AGENT.md` raiz porque o founder fala naturalmente. Ele entra em Operations porque transformar roadmap em trabalho executável de delivery pertence a Operations. Ele lê `operations/workflows/roadmap-item-to-epic.workflow.md` porque esta é uma transição de planejamento entre áreas. Ele entra em Product Ops porque Product Ops é dono de escopo de delivery, formato do Epic e readiness de issue. Ele usa o julgamento do Product Owner para decidir `scope_type`, milestone, objetivo de release, limite de escopo e readiness do Epic. Ele chama Design, Security, DevOps ou Engineering apenas quando os critérios dessas áreas podem mudar o Epic. Ele pede confirmação ao founder antes de criar ou atualizar a pasta local do Epic.
 
-## Founder Trigger
+## Trigger Do Founder
 
-- "isso entra na proxima entrega?"
+- "isso entra na próxima entrega?"
 - "isso entra no MVP?"
 - "crie um epic para esse item"
 - "transforma esse item do roadmap em entrega"
 - "vamos planejar esse item para desenvolvimento"
 
-## Moment
+## Momento
 
-Roadmap planning to local Epic. This happens after `idea-to-roadmap` and before `epic-to-features`.
+Planejamento de roadmap para Epic local. Isso acontece depois de `idea-to-roadmap` e antes de `epic-to-features`.
 
-## Start Condition
+## Condição De Início
 
-This journey starts when:
+Esta jornada começa quando:
 
-- a roadmap or backlog item exists and can be identified;
-- the item has enough product context to discuss delivery;
-- the founder asks whether it should become real delivery work.
+- um item de roadmap ou backlog existe e pode ser identificado;
+- o item tem contexto de produto suficiente para discutir delivery;
+- o founder pergunta se ele deve virar trabalho real de delivery.
 
-## End Condition
+## Condição De Fim
 
-This journey ends when:
+Esta jornada termina quando:
 
-- a local Epic is proposed and the founder confirms or declines writing it;
-- or the model explains why the roadmap item is not ready to become an Epic;
-- or the model maps a missing route/file gap and stops.
+- um Epic local é proposto e o founder confirma ou recusa a escrita;
+- ou o modelo explica por que o item de roadmap ainda não está pronto para virar Epic;
+- ou o modelo mapeia uma lacuna de rota/arquivo e para.
 
 ## Owner
 
-- Department: Operations
-- Area: Product Ops
+- Departamento: Operations
+- Área: Product Ops
 - Workflow: `operations/workflows/roadmap-item-to-epic.workflow.md`
-- Primary role: `operations/product-ops/roles/product-owner.role.md`
-- Primary playbook: `operations/product-ops/playbooks/delivery-scope-planning.playbook.md`
+- Role primária: `operations/product-ops/roles/product-owner.role.md`
+- Playbook primário: `operations/product-ops/playbooks/delivery-scope-planning.playbook.md`
 
-## Route Contract
+## Contrato De Rota
 
 ```text
 Root AGENT.md
@@ -96,17 +96,17 @@ Root AGENT.md
 -> Output
 ```
 
-## Why This Replaces Two Old Journeys
+## Por Que Isso Substitui Duas Jornadas Antigas
 
-The previous chain had two separate transitions:
+A cadeia anterior tinha duas transições separadas:
 
 ```text
 roadmap item -> delivery scope -> epic
 ```
 
-That created an unnecessary extra step after LeanOS adopted local Epics as the real planning unit.
+Isso criou uma etapa extra desnecessária depois que o LeanOS adotou Epics locais como unidade real de planejamento.
 
-The official chain is now:
+A cadeia oficial agora é:
 
 ```text
 new-idea-intake
@@ -116,150 +116,150 @@ new-idea-intake
 -> feature-to-delivery-cycle
 ```
 
-`scope_type`, `milestone` and `release_goal` remain important, but they are Epic fields, not a separate workflow.
+`scope_type`, `milestone` e `release_goal` continuam importantes, mas são campos do Epic, não um workflow separado.
 
-## Conditional Area Rules
+## Regras De Áreas Condicionais
 
-- Design enters when UX, UI, copy, accessibility, screen, flow, behavior or component implications can change the Epic.
-- Security enters when data, auth, permissions, privacy, abuse, API, database, compliance, infrastructure or AI-generated-code risk can change the Epic.
-- DevOps enters when GitHub Project, milestone sync, environments, deploy, observability, config or release readiness can change the Epic.
-- Engineering enters when feasibility, architecture boundary, dependencies, data model or implementation size can change the Epic.
+- Design entra quando implicações de UX, UI, copy, acessibilidade, tela, fluxo, comportamento ou componente podem mudar o Epic.
+- Security entra quando dados, auth, permissões, privacidade, abuso, API, banco de dados, compliance, infraestrutura ou risco de código gerado por IA podem mudar o Epic.
+- DevOps entra quando GitHub Project, sync de milestone, ambientes, deploy, observabilidade, config ou readiness de release podem mudar o Epic.
+- Engineering entra quando viabilidade, limite de arquitetura, dependências, modelo de dados ou tamanho de implementação podem mudar o Epic.
 
-## What The Model Does In Practice
+## O Que O Modelo Faz Na Prática
 
-### Step 1 - Confirm Route
+### Etapa 1 - Confirmar Rota
 
-The model opens:
+O modelo abre:
 
 `AGENT.md`
 
-Why:
+Por quê:
 
-- The founder gave a natural-language planning request.
-- Root routing should choose Operations because the request is moving from roadmap into delivery planning.
+- O founder fez uma solicitação de planejamento em linguagem natural.
+- O roteamento raiz deve escolher Operations porque a solicitação está saindo de roadmap e entrando em planejamento de delivery.
 
-Next step:
+Próxima etapa:
 
 `operations/AGENT.md`
 
-### Step 2 - Load Operations Workflow
+### Etapa 2 - Carregar O Workflow De Operations
 
-The model opens:
+O modelo abre:
 
 `operations/workflows/roadmap-item-to-epic.workflow.md`
 
-Why:
+Por quê:
 
-- This is a cross-area transition from roadmap context into executable delivery shape.
-- The workflow decides that Product Ops leads and Design, Security, DevOps or Engineering enter only when they can change Epic readiness.
+- Esta é uma transição entre áreas do contexto de roadmap para formato executável de delivery.
+- O workflow decide que Product Ops lidera e que Design, Security, DevOps ou Engineering entram apenas quando podem mudar a readiness do Epic.
 
-Next step:
-
-`operations/product-ops/AGENT.md`
-
-### Step 3 - Load Product Ops
-
-The model opens:
+Próxima etapa:
 
 `operations/product-ops/AGENT.md`
 
-Why:
+### Etapa 3 - Carregar Product Ops
 
-- Product Ops owns Epic shape, delivery scope and readiness.
-- The area lead chooses Product Owner before skills or playbooks.
+O modelo abre:
 
-Next step:
+`operations/product-ops/AGENT.md`
+
+Por quê:
+
+- Product Ops é dono do formato do Epic, escopo de delivery e readiness.
+- O lead da área escolhe Product Owner antes de skills ou playbooks.
+
+Próxima etapa:
 
 `operations/product-ops/roles/product-owner.role.md`
 
-### Step 4 - Shape The Local Epic
+### Etapa 4 - Moldar O Epic Local
 
-The model opens:
+O modelo abre:
 
 - `operations/product-ops/skills/define-delivery-scope.skill.md`
 - `operations/product-ops/skills/shape-epic.skill.md`
 - `operations/product-ops/playbooks/delivery-scope-planning.playbook.md`
 - `ai-standard/templates/product/epic-template.md`
 
-Why:
+Por quê:
 
-- The roadmap item needs a delivery boundary, `scope_type`, milestone, release goal, outcome, non-goals, risks and likely Feature groups.
-- The model should not create Features yet.
+- O item de roadmap precisa de limite de delivery, `scope_type`, milestone, objetivo de release, outcome, non-goals, riscos e grupos prováveis de Features.
+- O modelo ainda não deve criar Features.
 
-### Step 5 - Founder Confirmation
+### Etapa 5 - Confirmação Do Founder
 
-The model explains the recommendation in founder-friendly language, then asks before writing the local Epic.
+O modelo explica a recomendação em linguagem amigável para o founder e pergunta antes de escrever o Epic local.
 
-If the founder confirms, the model may create or update the local Epic folder. If not, it explains the outcome and stops.
+Se o founder confirmar, o modelo pode criar ou atualizar a pasta local do Epic. Se não, ele explica o resultado e para.
 
-## Founder-Friendly Output
+## Output Amigável Para O Founder
 
-The model should explain the outcome before talking about files:
+O modelo deve explicar o resultado antes de falar sobre arquivos:
 
 ```text
-Esse item ja parece pronto para virar um Epic local.
+Esse item já parece pronto para virar um Epic local.
 
-Minha recomendacao:
+Minha recomendação:
 - criar o Epic "[EPIC] Customer Management";
 - tratar como scope_type: MVP;
 - vincular ao milestone "MVP v1";
 - registrar que Design precisa avaliar tabela/lista de clientes antes das Features;
-- nao sincronizar com GitHub ainda sem sua confirmacao.
+- não sincronizar com GitHub ainda sem sua confirmação.
 
 Quer que eu crie esse Epic local agora?
 ```
 
-## Stop Conditions
+## Condições De Parada
 
-Stop without writing when:
+Pare sem escrever quando:
 
-- the roadmap or backlog item cannot be identified;
-- the item lacks product context, user, outcome or value;
-- the founder does not confirm Epic creation;
-- the request shifts into Feature shaping, GitHub sync, branch creation, code or PR work.
+- o item de roadmap ou backlog não pode ser identificado;
+- o item não tem contexto de produto, usuário, outcome ou valor;
+- o founder não confirma a criação do Epic;
+- a solicitação muda para shaping de Feature, GitHub sync, criação de branch, código ou trabalho de PR.
 
-When stopping, explain what happened and suggest the next safe route.
+Ao parar, explique o que aconteceu e sugira a próxima rota segura.
 
-## Continuation Bridge
+## Ponte De Continuação
 
-When the local Epic is confirmed, offer the next journey without starting it automatically:
+Quando o Epic local for confirmado, ofereça a próxima jornada sem iniciá-la automaticamente:
 
 ```text
-O Epic local esta pronto.
+O Epic local está pronto.
 Quer que eu quebre esse Epic em Features usando a Delivery Readiness Matrix?
 ```
 
-Next route:
+Próxima rota:
 
 `epic-to-features`
 
-## Journey Validation Checklist
+## Checklist De Validação Da Jornada
 
-### Files Exist
+### Arquivos Existem
 
-- [ ] `operations/workflows/roadmap-item-to-epic.workflow.md` exists.
-- [ ] No separate roadmap-to-delivery-scope workflow exists.
-- [ ] No separate workflow exists between delivery scope and local Epic creation.
-- [ ] `strategy/workflows/idea-to-roadmap.workflow.md` bridges to `roadmap-item-to-epic`.
-- [ ] `operations/product-ops/AGENT.md` routes Epic shaping to Product Owner.
-- [ ] `operations/product-ops/skills/define-delivery-scope.skill.md` exists.
-- [ ] `operations/product-ops/skills/shape-epic.skill.md` exists.
-- [ ] `operations/product-ops/playbooks/delivery-scope-planning.playbook.md` exists.
-- [ ] `ai-standard/templates/product/epic-template.md` exists.
-- [ ] The workflow stops before Feature files, GitHub issues, branch, code or PR work.
+- [ ] `operations/workflows/roadmap-item-to-epic.workflow.md` existe.
+- [ ] Nenhum workflow separado de roadmap-to-delivery-scope existe.
+- [ ] Nenhum workflow separado existe entre escopo de delivery e criação de Epic local.
+- [ ] `strategy/workflows/idea-to-roadmap.workflow.md` faz bridge para `roadmap-item-to-epic`.
+- [ ] `operations/product-ops/AGENT.md` roteia shaping de Epic para Product Owner.
+- [ ] `operations/product-ops/skills/define-delivery-scope.skill.md` existe.
+- [ ] `operations/product-ops/skills/shape-epic.skill.md` existe.
+- [ ] `operations/product-ops/playbooks/delivery-scope-planning.playbook.md` existe.
+- [ ] `ai-standard/templates/product/epic-template.md` existe.
+- [ ] O workflow para antes de arquivos de Feature, issues do GitHub, branch, código ou trabalho de PR.
 
-### Files Point To Each Other
+### Arquivos Apontam Uns Para Os Outros
 
-- [ ] Root routes to Operations.
-- [ ] Operations routes roadmap-to-delivery planning through workflows or Product Ops.
-- [ ] Product Ops points to Product Owner.
-- [ ] Product Owner points to delivery-scope and epic-shaping skills.
-- [ ] `.leanos/index/workflows.yaml` includes `roadmap-item-to-epic`.
+- [ ] A raiz roteia para Operations.
+- [ ] Operations roteia planejamento de roadmap-to-delivery por workflows ou Product Ops.
+- [ ] Product Ops aponta para Product Owner.
+- [ ] Product Owner aponta para skills de delivery-scope e epic-shaping.
+- [ ] `.leanos/index/workflows.yaml` inclui `roadmap-item-to-epic`.
 
-### Journey Execution
+### Execução Da Jornada
 
-- [ ] The model can explain why it loaded each file.
-- [ ] The model does not skip Product Ops.
-- [ ] The model does not create Feature files in this journey.
-- [ ] The model asks for confirmation before writing the local Epic.
-- [ ] The model offers `epic-to-features` only after the local Epic exists.
+- [ ] O modelo consegue explicar por que carregou cada arquivo.
+- [ ] O modelo não pula Product Ops.
+- [ ] O modelo não cria arquivos de Feature nesta jornada.
+- [ ] O modelo pede confirmação antes de escrever o Epic local.
+- [ ] O modelo oferece `epic-to-features` apenas depois que o Epic local existe.

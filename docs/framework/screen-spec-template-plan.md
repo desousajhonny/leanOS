@@ -1,96 +1,96 @@
-# Screen Spec Template Plan
+# Plano Do Template De Spec De Tela
 
-This document is internal to the LeanOS framework. It should not be generated into the client workspace yet.
+Este documento é interno ao framework LeanOS. Ele ainda não deve ser gerado no workspace do cliente.
 
-## Purpose
+## Propósito
 
-Plan the future `screen-spec-template.md` so Design can document concrete screens before Engineering implements them.
+Planejar o futuro `screen-spec-template.md` para que Design possa documentar telas concretas antes de Engineering implementá-las.
 
-Screen specs are different from component specs:
+Specs de tela são diferentes de specs de componente:
 
-- Component spec: reusable UI part, such as table, import panel, modal or status badge.
-- Screen spec: concrete screen or view that composes components, content, actions, states and rules.
+- Spec de componente: parte reutilizável da UI, como tabela, painel de importação, modal ou badge de status.
+- Spec de tela: tela ou view concreta que compõe componentes, conteúdo, ações, estados e regras.
 
-## Proposed Location
+## Local Proposto
 
-Future template:
+Template futuro:
 
 `ai-standard/templates/design/screen-spec-template.md`
 
-Future concrete specs:
+Specs concretas futuras:
 
 `operations/design/knowledge/screens/<screen-name>.md`
 
-Do not create `screens/` or concrete screen specs in the initial scaffold until a real Feature requires them.
+Não crie `screens/` nem specs concretas de tela no scaffold inicial até que uma Feature real exija isso.
 
-## When To Create A Screen Spec
+## Quando Criar Uma Spec De Tela
 
-Create a screen spec only when:
+Crie uma spec de tela apenas quando:
 
-- a real Feature requires a concrete screen, page, view, modal or flow step;
-- Product Ops has confirmed Feature context and acceptance criteria;
-- Design foundation and accessibility baseline exist or are explicitly enough for the Feature;
-- required component specs are known, reused or planned;
-- the founder confirms the Design step.
+- uma Feature real exige uma tela, página, view, modal ou etapa de fluxo concreta;
+- Product Ops confirmou contexto de Feature e critérios de aceite;
+- a foundation de Design e a baseline de acessibilidade existem ou são explicitamente suficientes para a Feature;
+- specs de componentes necessárias são conhecidas, reutilizadas ou planejadas;
+- o founder confirma a etapa de Design.
 
-## Suggested Template Sections
+## Seções Sugeridas Para O Template
 
-The future template should include:
+O template futuro deve incluir:
 
 - `# <Screen Name>`
-- `## Purpose`
-- `## User Goal`
-- `## Entry Points`
-- `## Layout Structure`
-- `## Required Components`
-- `## Primary Actions`
-- `## Secondary Actions`
-- `## Content Rules`
-- `## Data Rules`
-- `## States`
-- `## Validation And Errors`
-- `## Accessibility`
-- `## Responsive Behavior`
-- `## Analytics Or Events`
-- `## Engineering Handoff`
-- `## Do Not Do`
-- `## Open Questions`
+- `## Propósito`
+- `## Objetivo Do Usuário`
+- `## Pontos De Entrada`
+- `## Estrutura De Layout`
+- `## Componentes Necessários`
+- `## Ações Primárias`
+- `## Ações Secundárias`
+- `## Regras De Conteúdo`
+- `## Regras De Dados`
+- `## Estados`
+- `## Validação E Erros`
+- `## Acessibilidade`
+- `## Comportamento Responsivo`
+- `## Analytics Ou Eventos`
+- `## Handoff Para Engineering`
+- `## Não Fazer`
+- `## Perguntas Em Aberto`
 
-## Required States
+## Estados Obrigatórios
 
-Screen specs should consider these when applicable:
+Specs de tela devem considerar estes estados quando aplicável:
 
-- default
-- loading
-- empty
-- error
-- success
-- disabled
-- permission denied
-- partial data
-- offline or network failure
+- padrão
+- carregando
+- vazio
+- erro
+- sucesso
+- desabilitado
+- permissão negada
+- dados parciais
+- offline ou falha de rede
 
-## Design To Engineering Flow
+## Fluxo De Design Para Engineering
 
-1. Product Ops confirms the Feature.
-2. Design checks component readiness.
-3. Design creates or confirms component specs when needed.
-4. Design creates the screen spec only when the screen is concrete enough.
-5. Engineering implements required reusable components first.
-6. Engineering implements the screen using approved components and screen spec.
-7. PR review checks implementation against Feature, component specs and screen spec.
+1. Product Ops confirma a Feature.
+2. Design verifica readiness de componentes.
+3. Design cria ou confirma specs de componentes quando necessário.
+4. Design cria a spec de tela apenas quando a tela está concreta o suficiente.
+5. Engineering implementa primeiro os componentes reutilizáveis necessários.
+6. Engineering implementa a tela usando componentes aprovados e a spec de tela.
+7. O review do PR verifica a implementação contra a Feature, specs de componentes e spec de tela.
 
-## Do Not Do
+## Não Fazer
 
-- Do not create screen specs for vague ideas, roadmap items or unsplit Epics.
-- Do not use screen specs as product requirements.
-- Do not let a screen spec bypass Product Ops readiness.
-- Do not let Engineering invent layout, copy, component behavior or states that Design has not defined or confirmed.
-- Do not create a full screen-spec system before real Feature delivery needs it.
+- Não crie specs de tela para ideias vagas, itens de roadmap ou Epics não quebrados.
+- Não use specs de tela como requisitos de produto.
+- Não deixe uma spec de tela contornar a readiness de Product Ops.
+- Não deixe Engineering inventar layout, copy, comportamento de componente ou estados que Design não definiu ou confirmou.
+- Não crie um sistema completo de screen-spec antes que uma entrega real de Feature precise disso.
 
-## Future Implementation Notes
+## Notas De Implementação Futura
 
-When this becomes part of the scaffold, update:
+Quando isso virar parte do scaffold, atualize:
 
 - `ai-standard/templates/design/README.md`
 - `operations/design/knowledge/README.md`
@@ -98,4 +98,4 @@ When this becomes part of the scaffold, update:
 - `operations/design/playbooks/component-readiness.playbook.md` or a future screen-readiness playbook
 - `operations/workflows/feature-to-delivery-cycle.workflow.md`
 - `operations/engineering/knowledge/component-guidelines.md`
-- generator validation for no speculative screen specs in initial scaffold
+- validação do generator para impedir specs de tela especulativas no scaffold inicial

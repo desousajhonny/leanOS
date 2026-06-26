@@ -1,27 +1,27 @@
-# Founder Progression Model Implementation Plan
+# Plano De Implementação Do Founder Progression Model
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **Para agentes executores:** SUB-SKILL OBRIGATÓRIA: use superpowers:subagent-driven-development (recomendado) ou superpowers:executing-plans para implementar este plano tarefa por tarefa. As etapas usam sintaxe de checkbox (`- [ ]`) para acompanhamento.
 
-**Goal:** Add the Founder Progression Model as a generated LeanOS foundation asset, validate it automatically, and prepare it to drive progressive workspace activation.
+**Objetivo:** adicionar o Founder Progression Model como asset gerado de foundation do LeanOS, validá-lo automaticamente e prepará-lo para orientar a ativação progressiva do workspace.
 
-**Architecture:** The first slice keeps the model as source-generated documentation under `ai-standard/foundation/` because that folder already owns framework-level rules for navigation, guided conversation and quality. Generator validation will fail when the file, README routes or required progression anchors are missing.
+**Arquitetura:** o primeiro slice mantém o modelo como documentação gerada a partir do source em `ai-standard/foundation/`, porque essa pasta já é dona das regras de nível de framework para navegação, conversa guiada e qualidade. A validação do generator deve falhar quando o arquivo, as rotas no README ou as âncoras obrigatórias de progressão estiverem ausentes.
 
-**Tech Stack:** TypeScript generator templates, Node validation script, Markdown generated workspace assets.
+**Stack Técnica:** templates do generator em TypeScript, script de validação em Node e assets Markdown gerados no workspace.
 
 ---
 
-### Task 1: Add Generator Validation For Founder Progression
+### Tarefa 1: Adicionar Validação Do Generator Para Founder Progression
 
-**Files:**
-- Modify: `packages/cli/scripts/validate-generator.mjs`
+**Arquivos:**
+- Modificar: `packages/cli/scripts/validate-generator.mjs`
 
-- [x] **Step 1: Add the failing file-existence expectation**
+- [x] **Etapa 1: Adicionar a expectativa de existência de arquivo que deve falhar**
 
-Add `ai-standard/foundation/founder-progression-model.md` to the expected generated paths in `validateWorkspaceFiles()`.
+Adicionar `ai-standard/foundation/founder-progression-model.md` aos paths gerados esperados em `validateWorkspaceFiles()`.
 
-- [x] **Step 2: Add content assertions**
+- [x] **Etapa 2: Adicionar assertions de conteúdo**
 
-In `assertAiStandardFoundation(rootDir)`, read `founder-progression-model.md` and assert it contains the required anchors:
+Em `assertAiStandardFoundation(rootDir)`, ler `founder-progression-model.md` e garantir que ele contém as âncoras obrigatórias:
 
 ```js
 const founderProgressionModel = await readFile(join(rootDir, "ai-standard", "foundation", "founder-progression-model.md"), "utf8");
@@ -47,71 +47,71 @@ for (const expected of [
 }
 ```
 
-- [x] **Step 3: Run validation and confirm RED**
+- [x] **Etapa 3: Rodar validação e confirmar RED**
 
-Run: `node packages\cli\scripts\validate-generator.mjs`
+Rodar: `node packages\cli\scripts\validate-generator.mjs`
 
-Expected: FAIL because `ai-standard/foundation/founder-progression-model.md` is not generated yet.
+Esperado: FAIL porque `ai-standard/foundation/founder-progression-model.md` ainda não é gerado.
 
-Observed: FAIL with `Expected generated path missing: ai-standard/foundation/founder-progression-model.md`.
+Observado: FAIL com `Expected generated path missing: ai-standard/foundation/founder-progression-model.md`.
 
-### Task 2: Generate Founder Progression Foundation File
+### Tarefa 2: Gerar O Arquivo De Foundation Founder Progression
 
-**Files:**
-- Modify: `packages/cli/src/templates/workspace/renderers/ai-standard.ts`
+**Arquivos:**
+- Modificar: `packages/cli/src/templates/workspace/renderers/ai-standard.ts`
 
-- [x] **Step 1: Register the new foundation asset**
+- [x] **Etapa 1: Registrar o novo asset de foundation**
 
-Add the file to the foundation README list and the `aiStandardFiles()` return array:
+Adicionar o arquivo à lista do README de foundation e ao array de retorno de `aiStandardFiles()`:
 
 ```ts
 { path: "ai-standard/foundation/founder-progression-model.md", content: founderProgressionModel() },
 ```
 
-- [x] **Step 2: Add the content function**
+- [x] **Etapa 2: Adicionar a função de conteúdo**
 
-Create `founderProgressionModel(): string` with sections for:
+Criar `founderProgressionModel(): string` com seções para:
 
-- purpose and when to use
-- startup progression stages
-- Chief behavior at startup
-- guided question rules
-- activation gates
-- `activation_required` response behavior
-- red lines against inactive or nonexistent assets
-- practical routing examples
+- propósito e quando usar
+- estágios de progressão inicial
+- comportamento do Chief no startup
+- regras de perguntas guiadas
+- gates de ativação
+- comportamento de resposta para `activation_required`
+- linhas vermelhas contra assets inativos ou inexistentes
+- exemplos práticos de roteamento
 
-- [x] **Step 3: Update AI Standard README routes**
+- [x] **Etapa 3: Atualizar rotas do README de AI Standard**
 
-Add a route row for choosing the next founder progression stage:
+Adicionar uma linha de rota para escolher o próximo estágio de progressão do founder:
 
 ```md
 | Decide the next founder progression stage | `foundation/founder-progression-model.md` | Defines Strategy-first progression, gates, activation_required and Chief routing behavior. |
 ```
 
-- [x] **Step 4: Run validation and confirm GREEN**
+- [x] **Etapa 4: Rodar validação e confirmar GREEN**
 
-Run: `node packages\cli\scripts\validate-generator.mjs`
+Rodar: `node packages\cli\scripts\validate-generator.mjs`
 
-Expected: PASS with `LeanOS generator validations passed.`
+Esperado: PASS com `LeanOS generator validations passed.`
 
-Observed: PASS after compiling `packages/cli` with `packages\cli\node_modules\.bin\tsc.CMD -p packages\cli\tsconfig.json` and regenerating `examples/client-workspace`.
+Observado: PASS depois de compilar `packages/cli` com `packages\cli\node_modules\.bin\tsc.CMD -p packages\cli\tsconfig.json` e regenerar `examples/client-workspace`.
 
-### Task 3: Review Generated Diff
+### Tarefa 3: Revisar O Diff Gerado
 
-**Files:**
-- Review: `packages/cli/src/templates/workspace/renderers/ai-standard.ts`
-- Review: `packages/cli/scripts/validate-generator.mjs`
-- Review: `docs/superpowers/plans/2026-06-25-founder-progression-model.md`
+**Arquivos:**
+- Revisar: `packages/cli/src/templates/workspace/renderers/ai-standard.ts`
+- Revisar: `packages/cli/scripts/validate-generator.mjs`
+- Revisar: `docs/superpowers/plans/2026-06-25-founder-progression-model.md`
 
-- [x] **Step 1: Inspect changed files**
+- [x] **Etapa 1: Inspecionar arquivos alterados**
 
-Run: `git diff -- packages/cli/src/templates/workspace/renderers/ai-standard.ts packages/cli/scripts/validate-generator.mjs docs/superpowers/plans/2026-06-25-founder-progression-model.md`
+Rodar: `git diff -- packages/cli/src/templates/workspace/renderers/ai-standard.ts packages/cli/scripts/validate-generator.mjs docs/superpowers/plans/2026-06-25-founder-progression-model.md`
 
-Expected: Diff only adds the new foundation model, README routing and validation assertions.
+Esperado: o diff adiciona apenas o novo foundation model, roteamento no README e assertions de validação.
 
-Observed: Diff includes the generated preview fixture for the new foundation file, plus the temporary roadmap file already modified in this session.
+Observado: o diff inclui a fixture de preview gerada para o novo arquivo de foundation, além do arquivo temporário de roadmap já modificado nesta sessão.
 
-- [ ] **Step 2: Decide next slice**
+- [ ] **Etapa 2: Decidir o próximo slice**
 
-After this passes, continue with root `AGENT.md` / generated root agent progression routing, then Strategy-only scaffold activation rules.
+Depois que isso passar, continuar com roteamento de progressão no `AGENT.md` raiz / agente raiz gerado, depois regras de ativação do scaffold Strategy-only.
