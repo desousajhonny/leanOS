@@ -18,6 +18,10 @@ Ideia / Contexto Inicial
 
 A sequência nem sempre é linear em produtos maduros, mas os gates continuam valendo. Um founder pode entrar no LeanOS com um produto, codebase ou backlog existente. O LeanOS deve diagnosticar o estágio atual antes de rotear.
 
+O estágio atual do negócio é definido em `business-stages.md`. O Chief deve diagnosticar esse estágio antes de qualquer ação, porque uma nova ideia pode aparecer tanto em um negócio recém-iniciado quanto em um produto já operando.
+
+Toda nova ideia entra por `new-idea-intake`, e esse intake deve considerar o estágio atual do negócio.
+
 ## Fluxo Inicial
 
 ### 1. Contexto Inicial

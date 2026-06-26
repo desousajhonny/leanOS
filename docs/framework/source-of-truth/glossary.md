@@ -22,6 +22,10 @@ Inclui usuário/ICP, problema, alternativa atual, proposta de valor, premissa ma
 
 O movimento sensível ao estágio que vai da ideia para strategy, roadmap, escopo de MVP, Epic, Features, delivery e aprendizado.
 
+## Business Stage
+
+O estágio real e durável do negócio/produto do founder. Ele orienta o Chief antes de qualquer rota, ativação, roadmap, escopo ou implementação. Os estágios canônicos vivem em `business-stages.md`.
+
 ## Progressive Activation
 
 A política de criar departamentos e áreas apenas quando o estágio atual do founder precisa deles.

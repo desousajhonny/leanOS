@@ -12,8 +12,8 @@ O propósito não é adicionar a ideia ao roadmap imediatamente. O propósito é
 
 - **Trigger:** founder diz que tem uma ideia ou quer avaliar uma nova feature.
 - **Objetivo:** entender se a ideia deve ser rejeitada, refinada, salva como nota ou promovida para consideração de roadmap.
-- **Começa em:** `AGENT.md` raiz, depois `strategy/AGENT.md`.
-- **Passa por:** `new-idea-intake.workflow.md`, Product Strategist e playbook de Product Strategy.
+- **Começa em:** `AGENT.md` raiz, com leitura obrigatória de `leanos.yaml` e diagnóstico do estágio real do negócio.
+- **Passa por:** diagnóstico do Chief, `new-idea-intake.workflow.md`, Product Strategist e playbook de Product Strategy.
 - **Termina com:** uma recomendação amigável ao founder e uma pausa de decisão.
 - **Não faz:** adicionar ao roadmap automaticamente, definir MVP, criar issues no GitHub ou iniciar implementação.
 
@@ -21,30 +21,78 @@ O propósito não é adicionar a ideia ao roadmap imediatamente. O propósito é
 
 ```mermaid
 flowchart TD
-  A["Founder: tenho uma ideia"]
-  B["Root AGENT"]
-  C["Strategy AGENT"]
-  D["workflow new-idea-intake"]
-  E{"Arquivos da rota existem?"}
-  F["Product Strategist"]
-  G["playbook Product Strategy"]
-  H["Perguntas guiadas"]
-  I{"Destino?"}
-  J["Rejeitar / refinar / anotar"]
-  K["Handoff: idea-to-roadmap"]
-  L["Explicar rota ausente ao founder"]
-  M["Parar e mapear lacuna"]
+  A["Founder: tenho uma ideia / quero avaliar uma feature"]
+  B["LeanOS Chief / Root AGENT"]
+  C["Ler leanos.yaml"]
+  D["Diagnosticar estágio real do negócio + áreas ativas"]
+  E{"É uma nova ideia?"}
+  F["Route: Strategy"]
+  G["Workflow: new-idea-intake"]
+  H["Revalidar leanos.yaml + estágio antes de avaliar"]
+  I{"Estágio claro o bastante?"}
+  J["Pergunta mínima de diagnóstico ou founder-diagnosis"]
+  K["Carregar contexto ativo de Product Strategy"]
+  L{"Estágio do negócio"}
+  M["seed / strategy_forming: descobrir usuário, dor e promessa"]
+  N["mvp_shaping: ajuda ou distrai o MVP validation scope?"]
+  O["mvp_building: afeta escopo atual ou deve estacionar?"]
+  P["mvp_live_learning: responde a evidência real?"]
+  Q["product_operating: fit com produto, clientes, roadmap, timing e risco?"]
+  R["growth_scaling: impacto em aquisição, retenção, monetização ou operação?"]
+  S["Product Strategist avalia fit, evidência e custo de oportunidade"]
+  T{"Destino recomendado?"}
+  U["Rejeitar / refinar / anotar / estacionar"]
+  V["Handoff confirmado: idea-to-roadmap"]
+  W["Explicar lacuna de rota ou estágio e parar"]
 
   A --> B --> C --> D --> E
   E -->|Sim| F --> G --> H --> I
-  E -->|Não| L --> M
-  I -->|Não pronta| J
-  I -->|Promover| K
+  E -->|Não| W
+  I -->|Não| J
+  J --> W
+  I -->|Sim| K
+  K --> L
+  L --> M
+  M --> S
+  L --> N
+  N --> S
+  L --> O
+  O --> S
+  L --> P
+  P --> S
+  L --> Q
+  Q --> S
+  L --> R
+  R --> S
+  S --> T
+  T -->|Não pronta| U
+  T -->|Promover| V
+```
+
+## Ownership Do `leanos.yaml`
+
+O controle mais seguro é **duplo, com responsabilidades diferentes**:
+
+- O **LeanOS Chief**, no `AGENT.md` raiz, lê `leanos.yaml` antes de qualquer rota. Ele é dono do diagnóstico global: estágio real do negócio, áreas ativas, áreas inativas, intenção do founder e próximo gate permitido.
+- O **workflow `new-idea-intake`** revalida `leanos.yaml` como pré-condição. Ele não decide o estado global sozinho; ele confere se recebeu contexto suficiente e atual antes de avaliar a ideia.
+
+Isso evita dois erros:
+
+- se apenas o workflow checar, o Chief pode rotear errado antes de saber o estágio real ou as áreas disponíveis;
+- se apenas o Chief checar, o workflow pode operar com contexto antigo em uma retomada de sessão ou depois de uma ativação.
+
+Regra prática:
+
+```text
+Chief lê e classifica.
+new-idea-intake revalida e avalia.
 ```
 
 ## Fluxo Em Linguagem Simples
 
-O modelo começa no `AGENT.md` raiz porque o founder fala em linguagem natural. Ele entra em Strategy porque a solicitação é sobre direção de produto, lê `new-idea-intake.workflow.md` porque esta é uma jornada de decisão, ativa Product porque a primeira pergunta é fit de produto e termina perguntando se a ideia deve ser descartada, refinada, salva como nota ou passada para `idea-to-roadmap`.
+O modelo começa no `AGENT.md` raiz porque o founder fala em linguagem natural. Antes de escolher qualquer workflow, o Chief lê `leanos.yaml`, identifica áreas ativas e diagnostica o estágio real do negócio a partir do YAML, dos arquivos ativos de Strategy e da conversa.
+
+Depois disso, se a intenção for uma nova ideia, ele entra em Strategy e carrega `new-idea-intake.workflow.md`. O workflow revalida o estágio, abre Product porque a primeira pergunta é fit de produto e termina perguntando se a ideia deve ser descartada, refinada, salva como nota ou passada para `idea-to-roadmap`.
 
 ## Trigger Do Founder
 
@@ -113,8 +161,11 @@ A rota obrigatória é:
 
 ```text
 Root AGENT.md
+-> leanos.yaml
+-> diagnóstico do estágio real do negócio e áreas ativas
 -> strategy/AGENT.md
 -> strategy/workflows/new-idea-intake.workflow.md
+-> revalidação de leanos.yaml e estágio no workflow
 -> strategy/product/AGENT.md
 -> strategy/product/roles/product-strategist.role.md
 -> strategy/product/skills/evaluate-idea.skill.md
@@ -125,6 +176,10 @@ Root AGENT.md
 
 Regras:
 
+- O `AGENT.md` raiz deve ler `leanos.yaml` antes de rotear a solicitação.
+- O Chief deve diagnosticar o estágio real do negócio a partir de `leanos.yaml`, contexto ativo de Strategy, evidências existentes e conversa com o founder.
+- O `new-idea-intake.workflow.md` deve revalidar esse estágio antes de avaliar a ideia.
+- Se o estágio não estiver claro o suficiente, o modelo deve fazer a menor pergunta de diagnóstico ou usar `founder-diagnosis` antes de julgar a ideia.
 - O modelo não pode pular da ideia do founder diretamente para roadmap, MVP ou implementação.
 - O modelo deve declarar a rota antes de avaliar a ideia.
 - O modelo usa Product primeiro porque a primeira pergunta é fit de produto, não planejamento de delivery.
@@ -144,16 +199,19 @@ Por quê:
 
 - O `AGENT.md` raiz diz que toda tarefa roteada do LeanOS começa com o Response Header.
 - O `AGENT.md` raiz diz que solicitações em linguagem natural devem rotear pela Navigation Chain quando nenhum comando combina claramente.
+- O `AGENT.md` raiz deve ler `leanos.yaml` antes de escolher a rota, porque o estágio real do negócio e as áreas ativas mudam a decisão correta.
 - O founder não está pedindo código ou trabalho de GitHub; ele está pedindo julgamento de strategy/produto.
 
 Evidência De Navegação:
 
+- `leanos.yaml` mostra estágio operacional atual, áreas ativas, áreas inativas e áreas que podem ser ativadas.
 - `AGENT.md` roteia negócio, estratégia de produto, roadmap, validação, ICP ou premissas para `strategy/AGENT.md`.
 - A solicitação contém uma ideia de produto, então Strategy é o departamento owner.
 
 O que o modelo entende aqui:
 
 - Esta é uma solicitação de Strategy.
+- O Chief deve diagnosticar o estágio real do negócio antes de avaliar a ideia.
 - Esta não é uma solicitação de implementação.
 - O modelo ainda não deve adicionar nada ao roadmap.
 
@@ -212,6 +270,7 @@ O que o modelo entende aqui:
 
 - O framework tem um workflow dedicado de intake.
 - O modelo deve evitar tratar `idea-to-roadmap` como promoção automática para roadmap.
+- O workflow escolhido deve revalidar `leanos.yaml` e o estágio atual antes de qualquer julgamento de Product.
 
 Próxima etapa:
 
@@ -224,7 +283,35 @@ Encontrei a área de workflows de Strategy, mas o workflow dedicado new-idea-int
 Devo parar aqui e reportar esta lacuna do framework em vez de inventar um workflow substituto.
 ```
 
-### Etapa 4 - Rotear Para Product Para Avaliação De Product Fit
+### Etapa 4 - Revalidar Estado Antes De Avaliar A Ideia
+
+O modelo abre:
+
+`strategy/workflows/new-idea-intake.workflow.md`
+
+Por quê:
+
+- O Chief já diagnosticou o estágio real do negócio, mas o workflow precisa confirmar que esse contexto ainda está disponível e coerente.
+- A avaliação de uma ideia muda conforme o negócio está em `seed`, `strategy_forming`, `mvp_shaping`, `mvp_building`, `mvp_live_learning`, `product_operating` ou `growth_scaling`.
+- O workflow não deve assumir que toda ideia nova é MVP.
+
+Evidência De Navegação:
+
+- `docs/framework/source-of-truth/business-stages.md` define que toda nova ideia entra por `new-idea-intake`.
+- `leanos.yaml` indica estágio operacional, áreas ativas e áreas inativas.
+- Os arquivos ativos de Strategy indicam contexto de produto, ICP, problema, proposta de valor, roadmap candidate e MVP validation scope quando existirem.
+
+O que o modelo entende aqui:
+
+- Se o estágio estiver claro, a ideia pode ser avaliada com contexto correto.
+- Se o estágio estiver ambíguo, a primeira ação é diagnóstico, não julgamento de ideia.
+- Se a rota exigir uma área inativa, o output deve ser `activation_required`, não abertura de arquivos inexistentes.
+
+Próxima etapa:
+
+`strategy/product/AGENT.md`
+
+### Etapa 5 - Rotear Para Product Para Avaliação De Product Fit
 
 O modelo abre:
 
@@ -250,7 +337,7 @@ Próxima etapa:
 
 `strategy/product/roles/product-strategist.role.md`
 
-### Etapa 5 - Ativar Product Strategist
+### Etapa 6 - Ativar Product Strategist
 
 O modelo abre:
 
@@ -277,7 +364,7 @@ Próxima etapa:
 
 `strategy/product/skills/evaluate-idea.skill.md`
 
-### Etapa 6 - Avaliar A Ideia
+### Etapa 7 - Avaliar A Ideia
 
 O modelo abre:
 
@@ -304,7 +391,7 @@ Próxima etapa:
 
 `strategy/product/playbooks/product-strategy.playbook.md`
 
-### Etapa 7 - Usar O Playbook De Product Strategy
+### Etapa 8 - Usar O Playbook De Product Strategy
 
 O modelo abre:
 
@@ -331,7 +418,7 @@ Próxima etapa:
 
 Pausa de decisão antes de qualquer handoff para Roadmap.
 
-### Etapa 8 - Pausa De Decisão Antes Do Roadmap
+### Etapa 9 - Pausa De Decisão Antes Do Roadmap
 
 O modelo ainda não abre uma nova área.
 
@@ -369,7 +456,7 @@ Próxima etapa:
 - Pare aqui se o founder rejeitar, estacionar ou quiser apenas uma nota.
 - Inicie `idea-to-roadmap` apenas se o founder confirmar promoção para roadmap/backlog.
 
-### Etapa 9 - Handoff Opcional Para Idea To Roadmap
+### Etapa 10 - Handoff Opcional Para Idea To Roadmap
 
 O modelo inicia uma nova jornada apenas se o founder confirmar.
 
@@ -406,7 +493,7 @@ Próxima etapa:
 
 Declare a nova rota para `idea-to-roadmap` antes de carregar arquivos de Roadmap.
 
-### Etapa 10 - Produzir Recomendação Amigável Ao Founder
+### Etapa 11 - Produzir Recomendação Amigável Ao Founder
 
 O modelo responde primeiro em linguagem simples.
 
@@ -479,8 +566,8 @@ Não pergunte como formulário rígido. Pergunte apenas o que está faltando.
 
 | Etapa | Propósito | Fonte |
 | --- | --- | --- |
-| Etapa 6 | Perguntar apenas contexto de product-fit ausente antes de avaliar a ideia. | `strategy/product/skills/evaluate-idea.skill.md` |
-| Etapa 8 | Ajudar o founder a escolher o destino da ideia antes de qualquer handoff para roadmap. | `strategy/product/playbooks/product-strategy.playbook.md` |
+| Etapa 7 | Perguntar apenas contexto de product-fit ausente antes de avaliar a ideia. | `strategy/product/skills/evaluate-idea.skill.md` |
+| Etapa 9 | Ajudar o founder a escolher o destino da ideia antes de qualquer handoff para roadmap. | `strategy/product/playbooks/product-strategy.playbook.md` |
 | Confirmação | Confirmar se deve registrar uma nota ou iniciar `idea-to-roadmap`. | `ai-standard/foundation/guided-conversation.md` |
 
 Opções detalhadas pertencem ao playbook de Product Strategy e ao padrão global de conversa guiada, não a este documento de jornada.
@@ -592,7 +679,7 @@ Depois desta jornada, o próximo fluxo pode ser:
 - `idea-to-roadmap` quando a ideia deve virar item de roadmap/backlog.
 - `roadmap-item-to-epic` quando um item existente de roadmap pode entrar no MVP, em um release, experimento ou outro escopo de delivery.
 - Definição de MVP pelo `AGENT.md` raiz quando o próprio MVP ainda está indefinido.
-- `start-leanos` quando o workspace não tem baseline de strategy suficiente.
+- Diagnóstico inicial pelo Chief e `founder-diagnosis` quando o workspace não tem baseline de Strategy suficiente.
 
 ## Checklist De Validação Da Jornada
 
@@ -601,6 +688,8 @@ Use este checklist para testar se a jornada realmente aplica a Navigation Chain.
 ### Arquivos Existem
 
 - [x] `AGENT.md` existe.
+- [x] `leanos.yaml` existe.
+- [x] `docs/framework/source-of-truth/business-stages.md` existe como definição canônica de estágios do negócio.
 - [x] `strategy/AGENT.md` existe.
 - [x] `strategy/workflows/new-idea-intake.workflow.md` existe.
 - [x] `strategy/workflows/idea-to-roadmap.workflow.md` existe como workflow posterior de promoção para roadmap.
@@ -628,6 +717,9 @@ Use este checklist para testar se a jornada realmente aplica a Navigation Chain.
 ### Execução Da Jornada
 
 - [x] O modelo consegue explicar a rota antes de agir.
+- [x] O Chief lê `leanos.yaml` antes de escolher a rota.
+- [x] O Chief diagnostica estágio real do negócio e áreas ativas antes de avaliar a ideia.
+- [x] `new-idea-intake.workflow.md` revalida `leanos.yaml` e estágio antes de chamar Product.
 - [x] O modelo consegue dizer por que cada próximo arquivo foi carregado.
 - [x] O modelo não pula departamento ou área.
 - [x] O modelo não carrega o workspace inteiro sem necessidade.

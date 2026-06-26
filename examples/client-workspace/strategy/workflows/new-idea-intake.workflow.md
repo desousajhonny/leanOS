@@ -12,6 +12,12 @@ Capture, qualify and decide whether a founder idea should refine strategy, updat
 - "pensei em uma melhoria"
 - "vale a pena fazer isso?"
 
+## Entry Gate
+
+- Root AGENT must read `leanos.yaml` before this workflow is selected.
+- Chief must identify the current business stage from `activation.current_stage`, `company.stage`, active Strategy files and the founder message.
+- This workflow must re-check `leanos.yaml` and the current business-stage reading before evaluating the idea.
+
 ## Owner
 
 - Department: `strategy`
@@ -31,6 +37,7 @@ All required areas are active in this department.
 ## Load First
 
 - `AGENT.md`
+- `leanos.yaml`
 - `strategy/AGENT.md`
 - `strategy/workflows/README.md`
 - `strategy/workflows/new-idea-intake.workflow.md`
@@ -45,26 +52,31 @@ All required areas are active in this department.
 ## Navigation Route
 
 1. `AGENT.md`
-2. `strategy/AGENT.md`
-3. `strategy/workflows/new-idea-intake.workflow.md`
-4. `strategy/product/AGENT.md`
-5. `strategy/product/roles/product-strategist.role.md`
-6. `strategy/product/skills/evaluate-idea.skill.md`
-7. `strategy/product/skills/define-mvp-validation-scope.skill.md`
-8. `strategy/product/playbooks/product-strategy.playbook.md`
-9. `strategy/roadmap/AGENT.md only after founder confirms roadmap or backlog promotion`
+2. `leanos.yaml`
+3. `Chief business-stage diagnosis before Strategy route`
+4. `strategy/AGENT.md`
+5. `strategy/workflows/new-idea-intake.workflow.md`
+6. `new-idea-intake state re-check before Product evaluation`
+7. `strategy/product/AGENT.md`
+8. `strategy/product/roles/product-strategist.role.md`
+9. `strategy/product/skills/evaluate-idea.skill.md`
+10. `strategy/product/skills/define-mvp-validation-scope.skill.md`
+11. `strategy/product/playbooks/product-strategy.playbook.md`
+12. `strategy/roadmap/AGENT.md only after founder confirms roadmap or backlog promotion`
 
 ## Sequence
 
-1. Read product strategy before judging the idea
-2. Restate the founder idea in plain language and ask only the minimum guided questions needed to remove ambiguity
-3. Evaluate idea against ICP, problem, value proposition, evidence, current focus and opportunity cost
-4. Identify assumptions, evidence gaps, dependencies and why this idea may or may not matter now
-5. Use `validation-notes.md` for lightweight assumptions and evidence gaps; do not route to a formal Strategy Validation area
-6. When the founder wants speed, treat MVP as the default business validation path and decide whether to define or update MVP Validation Scope
-7. Recommend one outcome: reject, refine, park, validation note, MVP Validation Scope update, backlog candidate or roadmap candidate
-8. Explain the recommendation in founder-friendly language
-9. Ask for confirmation before recording the idea anywhere or starting the roadmap promotion workflow
+1. Re-check `leanos.yaml` and confirm the Chief's current business-stage diagnosis before evaluating the idea
+2. If the business stage is unclear, ask the smallest diagnostic question or route to `founder-diagnosis`; do not judge the idea yet
+3. Read product strategy before judging the idea
+4. Restate the founder idea in plain language and ask only the minimum guided questions needed to remove ambiguity
+5. Evaluate idea against ICP, problem, value proposition, evidence, current focus and opportunity cost
+6. Identify assumptions, evidence gaps, dependencies and why this idea may or may not matter now
+7. Use `validation-notes.md` for lightweight assumptions and evidence gaps; do not route to a formal Strategy Validation area
+8. When the founder wants speed, treat MVP as the default business validation path and decide whether to define or update MVP Validation Scope
+9. Recommend one outcome: reject, refine, park, validation note, MVP Validation Scope update, backlog candidate or roadmap candidate
+10. Explain the recommendation in founder-friendly language
+11. Ask for confirmation before recording the idea anywhere or starting the roadmap promotion workflow
 
 ## Confirmation Gates
 
@@ -98,6 +110,7 @@ All required areas are active in this department.
 
 ## Stop Conditions
 
+- The current business stage is unclear after the smallest useful diagnostic question.
 - The idea is too vague to evaluate after guided questions.
 - Product strategy is missing enough context to judge fit.
 - The founder does not confirm recording the note or moving to Roadmap.
@@ -105,6 +118,7 @@ All required areas are active in this department.
 
 ## Expected Output
 
+- Current business-stage reading and why it matters for this idea.
 - Plain-language restatement of the idea.
 - Fit assessment against product strategy.
 - Risks, assumptions and evidence gaps.

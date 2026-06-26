@@ -92,3 +92,18 @@ Justificativa:
 - O LeanOS deve preservar linguagem product-first.
 - A estrutura de issues do GitHub não deve ditar o pensamento de produto.
 - O estado de sync pode mapear artefatos locais para IDs remotos sem tornar o GitHub a fonte da verdade.
+
+## 2026-06-26 - Business Stage Como Diagnóstico Primário
+
+Decisão:
+
+- O LeanOS deve diagnosticar o estágio real do negócio antes de qualquer rota.
+- Os estágios canônicos são: `seed`, `strategy_forming`, `mvp_shaping`, `mvp_building`, `mvp_live_learning`, `product_operating` e `growth_scaling`.
+- Toda nova ideia deve entrar por `new-idea-intake`, que avalia a ideia considerando o `business_stage` atual.
+
+Justificativa:
+
+- Uma nova ideia pode aparecer em qualquer estágio do negócio.
+- Um produto em operação não deve tratar toda ideia nova como MVP.
+- O founder não deve escolher estágios manualmente.
+- Centralizar ideias novas em `new-idea-intake` mantém o framework simples e evita burocracia adicional.

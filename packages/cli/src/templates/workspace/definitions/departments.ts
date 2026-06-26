@@ -3422,8 +3422,14 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           primaryArea: "product",
           supportingAreas: ["roadmap"]
         },
+        entryGate: [
+          "Root AGENT must read `leanos.yaml` before this workflow is selected.",
+          "Chief must identify the current business stage from `activation.current_stage`, `company.stage`, active Strategy files and the founder message.",
+          "This workflow must re-check `leanos.yaml` and the current business-stage reading before evaluating the idea."
+        ],
         loadFirst: [
           "AGENT.md",
+          "leanos.yaml",
           "strategy/AGENT.md",
           "strategy/workflows/README.md",
           "strategy/workflows/new-idea-intake.workflow.md",
@@ -3437,8 +3443,11 @@ export const rootDepartments: RootDepartmentDefinition[] = [
         ],
         navigationRoute: [
           "AGENT.md",
+          "leanos.yaml",
+          "Chief business-stage diagnosis before Strategy route",
           "strategy/AGENT.md",
           "strategy/workflows/new-idea-intake.workflow.md",
+          "new-idea-intake state re-check before Product evaluation",
           "strategy/product/AGENT.md",
           "strategy/product/roles/product-strategist.role.md",
           "strategy/product/skills/evaluate-idea.skill.md",
@@ -3447,6 +3456,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "strategy/roadmap/AGENT.md only after founder confirms roadmap or backlog promotion"
         ],
         steps: [
+          "Re-check `leanos.yaml` and confirm the Chief's current business-stage diagnosis before evaluating the idea",
+          "If the business stage is unclear, ask the smallest diagnostic question or route to `founder-diagnosis`; do not judge the idea yet",
           "Read product strategy before judging the idea",
           "Restate the founder idea in plain language and ask only the minimum guided questions needed to remove ambiguity",
           "Evaluate idea against ICP, problem, value proposition, evidence, current focus and opportunity cost",
@@ -3484,12 +3495,14 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "Do not create branches, commits, code or PRs."
         ],
         stopConditions: [
+          "The current business stage is unclear after the smallest useful diagnostic question.",
           "The idea is too vague to evaluate after guided questions.",
           "Product strategy is missing enough context to judge fit.",
           "The founder does not confirm recording the note or moving to Roadmap.",
           "The request shifts into delivery scope, Epic creation, GitHub sync, branch, code or PR work."
         ],
         expectedOutput: [
+          "Current business-stage reading and why it matters for this idea.",
           "Plain-language restatement of the idea.",
           "Fit assessment against product strategy.",
           "Risks, assumptions and evidence gaps.",
