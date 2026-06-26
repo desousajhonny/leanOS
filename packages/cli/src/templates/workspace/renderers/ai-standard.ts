@@ -1669,6 +1669,8 @@ Then ask for confirmation before creating or activating any department or area:
 Posso ativar Operations/Product Ops e criar os arquivos minimos para esse proximo passo?
 \`\`\`
 
+After confirmation, run \`lean-os activate <area>\` from the workspace root, then reload \`leanos.yaml\`, context and routing indexes before opening the activated area.
+
 Then include the structured activation decision:
 
 \`\`\`yaml

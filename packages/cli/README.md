@@ -13,3 +13,11 @@ The CLI creates the initial LeanOS workspace. After setup, open your editor chat
 ```text
 /start-leanos
 ```
+
+After LeanOS Chief proposes and the founder confirms a progressive activation, run:
+
+```bash
+npx lean-os activate operations.product-ops
+```
+
+The activation command updates `leanos.yaml`, context, indexes, commands and the minimal files for the requested area.

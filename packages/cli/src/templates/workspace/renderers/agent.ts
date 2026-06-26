@@ -102,7 +102,8 @@ When a founder request needs an inactive department or area:
 3. Explain the next natural operating step in founder language.
 4. Name the inactive department or area that should be activated.
 5. Ask for confirmation before creating or activating a department or area.
-6. Only after the founder confirms, create the minimal active surface for that target and update activation state.
+6. Only after the founder confirms, run \`lean-os activate <area>\` from the workspace root, or ask the tool-capable environment to run it.
+7. After activation, reload \`leanos.yaml\`, context and routing indexes before opening the new area.
 
 Use this shape:
 

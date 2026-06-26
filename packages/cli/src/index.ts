@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 import { runAiCommand } from "./commands/ai.js";
+import { runActivateCommand } from "./commands/activate.js";
 import { ui } from "./ui/theme.js";
 
-const [command] = process.argv.slice(2);
+const [command, ...args] = process.argv.slice(2);
 
 async function main(): Promise<void> {
   if (!command || command === "--help" || command === "-h") {
@@ -13,6 +14,11 @@ async function main(): Promise<void> {
 
   if (command === "ai") {
     await runAiCommand();
+    return;
+  }
+
+  if (command === "activate") {
+    await runActivateCommand(args[0]);
     return;
   }
 
@@ -28,9 +34,11 @@ ${ui.muted("Agent-native startup operating system")}
 
 Usage:
   ${ui.command("lean-os ai")}
+  ${ui.command("lean-os activate <area>")}
 
 Commands:
-  ${ui.command("ai")}    Create an agent-native LeanOS startup workspace
+  ${ui.command("ai")}          Create an agent-native LeanOS startup workspace
+  ${ui.command("activate")}    Activate a progressive LeanOS workspace area
 `);
 }
 

@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
+import { execFile } from "node:child_process";
 import { constants } from "node:fs";
 import { access, mkdir, mkdtemp, readdir, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, isAbsolute, join, relative, resolve } from "node:path";
+import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 import { parse } from "yaml";
 import { createTreeMarkdown, exampleAnswers } from "./generate-client-workspace.mjs";
@@ -16,6 +18,7 @@ const packageRoot = resolve(scriptDir, "..");
 const projectRoot = resolve(packageRoot, "..", "..");
 const clientWorkspaceFixtureDir = resolve(projectRoot, "examples", "client-workspace");
 const clientWorkspaceTreePath = resolve(projectRoot, "examples", "client-workspace-tree.md");
+const execFileAsync = promisify(execFile);
 
 const allSubareas = [
   "strategy.business",
@@ -103,6 +106,7 @@ await validateEngineeringOnlyContext();
 await validateDesignOnlyContext();
 await validateGrowthValidationContext();
 await validateProductOpsActivation();
+await validateActivationCliCommand();
 await validateExistingProductRepoMode();
 await validateWriterSkipsExistingFiles();
 await validateWriterOverwritesWhenAllowed();
@@ -1110,6 +1114,30 @@ async function validateProductOpsActivation() {
   await assertIndexPathsExist(rootDir);
 }
 
+async function validateActivationCliCommand() {
+  const rootDir = await mkdtemp(join(tmpdir(), "leanos-activation-cli-"));
+  await generateWorkspace(rootDir, answers);
+
+  const { stdout } = await execFileAsync(process.execPath, [join(packageRoot, "dist", "index.js"), "activate", "operations.product-ops"], {
+    cwd: rootDir,
+    env: {
+      ...process.env,
+      NO_COLOR: "1"
+    }
+  });
+
+  assert(stdout.includes("Activated operations.product-ops"), "Activation CLI should report the activated area");
+  assert(stdout.includes("operations/AGENT.md"), "Activation CLI should report created Operations files");
+  assert(stdout.includes(".leanos/commands/define-mvp.md"), "Activation CLI should report activated command files");
+
+  const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
+
+  assert(yaml.activation.active_areas.includes("operations.product-ops"), "Activation CLI should update leanos.yaml");
+  await assertExists(join(rootDir, "operations", "product-ops", "AGENT.md"));
+  await assertExists(join(rootDir, ".leanos", "commands", "define-mvp.md"));
+  assert.equal(await exists(join(rootDir, "operations", "engineering")), false, "Activation CLI should not activate Engineering with Product Ops");
+}
+
 async function assertProgressiveStrategyOnlyWorkspace(rootDir, founderSelectedSubareas) {
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
   const rolesIndex = parse(await readFile(join(rootDir, ".leanos", "index", "roles.yaml"), "utf8"));
@@ -1511,6 +1539,7 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("Do not answer with only `activation_required`"), "Root AGENT.md should require natural activation language");
   assert(rootAgent.includes("Explain the next natural operating step"), "Root AGENT.md should explain why activation is the next operating step");
   assert(rootAgent.includes("Ask for confirmation before creating or activating a department or area"), "Root AGENT.md should ask before activation");
+  assert(rootAgent.includes("lean-os activate <area>"), "Root AGENT.md should name the activation CLI capability");
   assert(rootAgent.includes("Read `leanos.yaml` first and distinguish `active_*`, `inactive_*` and `founder_selected_*`"), "Root AGENT.md should distinguish activation state fields");
   assert(rootAgent.includes("Do not load inactive departments"), "Root AGENT.md should forbid inactive department loading");
   assert(rootAgent.includes("Do not treat `available` as `exists`"), "Root AGENT.md should distinguish available from existing workspace assets");
