@@ -16,16 +16,16 @@ Use this department for business, product strategy, roadmap, validation, ICP or 
 
 ## Routing Rules
 
-1. If the founder request changes state, priority, scope, handoff, roadmap, delivery, launch or learning, open `workflows/README.md` and choose the smallest matching workflow.
+1. If the founder request changes state, priority, scope, handoff, roadmap, delivery, launch or learning and no department workflow exists, route to the smallest active area `AGENT.md` or README.
 2. If the request is calibration, clarification, evaluation or definition inside one area, route to that area `AGENT.md` when present; otherwise route to its README.
 3. If the request belongs to one area and one asset family, route to that area `AGENT.md` when present; otherwise route to its README.
-4. If you are unsure, check `workflows/README.md` first; if no workflow matches, route to the smallest active area.
-5. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
+4. If you are unsure, use `department.yaml` and the active area list to choose the smallest active area.
+5. If the needed area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
 6. Do not load roles, skills or playbooks before entering the owning area.
 
 ## Journey Signals
 
-Use `workflows/README.md` when the founder asks for a multi-step decision or transition, such as:
+Route multi-step decisions to the owning area playbook when no department workflow exists, such as:
 
 - deciding whether an idea should enter roadmap
 - changing product direction, priority or sequencing
@@ -33,15 +33,13 @@ Use `workflows/README.md` when the founder asks for a multi-step decision or tra
 
 ## Active Areas
 
-- Business: `business/AGENT.md` - Keep business identity, principles, mission and operating decisions coherent.
-- Product: `product/AGENT.md` - Own product strategy, ICP, value proposition, MVP validation scope, positioning and business model coherence.
-- Roadmap: `roadmap/AGENT.md` - Own roadmap sequence, milestones, backlog and planning-cycle prioritization.
+- Business: `business/AGENT.md` - Keep business identity, principles, mission, operating decisions and business model coherent.
+- Product: `product/AGENT.md` - Own product strategy, product core, ICP, value proposition, MVP validation scope and positioning coherence.
+- Roadmap: `roadmap/AGENT.md` - Own roadmap sequence, milestones, backlog and planning-cycle prioritization for operating or scaling products.
 
-## Workflow Entry
+## Playbook Entry
 
-- Department workflows: `workflows/README.md`
-
-Use workflows for multi-step journeys and cross-area sequencing. Use area playbooks for tactical execution inside one area.
+This department has no active department-level workflows. Use area playbooks for practical multi-step execution inside the owning area.
 
 ## Navigation
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Sequence product and business work into visible, decision-ready roadmap items.
+Sequence product and business work into visible, decision-ready roadmap items when the business is operating, scaling or explicitly choosing between multiple priorities.
 
 ## Current State
 
@@ -14,9 +14,9 @@ TBD
 
 ## Delivery Scope Model
 
-Backlog guarda possibilidades. Roadmap organiza uma sequencia candidata de validacao ou implementacao. Delivery scope transforma um item confirmado em compromisso de entrega.
+Backlog guarda possibilidades. Roadmap organiza uma sequencia candidata de operacao, crescimento ou multiplas prioridades. Delivery scope transforma um item confirmado em compromisso de entrega.
 
-For a new founder idea, the initial roadmap is usually an MVP Candidate Roadmap. It sequences what must exist to validate the business thesis, without creating Epics, Features or implementation work.
+Roadmap is not mandatory after first MVP validation. The first MVP validation path lives in Strategy Product as MVP Validation Scope; Roadmap enters when the product is operating, scaling or the founder explicitly needs a cycle, backlog order or priority sequence.
 
 Use this lightweight header when a roadmap item becomes delivery-ready:
 

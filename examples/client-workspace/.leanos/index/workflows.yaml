@@ -1,5 +1,1 @@
-workflows:
-  - key: idea-to-roadmap
-    department: strategy
-    path: ../../strategy/workflows/idea-to-roadmap.workflow.md
-    active: true
+workflows: []

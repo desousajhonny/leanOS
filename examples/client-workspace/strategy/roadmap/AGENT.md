@@ -17,7 +17,7 @@ Route roadmap planning, prioritization and cycle planning.
 
 Choose the smallest specialist role for the request:
 
-- Roadmap Planner: `roles/roadmap-planner.role.md` - use when roadmap order is unclear; backlog needs prioritization; cycle planning is needed.
+- Roadmap Planner: `roles/roadmap-planner.role.md` - use when roadmap order is unclear; backlog needs prioritization; cycle planning is needed; the business is product_operating or growth_scaling.
 
 ## Routing Rules
 

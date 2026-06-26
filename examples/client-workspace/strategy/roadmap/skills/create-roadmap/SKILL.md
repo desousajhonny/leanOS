@@ -1,33 +1,37 @@
 ---
 name: create-roadmap
-description: Use when the founder needs a roadmap; product strategy needs an MVP Candidate Roadmap; delivery scope needs a planning path after Strategy
+description: Use when the founder needs a roadmap for a product_operating business; growth_scaling requires sequencing across multiple priorities; backlog candidates need Now/Next/Later/Not Planned classification
 ---
 
 # Create Roadmap
 
 ## Overview
 
-Sequence roadmap work by business outcome, product value, MVP validation scope and delivery constraints.
+Sequence roadmap work by business outcome, product value, operating stage and delivery constraints.
 
 ## Use When
 
-- the founder needs a roadmap
-- product strategy needs an MVP Candidate Roadmap
-- delivery scope needs a planning path after Strategy
+- the founder needs a roadmap for a product_operating business
+- growth_scaling requires sequencing across multiple priorities
+- backlog candidates need Now/Next/Later/Not Planned classification
 
 ## Required Context
 
+- ../../../leanos.yaml
 - ../knowledge/roadmap.md
 - ../knowledge/current-cycle.md
 - ../../product/knowledge/brief.md
-- ../../product/knowledge/mvp-validation-scope.md
+- ../../product/knowledge/problem.md
+- ../../product/knowledge/value-proposition.md
+- ../../product/knowledge/validation-notes.md
 
 ## Inputs
 
+- Business stage
 - Product strategy
-- MVP Validation Scope
 - Business constraints
 - Known risks
+- Customer or validation signals
 - Candidate work
 
 ## Process
@@ -38,25 +42,29 @@ Clarify the roadmap objective.
 
 ### Step 2
 
-When the product is at idea stage, produce an MVP Candidate Roadmap from the MVP Validation Scope.
+Confirm the business is `product_operating` or `growth_scaling`, or that the founder explicitly asks to sequence multiple priorities.
 
 ### Step 3
 
-Separate Now, Next, Later and Not Planned.
+Do not use Roadmap as the mandatory continuation of first MVP validation.
 
 ### Step 4
 
-Connect items to outcomes and validation signals.
+Separate Now, Next, Later and Not Planned.
 
 ### Step 5
 
-Identify delivery scope type, milestone and release goal only when confirmed later by Product Ops.
+Connect items to outcomes, customer signals and validation or operating signals.
 
 ### Step 6
 
-Identify dependencies and risks.
+Identify delivery scope type, milestone and release goal only when confirmed later by Product Ops.
 
 ### Step 7
+
+Identify dependencies and risks.
+
+### Step 8
 
 Propose updates before writing.
 
@@ -64,13 +72,12 @@ Propose updates before writing.
 
 - Now items are small enough to reason about.
 - Roadmap items are not vague wishes.
-- MVP Candidate Roadmap does not create Epics or Features.
+- Product is operating/scaling or the founder explicitly needs multi-priority sequencing.
 - Delivery scope is not expanded silently.
-- MVP is treated as validation context before Product Ops converts items to delivery scope.
+- MVP-building items are routed to Product Ops scope/backlog instead of Roadmap when they affect current delivery.
 
 ## Output
 
-- MVP Candidate Roadmap proposal
 - Roadmap proposal
 - Current cycle proposal
 - Risks and dependencies

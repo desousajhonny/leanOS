@@ -14,7 +14,7 @@ O propósito não é construir imediatamente um MVP completo, roadmap ou plano d
 - **Objetivo:** transformar o contexto inicial em uma lacuna clara de Strategy Baseline e uma próxima pergunta guiada.
 - **Começa em:** `AGENT.md` raiz.
 - **Passa por:** `strategy/AGENT.md`, `strategy/product/AGENT.md`, Product Strategist, `map-business-baseline` e playbook de Idea Calibration.
-- **Termina com:** atualizações confirmadas de knowledge em Strategy ou uma próxima rota como `mvp-validation-scope.playbook.md`, `idea-to-roadmap` ou `activation_required: operations.product-ops`.
+- **Termina com:** atualizações confirmadas de knowledge em Strategy ou uma próxima rota stage-aware como `mvp-validation-scope.playbook.md`, `roadmap-cycle-planning.playbook.md` ou `activation_required: operations.product-ops`.
 - **Não faz:** criar itens de roadmap, definir escopo de delivery do MVP, criar Epics/Features, ativar Operations/Growth ou iniciar implementação.
 
 ## Diagrama Do Fluxo
@@ -32,7 +32,7 @@ flowchart TD
   I{"Strategy Baseline pronta?"}
   J["Fazer uma pergunta guiada"]
   K["Propor atualizações em Strategy"]
-  L["Handoff: MVP Validation Scope / idea-to-roadmap / activation_required"]
+  L["Handoff stage-aware: MVP Validation Scope / Roadmap / Product Ops"]
   M["Parar sem escrever"]
 
   A --> B --> C --> D --> E --> F --> G --> H --> I
@@ -71,6 +71,8 @@ Root AGENT.md
 -> strategy/product/skills/map-business-baseline/SKILL.md
 -> strategy/product/playbooks/idea-calibration.playbook.md
 -> strategy/product/playbooks/mvp-validation-scope.playbook.md quando o founder quiser analisar o MVP de validação
+-> operations.product-ops quando o estágio for mvp_building ou mvp_live_learning e a ideia afetar entrega
+-> strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md quando o estágio for product_operating/growth_scaling ou houver múltiplas prioridades
 ```
 
 ## Regras De Parada

@@ -98,13 +98,13 @@ Sinais:
 
 - Strategy Baseline mínima existe;
 - o founder quer definir o que validar primeiro;
-- existe direção de roadmap candidate ou MVP validation scope;
+- existe direção de MVP validation scope ou sequência mínima de validação;
 - ainda não existe necessariamente escopo executável de entrega.
 
 Trabalho principal do Chief:
 
 - transformar Strategy em MVP validation scope;
-- organizar roadmap candidate sem virar backlog de implementação;
+- organizar MVP Validation Sequence sem virar backlog de implementação;
 - decidir se Product Ops precisa ser ativado para escopo de entrega;
 - manter Design, Engineering, Security, DevOps e Growth inativos até seus gates.
 
@@ -112,7 +112,7 @@ Rotas típicas:
 
 - Strategy Product para MVP validation scope;
 - `strategy/product/playbooks/mvp-validation-scope.playbook.md`;
-- Strategy Roadmap para roadmap candidate;
+- Strategy Roadmap apenas quando o founder precisa ordenar ciclo, backlog ou múltiplas prioridades;
 - `activation_required: operations.product-ops` quando o founder entra em escopo de entrega.
 
 Próximo estágio saudável:
@@ -197,7 +197,7 @@ Regra importante:
 
 ```text
 Uma ideia nova em product_operating não é MVP por padrão.
-Ela entra por `idea-calibration` e só depois pode virar roadmap candidate, delivery candidate, Epic ou Feature.
+Ela entra por `idea-calibration` e só depois pode virar item de roadmap, delivery candidate, Epic ou Feature.
 ```
 
 Próximo estágio saudável:
@@ -241,16 +241,16 @@ Se business_stage = strategy_forming:
   fechar lacunas da Strategy Baseline.
 
 Se business_stage = mvp_shaping:
-  ajudar a escolher MVP validation scope ou roadmap candidate.
+  ajudar a escolher MVP validation scope e a sequência mínima de validação.
 
 Se business_stage = mvp_building:
-  retomar escopo, Epics, Features ou readiness.
+  retomar escopo de MVP, backlog de entrega, Epics, Features ou readiness em Product Ops.
 
 Se business_stage = mvp_live_learning:
   capturar aprendizado e decidir próximo ciclo.
 
 Se business_stage = product_operating:
-  resumir estado atual e perguntar qual frente avançar.
+  resumir estado atual e, se houver múltiplas prioridades, rotear para roadmap/ciclo.
 
 Se business_stage = growth_scaling:
   orientar crescimento, aprendizado e operação.
@@ -265,9 +265,9 @@ O intake deve avaliar a ideia contra o estágio atual:
 - em `seed`, ajuda a descobrir usuário, dor, promessa e foco;
 - em `strategy_forming`, verifica se fortalece ou muda a baseline;
 - em `mvp_shaping`, verifica se ajuda ou distrai o MVP validation scope;
-- em `mvp_building`, verifica impacto no escopo atual e risco de desviar entrega;
-- em `mvp_live_learning`, verifica se responde a evidência real;
-- em `product_operating`, verifica fit com produto, clientes, roadmap, riscos e timing;
+- em `mvp_building`, verifica impacto no escopo atual e risco de desviar entrega; se entrar no MVP atual, segue para Product Ops, não para Roadmap;
+- em `mvp_live_learning`, verifica se responde a evidência real; se virar entrega, segue para Product Ops;
+- em `product_operating`, verifica fit com produto, clientes, roadmap, riscos e timing; Roadmap entra quando há ciclo, backlog ou múltiplas prioridades para ordenar;
 - em `growth_scaling`, verifica impacto em aquisição, retenção, monetização, operação e aprendizado.
 
 ## Atualização Do Estágio
@@ -287,7 +287,8 @@ Quer que eu atualize o estágio do negócio para mvp_shaping?
 - Não avance estágio apenas porque o founder pediu uma Feature.
 - Não trate uma nova ideia como MVP automaticamente.
 - Não use `activation_required` para compensar Strategy fraca.
-- Não ative Product Ops antes de Strategy Baseline ou roadmap/MVP candidate suficiente.
+- Não force Roadmap entre MVP Validation Scope e Product Ops.
+- Não ative Product Ops antes de Strategy Baseline e MVP Validation Scope ou item atual de MVP/backlog suficiente.
 - Não ative Engineering antes de Feature readiness.
 - Não volte para `seed` quando um produto em operação traz uma ideia nova.
 - Não peça que o founder escolha o estágio em uma lista; o Chief diagnostica e explica.

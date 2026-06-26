@@ -74,8 +74,8 @@ const subareaLabels: Record<Subarea, string> = {
 };
 
 const subareaHints: Record<Subarea, string> = {
-  "strategy.business": "brand, mission, principles and operating model",
-  "strategy.product": "ICP, problem, value proposition and business model",
+  "strategy.business": "brand, mission, principles, operating model and business model",
+  "strategy.product": "product core, ICP, problem, value proposition and MVP validation scope",
   "strategy.roadmap": "cycles, milestones and backlog priority",
   "operations.product-ops": "delivery scope, acceptance criteria and issue readiness",
   "operations.design": "flows, screens, UX states and usability",

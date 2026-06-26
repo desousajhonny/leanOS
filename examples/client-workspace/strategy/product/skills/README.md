@@ -15,12 +15,8 @@ Use when a selected role points to a skill.
 ## Files
 
 - `map-business-baseline/SKILL.md`
-- `define-product/SKILL.md`
-- `define-icp/SKILL.md`
-- `define-value-proposition/SKILL.md`
-- `define-business-model/SKILL.md`
+- `define-product-core/SKILL.md`
 - `define-mvp-validation-scope/SKILL.md`
-- `evaluate-idea/SKILL.md`
 - `check-coherence/SKILL.md`
 
 ## Related Folders

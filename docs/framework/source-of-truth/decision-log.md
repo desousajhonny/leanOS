@@ -2,6 +2,25 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-26 - Núcleo De Produto E Dono Do Modelo De Negócio
+
+Decisão:
+
+- Remover as skills soltas `define-product`, `define-icp` e `define-value-proposition` de Strategy Product.
+- Criar `define-product-core` para consolidar produto, usuário primário, problema central, alternativa, promessa, diferenciação e hipótese mais arriscada.
+- Remover `evaluate-idea` como skill solta e absorver a avaliação de fit, evidência, impacto de MVP e impacto de roadmap dentro do playbook `idea-calibration`.
+- Manter `define-business-model` fora do fluxo principal de Product e mover essa skill para Strategy Business.
+- Strategy Business passa a ser dona de `knowledge/business-model-canvas.md`.
+- Strategy Product mantém `map-business-baseline`, `define-product-core`, `define-mvp-validation-scope` e `check-coherence`.
+
+Justificativa:
+
+- A descoberta de produto, ICP e proposta de valor acontece junta na conversa real com o founder.
+- Separar essas capacidades em três skills criava mais roteamento do que clareza.
+- Avaliar uma ideia depende do estágio atual do negócio e do contexto conversacional; por isso faz mais sentido dentro de `idea-calibration`.
+- Modelo de negócio, receita, canais e custos são decisões de negócio, não fonte da verdade de Product.
+- O fluxo principal fica menor: mapear baseline -> calibrar Product Core -> definir MVP Validation Scope quando o founder confirmar.
+
 ## 2026-06-26 - Manter `AGENT.md` Como Entrada Canônica Do MVP
 
 Decisão:
@@ -129,6 +148,24 @@ Justificativa:
 - `idea-calibration` descreve melhor a conversa guiada para chegar a uma Strategy Baseline confirmada ou a uma avaliação de fit em produtos mais maduros.
 - Separar `mvp-validation-scope` evita que a ideia calibrada pule direto para Epic.
 - A sequência fica mais natural para o founder: calibrar ideia -> analisar MVP de validação -> decidir se vira entrega.
+
+## 2026-06-26 - Remover `idea-to-roadmap` E Roteamento Stage-Aware
+
+Decisão:
+
+- Remover `strategy/workflows/idea-to-roadmap.workflow.md` do framework.
+- `idea-calibration` decide o próximo caminho pelo `business_stage`.
+- `seed`, `strategy_forming` e `mvp_shaping` seguem para `mvp-validation-scope` quando a ideia já está calibrada.
+- `mvp_building` e `mvp_live_learning` seguem para Product Ops quando a ideia afeta escopo, backlog ou entrega do MVP atual.
+- `product_operating` e `growth_scaling` seguem para `roadmap-cycle-planning` quando há ciclo, backlog ou múltiplas prioridades para ordenar.
+- `mvp-validation-scope` não atualiza Roadmap ou backlog; ele produz uma sequência de validação e uma recomendação de handoff.
+
+Justificativa:
+
+- Roadmap não deve ser uma etapa obrigatória entre MVP Validation Scope e delivery.
+- Durante `mvp_building`, novas ideias precisam proteger ou ajustar o MVP em construção, não virar roadmap estratégico por padrão.
+- Em produto operando, Roadmap volta a fazer sentido porque existe cadência, clientes, backlog, timing e múltiplas frentes para priorizar.
+- O controle por estágio reduz a necessidade de manter regras frágeis em vários `AGENT.md` e evita rotas concorrentes.
 
 ## 2026-06-26 - Skills Como Pastas Com `SKILL.md`
 

@@ -12,9 +12,9 @@ Use for business, product strategy, roadmap, validation, ICP or assumptions.
 - `README.md`: this map.
 - `department.yaml`: machine-readable structure for active areas and workflows.
 - `workflows/`: cross-area workflows owned by this department.
-- `business/`: Keep business identity, principles, mission and operating decisions coherent.
-- `product/`: Own product strategy, ICP, value proposition, MVP validation scope, positioning and business model coherence.
-- `roadmap/`: Own roadmap sequence, milestones, backlog and planning-cycle prioritization.
+- `business/`: Keep business identity, principles, mission, operating decisions and business model coherent.
+- `product/`: Own product strategy, product core, ICP, value proposition, MVP validation scope and positioning coherence.
+- `roadmap/`: Own roadmap sequence, milestones, backlog and planning-cycle prioritization for operating or scaling products.
 
 ## Start Here
 

@@ -12,6 +12,4 @@ department:
     - key: strategy.roadmap
       agent: roadmap/AGENT.md
       readme: roadmap/README.md
-  workflows:
-    - key: idea-to-roadmap
-      path: workflows/idea-to-roadmap.workflow.md
+  workflows: []

@@ -34,4 +34,4 @@ Use this README to choose the next specific file. Do not load unrelated files.
 
 ## Agent Notes
 
-This folder is runtime support. Business workflows live in departments or areas such as `strategy/workflows/` and `operations/workflows/`. Operational roles, skills and playbooks live in workspace areas. Traces are local diagnostics, not telemetry.
+This folder is runtime support. Business workflows live in departments or areas when active, such as `operations/workflows/`. Operational roles, skills and playbooks live in workspace areas. Traces are local diagnostics, not telemetry.

@@ -55,13 +55,13 @@ O modelo começa no `AGENT.md` raiz porque o founder fala naturalmente. Ele entr
 
 ## Momento
 
-Planejamento de roadmap para Epic local. Isso acontece depois de `idea-to-roadmap` e antes de `epic-to-features`.
+Planejamento de item priorizado para Epic local. Isso pode acontecer depois de `roadmap-cycle-planning` em produto operando ou depois de MVP Validation Scope / Product Ops quando o negócio ainda está em MVP.
 
 ## Condição De Início
 
 Esta jornada começa quando:
 
-- um item de roadmap ou backlog existe e pode ser identificado;
+- um item de roadmap, backlog, MVP Validation Scope ou escopo atual de MVP existe e pode ser identificado;
 - o item tem contexto de produto suficiente para discutir delivery;
 - o founder pergunta se ele deve virar trabalho real de delivery.
 
@@ -110,7 +110,8 @@ A cadeia oficial agora é:
 
 ```text
 idea-calibration
--> idea-to-roadmap
+-> mvp-validation-scope ou roadmap-cycle-planning quando o estágio pede
+-> Product Ops / define-mvp quando o item vira entrega
 -> roadmap-item-to-epic
 -> epic-to-features
 -> feature-to-delivery-cycle
@@ -136,7 +137,7 @@ O modelo abre:
 Por quê:
 
 - O founder fez uma solicitação de planejamento em linguagem natural.
-- O roteamento raiz deve escolher Operations porque a solicitação está saindo de roadmap e entrando em planejamento de delivery.
+- O roteamento raiz deve escolher Operations porque a solicitação está saindo de Strategy, Roadmap ou MVP Validation e entrando em planejamento de delivery.
 
 Próxima etapa:
 
@@ -150,7 +151,7 @@ O modelo abre:
 
 Por quê:
 
-- Esta é uma transição entre áreas do contexto de roadmap para formato executável de delivery.
+- Esta é uma transição entre áreas do contexto estratégico/priorizado para formato executável de delivery.
 - O workflow decide que Product Ops lidera e que Design, Security, DevOps ou Engineering entram apenas quando podem mudar a readiness do Epic.
 
 Próxima etapa:
@@ -183,7 +184,7 @@ O modelo abre:
 
 Por quê:
 
-- O item de roadmap precisa de limite de delivery, `scope_type`, milestone, objetivo de release, outcome, non-goals, riscos e grupos prováveis de Features.
+- O item priorizado precisa de limite de delivery, `scope_type`, milestone, objetivo de release, outcome, non-goals, riscos e grupos prováveis de Features.
 - O modelo ainda não deve criar Features.
 
 ### Etapa 5 - Confirmação Do Founder
@@ -213,7 +214,7 @@ Quer que eu crie esse Epic local agora?
 
 Pare sem escrever quando:
 
-- o item de roadmap ou backlog não pode ser identificado;
+- o item de roadmap, backlog, MVP Validation Scope ou escopo atual não pode ser identificado;
 - o item não tem contexto de produto, usuário, outcome ou valor;
 - o founder não confirma a criação do Epic;
 - a solicitação muda para shaping de Feature, GitHub sync, criação de branch, código ou trabalho de PR.
@@ -240,7 +241,7 @@ Próxima rota:
 - [ ] `operations/workflows/roadmap-item-to-epic.workflow.md` existe.
 - [ ] Nenhum workflow separado de roadmap-to-delivery-scope existe.
 - [ ] Nenhum workflow separado existe entre escopo de delivery e criação de Epic local.
-- [ ] `strategy/workflows/idea-to-roadmap.workflow.md` faz bridge para `roadmap-item-to-epic`.
+- [ ] Nenhum workflow de Strategy é necessário para chegar a `roadmap-item-to-epic`.
 - [ ] `operations/product-ops/AGENT.md` roteia shaping de Epic para Product Owner.
 - [ ] `operations/product-ops/skills/define-delivery-scope/SKILL.md` existe.
 - [ ] `operations/product-ops/skills/shape-epic/SKILL.md` existe.

@@ -1,7 +1,7 @@
 # Active Workflow
 
-Current compatible local workflows:
+No complete local workflow is active yet.
 
-- idea-to-roadmap
+The currently active areas do not satisfy any full department workflow requirements.
 
-Use only workflows listed here as active. Other workflow files may exist inside root departments, but they can require areas that are not active yet.
+Use active area READMEs and routing protocols until the user activates more areas.

@@ -54,7 +54,7 @@ TBD
 
 TBD
 
-## Initial MVP Roadmap Candidate
+## MVP Validation Sequence
 
 TBD
 
@@ -62,7 +62,7 @@ TBD
 
 TBD
 
-## Ready for Roadmap?
+## Ready for Product Ops?
 
 TBD
 

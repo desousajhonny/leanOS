@@ -18,9 +18,9 @@ Regra de manutenção: sempre que um playbook for criado, removido, renomeado ou
 | Playbook | Área | Serve Para | Pode Ser Ativado Por |
 | --- | --- | --- | --- |
 | `business-foundation` | `strategy.business` | Transformar contexto bruto em identidade, princípios e modelo operacional usáveis. | Role `business-strategist`; pedidos de fundação de negócio. |
-| `idea-calibration` | `strategy.product` | Calibrar qualquer ideia do founder contra o estágio atual do negócio sem pular para roadmap, MVP scope ou delivery. | Roles `product-strategist` e `product-manager`; pedidos como "vamos começar", "tenho uma ideia" ou "vamos avaliar essa ideia". |
-| `mvp-validation-scope` | `strategy.product` | Transformar Strategy Baseline confirmada no menor escopo de validação de MVP antes de Product Ops. | Roles `product-strategist` e `product-manager`; handoff vindo de `idea-calibration`; handoff para `idea-to-roadmap`. |
-| `roadmap-cycle-planning` | `strategy.roadmap` | Planejar ciclo de roadmap a partir de Strategy, escopo de MVP, restrições e riscos. | Role `roadmap-planner`; workflow `idea-to-roadmap`; pedidos de roadmap/backlog. |
+| `idea-calibration` | `strategy.product` | Calibrar qualquer ideia do founder contra o estágio atual do negócio, consolidar o núcleo de produto e avaliar fit sem pular para roadmap, MVP scope ou delivery. | Roles `product-strategist` e `product-manager`; pedidos como "vamos começar", "tenho uma ideia" ou "vamos avaliar essa ideia". |
+| `mvp-validation-scope` | `strategy.product` | Transformar Strategy Baseline confirmada no menor escopo e sequência de validação de MVP antes de Product Ops. | Roles `product-strategist` e `product-manager`; handoff vindo de `idea-calibration`; handoff direto para Product Ops quando o founder quiser delivery. |
+| `roadmap-cycle-planning` | `strategy.roadmap` | Planejar ciclo de roadmap quando o produto está em `product_operating`, `growth_scaling` ou há pedido explícito de priorização entre múltiplas frentes. | Role `roadmap-planner`; pedidos de roadmap, backlog, ciclo ou priorização em produto operando. |
 
 ## Operations
 

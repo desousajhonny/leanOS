@@ -24,7 +24,6 @@ Map a raw founder idea or current business context into known facts, Strategy Ba
 - ../knowledge/problem.md
 - ../knowledge/icp.md
 - ../knowledge/value-proposition.md
-- ../knowledge/business-model-canvas.md
 - ../knowledge/mvp-validation-scope.md
 - ../knowledge/validation-notes.md
 
@@ -88,7 +87,6 @@ Recommend the next route only when the gate is satisfied.
 - ../knowledge/problem.md
 - ../knowledge/icp.md
 - ../knowledge/value-proposition.md
-- ../knowledge/business-model-canvas.md
 - ../knowledge/mvp-validation-scope.md
 - ../knowledge/validation-notes.md
 

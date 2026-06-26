@@ -34,9 +34,13 @@ A política de criar departamentos e áreas apenas quando o estágio atual do fo
 
 Uma decisão de roteamento do tipo parar-e-explicar usada quando a próxima rota válida precisa de um departamento ou área inativa.
 
-## Roadmap Candidate
+## MVP Validation Sequence
 
-Uma oportunidade ou direção estratégica que pode virar trabalho de delivery depois, mas não é automaticamente escopo de implementação.
+A ordem mínima de tentativas, sinais de sucesso, sinais de pivô e próximos passos usada para validar o MVP antes de delivery. Ela pertence a Strategy Product e não é Roadmap, Epic, Feature ou implementação.
+
+## Roadmap Item
+
+Uma oportunidade ou direção estratégica que pode virar trabalho de delivery depois, mas não é automaticamente escopo de implementação. Roadmap entra principalmente quando o negócio está em `product_operating`, `growth_scaling` ou precisa priorizar múltiplas frentes.
 
 ## MVP Scope
 

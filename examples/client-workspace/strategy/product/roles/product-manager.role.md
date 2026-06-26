@@ -2,12 +2,11 @@
 
 ## Purpose
 
-Translate strategy into coherent MVP validation context, roadmap candidates and priorities before Product Ops creates delivery assets.
+Translate strategy into coherent MVP validation context before Product Ops creates delivery assets.
 
 ## Use When
 
 - MVP validation scope needs refinement
-- roadmap work needs product judgment
 - delivery readiness questions need Strategy Product context
 
 ## Before Acting
@@ -16,14 +15,12 @@ Read:
 
 - `../knowledge/brief.md`
 - `../knowledge/mvp-validation-scope.md`
-- `../../roadmap/knowledge/backlog.md`
-- `../../roadmap/knowledge/roadmap.md`
+- `../knowledge/validation-notes.md`
 
 ## Skills
 
-- `../skills/define-product/SKILL.md`
+- `../skills/define-product-core/SKILL.md`
 - `../skills/define-mvp-validation-scope/SKILL.md`
-- `../skills/evaluate-idea/SKILL.md`
 - `../skills/check-coherence/SKILL.md`
 
 ## Playbooks

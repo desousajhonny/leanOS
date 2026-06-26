@@ -17,8 +17,8 @@ Route product strategy work, choose the right product role and keep product deci
 
 Choose the smallest specialist role for the request:
 
-- Product Strategist: `roles/product-strategist.role.md` - use when strategy is unclear; a founder idea needs calibration; ICP or value proposition needs definition; MVP validation scope needs definition; roadmap coherence is at risk.
-- Product Manager: `roles/product-manager.role.md` - use when MVP validation scope needs refinement; roadmap work needs product judgment; delivery readiness questions need Strategy Product context.
+- Product Strategist: `roles/product-strategist.role.md` - use when strategy is unclear; a founder idea needs calibration; product core needs definition; MVP validation scope needs definition; roadmap coherence is at risk.
+- Product Manager: `roles/product-manager.role.md` - use when MVP validation scope needs refinement; delivery readiness questions need Strategy Product context.
 
 ## Routing Rules
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Calibrate any founder idea against the current business stage, from first seed idea to product-operating change, without jumping into roadmap, MVP scope or delivery.
+Calibrate any founder idea against the current business stage, from first seed idea to product-operating change, without jumping into roadmap, MVP delivery scope or implementation.
 
 ## Inputs
 
@@ -12,21 +12,22 @@ Calibrate any founder idea against the current business stage, from first seed i
 - ../knowledge/icp.md
 - ../knowledge/value-proposition.md
 - ../knowledge/positioning.md
-- ../knowledge/business-model-canvas.md
 - ../knowledge/validation-notes.md
+- ../../business/knowledge/business-model-canvas.md
 
 ## Process
 
 1. Load the Product AGENT and choose Product Strategist or Product Manager.
 2. Use `skills/map-business-baseline/SKILL.md` first to read `leanos.yaml`, active Strategy context, business stage and Strategy Baseline gaps.
 3. Choose the calibration path from the business stage: `seed` or `strategy_forming` builds baseline; `mvp_shaping` compares against MVP Validation Scope; `mvp_building` protects current delivery focus; `mvp_live_learning` checks learning signals; `product_operating` and `growth_scaling` evaluate fit with existing product, customers, roadmap, risks and timing.
-4. Clarify product, ICP, problem and value proposition only where the current stage makes the baseline weak.
-5. Use `skills/evaluate-idea/SKILL.md` when the idea affects an existing MVP, product, roadmap, customer signal or operating cadence.
-6. Use business-model work only when pricing, revenue, delivery model or channel assumptions affect the idea.
-7. Separate facts, assumptions, open questions and founder decisions.
-8. Present the calibrated idea with current business-stage reading, fit assessment and smallest safe next route.
-9. Ask the founder to confirm, correct or keep calibrating before writing knowledge files.
-10. After confirmation, offer only the appropriate bridge: `playbooks/mvp-validation-scope.playbook.md`, `strategy/workflows/idea-to-roadmap.workflow.md`, a validation note, or `activation_required: operations.product-ops` when the founder explicitly wants delivery scope. Do not create roadmap, Epics, Features or delivery scope here.
+4. Ask only the discovery questions needed to mature the idea for the current business stage.
+5. Use `skills/define-product-core/SKILL.md` when there is enough signal to consolidate product, primary user, core problem, promise, differentiation and riskiest assumption.
+6. Evaluate fit, assumptions, evidence, MVP impact and roadmap impact inside this playbook when the idea affects an existing MVP, product, roadmap, customer signal or operating cadence.
+7. Route pricing, revenue, channel or delivery-model decisions to `../../business/skills/define-business-model/SKILL.md` only when they block the Product decision.
+8. Separate facts, assumptions, open questions and founder decisions.
+9. Present the calibrated idea with current business-stage reading, Product Core, fit assessment and smallest safe next route.
+10. Ask the founder to confirm, correct or keep calibrating before writing knowledge files.
+11. After confirmation, choose the bridge by business stage: `seed`, `strategy_forming` or `mvp_shaping` -> `playbooks/mvp-validation-scope.playbook.md`; `mvp_building` or `mvp_live_learning` -> `activation_required: operations.product-ops`; `product_operating` or `growth_scaling` -> `../../roadmap/playbooks/roadmap-cycle-planning.playbook.md`. Use a validation note when the idea is not ready. Do not create roadmap, Epics, Features or delivery scope here.
 
 ## Guided Conversation
 
@@ -59,7 +60,6 @@ Do not ask a rigid questionnaire. Ask only what is missing.
 - ../knowledge/icp.md
 - ../knowledge/value-proposition.md
 - ../knowledge/positioning.md
-- ../knowledge/business-model-canvas.md
 - ../knowledge/validation-notes.md
 
 ## Navigation

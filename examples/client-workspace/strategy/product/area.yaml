@@ -9,12 +9,8 @@ area:
     - product-manager
   skills:
     - map-business-baseline
-    - define-product
-    - define-icp
-    - define-value-proposition
-    - define-business-model
+    - define-product-core
     - define-mvp-validation-scope
-    - evaluate-idea
     - check-coherence
   playbooks:
     - idea-calibration
@@ -26,6 +22,5 @@ area:
     - knowledge/jobs-to-be-done.md
     - knowledge/value-proposition.md
     - knowledge/positioning.md
-    - knowledge/business-model-canvas.md
     - knowledge/mvp-validation-scope.md
     - knowledge/validation-notes.md

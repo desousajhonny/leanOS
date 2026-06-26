@@ -9,6 +9,7 @@ area:
   skills:
     - define-business-identity
     - clarify-operating-model
+    - define-business-model
   playbooks:
     - business-foundation
   source_of_truth:
@@ -17,4 +18,5 @@ area:
     - knowledge/vision.md
     - knowledge/principles.md
     - knowledge/operating-model.md
+    - knowledge/business-model-canvas.md
     - knowledge/decision-log.md

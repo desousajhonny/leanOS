@@ -2,29 +2,32 @@
 
 ## Purpose
 
-Plan the next coherent roadmap cycle from strategy, MVP validation scope, constraints and known risks.
+Plan the next coherent roadmap cycle from product strategy, operating constraints and known risks.
 
 ## Inputs
 
+- ../../../leanos.yaml
 - ../knowledge/roadmap.md
 - ../knowledge/current-cycle.md
 - ../knowledge/backlog.md
 - ../../product/knowledge/brief.md
-- ../../product/knowledge/mvp-validation-scope.md
+- ../../product/knowledge/problem.md
+- ../../product/knowledge/value-proposition.md
+- ../../product/knowledge/validation-notes.md
 
 ## Process
 
 1. Load the Roadmap AGENT and Roadmap Planner role.
-2. Review product strategy and MVP Validation Scope context.
-3. When this is a new product idea, produce or refine the MVP Candidate Roadmap first.
-4. Review backlog candidates.
-5. Choose Now, Next, Later and Not Planned boundaries.
-6. Define current cycle goal and success criteria.
-7. Propose updates and wait for confirmation before writing.
+2. Use only when the product is `product_operating` or `growth_scaling`, or when the founder explicitly asks to sequence multiple priorities.
+3. If the business is `mvp_building` or `mvp_live_learning`, route the idea to `activation_required: operations.product-ops` for MVP scope, backlog or delivery planning.
+4. Review product strategy, customer signals and validation notes.
+5. Review backlog candidates.
+6. Choose Now, Next, Later and Not Planned boundaries.
+7. Define current cycle goal and success criteria.
+8. Propose updates and wait for confirmation before writing.
 
 ## Output
 
-- MVP Candidate Roadmap summary
 - Roadmap cycle summary
 - Current cycle proposal
 - Backlog changes

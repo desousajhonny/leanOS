@@ -6,7 +6,7 @@ Route:
 
 `AGENT.md` -> `strategy/AGENT.md`
 
-Use this when the founder is starting, restarting, defining ICP, clarifying the MVP Validation Scope, evaluating an idea or shaping the first MVP Candidate Roadmap.
+Use this when the founder is starting, restarting, defining ICP, clarifying the MVP Validation Scope, evaluating an idea or shaping the first MVP validation path.
 
 ## 2. Check Status Or Readiness
 

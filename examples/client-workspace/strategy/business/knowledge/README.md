@@ -6,7 +6,7 @@ Durable business context produced by Strategy Business.
 
 ## When to Use
 
-Use when defining business identity, brand logic, mission, principles, operating model or strategic decisions.
+Use when defining business identity, brand logic, mission, principles, operating model, business model or strategic decisions.
 
 ## Source of Truth
 
@@ -19,6 +19,7 @@ Use when defining business identity, brand logic, mission, principles, operating
 - `vision.md`
 - `principles.md`
 - `operating-model.md`
+- `business-model-canvas.md`
 - `decision-log.md`
 
 ## Related Folders

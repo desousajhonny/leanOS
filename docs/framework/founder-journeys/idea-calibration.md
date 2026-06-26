@@ -41,7 +41,10 @@ flowchart TD
   O["Propor decisão e próxima rota"]
   P{"Founder confirma?"}
   Q["Atualizar knowledge permitido"]
-  R["Handoff: MVP Validation Scope / idea-to-roadmap / activation_required"]
+  R["Handoff por estágio"]
+  T["seed / strategy_forming / mvp_shaping: mvp-validation-scope"]
+  U["mvp_building / mvp_live_learning: Product Ops"]
+  V["product_operating / growth_scaling: roadmap-cycle-planning"]
   S["Parar sem escrever"]
 
   A --> B --> C --> D --> E --> F --> G --> H --> I
@@ -52,6 +55,9 @@ flowchart TD
   I --> N --> O
   O --> P
   P -->|Sim| Q --> R
+  R --> T
+  R --> U
+  R --> V
   P -->|Não| S
 ```
 
@@ -78,9 +84,9 @@ Root AGENT.md
 
 ## Próximas Rotas Possíveis
 
-- `strategy/product/playbooks/mvp-validation-scope.playbook.md`: quando a ideia está calibrada e o founder quer analisar o menor MVP de validação.
-- `strategy/workflows/idea-to-roadmap.workflow.md`: quando o founder confirma que a ideia deve virar roadmap/backlog candidate.
-- `activation_required: operations.product-ops`: quando o founder quer transformar direção confirmada em escopo de entrega.
+- `strategy/product/playbooks/mvp-validation-scope.playbook.md`: quando o negócio está em `seed`, `strategy_forming` ou `mvp_shaping` e a ideia já está calibrada para analisar o menor MVP de validação.
+- `activation_required: operations.product-ops`: quando o negócio está em `mvp_building` ou `mvp_live_learning` e a ideia afeta o MVP atual, backlog de entrega ou escopo executável.
+- `strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md`: quando o negócio está em `product_operating` ou `growth_scaling`, ou quando o founder pede explicitamente ciclo, backlog ou priorização entre múltiplas frentes.
 - Parar sem escrever: quando a ideia ainda está vaga, foi descartada ou o founder não confirmou updates.
 
 ## Regras De Parada

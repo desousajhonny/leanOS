@@ -1,25 +1,25 @@
 ---
 name: define-business-model
-description: Use when pricing or revenue logic is unclear; financial assumptions affect MVP scope; go-to-market needs a business model baseline
+description: Use when pricing or revenue logic is unclear; business model assumptions affect MVP scope; go-to-market needs a business model baseline
 ---
 
 # Define Business Model
 
 ## Overview
 
-Draft revenue, channels, costs and delivery model.
+Draft revenue, channels, costs and delivery model at the business level.
 
 ## Use When
 
 - pricing or revenue logic is unclear
-- financial assumptions affect MVP scope
+- business model assumptions affect MVP scope
 - go-to-market needs a business model baseline
 
 ## Required Context
 
 - ../knowledge/business-model-canvas.md
-- ../knowledge/icp.md
-- ../knowledge/value-proposition.md
+- ../../product/knowledge/icp.md
+- ../../product/knowledge/value-proposition.md
 
 ## Inputs
 

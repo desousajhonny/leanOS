@@ -175,6 +175,7 @@ client-workspace/
 |-- strategy/
 |   |-- business/
 |   |   |-- knowledge/
+|   |   |   |-- business-model-canvas.md
 |   |   |   |-- decision-log.md
 |   |   |   |-- mission.md
 |   |   |   |-- operating-model.md
@@ -193,6 +194,8 @@ client-workspace/
 |   |   |   |   `-- SKILL.md
 |   |   |   |-- define-business-identity/
 |   |   |   |   `-- SKILL.md
+|   |   |   |-- define-business-model/
+|   |   |   |   `-- SKILL.md
 |   |   |   `-- README.md
 |   |   |-- AGENT.md
 |   |   |-- area.yaml
@@ -200,7 +203,6 @@ client-workspace/
 |   |-- product/
 |   |   |-- knowledge/
 |   |   |   |-- brief.md
-|   |   |   |-- business-model-canvas.md
 |   |   |   |-- icp.md
 |   |   |   |-- jobs-to-be-done.md
 |   |   |   |-- mvp-validation-scope.md
@@ -220,17 +222,9 @@ client-workspace/
 |   |   |-- skills/
 |   |   |   |-- check-coherence/
 |   |   |   |   `-- SKILL.md
-|   |   |   |-- define-business-model/
-|   |   |   |   `-- SKILL.md
-|   |   |   |-- define-icp/
-|   |   |   |   `-- SKILL.md
 |   |   |   |-- define-mvp-validation-scope/
 |   |   |   |   `-- SKILL.md
-|   |   |   |-- define-product/
-|   |   |   |   `-- SKILL.md
-|   |   |   |-- define-value-proposition/
-|   |   |   |   `-- SKILL.md
-|   |   |   |-- evaluate-idea/
+|   |   |   |-- define-product-core/
 |   |   |   |   `-- SKILL.md
 |   |   |   |-- map-business-baseline/
 |   |   |   |   `-- SKILL.md
@@ -259,9 +253,6 @@ client-workspace/
 |   |   |   `-- README.md
 |   |   |-- AGENT.md
 |   |   |-- area.yaml
-|   |   `-- README.md
-|   |-- workflows/
-|   |   |-- idea-to-roadmap.workflow.md
 |   |   `-- README.md
 |   |-- AGENT.md
 |   |-- department.yaml

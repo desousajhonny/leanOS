@@ -17,7 +17,7 @@ Route business identity, brand logic, mission, principles and operating model wo
 
 Choose the smallest specialist role for the request:
 
-- Business Strategist: `roles/business-strategist.role.md` - use when business direction is unclear; operating model needs definition; a strategic decision must be recorded.
+- Business Strategist: `roles/business-strategist.role.md` - use when business direction is unclear; operating model needs definition; business model or revenue logic needs definition; a strategic decision must be recorded.
 
 ## Routing Rules
 

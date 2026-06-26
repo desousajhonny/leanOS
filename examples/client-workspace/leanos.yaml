@@ -127,14 +127,11 @@ skills:
     strategy.business:
       - define-business-identity
       - clarify-operating-model
+      - define-business-model
     strategy.product:
       - map-business-baseline
-      - define-product
-      - define-icp
-      - define-value-proposition
-      - define-business-model
+      - define-product-core
       - define-mvp-validation-scope
-      - evaluate-idea
       - check-coherence
     strategy.roadmap:
       - create-roadmap
@@ -151,12 +148,9 @@ playbooks:
       - roadmap-cycle-planning
 workflows:
   ownership: department-local
-  active:
-    - idea-to-roadmap
+  active: []
   by_department:
-    strategy:
-      - key: idea-to-roadmap
-        path: strategy/workflows/idea-to-roadmap.workflow.md
+    strategy: []
 ai_standard:
   path: ai-standard/README.md
   foundation: ai-standard/foundation

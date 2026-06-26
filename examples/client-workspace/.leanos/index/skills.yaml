@@ -5,27 +5,18 @@ skills:
   - key: clarify-operating-model
     area: strategy.business
     path: ../../strategy/business/skills/clarify-operating-model/SKILL.md
+  - key: define-business-model
+    area: strategy.business
+    path: ../../strategy/business/skills/define-business-model/SKILL.md
   - key: map-business-baseline
     area: strategy.product
     path: ../../strategy/product/skills/map-business-baseline/SKILL.md
-  - key: define-product
+  - key: define-product-core
     area: strategy.product
-    path: ../../strategy/product/skills/define-product/SKILL.md
-  - key: define-icp
-    area: strategy.product
-    path: ../../strategy/product/skills/define-icp/SKILL.md
-  - key: define-value-proposition
-    area: strategy.product
-    path: ../../strategy/product/skills/define-value-proposition/SKILL.md
-  - key: define-business-model
-    area: strategy.product
-    path: ../../strategy/product/skills/define-business-model/SKILL.md
+    path: ../../strategy/product/skills/define-product-core/SKILL.md
   - key: define-mvp-validation-scope
     area: strategy.product
     path: ../../strategy/product/skills/define-mvp-validation-scope/SKILL.md
-  - key: evaluate-idea
-    area: strategy.product
-    path: ../../strategy/product/skills/evaluate-idea/SKILL.md
   - key: check-coherence
     area: strategy.product
     path: ../../strategy/product/skills/check-coherence/SKILL.md

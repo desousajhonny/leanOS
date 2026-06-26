@@ -2,12 +2,12 @@
 
 ## Purpose
 
-Own product strategy, ICP, value proposition, MVP validation scope, positioning and business model coherence.
+Own product strategy, product core, ICP, value proposition, MVP validation scope and positioning coherence.
 
 ## When to Use
 
 - start or calibrate a founder idea
-- define strategy
+- define product core
 - clarify ICP
 - shape value proposition
 - define MVP validation scope
@@ -21,7 +21,6 @@ Own product strategy, ICP, value proposition, MVP validation scope, positioning 
 - `knowledge/jobs-to-be-done.md`
 - `knowledge/value-proposition.md`
 - `knowledge/positioning.md`
-- `knowledge/business-model-canvas.md`
 - `knowledge/mvp-validation-scope.md`
 - `knowledge/validation-notes.md`
 
@@ -46,5 +45,5 @@ Own product strategy, ICP, value proposition, MVP validation scope, positioning 
 
 ## Common Paths
 
-- Idea calibration request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/map-business-baseline/SKILL.md` -> playbook `playbooks/idea-calibration.playbook.md`.
+- Idea calibration request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/map-business-baseline/SKILL.md` -> skill `skills/define-product-core/SKILL.md` when enough signal exists -> playbook `playbooks/idea-calibration.playbook.md`.
 - MVP validation request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/define-mvp-validation-scope/SKILL.md` -> playbook `playbooks/mvp-validation-scope.playbook.md`.

@@ -2,13 +2,14 @@
 
 ## Purpose
 
-Turn business, product and MVP validation context into a coherent roadmap and cycle plan.
+Turn business, product and operating constraints into a coherent roadmap and cycle plan.
 
 ## Use When
 
 - roadmap order is unclear
 - backlog needs prioritization
 - cycle planning is needed
+- the business is product_operating or growth_scaling
 
 ## Before Acting
 
@@ -18,7 +19,9 @@ Read:
 - `../knowledge/current-cycle.md`
 - `../knowledge/backlog.md`
 - `../../product/knowledge/brief.md`
-- `../../product/knowledge/mvp-validation-scope.md`
+- `../../product/knowledge/problem.md`
+- `../../product/knowledge/value-proposition.md`
+- `../../product/knowledge/validation-notes.md`
 
 ## Skills
 

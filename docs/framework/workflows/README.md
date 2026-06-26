@@ -17,7 +17,6 @@ Regra de manutenção: sempre que um workflow for criado, removido, renomeado, m
 
 | Workflow | Departamento | Serve Para | Áreas Necessárias | Áreas Condicionais | Ativado Por |
 | --- | --- | --- | --- | --- | --- |
-| `idea-to-roadmap` | `strategy` | Promover ideia qualificada ou MVP Validation Scope para Roadmap Candidate ou backlog sem criar delivery scope ou GitHub execution. | `product`, `roadmap` | `operations.product-ops`, `growth.customer-experience` | "vamos colocar essa ideia no roadmap", "salve isso no backlog", "isso entra no backlog?", "vamos priorizar". |
 | `define-mvp` | `operations` | Estruturar o primeiro escopo de MVP a partir de Strategy usando o MVP Decision Gate antes de Epics, Features, GitHub, branch ou código. | `product-ops` | `strategy/product`, `strategy/roadmap`, `operations/design`, `operations/security`, `operations/engineering`, `operations/devops` | "defina o MVP", "qual a primeira versão?", "o que entra no MVP?", "vamos definir a primeira entrega". |
 | `roadmap-item-to-epic` | `operations` | Transformar item confirmado de roadmap/backlog em Epic local com outcome, escopo, não objetivos, riscos e readiness notes. | `product-ops` | `operations/design`, `operations/security`, `operations/devops`, `operations/engineering` | "vamos transformar esse item do roadmap em epic", "crie um epic", "isso entra no MVP?", "qual milestone recebe esse item?". |
 | `epic-to-features` | `operations` | Quebrar Epic local em Features implementáveis com tasks internas e critérios de Delivery Readiness Matrix antes de Engineering. | `product-ops`, `engineering` | `design`, `security`, `devops` | "quebre esse epic em features", "prepara esse epic para desenvolvimento", "transforma esse epic em trabalho executável". |
@@ -28,8 +27,10 @@ Regra de manutenção: sempre que um workflow for criado, removido, renomeado, m
 ## Observações Operacionais
 
 - Calibrar uma ideia não é workflow. A entrada padrão para "vamos começar", "tenho uma ideia" ou "vamos avaliar essa ideia" é `strategy/product/playbooks/idea-calibration.playbook.md`.
-- `idea-calibration` usa `map-business-baseline` para ler `leanos.yaml`, estágio do negócio e knowledge ativa antes de recomendar qualquer rota.
-- `idea-to-roadmap` ainda trabalha em Strategy; Product Ops só entra quando o trabalho vira escopo de entrega.
-- `define-mvp`, `roadmap-item-to-epic` e `epic-to-features` são a ponte principal de Strategy para delivery.
+- `idea-calibration` usa `map-business-baseline` para ler `leanos.yaml`, estágio do negócio e knowledge ativa, depois usa `define-product-core` quando houver sinal suficiente para consolidar produto, usuário, problema e promessa.
+- Strategy não possui workflow ativo no scaffold inicial; decisões de ideia, MVP Validation Scope e roadmap são conduzidas por playbooks de área.
+- `mvp-validation-scope` não cria Roadmap ou backlog. Ele cria uma sequência de validação e pode fazer handoff direto para Product Ops quando o founder quiser delivery.
+- `roadmap-cycle-planning` é playbook de Strategy/Roadmap para `product_operating`, `growth_scaling` ou pedidos explícitos de ciclo/priorização entre múltiplas frentes.
+- `define-mvp`, `roadmap-item-to-epic` e `epic-to-features` são a ponte principal para delivery quando Product Ops está ativo.
 - `feature-to-delivery-cycle` só deve começar quando a Feature tiver readiness suficiente ou quando um spike técnico for explicitamente aprovado.
 - `launch-learning-loop` pertence a Growth e deve transformar sinais de mercado/cliente em aprendizado antes de criar novo trabalho de produto.

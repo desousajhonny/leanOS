@@ -2,13 +2,14 @@
 
 ## Purpose
 
-Keep business identity, principles, mission and operating decisions coherent.
+Keep business identity, principles, mission, operating decisions and business model coherent.
 
 ## When to Use
 
 - define business identity
 - clarify mission
 - capture principles
+- define business model
 - record strategic decisions
 
 ## Source of Truth
@@ -18,6 +19,7 @@ Keep business identity, principles, mission and operating decisions coherent.
 - `knowledge/vision.md`
 - `knowledge/principles.md`
 - `knowledge/operating-model.md`
+- `knowledge/business-model-canvas.md`
 - `knowledge/decision-log.md`
 
 
@@ -41,4 +43,4 @@ Keep business identity, principles, mission and operating decisions coherent.
 
 ## Common Paths
 
-- Business request: `AGENT.md` -> role `roles/business-strategist.role.md` -> skill `skills/define-business-identity/SKILL.md` or `skills/clarify-operating-model/SKILL.md` -> playbook `playbooks/business-foundation.playbook.md`.
+- Business request: `AGENT.md` -> role `roles/business-strategist.role.md` -> skill `skills/define-business-identity/SKILL.md`, `skills/clarify-operating-model/SKILL.md` or `skills/define-business-model/SKILL.md` -> playbook `playbooks/business-foundation.playbook.md` when foundation work is needed.

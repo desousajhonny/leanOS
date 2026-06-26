@@ -183,7 +183,7 @@ Use this section only to choose the owning department. The department `AGENT.md`
 ## LeanOS Runtime
 
 `.leanos/` contains runtime files for context, indexes, local traces and VS Code integration.
-`.leanos/` does not own business workflows. Operational workflows live in root departments or their areas, such as `strategy/workflows/` and `operations/workflows/`.
+`.leanos/` does not own business workflows. Operational workflows live in root departments or their areas when that department has active workflows, such as `operations/workflows/`.
 
 `ai-standard/` is the framework standards router for creating, changing, reviewing or validating LeanOS assets.
 

@@ -199,10 +199,12 @@ async function validateWorkspaceFiles() {
     "strategy/business/knowledge/vision.md",
     "strategy/business/knowledge/principles.md",
     "strategy/business/knowledge/operating-model.md",
+    "strategy/business/knowledge/business-model-canvas.md",
     "strategy/business/knowledge/decision-log.md",
     "strategy/business/roles/business-strategist.role.md",
     "strategy/business/skills/define-business-identity/SKILL.md",
     "strategy/business/skills/clarify-operating-model/SKILL.md",
+    "strategy/business/skills/define-business-model/SKILL.md",
     "strategy/business/playbooks/business-foundation.playbook.md",
     "strategy/product/AGENT.md",
     "strategy/product/README.md",
@@ -213,14 +215,12 @@ async function validateWorkspaceFiles() {
     "strategy/product/knowledge/jobs-to-be-done.md",
     "strategy/product/knowledge/value-proposition.md",
     "strategy/product/knowledge/positioning.md",
-    "strategy/product/knowledge/business-model-canvas.md",
     "strategy/product/knowledge/mvp-validation-scope.md",
     "strategy/product/skills/map-business-baseline/SKILL.md",
+    "strategy/product/skills/define-product-core/SKILL.md",
     "strategy/product/skills/define-mvp-validation-scope/SKILL.md",
-    "strategy/product/skills/evaluate-idea/SKILL.md",
     "strategy/product/playbooks/idea-calibration.playbook.md",
     "strategy/product/playbooks/mvp-validation-scope.playbook.md",
-    "strategy/workflows/idea-to-roadmap.workflow.md",
     "strategy/roadmap/AGENT.md",
     "strategy/roadmap/knowledge/README.md",
     "strategy/roadmap/knowledge/roadmap.md",
@@ -509,6 +509,7 @@ async function validateWorkspaceFiles() {
     "strategy/roadmap/current-cycle.md",
     "strategy/roadmap/backlog.md",
     "strategy/roadmap/playbooks/validation-cycle-planning.playbook.md",
+    "strategy/workflows/idea-to-roadmap.workflow.md",
     "ai-standard/navigation-chain.md",
     "ai-standard/asset-taxonomy.md",
     "ai-standard/creation-rules.md",
@@ -569,7 +570,9 @@ async function validateWorkspaceFiles() {
   assert.equal(await exists(join(rootDir, "growth")), false, "Growth should not be generated during initial Strategy-only setup");
   await assertExists(join(rootDir, "strategy", "business", "AGENT.md"));
   await assertExists(join(rootDir, "strategy", "business", "knowledge", "profile.md"));
+  await assertExists(join(rootDir, "strategy", "business", "knowledge", "business-model-canvas.md"));
   await assertExists(join(rootDir, "strategy", "business", "roles", "business-strategist.role.md"));
+  await assertExists(join(rootDir, "strategy", "business", "skills", "define-business-model/SKILL.md"));
   await assertExists(join(rootDir, "strategy", "product", "AGENT.md"));
   await assertExists(join(rootDir, "strategy", "product", "knowledge", "README.md"));
   await assertExists(join(rootDir, "strategy", "product", "knowledge", "brief.md"));
@@ -580,27 +583,15 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "strategy", "roadmap", "knowledge", "roadmap.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-cycle-planning.playbook.md"));
   assert.equal(await exists(join(rootDir, "strategy", "validation")), false, "Strategy Validation should not be generated");
-  await assertExists(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"));
+  assert.equal(await exists(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md")), false, "Strategy should not generate idea-to-roadmap workflow");
   assert.equal(await exists(join(rootDir, "strategy", "workflows", "business-intake.workflow.md")), false, "Business intake workflow should not be generated");
   assert.equal(await exists(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md")), false, "New idea intake workflow should not be generated");
   assert.equal(await exists(join(rootDir, "strategy", "workflows", "strategy-validation-cycle.workflow.md")), false, "Strategy validation workflow should not be generated");
   assert.equal(await exists(join(rootDir, "strategy", "workflows", "roadmap-to-github-project.workflow.md")), false, "Roadmap-to-GitHub workflow should not be generated");
-  const ideaToRoadmapWorkflow = await readFile(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"), "utf8");
-  assert(ideaToRoadmapWorkflow.includes("## Continuation Bridge"), "Idea-to-roadmap workflow should offer a continuation bridge");
-  assert(
-    ideaToRoadmapWorkflow.includes("Next route:\n\n`activation_required: operations.product-ops, then roadmap-item-to-epic`"),
-    "Idea-to-roadmap workflow should request Product Ops activation before roadmap-item-to-epic"
-  );
-  assert(ideaToRoadmapWorkflow.includes("## Founder Triggers"), "Idea-to-roadmap workflow should define founder triggers");
-  assert(ideaToRoadmapWorkflow.includes("## Confirmation Gates"), "Idea-to-roadmap workflow should define confirmation gates");
-  assert(ideaToRoadmapWorkflow.includes("MVP Candidate Roadmap"), "Idea-to-roadmap should explicitly create MVP candidate roadmap context");
-  assert(ideaToRoadmapWorkflow.includes("Do not create Epics, Features or implementation work"), "Idea-to-roadmap should not automatically promote roadmap items to delivery");
-  assert.equal(ideaToRoadmapWorkflow.includes("Do not mark as delivery scope, MVP, Epic or GitHub work"), false, "Idea-to-roadmap should no longer block Strategy from naming an MVP candidate");
-  assert(ideaToRoadmapWorkflow.includes("## Stop Conditions"), "Idea-to-roadmap workflow should define stop conditions");
   await assertExists(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"));
   await assertExists(join(rootDir, "strategy", "product", "skills", "map-business-baseline/SKILL.md"));
+  await assertExists(join(rootDir, "strategy", "product", "skills", "define-product-core/SKILL.md"));
   await assertExists(join(rootDir, "strategy", "product", "skills", "define-mvp-validation-scope/SKILL.md"));
-  await assertExists(join(rootDir, "strategy", "product", "skills", "evaluate-idea/SKILL.md"));
   assert.equal(await exists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync/SKILL.md")), false, "Strategy Roadmap should not own GitHub sync skills");
   assert.equal(await exists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md")), false, "Strategy Roadmap should not own GitHub sync playbooks");
   await assertExists(join(rootDir, ".github", "agents", "leanos-chief.agent.md"));
@@ -732,7 +723,7 @@ async function validateWorkspaceFiles() {
   assert.equal(yaml.departments.routes.strategy.readme, "strategy/README.md");
   assert.equal(yaml.departments.routes.operations, undefined, "Operations should not be an active route during initial setup");
   assert.equal(yaml.departments.routes.growth, undefined, "Growth should not be an active route during initial setup");
-  assert(yaml.workflows.active.includes("idea-to-roadmap"), "Expected active local Strategy idea-to-roadmap workflow");
+  assert.equal(yaml.workflows.active.includes("idea-to-roadmap"), false, "Strategy should not expose idea-to-roadmap workflow");
   assert.equal(yaml.workflows.active.includes("business-intake"), false, "Strategy should not expose business-intake workflow");
   assert.equal(yaml.workflows.active.includes("new-idea-intake"), false, "Strategy should not expose new-idea-intake workflow");
   assert.equal(yaml.workflows.active.includes("strategy-validation-cycle"), false, "Strategy validation workflow should not be active");
@@ -780,10 +771,11 @@ async function validateClientWorkspaceFixture() {
     "strategy/product/README.md",
     "strategy/product/knowledge/mvp-validation-scope.md",
     "strategy/product/skills/map-business-baseline/SKILL.md",
+    "strategy/product/skills/define-product-core/SKILL.md",
     "strategy/product/skills/define-mvp-validation-scope/SKILL.md",
-    "strategy/product/skills/evaluate-idea/SKILL.md",
     "strategy/product/knowledge/validation-notes.md",
-    "strategy/workflows/idea-to-roadmap.workflow.md",
+    "strategy/business/knowledge/business-model-canvas.md",
+    "strategy/business/skills/define-business-model/SKILL.md",
     "operations/product-ops/AGENT.md",
     "operations/product-ops/knowledge/README.md",
     "operations/product-ops/knowledge/overview.md",
@@ -1543,7 +1535,9 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("Operational workflows live in root departments"), "AGENT.md should keep business workflows out of .leanos");
   assert(strategyAgent.includes("CEO / PMO / Product Strategy operator"), "Strategy AGENT should define its executive operating owner");
   assert(strategyAgent.includes("## Routing Rules"), "Strategy AGENT should define department-level routing rules");
-  assert(strategyAgent.includes("workflows/README.md"), "Strategy AGENT should point to workflow index instead of enumerating workflows");
+  assert.equal(await exists(join(rootDir, "strategy", "workflows", "README.md")), false, "Strategy should not generate workflow index when no Strategy workflow is active");
+  assert.equal(strategyAgent.includes("workflows/README.md"), false, "Strategy AGENT should not point to workflow index when no Strategy workflow is active");
+  assert(strategyAgent.includes("## Playbook Entry"), "Strategy AGENT should route multi-step Strategy work through area playbooks");
   assert.equal(strategyAgent.includes("workflows/idea-to-roadmap.workflow.md"), false, "Strategy AGENT should not enumerate every workflow path");
   assert(runtimeReadme.includes("Business workflows live in departments or areas"), ".leanos README should keep workflows local to departments or areas");
   assert(operatingRules.includes("Natural language founder requests are first-class"), "Operating rules should support natural-language founder intent");
@@ -1570,7 +1564,7 @@ async function assertFounderIntentRouting(rootDir) {
   assert.equal(vscodeAgent.includes("Do not bypass department `AGENT.md`"), false, "VS Code agent should avoid narrow workflow-bypass prohibitions");
   assert.equal(await exists(join(rootDir, ".leanos", "workflows")), false, ".leanos/workflows should not be generated");
 
-  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "idea-to-roadmap" && workflow.path === "../../strategy/workflows/idea-to-roadmap.workflow.md"), "Workflows index should point to Strategy idea-to-roadmap workflow");
+  assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "idea-to-roadmap"), false, "Workflows index should not include removed idea-to-roadmap workflow");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "business-intake"), false, "Workflows index should not include business-intake");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "new-idea-intake"), false, "Workflows index should not include new-idea-intake");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "strategy-validation-cycle"), false, "Workflows index should not include removed Strategy validation workflow");
@@ -1656,7 +1650,8 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
     assert(founderProgressionModel.includes(expected), `Founder Progression Model should include ${expected}`);
   }
   assert(founderProgressionModel.includes("Strategy Product defines MVP Validation Scope"), "Founder Progression Model should route first MVP definition through Strategy Product");
-  assert(founderProgressionModel.includes("MVP Candidate Roadmap"), "Founder Progression Model should name the MVP Candidate Roadmap gate");
+  assert(founderProgressionModel.includes("MVP Validation Scope can hand off directly to Product Ops"), "Founder Progression Model should allow MVP validation to hand off without Roadmap");
+  assert(founderProgressionModel.includes("Roadmap is not mandatory after first MVP validation"), "Founder Progression Model should prevent forced Roadmap after first MVP validation");
   assert(founderProgressionModel.includes("executable MVP delivery scope needs Product Ops ownership"), "Founder Progression Model should reserve Product Ops for executable MVP delivery scope");
   assert(founderProgressionModel.includes("progression-gates.md"), "Founder Progression Model should delegate concrete gate criteria to progression gates");
   for (const expected of [
@@ -1668,12 +1663,12 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
     "Setup Seed",
     "Strategy Baseline",
     "MVP Validation Scope",
-    "MVP Candidate Roadmap",
     "MVP Delivery Decision",
     "Implementation"
   ]) {
     assert(progressionGates.includes(expected), `Progression Gates should include ${expected}`);
   }
+  assert(progressionGates.includes("Do not force Roadmap between MVP Validation Scope and Product Ops delivery planning"), "Progression Gates should block forced Roadmap between MVP validation and delivery planning");
   assert(progressionGates.includes("Do not allow Engineering before Product Ops delivery readiness"), "Progression Gates should block premature Engineering");
   assert(progressionGates.includes("activation_required"), "Progression Gates should document activation decisions");
   assert(guidedConversation.includes("# Guided Conversation"), "Guided conversation should have expected title");
@@ -2396,9 +2391,11 @@ async function assertBusinessAreaPattern(rootDir) {
   const businessAreaYaml = parse(await readFile(join(rootDir, "strategy", "business", "area.yaml"), "utf8"));
   const knowledgeReadme = await readFile(join(rootDir, "strategy", "business", "knowledge", "README.md"), "utf8");
   const profile = await readFile(join(rootDir, "strategy", "business", "knowledge", "profile.md"), "utf8");
+  const businessModel = await readFile(join(rootDir, "strategy", "business", "knowledge", "business-model-canvas.md"), "utf8");
   const role = await readFile(join(rootDir, "strategy", "business", "roles", "business-strategist.role.md"), "utf8");
   const identitySkill = await readFile(join(rootDir, "strategy", "business", "skills", "define-business-identity/SKILL.md"), "utf8");
   const operatingModelSkill = await readFile(join(rootDir, "strategy", "business", "skills", "clarify-operating-model/SKILL.md"), "utf8");
+  const businessModelSkill = await readFile(join(rootDir, "strategy", "business", "skills", "define-business-model/SKILL.md"), "utf8");
   const playbook = await readFile(join(rootDir, "strategy", "business", "playbooks", "business-foundation.playbook.md"), "utf8");
 
   assert(businessAgent.includes("# Business Agent"), "Business should have an area AGENT");
@@ -2407,15 +2404,22 @@ async function assertBusinessAreaPattern(rootDir) {
   assert(businessReadme.includes("start with `AGENT.md`"), "Business README should route operational work through AGENT.md");
   assert.equal(businessAreaYaml.area.agent, "AGENT.md", "Business area.yaml should declare AGENT.md");
   assert(businessAreaYaml.area.source_of_truth.includes("knowledge/profile.md"), "Business area.yaml should list knowledge source files");
+  assert(businessAreaYaml.area.source_of_truth.includes("knowledge/business-model-canvas.md"), "Business area.yaml should own business model source of truth");
   assert(knowledgeReadme.includes("# Business Knowledge"), "Business knowledge folder should include a README");
+  assert(knowledgeReadme.includes("business-model-canvas.md"), "Business knowledge README should list business model canvas");
   assert(profile.includes("# Business Profile"), "Business profile should use Business naming");
+  assert(businessModel.includes("## Revenue Model"), "Business model should include revenue model");
+  assert(businessModel.includes("## Assumptions to Validate"), "Business model should include assumptions to validate");
   assert(role.includes("# Business Strategist"), "Business should use Business Strategist role");
   assert(role.includes("../knowledge/profile.md"), "Business Strategist should load Business knowledge files");
+  assert(role.includes("define-business-model"), "Business Strategist should expose business model definition");
   assertSkillFormat(identitySkill, "define-business-identity");
   assertSkillFormat(operatingModelSkill, "clarify-operating-model");
+  assertSkillFormat(businessModelSkill, "define-business-model");
   assert(identitySkill.includes("## Required Context"), "Business identity skill should use rich skill structure");
   assert(identitySkill.includes("../knowledge/profile.md"), "Business identity skill should update Business knowledge");
   assert(operatingModelSkill.includes("Human approval points are explicit"), "Operating model skill should preserve human approval points");
+  assert(businessModelSkill.includes("Route detailed finance modeling to Growth Finance when needed"), "Business model skill should route finance detail to Growth Finance");
   assert(playbook.includes("Business Foundation"), "Business foundation playbook should exist");
   assert(playbook.includes("../knowledge/operating-model.md"), "Business foundation playbook should update operating model knowledge");
 
@@ -2431,15 +2435,13 @@ async function assertProductAreaPattern(rootDir) {
   const icp = await readFile(join(rootDir, "strategy", "product", "knowledge", "icp.md"), "utf8");
   const valueProposition = await readFile(join(rootDir, "strategy", "product", "knowledge", "value-proposition.md"), "utf8");
   const positioning = await readFile(join(rootDir, "strategy", "product", "knowledge", "positioning.md"), "utf8");
-  const businessModel = await readFile(join(rootDir, "strategy", "product", "knowledge", "business-model-canvas.md"), "utf8");
   const validationNotes = await readFile(join(rootDir, "strategy", "product", "knowledge", "validation-notes.md"), "utf8");
   const mvpValidationScope = await readFile(join(rootDir, "strategy", "product", "knowledge", "mvp-validation-scope.md"), "utf8");
   const productStrategistRole = await readFile(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"), "utf8");
   const productManagerRole = await readFile(join(rootDir, "strategy", "product", "roles", "product-manager.role.md"), "utf8");
   const diagnoseFounderIdeaSkill = await readFile(join(rootDir, "strategy", "product", "skills", "map-business-baseline/SKILL.md"), "utf8");
+  const defineProductCoreSkill = await readFile(join(rootDir, "strategy", "product", "skills", "define-product-core/SKILL.md"), "utf8");
   const defineMvpValidationScopeSkill = await readFile(join(rootDir, "strategy", "product", "skills", "define-mvp-validation-scope/SKILL.md"), "utf8");
-  const defineProductSkill = await readFile(join(rootDir, "strategy", "product", "skills", "define-product/SKILL.md"), "utf8");
-  const evaluateIdeaSkill = await readFile(join(rootDir, "strategy", "product", "skills", "evaluate-idea/SKILL.md"), "utf8");
   const productStrategyPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "idea-calibration.playbook.md"), "utf8");
   const mvpValidationScopePlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "mvp-validation-scope.playbook.md"), "utf8");
 
@@ -2458,8 +2460,8 @@ async function assertProductAreaPattern(rootDir) {
   assert(valueProposition.includes("## Differentiation"), "Product value proposition should include differentiation");
   assert(positioning.includes("## Category"), "Product positioning should include category");
   assert(positioning.includes("## Do Not Say"), "Product positioning should include Do Not Say");
-  assert(businessModel.includes("## Revenue Model"), "Product business model should include revenue model");
-  assert(businessModel.includes("## Assumptions to Validate"), "Product business model should include assumptions to validate");
+  assert.equal(productAreaYaml.area.source_of_truth.includes("knowledge/business-model-canvas.md"), false, "Product should not own business model source of truth");
+  assert.equal(knowledgeReadme.includes("business-model-canvas.md"), false, "Product knowledge README should not list business model canvas");
   assert(validationNotes.includes("## Key Assumptions"), "Product validation notes should include key assumptions");
   assert(validationNotes.includes("## Evidence"), "Product validation notes should include evidence");
   assert(validationNotes.includes("## Roadmap Impact"), "Product validation notes should include roadmap impact");
@@ -2469,39 +2471,93 @@ async function assertProductAreaPattern(rootDir) {
   assert(mvpValidationScope.includes("## MVP Slice"), "MVP validation scope should include MVP slice");
   assert(mvpValidationScope.includes("## Success Signals"), "MVP validation scope should include success signals");
   assert(mvpValidationScope.includes("## Pivot Signals"), "MVP validation scope should include pivot signals");
-  assert(mvpValidationScope.includes("## Initial MVP Roadmap Candidate"), "MVP validation scope should include initial roadmap candidate");
+  assert(mvpValidationScope.includes("## MVP Validation Sequence"), "MVP validation scope should include validation sequence");
   assert(productAreaYaml.area.source_of_truth.includes("knowledge/mvp-validation-scope.md"), "Product area.yaml should list MVP validation scope as source of truth");
   assert(productAreaYaml.area.source_of_truth.includes("knowledge/validation-notes.md"), "Product area.yaml should list validation notes as source of truth");
+  assert(productAreaYaml.area.skills.includes("define-product-core"), "Product area.yaml should list define-product-core");
+  assert.equal(productAreaYaml.area.skills.includes("define-product"), false, "Product area.yaml should not list removed define-product");
+  assert.equal(productAreaYaml.area.skills.includes("define-icp"), false, "Product area.yaml should not list removed define-icp");
+  assert.equal(productAreaYaml.area.skills.includes("define-value-proposition"), false, "Product area.yaml should not list removed define-value-proposition");
+  assert.equal(productAreaYaml.area.skills.includes("define-business-model"), false, "Product area.yaml should not list Strategy Business skill");
+  assert.equal(productAreaYaml.area.skills.includes("evaluate-idea"), false, "Product area.yaml should not list removed evaluate-idea");
   assert(productStrategistRole.includes("../knowledge/brief.md"), "Product Strategist should load Product knowledge files");
   assert(productStrategistRole.includes("../knowledge/mvp-validation-scope.md"), "Product Strategist should load MVP validation scope");
   assert(productStrategistRole.includes("map-business-baseline"), "Product Strategist should expose business baseline mapping skill");
+  assert(productStrategistRole.includes("define-product-core"), "Product Strategist should expose product core definition");
   assert(productStrategistRole.includes("define-mvp-validation-scope"), "Product Strategist should expose MVP validation scope skill");
+  assert.equal(productStrategistRole.includes("../skills/define-product/SKILL.md"), false, "Product Strategist should not load removed define-product skill");
+  assert.equal(productStrategistRole.includes("../skills/define-icp/SKILL.md"), false, "Product Strategist should not load removed define-icp skill");
+  assert.equal(productStrategistRole.includes("../skills/define-value-proposition/SKILL.md"), false, "Product Strategist should not load removed define-value-proposition skill");
+  assert.equal(productStrategistRole.includes("../skills/define-business-model/SKILL.md"), false, "Product Strategist should not load business model skill from Product");
+  assert.equal(productStrategistRole.includes("../skills/evaluate-idea/SKILL.md"), false, "Product Strategist should not load removed evaluate-idea skill");
   assert(productManagerRole.includes("../knowledge/brief.md"), "Product Manager should load Product knowledge files");
+  assert(productManagerRole.includes("define-product-core"), "Product Manager should expose product core definition");
+  assert.equal(productManagerRole.includes("../skills/define-product/SKILL.md"), false, "Product Manager should not load removed define-product skill");
+  assert.equal(productManagerRole.includes("../skills/evaluate-idea/SKILL.md"), false, "Product Manager should not load removed evaluate-idea skill");
   assertSkillFormat(diagnoseFounderIdeaSkill, "map-business-baseline");
+  assertSkillFormat(defineProductCoreSkill, "define-product-core");
   assertSkillFormat(defineMvpValidationScopeSkill, "define-mvp-validation-scope");
-  assertSkillFormat(defineProductSkill, "define-product");
-  assertSkillFormat(evaluateIdeaSkill, "evaluate-idea");
   assert(diagnoseFounderIdeaSkill.includes("# Map Business Baseline"), "Product should have a dedicated business baseline mapping skill");
   assert(diagnoseFounderIdeaSkill.includes("Strategy Baseline"), "Business baseline mapping skill should build Strategy Baseline");
   assert(diagnoseFounderIdeaSkill.includes("../../../ai-standard/foundation/progression-gates.md"), "Business baseline mapping skill should load progression gates");
   assert(diagnoseFounderIdeaSkill.includes("baseline gaps"), "Business baseline mapping skill should identify baseline gaps");
   assert(diagnoseFounderIdeaSkill.includes("Do not create roadmap, MVP delivery scope, Epics, Features or implementation work"), "Business baseline mapping skill should stop before roadmap and delivery");
+  assert(defineProductCoreSkill.includes("# Define Product Core"), "Product should have a dedicated product core definition skill");
+  assert(defineProductCoreSkill.includes("Primary user"), "Product core skill should cover the primary user");
+  assert(defineProductCoreSkill.includes("Core problem"), "Product core skill should cover the core problem");
+  assert(defineProductCoreSkill.includes("Product promise"), "Product core skill should cover the product promise");
+  assert(defineProductCoreSkill.includes("Check Product Core readiness"), "Product core skill should check readiness before consolidation");
+  assert(defineProductCoreSkill.includes("do not consolidate yet"), "Product core skill should avoid forced consolidation");
+  assert(defineProductCoreSkill.includes("return missing signals and next useful question to idea-calibration"), "Product core skill should return gaps to idea calibration when signal is insufficient");
+  for (const outputLabel of [
+    "Product in one sentence",
+    "Existing alternative",
+    "Evidence",
+    "Assumptions",
+    "Main open question"
+  ]) {
+    assert(defineProductCoreSkill.includes(outputLabel), `Product core skill should include output label: ${outputLabel}`);
+  }
+  assert(defineProductCoreSkill.includes("Route pricing, revenue or delivery-model decisions to Strategy Business"), "Product core skill should route business model decisions to Strategy Business");
   assert(defineMvpValidationScopeSkill.includes("# Define MVP Validation Scope"), "Product should have a dedicated MVP validation scope skill");
   assert(defineMvpValidationScopeSkill.includes("Business Thesis"), "MVP validation scope skill should require business thesis");
   assert(defineMvpValidationScopeSkill.includes("MVP Slice"), "MVP validation scope skill should require MVP slice");
   assert(defineMvpValidationScopeSkill.includes("Success Signals"), "MVP validation scope skill should require success signals");
   assert(defineMvpValidationScopeSkill.includes("Pivot Signals"), "MVP validation scope skill should require pivot signals");
-  assert(defineMvpValidationScopeSkill.includes("Initial MVP Roadmap Candidate"), "MVP validation scope skill should require initial roadmap candidate");
+  assert(defineMvpValidationScopeSkill.includes("MVP Validation Sequence"), "MVP validation scope skill should define the validation sequence");
+  assert(defineMvpValidationScopeSkill.includes("Do not update Roadmap files from MVP validation scope"), "MVP validation scope skill should not update Roadmap files");
   assert(defineMvpValidationScopeSkill.includes("Do not create Epics, Features or implementation scope"), "MVP validation scope skill should stop before delivery work");
-  assert(defineProductSkill.includes("use MVP Validation Scope for the initial MVP thesis"), "Define product skill should route MVP thesis to Strategy Product");
-  assert(evaluateIdeaSkill.includes("MVP validation scope recommendation"), "Evaluate idea skill should produce MVP validation scope recommendation");
   assert(productStrategyPlaybook.includes("## Guided Conversation"), "Idea calibration playbook should include guided conversation");
   assert(productStrategyPlaybook.includes("../../../ai-standard/foundation/guided-conversation.md"), "Idea calibration playbook should point to guided conversation standard");
   assert(productStrategyPlaybook.includes("Ask one useful question at a time"), "Idea calibration playbook should keep calibration conversational");
+  assert(productStrategyPlaybook.includes("skills/define-product-core/SKILL.md"), "Idea calibration playbook should use product core skill");
+  assert(productStrategyPlaybook.includes("Evaluate fit, assumptions, evidence, MVP impact and roadmap impact inside this playbook"), "Idea calibration playbook should absorb idea evaluation");
+  assert(productStrategyPlaybook.includes("`seed`, `strategy_forming` or `mvp_shaping` -> `playbooks/mvp-validation-scope.playbook.md`"), "Idea calibration should route early-stage ideas to MVP validation scope");
+  assert(productStrategyPlaybook.includes("`mvp_building` or `mvp_live_learning` -> `activation_required: operations.product-ops`"), "Idea calibration should route active MVP work to Product Ops");
+  assert(productStrategyPlaybook.includes("`product_operating` or `growth_scaling` -> `../../roadmap/playbooks/roadmap-cycle-planning.playbook.md`"), "Idea calibration should route operating products to Roadmap");
+  assert.equal(productStrategyPlaybook.includes("strategy/workflows/idea-to-roadmap.workflow.md"), false, "Idea calibration should not bridge through removed idea-to-roadmap workflow");
+  assert.equal(productStrategyPlaybook.includes("skills/evaluate-idea/SKILL.md"), false, "Idea calibration playbook should not call evaluate-idea as a separate skill");
   assert(productStrategyPlaybook.includes("Do not create roadmap, Epics, Features or delivery scope here"), "Idea calibration playbook should stop before roadmap and delivery");
   assert(mvpValidationScopePlaybook.includes("## Guided Conversation"), "MVP validation scope playbook should include guided conversation");
+  assert(mvpValidationScopePlaybook.includes("../../business/knowledge/business-model-canvas.md"), "MVP validation scope playbook should read business model from Strategy Business");
   assert(mvpValidationScopePlaybook.includes("../knowledge/mvp-validation-scope.md"), "MVP validation scope playbook should use MVP validation scope knowledge");
+  assert(mvpValidationScopePlaybook.includes("MVP Validation Sequence"), "MVP validation scope playbook should produce a validation sequence");
+  assert.equal(mvpValidationScopePlaybook.includes("../../roadmap/knowledge/backlog.md"), false, "MVP validation scope playbook should not update Roadmap backlog");
+  assert.equal(mvpValidationScopePlaybook.includes("../../roadmap/knowledge/roadmap.md"), false, "MVP validation scope playbook should not update Roadmap");
+  assert.equal(mvpValidationScopePlaybook.includes("MVP Candidate Roadmap"), false, "MVP validation scope playbook should not create MVP Candidate Roadmap");
   assert(mvpValidationScopePlaybook.includes("Product Ops turns confirmed scope into delivery work"), "MVP validation scope playbook should make the Product Ops handoff explicit");
+
+  for (const oldSkill of [
+    "define-product",
+    "define-icp",
+    "define-value-proposition",
+    "define-business-model",
+    "evaluate-idea"
+  ]) {
+    assert.equal(await exists(join(rootDir, "strategy", "product", "skills", oldSkill, "SKILL.md")), false, `Product should not generate removed skill ${oldSkill}`);
+  }
+
+  assert.equal(await exists(join(rootDir, "strategy", "product", "knowledge", "business-model-canvas.md")), false, "Product should not generate business model canvas knowledge");
 
   for (const oldPath of [
     "brief.md",
@@ -2550,18 +2606,25 @@ async function assertRoadmapAreaPattern(rootDir) {
   assert(currentCycle.includes("## Success Criteria"), "Current cycle knowledge should include success criteria");
   assert(backlog.includes("## Candidate Items"), "Backlog knowledge should include candidate items");
   assert(role.includes("../knowledge/roadmap.md"), "Roadmap Planner should load Roadmap knowledge files");
-  assert(role.includes("../../product/knowledge/mvp-validation-scope.md"), "Roadmap Planner should load Product MVP validation scope");
+  assert.equal(role.includes("../../product/knowledge/mvp-validation-scope.md"), false, "Roadmap Planner should not depend on MVP validation scope as mandatory input");
+  assert(role.includes("../../product/knowledge/brief.md"), "Roadmap Planner should load Product brief context");
   assert.equal(role.includes("../../../operations/product-ops/mvp/scope.md"), false, "Roadmap Planner should not depend on inactive Product Ops MVP scope");
   assert.equal(role.includes("prepare-roadmap-sync"), false, "Roadmap Planner should not own GitHub sync preparation");
   assert(createRoadmapSkill.includes("## Required Context"), "Create roadmap skill should use rich skill structure");
-  assert(createRoadmapSkill.includes("../../product/knowledge/mvp-validation-scope.md"), "Create roadmap should use Product MVP validation scope");
-  assert(createRoadmapSkill.includes("MVP Candidate Roadmap"), "Create roadmap should support MVP Candidate Roadmap");
+  assert.equal(createRoadmapSkill.includes("../../product/knowledge/mvp-validation-scope.md"), false, "Create roadmap should not require Product MVP validation scope");
+  assert.equal(createRoadmapSkill.includes("MVP Candidate Roadmap"), false, "Create roadmap should not create MVP Candidate Roadmap");
+  assert(createRoadmapSkill.includes("product_operating"), "Create roadmap should target product_operating stage");
+  assert(createRoadmapSkill.includes("growth_scaling"), "Create roadmap should target growth_scaling stage");
+  assert(createRoadmapSkill.includes("Do not use Roadmap as the mandatory continuation of first MVP validation"), "Create roadmap should prevent forced Roadmap after MVP validation");
   assert.equal(createRoadmapSkill.includes("../../../operations/product-ops/mvp/scope.md"), false, "Create roadmap should not depend on inactive Product Ops MVP scope");
   assert(prioritizeBacklogSkill.includes("Large items are flagged for epic breakdown"), "Prioritize backlog skill should identify large items");
   assert.equal(await exists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync/SKILL.md")), false, "Roadmap should not generate prepare-roadmap-sync skill");
   assert(cyclePlaybook.includes("Roadmap Cycle Planning"), "Roadmap cycle playbook should replace validation cycle planning");
   assert(cyclePlaybook.includes("../knowledge/current-cycle.md"), "Roadmap cycle playbook should update current-cycle knowledge");
-  assert(cyclePlaybook.includes("../../product/knowledge/mvp-validation-scope.md"), "Roadmap cycle playbook should use Product MVP validation scope");
+  assert.equal(cyclePlaybook.includes("../../product/knowledge/mvp-validation-scope.md"), false, "Roadmap cycle playbook should not require Product MVP validation scope");
+  assert.equal(cyclePlaybook.includes("MVP Candidate Roadmap"), false, "Roadmap cycle playbook should not create MVP Candidate Roadmap");
+  assert(cyclePlaybook.includes("Use only when the product is `product_operating` or `growth_scaling`"), "Roadmap cycle playbook should be stage-gated to operating products");
+  assert(cyclePlaybook.includes("If the business is `mvp_building` or `mvp_live_learning`"), "Roadmap cycle playbook should route active MVP work to Product Ops");
   assert.equal(cyclePlaybook.includes("../../../operations/product-ops/mvp/scope.md"), false, "Roadmap cycle playbook should not depend on inactive Product Ops MVP scope");
   assert.equal(await exists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md")), false, "Roadmap should not generate roadmap-sync-prep playbook");
   assert(projectSync.includes("operations/product-ops/epics/"), "GitHub project sync should point to local Epics/Features");
@@ -3503,7 +3566,6 @@ async function assertInitialContextCoherence(rootDir) {
   ];
 
   const workflowRequirements = [
-    { workflow: "idea-to-roadmap", subareas: ["strategy.product", "strategy.roadmap"] },
     { workflow: "define-mvp", subareas: ["operations.product-ops"] },
     { workflow: "roadmap-item-to-epic", subareas: ["operations.product-ops"] },
     { workflow: "epic-to-features", subareas: ["operations.product-ops", "operations.engineering"] },

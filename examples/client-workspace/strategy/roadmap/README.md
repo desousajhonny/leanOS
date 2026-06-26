@@ -2,12 +2,12 @@
 
 ## Purpose
 
-Own roadmap sequence, milestones, backlog and planning-cycle prioritization.
+Own roadmap sequence, milestones, backlog and planning-cycle prioritization for operating or scaling products.
 
 ## When to Use
 
-- sequence product work
-- prioritize backlog
+- sequence product work for product_operating or growth_scaling
+- prioritize multiple backlog candidates
 - define current cycle
 - plan milestones
 

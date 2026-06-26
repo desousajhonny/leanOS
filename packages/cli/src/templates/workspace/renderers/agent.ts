@@ -180,7 +180,7 @@ ${routingLines.join("\n\n")}
 ## LeanOS Runtime
 
 \`.leanos/\` contains runtime files for context, indexes, local traces and VS Code integration.
-\`.leanos/\` does not own business workflows. Operational workflows live in root departments or their areas, such as \`strategy/workflows/\` and \`operations/workflows/\`.
+\`.leanos/\` does not own business workflows. Operational workflows live in root departments or their areas when that department has active workflows, such as \`operations/workflows/\`.
 
 \`ai-standard/\` is the framework standards router for creating, changing, reviewing or validating LeanOS assets.
 
@@ -211,7 +211,7 @@ Do not use \`ai-standard/\` to define product strategy, MVP, roadmap, design, en
 
 export function leanosRuntimeFiles(): FileEntry[] {
   return [
-    { path: ".leanos/README.md", content: folderReadme("LeanOS Runtime", "Runtime files for LeanOS Chief.", "Use for context, indexes, local traces and VS Code integration.", "context/current-focus.md", ["agent/", "context/", "index/", "traces/", "vscode/"], ["../AGENT.md", "../ai-standard/", "../strategy/", "../operations/", "../growth/"], "This folder is runtime support. Business workflows live in departments or areas such as `strategy/workflows/` and `operations/workflows/`. Operational roles, skills and playbooks live in workspace areas. Traces are local diagnostics, not telemetry.") },
+    { path: ".leanos/README.md", content: folderReadme("LeanOS Runtime", "Runtime files for LeanOS Chief.", "Use for context, indexes, local traces and VS Code integration.", "context/current-focus.md", ["agent/", "context/", "index/", "traces/", "vscode/"], ["../AGENT.md", "../ai-standard/", "../strategy/", "../operations/", "../growth/"], "This folder is runtime support. Business workflows live in departments or areas when active, such as `operations/workflows/`. Operational roles, skills and playbooks live in workspace areas. Traces are local diagnostics, not telemetry.") },
     { path: ".leanos/agent/README.md", content: folderReadme("Agent", "Chief Agent operating guidance.", "Use when defining how LeanOS Chief loads context, activates routes and formats output.", "chief-agent.md", ["chief-agent.md", "operating-rules.md", "context-loading.md", "role-activation.md", "output-standards.md", "protocols/"], ["../../ai-standard/", "../context/"], "Keep this folder concise. Route product work to root departments and areas. Protocols are internal agent procedures, not product workflows.") },
     { path: ".leanos/agent/chief-agent.md", content: "# Chief Agent\n\nLeanOS Chief is the bootloader and dispatcher for the workspace.\n\nIt should load AGENT.md, leanos.yaml, context files and the routing map before acting.\n" },
     { path: ".leanos/agent/operating-rules.md", content: "# Operating Rules\n\n- Start from `../../AGENT.md`.\n- Natural language founder requests are first-class and the primary interface. Root AGENT.md routes to the correct department; department AGENT.md files route to workflows or areas.\n- `AGENT.md` is the operating owner for its level; `README.md` is the directory map.\n- Area `AGENT.md` files, when present, choose the specialist role before skills and playbooks are loaded.\n- For startup requests, route through `../../AGENT.md` and `../../strategy/AGENT.md`.\n- For status, resume, readiness or \"can we build?\" requests, load `protocols/where-we-are.md` before recommending a next step.\n- For trace, debug or diagnostic requests, load `protocols/chief-trace.md` and create only a safe local trace after confirmation.\n- Load only relevant context.\n- Enter the owning department or area before acting.\n- Do not implement before loading the matching workflow, area, role, skill and playbook.\n- Business workflows live in root departments or areas, not in `.leanos/`.\n- During startup, propose updates first and write only after explicit user confirmation.\n- Do not write during the first response.\n- Do not modify roles, skills, playbooks, workflows, `ai-standard/` or `.github/` during startup.\n- Do not write secrets to tracked files.\n- Customize framework files only when the user explicitly asks to change LeanOS itself.\n" },
@@ -335,7 +335,7 @@ If these are missing, explain the gap and recommend the next LeanOS route instea
 - Product strategy weak -> Strategy Product through \`strategy/AGENT.md\`
 - MVP validation scope missing or weak -> Strategy Product through \`strategy/AGENT.md\`
 - MVP delivery scope missing after roadmap item is chosen -> Product Ops \`define-mvp\` workflow when Product Ops is active, otherwise activate \`operations.product-ops\`
-- Roadmap missing -> Strategy \`idea-to-roadmap\` workflow or Strategy Roadmap through \`strategy/AGENT.md\`
+- Roadmap missing for an operating product -> Strategy Roadmap through \`strategy/AGENT.md\`
 - Local epic missing -> Product Ops \`roadmap-item-to-epic\` workflow
 - Features missing -> Product Ops \`epic-to-features\` workflow when available
 - Implementation ready -> Engineering \`feature-to-delivery-cycle\` workflow

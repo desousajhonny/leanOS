@@ -8,8 +8,6 @@ Operate only through active workspace areas:
 - strategy.product: `strategy/product/AGENT.md` (map: `strategy/product/README.md`)
 - strategy.roadmap: `strategy/roadmap/AGENT.md` (map: `strategy/roadmap/README.md`)
 
-Compatible local workflows:
-
-- idea-to-roadmap
+No complete local workflow is active yet.
 
 Product strategy routes are available.

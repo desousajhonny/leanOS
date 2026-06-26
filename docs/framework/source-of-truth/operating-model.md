@@ -9,14 +9,18 @@ Ideia / Contexto Inicial
 -> Idea Calibration
 -> Strategy Baseline
 -> MVP Validation Scope
--> Roadmap Candidate
--> Delivery Scope
+-> MVP Validation Sequence
+-> Product Ops / Delivery Scope
 -> Epic
 -> Features
 -> Delivery
 -> PR / Release
 -> Learning Loop
 ```
+
+Roadmap não é uma etapa obrigatória depois de MVP Validation Scope.
+
+Quando o negócio está em `mvp_building` ou `mvp_live_learning`, uma ideia calibrada que afeta o MVP atual deve seguir para Product Ops. Quando o negócio está em `product_operating` ou `growth_scaling`, Roadmap entra para ordenar ciclo, backlog e múltiplas prioridades.
 
 A sequência nem sempre é linear em produtos maduros, mas os gates continuam valendo. Um founder pode entrar no LeanOS com um produto, codebase ou backlog existente. O LeanOS deve mapear o estágio atual antes de rotear.
 
@@ -62,45 +66,51 @@ Strategy é dona desta decisão porque ela responde:
 
 MVP Validation Scope não cria Epic, Feature, GitHub issue, branch ou código.
 
-### 4. Roadmap Candidate
+### 4. MVP Validation Sequence
 
-O roadmap começa como oportunidade e foco organizados, não como implementação garantida.
+MVP Validation Sequence organiza a ordem mínima para aprender com o MVP: o que tentar primeiro, quais sinais observar, quando pivotar e quando passar para Product Ops.
+
+Ela não cria Roadmap, backlog, Epic, Feature, GitHub issue, branch ou código.
+
+### 5. Roadmap
+
+O roadmap começa como oportunidade e foco organizados, não como implementação garantida. Ele é condicional: deve ser usado quando o produto está operando, escalando ou quando há múltiplas prioridades para ordenar.
 
 O roadmap pode conter:
 
 - Now / Next / Later;
 - itens de not-now;
 - oportunidades de aprendizado;
-- candidatos a MVP;
+- oportunidades de produto;
 - oportunidades futuras de produto.
 
 O roadmap não deve criar automaticamente Epics, Features ou issues no GitHub.
 
-### 5. Delivery Scope
+### 6. Delivery Scope
 
-Delivery Scope traduz Strategy, MVP Validation Scope e direção selecionada do roadmap em escopo concreto de entrega.
+Delivery Scope traduz Strategy, MVP Validation Scope, sequência de validação ou direção selecionada do roadmap em escopo concreto de entrega.
 
 Product Ops é dono do Delivery Scope. Se Product Ops estiver inativo, o LeanOS retorna `activation_required: operations.product-ops`.
 
-### 6. Epic
+### 7. Epic
 
 Um Epic é um artefato local de Product Ops que transforma um item de roadmap ou Delivery Scope em contexto executável de entrega.
 
 Um Epic não é uma issue do GitHub por padrão. O GitHub pode espelhá-lo depois.
 
-### 7. Features
+### 8. Features
 
 Features quebram um Epic em unidades implementáveis.
 
 Cada Feature deve conter critérios de aceite, tasks internas e dimensões de readiness para Product Ops, Engineering e, quando aplicável, Design, Security e DevOps.
 
-### 8. Delivery
+### 9. Delivery
 
 Delivery começa apenas quando uma Feature está pronta para desenvolvimento ou quando um spike técnico explícito foi aprovado.
 
 Engineering entra depois da readiness de Product Ops e de qualquer gate aplicável de Design, Security ou DevOps.
 
-### 9. Ciclo De Aprendizado
+### 10. Ciclo De Aprendizado
 
 Depois da entrega, o LeanOS deve capturar o que mudou, o que foi aprendido, o que continua incerto e qual rota deve acontecer em seguida.
 

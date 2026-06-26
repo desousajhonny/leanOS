@@ -140,7 +140,7 @@ O que ainda falta:
 - entender o menor sinal de validação.
 
 Próximo passo recomendado:
-registrar essa Strategy Baseline mínima e então montar um roadmap candidate simples para o MVP de validação.
+registrar essa Strategy Baseline mínima e então definir o MVP Validation Scope com uma sequência simples de validação.
 
 Pergunta:
 para validar esse negócio, o primeiro MVP precisa enviar mensagens pelo WhatsApp automaticamente, ou já seria útil começar organizando status e respostas das confirmações?
@@ -153,8 +153,8 @@ Estágio: Strategy Baseline quase suficiente
 Rota: Strategy/Product
 Área ativa: Strategy
 Operations/Product Ops: ainda não ativa
-Roadmap: pode nascer depois da próxima resposta
-MVP Scope: ainda não, porque depende de Product Ops
+Roadmap: ainda não é necessário
+MVP Validation Scope: pode nascer em Strategy Product depois da próxima resposta
 Escrita de arquivo: agora faz sentido propor update em Strategy knowledge, com confirmação
 ```
 
@@ -179,28 +179,28 @@ O que já temos:
 - premissa mais arriscada: isso já gera valor mesmo sem envio automático de mensagens.
 
 Próximo passo recomendado:
-registrar essa baseline e criar um roadmap candidate enxuto para o MVP de validação.
+registrar essa baseline e criar um MVP Validation Scope enxuto para o MVP de validação.
 
-Minha sugestão de roadmap candidate:
-- Now: painel simples de consultas com status de confirmação;
-- Now: registro manual ou semi-manual das respostas vindas do WhatsApp;
-- Next: templates de mensagem para confirmação;
-- Later: envio automático pelo WhatsApp;
-- Later: remarcação assistida por IA.
+Minha sugestão de MVP Validation Scope:
+- primeira tentativa: painel simples de consultas com status de confirmação;
+- modo manual/semi-manual: registrar respostas vindas do WhatsApp;
+- sinal de sucesso: recepcionista acompanha pendentes, confirmadas e remarcações sem depender da memória;
+- sinal de pivô: o painel não reduz confusão sem envio automático;
+- fora desta validação: envio automático pelo WhatsApp, remarcação assistida por IA e agenda médica completa.
 
 Pergunta:
-quer que eu registre essa Strategy Baseline e esse roadmap candidate inicial?
+quer que eu registre essa Strategy Baseline e esse MVP Validation Scope inicial?
 ```
 
 Análise do framework:
 
 ```text
 Estágio: Strategy Baseline suficiente
-Rota: Strategy/Product -> Strategy/Roadmap
+Rota: Strategy/Product
 Área ativa: Strategy
 Operations/Product Ops: ainda não ativa
-Roadmap: nasce agora como candidate, não como backlog de implementação
-MVP Scope: ainda não nasce
+Roadmap: não nasce agora
+MVP Validation Scope: nasce como sequência de validação, não como delivery scope
 Escrita de arquivo: sim, mas só após confirmação do founder
 ```
 
@@ -217,9 +217,9 @@ Resposta esperada do LeanOS Chief:
 ```text
 LeanOS Chief: vou fazer duas coisas em sequência, com limites claros.
 
-Primeiro, registrar em Strategy a baseline e o roadmap candidate que acabamos de validar na conversa.
+Primeiro, registrar em Strategy a baseline e o MVP Validation Scope que acabamos de validar na conversa.
 
-Depois, para definir MVP, preciso ativar Operations/Product Ops, porque MVP Scope já é trabalho de estruturação de entrega, não apenas Strategy.
+Depois, para transformar isso em entrega, preciso ativar Operations/Product Ops, porque delivery scope, Epic e Feature já são trabalho operacional.
 
 O que será registrado em Strategy:
 - usuário inicial: recepcionista de clínica pequena;
@@ -227,15 +227,13 @@ O que será registrado em Strategy:
 - alternativa atual: acompanhar conversas manualmente;
 - promessa inicial: clareza sobre consultas confirmadas, pendentes e com ação necessária;
 - premissa mais arriscada: um painel de status já gera valor sem envio automático;
-- roadmap candidate:
-  - Now: painel de consultas com status;
-  - Now: registro manual/semi-manual de respostas;
-  - Next: templates de confirmação;
-  - Later: envio automático via WhatsApp;
-  - Later: remarcação assistida por IA.
+- MVP Validation Scope:
+  - primeira tentativa: painel de consultas com status;
+  - modo manual/semi-manual: registro de respostas;
+  - fora da validação inicial: envio automático via WhatsApp e remarcação assistida por IA.
 
 Próximo passo recomendado:
-ativar Operations/Product Ops para transformar esse foco em um Escopo de MVP pequeno e validável.
+ativar Operations/Product Ops para transformar esse foco em delivery scope pequeno e validável.
 
 Pergunta:
 posso ativar Operations/Product Ops e criar os arquivos mínimos para definir o MVP?
@@ -244,13 +242,13 @@ posso ativar Operations/Product Ops e criar os arquivos mínimos para definir o 
 Análise do framework:
 
 ```text
-Estágio: transição de Strategy para Escopo de MVP
-Rota 1: Strategy/Product + Strategy/Roadmap para registrar baseline/roadmap candidate
+Estágio: transição de Strategy para Delivery Scope de MVP
+Rota 1: Strategy/Product para registrar baseline e MVP Validation Scope
 Rota 2: activation_required: operations.product-ops
 Área ativa atual: Strategy
 Área requerida: Operations/Product Ops
-Roadmap: existe como candidate
-MVP Scope: ainda não escrito
+Roadmap: ainda não é necessário
+MVP Validation Scope: escrito em Strategy se confirmado
 Escrita de arquivo: sim para Strategy se confirmado; Product Ops só depois de nova confirmação de ativação
 ```
 
@@ -269,7 +267,7 @@ LeanOS Chief: ativando Operations/Product Ops porque agora o trabalho saiu de St
 
 O que já temos:
 - Strategy Baseline mínima;
-- roadmap candidate inicial;
+- MVP Validation Scope inicial;
 - foco de validação: painel de status para confirmações de consulta.
 
 O que vou criar:
@@ -349,9 +347,9 @@ Escrita de arquivo: só depois da confirmação do founder sobre o escopo
 1. O Chief começa por Strategy, não por aplicativo, tecnologia ou implementação.
 2. A primeira pergunta deve reduzir a ambiguidade da Strategy Baseline.
 3. O Chief deve fazer uma pergunta útil por vez.
-4. Roadmap Candidate nasce quando usuário, dor, alternativa atual, promessa e premissa mais arriscada estão minimamente claros.
-5. Roadmap Candidate não é backlog de implementação.
-6. MVP Scope não deve ser escrito enquanto Product Ops estiver inativo.
+4. MVP Validation Scope nasce quando usuário, dor, alternativa atual, promessa e premissa mais arriscada estão minimamente claros.
+5. MVP Validation Scope não é backlog, Roadmap ou implementação.
+6. Delivery Scope não deve ser escrito enquanto Product Ops estiver inativo.
 7. Product Ops deve ser ativado por `activation_required`, com explicação e confirmação.
 8. Ativar Product Ops não ativa Design, Engineering, Security, DevOps ou Growth automaticamente.
 9. O Chief pode registrar Strategy depois de confirmação explícita, mas não deve ativar áreas novas sem confirmação separada.
@@ -361,7 +359,7 @@ Escrita de arquivo: só depois da confirmação do founder sobre o escopo
 
 - A primeira pergunta deve sempre oferecer opções ou pode ser aberta em alguns casos?
 - O Turno 3 já deveria propor escrita de Strategy ou esperar o Turno 4?
-- O roadmap candidate deve nascer antes ou depois da confirmação de Strategy Baseline?
+- O MVP Validation Scope deve nascer antes ou depois da confirmação de Strategy Baseline?
 - A ativação de Product Ops deve acontecer imediatamente após o founder pedir MVP, ou o Chief deve explicar uma vez e aguardar confirmação separada?
 - O Turno 7 deve propor MVP em texto livre ou já usar campos estruturados do template de MVP?
 - O Critério de sucesso do MVP está suficientemente mensurável ou ainda está qualitativo demais?

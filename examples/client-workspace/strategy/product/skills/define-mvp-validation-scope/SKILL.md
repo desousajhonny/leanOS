@@ -1,18 +1,18 @@
 ---
 name: define-mvp-validation-scope
-description: Use when a founder has a raw idea and wants the first MVP direction; the roadmap needs a simple MVP validation source; validation should happen through an MVP, landing page, manual workflow or concierge slice
+description: Use when a founder has a raw idea and wants the first MVP direction; the business is in seed, strategy_forming or mvp_shaping; validation should happen through an MVP, landing page, manual workflow or concierge slice
 ---
 
 # Define MVP Validation Scope
 
 ## Overview
 
-Define the smallest MVP validation path that can test the business thesis and produce an MVP Candidate Roadmap.
+Define the smallest MVP validation path that can test the business thesis and produce an MVP Validation Sequence.
 
 ## Use When
 
 - a founder has a raw idea and wants the first MVP direction
-- the roadmap needs a simple MVP validation source
+- the business is in seed, strategy_forming or mvp_shaping
 - validation should happen through an MVP, landing page, manual workflow or concierge slice
 
 ## Required Context
@@ -21,7 +21,7 @@ Define the smallest MVP validation path that can test the business thesis and pr
 - ../knowledge/problem.md
 - ../knowledge/icp.md
 - ../knowledge/value-proposition.md
-- ../knowledge/business-model-canvas.md
+- ../../business/knowledge/business-model-canvas.md
 - ../knowledge/mvp-validation-scope.md
 - ../knowledge/validation-notes.md
 
@@ -63,18 +63,19 @@ Define Success Signals and Pivot Signals.
 
 ### Step 7
 
-Draft the Initial MVP Roadmap Candidate without creating Epics or Features.
+Draft the MVP Validation Sequence without creating roadmap, Epics or Features.
 
 ### Step 8
 
-Record open risks and whether the scope is ready for Roadmap.
+Record open risks and whether the scope is ready for Product Ops.
 
 ## Checks
 
 - The MVP validates the business thesis instead of maximizing feature count.
 - Manual or concierge work is allowed when it speeds validation.
 - Success and pivot signals are observable.
-- The Initial MVP Roadmap Candidate is still Strategy context, not delivery scope.
+- The MVP Validation Sequence is not roadmap or delivery scope.
+- Do not update Roadmap files from MVP validation scope.
 
 ## Output
 
@@ -83,8 +84,8 @@ Record open risks and whether the scope is ready for Roadmap.
 - MVP Slice
 - Success Signals
 - Pivot Signals
-- Initial MVP Roadmap Candidate
-- Ready-for-roadmap recommendation
+- MVP Validation Sequence
+- Ready-for-Product-Ops recommendation
 
 ## Files to Update
 
@@ -95,4 +96,4 @@ Record open risks and whether the scope is ready for Roadmap.
 
 - Do not require interviews or research before proposing an MVP validation scope when the founder wants speed.
 - Do not create Epics, Features or implementation scope from Strategy Product.
-- Do not update roadmap files from this skill unless the founder confirms the roadmap handoff.
+- Do not update Roadmap files from MVP validation scope.

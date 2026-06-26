@@ -8,10 +8,12 @@ export function rootDepartmentFiles(answers: WorkspaceAnswers, activeAreas: Area
     const workflows = activeDepartmentWorkflows(department, areas);
 
     return [
-      { path: `${department.key}/AGENT.md`, content: departmentAgent(department, areas) },
+      { path: `${department.key}/AGENT.md`, content: departmentAgent(department, areas, workflows) },
       { path: `${department.key}/README.md`, content: departmentReadme(department, areas) },
       { path: `${department.key}/department.yaml`, content: departmentYaml(department, areas, workflows) },
-      { path: `${department.key}/workflows/README.md`, content: folderReadme(`${department.name} Workflows`, `Internal cross-area workflows for ${department.name}.`, "Use when work spans more than one active area inside this department.", "../department.yaml", workflows.map((workflow) => `${workflow.slug}.workflow.md`), areas.map((area) => `../${area.slug}/`), "Workflows route between active areas; if a workflow is missing, ask before activating or creating the missing area.") },
+      ...(workflows.length > 0
+        ? [{ path: `${department.key}/workflows/README.md`, content: folderReadme(`${department.name} Workflows`, `Internal cross-area workflows for ${department.name}.`, "Use when work spans more than one active area inside this department.", "../department.yaml", workflows.map((workflow) => `${workflow.slug}.workflow.md`), areas.map((area) => `../${area.slug}/`), "Workflows route between active areas; if a workflow is missing, ask before activating or creating the missing area.") }]
+        : []),
       ...workflows.map((workflow) => ({
         path: `${department.key}/workflows/${workflow.slug}.workflow.md`,
         content: departmentWorkflowFile(department, areas, workflow)
@@ -41,7 +43,35 @@ function areaFiles(area: AreaDefinition, answers: WorkspaceAnswers): FileEntry[]
   ];
 }
 
-function departmentAgent(department: RootDepartmentDefinition, areas: AreaDefinition[]): string {
+function departmentAgent(department: RootDepartmentDefinition, areas: AreaDefinition[], workflows: DepartmentWorkflowDefinition[]): string {
+  const hasWorkflows = workflows.length > 0;
+  const areaRoute = areas.some((area) => area.lead) ? "\`AGENT.md\` when present; otherwise route to its README" : "README";
+  const workflowRoutingRules = hasWorkflows
+    ? `1. If the founder request changes state, priority, scope, handoff, roadmap, delivery, launch or learning, open \`workflows/README.md\` and choose the smallest matching workflow.
+2. If the request is calibration, clarification, evaluation or definition inside one area, route to that area ${areaRoute}.
+3. If the request belongs to one area and one asset family, route to that area ${areaRoute}.
+4. If you are unsure, check \`workflows/README.md\` first; if no workflow matches, route to the smallest active area.
+5. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
+6. Do not load roles, skills or playbooks before entering the owning area.`
+    : `1. If the founder request changes state, priority, scope, handoff, roadmap, delivery, launch or learning and no department workflow exists, route to the smallest active area \`AGENT.md\` or README.
+2. If the request is calibration, clarification, evaluation or definition inside one area, route to that area ${areaRoute}.
+3. If the request belongs to one area and one asset family, route to that area ${areaRoute}.
+4. If you are unsure, use \`department.yaml\` and the active area list to choose the smallest active area.
+5. If the needed area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
+6. Do not load roles, skills or playbooks before entering the owning area.`;
+  const workflowEntry = hasWorkflows
+    ? `## Workflow Entry
+
+- Department workflows: \`workflows/README.md\`
+
+Use workflows for multi-step journeys and cross-area sequencing. Use area playbooks for tactical execution inside one area.`
+    : `## Playbook Entry
+
+This department has no active department-level workflows. Use area playbooks for practical multi-step execution inside the owning area.`;
+  const journeySignals = hasWorkflows
+    ? `Use \`workflows/README.md\` when the founder asks for a multi-step decision or transition, such as:`
+    : `Route multi-step decisions to the owning area playbook when no department workflow exists, such as:`;
+
   return `# ${department.name} Agent
 
 You are the ${departmentOperatingOwner(department)} for this workspace.
@@ -60,16 +90,11 @@ Use this department for ${department.requestTypes}.
 
 ## Routing Rules
 
-1. If the founder request changes state, priority, scope, handoff, roadmap, delivery, launch or learning, open \`workflows/README.md\` and choose the smallest matching workflow.
-2. If the request is calibration, clarification, evaluation or definition inside one area, route to that area ${areas.some((area) => area.lead) ? "\`AGENT.md\` when present; otherwise route to its README" : "README"}.
-3. If the request belongs to one area and one asset family, route to that area ${areas.some((area) => area.lead) ? "\`AGENT.md\` when present; otherwise route to its README" : "README"}.
-4. If you are unsure, check \`workflows/README.md\` first; if no workflow matches, route to the smallest active area.
-5. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
-6. Do not load roles, skills or playbooks before entering the owning area.
+${workflowRoutingRules}
 
 ## Journey Signals
 
-Use \`workflows/README.md\` when the founder asks for a multi-step decision or transition, such as:
+${journeySignals}
 
 ${departmentJourneySignals(department)}
 
@@ -77,11 +102,7 @@ ${departmentJourneySignals(department)}
 
 ${areas.map((area) => `- ${area.name}: \`${area.slug}/${area.lead ? "AGENT.md" : "README.md"}\` - ${area.purpose}`).join("\n")}
 
-## Workflow Entry
-
-- Department workflows: \`workflows/README.md\`
-
-Use workflows for multi-step journeys and cross-area sequencing. Use area playbooks for tactical execution inside one area.
+${workflowEntry}
 
 ## Navigation
 

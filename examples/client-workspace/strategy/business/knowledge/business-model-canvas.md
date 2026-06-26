@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Define how the product can create, deliver and capture value at MVP stage.
+Define how the business can create, deliver and capture value as the product evolves.
 
 ## Current State
 

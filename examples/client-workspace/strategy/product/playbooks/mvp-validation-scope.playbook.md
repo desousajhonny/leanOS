@@ -10,11 +10,9 @@ Turn a confirmed Strategy Baseline into the smallest MVP validation scope before
 - ../knowledge/problem.md
 - ../knowledge/icp.md
 - ../knowledge/value-proposition.md
-- ../knowledge/business-model-canvas.md
+- ../../business/knowledge/business-model-canvas.md
 - ../knowledge/mvp-validation-scope.md
 - ../knowledge/validation-notes.md
-- ../../roadmap/knowledge/backlog.md
-- ../../roadmap/knowledge/roadmap.md
 
 ## Process
 
@@ -23,7 +21,7 @@ Turn a confirmed Strategy Baseline into the smallest MVP validation scope before
 3. Choose the smallest validation artifact: product slice, landing page, manual/concierge workflow, prototype or simple automation.
 4. Separate In Scope, Out of Scope, Manual / Concierge Parts and Productized Parts.
 5. Define Success Signals and Pivot Signals.
-6. Draft the MVP Candidate Roadmap without creating Epics, Features, GitHub issues or implementation work.
+6. Draft the MVP Validation Sequence without creating roadmap, Epics, Features, GitHub issues or implementation work.
 7. Use `skills/check-coherence/SKILL.md` before proposing file updates.
 8. Ask the founder to confirm the MVP validation scope before writing.
 9. After confirmation, offer the handoff to Product Ops when the founder wants delivery scope or Epic planning.
@@ -46,15 +44,13 @@ Do not ask a rigid questionnaire. Ask only what is missing.
 - MVP slice
 - Success signals
 - Pivot signals
-- MVP Candidate Roadmap
+- MVP Validation Sequence
 - Product Ops handoff recommendation
 
 ## Files to Update
 
 - ../knowledge/mvp-validation-scope.md
 - ../knowledge/validation-notes.md
-- ../../roadmap/knowledge/backlog.md
-- ../../roadmap/knowledge/roadmap.md
 
 ## Navigation
 
