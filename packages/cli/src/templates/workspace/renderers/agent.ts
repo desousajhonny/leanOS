@@ -71,6 +71,28 @@ Examples:
 - "define the MVP" -> \`.leanos/commands/define-mvp.md\`
 - "review this PR" -> \`.leanos/commands/review-pr.md\`
 
+## Progression Intent Routing
+
+For founder progression decisions, use \`ai-standard/foundation/founder-progression-model.md\` as the operating rule for stage, gate and activation behavior. Use it for routing discipline only; product decisions still belong to the active department through the Navigation Chain.
+
+Apply this decision shape:
+
+\`\`\`text
+Intent -> Current Stage -> Gate -> Active Requirements -> Route
+\`\`\`
+
+Rules:
+
+- Start, restart or idea diagnosis: \`strategy/AGENT.md\`
+- Roadmap, prioritization or validation route: \`strategy/AGENT.md\`
+- MVP, epic, feature or delivery shaping: \`operations/AGENT.md\` only when the required Operations area is active.
+- Implementation, branch, PR or review: \`operations/AGENT.md\` only when Engineering is active and delivery readiness is clear.
+- Launch, acquisition, onboarding or learning loop: \`growth/AGENT.md\` only when the required Growth area is active.
+- If the next step requires an inactive or missing department or area, return \`activation_required\` instead of opening or inventing paths.
+- Do not load inactive departments.
+- Do not treat \`available\` as \`exists\`.
+- Do not route directly from root to roles, skills, playbooks, workflows or knowledge.
+
 ## Natural Intent Map
 
 Use this map as routing guidance, not as execution detail. After selecting the route, load the owning command, department or workflow and let that file decide the next step.

@@ -133,6 +133,7 @@ client-workspace/
 |   |   |-- asset-taxonomy.md
 |   |   |-- creation-rules.md
 |   |   |-- folder-documentation-rules.md
+|   |   |-- founder-progression-model.md
 |   |   |-- guided-conversation.md
 |   |   |-- naming-conventions.md
 |   |   |-- navigation-chain.md

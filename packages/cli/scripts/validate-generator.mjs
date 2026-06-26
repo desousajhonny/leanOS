@@ -112,6 +112,7 @@ async function validateWorkspaceFiles() {
     "ai-standard/README.md",
     "ai-standard/foundation/README.md",
     "ai-standard/foundation/navigation-chain.md",
+    "ai-standard/foundation/founder-progression-model.md",
     "ai-standard/foundation/guided-conversation.md",
     "ai-standard/foundation/asset-taxonomy.md",
     "ai-standard/foundation/creation-rules.md",
@@ -1719,6 +1720,13 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("Loaded Context:"), "Root AGENT.md should require loaded context in response header");
   assert(rootAgent.includes("## Natural Language Handling"), "Root AGENT.md should route natural-language requests");
   assert(rootAgent.includes("If a natural-language request clearly matches an existing LeanOS command"), "Root AGENT.md should map natural language to commands when clear");
+  assert(rootAgent.includes("## Progression Intent Routing"), "Root AGENT.md should include progression intent routing");
+  assert(rootAgent.includes("`ai-standard/foundation/founder-progression-model.md`"), "Root AGENT.md should reference the Founder Progression Model");
+  assert(rootAgent.includes("Intent -> Current Stage -> Gate -> Active Requirements -> Route"), "Root AGENT.md should define the progression routing decision shape");
+  assert(rootAgent.includes("If the next step requires an inactive or missing department or area, return `activation_required`"), "Root AGENT.md should return activation_required instead of inventing missing areas");
+  assert(rootAgent.includes("Do not load inactive departments"), "Root AGENT.md should forbid inactive department loading");
+  assert(rootAgent.includes("Do not treat `available` as `exists`"), "Root AGENT.md should distinguish available from existing workspace assets");
+  assert(rootAgent.includes("Start, restart or idea diagnosis: `strategy/AGENT.md`"), "Root AGENT.md should route start and diagnosis through Strategy AGENT");
   assert(rootAgent.includes("## Natural Intent Map"), "Root AGENT.md should include a compact natural intent map");
   assert(rootAgent.includes("Use this map as routing guidance, not as execution detail"), "Root AGENT.md should keep intent map lightweight");
   assert(rootAgent.includes("New idea or feature evaluation: `strategy/AGENT.md`"), "Root AGENT.md should route idea evaluation through Strategy AGENT");
@@ -1929,6 +1937,7 @@ async function assertFounderIntentRouting(rootDir) {
 async function assertAiStandardAssetTaxonomy(rootDir) {
   const aiStandardReadme = await readFile(join(rootDir, "ai-standard", "README.md"), "utf8");
   const foundationReadme = await readFile(join(rootDir, "ai-standard", "foundation", "README.md"), "utf8");
+  const founderProgressionModel = await readFile(join(rootDir, "ai-standard", "foundation", "founder-progression-model.md"), "utf8");
   const assetTaxonomy = await readFile(join(rootDir, "ai-standard", "foundation", "asset-taxonomy.md"), "utf8");
   const guidedConversation = await readFile(join(rootDir, "ai-standard", "foundation", "guided-conversation.md"), "utf8");
   const creationRules = await readFile(join(rootDir, "ai-standard", "foundation", "creation-rules.md"), "utf8");
@@ -1943,9 +1952,30 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
   assert(aiStandardReadme.includes("Do not load all of `ai-standard/` by default"), "AI Standard README should encourage minimal loading");
   assert(foundationReadme.includes("asset-taxonomy.md"), "Foundation README should list asset taxonomy");
   assert(foundationReadme.includes("navigation-chain.md"), "Foundation README should list navigation chain");
+  assert(foundationReadme.includes("founder-progression-model.md"), "Foundation README should list founder progression model");
   assert(foundationReadme.includes("guided-conversation.md"), "Foundation README should list guided conversation");
   assert(foundationReadme.includes("folder-documentation-rules.md"), "Foundation README should list folder documentation rules");
+  assert(aiStandardReadme.includes("foundation/founder-progression-model.md"), "AI Standard README should route founder progression decisions");
   assert(aiStandardReadme.includes("foundation/guided-conversation.md"), "AI Standard README should route guided conversation decisions");
+  for (const expected of [
+    "Setup Seed",
+    "Strategy Seed",
+    "Strategy Baseline",
+    "Idea Diagnosis",
+    "Roadmap Inicial",
+    "MVP Decision",
+    "Product Shaping",
+    "Delivery Readiness",
+    "Implementation",
+    "Launch",
+    "Learning Loop",
+    "Scaling / Operating Cadence",
+    "activation_required",
+    "Progression Intent Routing",
+    "Do not load inactive departments"
+  ]) {
+    assert(founderProgressionModel.includes(expected), `Founder Progression Model should include ${expected}`);
+  }
   assert(guidedConversation.includes("# Guided Conversation"), "Guided conversation should have expected title");
   assert(guidedConversation.includes("the host application's native selection UI when available"), "Guided conversation should prefer native selection UI when available");
   assert(guidedConversation.includes("If no native selection UI is available, write numbered options directly in chat"), "Guided conversation should define numbered fallback");
