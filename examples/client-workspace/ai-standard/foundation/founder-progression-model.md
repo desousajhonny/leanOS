@@ -99,7 +99,23 @@ Activation creates workspace surface area only when the founder's stage needs it
 
 ## activation_required Response
 
-When activation is required, the Chief should not try to open missing paths. It should answer with:
+When activation is required, the Chief should not try to open missing paths.
+
+Do not answer with only `activation_required`.
+
+First explain the next natural operating step in founder language:
+
+```text
+Esse pedido ja passou do ponto de estrategia. Minha sugestao e abrir Product Ops agora para transformar isso em escopo executavel.
+```
+
+Then ask for confirmation before creating or activating any department or area:
+
+```text
+Posso ativar Operations/Product Ops e criar os arquivos minimos para esse proximo passo?
+```
+
+Then include the structured activation decision:
 
 ```yaml
 activation_required:

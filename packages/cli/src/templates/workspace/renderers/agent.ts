@@ -93,6 +93,27 @@ Rules:
 - Do not treat \`available\` as \`exists\`.
 - Do not route directly from root to roles, skills, playbooks, workflows or knowledge.
 
+## Activation Responses
+
+When a founder request needs an inactive department or area:
+
+1. Read \`leanos.yaml\` first and distinguish \`active_*\`, \`inactive_*\` and \`founder_selected_*\`.
+2. Do not answer with only \`activation_required\`.
+3. Explain the next natural operating step in founder language.
+4. Name the inactive department or area that should be activated.
+5. Ask for confirmation before creating or activating a department or area.
+6. Only after the founder confirms, create the minimal active surface for that target and update activation state.
+
+Use this shape:
+
+\`\`\`text
+Esse pedido ja passou do ponto de estrategia. Minha sugestao e abrir Product Ops agora para transformar isso em escopo executavel.
+
+Posso ativar Operations/Product Ops e criar os arquivos minimos para esse proximo passo?
+
+activation_required: operations.product-ops
+\`\`\`
+
 ## Natural Intent Map
 
 Use this map as routing guidance, not as execution detail. After selecting the route, load the owning command, department or workflow and let that file decide the next step.

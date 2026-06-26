@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { parse } from "yaml";
 import { createTreeMarkdown, exampleAnswers } from "./generate-client-workspace.mjs";
 import { writeWorkspaceFiles } from "../dist/generators/file-writer.js";
+import { activateWorkspaceArea } from "../dist/generators/workspace-activation.js";
 import { generateWorkspace } from "../dist/generators/workspace-generator.js";
 import { createWorkspaceFiles } from "../dist/templates/workspace-template.js";
 
@@ -101,6 +102,7 @@ await validatePartialAreaSelection();
 await validateEngineeringOnlyContext();
 await validateDesignOnlyContext();
 await validateGrowthValidationContext();
+await validateProductOpsActivation();
 await validateExistingProductRepoMode();
 await validateWriterSkipsExistingFiles();
 await validateWriterOverwritesWhenAllowed();
@@ -1047,6 +1049,67 @@ async function validateGrowthValidationContext() {
   assert.equal(await exists(join(rootDir, ".env.local")), false, "Workspace should not generate .env.local when GitHub management was not requested");
 }
 
+async function validateProductOpsActivation() {
+  const rootDir = await mkdtemp(join(tmpdir(), "leanos-product-ops-activation-"));
+  await generateWorkspace(rootDir, answers);
+
+  const result = await activateWorkspaceArea(rootDir, "operations.product-ops");
+
+  assert(result.writtenPaths.length > 0, "Product Ops activation should write files");
+  assert.equal(result.activatedArea, "operations.product-ops");
+  assert.equal(result.activatedDepartment, "operations");
+  assert(result.writtenPaths.includes("operations/AGENT.md"), "Product Ops activation should create Operations");
+  assert(result.writtenPaths.includes("operations/product-ops/AGENT.md"), "Product Ops activation should create Product Ops");
+  assert(result.writtenPaths.includes(".leanos/commands/define-mvp.md"), "Product Ops activation should create define-mvp command");
+  assert(result.writtenPaths.includes("leanos.yaml"), "Product Ops activation should update leanos.yaml");
+  assert.equal(result.writtenPaths.some((writtenPath) => writtenPath.startsWith("ai-standard/")), false, "Activation should not regenerate AI Standard");
+  assert.equal(result.writtenPaths.some((writtenPath) => writtenPath.startsWith(".github/")), false, "Activation should not regenerate GitHub support files");
+  assert.equal(await exists(join(rootDir, "operations", "design")), false, "Product Ops activation should not generate Design");
+  assert.equal(await exists(join(rootDir, "operations", "engineering")), false, "Product Ops activation should not generate Engineering");
+  assert.equal(await exists(join(rootDir, "growth")), false, "Product Ops activation should not generate Growth");
+
+  await assertExists(join(rootDir, "operations", "AGENT.md"));
+  await assertExists(join(rootDir, "operations", "workflows", "define-mvp.workflow.md"));
+  await assertExists(join(rootDir, "operations", "workflows", "roadmap-item-to-epic.workflow.md"));
+  await assertExists(join(rootDir, "operations", "product-ops", "AGENT.md"));
+  await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "mvp-decision-gate.md"));
+  await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "ready-to-develop.md"));
+  await assertExists(join(rootDir, "operations", "product-ops", "mvp", "prd.md"));
+  await assertExists(join(rootDir, ".leanos", "commands", "define-mvp.md"));
+  assert.equal(await exists(join(rootDir, ".leanos", "commands", "define-design.md")), false, "Design command should wait for Design activation");
+  assert.equal(await exists(join(rootDir, ".leanos", "commands", "workon-feature.md")), false, "Engineering command should wait for Engineering activation");
+
+  const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
+  assert.deepEqual(yaml.departments.active, ["strategy", "operations"]);
+  assert.equal(yaml.departments.routes.operations.agent, "operations/AGENT.md");
+  assert.deepEqual(yaml.activation.active_departments, ["strategy", "operations"]);
+  assert.deepEqual(yaml.activation.inactive_departments, ["growth"]);
+  assert(yaml.activation.active_areas.includes("operations.product-ops"), "Product Ops should become active");
+  assert.equal(yaml.activation.inactive_areas.includes("operations.product-ops"), false, "Product Ops should leave inactive areas");
+  assert(yaml.activation.inactive_areas.includes("operations.engineering"), "Engineering should remain inactive");
+  assert(yaml.workflows.active.includes("define-mvp"), "Product Ops activation should enable define-mvp workflow");
+  assert(yaml.workflows.active.includes("roadmap-item-to-epic"), "Product Ops activation should enable roadmap-item-to-epic workflow");
+  assert.equal(yaml.workflows.active.includes("feature-to-delivery-cycle"), false, "Engineering workflows should wait for Engineering activation");
+
+  const routingMap = parse(await readFile(join(rootDir, ".leanos", "index", "routing-map.yaml"), "utf8"));
+  const rolesIndex = parse(await readFile(join(rootDir, ".leanos", "index", "roles.yaml"), "utf8"));
+  const playbooksIndex = parse(await readFile(join(rootDir, ".leanos", "index", "playbooks.yaml"), "utf8"));
+  const workspaceSummary = await readFile(join(rootDir, ".leanos", "context", "workspace-summary.md"), "utf8");
+  const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
+  const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
+
+  assert.equal(routingMap.routing.departments.operations.agent, "../../operations/AGENT.md");
+  assert.equal(routingMap.routing.areas.product_ops.agent, "../../operations/product-ops/AGENT.md");
+  assert(rolesIndex.roles.some((role) => role.key === "product-owner"), "Product Owner role should be indexed after Product Ops activation");
+  assert(playbooksIndex.playbooks.some((playbook) => playbook.key === "mvp-delivery"), "MVP delivery playbook should be indexed after Product Ops activation");
+  assert(workspaceSummary.includes("Active departments: strategy, operations"), "Workspace summary should include active Operations");
+  assert(workspaceSummary.includes("operations.product-ops"), "Workspace summary should include Product Ops");
+  assert(nextActions.includes("/define-mvp"), "Next actions should expose define-mvp after Product Ops activation");
+  assert(rootAgent.includes("- Operations: `operations/AGENT.md`"), "Root AGENT should route to Operations after activation");
+
+  await assertIndexPathsExist(rootDir);
+}
+
 async function assertProgressiveStrategyOnlyWorkspace(rootDir, founderSelectedSubareas) {
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
   const rolesIndex = parse(await readFile(join(rootDir, ".leanos", "index", "roles.yaml"), "utf8"));
@@ -1445,6 +1508,10 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("`ai-standard/foundation/founder-progression-model.md`"), "Root AGENT.md should reference the Founder Progression Model");
   assert(rootAgent.includes("Intent -> Current Stage -> Gate -> Active Requirements -> Route"), "Root AGENT.md should define the progression routing decision shape");
   assert(rootAgent.includes("If the next step requires an inactive or missing department or area, return `activation_required`"), "Root AGENT.md should return activation_required instead of inventing missing areas");
+  assert(rootAgent.includes("Do not answer with only `activation_required`"), "Root AGENT.md should require natural activation language");
+  assert(rootAgent.includes("Explain the next natural operating step"), "Root AGENT.md should explain why activation is the next operating step");
+  assert(rootAgent.includes("Ask for confirmation before creating or activating a department or area"), "Root AGENT.md should ask before activation");
+  assert(rootAgent.includes("Read `leanos.yaml` first and distinguish `active_*`, `inactive_*` and `founder_selected_*`"), "Root AGENT.md should distinguish activation state fields");
   assert(rootAgent.includes("Do not load inactive departments"), "Root AGENT.md should forbid inactive department loading");
   assert(rootAgent.includes("Do not treat `available` as `exists`"), "Root AGENT.md should distinguish available from existing workspace assets");
   assert(rootAgent.includes("Start, restart or idea diagnosis: `strategy/AGENT.md`"), "Root AGENT.md should route start and diagnosis through Strategy AGENT");
@@ -1602,6 +1669,9 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
     "Learning Loop",
     "Scaling / Operating Cadence",
     "activation_required",
+    "Do not answer with only `activation_required`",
+    "Esse pedido ja passou do ponto de estrategia",
+    "Posso ativar Operations/Product Ops",
     "Progression Intent Routing",
     "Do not load inactive departments"
   ]) {
