@@ -179,13 +179,13 @@ function departmentWorkflowFile(department: RootDepartmentDefinition, activeArea
 
 ${workflow.purpose}
 
-${workflow.founderTriggers ? listSection("Founder Triggers", workflow.founderTriggers.map((trigger) => `"${trigger}"`)) : ""}${workflow.owner ? ownerSection(workflow.owner) : ""}## Required Areas
+${workflow.founderTriggers ? listSection("Founder Triggers", workflow.founderTriggers.map((trigger) => `"${trigger}"`)) : ""}${workflow.progressionStage ? `## Progression Stage\n\n${workflow.progressionStage}\n\n` : ""}${workflow.entryGate ? listSection("Entry Gate", workflow.entryGate) : ""}${workflow.activeRequirements ? listSection("Active Requirements", workflow.activeRequirements) : ""}${workflow.activationRequirements ? listSection("Activation Requirements", workflow.activationRequirements) : ""}${workflow.owner ? ownerSection(workflow.owner) : ""}## Required Areas
 
 ${workflow.requiredAreas.map((area) => `- ${area}`).join("\n")}
 
 ${workflow.conditionalAreas ? conditionalAreasSection(workflow.conditionalAreas) : ""}${missingAreas.length > 0 ? `## Availability\n\nThis workflow references areas that are not currently active: ${missingAreas.join(", ")}.\n\nDo not load missing area paths. Ask whether to activate or create the missing area before executing this workflow.\n` : "## Availability\n\nAll required areas are active in this department.\n"}
 
-${workflow.loadFirst ? listSection("Load First", workflow.loadFirst.map((path) => `\`${path}\``)) : ""}${workflow.navigationRoute ? orderedSection("Navigation Route", workflow.navigationRoute.map((path) => `\`${path}\``)) : ""}## Sequence
+${workflow.loadFirst ? listSection("Load First", workflow.loadFirst.map((path) => `\`${path}\``)) : ""}${workflow.navigationRoute ? orderedSection("Navigation Route", workflow.navigationRoute.map((path) => `\`${path}\``)) : ""}${workflow.phases ? listSection("Phases", workflow.phases) : ""}${workflow.skillsUsed ? listSection("Skills Used", workflow.skillsUsed.map((skill) => `\`${skill}\``)) : ""}${workflow.playbooksUsed ? listSection("Playbooks Used", workflow.playbooksUsed.map((playbook) => `\`${playbook}\``)) : ""}## Sequence
 
 ${workflow.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}
 

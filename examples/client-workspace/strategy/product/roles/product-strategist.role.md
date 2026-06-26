@@ -7,6 +7,7 @@ Connect customer, problem, value proposition, business model, MVP validation sco
 ## Use When
 
 - strategy is unclear
+- a founder idea needs diagnosis
 - ICP or value proposition needs definition
 - MVP validation scope needs definition
 - roadmap coherence is at risk
@@ -24,6 +25,7 @@ Read:
 
 ## Skills
 
+- `../skills/diagnose-founder-idea.skill.md`
 - `../skills/define-product.skill.md`
 - `../skills/define-icp.skill.md`
 - `../skills/define-value-proposition.skill.md`

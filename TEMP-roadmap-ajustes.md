@@ -950,9 +950,9 @@ Founder Journeys existentes:
   - mapear intenção natural -> estágio da progressão -> gate -> requisito ativo -> workflow ou `activation_required`;
   - deixar claro que o root `AGENTS.md` escolhe estágio/rota, não executa skill/playbook diretamente;
   - impedir que o Chief carregue departamento, área ou workflow inativo antes da checagem de activation state.
-- [ ] Criar `strategy/workflows/founder-diagnosis.workflow.md`.
-- [ ] Criar skill `strategy/product/skills/diagnose-founder-idea/SKILL.md`.
-- [ ] Criar playbook `strategy/product/playbooks/founder-discovery.playbook.md` ou fortalecer `product-strategy.playbook.md` para cobrir o início guiado.
+- [x] Criar `strategy/workflows/founder-diagnosis.workflow.md`.
+- [x] Criar skill `strategy/product/skills/diagnose-founder-idea.skill.md`.
+- [x] Criar playbook `strategy/product/playbooks/founder-discovery.playbook.md` ou fortalecer `product-strategy.playbook.md` para cobrir o início guiado.
 - [ ] Criar `strategy/knowledge/progression-state.md` ou registrar progressão em `leanos.yaml` / activation state.
 - [ ] Criar uma matriz de gates por estágio: required context, allowed next stages, blocked next stages.
 - [ ] Atualizar `new-idea-intake` para entrar no Progression Model em vez de virar fluxo isolado.
@@ -1804,7 +1804,7 @@ Jornadas internas devem ser criadas em `docs/framework/founder-journeys/` usando
 
 | Etapa | Scaffold atualizado | Jornada criada | Momento | Workflow / Entrada | Intencao do Founder | Dono | Roles Principais | Playbooks Principais | Estado |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 0 | [ ] | [ ] `docs/framework/founder-journeys/start-leanos.md` | Setup inicial | `AGENT.md` + Strategy Baseline | "vamos comecar", "configurar o LeanOS", "iniciar o projeto" | LeanOS Chief + Strategy | Business Strategist, Product Strategist | `business-foundation`, `product-strategy` | Existe, garantir Strategy Baseline minima sem comando slash |
+| 0 | [x] | [x] `docs/framework/founder-journeys/start-leanos.md` | Setup inicial | `AGENT.md` + `.leanos/commands/start-leanos.md` + `strategy/workflows/founder-diagnosis.workflow.md` | "vamos comecar", "configurar o LeanOS", "iniciar o projeto" | LeanOS Chief + Strategy | Business Strategist, Product Strategist | `business-foundation`, `product-strategy` | Scaffold e jornada criados; Strategy Baseline minima segue sem comando slash obrigatorio |
 | 1 | [x] | [x] `docs/framework/founder-journeys/define-mvp.md` | Primeira definicao do produto | `operations/workflows/define-mvp.workflow.md` | "Defina o MVP", "qual a primeira versao?", "o que entra no MVP?" | Product Ops | Product Owner, Delivery Architect, Product Designer quando aplicavel, Security Reviewer quando aplicavel | `mvp-delivery`, `delivery-readiness`, `design-foundation`, `pre-mvp-security-checklist` | Jornada criada; precisa remover dependencia de comando slash e manter conversa guiada, confirmacao e ponte para `roadmap-item-to-epic` |
 | 2 | [x] | [x] `docs/framework/founder-journeys/new-idea-intake.md` | Novas ideias e features | `strategy/workflows/new-idea-intake.workflow.md` | "Tenho uma ideia", "quero avaliar uma feature nova", "isso faz sentido para o produto?" | Strategy | Product Strategist, Product Manager, Business Strategist, Roadmap Planner | `product-strategy`, `business-foundation`, `roadmap-cycle-planning`, `mvp-delivery` | Jornada criada e scaffold ajustado para separar intake de roadmap |
 | 3 | [x] | [x] `docs/framework/founder-journeys/idea-to-roadmap.md` | Decisao de roadmap | `strategy/workflows/idea-to-roadmap.workflow.md` | "Parece interessante, vamos adicionar ao roadmap", "isso entra no backlog do produto?" | Strategy / Roadmap | Product Strategist, Product Manager, Roadmap Planner | `roadmap-cycle-planning`, `product-strategy` | Jornada criada; scaffold existente validado; gap futuro: delivery scope deve ser contexto opcional no Roadmap Planner |
@@ -1867,7 +1867,7 @@ Workflows a revisar:
   - deve tratar GitHub sync como opcional;
   - deve parar antes de qualquer GitHub API write sem confirmacao.
 
-- [ ] Intencao natural de iniciar/configurar LeanOS no `AGENTS.md`
+- [x] Intencao natural de iniciar/configurar LeanOS no `AGENTS.md`
   - deve criar Strategy Baseline minima, nao MVP completo;
   - baseline minima: negocio, produto/ideia principal, usuario alvo, problema/dor, promessa de valor, alternativa atual, hipotese mais arriscada e foco imediato;
   - deve deixar MVP scope como proximo passo quando ainda nao estiver definido.

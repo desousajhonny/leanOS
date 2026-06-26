@@ -16,6 +16,8 @@ department:
       agent: null
       readme: validation/README.md
   workflows:
+    - key: founder-diagnosis
+      path: workflows/founder-diagnosis.workflow.md
     - key: new-idea-intake
       path: workflows/new-idea-intake.workflow.md
     - key: idea-to-roadmap

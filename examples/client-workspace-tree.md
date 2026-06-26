@@ -239,6 +239,7 @@ client-workspace/
 |   |   |   |-- define-mvp-validation-scope.skill.md
 |   |   |   |-- define-product.skill.md
 |   |   |   |-- define-value-proposition.skill.md
+|   |   |   |-- diagnose-founder-idea.skill.md
 |   |   |   |-- evaluate-idea.skill.md
 |   |   |   `-- README.md
 |   |   |-- AGENT.md
@@ -287,6 +288,7 @@ client-workspace/
 |   |   |-- riskiest-assumptions.md
 |   |   `-- success-metrics.md
 |   |-- workflows/
+|   |   |-- founder-diagnosis.workflow.md
 |   |   |-- idea-to-roadmap.workflow.md
 |   |   |-- new-idea-intake.workflow.md
 |   |   |-- README.md

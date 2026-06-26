@@ -615,6 +615,7 @@ Read:
 - \`../context/next-actions.md\`
 - \`../index/routing-map.yaml\`
 - \`../../ai-standard/foundation/guided-conversation.md\`
+- \`../../strategy/workflows/founder-diagnosis.workflow.md\`
 
 ## Internal Reading Rules
 
@@ -649,13 +650,16 @@ Use open-ended questions only when:
 ## What To Do
 
 1. Read the initial product/company context from \`leanos.yaml\`.
-2. Identify the smallest missing strategic context needed to continue.
-3. Greet the founder in plain language.
-4. Ask one guided question at a time using native selection UI when available, otherwise numbered options.
-5. Accept a number or a free-form answer.
-6. Restate how you interpreted the answer before moving to the next question.
-7. Do not propose file updates in the first response unless the founder explicitly asks to write or continue from an already-confirmed plan.
-8. After enough answers, summarize the proposed source-of-truth updates and ask for confirmation before writing.
+2. Use \`../../strategy/workflows/founder-diagnosis.workflow.md\` as the continuation route for diagnosing the current founder stage.
+3. Identify the smallest missing strategic context needed to continue.
+4. Greet the founder in plain language.
+5. Ask one guided question at a time using native selection UI when available, otherwise numbered options.
+6. Accept a number or a free-form answer.
+7. Restate how you interpreted the answer before moving to the next question.
+8. Do not propose file updates in the first response unless the founder explicitly asks to write or continue from an already-confirmed plan.
+9. After enough answers, summarize the proposed source-of-truth updates and ask for confirmation before writing.
+
+After the first response, continue with the \`founder-diagnosis\` workflow instead of improvising a separate startup flow.
 
 ## First Response Shape
 

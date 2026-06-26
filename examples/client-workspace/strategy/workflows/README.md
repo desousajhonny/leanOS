@@ -14,6 +14,7 @@ Use when work spans more than one active area inside this department.
 
 ## Files
 
+- `founder-diagnosis.workflow.md`
 - `new-idea-intake.workflow.md`
 - `idea-to-roadmap.workflow.md`
 - `strategy-validation-cycle.workflow.md`

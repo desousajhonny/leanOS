@@ -159,6 +159,13 @@ export type DepartmentWorkflowDefinition = {
   slug: string;
   purpose: string;
   requiredAreas: string[];
+  progressionStage?: string;
+  entryGate?: string[];
+  activeRequirements?: string[];
+  activationRequirements?: string[];
+  phases?: string[];
+  skillsUsed?: string[];
+  playbooksUsed?: string[];
   founderTriggers?: string[];
   owner?: {
     department: string;

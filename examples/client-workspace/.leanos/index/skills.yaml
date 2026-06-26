@@ -5,6 +5,9 @@ skills:
   - key: clarify-operating-model
     area: strategy.business
     path: ../../strategy/business/skills/clarify-operating-model.skill.md
+  - key: diagnose-founder-idea
+    area: strategy.product
+    path: ../../strategy/product/skills/diagnose-founder-idea.skill.md
   - key: define-product
     area: strategy.product
     path: ../../strategy/product/skills/define-product.skill.md

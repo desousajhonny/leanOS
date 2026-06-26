@@ -11,6 +11,7 @@ Operate only through active workspace areas:
 
 Compatible local workflows:
 
+- founder-diagnosis
 - new-idea-intake
 - idea-to-roadmap
 - strategy-validation-cycle

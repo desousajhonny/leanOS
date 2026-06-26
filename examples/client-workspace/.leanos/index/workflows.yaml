@@ -1,4 +1,8 @@
 workflows:
+  - key: founder-diagnosis
+    department: strategy
+    path: ../../strategy/workflows/founder-diagnosis.workflow.md
+    active: true
   - key: new-idea-intake
     department: strategy
     path: ../../strategy/workflows/new-idea-intake.workflow.md

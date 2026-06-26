@@ -136,6 +136,7 @@ skills:
       - define-business-identity
       - clarify-operating-model
     strategy.product:
+      - diagnose-founder-idea
       - define-product
       - define-icp
       - define-value-proposition
@@ -166,12 +167,15 @@ playbooks:
 workflows:
   ownership: department-local
   active:
+    - founder-diagnosis
     - new-idea-intake
     - idea-to-roadmap
     - strategy-validation-cycle
     - roadmap-to-github-project
   by_department:
     strategy:
+      - key: founder-diagnosis
+        path: strategy/workflows/founder-diagnosis.workflow.md
       - key: new-idea-intake
         path: strategy/workflows/new-idea-intake.workflow.md
       - key: idea-to-roadmap
