@@ -10,8 +10,6 @@ Operate only through active workspace areas:
 
 Compatible local workflows:
 
-- business-intake
-- new-idea-intake
 - idea-to-roadmap
 
 Product strategy routes are available.

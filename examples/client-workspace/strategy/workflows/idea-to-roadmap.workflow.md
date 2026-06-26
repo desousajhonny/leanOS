@@ -66,7 +66,7 @@ All required areas are active in this department.
 
 ## Sequence
 
-1. Confirm the idea already passed `new-idea-intake` or that the founder explicitly asked for roadmap or backlog promotion
+1. Confirm the idea was calibrated through `strategy/product/playbooks/idea-calibration.playbook.md` or that the founder explicitly asked for roadmap or backlog promotion
 2. Read product strategy, MVP Validation Scope and roadmap context before classifying the item
 3. Preserve the qualified idea context; do not redo the entire intake unless key context is missing
 4. Define problem, user, expected value, dependencies, evidence level, MVP validation goal and opportunity cost

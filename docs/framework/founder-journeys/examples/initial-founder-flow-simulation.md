@@ -65,7 +65,7 @@ Análise do framework:
 
 ```text
 Estágio: Ideia / Contexto Inicial
-Rota: Root AGENT -> Strategy -> business-intake -> Product Strategist
+Rota: Root AGENT -> Strategy -> Product -> map-business-baseline/idea-calibration
 Área ativa: Strategy
 Operations/Product Ops: não ativa
 Roadmap: ainda não nasce

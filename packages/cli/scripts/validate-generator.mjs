@@ -220,8 +220,6 @@ async function validateWorkspaceFiles() {
     "strategy/product/skills/evaluate-idea/SKILL.md",
     "strategy/product/playbooks/idea-calibration.playbook.md",
     "strategy/product/playbooks/mvp-validation-scope.playbook.md",
-    "strategy/workflows/business-intake.workflow.md",
-    "strategy/workflows/new-idea-intake.workflow.md",
     "strategy/workflows/idea-to-roadmap.workflow.md",
     "strategy/roadmap/AGENT.md",
     "strategy/roadmap/knowledge/README.md",
@@ -582,30 +580,12 @@ async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "strategy", "roadmap", "knowledge", "roadmap.md"));
   await assertExists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-cycle-planning.playbook.md"));
   assert.equal(await exists(join(rootDir, "strategy", "validation")), false, "Strategy Validation should not be generated");
-  await assertExists(join(rootDir, "strategy", "workflows", "business-intake.workflow.md"));
-  await assertExists(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md"));
   await assertExists(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"));
+  assert.equal(await exists(join(rootDir, "strategy", "workflows", "business-intake.workflow.md")), false, "Business intake workflow should not be generated");
+  assert.equal(await exists(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md")), false, "New idea intake workflow should not be generated");
   assert.equal(await exists(join(rootDir, "strategy", "workflows", "strategy-validation-cycle.workflow.md")), false, "Strategy validation workflow should not be generated");
   assert.equal(await exists(join(rootDir, "strategy", "workflows", "roadmap-to-github-project.workflow.md")), false, "Roadmap-to-GitHub workflow should not be generated");
-  const founderDiagnosisWorkflow = await readFile(join(rootDir, "strategy", "workflows", "business-intake.workflow.md"), "utf8");
-  const newIdeaWorkflow = await readFile(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md"), "utf8");
   const ideaToRoadmapWorkflow = await readFile(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md"), "utf8");
-  assert(founderDiagnosisWorkflow.includes("## Progression Stage"), "Business intake workflow should declare progression stage");
-  assert(founderDiagnosisWorkflow.includes("## Entry Gate"), "Business intake workflow should declare an entry gate");
-  assert(founderDiagnosisWorkflow.includes("ai-standard/foundation/progression-gates.md"), "Business intake workflow should load progression gates");
-  assert(founderDiagnosisWorkflow.includes("Strategy Baseline"), "Business intake workflow should build Strategy Baseline");
-  assert(founderDiagnosisWorkflow.includes("map-business-baseline"), "Business intake workflow should use the business baseline mapping skill");
-  assert(founderDiagnosisWorkflow.includes("Do not create roadmap, MVP delivery scope, Epics, Features or implementation work"), "Business intake workflow should stop before roadmap and delivery");
-  assert(founderDiagnosisWorkflow.includes("Next route:\n\n`strategy/product/playbooks/mvp-validation-scope.playbook.md, then optional activation_required: operations.product-ops for delivery scope`"), "Business intake workflow should bridge to MVP validation scope and optional Product Ops handoff");
-  assert(newIdeaWorkflow.includes("## Continuation Bridge"), "New idea intake workflow should offer a continuation bridge");
-  assert(newIdeaWorkflow.includes("Next route:\n\n`idea-to-roadmap`"), "New idea intake workflow should bridge to idea-to-roadmap");
-  assert(newIdeaWorkflow.includes("## Founder Triggers"), "New idea intake workflow should define founder triggers");
-  assert(newIdeaWorkflow.includes("## Confirmation Gates"), "New idea intake workflow should define confirmation gates");
-  assert(newIdeaWorkflow.includes("## Allowed Updates"), "New idea intake workflow should define allowed updates");
-  assert(newIdeaWorkflow.includes("## Forbidden Updates"), "New idea intake workflow should define forbidden updates");
-  assert.equal(newIdeaWorkflow.includes("Use Validation only when it exists"), false, "New idea intake workflow should not mention removed Strategy Validation");
-  assert(newIdeaWorkflow.includes("MVP Validation Scope"), "New idea intake workflow should route strong initial ideas into MVP validation scope");
-  assert(newIdeaWorkflow.includes("strategy/product/knowledge/mvp-validation-scope.md"), "New idea intake workflow should allow Product MVP validation scope updates after confirmation");
   assert(ideaToRoadmapWorkflow.includes("## Continuation Bridge"), "Idea-to-roadmap workflow should offer a continuation bridge");
   assert(
     ideaToRoadmapWorkflow.includes("Next route:\n\n`activation_required: operations.product-ops, then roadmap-item-to-epic`"),
@@ -752,8 +732,9 @@ async function validateWorkspaceFiles() {
   assert.equal(yaml.departments.routes.strategy.readme, "strategy/README.md");
   assert.equal(yaml.departments.routes.operations, undefined, "Operations should not be an active route during initial setup");
   assert.equal(yaml.departments.routes.growth, undefined, "Growth should not be an active route during initial setup");
-  assert(yaml.workflows.active.includes("new-idea-intake"), "Expected active local Strategy new-idea-intake workflow");
   assert(yaml.workflows.active.includes("idea-to-roadmap"), "Expected active local Strategy idea-to-roadmap workflow");
+  assert.equal(yaml.workflows.active.includes("business-intake"), false, "Strategy should not expose business-intake workflow");
+  assert.equal(yaml.workflows.active.includes("new-idea-intake"), false, "Strategy should not expose new-idea-intake workflow");
   assert.equal(yaml.workflows.active.includes("strategy-validation-cycle"), false, "Strategy validation workflow should not be active");
   assert.equal(yaml.workflows.active.includes("roadmap-to-github-project"), false, "Strategy should not expose roadmap-to-GitHub workflow");
   assert.equal(yaml.workflows.active.includes("roadmap-item-to-epic"), false, "Operations workflows should not be active during initial setup");
@@ -802,8 +783,6 @@ async function validateClientWorkspaceFixture() {
     "strategy/product/skills/define-mvp-validation-scope/SKILL.md",
     "strategy/product/skills/evaluate-idea/SKILL.md",
     "strategy/product/knowledge/validation-notes.md",
-    "strategy/workflows/business-intake.workflow.md",
-    "strategy/workflows/new-idea-intake.workflow.md",
     "strategy/workflows/idea-to-roadmap.workflow.md",
     "operations/product-ops/AGENT.md",
     "operations/product-ops/knowledge/README.md",
@@ -1524,7 +1503,7 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("Read `leanos.yaml` first and distinguish `active_*`, `inactive_*` and `founder_selected_*`"), "Root AGENT.md should distinguish activation state fields");
   assert(rootAgent.includes("Do not load inactive departments"), "Root AGENT.md should forbid inactive department loading");
   assert(rootAgent.includes("Do not treat `available` as `exists`"), "Root AGENT.md should distinguish available from existing workspace assets");
-  assert(rootAgent.includes("Start, restart, business intake or idea calibration: `strategy/AGENT.md`"), "Root AGENT.md should route start and idea calibration through Strategy AGENT");
+  assert(rootAgent.includes("Start, restart or idea calibration: `strategy/AGENT.md`, then Strategy Product and `idea-calibration.playbook.md`"), "Root AGENT.md should route start and idea calibration through Strategy Product");
   assert(rootAgent.includes("Initial MVP validation scope, roadmap, prioritization or validation route: `strategy/AGENT.md`"), "Root AGENT.md should route initial MVP validation scope through Strategy");
   assert(rootAgent.includes("MVP validation scope or first MVP roadmap: `strategy/AGENT.md`"), "Root AGENT.md should keep first MVP roadmap in Strategy");
   assert(rootAgent.includes("MVP delivery scope definition: return `activation_required` for `operations.product-ops`"), "Root AGENT.md should gate delivery MVP scope behind Product Ops activation");
@@ -1585,15 +1564,15 @@ async function assertFounderIntentRouting(rootDir) {
   assert.equal(operatingRules.includes("Root AGENT.md must not bypass department AGENT.md"), false, "Operating rules should avoid narrow workflow-bypass prohibitions");
   assert(operatingRules.includes("Business workflows live in root departments or areas, not in `.leanos/`"), "Operating rules should keep business workflows out of .leanos");
   assert(vscodeAgent.includes("Founder requests can be natural language"), "VS Code agent should support founder intent routing");
-  assert(vscodeAgent.includes("Then use the department `AGENT.md` to choose the workflow folder or active area"), "VS Code agent should route workflows through department AGENT files");
+  assert(vscodeAgent.includes("Then use the department `AGENT.md` to choose either a state-changing workflow or the smallest active area"), "VS Code agent should route workflows and area work through department AGENT files");
   assert(vscodeAgent.includes("Enter the owning department or area before acting"), "VS Code agent should use owner-first routing");
   assert(vscodeAgent.includes("When an area has its own `AGENT.md`, use it before loading roles, skills or playbooks"), "VS Code agent should understand area-level agents");
   assert.equal(vscodeAgent.includes("Do not bypass department `AGENT.md`"), false, "VS Code agent should avoid narrow workflow-bypass prohibitions");
   assert.equal(await exists(join(rootDir, ".leanos", "workflows")), false, ".leanos/workflows should not be generated");
 
-  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "new-idea-intake" && workflow.path === "../../strategy/workflows/new-idea-intake.workflow.md"), "Workflows index should point to Strategy new idea intake workflow");
-  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "business-intake" && workflow.path === "../../strategy/workflows/business-intake.workflow.md"), "Workflows index should point to Strategy business intake workflow");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "idea-to-roadmap" && workflow.path === "../../strategy/workflows/idea-to-roadmap.workflow.md"), "Workflows index should point to Strategy idea-to-roadmap workflow");
+  assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "business-intake"), false, "Workflows index should not include business-intake");
+  assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "new-idea-intake"), false, "Workflows index should not include new-idea-intake");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "strategy-validation-cycle"), false, "Workflows index should not include removed Strategy validation workflow");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-to-github-project"), false, "Workflows index should not include removed roadmap-to-GitHub workflow");
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "roadmap-item-to-epic"), false, "Workflows index should not include inactive Operations workflows during setup");
@@ -1618,8 +1597,8 @@ async function assertFounderIntentRouting(rootDir) {
   assert(rootAgentTemplate.includes("Use `ai-standard/README.md` only when the user asks to create, change, review or validate LeanOS framework assets"), "Root agent template should route framework standards through AI Standard README");
   assert(rootAgentTemplate.includes("Do not guess the correct template, checklist or instruction from memory"), "Root agent template should prevent framework asset hallucination");
   assert(rootAgentTemplate.includes("When an area has its own `AGENT.md`, use it as the area operating owner before loading roles, skills or playbooks"), "Root agent template should include area AGENT rule");
-  assert(departmentAgentTemplate.includes("If the founder request is a journey, open `workflows/README.md`"), "Department agent template should route journeys through workflow index");
-  assert(departmentAgentTemplate.includes("A journey changes state, priority, scope, handoff, roadmap, delivery, launch or learning"), "Department agent template should define workflow journey signals");
+  assert(departmentAgentTemplate.includes("If the founder request changes state, priority, scope, handoff, roadmap, delivery, launch or learning"), "Department agent template should route state-changing journeys through workflow index");
+  assert(departmentAgentTemplate.includes("Use `workflows/README.md` when the founder asks for a multi-step decision or transition"), "Department agent template should define workflow journey signals");
   assert(departmentAgentTemplate.includes("route to that area `AGENT.md` when present"), "Department agent template should route to area AGENT when present");
   assert(departmentAgentTemplate.includes("Do not load roles, skills or playbooks before entering the owning area"), "Department agent template should keep roles/skills/playbooks area-owned");
   assert(areaAgentTemplate.includes("Choose the smallest specialist role"), "Area AGENT template should route to specialist roles");
@@ -1657,7 +1636,7 @@ async function assertAiStandardAssetTaxonomy(rootDir) {
     "Setup Seed",
     "Strategy Seed",
     "Strategy Baseline",
-    "Idea Diagnosis",
+    "Idea Calibration",
     "MVP Validation Scope",
     "Roadmap Inicial",
     "MVP Delivery Decision",
@@ -2519,7 +2498,7 @@ async function assertProductAreaPattern(rootDir) {
   assert(productStrategyPlaybook.includes("## Guided Conversation"), "Idea calibration playbook should include guided conversation");
   assert(productStrategyPlaybook.includes("../../../ai-standard/foundation/guided-conversation.md"), "Idea calibration playbook should point to guided conversation standard");
   assert(productStrategyPlaybook.includes("Ask one useful question at a time"), "Idea calibration playbook should keep calibration conversational");
-  assert(productStrategyPlaybook.includes("do not create roadmap, Epics, Features or delivery scope here"), "Idea calibration playbook should stop before roadmap and delivery");
+  assert(productStrategyPlaybook.includes("Do not create roadmap, Epics, Features or delivery scope here"), "Idea calibration playbook should stop before roadmap and delivery");
   assert(mvpValidationScopePlaybook.includes("## Guided Conversation"), "MVP validation scope playbook should include guided conversation");
   assert(mvpValidationScopePlaybook.includes("../knowledge/mvp-validation-scope.md"), "MVP validation scope playbook should use MVP validation scope knowledge");
   assert(mvpValidationScopePlaybook.includes("Product Ops turns confirmed scope into delivery work"), "MVP validation scope playbook should make the Product Ops handoff explicit");
@@ -3228,18 +3207,18 @@ async function assertGrowthAreaPattern(rootDir) {
 
 async function assertNaturalStartupRules(rootDir) {
   const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
-  const founderDiagnosis = await readFile(join(rootDir, "strategy", "workflows", "business-intake.workflow.md"), "utf8");
   const productPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "idea-calibration.playbook.md"), "utf8");
 
   assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Startup should not depend on generated command files");
   assert(rootAgent.includes("Setup or restart LeanOS: `strategy/AGENT.md`"), "Root AGENT should route startup intent through Strategy");
+  assert(rootAgent.includes("Strategy Product -> `idea-calibration.playbook.md`"), "Root AGENT should route startup and ideas to Strategy Product idea calibration");
   assert(rootAgent.includes("Intent -> Current Stage -> Gate -> Active Requirements -> Route"), "Root AGENT should use progression intent routing");
   assert(rootAgent.includes("Do not write during the first response"), "Root AGENT should avoid writing during the first startup response");
   assert(rootAgent.includes("Do not modify roles, skills, playbooks, workflows, `ai-standard/` or `.github/` during startup"), "Root AGENT should protect operating assets during startup");
-  assert(founderDiagnosis.includes("Use `ai-standard/foundation/founder-progression-model.md`"), "Business intake should use the progression model");
-  assert(founderDiagnosis.includes("Use `ai-standard/foundation/progression-gates.md`"), "Business intake should use progression gates");
-  assert(founderDiagnosis.includes("Ask one founder-friendly guided question"), "Business intake should ask one guided question at a time");
-  assert(founderDiagnosis.includes("Do not create roadmap, MVP delivery scope, Epics, Features or implementation work"), "Business intake should stop before delivery");
+  assert.equal(await exists(join(rootDir, "strategy", "workflows", "business-intake.workflow.md")), false, "Startup should not depend on business-intake workflow");
+  assert.equal(await exists(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md")), false, "Startup should not depend on new-idea-intake workflow");
+  assert(productPlaybook.includes("Use `skills/map-business-baseline/SKILL.md` first to read `leanos.yaml`"), "Idea calibration should start with baseline mapping");
+  assert(productPlaybook.includes("business stage"), "Idea calibration should use the current business stage");
   assert(productPlaybook.includes("Ask one useful question at a time"), "Idea calibration playbook should keep startup guided and incremental");
   assert(productPlaybook.includes("End with a clear confirmation question before file updates"), "Idea calibration playbook should ask for confirmation before writing");
 }
@@ -3524,7 +3503,6 @@ async function assertInitialContextCoherence(rootDir) {
   ];
 
   const workflowRequirements = [
-    { workflow: "new-idea-intake", subareas: ["strategy.product", "strategy.roadmap"] },
     { workflow: "idea-to-roadmap", subareas: ["strategy.product", "strategy.roadmap"] },
     { workflow: "define-mvp", subareas: ["operations.product-ops"] },
     { workflow: "roadmap-item-to-epic", subareas: ["operations.product-ops"] },

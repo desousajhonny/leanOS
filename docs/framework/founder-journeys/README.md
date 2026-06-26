@@ -14,6 +14,7 @@ Use esta pasta para desenhar e testar a jornada humana antes de alterar o scaffo
 
 - `journey-template.md`: template para descrever uma jornada de intenção do founder.
 - `journey-map.md`: checklist das jornadas que ainda precisam ser escritas.
+- `idea-calibration.md`: jornada canônica para começar, calibrar ou avaliar qualquer ideia antes de MVP, roadmap ou delivery.
 
 ## Regra
 

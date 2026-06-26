@@ -3035,9 +3035,9 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           purpose: "Route product strategy work, choose the right product role and keep product decisions aligned with validation, roadmap and delivery scope."
         },
         routingKey: "product",
-        requestTypes: "product strategy, ICP, value proposition, MVP validation scope, positioning or business model",
+        requestTypes: "idea calibration, product strategy, ICP, value proposition, MVP validation scope, positioning or business model",
         purpose: "Own product strategy, ICP, value proposition, MVP validation scope, positioning and business model coherence.",
-        whenToUse: ["define strategy", "clarify ICP", "shape value proposition", "define MVP validation scope", "check product coherence"],
+        whenToUse: ["start or calibrate a founder idea", "define strategy", "clarify ICP", "shape value proposition", "define MVP validation scope", "check product coherence"],
         sourceOfTruth: ["knowledge/brief.md", "knowledge/problem.md", "knowledge/icp.md", "knowledge/jobs-to-be-done.md", "knowledge/value-proposition.md", "knowledge/positioning.md", "knowledge/business-model-canvas.md", "knowledge/mvp-validation-scope.md", "knowledge/validation-notes.md"],
         files: [
           { path: "knowledge/README.md", content: () => folderReadme("Product Knowledge", "Durable product context produced by Strategy Product.", "Use when defining product strategy, ICP, value proposition, MVP validation scope, positioning, business model, lightweight validation notes or product coherence.", "brief.md", ["brief.md", "problem.md", "icp.md", "jobs-to-be-done.md", "value-proposition.md", "positioning.md", "business-model-canvas.md", "mvp-validation-scope.md", "validation-notes.md"], ["../roles/", "../skills/", "../playbooks/", "../../roadmap/"], "Keep company/product context here. Do not enrich roles, skills or playbooks with company-specific facts.") },
@@ -3083,7 +3083,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             checks: ["The output names baseline gaps instead of asking a generic question.", "The next question is tied to one missing decision.", "Roadmap and MVP validation are recommended only after Strategy Baseline is minimally coherent.", "activation_required is used only for inactive areas after the gate permits it."],
             outputs: ["Current business stage", "Known context summary", "Strategy Baseline gaps", "Next guided question", "Safe next route"],
             filesToUpdate: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/business-model-canvas.md", "../knowledge/mvp-validation-scope.md", "../knowledge/validation-notes.md"],
-            redLines: ["Do not ask broad empty questions such as tell me more.", "Do not create roadmap, MVP delivery scope, Epics, Features or implementation work.", "Do not activate Operations, Growth or GitHub from business intake."]
+            redLines: ["Do not ask broad empty questions such as tell me more.", "Do not create roadmap, MVP delivery scope, Epics, Features or implementation work.", "Do not activate Operations, Growth or GitHub from idea calibration."]
           },
           {
             slug: "define-product",
@@ -3181,11 +3181,11 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           {
             slug: "idea-calibration",
             title: "Idea Calibration",
-            purpose: "Move from a raw founder idea to a confirmed Strategy Baseline without jumping into roadmap, MVP scope or delivery.",
+            purpose: "Calibrate any founder idea against the current business stage, from first seed idea to product-operating change, without jumping into roadmap, MVP scope or delivery.",
             inputs: ["../../../leanos.yaml", "../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/business-model-canvas.md", "../knowledge/validation-notes.md"],
-            steps: ["Load the Product AGENT and choose Product Strategist or Product Manager.", "Use `skills/map-business-baseline/SKILL.md` to summarize known context, business stage and Strategy Baseline gaps.", "Clarify product, ICP, problem and value proposition only where the baseline is weak.", "Use business-model work only when pricing, revenue, delivery model or channel assumptions affect the initial thesis.", "Separate facts, assumptions, open questions and founder decisions.", "Present the calibrated idea as a concise Strategy Baseline.", "Ask the founder to confirm, correct or keep calibrating before writing knowledge files.", "After confirmation, offer the bridge to `playbooks/mvp-validation-scope.playbook.md`; do not create roadmap, Epics, Features or delivery scope here."],
-            guidedConversation: ["Ask one useful question at a time, tied to the biggest Strategy Baseline gap.", "Avoid interview fatigue; do not force every skill when the baseline is already clear enough.", "Use numbered choices only when they make the founder's decision easier.", "Let the founder answer with a number or free-form text.", "End with a clear confirmation question before file updates."],
-            outputs: ["Calibrated idea summary", "Strategy Baseline proposal", "Known facts", "Assumptions", "Open questions", "Recommended next step toward MVP Validation Scope"],
+            steps: ["Load the Product AGENT and choose Product Strategist or Product Manager.", "Use `skills/map-business-baseline/SKILL.md` first to read `leanos.yaml`, active Strategy context, business stage and Strategy Baseline gaps.", "Choose the calibration path from the business stage: `seed` or `strategy_forming` builds baseline; `mvp_shaping` compares against MVP Validation Scope; `mvp_building` protects current delivery focus; `mvp_live_learning` checks learning signals; `product_operating` and `growth_scaling` evaluate fit with existing product, customers, roadmap, risks and timing.", "Clarify product, ICP, problem and value proposition only where the current stage makes the baseline weak.", "Use `skills/evaluate-idea/SKILL.md` when the idea affects an existing MVP, product, roadmap, customer signal or operating cadence.", "Use business-model work only when pricing, revenue, delivery model or channel assumptions affect the idea.", "Separate facts, assumptions, open questions and founder decisions.", "Present the calibrated idea with current business-stage reading, fit assessment and smallest safe next route.", "Ask the founder to confirm, correct or keep calibrating before writing knowledge files.", "After confirmation, offer only the appropriate bridge: `playbooks/mvp-validation-scope.playbook.md`, `strategy/workflows/idea-to-roadmap.workflow.md`, a validation note, or `activation_required: operations.product-ops` when the founder explicitly wants delivery scope. Do not create roadmap, Epics, Features or delivery scope here."],
+            guidedConversation: ["Ask one useful question at a time, tied to the biggest Strategy Baseline or fit gap for the current business stage.", "Avoid interview fatigue; do not force every skill when the idea is already clear enough.", "Do not treat every new idea as MVP when the business is already building, validating, operating or scaling.", "Use numbered choices only when they make the founder's decision easier.", "Let the founder answer with a number or free-form text.", "End with a clear confirmation question before file updates."],
+            outputs: ["Current business-stage reading", "Calibrated idea summary", "Fit assessment", "Strategy Baseline proposal or product-fit recommendation", "Known facts", "Assumptions", "Open questions", "Recommended next route"],
             filesToUpdate: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/business-model-canvas.md", "../knowledge/validation-notes.md"]
           },
           {
@@ -3283,256 +3283,6 @@ export const rootDepartments: RootDepartmentDefinition[] = [
     ],
     workflows: [
       {
-        slug: "business-intake",
-        purpose: "Orient the founder's starting point, map the current business stage, build the minimum Strategy Baseline and decide the next safe Strategy route.",
-        requiredAreas: ["business", "product", "roadmap"],
-        progressionStage: "Setup Seed, Strategy Seed, Strategy Baseline or Business Intake.",
-        entryGate: [
-          "The founder is starting, restarting or asking how to begin.",
-          "Only Strategy areas are required; Operations and Growth must remain inactive until a later gate requires them.",
-          "Seed context from `leanos.yaml` is available or the founder provides enough plain-language context to start."
-        ],
-        activeRequirements: [
-          "Read `leanos.yaml` and active Strategy context first.",
-          "Use `ai-standard/foundation/founder-progression-model.md` to classify the current stage.",
-          "Use `ai-standard/foundation/progression-gates.md` to check required context, allowed next stages and blocked next stages.",
-          "Use Product Strategist with `map-business-baseline` when the missing baseline decision is product-facing."
-        ],
-        activationRequirements: [
-          "Do not activate Operations, Growth, GitHub or source-code workflows from business intake.",
-          "Return a later `activation_required` only after Strategy Baseline and roadmap/MVP candidate gates are satisfied."
-        ],
-        founderTriggers: [
-          "quero começar",
-          "como começar",
-          "iniciar LeanOS",
-          "vamos começar",
-          "por onde começamos?",
-          "start leanos"
-        ],
-        owner: {
-          department: "strategy",
-          primaryArea: "product",
-          supportingAreas: ["business", "roadmap"]
-        },
-        loadFirst: [
-          "AGENT.md",
-          "leanos.yaml",
-          ".leanos/context/workspace-summary.md",
-          ".leanos/context/current-focus.md",
-          ".leanos/context/next-actions.md",
-          "ai-standard/foundation/founder-progression-model.md",
-          "ai-standard/foundation/progression-gates.md",
-          "strategy/AGENT.md",
-          "strategy/workflows/README.md",
-          "strategy/workflows/business-intake.workflow.md",
-          "strategy/business/knowledge/profile.md",
-          "strategy/product/AGENT.md",
-          "strategy/product/knowledge/brief.md",
-          "strategy/product/knowledge/problem.md",
-          "strategy/product/knowledge/icp.md",
-          "strategy/product/knowledge/value-proposition.md",
-          "strategy/product/knowledge/business-model-canvas.md",
-          "strategy/product/knowledge/mvp-validation-scope.md",
-          "strategy/product/knowledge/validation-notes.md"
-        ],
-        navigationRoute: [
-          "AGENT.md",
-          "strategy/AGENT.md",
-          "strategy/workflows/business-intake.workflow.md",
-          "strategy/product/AGENT.md",
-          "strategy/product/roles/product-strategist.role.md",
-          "strategy/product/skills/map-business-baseline/SKILL.md",
-          "strategy/product/playbooks/idea-calibration.playbook.md",
-          "strategy/product/playbooks/mvp-validation-scope.playbook.md when Strategy Baseline is confirmed and the founder wants MVP validation analysis",
-          "strategy/business/AGENT.md only when business identity gaps block idea calibration",
-          "strategy/roadmap/AGENT.md only after Strategy Baseline is coherent enough for roadmap sequencing"
-        ],
-        phases: [
-          "Phase 1: Identify current progression stage from seed context and active Strategy files.",
-          "Phase 2: Name the smallest Strategy Baseline gap blocking the next decision.",
-          "Phase 3: Ask one founder-friendly guided question tied to that gap.",
-          "Phase 4: Propose Strategy knowledge updates only after enough context exists.",
-          "Phase 5: Recommend MVP Validation Scope work, `new-idea-intake` or `idea-to-roadmap` only after Strategy Baseline is ready."
-        ],
-        skillsUsed: ["strategy/product/skills/map-business-baseline/SKILL.md", "strategy/product/skills/define-product/SKILL.md", "strategy/product/skills/define-mvp-validation-scope/SKILL.md when the founder is ready for MVP validation scope"],
-        playbooksUsed: ["strategy/product/playbooks/idea-calibration.playbook.md", "strategy/product/playbooks/mvp-validation-scope.playbook.md after calibrated idea confirmation", "strategy/business/playbooks/business-foundation.playbook.md when business identity gaps block the baseline", "strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md only after the roadmap gate is satisfied"],
-        steps: [
-          "Read seed context and active Strategy context before asking questions.",
-          "Classify the founder progression stage and explain it in founder language.",
-          "Identify baseline gaps across user, problem, promise, alternative, riskiest assumption, business model direction, immediate focus and MVP validation target.",
-          "Ask one guided question tied to the highest-impact gap; do not ask a generic tell-me-more question.",
-          "When enough context exists, propose updates to Strategy knowledge and wait for confirmation before writing.",
-          "When Strategy Baseline is coherent, ask whether the founder wants to start MVP Validation Scope analysis inside Strategy Product.",
-          "After MVP Validation Scope is confirmed, offer Product Ops handoff only when the founder wants delivery scope or Epic planning.",
-          "Stop before roadmap, MVP delivery scope, Epics, Features or implementation work."
-        ],
-        confirmationGates: [
-          "Ask before writing any Strategy knowledge file.",
-          "Ask before moving into MVP Validation Scope analysis.",
-          "Ask before moving into `new-idea-intake`.",
-          "Ask before moving into `idea-to-roadmap`.",
-          "Ask before offering Product Ops handoff.",
-          "Ask before recommending activation for any inactive area."
-        ],
-        allowedUpdates: [
-          "strategy/business/knowledge/profile.md",
-          "strategy/business/knowledge/decision-log.md",
-          "strategy/product/knowledge/brief.md",
-          "strategy/product/knowledge/problem.md",
-          "strategy/product/knowledge/icp.md",
-          "strategy/product/knowledge/value-proposition.md",
-          "strategy/product/knowledge/business-model-canvas.md",
-          "strategy/product/knowledge/mvp-validation-scope.md",
-          "strategy/product/knowledge/validation-notes.md"
-        ],
-        forbiddenUpdates: [
-          "strategy/roadmap/knowledge/roadmap.md until Strategy Baseline is confirmed",
-          "Product Ops delivery assets until operations.product-ops is activated",
-          "local Epic assets until operations.product-ops is activated",
-          "Do not create roadmap, MVP delivery scope, Epics, Features or implementation work",
-          ".github/",
-          ".leanos/",
-          "source code",
-          "branches",
-          "pull requests"
-        ],
-        externalCapabilities: [
-          "No external capability is required.",
-          "Do not call GitHub APIs.",
-          "Do not create branches, commits, code or PRs."
-        ],
-        stopConditions: [
-          "Seed context and founder answer are too vague to identify one useful baseline gap.",
-          "The founder does not confirm Strategy knowledge updates.",
-          "The request shifts into delivery scope, Epic creation, GitHub sync, branch, code or PR work.",
-          "The next step requires an inactive area that has not been confirmed for activation."
-        ],
-        expectedOutput: [
-          "Current progression stage.",
-          "Known context summary.",
-          "Smallest Strategy Baseline gap.",
-          "One guided question or a proposed Strategy knowledge update.",
-          "Clear next route when the Strategy Baseline gate is ready."
-        ],
-        continuationBridge: {
-          immediate: "Temos uma ideia calibrada o suficiente para discutir validacao.\nQuer que eu analise agora qual MVP validaria essa tese?",
-          laterTriggers: ["vamos analisar o MVP", "definir mvp validation scope", "qual menor MVP valida isso?", "vamos definir o escopo de validacao", "continuar idea calibration"],
-          nextRoute: "strategy/product/playbooks/mvp-validation-scope.playbook.md, then optional activation_required: operations.product-ops for delivery scope"
-        }
-      },
-      {
-        slug: "new-idea-intake",
-        purpose: "Capture, qualify and decide whether a founder idea should refine strategy, update MVP Validation Scope or become a roadmap candidate.",
-        requiredAreas: ["product", "roadmap"],
-        founderTriggers: [
-          "tenho uma ideia",
-          "quero avaliar uma feature nova",
-          "isso faz sentido para o produto?",
-          "pensei em uma melhoria",
-          "vale a pena fazer isso?"
-        ],
-        owner: {
-          department: "strategy",
-          primaryArea: "product",
-          supportingAreas: ["roadmap"]
-        },
-        entryGate: [
-          "Root AGENT must read `leanos.yaml` before this workflow is selected.",
-          "Chief must identify the current business stage from `activation.current_stage`, `company.stage`, active Strategy files and the founder message.",
-          "This workflow must re-check `leanos.yaml` and the current business-stage reading before evaluating the idea."
-        ],
-        loadFirst: [
-          "AGENT.md",
-          "leanos.yaml",
-          "strategy/AGENT.md",
-          "strategy/workflows/README.md",
-          "strategy/workflows/new-idea-intake.workflow.md",
-          "strategy/product/AGENT.md",
-          "strategy/product/knowledge/brief.md",
-          "strategy/product/knowledge/icp.md",
-          "strategy/product/knowledge/problem.md",
-          "strategy/product/knowledge/value-proposition.md",
-          "strategy/product/knowledge/mvp-validation-scope.md",
-          "strategy/product/knowledge/validation-notes.md"
-        ],
-        navigationRoute: [
-          "AGENT.md",
-          "leanos.yaml",
-          "Chief business-stage diagnosis before Strategy route",
-          "strategy/AGENT.md",
-          "strategy/workflows/new-idea-intake.workflow.md",
-          "new-idea-intake state re-check before Product evaluation",
-          "strategy/product/AGENT.md",
-          "strategy/product/roles/product-strategist.role.md",
-          "strategy/product/skills/evaluate-idea/SKILL.md",
-          "strategy/product/skills/define-mvp-validation-scope/SKILL.md",
-          "strategy/product/playbooks/idea-calibration.playbook.md when the idea needs more baseline clarity",
-          "strategy/product/playbooks/mvp-validation-scope.playbook.md when the founder wants MVP validation analysis",
-          "strategy/roadmap/AGENT.md only after founder confirms roadmap or backlog promotion"
-        ],
-        steps: [
-          "Re-check `leanos.yaml` and confirm the Chief's current business-stage diagnosis before evaluating the idea",
-          "If the business stage is unclear, ask the smallest diagnostic question or route to `business-intake`; do not judge the idea yet",
-          "Read product strategy before judging the idea",
-          "Restate the founder idea in plain language and ask only the minimum guided questions needed to remove ambiguity",
-          "Evaluate idea against ICP, problem, value proposition, evidence, current focus and opportunity cost",
-          "Identify assumptions, evidence gaps, dependencies and why this idea may or may not matter now",
-          "Use `validation-notes.md` for lightweight assumptions and evidence gaps; do not route to a formal Strategy Validation area",
-          "When the founder wants speed, treat MVP as the default business validation path and decide whether to define or update MVP Validation Scope",
-          "Recommend one outcome: reject, refine, park, validation note, MVP Validation Scope update, backlog candidate or roadmap candidate",
-          "Explain the recommendation in founder-friendly language",
-          "Ask for confirmation before recording the idea anywhere or starting the roadmap promotion workflow"
-        ],
-        confirmationGates: [
-          "Ask before recording the idea as a note.",
-          "Ask before updating product knowledge.",
-          "Ask before routing to Roadmap.",
-          "Ask before starting `idea-to-roadmap`."
-        ],
-        allowedUpdates: [
-          "strategy/product/knowledge/mvp-validation-scope.md",
-          "strategy/product/knowledge/validation-notes.md"
-        ],
-        forbiddenUpdates: [
-          "strategy/roadmap/knowledge/roadmap.md",
-          "strategy/roadmap/knowledge/backlog.md",
-          "Product Ops delivery assets until operations.product-ops is activated",
-          "local Epic assets until operations.product-ops is activated",
-          ".github/",
-          ".leanos/",
-          "source code",
-          "branches",
-          "pull requests"
-        ],
-        externalCapabilities: [
-          "No external capability is required.",
-          "Do not call GitHub APIs.",
-          "Do not create branches, commits, code or PRs."
-        ],
-        stopConditions: [
-          "The current business stage is unclear after the smallest useful diagnostic question.",
-          "The idea is too vague to evaluate after guided questions.",
-          "Product strategy is missing enough context to judge fit.",
-          "The founder does not confirm recording the note or moving to Roadmap.",
-          "The request shifts into delivery scope, Epic creation, GitHub sync, branch, code or PR work."
-        ],
-        expectedOutput: [
-          "Current business-stage reading and why it matters for this idea.",
-          "Plain-language restatement of the idea.",
-          "Fit assessment against product strategy.",
-          "Risks, assumptions and evidence gaps.",
-          "Recommendation: reject, refine, park, validation note, MVP Validation Scope update, backlog candidate or roadmap candidate.",
-          "MVP Validation Scope recommendation when the idea is strong enough for an MVP validation path.",
-          "Founder-friendly confirmation question for the next step."
-        ],
-        continuationBridge: {
-          immediate: "Essa ideia parece forte o bastante para virar um MVP de validacao.\nQuer que eu transforme isso em MVP Validation Scope e depois em um MVP Candidate Roadmap?",
-          laterTriggers: ["vamos colocar aquela ideia no roadmap", "quero salvar essa ideia no backlog", "vamos priorizar a ideia que discutimos", "essa ideia merece entrar no produto?"],
-          nextRoute: "idea-to-roadmap"
-        }
-      },
-      {
         slug: "idea-to-roadmap",
         purpose: "Promote a qualified idea or MVP Validation Scope into an MVP Candidate Roadmap or backlog item without creating delivery scope or GitHub execution.",
         requiredAreas: ["product", "roadmap"],
@@ -3582,7 +3332,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           "strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md"
         ],
         steps: [
-          "Confirm the idea already passed `new-idea-intake` or that the founder explicitly asked for roadmap or backlog promotion",
+          "Confirm the idea was calibrated through `strategy/product/playbooks/idea-calibration.playbook.md` or that the founder explicitly asked for roadmap or backlog promotion",
           "Read product strategy, MVP Validation Scope and roadmap context before classifying the item",
           "Preserve the qualified idea context; do not redo the entire intake unless key context is missing",
           "Define problem, user, expected value, dependencies, evidence level, MVP validation goal and opportunity cost",

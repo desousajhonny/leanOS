@@ -13,9 +13,5 @@ department:
       agent: roadmap/AGENT.md
       readme: roadmap/README.md
   workflows:
-    - key: business-intake
-      path: workflows/business-intake.workflow.md
-    - key: new-idea-intake
-      path: workflows/new-idea-intake.workflow.md
     - key: idea-to-roadmap
       path: workflows/idea-to-roadmap.workflow.md

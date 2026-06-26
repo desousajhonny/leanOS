@@ -30,13 +30,13 @@ Ativação padrão: `AGENT.md` -> `strategy/AGENT.md` -> `strategy/product/AGENT
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
-| `map-business-baseline` | Mapear contexto inicial, estágio do negócio, lacunas da Strategy Baseline e próxima pergunta segura. | Workflow `business-intake`; role `product-strategist`; início do LeanOS com ideia vaga. |
-| `define-product` | Esclarecer produto, problema, usuário alvo e status do produto. | Workflow `business-intake`; roles `product-strategist` e `product-manager`; playbook `idea-calibration`. |
+| `map-business-baseline` | Mapear contexto inicial, estágio do negócio, lacunas da Strategy Baseline e próxima pergunta segura. | Primeiro passo do playbook `idea-calibration`; role `product-strategist`; início do LeanOS ou qualquer ideia nova. |
+| `define-product` | Esclarecer produto, problema, usuário alvo e status do produto. | Roles `product-strategist` e `product-manager`; playbook `idea-calibration`. |
 | `define-icp` | Definir o primeiro segmento de cliente com dores, gatilhos e exclusões. | Role `product-strategist`; playbook `idea-calibration`; pedidos sobre ICP, usuário alvo ou validação. |
 | `define-value-proposition` | Articular promessa, resultado, prova e diferenciação. | Role `product-strategist`; playbook `idea-calibration`; pedidos sobre proposta de valor ou posicionamento. |
 | `define-business-model` | Rascunhar receita, canais, custos e modelo de entrega. | Role `product-strategist`; playbook `idea-calibration`; pedidos sobre pricing, receita ou modelo de negócio. |
-| `define-mvp-validation-scope` | Definir o menor caminho de validação do MVP e gerar um Roadmap Candidate inicial. | Playbook `mvp-validation-scope`; workflows `business-intake`, `new-idea-intake` e `idea-to-roadmap`; roles `product-strategist` e `product-manager`. |
-| `evaluate-idea` | Avaliar uma nova ideia contra valor do usuário, evidência, fit com MVP e impacto no roadmap. | Workflow `new-idea-intake`; roles `product-strategist` e `product-manager`; pedidos de nova ideia ou mudança de direção. |
+| `define-mvp-validation-scope` | Definir o menor caminho de validação do MVP e gerar um Roadmap Candidate inicial. | Playbook `mvp-validation-scope`; handoff vindo de `idea-calibration` ou `idea-to-roadmap`; roles `product-strategist` e `product-manager`. |
+| `evaluate-idea` | Avaliar uma nova ideia contra valor do usuário, evidência, fit com MVP e impacto no roadmap. | Playbook `idea-calibration`; roles `product-strategist` e `product-manager`; pedidos de nova ideia ou mudança de direção. |
 | `check-coherence` | Checar coerência entre ICP, problema, proposta de valor, escopo de MVP, roadmap e issue. | Roles `product-strategist` e `product-manager`; playbook `idea-calibration`; revisões de coerência antes de avançar. |
 
 ### Roadmap

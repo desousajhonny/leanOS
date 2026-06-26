@@ -109,7 +109,7 @@ Isso criou uma etapa extra desnecessária depois que o LeanOS adotou Epics locai
 A cadeia oficial agora é:
 
 ```text
-new-idea-intake
+idea-calibration
 -> idea-to-roadmap
 -> roadmap-item-to-epic
 -> epic-to-features

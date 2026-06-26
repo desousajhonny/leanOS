@@ -22,7 +22,7 @@ A sequência nem sempre é linear em produtos maduros, mas os gates continuam va
 
 O estágio atual do negócio é definido em `business-stages.md`. O Chief deve mapear esse estágio antes de qualquer ação, porque uma nova ideia pode aparecer tanto em um negócio recém-iniciado quanto em um produto já operando.
 
-Toda nova ideia entra por `new-idea-intake`, e esse intake deve considerar o estágio atual do negócio.
+Toda ideia entra por `idea-calibration`, e essa calibragem deve considerar o estágio atual do negócio.
 
 ## Fluxo Inicial
 

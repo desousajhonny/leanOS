@@ -16,7 +16,7 @@ Load:
 - [.leanos/context/next-actions.md](../../.leanos/context/next-actions.md)
 - [.leanos/index/routing-map.yaml](../../.leanos/index/routing-map.yaml)
 
-Then route startup through `AGENT.md` -> `strategy/AGENT.md` -> the smallest matching Strategy workflow or active area.
+Then route startup through `AGENT.md` -> `strategy/AGENT.md` -> `strategy/product/AGENT.md` -> `strategy/product/playbooks/idea-calibration.playbook.md`.
 
 Use propose-first mode:
 

@@ -1463,7 +1463,7 @@ If the next step needs an inactive workspace area, return an \`activation_requir
 | Setup Seed | \`leanos.yaml\`, root \`AGENT.md\`, minimal Strategy | The founder described the idea in the wizard or has almost no structure. | Read the seed context and orient the founder. | Founder wants to begin and accepts guided diagnosis. |
 | Strategy Seed | Strategy only | There is a rough idea, but problem, customer and value are incomplete. | Ask guided diagnosis questions and fill the minimum Strategy knowledge. | Problem, ICP, value proposition and assumptions are minimally clear. |
 | Strategy Baseline | Strategy only | The business direction is coherent enough to compare options. | Confirm positioning, business model, validation risk and current constraints. | Founder confirms a baseline worth turning into a roadmap. |
-| Idea Diagnosis | Strategy only | The founder needs to know what the idea is, for whom and why now. | Diagnose clarity, risk and evidence without jumping to execution. | One clear opportunity or validation path is selected. |
+| Idea Calibration | Strategy only | The founder needs to understand what the idea is, for whom and why now. | Calibrate clarity, risk and evidence without jumping to execution. | One clear opportunity or validation path is selected. |
 | MVP Validation Scope | Strategy only | The founder wants to validate the business through a first MVP path. | Define business thesis, target user, core problem, MVP slice, manual/concierge parts, productized parts, success signals and pivot signals. | Founder confirms the MVP validation scope is ready for roadmap sequencing. |
 | Roadmap Inicial | Strategy only | The founder has a validated-enough direction or MVP Validation Scope but no sequence. | Convert Strategy into first roadmap options, prioritization and MVP Candidate Roadmap. | Founder chooses a near-term roadmap item or validation path. |
 | MVP Delivery Decision | Strategy plus Product Ops activation when needed | The founder wants to turn a chosen roadmap/MVP item into executable scope. | Decide delivery boundary, PRD, non-goals, acceptance criteria and dependencies. | If Product Ops is missing, return \`activation_required\` for Product Ops/Operations. |
@@ -1582,9 +1582,9 @@ If the prerequisite is not met, say what Strategy decision must happen first.
 | Founder Says | Stage | Route |
 | --- | --- | --- |
 | "Quero começar agora" | Setup Seed or Strategy Seed | Active Strategy founder diagnosis workflow. |
-| "Minha ideia faz sentido?" | Strategy Seed or Idea Diagnosis | Diagnose problem, ICP, promise, evidence and risk before roadmap. |
+| "Minha ideia faz sentido?" | Strategy Seed or Idea Calibration | Calibrate problem, ICP, promise, evidence and risk before roadmap. |
 | "Vamos montar o roadmap" | Strategy Baseline | Strategy roadmap workflow if baseline gate is met. |
-| "Vamos definir o MVP" | Idea Diagnosis or MVP Validation Scope | Strategy Product defines MVP Validation Scope, then Strategy Roadmap creates the MVP Candidate Roadmap. |
+| "Vamos definir o MVP" | Idea Calibration or MVP Validation Scope | Strategy Product defines MVP Validation Scope, then Strategy Roadmap creates the MVP Candidate Roadmap. |
 | "Vamos transformar esse item do MVP em entrega" | Roadmap Inicial or MVP Delivery Decision | Return \`activation_required\` for Product Ops if not active; then route to MVP delivery scope definition. |
 | "Quebre isso em features" | Product Shaping | Require Product Ops active and delivery scope confirmed. |
 | "Implemente essa feature" | Delivery Readiness or Implementation | Return \`activation_required\` for Engineering if not active; then route to delivery cycle. |
@@ -1621,10 +1621,10 @@ Use this file with \`founder-progression-model.md\`. The model explains the jour
 
 | Stage | Required Context | Allowed Next Stages | Blocked Next Stages |
 | --- | --- | --- | --- |
-| Setup Seed | \`leanos.yaml\` seed context, active Strategy routes, founder start intent | Strategy Seed, Idea Diagnosis | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
-| Strategy Seed | product idea, target user guess, problem guess, value promise guess | Strategy Baseline, Idea Diagnosis | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
-| Strategy Baseline | problem statement, ICP or first user segment, value proposition, alternative, riskiest assumption, business model direction, immediate focus | MVP Validation Scope, Roadmap Inicial, Idea Diagnosis | MVP Delivery Decision, Product Shaping, Implementation |
-| Idea Diagnosis | idea restated, user and problem named, fit with ICP/value checked, evidence and assumptions visible | MVP Validation Scope, Roadmap Inicial, Strategy Baseline | MVP Delivery Decision, Product Shaping, Implementation |
+| Setup Seed | \`leanos.yaml\` seed context, active Strategy routes, founder start intent | Strategy Seed, Idea Calibration | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
+| Strategy Seed | product idea, target user guess, problem guess, value promise guess | Strategy Baseline, Idea Calibration | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
+| Strategy Baseline | problem statement, ICP or first user segment, value proposition, alternative, riskiest assumption, business model direction, immediate focus | MVP Validation Scope, Roadmap Inicial, Idea Calibration | MVP Delivery Decision, Product Shaping, Implementation |
+| Idea Calibration | idea restated, user and problem named, fit with ICP/value checked, evidence and assumptions visible | MVP Validation Scope, Roadmap Inicial, Strategy Baseline | MVP Delivery Decision, Product Shaping, Implementation |
 | MVP Validation Scope | Business Thesis, Target User, Core Problem, Promise, MVP Slice, Success Signals, Pivot Signals, Initial MVP Roadmap Candidate | MVP Candidate Roadmap, Roadmap Inicial | MVP Delivery Decision, Product Shaping, Implementation |
 | MVP Candidate Roadmap | confirmed roadmap/backlog candidate, outcome, validation goal, Now/Next placement, founder confirmation | MVP Delivery Decision, Product Shaping when Product Ops is active | Implementation |
 | MVP Delivery Decision | Product Ops active, delivery scope, PRD or equivalent scope, non-goals, acceptance criteria, dependencies | Product Shaping, Delivery Readiness | Implementation before Feature readiness |
@@ -1651,7 +1651,7 @@ Allowed next stages are the only stages LeanOS may recommend without explaining 
 
 When multiple next stages are allowed, choose the smallest one that answers the founder's intent:
 
-- if context is unclear, stay in Strategy Seed or Idea Diagnosis;
+- if context is unclear, stay in Strategy Seed or Idea Calibration;
 - if the founder wants fast business validation, move to MVP Validation Scope;
 - if the founder wants sequence, move to MVP Candidate Roadmap or Roadmap Inicial;
 - if the founder chose a roadmap item for delivery, request Product Ops activation and move to MVP Delivery Decision.
@@ -2458,8 +2458,8 @@ Describe what this department owns.
 
 ## Routing Rules
 
-1. If the founder request is a journey, open \`workflows/README.md\` and choose the smallest matching workflow.
-2. A journey changes state, priority, scope, handoff, roadmap, delivery, launch or learning.
+1. If the founder request changes state, priority, scope, handoff, roadmap, delivery, launch or learning, open \`workflows/README.md\` and choose the smallest matching workflow.
+2. If the request is calibration, clarification, evaluation or definition inside one area, route to that area \`AGENT.md\` when present; otherwise route to its README.
 3. If the request belongs to one area and one asset family, route to that area \`AGENT.md\` when present; otherwise route to its README.
 4. If you are unsure, check \`workflows/README.md\` first; if no workflow matches, route to the smallest active area.
 5. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.

@@ -152,15 +152,9 @@ playbooks:
 workflows:
   ownership: department-local
   active:
-    - business-intake
-    - new-idea-intake
     - idea-to-roadmap
   by_department:
     strategy:
-      - key: business-intake
-        path: strategy/workflows/business-intake.workflow.md
-      - key: new-idea-intake
-        path: strategy/workflows/new-idea-intake.workflow.md
       - key: idea-to-roadmap
         path: strategy/workflows/idea-to-roadmap.workflow.md
 ai_standard:

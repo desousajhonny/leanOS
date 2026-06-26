@@ -17,8 +17,6 @@ Regra de manutenção: sempre que um workflow for criado, removido, renomeado, m
 
 | Workflow | Departamento | Serve Para | Áreas Necessárias | Áreas Condicionais | Ativado Por |
 | --- | --- | --- | --- | --- | --- |
-| `business-intake` | `strategy` | Orientar o ponto de partida do founder, mapear estágio do negócio, formar Strategy Baseline mínima e decidir próxima rota segura. | `business`, `product`, `roadmap` | Nenhuma | "quero começar", "como começar", "iniciar LeanOS", "vamos começar". |
-| `new-idea-intake` | `strategy` | Capturar e qualificar uma nova ideia, decidindo se refina Strategy, atualiza MVP Validation Scope ou vira candidata de roadmap. | `product`, `roadmap` | Nenhuma | "tenho uma ideia", "quero avaliar uma feature nova", "isso faz sentido para o produto?", "pensei em uma melhoria". |
 | `idea-to-roadmap` | `strategy` | Promover ideia qualificada ou MVP Validation Scope para Roadmap Candidate ou backlog sem criar delivery scope ou GitHub execution. | `product`, `roadmap` | `operations.product-ops`, `growth.customer-experience` | "vamos colocar essa ideia no roadmap", "salve isso no backlog", "isso entra no backlog?", "vamos priorizar". |
 | `define-mvp` | `operations` | Estruturar o primeiro escopo de MVP a partir de Strategy usando o MVP Decision Gate antes de Epics, Features, GitHub, branch ou código. | `product-ops` | `strategy/product`, `strategy/roadmap`, `operations/design`, `operations/security`, `operations/engineering`, `operations/devops` | "defina o MVP", "qual a primeira versão?", "o que entra no MVP?", "vamos definir a primeira entrega". |
 | `roadmap-item-to-epic` | `operations` | Transformar item confirmado de roadmap/backlog em Epic local com outcome, escopo, não objetivos, riscos e readiness notes. | `product-ops` | `operations/design`, `operations/security`, `operations/devops`, `operations/engineering` | "vamos transformar esse item do roadmap em epic", "crie um epic", "isso entra no MVP?", "qual milestone recebe esse item?". |
@@ -29,8 +27,8 @@ Regra de manutenção: sempre que um workflow for criado, removido, renomeado, m
 
 ## Observações Operacionais
 
-- `business-intake` usa `idea-calibration` para calibrar a ideia e, após confirmação, pode oferecer `mvp-validation-scope`.
-- `new-idea-intake` é Strategy-first e não deve criar delivery work.
+- Calibrar uma ideia não é workflow. A entrada padrão para "vamos começar", "tenho uma ideia" ou "vamos avaliar essa ideia" é `strategy/product/playbooks/idea-calibration.playbook.md`.
+- `idea-calibration` usa `map-business-baseline` para ler `leanos.yaml`, estágio do negócio e knowledge ativa antes de recomendar qualquer rota.
 - `idea-to-roadmap` ainda trabalha em Strategy; Product Ops só entra quando o trabalho vira escopo de entrega.
 - `define-mvp`, `roadmap-item-to-epic` e `epic-to-features` são a ponte principal de Strategy para delivery.
 - `feature-to-delivery-cycle` só deve começar quando a Feature tiver readiness suficiente ou quando um spike técnico for explicitamente aprovado.

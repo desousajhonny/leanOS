@@ -30,7 +30,7 @@ for (const expected of [
   "Setup Seed",
   "Strategy Seed",
   "Strategy Baseline",
-  "Idea Diagnosis",
+  "Idea Calibration",
   "Roadmap Inicial",
   "MVP Decision",
   "Product Shaping",

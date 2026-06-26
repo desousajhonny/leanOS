@@ -14,8 +14,6 @@ Use when work spans more than one active area inside this department.
 
 ## Files
 
-- `business-intake.workflow.md`
-- `new-idea-intake.workflow.md`
 - `idea-to-roadmap.workflow.md`
 
 ## Related Folders

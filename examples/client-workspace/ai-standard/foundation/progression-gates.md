@@ -10,10 +10,10 @@ Use this file with `founder-progression-model.md`. The model explains the journe
 
 | Stage | Required Context | Allowed Next Stages | Blocked Next Stages |
 | --- | --- | --- | --- |
-| Setup Seed | `leanos.yaml` seed context, active Strategy routes, founder start intent | Strategy Seed, Idea Diagnosis | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
-| Strategy Seed | product idea, target user guess, problem guess, value promise guess | Strategy Baseline, Idea Diagnosis | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
-| Strategy Baseline | problem statement, ICP or first user segment, value proposition, alternative, riskiest assumption, business model direction, immediate focus | MVP Validation Scope, Roadmap Inicial, Idea Diagnosis | MVP Delivery Decision, Product Shaping, Implementation |
-| Idea Diagnosis | idea restated, user and problem named, fit with ICP/value checked, evidence and assumptions visible | MVP Validation Scope, Roadmap Inicial, Strategy Baseline | MVP Delivery Decision, Product Shaping, Implementation |
+| Setup Seed | `leanos.yaml` seed context, active Strategy routes, founder start intent | Strategy Seed, Idea Calibration | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
+| Strategy Seed | product idea, target user guess, problem guess, value promise guess | Strategy Baseline, Idea Calibration | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
+| Strategy Baseline | problem statement, ICP or first user segment, value proposition, alternative, riskiest assumption, business model direction, immediate focus | MVP Validation Scope, Roadmap Inicial, Idea Calibration | MVP Delivery Decision, Product Shaping, Implementation |
+| Idea Calibration | idea restated, user and problem named, fit with ICP/value checked, evidence and assumptions visible | MVP Validation Scope, Roadmap Inicial, Strategy Baseline | MVP Delivery Decision, Product Shaping, Implementation |
 | MVP Validation Scope | Business Thesis, Target User, Core Problem, Promise, MVP Slice, Success Signals, Pivot Signals, Initial MVP Roadmap Candidate | MVP Candidate Roadmap, Roadmap Inicial | MVP Delivery Decision, Product Shaping, Implementation |
 | MVP Candidate Roadmap | confirmed roadmap/backlog candidate, outcome, validation goal, Now/Next placement, founder confirmation | MVP Delivery Decision, Product Shaping when Product Ops is active | Implementation |
 | MVP Delivery Decision | Product Ops active, delivery scope, PRD or equivalent scope, non-goals, acceptance criteria, dependencies | Product Shaping, Delivery Readiness | Implementation before Feature readiness |
@@ -40,7 +40,7 @@ Allowed next stages are the only stages LeanOS may recommend without explaining 
 
 When multiple next stages are allowed, choose the smallest one that answers the founder's intent:
 
-- if context is unclear, stay in Strategy Seed or Idea Diagnosis;
+- if context is unclear, stay in Strategy Seed or Idea Calibration;
 - if the founder wants fast business validation, move to MVP Validation Scope;
 - if the founder wants sequence, move to MVP Candidate Roadmap or Roadmap Inicial;
 - if the founder chose a roadmap item for delivery, request Product Ops activation and move to MVP Delivery Decision.

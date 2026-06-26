@@ -6,6 +6,7 @@ Own product strategy, ICP, value proposition, MVP validation scope, positioning 
 
 ## When to Use
 
+- start or calibrate a founder idea
 - define strategy
 - clarify ICP
 - shape value proposition

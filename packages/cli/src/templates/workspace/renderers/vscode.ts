@@ -36,7 +36,7 @@ For startup, restart or continuation requests, load:
 - [.leanos/context/next-actions.md](../../.leanos/context/next-actions.md)
 - [.leanos/index/routing-map.yaml](../../.leanos/index/routing-map.yaml)
 
-Founder requests can be natural language. Use root \`AGENT.md\` to route to the correct department. Then use the department \`AGENT.md\` to choose the workflow folder or active area.
+Founder requests can be natural language. Use root \`AGENT.md\` to route to the correct department. Then use the department \`AGENT.md\` to choose either a state-changing workflow or the smallest active area. Startup and idea evaluation usually go to Strategy Product and \`idea-calibration.playbook.md\`.
 
 Follow the LeanOS Navigation Chain:
 
@@ -75,7 +75,7 @@ Load:
 - [.leanos/context/next-actions.md](../../.leanos/context/next-actions.md)
 - [.leanos/index/routing-map.yaml](../../.leanos/index/routing-map.yaml)
 
-Then route startup through \`AGENT.md\` -> \`strategy/AGENT.md\` -> the smallest matching Strategy workflow or active area.
+Then route startup through \`AGENT.md\` -> \`strategy/AGENT.md\` -> \`strategy/product/AGENT.md\` -> \`strategy/product/playbooks/idea-calibration.playbook.md\`.
 
 Use propose-first mode:
 
@@ -108,7 +108,7 @@ Load:
 - [.leanos/context/next-actions.md](../../.leanos/context/next-actions.md)
 - [.leanos/index/routing-map.yaml](../../.leanos/index/routing-map.yaml)
 
-Then route startup through \`AGENT.md\` -> \`strategy/AGENT.md\` -> the smallest matching Strategy workflow or active area.
+Then route startup through \`AGENT.md\` -> \`strategy/AGENT.md\` -> \`strategy/product/AGENT.md\` -> \`strategy/product/playbooks/idea-calibration.playbook.md\`.
 
 Use propose-first mode:
 

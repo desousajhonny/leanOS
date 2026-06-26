@@ -1,12 +1,4 @@
 workflows:
-  - key: business-intake
-    department: strategy
-    path: ../../strategy/workflows/business-intake.workflow.md
-    active: true
-  - key: new-idea-intake
-    department: strategy
-    path: ../../strategy/workflows/new-idea-intake.workflow.md
-    active: true
   - key: idea-to-roadmap
     department: strategy
     path: ../../strategy/workflows/idea-to-roadmap.workflow.md

@@ -99,31 +99,34 @@ Decisão:
 
 - O LeanOS deve mapear o estágio real do negócio antes de qualquer rota.
 - Os estágios canônicos são: `seed`, `strategy_forming`, `mvp_shaping`, `mvp_building`, `mvp_live_learning`, `product_operating` e `growth_scaling`.
-- Toda nova ideia deve entrar por `new-idea-intake`, que avalia a ideia considerando o `business_stage` atual.
+- Toda ideia deve entrar por `idea-calibration`, que usa `map-business-baseline` para avaliar a ideia considerando o `business_stage` atual.
 
 Justificativa:
 
 - Uma nova ideia pode aparecer em qualquer estágio do negócio.
 - Um produto em operação não deve tratar toda ideia nova como MVP.
 - O founder não deve escolher estágios manualmente.
-- Centralizar ideias novas em `new-idea-intake` mantém o framework simples e evita burocracia adicional.
+- Centralizar ideias em `idea-calibration` mantém o framework simples e evita duplicar workflow para uma conversa que pertence a Strategy Product.
 
-## 2026-06-26 - Business Intake, Idea Calibration E MVP Validation Scope
+## 2026-06-26 - Idea Calibration E MVP Validation Scope
 
 Decisão:
 
-- O fluxo inicial Strategy deixa de usar `founder-diagnosis` como nome do workflow e passa a usar `business-intake`.
+- O fluxo inicial Strategy não usa workflow dedicado de intake.
+- `business-intake.workflow.md` e `new-idea-intake.workflow.md` não fazem parte do scaffold.
 - A skill `diagnose-founder-idea` passa a ser `map-business-baseline`.
 - O playbook genérico `product-strategy` passa a ser `idea-calibration`.
 - Strategy Product ganha o playbook `mvp-validation-scope`.
-- Strategy calibra a ideia e define o MVP Validation Scope.
+- Strategy Product calibra qualquer ideia com `idea-calibration`.
+- Strategy Product define o MVP Validation Scope quando o founder confirma que quer analisar o menor caminho de validação.
 - Product Ops transforma um MVP Validation Scope confirmado em Delivery Scope, Epic e Features quando o founder quiser delivery.
 
 Justificativa:
 
 - `diagnosis` soava pesado demais para a experiência inicial.
 - `product-strategy` era genérico e confundia o papel de playbook, skill e workflow.
-- `idea-calibration` descreve melhor a conversa guiada para chegar a uma Strategy Baseline confirmada.
+- `business-intake` e `new-idea-intake` duplicavam o papel de `idea-calibration` e aumentavam o risco de rotas concorrentes.
+- `idea-calibration` descreve melhor a conversa guiada para chegar a uma Strategy Baseline confirmada ou a uma avaliação de fit em produtos mais maduros.
 - Separar `mvp-validation-scope` evita que a ideia calibrada pule direto para Epic.
 - A sequência fica mais natural para o founder: calibrar ideia -> analisar MVP de validação -> decidir se vira entrega.
 

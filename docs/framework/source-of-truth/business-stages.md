@@ -24,10 +24,10 @@ O estágio do negócio não é:
 - um comando;
 - uma classificação que o founder precisa preencher;
 - permissão automática para implementar;
-- substituto para `new-idea-intake`;
+- substituto para `idea-calibration`;
 - substituto para readiness de Epic, Feature, Design, Security, DevOps ou Engineering.
 
-Toda nova ideia entra por `new-idea-intake`, e o intake usa o estágio atual do negócio como contexto.
+Toda ideia entra por `idea-calibration`, e a calibragem usa o estágio atual do negócio como contexto.
 
 ## Estágios Canônicos
 
@@ -44,14 +44,13 @@ Sinais:
 
 Trabalho principal do Chief:
 
-- iniciar business intake em Strategy;
+- iniciar `idea-calibration` em Strategy Product;
 - entender usuário inicial, dor, alternativa atual, promessa e premissa mais arriscada;
 - fazer uma pergunta útil por vez;
 - evitar roadmap, MVP delivery scope, Epic, Feature e código.
 
 Rotas típicas:
 
-- `strategy/workflows/business-intake.workflow.md`
 - `strategy/product/skills/map-business-baseline/SKILL.md`
 - `strategy/product/playbooks/idea-calibration.playbook.md`
 
@@ -75,7 +74,7 @@ Trabalho principal do Chief:
 
 - fechar a Strategy Baseline mínima;
 - separar fatos, hipóteses e incertezas;
-- avaliar ideias novas com `new-idea-intake`;
+- avaliar ideias novas com `idea-calibration`;
 - impedir que pedidos de MVP ou implementação pulem a baseline.
 
 Gate mínimo para avançar:
@@ -189,7 +188,7 @@ Sinais:
 
 Trabalho principal do Chief:
 
-- usar `new-idea-intake` para toda nova ideia;
+- usar `idea-calibration` para toda nova ideia;
 - avaliar fit com ICP, produto atual, roadmap, clientes, riscos e timing;
 - impedir que ideias novas virem Feature sem roadmap/delivery readiness;
 - manter o negócio operando com cadência de aprendizado e priorização.
@@ -198,7 +197,7 @@ Regra importante:
 
 ```text
 Uma ideia nova em product_operating não é MVP por padrão.
-Ela entra por new-idea-intake e só depois pode virar roadmap candidate, delivery candidate, Epic ou Feature.
+Ela entra por `idea-calibration` e só depois pode virar roadmap candidate, delivery candidate, Epic ou Feature.
 ```
 
 Próximo estágio saudável:
@@ -259,7 +258,7 @@ Se business_stage = growth_scaling:
 
 ### Ao Receber Uma Nova Ideia
 
-Toda nova ideia entra por `new-idea-intake`, independentemente do estágio do negócio.
+Toda nova ideia entra por `idea-calibration`, independentemente do estágio do negócio.
 
 O intake deve avaliar a ideia contra o estágio atual:
 

@@ -53,7 +53,7 @@ Examples:
 
 ## Natural Language Handling
 
-Natural language is the primary interface. Route founder requests through Progression Intent Routing, then through the owning department, workflow, area, role, skill and playbook.
+Natural language is the primary interface. Route founder requests through Progression Intent Routing, then through the owning department, area, role, skill and playbook. Use workflows only when the request changes state, priority, scope, handoff, roadmap, delivery, launch or learning.
 
 Examples:
 
@@ -74,7 +74,7 @@ Intent -> Current Stage -> Gate -> Active Requirements -> Route
 
 Rules:
 
-- Start, restart, business intake or idea calibration: \`strategy/AGENT.md\`
+- Start, restart or idea calibration: \`strategy/AGENT.md\`, then Strategy Product and \`idea-calibration.playbook.md\`
 - Initial MVP validation scope, roadmap, prioritization or validation route: \`strategy/AGENT.md\`
 - MVP delivery scope, epic, feature or delivery shaping: \`operations/AGENT.md\` only when the required Operations area is active.
 - Implementation, branch, PR or review: \`operations/AGENT.md\` only when Engineering is active and delivery readiness is clear.
@@ -108,14 +108,14 @@ activation_required: operations.product-ops
 
 ## Natural Intent Map
 
-Use this map as routing guidance, not as execution detail. After selecting the route, load the owning department or workflow and let that file decide the next step.
+Use this map as routing guidance, not as execution detail. After selecting the route, load the owning department and let that file decide the next workflow or area.
 
-- Setup or restart LeanOS: \`strategy/AGENT.md\`
+- Setup or restart LeanOS: \`strategy/AGENT.md\` -> Strategy Product -> \`idea-calibration.playbook.md\`
 - Status, resume or readiness: \`.leanos/agent/protocols/where-we-are.md\`
 - MVP validation scope or first MVP roadmap: \`strategy/AGENT.md\`
 - MVP delivery scope definition: return \`activation_required\` for \`operations.product-ops\` until Product Ops is active
 - Coherence check: \`strategy/AGENT.md\`
-- New idea or feature evaluation: \`strategy/AGENT.md\`
+- New idea or feature evaluation: \`strategy/AGENT.md\` -> Strategy Product -> \`idea-calibration.playbook.md\`
 - Roadmap/backlog promotion: \`strategy/AGENT.md\`
 - Roadmap item to Epic or Epic to Features: return \`activation_required\` for \`operations.product-ops\` until Operations is active
 - Feature implementation: return \`activation_required\` for \`operations.engineering\` until Engineering is active

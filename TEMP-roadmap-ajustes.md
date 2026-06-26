@@ -54,7 +54,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] Root `AGENT.md` aponta para a source of truth antes de decisoes de framework.
 - [x] Skills migradas para pastas `skills/<skill-slug>/SKILL.md`.
 - [x] Inventarios macro de skills, playbooks e workflows criados em `docs/framework/`.
-- [x] Jornada inicial redesenhada como `business-intake -> idea-calibration -> mvp-validation-scope -> Product Ops handoff`.
+- [x] Jornada inicial consolidada em `idea-calibration -> mvp-validation-scope -> Product Ops handoff`.
 - [x] Fluxo inicial validado com `npm test` e `git diff --check`.
 
 ## Pendencias Ativas

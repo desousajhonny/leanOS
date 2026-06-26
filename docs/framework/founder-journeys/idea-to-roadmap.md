@@ -1,6 +1,6 @@
 # Jornada: Ideia Para Roadmap
 
-Esta jornada começa depois que `new-idea-intake` qualifica uma ideia e o founder confirma que a ideia deve ser acompanhada como candidata de roadmap ou backlog.
+Esta jornada começa depois que `idea-calibration` calibra uma ideia e o founder confirma que ela deve ser acompanhada como candidata de roadmap ou backlog.
 
 O propósito não é decidir escopo de delivery, criar issues no GitHub ou iniciar implementação. O propósito é transformar uma ideia qualificada em um item estruturado de roadmap/backlog com valor, evidência, prioridade e timing claros.
 
@@ -60,7 +60,7 @@ Isso acontece depois do intake de ideia e antes de escopo de delivery ou planeja
 
 Pode acontecer:
 
-- depois de `new-idea-intake`;
+- depois de `idea-calibration`;
 - quando um founder quer acompanhar uma ideia sem comprometê-la com delivery;
 - quando uma ideia precisa de classificação de backlog ou roadmap;
 - quando a direção de produto muda, mas a implementação ainda não deve começar.
@@ -78,7 +78,7 @@ Em linguagem amigável ao founder:
 Esta jornada começa quando:
 
 - uma ideia qualificada já existe;
-- `new-idea-intake` recomendou acompanhamento em roadmap/backlog ou o founder pediu isso explicitamente;
+- `idea-calibration` recomendou acompanhamento em roadmap/backlog ou o founder pediu isso explicitamente;
 - o founder confirma que a ideia deve ser promovida de intake para consideração de roadmap/backlog.
 
 ## Condição De Fim
@@ -98,7 +98,7 @@ Departamento ou área dona da jornada:
 - Área primária: `strategy/roadmap/`
 - Área de suporte: `strategy/product/`
 - Workflow: `strategy/workflows/idea-to-roadmap.workflow.md`
-- Comando, se houver: nenhum obrigatório. Linguagem natural deve ativar esta rota depois de `new-idea-intake`.
+- Comando, se houver: nenhum obrigatório. Linguagem natural deve ativar esta rota depois de `idea-calibration`.
 
 ## Contrato De Rota
 
@@ -204,7 +204,7 @@ Evidência De Navegação:
 
 O que o modelo entende aqui:
 
-- `new-idea-intake` está completo.
+- `idea-calibration` está completo.
 - `idea-to-roadmap` é o workflow correto seguinte.
 - O workflow não deve assumir escopo de delivery, GitHub ou implementação.
 
@@ -606,7 +606,7 @@ A jornada pode terminar com:
 - **Next**: acompanhar para o próximo ciclo de planejamento.
 - **Later**: manter como oportunidade futura.
 - **Not Planned**: registrar que não deve ser perseguida agora.
-- **Precisa de mais intake**: retornar para `new-idea-intake` quando o contexto de produto ainda estiver fraco demais.
+- **Precisa de mais calibragem**: retornar para `idea-calibration` quando o contexto de produto ainda estiver fraco demais.
 
 ## Ponte De Continuação
 
@@ -644,7 +644,7 @@ Depois desta jornada, o próximo fluxo pode ser:
 
 - `roadmap-item-to-epic` quando o founder pergunta se o item de roadmap deve entrar no MVP, em um release, experimento ou outro escopo de delivery.
 - GitHub sync por readiness de DevOps/Product Ops quando Epics e Features locais confirmados devem ser espelhados no GitHub Projects.
-- `new-idea-intake` quando a ideia precisa de mais qualificação.
+- `idea-calibration` quando a ideia precisa de mais qualificação.
 
 ## Checklist De Validação Da Jornada
 

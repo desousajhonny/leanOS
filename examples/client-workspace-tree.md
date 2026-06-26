@@ -261,9 +261,7 @@ client-workspace/
 |   |   |-- area.yaml
 |   |   `-- README.md
 |   |-- workflows/
-|   |   |-- business-intake.workflow.md
 |   |   |-- idea-to-roadmap.workflow.md
-|   |   |-- new-idea-intake.workflow.md
 |   |   `-- README.md
 |   |-- AGENT.md
 |   |-- department.yaml
