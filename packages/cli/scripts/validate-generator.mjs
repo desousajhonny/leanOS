@@ -2428,6 +2428,7 @@ async function assertBusinessAreaPattern(rootDir) {
   assert(role.includes("# Business Strategist"), "Business should use Business Strategist role");
   assert(role.includes("../knowledge/profile.md"), "Business Strategist should load Business knowledge files");
   assert(role.includes("define-business-model"), "Business Strategist should expose business model definition");
+  assertRoleFormat(role, "business-strategist");
   assertSkillFormat(identitySkill, "define-business-identity");
   assertSkillFormat(operatingModelSkill, "clarify-operating-model");
   assertSkillFormat(businessModelSkill, "define-business-model");
@@ -2437,6 +2438,7 @@ async function assertBusinessAreaPattern(rootDir) {
   assert(businessModelSkill.includes("Route detailed finance modeling to Growth Finance when needed"), "Business model skill should route finance detail to Growth Finance");
   assert(playbook.includes("Business Foundation"), "Business foundation playbook should exist");
   assert(playbook.includes("../knowledge/operating-model.md"), "Business foundation playbook should update operating model knowledge");
+  assertPlaybookFormat(playbook, "business-foundation");
 
   assert.equal(await exists(join(rootDir, "strategy", "company")), false, "Old strategy/company path should not be generated");
 }
@@ -2500,6 +2502,7 @@ async function assertProductAreaPattern(rootDir) {
   assert(productStrategistRole.includes("map-business-baseline"), "Product Strategist should expose business baseline mapping skill");
   assert(productStrategistRole.includes("define-product-core"), "Product Strategist should expose product core definition");
   assert(productStrategistRole.includes("define-mvp-validation-scope"), "Product Strategist should expose MVP validation scope skill");
+  assertRoleFormat(productStrategistRole, "product-strategist");
   assert.equal(productStrategistRole.includes("../skills/define-product/SKILL.md"), false, "Product Strategist should not load removed define-product skill");
   assert.equal(productStrategistRole.includes("../skills/define-icp/SKILL.md"), false, "Product Strategist should not load removed define-icp skill");
   assert.equal(productStrategistRole.includes("../skills/define-value-proposition/SKILL.md"), false, "Product Strategist should not load removed define-value-proposition skill");
@@ -2507,11 +2510,14 @@ async function assertProductAreaPattern(rootDir) {
   assert.equal(productStrategistRole.includes("../skills/evaluate-idea/SKILL.md"), false, "Product Strategist should not load removed evaluate-idea skill");
   assert(productManagerRole.includes("../knowledge/brief.md"), "Product Manager should load Product knowledge files");
   assert(productManagerRole.includes("define-product-core"), "Product Manager should expose product core definition");
+  assertRoleFormat(productManagerRole, "product-manager");
   assert.equal(productManagerRole.includes("../skills/define-product/SKILL.md"), false, "Product Manager should not load removed define-product skill");
   assert.equal(productManagerRole.includes("../skills/evaluate-idea/SKILL.md"), false, "Product Manager should not load removed evaluate-idea skill");
   assertSkillFormat(diagnoseFounderIdeaSkill, "map-business-baseline");
   assertSkillFormat(defineProductCoreSkill, "define-product-core");
   assertSkillFormat(defineMvpValidationScopeSkill, "define-mvp-validation-scope");
+  assertPlaybookFormat(productStrategyPlaybook, "idea-calibration");
+  assertPlaybookFormat(mvpValidationScopePlaybook, "mvp-validation-scope");
   assert(diagnoseFounderIdeaSkill.includes("# Map Business Baseline"), "Product should have a dedicated business baseline mapping skill");
   assert(diagnoseFounderIdeaSkill.includes("Strategy Baseline"), "Business baseline mapping skill should build Strategy Baseline");
   assert(diagnoseFounderIdeaSkill.includes("../../../ai-standard/foundation/progression-gates.md"), "Business baseline mapping skill should load progression gates");
@@ -3698,6 +3704,34 @@ function assertSkillFormat(content, expectedName) {
   assert(content.includes("## Overview"), `${expectedName} skill should use Overview section`);
   assert(content.includes("## Process"), `${expectedName} skill should include Process section`);
   assert(content.includes("### Step 1"), `${expectedName} skill should use Step headings inside Process`);
+}
+
+function assertRoleFormat(content, expectedName) {
+  assert(content.startsWith("---\n"), `${expectedName} role should start with YAML frontmatter`);
+  assert(content.includes(`name: ${expectedName}`), `${expectedName} role frontmatter should declare name`);
+  assert(content.includes("description: Use when"), `${expectedName} role frontmatter should declare trigger description`);
+  assert(content.includes("## Purpose"), `${expectedName} role should include Purpose section`);
+  assert(content.includes("## When to Use"), `${expectedName} role should include When to Use section`);
+  assert(content.includes("## Before Acting"), `${expectedName} role should include Before Acting section`);
+  assert(content.includes("## Required Skills"), `${expectedName} role should include Required Skills section`);
+  assert(content.includes("## Relevant Playbooks"), `${expectedName} role should include Relevant Playbooks section`);
+  assert(content.includes("## Acceptance Criteria"), `${expectedName} role should include Acceptance Criteria section`);
+  assert(content.includes("## Red Lines"), `${expectedName} role should include Red Lines section`);
+}
+
+function assertPlaybookFormat(content, expectedName) {
+  assert(content.startsWith("---\n"), `${expectedName} playbook should start with YAML frontmatter`);
+  assert(content.includes(`name: ${expectedName}`), `${expectedName} playbook frontmatter should declare name`);
+  assert(content.includes("description: Use when"), `${expectedName} playbook frontmatter should declare trigger description`);
+  assert(content.includes("## Purpose"), `${expectedName} playbook should include Purpose section`);
+  assert(content.includes("## When to Use"), `${expectedName} playbook should include When to Use section`);
+  assert(content.includes("## Before Acting"), `${expectedName} playbook should include Before Acting section`);
+  assert(content.includes("## Inputs"), `${expectedName} playbook should include Inputs section`);
+  assert(content.includes("## Process"), `${expectedName} playbook should include Process section`);
+  assert(content.includes("## Stop Conditions"), `${expectedName} playbook should include Stop Conditions section`);
+  assert(content.includes("## Acceptance Criteria & Outputs"), `${expectedName} playbook should include Acceptance Criteria & Outputs section`);
+  assert(content.includes("## Files to Update"), `${expectedName} playbook should include Files to Update section`);
+  assert(content.includes("## Red Lines"), `${expectedName} playbook should include Red Lines section`);
 }
 
 async function exists(path) {

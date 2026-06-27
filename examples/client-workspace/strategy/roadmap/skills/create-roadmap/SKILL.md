@@ -68,7 +68,7 @@ Identify dependencies and risks.
 
 Propose updates before writing.
 
-## Checks
+## Checks & Acceptance Criteria
 
 - Now items are small enough to reason about.
 - Roadmap items are not vague wishes.

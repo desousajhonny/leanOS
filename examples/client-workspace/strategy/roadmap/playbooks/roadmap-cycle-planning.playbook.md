@@ -1,8 +1,22 @@
+---
+name: roadmap-cycle-planning
+description: Use when roadmap cycle planning is required for the active request
+---
+
 # Roadmap Cycle Planning
 
 ## Purpose
 
 Plan the next coherent roadmap cycle from product strategy, operating constraints and known risks.
+
+## When to Use
+
+- Use when this execution sequence matches the active request.
+
+## Before Acting
+
+- `../AGENT.md`
+- `../area.yaml`
 
 ## Inputs
 
@@ -26,7 +40,11 @@ Plan the next coherent roadmap cycle from product strategy, operating constraint
 7. Define current cycle goal and success criteria.
 8. Propose updates and wait for confirmation before writing.
 
-## Output
+## Stop Conditions
+
+- Stop and ask for confirmation before changing security-sensitive files.
+
+## Acceptance Criteria & Outputs
 
 - Roadmap cycle summary
 - Current cycle proposal
@@ -38,6 +56,13 @@ Plan the next coherent roadmap cycle from product strategy, operating constraint
 - ../knowledge/roadmap.md
 - ../knowledge/current-cycle.md
 - ../knowledge/backlog.md
+
+## Red Lines
+
+- Do not duplicate a workflow.
+- Do not duplicate skills.
+- Do not invent missing context.
+- Do not update files without explicit confirmation.
 
 ## Navigation
 

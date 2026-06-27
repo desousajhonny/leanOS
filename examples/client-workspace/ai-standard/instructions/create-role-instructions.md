@@ -17,10 +17,11 @@ Use when creating a `.role.md` file inside an area.
 ## Process
 
 1. Define what hat the agent should wear.
-2. Define when to use the role.
-3. Define required context.
-4. Point to existing skills and playbooks.
-5. Create missing skills or playbooks only after separate confirmation.
+2. Add YAML frontmatter with `name` and a trigger-only `description` that starts with "Use when".
+3. Define when to use the role.
+4. Define required context.
+5. Point to existing skills and playbooks.
+6. Create missing skills or playbooks only after separate confirmation.
 
 ## Validate
 

@@ -67,7 +67,7 @@ Separate evidence, assumptions, riskiest assumption and open questions.
 
 Propose file updates only after the founder confirms the product core.
 
-## Checks
+## Checks & Acceptance Criteria
 
 - Product Core can be summarized in one coherent paragraph.
 - Primary user, Core problem and Product promise support each other.

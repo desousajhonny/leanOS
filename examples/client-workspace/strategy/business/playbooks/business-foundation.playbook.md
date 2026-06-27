@@ -1,8 +1,22 @@
+---
+name: business-foundation
+description: Use when business foundation is required for the active request
+---
+
 # Business Foundation
 
 ## Purpose
 
 Move from raw business context to usable identity, principles and operating model.
+
+## When to Use
+
+- Use when this execution sequence matches the active request.
+
+## Before Acting
+
+- `../AGENT.md`
+- `../area.yaml`
 
 ## Inputs
 
@@ -22,7 +36,11 @@ Move from raw business context to usable identity, principles and operating mode
 5. Record decisions and open questions.
 6. Propose file updates and wait for confirmation before writing.
 
-## Output
+## Stop Conditions
+
+- Stop and ask for confirmation before changing security-sensitive files.
+
+## Acceptance Criteria & Outputs
 
 - Business foundation summary
 - Mission/principles proposal
@@ -37,6 +55,13 @@ Move from raw business context to usable identity, principles and operating mode
 - ../knowledge/principles.md
 - ../knowledge/operating-model.md
 - ../knowledge/decision-log.md
+
+## Red Lines
+
+- Do not duplicate a workflow.
+- Do not duplicate skills.
+- Do not invent missing context.
+- Do not update files without explicit confirmation.
 
 ## Navigation
 

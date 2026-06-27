@@ -1,8 +1,22 @@
+---
+name: idea-calibration
+description: Use when idea calibration is required for the active request
+---
+
 # Idea Calibration
 
 ## Purpose
 
 Calibrate any founder idea against the current business stage, from first seed idea to product-operating change, without jumping into roadmap, MVP backlog or implementation.
+
+## When to Use
+
+- Use when this execution sequence matches the active request.
+
+## Before Acting
+
+- `../AGENT.md`
+- `../area.yaml`
 
 ## Inputs
 
@@ -42,7 +56,11 @@ Use `../../../ai-standard/foundation/guided-conversation.md`.
 
 Do not ask a rigid questionnaire. Ask only what is missing.
 
-## Output
+## Stop Conditions
+
+- Stop and ask for confirmation before changing security-sensitive files.
+
+## Acceptance Criteria & Outputs
 
 - Current business-stage reading
 - Calibrated idea summary
@@ -61,6 +79,13 @@ Do not ask a rigid questionnaire. Ask only what is missing.
 - ../knowledge/value-proposition.md
 - ../knowledge/positioning.md
 - ../knowledge/validation-notes.md
+
+## Red Lines
+
+- Do not duplicate a workflow.
+- Do not duplicate skills.
+- Do not invent missing context.
+- Do not update files without explicit confirmation.
 
 ## Navigation
 

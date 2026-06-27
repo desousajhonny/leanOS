@@ -2,6 +2,11 @@
 
 Use this checklist before accepting a `.role.md` file.
 
+## Metadata
+
+- [ ] The role has YAML frontmatter with `name` and `description`.
+- [ ] The `description` starts with "Use when" and describes triggering conditions.
+
 ## Responsibility
 
 - [ ] The role defines a clear operating persona.
@@ -20,7 +25,7 @@ Use this checklist before accepting a `.role.md` file.
 - [ ] The role points to relevant playbooks.
 - [ ] The role does not reference missing files.
 
-## Output
+## Acceptance Criteria
 
-- [ ] The role states the kind of output it should produce.
+- [ ] The role states the expected output or confirmation state under `## Acceptance Criteria`.
 - [ ] The role states when to ask for clarification or confirmation.

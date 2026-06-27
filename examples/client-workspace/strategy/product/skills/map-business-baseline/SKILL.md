@@ -66,7 +66,7 @@ Choose the smallest next guided question.
 
 Recommend the next route only when the gate is satisfied.
 
-## Checks
+## Checks & Acceptance Criteria
 
 - The output names baseline gaps instead of asking a generic question.
 - The next question is tied to one missing decision.

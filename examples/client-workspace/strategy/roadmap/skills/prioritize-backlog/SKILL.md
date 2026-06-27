@@ -48,7 +48,7 @@ Recommend keep, park, split or discard.
 
 Update only after confirmation.
 
-## Checks
+## Checks & Acceptance Criteria
 
 - Top items have a clear user or business outcome.
 - Large items are flagged for epic breakdown.

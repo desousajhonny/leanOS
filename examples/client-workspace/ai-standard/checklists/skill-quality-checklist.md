@@ -18,7 +18,7 @@ Use this checklist before accepting a skill folder with `SKILL.md`.
 - [ ] The skill states required context.
 - [ ] The skill states inputs.
 - [ ] The skill uses `### Step N` headings inside `## Process`.
-- [ ] The skill states checks.
+- [ ] The skill states checks under `## Checks & Acceptance Criteria`.
 - [ ] The skill states outputs.
 - [ ] The skill states red lines.
 

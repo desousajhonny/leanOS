@@ -2,6 +2,11 @@
 
 Use this checklist before accepting a `.playbook.md` file.
 
+## Metadata
+
+- [ ] The playbook has YAML frontmatter with `name` and `description`.
+- [ ] The `description` starts with "Use when" and describes triggering conditions.
+
 ## Sequence
 
 - [ ] The playbook defines an ordered execution sequence.
@@ -13,9 +18,10 @@ Use this checklist before accepting a `.playbook.md` file.
 
 - [ ] Inputs are listed.
 - [ ] Process steps are listed.
-- [ ] Outputs are listed.
-- [ ] Files to update are listed when applicable.
-- [ ] Confirmation is required before durable file updates.
+- [ ] Stop conditions are listed under `## Stop Conditions`.
+- [ ] Acceptance criteria and outputs are listed under `## Acceptance Criteria & Outputs`.
+- [ ] Files to update are listed under `## Files to Update`.
+- [ ] Red lines are listed under `## Red Lines`.
 
 ## Guided Conversation
 

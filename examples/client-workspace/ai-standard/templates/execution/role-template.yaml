@@ -1,11 +1,14 @@
-# Role Template
-
-Use this template as a starting point.
-
-## Required
-
-- Purpose
-- Inputs
-- Process
-- Output
-- Navigation
+role:
+  slug: <role-name>
+  title: <Role Name>
+  purpose: <Description of role responsibility>
+  use_when:
+    - <trigger>
+  before_acting:
+    - <context file>
+  skills:
+    - <skill-name>
+  playbooks:
+    - <playbook-name>
+  outputs:
+    - <expected output>

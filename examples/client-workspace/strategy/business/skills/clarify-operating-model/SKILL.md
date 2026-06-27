@@ -46,7 +46,7 @@ Name decisions that require founder confirmation.
 
 Record durable decisions in the decision log.
 
-## Checks
+## Checks & Acceptance Criteria
 
 - Human approval points are explicit.
 - AI responsibilities do not exceed the workspace rules.

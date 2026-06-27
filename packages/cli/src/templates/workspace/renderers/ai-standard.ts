@@ -137,6 +137,8 @@ function templateContent(fileName: string): string {
     "department-agent-template.md": departmentAgentTemplate(),
     "area-agent-template.md": areaAgentTemplate(),
     "area-readme-template.md": areaReadmeTemplate(),
+    "role-template.md": roleTemplate(),
+    "role-template.yaml": roleYamlTemplate(),
     "skill-template.md": skillTemplate(),
     "skill-template.yaml": skillYamlTemplate(),
     "playbook-template.md": playbookTemplate(),
@@ -816,6 +818,11 @@ Use this checklist before accepting an area.
 
 Use this checklist before accepting a \`.role.md\` file.
 
+## Metadata
+
+- [ ] The role has YAML frontmatter with \`name\` and \`description\`.
+- [ ] The \`description\` starts with "Use when" and describes triggering conditions.
+
 ## Responsibility
 
 - [ ] The role defines a clear operating persona.
@@ -834,9 +841,9 @@ Use this checklist before accepting a \`.role.md\` file.
 - [ ] The role points to relevant playbooks.
 - [ ] The role does not reference missing files.
 
-## Output
+## Acceptance Criteria
 
-- [ ] The role states the kind of output it should produce.
+- [ ] The role states the expected output or confirmation state under \`## Acceptance Criteria\`.
 - [ ] The role states when to ask for clarification or confirmation.
 `,
     skill: `# Skill Quality Checklist
@@ -859,7 +866,7 @@ Use this checklist before accepting a skill folder with \`SKILL.md\`.
 - [ ] The skill states required context.
 - [ ] The skill states inputs.
 - [ ] The skill uses \`### Step N\` headings inside \`## Process\`.
-- [ ] The skill states checks.
+- [ ] The skill states checks under \`## Checks & Acceptance Criteria\`.
 - [ ] The skill states outputs.
 - [ ] The skill states red lines.
 
@@ -873,6 +880,11 @@ Use this checklist before accepting a skill folder with \`SKILL.md\`.
 
 Use this checklist before accepting a \`.playbook.md\` file.
 
+## Metadata
+
+- [ ] The playbook has YAML frontmatter with \`name\` and \`description\`.
+- [ ] The \`description\` starts with "Use when" and describes triggering conditions.
+
 ## Sequence
 
 - [ ] The playbook defines an ordered execution sequence.
@@ -884,9 +896,10 @@ Use this checklist before accepting a \`.playbook.md\` file.
 
 - [ ] Inputs are listed.
 - [ ] Process steps are listed.
-- [ ] Outputs are listed.
-- [ ] Files to update are listed when applicable.
-- [ ] Confirmation is required before durable file updates.
+- [ ] Stop conditions are listed under \`## Stop Conditions\`.
+- [ ] Acceptance criteria and outputs are listed under \`## Acceptance Criteria & Outputs\`.
+- [ ] Files to update are listed under \`## Files to Update\`.
+- [ ] Red lines are listed under \`## Red Lines\`.
 
 ## Guided Conversation
 
@@ -1297,10 +1310,11 @@ Use when creating a \`.role.md\` file inside an area.
 ## Process
 
 1. Define what hat the agent should wear.
-2. Define when to use the role.
-3. Define required context.
-4. Point to existing skills and playbooks.
-5. Create missing skills or playbooks only after separate confirmation.
+2. Add YAML frontmatter with \`name\` and a trigger-only \`description\` that starts with "Use when".
+3. Define when to use the role.
+4. Define required context.
+5. Point to existing skills and playbooks.
+6. Create missing skills or playbooks only after separate confirmation.
 
 ## Validate
 
@@ -1335,7 +1349,7 @@ Use when creating a skill folder inside an area.
 3. Define when to use it.
 4. Define required context and inputs.
 5. Use \`### Step N\` headings inside \`## Process\`.
-6. Define checks and outputs.
+6. Define Checks & Acceptance Criteria and outputs.
 7. Define red lines.
 8. Avoid turning the skill into a full ordered process.
 
@@ -1369,12 +1383,14 @@ Use when creating a \`.playbook.md\` file inside an area.
 ## Process
 
 1. Define trigger and goal.
-2. Define inputs.
-3. Define ordered process.
-4. Reference skills instead of duplicating them.
-5. Add \`Guided Conversation\` when founder input or confirmation is part of the playbook.
-6. Define outputs.
-7. Define files to update and confirmation rules.
+2. Add YAML frontmatter with \`name\` and a trigger-only \`description\` that starts with "Use when".
+3. Define inputs.
+4. Define ordered process.
+5. Reference skills instead of duplicating them.
+6. Add \`Guided Conversation\` when founder input or confirmation is part of the playbook.
+7. Define Stop Conditions.
+8. Define Acceptance Criteria & Outputs.
+9. Define Files to Update.
 
 ## Validate
 
@@ -2557,6 +2573,66 @@ What this area owns.
 `;
 }
 
+function roleTemplate(): string {
+  return `---
+name: <role-name>
+description: Use when <specific trigger or situation>
+---
+
+# <Role Name>
+
+## Purpose
+
+Define the responsibility boundary and point of view of this role in one or two sentences.
+
+## When to Use
+
+- <trigger>
+- <symptom>
+
+## Before Acting
+
+Read:
+
+- \\\`../knowledge/<file>.md\\\`
+
+## Required Skills
+
+- \\\`../skills/<skill-name>/SKILL.md\\\`
+
+## Relevant Playbooks
+
+- \\\`../playbooks/<playbook-name>.playbook.md\\\`
+
+## Acceptance Criteria
+
+- <expected output or confirmation state>
+
+## Red Lines
+
+- Do not invent product-specific facts.
+- Ask before modifying durable files.
+`;
+}
+
+function roleYamlTemplate(): string {
+  return `role:
+  slug: <role-name>
+  title: <Role Name>
+  purpose: <Description of role responsibility>
+  use_when:
+    - <trigger>
+  before_acting:
+    - <context file>
+  skills:
+    - <skill-name>
+  playbooks:
+    - <playbook-name>
+  outputs:
+    - <expected output>
+`;
+}
+
 function skillTemplate(): string {
   return `---
 name: <skill-name>
@@ -2604,7 +2680,7 @@ Apply the capability and produce the smallest useful output.
 
 Check red lines before recommending file updates or handoffs.
 
-## Checks
+## Checks & Acceptance Criteria
 
 - <check>
 - <check>
@@ -2645,13 +2721,18 @@ function skillYamlTemplate(): string {
 }
 
 function playbookTemplate(): string {
-  return `# <Playbook Name>
+  return `---
+name: <playbook-name>
+description: Use when <specific trigger or situation>
+---
+
+# <Playbook Name>
 
 ## Purpose
 
 Explain the practical task this playbook executes inside one area.
 
-## Use When
+## When to Use
 
 - ...
 - ...
@@ -2682,21 +2763,21 @@ Do not ask a rigid questionnaire. Ask only what is missing.
 2. ...
 3. ...
 
-## Outputs
-
-- ...
-- ...
-- ...
-
-## Files To Update
-
-- ...
-
-## Confirmation Rules
+## Stop Conditions
 
 - Ask before updating durable files.
 - Ask before calling scripts, APIs or external capabilities.
 - Ask before changing roadmap, MVP, issue, PR or implementation state.
+
+## Acceptance Criteria & Outputs
+
+- ...
+- ...
+- ...
+
+## Files to Update
+
+- ...
 
 ## Red Lines
 

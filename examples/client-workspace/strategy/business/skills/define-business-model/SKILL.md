@@ -47,7 +47,7 @@ Identify pricing risks.
 
 Route detailed finance modeling to Growth Finance when needed.
 
-## Checks
+## Checks & Acceptance Criteria
 
 - Revenue model is plausible for the ICP.
 - Costs and delivery assumptions are visible.

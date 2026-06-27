@@ -51,7 +51,7 @@ Separate founder beliefs from validated facts.
 
 Propose updates before writing.
 
-## Checks
+## Checks & Acceptance Criteria
 
 - Mission is clear enough to guide tradeoffs.
 - Principles are actionable.

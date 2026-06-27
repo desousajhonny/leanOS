@@ -18,12 +18,14 @@ Use when creating a `.playbook.md` file inside an area.
 ## Process
 
 1. Define trigger and goal.
-2. Define inputs.
-3. Define ordered process.
-4. Reference skills instead of duplicating them.
-5. Add `Guided Conversation` when founder input or confirmation is part of the playbook.
-6. Define outputs.
-7. Define files to update and confirmation rules.
+2. Add YAML frontmatter with `name` and a trigger-only `description` that starts with "Use when".
+3. Define inputs.
+4. Define ordered process.
+5. Reference skills instead of duplicating them.
+6. Add `Guided Conversation` when founder input or confirmation is part of the playbook.
+7. Define Stop Conditions.
+8. Define Acceptance Criteria & Outputs.
+9. Define Files to Update.
 
 ## Validate
 

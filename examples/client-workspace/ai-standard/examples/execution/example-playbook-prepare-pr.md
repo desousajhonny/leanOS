@@ -1,8 +1,22 @@
+---
+name: prepare-pr
+description: Use when prepare pr is required for the active request
+---
+
 # Prepare PR
 
 ## Purpose
 
 Prepare a reviewable pull request from a confirmed Feature implementation.
+
+## When to Use
+
+- Use when this execution sequence matches the active request.
+
+## Before Acting
+
+- `../AGENT.md`
+- `../area.yaml`
 
 ## Inputs
 
@@ -33,7 +47,11 @@ Prepare a reviewable pull request from a confirmed Feature implementation.
 14. Fill the `Founder Testing Guide` with plain-language steps, where to test, expected result, out-of-scope notes and known limits
 15. If there is no preview URL, provide the local route, command or manual fallback the founder can realistically use
 
-## Output
+## Stop Conditions
+
+- Stop and ask for confirmation before changing security-sensitive files.
+
+## Acceptance Criteria & Outputs
 
 - Implementation summary
 - Branch used
@@ -47,6 +65,13 @@ Prepare a reviewable pull request from a confirmed Feature implementation.
 
 - Update `../knowledge/implementation-notes.md` when implementation decisions should persist.
 - Update `../knowledge/pr-log.md` after PR creation or when the user asks for a persistent PR record.
+
+## Red Lines
+
+- Do not duplicate a workflow.
+- Do not duplicate skills.
+- Do not invent missing context.
+- Do not update files without explicit confirmation.
 
 ## Navigation
 

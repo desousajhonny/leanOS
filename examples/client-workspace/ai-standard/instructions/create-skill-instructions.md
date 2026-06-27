@@ -21,7 +21,7 @@ Use when creating a skill folder inside an area.
 3. Define when to use it.
 4. Define required context and inputs.
 5. Use `### Step N` headings inside `## Process`.
-6. Define checks and outputs.
+6. Define Checks & Acceptance Criteria and outputs.
 7. Define red lines.
 8. Avoid turning the skill into a full ordered process.
 

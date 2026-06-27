@@ -377,11 +377,41 @@ function areaYaml(area: AreaDefinition): string {
   });
 }
 
+function roleDescription(role: RoleDefinition): string {
+  const triggers = role.useWhen?.length ? role.useWhen.join("; ") : `${role.title.toLowerCase()} is required for the active request`;
+  return `Use when ${triggers}`;
+}
+
+function roleFrontmatter(role: RoleDefinition): string {
+  return `---
+${stringifyYaml({
+    name: role.slug,
+    description: roleDescription(role)
+  }).trimEnd()}
+---`;
+}
+
+function playbookDescription(playbook: PlaybookDefinition): string {
+  const triggers = playbook.useWhen?.length ? playbook.useWhen.join("; ") : `${playbook.title.toLowerCase()} is required for the active request`;
+  return `Use when ${triggers}`;
+}
+
+function playbookFrontmatter(playbook: PlaybookDefinition): string {
+  return `---
+${stringifyYaml({
+    name: playbook.slug,
+    description: playbookDescription(playbook)
+  }).trimEnd()}
+---`;
+}
+
 export function roleFile(area: AreaDefinition, role: RoleDefinition): string {
   const areaOwner = area.lead ? "../AGENT.md" : "../README.md";
+  const frontmatter = roleFrontmatter(role);
 
-  if (role.outputs || role.redLines) {
-    return `# ${role.title}
+  return `${frontmatter}
+
+# ${role.title}
 
 ## Purpose
 
@@ -391,7 +421,9 @@ ${role.purpose}
 
 ${role.useWhen.map((item) => `- ${item}`).join("\n")}
 
-## Source of Truth
+## Before Acting
+
+Read:
 
 ${role.beforeActing.map((file) => `- \`${file}\``).join("\n")}
 
@@ -403,49 +435,13 @@ ${role.skills.map((skill) => `- \`../skills/${skill}/SKILL.md\``).join("\n")}
 
 ${role.playbooks.map((playbook) => `- \`../playbooks/${playbook}.playbook.md\``).join("\n")}
 
-## Output
+## Acceptance Criteria
 
 ${(role.outputs ?? ["Context loaded", "Recommendation", "Files that should be updated"]).map((item) => `- ${item}`).join("\n")}
 
 ## Red Lines
 
 ${(role.redLines ?? ["Do not invent product-specific facts.", "Ask before modifying files."]).map((item) => `- ${item}`).join("\n")}
-
-## Navigation
-
-Start from \`${areaOwner}\`, then load only the required skill and playbook.
-`;
-  }
-
-  return `# ${role.title}
-
-## Purpose
-
-${role.purpose}
-
-## Use When
-
-${role.useWhen.map((item) => `- ${item}`).join("\n")}
-
-## Before Acting
-
-Read:
-
-${role.beforeActing.map((file) => `- \`${file}\``).join("\n")}
-
-## Skills
-
-${role.skills.map((skill) => `- \`../skills/${skill}/SKILL.md\``).join("\n")}
-
-## Playbooks
-
-${role.playbooks.map((playbook) => `- \`../playbooks/${playbook}.playbook.md\``).join("\n")}
-
-## Output Style
-
-- State what context was loaded.
-- Make the smallest coherent recommendation or change.
-- Identify files that should be updated.
 
 ## Navigation
 
@@ -481,7 +477,7 @@ ${(skill.inputs ?? ["Relevant area knowledge", "Active role instructions", "User
 
 ${renderSkillProcess(skill.process ?? ["Read the minimum relevant context.", "Apply this skill to the request.", "Prepare a concise output or file update."])}
 
-## Checks
+## Checks & Acceptance Criteria
 
 ${(skill.checks ?? ["Check that the output matches the active request.", "Check that no unsupported product facts were invented."]).map((item) => `- ${item}`).join("\n")}
 
@@ -549,9 +545,14 @@ function renderSkillProcess(steps: string[]): string {
 
 export function playbookFile(area: AreaDefinition, playbook: PlaybookDefinition): string {
   const areaOwner = area.lead ? "../AGENT.md" : "../README.md";
+  const frontmatter = playbookFrontmatter(playbook);
 
-  if (playbook.useWhen || playbook.beforeActing || playbook.securityGate || playbook.stopConditions) {
-    return `# ${playbook.title}
+  const guidedConv = playbook.guidedConversation ? `\n\n${guidedConversationSection(playbook.guidedConversation)}` : "";
+  const gatesSec = playbook.gates ? `\n\n## Gates\n\n${playbook.gates.map((item) => `- ${item}`).join("\n")}` : "";
+
+  return `${frontmatter}
+
+# ${playbook.title}
 
 ## Purpose
 
@@ -569,14 +570,15 @@ ${(playbook.beforeActing ?? [areaOwner, "../area.yaml"]).map((item) => `- \`${it
 
 ${(playbook.inputs ?? ["Area knowledge", "Active role instructions", "User request"]).map((input) => `- ${input}`).join("\n")}
 
-## Steps
+## Process
 
-${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}${playbook.guidedConversation ? `\n\n${guidedConversationSection(playbook.guidedConversation)}\n` : "\n"}${playbook.gates ? `\n## Gates\n\n${playbook.gates.map((item) => `- ${item}`).join("\n")}\n` : ""}
-## Security Gate
+${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}${guidedConv}${gatesSec}
 
-${(playbook.securityGate ?? ["Stop when security context is missing or risk is unclear."]).map((item) => `- ${item}`).join("\n")}
+## Stop Conditions
 
-## Output
+${(playbook.stopConditions ?? ["Stop and ask for confirmation before changing security-sensitive files."]).map((item) => `- ${item}`).join("\n")}
+
+## Acceptance Criteria & Outputs
 
 ${(playbook.outputs ?? ["Decision or action summary", "Updated knowledge files when requested", "Next recommended LeanOS action"]).map((output) => `- ${output}`).join("\n")}
 
@@ -584,62 +586,9 @@ ${(playbook.outputs ?? ["Decision or action summary", "Updated knowledge files w
 
 ${(playbook.filesToUpdate ?? ["Update relevant area knowledge only after explicit confirmation."]).map((file) => `- ${file}`).join("\n")}
 
-## Stop Conditions
+## Red Lines
 
-${(playbook.stopConditions ?? ["Stop and ask for confirmation before changing security-sensitive files."]).map((item) => `- ${item}`).join("\n")}
-
-## Navigation
-
-Start from \`${areaOwner}\`, choose a role in \`../roles/\`, load required skills in \`../skills/\`, then use this playbook.
-`;
-  }
-
-  if (playbook.inputs || playbook.outputs || playbook.filesToUpdate) {
-    return `# ${playbook.title}
-
-## Purpose
-
-${playbook.purpose}
-
-## Inputs
-
-${(playbook.inputs ?? ["Area source-of-truth files", "Active role instructions", "User request"]).map((input) => `- ${input}`).join("\n")}
-
-## Process
-
-${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}${playbook.guidedConversation ? `\n\n${guidedConversationSection(playbook.guidedConversation)}\n` : "\n"}
-## Output
-
-${(playbook.outputs ?? ["Decision or action summary", "Updated source-of-truth files when requested", "Next recommended LeanOS command"]).map((output) => `- ${output}`).join("\n")}
-
-## Files to Update
-
-${(playbook.filesToUpdate ?? ["Update relevant area source-of-truth files if applicable."]).map((file) => `- ${file}`).join("\n")}
-
-## Navigation
-
-Start from \`${areaOwner}\`, choose a role in \`../roles/\`, load required skills in \`../skills/\`, then use this playbook.
-`;
-  }
-
-  return `# ${playbook.title}
-
-## Purpose
-
-${playbook.purpose}
-
-## Area
-
-\`${area.path}\`
-
-## Sequence
-
-${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}${playbook.guidedConversation ? `\n\n${guidedConversationSection(playbook.guidedConversation)}\n` : "\n"}
-## Outputs
-
-- Decision or action summary
-- Updated source-of-truth files when requested
-- Next recommended LeanOS command
+${(playbook.redLines ?? ["Do not duplicate a workflow.", "Do not duplicate skills.", "Do not invent missing context.", "Do not update files without explicit confirmation."]).map((item) => `- ${item}`).join("\n")}
 
 ## Navigation
 

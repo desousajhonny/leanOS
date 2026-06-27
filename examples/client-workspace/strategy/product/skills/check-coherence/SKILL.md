@@ -53,7 +53,7 @@ Check roadmap/MVP validation scope fit.
 
 List contradictions and next fixes.
 
-## Checks
+## Checks & Acceptance Criteria
 
 - Findings separate alignment from inconsistency.
 - Risks are actionable.

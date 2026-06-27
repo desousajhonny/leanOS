@@ -69,7 +69,7 @@ Draft the MVP Validation Sequence without creating roadmap, Epics or Features.
 
 Record open risks and whether the scope is ready for Product Ops.
 
-## Checks
+## Checks & Acceptance Criteria
 
 - The MVP validates the business thesis instead of maximizing feature count.
 - Manual or concierge work is allowed when it speeds validation.

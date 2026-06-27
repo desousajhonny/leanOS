@@ -1,10 +1,15 @@
+---
+name: <playbook-name>
+description: Use when <specific trigger or situation>
+---
+
 # <Playbook Name>
 
 ## Purpose
 
 Explain the practical task this playbook executes inside one area.
 
-## Use When
+## When to Use
 
 - ...
 - ...
@@ -35,21 +40,21 @@ Do not ask a rigid questionnaire. Ask only what is missing.
 2. ...
 3. ...
 
-## Outputs
-
-- ...
-- ...
-- ...
-
-## Files To Update
-
-- ...
-
-## Confirmation Rules
+## Stop Conditions
 
 - Ask before updating durable files.
 - Ask before calling scripts, APIs or external capabilities.
 - Ask before changing roadmap, MVP, issue, PR or implementation state.
+
+## Acceptance Criteria & Outputs
+
+- ...
+- ...
+- ...
+
+## Files to Update
+
+- ...
 
 ## Red Lines
 

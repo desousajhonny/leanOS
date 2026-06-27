@@ -145,6 +145,7 @@ export type PlaybookDefinition = {
   outputs?: string[];
   filesToUpdate?: string[];
   stopConditions?: string[];
+  redLines?: string[];
 };
 
 export type WorkflowDefinition = {

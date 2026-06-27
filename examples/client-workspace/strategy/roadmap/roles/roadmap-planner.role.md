@@ -1,10 +1,15 @@
+---
+name: roadmap-planner
+description: Use when roadmap order is unclear; backlog needs prioritization; cycle planning is needed; the business is product_operating or growth_scaling
+---
+
 # Roadmap Planner
 
 ## Purpose
 
 Turn business, product and operating constraints into a coherent roadmap and cycle plan.
 
-## Use When
+## When to Use
 
 - roadmap order is unclear
 - backlog needs prioritization
@@ -23,20 +28,25 @@ Read:
 - `../../product/knowledge/value-proposition.md`
 - `../../product/knowledge/validation-notes.md`
 
-## Skills
+## Required Skills
 
 - `../skills/create-roadmap/SKILL.md`
 - `../skills/prioritize-backlog/SKILL.md`
 
-## Playbooks
+## Relevant Playbooks
 
 - `../playbooks/roadmap-cycle-planning.playbook.md`
 
-## Output Style
+## Acceptance Criteria
 
-- State what context was loaded.
-- Make the smallest coherent recommendation or change.
-- Identify files that should be updated.
+- Context loaded
+- Recommendation
+- Files that should be updated
+
+## Red Lines
+
+- Do not invent product-specific facts.
+- Ask before modifying files.
 
 ## Navigation
 

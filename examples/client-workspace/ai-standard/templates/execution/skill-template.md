@@ -44,7 +44,7 @@ Apply the capability and produce the smallest useful output.
 
 Check red lines before recommending file updates or handoffs.
 
-## Checks
+## Checks & Acceptance Criteria
 
 - <check>
 - <check>
