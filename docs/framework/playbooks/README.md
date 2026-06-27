@@ -29,8 +29,9 @@ Regra de manutenção: sempre que um playbook for criado, removido, renomeado ou
 | Playbook | Área | Serve Para | Pode Ser Ativado Por |
 | --- | --- | --- | --- |
 | `mvp-backlog-planning` | `operations.product-ops` | Transformar um MVP Validation Scope aprovado pelo founder em itens de MVP backlog antes de qualquer Epic ou Feature. | Role `product-owner`; handoff vindo de Strategy Product; ativa quando Product Ops está ativo. |
-| `delivery-scope-planning` | `operations.product-ops` | Decidir se um item de MVP backlog, roadmap, backlog ou delivery candidate vira escopo confirmado sem criar issue ou código. | Role `product-owner`; workflow `delivery-item-to-epic`. |
-| `epic-to-features` | `operations.product-ops` | Quebrar Epic local em Features com tasks internas e DRM antes de Engineering. | Role `product-owner`; workflows `delivery-item-to-epic` e `epic-to-features`. |
+| `delivery-item-to-epic` | `operations.product-ops` | Transformar item aprovado de MVP backlog, roadmap, backlog ou delivery scope em Epic local antes de Feature, GitHub ou código. | Role `product-owner`; skills `define-delivery-scope` e `shape-epic`. |
+| `delivery-scope-planning` | `operations.product-ops` | Decidir se um item de MVP backlog, roadmap, backlog ou delivery candidate vira escopo confirmado sem criar issue ou código. | Role `product-owner`; usado por Product Ops quando escopo precisa ser isolado antes do Epic. |
+| `epic-to-features` | `operations.product-ops` | Quebrar Epic local em Feature drafts com tasks internas e DRM antes de Engineering. | Role `product-owner`; skills `shape-epic` e `write-feature-criteria`. |
 | `delivery-readiness` | `operations.product-ops` | Confirmar se uma issue ou slice de MVP tem clareza para entrar em Engineering. | Role `delivery-architect`; workflows de delivery quando readiness está em dúvida. |
 
 ### Design
@@ -38,7 +39,7 @@ Regra de manutenção: sempre que um playbook for criado, removido, renomeado ou
 | Playbook | Área | Serve Para | Pode Ser Ativado Por |
 | --- | --- | --- | --- |
 | `design-foundation` | `operations.design` | Criar fundação de design do MVP antes da implementação. | Role `product-designer`; item de MVP backlog ou gates de Feature com UI. |
-| `component-readiness` | `operations.design` | Preparar decisão de componente ou spec quando uma Feature precisa de clareza de UI. | Role `product-designer`; workflow `epic-to-features` ou `feature-to-delivery-cycle`. |
+| `component-readiness` | `operations.design` | Preparar decisão de componente ou spec quando uma Feature precisa de clareza de UI. | Role `product-designer`; playbook `epic-to-features` ou workflow `feature-to-delivery-cycle`. |
 | `user-research` | `operations.design` | Esclarecer evidência de usuário antes de decisões de UX. | Role `ux-researcher`; rotas de Design com evidência insuficiente. |
 | `mvp-ux-flow` | `operations.design` | Criar fluxo usável para o primeiro ciclo de validação. | Roles `ux-researcher` e `product-designer`; item de MVP backlog ou Feature com impacto de UX. |
 | `accessibility-review` | `operations.design` | Revisar fundação ou fluxo de UX por acessibilidade. | Role `accessibility-specialist`; gates de Design/Feature. |

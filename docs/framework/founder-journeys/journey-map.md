@@ -7,8 +7,8 @@ Use este mapa para acompanhar quais jornadas do founder foram desenhadas com `jo
 | [x] | 0 | Setup inicial | `start-leanos.md` | Root `AGENT.md` -> `strategy/AGENT.md` -> `strategy/product/playbooks/idea-calibration.playbook.md` | "vamos começar", "configurar o LeanOS", "iniciar o projeto" |
 | [x] | 1 | MVP Backlog operacional | `mvp-backlog-planning.md` | Root `AGENT.md` -> `activation_required: operations.product-ops` -> `operations/product-ops/playbooks/mvp-backlog-planning.playbook.md` | "Pode seguir com esse MVP", "transforme isso em backlog do MVP", "o que entra no MVP operacional?" |
 | [x] | 2 | Calibração de ideias | `idea-calibration.md` | `strategy/product/playbooks/idea-calibration.playbook.md` | "Tenho uma ideia", "quero avaliar uma feature nova", "isso faz sentido para o produto?" |
-| [x] | 3 | Item aprovado para Epic local | `delivery-item-to-epic.md` | `operations/workflows/delivery-item-to-epic.workflow.md` | "Isso entra na próxima entrega?", "isso entra no MVP?", "crie um Epic para esse item" |
-| [x] | 4 | Feature Shaping | `epic-to-features.md` | `operations/workflows/epic-to-features.workflow.md` | "Quebre o epic #123 em features" |
+| [x] | 3 | Item aprovado para Epic local | `delivery-item-to-epic.md` | `operations/product-ops/playbooks/delivery-item-to-epic.playbook.md` | "Isso entra na próxima entrega?", "isso entra no MVP?", "crie um Epic para esse item" |
+| [x] | 4 | Feature Shaping | `epic-to-features.md` | `operations/product-ops/playbooks/epic-to-features.playbook.md` | "Quebre o epic #123 em features" |
 | [x] | 5 | GitHub tracking opcional | `github-sync.md` | Root `AGENT.md` -> DevOps/Product Ops readiness + `.github/leanos/capability-contract.md` | "Sincronize Epics/Features com GitHub", "configura GitHub para o LeanOS" |
 | [x] | 6 | Implementação | `feature-to-delivery-cycle.md` | `operations/workflows/feature-to-delivery-cycle.workflow.md` | "Implemente a feature", "implemente a issue #554", "vamos começar essa feature" |
 | [ ] | 7 | Review e PR | `review-pr.md` | Dentro de `feature-to-delivery-cycle` ou futuro workflow de review | "Revise o PR", "está pronto para merge?" |

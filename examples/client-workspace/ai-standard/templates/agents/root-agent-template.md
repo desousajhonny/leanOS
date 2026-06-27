@@ -46,7 +46,7 @@ Examples:
 
 ## Natural Language Handling
 
-Natural language is the primary interface. Route founder requests through Progression Intent Routing, then through the owning department, workflow, area, role, skill and playbook.
+Natural language is the primary interface. Route founder requests through Progression Intent Routing, then through the owning department, area, role, skill and playbook. Use a workflow only when the request needs multi-area, multi-department or lifecycle coordination.
 
 Examples:
 

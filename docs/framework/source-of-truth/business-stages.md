@@ -140,8 +140,8 @@ Trabalho principal do Chief:
 Rotas típicas:
 
 - `operations/product-ops/playbooks/mvp-backlog-planning.playbook.md`
-- `operations/workflows/delivery-item-to-epic.workflow.md`
-- `operations/workflows/epic-to-features.workflow.md`
+- `operations/product-ops/playbooks/delivery-item-to-epic.playbook.md`
+- `operations/product-ops/playbooks/epic-to-features.playbook.md`
 - `operations/workflows/feature-to-delivery-cycle.workflow.md`
 
 Próximo estágio saudável:

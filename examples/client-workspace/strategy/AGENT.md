@@ -16,8 +16,8 @@ Use this department for business, product strategy, roadmap, validation, ICP or 
 
 ## Routing Rules
 
-1. If the founder request changes state, priority, scope, handoff, roadmap, delivery, launch or learning and no department workflow exists, route to the smallest active area `AGENT.md` or README.
-2. If the request is calibration, clarification, evaluation or definition inside one area, route to that area `AGENT.md` when present; otherwise route to its README.
+1. If the founder request is owned by this department and no department workflow exists, route to the smallest active area `AGENT.md` or README.
+2. If the request is a state change owned entirely by one area, calibration, clarification, evaluation or definition, route to that area `AGENT.md` when present; otherwise route to its README.
 3. If the request belongs to one area and one asset family, route to that area `AGENT.md` when present; otherwise route to its README.
 4. If you are unsure, use `department.yaml` and the active area list to choose the smallest active area.
 5. If the needed area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.

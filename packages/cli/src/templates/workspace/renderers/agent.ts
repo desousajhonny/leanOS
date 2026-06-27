@@ -53,7 +53,7 @@ Examples:
 
 ## Natural Language Handling
 
-Natural language is the primary interface. Route founder requests through Progression Intent Routing, then through the owning department, area, role, skill and playbook. Use workflows only when the request changes state, priority, scope, handoff, roadmap, delivery, launch or learning.
+Natural language is the primary interface. Route founder requests through Progression Intent Routing, then through the owning department, area, role, skill and playbook. Use workflows only when the request needs multi-area, multi-department or lifecycle coordination. Use area playbooks for state changes owned entirely by one area, such as Product Ops turning an approved item into an Epic or Features.
 
 Examples:
 
@@ -336,8 +336,8 @@ If these are missing, explain the gap and recommend the next LeanOS route instea
 - MVP validation scope missing or weak -> Strategy Product through \`strategy/AGENT.md\`
 - MVP backlog missing after Strategy MVP Validation Scope is approved -> Product Ops \`mvp-backlog-planning\` playbook when Product Ops is active, otherwise activate \`operations.product-ops\`
 - Roadmap missing for an operating product -> Strategy Roadmap through \`strategy/AGENT.md\`
-- Local epic missing -> Product Ops \`delivery-item-to-epic\` workflow
-- Features missing -> Product Ops \`epic-to-features\` workflow when available
+- Local epic missing -> Product Ops \`delivery-item-to-epic\` playbook
+- Features missing -> Product Ops \`epic-to-features\` playbook when Product Ops is active
 - Implementation ready -> Engineering \`feature-to-delivery-cycle\` workflow
 - PR/review needed -> Engineering PR validation route
 - Launch/readiness needed -> Growth or DevOps based on the gap

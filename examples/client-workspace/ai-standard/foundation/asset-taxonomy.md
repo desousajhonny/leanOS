@@ -41,8 +41,8 @@ Playbook = executes a practical task inside one area.
 A workflow should explain who participates, what handoffs happen and when the work moves from one owner to another.
 A playbook should explain the concrete steps an area follows after the correct owner, role and skills are selected.
 
-If the process crosses Product Ops, Design, Engineering or Security, it is probably a workflow.
-If the process is branch creation, PR preparation, design foundation or security review inside one area, it is probably a playbook.
+If the process actively coordinates Product Ops, Design, Engineering or Security across owners, it is probably a workflow.
+If the process changes state inside one owning area, such as Product Ops creating an Epic or Feature drafts, it is probably a playbook.
 
 ## Asset Types
 

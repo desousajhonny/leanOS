@@ -11,6 +11,8 @@ Decisão:
 - Substituir o playbook `mvp-delivery` por `mvp-backlog-planning`.
 - Criar `operations/product-ops/mvp/backlog.md` como fonte operacional dos itens do MVP.
 - Renomear `roadmap-item-to-epic` para `delivery-item-to-epic`.
+- Manter `delivery-item-to-epic` como playbook de Product Ops, não workflow.
+- Manter `epic-to-features` como playbook de Product Ops, não workflow.
 - Um item aprovado de MVP backlog, roadmap, backlog ou delivery scope deve virar Epic local antes de ser quebrado em Features.
 
 Justificativa:
@@ -19,6 +21,8 @@ Justificativa:
 - Product Ops não deve "definir MVP" de forma ampla; ele transforma uma decisão aprovada de Strategy em backlog operacional.
 - O backlog do MVP evita forçar Roadmap no estágio `mvp_building`.
 - `delivery-item-to-epic` descreve melhor o fluxo real, porque a origem do item pode ser MVP backlog, roadmap, backlog ou delivery scope.
+- Criar Epic local e quebrar Epic em Features são procedimentos de Product Ops; eles não coordenam implementação de ponta a ponta.
+- Workflow volta a fazer sentido em `feature-to-delivery-cycle`, quando Product Ops, Engineering e áreas condicionais passam a coordenar entrega.
 - A ordem oficial fica: MVP Validation Scope aprovado -> MVP Backlog -> Epic -> Features -> Delivery.
 
 ## 2026-06-26 - Núcleo De Produto E Dono Do Modelo De Negócio

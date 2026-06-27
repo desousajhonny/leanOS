@@ -17,8 +17,6 @@ Regra de manutenção: sempre que um workflow for criado, removido, renomeado, m
 
 | Workflow | Departamento | Serve Para | Áreas Necessárias | Áreas Condicionais | Ativado Por |
 | --- | --- | --- | --- | --- | --- |
-| `delivery-item-to-epic` | `operations` | Transformar item aprovado de MVP backlog, roadmap, backlog ou delivery scope em Epic local com outcome, escopo, não objetivos, riscos e readiness notes. | `product-ops` | `operations/design`, `operations/security`, `operations/devops`, `operations/engineering` | "vamos transformar esse item do MVP em Epic", "crie um Epic", "isso entra no MVP?", "qual milestone recebe esse item?". |
-| `epic-to-features` | `operations` | Quebrar Epic local em Features implementáveis com tasks internas e critérios de Delivery Readiness Matrix antes de Engineering. | `product-ops`, `engineering` | `design`, `security`, `devops` | "quebre esse epic em features", "prepara esse epic para desenvolvimento", "transforma esse epic em trabalho executável". |
 | `feature-to-delivery-cycle` | `operations` | Coordenar Product Ops, Engineering e áreas condicionais da interpretação da Feature até branch, implementação, revisão e PR. | `product-ops`, `engineering` | `design`, `security`, `devops` | "implemente a feature", "podemos iniciar o desenvolvimento?", "essa feature já pode ir para código?". |
 | `post-merge-continuation` | `operations` | Continuar o delivery depois de merge sem perder contexto de produto, engenharia, release ou aprendizado. | `product-ops`, `engineering` | `devops`, `security`, `growth/customer-experience`, `strategy/roadmap` | "o PR foi mergeado", "terminamos essa feature", "o que fazemos depois do merge?", "vamos para a próxima". |
 | `launch-learning-loop` | `growth` | Coordenar marketing, customer experience e finance depois de lançamento. | `marketing`, `customer-experience` | `growth/finance`, `strategy/product`, `operations/product-ops` | "vamos lançar", "como aprendemos com os usuários?", "o que fazer depois do lançamento?", "vamos analisar feedback". |
@@ -31,6 +29,6 @@ Regra de manutenção: sempre que um workflow for criado, removido, renomeado, m
 - `mvp-validation-scope` não cria Roadmap ou backlog. Ele cria uma sequência de validação e pode fazer handoff direto para Product Ops quando o founder quiser delivery.
 - `roadmap-cycle-planning` é playbook de Strategy/Roadmap para `product_operating`, `growth_scaling` ou pedidos explícitos de ciclo/priorização entre múltiplas frentes.
 - `mvp-backlog-planning` é playbook de Product Ops, não workflow. Ele recebe um MVP Validation Scope aprovado e registra os itens em `operations/product-ops/mvp/backlog.md`.
-- `delivery-item-to-epic` e `epic-to-features` são a ponte principal para delivery quando Product Ops está ativo.
+- `delivery-item-to-epic` e `epic-to-features` são playbooks de Product Ops, não workflows. Eles operam dentro da área para criar Epic local e Feature drafts.
 - `feature-to-delivery-cycle` só deve começar quando a Feature tiver readiness suficiente ou quando um spike técnico for explicitamente aprovado.
 - `launch-learning-loop` pertence a Growth e deve transformar sinais de mercado/cliente em aprendizado antes de criar novo trabalho de produto.

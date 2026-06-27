@@ -47,14 +47,14 @@ function departmentAgent(department: RootDepartmentDefinition, areas: AreaDefini
   const hasWorkflows = workflows.length > 0;
   const areaRoute = areas.some((area) => area.lead) ? "\`AGENT.md\` when present; otherwise route to its README" : "README";
   const workflowRoutingRules = hasWorkflows
-    ? `1. If the founder request changes state, priority, scope, handoff, roadmap, delivery, launch or learning, open \`workflows/README.md\` and choose the smallest matching workflow.
-2. If the request is calibration, clarification, evaluation or definition inside one area, route to that area ${areaRoute}.
+    ? `1. If the founder request needs multi-area, multi-department or lifecycle coordination, open \`workflows/README.md\` and choose the smallest matching workflow.
+2. If the request is a state change owned entirely by one area, calibration, clarification, evaluation or definition, route to that area ${areaRoute}.
 3. If the request belongs to one area and one asset family, route to that area ${areaRoute}.
 4. If you are unsure, check \`workflows/README.md\` first; if no workflow matches, route to the smallest active area.
 5. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
 6. Do not load roles, skills or playbooks before entering the owning area.`
-    : `1. If the founder request changes state, priority, scope, handoff, roadmap, delivery, launch or learning and no department workflow exists, route to the smallest active area \`AGENT.md\` or README.
-2. If the request is calibration, clarification, evaluation or definition inside one area, route to that area ${areaRoute}.
+    : `1. If the founder request is owned by this department and no department workflow exists, route to the smallest active area \`AGENT.md\` or README.
+2. If the request is a state change owned entirely by one area, calibration, clarification, evaluation or definition, route to that area ${areaRoute}.
 3. If the request belongs to one area and one asset family, route to that area ${areaRoute}.
 4. If you are unsure, use \`department.yaml\` and the active area list to choose the smallest active area.
 5. If the needed area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
