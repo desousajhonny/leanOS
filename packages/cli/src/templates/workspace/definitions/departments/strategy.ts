@@ -1,7 +1,7 @@
 import type { RootDepartmentDefinition } from "../../types.js";
-import { strategyBusinessArea } from "./areas/strategy-business.js";
-import { strategyProductArea } from "./areas/strategy-product.js";
-import { strategyRoadmapArea } from "./areas/strategy-roadmap.js";
+import { strategyBusinessArea } from "./strategy/business/index.js";
+import { strategyProductArea } from "./strategy/product/index.js";
+import { strategyRoadmapArea } from "./strategy/roadmap/index.js";
 
 export const strategyDepartment: RootDepartmentDefinition = {
   key: "strategy",

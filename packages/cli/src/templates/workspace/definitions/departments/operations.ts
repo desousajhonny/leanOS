@@ -1,9 +1,9 @@
 import type { RootDepartmentDefinition } from "../../types.js";
-import { operationsProductOpsArea } from "./areas/operations-product-ops.js";
-import { operationsDesignArea } from "./areas/operations-design.js";
-import { operationsEngineeringArea } from "./areas/operations-engineering.js";
-import { operationsDevopsArea } from "./areas/operations-devops.js";
-import { operationsSecurityArea } from "./areas/operations-security.js";
+import { operationsProductOpsArea } from "./operations/product-ops/index.js";
+import { operationsDesignArea } from "./operations/design/index.js";
+import { operationsEngineeringArea } from "./operations/engineering/index.js";
+import { operationsDevopsArea } from "./operations/devops/index.js";
+import { operationsSecurityArea } from "./operations/security/index.js";
 
 export const operationsDepartment: RootDepartmentDefinition = {
   key: "operations",

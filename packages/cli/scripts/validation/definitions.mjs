@@ -4,75 +4,57 @@ import { access, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { packageRoot } from "./fixtures.mjs";
 
+const areaDefinitions = [
+  ["strategy", "business"],
+  ["strategy", "product"],
+  ["strategy", "roadmap"],
+  ["operations", "product-ops"],
+  ["operations", "design"],
+  ["operations", "engineering"],
+  ["operations", "devops"],
+  ["operations", "security"],
+  ["growth", "customer-experience"],
+  ["growth", "marketing"],
+  ["growth", "finance"]
+];
+
+const areaModuleFiles = [
+  "index.ts",
+  "files.ts",
+  "roles.ts",
+  "skills.ts",
+  "playbooks.ts",
+  "common-paths.ts",
+  join("knowledge", "index.ts")
+];
+
 export async function validateAreaDefinitionsAreModular() {
-  await assertAreaFacade("operations-devops.ts", "operations/devops", [
-    "index.ts",
-    "devopsGithubManagementKnowledge.ts",
-    "devopsEnvironmentsKnowledge.ts",
-    "devopsDeploymentReadinessKnowledge.ts",
-    "devopsCiCdKnowledge.ts",
-    "devopsObservabilityKnowledge.ts",
-    "devopsReleaseNotesKnowledge.ts"
-  ]);
-  await assertAreaFacade("operations-engineering.ts", "operations/engineering", [
-    "index.ts",
-    "engineeringImplementationNotesKnowledge.ts",
-    "engineeringPrLogKnowledge.ts",
-    "engineeringCodeStandardsKnowledge.ts",
-    "engineeringImplementationRulesKnowledge.ts",
-    "engineeringComponentGuidelinesKnowledge.ts",
-    "engineeringDataGuidelinesKnowledge.ts",
-    "engineeringTestingStrategyKnowledge.ts",
-    "engineeringReviewCriteriaKnowledge.ts"
-  ]);
-  await assertAreaFacade("operations-product-ops.ts", "operations/product-ops", [
-    "index.ts",
-    "productOpsOverviewKnowledge.ts",
-    "productOpsEpicsReadmeKnowledge.ts",
-    "productOpsDeliveryScopeKnowledge.ts",
-    "productOpsIssueReadinessKnowledge.ts",
-    "productOpsReadyToDevelopKnowledge.ts",
-    "productOpsMvpDecisionGateKnowledge.ts",
-    "productOpsMvpScopeKnowledge.ts",
-    "productOpsMvpBacklogKnowledge.ts",
-    "productOpsMvpPrdKnowledge.ts",
-    "productOpsMvpUserStoriesKnowledge.ts",
-    "productOpsMvpAcceptanceCriteriaKnowledge.ts",
-    "productOpsWorkTaxonomyKnowledge.ts"
-  ]);
-  await assertAreaFacade("operations-design.ts", "operations/design", [
-    "index.ts",
-    "designSystemKnowledge.ts",
-    "designAccessibilityKnowledge.ts",
-    "designUserFlowsKnowledge.ts",
-    "designComponentInventoryKnowledge.ts",
-    "designComponentSpecsReadme.ts"
-  ]);
-  await assertAreaFacade("operations-security.ts", "operations/security", [
-    "index.ts",
-    "securityKnowledgeTemplate.ts",
-    "securityBaselineKnowledge.ts",
-    "securityThreatModelKnowledge.ts",
-    "securityAccessControlKnowledge.ts",
-    "securityDataProtectionKnowledge.ts",
-    "securityDatabaseSecurityKnowledge.ts",
-    "securitySecretsManagementKnowledge.ts",
-    "securityInfraHardeningKnowledge.ts",
-    "securitySecureCodingKnowledge.ts",
-    "securityIncidentResponseKnowledge.ts",
-    "securityAutomationKnowledge.ts"
-  ]);
+  const departmentsRoot = join(packageRoot, "src", "templates", "workspace", "definitions", "departments");
+
+  await assertMissing(join(departmentsRoot, "areas"), "Legacy definitions/departments/areas directory should not exist");
+
+  for (const [department, area] of areaDefinitions) {
+    await assertAreaPackage(departmentsRoot, department, area);
+  }
 }
 
-async function assertAreaFacade(fileName, moduleDirectory, expectedModules) {
-  const areasRoot = join(packageRoot, "src", "templates", "workspace", "definitions", "departments", "areas");
-  const facadePath = join(areasRoot, fileName);
-  const moduleDir = join(areasRoot, moduleDirectory);
-  const facadeLineCount = (await readFile(facadePath, "utf8")).split(/\r?\n/).length;
+async function assertAreaPackage(departmentsRoot, department, area) {
+  const areaDir = join(departmentsRoot, department, area);
 
-  assert(facadeLineCount <= 40, `Area definition facade should stay small: ${fileName}`);
-
-  for (const moduleName of expectedModules) {
-    await access(join(moduleDir, moduleName), constants.F_OK);
+  for (const fileName of areaModuleFiles) {
+    await access(join(areaDir, fileName), constants.F_OK);
   }
+
+  const indexLineCount = (await readFile(join(areaDir, "index.ts"), "utf8")).split(/\r?\n/).length;
+  assert(indexLineCount <= 60, `Area definition index should stay as a small composition root: ${department}/${area}/index.ts`);
+}
+
+async function assertMissing(path, message) {
+  try {
+    await access(path, constants.F_OK);
+  } catch {
+    return;
+  }
+
+  assert.fail(message);
 }

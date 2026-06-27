@@ -1,7 +1,7 @@
 import type { RootDepartmentDefinition } from "../../types.js";
-import { growthCustomerExperienceArea } from "./areas/growth-customer-experience.js";
-import { growthMarketingArea } from "./areas/growth-marketing.js";
-import { growthFinanceArea } from "./areas/growth-finance.js";
+import { growthCustomerExperienceArea } from "./growth/customer-experience/index.js";
+import { growthMarketingArea } from "./growth/marketing/index.js";
+import { growthFinanceArea } from "./growth/finance/index.js";
 
 export const growthDepartment: RootDepartmentDefinition = {
   key: "growth",
