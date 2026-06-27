@@ -98,6 +98,7 @@ const existingProductRepoAnswers = {
 };
 
 await validateWorkspaceFiles();
+await validateAiStandardRendererIsModular();
 await validateClientWorkspaceFixture();
 await validatePartialAreaSelection();
 await validateEngineeringOnlyContext();
@@ -760,6 +761,26 @@ async function validateWorkspaceFiles() {
 
   await assertIndexPathsExist(rootDir);
   await assertInitialContextCoherence(rootDir, answers.subareas);
+}
+
+async function validateAiStandardRendererIsModular() {
+  const facadePath = join(packageRoot, "src", "templates", "workspace", "renderers", "ai-standard.ts");
+  const moduleDir = join(packageRoot, "src", "templates", "workspace", "renderers", "ai-standard");
+  const facadeLineCount = (await readFile(facadePath, "utf8")).split(/\r?\n/).length;
+  const expectedModules = [
+    "index.ts",
+    "foundation.ts",
+    "templates.ts",
+    "examples.ts",
+    "checklists.ts",
+    "instructions.ts"
+  ];
+
+  assert(facadeLineCount <= 40, "AI Standard renderer facade should stay small; split content into renderers/ai-standard modules");
+
+  for (const moduleName of expectedModules) {
+    await access(join(moduleDir, moduleName), constants.F_OK);
+  }
 }
 
 async function validateClientWorkspaceFixture() {
