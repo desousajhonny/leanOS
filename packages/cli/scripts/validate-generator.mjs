@@ -2,7 +2,9 @@ import { validateGeneratorScriptIsModular } from "./validation/assertions.mjs";
 import { validateProductOpsActivation, validateActivationCliCommand } from "./validation/activation.mjs";
 import { validateAiStandardRendererIsModular } from "./validation/ai-standard.mjs";
 import { validateClientWorkspaceFixture } from "./validation/client-fixture.mjs";
+import { validateAreaDefinitionsAreModular } from "./validation/definitions.mjs";
 import { validateExistingProductRepoMode } from "./validation/existing-product-repo.mjs";
+import { validateWorkspaceRenderersAreModular } from "./validation/renderers.mjs";
 import {
   validateWorkspaceFiles,
   validatePartialAreaSelection,
@@ -15,6 +17,8 @@ import { validateWriterSkipsExistingFiles, validateWriterOverwritesWhenAllowed }
 await validateGeneratorScriptIsModular();
 await validateWorkspaceFiles();
 await validateAiStandardRendererIsModular();
+await validateWorkspaceRenderersAreModular();
+await validateAreaDefinitionsAreModular();
 await validateClientWorkspaceFixture();
 await validatePartialAreaSelection();
 await validateEngineeringOnlyContext();

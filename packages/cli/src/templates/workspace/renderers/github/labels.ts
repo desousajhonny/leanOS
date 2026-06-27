@@ -1,0 +1,34 @@
+export function labelsYaml(): string {
+  return `labels:
+  - name: leanos
+    color: "5319e7"
+    description: LeanOS managed work
+  - name: epic
+    color: "7057ff"
+    description: Roadmap epic
+  - name: feature
+    color: "bfd4f2"
+    description: Feature created from an epic
+  - name: task
+    color: "d4c5f9"
+    description: Exceptional task issue created from a feature checklist item
+  - name: validation
+    color: "0e8a16"
+    description: Validation or learning task
+  - name: mvp
+    color: "1d76db"
+    description: MVP backlog and delivery scope work
+  - name: strategy
+    color: "fbca04"
+    description: Strategy or product definition
+  - name: design
+    color: "c5def5"
+    description: UX or interface work
+  - name: security
+    color: "d73a4a"
+    description: Security, privacy or access control work
+  - name: devops
+    color: "5319e7"
+    description: Delivery, environment or GitHub operations work
+`;
+}
