@@ -87,7 +87,7 @@ export function aiStandardFiles(): FileEntry[] {
       title: "Execution Examples",
       purpose: "Examples of roles, skills, playbooks and workflows.",
       use: "Use when reviewing area-level execution assets or department/area workflows.",
-      files: ["example-role-senior-developer.md", "example-skill-check-coherence.md", "example-playbook-prepare-pr.md", "example-workflow-feature-to-delivery-cycle.md"]
+      files: ["example-role-senior-developer.md", "example-skill-coherence.md", "example-playbook-prepare-pr.md", "example-workflow-feature-to-delivery-cycle.md"]
     },
     {
       key: "github",
@@ -291,7 +291,7 @@ function exampleContent(_groupKey: string, fileName: string): string {
   const engineering = getArea("operations.engineering");
   const product = getArea("strategy.product");
   const seniorDeveloper = engineering.roles.find((role) => role.slug === "senior-developer") ?? engineering.roles[0];
-  const checkCoherence = product.skills.find((skill) => skill.slug === "check-coherence") ?? product.skills[0];
+  const coherence = product.skills.find((skill) => skill.slug === "coherence") ?? product.skills[0];
   const preparePr = engineering.playbooks.find((playbook) => playbook.slug === "prepare-pr") ?? engineering.playbooks[0];
   const examples: Record<string, string> = {
     "example-root-agent.md": rootAgent(getAllAreas(), rootDepartments),
@@ -299,7 +299,7 @@ function exampleContent(_groupKey: string, fileName: string): string {
     "example-folder-readme.md": folderReadme("Example Folder", "Example purpose.", "Use when relevant.", "README.md", ["README.md"], ["../"], "Example notes."),
     "example-area-readme.md": exampleAreaReadme(),
     "example-role-senior-developer.md": roleFile(engineering, seniorDeveloper),
-    "example-skill-check-coherence.md": skillFile(product, checkCoherence),
+    "example-skill-coherence.md": skillFile(product, coherence),
     "example-playbook-prepare-pr.md": playbookFile(engineering, preparePr),
     "example-workflow-feature-to-delivery-cycle.md": exampleWorkflowFeatureToDeliveryCycle(),
     "example-github-epic.md": exampleGithubEpic(),

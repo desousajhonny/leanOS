@@ -14,10 +14,10 @@ Use when a selected role points to a skill.
 
 ## Files
 
-- `map-business-baseline/SKILL.md`
-- `define-product-core/SKILL.md`
-- `define-mvp-validation-scope/SKILL.md`
-- `check-coherence/SKILL.md`
+- `business-baseline/SKILL.md`
+- `product-core/SKILL.md`
+- `mvp-validation-scope/SKILL.md`
+- `coherence/SKILL.md`
 
 ## Related Folders
 

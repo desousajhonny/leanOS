@@ -1,9 +1,9 @@
 ---
-name: define-product-core
+name: product-core
 description: Use when a founder idea has enough discovery signals to consolidate; the idea-calibration playbook needs one product thesis before MVP validation scope; ICP, problem and value proposition are intertwined
 ---
 
-# Define Product Core
+# Product Core
 
 ## Overview
 

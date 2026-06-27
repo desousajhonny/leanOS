@@ -32,12 +32,12 @@ Calibrate any founder idea against the current business stage, from first seed i
 ## Process
 
 1. Load the Product AGENT and choose Product Strategist or Product Manager.
-2. Use `skills/map-business-baseline/SKILL.md` first to read `leanos.yaml`, active Strategy context, business stage and Strategy Baseline gaps.
+2. Use `skills/business-baseline/SKILL.md` first to read `leanos.yaml`, active Strategy context, business stage and Strategy Baseline gaps.
 3. Choose the calibration path from the business stage: `seed` or `strategy_forming` builds baseline; `mvp_shaping` compares against MVP Validation Scope; `mvp_building` protects current delivery focus; `mvp_live_learning` checks learning signals; `product_operating` and `growth_scaling` evaluate fit with existing product, customers, roadmap, risks and timing.
 4. Ask only the discovery questions needed to mature the idea for the current business stage.
-5. Use `skills/define-product-core/SKILL.md` when there is enough signal to consolidate product, primary user, core problem, promise, differentiation and riskiest assumption.
+5. Use `skills/product-core/SKILL.md` when there is enough signal to consolidate product, primary user, core problem, promise, differentiation and riskiest assumption.
 6. Evaluate fit, assumptions, evidence, MVP impact and roadmap impact inside this playbook when the idea affects an existing MVP, product, roadmap, customer signal or operating cadence.
-7. Route pricing, revenue, channel or delivery-model decisions to `../../business/skills/define-business-model/SKILL.md` only when they block the Product decision.
+7. Route pricing, revenue, channel or delivery-model decisions to `../../business/skills/business-model/SKILL.md` only when they block the Product decision.
 8. Separate facts, assumptions, open questions and founder decisions.
 9. Present the calibrated idea with current business-stage reading, Product Core, fit assessment and smallest safe next route.
 10. Ask the founder to confirm, correct or keep calibrating before writing knowledge files.

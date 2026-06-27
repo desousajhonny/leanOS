@@ -1,9 +1,9 @@
 ---
-name: prioritize-backlog
+name: backlog-prioritization
 description: Use when backlog is unordered; a new idea needs placement; the current cycle needs sharper priority
 ---
 
-# Prioritize Backlog
+# Backlog Prioritization
 
 ## Overview
 

@@ -1,9 +1,9 @@
 ---
-name: define-mvp-validation-scope
+name: mvp-validation-scope
 description: Use when a founder has a raw idea and wants the first MVP direction; the business is in seed, strategy_forming or mvp_shaping; validation should happen through an MVP, landing page, manual workflow or concierge slice
 ---
 
-# Define MVP Validation Scope
+# MVP Validation Scope
 
 ## Overview
 

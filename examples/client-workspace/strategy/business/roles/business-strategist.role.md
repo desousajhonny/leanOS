@@ -28,9 +28,9 @@ Read:
 
 ## Required Skills
 
-- `../skills/define-business-identity/SKILL.md`
-- `../skills/clarify-operating-model/SKILL.md`
-- `../skills/define-business-model/SKILL.md`
+- `../skills/business-identity/SKILL.md`
+- `../skills/operating-model/SKILL.md`
+- `../skills/business-model/SKILL.md`
 
 ## Relevant Playbooks
 

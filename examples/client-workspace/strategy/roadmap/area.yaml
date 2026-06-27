@@ -7,8 +7,8 @@ area:
   roles:
     - roadmap-planner
   skills:
-    - create-roadmap
-    - prioritize-backlog
+    - roadmap
+    - backlog-prioritization
   playbooks:
     - roadmap-cycle-planning
   source_of_truth:

@@ -30,8 +30,8 @@ Read:
 
 ## Required Skills
 
-- `../skills/create-roadmap/SKILL.md`
-- `../skills/prioritize-backlog/SKILL.md`
+- `../skills/roadmap/SKILL.md`
+- `../skills/backlog-prioritization/SKILL.md`
 
 ## Relevant Playbooks
 

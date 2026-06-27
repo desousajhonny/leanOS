@@ -11,7 +11,7 @@ Use when reviewing area-level execution assets or department/area workflows.
 ## Files
 
 - `example-role-senior-developer.md`
-- `example-skill-check-coherence.md`
+- `example-skill-coherence.md`
 - `example-playbook-prepare-pr.md`
 - `example-workflow-feature-to-delivery-cycle.md`
 

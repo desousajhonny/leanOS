@@ -3035,14 +3035,14 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             purpose: "Clarify business context, principles, operating model, business model and decision quality.",
             useWhen: ["business direction is unclear", "operating model needs definition", "business model or revenue logic needs definition", "a strategic decision must be recorded"],
             beforeActing: ["../knowledge/profile.md", "../knowledge/principles.md", "../knowledge/operating-model.md", "../knowledge/business-model-canvas.md", "../knowledge/decision-log.md"],
-            skills: ["define-business-identity", "clarify-operating-model", "define-business-model"],
+            skills: ["business-identity", "operating-model", "business-model"],
             playbooks: ["business-foundation"]
           }
         ],
         skills: [
           {
-            slug: "define-business-identity",
-            title: "Define Business Identity",
+            slug: "business-identity",
+            title: "Business Identity",
             purpose: "Clarify business context, mission, principles and identity.",
             useWhen: ["business identity is unclear", "mission or principles need definition", "product work lacks business context"],
             requiredContext: ["../knowledge/profile.md", "../knowledge/mission.md", "../knowledge/principles.md"],
@@ -3054,8 +3054,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             redLines: ["Do not invent brand claims or market proof.", "Do not turn founder preferences into validated facts.", "Do not update files without confirmation."]
           },
           {
-            slug: "clarify-operating-model",
-            title: "Clarify Operating Model",
+            slug: "operating-model",
+            title: "Operating Model",
             purpose: "Define how humans and AI models collaborate in the business.",
             useWhen: ["operating model needs definition", "AI/human collaboration is unclear", "decision ownership is ambiguous"],
             requiredContext: ["../knowledge/operating-model.md", "../knowledge/principles.md", "../knowledge/decision-log.md"],
@@ -3067,8 +3067,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             redLines: ["Do not grant models authority to make irreversible business decisions.", "Do not store secrets or private credentials.", "Do not update files without confirmation."]
           },
           {
-            slug: "define-business-model",
-            title: "Define Business Model",
+            slug: "business-model",
+            title: "Business Model",
             purpose: "Draft revenue, channels, costs and delivery model at the business level.",
             useWhen: ["pricing or revenue logic is unclear", "business model assumptions affect MVP scope", "go-to-market needs a business model baseline"],
             requiredContext: ["../knowledge/business-model-canvas.md", "../../product/knowledge/icp.md", "../../product/knowledge/value-proposition.md"],
@@ -3092,7 +3092,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           }
         ],
         commonPaths: [
-          "Business request: `AGENT.md` -> role `roles/business-strategist.role.md` -> skill `skills/define-business-identity/SKILL.md`, `skills/clarify-operating-model/SKILL.md` or `skills/define-business-model/SKILL.md` -> playbook `playbooks/business-foundation.playbook.md` when foundation work is needed."
+          "Business request: `AGENT.md` -> role `roles/business-strategist.role.md` -> skill `skills/business-identity/SKILL.md`, `skills/operating-model/SKILL.md` or `skills/business-model/SKILL.md` -> playbook `playbooks/business-foundation.playbook.md` when foundation work is needed."
         ]
       },
       {
@@ -3128,7 +3128,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             purpose: "Connect customer, problem, value proposition, MVP validation scope, roadmap and validation logic.",
             useWhen: ["strategy is unclear", "a founder idea needs calibration", "product core needs definition", "MVP validation scope needs definition", "roadmap coherence is at risk"],
             beforeActing: ["../knowledge/brief.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/mvp-validation-scope.md", "../knowledge/validation-notes.md", "../../roadmap/knowledge/current-cycle.md"],
-            skills: ["map-business-baseline", "define-product-core", "define-mvp-validation-scope", "check-coherence"],
+            skills: ["business-baseline", "product-core", "mvp-validation-scope", "coherence"],
             playbooks: ["idea-calibration", "mvp-validation-scope"]
           },
           {
@@ -3137,14 +3137,14 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             purpose: "Translate strategy into coherent MVP validation context before Product Ops creates delivery assets.",
             useWhen: ["MVP validation scope needs refinement", "delivery readiness questions need Strategy Product context"],
             beforeActing: ["../knowledge/brief.md", "../knowledge/mvp-validation-scope.md", "../knowledge/validation-notes.md"],
-            skills: ["define-product-core", "define-mvp-validation-scope", "check-coherence"],
+            skills: ["product-core", "mvp-validation-scope", "coherence"],
             playbooks: ["idea-calibration", "mvp-validation-scope"]
           }
         ],
         skills: [
           {
-            slug: "map-business-baseline",
-            title: "Map Business Baseline",
+            slug: "business-baseline",
+            title: "Business Baseline",
             purpose: "Map a raw founder idea or current business context into known facts, Strategy Baseline gaps, next guided question and safe next route.",
             useWhen: ["the founder is starting LeanOS", "the product idea is raw", "the Chief needs to identify the current business stage before roadmap or MVP validation scope"],
             requiredContext: ["../../../leanos.yaml", "../../../ai-standard/foundation/founder-progression-model.md", "../../../ai-standard/foundation/progression-gates.md", "../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/mvp-validation-scope.md", "../knowledge/validation-notes.md"],
@@ -3156,8 +3156,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             redLines: ["Do not ask broad empty questions such as tell me more.", "Do not create roadmap, MVP backlog, Epics, Features or implementation work.", "Do not activate Operations, Growth or GitHub from idea calibration."]
           },
           {
-            slug: "define-product-core",
-            title: "Define Product Core",
+            slug: "product-core",
+            title: "Product Core",
             purpose: "Consolidate product, primary user, core problem, promise, differentiation and riskiest assumptions into one coherent product core only when the idea has enough signal.",
             useWhen: ["a founder idea has enough discovery signals to consolidate", "the idea-calibration playbook needs one product thesis before MVP validation scope", "ICP, problem and value proposition are intertwined"],
             requiredContext: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/validation-notes.md"],
@@ -3169,8 +3169,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             redLines: ["Do not run a rigid discovery interview.", "Do not invent customer evidence or validation.", "Do not force a Product Core from weak signal; return gaps instead.", "Do not create roadmap, MVP backlog, Epics, Features or implementation work.", "Route pricing, revenue or delivery-model decisions to Strategy Business."]
           },
           {
-            slug: "define-mvp-validation-scope",
-            title: "Define MVP Validation Scope",
+            slug: "mvp-validation-scope",
+            title: "MVP Validation Scope",
             purpose: "Define the smallest MVP validation path that can test the business thesis and produce an MVP Validation Sequence.",
             useWhen: ["a founder has a raw idea and wants the first MVP direction", "the business is in seed, strategy_forming or mvp_shaping", "validation should happen through an MVP, landing page, manual workflow or concierge slice"],
             requiredContext: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../../business/knowledge/business-model-canvas.md", "../knowledge/mvp-validation-scope.md", "../knowledge/validation-notes.md"],
@@ -3182,8 +3182,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             redLines: ["Do not require interviews or research before proposing an MVP validation scope when the founder wants speed.", "Do not create Epics, Features or implementation scope from Strategy Product.", "Do not update Roadmap files from MVP validation scope."]
           },
           {
-            slug: "check-coherence",
-            title: "Check Coherence",
+            slug: "coherence",
+            title: "Coherence Check",
             purpose: "Check alignment between ICP, problem, value proposition, MVP validation scope, roadmap and issue.",
             useWhen: ["strategy feels inconsistent", "MVP validation scope may not match the problem", "roadmap or issue work needs product review"],
             requiredContext: ["../knowledge/icp.md", "../knowledge/problem.md", "../knowledge/value-proposition.md", "../knowledge/mvp-validation-scope.md", "../../roadmap/knowledge/roadmap.md"],
@@ -3201,7 +3201,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "Idea Calibration",
             purpose: "Calibrate any founder idea against the current business stage, from first seed idea to product-operating change, without jumping into roadmap, MVP backlog or implementation.",
             inputs: ["../../../leanos.yaml", "../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/validation-notes.md", "../../business/knowledge/business-model-canvas.md"],
-            steps: ["Load the Product AGENT and choose Product Strategist or Product Manager.", "Use `skills/map-business-baseline/SKILL.md` first to read `leanos.yaml`, active Strategy context, business stage and Strategy Baseline gaps.", "Choose the calibration path from the business stage: `seed` or `strategy_forming` builds baseline; `mvp_shaping` compares against MVP Validation Scope; `mvp_building` protects current delivery focus; `mvp_live_learning` checks learning signals; `product_operating` and `growth_scaling` evaluate fit with existing product, customers, roadmap, risks and timing.", "Ask only the discovery questions needed to mature the idea for the current business stage.", "Use `skills/define-product-core/SKILL.md` when there is enough signal to consolidate product, primary user, core problem, promise, differentiation and riskiest assumption.", "Evaluate fit, assumptions, evidence, MVP impact and roadmap impact inside this playbook when the idea affects an existing MVP, product, roadmap, customer signal or operating cadence.", "Route pricing, revenue, channel or delivery-model decisions to `../../business/skills/define-business-model/SKILL.md` only when they block the Product decision.", "Separate facts, assumptions, open questions and founder decisions.", "Present the calibrated idea with current business-stage reading, Product Core, fit assessment and smallest safe next route.", "Ask the founder to confirm, correct or keep calibrating before writing knowledge files.", "After confirmation, choose the bridge by business stage: `seed`, `strategy_forming` or `mvp_shaping` -> `playbooks/mvp-validation-scope.playbook.md`; `mvp_building` or `mvp_live_learning` -> `activation_required: operations.product-ops`; `product_operating` or `growth_scaling` -> `../../roadmap/playbooks/roadmap-cycle-planning.playbook.md`. Use a validation note when the idea is not ready. Do not create roadmap, Epics, Features or delivery scope here."],
+            steps: ["Load the Product AGENT and choose Product Strategist or Product Manager.", "Use `skills/business-baseline/SKILL.md` first to read `leanos.yaml`, active Strategy context, business stage and Strategy Baseline gaps.", "Choose the calibration path from the business stage: `seed` or `strategy_forming` builds baseline; `mvp_shaping` compares against MVP Validation Scope; `mvp_building` protects current delivery focus; `mvp_live_learning` checks learning signals; `product_operating` and `growth_scaling` evaluate fit with existing product, customers, roadmap, risks and timing.", "Ask only the discovery questions needed to mature the idea for the current business stage.", "Use `skills/product-core/SKILL.md` when there is enough signal to consolidate product, primary user, core problem, promise, differentiation and riskiest assumption.", "Evaluate fit, assumptions, evidence, MVP impact and roadmap impact inside this playbook when the idea affects an existing MVP, product, roadmap, customer signal or operating cadence.", "Route pricing, revenue, channel or delivery-model decisions to `../../business/skills/business-model/SKILL.md` only when they block the Product decision.", "Separate facts, assumptions, open questions and founder decisions.", "Present the calibrated idea with current business-stage reading, Product Core, fit assessment and smallest safe next route.", "Ask the founder to confirm, correct or keep calibrating before writing knowledge files.", "After confirmation, choose the bridge by business stage: `seed`, `strategy_forming` or `mvp_shaping` -> `playbooks/mvp-validation-scope.playbook.md`; `mvp_building` or `mvp_live_learning` -> `activation_required: operations.product-ops`; `product_operating` or `growth_scaling` -> `../../roadmap/playbooks/roadmap-cycle-planning.playbook.md`. Use a validation note when the idea is not ready. Do not create roadmap, Epics, Features or delivery scope here."],
             guidedConversation: ["Ask one useful question at a time, tied to the biggest Strategy Baseline or fit gap for the current business stage.", "Avoid interview fatigue; do not force every skill when the idea is already clear enough.", "Do not treat every new idea as MVP when the business is already building, validating, operating or scaling.", "Use numbered choices only when they make the founder's decision easier.", "Let the founder answer with a number or free-form text.", "End with a clear confirmation question before file updates."],
             outputs: ["Current business-stage reading", "Calibrated idea summary", "Fit assessment", "Strategy Baseline proposal or product-fit recommendation", "Known facts", "Assumptions", "Open questions", "Recommended next route"],
             filesToUpdate: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/validation-notes.md"]
@@ -3211,15 +3211,15 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             title: "MVP Validation Scope",
             purpose: "Turn a confirmed Strategy Baseline into the smallest MVP validation scope before Product Ops delivery planning.",
             inputs: ["../knowledge/brief.md", "../knowledge/problem.md", "../knowledge/icp.md", "../knowledge/value-proposition.md", "../../business/knowledge/business-model-canvas.md", "../knowledge/mvp-validation-scope.md", "../knowledge/validation-notes.md"],
-            steps: ["Load the confirmed Strategy Baseline from Product knowledge.", "Use `skills/define-mvp-validation-scope/SKILL.md` to identify the first business thesis to validate.", "Choose the smallest validation artifact: product slice, landing page, manual/concierge workflow, prototype or simple automation.", "Separate In Scope, Out of Scope, Manual / Concierge Parts and Productized Parts.", "Define Success Signals and Pivot Signals.", "Draft the MVP Validation Sequence without creating roadmap, Epics, Features, GitHub issues or implementation work.", "Use `skills/check-coherence/SKILL.md` before proposing file updates.", "Ask the founder to confirm the MVP validation scope before writing.", "After confirmation, offer the handoff to Product Ops when the founder wants delivery scope or Epic planning."],
+            steps: ["Load the confirmed Strategy Baseline from Product knowledge.", "Use `skills/mvp-validation-scope/SKILL.md` to identify the first business thesis to validate.", "Choose the smallest validation artifact: product slice, landing page, manual/concierge workflow, prototype or simple automation.", "Separate In Scope, Out of Scope, Manual / Concierge Parts and Productized Parts.", "Define Success Signals and Pivot Signals.", "Draft the MVP Validation Sequence without creating roadmap, Epics, Features, GitHub issues or implementation work.", "Use `skills/coherence/SKILL.md` before proposing file updates.", "Ask the founder to confirm the MVP validation scope before writing.", "After confirmation, offer the handoff to Product Ops when the founder wants delivery scope or Epic planning."],
             guidedConversation: ["Start by restating the confirmed Strategy Baseline.", "Ask only for missing constraints or validation choices.", "When the founder wants speed, prefer the smallest artifact that can teach the business something real.", "Make the handoff explicit: Strategy validates what should be tried; Product Ops turns confirmed scope into delivery work."],
             outputs: ["MVP Validation Scope", "Business thesis", "MVP slice", "Success signals", "Pivot signals", "MVP Validation Sequence", "Product Ops handoff recommendation"],
             filesToUpdate: ["../knowledge/mvp-validation-scope.md", "../knowledge/validation-notes.md"]
           }
         ],
         commonPaths: [
-          "Idea calibration request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/map-business-baseline/SKILL.md` -> skill `skills/define-product-core/SKILL.md` when enough signal exists -> playbook `playbooks/idea-calibration.playbook.md`.",
-          "MVP validation request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/define-mvp-validation-scope/SKILL.md` -> playbook `playbooks/mvp-validation-scope.playbook.md`."
+          "Idea calibration request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/business-baseline/SKILL.md` -> skill `skills/product-core/SKILL.md` when enough signal exists -> playbook `playbooks/idea-calibration.playbook.md`.",
+          "MVP validation request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/mvp-validation-scope/SKILL.md` -> playbook `playbooks/mvp-validation-scope.playbook.md`."
         ]
       },
       {
@@ -3251,14 +3251,14 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             purpose: "Turn business, product and operating constraints into a coherent roadmap and cycle plan.",
             useWhen: ["roadmap order is unclear", "backlog needs prioritization", "cycle planning is needed", "the business is product_operating or growth_scaling"],
             beforeActing: ["../knowledge/roadmap.md", "../knowledge/current-cycle.md", "../knowledge/backlog.md", "../../product/knowledge/brief.md", "../../product/knowledge/problem.md", "../../product/knowledge/value-proposition.md", "../../product/knowledge/validation-notes.md"],
-            skills: ["create-roadmap", "prioritize-backlog"],
+            skills: ["roadmap", "backlog-prioritization"],
             playbooks: ["roadmap-cycle-planning"]
           }
         ],
         skills: [
           {
-            slug: "create-roadmap",
-            title: "Create Roadmap",
+            slug: "roadmap",
+            title: "Roadmap",
             purpose: "Sequence roadmap work by business outcome, product value, operating stage and delivery constraints.",
             useWhen: ["the founder needs a roadmap for a product_operating business", "growth_scaling requires sequencing across multiple priorities", "backlog candidates need Now/Next/Later/Not Planned classification"],
             requiredContext: ["../../../leanos.yaml", "../knowledge/roadmap.md", "../knowledge/current-cycle.md", "../../product/knowledge/brief.md", "../../product/knowledge/problem.md", "../../product/knowledge/value-proposition.md", "../../product/knowledge/validation-notes.md"],
@@ -3270,8 +3270,8 @@ export const rootDepartments: RootDepartmentDefinition[] = [
             redLines: ["Do not commit future work without founder confirmation.", "Do not invent milestones or dates.", "Do not turn backlog candidates into committed scope silently."]
           },
           {
-            slug: "prioritize-backlog",
-            title: "Prioritize Backlog",
+            slug: "backlog-prioritization",
+            title: "Backlog Prioritization",
             purpose: "Prioritize candidate work by value, risk, evidence, effort and current cycle fit.",
             useWhen: ["backlog is unordered", "a new idea needs placement", "the current cycle needs sharper priority"],
             requiredContext: ["../knowledge/backlog.md", "../knowledge/current-cycle.md", "../../product/knowledge/problem.md", "../../product/knowledge/value-proposition.md"],
@@ -3295,7 +3295,7 @@ export const rootDepartments: RootDepartmentDefinition[] = [
           }
         ],
         commonPaths: [
-          "Roadmap request: `AGENT.md` -> role `roles/roadmap-planner.role.md` -> skill `skills/create-roadmap/SKILL.md` -> playbook `playbooks/roadmap-cycle-planning.playbook.md`."
+          "Roadmap request: `AGENT.md` -> role `roles/roadmap-planner.role.md` -> skill `skills/roadmap/SKILL.md` -> playbook `playbooks/roadmap-cycle-planning.playbook.md`."
         ]
       }
     ],

@@ -1,9 +1,9 @@
 ---
-name: define-business-identity
+name: business-identity
 description: Use when business identity is unclear; mission or principles need definition; product work lacks business context
 ---
 
-# Define Business Identity
+# Business Identity
 
 ## Overview
 

@@ -1,9 +1,9 @@
 ---
-name: check-coherence
+name: coherence
 description: Use when strategy feels inconsistent; MVP validation scope may not match the problem; roadmap or issue work needs product review
 ---
 
-# Check Coherence
+# Coherence Check
 
 ## Overview
 

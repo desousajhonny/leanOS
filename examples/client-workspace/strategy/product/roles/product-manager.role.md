@@ -24,9 +24,9 @@ Read:
 
 ## Required Skills
 
-- `../skills/define-product-core/SKILL.md`
-- `../skills/define-mvp-validation-scope/SKILL.md`
-- `../skills/check-coherence/SKILL.md`
+- `../skills/product-core/SKILL.md`
+- `../skills/mvp-validation-scope/SKILL.md`
+- `../skills/coherence/SKILL.md`
 
 ## Relevant Playbooks
 

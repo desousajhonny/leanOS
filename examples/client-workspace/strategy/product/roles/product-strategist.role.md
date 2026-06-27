@@ -30,10 +30,10 @@ Read:
 
 ## Required Skills
 
-- `../skills/map-business-baseline/SKILL.md`
-- `../skills/define-product-core/SKILL.md`
-- `../skills/define-mvp-validation-scope/SKILL.md`
-- `../skills/check-coherence/SKILL.md`
+- `../skills/business-baseline/SKILL.md`
+- `../skills/product-core/SKILL.md`
+- `../skills/mvp-validation-scope/SKILL.md`
+- `../skills/coherence/SKILL.md`
 
 ## Relevant Playbooks
 

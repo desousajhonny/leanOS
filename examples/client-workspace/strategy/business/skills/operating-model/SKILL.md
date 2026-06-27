@@ -1,9 +1,9 @@
 ---
-name: clarify-operating-model
+name: operating-model
 description: Use when operating model needs definition; AI/human collaboration is unclear; decision ownership is ambiguous
 ---
 
-# Clarify Operating Model
+# Operating Model
 
 ## Overview
 

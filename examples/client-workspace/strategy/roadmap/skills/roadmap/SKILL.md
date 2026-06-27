@@ -1,9 +1,9 @@
 ---
-name: create-roadmap
+name: roadmap
 description: Use when the founder needs a roadmap for a product_operating business; growth_scaling requires sequencing across multiple priorities; backlog candidates need Now/Next/Later/Not Planned classification
 ---
 
-# Create Roadmap
+# Roadmap
 
 ## Overview
 

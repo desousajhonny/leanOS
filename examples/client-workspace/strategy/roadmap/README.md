@@ -39,4 +39,4 @@ Own roadmap sequence, milestones, backlog and planning-cycle prioritization for 
 
 ## Common Paths
 
-- Roadmap request: `AGENT.md` -> role `roles/roadmap-planner.role.md` -> skill `skills/create-roadmap/SKILL.md` -> playbook `playbooks/roadmap-cycle-planning.playbook.md`.
+- Roadmap request: `AGENT.md` -> role `roles/roadmap-planner.role.md` -> skill `skills/roadmap/SKILL.md` -> playbook `playbooks/roadmap-cycle-planning.playbook.md`.

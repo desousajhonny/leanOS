@@ -1,9 +1,9 @@
 ---
-name: define-business-model
+name: business-model
 description: Use when pricing or revenue logic is unclear; business model assumptions affect MVP scope; go-to-market needs a business model baseline
 ---
 
-# Define Business Model
+# Business Model
 
 ## Overview
 

@@ -90,7 +90,7 @@ client-workspace/
 |   |   |-- execution/
 |   |   |   |-- example-playbook-prepare-pr.md
 |   |   |   |-- example-role-senior-developer.md
-|   |   |   |-- example-skill-check-coherence.md
+|   |   |   |-- example-skill-coherence.md
 |   |   |   |-- example-workflow-feature-to-delivery-cycle.md
 |   |   |   `-- README.md
 |   |   |-- github/
@@ -190,11 +190,11 @@ client-workspace/
 |   |   |   |-- business-strategist.role.md
 |   |   |   `-- README.md
 |   |   |-- skills/
-|   |   |   |-- clarify-operating-model/
+|   |   |   |-- business-identity/
 |   |   |   |   `-- SKILL.md
-|   |   |   |-- define-business-identity/
+|   |   |   |-- business-model/
 |   |   |   |   `-- SKILL.md
-|   |   |   |-- define-business-model/
+|   |   |   |-- operating-model/
 |   |   |   |   `-- SKILL.md
 |   |   |   `-- README.md
 |   |   |-- AGENT.md
@@ -220,13 +220,13 @@ client-workspace/
 |   |   |   |-- product-strategist.role.md
 |   |   |   `-- README.md
 |   |   |-- skills/
-|   |   |   |-- check-coherence/
+|   |   |   |-- business-baseline/
 |   |   |   |   `-- SKILL.md
-|   |   |   |-- define-mvp-validation-scope/
+|   |   |   |-- coherence/
 |   |   |   |   `-- SKILL.md
-|   |   |   |-- define-product-core/
+|   |   |   |-- mvp-validation-scope/
 |   |   |   |   `-- SKILL.md
-|   |   |   |-- map-business-baseline/
+|   |   |   |-- product-core/
 |   |   |   |   `-- SKILL.md
 |   |   |   `-- README.md
 |   |   |-- AGENT.md
@@ -246,9 +246,9 @@ client-workspace/
 |   |   |   |-- README.md
 |   |   |   `-- roadmap-planner.role.md
 |   |   |-- skills/
-|   |   |   |-- create-roadmap/
+|   |   |   |-- backlog-prioritization/
 |   |   |   |   `-- SKILL.md
-|   |   |   |-- prioritize-backlog/
+|   |   |   |-- roadmap/
 |   |   |   |   `-- SKILL.md
 |   |   |   `-- README.md
 |   |   |-- AGENT.md

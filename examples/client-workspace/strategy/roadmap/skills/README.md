@@ -14,8 +14,8 @@ Use when a selected role points to a skill.
 
 ## Files
 
-- `create-roadmap/SKILL.md`
-- `prioritize-backlog/SKILL.md`
+- `roadmap/SKILL.md`
+- `backlog-prioritization/SKILL.md`
 
 ## Related Folders
 

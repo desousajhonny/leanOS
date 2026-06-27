@@ -31,12 +31,12 @@ Turn a confirmed Strategy Baseline into the smallest MVP validation scope before
 ## Process
 
 1. Load the confirmed Strategy Baseline from Product knowledge.
-2. Use `skills/define-mvp-validation-scope/SKILL.md` to identify the first business thesis to validate.
+2. Use `skills/mvp-validation-scope/SKILL.md` to identify the first business thesis to validate.
 3. Choose the smallest validation artifact: product slice, landing page, manual/concierge workflow, prototype or simple automation.
 4. Separate In Scope, Out of Scope, Manual / Concierge Parts and Productized Parts.
 5. Define Success Signals and Pivot Signals.
 6. Draft the MVP Validation Sequence without creating roadmap, Epics, Features, GitHub issues or implementation work.
-7. Use `skills/check-coherence/SKILL.md` before proposing file updates.
+7. Use `skills/coherence/SKILL.md` before proposing file updates.
 8. Ask the founder to confirm the MVP validation scope before writing.
 9. After confirmation, offer the handoff to Product Ops when the founder wants delivery scope or Epic planning.
 

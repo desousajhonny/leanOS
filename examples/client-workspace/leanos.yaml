@@ -125,17 +125,17 @@ skills:
   ownership: area-first
   active:
     strategy.business:
-      - define-business-identity
-      - clarify-operating-model
-      - define-business-model
+      - business-identity
+      - operating-model
+      - business-model
     strategy.product:
-      - map-business-baseline
-      - define-product-core
-      - define-mvp-validation-scope
-      - check-coherence
+      - business-baseline
+      - product-core
+      - mvp-validation-scope
+      - coherence
     strategy.roadmap:
-      - create-roadmap
-      - prioritize-backlog
+      - roadmap
+      - backlog-prioritization
 playbooks:
   ownership: area-first
   active:

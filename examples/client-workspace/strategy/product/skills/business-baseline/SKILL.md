@@ -1,9 +1,9 @@
 ---
-name: map-business-baseline
+name: business-baseline
 description: Use when the founder is starting LeanOS; the product idea is raw; the Chief needs to identify the current business stage before roadmap or MVP validation scope
 ---
 
-# Map Business Baseline
+# Business Baseline
 
 ## Overview
 

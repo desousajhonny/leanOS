@@ -8,10 +8,10 @@ area:
     - product-strategist
     - product-manager
   skills:
-    - map-business-baseline
-    - define-product-core
-    - define-mvp-validation-scope
-    - check-coherence
+    - business-baseline
+    - product-core
+    - mvp-validation-scope
+    - coherence
   playbooks:
     - idea-calibration
     - mvp-validation-scope

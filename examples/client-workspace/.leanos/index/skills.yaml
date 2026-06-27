@@ -1,28 +1,28 @@
 skills:
-  - key: define-business-identity
+  - key: business-identity
     area: strategy.business
-    path: ../../strategy/business/skills/define-business-identity/SKILL.md
-  - key: clarify-operating-model
+    path: ../../strategy/business/skills/business-identity/SKILL.md
+  - key: operating-model
     area: strategy.business
-    path: ../../strategy/business/skills/clarify-operating-model/SKILL.md
-  - key: define-business-model
+    path: ../../strategy/business/skills/operating-model/SKILL.md
+  - key: business-model
     area: strategy.business
-    path: ../../strategy/business/skills/define-business-model/SKILL.md
-  - key: map-business-baseline
+    path: ../../strategy/business/skills/business-model/SKILL.md
+  - key: business-baseline
     area: strategy.product
-    path: ../../strategy/product/skills/map-business-baseline/SKILL.md
-  - key: define-product-core
+    path: ../../strategy/product/skills/business-baseline/SKILL.md
+  - key: product-core
     area: strategy.product
-    path: ../../strategy/product/skills/define-product-core/SKILL.md
-  - key: define-mvp-validation-scope
+    path: ../../strategy/product/skills/product-core/SKILL.md
+  - key: mvp-validation-scope
     area: strategy.product
-    path: ../../strategy/product/skills/define-mvp-validation-scope/SKILL.md
-  - key: check-coherence
+    path: ../../strategy/product/skills/mvp-validation-scope/SKILL.md
+  - key: coherence
     area: strategy.product
-    path: ../../strategy/product/skills/check-coherence/SKILL.md
-  - key: create-roadmap
+    path: ../../strategy/product/skills/coherence/SKILL.md
+  - key: roadmap
     area: strategy.roadmap
-    path: ../../strategy/roadmap/skills/create-roadmap/SKILL.md
-  - key: prioritize-backlog
+    path: ../../strategy/roadmap/skills/roadmap/SKILL.md
+  - key: backlog-prioritization
     area: strategy.roadmap
-    path: ../../strategy/roadmap/skills/prioritize-backlog/SKILL.md
+    path: ../../strategy/roadmap/skills/backlog-prioritization/SKILL.md

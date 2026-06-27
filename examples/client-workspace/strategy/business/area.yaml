@@ -7,9 +7,9 @@ area:
   roles:
     - business-strategist
   skills:
-    - define-business-identity
-    - clarify-operating-model
-    - define-business-model
+    - business-identity
+    - operating-model
+    - business-model
   playbooks:
     - business-foundation
   source_of_truth:
