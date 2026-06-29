@@ -11,7 +11,8 @@ export const operationsDevopsSkills: SkillDefinition[] = [
       process: ["Load `.github/leanos/setup-guide.md` before asking setup questions", "Load `.github/leanos/capability-contract.md` before describing remote execution", "Check `project-sync.yaml` for TODO owner/repository/project values", "Check `labels.yaml` for minimum labels", "Check `sync-state.yaml` exists and contains no secrets", "Separate setup local, token readiness, Project readiness, labels/milestones readiness and dry-run readiness", "Confirm token source without asking for token values", "Prepare a readiness summary and proposed updates before writing"],
       checks: ["No token stored in workspace", "Founder never pastes token into chat", "Owner and repository are known", "Project type and URL or number are known", "Project fields are mapped", "Labels and milestones are declared or planned", "Dry-run required before write", "Duplicate sync risk is visible"],
       outputs: ["GitHub readiness summary", "Missing configuration", "Founder-friendly setup guidance", "Proposed project-sync update", "Token-source guidance", "Dry-run readiness", "Next action for GitHub Epics/Features sync"],
-      filesToUpdate: ["Update `../knowledge/github-management.md` after confirmation.", "Update `../../../.github/leanos/project-sync.yaml` only after explicit confirmation.", "Update `../../../.github/leanos/labels.yaml` only after explicit confirmation."]
+      filesToUpdate: ["Update `../knowledge/github-management.md` after confirmation.", "Update `../../../.github/leanos/project-sync.yaml` only after explicit confirmation.", "Update `../../../.github/leanos/labels.yaml` only after explicit confirmation."],
+      redLines: ["Do not ask the founder to paste tokens into chat or files.", "Do not perform remote GitHub writes without explicit confirmation and dry-run readiness.", "Do not make GitHub the primary source of truth over local Epics and Features."]
     },
     {
       slug: "configure-environments",
@@ -23,7 +24,8 @@ export const operationsDevopsSkills: SkillDefinition[] = [
       process: ["Separate local, preview/staging and production", "Classify config vs secret values", "Identify access owners", "List missing environment decisions", "Document open questions"],
       checks: ["Secrets are not written into markdown", "Production access is explicit", "Preview and production are not confused"],
       outputs: ["Environment map", "Config needs", "Secret handling guidance", "Access risks", "Open questions"],
-      filesToUpdate: ["Update `../knowledge/environments.md` only after explicit confirmation."]
+      filesToUpdate: ["Update `../knowledge/environments.md` only after explicit confirmation."],
+      redLines: ["Do not write secret values into markdown, `.env` or generated instructions.", "Do not invent environment names, access owners or provider details without confirmation.", "Do not confuse preview/staging behavior with production behavior."]
     },
     {
       slug: "setup-ci",
@@ -35,7 +37,8 @@ export const operationsDevopsSkills: SkillDefinition[] = [
       process: ["Identify available scripts", "Define minimum required checks", "Separate validation from deployment", "Document failure behavior", "Ask before changing workflow files"],
       checks: ["CI does not deploy automatically by default", "Required checks match project maturity", "Failures block unsafe merges"],
       outputs: ["CI readiness", "Required checks", "Workflow gaps", "Branch protection notes", "Next action"],
-      filesToUpdate: ["Update `../knowledge/ci-cd.md` after confirmation.", "Update `.github/workflows/*` only after explicit user confirmation."]
+      filesToUpdate: ["Update `../knowledge/ci-cd.md` after confirmation.", "Update `.github/workflows/*` only after explicit user confirmation."],
+      redLines: ["Do not create CI workflows before stable build and test commands are known.", "Do not deploy from validation workflows by default.", "Do not add required checks that cannot run reliably in the current repository."]
     },
     {
       slug: "plan-deployment",
@@ -47,7 +50,8 @@ export const operationsDevopsSkills: SkillDefinition[] = [
       process: ["Confirm app/framework exists", "Check Vercel/framework detection readiness", "Identify required env vars", "Define release gates", "Define rollback and smoke checks"],
       checks: ["No `.vercel/` creation", "No automatic deploy", "No `vercel.json` unless overrides are required", "Rollback path is explicit"],
       outputs: ["Deployment readiness", "Release gates", "Rollback notes", "Smoke checks", "Provider notes"],
-      filesToUpdate: ["Update `../knowledge/deployment-readiness.md` only after explicit confirmation."]
+      filesToUpdate: ["Update `../knowledge/deployment-readiness.md` only after explicit confirmation."],
+      redLines: ["Do not deploy, link providers or create remote state from this skill.", "Do not create provider config unless a real app/framework requires it.", "Do not declare deployment ready without environment, rollback and smoke-check notes."]
     },
     {
       slug: "define-observability",
@@ -59,7 +63,8 @@ export const operationsDevopsSkills: SkillDefinition[] = [
       process: ["Identify critical signals", "Define logs and errors", "Define metrics and alerts", "Define post-deploy checks", "List instrumentation gaps"],
       checks: ["Signals map to user or business risk", "Alerts are actionable", "Post-deploy checks are practical"],
       outputs: ["Observability baseline", "Critical signals", "Alert candidates", "Instrumentation gaps", "Next action"],
-      filesToUpdate: ["Update `../knowledge/observability.md` only after explicit confirmation."]
+      filesToUpdate: ["Update `../knowledge/observability.md` only after explicit confirmation."],
+      redLines: ["Do not log secrets, credentials, tokens or sensitive customer data.", "Do not create noisy alerts that have no clear owner or action.", "Do not treat instrumentation guesses as verified runtime visibility."]
     },
     {
       slug: "prepare-release",
@@ -71,6 +76,7 @@ export const operationsDevopsSkills: SkillDefinition[] = [
       process: ["Summarize scope", "Check CI/CD and deployment readiness", "Check observability/post-deploy checks", "List risks and rollback", "Prepare follow-up notes"],
       checks: ["Release does not hide known risk", "Rollback is explicit", "Post-release checks are visible"],
       outputs: ["Release notes", "Readiness summary", "Risks", "Rollback notes", "Post-release checklist"],
-      filesToUpdate: ["Update `../knowledge/release-notes.md` only after explicit confirmation."]
+      filesToUpdate: ["Update `../knowledge/release-notes.md` only after explicit confirmation."],
+      redLines: ["Do not hide known release risks, test gaps or rollback gaps.", "Do not mark a release ready without post-release checks.", "Do not merge, deploy or change remote state automatically."]
     }
   ];

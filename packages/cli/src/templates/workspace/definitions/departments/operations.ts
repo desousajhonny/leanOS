@@ -34,6 +34,15 @@ export const operationsDepartment: RootDepartmentDefinition = {
         { area: "security", when: "Enter before Engineering when the Feature touches data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk." },
         { area: "devops", when: "Enter before Engineering when the Feature touches environments, CI/CD, deploy, observability, config, GitHub sync or release readiness." }
       ],
+      phases: [
+        "Intake - accept only a local Feature or mapped GitHub Feature issue.",
+        "Product Ops readiness - identify the Feature, parent Epic, delivery scope and ready-to-develop state.",
+        "Conditional area readiness - resolve Design, Security and DevOps applicability before Engineering.",
+        "Engineering delivery - delegate branch, implementation and tests to `engineering-delivery.playbook.md`.",
+        "PR preparation - prepare PR scope, test notes, risks and Founder Testing Guide through `prepare-pr.playbook.md`.",
+        "PR validation - validate implementation through `pr-validation.playbook.md` before merge readiness.",
+        "Founder handoff - explain the result, remaining risks and the next decision in founder-friendly language."
+      ],
       loadFirst: [
         "AGENT.md",
         "operations/AGENT.md",
@@ -65,6 +74,7 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "Accept only a local Feature or GitHub Feature issue as input; do not start from a loose idea, roadmap item or unsplit Epic",
         "Load Product Ops through `operations/product-ops/AGENT.md` first to identify the Feature, parent Epic, delivery scope and readiness state",
         "Run `operations/product-ops/knowledge/ready-to-develop.md` before branch, code or PR work",
+        "If Design, Security or DevOps is required but the area is inactive, return `activation_required: operations.<area>` instead of loading missing area paths or inventing the answer",
         "If the Feature affects UI, screens, flows, copy, accessibility or reusable components, route Design before Engineering",
         "Ask Design to confirm whether the Feature can reuse an existing component, adapt an existing component or needs a new component contract",
         "If a new component spec is needed and no approved spec exists, route to `operations/design/playbooks/component-readiness.playbook.md` before branch or code",
@@ -72,11 +82,12 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "Route DevOps only when environments, CI/CD, deploy, observability, configuration, GitHub sync or release readiness are affected",
         "Record why Design, Security or DevOps are not applicable when they do not enter the flow",
         "After Product Ops, Design, Security and DevOps readiness are ready or explicitly not applicable, route to `operations/engineering/AGENT.md` and load `operations/engineering/playbooks/engineering-delivery.playbook.md`",
-        "Let `engineering-delivery.playbook.md` create the Feature-linked branch, plan implementation, run component implementation when needed, execute tests, prepare PR and run PR validation",
+        "This workflow coordinates gates and handoffs; `engineering-delivery.playbook.md` executes the Feature-linked branch, implementation, tests, PR preparation and PR validation",
+        "Use `operations/engineering/playbooks/engineering-delivery.playbook.md` to create or confirm the Feature-linked branch, plan implementation, run component implementation when needed, update code and execute tests",
         "Run tests or explain gaps",
-        "Prepare the Founder Testing Guide before asking the founder to review the PR",
-        "Run PR validation",
-        "Prepare PR and make clear that PR opened does not mean merge-ready until founder acceptance and PR validation are complete"
+        "Use `operations/engineering/playbooks/prepare-pr.playbook.md` through engineering-delivery to prepare PR scope, test notes, risks, Founder Testing Guide and PR draft before founder review",
+        "Use `operations/engineering/playbooks/pr-validation.playbook.md` through engineering-delivery after PR preparation and before recommending merge readiness",
+        "Make clear that PR opened does not mean merge-ready until founder acceptance and PR validation are complete"
       ],
       confirmationGates: [
         "Ask before creating or updating local Feature files.",
@@ -117,6 +128,7 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "The request is a loose idea, roadmap item or unsplit Epic instead of a Feature.",
         "The Feature cannot be mapped to a local Feature or GitHub Feature issue.",
         "`ready-to-develop.md` shows missing Product Ops, Design, Security, DevOps or Engineering readiness.",
+        "Design, Security or DevOps is required but inactive; return `activation_required: operations.<area>` instead of loading missing paths.",
         "A required Design component spec is missing.",
         "Security or DevOps triggers apply and cannot be resolved or marked not applicable with a reason.",
         "The founder does not confirm branch, code changes, external actions or PR preparation.",

@@ -3,6 +3,7 @@
 Este arquivo e temporario. Ele deve ser removido quando os itens relevantes forem implementados, validados e movidos para issues oficiais ou documentacao permanente.
 
 Ultima limpeza: 2026-06-26.
+Ultima priorizacao: 2026-06-29.
 
 ## Estado Atual
 
@@ -59,9 +60,58 @@ O LeanOS tem um MVP de framework local com:
 
 ## Pendencias Ativas
 
-### 1. Validar Fluxo Inicial Com Founder
+### 1. LeanOS Asset Contract v2
 
-Status: proximo assunto de produto.
+Status: prioridade imediata.
+
+Objetivo: fortalecer workflows, playbooks e skills para ficarem mais parecidos com o padrao operacional do Superpowers: gatilhos claros, hard gates, red flags, stop conditions, outputs verificaveis e validacao automatica.
+
+Motivacao:
+
+- `feature-to-delivery-cycle` deve continuar sendo workflow, mas precisa ficar mais explicito como coordenador de areas e gates.
+- `delivery-item-to-epic` e `epic-to-features` devem continuar sendo playbooks de Product Ops, com limites mais fortes entre Epic, Feature, GitHub e codigo.
+- Skills precisam parecer mais com `SKILL.md` de Superpowers: descricao baseada em gatilho, processo por etapas, red lines, checks e comportamento testavel.
+- O framework deve conseguir validar seus proprios assets, evitando regressao de ordem, filesToUpdate, gates e stop conditions.
+
+Primeira fatia para resolver agora:
+
+1. Corrigir `feature-to-delivery-cycle`:
+   - explicitar fases: Intake -> Product Ops readiness -> areas condicionais -> Engineering -> PR preparation -> PR validation -> founder handoff;
+   - garantir `prepare-pr` antes de `pr-validation`;
+   - deixar claro que o workflow coordena, mas quem executa codigo e `engineering-delivery`;
+   - tornar `activation_required` explicito quando Design, Security ou DevOps forem necessarios mas estiverem inativos.
+2. Corrigir `epic-to-features`:
+   - incluir criacao/atualizacao de `../epics/<epic-slug>/<feature-slug>.md` em `filesToUpdate`;
+   - pedir confirmacao antes de criar Feature files locais, nao apenas antes de escrita remota;
+   - reforcar que nao cria GitHub issue, branch, codigo ou PR.
+3. Fortalecer `delivery-item-to-epic`:
+   - adicionar lei operacional: este playbook cria Epic local, nao Feature, GitHub issue, branch, codigo ou PR;
+   - deixar output esperado mais verificavel.
+4. Expandir skills rasas de Product Ops:
+   - `write-acceptance-criteria`;
+   - `check-delivery-coherence`;
+   - `define-delivery-boundaries`.
+5. Fortalecer Engineering:
+   - `write-tests` com red flags semelhantes a TDD;
+   - `create-pr` exigindo Founder Testing Guide;
+   - `review-pr` com findings por severidade e evidencia antes de merge recommendation.
+6. Adicionar validacoes automaticas:
+   - workflow com `confirmationGates`, `stopConditions` e `expectedOutput`;
+   - playbooks importantes com `useWhen`, `gates`, `outputs`, `filesToUpdate` e `stopConditions`;
+   - skills com frontmatter, description `Use when...`, steps, checks e red lines;
+   - ordem `prepare-pr` antes de `pr-validation`;
+   - `epic-to-features.filesToUpdate` contendo Feature file local.
+
+Resultado esperado:
+
+- O fluxo de Feature ate PR fica coerente, verificavel e menos dependente de memoria do agente.
+- Playbooks deixam de ser apenas instrucoes e viram contratos de execucao.
+- Skills ficam descobriveis e disciplinadas como Superpowers.
+- O generator passa a prevenir regressao nesses contratos.
+
+### 2. Validar Fluxo Inicial Com Founder
+
+Status: importante, mas fica depois da primeira fatia do Asset Contract v2.
 
 Base obrigatoria:
 
@@ -87,20 +137,6 @@ Perguntas a resolver:
 - Quando o MVP scope nasce?
 - O que conta como Strategy Baseline suficiente?
 - Qual e o menor caminho agradavel para o founder nao sentir burocracia?
-
-### 2. LeanOS Asset Contract v2
-
-Status: planejado.
-
-Objetivo: fortalecer roles, skills, playbooks e knowledge com frontmatter, gatilhos, gates, red flags, stop conditions e criterios de aceite.
-
-Ordem recomendada:
-
-1. Definir contrato v2 para skill, role, playbook e knowledge.
-2. Atualizar templates/checklists/instructions.
-3. Aplicar aos assets principais.
-4. Atualizar `validate-generator.mjs`.
-5. Regenerar preview.
 
 ### 3. Launch Readiness
 

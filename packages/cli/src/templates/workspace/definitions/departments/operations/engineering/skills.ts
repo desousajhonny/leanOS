@@ -50,7 +50,8 @@ export const operationsEngineeringSkills: SkillDefinition[] = [
       process: ["Load branch rules", "Generate a Feature-linked branch name", "Use `feature/...` for local-only Features and `issue/...` for mapped GitHub issues", "Keep the branch name short and descriptive", "Check for conflicting branch names", "Ask before reusing or replacing a branch"],
       checks: ["Branch includes the issue number when available", "Branch uses the Feature slug when no issue number exists", "Branch name does not include secrets or vague wording", "Branch matches repository convention"],
       outputs: ["Proposed branch name", "Branch command or plan", "Safety notes"],
-      filesToUpdate: ["Do not update files just to create a branch plan."]
+      filesToUpdate: ["Do not update files just to create a branch plan."],
+      redLines: ["Do not create or reuse a branch without explicit founder confirmation.", "Do not branch from a loose idea, roadmap item or unsplit Epic.", "Do not include secrets, customer data or vague scope in branch names."]
     },
     {
       slug: "write-tests",
@@ -62,7 +63,8 @@ export const operationsEngineeringSkills: SkillDefinition[] = [
       process: ["Identify behavior under test", "Choose unit, integration, e2e or manual validation", "Map tests to acceptance criteria", "Add regression coverage for bugs", "List test gaps honestly"],
       checks: ["Tests prove behavior, not implementation details", "Risky behavior has coverage or an explicit gap", "Manual checks are concrete"],
       outputs: ["Test plan", "Test changes", "Manual validation", "Known gaps"],
-      filesToUpdate: ["Update `../knowledge/implementation-notes.md` only when persistent testing decisions are useful."]
+      filesToUpdate: ["Update `../knowledge/implementation-notes.md` only when persistent testing decisions are useful."],
+      redLines: ["Do not claim coverage without a test run, test plan or explicit validation gap.", "Do not hide test gaps or risky untested behavior.", "Do not test implementation details when acceptance behavior can be tested."]
     },
     {
       slug: "review-data-change",
@@ -74,7 +76,8 @@ export const operationsEngineeringSkills: SkillDefinition[] = [
       process: ["Classify data sensitivity", "Identify schema or API impact", "Check validation and authorization", "Check migration and rollback implications", "Check index/performance needs", "Route to Security when privacy/auth/compliance risk exists"],
       checks: ["No destructive change without confirmation", "No sensitive data exposure", "Backward compatibility is considered", "Rollback path is visible"],
       outputs: ["Data-change review", "Risks", "Migration notes", "Security routing result", "Rollback notes"],
-      filesToUpdate: ["Update `../knowledge/data-guidelines.md` only after explicit confirmation."]
+      filesToUpdate: ["Update `../knowledge/data-guidelines.md` only after explicit confirmation."],
+      redLines: ["Do not approve destructive data changes without explicit confirmation and rollback notes.", "Do not skip Security routing when auth, privacy, compliance or sensitive data is involved.", "Do not store secrets, credentials or sensitive customer data in notes."]
     },
     {
       slug: "create-pr",
@@ -86,7 +89,8 @@ export const operationsEngineeringSkills: SkillDefinition[] = [
       process: ["Load PR template", "Summarize scope", "List implementation notes", "List tests and manual validation", "Write the Founder Testing Guide in plain language", "Include where to test, how to test and expected result", "Flag Design/Security/Data applicability", "List known risks and follow-up"],
       checks: ["PR references the issue", "Tests or gaps are explicit", "Founder Testing Guide is usable by a non-technical founder", "Description does not hide known risk"],
       outputs: ["PR title", "PR body", "Founder Testing Guide", "Test summary", "Risk notes"],
-      filesToUpdate: ["Update `../knowledge/pr-log.md` after PR creation or when the user asks for a persistent PR record."]
+      filesToUpdate: ["Update `../knowledge/pr-log.md` after PR creation or when the user asks for a persistent PR record."],
+      redLines: ["Do not prepare a PR without linked Feature or issue scope.", "Do not omit tests, validation gaps or known risks from the PR body.", "Do not mark a PR founder-ready without a usable Founder Testing Guide."]
     },
     {
       slug: "review-pr",
@@ -98,6 +102,7 @@ export const operationsEngineeringSkills: SkillDefinition[] = [
       process: ["Check scope against issue and PRD", "Review code standards", "Review tests", "Review Founder Testing Guide usability", "Review Design applicability", "Review Security/Data applicability", "List findings by severity", "Recommend merge, changes or blocked"],
       checks: ["Findings are actionable", "Severity is clear", "Founder can test the PR without reading code", "Design/Security/Data are not forced when not applicable", "Merge recommendation is justified"],
       outputs: ["Findings by severity", "Scope result", "Code result", "Founder acceptance result", "Test result", "Design result or not applicable", "Security/Data result or not applicable", "Merge recommendation"],
-      filesToUpdate: ["Update `../knowledge/code-review-notes.md` or `../knowledge/pr-log.md` only when the user asks for persistent review notes."]
+      filesToUpdate: ["Update `../knowledge/code-review-notes.md` or `../knowledge/pr-log.md` only when the user asks for persistent review notes."],
+      redLines: ["Do not recommend merge without PR validation evidence.", "Do not bury blocking findings below summaries or nice-to-have notes.", "Do not ignore Product, Design, Security or Data criteria when they are applicable."]
     }
   ];

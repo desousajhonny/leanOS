@@ -71,9 +71,11 @@ import {
 } from "./areas.mjs";
 
 export async function validateClientWorkspaceFixture() {
+  const ignoredGeneratedFixturePaths = new Set([
+    ".env.local"
+  ]);
   const requiredPaths = [
     "AGENT.md",
-    ".env.local",
     ".gitignore",
     "leanos.yaml",
     "ai-standard/README.md",
@@ -280,8 +282,11 @@ export async function validateClientWorkspaceFixture() {
     failOutOfDate(["Changed fixture tree: examples/client-workspace-tree.md"]);
   }
 
-  const expectedPaths = expectedFiles.map((file) => file.path).sort();
-  const actualPaths = (await listFiles(clientWorkspaceFixtureDir)).sort();
+  const expectedFixtureFiles = expectedFiles.filter((file) => !ignoredGeneratedFixturePaths.has(file.path));
+  const expectedPaths = expectedFixtureFiles.map((file) => file.path).sort();
+  const actualPaths = (await listFiles(clientWorkspaceFixtureDir))
+    .filter((path) => !ignoredGeneratedFixturePaths.has(path))
+    .sort();
 
   const expectedPathSet = new Set(expectedPaths);
   const actualPathSet = new Set(actualPaths);
@@ -297,7 +302,7 @@ export async function validateClientWorkspaceFixture() {
 
   const changedPaths = [];
 
-  for (const file of expectedFiles) {
+  for (const file of expectedFixtureFiles) {
     const actualContent = await readFile(resolveFixturePath(file.path), "utf8");
     const expectedContent = ensureTrailingNewline(file.content);
 

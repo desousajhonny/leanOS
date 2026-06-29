@@ -14,8 +14,32 @@ export const operationsProductOpsSkills: SkillDefinition[] = [
       filesToUpdate: ["Update `../knowledge/delivery-scope.md` only after explicit confirmation.", "Update `../mvp/scope.md` only when `scope_type` is MVP and the founder confirms.", "Do not create GitHub issues from this skill."],
       redLines: ["Do not treat roadmap priority as delivery commitment.", "Do not mark an item as MVP just because it is important.", "Do not create epics or features in this step."]
     },
-    { slug: "write-acceptance-criteria", title: "Write Acceptance Criteria", purpose: "Define completion criteria for MVP work." },
-    { slug: "check-delivery-coherence", title: "Check Delivery Coherence", purpose: "Check that delivery scope matches strategy, roadmap and acceptance criteria." },
+    {
+      slug: "write-acceptance-criteria",
+      title: "Write Acceptance Criteria",
+      purpose: "Define testable Product Ops acceptance criteria for MVP, Epic or Feature work without turning criteria into implementation instructions.",
+      useWhen: ["MVP, Epic or Feature work needs completion criteria", "a delivery item has unclear pass/fail expectations", "Product Ops needs acceptance criteria before readiness or handoff", "existing criteria mix scope, implementation details and outcomes"],
+      requiredContext: ["../AGENT.md", "../knowledge/work-taxonomy.md", "../mvp/prd.md", "../mvp/scope.md", "../mvp/acceptance-criteria.md", "../epics/README.md", "../../../strategy/product/knowledge/brief.md"],
+      inputs: ["Delivery item, Epic or Feature", "User or customer outcome", "MVP scope or delivery scope", "Known non-goals", "Existing PRD or acceptance criteria", "Known Design, Security, DevOps or Engineering applicability"],
+      process: ["Restate the intended outcome and who benefits.", "Separate in-scope behavior from non-goals and implementation ideas.", "Write observable criteria with a clear pass/fail test.", "Cover happy path, edge states, errors, permissions, data and copy only when they apply.", "Map criteria to Product Ops, Design, Engineering, Security or DevOps readiness dimensions.", "Mark missing context explicitly and ask before updating local criteria files."],
+      checks: ["Each criterion describes observable behavior or a concrete business/user outcome.", "Each criterion is testable with a pass/fail result.", "Criteria do not prescribe implementation details, code structure or tool choices.", "Non-goals and out-of-scope expectations are visible.", "Applicable Design, Security, DevOps and Engineering dimensions are included or marked not applicable with reason."],
+      outputs: ["Acceptance criteria list", "Pass/fail validation notes", "Non-goals", "Readiness dimensions touched", "Missing context", "Recommended file updates"],
+      filesToUpdate: ["Update `../mvp/acceptance-criteria.md` only after explicit confirmation.", "Update a local Epic or Feature file only after the founder confirms the scoped criteria.", "Do not update GitHub, branches, source code or PRs from this skill."],
+      redLines: ["Do not write implementation instructions, code tasks or architecture choices as acceptance criteria.", "Do not expand scope while writing criteria.", "Do not accept vague criteria that cannot be tested.", "Do not create Epics, Feature files, GitHub issues, branches, code or PRs."]
+    },
+    {
+      slug: "check-delivery-coherence",
+      title: "Check Delivery Coherence",
+      purpose: "Check whether delivery scope, MVP context, roadmap intent and acceptance criteria agree before Product Ops moves work forward.",
+      useWhen: ["delivery scope may not match Strategy or MVP scope", "an Epic, Feature or backlog item feels inconsistent", "criteria conflict with roadmap, PRD, non-goals or readiness", "Product Ops needs a coherence gate before Epic, Feature or Engineering handoff"],
+      requiredContext: ["../AGENT.md", "../knowledge/work-taxonomy.md", "../knowledge/delivery-scope.md", "../knowledge/issue-readiness.md", "../mvp/backlog.md", "../mvp/prd.md", "../mvp/scope.md", "../mvp/acceptance-criteria.md", "../../../strategy/product/knowledge/brief.md", "../../../strategy/roadmap/knowledge/roadmap.md"],
+      inputs: ["Delivery scope, Epic, Feature or backlog item", "Product outcome", "MVP scope", "PRD", "Acceptance criteria", "Roadmap or backlog context", "Known risks, dependencies and non-goals"],
+      process: ["Restate the proposed work and its claimed outcome.", "Compare the work against Strategy Product brief, MVP scope, PRD and acceptance criteria.", "Check whether roadmap or backlog priority is being treated as delivery commitment.", "Identify contradictions, missing criteria, oversized scope and unowned dependencies.", "Classify the result as coherent, needs-shaping, blocked or out-of-scope.", "Recommend the smallest next Product Ops route without rewriting scope silently."],
+      checks: ["The work maps to an approved product or delivery outcome.", "MVP scope, PRD, criteria and non-goals do not contradict each other.", "Roadmap priority is not treated as implementation approval.", "Dependencies and specialist checks are visible.", "The recommendation names the next owner or stop condition."],
+      outputs: ["Coherence result", "Aligned context", "Contradictions", "Missing criteria", "Scope risks", "Recommended next route"],
+      filesToUpdate: ["Update `../knowledge/issue-readiness.md` only after explicit confirmation.", "Update `../knowledge/delivery-scope.md` only after the founder confirms a scope decision.", "Do not update roadmap, GitHub, branches, source code or PRs from this skill."],
+      redLines: ["Do not silently rewrite delivery scope to make it look coherent.", "Do not promote roadmap priority into delivery readiness.", "Do not hide contradictions or missing specialist checks.", "Do not create Epics, Features, GitHub issues, branches, code or PRs."]
+    },
     {
       slug: "shape-epic",
       title: "Shape Epic",
@@ -42,5 +66,17 @@ export const operationsProductOpsSkills: SkillDefinition[] = [
       filesToUpdate: ["Update `../knowledge/issue-readiness.md` only after explicit confirmation.", "Do not update GitHub directly from the model."],
       redLines: ["Do not create implementation-ready features without Product Ops and Engineering criteria.", "Do not add fake Design, Security or DevOps criteria when not applicable.", "Do not call GitHub API directly from the model."]
     },
-    { slug: "define-delivery-boundaries", title: "Define Delivery Boundaries", purpose: "Define enough technical and operational boundaries for safe implementation without creating premature architecture artifacts." }
+    {
+      slug: "define-delivery-boundaries",
+      title: "Define Delivery Boundaries",
+      purpose: "Define the minimum product, technical and operational boundaries needed for safe implementation without creating premature architecture artifacts.",
+      useWhen: ["an issue or MVP slice needs delivery readiness", "Product Ops must clarify implementation boundaries before Engineering", "Design, Security, DevOps or Engineering applicability is unclear", "technical constraints or operational risks may change the delivery scope"],
+      requiredContext: ["../AGENT.md", "../knowledge/work-taxonomy.md", "../knowledge/issue-readiness.md", "../knowledge/ready-to-develop.md", "../knowledge/technical-decisions.md", "../mvp/prd.md", "../mvp/scope.md", "../mvp/acceptance-criteria.md", "../epics/README.md", "../../engineering/knowledge/implementation-rules.md"],
+      inputs: ["Issue, Feature or MVP slice", "Acceptance criteria", "Known dependencies", "Known technical constraints", "Data, auth, privacy or API impact", "UI, flow, accessibility or component impact", "Environment, deploy or observability impact"],
+      process: ["Restate the slice and the delivery boundary in founder-friendly language.", "Separate product boundary, technical boundary, operational boundary and non-goals.", "Classify Design, Security, DevOps and Engineering applicability with a reason.", "Identify dependencies, blocked assumptions, spike needs and readiness gaps.", "Recommend ready, needs-product-shaping, needs-design, needs-security, needs-devops, needs-engineering-spike or blocked.", "Propose the smallest local knowledge update and wait for confirmation before writing."],
+      checks: ["The boundary is narrow enough for Engineering to plan safely.", "Design/Security/DevOps applicability is explicit and reasoned.", "Data, auth, privacy, API, environment and release risks are not skipped when applicable.", "Non-goals prevent scope creep.", "The recommendation does not invent implementation details."],
+      outputs: ["Delivery boundary summary", "Design/Security/DevOps applicability", "Engineering readiness expectations", "Dependencies", "Risks and blocked assumptions", "Recommended readiness result"],
+      filesToUpdate: ["Update `../knowledge/issue-readiness.md` only after explicit confirmation.", "Update `../knowledge/technical-decisions.md` only when a durable confirmed decision exists.", "Do not update design specs, engineering code, GitHub issues, branches or PRs from this skill."],
+      redLines: ["Do not create architecture artifacts or source code from this skill.", "Do not decide Security, Design or DevOps is not applicable without a reason.", "Do not turn a boundary decision into implementation approval.", "Do not create Epics, Features, GitHub issues, branches, code or PRs."]
+    }
   ];

@@ -102,6 +102,7 @@ export async function assertWorkflowContract(rootDir) {
     assertWorkflowRequiredSections(content, workflowRelativePath);
     assertWorkflowNavigationChain(content, workflowRelativePath);
     assertWorkflowExternalSafety(content, workflowRelativePath);
+    assertFeatureDeliveryWorkflowContract(content, workflowRelativePath);
     await assertWorkflowPathReferences(rootDir, workflowRelativePath, content);
   }
 }
@@ -187,6 +188,49 @@ function assertWorkflowExternalSafety(content, workflowRelativePath) {
   assert(
     /confirm|confirmation/i.test(content),
     `Workflow with external write capability should require confirmation: ${workflowRelativePath}`
+  );
+}
+
+function assertFeatureDeliveryWorkflowContract(content, workflowRelativePath) {
+  if (!workflowRelativePath.endsWith("operations/workflows/feature-to-delivery-cycle.workflow.md")) {
+    return;
+  }
+
+  const phases = extractMarkdownSection(content, "Phases");
+  for (const expectedPhase of [
+    "Intake",
+    "Product Ops readiness",
+    "Conditional area readiness",
+    "Engineering delivery",
+    "PR preparation",
+    "PR validation",
+    "Founder handoff"
+  ]) {
+    assert(
+      phases.includes(expectedPhase),
+      `Feature delivery workflow should include phase '${expectedPhase}': ${workflowRelativePath}`
+    );
+  }
+
+  const sequence = extractMarkdownSection(content, "Sequence");
+  const preparePrIndex = sequence.indexOf("prepare-pr");
+  const prValidationIndex = sequence.indexOf("pr-validation");
+
+  assert.notEqual(preparePrIndex, -1, `Feature delivery workflow should mention prepare-pr in Sequence: ${workflowRelativePath}`);
+  assert.notEqual(prValidationIndex, -1, `Feature delivery workflow should mention pr-validation in Sequence: ${workflowRelativePath}`);
+  assert(
+    preparePrIndex < prValidationIndex,
+    `Feature delivery workflow should prepare the PR before PR validation: ${workflowRelativePath}`
+  );
+
+  assert(
+    /workflow coordinates|workflow coordina/i.test(content) && /engineering-delivery/i.test(content),
+    `Feature delivery workflow should state that it coordinates while engineering-delivery executes implementation: ${workflowRelativePath}`
+  );
+
+  assert(
+    content.includes("activation_required"),
+    `Feature delivery workflow should name activation_required for inactive required conditional areas: ${workflowRelativePath}`
   );
 }
 
