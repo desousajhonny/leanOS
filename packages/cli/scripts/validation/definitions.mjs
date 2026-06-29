@@ -42,6 +42,7 @@ export async function validateAreaDefinitionsAreModular() {
   assertDeliveryItemToEpicPlaybookDefinition();
   assertEpicToFeaturesPlaybookDefinition();
   assertProductOpsSkillContracts();
+  assertEngineeringSkillContracts();
   assertAllSkillsHaveRedLines();
 }
 
@@ -225,6 +226,63 @@ function assertProductOpsSkillContracts() {
   assert(
     deliveryBoundaries.redLines?.some((item) => /architecture artifact|source code/i.test(item)),
     "define-delivery-boundaries should block premature architecture artifacts or source code"
+  );
+}
+
+function assertEngineeringSkillContracts() {
+  const engineeringArea = operationsDepartment.areas.find((area) => area.slug === "engineering");
+
+  assert(engineeringArea, "Operations should define Engineering area");
+
+  const writeTests = engineeringArea.skills.find((item) => item.slug === "write-tests");
+  const createPr = engineeringArea.skills.find((item) => item.slug === "create-pr");
+  const reviewPr = engineeringArea.skills.find((item) => item.slug === "review-pr");
+
+  assert(writeTests, "Engineering should define write-tests skill");
+  assert(createPr, "Engineering should define create-pr skill");
+  assert(reviewPr, "Engineering should define review-pr skill");
+
+  assert(
+    writeTests.process?.some((item) => /failing test|RED/i.test(item)),
+    "write-tests should require failing test or RED evidence when test-first is feasible"
+  );
+  assert(
+    writeTests.outputs?.includes("RED/GREEN evidence"),
+    "write-tests should output RED/GREEN evidence"
+  );
+  assert(
+    writeTests.outputs?.includes("Test gap explanation"),
+    "write-tests should output explicit test-gap explanation"
+  );
+  assert(
+    writeTests.redLines?.some((item) => /tests written after implementation|manual validation/i.test(item)),
+    "write-tests should block weak after-the-fact test or manual-validation claims"
+  );
+
+  assert(
+    createPr.outputs?.includes("PR readiness status"),
+    "create-pr should output PR readiness status"
+  );
+  assert(
+    createPr.checks?.some((item) => /tests run or test-gap explanation/i.test(item)),
+    "create-pr should require tests run or test-gap explanation"
+  );
+  assert(
+    createPr.redLines?.some((item) => /founder-ready/i.test(item) && /tests|gaps|risks/i.test(item)),
+    "create-pr should block founder-ready PRs without tests, gaps and risks"
+  );
+
+  assert(
+    reviewPr.outputs?.includes("Evidence reviewed"),
+    "review-pr should output evidence reviewed"
+  );
+  assert(
+    reviewPr.checks?.some((item) => /file\/line|line reference|artifact reference/i.test(item)),
+    "review-pr should require file/line or artifact references when possible"
+  );
+  assert(
+    reviewPr.redLines?.some((item) => /merge recommendation/i.test(item) && /evidence/i.test(item)),
+    "review-pr should block merge recommendations without evidence"
   );
 }
 

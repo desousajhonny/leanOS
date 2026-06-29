@@ -56,15 +56,15 @@ export const operationsEngineeringSkills: SkillDefinition[] = [
     {
       slug: "write-tests",
       title: "Write Tests",
-      purpose: "Define or update tests for changed behavior.",
-      useWhen: ["behavior changes", "bug fixes need regression coverage", "acceptance criteria require validation", "PR test gaps need explanation"],
-      requiredContext: ["Testing strategy", "Acceptance criteria", "Changed behavior", "Known risks"],
-      inputs: ["Implementation scope", "Changed behavior", "Acceptance criteria", "Existing test patterns"],
-      process: ["Identify behavior under test", "Choose unit, integration, e2e or manual validation", "Map tests to acceptance criteria", "Add regression coverage for bugs", "List test gaps honestly"],
-      checks: ["Tests prove behavior, not implementation details", "Risky behavior has coverage or an explicit gap", "Manual checks are concrete"],
-      outputs: ["Test plan", "Test changes", "Manual validation", "Known gaps"],
+      purpose: "Define or update tests and validation evidence for changed behavior before PR readiness.",
+      useWhen: ["behavior changes", "bug fixes need regression coverage", "acceptance criteria require validation", "before implementing behavior when test-first is feasible", "manual validation is the only practical option", "PR test gaps need explanation"],
+      requiredContext: ["Testing strategy", "Acceptance criteria", "Changed behavior", "Existing test patterns", "Known risks", "Validation commands"],
+      inputs: ["Implementation scope", "Changed behavior", "Acceptance criteria", "Existing test patterns", "Risk areas", "Available test commands"],
+      process: ["Identify changed behavior and the acceptance criterion it proves", "For bug fixes or deterministic behavior, write or identify the failing test first and verify RED before implementation when feasible", "Choose unit, integration, e2e or manual validation based on risk and repository patterns", "Map each test or manual check to acceptance criteria", "Verify GREEN after implementation or document the exact command/manual validation evidence", "List test gaps honestly with why they remain and what would close them"],
+      checks: ["Tests prove behavior, not implementation details", "RED/GREEN evidence exists when test-first is feasible", "Tests run or manual validation steps are concrete and reproducible", "Risky behavior has coverage or explicit test-gap explanation"],
+      outputs: ["Test plan", "RED/GREEN evidence", "Test changes", "Manual validation", "Test gap explanation", "Known risks"],
       filesToUpdate: ["Update `../knowledge/implementation-notes.md` only when persistent testing decisions are useful."],
-      redLines: ["Do not claim coverage without a test run, test plan or explicit validation gap.", "Do not hide test gaps or risky untested behavior.", "Do not test implementation details when acceptance behavior can be tested."]
+      redLines: ["Do not treat tests written after implementation as RED/GREEN evidence.", "Do not claim manual validation covers untested edge cases without concrete steps.", "Do not claim coverage without a test run, test plan or explicit validation gap.", "Do not hide test gaps or risky untested behavior.", "Do not test implementation details when acceptance behavior can be tested."]
     },
     {
       slug: "review-data-change",
@@ -82,27 +82,27 @@ export const operationsEngineeringSkills: SkillDefinition[] = [
     {
       slug: "create-pr",
       title: "Create PR",
-      purpose: "Prepare a PR summary tied to issue scope, tests and review criteria.",
-      useWhen: ["implementation is ready for review", "PR description needs structure", "merge risk needs communication"],
+      purpose: "Prepare a reviewable PR package tied to Feature scope, tests, Founder Testing Guide and risks.",
+      useWhen: ["implementation is ready for review", "PR description needs structure", "merge risk needs communication", "Founder needs a plain-language validation path"],
       requiredContext: ["PR template", "Linked issue", "Implementation notes", "Tests run", "Known risks", "Founder Testing Guide requirements"],
       inputs: ["Branch", "Linked issue", "Changed files", "Tests", "Risks", "Screenshots or UX notes when applicable", "Preview URL or local route when available"],
-      process: ["Load PR template", "Summarize scope", "List implementation notes", "List tests and manual validation", "Write the Founder Testing Guide in plain language", "Include where to test, how to test and expected result", "Flag Design/Security/Data applicability", "List known risks and follow-up"],
-      checks: ["PR references the issue", "Tests or gaps are explicit", "Founder Testing Guide is usable by a non-technical founder", "Description does not hide known risk"],
-      outputs: ["PR title", "PR body", "Founder Testing Guide", "Test summary", "Risk notes"],
+      process: ["Confirm linked local Feature or GitHub issue and current branch", "Load PR template", "Summarize scope, non-goals and implementation notes", "List changed files that matter for review", "Include tests run, manual validation and test-gap explanation", "Write the Founder Testing Guide in plain language with where to test, how to test and expected result", "Flag Design/Security/Data/DevOps applicability", "Mark PR readiness status as draft, founder-ready, blocked-by-tests or blocked-by-context", "List known risks and follow-up"],
+      checks: ["PR references the issue or local Feature", "Tests run or test-gap explanation is present", "Founder Testing Guide is usable by a non-technical founder", "Design/Security/Data/DevOps applicability is explicit when relevant", "Description does not hide known risk"],
+      outputs: ["PR title", "PR body", "Founder Testing Guide", "Test summary", "PR readiness status", "Risk notes"],
       filesToUpdate: ["Update `../knowledge/pr-log.md` after PR creation or when the user asks for a persistent PR record."],
-      redLines: ["Do not prepare a PR without linked Feature or issue scope.", "Do not omit tests, validation gaps or known risks from the PR body.", "Do not mark a PR founder-ready without a usable Founder Testing Guide."]
+      redLines: ["Do not prepare a PR without linked Feature or issue scope.", "Do not omit tests, validation gaps or known risks from the PR body.", "Do not mark a PR founder-ready without tests, gaps and risks documented.", "Do not mark a PR founder-ready without a usable Founder Testing Guide."]
     },
     {
       slug: "review-pr",
       title: "Review PR",
-      purpose: "Review PR changes for correctness, scope and LeanOS coherence.",
+      purpose: "Review PR changes for correctness, scope, evidence and LeanOS merge readiness.",
       useWhen: ["review a PR", "validate implementation readiness", "check merge risk", "perform code review"],
-      requiredContext: ["Review criteria", "PR validation rules", "Linked issue", "PRD", "Acceptance criteria", "Changed files"],
-      inputs: ["PR description", "Diff", "Linked issue", "Tests", "Known risks"],
-      process: ["Check scope against issue and PRD", "Review code standards", "Review tests", "Review Founder Testing Guide usability", "Review Design applicability", "Review Security/Data applicability", "List findings by severity", "Recommend merge, changes or blocked"],
-      checks: ["Findings are actionable", "Severity is clear", "Founder can test the PR without reading code", "Design/Security/Data are not forced when not applicable", "Merge recommendation is justified"],
-      outputs: ["Findings by severity", "Scope result", "Code result", "Founder acceptance result", "Test result", "Design result or not applicable", "Security/Data result or not applicable", "Merge recommendation"],
+      requiredContext: ["Review criteria", "PR validation rules", "Linked issue", "PRD", "Acceptance criteria", "Changed files", "Tests", "Founder Testing Guide"],
+      inputs: ["PR description", "Diff", "Linked issue", "Tests", "Founder Testing Guide", "Known risks", "Screenshots or preview URL when applicable"],
+      process: ["Check scope against issue, PRD and acceptance criteria", "Review evidence including tests, manual validation, screenshots, preview URL and Founder Testing Guide", "Review code standards and changed files", "Review Design/Security/Data/DevOps applicability only when relevant", "List findings by severity with file/line or artifact reference when possible", "State evidence reviewed and evidence gaps before the merge recommendation", "Recommend merge, changes or blocked"],
+      checks: ["Findings are actionable", "Severity is clear", "Actionable findings include file/line or artifact reference when possible", "Founder can test the PR without reading code", "Design/Security/Data are not forced when not applicable", "Merge recommendation is justified by evidence"],
+      outputs: ["Findings by severity", "Evidence reviewed", "Scope result", "Code result", "Founder acceptance result", "Test result", "Design result or not applicable", "Security/Data result or not applicable", "Merge recommendation"],
       filesToUpdate: ["Update `../knowledge/code-review-notes.md` or `../knowledge/pr-log.md` only when the user asks for persistent review notes."],
-      redLines: ["Do not recommend merge without PR validation evidence.", "Do not bury blocking findings below summaries or nice-to-have notes.", "Do not ignore Product, Design, Security or Data criteria when they are applicable."]
+      redLines: ["Do not make a merge recommendation without evidence reviewed and PR validation evidence.", "Do not bury blocking findings below summaries or nice-to-have notes.", "Do not ignore Product, Design, Security or Data criteria when they are applicable."]
     }
   ];
