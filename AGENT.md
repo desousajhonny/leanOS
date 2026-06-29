@@ -8,6 +8,16 @@ For this project, always evaluate requests against the current LeanOS context, r
 
 Agreement is not the goal. Useful judgment is the goal.
 
+## Model Continuity Memory
+
+Before answering status, continuation, resume, next steps or model-switch handoff requests, read:
+
+1. `MODEL_MEMORY.md`
+
+Use `MODEL_MEMORY.md` as a continuity index for recent decisions, recent changes, current state and open threads. It is for agents and models only; it is not the canonical source of truth for LeanOS doctrine or framework behavior.
+
+When a meaningful framework decision, commit, push, roadmap change or handoff-relevant discovery happens, update `MODEL_MEMORY.md` in the same change unless the user explicitly asks not to.
+
 ## Framework Source Of Truth
 
 Before making or recommending changes to LeanOS framework behavior, generated workspace structure, founder journeys, activation rules, routing, asset contracts, GitHub sync, roadmap order or release readiness, read:

@@ -5,6 +5,7 @@ import { validateClientWorkspaceFixture } from "./validation/client-fixture.mjs"
 import { validateAreaDefinitionsAreModular } from "./validation/definitions.mjs";
 import { validateExistingProductRepoMode } from "./validation/existing-product-repo.mjs";
 import { validateWorkspaceRenderersAreModular } from "./validation/renderers.mjs";
+import { validateRootModelMemory } from "./validation/root-memory.mjs";
 import {
   validateWorkspaceFiles,
   validatePartialAreaSelection,
@@ -18,6 +19,7 @@ await validateGeneratorScriptIsModular();
 await validateWorkspaceFiles();
 await validateAiStandardRendererIsModular();
 await validateWorkspaceRenderersAreModular();
+await validateRootModelMemory();
 await validateAreaDefinitionsAreModular();
 await validateClientWorkspaceFixture();
 await validatePartialAreaSelection();

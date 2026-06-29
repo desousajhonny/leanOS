@@ -16,7 +16,8 @@ export async function validateGeneratorScriptIsModular() {
     "existing-product-repo.mjs",
     "writer.mjs",
     "assertions.mjs",
-    "path-utils.mjs"
+    "path-utils.mjs",
+    "root-memory.mjs"
   ];
 
   assert(runnerLineCount <= 80, "Generator validation runner should stay small; split validation logic into scripts/validation modules");
