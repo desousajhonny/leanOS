@@ -1,23 +1,23 @@
-# README Quality Checklist
+# Checklist de Qualidade do README
 
-Use this checklist before accepting a folder `README.md`.
+Use este checklist antes de aceitar um `README.md` de pasta.
 
-## Folder Map
+## Mapa da Pasta
 
-- [ ] The README explains the folder purpose.
-- [ ] The README says when to use the folder.
-- [ ] The README lists important files and subfolders.
-- [ ] The README points to the operating owner when one exists.
+- [ ] O README explica o propósito da pasta.
+- [ ] O README diz quando usar a pasta.
+- [ ] O README lista arquivos e subpastas importantes.
+- [ ] O README aponta para o owner operacional quando existir.
 
-## Navigation
+## Navegação
 
-- [ ] If the folder has `AGENT.md`, the README tells agents to start there for operational work.
-- [ ] The README identifies related folders.
-- [ ] The README avoids routing directly to child roles when an area agent should route first.
+- [ ] Se a pasta tiver `AGENT.md`, o README orienta agentes a começar por ele para trabalho operacional.
+- [ ] O README identifica pastas relacionadas.
+- [ ] O README evita rotear diretamente para roles filhas quando um agente de área deve rotear primeiro.
 
-## Boundaries
+## Limites
 
-- [ ] The README is a map, not the operator.
-- [ ] The README does not duplicate the full content of child files.
-- [ ] The README does not hide process rules that belong in a playbook.
-- [ ] The README does not store product facts that belong in knowledge files.
+- [ ] O README é um mapa, não o operador.
+- [ ] O README não duplica o conteúdo completo dos arquivos filhos.
+- [ ] O README não esconde regras de processo que pertencem a um playbook.
+- [ ] O README não armazena fatos de produto que pertencem a arquivos de knowledge.

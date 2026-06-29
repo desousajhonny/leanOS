@@ -3,91 +3,91 @@ import type { PlaybookDefinition } from "../../../../types.js";
 export const operationsEngineeringPlaybooks: PlaybookDefinition[] = [
     {
       slug: "engineering-delivery",
-      title: "Engineering Delivery",
-      purpose: "Orchestrate the internal Engineering path from a ready Feature to branch, implementation, tests, PR and PR validation.",
-      useWhen: ["a Feature has passed ready-to-develop", "implementation should begin", "Engineering needs the safe execution order", "the founder asks to implement a Feature"],
+      title: "Entrega De Engineering",
+      purpose: "Orquestrar o caminho interno de Engineering de uma Feature pronta até branch, implementação, testes, PR e validação de PR.",
+      useWhen: ["uma Feature passou pelo ready-to-develop", "a implementação deve começar", "Engineering precisa da ordem segura de execução", "o founder pede para implementar uma Feature"],
       beforeActing: ["../AGENT.md", "../../product-ops/knowledge/ready-to-develop.md", "../../product-ops/epics/README.md", "../knowledge/implementation-rules.md", "../knowledge/code-standards.md", "../knowledge/component-guidelines.md", "../knowledge/data-guidelines.md", "../knowledge/testing-strategy.md", "../../../.github/leanos/branch-rules.md", "../../../.github/leanos/pr-validation-rules.md"],
-      inputs: ["Confirmed local Feature or mapped GitHub Feature issue", "Ready-to-develop result", "Parent Epic", "Acceptance criteria", "Design component spec when applicable", "Security and DevOps readiness when applicable", "Branch rules", "PR validation rules"],
+      inputs: ["Feature local confirmada ou issue de Feature do GitHub mapeada", "Resultado ready-to-develop", "Epic pai", "Critérios de aceite", "Especificação de componente de Design quando aplicável", "Prontidão de Security e DevOps quando aplicável", "Regras de branch", "Regras de validação de PR"],
       steps: [
-        "Confirm the request is a ready Feature, not a loose idea, roadmap item or unsplit Epic",
-        "Confirm Product Ops readiness from `../../product-ops/knowledge/ready-to-develop.md`",
-        "Use `playbooks/branch-for-feature.playbook.md` before editing code",
-        "Use `skills/plan-implementation/SKILL.md` to summarize the Feature, likely files, risks and tests",
-        "If a new reusable component is required, confirm the approved Design component spec before code and run `playbooks/component-implementation.playbook.md` first",
-        "Use `skills/follow-code-standards/SKILL.md` during implementation to preserve modularity, local patterns and no-hardcoding rules",
-        "Use `skills/review-data-change/SKILL.md` when data, API, persistence, auth, permissions or privacy are involved",
-        "Use `skills/write-tests/SKILL.md` to add or update tests, or explain the test gap clearly",
-        "Use `playbooks/prepare-pr.playbook.md` to prepare PR scope, test notes, risks, Founder Testing Guide and screenshots or UX notes when applicable",
-        "Use `playbooks/pr-validation.playbook.md` before recommending merge readiness"
+        "Confirme que a solicitação é uma Feature pronta, não uma ideia solta, item de roadmap ou Epic não quebrado",
+        "Confirme a prontidão de Product Ops em `../../product-ops/knowledge/ready-to-develop.md`",
+        "Use `playbooks/branch-for-feature.playbook.md` antes de editar código",
+        "Use `skills/plan-implementation/SKILL.md` para resumir a Feature, arquivos prováveis, riscos e testes",
+        "Se um novo componente reutilizável for necessário, confirme a especificação de componente aprovada por Design antes do código e execute `playbooks/component-implementation.playbook.md` primeiro",
+        "Use `skills/follow-code-standards/SKILL.md` durante a implementação para preservar modularidade, padrões locais e regras contra hardcoding",
+        "Use `skills/review-data-change/SKILL.md` quando dados, API, persistência, auth, permissões ou privacidade estiverem envolvidos",
+        "Use `skills/write-tests/SKILL.md` para adicionar ou atualizar testes, ou explicar claramente a lacuna de teste",
+        "Use `playbooks/prepare-pr.playbook.md` para preparar escopo do PR, notas de teste, riscos, Founder Testing Guide e screenshots ou notas de UX quando aplicável",
+        "Use `playbooks/pr-validation.playbook.md` antes de recomendar prontidão de merge"
       ],
       gates: [
-        "Do not edit code before a Feature-linked branch is created or confirmed.",
-        "Do not implement a new user-facing component without an approved Design component spec when component readiness is applicable.",
-        "Do not open or prepare a PR without tests, manual validation notes or a clear test-gap explanation.",
-        "Do not mark a PR ready for founder review without a Founder Testing Guide that explains where and how to test the change.",
-        "Do not recommend merge before `playbooks/pr-validation.playbook.md` is complete.",
-        "Do not expand beyond the confirmed Feature scope without founder confirmation."
+        "Não edite código antes de uma branch vinculada à Feature ser criada ou confirmada.",
+        "Não implemente um novo componente voltado ao usuário sem uma especificação de componente aprovada por Design quando prontidão de componente for aplicável.",
+        "Não abra nem prepare um PR sem testes, notas de validação manual ou explicação clara de lacuna de teste.",
+        "Não marque um PR como pronto para revisão do founder sem um Founder Testing Guide que explique onde e como testar a mudança.",
+        "Não recomende merge antes de `playbooks/pr-validation.playbook.md` estar completo.",
+        "Não expanda além do escopo confirmado da Feature sem confirmação do founder."
       ],
       securityGate: [
-        "Stop before implementation when Security triggers apply and no Security readiness exists.",
-        "Stop before data migration, destructive data changes or permission changes without explicit confirmation and rollback notes.",
-        "Do not commit secrets, tokens, credentials or sensitive customer data."
+        "Pare antes da implementação quando gatilhos de Security se aplicarem e não houver prontidão de Security.",
+        "Pare antes de migração de dados, mudanças destrutivas de dados ou mudanças de permissão sem confirmação explícita e notas de rollback.",
+        "Não comite segredos, tokens, credenciais ou dados sensíveis de cliente."
       ],
-      outputs: ["Branch name and branch status", "Implementation plan", "Files changed", "Component implementation summary when applicable", "Tests run or test-gap explanation", "PR draft summary", "Founder Testing Guide", "PR validation result", "Remaining risks and next step"],
-      filesToUpdate: ["Update `../knowledge/implementation-notes.md` when implementation decisions should persist.", "Update `../knowledge/pr-log.md` after PR creation or when the user asks for persistent PR records."],
+      outputs: ["Nome e status da branch", "Plano de implementação", "Arquivos alterados", "Resumo de implementação de componente quando aplicável", "Testes executados ou explicação de lacuna de teste", "Resumo do rascunho de PR", "Founder Testing Guide", "Resultado de validação do PR", "Riscos restantes e próximo passo"],
+      filesToUpdate: ["Atualize `../knowledge/implementation-notes.md` quando decisões de implementação precisarem persistir.", "Atualize `../knowledge/pr-log.md` após a criação do PR ou quando o usuário pedir registros persistentes de PR."],
       stopConditions: [
-        "Feature readiness is missing or blocked.",
-        "No Feature-linked branch can be created or confirmed.",
-        "A required Design component spec is missing.",
-        "Security or DevOps readiness is required and missing.",
-        "The implementation would exceed the confirmed Feature scope.",
-        "Tests cannot be run and no useful manual validation can be described.",
-        "PR validation finds blocking risk."
+        "A prontidão da Feature está ausente ou bloqueada.",
+        "Nenhuma branch vinculada à Feature pode ser criada ou confirmada.",
+        "Uma especificação obrigatória de componente de Design está ausente.",
+        "Prontidão de Security ou DevOps é obrigatória e está ausente.",
+        "A implementação excederia o escopo confirmado da Feature.",
+        "Testes não podem ser executados e nenhuma validação manual útil pode ser descrita.",
+        "A validação do PR encontra risco bloqueante."
       ]
     },
     {
       slug: "branch-for-feature",
-      title: "Branch For Feature",
-      purpose: "Create a safe branch plan before implementation starts.",
-      inputs: ["Local Feature slug or GitHub issue number", "Feature title", "Current default branch", "Existing branch list when available", "Branch rules", "Skill: create-branch"],
-      steps: ["Use this as the branch step of `engineering-delivery.playbook.md`; return to engineering-delivery after branch status is clear", "Read the Feature context and title", "Load `.github/leanos/branch-rules.md`", "Use `skills/create-branch/SKILL.md` to generate a branch name using the required Feature/GitHub branch format", "Use `feature/...` for local-only Features and `issue/...` for mapped GitHub issues", "Check for sensitive words or unnecessary scope", "Ask before using an existing branch or creating a new one"],
-      outputs: ["Proposed branch name", "Linked Feature or GitHub issue", "Branch safety notes", "Next implementation step"],
-      filesToUpdate: ["Do not update files just to create a branch plan. Record branch decisions in `../knowledge/implementation-notes.md` only when the user asks for persistent notes."]
+      title: "Branch Para Feature",
+      purpose: "Criar um plano seguro de branch antes do início da implementação.",
+      inputs: ["Slug da Feature local ou número da issue do GitHub", "Título da Feature", "Branch padrão atual", "Lista de branches existentes quando disponível", "Regras de branch", "Skill: create-branch"],
+      steps: ["Use este playbook como etapa de branch de `engineering-delivery.playbook.md`; retorne para engineering-delivery depois que o status da branch estiver claro", "Leia o contexto e o título da Feature", "Carregue `.github/leanos/branch-rules.md`", "Use `skills/create-branch/SKILL.md` para gerar um nome de branch no formato obrigatório de Feature/GitHub", "Use `feature/...` para Features apenas locais e `issue/...` para issues do GitHub mapeadas", "Verifique palavras sensíveis ou escopo desnecessário", "Peça confirmação antes de usar uma branch existente ou criar uma nova"],
+      outputs: ["Nome de branch proposto", "Feature ou issue do GitHub vinculada", "Notas de segurança da branch", "Próximo passo de implementação"],
+      filesToUpdate: ["Não atualize arquivos apenas para criar um plano de branch. Registre decisões de branch em `../knowledge/implementation-notes.md` somente quando o usuário pedir notas persistentes."]
     },
     {
       slug: "component-implementation",
-      title: "Component Implementation",
-      purpose: "Implement a reusable component from an approved Design spec before the screen or Feature that depends on it.",
-      inputs: ["Feature or GitHub Feature issue", "Approved Design component spec", "Design component inventory", "Design system", "Accessibility baseline", "Engineering component guidelines", "Code standards", "Testing strategy", "Skill: implement-component"],
-      steps: ["Use this as the component step of `engineering-delivery.playbook.md`; return to engineering-delivery before implementing the dependent screen or Feature", "Read Engineering AGENT and choose the Senior Developer role", "Read the Feature and confirm that a reusable component is required", "Load the Design component spec before changing code", "Load `../../design/knowledge/component-inventory.md`, `../../design/knowledge/design-system.md` and `../../design/knowledge/accessibility.md`", "Load `knowledge/component-guidelines.md`, `knowledge/code-standards.md` and `knowledge/testing-strategy.md`", "Use `skills/implement-component/SKILL.md` to plan component implementation", "Inspect existing component patterns before creating a new file", "Create or confirm a Feature-linked branch before editing code", "Implement the reusable component before the screen or Feature that consumes it", "Validate required states, keyboard behavior, focus behavior and accessibility notes", "Add tests, examples, stories or manual validation notes when the repository supports them", "Summarize component readiness before continuing to the dependent screen or Feature"],
-      outputs: ["Component implementation plan", "Branch used", "Files changed", "States implemented", "Accessibility validation", "Tests or manual validation", "Known gaps", "Decision to continue to screen or Feature implementation"],
-      filesToUpdate: ["Update `../knowledge/implementation-notes.md` when component implementation decisions should persist.", "Do not update Design component specs unless routed back to Design and confirmed by the user."]
+      title: "Implementação De Componente",
+      purpose: "Implementar um componente reutilizável a partir de uma especificação aprovada por Design antes da tela ou Feature que depende dele.",
+      inputs: ["Feature ou issue de Feature no GitHub", "Especificação aprovada de componente de Design", "Inventário de componentes de Design", "Design system", "Baseline de acessibilidade", "Diretrizes de componentes de Engineering", "Padrões de código", "Estratégia de testes", "Skill: implement-component"],
+      steps: ["Use este playbook como etapa de componente de `engineering-delivery.playbook.md`; retorne para engineering-delivery antes de implementar a tela ou Feature dependente", "Leia o AGENT de Engineering e escolha a role Senior Developer", "Leia a Feature e confirme que um componente reutilizável é necessário", "Carregue a especificação de componente de Design antes de alterar código", "Carregue `../../design/knowledge/component-inventory.md`, `../../design/knowledge/design-system.md` e `../../design/knowledge/accessibility.md`", "Carregue `knowledge/component-guidelines.md`, `knowledge/code-standards.md` e `knowledge/testing-strategy.md`", "Use `skills/implement-component/SKILL.md` para planejar a implementação do componente", "Inspecione padrões de componentes existentes antes de criar um novo arquivo", "Crie ou confirme uma branch vinculada à Feature antes de editar código", "Implemente o componente reutilizável antes da tela ou Feature que o consome", "Valide estados obrigatórios, comportamento de teclado, comportamento de foco e notas de acessibilidade", "Adicione testes, exemplos, stories ou notas de validação manual quando o repositório suportar", "Resuma a prontidão do componente antes de continuar para a tela ou Feature dependente"],
+      outputs: ["Plano de implementação do componente", "Branch usada", "Arquivos alterados", "Estados implementados", "Validação de acessibilidade", "Testes ou validação manual", "Lacunas conhecidas", "Decisão de continuar para implementação da tela ou Feature"],
+      filesToUpdate: ["Atualize `../knowledge/implementation-notes.md` quando decisões de implementação de componente precisarem persistir.", "Não atualize especificações de componente de Design sem roteamento de volta para Design e confirmação do usuário."]
     },
     {
       slug: "prepare-pr",
-      title: "Prepare PR",
-      purpose: "Prepare a reviewable pull request from a confirmed Feature implementation.",
-      inputs: ["GitHub issue body", "Parent epic when available", "MVP scope", "PRD", "Acceptance criteria", "Product, Design, Engineering and Security criteria", "Branch name", "Engineering knowledge"],
-      steps: ["Use this as the PR preparation step of `engineering-delivery.playbook.md`; do not use it before implementation and test status are clear", "Read Engineering AGENT and choose the Senior Developer role", "Read Feature or mapped GitHub issue, PRD, MVP scope and acceptance criteria", "Confirm Feature readiness with Product and Engineering criteria", "Check whether Design criteria are required for user-facing UX", "Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance", "Create or confirm a Feature-linked branch before code changes", "Use `skills/plan-implementation/SKILL.md` to plan implementation", "Run `playbooks/component-implementation.playbook.md` before screen or Feature work when a new reusable component is required", "Use `skills/follow-code-standards/SKILL.md` while changing code", "Use `skills/review-data-change/SKILL.md` when data/API/persistence is involved", "Use `skills/write-tests/SKILL.md` to update tests or explain gaps", "Use `skills/create-pr/SKILL.md` to prepare PR using the PR template", "Fill the `Founder Testing Guide` with plain-language steps, where to test, expected result, out-of-scope notes and known limits", "If there is no preview URL, provide the local route, command or manual fallback the founder can realistically use"],
-      outputs: ["Implementation summary", "Branch used", "Files changed", "Tests run or proposed", "Founder Testing Guide", "PR draft", "Known risks"],
-      filesToUpdate: ["Update `../knowledge/implementation-notes.md` when implementation decisions should persist.", "Update `../knowledge/pr-log.md` after PR creation or when the user asks for a persistent PR record."]
+      title: "Preparar PR",
+      purpose: "Preparar um pull request revisável a partir de uma implementação de Feature confirmada.",
+      inputs: ["Corpo da issue do GitHub", "Epic pai quando disponível", "Escopo do MVP", "PRD", "Critérios de aceite", "Critérios de Product, Design, Engineering e Security", "Nome da branch", "Knowledge de Engineering"],
+      steps: ["Use este playbook como etapa de preparação de PR de `engineering-delivery.playbook.md`; não use antes de o status de implementação e testes estar claro", "Leia o AGENT de Engineering e escolha a role Senior Developer", "Leia a Feature ou issue do GitHub mapeada, PRD, escopo do MVP e critérios de aceite", "Confirme prontidão da Feature com critérios de Product e Engineering", "Verifique se critérios de Design são obrigatórios para UX voltada ao usuário", "Verifique se critérios de Security/Data são obrigatórios para dados, auth, privacidade, abuso ou compliance", "Crie ou confirme uma branch vinculada à Feature antes de mudanças de código", "Use `skills/plan-implementation/SKILL.md` para planejar a implementação", "Execute `playbooks/component-implementation.playbook.md` antes de trabalho de tela ou Feature quando um novo componente reutilizável for necessário", "Use `skills/follow-code-standards/SKILL.md` ao alterar código", "Use `skills/review-data-change/SKILL.md` quando dados/API/persistência estiverem envolvidos", "Use `skills/write-tests/SKILL.md` para atualizar testes ou explicar lacunas", "Use `skills/create-pr/SKILL.md` para preparar o PR usando o template de PR", "Preencha o `Founder Testing Guide` com passos em linguagem simples, onde testar, resultado esperado, notas fora de escopo e limites conhecidos", "Se não houver URL de preview, forneça a rota local, comando ou fallback manual que o founder consiga usar de forma realista"],
+      outputs: ["Resumo de implementação", "Branch usada", "Arquivos alterados", "Testes executados ou propostos", "Founder Testing Guide", "Rascunho de PR", "Riscos conhecidos"],
+      filesToUpdate: ["Atualize `../knowledge/implementation-notes.md` quando decisões de implementação precisarem persistir.", "Atualize `../knowledge/pr-log.md` após a criação do PR ou quando o usuário pedir um registro persistente de PR."]
     },
     {
       slug: "test-planning",
-      title: "Test Planning",
-      purpose: "Plan validation for implementation work without storing procedural test instructions as loose area files.",
-      inputs: ["Implementation scope", "PRD", "Acceptance criteria", "Changed behavior", "Known risks", "Testing strategy", "Skill: write-tests"],
-      steps: ["Read `knowledge/testing-strategy.md`", "Identify changed behavior", "Use `skills/write-tests/SKILL.md` to choose automated and manual validation", "Map tests to acceptance criteria", "Identify risky gaps", "Summarize validation readiness"],
-      outputs: ["Test strategy", "Validation gaps", "Manual checks", "Next action"],
-      filesToUpdate: ["Update `../knowledge/implementation-notes.md` or PR notes if the workspace needs a persistent test decision."]
+      title: "Planejamento De Testes",
+      purpose: "Planejar validação para trabalho de implementação sem armazenar instruções procedurais de teste como arquivos soltos da área.",
+      inputs: ["Escopo de implementação", "PRD", "Critérios de aceite", "Comportamento alterado", "Riscos conhecidos", "Estratégia de testes", "Skill: write-tests"],
+      steps: ["Leia `knowledge/testing-strategy.md`", "Identifique o comportamento alterado", "Use `skills/write-tests/SKILL.md` para escolher validação automatizada e manual", "Mapeie testes para critérios de aceite", "Identifique lacunas arriscadas", "Resuma prontidão de validação"],
+      outputs: ["Estratégia de testes", "Lacunas de validação", "Checks manuais", "Próxima ação"],
+      filesToUpdate: ["Atualize `../knowledge/implementation-notes.md` ou notas de PR se o workspace precisar de uma decisão persistente de teste."]
     },
     {
       slug: "pr-validation",
-      title: "PR Validation",
-      purpose: "Validate implementation before merge.",
-      inputs: ["PR description", "Linked issue", "Parent epic when available", "MVP scope", "PRD", "Acceptance criteria", "Changed files", "Tests or validation evidence", "Founder Testing Guide", "Review criteria"],
-      steps: ["Use this as the final validation step of `engineering-delivery.playbook.md`; do not recommend merge before this review is complete", "Read Engineering AGENT and choose PR Reviewer or Test Engineer as needed", "Read PR context", "Load `.github/leanos/pr-validation-rules.md` and `knowledge/review-criteria.md`", "Use `skills/review-pr/SKILL.md` to check scope against issue, PRD and MVP", "Use `skills/follow-code-standards/SKILL.md` to check code quality", "Use `skills/review-data-change/SKILL.md` when data/API/persistence is involved", "Validate Product criteria and acceptance criteria", "Review the Founder Testing Guide and confirm a non-technical founder can test the PR", "Review Design criteria only when UX changed", "Review Security criteria only when data, auth, privacy, abuse or compliance is involved", "Review tests and manual validation", "List findings by severity", "Recommend merge, changes or blocked-by-context"],
-      outputs: ["Findings by severity", "Product alignment", "Code quality result", "Founder acceptance result", "Design review result or not applicable", "Security/Data review result or not applicable", "Test confidence", "Merge recommendation"],
-      filesToUpdate: ["Update `../knowledge/code-review-notes.md` or `../knowledge/pr-log.md` only when the user asks for persistent review notes."]
+      title: "Validação De PR",
+      purpose: "Validar a implementação antes do merge.",
+      inputs: ["Descrição do PR", "Issue vinculada", "Epic pai quando disponível", "Escopo do MVP", "PRD", "Critérios de aceite", "Arquivos alterados", "Testes ou evidência de validação", "Founder Testing Guide", "Critérios de revisão"],
+      steps: ["Use este playbook como etapa final de validação de `engineering-delivery.playbook.md`; não recomende merge antes de esta revisão estar completa", "Leia o AGENT de Engineering e escolha PR Reviewer ou Test Engineer conforme necessário", "Leia o contexto do PR", "Carregue `.github/leanos/pr-validation-rules.md` e `knowledge/review-criteria.md`", "Use `skills/review-pr/SKILL.md` para verificar escopo contra issue, PRD e MVP", "Use `skills/follow-code-standards/SKILL.md` para verificar qualidade de código", "Use `skills/review-data-change/SKILL.md` quando dados/API/persistência estiverem envolvidos", "Valide critérios de Product e critérios de aceite", "Revise o Founder Testing Guide e confirme que um founder não técnico consegue testar o PR", "Revise critérios de Design somente quando UX mudou", "Revise critérios de Security somente quando dados, auth, privacidade, abuso ou compliance estiverem envolvidos", "Revise testes e validação manual", "Liste achados por severidade", "Recomende merge, mudanças ou blocked-by-context"],
+      outputs: ["Achados por severidade", "Alinhamento de Product", "Resultado de qualidade de código", "Resultado de aceite do founder", "Resultado de revisão de Design ou não aplicável", "Resultado de revisão de Security/Data ou não aplicável", "Confiança de teste", "Recomendação de merge"],
+      filesToUpdate: ["Atualize `../knowledge/code-review-notes.md` ou `../knowledge/pr-log.md` somente quando o usuário pedir notas persistentes de revisão."]
     }
   ];

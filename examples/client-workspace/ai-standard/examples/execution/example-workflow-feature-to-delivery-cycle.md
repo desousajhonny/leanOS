@@ -1,38 +1,38 @@
-# Feature To Delivery Cycle Workflow
+# Workflow Feature To Delivery Cycle
 
-## Purpose
+## Propósito
 
-Move a confirmed local Feature or mapped GitHub issue from understanding to branch, implementation, review and PR readiness.
+Mover uma Feature local confirmada ou issue do GitHub mapeada de entendimento para branch, implementação, review e prontidão de PR.
 
-## Trigger
+## Gatilho
 
-The founder asks to implement a specific Feature, or a GitHub issue that represents a Feature.
+O founder pede para implementar uma Feature específica ou uma issue do GitHub que representa uma Feature.
 
-## Participating Areas
+## Áreas Participantes
 
-- Product Ops: confirms delivery scope, issue readiness and delivery boundaries.
-- Engineering: plans, implements, tests and prepares PR.
-- Design: conditional, only when UX changes.
-- Security: conditional, only when data, auth, permissions, privacy, abuse risk or compliance is involved.
+- Product Ops: confirma escopo de delivery, prontidão de issue e limites de delivery.
+- Engineering: planeja, implementa, testa e prepara PR.
+- Design: condicional, somente quando UX muda.
+- Security: condicional, somente quando dados, auth, permissões, privacidade, risco de abuso ou compliance estiverem envolvidos.
 
-## Sequence
+## Sequência
 
-1. Load the Feature, parent Epic and MVP context.
-2. Summarize the Feature in chat and ask for confirmation.
-3. Check Product and Engineering readiness.
-4. Add Design criteria only when user-facing UX changes.
-5. Add Security criteria only when the issue has a security-sensitive surface.
-6. Create a Feature-linked branch plan.
-7. Implement only after confirmation.
-8. Run tests or explain why they cannot run.
-9. Prepare a PR draft using the PR template.
-10. Route to review before merge.
+1. Carregue a Feature, Epic pai e contexto do MVP.
+2. Resuma a Feature no chat e peça confirmação.
+3. Cheque prontidão de Product e Engineering.
+4. Adicione critérios de Design somente quando UX voltada ao usuário mudar.
+5. Adicione critérios de Security somente quando a issue tiver superfície sensível a Security.
+6. Crie um plano de branch vinculado à Feature.
+7. Implemente somente após confirmação.
+8. Rode testes ou explique por que não podem rodar.
+9. Prepare um rascunho de PR usando o template de PR.
+10. Roteie para review antes do merge.
 
-## Output
+## Saída
 
-- Confirmed Feature summary
-- Implementation plan
-- Branch name
-- Test plan
-- PR draft
-- Review readiness notes
+- Resumo da Feature confirmada
+- Plano de implementação
+- Nome da branch
+- Plano de teste
+- Rascunho de PR
+- Notas de prontidão de review

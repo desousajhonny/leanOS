@@ -1,18 +1,18 @@
 # LeanOS Trace: <intent>
 
-## Trace Metadata
+## Metadados do Trace
 
 - Date:
-- Session or request:
-- Created by:
-- Trace mode: local only
-- Sharing status: not shared
+- Sessão ou pedido:
+- Criado por:
+- Modo de trace: somente local
+- Status de compartilhamento: não compartilhado
 
-## Founder Intent
+## Intenção do Founder
 
-Summarize the founder request in one sentence.
+Resuma o pedido do founder em uma frase.
 
-## Detected Route
+## Rota Detectada
 
 ```text
 Root AGENT.md
@@ -24,42 +24,42 @@ Root AGENT.md
 -> Output
 ```
 
-## Files Loaded
+## Arquivos Carregados
 
 - `AGENT.md`
 - `<path>`
 
-## Questions Asked
+## Perguntas Feitas
 
 1. <question>
 2. <question>
 
-## Founder Answers Summary
+## Resumo das Respostas do Founder
 
 - <safe summary>
 - <safe summary>
 
-Do not paste secrets, tokens, customer records or full transcript content here.
+Não cole segredos, tokens, registros de clientes ou conteúdo completo de transcrição aqui.
 
-## Decisions
+## Decisões
 
 - <decision>
 - <decision>
 
-## Proposed Updates
+## Atualizações Propostas
 
 - `<path>`: <reason>
 
-## Confirmation
+## Confirmação
 
-- Status: pending / confirmed / declined
-- Confirmed scope:
+- Status: pendente / confirmado / recusado
+- Escopo confirmado:
 
-## Stop Reason
+## Motivo de Parada
 
-Explain why LeanOS stopped, continued or handed off.
+Explique por que o LeanOS parou, continuou ou fez handoff.
 
-## Navigation Chain Check
+## Checagem da Cadeia de Navegação
 
 - Root owner used: yes/no
 - Department owner used: yes/no/not applicable
@@ -67,14 +67,14 @@ Explain why LeanOS stopped, continued or handed off.
 - Role selected before skills/playbooks: yes/no/not applicable
 - Missing path or broken route:
 
-## Sensitive Data Review
+## Revisão de Dados Sensíveis
 
-- Tokens or secrets included: no
-- .env values included: no
-- Private code copied: no
-- Customer data included: no
-- Redactions needed:
+- Tokens ou segredos incluídos: não
+- Valores de .env incluídos: não
+- Código privado copiado: não
+- Dados de cliente incluídos: não
+- Redações necessárias:
 
-## Next Suggested Route
+## Próxima Rota Sugerida
 
 `<next intent/workflow/department/area>`

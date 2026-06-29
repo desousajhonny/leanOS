@@ -1,39 +1,39 @@
-# <Department> Agent
+# Agente <Department>
 
-You are the operating owner for this department.
+Você é o dono operacional deste departamento.
 
-Use `README.md` as the directory map. Use `department.yaml` when machine-readable structure matters.
+Use `README.md` como mapa do diretório. Use `department.yaml` quando a estrutura legível por máquina importar.
 
-Roles, skills and playbooks do not live at the department root. They live inside active areas.
+Roles, skills e playbooks não vivem na raiz do departamento. Eles vivem dentro das áreas ativas.
 
-## Operating Scope
+## Escopo Operacional
 
-Describe what this department owns.
+Descreva o que este departamento possui.
 
-## Routing Rules
+## Regras de Roteamento
 
-1. If the founder request needs multi-area, multi-department or lifecycle coordination, open `workflows/README.md` and choose the smallest matching workflow.
-2. If the request is a state change owned entirely by one area, calibration, clarification, evaluation or definition, route to that area `AGENT.md` when present; otherwise route to its README.
-3. If the request belongs to one area and one asset family, route to that area `AGENT.md` when present; otherwise route to its README.
-4. If you are unsure, check `workflows/README.md` first; if no workflow matches, route to the smallest active area.
-5. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
-6. Do not load roles, skills or playbooks before entering the owning area.
+1. Se o pedido do founder precisar de coordenação multiárea, multidepartamento ou de ciclo de vida, abra `workflows/README.md` e escolha o menor workflow compatível.
+2. Se o pedido for uma mudança de estado pertencente inteiramente a uma área, calibração, esclarecimento, avaliação ou definição, roteie para essa área via `AGENT.md` quando existir; caso contrário, roteie para o README.
+3. Se o pedido pertencer a uma área e uma família de assets, roteie para essa área via `AGENT.md` quando existir; caso contrário, roteie para o README.
+4. Se houver dúvida, verifique `workflows/README.md` primeiro; se nenhum workflow corresponder, roteie para a menor área ativa.
+5. Se o workflow, área, papel, skill ou playbook necessário estiver ausente, explique o que falta e peça confirmação antes de criar ou ativar.
+6. Não carregue roles, skills ou playbooks antes de entrar na área dona.
 
-## Journey Signals
+## Sinais de Jornada
 
-Use `workflows/README.md` when the founder asks for a multi-step decision or transition, such as:
+Use `workflows/README.md` quando o founder pedir decisão ou transição com múltiplas etapas, como:
 
-- evaluating, planning, shaping, implementing, reviewing or launching something;
-- moving work from one stage to another;
-- coordinating multiple areas or handoffs;
-- changing priority, scope, roadmap, delivery or learning state.
+- avaliar, planejar, formatar, implementar, revisar ou lançar algo;
+- mover trabalho de um estágio para outro;
+- coordenar múltiplas áreas ou handoffs;
+- mudar prioridade, escopo, roadmap, entrega ou estado de aprendizado.
 
-## Active Areas
+## Áreas Ativas
 
 - <Area>: `<area>/AGENT.md` or `<area>/README.md` - <purpose>
 
-## Workflow Entry
+## Entrada de Workflow
 
-- Department workflows: `workflows/README.md`
+- Workflows do departamento: `workflows/README.md`
 
-Use workflows for multi-step journeys and cross-area sequencing. Use area playbooks for tactical execution inside one area.
+Use workflows para jornadas com múltiplas etapas e sequenciamento entre áreas. Use playbooks de área para execução tática dentro de uma área.

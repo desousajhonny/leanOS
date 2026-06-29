@@ -13,23 +13,23 @@ This file is owned by Design. Engineering uses it as an implementation contract.
 - Related Epic:
 - Last Updated:
 
-## Purpose
+## Propósito
 
 Explain what this component does and what user problem it helps solve.
 
 ## When To Use
 
-- Use when...
-- Use when...
+- Use quando...
+- Use quando...
 
 ## When Not To Use
 
-- Do not use when...
-- Do not use when...
+- Não use quando...
+- Não use quando...
 
 ## Anatomy
 
-List the visible and structural parts of the component.
+Liste as partes visíveis e estruturais do componente.
 
 - Container:
 - Header/title:
@@ -110,14 +110,14 @@ List the visible and structural parts of the component.
 - Performance concerns:
 - Existing patterns to follow:
 
-## Do Not Do
+## Não Faça
 
-- Do not hardcode product copy that should come from Feature context.
-- Do not hardcode colors outside the Design token intent.
-- Do not create a one-off component when this should be reusable.
-- Do not skip keyboard, focus, loading, empty or error states when applicable.
+- Não hardcode copy de produto que deveria vir do contexto da Feature.
+- Não hardcode cores fora da intenção dos Design tokens.
+- Não crie um componente único quando ele deveria ser reutilizável.
+- Não pule estados de teclado, foco, loading, vazio ou erro quando aplicáveis.
 
-## Open Questions
+## Perguntas em Aberto
 
 - TBD
 `;

@@ -1,7 +1,7 @@
 export function engineeringPrLogKnowledge(): string {
   return `# PR Log
 
-## Purpose
+## Propósito
 
 Keep a lightweight delivery log of PRs, reviews and merges so the founder and future agents can understand what shipped without rereading every code change.
 

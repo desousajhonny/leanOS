@@ -16,9 +16,9 @@ export const strategyRoadmapArea: AreaDefinition = {
     purpose: "Route roadmap planning, prioritization and cycle planning."
   },
   routingKey: "roadmap",
-  requestTypes: "roadmap, milestones, backlog, cycle planning, prioritization or operating product sequencing",
-  purpose: "Own roadmap sequence, milestones, backlog and planning-cycle prioritization for operating or scaling products.",
-  whenToUse: ["sequence product work for product_operating or growth_scaling", "prioritize multiple backlog candidates", "define current cycle", "plan milestones"],
+  requestTypes: "roadmap, milestones, backlog, planejamento de ciclo, priorização ou sequenciamento de produto operando",
+  purpose: "Possui sequência de roadmap, milestones, backlog e priorização de ciclo de planejamento para produtos operando ou escalando.",
+  whenToUse: ["sequenciar trabalho de produto para product_operating ou growth_scaling", "priorizar múltiplos candidatos de backlog", "definir ciclo atual", "planejar milestones"],
   sourceOfTruth: strategyRoadmapSourceOfTruth,
   files: strategyRoadmapFiles,
   roles: strategyRoadmapRoles,

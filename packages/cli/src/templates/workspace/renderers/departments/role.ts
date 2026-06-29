@@ -2,8 +2,8 @@ import type { AreaDefinition, RoleDefinition } from "../../types.js";
 import { stringifyYaml } from "../../../../utils/yaml.js";
 
 function roleDescription(role: RoleDefinition): string {
-  const triggers = role.useWhen?.length ? role.useWhen.join("; ") : `${role.title.toLowerCase()} is required for the active request`;
-  return `Use when ${triggers}`;
+  const triggers = role.useWhen?.length ? role.useWhen.join("; ") : `${role.title.toLowerCase()} é necessário para o pedido ativo`;
+  return `Use quando ${triggers}`;
 }
 
 function roleFrontmatter(role: RoleDefinition): string {
@@ -23,38 +23,38 @@ export function roleFile(area: AreaDefinition, role: RoleDefinition): string {
 
 # ${role.title}
 
-## Purpose
+## Propósito
 
 ${role.purpose}
 
-## When to Use
+## Use Quando
 
 ${role.useWhen.map((item) => `- ${item}`).join("\n")}
 
-## Before Acting
+## Antes de Agir
 
-Read:
+Leia:
 
 ${role.beforeActing.map((file) => `- \`${file}\``).join("\n")}
 
-## Required Skills
+## Skills Obrigatórias
 
 ${role.skills.map((skill) => `- \`../skills/${skill}/SKILL.md\``).join("\n")}
 
-## Relevant Playbooks
+## Playbooks Relevantes
 
 ${role.playbooks.map((playbook) => `- \`../playbooks/${playbook}.playbook.md\``).join("\n")}
 
-## Acceptance Criteria
+## Critérios de Aceite
 
-${(role.outputs ?? ["Context loaded", "Recommendation", "Files that should be updated"]).map((item) => `- ${item}`).join("\n")}
+${(role.outputs ?? ["Contexto carregado", "Recomendação", "Arquivos que devem ser atualizados"]).map((item) => `- ${item}`).join("\n")}
 
-## Red Lines
+## Linhas Vermelhas
 
-${(role.redLines ?? ["Do not invent product-specific facts.", "Ask before modifying files."]).map((item) => `- ${item}`).join("\n")}
+${(role.redLines ?? ["Não invente fatos específicos do produto.", "Peça confirmação antes de modificar arquivos."]).map((item) => `- ${item}`).join("\n")}
 
-## Navigation
+## Navegação
 
-Start from \`${areaOwner}\`, then load only the required skill and playbook.
+Comece em \`${areaOwner}\` e carregue apenas a skill e o playbook necessários.
 `;
 }

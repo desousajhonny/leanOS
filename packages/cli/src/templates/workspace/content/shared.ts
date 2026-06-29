@@ -1,59 +1,59 @@
 import type { WorkspaceAnswers } from "../types.js";
 
 export function businessProfile(answers: WorkspaceAnswers): string {
-  return `# Business Profile
+  return `# Perfil do Negócio
 
-## Purpose
+## Propósito
 
-Capture the initial business context collected by LeanOS.
+Registrar o contexto inicial de negócio coletado pelo LeanOS.
 
-## Current State
+## Estado Atual
 
-- Company: ${answers.companyName}
-- Operating mode: ${answers.mode}
-- Current stage: ${answers.stage}
+- Empresa: ${answers.companyName}
+- Modo de operação: ${answers.mode}
+- Estágio atual: ${answers.stage}
 
-## Decisions
-
-TBD
-
-## Open Questions
+## Decisões
 
 TBD
 
-## Next Update
+## Perguntas em Aberto
+
+TBD
+
+## Próxima Atualização
 
 TBD
 `;
 }
 
 export function productBrief(answers: WorkspaceAnswers): string {
-  return `# Product Brief
+  return `# Brief do Produto
 
-## Purpose
+## Propósito
 
-Capture the initial product context collected by LeanOS.
+Registrar o contexto inicial de produto coletado pelo LeanOS.
 
-## Current State
+## Estado Atual
 
-- Product: ${answers.productName}
-- Type: ${answers.productType}
+- Produto: ${answers.productName}
+- Tipo: ${answers.productType}
 - Status: ${answers.productStatus}
-- Primary user: ${answers.targetUser}
+- Usuário primário: ${answers.targetUser}
 
-## Description
+## Descrição
 
 ${answers.description}
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;
@@ -62,31 +62,31 @@ TBD
 export function folderReadme(title: string, purpose: string, whenToUse: string, sourceOfTruth: string, files: string[], relatedFolders: string[], agentNotes: string): string {
   return `# ${title}
 
-## Purpose
+## Propósito
 
 ${purpose}
 
-## When to Use
+## Use Quando
 
 ${whenToUse}
 
-## Source of Truth
+## Fonte da Verdade
 
 \`${sourceOfTruth}\`
 
-## Files
+## Arquivos
 
 ${files.map((file) => `- \`${file}\``).join("\n")}
 
-## Related Folders
+## Pastas Relacionadas
 
 ${relatedFolders.map((folder) => `- \`${folder}\``).join("\n")}
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
 ${agentNotes}
 `;
@@ -99,23 +99,23 @@ export function titledDraft(title: string, guidance: string): string {
 export function stateDraft(title: string, purpose: string): string {
   return `# ${title}
 
-## Purpose
+## Propósito
 
 ${purpose}
 
-## Current State
+## Estado Atual
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;
@@ -124,268 +124,268 @@ TBD
 export function decisionLog(title: string): string {
   return `# ${title}
 
-## Purpose
+## Propósito
 
-Capture durable decisions and why they were made.
+Registrar decisões duráveis e por que elas foram tomadas.
 
-## Current State
+## Estado Atual
 
-No decisions recorded yet.
+Nenhuma decisão registrada ainda.
 
-## Decisions
+## Decisões
 
-| Date | Decision | Context | Owner |
+| Data | Decisão | Contexto | Dono |
 | --- | --- | --- | --- |
 | TBD | TBD | TBD | TBD |
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;
 }
 
 export function learningLog(): string {
-  return `# Learning Log
+  return `# Registro de Aprendizado
 
-## Purpose
+## Propósito
 
-Capture validated learning and its impact on roadmap, backlog and product decisions.
+Registrar aprendizado validado e seu impacto em roadmap, backlog e decisões de produto.
 
-## Current State
+## Estado Atual
 
-No learning recorded yet.
+Nenhum aprendizado registrado ainda.
 
-## Validation Loop
+## Loop de Validação
 
-Use this sequence:
+Use esta sequência:
 
-1. Assumption
-2. Experiment
-3. Evidence
+1. Suposição
+2. Experimento
+3. Evidência
 4. Insight
-5. Decision
-6. Roadmap impact
+5. Decisão
+6. Impacto no roadmap
 
-## Evidence Rules
+## Regras de Evidência
 
-- Assumption: something believed but not yet proven.
-- Evidence: something observed from users, behavior, data or shipped product.
-- Insight: interpretation of evidence.
-- Decision: a committed change in strategy, MVP, roadmap or backlog.
-- Roadmap impact: what changes because of the decision.
+- Suposição: algo em que se acredita, mas que ainda não foi provado.
+- Evidência: algo observado em usuários, comportamento, dados ou produto entregue.
+- Insight: interpretação da evidência.
+- Decisão: mudança assumida em estratégia, MVP, roadmap ou backlog.
+- Impacto no roadmap: o que muda por causa da decisão.
 
-Do not record an assumption as validated learning without evidence.
+Não registre uma suposição como aprendizado validado sem evidência.
 
-## Decisions
-
-TBD
-
-## Open Questions
+## Decisões
 
 TBD
 
-## Next Update
+## Perguntas em Aberto
 
 TBD
 
-## Learning Entries
+## Próxima Atualização
 
-| Date | Assumption | Experiment | Evidence | Insight | Decision | Roadmap Impact |
+TBD
+
+## Entradas de Aprendizado
+
+| Data | Suposição | Experimento | Evidência | Insight | Decisão | Impacto no Roadmap |
 | --- | --- | --- | --- | --- | --- | --- |
 | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 `;
 }
 
 export function assumptionsRegister(): string {
-  return `# Assumptions
+  return `# Suposições
 
-## Purpose
+## Propósito
 
-List assumptions behind customer, problem, value and MVP before treating them as facts.
+Listar suposições sobre cliente, problema, valor e MVP antes de tratá-las como fatos.
 
-## Current State
+## Estado Atual
 
-No assumptions prioritized yet.
+Nenhuma suposição priorizada ainda.
 
-## How to Use
+## Como Usar
 
-Use this file as the assumption register for product, customer, problem, value and MVP claims.
+Use este arquivo como registro de suposições para afirmações sobre produto, cliente, problema, valor e MVP.
 
-Do not write conclusions here as facts. Write them as assumptions until evidence exists.
+Não escreva conclusões aqui como fatos. Escreva como suposições até que exista evidência.
 
-## Validation Loop
+## Loop de Validação
 
-Each assumption should move through:
+Cada suposição deve passar por:
 
 \`assumption -> experiment -> evidence -> decision -> roadmap impact\`
 
-## Assumption Types
+## Tipos de Suposição
 
-- customer: who the product is for.
-- problem: the pain, frequency or urgency being assumed.
-- value: the outcome or promise believed to matter.
-- MVP: the smallest scope believed to validate the product.
-- channel: how the user will discover or adopt the product.
-- business: pricing, willingness to pay or unit economics.
+- customer: para quem o produto é.
+- problem: dor, frequência ou urgência assumida.
+- value: resultado ou promessa que se acredita importar.
+- MVP: menor escopo que se acredita validar o produto.
+- channel: como o usuário descobrirá ou adotará o produto.
+- business: preço, disposição a pagar ou unit economics.
 
-## Evidence Status
+## Status de Evidência
 
-- untested: no evidence yet.
-- weak_signal: anecdote, opinion or very small signal.
-- tested: experiment completed, evidence recorded.
-- validated: enough evidence to support a decision.
-- invalidated: evidence suggests the assumption is false.
+- untested: ainda sem evidência.
+- weak_signal: anedota, opinião ou sinal muito pequeno.
+- tested: experimento concluído e evidência registrada.
+- validated: evidência suficiente para apoiar uma decisão.
+- invalidated: a evidência sugere que a suposição é falsa.
 
-## Assumption Register
+## Registro de Suposições
 
-| ID | Assumption | Type | Source | Confidence | Evidence Status | Next Experiment |
+| ID | Suposição | Tipo | Fonte | Confiança | Status de Evidência | Próximo Experimento |
 | --- | --- | --- | --- | --- | --- | --- |
 | A-001 | TBD | customer/problem/value/MVP | TBD | low/medium/high | untested | TBD |
 
-## Entry Template
+## Template de Entrada
 
-Use this shape when adding a new assumption:
+Use este formato ao adicionar uma nova suposição:
 
-| ID | Assumption | Type | Source | Confidence | Evidence Status | Next Experiment |
+| ID | Suposição | Tipo | Fonte | Confiança | Status de Evidência | Próximo Experimento |
 | --- | --- | --- | --- | --- | --- | --- |
-| A-002 | We believe [primary user] has [problem] often enough to care about [value promise]. | problem | founder belief / user signal | low | untested | Interview 5 target users |
+| A-002 | Acreditamos que [usuário primário] tem [problema] com frequência suficiente para se importar com [promessa de valor]. | problem | crença do founder / sinal de usuário | low | untested | Entrevistar 5 usuários-alvo |
 
-## Promotion Checklist
+## Checklist de Promoção
 
-Before moving an assumption into learning or roadmap:
+Antes de mover uma suposição para aprendizado ou roadmap:
 
-- [ ] Evidence source is named.
-- [ ] Success or failure signal is defined.
-- [ ] Evidence is separated from interpretation.
-- [ ] Decision is explicit.
-- [ ] Roadmap or backlog impact is recorded when relevant.
+- [ ] A fonte da evidência está nomeada.
+- [ ] O sinal de sucesso ou falha está definido.
+- [ ] Evidência está separada de interpretação.
+- [ ] A decisão está explícita.
+- [ ] Impacto em roadmap ou backlog está registrado quando relevante.
 
-## Decisions
-
-TBD
-
-## Open Questions
+## Decisões
 
 TBD
 
-## Next Update
+## Perguntas em Aberto
+
+TBD
+
+## Próxima Atualização
 
 TBD
 `;
 }
 
-export function riskiestAssumptions(): string {
-  return `# Riskiest Assumptions
+export function riskiestSuposições(): string {
+  return `# Suposições Mais Arriscadas
 
-## Purpose
+## Propósito
 
-Prioritize assumptions that could invalidate the product, MVP or roadmap.
+Priorizar suposições que poderiam invalidar o produto, MVP ou roadmap.
 
-## Current State
+## Estado Atual
 
-No riskiest assumptions selected yet.
+Nenhuma suposição mais arriscada selecionada ainda.
 
-## Prioritization Criteria
+## Critérios de Priorização
 
-- Importance: would this break the product if false?
-- Uncertainty: how little evidence do we have?
-- Testability: can we learn quickly?
-- Cost of delay: what happens if we postpone learning?
+- Importância: isso quebraria o produto se fosse falso?
+- Incerteza: quão pouca evidência temos?
+- Testabilidade: conseguimos aprender rapidamente?
+- Custo do atraso: o que acontece se adiarmos esse aprendizado?
 
-## Ranked Risks
+## Riscos Ranqueados
 
-| Rank | Assumption ID | Risk | Why It Matters | Next Experiment | Decision Needed |
+| Rank | ID da Suposição | Risco | Por que Importa | Próximo Experimento | Decisão Necessária |
 | --- | --- | --- | --- | --- | --- |
 | 1 | TBD | TBD | TBD | TBD | TBD |
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;
 }
 
 export function validationExperiments(): string {
-  return `# Experiments
+  return `# Experimentos
 
-## Purpose
+## Propósito
 
-Plan experiments that produce evidence for the riskiest assumptions.
+Planejar experimentos que produzam evidência para as suposições mais arriscadas.
 
-## Current State
+## Estado Atual
 
-No experiments planned yet.
+Nenhum experimento planejado ainda.
 
-## Experiment Rules
+## Regras de Experimento
 
-- Every experiment must link to an assumption.
-- Define success and failure signals before running it.
-- Separate observed evidence from interpretation.
-- Record decision and roadmap impact after the experiment.
+- Todo experimento deve se conectar a uma suposição.
+- Defina sinais de sucesso e falha antes de executar.
+- Separe evidência observada de interpretação.
+- Registre decisão e impacto no roadmap depois do experimento.
 
-## Experiment Plan
+## Plano de Experimento
 
-| ID | Assumption ID | Method | Audience | Success Signal | Failure Signal | Status |
+| ID | ID da Suposição | Método | Público | Sinal de Sucesso | Sinal de Falha | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | E-001 | TBD | interview/landing-page/prototype/manual-test/data-review | TBD | TBD | TBD | planned |
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;
 }
 
 export function validationSuccessMetrics(): string {
-  return `# Success Metrics
+  return `# Métricas de Sucesso
 
-## Purpose
+## Propósito
 
-Define validation signals before treating learning as evidence.
+Definir sinais de validação antes de tratar aprendizado como evidência.
 
-## Current State
+## Estado Atual
 
-No success metrics defined yet.
+Nenhuma métrica de sucesso definida ainda.
 
-## Metric Rules
+## Regras de Métrica
 
-- Metrics must connect to assumptions or experiments.
-- Qualitative evidence is allowed, but must name the source.
-- A signal is not a decision; decisions are recorded after interpreting evidence.
+- Métricas devem se conectar a suposições ou experimentos.
+- Evidência qualitativa é permitida, mas precisa nomear a fonte.
+- Um sinal não é uma decisão; decisões são registradas depois da interpretação da evidência.
 
-## Metrics
+## Métricas
 
-| Metric | Linked Assumption or Experiment | Success Threshold | Failure Threshold | Evidence Source |
+| Métrica | Suposição ou Experimento Conectado | Limite de Sucesso | Limite de Falha | Fonte de Evidência |
 | --- | --- | --- | --- | --- |
 | TBD | TBD | TBD | TBD | TBD |
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;
@@ -394,69 +394,69 @@ TBD
 export function checklist(title: string): string {
   return `# ${title}
 
-## Purpose
+## Propósito
 
-Track readiness without inventing project-specific facts.
+Acompanhar readiness sem inventar fatos específicos do projeto.
 
-## Current State
-
-TBD
-
-## Decisions
+## Estado Atual
 
 TBD
 
-## Open Questions
+## Decisões
 
 TBD
 
-## Next Update
+## Perguntas em Aberto
+
+TBD
+
+## Próxima Atualização
 
 TBD
 
 ## Checklist
 
-- [ ] Context reviewed
-- [ ] Scope is coherent
-- [ ] Risks are visible
-- [ ] Next action is clear
+- [ ] Contexto revisado
+- [ ] Escopo coerente
+- [ ] Riscos visíveis
+- [ ] Próxima ação clara
 `;
 }
 
 export function standardTemplate(fileName: string): string {
   return `# ${toTitle(fileName.replace(/\.(md|yaml)$/, ""))}
 
-Use this template as a starting point.
+Use este template como ponto de partida.
 
-## Required
+## Obrigatório
 
-- Purpose
-- Inputs
-- Process
-- Output
-- Navigation
+- Propósito
+- Entradas
+- Processo
+- Saída
+- Navegação
 `;
 }
 
 export function qualityChecklist(name: string): string {
-  return `# ${name} Quality Checklist
+  return `# Checklist de Qualidade de ${name}
 
-- [ ] Purpose is clear
-- [ ] Source-of-truth files are referenced
-- [ ] Navigation is explicit
-- [ ] Output expectations are clear
-- [ ] No inactive or missing paths are required
+- [ ] O propósito está claro
+- [ ] Os arquivos de fonte da verdade estão referenciados
+- [ ] A navegação está explícita
+- [ ] As expectativas de saída estão claras
+- [ ] Nenhum path inativo ou ausente é exigido
 `;
 }
 
 export function creationInstructions(assetName: string): string {
-  return `# Create ${assetName} Instructions
+  return `# Instruções para Criar ${assetName}
 
-1. Read \`../README.md\`.
-2. Choose the active department and area.
-3. Use the matching template.
-4. Validate with the matching checklist.
-5. Create the asset inside the selected area.
+1. Leia \`../README.md\`.
+2. Escolha o departamento e a área ativos.
+3. Use o template correspondente.
+4. Valide com o checklist correspondente.
+5. Crie o asset dentro da área selecionada.
 `;
 }
 

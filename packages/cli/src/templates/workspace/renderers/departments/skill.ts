@@ -9,41 +9,41 @@ export function skillFile(area: AreaDefinition, skill: SkillDefinition): string 
 
 # ${skill.title}
 
-## Overview
+## Visão Geral
 
 ${skill.purpose}
 
-## Use When
+## Use Quando
 
-${(skill.useWhen ?? ["Use when this capability is required for the active request."]).map((item) => `- ${item}`).join("\n")}
+${(skill.useWhen ?? ["Use quando esta capacidade for necessária para o pedido ativo."]).map((item) => `- ${item}`).join("\n")}
 
-## Required Context
+## Contexto Obrigatório
 
-${(skill.requiredContext ?? ["Area README", "Active role instructions", "User request"]).map((item) => `- ${item}`).join("\n")}
+${(skill.requiredContext ?? ["README da área", "Instruções do papel ativo", "Pedido do usuário"]).map((item) => `- ${item}`).join("\n")}
 
-## Inputs
+## Entradas
 
-${(skill.inputs ?? ["Relevant area knowledge", "Active role instructions", "User request"]).map((item) => `- ${item}`).join("\n")}
+${(skill.inputs ?? ["Knowledge relevante da área", "Instruções do papel ativo", "Pedido do usuário"]).map((item) => `- ${item}`).join("\n")}
 
-## Process
+## Processo
 
-${renderSkillProcess(skill.process ?? ["Read the minimum relevant context.", "Apply this skill to the request.", "Prepare a concise output or file update."])}
+${renderSkillProcess(skill.process ?? ["Leia o menor contexto relevante.", "Aplique esta skill ao pedido.", "Prepare uma saída concisa ou atualização de arquivo."])}
 
-## Checks & Acceptance Criteria
+## Verificações e Critérios de Aceite
 
-${(skill.checks ?? ["Check that the output matches the active request.", "Check that no unsupported product facts were invented."]).map((item) => `- ${item}`).join("\n")}
+${(skill.checks ?? ["Verifique se a saída responde ao pedido ativo.", "Verifique se nenhum fato de produto sem evidência foi inventado."]).map((item) => `- ${item}`).join("\n")}
 
-## Output
+## Saída
 
-${(skill.outputs ?? ["Summary", "Decisions", "Suggested file updates"]).map((item) => `- ${item}`).join("\n")}
+${(skill.outputs ?? ["Resumo", "Decisões", "Atualizações de arquivo sugeridas"]).map((item) => `- ${item}`).join("\n")}
 
-## Files to Update
+## Arquivos para Atualizar
 
-${(skill.filesToUpdate ?? ["Update relevant area knowledge only after explicit confirmation."]).map((item) => `- ${item}`).join("\n")}
+${(skill.filesToUpdate ?? ["Atualize knowledge relevante da área somente depois de confirmação explícita."]).map((item) => `- ${item}`).join("\n")}
 
-## Red Lines
+## Linhas Vermelhas
 
-${(skill.redLines ?? ["Do not invent product-specific facts.", "Ask before modifying files."]).map((item) => `- ${item}`).join("\n")}
+${(skill.redLines ?? ["Não invente fatos específicos do produto.", "Peça confirmação antes de modificar arquivos."]).map((item) => `- ${item}`).join("\n")}
 `;
   }
 
@@ -51,29 +51,29 @@ ${(skill.redLines ?? ["Do not invent product-specific facts.", "Ask before modif
 
 # ${skill.title}
 
-## Overview
+## Visão Geral
 
 ${skill.purpose}
 
-## Area
+## Área
 
 \`${area.path}\`
 
-## Inputs
+## Entradas
 
-- Area source-of-truth files
-- Active role instructions
-- User request
+- Arquivos de fonte da verdade da área
+- Instruções do papel ativo
+- Pedido do usuário
 
-## Process
+## Processo
 
-${renderSkillProcess(["Read the minimum relevant source-of-truth files.", "Apply this skill to the user request.", "Prepare a concise output or file update."])}
+${renderSkillProcess(["Leia os menores arquivos relevantes de fonte da verdade.", "Aplique esta skill ao pedido do usuário.", "Prepare uma saída concisa ou atualização de arquivo."])}
 
-## Output
+## Saída
 
-- Summary
-- Decisions
-- Suggested file updates
+- Resumo
+- Decisões
+- Atualizações de arquivo sugeridas
 `;
 }
 
@@ -87,10 +87,10 @@ ${stringifyYaml({
 }
 
 function skillDescription(skill: SkillDefinition): string {
-  const triggers = skill.useWhen?.length ? skill.useWhen.join("; ") : `${skill.title.toLowerCase()} is required for the active request`;
-  return `Use when ${triggers}`;
+  const triggers = skill.useWhen?.length ? skill.useWhen.join("; ") : `${skill.title.toLowerCase()} é necessário para o pedido ativo`;
+  return `Use quando ${triggers}`;
 }
 
 function renderSkillProcess(steps: string[]): string {
-  return steps.map((step, index) => `### Step ${index + 1}\n\n${step}`).join("\n\n");
+  return steps.map((step, index) => `### Etapa ${index + 1}\n\n${step}`).join("\n\n");
 }

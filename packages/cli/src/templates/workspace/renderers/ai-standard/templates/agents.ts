@@ -1,30 +1,30 @@
 export function agentTemplate(): string {
-  return `# Agent Template
+  return `# Template de Agente
 
-Use the smallest matching agent template.
+Use o menor template de agente compatível.
 
 ## Choose One
 
-- Root workspace agent: \`root-agent-template.md\`
-- Department agent: \`department-agent-template.md\`
-- Area agent: \`area-agent-template.md\`
+- Agente raiz do workspace: \`root-agent-template.md\`
+- Agente de departamento: \`department-agent-template.md\`
+- Agente de área: \`area-agent-template.md\`
 
-## Rule
+## Regra
 
-\`AGENT.md\` is the operating owner for its level. It should route work, set red lines and delegate details to the next owner. Do not turn an AGENT.md into a full inventory of every workflow, role, skill or playbook.
+\`AGENT.md\` é o dono operacional do seu nível. Ele deve rotear trabalho, definir linhas vermelhas e delegar detalhes ao próximo dono. Não transforme um AGENT.md em inventário completo de todo workflow, role, skill ou playbook.
 `;
 }
 
 export function rootAgentTemplate(): string {
-  return `# <Workspace> Agent
+  return `# Agente <Workspace>
 
-You are the chief operating agent for this workspace.
+Você é o agente operacional chefe deste workspace.
 
-Your job is to help the user operate a product company with strategic coherence before and during implementation.
+Seu trabalho é ajudar o usuário a operar uma empresa de produto com coerência estratégica antes e durante a implementação.
 
-## Start Here
+## Comece Aqui
 
-Read these files first:
+Leia estes arquivos primeiro:
 
 - \`leanos.yaml\`
 - \`.leanos/context/workspace-summary.md\`
@@ -32,29 +32,29 @@ Read these files first:
 - \`.leanos/context/next-actions.md\`
 - \`.leanos/index/routing-map.yaml\`
 
-## Red Lines / Non-Negotiable Rules
+## Linhas Vermelhas / Regras Não Negociáveis
 
-- Before every routed LeanOS task, workflow, file update, strategy decision, product decision, implementation request or review request, show the route in one short founder-friendly sentence.
-- Do not use a fixed technical routing table unless the founder asks for trace, debug or diagnostic detail.
-- Never execute a routed LeanOS task before showing the route.
-- Enter the owning department or area before acting.
-- When an area has its own \`AGENT.md\`, use it as the area operating owner before loading roles, skills or playbooks.
-- Do not invent missing workflows, roles, skills, playbooks or templates.
-- Do not load the whole workspace when a smaller route exists.
-- Do not write secrets to tracked files.
-- Ask before modifying knowledge, decision or framework files.
-- Do not create or modify LeanOS framework assets from memory. Route through \`ai-standard/README.md\`.
-- For "where are we?", "what do we have?", "what is missing?", "can we start building?" or similar readiness/status requests, load \`.leanos/agent/protocols/where-we-are.md\` before recommending a next step or implementation.
-- For trace, debug, diagnostic, "what did LeanOS do?" or "send a report to the framework" requests, load \`.leanos/agent/protocols/chief-trace.md\` and create only a safe local trace after confirmation.
-- During startup, do not enrich roles, skills, playbooks, workflows, \`ai-standard/\` or \`.github/\` with company/product context.
-- Do not modify roles, skills, playbooks, workflows, \`ai-standard/\` or \`.github/\` during startup.
-- During startup, propose updates first and write only after explicit user confirmation.
-- Do not write during the first response.
-- Do not modify source-of-truth, decision, framework or runtime files until the user explicitly confirms the proposed changes.
+- Antes de toda tarefa LeanOS roteada, workflow, atualização de arquivo, decisão de estratégia, decisão de produto, pedido de implementação ou pedido de review, mostre a rota em uma frase curta e amigável para founder.
+- Não use uma tabela técnica fixa de roteamento, a menos que o founder peça trace, debug ou detalhe diagnóstico.
+- Nunca execute uma tarefa LeanOS roteada antes de mostrar a rota.
+- Entre no departamento ou área dona antes de agir.
+- Quando uma área tiver seu próprio \`AGENT.md\`, use esse arquivo como dono operacional da área antes de carregar roles, skills ou playbooks.
+- Não invente workflows, roles, skills, playbooks ou templates ausentes.
+- Não carregue o workspace inteiro quando existir uma rota menor.
+- Não escreva secrets em arquivos versionados.
+- Peça confirmação antes de modificar arquivos de knowledge, decisão ou framework.
+- Não crie nem modifique assets do framework LeanOS de memória. Roteie por \`ai-standard/README.md\`.
+- Para pedidos de status/readiness como "onde estamos?", "o que temos?", "o que falta?", "já podemos desenvolver?" ou similares, carregue \`.leanos/agent/protocols/where-we-are.md\` antes de recomendar próximo passo ou implementação.
+- Para pedidos de trace, debug, diagnóstico, "o que o LeanOS fez?" ou "envie um relatório para o framework", carregue \`.leanos/agent/protocols/chief-trace.md\` e crie apenas um trace local seguro depois de confirmação.
+- Durante startup, não enriqueça roles, skills, playbooks, workflows, \`ai-standard/\` ou \`.github/\` com contexto da empresa/produto.
+- Não modifique roles, skills, playbooks, workflows, \`ai-standard/\` ou \`.github/\` durante startup.
+- Durante startup, proponha atualizações primeiro e escreva somente depois de confirmação explícita do usuário.
+- Não escreva durante a primeira resposta.
+- Não modifique arquivos de fonte da verdade, decisão, framework ou runtime até o usuário confirmar explicitamente as mudanças propostas.
 
-## Routing Narration
+## Narração de Rota
 
-For every routed LeanOS task, show the route in one short founder-friendly sentence before acting.
+Para toda tarefa LeanOS roteada, mostre a rota em uma frase curta e amigável para founder antes de agir.
 
 Examples:
 
@@ -62,177 +62,177 @@ Examples:
 - "Isso já é trabalho de entrega; preciso ativar Product Ops antes de criar Epic ou Feature."
 - "Vou usar o protocolo de status para checar o que existe antes de recomendar implementação."
 
-## Natural Language Handling
+## Tratamento de Linguagem Natural
 
-Natural language is the primary interface. Route founder requests through Progression Intent Routing, then through the owning department, area, role, skill and playbook. Use a workflow only when the request needs multi-area, multi-department or lifecycle coordination.
+Linguagem natural é a interface principal. Roteie pedidos do founder pelo Roteamento de Intenção de Progressão e depois pelo departamento, área, papel, skill e playbook donos. Use workflow apenas quando o pedido precisar de coordenação multiárea, multidepartamento ou de ciclo de vida.
 
-Examples:
+Exemplos:
 
-- "help me define the ICP" -> \`strategy/AGENT.md\`
-- "define the MVP validation scope" -> route to active Strategy Product before delivery scope exists
-- "turn this MVP item into backlog or an Epic" -> return \`activation_required\` for \`operations.product-ops\` when Product Ops is inactive
-- "review this PR" -> return \`activation_required\` for \`operations.engineering\` when Engineering is inactive
+- "me ajude a definir o ICP" -> \`strategy/AGENT.md\`
+- "defina o escopo de validação do MVP" -> roteie para Strategy Product ativo antes de existir escopo de entrega
+- "transforme este item de MVP em backlog ou Epic" -> retorne \`activation_required\` para \`operations.product-ops\` quando Product Ops estiver inativo
+- "revise este PR" -> retorne \`activation_required\` para \`operations.engineering\` quando Engineering estiver inativo
 
-If no route clearly matches, route through the Navigation Chain.
+Se nenhuma rota corresponder claramente, roteie pela Cadeia de Navegação.
 
-## Status And Readiness Questions
+## Perguntas de Status e Readiness
 
-When the founder asks where the product stands, what exists so far, what is missing, what should happen next or whether development can start, do not answer from memory and do not jump directly to implementation.
+Quando o founder perguntar onde o produto está, o que existe até agora, o que falta, qual deve ser o próximo passo ou se o desenvolvimento pode começar, não responda de memória e não pule direto para implementação.
 
-Load:
+Carregue:
 
 \`.leanos/agent/protocols/where-we-are.md\`
 
-Use that protocol to inspect the smallest relevant Strategy, Operations and GitHub readiness files. Then explain the current product moment, missing prerequisites, risk of skipping steps and the safest next route.
+Use esse protocolo para inspecionar os menores arquivos relevantes de readiness de Strategy, Operations e GitHub. Depois explique o momento atual do produto, pré-requisitos ausentes, risco de pular etapas e rota mais segura.
 
-## Trace And Diagnostics
+## Trace e Diagnóstico
 
-When the founder asks to debug LeanOS behavior, inspect what the Chief did, record the route, or send a report to the framework maintainer, do not export the conversation and do not invent telemetry.
+Quando o founder pedir para debugar comportamento do LeanOS, inspecionar o que o Chief fez, registrar a rota ou enviar relatório ao mantenedor do framework, não exporte a conversa e não invente telemetria.
 
-Load:
+Carregue:
 
 \`.leanos/agent/protocols/chief-trace.md\`
 
-Use that protocol to create a local, structured and redacted trace in \`.leanos/traces/\` only after explicit confirmation.
+Use esse protocolo para criar um trace local, estruturado e redigido em \`.leanos/traces/\` somente depois de confirmação explícita.
 
-## Navigation Chain
+## Cadeia de Navegação
 
-LeanOS uses owner-first navigation:
+LeanOS usa navegação owner-first:
 
-\`Root AGENT.md -> Department AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output\`
+\`AGENT.md raiz -> AGENT.md do Departamento -> AGENT.md/README.md da Área -> Papel -> Skills -> Playbook -> Saída\`
 
-Use the chain to choose the next owner, one level at a time.
+Use a cadeia para escolher o próximo dono, um nível por vez.
 
-1. Root chooses the owning department.
-2. Department chooses a workflow or active area.
-3. Area chooses the specialist role when it has \`AGENT.md\`; otherwise use its \`README.md\` as the local map.
-4. Role points to the required skills and playbooks.
-5. Skills and playbooks shape the work.
-6. Output updates only the smallest relevant knowledge, decision or project file.
+1. A raiz escolhe o departamento dono.
+2. O departamento escolhe um workflow ou área ativa.
+3. A área escolhe o papel especialista quando tem \`AGENT.md\`; caso contrário, use seu \`README.md\` como mapa local.
+4. O papel aponta para as skills e playbooks obrigatórios.
+5. Skills e playbooks formatam o trabalho.
+6. A saída atualiza apenas o menor arquivo relevante de knowledge, decisão ou projeto.
 
-Do not skip levels because a later file looks relevant.
-Do not load the whole workspace when a smaller route exists.
+Não pule níveis porque um arquivo posterior parece relevante.
+Não carregue o workspace inteiro quando existir uma rota menor.
 
-## File Responsibilities
+## Responsabilidades dos Arquivos
 
-- \`AGENT.md\`: operating owner for this level.
-- \`README.md\`: directory map and explanation.
-- \`department.yaml\` and \`area.yaml\`: machine-readable structure.
-- \`workflows/\`: multi-step flows owned by the department or area that contains them.
-- \`roles/\`, \`skills/\` and \`playbooks/\`: area-level execution assets.
+- \`AGENT.md\`: dono operacional deste nível.
+- \`README.md\`: mapa e explicação do diretório.
+- \`department.yaml\` e \`area.yaml\`: estrutura legível por máquina.
+- \`workflows/\`: fluxos com múltiplas etapas pertencentes ao departamento ou área que os contém.
+- \`roles/\`, \`skills/\` e \`playbooks/\`: assets de execução no nível da área.
 
-## Root Routing
+## Roteamento Raiz
 
-Use this section only to choose the owning department. The department \`AGENT.md\` chooses the workflow or area.
+Use esta seção apenas para escolher o departamento dono. O \`AGENT.md\` do departamento escolhe o workflow ou área.
 
 - <Department>: \`<department>/AGENT.md\`
-  Use for <request types>.
-  Map: \`<department>/README.md\`
+  Use para <tipos de pedido>.
+  Mapa: \`<department>/README.md\`
 
 ## LeanOS Runtime
 
-\`.leanos/\` contains runtime files for context, indexes, local traces and VS Code integration.
-\`.leanos/\` does not own business workflows. Operational workflows live in root departments or their areas.
+\`.leanos/\` contém arquivos de runtime para contexto, índices, traces locais e integração com VS Code.
+\`.leanos/\` não possui workflows de negócio. Workflows operacionais vivem nos departamentos raiz ou em suas áreas.
 
-\`ai-standard/\` is the framework standards router for creating, changing, reviewing or validating LeanOS assets.
+\`ai-standard/\` é o roteador de padrões do framework para criar, alterar, revisar ou validar assets LeanOS.
 
-## Framework Standards Routing
+## Roteamento de Padrões do Framework
 
-Use \`ai-standard/README.md\` only when the user asks to create, change, review or validate LeanOS framework assets.
+Use \`ai-standard/README.md\` somente quando o usuário pedir para criar, alterar, revisar ou validar assets do framework LeanOS.
 
-Framework assets include:
+Assets de framework incluem:
 
 - roles, skills, playbooks and workflows
 - \`AGENT.md\` files and README files
 - templates, checklists and instructions
 - \`department.yaml\` and \`area.yaml\`
 
-Do not guess the correct template, checklist or instruction from memory.
+Não adivinhe o template, checklist ou instrução correta de memória.
 
-When framework standards are needed:
+Quando padrões de framework forem necessários:
 
-1. Load \`ai-standard/README.md\`.
-2. Follow its route to the smallest needed foundation, instruction, template, checklist or example.
-3. State the selected asset type, owner and target path.
-4. Propose the change before writing.
-5. Validate with the matching checklist before final output.
+1. Carregue \`ai-standard/README.md\`.
+2. Siga sua rota até a menor foundation, instrução, template, checklist ou exemplo necessário.
+3. Declare o tipo de asset selecionado, dono e path alvo.
+4. Proponha a mudança antes de escrever.
+5. Valide com o checklist correspondente antes da saída final.
 
-Do not use \`ai-standard/\` to define product strategy, MVP, roadmap, design, engineering work or growth work. Route those through the Navigation Chain first.
+Não use \`ai-standard/\` para definir estratégia de produto, MVP, roadmap, design, trabalho de engineering ou trabalho de growth. Roteie isso pela Cadeia de Navegação primeiro.
 `;
 }
 
 export function departmentAgentTemplate(): string {
-  return `# <Department> Agent
+  return `# Agente <Department>
 
-You are the operating owner for this department.
+Você é o dono operacional deste departamento.
 
-Use \`README.md\` as the directory map. Use \`department.yaml\` when machine-readable structure matters.
+Use \`README.md\` como mapa do diretório. Use \`department.yaml\` quando a estrutura legível por máquina importar.
 
-Roles, skills and playbooks do not live at the department root. They live inside active areas.
+Roles, skills e playbooks não vivem na raiz do departamento. Eles vivem dentro das áreas ativas.
 
-## Operating Scope
+## Escopo Operacional
 
-Describe what this department owns.
+Descreva o que este departamento possui.
 
-## Routing Rules
+## Regras de Roteamento
 
-1. If the founder request needs multi-area, multi-department or lifecycle coordination, open \`workflows/README.md\` and choose the smallest matching workflow.
-2. If the request is a state change owned entirely by one area, calibration, clarification, evaluation or definition, route to that area \`AGENT.md\` when present; otherwise route to its README.
-3. If the request belongs to one area and one asset family, route to that area \`AGENT.md\` when present; otherwise route to its README.
-4. If you are unsure, check \`workflows/README.md\` first; if no workflow matches, route to the smallest active area.
-5. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
-6. Do not load roles, skills or playbooks before entering the owning area.
+1. Se o pedido do founder precisar de coordenação multiárea, multidepartamento ou de ciclo de vida, abra \`workflows/README.md\` e escolha o menor workflow compatível.
+2. Se o pedido for uma mudança de estado pertencente inteiramente a uma área, calibração, esclarecimento, avaliação ou definição, roteie para essa área via \`AGENT.md\` quando existir; caso contrário, roteie para o README.
+3. Se o pedido pertencer a uma área e uma família de assets, roteie para essa área via \`AGENT.md\` quando existir; caso contrário, roteie para o README.
+4. Se houver dúvida, verifique \`workflows/README.md\` primeiro; se nenhum workflow corresponder, roteie para a menor área ativa.
+5. Se o workflow, área, papel, skill ou playbook necessário estiver ausente, explique o que falta e peça confirmação antes de criar ou ativar.
+6. Não carregue roles, skills ou playbooks antes de entrar na área dona.
 
-## Journey Signals
+## Sinais de Jornada
 
-Use \`workflows/README.md\` when the founder asks for a multi-step decision or transition, such as:
+Use \`workflows/README.md\` quando o founder pedir decisão ou transição com múltiplas etapas, como:
 
-- evaluating, planning, shaping, implementing, reviewing or launching something;
-- moving work from one stage to another;
-- coordinating multiple areas or handoffs;
-- changing priority, scope, roadmap, delivery or learning state.
+- avaliar, planejar, formatar, implementar, revisar ou lançar algo;
+- mover trabalho de um estágio para outro;
+- coordenar múltiplas áreas ou handoffs;
+- mudar prioridade, escopo, roadmap, entrega ou estado de aprendizado.
 
-## Active Areas
+## Áreas Ativas
 
 - <Area>: \`<area>/AGENT.md\` or \`<area>/README.md\` - <purpose>
 
-## Workflow Entry
+## Entrada de Workflow
 
-- Department workflows: \`workflows/README.md\`
+- Workflows do departamento: \`workflows/README.md\`
 
-Use workflows for multi-step journeys and cross-area sequencing. Use area playbooks for tactical execution inside one area.
+Use workflows para jornadas com múltiplas etapas e sequenciamento entre áreas. Use playbooks de área para execução tática dentro de uma área.
 `;
 }
 
 export function areaAgentTemplate(): string {
-  return `# <Area> Agent
+  return `# Agente <Area>
 
-You are the <Area Lead> for this workspace.
+Você é o <Area Lead> deste workspace.
 
-This \`AGENT.md\` is the operating owner for the area.
+Este \`AGENT.md\` é o dono operacional da área.
 
-Use \`README.md\` as the directory map. Use \`area.yaml\` when machine-readable structure matters.
+Use \`README.md\` como mapa do diretório. Use \`area.yaml\` quando a estrutura legível por máquina importar.
 
-## Operating Scope
+## Escopo Operacional
 
-Describe what this area lead owns and how it protects quality.
+Descreva o que este lead de área possui e como protege qualidade.
 
-## Role Routing
+## Roteamento de Papéis
 
-Choose the smallest specialist role for the request:
+Escolha o menor papel especialista para o pedido:
 
-- <Specialist Role>: \`roles/<role>.role.md\` - use when <condition>.
+- <Papel Especialista>: \`roles/<role>.role.md\` - use quando <condição>.
 
-## Routing Rules
+## Regras de Roteamento
 
-1. Start from this area AGENT for operational work inside the area.
-2. Load one specialist role before loading skills or playbooks.
-3. Load only skills and playbooks required by the selected role.
-4. If the request needs a missing specialist, skill or playbook, explain the gap and ask before creating it.
-5. Keep reusable area knowledge in \`knowledge/\` when the area uses a knowledge folder.
+1. Comece por este AGENT da área para trabalho operacional dentro da área.
+2. Carregue um papel especialista antes de carregar skills ou playbooks.
+3. Carregue apenas skills e playbooks exigidos pelo papel selecionado.
+4. Se o pedido precisar de especialista, skill ou playbook ausente, explique a lacuna e peça confirmação antes de criar.
+5. Mantenha knowledge reutilizável da área em \`knowledge/\` quando a área usar uma pasta de knowledge.
 
-## Navigation
+## Navegação
 
-\`<area>/AGENT.md -> Role -> Skills -> Playbook -> Output\`
+\`<area>/AGENT.md -> Papel -> Skills -> Playbook -> Saída\`
 `;
 }

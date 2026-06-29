@@ -1,18 +1,18 @@
 # LeanOS Index
 
-## Purpose
+## Propósito
 
-Structured maps that help agents route without loading every asset.
+Mapas estruturados que ajudam agentes a rotear sem carregar todos os assets.
 
-## When to Use
+## Use Quando
 
-Use when a model needs a quick routing map.
+Use quando um modelo precisa de um mapa rápido de roteamento.
 
-## Source of Truth
+## Fonte da Verdade
 
 `routing-map.yaml`
 
-## Files
+## Arquivos
 
 - `departments.yaml`
 - `areas.yaml`
@@ -22,16 +22,16 @@ Use when a model needs a quick routing map.
 - `workflows.yaml`
 - `routing-map.yaml`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../../strategy/`
 - `../../operations/`
 - `../../growth/`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
 Use index files as maps, then load the destination README. Business workflows live in departments or areas, not in `.leanos/`.

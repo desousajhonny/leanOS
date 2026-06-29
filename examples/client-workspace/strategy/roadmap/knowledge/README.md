@@ -1,25 +1,25 @@
-# Roadmap Knowledge
+# Knowledge de Roadmap
 
-## Purpose
+## Propósito
 
-Durable roadmap context produced by Strategy Roadmap.
+Contexto durável de roadmap produzido por Strategy Roadmap.
 
-## When to Use
+## Use Quando
 
-Use when sequencing product work, planning milestones, choosing the current cycle or preparing Product Ops handoff.
+Use quando sequenciar trabalho de produto, planejar milestones, escolher o ciclo atual ou preparar handoff para Product Ops.
 
-## Source of Truth
+## Fonte da Verdade
 
 `roadmap.md`
 
-## Files
+## Arquivos
 
 - `roadmap.md`
 - `milestones.md`
 - `current-cycle.md`
 - `backlog.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../roles/`
 - `../skills/`
@@ -27,10 +27,10 @@ Use when sequencing product work, planning milestones, choosing the current cycl
 - `../../product/`
 - `../../../.github/leanos/`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
-Keep roadmap planning context here. Do not turn candidate backlog items into committed scope without explicit confirmation.
+Mantenha contexto de planejamento de roadmap aqui. Não transforme itens candidatos de backlog em escopo comprometido sem confirmação explícita.

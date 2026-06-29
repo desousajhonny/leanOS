@@ -6,26 +6,26 @@ export function departmentWorkflowFile(department: RootDepartmentDefinition, act
   const activeSlugs = new Set(activeAreas.map((area) => area.slug));
   const missingAreas = workflow.requiredAreas.filter((area) => !activeSlugs.has(area));
 
-  return `# ${toTitle(workflow.slug)} Workflow
+  return `# Workflow ${toTitle(workflow.slug)}
 
-## Purpose
+## Propósito
 
 ${workflow.purpose}
 
-${workflow.founderTriggers ? listSection("Founder Triggers", workflow.founderTriggers.map((trigger) => `"${trigger}"`)) : ""}${workflow.progressionStage ? `## Progression Stage\n\n${workflow.progressionStage}\n\n` : ""}${workflow.entryGate ? listSection("Entry Gate", workflow.entryGate) : ""}${workflow.activeRequirements ? listSection("Active Requirements", workflow.activeRequirements) : ""}${workflow.activationRequirements ? listSection("Activation Requirements", workflow.activationRequirements) : ""}${workflow.owner ? ownerSection(workflow.owner) : ""}## Required Areas
+${workflow.founderTriggers ? listSection("Gatilhos do Founder", workflow.founderTriggers.map((trigger) => `"${trigger}"`)) : ""}${workflow.progressionStage ? `## Estágio de Progressão\n\n${workflow.progressionStage}\n\n` : ""}${workflow.entryGate ? listSection("Gate de Entrada", workflow.entryGate) : ""}${workflow.activeRequirements ? listSection("Requisitos Ativos", workflow.activeRequirements) : ""}${workflow.activationRequirements ? listSection("Requisitos de Ativação", workflow.activationRequirements) : ""}${workflow.owner ? ownerSection(workflow.owner) : ""}## Áreas Obrigatórias
 
 ${workflow.requiredAreas.map((area) => `- ${area}`).join("\n")}
 
-${workflow.conditionalAreas ? conditionalAreasSection(workflow.conditionalAreas) : ""}${missingAreas.length > 0 ? `## Availability\n\nThis workflow references areas that are not currently active: ${missingAreas.join(", ")}.\n\nDo not load missing area paths. Ask whether to activate or create the missing area before executing this workflow.\n` : "## Availability\n\nAll required areas are active in this department.\n"}
+${workflow.conditionalAreas ? conditionalAreasSection(workflow.conditionalAreas) : ""}${missingAreas.length > 0 ? `## Disponibilidade\n\nEste workflow referencia áreas que ainda não estão ativas: ${missingAreas.join(", ")}.\n\nNão carregue paths de áreas ausentes. Pergunte se deve ativar ou criar a área antes de executar este workflow.\n` : "## Disponibilidade\n\nTodas as áreas obrigatórias estão ativas neste departamento.\n"}
 
-${workflow.loadFirst ? listSection("Load First", workflow.loadFirst.map((path) => `\`${path}\``)) : ""}${workflow.navigationRoute ? orderedSection("Navigation Route", workflow.navigationRoute.map((path) => `\`${path}\``)) : ""}${workflow.phases ? listSection("Phases", workflow.phases) : ""}${workflow.skillsUsed ? listSection("Skills Used", workflow.skillsUsed.map((skill) => `\`${skill}\``)) : ""}${workflow.playbooksUsed ? listSection("Playbooks Used", workflow.playbooksUsed.map((playbook) => `\`${playbook}\``)) : ""}## Sequence
+${workflow.loadFirst ? listSection("Carregar Primeiro", workflow.loadFirst.map((path) => `\`${path}\``)) : ""}${workflow.navigationRoute ? orderedSection("Rota de Navegação", workflow.navigationRoute.map((path) => `\`${path}\``)) : ""}${workflow.phases ? listSection("Fases", workflow.phases) : ""}${workflow.skillsUsed ? listSection("Skills Usadas", workflow.skillsUsed.map((skill) => `\`${skill}\``)) : ""}${workflow.playbooksUsed ? listSection("Playbooks Usados", workflow.playbooksUsed.map((playbook) => `\`${playbook}\``)) : ""}## Sequência
 
 ${workflow.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}
 
-${workflow.confirmationGates ? listSection("Confirmation Gates", workflow.confirmationGates) : ""}${workflow.allowedUpdates ? listSection("Allowed Updates", workflow.allowedUpdates.map((path) => `\`${path}\``)) : ""}${workflow.forbiddenUpdates ? listSection("Forbidden Updates", workflow.forbiddenUpdates.map((path) => `\`${path}\``)) : ""}${workflow.externalCapabilities ? listSection("External Capabilities", workflow.externalCapabilities) : ""}${workflow.stopConditions ? listSection("Stop Conditions", workflow.stopConditions) : ""}${workflow.expectedOutput ? listSection("Expected Output", workflow.expectedOutput) : ""}${workflow.continuationBridge ? continuationBridgeSection(workflow) : ""}
+${workflow.confirmationGates ? listSection("Gates de Confirmação", workflow.confirmationGates) : ""}${workflow.allowedUpdates ? listSection("Atualizações Permitidas", workflow.allowedUpdates.map((path) => `\`${path}\``)) : ""}${workflow.forbiddenUpdates ? listSection("Atualizações Proibidas", workflow.forbiddenUpdates.map((path) => `\`${path}\``)) : ""}${workflow.externalCapabilities ? listSection("Capacidades Externas", workflow.externalCapabilities) : ""}${workflow.stopConditions ? listSection("Condições de Parada", workflow.stopConditions) : ""}${workflow.expectedOutput ? listSection("Saída Esperada", workflow.expectedOutput) : ""}${workflow.continuationBridge ? continuationBridgeSection(workflow) : ""}
 
-## Navigation
+## Navegação
 
-Use ${department.name} area READMEs for each step to preserve area-first ownership.
+Use os READMEs das áreas de ${department.name} em cada etapa para preservar ownership por área.
 `;
 }

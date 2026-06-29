@@ -1,14 +1,14 @@
 # Ideal Customer Profile
 
-## Purpose
+## Propósito
 
 Define the first customer segment LeanOS should optimize strategy, MVP and validation around.
 
-## Current State
+## Estado Atual
 
 TBD
 
-## Primary Segment
+## Segmento Primário
 
 TBD
 
@@ -28,22 +28,22 @@ TBD
 
 TBD
 
-## Exclusions
+## Exclusões
 
 TBD
 
-## Evidence
+## Evidência
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD

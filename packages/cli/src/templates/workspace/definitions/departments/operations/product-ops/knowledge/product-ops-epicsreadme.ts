@@ -1,7 +1,7 @@
 export function productOpsEpicsReadmeKnowledge(): string {
   return `# Product Ops Epics
 
-## Purpose
+## Propósito
 
 This folder stores local LeanOS Epics before optional GitHub sync.
 
@@ -17,14 +17,14 @@ operations/product-ops/epics/
     <feature-slug>.md
 ~~~
 
-## Rules
+## Regras
 
 - Each Epic gets one folder.
 - The Epic folder name must use stable kebab-case.
 - The Epic README must follow \`../../../ai-standard/templates/product/epic-template.md\`.
 - Every markdown file inside an Epic folder, except \`README.md\`, is a Feature that belongs to that Epic.
 - Feature files must follow \`../../../ai-standard/templates/product/feature-template.md\`.
-- Do not create a \`features/\` subfolder in the MVP scaffold.
+- Não crie uma subpasta \`features/\` no scaffold de MVP.
 - Tasks stay inside Feature files as internal checklists unless separate tracking is explicitly needed.
 - GitHub sync is optional and must be confirmed by the founder.
 - GitHub mapping rules live in \`../../../.github/leanos/work-mapping.md\`.
@@ -71,7 +71,7 @@ Feature title:
 
 Keep synced and unsynced Epics in this folder.
 
-Do not create \`operations/product-ops/epics/synced/\` in the MVP scaffold.
+Não crie \`operations/product-ops/epics/synced/\` no scaffold de MVP.
 
 Use \`../../../.github/leanos/sync-state.yaml\` to know whether an Epic or Feature is \`not_synced\`, \`sync_ready\`, \`synced\` or \`conflict\`.
 
@@ -91,12 +91,12 @@ Use \`sync_status\` only for GitHub or remote tracking:
 sync_status: not_synced | sync_ready | synced | conflict
 ~~~
 
-Do not use \`synced\` as a product status.
+Não use \`synced\` como status de produto.
 
-## Do Not Do
+## Não Faça
 
-- Do not create example Epics that are not tied to real delivery scope.
-- Do not move synced Epics to another folder unless a future framework version explicitly supports that flow.
-- Do not treat GitHub as the source of truth when local LeanOS files exist.
+- Não crie Epics de exemplo que não estejam ligados a escopo real de delivery.
+- Não mova Epics sincronizadas para outra pasta salvo se uma versão futura do framework suportar explicitamente esse fluxo.
+- Não trate GitHub como source of truth quando arquivos locais do LeanOS existirem.
 `;
 }

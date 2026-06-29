@@ -1,11 +1,11 @@
 export function productOpsMvpDecisionGateKnowledge(): string {
   return `# MVP Decision Gate
 
-## Purpose
+## Propósito
 
 Define the fixed LeanOS criteria for deciding what belongs in the first MVP scope.
 
-This is a framework criterion, not a product status log. Do not rewrite it with product-specific progress unless the framework itself changes.
+Isto é um critério do framework, não um log de status de produto. Não reescreva com progresso específico do produto salvo quando o próprio framework mudar.
 
 ## Core Rule
 
@@ -116,9 +116,9 @@ Use these buckets in founder-facing output:
 
 - Ask guided questions only for missing information.
 - Prefer fewer, clearer MVP items over a broad first version.
-- Do not mark something as MVP just because the founder likes it.
-- Do not create Epics, Features, GitHub issues, branches, PRs or code from this gate.
-- Do not update MVP files until the founder confirms the proposed decision.
+- Não marque algo como MVP só porque o founder gosta.
+- Não crie Epics, Features, issues do GitHub, branches, PRs ou código a partir deste gate.
+- Não atualize arquivos de MVP até o founder confirmar a decisão proposta.
 - If Design, Security, Engineering or DevOps risk is applicable, name the risk and recommend the next LeanOS route.
 
 ## Founder-Friendly Output

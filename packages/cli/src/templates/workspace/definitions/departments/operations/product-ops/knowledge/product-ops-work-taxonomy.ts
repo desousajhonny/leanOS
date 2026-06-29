@@ -1,7 +1,7 @@
 export function productOpsWorkTaxonomyKnowledge(): string {
   return `# Work Taxonomy
 
-## Purpose
+## Propósito
 
 Define the LeanOS product work hierarchy so agents, founders and future GitHub sync flows use the same language.
 
@@ -126,8 +126,8 @@ Example task names:
 ~~~text
 Create database model
 Create form
-Add validation
-Add tests
+Adicionar validação
+Adicionar testes
 ~~~
 
 Create separate Task issues only when there is a clear operational reason.
@@ -150,7 +150,7 @@ Avoid manual ordering names like [EPIC A] because they break when priority chang
 
 ## Lifecycle Status
 
-Use these values for product work status. Do not use GitHub sync as product status.
+Use estes valores para status de trabalho de produto. Não use sync do GitHub como status de produto.
 
 | Status | Meaning | Decided By |
 | --- | --- | --- |
@@ -198,11 +198,11 @@ Default mapping:
 
 Task issues are exceptions, not the default. Create a separate Task issue only when a task needs separate assignment, review, timeline, deployment, security review or external tracking.
 
-Remote sync metadata must live in \`.github/leanos/sync-state.yaml\`. Do not store GitHub IDs inside product work status unless the template explicitly includes a sync field.
+Metadados de sync remoto devem viver em \`.github/leanos/sync-state.yaml\`. Não armazene IDs do GitHub dentro do status de trabalho de produto salvo quando o template incluir explicitamente um campo de sync.
 
 ## Sync State Decision
 
-Do not move synced Epics or Features into a separate \`synced/\` folder in the initial LeanOS scaffold.
+Não mova Epics ou Features sincronizadas para uma pasta separada \`synced/\` no scaffold inicial do LeanOS.
 
 Reason:
 
@@ -247,14 +247,14 @@ A Feature can exist before it is ready to develop.
 
 A Feature can enter implementation only after it passes \`ready-to-develop.md\`.
 
-## Do Not Do
+## Não Faça
 
-- Do not treat roadmap items as implementation work.
-- Do not skip Delivery Scope before creating an Epic.
-- Do not send vague Epics directly to Engineering.
-- Do not create GitHub issues before the founder confirms sync.
-- Do not make Tasks top-level planning objects unless they need separate tracking.
-- Do not use GitHub issue numbers as the only identifier for local Epics or Features.
-- Do not create or use \`operations/product-ops/epics/synced/\` unless a future framework version explicitly supports that flow.
+- Não trate itens de roadmap como trabalho de implementação.
+- Não pule Delivery Scope antes de criar um Epic.
+- Não envie Epics vagas diretamente para Engineering.
+- Não crie issues do GitHub antes de o founder confirmar sync.
+- Não transforme Tasks em objetos de planejamento top-level salvo quando precisarem de tracking separado.
+- Não use números de issue do GitHub como único identificador de Epics ou Features locais.
+- Não crie nem use \`operations/product-ops/epics/synced/\` a menos que uma versão futura do framework suporte explicitamente esse fluxo.
 `;
 }

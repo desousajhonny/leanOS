@@ -1,10 +1,10 @@
 # Design
 
-## Purpose
+## Propósito
 
 Own product experience quality: design system, accessibility, flows, interaction decisions and UX writing.
 
-## When to Use
+## Use Quando
 
 - The request changes user-facing behavior, screens, states, copy or interaction.
 - The founder wants to define design before implementation.
@@ -16,14 +16,14 @@ Own product experience quality: design system, accessibility, flows, interaction
 - `knowledge/accessibility.md`
 - `knowledge/user-flows.md`
 
-## Navigation
+## Navegação
 
 1. For operational work, start with `AGENT.md`.
 2. Use this README as the directory map.
 3. After the area AGENT selects a role, load only required skills and playbooks.
 4. Produce the requested output and update knowledge only after confirmation.
 
-## File Responsibilities
+## Responsabilidades dos Arquivos
 
 - `AGENT.md`: Design operating lead.
 - `README.md`: Design area map.

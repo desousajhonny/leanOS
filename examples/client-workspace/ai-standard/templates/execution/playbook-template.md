@@ -1,68 +1,68 @@
 ---
 name: <playbook-name>
-description: Use when <specific trigger or situation>
+description: Use quando <gatilho ou situação específica>
 ---
 
 # <Playbook Name>
 
-## Purpose
+## Propósito
 
-Explain the practical task this playbook executes inside one area.
+Explique a tarefa prática que este playbook executa dentro de uma área.
 
-## When to Use
-
-- ...
-- ...
-- ...
-
-## Inputs
+## Use Quando
 
 - ...
 - ...
 - ...
 
-## Guided Conversation
+## Entradas
 
-Use `../../../ai-standard/foundation/guided-conversation.md` when the playbook needs the founder to choose, classify, prioritize or confirm.
+- ...
+- ...
+- ...
 
-Ask guided questions when:
+## Conversa Guiada
 
-- required context is missing;
-- the founder must choose between predictable paths;
-- a durable file update depends on confirmation;
-- the next step changes roadmap, MVP, issue, PR, implementation, launch or learning state.
+Use `../../../ai-standard/foundation/guided-conversation.md` quando o playbook precisar que o founder escolha, classifique, priorize ou confirme.
 
-Do not ask a rigid questionnaire. Ask only what is missing.
+Faça perguntas guiadas quando:
 
-## Process
+- contexto obrigatório estiver ausente;
+- o founder precisar escolher entre caminhos previsíveis;
+- uma atualização durável de arquivo depender de confirmação;
+- o próximo passo mudar roadmap, MVP, issue, PR, implementação, launch ou estado de aprendizado.
+
+Não faça um questionário rígido. Pergunte apenas o que estiver faltando.
+
+## Processo
 
 1. ...
 2. ...
 3. ...
 
-## Stop Conditions
+## Condições de Parada
 
-- Ask before updating durable files.
-- Ask before calling scripts, APIs or external capabilities.
-- Ask before changing roadmap, MVP, issue, PR or implementation state.
+- Peça confirmação antes de atualizar arquivos duráveis.
+- Peça confirmação antes de chamar scripts, APIs ou capacidades externas.
+- Peça confirmação antes de mudar estado de roadmap, MVP, issue, PR ou implementação.
 
-## Acceptance Criteria & Outputs
-
-- ...
-- ...
-- ...
-
-## Files to Update
+## Critérios de Aceite e Saídas
 
 - ...
+- ...
+- ...
 
-## Red Lines
+## Arquivos para Atualizar
 
-- Do not duplicate a workflow.
-- Do not duplicate skills.
-- Do not invent missing context.
-- Do not update files without explicit confirmation.
+- ...
 
-## Navigation
+## Linhas Vermelhas
 
-`../AGENT.md -> roles/<role>.role.md -> skills/<skill>/SKILL.md -> playbooks/<this-playbook>.playbook.md -> Output`
+- Não duplique um workflow.
+- Não duplique skills.
+- Não invente contexto ausente.
+- Não atualize arquivos sem confirmação explícita.
+
+## Navegação
+
+`../AGENT.md -> roles/<role>.role.md -> skills/<skill>/SKILL.md -> playbooks/<this-playbook>.playbook.md -> Saída`

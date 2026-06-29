@@ -7,19 +7,19 @@ export function traceFiles(): FileEntry[] {
       path: ".leanos/traces/README.md",
       content: folderReadme(
         "LeanOS Traces",
-        "Local diagnostic traces for LeanOS Chief sessions.",
-        "Use only when the founder asks to debug, inspect or share how LeanOS routed a session.",
+        "Traces locais de diagnóstico para sessões do LeanOS Chief.",
+        "Use apenas quando o founder pedir para debugar, inspecionar ou compartilhar como o LeanOS roteou uma sessão.",
         "../agent/protocols/chief-trace.md",
         ["trace-index.yaml", "trace-template.md"],
         ["../agent/protocols/chief-trace.md", "../index/", "../../AGENT.md"],
-        "Traces are local, opt-in and safe-by-default. They summarize routing, files loaded, questions, decisions, confirmations and stop reasons. Do not store full transcripts, secrets, tokens, .env values, private code or unnecessary customer data."
+        "Traces são locais, opt-in e seguros por padrão. Eles resumem roteamento, arquivos carregados, perguntas, decisões, confirmações e motivos de parada. Não armazene transcrições completas, segredos, tokens, valores de .env, código privado ou dados de cliente desnecessários."
       )
     },
     {
       path: ".leanos/traces/trace-index.yaml",
-      content: `# LeanOS local trace index.
-# This file is safe to version while it contains only examples or non-sensitive summaries.
-# Add real trace entries only after founder confirmation.
+      content: `# Índice local de traces do LeanOS.
+# Este arquivo é seguro para versionar enquanto contiver apenas exemplos ou resumos não sensíveis.
+# Adicione entradas reais de trace apenas depois de confirmação do founder.
 
 traces: []
 `
@@ -32,17 +32,17 @@ traces: []
 }
 
 export function chiefTraceProtocol(): string {
-  return `# Chief Trace Protocol
+  return `# Protocolo de Trace do Chief
 
-## Purpose
+## Propósito
 
-Create a safe local diagnostic trace that explains how LeanOS Chief interpreted a founder request, which route it selected, which files it loaded, what it asked, what it decided, where it stopped and what should happen next.
+Crie um trace local seguro de diagnóstico que explique como o LeanOS Chief interpretou o pedido do founder, qual rota selecionou, quais arquivos carregou, o que perguntou, o que decidiu, onde parou e o que deve acontecer em seguida.
 
-Use this protocol to debug whether LeanOS followed the Navigation Chain.
+Use este protocolo para debugar se o LeanOS seguiu a Navigation Chain.
 
-## Trigger Phrases
+## Frases de Gatilho
 
-Use this protocol when the founder says things like:
+Use este protocolo quando o founder disser algo como:
 
 - "gere um trace"
 - "quero diagnosticar o Chief"
@@ -53,29 +53,29 @@ Use this protocol when the founder says things like:
 - "debug LeanOS"
 - "trace this LeanOS session"
 
-## Safety Rules
+## Regras de Segurança
 
-- Traces are local and opt-in.
-- Ask before writing a trace file.
-- Do not store full chat transcripts.
-- Do not store tokens, secrets, credentials, .env values or private keys.
-- Do not copy private code, customer records or long proprietary content.
-- Summarize founder answers instead of quoting sensitive details.
-- Redact anything that looks like a token, password, email list, API key, customer data or production URL when it is not needed for routing diagnosis.
-- If a trace would expose sensitive information, stop and explain what must be redacted first.
+- Traces são locais e opt-in.
+- Peça confirmação antes de escrever um arquivo de trace.
+- Não armazene transcrições completas de chat.
+- Não armazene tokens, segredos, credenciais, valores de .env ou chaves privadas.
+- Não copie código privado, registros de clientes ou conteúdo proprietário longo.
+- Resuma respostas do founder em vez de citar detalhes sensíveis.
+- Redija qualquer coisa que pareça token, senha, lista de emails, chave de API, dado de cliente ou URL de produção quando isso não for necessário para diagnóstico de roteamento.
+- Se um trace expuser informação sensível, pare e explique o que precisa ser redigido primeiro.
 
-## When To Create
+## Quando Criar
 
-Create a trace when:
+Crie um trace quando:
 
-- the founder explicitly asks for a diagnostic record;
-- a LeanOS flow behaved unexpectedly and the founder wants to inspect it;
-- the founder wants to share a compact report with the LeanOS framework maintainer;
-- a command or workflow asks for trace evidence during testing.
+- o founder pedir explicitamente um registro de diagnóstico;
+- um fluxo LeanOS se comportar de forma inesperada e o founder quiser inspecionar;
+- o founder quiser compartilhar um relatório compacto com o mantenedor do framework LeanOS;
+- um comando ou workflow pedir evidência de trace durante testes.
 
-Do not create a trace by default for every normal product interaction.
+Não crie trace por padrão para toda interação normal de produto.
 
-## Load First
+## Carregue Primeiro
 
 Read:
 
@@ -84,9 +84,9 @@ Read:
 - \`../../traces/trace-index.yaml\`
 - \`../../../AGENT.md\`
 
-Then inspect only the files already involved in the session route or the smallest missing route needed to explain the diagnosis.
+Depois inspecione apenas os arquivos já envolvidos na rota da sessão ou a menor rota ausente necessária para explicar o diagnóstico.
 
-## Trace File Naming
+## Nome do Arquivo de Trace
 
 Use:
 
@@ -94,52 +94,52 @@ Use:
 .leanos/traces/YYYY-MM-DD-<short-kebab-intent>.trace.md
 \`\`\`
 
-Examples:
+Exemplos:
 
 - \`.leanos/traces/2026-06-24-github-sync.trace.md\`
 - \`.leanos/traces/2026-06-24-feature-delivery.trace.md\`
 - \`.leanos/traces/2026-06-24-start-leanos.trace.md\`
 
-## Process
+## Processo
 
-1. Confirm that the founder wants a local trace.
-2. Identify the founder intent in one short sentence.
-3. Record the route that was selected, one file per line.
-4. Record the smallest list of files loaded or expected to be loaded.
-5. Summarize questions asked and answers received.
-6. Record decisions, confirmations and stop reasons.
-7. Record proposed updates and whether they were confirmed.
-8. Record missing files or Navigation Chain breaks.
-9. Record the next suggested route.
-10. Ask before writing the trace file and updating \`trace-index.yaml\`.
+1. Confirme que o founder quer um trace local.
+2. Identifique a intenção do founder em uma frase curta.
+3. Registre a rota selecionada, um arquivo por linha.
+4. Registre a menor lista de arquivos carregados ou esperados.
+5. Resuma perguntas feitas e respostas recebidas.
+6. Registre decisões, confirmações e motivos de parada.
+7. Registre atualizações propostas e se foram confirmadas.
+8. Registre arquivos ausentes ou quebras na Navigation Chain.
+9. Registre a próxima rota sugerida.
+10. Peça confirmação antes de escrever o arquivo de trace e atualizar \`trace-index.yaml\`.
 
-## Allowed Updates
+## Atualizações Permitidas
 
-After explicit founder confirmation, write:
+Depois de confirmação explícita do founder, escreva:
 
 - \`../../traces/YYYY-MM-DD-<short-kebab-intent>.trace.md\`
 - \`../../traces/trace-index.yaml\`
 
-## Forbidden Updates
+## Atualizações Proibidas
 
-Do not update:
+Não atualize:
 
-- product strategy files;
-- operations knowledge files;
-- roles, skills, playbooks or workflows;
+- arquivos de estratégia de produto;
+- arquivos de knowledge de operations;
+- roles, skills, playbooks ou workflows;
 - \`.github/\`;
 - code;
-- env files;
-- remote services.
+- arquivos env;
+- serviços remotos.
 
-This protocol documents what happened. It does not execute product work.
+Este protocolo documenta o que aconteceu. Ele não executa trabalho de produto.
 
-## Expected Output
+## Saída Esperada
 
 Before writing, show:
 
 \`\`\`text
-Trace summary:
+Resumo do trace:
 - Intent:
 - Route:
 - Files loaded:
@@ -147,29 +147,29 @@ Trace summary:
 - Sensitive data risk:
 - Proposed trace file:
 
-Do you want me to write this local trace?
+Você quer que eu escreva este trace local?
 \`\`\`
 
-After writing, tell the founder which trace file was created and remind them to review/redact before sharing it outside their workspace.
+Depois de escrever, diga ao founder qual arquivo de trace foi criado e lembre-o de revisar/redigir antes de compartilhar fora do workspace.
 `;
 }
 
 function traceTemplate(): string {
   return `# LeanOS Trace: <intent>
 
-## Trace Metadata
+## Metadados do Trace
 
 - Date:
-- Session or request:
-- Created by:
-- Trace mode: local only
-- Sharing status: not shared
+- Sessão ou pedido:
+- Criado por:
+- Modo de trace: somente local
+- Status de compartilhamento: não compartilhado
 
-## Founder Intent
+## Intenção do Founder
 
-Summarize the founder request in one sentence.
+Resuma o pedido do founder em uma frase.
 
-## Detected Route
+## Rota Detectada
 
 \`\`\`text
 Root AGENT.md
@@ -181,42 +181,42 @@ Root AGENT.md
 -> Output
 \`\`\`
 
-## Files Loaded
+## Arquivos Carregados
 
 - \`AGENT.md\`
 - \`<path>\`
 
-## Questions Asked
+## Perguntas Feitas
 
 1. <question>
 2. <question>
 
-## Founder Answers Summary
+## Resumo das Respostas do Founder
 
 - <safe summary>
 - <safe summary>
 
-Do not paste secrets, tokens, customer records or full transcript content here.
+Não cole segredos, tokens, registros de clientes ou conteúdo completo de transcrição aqui.
 
-## Decisions
+## Decisões
 
 - <decision>
 - <decision>
 
-## Proposed Updates
+## Atualizações Propostas
 
 - \`<path>\`: <reason>
 
-## Confirmation
+## Confirmação
 
-- Status: pending / confirmed / declined
-- Confirmed scope:
+- Status: pendente / confirmado / recusado
+- Escopo confirmado:
 
-## Stop Reason
+## Motivo de Parada
 
-Explain why LeanOS stopped, continued or handed off.
+Explique por que o LeanOS parou, continuou ou fez handoff.
 
-## Navigation Chain Check
+## Checagem da Cadeia de Navegação
 
 - Root owner used: yes/no
 - Department owner used: yes/no/not applicable
@@ -224,15 +224,15 @@ Explain why LeanOS stopped, continued or handed off.
 - Role selected before skills/playbooks: yes/no/not applicable
 - Missing path or broken route:
 
-## Sensitive Data Review
+## Revisão de Dados Sensíveis
 
-- Tokens or secrets included: no
-- .env values included: no
-- Private code copied: no
-- Customer data included: no
-- Redactions needed:
+- Tokens ou segredos incluídos: não
+- Valores de .env incluídos: não
+- Código privado copiado: não
+- Dados de cliente incluídos: não
+- Redações necessárias:
 
-## Next Suggested Route
+## Próxima Rota Sugerida
 
 \`<next intent/workflow/department/area>\`
 `;

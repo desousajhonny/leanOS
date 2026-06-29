@@ -116,19 +116,19 @@ export async function assertDesignFoundation(rootDir) {
   assert.equal(await exists(join(rootDir, "operations", "design", "skills", "ux-states/SKILL.md")), false, "UX states should be incorporated into screen specification");
   assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-ux-states/SKILL.md")), false, "UX states skill should use direct naming");
 
-  for (const heading of ["## Tokens", "## Typography", "## Color Intent", "## Spacing", "## Components", "## Interaction Principles", "## Do Not Do", "## Open Questions"]) {
+  for (const heading of ["## Tokens", "## Typography", "## Color Intent", "## Spacing", "## Components", "## Interaction Principles", "## Não Faça", "## Perguntas em Aberto"]) {
     assert(designSystemKnowledge.includes(heading), `Design system knowledge should include ${heading}`);
   }
 
-  for (const heading of ["## Accessibility Baseline", "## WCAG Target", "## Keyboard Navigation", "## Focus Rules", "## Contrast Rules", "## Forms and Errors", "## Screen Reader Notes", "## Known Risks"]) {
+  for (const heading of ["## Accessibility Baseline", "## WCAG Target", "## Keyboard Navigation", "## Focus Rules", "## Contrast Rules", "## Forms and Errors", "## Screen Reader Notes", "## Riscos Conhecidos"]) {
     assert(accessibilityKnowledge.includes(heading), `Accessibility knowledge should include ${heading}`);
   }
 
-  for (const heading of ["## Primary Flow", "## Entry Point", "## User Goal", "## Steps", "## Edge Cases", "## Required Screens", "## Open Questions"]) {
+  for (const heading of ["## Primary Flow", "## Entry Point", "## User Goal", "## Etapas", "## Edge Cases", "## Required Screens", "## Perguntas em Aberto"]) {
     assert(userFlowsKnowledge.includes(heading), `User flows knowledge should include ${heading}`);
   }
 
-  for (const heading of ["## Purpose", "## How To Use", "## Component List", "## Known Gaps", "## Reuse Rules", "## Open Questions"]) {
+  for (const heading of ["## Propósito", "## How To Use", "## Component List", "## Lacunas Conhecidas", "## Reuse Rules", "## Perguntas em Aberto"]) {
     assert(componentInventoryKnowledge.includes(heading), `Component inventory knowledge should include ${heading}`);
   }
   assert(componentInventoryKnowledge.includes("approved, planned, needs-spec, deprecated or unknown"), "Component inventory should define practical component statuses");
@@ -141,16 +141,16 @@ export async function assertDesignFoundation(rootDir) {
 
   for (const skillContent of [userResearchSkill, userFlowMappingSkill, designSystemSkill, componentAnalysisSkill, screenSpecificationSkill, microcopySkill, accessibilitySkill, designReviewSkill]) {
     assert(skillContent.includes("---\nname:"), "Design skill should include YAML frontmatter");
-    assert(skillContent.includes("description: Use when"), "Design skill should include trigger-only description");
-    assert(skillContent.includes("### Step 1"), "Design skill should use Step headings inside Process");
+    assert(skillContent.includes("description: Use quando"), "Design skill should include trigger-only description");
+    assert(skillContent.includes("### Etapa 1"), "Design skill should use Step headings inside Process");
 
-    for (const heading of ["## Overview", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output", "## Files to Update", "## Red Lines"]) {
+    for (const heading of ["## Visão Geral", "## Use Quando", "## Contexto Obrigatório", "## Entradas", "## Processo", "## Verificações", "## Saída", "## Arquivos para Atualizar", "## Linhas Vermelhas"]) {
       assert(skillContent.includes(heading), `Design skill should include ${heading}`);
     }
   }
 
   assert(userResearchSkill.includes("Separate evidence from assumptions"), "User research skill should separate evidence from assumptions");
-  assert(userResearchSkill.includes("Do not treat hypotheses as facts"), "User research skill should avoid treating hypotheses as facts");
+  assert(userResearchSkill.includes("Não trate hipóteses como fatos"), "User research skill should avoid treating hypotheses as facts");
   assert(userFlowMappingSkill.includes("Avoid flows larger than the MVP"), "User flow mapping should avoid oversized MVP flows");
   assert(designSystemSkill.includes("Prioritize flow clarity before visual polish"), "Design system skill should avoid polish before flow clarity");
   assert(componentAnalysisSkill.includes("reuse, adapt, create-new, not-applicable or blocked"), "Component analysis should classify component readiness decisions");
@@ -166,13 +166,13 @@ export async function assertDesignFoundation(rootDir) {
   assert(designKnowledgeReadme.includes("components/README.md"), "Design knowledge README should include component specs folder guidance");
   assert(designKnowledgeReadme.includes("Create component specs inside `components/` only when a real Feature requires them"), "Design knowledge README should prevent speculative component specs");
   assert(designReadme.includes("Design foundation request"), "Design README should expose the design foundation common path");
-  assert(designReadme.includes("For operational work, start with `AGENT.md`"), "Design README should point operational work to the area AGENT");
-  assert(designAgent.includes("You are the UX Lead"), "Design AGENT should define UX Lead as the area owner");
+  assert(designReadme.includes("For operational work, comece em `AGENT.md`"), "Design README should point operational work to the area AGENT");
+  assert(designAgent.includes("Você é UX Lead"), "Design AGENT should define UX Lead as the area owner");
   assert(designAgent.includes("Product Designer: `roles/product-designer.role.md`"), "Design AGENT should route product design work");
   assert(designAgent.includes("UX Researcher: `roles/ux-researcher.role.md`"), "Design AGENT should route research work");
   assert(designAgent.includes("Accessibility Specialist: `roles/accessibility-specialist.role.md`"), "Design AGENT should route accessibility work");
   assert(designAgent.includes("UX Writer: `roles/ux-writer.role.md`"), "Design AGENT should route UX writing work");
-  assert(designAgent.includes("Keep reusable area knowledge in `knowledge/`"), "Design AGENT should keep knowledge modular");
+  assert(designAgent.includes("Mantenha knowledge reutilizável da área em `knowledge/`"), "Design AGENT should keep knowledge modular");
   assert.equal(areaYaml.area.agent, "AGENT.md");
   assert(areaYaml.area.skills.includes("design-review"), "Design area YAML should list design-review skill");
   assert(areaYaml.area.skills.includes("component-analysis"), "Design area YAML should list component-analysis skill");
@@ -247,17 +247,17 @@ export async function assertEngineeringAreaPattern(rootDir) {
   assert.equal(await exists(join(rootDir, "operations", "engineering", "code-review-notes.md")), false, "Code review notes should move into knowledge/");
   assert.equal(await exists(join(rootDir, "operations", "engineering", "pr-log.md")), false, "PR log should move into knowledge/");
 
-  assert(engineeringReadme.includes("start with `AGENT.md`"), "Engineering README should route operational work through AGENT.md");
+  assert(engineeringReadme.includes("comece em `AGENT.md`"), "Engineering README should route operational work through AGENT.md");
   assert(engineeringReadme.includes("Read the approved Design component spec before implementing a new reusable component"), "Engineering README should require Design component spec before component work");
-  assert(engineeringReadme.includes("Do not create new user-facing components before Design defines the structure or confirms the component spec"), "Engineering README should include component red line");
-  assert(engineeringAgent.includes("You are the Engineering Lead"), "Engineering AGENT should define Engineering Lead");
+  assert(engineeringReadme.includes("Não crie novos componentes voltados ao usuário antes de Design definir a estrutura ou confirmar a especificação do componente"), "Engineering README should include component red line");
+  assert(engineeringAgent.includes("Você é Engineering Lead"), "Engineering AGENT should define Engineering Lead");
   assert(engineeringAgent.includes("Senior Developer: `roles/senior-developer.role.md`"), "Engineering AGENT should route Senior Developer work");
   assert(engineeringAgent.includes("Test Engineer: `roles/test-engineer.role.md`"), "Engineering AGENT should route Test Engineer work");
   assert(engineeringAgent.includes("PR Reviewer: `roles/pr-reviewer.role.md`"), "Engineering AGENT should route PR Reviewer work");
   assert(engineeringAgent.includes("Create or confirm a Feature-linked branch before changing code"), "Engineering AGENT should require branch before code changes");
   assert(engineeringAgent.includes("Implement reusable component work before the screen or Feature that depends on it"), "Engineering AGENT should implement reusable component before dependent Feature");
   assert(engineeringAgent.includes("playbooks/engineering-delivery.playbook.md"), "Engineering AGENT should route implementation through engineering-delivery");
-  assert(engineeringAgent.includes("Do not hardcode secrets, configuration, business rules, copy or design values"), "Engineering AGENT should forbid hardcoding");
+  assert(engineeringAgent.includes("Não hardcode segredos, configuração, regras de negócio, copy ou valores de design"), "Engineering AGENT should forbid hardcoding");
   assert.equal(areaYaml.area.agent, "AGENT.md", "Engineering area.yaml should declare AGENT.md");
   assert(areaYaml.area.source_of_truth.includes("knowledge/code-standards.md"), "Engineering area.yaml should list code standards");
   assert(areaYaml.area.roles.includes("test-engineer"), "Engineering area.yaml should list test-engineer");
@@ -271,7 +271,7 @@ export async function assertEngineeringAreaPattern(rootDir) {
   assert(playbooksIndex.playbooks.some((playbook) => playbook.key === "component-implementation" && playbook.path === "../../operations/engineering/playbooks/component-implementation.playbook.md"), "Playbooks index should list component-implementation");
 
   for (const content of [codeStandards, implementationRules, componentGuidelines, dataGuidelines, testingStrategy, reviewCriteria]) {
-    for (const section of ["## Purpose", "## Current State", "## Decisions", "## Open Questions", "## Next Update"]) {
+    for (const section of ["## Propósito", "## Estado Atual", "## Decisões", "## Perguntas em Aberto", "## Próxima Atualização"]) {
       assert(content.includes(section), `Engineering knowledge should include ${section}`);
     }
   }
@@ -280,8 +280,8 @@ export async function assertEngineeringAreaPattern(rootDir) {
   assert(componentGuidelines.includes("Read the approved Design component spec before implementing a new user-facing component"), "Component guidelines should require Design spec before component implementation");
   assert(componentGuidelines.includes("../../design/knowledge/component-inventory.md"), "Component guidelines should point to component inventory");
   assert(componentGuidelines.includes("Implement reusable component behavior before the screen or Feature that consumes it"), "Component guidelines should implement component before dependent Feature");
-  assert(componentGuidelines.includes("Do not create a new user-facing component without a Design spec"), "Component guidelines should block component work without Design spec");
-  assert(componentGuidelines.includes("## Do Not Do"), "Component guidelines should include Do Not Do");
+  assert(componentGuidelines.includes("Não crie um novo componente voltado ao usuário sem uma especificação de Design"), "Component guidelines should block component work without Design spec");
+  assert(componentGuidelines.includes("## Não Faça"), "Component guidelines should include Do Not Do");
   assert(dataGuidelines.includes("## Migrations"), "Data guidelines should include migrations");
   assert(dataGuidelines.includes("## Rollback"), "Data guidelines should include rollback");
   assert(testingStrategy.includes("## Test Gaps"), "Testing strategy should include test gaps");
@@ -296,20 +296,20 @@ export async function assertEngineeringAreaPattern(rootDir) {
 
   for (const skillContent of [planImplementation, followCodeStandards, implementComponent, reviewDataChange]) {
     assert(skillContent.includes("---\nname:"), "Engineering skill should include YAML frontmatter");
-    assert(skillContent.includes("description: Use when"), "Engineering skill should include trigger-only description");
-    assert(skillContent.includes("### Step 1"), "Engineering skill should use Step headings inside Process");
+    assert(skillContent.includes("description: Use quando"), "Engineering skill should include trigger-only description");
+    assert(skillContent.includes("### Etapa 1"), "Engineering skill should use Step headings inside Process");
 
-    for (const heading of ["## Overview", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output"]) {
+    for (const heading of ["## Visão Geral", "## Use Quando", "## Contexto Obrigatório", "## Entradas", "## Processo", "## Verificações", "## Saída"]) {
       assert(skillContent.includes(heading), `Engineering skill should include ${heading}`);
     }
   }
 
-  assert(planImplementation.includes("Do not begin code changes without branch context"), "Plan implementation should block code without branch context");
+  assert(planImplementation.includes("Não comece mudanças de código sem contexto de branch"), "Plan implementation should block code without branch context");
   assert(followCodeStandards.includes("No large unstructured component or file"), "Code standards skill should enforce modularity");
   assert(implementComponent.includes("Design component spec"), "Implement component skill should require Design component spec");
   assert(implementComponent.includes("../../design/knowledge/component-inventory.md"), "Implement component skill should read Design component inventory");
   assert(implementComponent.includes("../knowledge/component-guidelines.md"), "Implement component skill should read Engineering component guidelines");
-  assert(implementComponent.includes("Do not implement a new user-facing component without a Design spec"), "Implement component skill should block component work without Design spec");
+  assert(implementComponent.includes("Não implemente um novo componente voltado ao usuário sem uma especificação de Design"), "Implement component skill should block component work without Design spec");
   assert(engineeringDelivery.includes("Orchestrate the internal Engineering path"), "Engineering delivery playbook should define the master Engineering path");
   assert(engineeringDelivery.includes("playbooks/branch-for-feature.playbook.md"), "Engineering delivery playbook should start with branch playbook");
   assert(engineeringDelivery.includes("skills/plan-implementation/SKILL.md"), "Engineering delivery playbook should require implementation planning");
@@ -321,10 +321,10 @@ export async function assertEngineeringAreaPattern(rootDir) {
   assert(engineeringDelivery.includes("playbooks/pr-validation.playbook.md"), "Engineering delivery playbook should end with PR validation");
   assert(engineeringDelivery.includes("Founder Testing Guide"), "Engineering delivery should require Founder Testing Guide before founder review");
   assert(engineeringDelivery.includes("## Gates"), "Engineering delivery playbook should declare explicit gates");
-  assert(engineeringDelivery.includes("Do not edit code before a Feature-linked branch"), "Engineering delivery should gate code behind branch creation");
-  assert(engineeringDelivery.includes("Do not implement a new user-facing component without an approved Design component spec"), "Engineering delivery should gate new components behind Design spec");
-  assert(engineeringDelivery.includes("Do not open or prepare a PR without tests"), "Engineering delivery should gate PR behind tests or validation notes");
-  assert(engineeringDelivery.includes("Do not recommend merge before `playbooks/pr-validation.playbook.md` is complete"), "Engineering delivery should gate merge recommendation behind PR validation");
+  assert(engineeringDelivery.includes("Não edite código antes de uma branch vinculada à Feature"), "Engineering delivery should gate code behind branch creation");
+  assert(engineeringDelivery.includes("Não implemente um novo componente voltado ao usuário sem uma especificação de componente aprovada por Design"), "Engineering delivery should gate new components behind Design spec");
+  assert(engineeringDelivery.includes("Não abra nem prepare um PR sem testes"), "Engineering delivery should gate PR behind tests or validation notes");
+  assert(engineeringDelivery.includes("Não recomende merge antes de `playbooks/pr-validation.playbook.md` estar completo"), "Engineering delivery should gate merge recommendation behind PR validation");
   assert(engineeringDelivery.includes("Stop Conditions"), "Engineering delivery playbook should include stop conditions");
   assert(componentImplementation.includes("Approved Design component spec"), "Component implementation playbook should require approved Design spec");
   assert(branchPlaybook.includes("branch step of `engineering-delivery.playbook.md`"), "Branch playbook should identify itself as engineering-delivery branch step");
@@ -382,14 +382,14 @@ export async function assertDevOpsAreaPattern(rootDir) {
   assert.equal(await exists(join(rootDir, "operations", "devops", "observability.md")), false, "DevOps observability should live in knowledge/");
   assert.equal(await exists(join(rootDir, "operations", "devops", "release-notes.md")), false, "DevOps release notes should live in knowledge/");
 
-  assert(devopsReadme.includes("start with `AGENT.md`"), "DevOps README should route operational work through AGENT.md");
-  assert(devopsReadme.includes("Do not store tokens, secrets or credentials in workspace files"), "DevOps README should include token storage red line");
-  assert(devopsAgent.includes("You are the DevOps Lead"), "DevOps AGENT should define DevOps Lead");
+  assert(devopsReadme.includes("comece em `AGENT.md`"), "DevOps README should route operational work through AGENT.md");
+  assert(devopsReadme.includes("Não armazene tokens, segredos ou credenciais em arquivos do workspace"), "DevOps README should include token storage red line");
+  assert(devopsAgent.includes("Você é DevOps Lead"), "DevOps AGENT should define DevOps Lead");
   assert(devopsAgent.includes("GitHub DevOps: `roles/github-devops.role.md`"), "DevOps AGENT should route GitHub DevOps work");
   assert(devopsAgent.includes("DevOps Engineer: `roles/devops-engineer.role.md`"), "DevOps AGENT should route DevOps Engineer work");
   assert(devopsAgent.includes("Release Manager: `roles/release-manager.role.md`"), "DevOps AGENT should route Release Manager work");
-  assert(devopsAgent.includes("Do not store tokens, secrets or credentials in workspace files"), "DevOps AGENT should protect secrets");
-  assert(devopsAgent.includes("Do not create `.vercel/`, run `vercel link` or deploy automatically"), "DevOps AGENT should block automatic Vercel actions");
+  assert(devopsAgent.includes("Não armazene tokens, segredos ou credenciais em arquivos do workspace"), "DevOps AGENT should protect secrets");
+  assert(devopsAgent.includes("Não crie `.vercel/`, rode `vercel link` ou faça deploy automaticamente"), "DevOps AGENT should block automatic Vercel actions");
   assert.equal(areaYaml.area.agent, "AGENT.md", "DevOps area.yaml should declare AGENT.md");
   assert(areaYaml.area.source_of_truth.includes("knowledge/github-management.md"), "DevOps area.yaml should list GitHub management knowledge");
   assert(areaYaml.area.source_of_truth.includes("knowledge/deployment-readiness.md"), "DevOps area.yaml should list deployment readiness knowledge");
@@ -397,12 +397,12 @@ export async function assertDevOpsAreaPattern(rootDir) {
   assert(areaYaml.area.skills.includes("prepare-release"), "DevOps area.yaml should list prepare-release");
 
   for (const content of [environments, deploymentReadiness, ciCd, observability, releaseNotes]) {
-    for (const section of ["## Purpose", "## Current State", "## Decisions", "## Open Questions", "## Next Update"]) {
+    for (const section of ["## Propósito", "## Estado Atual", "## Decisões", "## Perguntas em Aberto", "## Próxima Atualização"]) {
       assert(content.includes(section), `DevOps knowledge should include ${section}`);
     }
   }
 
-  for (const section of ["## Purpose", "## Setup Status", "## Repository", "## GitHub Project", "## Project Fields", "## Token Source", "## Readiness Checklist", "## Dry Run", "## Decisions", "## Open Questions", "## Next Update"]) {
+  for (const section of ["## Propósito", "## Setup Status", "## Repository", "## GitHub Project", "## Project Fields", "## Token Source", "## Readiness Checklist", "## Dry Run", "## Decisões", "## Perguntas em Aberto", "## Próxima Atualização"]) {
     assert(githubManagement.includes(section), `GitHub management knowledge should include ${section}`);
   }
   assert(githubManagement.includes("## Token Source"), "GitHub management knowledge should define token source");
@@ -415,7 +415,7 @@ export async function assertDevOpsAreaPattern(rootDir) {
   assert(deploymentReadiness.includes("## Vercel Readiness"), "Deployment readiness should include Vercel readiness");
   assert(deploymentReadiness.includes("## Framework Detection"), "Deployment readiness should include framework detection");
   assert(deploymentReadiness.includes("## Rollback"), "Deployment readiness should include rollback");
-  assert(ciCd.includes("## Required Checks"), "CI/CD knowledge should include required checks");
+  assert(ciCd.includes("## Verificações Obrigatórias"), "CI/CD knowledge should include required checks");
   assert(ciCd.includes("## Failure Handling"), "CI/CD knowledge should include failure handling");
   assert(observability.includes("## Logs"), "Observability knowledge should include logs");
   assert(observability.includes("## Errors"), "Observability knowledge should include errors");
@@ -432,10 +432,10 @@ export async function assertDevOpsAreaPattern(rootDir) {
 
   for (const skillContent of [configureGithubProject, configureEnvironments, setupCi, planDeployment, defineObservability, prepareRelease]) {
     assert(skillContent.includes("---\nname:"), "DevOps skill should include YAML frontmatter");
-    assert(skillContent.includes("description: Use when"), "DevOps skill should include trigger-only description");
-    assert(skillContent.includes("### Step 1"), "DevOps skill should use Step headings inside Process");
+    assert(skillContent.includes("description: Use quando"), "DevOps skill should include trigger-only description");
+    assert(skillContent.includes("### Etapa 1"), "DevOps skill should use Step headings inside Process");
 
-    for (const heading of ["## Overview", "## Use When", "## Required Context", "## Inputs", "## Process", "## Checks", "## Output"]) {
+    for (const heading of ["## Visão Geral", "## Use Quando", "## Contexto Obrigatório", "## Entradas", "## Processo", "## Verificações", "## Saída"]) {
       assert(skillContent.includes(heading), `DevOps skill should include ${heading}`);
     }
   }
@@ -492,10 +492,10 @@ export async function assertSecurityAreaPattern(rootDir) {
     assert.equal(await exists(join(rootDir, "operations", "security", oldPath)), false, `Security ${oldPath} should live in knowledge/`);
   }
 
-  assert(securityReadme.includes("start with `AGENT.md`"), "Security README should route operational work through AGENT.md");
+  assert(securityReadme.includes("comece em `AGENT.md`"), "Security README should route operational work through AGENT.md");
   assert(securityReadme.includes("No public production database"), "Security README should include baseline red lines");
   assert(securityReadme.includes("quality gate"), "Security README should explain quality gate role");
-  assert(securityAgent.includes("You are the Security Lead"), "Security AGENT should define Security Lead");
+  assert(securityAgent.includes("Você é Security Lead"), "Security AGENT should define Security Lead");
   assert(securityAgent.includes("Application Security Engineer: `roles/application-security-engineer.role.md`"), "Security AGENT should route AppSec work");
   assert(securityAgent.includes("Cloud Security Reviewer: `roles/cloud-security-reviewer.role.md`"), "Security AGENT should route cloud security work");
   assert(securityAgent.includes("Data Protection Reviewer: `roles/data-protection-reviewer.role.md`"), "Security AGENT should route data protection work");
@@ -512,7 +512,7 @@ export async function assertSecurityAreaPattern(rootDir) {
   assert(areaYaml.area.playbooks.includes("security-automation-readiness"), "Security area.yaml should list security automation readiness playbook");
 
   for (const content of [baseline, threatModel, accessControl, dataProtection, databaseSecurity, secretsManagement, infraHardening, secureCoding, incidentResponse, securityAutomation]) {
-    for (const section of ["## Purpose", "## What to Document", "## Required Checks", "## Red Lines", "## Related Playbooks"]) {
+    for (const section of ["## Propósito", "## O Que Documentar", "## Verificações Obrigatórias", "## Linhas Vermelhas", "## Related Playbooks"]) {
       assert(content.includes(section), `Security knowledge should include ${section}`);
     }
   }
@@ -542,20 +542,20 @@ export async function assertSecurityAreaPattern(rootDir) {
   assert(securityAutomation.toLowerCase().includes("dependency audit"), "Security automation knowledge should mention dependency audit");
   assert(securityAutomation.includes("SAST/code scanning"), "Security automation knowledge should mention SAST/code scanning");
   assert(securityAutomation.includes("IaC/config scanning"), "Security automation knowledge should mention IaC/config scanning");
-  assert(securityAutomation.includes("Do not create scanner workflows until stack, package manager and stable commands are known"), "Security automation knowledge should avoid fragile early workflows");
+  assert(securityAutomation.includes("Não crie workflows de scanner até stack, package manager e comandos estáveis serem conhecidos"), "Security automation knowledge should avoid fragile early workflows");
 
   for (const roleContent of [securityReviewer, appSecEngineer, cloudSecurityReviewer, dataProtectionReviewer]) {
-    for (const section of ["## Purpose", "## When to Use", "## Source of Truth", "## Required Skills", "## Relevant Playbooks", "## Output", "## Red Lines"]) {
+    for (const section of ["## Propósito", "## Use Quando", "## Fonte da Verdade", "## Skills Obrigatórias", "## Playbooks Relevantes", "## Saída", "## Linhas Vermelhas"]) {
       assert(roleContent.includes(section), `Security role should include ${section}`);
     }
   }
 
   for (const skillContent of [aiGeneratedCodeSecurity, apiSecurityReview, databaseSecurityReview, securityAutomationReadiness]) {
     assert(skillContent.includes("---\nname:"), "Security skill should include YAML frontmatter");
-    assert(skillContent.includes("description: Use when"), "Security skill should include trigger-only description");
-    assert(skillContent.includes("### Step 1"), "Security skill should use Step headings inside Process");
+    assert(skillContent.includes("description: Use quando"), "Security skill should include trigger-only description");
+    assert(skillContent.includes("### Etapa 1"), "Security skill should use Step headings inside Process");
 
-    for (const section of ["## Overview", "## Use When", "## Required Context", "## Process", "## Checks", "## Output", "## Files to Update", "## Red Lines"]) {
+    for (const section of ["## Visão Geral", "## Use Quando", "## Contexto Obrigatório", "## Processo", "## Verificações", "## Saída", "## Arquivos para Atualizar", "## Linhas Vermelhas"]) {
       assert(skillContent.includes(section), `Security skill should include ${section}`);
     }
   }
@@ -574,7 +574,7 @@ export async function assertSecurityAreaPattern(rootDir) {
     assert(aiGeneratedCodeSecurity.includes(aiRisk), `AI generated code security skill should cover ${aiRisk}`);
   }
 
-  for (const section of ["## Purpose", "## When to Use", "## Before Acting", "## Steps", "## Security Gate", "## Output", "## Files to Update", "## Stop Conditions"]) {
+  for (const section of ["## Propósito", "## Use Quando", "## Antes de Agir", "## Etapas", "## Gate de Segurança", "## Saída", "## Arquivos para Atualizar", "## Stop Conditions"]) {
     assert(preDeployReview.includes(section), `Pre-deploy security review should include ${section}`);
     assert(aiGeneratedReview.includes(section), `AI generated code review playbook should include ${section}`);
     assert(securityAutomationPlaybook.includes(section), `Security automation readiness playbook should include ${section}`);
@@ -608,7 +608,7 @@ export async function assertSecurityAreaPattern(rootDir) {
   assert(githubSecurityAutomation.includes("This file is guidance-only in the initial scaffold"), "GitHub security automation doc should be guidance-only");
   assert(githubSecurityAutomation.includes("Secret scanning"), "GitHub security automation doc should mention secret scanning");
   assert(githubSecurityAutomation.includes("Dependency audit"), "GitHub security automation doc should mention dependency audit");
-  assert(githubSecurityAutomation.includes("Do not create blocking CI workflows before the project has reliable build/test commands"), "GitHub security automation doc should avoid fragile blocking workflows");
+  assert(githubSecurityAutomation.includes("Não crie workflows bloqueantes de CI antes de o projeto ter comandos confiáveis de build/test"), "GitHub security automation doc should avoid fragile blocking workflows");
 }
 
 export async function assertOperationalPlaybookSections(rootDir) {
@@ -640,7 +640,7 @@ export async function assertOperationalPlaybookSections(rootDir) {
     "growth/marketing/playbooks/mvp-launch.playbook.md",
     "growth/finance/playbooks/finance-review.playbook.md"
   ];
-  const requiredSections = ["## Purpose", "## Inputs", "## Output", "## Files to Update", "## Navigation"];
+  const requiredSections = ["## Propósito", "## Entradas", "## Saída", "## Arquivos para Atualizar", "## Navegação"];
 
   for (const playbook of playbooks) {
     const content = await readFile(join(rootDir, playbook), "utf8");
@@ -649,7 +649,7 @@ export async function assertOperationalPlaybookSections(rootDir) {
       assert(content.includes(section), `${playbook} should include ${section}`);
     }
 
-    assert(content.includes("## Process") || content.includes("## Steps"), `${playbook} should include ## Process or ## Steps`);
+    assert(content.includes("## Processo") || content.includes("## Etapas"), `${playbook} should include ## Processo or ## Etapas`);
   }
 }
 
@@ -698,7 +698,7 @@ export async function assertSourceScaffoldSections(rootDir) {
     "growth/finance/knowledge/budget.md",
     "growth/finance/knowledge/finance-risks.md"
   ];
-  const requiredSections = ["## Purpose", "## Current State", "## Decisions", "## Open Questions", "## Next Update"];
+  const requiredSections = ["## Propósito", "## Estado Atual", "## Decisões", "## Perguntas em Aberto", "## Próxima Atualização"];
 
   for (const scaffoldFile of scaffoldFiles) {
     const content = await readFile(join(rootDir, scaffoldFile), "utf8");
@@ -717,7 +717,7 @@ export async function assertProductOpsPrdSections(rootDir) {
     "## Target User",
     "## Requirements",
     "## User Stories",
-    "## Acceptance Criteria",
+    "## Critérios de Aceite",
     "## Design Considerations",
     "## Security and Privacy Considerations",
     "## Non-Goals"

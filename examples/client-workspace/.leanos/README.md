@@ -1,18 +1,18 @@
-# LeanOS Runtime
+# Runtime LeanOS
 
-## Purpose
+## Propósito
 
-Runtime files for LeanOS Chief.
+Arquivos de runtime para o LeanOS Chief.
 
-## When to Use
+## Use Quando
 
-Use for context, indexes, local traces and VS Code integration.
+Use para contexto, índices, traces locais e integração com VS Code.
 
-## Source of Truth
+## Fonte da Verdade
 
 `context/current-focus.md`
 
-## Files
+## Arquivos
 
 - `agent/`
 - `context/`
@@ -20,7 +20,7 @@ Use for context, indexes, local traces and VS Code integration.
 - `traces/`
 - `vscode/`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../AGENT.md`
 - `../ai-standard/`
@@ -28,10 +28,10 @@ Use for context, indexes, local traces and VS Code integration.
 - `../operations/`
 - `../growth/`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
-This folder is runtime support. Business workflows live in departments or areas when active, such as `operations/workflows/`. Operational roles, skills and playbooks live in workspace areas. Traces are local diagnostics, not telemetry.
+Esta pasta é suporte de runtime. Workflows de negócio vivem em departamentos ou áreas quando ativos, como `operations/workflows/`. Roles, skills e playbooks operacionais vivem nas áreas do workspace. Traces são diagnósticos locais, não telemetria.

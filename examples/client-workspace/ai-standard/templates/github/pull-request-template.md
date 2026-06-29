@@ -1,18 +1,18 @@
 # Pull Request
 
-## Summary
+## Resumo
 
 What changed and why.
 
-## Linked Issue
+## Issue Vinculada
 
 Closes #
 
-## Parent Epic
+## Epic Pai
 
 Epic #
 
-## LeanOS Context
+## Contexto LeanOS
 
 - Department:
 - Area:
@@ -20,18 +20,18 @@ Epic #
 - Skills:
 - Playbook:
 
-## Product / Delivery Scope Alignment
+## Alinhamento De Product / Escopo De Delivery
 
 - Roadmap item:
-- Delivery scope:
+- Escopo de delivery:
 - Acceptance criteria:
 - Validation or learning impact:
 
-## Design Notes
+## Notas De Design
 
 State "Not applicable" when no user-facing design change exists.
 
-## Security Notes
+## Notas De Security
 
 State "Not applicable" when no security-sensitive surface exists.
 
@@ -44,48 +44,48 @@ State "Not applicable" when no security-sensitive surface exists.
 
 Explain how a non-technical founder can test this PR before merge.
 
-### What Changed
+### O Que Mudou
 
 Plain-language summary of the user-facing or business behavior delivered.
 
-### Where to Test
+### Onde Testar
 
 - Preview URL:
 - Local route or screen:
 - Test account or data:
 
-### How to Test
+### Como Testar
 
 1. Open...
 2. Do...
 3. Confirm...
 
-### Expected Result
+### Resultado Esperado
 
 What the founder should see when the PR works.
 
-### Out of Scope
+### Fora Do Escopo
 
 What this PR intentionally does not cover.
 
-### Known Risks or Limits
+### Riscos Conhecidos Ou Limites
 
 Anything the founder should know before approving.
 
-## Risks
+## Riscos
 
 - Scope risk:
 - Technical risk:
 - Product risk:
 - Security risk:
 
-## LeanOS Review Checklist
+## Checklist De Review LeanOS
 
 - [ ] Issue context loaded
 - [ ] Branch follows LeanOS naming
 - [ ] Acceptance criteria addressed
-- [ ] Tests run or explained
+- [ ] Testes executados ou explicados
 - [ ] Founder Testing Guide is clear enough for a non-technical founder
 - [ ] Design criteria addressed or not applicable
 - [ ] Security criteria addressed or not applicable
-- [ ] No unrelated scope added
+- [ ] Nenhum escopo não relacionado adicionado

@@ -16,37 +16,37 @@ type ExampleGroup = {
 const exampleGroups: ExampleGroup[] = [
   {
     key: "agents",
-    title: "Agent Examples",
-    purpose: "Examples of root and area AGENT.md routing behavior.",
-    use: "Use when reviewing how an agent should route, set boundaries and delegate to the next owner.",
+    title: "Exemplos de Agente",
+    purpose: "Exemplos de comportamento de roteamento de AGENT.md raiz e de área.",
+    use: "Use quando revisar como um agente deve rotear, definir limites e delegar ao próximo owner.",
     files: ["example-root-agent.md", "example-area-agent.md"]
   },
   {
     key: "structure",
-    title: "Structure Examples",
-    purpose: "Examples of folder and area documentation.",
-    use: "Use when reviewing how README-style files should map structure without becoming operators.",
+    title: "Exemplos de Estrutura",
+    purpose: "Exemplos de documentação de pasta e área.",
+    use: "Use quando revisar como arquivos estilo README devem mapear estrutura sem virar operadores.",
     files: ["example-folder-readme.md", "example-area-readme.md"]
   },
   {
     key: "execution",
-    title: "Execution Examples",
-    purpose: "Examples of roles, skills, playbooks and workflows.",
-    use: "Use when reviewing area-level execution assets or department/area workflows.",
+    title: "Exemplos de Execução",
+    purpose: "Exemplos de roles, skills, playbooks e workflows.",
+    use: "Use quando revisar assets de execução de nível de área ou workflows de departamento/área.",
     files: ["example-role-senior-developer.md", "example-skill-coherence.md", "example-playbook-prepare-pr.md", "example-workflow-feature-to-delivery-cycle.md"]
   },
   {
     key: "github",
-    title: "GitHub Examples",
-    purpose: "Examples of GitHub epics, features and pull requests.",
-    use: "Use when reviewing GitHub-ready collaboration artifacts.",
+    title: "Exemplos de GitHub",
+    purpose: "Exemplos de epics, features e pull requests do GitHub.",
+    use: "Use quando revisar artefatos de colaboração prontos para GitHub.",
     files: ["example-github-epic.md", "example-github-feature.md", "example-pull-request.md"]
   },
   {
     key: "review",
-    title: "Review Examples",
-    purpose: "Examples of review outputs.",
-    use: "Use when reviewing how to structure code review findings and decisions.",
+    title: "Exemplos de Review",
+    purpose: "Exemplos de saídas de review.",
+    use: "Use quando revisar como estruturar findings e decisões de code review.",
     files: ["example-code-review.md"]
   }
 ];
@@ -62,53 +62,53 @@ export function exampleFiles(): FileEntry[] {
 function examplesReadme(groups: ExampleGroup[]): string {
   return `# Examples
 
-## Purpose
+## Propósito
 
-Illustrative examples of LeanOS assets.
+Exemplos ilustrativos de assets LeanOS.
 
-## When to Use
+## Use Quando
 
-Use examples after reading the matching foundation, instruction, template and checklist.
+Use exemplos depois de ler a foundation, instrução, template e checklist correspondentes.
 
-Examples show what "good enough" can look like. They are not active workspace context, not templates and not instructions.
+Exemplos mostram como "bom o bastante" pode parecer. Eles não são contexto ativo do workspace, nem templates, nem instruções.
 
-## Categories
+## Categorias
 
-${groups.map((group) => `### \`${group.key}/\`\n\n${group.purpose}\n\nUse when: ${group.use}\n\nFiles:\n${group.files.map((file) => `- \`${group.key}/${file}\``).join("\n")}`).join("\n\n")}
+${groups.map((group) => `### \`${group.key}/\`\n\n${group.purpose}\n\nUse quando: ${group.use}\n\nArquivos:\n${group.files.map((file) => `- \`${group.key}/${file}\``).join("\n")}`).join("\n\n")}
 
-## How to Use
+## Como Usar
 
-1. Confirm the asset type in \`../foundation/asset-taxonomy.md\`.
-2. Load the matching creation instruction in \`../instructions/\`.
-3. Use the matching template in \`../templates/\`.
-4. Validate with the matching checklist in \`../checklists/\`.
-5. Open the smallest example category only if you need a reference.
+1. Confirme o tipo de asset em \`../foundation/asset-taxonomy.md\`.
+2. Carregue a instrução de criação correspondente em \`../instructions/\`.
+3. Use o template correspondente em \`../templates/\`.
+4. Valide com o checklist correspondente em \`../checklists/\`.
+5. Abra apenas a menor categoria de exemplo se precisar de uma referência.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not copy examples blindly.
-- Do not treat example company, product, issue or PR content as real workspace context.
-- Do not use examples instead of templates.
-- Do not let examples override the active department, area, role, skill, playbook or workflow.
+- Não copie exemplos cegamente.
+- Não trate conteúdo de empresa, produto, issue ou PR de exemplo como contexto real do workspace.
+- Não use exemplos no lugar de templates.
+- Não deixe exemplos sobrescreverem o departamento, área, role, skill, playbook ou workflow ativo.
 `;
 }
 
 function exampleGroupReadme(group: ExampleGroup): string {
   return `# ${group.title}
 
-## Purpose
+## Propósito
 
 ${group.purpose}
 
-## When to Use
+## Use Quando
 
 ${group.use}
 
-## Files
+## Arquivos
 
 ${group.files.map((file) => `- \`${file}\``).join("\n")}
 
-## Related Folders
+## Pastas Relacionadas
 
 - \`../\`
 - \`../../foundation/\`
@@ -116,9 +116,9 @@ ${group.files.map((file) => `- \`${file}\``).join("\n")}
 - \`../../templates/\`
 - \`../../checklists/\`
 
-## Agent Notes
+## Notas para Agentes
 
-These files are examples only. Use them for shape and quality signals, not as active context.
+Estes arquivos são apenas exemplos. Use-os para formato e sinais de qualidade, não como contexto ativo.
 `;
 }
 
@@ -131,7 +131,7 @@ function exampleContent(_groupKey: string, fileName: string): string {
   const examples: Record<string, string> = {
     "example-root-agent.md": rootAgent(getAllAreas(), rootDepartments),
     "example-area-agent.md": exampleAreaAgent(),
-    "example-folder-readme.md": folderReadme("Example Folder", "Example purpose.", "Use when relevant.", "README.md", ["README.md"], ["../"], "Example notes."),
+    "example-folder-readme.md": folderReadme("Pasta de Exemplo", "Propósito de exemplo.", "Use quando for relevante.", "README.md", ["README.md"], ["../"], "Notas de exemplo."),
     "example-area-readme.md": exampleAreaReadme(),
     "example-role-senior-developer.md": roleFile(engineering, seniorDeveloper),
     "example-skill-coherence.md": skillFile(product, coherence),
@@ -154,45 +154,45 @@ Use the matching template, instruction and checklist before creating a real asse
 function exampleAreaAgent(): string {
   return `# Design Agent
 
-You are the Design Lead for this workspace.
+Você é o Design Lead deste workspace.
 
 This \`AGENT.md\` is the operating owner for \`operations/design/\`.
 
 Use \`README.md\` as the directory map. Use \`area.yaml\` when machine-readable structure matters.
 
-## Operating Scope
+## Escopo Operacional
 
-Route design work to the smallest specialist role before loading skills or playbooks.
+Roteie trabalho de Design para a menor role especialista antes de carregar skills ou playbooks.
 
-## Role Routing
+## Roteamento De Roles
 
 - Product Designer: \`roles/product-designer.role.md\` - use for design system, flows, screens and interaction decisions.
 - UX Researcher: \`roles/ux-researcher.role.md\` - use for research questions, interview synthesis and learning loops.
 - Accessibility Specialist: \`roles/accessibility-specialist.role.md\` - use for WCAG, keyboard, focus, contrast and assistive technology concerns.
 - UX Writer: \`roles/ux-writer.role.md\` - use for product copy, microcopy, errors and empty states.
 
-## Routing Rules
+## Regras De Roteamento
 
-1. Start from this area AGENT for operational work inside Design.
-2. Load one specialist role before loading skills or playbooks.
-3. Load only skills and playbooks required by the selected role.
-4. Keep reusable Design context in \`knowledge/\`.
-5. Ask before changing durable knowledge files.
+1. Comece pelo AGENT desta área para trabalho operacional dentro de Design.
+2. Carregue uma role especialista antes de carregar skills ou playbooks.
+3. Carregue somente skills e playbooks exigidos pela role selecionada.
+4. Mantenha contexto reutilizável de Design em \`knowledge/\`.
+5. Peça confirmação antes de alterar arquivos duráveis de knowledge.
 
-## Navigation
+## Navegação
 
-\`operations/design/AGENT.md -> Role -> Skills -> Playbook -> Output\`
+\`operations/design/AGENT.md -> Role -> Skills -> Playbook -> Saída\`
 `;
 }
 
 function exampleAreaReadme(): string {
   return `# Design
 
-## Purpose
+## Propósito
 
 Own product experience quality: design system, accessibility, flows, interaction decisions and UX writing.
 
-## When to Use
+## Use Quando
 
 - The request changes user-facing behavior, screens, states, copy or interaction.
 - The founder wants to define design before implementation.
@@ -204,14 +204,14 @@ Own product experience quality: design system, accessibility, flows, interaction
 - \`knowledge/accessibility.md\`
 - \`knowledge/user-flows.md\`
 
-## Navigation
+## Navegação
 
 1. For operational work, start with \`AGENT.md\`.
 2. Use this README as the directory map.
 3. After the area AGENT selects a role, load only required skills and playbooks.
 4. Produce the requested output and update knowledge only after confirmation.
 
-## File Responsibilities
+## Responsabilidades dos Arquivos
 
 - \`AGENT.md\`: Design operating lead.
 - \`README.md\`: Design area map.
@@ -224,44 +224,44 @@ Own product experience quality: design system, accessibility, flows, interaction
 }
 
 function exampleWorkflowFeatureToDeliveryCycle(): string {
-  return `# Feature To Delivery Cycle Workflow
+  return `# Workflow Feature To Delivery Cycle
 
-## Purpose
+## Propósito
 
-Move a confirmed local Feature or mapped GitHub issue from understanding to branch, implementation, review and PR readiness.
+Mover uma Feature local confirmada ou issue do GitHub mapeada de entendimento para branch, implementação, review e prontidão de PR.
 
-## Trigger
+## Gatilho
 
-The founder asks to implement a specific Feature, or a GitHub issue that represents a Feature.
+O founder pede para implementar uma Feature específica ou uma issue do GitHub que representa uma Feature.
 
-## Participating Areas
+## Áreas Participantes
 
-- Product Ops: confirms delivery scope, issue readiness and delivery boundaries.
-- Engineering: plans, implements, tests and prepares PR.
-- Design: conditional, only when UX changes.
-- Security: conditional, only when data, auth, permissions, privacy, abuse risk or compliance is involved.
+- Product Ops: confirma escopo de delivery, prontidão de issue e limites de delivery.
+- Engineering: planeja, implementa, testa e prepara PR.
+- Design: condicional, somente quando UX muda.
+- Security: condicional, somente quando dados, auth, permissões, privacidade, risco de abuso ou compliance estiverem envolvidos.
 
-## Sequence
+## Sequência
 
-1. Load the Feature, parent Epic and MVP context.
-2. Summarize the Feature in chat and ask for confirmation.
-3. Check Product and Engineering readiness.
-4. Add Design criteria only when user-facing UX changes.
-5. Add Security criteria only when the issue has a security-sensitive surface.
-6. Create a Feature-linked branch plan.
-7. Implement only after confirmation.
-8. Run tests or explain why they cannot run.
-9. Prepare a PR draft using the PR template.
-10. Route to review before merge.
+1. Carregue a Feature, Epic pai e contexto do MVP.
+2. Resuma a Feature no chat e peça confirmação.
+3. Cheque prontidão de Product e Engineering.
+4. Adicione critérios de Design somente quando UX voltada ao usuário mudar.
+5. Adicione critérios de Security somente quando a issue tiver superfície sensível a Security.
+6. Crie um plano de branch vinculado à Feature.
+7. Implemente somente após confirmação.
+8. Rode testes ou explique por que não podem rodar.
+9. Prepare um rascunho de PR usando o template de PR.
+10. Roteie para review antes do merge.
 
-## Output
+## Saída
 
-- Confirmed Feature summary
-- Implementation plan
-- Branch name
-- Test plan
-- PR draft
-- Review readiness notes
+- Resumo da Feature confirmada
+- Plano de implementação
+- Nome da branch
+- Plano de teste
+- Rascunho de PR
+- Notas de prontidão de review
 `;
 }
 
@@ -270,137 +270,137 @@ function exampleGithubEpic(): string {
 
 ## Outcome
 
-Clinic owners can capture structured patient intake before the appointment.
+Donos de clínica conseguem capturar intake estruturado do paciente antes da consulta.
 
-## Strategic Context
+## Contexto Estratégico
 
-- Product: Clinic Assistant AI
-- ICP: small clinic owners
-- Problem: front-desk intake is slow and inconsistent
-- Value proposition: reduce manual intake work before appointments
-- Validation assumption: clinics will trust guided AI intake for low-risk cases
-- Evidence status: assumption
+- Produto: Clinic Assistant AI
+- ICP: donos de clínicas pequenas
+- Problem: o intake da recepção é lento e inconsistente
+- Proposta de valor: reduzir trabalho manual de intake antes das consultas
+- Validation suposição: clínicas confiarão em intake guiado por IA para casos de baixo risco
+- Evidence status: suposição
 
-## Delivery Scope Linkage
+## Vínculo Com Escopo De Delivery
 
 - scope_type: MVP
 - milestone: MVP Alpha
-- release_goal: validate the guided intake flow, intake summary and staff review
-- Non-goals: insurance automation, diagnosis, clinical decision-making
-- Acceptance criteria: staff can review and edit the intake summary
-- Roadmap item: MVP Intake Flow
+- release_goal: validar o fluxo guiado de intake, resumo do intake e review da equipe
+- Non-goals: automação de seguro, diagnóstico, tomada de decisão clínica
+- Acceptance criteria: equipe consegue revisar e editar o resumo do intake
+- Roadmap item: Fluxo De Intake Do MVP
 - Milestone: MVP Alpha
 
-## Product Criteria
+## Critérios De Product
 
-- User value: less front-desk time
-- Jobs to be done: capture intake information before visit
-- Acceptance criteria: intake summary is understandable and editable
-- Learning signal: at least 5 clinics complete test intake sessions
+- Valor para usuário: menos tempo de recepção
+- Jobs to be done: capturar informações de intake antes da visita
+- Critérios de aceite: resumo do intake é compreensível e editável
+- Sinal de aprendizado: pelo menos 5 clínicas completam sessões de teste de intake
 
-## Design Criteria
+## Critérios De Design
 
-- User flow: patient starts from appointment link and submits intake
-- Screens or states: start, question flow, review, submitted
-- UX constraints: simple language, progress indication, error recovery
-- Accessibility considerations: keyboard navigation and readable form labels
+- Fluxo de usuário: paciente começa pelo link da consulta e envia o intake
+- Telas ou estados: início, fluxo de perguntas, review, enviado
+- Restrições de UX: linguagem simples, indicação de progresso, recuperação de erro
+- Considerações de acessibilidade: navegação por teclado e labels de formulário legíveis
 
-## Engineering Criteria
+## Critérios De Engineering
 
-- Technical approach: form flow with persisted draft state
-- System boundaries: patient intake and staff review only
-- Test expectations: form validation and summary generation tests
+- Abordagem técnica: fluxo de formulário com estado de rascunho persistido
+- Limites do sistema: apenas intake do paciente e review da equipe
+- Expectativas de teste: testes de validação de formulário e geração de resumo
 
-## Security Criteria
+## Critérios De Security
 
-- Data involved: patient-provided personal information
-- Auth or permissions: staff-only review
-- Privacy considerations: avoid exposing intake data in logs
-- Abuse cases: spam submissions
+- Dados envolvidos: informações pessoais fornecidas pelo paciente
+- Auth ou permissões: review somente pela equipe
+- Considerações de privacidade: evitar expor dados de intake em logs
+- Casos de abuso: submissões de spam
 
-## Sub-issue Breakdown
+## Quebra Em Sub-Issues
 
 - Status: ready_for_breakdown
-- Expected features: intake form, draft persistence, staff review, security controls
-- Open questions: retention policy
+- Features esperadas: formulário de intake, persistência de rascunho, review da equipe, controles de Security
+- Perguntas abertas: retention policy
 `;
 }
 
 function exampleGithubFeature(): string {
-  return `# Build patient intake form flow
+  return `# Construir fluxo de formulário de intake do paciente
 
-## Parent Epic
+## Epic Pai
 
 - Epic: #123 Guided clinic intake MVP
 - Milestone: MVP Alpha
-- Roadmap item: MVP Intake Flow
+- Roadmap item: Fluxo De Intake Do MVP
 
-## Purpose
+## Propósito
 
-Create the first patient-facing flow for collecting intake information.
+Criar o primeiro fluxo voltado ao paciente para coletar informações de intake.
 
-## Scope
+## Escopo
 
-Implement start, question flow, review and submitted states.
+Implementar estados de início, fluxo de perguntas, review e enviado.
 
-## Non-goals
+## Não Objetivos
 
-- Staff review dashboard
-- Diagnosis
-- Insurance processing
+- Dashboard de review da equipe
+- Diagnóstico
+- Processamento de seguro
 
-## Product Criteria
+## Critérios De Product
 
-- User value: patient can submit intake before appointment
-- Acceptance criteria: patient can complete and review all required fields
-- Success or learning signal: test users complete the flow without assistance
+- Valor para usuário: paciente consegue enviar intake antes da consulta
+- Critérios de aceite: paciente consegue completar e revisar todos os campos obrigatórios
+- Sinal de sucesso ou aprendizado: usuários de teste completam o fluxo sem ajuda
 
-## Design Criteria
+## Critérios De Design
 
-- Flow: appointment link -> intake questions -> review -> submitted
-- Screens or states: start, step, validation error, review, success
-- UX constraints: clear progress and plain-language questions
-- Accessibility: labeled inputs and keyboard navigation
+- Fluxo: link da consulta -> perguntas de intake -> review -> enviado
+- Telas ou estados: início, etapa, erro de validação, review, sucesso
+- Restrições de UX: progresso claro e perguntas em linguagem simples
+- Acessibilidade: inputs com label e navegação por teclado
 
-## Engineering Criteria
+## Critérios De Engineering
 
-- Suggested area: operations/engineering
-- Technical notes: persist draft state locally or server-side based on selected stack
-- Dependencies: product field list and validation rules
-- Test expectations: validation, navigation and submit tests
+- Área sugerida: operations/engineering
+- Notas técnicas: persistir estado de rascunho localmente ou server-side conforme stack escolhida
+- Dependências: lista de campos de produto e regras de validação
+- Expectativas de teste: testes de validação, navegação e submit
 
-## Security Criteria
+## Critérios De Security
 
-- Data: patient-provided personal information
-- Permissions: no staff-only data exposed to patient
-- Privacy: no sensitive data in analytics events
+- Dados: informações pessoais fornecidas pelo paciente
+- Permissões: nenhum dado apenas da equipe exposto ao paciente
+- Privacidade: nenhum dado sensível em eventos de analytics
 
-## Definition of Done
+## Definição De Pronto
 
-- [ ] Product criteria satisfied
-- [ ] Design criteria satisfied
-- [ ] Engineering criteria satisfied
-- [ ] Security criteria satisfied
-- [ ] Tests or validation plan defined
+- [ ] Critérios de Product satisfeitos
+- [ ] Critérios de Design satisfeitos
+- [ ] Critérios de Engineering satisfeitos
+- [ ] Critérios de Security satisfeitos
+- [ ] Testes ou plano de validação definidos
 `;
 }
 
 function examplePullRequest(): string {
-  return `# Add patient intake form flow
+  return `# Adicionar fluxo de formulário de intake do paciente
 
-## Summary
+## Resumo
 
-Adds the initial patient intake form flow with required field validation and review state.
+Adiciona o fluxo inicial de formulário de intake do paciente com validação de campos obrigatórios e estado de review.
 
-## Linked Issue
+## Issue Vinculada
 
 Closes #554
 
-## Parent Epic
+## Epic Pai
 
 Epic #123
 
-## LeanOS Context
+## Contexto LeanOS
 
 - Department: Operations
 - Area: Engineering
@@ -408,101 +408,101 @@ Epic #123
 - Skills: plan-implementation, create-pr
 - Playbook: prepare-pr
 
-## Product / Delivery Scope Alignment
+## Alinhamento De Product / Escopo De Delivery
 
-- Roadmap item: MVP Intake Flow
-- Delivery scope: guided intake flow
-- Acceptance criteria: patient can complete and review required fields
-- Validation or learning impact: enables first usability test
+- Roadmap item: Fluxo De Intake Do MVP
+- Escopo de delivery: fluxo guiado de intake
+- Critérios de aceite: paciente consegue completar e revisar campos obrigatórios
+- Impacto de validação ou aprendizado: habilita primeiro teste de usabilidade
 
-## Design Notes
+## Notas De Design
 
-Uses the current Design foundation for form labels, spacing and focus behavior.
+Usa a fundação atual de Design para labels de formulário, espaçamento e comportamento de foco.
 
-## Security Notes
+## Notas De Security
 
-Avoids logging intake field values.
+Evita registrar valores de campos de intake em logs.
 
 ## Tests
 
-- [x] Form validation tests
-- [x] Manual keyboard navigation check
+- [x] Testes de validação de formulário
+- [x] Check manual de navegação por teclado
 
 ## Founder Testing Guide
 
-### What Changed
+### O Que Mudou
 
-Patients can now complete the first intake form flow, review answers and submit the intake.
+Pacientes agora conseguem completar o primeiro fluxo de formulário de intake, revisar respostas e enviar o intake.
 
-### Where to Test
+### Onde Testar
 
-- Preview URL: use the PR preview URL when available
-- Local route or screen: /intake
-- Test account or data: use a test patient profile only
+- URL de preview: use a URL de preview do PR quando disponível
+- Rota ou tela local: /intake
+- Conta ou dado de teste: use apenas perfil de paciente de teste
 
-### How to Test
+### Como Testar
 
-1. Open the intake route.
-2. Complete the required questions.
-3. Try submitting with one required answer missing.
-4. Review the answers.
-5. Submit the form.
+1. Abra a rota de intake.
+2. Complete as perguntas obrigatórias.
+3. Tente enviar com uma resposta obrigatória ausente.
+4. Revise as respostas.
+5. Envie o formulário.
 
-### Expected Result
+### Resultado Esperado
 
-The founder should see validation for missing required answers, a review state and a final submitted state without exposing intake data in logs.
+O founder deve ver validação para respostas obrigatórias ausentes, um estado de review e um estado final enviado sem expor dados de intake em logs.
 
-### Out of Scope
+### Fora Do Escopo
 
-Staff review dashboard and diagnosis are not included in this PR.
+Dashboard de review da equipe and diagnosis are not included in this PR.
 
-### Known Risks or Limits
+### Riscos Conhecidos Ou Limites
 
-Question order still needs usability validation.
+Ordem das perguntas ainda precisa de validação de usabilidade.
 
-## Risks
+## Riscos
 
-- Scope risk: staff review remains separate
-- Technical risk: persistence strategy may change
-- Product risk: question order still needs user validation
-- Security risk: retention policy is still open
+- Risco de escopo: review da equipe permanece separado
+- Risco técnico: estratégia de persistência pode mudar
+- Risco de Product: ordem das perguntas ainda precisa de validação com usuário
+- Risco de Security: política de retenção ainda está aberta
 `;
 }
 
 function exampleCodeReview(): string {
   return `# Code Review
 
-## Review Context
+## Contexto Do Review
 
 - PR: #812
-- Linked issue: #554
-- Parent epic: #123
-- Delivery scope: guided intake flow
-- Acceptance criteria: patient can complete and review required fields
+- Issue vinculada: #554
+- Epic pai: #123
+- Escopo de delivery: fluxo guiado de intake
+- Critérios de aceite: paciente consegue completar e revisar campos obrigatórios
 
-## Findings
+## Achados
 
-| Severity | File/Area | Finding | Required Change |
+| Severidade | Arquivo/Área | Achado | Mudança Obrigatória |
 | --- | --- | --- | --- |
-| medium | intake form validation | Error state is not announced to screen readers. | Add accessible error messaging and focus behavior. |
-| low | tests | Missing keyboard-only manual check note. | Add validation note to PR checklist. |
+| medium | intake form validation | Estado de erro não é anunciado para leitores de tela. | Adicione mensagem de erro acessível e comportamento de foco. |
+| low | tests | Nota de check manual apenas por teclado ausente. | Adicione nota de validação ao checklist do PR. |
 
-## Review Dimensions
+## Dimensões Do Review
 
-- Correctness: mostly aligned
-- Scope control: no unrelated scope found
-- Tests: automated validation present
-- Security/privacy: no sensitive logs found
-- Design/UX: accessibility fix required
+- Correção: majoritariamente alinhada
+- Controle de escopo: nenhum escopo não relacionado encontrado
+- Testes: validação automatizada presente
+- Security/privacidade: nenhum log sensível encontrado
+- Design/UX: ajuste de acessibilidade obrigatório
 
-## Decision
+## Decisão
 
-- [ ] Ready to merge
-- [x] Needs changes
-- [ ] Blocked by missing context
+- [ ] Pronto para merge
+- [x] Precisa de mudanças
+- [ ] Bloqueado por contexto ausente
 
-## Open Questions
+## Perguntas em Aberto
 
-- Should intake draft state persist across browser sessions?
+- O estado de rascunho do intake deve persistir entre sessões do navegador?
 `;
 }

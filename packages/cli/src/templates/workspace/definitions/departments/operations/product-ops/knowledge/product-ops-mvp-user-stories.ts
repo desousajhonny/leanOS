@@ -1,11 +1,11 @@
 export function productOpsMvpUserStoriesKnowledge(): string {
   return `# User Stories
 
-## Purpose
+## Propósito
 
 Capture the MVP user stories that can later become epics, features or acceptance criteria.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -29,15 +29,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

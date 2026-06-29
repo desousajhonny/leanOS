@@ -10,7 +10,7 @@ export const operationsSecurityRoles: RoleDefinition[] = [
       skills: ["threat-modeling", "access-control-review", "secure-code-review", "ai-generated-code-security", "security-automation-readiness"],
       playbooks: ["security-foundation", "pre-mvp-security-checklist", "pre-deploy-security-review", "security-automation-readiness", "ai-generated-code-security-review"],
       outputs: ["Security risk summary", "Gate decision", "Required fixes", "Stop conditions", "Files that may be updated after confirmation"],
-      redLines: ["Do not approve private data access without server-side authorization.", "Do not treat client-side checks as security controls.", "Do not ignore AI-generated-code risks.", "Do not update auth, secrets, CI/CD, infra or dependencies without human review."]
+      redLines: ["Não aprove acesso a dados privados sem autorização server-side.", "Não trate checks client-side como controles de segurança.", "Não ignore riscos de código gerado por AI.", "Não atualize auth, segredos, CI/CD, infra ou dependências sem review humano."]
     },
     {
       slug: "application-security-engineer",
@@ -21,7 +21,7 @@ export const operationsSecurityRoles: RoleDefinition[] = [
       skills: ["api-security-review", "secure-code-review", "dependency-supply-chain-review", "ai-generated-code-security", "secrets-management"],
       playbooks: ["api-security-review", "ai-generated-code-security-review", "vulnerability-response", "pre-deploy-security-review"],
       outputs: ["Application security findings", "Required code/security fixes", "Dependency and supply-chain notes", "PR/deploy gate result"],
-      redLines: ["Do not approve unsafe query construction.", "Do not accept fabricated tests or deleted security tests.", "Do not let generated code change auth, secrets, CI/CD or infra without review."]
+      redLines: ["Não aprove construção insegura de query.", "Não aceite testes fabricados ou testes de Security deletados.", "Não deixe código gerado alterar auth, segredos, CI/CD ou infra sem review."]
     },
     {
       slug: "cloud-security-reviewer",
@@ -32,7 +32,7 @@ export const operationsSecurityRoles: RoleDefinition[] = [
       skills: ["infra-hardening-review", "secrets-management", "security-automation-readiness", "incident-response"],
       playbooks: ["pre-deploy-security-review", "security-automation-readiness", "secrets-rotation", "incident-response"],
       outputs: ["Infrastructure risk summary", "Deployment blockers", "Secret/service-account findings", "Rollback or incident-response notes"],
-      redLines: ["Do not approve public production databases.", "Do not approve over-permissive service accounts.", "Do not approve production deploy without backup and rollback path."]
+      redLines: ["Não aprove bancos de produção públicos.", "Não aprove service accounts permissivas demais.", "Não aprove deploy de produção sem backup e caminho de rollback."]
     },
     {
       slug: "data-protection-reviewer",
@@ -43,6 +43,6 @@ export const operationsSecurityRoles: RoleDefinition[] = [
       skills: ["database-security-review", "access-control-review", "secure-code-review"],
       playbooks: ["database-security-review", "pre-deploy-security-review", "pre-mvp-security-checklist"],
       outputs: ["Data protection findings", "Tenant/access-control result", "Database safety result", "Required follow-up"],
-      redLines: ["Do not approve sensitive data in logs, analytics, errors or events.", "Do not approve missing tenant isolation.", "Do not approve destructive data changes without backup and rollback."]
+      redLines: ["Não aprove dados sensíveis em logs, analytics, erros ou eventos.", "Não aprove isolamento de tenant ausente.", "Não aprove mudanças destrutivas de dados sem backup e rollback."]
     }
   ];

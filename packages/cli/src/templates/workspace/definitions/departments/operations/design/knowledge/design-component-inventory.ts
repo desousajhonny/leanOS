@@ -1,18 +1,18 @@
 export function designComponentInventoryKnowledge(): string {
   return `# Component Inventory
 
-## Purpose
+## Propósito
 
 Track reusable UI components that Design has approved, planned or identified as gaps.
 
-This is not source code. It is a lightweight Design catalog that helps the model decide whether a Feature can reuse an existing component, adapt one or needs a new component specification before Engineering starts.
+This is not código-fonte. It is a lightweight Design catalog that helps the model decide whether a Feature can reuse an existing component, adapt one or needs a new component specification before Engineering starts.
 
 ## How To Use
 
 - Check this file before asking Engineering to create or modify user-facing UI.
 - Keep entries short and link to a component spec when one exists.
 - Mark components as approved, planned, needs-spec, deprecated or unknown.
-- Do not invent components just to make implementation easier.
+- Não invente componentes apenas para facilitar implementação.
 
 ## Component List
 
@@ -20,7 +20,7 @@ This is not source code. It is a lightweight Design catalog that helps the model
 | --- | --- | --- | --- | --- | --- |
 | TBD | unknown | TBD | TBD | TBD | TBD |
 
-## Known Gaps
+## Lacunas Conhecidas
 
 | Gap | Needed For | Why It Matters | Next Step |
 | --- | --- | --- | --- |
@@ -33,7 +33,7 @@ This is not source code. It is a lightweight Design catalog that helps the model
 - Create a new component only when reuse or adaptation would create unclear behavior, accessibility risk or brittle composition.
 - If a new component is needed, create or request a component spec before Engineering implements it.
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 `;

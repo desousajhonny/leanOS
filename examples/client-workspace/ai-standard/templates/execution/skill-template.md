@@ -1,65 +1,65 @@
 ---
 name: <skill-name>
-description: Use when <specific trigger or situation>
+description: Use quando <gatilho ou situação específica>
 ---
 
 # <Skill Name>
 
-## Overview
+## Visão Geral
 
-Define one reusable capability in one or two sentences.
+Defina uma capacidade reutilizável em uma ou duas frases.
 
-## Use When
+## Use Quando
 
-- <trigger>
-- <symptom>
-- <situation>
+- <gatilho>
+- <sintoma>
+- <situação>
 
-## Required Context
+## Contexto Obrigatório
 
 - `../knowledge/<file>.md`
-- Active role instructions
-- Founder request
+- Instruções do papel ativo
+- Pedido do founder
 
-## Inputs
+## Entradas
 
 - <input>
 - <input>
 
-## Process
+## Processo
 
-### Step 1
+### Etapa 1
 
-Confirm this skill applies to the active request.
+Confirme que esta skill se aplica ao pedido ativo.
 
-### Step 2
+### Etapa 2
 
-Load only the required context.
+Carregue apenas o contexto obrigatório.
 
-### Step 3
+### Etapa 3
 
-Apply the capability and produce the smallest useful output.
+Aplique a capacidade e produza a menor saída útil.
 
-### Step 4
+### Etapa 4
 
-Check red lines before recommending file updates or handoffs.
+Verifique as linhas vermelhas antes de recomendar atualizações de arquivo ou handoffs.
 
-## Checks & Acceptance Criteria
+## Verificações e Critérios de Aceite
 
 - <check>
 - <check>
 
-## Output
+## Saída
 
 - <output>
 - <output>
 
-## Files to Update
+## Arquivos para Atualizar
 
-- Update relevant area knowledge only after explicit confirmation.
+- Atualize knowledge relevante da área somente depois de confirmação explícita.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not invent product-specific facts.
-- Do not turn this skill into a playbook or workflow.
-- Ask before modifying durable files.
+- Não invente fatos específicos do produto.
+- Não transforme esta skill em playbook ou workflow.
+- Peça confirmação antes de modificar arquivos duráveis.

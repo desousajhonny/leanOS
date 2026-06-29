@@ -1,5 +1,5 @@
-# Role Activation
+# Ativação de Papel
 
-Roles live inside active workspace areas.
+Roles vivem dentro de áreas ativas do workspace.
 
-Do not activate a role from an inactive or missing area without asking the user.
+Não ative um papel de uma área inativa ou ausente sem perguntar ao usuário.

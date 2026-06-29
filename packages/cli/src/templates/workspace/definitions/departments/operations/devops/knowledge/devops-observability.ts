@@ -1,11 +1,11 @@
 export function devopsObservabilityKnowledge(): string {
   return `# Observability
 
-## Purpose
+## Propósito
 
 Define the minimum runtime visibility needed to detect, debug and learn from production behavior.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -33,15 +33,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

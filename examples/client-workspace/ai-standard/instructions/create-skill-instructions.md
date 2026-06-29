@@ -1,36 +1,36 @@
-# Create Skill Instructions
+# Instruções para Criar Skill
 
-Use when creating a skill folder inside an area.
+Use quando criar uma pasta de skill dentro de uma área.
 
-## Before Creating
+## Antes de Criar
 
-1. Confirm the active area.
-2. Confirm which role or playbook will use the skill.
-3. Check whether an existing skill already covers the capability.
-4. Create `skills/<skill-name>/SKILL.md`.
+1. Confirme a área ativa.
+2. Confirme qual role ou playbook usará a skill.
+3. Verifique se uma skill existente já cobre a capacidade.
+4. Crie `skills/<skill-name>/SKILL.md`.
 
-## Choose Template
+## Escolha o Template
 
 - Skill: `../templates/execution/skill-template.md`
 - Skill YAML: `../templates/execution/skill-template.yaml`
 
-## Process
+## Processo
 
-1. Define one reusable capability.
-2. Add YAML frontmatter with `name` and a trigger-only `description` that starts with "Use when".
-3. Define when to use it.
-4. Define required context and inputs.
-5. Use `### Step N` headings inside `## Process`.
-6. Define Checks & Acceptance Criteria and outputs.
-7. Define red lines.
-8. Avoid turning the skill into a full ordered process.
+1. Defina uma capacidade reutilizável.
+2. Adicione frontmatter YAML com `name` e uma `description` apenas de gatilho que começa com "Use quando".
+3. Defina quando usar.
+4. Defina contexto obrigatório e entradas.
+5. Use headings `### Etapa N` dentro de `## Processo`.
+6. Defina verificações, critérios de aceite e saídas.
+7. Defina linhas vermelhas.
+8. Evite transformar a skill em um processo ordenado completo.
 
-## Validate
+## Valide
 
 Use `../checklists/skill-quality-checklist.md`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not duplicate another skill.
-- Do not create a skill for a one-off answer.
-- Do not put durable product facts in a skill.
+- Não duplique outra skill.
+- Não crie uma skill para uma resposta única.
+- Não coloque fatos duráveis de produto dentro de uma skill.

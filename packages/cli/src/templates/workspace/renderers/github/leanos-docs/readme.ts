@@ -1,19 +1,19 @@
 export function githubLeanOsReadme(devopsNote: string, engineeringNote: string, securityNote: string): string {
   return `# GitHub LeanOS
 
-## Purpose
+## Propósito
 
 GitHub support files for LeanOS workflow conventions.
 
 Use this folder when configuring GitHub Projects sync, issue labels, branch rules, PR validation guidance, security automation or deploy readiness.
 
-## Start Here
+## Comece Aqui
 
 \`setup-guide.md\`
 
 Use the setup guide before the first GitHub Epics/Features sync dry-run or whenever GitHub readiness fails.
 
-## Files
+## Arquivos
 
 \`setup-guide.md\`
 
@@ -55,7 +55,7 @@ PR review and founder testing expectations.
 
 Security automation readiness notes. Guidance only until stack/build/test commands are known.
 
-## Navigation
+## Navegação
 
 ${devopsNote}
 

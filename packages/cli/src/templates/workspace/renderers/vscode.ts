@@ -44,14 +44,14 @@ Follow the LeanOS Navigation Chain:
 
 During startup, restart or continuation, use propose-first mode: propose source-of-truth updates and write only after explicit user confirmation.
 Use company/product context to update source-of-truth files, primarily in \`strategy/\`.
-Do not enrich roles, skills, playbooks, workflows, \`ai-standard/\` or \`.github/\` with company/product context during startup.
+Não enriqueça roles, skills, playbooks, workflows, \`ai-standard/\` ou \`.github/\` com contexto de empresa/produto durante startup.
 
 Respect active departments and areas in \`leanos.yaml\`.
-Do not load missing area paths.
-Do not invent workflows.
+Não carregue paths de áreas ausentes.
+Não invente workflows.
 Enter the owning department or area before acting.
 When an area has its own \`AGENT.md\`, use it before loading roles, skills or playbooks.
-Do not implement code before loading the matching workflow, department, area, role, skill and playbook.
+Não implemente código antes de carregar o workflow, departamento, área, role, skill e playbook correspondentes.
 For PR validation or review requests, load the relevant validation criteria before judging.
 `;
 }
@@ -83,7 +83,7 @@ Use propose-first mode:
 - Propose Strategy-first source-of-truth updates before editing.
 - Write only after explicit user confirmation.
 - If confirmation is missing or ambiguous, do not write.
-- Do not modify roles, skills, playbooks, workflows, \`ai-standard/\`, \`.github/\` or Operations/Growth files during startup unless the user explicitly asks after startup.
+- Não modifique roles, skills, playbooks, workflows, \`ai-standard/\`, \`.github/\` ou arquivos de Operations/Growth durante startup, a menos que o usuário peça explicitamente depois do startup.
 `;
 }
 
@@ -116,7 +116,7 @@ Use propose-first mode:
 - Propose Strategy-first source-of-truth updates before editing.
 - Write only after explicit user confirmation.
 - If confirmation is missing or ambiguous, do not write.
-- Do not modify roles, skills, playbooks, workflows, \`ai-standard/\`, \`.github/\` or Operations/Growth files during startup unless the user explicitly asks after startup.
+- Não modifique roles, skills, playbooks, workflows, \`ai-standard/\`, \`.github/\` ou arquivos de Operations/Growth durante startup, a menos que o usuário peça explicitamente depois do startup.
 `;
 }
 
@@ -149,6 +149,6 @@ The legacy alias file is:
 
 \`.github/prompts/leanos-init.prompt.md\`
 
-Do not write global user configuration for this workspace without explicit user approval.
+Não escreva configuração global de usuário para este workspace sem aprovação explícita do usuário.
 `;
 }

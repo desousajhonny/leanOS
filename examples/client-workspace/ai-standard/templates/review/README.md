@@ -1,28 +1,28 @@
-# Review Templates
+# Templates de Review
 
-## Purpose
+## Propósito
 
-Templates for reviewing code, implementation and delivery quality.
+Templates para revisar código, implementação e qualidade de delivery.
 
-## When to Use
+## Use Quando
 
-Use when creating or applying review outputs.
+Use quando criar ou aplicar saídas de review.
 
-## Files
+## Arquivos
 
 - `code-review-template.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../`
 - `../../instructions/`
 - `../../checklists/`
 - `../../foundation/`
 
-## Navigation
+## Navegação
 
-Use this folder only after `../../foundation/asset-taxonomy.md` confirms the needed asset type.
+Use esta pasta apenas depois que `../../foundation/asset-taxonomy.md` confirmar o tipo de asset necessário.
 
-## Agent Notes
+## Notas para Agentes
 
-Load only the matching template file. Do not load unrelated template categories.
+Carregue apenas o arquivo de template correspondente. Não carregue categorias de template não relacionadas.

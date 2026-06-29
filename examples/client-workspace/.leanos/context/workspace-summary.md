@@ -11,6 +11,6 @@
 - Active departments: strategy
 - Active areas: strategy.business, strategy.product, strategy.roadmap
 - Workspace mode: new-product-workspace
-- Workspace mode note: LeanOS is preparing strategy and operations before app/code bootstrap. Do not create product source code during initial setup.
+- Workspace mode note: LeanOS está preparando Strategy e Operations antes do bootstrap de app/código. Não crie código-fonte de produto durante o setup inicial.
 - Detected project: no existing project signals
 - GitHub management: prepared; waiting for token/configuration

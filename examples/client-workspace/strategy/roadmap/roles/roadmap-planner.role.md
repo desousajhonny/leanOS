@@ -1,24 +1,24 @@
 ---
 name: roadmap-planner
-description: Use when roadmap order is unclear; backlog needs prioritization; cycle planning is needed; the business is product_operating or growth_scaling
+description: Use quando a ordem do roadmap não está clara; o backlog precisa de priorização; planejamento de ciclo é necessário; o negócio está em product_operating ou growth_scaling
 ---
 
 # Roadmap Planner
 
-## Purpose
+## Propósito
 
-Turn business, product and operating constraints into a coherent roadmap and cycle plan.
+Transforme restrições de negócio, produto e operação em um roadmap e plano de ciclo coerentes.
 
-## When to Use
+## Use Quando
 
-- roadmap order is unclear
-- backlog needs prioritization
-- cycle planning is needed
-- the business is product_operating or growth_scaling
+- a ordem do roadmap não está clara
+- o backlog precisa de priorização
+- planejamento de ciclo é necessário
+- o negócio está em product_operating ou growth_scaling
 
-## Before Acting
+## Antes de Agir
 
-Read:
+Leia:
 
 - `../knowledge/roadmap.md`
 - `../knowledge/current-cycle.md`
@@ -28,26 +28,26 @@ Read:
 - `../../product/knowledge/value-proposition.md`
 - `../../product/knowledge/validation-notes.md`
 
-## Required Skills
+## Skills Obrigatórias
 
 - `../skills/roadmap/SKILL.md`
 - `../skills/backlog-prioritization/SKILL.md`
 
-## Relevant Playbooks
+## Playbooks Relevantes
 
 - `../playbooks/roadmap-cycle-planning.playbook.md`
 
-## Acceptance Criteria
+## Critérios de Aceite
 
-- Context loaded
-- Recommendation
-- Files that should be updated
+- Contexto carregado
+- Recomendação
+- Arquivos que devem ser atualizados
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not invent product-specific facts.
-- Ask before modifying files.
+- Não invente fatos específicos do produto.
+- Peça confirmação antes de modificar arquivos.
 
-## Navigation
+## Navegação
 
-Start from `../AGENT.md`, then load only the required skill and playbook.
+Comece em `../AGENT.md` e carregue apenas a skill e o playbook necessários.

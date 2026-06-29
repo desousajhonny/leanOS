@@ -22,12 +22,12 @@ export const growthCustomerExperienceArea: AreaDefinition = {
   operatingRules: [
     "Treat customer signals as evidence, not product decisions by themselves.",
     "Route product changes back to Strategy Product or Product Ops when feedback affects scope.",
-    "Keep feedback lightweight and useful for learning loops."
+    "Mantenha feedback leve e útil para loops de aprendizado."
   ],
   redLines: [
-    "Do not store sensitive customer data, private identifiers or support secrets in these files.",
-    "Do not treat one loud customer as validated market evidence.",
-    "Do not promise roadmap changes without Strategy/Roadmap confirmation."
+    "Não armazene dados sensíveis de clientes, identificadores privados ou segredos de suporte nestes arquivos.",
+    "Não trate um cliente barulhento como evidência validada de mercado.",
+    "Não prometa mudanças de roadmap sem confirmação de Strategy/Roadmap."
   ],
   sourceOfTruth: growthCustomerExperienceSourceOfTruth,
   files: growthCustomerExperienceFiles,

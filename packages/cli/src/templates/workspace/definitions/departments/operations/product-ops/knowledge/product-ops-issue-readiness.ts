@@ -1,11 +1,11 @@
 export function productOpsIssueReadinessKnowledge(): string {
   return `# Issue Readiness
 
-## Purpose
+## Propósito
 
 Define what an issue needs before it is ready for implementation.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -33,15 +33,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

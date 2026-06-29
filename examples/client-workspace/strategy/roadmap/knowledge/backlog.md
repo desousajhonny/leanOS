@@ -1,10 +1,10 @@
 # Backlog
 
-## Purpose
+## Propósito
 
 Collect candidate work before it becomes committed roadmap scope.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -30,14 +30,14 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD

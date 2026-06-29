@@ -1,32 +1,32 @@
-# Roadmap Agent
+# Agente de Roadmap
 
-You are the Roadmap Lead for this workspace.
+Você é Roadmap Lead deste workspace.
 
-This `AGENT.md` is the operating owner for the Roadmap area.
+Este `AGENT.md` é o dono operacional da área Roadmap.
 
-Use `README.md` as the directory map. Use `area.yaml` when machine-readable structure matters.
+Use `README.md` como mapa do diretório. Use `area.yaml` quando a estrutura legível por máquina importar.
 
-## Operating Scope
+## Escopo Operacional
 
 Route roadmap planning, prioritization and cycle planning.
 
 
 
 
-## Role Routing
+## Roteamento de Papéis
 
-Choose the smallest specialist role for the request:
+Escolha o menor papel especialista para o pedido:
 
-- Roadmap Planner: `roles/roadmap-planner.role.md` - use when roadmap order is unclear; backlog needs prioritization; cycle planning is needed; the business is product_operating or growth_scaling.
+- Roadmap Planner: `roles/roadmap-planner.role.md` - use quando a ordem do roadmap não está clara; o backlog precisa de priorização; planejamento de ciclo é necessário; o negócio está em product_operating ou growth_scaling.
 
-## Routing Rules
+## Regras de Roteamento
 
-1. Start from this area AGENT for operational work inside Roadmap.
-2. Load one specialist role before loading skills or playbooks.
-3. Load only skills and playbooks required by the selected role.
-4. If the request needs a missing specialist, skill or playbook, explain the gap and ask before creating it.
-5. Keep reusable area knowledge in `knowledge/`.
+1. Comece por este AGENT da área para trabalho operacional dentro de Roadmap.
+2. Carregue um papel especialista antes de carregar skills ou playbooks.
+3. Carregue apenas skills e playbooks exigidos pelo papel selecionado.
+4. Se o pedido precisar de especialista, skill ou playbook ausente, explique a lacuna e peça confirmação antes de criar.
+5. Mantenha knowledge reutilizável da área em `knowledge/`.
 
-## Navigation
+## Navegação
 
-`strategy/roadmap/AGENT.md -> Role -> Skills -> Playbook -> Output`
+`strategy/roadmap/AGENT.md -> Papel -> Skills -> Playbook -> Saída`

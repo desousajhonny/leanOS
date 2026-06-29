@@ -1,31 +1,31 @@
-# Product Playbooks
+# Playbooks de Product
 
-## Purpose
+## Propósito
 
-Execution sequences owned by the Product area.
+Sequências de execução pertencentes à área Product.
 
-## When to Use
+## Use Quando
 
-Use when a selected role points to a playbook.
+Use quando um papel selecionado apontar para um playbook.
 
-## Source of Truth
+## Fonte da Verdade
 
 `../AGENT.md`
 
-## Files
+## Arquivos
 
 - `idea-calibration.playbook.md`
 - `mvp-validation-scope.playbook.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../roles/`
 - `../skills/`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
-Use playbooks for sequencing, not for duplicating skill details.
+Use playbooks para sequenciar execução, não para duplicar detalhes das skills.

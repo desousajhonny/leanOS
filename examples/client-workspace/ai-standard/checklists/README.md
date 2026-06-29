@@ -1,14 +1,14 @@
 # Checklists
 
-## Purpose
+## Propósito
 
-Quality gates for LeanOS assets.
+Gates de qualidade para assets LeanOS.
 
-## When to Use
+## Use Quando
 
-Use before accepting a newly created or modified asset.
+Use antes de aceitar um asset recém-criado ou modificado.
 
-## Files
+## Arquivos
 
 - `agent-quality-checklist.md`
 - `area-quality-checklist.md`
@@ -19,18 +19,18 @@ Use before accepting a newly created or modified asset.
 - `skill-quality-checklist.md`
 - `workflow-quality-checklist.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../foundation/`
 - `../templates/`
 - `../instructions/`
 
-## Navigation
+## Navegação
 
-1. Confirm the asset type in `../foundation/asset-taxonomy.md`.
-2. Use the matching checklist only.
-3. If no checklist matches, use `../foundation/quality-criteria.md` and ask before creating a new checklist.
+1. Confirme o tipo de asset em `../foundation/asset-taxonomy.md`.
+2. Use apenas o checklist correspondente.
+3. Se nenhum checklist corresponder, use `../foundation/quality-criteria.md` e peça confirmação antes de criar um novo checklist.
 
-## Agent Notes
+## Notas para Agentes
 
-Do not treat all checklists as interchangeable. Each checklist protects a different asset type.
+Não trate todos os checklists como intercambiáveis. Cada checklist protege um tipo de asset diferente.

@@ -1,35 +1,35 @@
 export function areaReadmeTemplate(): string {
   return `# <Area>
 
-## Purpose
+## Propósito
 
-What this area owns.
+O que esta área possui.
 
-## When to Use
+## Use Quando
 
 - <intent or situation>
 
-## Source of Truth
+## Fonte da Verdade
 
 - \`<file>.md\`
 
-## Navigation
+## Navegação
 
-1. If this area has \`AGENT.md\`, start there for operational routing.
-2. Use this README as the directory map.
-3. After the area owner selects a role, load only required skills and playbooks.
-4. Produce the requested output and update source-of-truth files when needed.
+1. Se esta área tiver \`AGENT.md\`, comece ali para roteamento operacional.
+2. Use este README como mapa do diretório.
+3. Depois que o dono da área selecionar um papel, carregue apenas skills e playbooks obrigatórios.
+4. Produza a saída solicitada e atualize arquivos de fonte da verdade quando necessário.
 
-## File Responsibilities
+## Responsabilidades dos Arquivos
 
-- \`AGENT.md\`: optional area operating owner.
-- \`README.md\`: area map and explanation.
-- \`area.yaml\`: machine-readable structure for this area.
-- \`roles/\`: operating personas for this area.
-- \`skills/\`: focused capabilities used by roles.
-- \`playbooks/\`: tactical execution sequences.
+- \`AGENT.md\`: dono operacional opcional da área.
+- \`README.md\`: mapa e explicação da área.
+- \`area.yaml\`: estrutura legível por máquina para esta área.
+- \`roles/\`: personas operacionais desta área.
+- \`skills/\`: capacidades focadas usadas por roles.
+- \`playbooks/\`: sequências táticas de execução.
 
-## Common Paths
+## Caminhos Comuns
 
 - <request>: role \`roles/<role>.role.md\` -> skill \`skills/<skill>/SKILL.md\` -> playbook \`playbooks/<playbook>.playbook.md\`.
 `;

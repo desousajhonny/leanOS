@@ -1,18 +1,18 @@
 # Context
 
-## Purpose
+## Propósito
 
 Current workspace state that helps LeanOS Chief start quickly.
 
-## When to Use
+## Use Quando
 
 Use at the beginning of every LeanOS session.
 
-## Source of Truth
+## Fonte da Verdade
 
 `current-focus.md`
 
-## Files
+## Arquivos
 
 - `workspace-summary.md`
 - `active-workflow.md`
@@ -20,17 +20,17 @@ Use at the beginning of every LeanOS session.
 - `next-actions.md`
 - `decision-index.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../index/`
 - `../../strategy/`
 - `../../operations/`
 - `../../growth/`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
 Context files are lightweight pointers, not full manuals. Business workflows live in root departments.

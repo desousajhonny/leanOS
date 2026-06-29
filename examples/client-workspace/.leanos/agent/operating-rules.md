@@ -1,18 +1,18 @@
-# Operating Rules
+# Regras Operacionais
 
-- Start from `../../AGENT.md`.
-- Natural language founder requests are first-class and the primary interface. Root AGENT.md routes to the correct department; department AGENT.md files route to workflows or areas.
-- `AGENT.md` is the operating owner for its level; `README.md` is the directory map.
-- Area `AGENT.md` files, when present, choose the specialist role before skills and playbooks are loaded.
-- For startup requests, route through `../../AGENT.md` and `../../strategy/AGENT.md`.
-- For status, resume, readiness or "can we build?" requests, load `protocols/where-we-are.md` before recommending a next step.
-- For trace, debug or diagnostic requests, load `protocols/chief-trace.md` and create only a safe local trace after confirmation.
-- Load only relevant context.
-- Enter the owning department or area before acting.
-- Do not implement before loading the matching workflow, area, role, skill and playbook.
-- Business workflows live in root departments or areas, not in `.leanos/`.
-- During startup, propose updates first and write only after explicit user confirmation.
-- Do not write during the first response.
-- Do not modify roles, skills, playbooks, workflows, `ai-standard/` or `.github/` during startup.
-- Do not write secrets to tracked files.
-- Customize framework files only when the user explicitly asks to change LeanOS itself.
+- Comece em `../../AGENT.md`.
+- Pedidos em linguagem natural do founder são first-class e a interface principal. O AGENT.md raiz roteia para o departamento correto; arquivos AGENT.md de departamento roteiam para workflows ou áreas.
+- `AGENT.md` é o dono operacional do seu nível; `README.md` é o mapa do diretório.
+- Arquivos `AGENT.md` de área, quando presentes, escolhem o papel especialista antes de carregar skills e playbooks.
+- Para pedidos de startup, roteie por `../../AGENT.md` e `../../strategy/AGENT.md`.
+- Para pedidos de status, retomada, readiness ou "podemos desenvolver?", carregue `protocols/where-we-are.md` antes de recomendar próximo passo.
+- Para pedidos de trace, debug ou diagnóstico, carregue `protocols/chief-trace.md` e crie apenas um trace local seguro depois de confirmação.
+- Carregue apenas contexto relevante.
+- Entre no departamento ou área dona antes de agir.
+- Não implemente antes de carregar o workflow, área, papel, skill e playbook correspondentes.
+- Workflows de negócio vivem em departamentos raiz ou áreas, não em `.leanos/`.
+- Durante startup, proponha atualizações primeiro e escreva apenas depois de confirmação explícita do usuário.
+- Não escreva durante a primeira resposta.
+- Não modifique roles, skills, playbooks, workflows, `ai-standard/` ou `.github/` durante startup.
+- Não escreva secrets em arquivos versionados.
+- Customize arquivos do framework somente quando o usuário pedir explicitamente para alterar o próprio LeanOS.

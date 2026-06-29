@@ -1,38 +1,38 @@
-# Create Playbook Instructions
+# Instruções para Criar Playbook
 
-Use when creating a `.playbook.md` file inside an area.
+Use quando criar um arquivo `.playbook.md` dentro de uma área.
 
-## Before Creating
+## Antes de Criar
 
-1. Confirm the active area.
-2. Confirm the playbook is tactical execution inside one area.
-3. Check whether a department workflow should own the broader flow.
-4. Identify skills the playbook should use.
-5. Load `../foundation/guided-conversation.md` when the playbook asks the founder to choose, classify, prioritize or confirm.
+1. Confirme a área ativa.
+2. Confirme se o playbook é execução tática dentro de uma área.
+3. Verifique se um workflow de departamento deveria possuir o fluxo mais amplo.
+4. Identifique as skills que o playbook deve usar.
+5. Carregue `../foundation/guided-conversation.md` quando o playbook pedir que o founder escolha, classifique, priorize ou confirme.
 
-## Choose Template
+## Escolha o Template
 
 - Playbook: `../templates/execution/playbook-template.md`
 - Playbook YAML: `../templates/execution/playbook-template.yaml`
 
-## Process
+## Processo
 
-1. Define trigger and goal.
-2. Add YAML frontmatter with `name` and a trigger-only `description` that starts with "Use when".
-3. Define inputs.
-4. Define ordered process.
-5. Reference skills instead of duplicating them.
-6. Add `Guided Conversation` when founder input or confirmation is part of the playbook.
-7. Define Stop Conditions.
-8. Define Acceptance Criteria & Outputs.
-9. Define Files to Update.
+1. Defina gatilho e objetivo.
+2. Adicione frontmatter YAML com `name` e uma `description` apenas de gatilho que começa com "Use quando".
+3. Defina entradas.
+4. Defina o processo ordenado.
+5. Referencie skills em vez de duplicá-las.
+6. Adicione `Conversa Guiada` quando entrada ou confirmação do founder fizer parte do playbook.
+7. Defina condições de parada.
+8. Defina critérios de aceite e saídas.
+9. Defina arquivos para atualizar.
 
-## Validate
+## Valide
 
 Use `../checklists/playbook-quality-checklist.md`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not duplicate a workflow.
-- Do not hide missing role or skill gaps.
-- Do not update durable files without confirmation.
+- Não duplique um workflow.
+- Não esconda lacunas de role ou skill ausente.
+- Não atualize arquivos duráveis sem confirmação.

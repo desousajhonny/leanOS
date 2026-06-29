@@ -19,51 +19,51 @@ type TemplateGroup = {
 const templateGroups: TemplateGroup[] = [
   {
     key: "agents",
-    title: "Agent Templates",
-    purpose: "Templates for root, department and area AGENT.md files.",
-    use: "Use when creating an operating owner or routing layer.",
+    title: "Templates de Agente",
+    purpose: "Templates para arquivos AGENT.md de raiz, departamento e área.",
+    use: "Use quando criar um owner operacional ou uma camada de roteamento.",
     files: ["agent-template.md", "root-agent-template.md", "department-agent-template.md", "area-agent-template.md"]
   },
   {
     key: "structure",
-    title: "Structure Templates",
-    purpose: "Templates for folders, READMEs, departments, areas and YAML structure.",
-    use: "Use when creating or documenting workspace structure.",
+    title: "Templates de Estrutura",
+    purpose: "Templates para pastas, READMEs, departamentos, áreas e estrutura YAML.",
+    use: "Use quando criar ou documentar a estrutura do workspace.",
     files: ["root-readme-template.md", "folder-readme-template.md", "area-readme-template.md", "department-template.md", "department-template.yaml", "area-template.md", "area-template.yaml"]
   },
   {
     key: "execution",
-    title: "Execution Templates",
-    purpose: "Templates for area-level roles, skills, playbooks and workflows.",
-    use: "Use when creating operational execution assets inside an area or department workflow folder.",
+    title: "Templates de Execução",
+    purpose: "Templates para roles, skills, playbooks e workflows de nível de área.",
+    use: "Use quando criar assets de execução operacional dentro de uma área ou pasta de workflow de departamento.",
     files: ["role-template.md", "role-template.yaml", "skill-template.md", "skill-template.yaml", "playbook-template.md", "playbook-template.yaml", "workflow-template.md"]
   },
   {
     key: "github",
     title: "GitHub Templates",
-    purpose: "Templates for GitHub issues, epics, features, branch naming, PRs and readiness matrices.",
-    use: "Use when shaping GitHub-ready work items or repository collaboration artifacts.",
+    purpose: "Templates para issues, epics, features, nomes de branch, PRs e matrizes de prontidão no GitHub.",
+    use: "Use quando estruturar itens prontos para GitHub ou artefatos de colaboração do repositório.",
     files: ["github-issue-template.md", "github-epic-template.md", "github-feature-template.md", "delivery-readiness-matrix-template.md", "branch-name-template.md", "pull-request-template.md"]
   },
   {
     key: "product",
-    title: "Product Work Templates",
-    purpose: "Templates for local LeanOS product work before optional GitHub sync.",
-    use: "Use when shaping local epics and features from delivery scope.",
+    title: "Templates de Trabalho de Produto",
+    purpose: "Templates para trabalho local de produto no LeanOS antes de sincronização opcional com GitHub.",
+    use: "Use quando estruturar epics e features locais a partir do escopo de delivery.",
     files: ["epic-template.md", "feature-template.md"]
   },
   {
     key: "design",
     title: "Design Templates",
-    purpose: "Templates for Design-owned specifications that hand off user-facing structure to Engineering.",
-    use: "Use when Design needs to document a component contract before implementation.",
+    purpose: "Templates para especificações de Design que entregam estrutura voltada ao usuário para Engineering.",
+    use: "Use quando Design precisar documentar um contrato de componente antes da implementação.",
     files: ["component-spec-template.md"]
   },
   {
     key: "review",
-    title: "Review Templates",
-    purpose: "Templates for reviewing code, implementation and delivery quality.",
-    use: "Use when creating or applying review outputs.",
+    title: "Templates de Review",
+    purpose: "Templates para revisar código, implementação e qualidade de delivery.",
+    use: "Use quando criar ou aplicar saídas de review.",
     files: ["code-review-template.md"]
   }
 ];
@@ -106,66 +106,66 @@ function templateContent(fileName: string): string {
 function templatesReadme(groups: TemplateGroup[]): string {
   return `# Templates
 
-## Purpose
+## Propósito
 
-Reusable starting structures for LeanOS framework assets and GitHub collaboration artifacts.
+Estruturas iniciais reutilizáveis para assets do framework LeanOS e artefatos de colaboração no GitHub.
 
-## When to Use
+## Use Quando
 
-Use after selecting the asset type with \`../foundation/asset-taxonomy.md\` and before drafting a new file.
+Use depois de selecionar o tipo de asset com \`../foundation/asset-taxonomy.md\` e antes de rascunhar um novo arquivo.
 
-Templates are starting structures. They are not active workspace context and should not override the owning AGENT, role, skill, playbook or workflow.
+Templates são estruturas iniciais. Eles não são contexto ativo do workspace e não devem sobrescrever o AGENT, role, skill, playbook ou workflow owner.
 
-## Categories
+## Categorias
 
-${groups.map((group) => `### \`${group.key}/\`\n\n${group.purpose}\n\nUse when: ${group.use}\n\nFiles:\n${group.files.map((file) => `- \`${group.key}/${file}\``).join("\n")}`).join("\n\n")}
+${groups.map((group) => `### \`${group.key}/\`\n\n${group.purpose}\n\nUse quando: ${group.use}\n\nArquivos:\n${group.files.map((file) => `- \`${group.key}/${file}\``).join("\n")}`).join("\n\n")}
 
-## How to Use
+## Como Usar
 
-1. Confirm the asset type in \`../foundation/asset-taxonomy.md\`.
-2. Load the matching creation instruction from \`../instructions/\`.
-3. Open only the smallest matching template category.
-4. Copy the matching template shape.
-5. Adapt it to the active department or area.
-6. Validate with the matching checklist in \`../checklists/\`.
+1. Confirme o tipo de asset em \`../foundation/asset-taxonomy.md\`.
+2. Carregue a instrução de criação correspondente em \`../instructions/\`.
+3. Abra apenas a menor categoria de template correspondente.
+4. Copie a estrutura do template correspondente.
+5. Adapte ao departamento ou área ativa.
+6. Valide com o checklist correspondente em \`../checklists/\`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not load every template by default.
-- Do not use a GitHub template for a LeanOS framework asset.
-- Do not use an execution template for folder documentation.
-- Do not use examples as templates when a real template exists.
+- Não carregue todos os templates por padrão.
+- Não use um template de GitHub para um asset do framework LeanOS.
+- Não use um template de execução para documentação de pasta.
+- Não use exemplos como templates quando existir um template real.
 `;
 }
 
 function templateGroupReadme(group: TemplateGroup): string {
   return `# ${group.title}
 
-## Purpose
+## Propósito
 
 ${group.purpose}
 
-## When to Use
+## Use Quando
 
 ${group.use}
 
-## Files
+## Arquivos
 
 ${group.files.map((file) => `- \`${file}\``).join("\n")}
 
-## Related Folders
+## Pastas Relacionadas
 
 - \`../\`
 - \`../../instructions/\`
 - \`../../checklists/\`
 - \`../../foundation/\`
 
-## Navigation
+## Navegação
 
-Use this folder only after \`../../foundation/asset-taxonomy.md\` confirms the needed asset type.
+Use esta pasta apenas depois que \`../../foundation/asset-taxonomy.md\` confirmar o tipo de asset necessário.
 
-## Agent Notes
+## Notas para Agentes
 
-Load only the matching template file. Do not load unrelated template categories.
+Carregue apenas o arquivo de template correspondente. Não carregue categorias de template não relacionadas.
 `;
 }

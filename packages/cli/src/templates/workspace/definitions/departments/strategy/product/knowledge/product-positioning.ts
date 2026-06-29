@@ -1,19 +1,19 @@
 export function productPositioningKnowledge(): string {
   return `# Positioning
 
-## Purpose
+## Propósito
 
 Define category, audience, problem, point of view and market alternative.
 
-## Current State
+## Estado Atual
 
 TBD
 
-## Category
+## Categoria
 
 TBD
 
-## Audience
+## Audiência
 
 TBD
 
@@ -29,19 +29,19 @@ TBD
 
 TBD
 
-## Do Not Say
+## Não Dizer
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

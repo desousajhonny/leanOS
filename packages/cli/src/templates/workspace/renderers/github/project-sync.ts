@@ -2,7 +2,7 @@ import type { WorkspaceAnswers } from "../../types.js";
 
 export function envLocal(): string {
   return `# LeanOS local environment
-# Local only. Do not commit.
+# Local apenas. Não faça commit.
 # Used by future LeanOS GitHub capabilities after Epics/Features sync readiness.
 
 LEANOS_GITHUB_TOKEN=

@@ -4,15 +4,15 @@ export const strategyRoadmapSkills: SkillDefinition[] = [
     {
       slug: "roadmap",
       title: "Roadmap",
-      purpose: "Sequence roadmap work by business outcome, product value, operating stage and delivery constraints.",
-      useWhen: ["the founder needs a roadmap for a product_operating business", "growth_scaling requires sequencing across multiple priorities", "backlog candidates need Now/Next/Later/Not Planned classification"],
+      purpose: "Sequencie trabalho de roadmap por resultado de negócio, valor de produto, estágio operacional e restrições de delivery.",
+      useWhen: ["o founder precisa de roadmap para um negócio product_operating", "growth_scaling exige sequenciamento entre múltiplas prioridades", "candidatos de backlog precisam de classificação Now/Next/Later/Not Planned"],
       requiredContext: ["../../../leanos.yaml", "../knowledge/roadmap.md", "../knowledge/current-cycle.md", "../../product/knowledge/brief.md", "../../product/knowledge/problem.md", "../../product/knowledge/value-proposition.md", "../../product/knowledge/validation-notes.md"],
-      inputs: ["Business stage", "Product strategy", "Business constraints", "Known risks", "Customer or validation signals", "Candidate work"],
-      process: ["Clarify the roadmap objective.", "Confirm the business is `product_operating` or `growth_scaling`, or that the founder explicitly asks to sequence multiple priorities.", "Do not use Roadmap as the mandatory continuation of first MVP validation.", "Separate Now, Next, Later and Not Planned.", "Connect items to outcomes, customer signals and validation or operating signals.", "Identify delivery scope type, milestone and release goal only when confirmed later by Product Ops.", "Identify dependencies and risks.", "Propose updates before writing."],
-      checks: ["Now items are small enough to reason about.", "Roadmap items are not vague wishes.", "Product is operating/scaling or the founder explicitly needs multi-priority sequencing.", "Delivery scope is not expanded silently.", "MVP-building items are routed to Product Ops scope/backlog instead of Roadmap when they affect current delivery."],
-      outputs: ["Roadmap proposal", "Current cycle proposal", "Risks and dependencies", "Open questions"],
+      inputs: ["Estágio de negócio", "Estratégia de produto", "Restrições de negócio", "Riscos conhecidos", "Sinais de cliente ou validação", "Trabalho candidato"],
+      process: ["Esclareça o objetivo do roadmap.", "Confirme se o negócio está em `product_operating` ou `growth_scaling`, ou se o founder pediu explicitamente para sequenciar múltiplas prioridades.", "Não use Roadmap como continuação obrigatória da primeira validação de MVP.", "Separe Now, Next, Later e Not Planned.", "Conecte itens a outcomes, sinais de cliente e sinais de validação ou operação.", "Identifique tipo de escopo de delivery, milestone e objetivo de release apenas quando confirmado depois por Product Ops.", "Identifique dependências e riscos.", "Proponha atualizações antes de escrever."],
+      checks: ["Itens Now são pequenos o bastante para raciocinar sobre eles.", "Itens de roadmap não são desejos vagos.", "O produto está operando/escalando ou o founder precisa explicitamente de sequenciamento multi-prioridade.", "Escopo de delivery não é expandido silenciosamente.", "Itens de construção de MVP são roteados para escopo/backlog de Product Ops em vez de Roadmap quando afetam delivery atual."],
+      outputs: ["Proposta de roadmap", "Proposta de ciclo atual", "Riscos e dependências", "Perguntas abertas"],
       filesToUpdate: ["../knowledge/roadmap.md", "../knowledge/current-cycle.md"],
-      redLines: ["Do not commit future work without founder confirmation.", "Do not invent milestones or dates.", "Do not turn backlog candidates into committed scope silently."]
+      redLines: ["Não comprometa trabalho futuro sem confirmação do founder.", "Não invente milestones ou datas.", "Não transforme candidatos de backlog em escopo comprometido silenciosamente."]
     },
     {
       slug: "backlog-prioritization",
@@ -21,10 +21,10 @@ export const strategyRoadmapSkills: SkillDefinition[] = [
       useWhen: ["backlog is unordered", "a new idea needs placement", "the current cycle needs sharper priority"],
       requiredContext: ["../knowledge/backlog.md", "../knowledge/current-cycle.md", "../../product/knowledge/problem.md", "../../product/knowledge/value-proposition.md"],
       inputs: ["Candidate backlog items", "Product value", "Risk", "Effort", "Dependencies"],
-      process: ["Group candidate work.", "Score by outcome value, risk reduction, effort and dependency.", "Recommend keep, park, split or discard.", "Update only after confirmation."],
-      checks: ["Top items have a clear user or business outcome.", "Large items are flagged for epic breakdown.", "Dependencies are visible."],
+      process: ["Agrupe trabalhos candidatos.", "Pontue por valor de outcome, redução de risco, esforço e dependência.", "Recomende manter, estacionar, dividir ou descartar.", "Atualize somente após confirmação."],
+      checks: ["Top items have a clear user or business outcome.", "Itens grandes são marcados para quebra em Epic.", "Dependencies are visible."],
       outputs: ["Prioritized backlog", "Parked items", "Items needing epic breakdown"],
       filesToUpdate: ["../knowledge/backlog.md", "../knowledge/current-cycle.md"],
-      redLines: ["Do not use priority as permission to implement.", "Do not hide uncertainty.", "Do not remove backlog items without confirmation."]
+      redLines: ["Não use prioridade como permissão para implementar.", "Não esconda incerteza.", "Não remova itens de backlog sem confirmação."]
     }
   ];

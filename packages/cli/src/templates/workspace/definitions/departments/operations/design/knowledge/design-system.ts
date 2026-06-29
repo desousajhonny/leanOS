@@ -25,11 +25,11 @@ TBD
 
 TBD
 
-## Do Not Do
+## Não Faça
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 `;

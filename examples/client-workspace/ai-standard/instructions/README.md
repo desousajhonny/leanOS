@@ -1,14 +1,14 @@
 # Instructions
 
-## Purpose
+## Propósito
 
-Step-by-step creation procedures for LeanOS assets.
+Procedimentos passo a passo para criar assets LeanOS.
 
-## When to Use
+## Use Quando
 
-Use when the user asks to create or update framework assets such as agents, departments, areas, roles, skills, playbooks, workflows or READMEs.
+Use quando o usuário pedir para criar ou atualizar assets do framework, como agentes, departamentos, áreas, roles, skills, playbooks, workflows ou READMEs.
 
-## Files
+## Arquivos
 
 - `create-agent-instructions.md`
 - `create-area-instructions.md`
@@ -19,20 +19,20 @@ Use when the user asks to create or update framework assets such as agents, depa
 - `create-skill-instructions.md`
 - `create-workflow-instructions.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../foundation/`
 - `../templates/`
 - `../checklists/`
 
-## Navigation
+## Navegação
 
-1. Confirm the asset type in `../foundation/asset-taxonomy.md`.
-2. Read `../foundation/creation-rules.md`.
-3. Open the matching instruction file.
-4. Use the matching template.
-5. Validate with the matching checklist.
+1. Confirme o tipo de asset em `../foundation/asset-taxonomy.md`.
+2. Leia `../foundation/creation-rules.md`.
+3. Abra o arquivo de instrução correspondente.
+4. Use o template correspondente.
+5. Valide com o checklist correspondente.
 
-## Agent Notes
+## Notas para Agentes
 
-Do not use one instruction for every asset type. Each instruction protects a different creation path.
+Não use uma instrução única para todos os tipos de asset. Cada instrução protege um caminho de criação diferente.

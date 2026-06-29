@@ -1,23 +1,23 @@
-# Business Profile
+# Perfil do Negócio
 
-## Purpose
+## Propósito
 
-Capture the initial business context collected by LeanOS.
+Registrar o contexto inicial de negócio coletado pelo LeanOS.
 
-## Current State
+## Estado Atual
 
-- Company: LeanOS Example Company
-- Operating mode: founder-plus-ai-agents
-- Current stage: idea
+- Empresa: LeanOS Example Company
+- Modo de operação: founder-plus-ai-agents
+- Estágio atual: idea
 
-## Decisions
-
-TBD
-
-## Open Questions
+## Decisões
 
 TBD
 
-## Next Update
+## Perguntas em Aberto
+
+TBD
+
+## Próxima Atualização
 
 TBD

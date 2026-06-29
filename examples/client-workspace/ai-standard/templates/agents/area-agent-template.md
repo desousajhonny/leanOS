@@ -1,29 +1,29 @@
-# <Area> Agent
+# Agente <Area>
 
-You are the <Area Lead> for this workspace.
+Você é o <Area Lead> deste workspace.
 
-This `AGENT.md` is the operating owner for the area.
+Este `AGENT.md` é o dono operacional da área.
 
-Use `README.md` as the directory map. Use `area.yaml` when machine-readable structure matters.
+Use `README.md` como mapa do diretório. Use `area.yaml` quando a estrutura legível por máquina importar.
 
-## Operating Scope
+## Escopo Operacional
 
-Describe what this area lead owns and how it protects quality.
+Descreva o que este lead de área possui e como protege qualidade.
 
-## Role Routing
+## Roteamento de Papéis
 
-Choose the smallest specialist role for the request:
+Escolha o menor papel especialista para o pedido:
 
-- <Specialist Role>: `roles/<role>.role.md` - use when <condition>.
+- <Papel Especialista>: `roles/<role>.role.md` - use quando <condição>.
 
-## Routing Rules
+## Regras de Roteamento
 
-1. Start from this area AGENT for operational work inside the area.
-2. Load one specialist role before loading skills or playbooks.
-3. Load only skills and playbooks required by the selected role.
-4. If the request needs a missing specialist, skill or playbook, explain the gap and ask before creating it.
-5. Keep reusable area knowledge in `knowledge/` when the area uses a knowledge folder.
+1. Comece por este AGENT da área para trabalho operacional dentro da área.
+2. Carregue um papel especialista antes de carregar skills ou playbooks.
+3. Carregue apenas skills e playbooks exigidos pelo papel selecionado.
+4. Se o pedido precisar de especialista, skill ou playbook ausente, explique a lacuna e peça confirmação antes de criar.
+5. Mantenha knowledge reutilizável da área em `knowledge/` quando a área usar uma pasta de knowledge.
 
-## Navigation
+## Navegação
 
-`<area>/AGENT.md -> Role -> Skills -> Playbook -> Output`
+`<area>/AGENT.md -> Papel -> Skills -> Playbook -> Saída`

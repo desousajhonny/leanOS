@@ -1,10 +1,10 @@
 # Current Cycle
 
-## Purpose
+## Propósito
 
 Define the current planning or delivery cycle without overcommitting future work.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -28,14 +28,14 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD

@@ -1,52 +1,75 @@
 export function engineeringDataGuidelinesKnowledge(): string {
   return `# Data Guidelines
 
-## Purpose
+## Propósito
 
 Define how Engineering should handle database, API, persistence and data-sensitive changes.
 
-## Current State
+## Estado Atual
 
-TBD
+Use these rules for data implementation. Security owns risk review; Engineering owns safe implementation, migration discipline and validation.
 
 ## Schema Changes
 
-TBD
+- Tie every schema change to a Feature, bug fix or explicit technical decision.
+- Prefer additive changes over destructive changes.
+- Keep ownership, tenant isolation, nullability, defaults and compatibility visible.
+- Não adicione campos que armazenem dados sensíveis sem revisão de Security.
 
 ## Migrations
 
-TBD
+- Use the repository's migration tool and naming convention.
+- Keep migrations small enough to review and roll back.
+- Separate schema migration from data backfill when risk is meaningful.
+- Não rode nem comite migrações destrutivas sem confirmação explícita.
+- Include local verification or dry-run evidence when the repository supports it.
 
 ## Validation
 
-TBD
+- Validate data at server/API boundaries, not only in the client.
+- Validate inputs before persistence.
+- Keep database constraints aligned with application validation when practical.
+- Return safe, actionable errors without leaking sensitive internals.
 
 ## Sensitive Data
 
-TBD
+- Classify whether the change touches personal, private, financial, health, credential, tenant or customer data.
+- Não registre segredos, credenciais, tokens ou dados sensíveis de cliente.
+- Não coloque dados reais de clientes em seeds, fixtures, screenshots, markdown ou testes.
+- Route privacy, auth, permission or compliance risk to Security before implementation.
 
 ## Indexes and Performance
 
-TBD
+- Consider indexes for new filters, joins, lookups, ordering and uniqueness requirements.
+- Avoid broad unbounded queries on user-facing or production paths.
+- Prefer pagination or limits when returning lists.
+- Não otimize prematuramente, mas registre risco óbvio de query.
 
 ## Backward Compatibility
 
-TBD
+- Consider existing data, clients, API consumers and deployed versions.
+- Prefer expand-and-contract migration when removing or renaming data fields.
+- Keep API responses compatible unless the Feature explicitly changes the contract.
+- Document any breaking change and its rollout path.
 
 ## Rollback
 
-TBD
+- Define how to reverse schema, migration, configuration and code changes.
+- For risky changes, name backup, restore or mitigation expectations before deploy.
+- Não marque uma mudança de dados como pronta sem notas de rollback ou motivo explícito para rollback não ser necessário.
 
-## Decisions
+## Decisões
 
-TBD
+Record durable data implementation decisions here only after confirmation. Feature-specific migration notes belong in implementation notes or PR notes.
 
-## Open Questions
+## Perguntas em Aberto
 
-TBD
+- Which ORM, query builder or migration tool is authoritative in this repository?
+- Which environments have real data?
+- What backup and restore path exists before production data changes?
 
-## Next Update
+## Próxima Atualização
 
-TBD
+Update when the repository adopts durable database, API or persistence conventions.
 `;
 }

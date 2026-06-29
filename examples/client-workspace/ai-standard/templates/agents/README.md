@@ -1,31 +1,31 @@
-# Agent Templates
+# Templates de Agente
 
-## Purpose
+## Propósito
 
-Templates for root, department and area AGENT.md files.
+Templates para arquivos AGENT.md de raiz, departamento e área.
 
-## When to Use
+## Use Quando
 
-Use when creating an operating owner or routing layer.
+Use quando criar um owner operacional ou uma camada de roteamento.
 
-## Files
+## Arquivos
 
 - `agent-template.md`
 - `root-agent-template.md`
 - `department-agent-template.md`
 - `area-agent-template.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../`
 - `../../instructions/`
 - `../../checklists/`
 - `../../foundation/`
 
-## Navigation
+## Navegação
 
-Use this folder only after `../../foundation/asset-taxonomy.md` confirms the needed asset type.
+Use esta pasta apenas depois que `../../foundation/asset-taxonomy.md` confirmar o tipo de asset necessário.
 
-## Agent Notes
+## Notas para Agentes
 
-Load only the matching template file. Do not load unrelated template categories.
+Carregue apenas o arquivo de template correspondente. Não carregue categorias de template não relacionadas.

@@ -1,23 +1,23 @@
-# Workflow Quality Checklist
+# Checklist de Qualidade do Workflow
 
-Use this checklist before accepting a `.workflow.md` file.
+Use este checklist antes de aceitar um arquivo `.workflow.md`.
 
 ## Ownership
 
-- [ ] The workflow belongs to a department or a truly area-owned flow.
-- [ ] The workflow coordinates multiple areas, roles or stages.
-- [ ] The workflow does not live in `.leanos/workflows/`.
+- [ ] O workflow pertence a um departamento ou a um fluxo realmente owned por uma área.
+- [ ] O workflow coordena múltiplas áreas, roles ou estágios.
+- [ ] O workflow não vive em `.leanos/workflows/`.
 
-## Flow
+## Fluxo
 
-- [ ] The workflow defines trigger, required context and end state.
-- [ ] The workflow identifies participating areas or roles.
-- [ ] The workflow defines handoffs between owners.
-- [ ] Conditional participants are marked as conditional.
-- [ ] Missing active areas are handled as gaps.
+- [ ] O workflow define gatilho, contexto obrigatório e estado final.
+- [ ] O workflow identifica áreas ou roles participantes.
+- [ ] O workflow define handoffs entre owners.
+- [ ] Participantes condicionais são marcados como condicionais.
+- [ ] Áreas ativas ausentes são tratadas como lacunas.
 
-## Output
+## Saída
 
-- [ ] The workflow states expected outputs.
-- [ ] The workflow identifies follow-up routes.
-- [ ] The workflow does not duplicate area playbooks.
+- [ ] O workflow declara as saídas esperadas.
+- [ ] O workflow identifica rotas de continuidade.
+- [ ] O workflow não duplica playbooks de área.

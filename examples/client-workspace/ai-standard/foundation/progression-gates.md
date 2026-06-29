@@ -1,20 +1,20 @@
-# Progression Gates
+# Gates de Progressão
 
-## Purpose
+## Propósito
 
-Define the concrete gates that decide whether LeanOS can move from one founder progression stage to the next.
+Define os gates concretos que decidem se o LeanOS pode mover de um estágio de progressão do founder para o próximo.
 
 Use this file with `founder-progression-model.md`. The model explains the journey. This file names the required context, allowed next stages and blocked next stages.
 
-## Gate Matrix
+## Matriz de Gates
 
-| Stage | Required Context | Allowed Next Stages | Blocked Next Stages |
+| Estágio | Contexto Obrigatório | Próximos Estágios Permitidos | Próximos Estágios Bloqueados |
 | --- | --- | --- | --- |
 | Setup Seed | `leanos.yaml` seed context, active Strategy routes, founder start intent | Strategy Seed, Idea Calibration | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
 | Strategy Seed | product idea, target user guess, problem guess, value promise guess | Strategy Baseline, Idea Calibration | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
-| Strategy Baseline | problem statement, ICP or first user segment, value proposition, alternative, riskiest assumption, business model direction, immediate focus | MVP Validation Scope, Roadmap Inicial when product_operating/growth_scaling or multiple priorities exist, Idea Calibration | MVP Delivery Decision, Product Shaping, Implementation |
-| Idea Calibration | idea restated, user and problem named, fit with ICP/value checked, evidence and assumptions visible | MVP Validation Scope, Roadmap Inicial when product_operating/growth_scaling or multiple priorities exist, Strategy Baseline | MVP Delivery Decision, Product Shaping, Implementation |
-| MVP Validation Scope | Business Thesis, Target User, Core Problem, Promise, MVP Slice, Success Signals, Pivot Signals, MVP Validation Sequence | MVP Delivery Decision, Product Shaping when Product Ops is active, Roadmap Inicial when product_operating/growth_scaling or multiple priorities exist | Implementation |
+| Strategy Baseline | declaração do problema, ICP ou primeiro segmento de usuário, proposta de valor, alternative, riskiest suposição, business model direction, immediate focus | MVP Validation Scope, Roadmap Inicial when product_operating/growth_scaling or multiple priorities exist, Idea Calibration | MVP Delivery Decision, Product Shaping, Implementation |
+| Idea Calibration | idea restated, user and problem named, fit with ICP/value checked, evidence and suposiçãos visible | MVP Validation Scope, Roadmap Inicial when product_operating/growth_scaling or multiple priorities exist, Strategy Baseline | MVP Delivery Decision, Product Shaping, Implementation |
+| MVP Validation Scope | Business Thesis, Target User, Core Problem, Promessa, MVP Slice, Success Signals, Pivot Signals, MVP Validation Sequence | MVP Delivery Decision, Product Shaping when Product Ops is active, Roadmap Inicial when product_operating/growth_scaling or multiple priorities exist | Implementation |
 | MVP Delivery Decision | Product Ops active, MVP backlog or delivery scope, PRD or equivalent scope, non-goals, acceptance criteria, dependencies | Product Shaping, Delivery Readiness | Implementation before Feature readiness |
 | Product Shaping | Epic exists, scope type, milestone or release goal, expected Features, readiness gaps | Delivery Readiness, Feature Shaping | Implementation |
 | Delivery Readiness | Feature exists, Product Ops criteria, Engineering criteria, Design/Security/DevOps criteria satisfied or not applicable | Implementation | Launch, Learning Loop without shipped or tested output |
@@ -23,53 +23,53 @@ Use this file with `founder-progression-model.md`. The model explains the journe
 | Learning Loop | evidence, insight, decision, roadmap or backlog impact, next learning action | Strategy Baseline, Roadmap Inicial, MVP Validation Scope, Product Shaping | Scaling / Operating Cadence without recurring usage or operating rhythm |
 | Scaling / Operating Cadence | product in use, recurring feedback or operations, metrics, cadence owner, backlog/launch/learning rhythm | Learning Loop, Roadmap Inicial, Delivery Readiness | Setup Seed |
 
-## Required Context
+## Contexto Obrigatório
 
-Before moving stages, confirm:
+Antes de mover estágios, confirme:
 
-- the current stage is named;
-- required context for the current stage exists in active files or is explicitly unknown;
-- assumptions are not treated as evidence;
+- o estágio atual está nomeado;
+- o contexto obrigatório do estágio atual existe em arquivos ativos ou está explicitamente desconhecido;
+- suposições não são tratadas como evidência;
 - the next route exists or returns `activation_required`;
-- the founder has confirmed any durable file update.
+- o founder confirmou qualquer atualização de arquivo durável.
 
-## Allowed Next Stages
+## Próximos Estágios Permitidos
 
-Allowed next stages are the only stages LeanOS may recommend without explaining a blocked gate.
+Próximos estágios permitidos são os únicos que o LeanOS pode recomendar sem explicar um gate bloqueado.
 
-When multiple next stages are allowed, choose the smallest one that answers the founder's intent:
+Quando múltiplos próximos estágios forem permitidos, escolha o menor que responda à intenção do founder:
 
-- if context is unclear, stay in Strategy Seed or Idea Calibration;
-- if the founder wants fast business validation, move to MVP Validation Scope;
-- if the founder wants sequence and the product is product_operating/growth_scaling or has multiple priorities, move to Roadmap Inicial;
-- if the founder chose an MVP backlog, roadmap, backlog or delivery-scope item for delivery, request Product Ops activation and move to MVP Delivery Decision.
-- if the founder confirms the first MVP validation scope and wants delivery, move from MVP Validation Scope directly to Product Ops / MVP Delivery Decision.
+- se o contexto estiver incerto, permaneça em Strategy Seed ou Idea Calibration;
+- se o founder quiser validação rápida de negócio, mova para MVP Validation Scope;
+- se o founder quiser sequência e o produto estiver em product_operating/growth_scaling ou tiver múltiplas prioridades, mova para Roadmap Inicial;
+- se o founder escolheu um item de MVP backlog, roadmap, backlog ou delivery-scope para entrega, peça ativação de Product Ops e mova para MVP Delivery Decision.
+- se o founder confirmar o primeiro escopo de validação do MVP e quiser delivery, mova de MVP Validation Scope diretamente para Product Ops / MVP Delivery Decision.
 
-## Blocked Next Stages
+## Próximos Estágios Bloqueados
 
-Blocked stages require a founder-friendly explanation and the missing gate.
+Estágios bloqueados exigem uma explicação amigável ao founder e o gate ausente.
 
-- Do not allow Engineering before Product Ops delivery readiness.
-- Do not force Roadmap between MVP Validation Scope and Product Ops delivery planning.
-- Do not allow Product Ops to create delivery scope before Strategy Baseline and MVP Validation Scope or a current MVP/backlog item exist.
-- Do not allow Growth launch work before there is a productized, landing-page, concierge or release surface to put in front of users.
-- Do not allow GitHub sync before local delivery assets or GitHub setup readiness exist.
-- Do not allow Scaling / Operating Cadence before usage, feedback, release activity or recurring operations exist.
+- Não permita Engineering antes de Product Ops delivery readiness.
+- Não force Roadmap entre MVP Validation Scope e planejamento de entrega de Product Ops.
+- Não permita Product Ops criar escopo de delivery antes de Strategy Baseline e MVP Validation Scope ou um item atual de MVP/backlog existir.
+- Não permita trabalho de launch de Growth antes de existir superfície productizada, landing page, concierge ou release para colocar diante de usuários.
+- Não permita sync com GitHub antes de existirem assets locais de delivery ou prontidão de setup do GitHub.
+- Não permita Scaling / Operating Cadence antes de existirem uso, feedback, atividade de release ou operações recorrentes.
 
-## Activation Rules
+## Regras de Ativação
 
 Use `activation_required` only when:
 
-- the requested next stage belongs to an inactive area;
-- the current stage gate is satisfied;
-- the founder has been told why the active Strategy files are no longer enough;
-- the founder confirms activation.
+- o próximo estágio solicitado pertence a uma área inativa;
+- o gate do estágio atual está satisfeito;
+- o founder foi informado por que os arquivos ativos de Strategy não são mais suficientes;
+- o founder confirma a ativação.
 
-Do not use `activation_required` as a substitute for missing Strategy context.
+Não use `activation_required` como substituto para contexto de Strategy ausente.
 
 ## Founder-Friendly Output
 
-When a gate blocks progress, say:
+Quando um gate bloquear progresso, diga:
 
 ~~~text
 Ainda falta uma decisao antes desse passo.

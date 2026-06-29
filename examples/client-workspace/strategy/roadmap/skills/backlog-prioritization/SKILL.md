@@ -1,28 +1,28 @@
 ---
 name: backlog-prioritization
-description: Use when backlog is unordered; a new idea needs placement; the current cycle needs sharper priority
+description: Use quando backlog is unordered; a new idea needs placement; the current cycle needs sharper priority
 ---
 
 # Backlog Prioritization
 
-## Overview
+## Visão Geral
 
 Prioritize candidate work by value, risk, evidence, effort and current cycle fit.
 
-## Use When
+## Use Quando
 
 - backlog is unordered
 - a new idea needs placement
 - the current cycle needs sharper priority
 
-## Required Context
+## Contexto Obrigatório
 
 - ../knowledge/backlog.md
 - ../knowledge/current-cycle.md
 - ../../product/knowledge/problem.md
 - ../../product/knowledge/value-proposition.md
 
-## Inputs
+## Entradas
 
 - Candidate backlog items
 - Product value
@@ -30,43 +30,43 @@ Prioritize candidate work by value, risk, evidence, effort and current cycle fit
 - Effort
 - Dependencies
 
-## Process
+## Processo
 
-### Step 1
+### Etapa 1
 
-Group candidate work.
+Agrupe trabalhos candidatos.
 
-### Step 2
+### Etapa 2
 
-Score by outcome value, risk reduction, effort and dependency.
+Pontue por valor de outcome, redução de risco, esforço e dependência.
 
-### Step 3
+### Etapa 3
 
-Recommend keep, park, split or discard.
+Recomende manter, estacionar, dividir ou descartar.
 
-### Step 4
+### Etapa 4
 
-Update only after confirmation.
+Atualize somente após confirmação.
 
-## Checks & Acceptance Criteria
+## Verificações e Critérios de Aceite
 
 - Top items have a clear user or business outcome.
-- Large items are flagged for epic breakdown.
+- Itens grandes são marcados para quebra em Epic.
 - Dependencies are visible.
 
-## Output
+## Saída
 
 - Prioritized backlog
 - Parked items
 - Items needing epic breakdown
 
-## Files to Update
+## Arquivos para Atualizar
 
 - ../knowledge/backlog.md
 - ../knowledge/current-cycle.md
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not use priority as permission to implement.
-- Do not hide uncertainty.
-- Do not remove backlog items without confirmation.
+- Não use prioridade como permissão para implementar.
+- Não esconda incerteza.
+- Não remova itens de backlog sem confirmação.

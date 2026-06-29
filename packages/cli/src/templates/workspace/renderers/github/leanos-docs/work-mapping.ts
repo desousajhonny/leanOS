@@ -1,7 +1,7 @@
 export function workMappingRules(): string {
   return `# GitHub Work Mapping
 
-## Purpose
+## Propósito
 
 Define how LeanOS local product work maps to GitHub tracking.
 
@@ -53,11 +53,11 @@ Store remote IDs, issue numbers, project item IDs and conflict state in:
 
 \`sync-state.yaml\`
 
-Do not store tokens, secrets or personal credentials in sync state.
+Não armazene tokens, segredos ou credenciais pessoais no estado de sync.
 
 ## Sync Location Decision
 
-Do not create or depend on \`operations/product-ops/epics/synced/\` in the initial scaffold.
+Não crie nem dependa de \`operations/product-ops/epics/synced/\` no scaffold inicial.
 
 Keep local Epics and Features in \`operations/product-ops/epics/\` and use \`sync-state.yaml\` as the index for remote status.
 
@@ -88,12 +88,12 @@ Explain:
 - what would be changed;
 - what the founder must confirm.
 
-## Do Not Do
+## Não Faça
 
-- Do not create GitHub issues for raw ideas, backlog notes or unsplit Epics.
-- Do not create one GitHub issue per Task by default.
-- Do not treat \`synced\` as product readiness.
-- Do not start implementation from GitHub sync alone; the Feature must pass \`ready-to-develop.md\`.
-- Do not call GitHub API directly from model reasoning.
+- Não crie issues do GitHub para ideias brutas, notas de backlog ou Epics não quebrados.
+- Não crie uma issue do GitHub por Task por padrão.
+- Não trate \`synced\` como prontidão de produto.
+- Não comece implementação apenas pelo sync do GitHub; a Feature deve passar por \`ready-to-develop.md\`.
+- Não chame a API do GitHub diretamente a partir do raciocínio do modelo.
 `;
 }

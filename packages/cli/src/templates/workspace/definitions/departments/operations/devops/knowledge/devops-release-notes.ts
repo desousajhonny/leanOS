@@ -1,11 +1,11 @@
 export function devopsReleaseNotesKnowledge(): string {
   return `# Release Notes
 
-## Purpose
+## Propósito
 
 Capture release scope, validation, risks and follow-up in a lightweight operational record.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -25,7 +25,7 @@ TBD
 
 TBD
 
-## Risks
+## Riscos
 
 TBD
 
@@ -37,15 +37,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

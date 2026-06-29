@@ -1,34 +1,34 @@
-# Create Area Instructions
+# Instruções para Criar Área
 
-Use when creating an area inside a root department.
+Use quando criar uma área dentro de um departamento raiz.
 
-## Before Creating
+## Antes de Criar
 
-1. Confirm the owning department.
-2. Load `../foundation/navigation-chain.md`.
-3. Confirm the area has a stable operational responsibility.
-4. Check whether an existing area already owns the work.
+1. Confirme o departamento owner.
+2. Carregue `../foundation/navigation-chain.md`.
+3. Confirme se a área tem uma responsabilidade operacional estável.
+4. Verifique se uma área existente já possui o trabalho.
 
-## Choose Templates
+## Escolha os Templates
 
 - Area README: `../templates/structure/area-readme-template.md`
 - Area YAML: `../templates/structure/area-template.yaml`
 - Area AGENT, when needed: `../templates/agents/area-agent-template.md`
 
-## Process
+## Processo
 
-1. Define area purpose.
-2. Define whether it needs `AGENT.md`.
-3. Define knowledge files, roles, skills and playbooks.
-4. Create `README.md` and `area.yaml`.
-5. Create `roles/`, `skills/`, `playbooks/` and `knowledge/` only when they are needed.
+1. Defina o propósito da área.
+2. Defina se ela precisa de `AGENT.md`.
+3. Defina arquivos de knowledge, roles, skills e playbooks.
+4. Crie `README.md` e `area.yaml`.
+5. Crie `roles/`, `skills/`, `playbooks/` e `knowledge/` apenas quando forem necessários.
 
-## Validate
+## Valide
 
 Use `../checklists/area-quality-checklist.md`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not create an area with no clear owner or use case.
-- Do not create empty execution folders just for decoration.
-- Do not bypass department ownership.
+- Não crie uma área sem owner ou caso de uso claro.
+- Não crie pastas de execução vazias apenas por decoração.
+- Não contorne o ownership do departamento.

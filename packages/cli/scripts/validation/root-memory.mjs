@@ -8,23 +8,23 @@ export async function validateRootModelMemory() {
   const rootAgent = await readFile(join(projectRoot, "AGENT.md"), "utf8");
 
   for (const requiredSection of [
-    "# Model Memory",
-    "## Current State",
-    "## Recent Decisions",
-    "## Recent Changes",
-    "## Open Threads",
-    "## Update Rules"
+    "# Memória de Modelo",
+    "## Estado Atual",
+    "## Decisões Recentes",
+    "## Mudanças Recentes",
+    "## Threads Abertas",
+    "## Regras de Atualização"
   ]) {
     assert(modelMemory.includes(requiredSection), `MODEL_MEMORY.md should include ${requiredSection}`);
   }
 
   assert(
-    modelMemory.includes("agent/model continuity"),
+    modelMemory.includes("continuidade entre agentes/modelos"),
     "MODEL_MEMORY.md should state that it exists for agent/model continuity"
   );
 
   assert(
-    modelMemory.includes("not a canonical doctrine file"),
+    modelMemory.includes("não é um arquivo canônico de doutrina"),
     "MODEL_MEMORY.md should avoid becoming a replacement for framework source of truth"
   );
 

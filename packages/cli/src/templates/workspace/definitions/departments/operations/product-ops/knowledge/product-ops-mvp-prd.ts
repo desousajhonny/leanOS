@@ -1,11 +1,11 @@
 export function productOpsMvpPrdKnowledge(): string {
   return `# Product Requirements Document
 
-## Purpose
+## Propósito
 
 Translate product strategy and MVP scope into clear requirements before Design and Engineering execution.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -21,7 +21,7 @@ TBD
 
 TBD
 
-## Scope
+## Escopo
 
 TBD
 
@@ -33,7 +33,7 @@ TBD
 
 TBD
 
-## Acceptance Criteria
+## Critérios de Aceite
 
 TBD
 
@@ -53,15 +53,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

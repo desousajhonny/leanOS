@@ -1,31 +1,31 @@
-# Roadmap Skills
+# Skills de Roadmap
 
-## Purpose
+## Propósito
 
-Skills owned by the Roadmap area.
+Skills pertencentes à área Roadmap.
 
-## When to Use
+## Use Quando
 
-Use when a selected role points to a skill.
+Use quando um papel selecionado apontar para uma skill.
 
-## Source of Truth
+## Fonte da Verdade
 
 `../AGENT.md`
 
-## Files
+## Arquivos
 
 - `roadmap/SKILL.md`
 - `backlog-prioritization/SKILL.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../roles/`
 - `../playbooks/`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
-Load only skills needed for the active task.
+Carregue apenas as skills necessárias para a tarefa ativa.

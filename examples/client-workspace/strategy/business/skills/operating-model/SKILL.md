@@ -1,70 +1,70 @@
 ---
 name: operating-model
-description: Use when operating model needs definition; AI/human collaboration is unclear; decision ownership is ambiguous
+description: Use quando modelo operacional precisa de definição; colaboração IA/humano está pouco clara; ownership de decisão está ambíguo
 ---
 
 # Operating Model
 
-## Overview
+## Visão Geral
 
-Define how humans and AI models collaborate in the business.
+Definir como humanos e modelos de IA colaboram no negócio.
 
-## Use When
+## Use Quando
 
-- operating model needs definition
-- AI/human collaboration is unclear
-- decision ownership is ambiguous
+- modelo operacional precisa de definição
+- colaboração IA/humano está pouco clara
+- ownership de decisão está ambíguo
 
-## Required Context
+## Contexto Obrigatório
 
 - ../knowledge/operating-model.md
 - ../knowledge/principles.md
 - ../knowledge/decision-log.md
 
-## Inputs
+## Entradas
 
-- Operating mode
-- Founder role
-- AI model responsibilities
-- Decision constraints
+- Modo operacional
+- Papel do founder
+- Responsabilidades dos modelos de IA
+- Restrições de decisão
 
-## Process
+## Processo
 
-### Step 1
+### Etapa 1
 
-Define what humans own.
+Defina o que humanos possuem.
 
-### Step 2
+### Etapa 2
 
-Define what AI agents can assist with.
+Defina em que agentes de IA podem ajudar.
 
-### Step 3
+### Etapa 3
 
-Name decisions that require founder confirmation.
+Nomeie decisões que exigem confirmação do founder.
 
-### Step 4
+### Etapa 4
 
-Record durable decisions in the decision log.
+Registre decisões duráveis no decision log.
 
-## Checks & Acceptance Criteria
+## Verificações e Critérios de Aceite
 
-- Human approval points are explicit.
-- AI responsibilities do not exceed the workspace rules.
-- Decisions are recorded with context.
+- Pontos de aprovação humana estão explícitos.
+- Responsabilidades de IA não excedem as regras do workspace.
+- Decisões são registradas com contexto.
 
-## Output
+## Saída
 
-- Operating model update
-- Decision log proposal
-- Open risks
+- Modo operacionall update
+- Proposta de decision log
+- Riscos em aberto
 
-## Files to Update
+## Arquivos para Atualizar
 
 - ../knowledge/operating-model.md
 - ../knowledge/decision-log.md
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not grant models authority to make irreversible business decisions.
-- Do not store secrets or private credentials.
-- Do not update files without confirmation.
+- Não conceda aos modelos autoridade para tomar decisões de negócio irreversíveis.
+- Não armazene secrets ou credenciais privadas.
+- Não atualize arquivos sem confirmação.

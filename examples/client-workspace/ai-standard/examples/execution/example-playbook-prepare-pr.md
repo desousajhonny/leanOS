@@ -1,78 +1,78 @@
 ---
 name: prepare-pr
-description: Use when prepare pr is required for the active request
+description: Use quando preparar pr é necessário para o pedido ativo
 ---
 
-# Prepare PR
+# Preparar PR
 
-## Purpose
+## Propósito
 
-Prepare a reviewable pull request from a confirmed Feature implementation.
+Preparar um pull request revisável a partir de uma implementação de Feature confirmada.
 
-## When to Use
+## Use Quando
 
-- Use when this execution sequence matches the active request.
+- Use quando esta sequência de execução corresponder ao pedido ativo.
 
-## Before Acting
+## Antes de Agir
 
 - `../AGENT.md`
 - `../area.yaml`
 
-## Inputs
+## Entradas
 
-- GitHub issue body
-- Parent epic when available
-- MVP scope
+- Corpo da issue do GitHub
+- Epic pai quando disponível
+- Escopo do MVP
 - PRD
-- Acceptance criteria
-- Product, Design, Engineering and Security criteria
-- Branch name
-- Engineering knowledge
+- Critérios de aceite
+- Critérios de Product, Design, Engineering e Security
+- Nome da branch
+- Knowledge de Engineering
 
-## Process
+## Processo
 
-1. Use this as the PR preparation step of `engineering-delivery.playbook.md`; do not use it before implementation and test status are clear
-2. Read Engineering AGENT and choose the Senior Developer role
-3. Read Feature or mapped GitHub issue, PRD, MVP scope and acceptance criteria
-4. Confirm Feature readiness with Product and Engineering criteria
-5. Check whether Design criteria are required for user-facing UX
-6. Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance
-7. Create or confirm a Feature-linked branch before code changes
-8. Use `skills/plan-implementation/SKILL.md` to plan implementation
-9. Run `playbooks/component-implementation.playbook.md` before screen or Feature work when a new reusable component is required
-10. Use `skills/follow-code-standards/SKILL.md` while changing code
-11. Use `skills/review-data-change/SKILL.md` when data/API/persistence is involved
-12. Use `skills/write-tests/SKILL.md` to update tests or explain gaps
-13. Use `skills/create-pr/SKILL.md` to prepare PR using the PR template
-14. Fill the `Founder Testing Guide` with plain-language steps, where to test, expected result, out-of-scope notes and known limits
-15. If there is no preview URL, provide the local route, command or manual fallback the founder can realistically use
+1. Use este playbook como etapa de preparação de PR de `engineering-delivery.playbook.md`; não use antes de o status de implementação e testes estar claro
+2. Leia o AGENT de Engineering e escolha a role Senior Developer
+3. Leia a Feature ou issue do GitHub mapeada, PRD, escopo do MVP e critérios de aceite
+4. Confirme prontidão da Feature com critérios de Product e Engineering
+5. Verifique se critérios de Design são obrigatórios para UX voltada ao usuário
+6. Verifique se critérios de Security/Data são obrigatórios para dados, auth, privacidade, abuso ou compliance
+7. Crie ou confirme uma branch vinculada à Feature antes de mudanças de código
+8. Use `skills/plan-implementation/SKILL.md` para planejar a implementação
+9. Execute `playbooks/component-implementation.playbook.md` antes de trabalho de tela ou Feature quando um novo componente reutilizável for necessário
+10. Use `skills/follow-code-standards/SKILL.md` ao alterar código
+11. Use `skills/review-data-change/SKILL.md` quando dados/API/persistência estiverem envolvidos
+12. Use `skills/write-tests/SKILL.md` para atualizar testes ou explicar lacunas
+13. Use `skills/create-pr/SKILL.md` para preparar o PR usando o template de PR
+14. Preencha o `Founder Testing Guide` com passos em linguagem simples, onde testar, resultado esperado, notas fora de escopo e limites conhecidos
+15. Se não houver URL de preview, forneça a rota local, comando ou fallback manual que o founder consiga usar de forma realista
 
-## Stop Conditions
+## Condições de Parada
 
-- Stop and ask for confirmation before changing security-sensitive files.
+- Pare e peça confirmação antes de alterar arquivos sensíveis de segurança.
 
-## Acceptance Criteria & Outputs
+## Critérios de Aceite e Saídas
 
-- Implementation summary
-- Branch used
-- Files changed
-- Tests run or proposed
+- Resumo de implementação
+- Branch usada
+- Arquivos alterados
+- Testes executados ou propostos
 - Founder Testing Guide
-- PR draft
-- Known risks
+- Rascunho de PR
+- Riscos conhecidos
 
-## Files to Update
+## Arquivos para Atualizar
 
-- Update `../knowledge/implementation-notes.md` when implementation decisions should persist.
-- Update `../knowledge/pr-log.md` after PR creation or when the user asks for a persistent PR record.
+- Atualize `../knowledge/implementation-notes.md` quando decisões de implementação precisarem persistir.
+- Atualize `../knowledge/pr-log.md` após a criação do PR ou quando o usuário pedir um registro persistente de PR.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not duplicate a workflow.
-- Do not duplicate skills.
-- Do not invent missing context.
-- Do not update files without explicit confirmation.
+- Não duplique um workflow.
+- Não duplique skills.
+- Não invente contexto ausente.
+- Não atualize arquivos sem confirmação explícita.
 
-## Navigation
+## Navegação
 
-Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Comece em `../AGENT.md`, escolha um papel em `../roles/`, carregue as skills necessárias em `../skills/` e então use este playbook.

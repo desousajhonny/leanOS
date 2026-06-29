@@ -97,7 +97,7 @@ export async function assertAiStandardAssetTaxonomy(rootDir) {
   assert(aiStandardReadme.includes("checklists/"), "AI Standard README should route to checklists");
   assert(aiStandardReadme.includes("instructions/"), "AI Standard README should route to instructions");
   assert(aiStandardReadme.includes("examples/"), "AI Standard README should route to examples");
-  assert(aiStandardReadme.includes("Do not load all of `ai-standard/` by default"), "AI Standard README should encourage minimal loading");
+  assert(aiStandardReadme.includes("Não carregue todo `ai-standard/` por padrão"), "AI Standard README should encourage minimal loading");
   assert(foundationReadme.includes("asset-taxonomy.md"), "Foundation README should list asset taxonomy");
   assert(foundationReadme.includes("navigation-chain.md"), "Foundation README should list navigation chain");
   assert(foundationReadme.includes("founder-progression-model.md"), "Foundation README should list founder progression model");
@@ -122,11 +122,11 @@ export async function assertAiStandardAssetTaxonomy(rootDir) {
     "Learning Loop",
     "Scaling / Operating Cadence",
     "activation_required",
-    "Do not answer with only `activation_required`",
+    "Não responda apenas com `activation_required`",
     "Esse pedido ja passou do ponto de estrategia",
     "Posso ativar Operations/Product Ops",
-    "Progression Intent Routing",
-    "Do not load inactive departments"
+    "Roteamento de Intenção de Progressão",
+    "Não carregue departamentos inativos"
   ]) {
     assert(founderProgressionModel.includes(expected), `Founder Progression Model should include ${expected}`);
   }
@@ -136,11 +136,11 @@ export async function assertAiStandardAssetTaxonomy(rootDir) {
   assert(founderProgressionModel.includes("approved MVP validation scope needs Product Ops ownership"), "Founder Progression Model should reserve Product Ops for approved MVP backlog planning");
   assert(founderProgressionModel.includes("progression-gates.md"), "Founder Progression Model should delegate concrete gate criteria to progression gates");
   for (const expected of [
-    "# Progression Gates",
-    "## Gate Matrix",
-    "## Required Context",
-    "## Allowed Next Stages",
-    "## Blocked Next Stages",
+    "# Gates de Progressão",
+    "## Matriz de Gates",
+    "## Contexto Obrigatório",
+    "## Próximos Estágios Permitidos",
+    "## Próximos Estágios Bloqueados",
     "Setup Seed",
     "Strategy Baseline",
     "MVP Validation Scope",
@@ -149,25 +149,25 @@ export async function assertAiStandardAssetTaxonomy(rootDir) {
   ]) {
     assert(progressionGates.includes(expected), `Progression Gates should include ${expected}`);
   }
-  assert(progressionGates.includes("Do not force Roadmap between MVP Validation Scope and Product Ops delivery planning"), "Progression Gates should block forced Roadmap between MVP validation and delivery planning");
-  assert(progressionGates.includes("Do not allow Engineering before Product Ops delivery readiness"), "Progression Gates should block premature Engineering");
+  assert(progressionGates.includes("Não force Roadmap entre MVP Validation Scope e planejamento de entrega de Product Ops"), "Progression Gates should block forced Roadmap between MVP validation and delivery planning");
+  assert(progressionGates.includes("Não permita Engineering antes de Product Ops delivery readiness"), "Progression Gates should block premature Engineering");
   assert(progressionGates.includes("activation_required"), "Progression Gates should document activation decisions");
-  assert(guidedConversation.includes("# Guided Conversation"), "Guided conversation should have expected title");
-  assert(guidedConversation.includes("the host application's native selection UI when available"), "Guided conversation should prefer native selection UI when available");
-  assert(guidedConversation.includes("If no native selection UI is available, write numbered options directly in chat"), "Guided conversation should define numbered fallback");
-  assert(guidedConversation.includes("3 to 5 numbered options"), "Guided conversation should define numbered options");
-  assert(guidedConversation.includes("not sure / help me decide"), "Guided conversation should include a help-me-decide option");
-  assert(guidedConversation.includes("You can reply with the number"), "Guided conversation should support low-friction answers");
-  assert(assetTaxonomy.includes("# Asset Taxonomy"), "Asset taxonomy should have expected title");
-  assert(assetTaxonomy.includes("Role = who acts."), "Asset taxonomy should define role concept");
-  assert(assetTaxonomy.includes("Skill = capability used."), "Asset taxonomy should define skill concept");
-  assert(assetTaxonomy.includes("Playbook = practical task execution inside an area."), "Asset taxonomy should define playbook concept");
-  assert(assetTaxonomy.includes("Knowledge = information/source of truth."), "Asset taxonomy should define knowledge concept");
-  assert(assetTaxonomy.includes("Workflow = coordination across areas, stages or handoffs."), "Asset taxonomy should define workflow concept");
+  assert(guidedConversation.includes("# Conversa Guiada"), "Guided conversation should have expected title");
+  assert(guidedConversation.includes("a UI nativa de seleção da aplicação host quando disponível"), "Guided conversation should prefer native selection UI when available");
+  assert(guidedConversation.includes("Se não houver UI nativa de seleção disponível, escreva opções numeradas diretamente no chat"), "Guided conversation should define numbered fallback");
+  assert(guidedConversation.includes("3 a 5 opções numeradas"), "Guided conversation should define numbered options");
+  assert(guidedConversation.includes("não tenho certeza / me ajude a decidir"), "Guided conversation should include a help-me-decide option");
+  assert(guidedConversation.includes("Você pode responder com o número"), "Guided conversation should support low-friction answers");
+  assert(assetTaxonomy.includes("# Taxonomia de Assets"), "Asset taxonomy should have expected title");
+  assert(assetTaxonomy.includes("Role = quem atua."), "Asset taxonomy should define role concept");
+  assert(assetTaxonomy.includes("Skill = capacidade usada."), "Asset taxonomy should define skill concept");
+  assert(assetTaxonomy.includes("Playbook = execução prática de tarefa dentro de uma área."), "Asset taxonomy should define playbook concept");
+  assert(assetTaxonomy.includes("Knowledge = informação/source of truth."), "Asset taxonomy should define knowledge concept");
+  assert(assetTaxonomy.includes("Workflow = coordenação entre áreas, estágios ou handoffs."), "Asset taxonomy should define workflow concept");
   assert(assetTaxonomy.includes("## Workflow vs Playbook"), "Asset taxonomy should distinguish workflows from playbooks");
-  assert(assetTaxonomy.includes("Workflow = coordinates multiple areas, stages or handoffs."), "Asset taxonomy should clarify workflow scope");
-  assert(assetTaxonomy.includes("Playbook = executes a practical task inside one area."), "Asset taxonomy should clarify playbook scope");
-  assert(assetTaxonomy.includes("| Asset | What It Is | Question It Answers |"), "Asset taxonomy should include summary table");
+  assert(assetTaxonomy.includes("Workflow = coordena múltiplas áreas, estágios ou handoffs."), "Asset taxonomy should clarify workflow scope");
+  assert(assetTaxonomy.includes("Playbook = executa uma tarefa prática dentro de uma área."), "Asset taxonomy should clarify playbook scope");
+  assert(assetTaxonomy.includes("| Asset | O Que É | Pergunta Que Responde |"), "Asset taxonomy should include summary table");
   assert(assetTaxonomy.includes("`AGENT.md`"), "Asset taxonomy should explain AGENT.md");
   assert(assetTaxonomy.includes("`README.md`"), "Asset taxonomy should explain README.md");
   assert(assetTaxonomy.includes("`department.yaml`"), "Asset taxonomy should explain department.yaml");
@@ -182,17 +182,17 @@ export async function assertAiStandardAssetTaxonomy(rootDir) {
   assert(assetTaxonomy.includes("operations/design/skills/accessibility/SKILL.md"), "Asset taxonomy should include Design skill example");
   assert(assetTaxonomy.includes("operations/design/playbooks/design-foundation.playbook.md"), "Asset taxonomy should include Design playbook example");
   assert(assetTaxonomy.includes("operations/design/knowledge/design-system.md"), "Asset taxonomy should include Design knowledge example");
-  assert(creationRules.includes("## Creation Decision"), "Creation rules should explain creation decisions");
-  assert(creationRules.includes("## Placement Rules"), "Creation rules should explain placement rules");
-  assert(creationRules.includes("## Confirmation Rule"), "Creation rules should explain confirmation rules");
-  assert(creationRules.includes("Do not create files just to make the workspace look complete"), "Creation rules should prevent cosmetic scaffolding");
-  assert(qualityCriteria.includes("## Universal Criteria"), "Quality criteria should include universal criteria");
-  assert(qualityCriteria.includes("## Asset-Specific Signals"), "Quality criteria should include asset-specific signals");
-  assert(qualityCriteria.includes("## Rejection Criteria"), "Quality criteria should include rejection criteria");
-  assert(folderDocumentationRules.includes("# Folder Documentation Rules"), "Folder documentation rules should have expected title");
-  assert(folderDocumentationRules.includes("A folder README is a map, not the operator"), "Folder documentation rules should define README responsibility");
-  assert(folderDocumentationRules.includes("## Required Sections"), "Folder documentation rules should define required sections");
-  assert(folderDocumentationRules.includes("Do not make folder README files huge inventories"), "Folder documentation rules should prevent huge inventories");
+  assert(creationRules.includes("## Decisão de Criação"), "Creation rules should explain creation decisions");
+  assert(creationRules.includes("## Regras de Posicionamento"), "Creation rules should explain placement rules");
+  assert(creationRules.includes("## Regra de Confirmação"), "Creation rules should explain confirmation rules");
+  assert(creationRules.includes("Não crie arquivos apenas para o workspace parecer completo"), "Creation rules should prevent cosmetic scaffolding");
+  assert(qualityCriteria.includes("## Critérios Universais"), "Quality criteria should include universal criteria");
+  assert(qualityCriteria.includes("## Sinais Específicos por Asset"), "Quality criteria should include asset-specific signals");
+  assert(qualityCriteria.includes("## Critérios de Rejeição"), "Quality criteria should include rejection criteria");
+  assert(folderDocumentationRules.includes("# Regras de Documentação de Pasta"), "Folder documentation rules should have expected title");
+  assert(folderDocumentationRules.includes("Um README de pasta é um mapa, não o operador"), "Folder documentation rules should define README responsibility");
+  assert(folderDocumentationRules.includes("## Seções Obrigatórias"), "Folder documentation rules should define required sections");
+  assert(folderDocumentationRules.includes("Não transforme READMEs de pasta em inventários enormes"), "Folder documentation rules should prevent huge inventories");
 }
 
 export async function assertAiStandardTemplates(rootDir) {
@@ -214,19 +214,19 @@ export async function assertAiStandardTemplates(rootDir) {
   assert(templatesReadme.includes("github/"), "Templates README should route to GitHub");
   assert(templatesReadme.includes("design/"), "Templates README should route to Design templates");
   assert(templatesReadme.includes("review/"), "Templates README should route to review");
-  assert(templatesReadme.includes("Do not load every template by default"), "Templates README should discourage loading every template");
+  assert(templatesReadme.includes("Não carregue todos os templates por padrão"), "Templates README should discourage loading every template");
   assert(agentsReadme.includes("root-agent-template.md"), "Agent templates README should list root agent template");
   assert(structureReadme.includes("department-template.yaml"), "Structure templates README should list department YAML template");
   assert(executionReadme.includes("role-template.md"), "Execution templates README should list role template");
   assert(executionReadme.includes("playbook-template.md"), "Execution templates README should list playbook template");
   assert(executionReadme.includes("workflow-template.md"), "Execution templates README should list workflow template");
-  assert(playbookTemplate.includes("## Guided Conversation"), "Playbook template should include guided conversation section");
+  assert(playbookTemplate.includes("## Conversa Guiada"), "Playbook template should include guided conversation section");
   assert(playbookTemplate.includes("../../../ai-standard/foundation/guided-conversation.md"), "Playbook template should point to guided conversation foundation");
   assert(githubReadme.includes("github-epic-template.md"), "GitHub templates README should list epic template");
   assert(githubReadme.includes("github-feature-template.md"), "GitHub templates README should list feature template");
   assert(githubReadme.includes("pull-request-template.md"), "GitHub templates README should list PR template");
   assert(designReadme.includes("component-spec-template.md"), "Design templates README should list component spec template");
-  for (const heading of ["## When To Use", "## Anatomy", "## Variants", "## States", "## Accessibility", "## Composition Rules", "## Engineering Notes", "## Do Not Do"]) {
+  for (const heading of ["## When To Use", "## Anatomy", "## Variants", "## States", "## Accessibility", "## Composition Rules", "## Engineering Notes", "## Não Faça"]) {
     assert(componentSpecTemplate.includes(heading), `Component spec template should include ${heading}`);
   }
   assert(reviewReadme.includes("code-review-template.md"), "Review templates README should list code review template");
@@ -245,25 +245,25 @@ export async function assertAiStandardChecklists(rootDir) {
   assert(checklistsReadme.includes("workflow-quality-checklist.md"), "Checklists README should list workflow checklist");
   assert.equal(checklistsReadme.includes("command-quality-checklist.md"), false, "Checklists README should not list command checklist");
   assert.equal(await exists(join(rootDir, "ai-standard", "checklists", "command-quality-checklist.md")), false, "Command checklist should not be generated");
-  assert(checklistsReadme.includes("Do not treat all checklists as interchangeable"), "Checklists README should explain checklist specificity");
-  assert(agentChecklist.includes("Root agents route only to departments"), "Agent checklist should validate root routing boundaries");
-  assert(agentChecklist.includes("does not try to be a full inventory"), "Agent checklist should prevent giant inventories");
-  assert(readmeChecklist.includes("The README is a map, not the operator"), "README checklist should define README responsibility");
-  assert(readmeChecklist.includes("does not duplicate the full content of child files"), "README checklist should prevent duplication");
-  assert(departmentChecklist.includes("does not contain `roles/`, `skills/` or `playbooks/` directly"), "Department checklist should enforce area-first execution assets");
-  assert(departmentChecklist.includes("Department workflows coordinate across areas or stages"), "Department checklist should validate workflow ownership");
-  assert(areaChecklist.includes("has `roles/`, `skills/` and `playbooks/`"), "Area checklist should validate execution folders");
-  assert(areaChecklist.includes("Area AGENT, when present, chooses the specialist role"), "Area checklist should validate area routing");
-  assert(roleChecklist.includes("with which hat should the agent act"), "Role checklist should validate persona responsibility");
-  assert(roleChecklist.includes("points to relevant skills"), "Role checklist should require skill pointers");
-  assert(skillChecklist.includes("one reusable capability"), "Skill checklist should validate reusable capability");
-  assert(skillChecklist.includes("does not become a full process sequence"), "Skill checklist should avoid playbook duplication");
-  assert(playbookChecklist.includes("ordered execution sequence"), "Playbook checklist should validate sequencing");
-  assert(playbookChecklist.includes("uses skills rather than duplicating all skill content"), "Playbook checklist should avoid skill duplication");
-  assert(playbookChecklist.includes("## Guided Conversation"), "Playbook checklist should include guided conversation criteria");
-  assert(playbookChecklist.includes("numbered options"), "Playbook checklist should validate guided numbered options");
-  assert(workflowChecklist.includes("does not live in `.leanos/workflows/`"), "Workflow checklist should keep workflows local to departments or areas");
-  assert(workflowChecklist.includes("defines handoffs between owners"), "Workflow checklist should validate handoffs");
+  assert(checklistsReadme.includes("Não trate todos os checklists como intercambiáveis"), "Checklists README should explain checklist specificity");
+  assert(agentChecklist.includes("Agentes raiz roteiam apenas para departamentos"), "Agent checklist should validate root routing boundaries");
+  assert(agentChecklist.includes("não tenta ser um inventário completo"), "Agent checklist should prevent giant inventories");
+  assert(readmeChecklist.includes("O README é um mapa, não o operador"), "README checklist should define README responsibility");
+  assert(readmeChecklist.includes("não duplica o conteúdo completo dos arquivos filhos"), "README checklist should prevent duplication");
+  assert(departmentChecklist.includes("não contém `roles/`, `skills/` ou `playbooks/` diretamente"), "Department checklist should enforce area-first execution assets");
+  assert(departmentChecklist.includes("Workflows de departamento coordenam entre áreas ou estágios"), "Department checklist should validate workflow ownership");
+  assert(areaChecklist.includes("tem `roles/`, `skills/` e `playbooks/`"), "Area checklist should validate execution folders");
+  assert(areaChecklist.includes("O AGENT da área, quando existir, escolhe a role especialista"), "Area checklist should validate area routing");
+  assert(roleChecklist.includes("com qual chapéu o agente deve atuar"), "Role checklist should validate persona responsibility");
+  assert(roleChecklist.includes("aponta para skills relevantes"), "Role checklist should require skill pointers");
+  assert(skillChecklist.includes("uma capacidade reutilizável"), "Skill checklist should validate reusable capability");
+  assert(skillChecklist.includes("não se torna uma sequência completa de processo"), "Skill checklist should avoid playbook duplication");
+  assert(playbookChecklist.includes("sequência ordenada de execução"), "Playbook checklist should validate sequencing");
+  assert(playbookChecklist.includes("usa skills em vez de duplicar todo o conteúdo delas"), "Playbook checklist should avoid skill duplication");
+  assert(playbookChecklist.includes("## Conversa Guiada"), "Playbook checklist should include guided conversation criteria");
+  assert(playbookChecklist.includes("opções numeradas"), "Playbook checklist should validate guided numbered options");
+  assert(workflowChecklist.includes("não vive em `.leanos/workflows/`"), "Workflow checklist should keep workflows local to departments or areas");
+  assert(workflowChecklist.includes("define handoffs entre owners"), "Workflow checklist should validate handoffs");
 }
 
 export async function assertAiStandardInstructions(rootDir) {
@@ -283,7 +283,7 @@ export async function assertAiStandardInstructions(rootDir) {
     await Promise.all(instructionFiles.map(async (name) => [name, await readFile(join(instructionsRoot, `${name}-instructions.md`), "utf8")]))
   );
 
-  assert(instructionsReadme.includes("Do not use one instruction for every asset type"), "Instructions README should explain instruction specificity");
+  assert(instructionsReadme.includes("Não use uma instrução única para todos os tipos de asset"), "Instructions README should explain instruction specificity");
   assert(instructionsReadme.includes("../foundation/asset-taxonomy.md"), "Instructions README should point to asset taxonomy");
   assert(instructionsReadme.includes("../foundation/creation-rules.md"), "Instructions README should point to creation rules");
   assert(instructionsReadme.includes("../templates/"), "Instructions README should point to templates");
@@ -295,47 +295,47 @@ export async function assertAiStandardInstructions(rootDir) {
   assert(contents["create-agent"].includes("../templates/agents/department-agent-template.md"), "Create agent instructions should point to department agent template");
   assert(contents["create-agent"].includes("../templates/agents/area-agent-template.md"), "Create agent instructions should point to area agent template");
   assert(contents["create-agent"].includes("../checklists/agent-quality-checklist.md"), "Create agent instructions should point to agent checklist");
-  assert(contents["create-agent"].includes("Do not make root AGENT route directly to area roles or skills"), "Create agent instructions should protect Navigation Chain levels");
+  assert(contents["create-agent"].includes("Não faça o AGENT raiz rotear diretamente para roles ou skills de área"), "Create agent instructions should protect Navigation Chain levels");
 
   assert(contents["create-readme"].includes("../foundation/folder-documentation-rules.md"), "Create README instructions should point to folder documentation rules");
   assert(contents["create-readme"].includes("../templates/structure/folder-readme-template.md"), "Create README instructions should point to folder README template");
   assert(contents["create-readme"].includes("../checklists/readme-quality-checklist.md"), "Create README instructions should point to README checklist");
-  assert(contents["create-readme"].includes("Keep it a map, not an executor"), "Create README instructions should keep README as a map");
+  assert(contents["create-readme"].includes("Mantenha como mapa, não como executor"), "Create README instructions should keep README as a map");
 
   assert(contents["create-department"].includes("../templates/agents/department-agent-template.md"), "Create department instructions should point to department agent template");
   assert(contents["create-department"].includes("../templates/structure/department-template.yaml"), "Create department instructions should point to department YAML template");
   assert(contents["create-department"].includes("../checklists/department-quality-checklist.md"), "Create department instructions should point to department checklist");
-  assert(contents["create-department"].includes("Do not create roles, skills or playbooks at department root"), "Create department instructions should protect area-owned assets");
+  assert(contents["create-department"].includes("Não crie roles, skills ou playbooks na raiz do departamento"), "Create department instructions should protect area-owned assets");
 
   assert(contents["create-area"].includes("../templates/structure/area-template.yaml"), "Create area instructions should point to area YAML template");
   assert(contents["create-area"].includes("../templates/agents/area-agent-template.md"), "Create area instructions should point to area agent template");
   assert(contents["create-area"].includes("../checklists/area-quality-checklist.md"), "Create area instructions should point to area checklist");
-  assert(contents["create-area"].includes("Create `roles/`, `skills/`, `playbooks/` and `knowledge/` only when they are needed"), "Create area instructions should avoid decorative folders");
+  assert(contents["create-area"].includes("Crie `roles/`, `skills/`, `playbooks/` e `knowledge/` apenas quando forem necessários"), "Create area instructions should avoid decorative folders");
 
   assert(contents["create-role"].includes("../templates/execution/role-template.md"), "Create role instructions should point to role template");
   assert(contents["create-role"].includes("../checklists/role-quality-checklist.md"), "Create role instructions should point to role checklist");
-  assert(contents["create-role"].includes("Define what hat the agent should wear"), "Create role instructions should define persona responsibility");
-  assert(contents["create-role"].includes("Do not create a role for a one-off task"), "Create role instructions should avoid one-off roles");
+  assert(contents["create-role"].includes("Defina qual chapéu operacional o agente deve vestir"), "Create role instructions should define persona responsibility");
+  assert(contents["create-role"].includes("Não crie uma role para uma tarefa única"), "Create role instructions should avoid one-off roles");
 
   assert(contents["create-skill"].includes("../templates/execution/skill-template.md"), "Create skill instructions should point to skill template");
   assert(contents["create-skill"].includes("../checklists/skill-quality-checklist.md"), "Create skill instructions should point to skill checklist");
-  assert(contents["create-skill"].includes("Define one reusable capability"), "Create skill instructions should define reusable capability");
-  assert(contents["create-skill"].includes("Avoid turning the skill into a full ordered process"), "Create skill instructions should avoid playbook duplication");
+  assert(contents["create-skill"].includes("Defina uma capacidade reutilizável"), "Create skill instructions should define reusable capability");
+  assert(contents["create-skill"].includes("Evite transformar a skill em um processo ordenado completo"), "Create skill instructions should avoid playbook duplication");
 
   assert(contents["create-playbook"].includes("../templates/execution/playbook-template.md"), "Create playbook instructions should point to playbook template");
   assert(contents["create-playbook"].includes("../foundation/guided-conversation.md"), "Create playbook instructions should point to guided conversation foundation when needed");
   assert(contents["create-playbook"].includes("../checklists/playbook-quality-checklist.md"), "Create playbook instructions should point to playbook checklist");
-  assert(contents["create-playbook"].includes("Reference skills instead of duplicating them"), "Create playbook instructions should reference skills");
-  assert(contents["create-playbook"].includes("Guided Conversation"), "Create playbook instructions should require guided conversation when founder input is needed");
-  assert(contents["create-playbook"].includes("Do not duplicate a workflow"), "Create playbook instructions should avoid workflow duplication");
+  assert(contents["create-playbook"].includes("Referencie skills em vez de duplicá-las"), "Create playbook instructions should reference skills");
+  assert(contents["create-playbook"].includes("Conversa Guiada"), "Create playbook instructions should require guided conversation when founder input is needed");
+  assert(contents["create-playbook"].includes("Não duplique um workflow"), "Create playbook instructions should avoid workflow duplication");
 
   assert(contents["create-workflow"].includes("../templates/execution/workflow-template.md"), "Create workflow instructions should point to workflow template");
   assert(contents["create-workflow"].includes("../checklists/workflow-quality-checklist.md"), "Create workflow instructions should point to workflow checklist");
-  assert(contents["create-workflow"].includes("spans multiple areas, roles or stages"), "Create workflow instructions should explain workflow scope");
-  assert(contents["create-workflow"].includes("Do not place business workflows in `.leanos/workflows/`"), "Create workflow instructions should keep business workflows local");
+  assert(contents["create-workflow"].includes("atravessa múltiplas áreas, roles ou estágios"), "Create workflow instructions should explain workflow scope");
+  assert(contents["create-workflow"].includes("Não coloque workflows de negócio em `.leanos/workflows/`"), "Create workflow instructions should keep business workflows local");
 
   for (const [name, content] of Object.entries(contents)) {
-    assert.equal(content.includes("Choose the active department and area"), false, `${name} instructions should not use the old generic body`);
+    assert.equal(content.includes("Escolha o departamento e a área ativos"), false, `${name} instructions should not use the old generic body`);
   }
 
   assert(new Set(Object.values(contents)).size === instructionFiles.length, "Instructions should be specific, not identical copies");
@@ -360,8 +360,8 @@ export async function assertAiStandardExamples(rootDir) {
   const prExample = await readFile(join(examplesRoot, "github", "example-pull-request.md"), "utf8");
   const codeReviewExample = await readFile(join(examplesRoot, "review", "example-code-review.md"), "utf8");
 
-  assert(examplesReadme.includes("Examples show what \"good enough\" can look like"), "Examples README should explain examples are quality references");
-  assert(examplesReadme.includes("They are not active workspace context, not templates and not instructions"), "Examples README should prevent example misuse");
+  assert(examplesReadme.includes("Exemplos mostram como \"bom o bastante\" pode parecer"), "Examples README should explain examples are quality references");
+  assert(examplesReadme.includes("Eles não são contexto ativo do workspace, nem templates, nem instruções"), "Examples README should prevent example misuse");
   assert(examplesReadme.includes("agents/"), "Examples README should route to agents examples");
   assert(examplesReadme.includes("structure/"), "Examples README should route to structure examples");
   assert(examplesReadme.includes("execution/"), "Examples README should route to execution examples");
@@ -384,21 +384,21 @@ export async function assertAiStandardExamples(rootDir) {
   assert(reviewReadme.includes("example-code-review.md"), "Review examples README should list code review example");
 
   assert(areaAgentExample.includes("# Design Agent"), "Area AGENT example should use a concrete Design area");
-  assert(areaAgentExample.includes("Role Routing"), "Area AGENT example should show role routing");
-  assert(areaAgentExample.includes("operations/design/AGENT.md -> Role -> Skills -> Playbook -> Output"), "Area AGENT example should show area Navigation Chain");
-  assert(areaReadmeExample.includes("## File Responsibilities"), "Area README example should show file responsibilities");
+  assert(areaAgentExample.includes("Roteamento De Roles"), "Area AGENT example should show role routing");
+  assert(areaAgentExample.includes("operations/design/AGENT.md -> Role -> Skills -> Playbook -> Saída"), "Area AGENT example should show area Navigation Chain");
+  assert(areaReadmeExample.includes("## Responsabilidades dos Arquivos"), "Area README example should show file responsibilities");
   assert(roleExample.includes("# Senior Developer"), "Role example should use Senior Developer");
-  assert(skillExample.includes("Coherence Check"), "Skill example should use Coherence Check");
-  assert(playbookExample.includes("Prepare PR"), "Playbook example should use Prepare PR");
-  assert(workflowExample.includes("Participating Areas"), "Workflow example should show participating areas");
-  assert(workflowExample.includes("Design: conditional"), "Workflow example should mark Design as conditional");
-  assert(workflowExample.includes("Security: conditional"), "Workflow example should mark Security as conditional");
-  assert(epicExample.includes("## Product Criteria"), "Epic example should include Product criteria");
-  assert(epicExample.includes("## Design Criteria"), "Epic example should include Design criteria");
-  assert(epicExample.includes("## Security Criteria"), "Epic example should include Security criteria");
-  assert(featureExample.includes("## Definition of Done"), "Feature example should include Definition of Done");
-  assert(prExample.includes("## LeanOS Context"), "PR example should include LeanOS context");
-  assert(codeReviewExample.includes("## Findings"), "Code review example should include findings");
+  assert(skillExample.includes("Checagem De Coerência"), "Skill example should use Coherence Check");
+  assert(playbookExample.includes("Preparar PR"), "Playbook example should use Prepare PR");
+  assert(workflowExample.includes("Áreas Participantes"), "Workflow example should show participating areas");
+  assert(workflowExample.includes("Design: condicional"), "Workflow example should mark Design as conditional");
+  assert(workflowExample.includes("Security: condicional"), "Workflow example should mark Security as conditional");
+  assert(epicExample.includes("## Critérios De Product"), "Epic example should include Product criteria");
+  assert(epicExample.includes("## Critérios De Design"), "Epic example should include Design criteria");
+  assert(epicExample.includes("## Critérios De Security"), "Epic example should include Security criteria");
+  assert(featureExample.includes("## Definição De Pronto"), "Feature example should include Definition of Done");
+  assert(prExample.includes("## Contexto LeanOS"), "PR example should include LeanOS context");
+  assert(codeReviewExample.includes("## Achados"), "Code review example should include findings");
 
   for (const oldFlatExample of [
     "example-agent.md",
@@ -473,12 +473,12 @@ export async function assertAiStandardReadiness(rootDir) {
     "examples/"
   ];
   const requiredSections = [
-    "## Fast Route",
-    "## Decision Map",
-    "## Routes",
-    "## Creation Flow",
-    "## Do Not Load By Default",
-    "## Agent Notes"
+    "## Rota Rápida",
+    "## Mapa de Decisão",
+    "## Rotas",
+    "## Fluxo de Criação",
+    "## Não Carregar por Padrão",
+    "## Notas para Agentes"
   ];
 
   for (const route of requiredRoutes) {
@@ -489,18 +489,18 @@ export async function assertAiStandardReadiness(rootDir) {
     assert(aiStandardReadme.includes(section), `AI Standard README should include ${section}`);
   }
 
-  assert(aiStandardReadme.includes("Use this route for most asset creation work"), "AI Standard README should give a default creation route");
-  assert(aiStandardReadme.includes("If the next route is unclear, start with `foundation/asset-taxonomy.md`"), "AI Standard README should provide a fallback route");
-  assert(aiStandardReadme.includes("Do not load every template category"), "AI Standard README should discourage loading all templates");
-  assert(aiStandardReadme.includes("Do not let examples override active workspace context"), "AI Standard README should keep examples subordinate to context");
+  assert(aiStandardReadme.includes("Use esta rota para a maior parte do trabalho de criação de assets"), "AI Standard README should give a default creation route");
+  assert(aiStandardReadme.includes("Se a próxima rota não estiver clara, comece por `foundation/asset-taxonomy.md`"), "AI Standard README should provide a fallback route");
+  assert(aiStandardReadme.includes("Não carregue todas as categorias de template"), "AI Standard README should discourage loading all templates");
+  assert(aiStandardReadme.includes("Não deixe exemplos sobrescreverem o contexto ativo do workspace"), "AI Standard README should keep examples subordinate to context");
 
   const fileChecks = [
-    ["ai-standard/foundation/asset-taxonomy.md", ["Role = who acts.", "Skill = capability used.", "Playbook = practical task execution inside an area.", "Knowledge = information/source of truth.", "Workflow = coordination across areas, stages or handoffs."]],
-    ["ai-standard/checklists/agent-quality-checklist.md", ["Root agents route only to departments", "does not try to be a full inventory"]],
-    ["ai-standard/checklists/skill-quality-checklist.md", ["one reusable capability", "does not become a full process sequence"]],
-    ["ai-standard/instructions/create-skill-instructions.md", ["Define one reusable capability", "../templates/execution/skill-template.md", "../checklists/skill-quality-checklist.md"]],
-    ["ai-standard/templates/execution/skill-template.md", ["name: <skill-name>", "description: Use when", "## Overview", "### Step 1"]],
-    ["ai-standard/examples/README.md", ["They are not active workspace context, not templates and not instructions"]]
+    ["ai-standard/foundation/asset-taxonomy.md", ["Role = quem atua.", "Skill = capacidade usada.", "Playbook = execução prática de tarefa dentro de uma área.", "Knowledge = informação/source of truth.", "Workflow = coordenação entre áreas, estágios ou handoffs."]],
+    ["ai-standard/checklists/agent-quality-checklist.md", ["Agentes raiz roteiam apenas para departamentos", "não tenta ser um inventário completo"]],
+    ["ai-standard/checklists/skill-quality-checklist.md", ["uma capacidade reutilizável", "não se torna uma sequência completa de processo"]],
+    ["ai-standard/instructions/create-skill-instructions.md", ["Defina uma capacidade reutilizável", "../templates/execution/skill-template.md", "../checklists/skill-quality-checklist.md"]],
+    ["ai-standard/templates/execution/skill-template.md", ["name: <skill-name>", "description: Use quando", "## Visão Geral", "### Etapa 1"]],
+    ["ai-standard/examples/README.md", ["Eles não são contexto ativo do workspace, nem templates, nem instruções"]]
   ];
 
   for (const [path, snippets] of fileChecks) {

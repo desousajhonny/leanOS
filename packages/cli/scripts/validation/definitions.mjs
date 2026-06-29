@@ -43,6 +43,7 @@ export async function validateAreaDefinitionsAreModular() {
   assertEpicToFeaturesPlaybookDefinition();
   assertProductOpsSkillContracts();
   assertEngineeringSkillContracts();
+  assertEngineeringKnowledgeContracts();
   assertDevopsSkillContracts();
   assertSecuritySkillContracts();
   assertDesignSkillContracts();
@@ -123,7 +124,9 @@ function assertEpicToFeaturesPlaybookDefinition() {
   );
 
   assert(
-    [...playbook.steps, ...(playbook.filesToUpdate ?? [])].some((item) => /confirmation before creating local Feature files/i.test(item)),
+    [...playbook.steps, ...(playbook.filesToUpdate ?? [])].some(
+      (item) => /confirmation before creating local Feature files|confirmação antes de criar arquivos locais de Feature/i.test(item)
+    ),
     "epic-to-features should require confirmation before creating local Feature files"
   );
 
@@ -131,7 +134,7 @@ function assertEpicToFeaturesPlaybookDefinition() {
 
   for (const forbiddenWork of ["GitHub issue", "branch", "code", "PR"]) {
     assert(
-      new RegExp(`Do not create.*${forbiddenWork}|no ${forbiddenWork}|not create.*${forbiddenWork}`, "i").test(guardText),
+      forbidsWork(guardText, forbiddenWork),
       `epic-to-features should explicitly avoid creating ${forbiddenWork}`
     );
   }
@@ -152,12 +155,12 @@ function assertDeliveryItemToEpicPlaybookDefinition() {
   );
 
   assert(
-    playbook.outputs?.includes("Local Epic README path"),
+    playbook.outputs?.includes("Caminho do README da Epic local"),
     "delivery-item-to-epic should output the local Epic README path"
   );
 
   assert(
-    playbook.outputs?.includes("Founder confirmation status"),
+    playbook.outputs?.includes("Status de confirmação do founder"),
     "delivery-item-to-epic should output founder confirmation status"
   );
 
@@ -170,16 +173,34 @@ function assertDeliveryItemToEpicPlaybookDefinition() {
   ].join("\n");
 
   assert(
-    /only.*local.*Epic/i.test(guardText),
+    /only.*local.*Epic|somente.*Epic local/i.test(guardText),
     "delivery-item-to-epic should state that it creates only a local Epic"
   );
 
   for (const forbiddenWork of ["Feature files", "GitHub issues", "branches", "source code", "PRs"]) {
     assert(
-      new RegExp(`Do not create.*${forbiddenWork}|no ${forbiddenWork}|not create.*${forbiddenWork}`, "i").test(guardText),
+      forbidsWork(guardText, forbiddenWork),
       `delivery-item-to-epic should explicitly avoid creating ${forbiddenWork}`
     );
   }
+}
+
+function forbidsWork(text, forbiddenWork) {
+  const aliases = {
+    "Feature files": ["Feature files", "arquivos de Feature"],
+    "GitHub issues": ["GitHub issues", "issues do GitHub"],
+    "GitHub issue": ["GitHub issue", "issue do GitHub", "issues do GitHub"],
+    branches: ["branches"],
+    branch: ["branch"],
+    "source code": ["source code", "código-fonte", "código"],
+    code: ["code", "código"],
+    PRs: ["PRs"],
+    PR: ["PR"]
+  }[forbiddenWork] ?? [forbiddenWork];
+
+  return aliases.some((alias) =>
+    new RegExp(`Do not create.*${alias}|no ${alias}|not create.*${alias}|Não crie.*${alias}|não crie.*${alias}`, "i").test(text)
+  );
 }
 
 function assertProductOpsSkillContracts() {
@@ -205,29 +226,33 @@ function assertProductOpsSkillContracts() {
   const deliveryBoundaries = productOpsArea.skills.find((item) => item.slug === "define-delivery-boundaries");
 
   assert(
-    acceptanceCriteria.checks?.some((item) => /testable|pass\/fail/i.test(item)),
+    acceptanceCriteria.checks?.some((item) => /testable|testável|pass\/fail|passa\/falha/i.test(item)),
     "write-acceptance-criteria should require testable pass/fail criteria"
   );
   assert(
-    acceptanceCriteria.redLines?.some((item) => /implementation|code/i.test(item)),
+    acceptanceCriteria.redLines?.some(
+      (item) => /implementation|implementação|code|código/i.test(item)
+    ),
     "write-acceptance-criteria should block implementation details and code work"
   );
 
   assert(
-    deliveryCoherence.outputs?.includes("Coherence result"),
+    deliveryCoherence.outputs?.includes("Resultado de coerência"),
     "check-delivery-coherence should output a Coherence result"
   );
   assert(
-    deliveryCoherence.redLines?.some((item) => /rewrite|silently/i.test(item)),
+    deliveryCoherence.redLines?.some((item) => /rewrite|reescreva|silently|silenciosamente/i.test(item)),
     "check-delivery-coherence should block silent scope rewrites"
   );
 
   assert(
-    deliveryBoundaries.outputs?.includes("Design/Security/DevOps applicability"),
+    deliveryBoundaries.outputs?.includes("Aplicabilidade de Design/Security/DevOps"),
     "define-delivery-boundaries should output Design/Security/DevOps applicability"
   );
   assert(
-    deliveryBoundaries.redLines?.some((item) => /architecture artifact|source code/i.test(item)),
+    deliveryBoundaries.redLines?.some(
+      (item) => /architecture artifact|artefatos? de arquitetura|source code|código-fonte|código/i.test(item)
+    ),
     "define-delivery-boundaries should block premature architecture artifacts or source code"
   );
 }
@@ -250,43 +275,105 @@ function assertEngineeringSkillContracts() {
     "write-tests should require failing test or RED evidence when test-first is feasible"
   );
   assert(
-    writeTests.outputs?.includes("RED/GREEN evidence"),
+    writeTests.outputs?.includes("Evidência RED/GREEN"),
     "write-tests should output RED/GREEN evidence"
   );
   assert(
-    writeTests.outputs?.includes("Test gap explanation"),
+    writeTests.outputs?.includes("Explicação de lacuna de teste"),
     "write-tests should output explicit test-gap explanation"
   );
   assert(
-    writeTests.redLines?.some((item) => /tests written after implementation|manual validation/i.test(item)),
+    writeTests.redLines?.some(
+      (item) => /tests written after implementation|testes escritos depois da implementação|manual validation|validação manual/i.test(item)
+    ),
     "write-tests should block weak after-the-fact test or manual-validation claims"
   );
 
   assert(
-    createPr.outputs?.includes("PR readiness status"),
+    createPr.outputs?.includes("Status de prontidão do PR"),
     "create-pr should output PR readiness status"
   );
   assert(
-    createPr.checks?.some((item) => /tests run or test-gap explanation/i.test(item)),
+    createPr.checks?.some((item) => /tests run or test-gap explanation|testes executados ou explicação de lacuna de teste/i.test(item)),
     "create-pr should require tests run or test-gap explanation"
   );
   assert(
-    createPr.redLines?.some((item) => /founder-ready/i.test(item) && /tests|gaps|risks/i.test(item)),
+    createPr.redLines?.some(
+      (item) => /founder-ready/i.test(item) && /tests|testes|gaps|lacunas|risks|riscos/i.test(item)
+    ),
     "create-pr should block founder-ready PRs without tests, gaps and risks"
   );
 
   assert(
-    reviewPr.outputs?.includes("Evidence reviewed"),
+    reviewPr.outputs?.includes("Evidência revisada"),
     "review-pr should output evidence reviewed"
   );
   assert(
-    reviewPr.checks?.some((item) => /file\/line|line reference|artifact reference/i.test(item)),
+    reviewPr.checks?.some((item) => /file\/line|arquivo\/linha|line reference|artifact reference|referência de artefato/i.test(item)),
     "review-pr should require file/line or artifact references when possible"
   );
   assert(
-    reviewPr.redLines?.some((item) => /merge recommendation/i.test(item) && /evidence/i.test(item)),
+    reviewPr.redLines?.some((item) => /merge recommendation|recomendação de merge/i.test(item) && /evidence|evidência/i.test(item)),
     "review-pr should block merge recommendations without evidence"
   );
+}
+
+function assertEngineeringKnowledgeContracts() {
+  const engineeringArea = findOperationsArea("engineering", "Engineering");
+  const frameworkKnowledgeFiles = [
+    "knowledge/code-standards.md",
+    "knowledge/implementation-rules.md",
+    "knowledge/component-guidelines.md",
+    "knowledge/data-guidelines.md",
+    "knowledge/testing-strategy.md",
+    "knowledge/review-criteria.md"
+  ];
+
+  const readAreaFile = (path) => {
+    const file = engineeringArea.files.find((item) => item.path === path);
+
+    assert(file, `Engineering should define ${path}`);
+
+    return file.content();
+  };
+
+  for (const path of frameworkKnowledgeFiles) {
+    assert(
+      !/\bTBD\b/.test(readAreaFile(path)),
+      `${path} should not contain TBD placeholders`
+    );
+  }
+
+  const knowledgeReadme = readAreaFile("knowledge/README.md");
+  const codeStandards = readAreaFile("knowledge/code-standards.md");
+  const implementationRules = readAreaFile("knowledge/implementation-rules.md");
+  const dataGuidelines = readAreaFile("knowledge/data-guidelines.md");
+  const testingStrategy = readAreaFile("knowledge/testing-strategy.md");
+  const reviewCriteria = readAreaFile("knowledge/review-criteria.md");
+
+  assert(knowledgeReadme.includes("## Responsabilidades dos Arquivos"), "Engineering knowledge README should define file responsibilities");
+  assert(knowledgeReadme.includes("code-review-notes.md"), "Engineering knowledge README should distinguish code-review-notes.md");
+  assert(knowledgeReadme.includes("pr-log.md"), "Engineering knowledge README should distinguish pr-log.md");
+
+  for (const expectedSection of ["## Existing Patterns First", "## Modularization", "## Não Faça"]) {
+    assert(codeStandards.includes(expectedSection), `code-standards.md should include ${expectedSection}`);
+  }
+
+  for (const expectedSection of ["## Contexto Obrigatório Before Coding", "## Design Dependency", "## Linhas Vermelhas"]) {
+    assert(implementationRules.includes(expectedSection), `implementation-rules.md should include ${expectedSection}`);
+  }
+
+  for (const expectedContent of ["## Migrations", "## Rollback", "Security"]) {
+    assert(dataGuidelines.includes(expectedContent), `data-guidelines.md should include ${expectedContent}`);
+  }
+
+  for (const expectedContent of ["RED/GREEN", "## Test Gaps", "Manual Validation"]) {
+    assert(testingStrategy.includes(expectedContent), `testing-strategy.md should include ${expectedContent}`);
+  }
+
+  for (const expectedContent of ["## Findings By Severity", "## Merge Recommendation", "Design Review"]) {
+    assert(reviewCriteria.includes(expectedContent), `review-criteria.md should include ${expectedContent}`);
+  }
 }
 
 function assertDevopsSkillContracts() {
@@ -302,23 +389,23 @@ function assertDevopsSkillContracts() {
   }
 
   assert(
-    findAreaSkill(devopsArea, "configure-environments", "DevOps").outputs?.includes("Environment readiness status"),
+    findAreaSkill(devopsArea, "configure-environments", "DevOps").outputs?.includes("Status de prontidão de ambiente"),
     "configure-environments should output Environment readiness status"
   );
   assert(
-    findAreaSkill(devopsArea, "setup-ci", "DevOps").outputs?.includes("CI gate decision"),
+    findAreaSkill(devopsArea, "setup-ci", "DevOps").outputs?.includes("Decisão de gate de CI"),
     "setup-ci should output CI gate decision"
   );
   assert(
-    findAreaSkill(devopsArea, "plan-deployment", "DevOps").outputs?.includes("Deploy/no-deploy decision"),
+    findAreaSkill(devopsArea, "plan-deployment", "DevOps").outputs?.includes("Decisão deploy/no-deploy"),
     "plan-deployment should output Deploy/no-deploy decision"
   );
   assert(
-    findAreaSkill(devopsArea, "define-observability", "DevOps").outputs?.includes("Signal owner/action map"),
+    findAreaSkill(devopsArea, "define-observability", "DevOps").outputs?.includes("Mapa de owner/ação por sinal"),
     "define-observability should output Signal owner/action map"
   );
   assert(
-    findAreaSkill(devopsArea, "prepare-release", "DevOps").outputs?.includes("Release readiness status"),
+    findAreaSkill(devopsArea, "prepare-release", "DevOps").outputs?.includes("Status de prontidão de release"),
     "prepare-release should output Release readiness status"
   );
 }

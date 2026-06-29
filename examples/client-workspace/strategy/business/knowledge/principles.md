@@ -1,21 +1,21 @@
 # Principles
 
-## Purpose
+## Propósito
 
 Capture operating principles that guide decisions.
 
-## Current State
+## Estado Atual
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD

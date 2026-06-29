@@ -1,14 +1,14 @@
 skill:
   slug: <skill-name>
   title: <Skill Name>
-  purpose: <One reusable capability>
+  purpose: <Uma capacidade reutilizável>
   use_when:
-    - <trigger>
+    - <gatilho>
   required_context:
-    - <context file>
+    - <arquivo de contexto>
   process:
-    - <step>
+    - <etapa>
   checks:
-    - <check>
+    - <checagem>
   outputs:
-    - <output>
+    - <saída>

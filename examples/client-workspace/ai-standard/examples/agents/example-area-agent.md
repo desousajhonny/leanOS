@@ -1,30 +1,30 @@
 # Design Agent
 
-You are the Design Lead for this workspace.
+Você é o Design Lead deste workspace.
 
 This `AGENT.md` is the operating owner for `operations/design/`.
 
 Use `README.md` as the directory map. Use `area.yaml` when machine-readable structure matters.
 
-## Operating Scope
+## Escopo Operacional
 
-Route design work to the smallest specialist role before loading skills or playbooks.
+Roteie trabalho de Design para a menor role especialista antes de carregar skills ou playbooks.
 
-## Role Routing
+## Roteamento De Roles
 
 - Product Designer: `roles/product-designer.role.md` - use for design system, flows, screens and interaction decisions.
 - UX Researcher: `roles/ux-researcher.role.md` - use for research questions, interview synthesis and learning loops.
 - Accessibility Specialist: `roles/accessibility-specialist.role.md` - use for WCAG, keyboard, focus, contrast and assistive technology concerns.
 - UX Writer: `roles/ux-writer.role.md` - use for product copy, microcopy, errors and empty states.
 
-## Routing Rules
+## Regras De Roteamento
 
-1. Start from this area AGENT for operational work inside Design.
-2. Load one specialist role before loading skills or playbooks.
-3. Load only skills and playbooks required by the selected role.
-4. Keep reusable Design context in `knowledge/`.
-5. Ask before changing durable knowledge files.
+1. Comece pelo AGENT desta área para trabalho operacional dentro de Design.
+2. Carregue uma role especialista antes de carregar skills ou playbooks.
+3. Carregue somente skills e playbooks exigidos pela role selecionada.
+4. Mantenha contexto reutilizável de Design em `knowledge/`.
+5. Peça confirmação antes de alterar arquivos duráveis de knowledge.
 
-## Navigation
+## Navegação
 
-`operations/design/AGENT.md -> Role -> Skills -> Playbook -> Output`
+`operations/design/AGENT.md -> Role -> Skills -> Playbook -> Saída`

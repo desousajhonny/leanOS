@@ -1,24 +1,24 @@
 ---
 name: roadmap-cycle-planning
-description: Use when roadmap cycle planning is required for the active request
+description: Use quando roadmap cycle planning é necessário para o pedido ativo
 ---
 
 # Roadmap Cycle Planning
 
-## Purpose
+## Propósito
 
-Plan the next coherent roadmap cycle from product strategy, operating constraints and known risks.
+Planeje o próximo ciclo coerente de roadmap a partir de estratégia de produto, restrições operacionais e riscos conhecidos.
 
-## When to Use
+## Use Quando
 
-- Use when this execution sequence matches the active request.
+- Use quando esta sequência de execução corresponder ao pedido ativo.
 
-## Before Acting
+## Antes de Agir
 
 - `../AGENT.md`
 - `../area.yaml`
 
-## Inputs
+## Entradas
 
 - ../../../leanos.yaml
 - ../knowledge/roadmap.md
@@ -29,41 +29,41 @@ Plan the next coherent roadmap cycle from product strategy, operating constraint
 - ../../product/knowledge/value-proposition.md
 - ../../product/knowledge/validation-notes.md
 
-## Process
+## Processo
 
-1. Load the Roadmap AGENT and Roadmap Planner role.
-2. Use only when the product is `product_operating` or `growth_scaling`, or when the founder explicitly asks to sequence multiple priorities.
-3. If the business is `mvp_building` or `mvp_live_learning`, route the idea to `activation_required: operations.product-ops` for MVP scope, backlog or delivery planning.
-4. Review product strategy, customer signals and validation notes.
-5. Review backlog candidates.
-6. Choose Now, Next, Later and Not Planned boundaries.
-7. Define current cycle goal and success criteria.
-8. Propose updates and wait for confirmation before writing.
+1. Carregue o AGENT de Roadmap e a role Roadmap Planner.
+2. Use apenas quando o produto estiver em `product_operating` ou `growth_scaling`, ou quando o founder pedir explicitamente para sequenciar múltiplas prioridades.
+3. Se o negócio estiver em `mvp_building` ou `mvp_live_learning`, roteie a ideia para `activation_required: operations.product-ops` para escopo de MVP, backlog ou planejamento de delivery.
+4. Revise estratégia de produto, sinais de cliente e notas de validação.
+5. Revise candidatos de backlog.
+6. Escolha limites de Now, Next, Later e Not Planned.
+7. Defina objetivo do ciclo atual e critérios de sucesso.
+8. Proponha atualizações e aguarde confirmação antes de escrever.
 
-## Stop Conditions
+## Condições de Parada
 
-- Stop and ask for confirmation before changing security-sensitive files.
+- Pare e peça confirmação antes de alterar arquivos sensíveis de segurança.
 
-## Acceptance Criteria & Outputs
+## Critérios de Aceite e Saídas
 
-- Roadmap cycle summary
-- Current cycle proposal
-- Backlog changes
-- Milestone follow-up
+- Resumo do ciclo de roadmap
+- Proposta de ciclo atual
+- Mudanças no backlog
+- Follow-up de milestone
 
-## Files to Update
+## Arquivos para Atualizar
 
 - ../knowledge/roadmap.md
 - ../knowledge/current-cycle.md
 - ../knowledge/backlog.md
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not duplicate a workflow.
-- Do not duplicate skills.
-- Do not invent missing context.
-- Do not update files without explicit confirmation.
+- Não duplique um workflow.
+- Não duplique skills.
+- Não invente contexto ausente.
+- Não atualize arquivos sem confirmação explícita.
 
-## Navigation
+## Navegação
 
-Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Comece em `../AGENT.md`, escolha um papel em `../roles/`, carregue as skills necessárias em `../skills/` e então use este playbook.

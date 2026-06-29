@@ -1,10 +1,10 @@
 # Product
 
-## Purpose
+## Propósito
 
 Own product strategy, product core, ICP, value proposition, MVP validation scope and positioning coherence.
 
-## When to Use
+## Use Quando
 
 - start or calibrate a founder idea
 - define product core
@@ -27,23 +27,23 @@ Own product strategy, product core, ICP, value proposition, MVP validation scope
 
 
 
-## Navigation
+## Navegação
 
-1. For operational work, start with `AGENT.md`.
-2. Use this README as the directory map.
-3. After the area AGENT selects a role, load only required skills and playbooks.
-4. Produce the requested output and update source-of-truth files when needed.
+1. Para trabalho operacional, comece em `AGENT.md`.
+2. Use este README como mapa do diretório.
+3. Depois que o AGENT da área escolher um papel, carregue apenas as skills e playbooks necessários.
+4. Produza a saída solicitada e atualize arquivos de fonte da verdade quando necessário.
 
-## File Responsibilities
+## Responsabilidades dos Arquivos
 
-- `README.md`: area map and explanation.
-- `AGENT.md`: area operating lead when present.
-- `area.yaml`: machine-readable structure for this area.
-- `roles/`: operating personas for this area.
-- `skills/`: focused capabilities used by roles.
-- `playbooks/`: tactical execution sequences.
+- `README.md`: mapa e explicação da área.
+- `AGENT.md`: lead operacional da área quando presente.
+- `area.yaml`: estrutura legível por máquina para esta área.
+- `roles/`: personas operacionais desta área.
+- `skills/`: capacidades focadas usadas pelos papéis.
+- `playbooks/`: sequências táticas de execução.
 
-## Common Paths
+## Caminhos Comuns
 
 - Idea calibration request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/business-baseline/SKILL.md` -> skill `skills/product-core/SKILL.md` when enough signal exists -> playbook `playbooks/idea-calibration.playbook.md`.
 - MVP validation request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/mvp-validation-scope/SKILL.md` -> playbook `playbooks/mvp-validation-scope.playbook.md`.

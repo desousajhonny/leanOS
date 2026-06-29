@@ -1,5 +1,5 @@
-# LeanOS local trace index.
-# This file is safe to version while it contains only examples or non-sensitive summaries.
-# Add real trace entries only after founder confirmation.
+# Índice local de traces do LeanOS.
+# Este arquivo é seguro para versionar enquanto contiver apenas exemplos ou resumos não sensíveis.
+# Adicione entradas reais de trace apenas depois de confirmação do founder.
 
 traces: []

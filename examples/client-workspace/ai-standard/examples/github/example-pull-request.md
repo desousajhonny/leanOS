@@ -1,18 +1,18 @@
-# Add patient intake form flow
+# Adicionar fluxo de formulário de intake do paciente
 
-## Summary
+## Resumo
 
-Adds the initial patient intake form flow with required field validation and review state.
+Adiciona o fluxo inicial de formulário de intake do paciente com validação de campos obrigatórios e estado de review.
 
-## Linked Issue
+## Issue Vinculada
 
 Closes #554
 
-## Parent Epic
+## Epic Pai
 
 Epic #123
 
-## LeanOS Context
+## Contexto LeanOS
 
 - Department: Operations
 - Area: Engineering
@@ -20,61 +20,61 @@ Epic #123
 - Skills: plan-implementation, create-pr
 - Playbook: prepare-pr
 
-## Product / Delivery Scope Alignment
+## Alinhamento De Product / Escopo De Delivery
 
-- Roadmap item: MVP Intake Flow
-- Delivery scope: guided intake flow
-- Acceptance criteria: patient can complete and review required fields
-- Validation or learning impact: enables first usability test
+- Roadmap item: Fluxo De Intake Do MVP
+- Escopo de delivery: fluxo guiado de intake
+- Critérios de aceite: paciente consegue completar e revisar campos obrigatórios
+- Impacto de validação ou aprendizado: habilita primeiro teste de usabilidade
 
-## Design Notes
+## Notas De Design
 
-Uses the current Design foundation for form labels, spacing and focus behavior.
+Usa a fundação atual de Design para labels de formulário, espaçamento e comportamento de foco.
 
-## Security Notes
+## Notas De Security
 
-Avoids logging intake field values.
+Evita registrar valores de campos de intake em logs.
 
 ## Tests
 
-- [x] Form validation tests
-- [x] Manual keyboard navigation check
+- [x] Testes de validação de formulário
+- [x] Check manual de navegação por teclado
 
 ## Founder Testing Guide
 
-### What Changed
+### O Que Mudou
 
-Patients can now complete the first intake form flow, review answers and submit the intake.
+Pacientes agora conseguem completar o primeiro fluxo de formulário de intake, revisar respostas e enviar o intake.
 
-### Where to Test
+### Onde Testar
 
-- Preview URL: use the PR preview URL when available
-- Local route or screen: /intake
-- Test account or data: use a test patient profile only
+- URL de preview: use a URL de preview do PR quando disponível
+- Rota ou tela local: /intake
+- Conta ou dado de teste: use apenas perfil de paciente de teste
 
-### How to Test
+### Como Testar
 
-1. Open the intake route.
-2. Complete the required questions.
-3. Try submitting with one required answer missing.
-4. Review the answers.
-5. Submit the form.
+1. Abra a rota de intake.
+2. Complete as perguntas obrigatórias.
+3. Tente enviar com uma resposta obrigatória ausente.
+4. Revise as respostas.
+5. Envie o formulário.
 
-### Expected Result
+### Resultado Esperado
 
-The founder should see validation for missing required answers, a review state and a final submitted state without exposing intake data in logs.
+O founder deve ver validação para respostas obrigatórias ausentes, um estado de review e um estado final enviado sem expor dados de intake em logs.
 
-### Out of Scope
+### Fora Do Escopo
 
-Staff review dashboard and diagnosis are not included in this PR.
+Dashboard de review da equipe and diagnosis are not included in this PR.
 
-### Known Risks or Limits
+### Riscos Conhecidos Ou Limites
 
-Question order still needs usability validation.
+Ordem das perguntas ainda precisa de validação de usabilidade.
 
-## Risks
+## Riscos
 
-- Scope risk: staff review remains separate
-- Technical risk: persistence strategy may change
-- Product risk: question order still needs user validation
-- Security risk: retention policy is still open
+- Risco de escopo: review da equipe permanece separado
+- Risco técnico: estratégia de persistência pode mudar
+- Risco de Product: ordem das perguntas ainda precisa de validação com usuário
+- Risco de Security: política de retenção ainda está aberta

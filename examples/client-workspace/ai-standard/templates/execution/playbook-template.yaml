@@ -2,24 +2,24 @@ playbook:
   key: <playbook-key>
   title: <Playbook Name>
   owner_area: <department.area>
-  purpose: <practical task this playbook executes>
+  purpose: <tarefa prática que este playbook executa>
   use_when:
-    - <trigger>
+    - <gatilho>
   inputs:
-    - <input>
+    - <entrada>
   guided_conversation:
     foundation: ../../../ai-standard/foundation/guided-conversation.md
     use_when:
-      - founder decision is needed
-      - durable update needs confirmation
+      - decisão do founder é necessária
+      - atualização durável precisa de confirmação
   process:
-    - <step>
+    - <etapa>
   outputs:
-    - <output>
+    - <saída>
   files_to_update:
     - <path>
   confirmation_required:
     - durable file updates
     - external actions
   red_lines:
-    - do not duplicate a workflow
+    - não duplicar workflow

@@ -26,4 +26,4 @@ The legacy alias file is:
 
 `.github/prompts/leanos-init.prompt.md`
 
-Do not write global user configuration for this workspace without explicit user approval.
+Não escreva configuração global de usuário para este workspace sem aprovação explícita do usuário.

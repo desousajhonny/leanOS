@@ -18,7 +18,7 @@ Feature-level DRM turns those dimensions into concrete, testable criteria and in
 
 ## Readiness Rule
 
-Do not create implementation-ready features or GitHub issues until Product Ops and Engineering are clear.
+Não crie features prontas para implementação nem issues do GitHub até Product Ops e Engineering estarem claros.
 
 Design is required only when user experience is affected.
 
@@ -26,6 +26,6 @@ Security is required only when the issue has a security-sensitive surface.
 
 DevOps is required only when delivery, environment, automation, release or operational readiness is affected.
 
-## Output Rule
+## Regra de Saída
 
 If a dimension is not applicable, say why. If it is applicable but unclear, mark it as missing context and stop before creating GitHub issues.

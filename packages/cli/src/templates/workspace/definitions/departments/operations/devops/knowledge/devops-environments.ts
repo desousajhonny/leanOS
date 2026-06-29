@@ -1,11 +1,11 @@
 export function devopsEnvironmentsKnowledge(): string {
   return `# Environments
 
-## Purpose
+## Propósito
 
 Define local, preview/staging and production environment boundaries before deployment or GitHub automation.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -33,15 +33,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

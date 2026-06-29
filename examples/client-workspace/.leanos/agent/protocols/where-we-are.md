@@ -1,14 +1,14 @@
-# Where We Are Protocol
+# Protocolo Onde Estamos
 
-## Purpose
+## Propósito
 
-Help LeanOS Chief answer status, resume and readiness questions without relying on memory or inventing progress.
+Ajuda o LeanOS Chief a responder perguntas de status, retomada e readiness sem depender de memória ou inventar progresso.
 
-Use this protocol to diagnose the current product moment, explain what exists, identify what is missing and recommend the safest next LeanOS route.
+Use este protocolo para diagnosticar o momento atual do produto, explicar o que existe, identificar o que falta e recomendar a próxima rota LeanOS mais segura.
 
-## Trigger Phrases
+## Frases de Gatilho
 
-Use this protocol when the founder asks things like:
+Use este protocolo quando o founder perguntar coisas como:
 
 - "Onde paramos?"
 - "O que temos ate agora?"
@@ -18,21 +18,21 @@ Use this protocol when the founder asks things like:
 - "Vamos desenvolver o produto."
 - "Estamos prontos para implementar?"
 - "O que falta para lancar?"
-- "What do we have so far?"
-- "Can we start building?"
+- "O que temos até agora?"
+- "Podemos começar a desenvolver?"
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not answer from chat memory alone.
-- Do not recommend implementation before checking product, roadmap and delivery readiness.
-- Do not invent completed work from empty or placeholder files.
-- Do not treat a roadmap item as delivery scope unless delivery scope is explicitly defined.
-- Do not treat delivery scope as GitHub-ready until epic/issue readiness is checked.
-- Do not write files during this protocol unless the founder explicitly asks to update something after the diagnosis.
+- Não responda apenas pela memória do chat.
+- Não recomende implementação antes de checar readiness de produto, roadmap e entrega.
+- Não invente trabalho concluído a partir de arquivos vazios ou placeholders.
+- Não trate item de roadmap como escopo de entrega se o escopo de entrega não estiver definido explicitamente.
+- Não trate escopo de entrega como GitHub-ready até checar readiness de Epic/issue.
+- Não escreva arquivos durante este protocolo, a menos que o founder peça explicitamente uma atualização depois do diagnóstico.
 
-## Reading Order
+## Ordem de Leitura
 
-Load only the smallest relevant files. Start here:
+Carregue apenas os menores arquivos relevantes. Comece aqui:
 
 1. `../../context/workspace-summary.md`
 2. `../../context/current-focus.md`
@@ -40,9 +40,9 @@ Load only the smallest relevant files. Start here:
 4. `../../index/workflows.yaml`
 5. `../../../leanos.yaml`
 
-Then inspect sources based on the question:
+Depois inspecione fontes conforme a pergunta:
 
-### Strategy Baseline
+### Baseline de Strategy
 
 - `../../../strategy/product/knowledge/brief.md`
 - `../../../strategy/product/knowledge/problem.md`
@@ -50,7 +50,7 @@ Then inspect sources based on the question:
 - `../../../strategy/roadmap/knowledge/backlog.md`
 - `../../../strategy/roadmap/knowledge/roadmap.md`
 
-### Delivery Readiness
+### Readiness de Entrega
 
 - `../../../operations/product-ops/knowledge/delivery-scope.md`
 - `../../../operations/product-ops/knowledge/issue-readiness.md`
@@ -59,99 +59,99 @@ Then inspect sources based on the question:
 - `../../../operations/product-ops/mvp/acceptance-criteria.md`
 - `../../../operations/product-ops/mvp/release-checklist.md`
 
-### GitHub / Execution Readiness
+### Readiness de GitHub / Execução
 
 - `../../../.github/leanos/project-sync.yaml`
 - `../../../.github/leanos/sync-state.yaml`
 - `../../../.leanos/index/workflows.yaml`
 
-Do not read all of these if the answer is already clear from earlier files.
+Não leia todos estes arquivos se a resposta já estiver clara pelos arquivos anteriores.
 
-## Diagnosis Levels
+## Níveis de Diagnóstico
 
-Classify the current moment as one of:
+Classifique o momento atual como um destes:
 
-- Strategy missing
-- Product strategy started
-- Roadmap missing
-- Roadmap ready
-- Local Epic missing
-- Local Epic ready
-- GitHub planning missing
-- Epics or features missing
-- Ready for implementation
-- In implementation
-- Ready for PR/review
-- Ready for launch
-- Learning/growth loop
+- Strategy ausente
+- Estratégia de produto iniciada
+- Roadmap ausente
+- Roadmap pronto
+- Epic local ausente
+- Epic local pronta
+- Planejamento de GitHub ausente
+- Epics ou Features ausentes
+- Pronto para implementação
+- Em implementação
+- Pronto para PR/review
+- Pronto para launch
+- Loop de aprendizado/growth
 
-## Development Gate
+## Gate de Desenvolvimento
 
-Before answering that the product, roadmap item, epic or issue is ready to develop, compare the current workspace against `../../../operations/product-ops/knowledge/ready-to-develop.md`.
+Antes de responder que o produto, item de roadmap, Epic ou issue está pronto para desenvolver, compare o workspace atual com `../../../operations/product-ops/knowledge/ready-to-develop.md`.
 
-Do not recommend implementation until the diagnosis confirms:
+Não recomende implementação até o diagnóstico confirmar:
 
-- product strategy has enough ICP, problem and value context;
-- roadmap or backlog item exists for the work;
-- delivery scope exists when the work belongs to MVP, release, experiment, beta or internal delivery;
-- PRD or acceptance criteria exist when product behavior is affected;
-- local Epic/Feature exists, GitHub issue exists, or the founder explicitly asks for a bootstrap flow instead of issue-based work;
-- Design is checked when UX, UI, copy, accessibility, screens, states or user flows are affected;
-- Security is checked when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved;
-- DevOps is checked when environments, CI/CD, deploy, observability, GitHub Project, config or release readiness are involved.
+- a estratégia de produto tem contexto suficiente de ICP, problema e valor;
+- existe item de roadmap ou backlog para o trabalho;
+- existe escopo de entrega quando o trabalho pertence a MVP, release, experimento, beta ou entrega interna;
+- existem PRD ou critérios de aceite quando comportamento de produto é afetado;
+- existe Epic/Feature local, issue GitHub, ou o founder pediu explicitamente um fluxo de bootstrap em vez de trabalho baseado em issue;
+- Design foi checado quando UX, UI, copy, acessibilidade, telas, estados ou fluxos de usuário são afetados;
+- Security foi checado quando há risco de dados, auth, permissões, privacidade, abuso, API, banco de dados, secrets, compliance, infraestrutura ou código gerado por IA;
+- DevOps foi checado quando ambientes, CI/CD, deploy, observabilidade, GitHub Project, config ou release readiness são afetados.
 
-If these are missing, explain the gap and recommend the next LeanOS route instead of coding.
+Se algo estiver ausente, explique a lacuna e recomende a próxima rota LeanOS em vez de codar.
 
-## Recommended Routes By Gap
+## Rotas Recomendadas por Lacuna
 
-- Strategy missing -> `strategy/AGENT.md`
-- Product strategy weak -> Strategy Product through `strategy/AGENT.md`
-- MVP validation scope missing or weak -> Strategy Product through `strategy/AGENT.md`
-- MVP backlog missing after Strategy MVP Validation Scope is approved -> Product Ops `mvp-backlog-planning` playbook when Product Ops is active, otherwise activate `operations.product-ops`
-- Roadmap missing for an operating product -> Strategy Roadmap through `strategy/AGENT.md`
-- Local epic missing -> Product Ops `delivery-item-to-epic` playbook
-- Features missing -> Product Ops `epic-to-features` playbook when Product Ops is active
-- Implementation ready -> Engineering `feature-to-delivery-cycle` workflow
-- PR/review needed -> Engineering PR validation route
-- Launch/readiness needed -> Growth or DevOps based on the gap
+- Strategy ausente -> `strategy/AGENT.md`
+- Estratégia de produto fraca -> Strategy Product via `strategy/AGENT.md`
+- Escopo de validação do MVP ausente ou fraco -> Strategy Product via `strategy/AGENT.md`
+- Backlog do MVP ausente depois que o MVP Validation Scope de Strategy foi aprovado -> playbook Product Ops `mvp-backlog-planning` quando Product Ops estiver ativo; caso contrário, ativar `operations.product-ops`
+- Roadmap ausente para produto operando -> Strategy Roadmap via `strategy/AGENT.md`
+- Epic local ausente -> playbook Product Ops `delivery-item-to-epic`
+- Features ausentes -> playbook Product Ops `epic-to-features` quando Product Ops estiver ativo
+- Implementação pronta -> workflow Engineering `feature-to-delivery-cycle`
+- PR/review necessário -> rota de validação de PR em Engineering
+- Launch/readiness necessário -> Growth ou DevOps conforme a lacuna
 
-## Founder Response Format
+## Formato de Resposta ao Founder
 
-Respond in plain language first:
+Responda primeiro em linguagem simples:
 
 ```text
 Onde estamos:
-<current product moment>
+<momento atual do produto>
 
 O que ja temos:
-- <confirmed thing>
-- <confirmed thing>
+- <item confirmado>
+- <item confirmado>
 
 O que falta:
-- <missing prerequisite>
-- <missing prerequisite>
+- <pré-requisito ausente>
+- <pré-requisito ausente>
 
 Risco de pular etapa:
-<short explanation>
+<explicação curta>
 
 Proximo passo recomendado:
-<route or workflow>
+<rota ou workflow>
 
 Quer seguir por esse caminho?
 ```
 
-Only after that, list technical files inspected or suggested updates.
+Somente depois disso, liste arquivos técnicos inspecionados ou atualizações sugeridas.
 
-## If The Founder Asked To Develop Too Early
+## Se o Founder Pediu para Desenvolver Cedo Demais
 
-Be clear but helpful:
+Seja claro, mas útil:
 
 ```text
 Ainda nao recomendo comecar pelo codigo.
 
-O motivo e que <missing readiness item>.
-Se formos direto para implementacao agora, o risco e <risk>.
+O motivo e que <item de readiness ausente>.
+Se formos direto para implementacao agora, o risco e <risco>.
 
-O proximo passo seguro e <recommended route>.
+O proximo passo seguro e <rota recomendada>.
 Quer que eu conduza esse passo agora?
 ```

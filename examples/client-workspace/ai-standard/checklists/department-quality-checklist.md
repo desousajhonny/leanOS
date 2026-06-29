@@ -1,24 +1,24 @@
-# Department Quality Checklist
+# Checklist de Qualidade do Departamento
 
-Use this checklist before accepting a root department.
+Use este checklist antes de aceitar um departamento raiz.
 
-## Structure
+## Estrutura
 
-- [ ] The department has `AGENT.md`.
-- [ ] The department has `README.md`.
-- [ ] The department has `department.yaml`.
-- [ ] The department has `workflows/` when cross-area flows exist.
-- [ ] Active areas are listed and routed clearly.
+- [ ] O departamento tem `AGENT.md`.
+- [ ] O departamento tem `README.md`.
+- [ ] O departamento tem `department.yaml`.
+- [ ] O departamento tem `workflows/` quando existem fluxos entre áreas.
+- [ ] Áreas ativas estão listadas e roteadas com clareza.
 
 ## Ownership
 
-- [ ] The department owns broad operating direction.
-- [ ] The department does not contain `roles/`, `skills/` or `playbooks/` directly.
-- [ ] Area-level execution assets live inside areas.
-- [ ] Department workflows coordinate across areas or stages.
+- [ ] O departamento possui a direção operacional ampla.
+- [ ] O departamento não contém `roles/`, `skills/` ou `playbooks/` diretamente.
+- [ ] Assets de execução de nível de área vivem dentro das áreas.
+- [ ] Workflows de departamento coordenam entre áreas ou estágios.
 
-## Routing
+## Roteamento
 
-- [ ] The department AGENT routes to workflows or areas.
-- [ ] The README acts as a map.
-- [ ] The YAML is machine-readable and does not store narrative product context.
+- [ ] O AGENT do departamento roteia para workflows ou áreas.
+- [ ] O README atua como mapa.
+- [ ] O YAML é legível por máquina e não armazena contexto narrativo de produto.

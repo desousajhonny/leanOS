@@ -1,5 +1,5 @@
-# Context Loading
+# Carregamento de Contexto
 
-LeanOS uses lazy context loading.
+LeanOS usa carregamento preguiçoso de contexto.
 
-Load `../context/` first, then use `../index/` to choose the smallest relevant path.
+Carregue `../context/` primeiro e depois use `../index/` para escolher o menor path relevante.

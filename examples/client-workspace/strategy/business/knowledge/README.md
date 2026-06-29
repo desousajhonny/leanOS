@@ -1,18 +1,18 @@
 # Business Knowledge
 
-## Purpose
+## Propósito
 
-Durable business context produced by Strategy Business.
+Contexto durável de negócio produzido por Strategy Business.
 
-## When to Use
+## Use Quando
 
-Use when defining business identity, brand logic, mission, principles, operating model, business model or strategic decisions.
+Use ao definir identidade do negócio, lógica de marca, missão, princípios, modelo operacional, modelo de negócio ou decisões estratégicas.
 
-## Source of Truth
+## Fonte da Verdade
 
 `profile.md`
 
-## Files
+## Arquivos
 
 - `profile.md`
 - `mission.md`
@@ -22,7 +22,7 @@ Use when defining business identity, brand logic, mission, principles, operating
 - `business-model-canvas.md`
 - `decision-log.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../roles/`
 - `../skills/`
@@ -30,10 +30,10 @@ Use when defining business identity, brand logic, mission, principles, operating
 - `../../product/`
 - `../../roadmap/`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
-Keep business context here. Do not enrich roles, skills or playbooks with business-specific facts.
+Mantenha contexto de negócio aqui. Não enriqueça roles, skills ou playbooks com fatos específicos do negócio.

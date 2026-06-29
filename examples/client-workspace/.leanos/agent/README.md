@@ -1,18 +1,18 @@
-# Agent
+# Agente
 
-## Purpose
+## Propósito
 
-Chief Agent operating guidance.
+Orientação operacional do Chief Agent.
 
-## When to Use
+## Use Quando
 
-Use when defining how LeanOS Chief loads context, activates routes and formats output.
+Use ao definir como o LeanOS Chief carrega contexto, ativa rotas e formata saída.
 
-## Source of Truth
+## Fonte da Verdade
 
 `chief-agent.md`
 
-## Files
+## Arquivos
 
 - `chief-agent.md`
 - `operating-rules.md`
@@ -21,15 +21,15 @@ Use when defining how LeanOS Chief loads context, activates routes and formats o
 - `output-standards.md`
 - `protocols/`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../../ai-standard/`
 - `../context/`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
-Keep this folder concise. Route product work to root departments and areas. Protocols are internal agent procedures, not product workflows.
+Mantenha esta pasta concisa. Roteie trabalho de produto para departamentos e áreas raiz. Protocolos são procedimentos internos do agente, não workflows de produto.

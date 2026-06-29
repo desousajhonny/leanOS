@@ -1,7 +1,7 @@
 export function engineeringImplementationNotesKnowledge(): string {
   return `# Implementation Notes
 
-## Purpose
+## Propósito
 
 Capture durable technical lessons learned during implementation so future model sessions can reuse decisions instead of rediscovering them.
 
@@ -12,7 +12,7 @@ Use this file for implementation memory, not delivery status.
 - Add a note only when the decision or learning should survive the current session.
 - Prefer concrete lessons tied to a Feature, PR, component, module or data change.
 - Keep notes short enough for future agents to scan quickly.
-- Do not duplicate PR status; use \`pr-log.md\` for PR/merge summaries.
+- Não duplique status de PR; use \`pr-log.md\` para resumos de PR/merge.
 
 ## Current Technical Context
 
@@ -34,7 +34,7 @@ TBD
 
 TBD
 
-## Risks Or Technical Debt
+## Riscos Or Technical Debt
 
 TBD
 

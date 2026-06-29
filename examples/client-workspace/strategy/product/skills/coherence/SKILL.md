@@ -1,21 +1,21 @@
 ---
 name: coherence
-description: Use when strategy feels inconsistent; MVP validation scope may not match the problem; roadmap or issue work needs product review
+description: Use quando strategy parece inconsistente; MVP Validation Scope pode não combinar com o problema; roadmap ou issue precisa de review de produto
 ---
 
-# Coherence Check
+# Checagem De Coerência
 
-## Overview
+## Visão Geral
 
-Check alignment between ICP, problem, value proposition, MVP validation scope, roadmap and issue.
+Checar alinhamento entre ICP, problema, proposta de valor, MVP Validation Scope, roadmap e issue.
 
-## Use When
+## Use Quando
 
-- strategy feels inconsistent
-- MVP validation scope may not match the problem
-- roadmap or issue work needs product review
+- strategy parece inconsistente
+- MVP Validation Scope pode não combinar com o problema
+- roadmap ou issue precisa de review de produto
 
-## Required Context
+## Contexto Obrigatório
 
 - ../knowledge/icp.md
 - ../knowledge/problem.md
@@ -23,55 +23,55 @@ Check alignment between ICP, problem, value proposition, MVP validation scope, r
 - ../knowledge/mvp-validation-scope.md
 - ../../roadmap/knowledge/roadmap.md
 
-## Inputs
+## Entradas
 
 - ICP
-- Problem
-- Value proposition
-- MVP Validation Scope
-- Roadmap or issue
+- Problema
+- Proposta de valor
+- Escopo de Validação do MVP
+- Roadmap ou issue
 
-## Process
+## Processo
 
-### Step 1
+### Etapa 1
 
-Check ICP/problem fit.
+Cheque fit entre ICP e problema.
 
-### Step 2
+### Etapa 2
 
-Check value proposition/problem fit.
+Cheque fit entre proposta de valor e problema.
 
-### Step 3
+### Etapa 3
 
-Check MVP validation scope/value fit.
+Cheque fit entre MVP Validation Scope e valor.
 
-### Step 4
+### Etapa 4
 
-Check roadmap/MVP validation scope fit.
+Cheque fit entre roadmap e MVP Validation Scope.
 
-### Step 5
+### Etapa 5
 
-List contradictions and next fixes.
+Liste contradições e próximos ajustes.
 
-## Checks & Acceptance Criteria
+## Verificações e Critérios de Aceite
 
-- Findings separate alignment from inconsistency.
-- Risks are actionable.
-- Next command or workflow is clear.
+- Achados separam alinhamento de inconsistência.
+- Riscos são acionáveis.
+- Próximo comando ou workflow está claro.
 
-## Output
+## Saída
 
-- Coherence score
-- Aligned points
-- Inconsistencies
-- Risks
-- Recommended next action
+- Score de coerência
+- Pontos alinhados
+- Inconsistências
+- Riscos
+- Próxima ação recomendada
 
-## Files to Update
+## Arquivos para Atualizar
 
-- Update no files unless the user asks after reviewing the findings.
+- Não atualize arquivos salvo se o usuário pedir após revisar os achados.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not silently rewrite strategy.
-- Do not treat coherence review as approval to implement.
+- Não reescreva estratégia silenciosamente.
+- Não trate review de coerência como aprovação para implementar.

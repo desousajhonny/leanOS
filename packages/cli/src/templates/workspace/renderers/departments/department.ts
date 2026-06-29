@@ -14,7 +14,7 @@ export function rootDepartmentFiles(answers: WorkspaceAnswers, activeAreas: Area
       { path: `${department.key}/README.md`, content: departmentReadme(department, areas) },
       { path: `${department.key}/department.yaml`, content: departmentYaml(department, areas, workflows) },
       ...(workflows.length > 0
-        ? [{ path: `${department.key}/workflows/README.md`, content: folderReadme(`${department.name} Workflows`, `Internal cross-area workflows for ${department.name}.`, "Use when work spans more than one active area inside this department.", "../department.yaml", workflows.map((workflow) => `${workflow.slug}.workflow.md`), areas.map((area) => `../${area.slug}/`), "Workflows route between active areas; if a workflow is missing, ask before activating or creating the missing area.") }]
+        ? [{ path: `${department.key}/workflows/README.md`, content: folderReadme(`Workflows de ${department.name}`, `Workflows internos entre áreas de ${department.name}.`, "Use quando o trabalho atravessar mais de uma área ativa dentro deste departamento.", "../department.yaml", workflows.map((workflow) => `${workflow.slug}.workflow.md`), areas.map((area) => `../${area.slug}/`), "Workflows roteiam entre áreas ativas; se um workflow estiver ausente, pergunte antes de ativar ou criar a área ausente.") }]
         : []),
       ...workflows.map((workflow) => ({
         path: `${department.key}/workflows/${workflow.slug}.workflow.md`,
@@ -32,70 +32,70 @@ function activeDepartmentWorkflows(department: RootDepartmentDefinition, areas: 
 
 function departmentAgent(department: RootDepartmentDefinition, areas: AreaDefinition[], workflows: DepartmentWorkflowDefinition[]): string {
   const hasWorkflows = workflows.length > 0;
-  const areaRoute = areas.some((area) => area.lead) ? "\`AGENT.md\` when present; otherwise route to its README" : "README";
+  const areaRoute = areas.some((area) => area.lead) ? "\`AGENT.md\` quando existir; caso contrário, roteie para o README" : "README";
   const workflowRoutingRules = hasWorkflows
-    ? `1. If the founder request needs multi-area, multi-department or lifecycle coordination, open \`workflows/README.md\` and choose the smallest matching workflow.
-2. If the request is a state change owned entirely by one area, calibration, clarification, evaluation or definition, route to that area ${areaRoute}.
-3. If the request belongs to one area and one asset family, route to that area ${areaRoute}.
-4. If you are unsure, check \`workflows/README.md\` first; if no workflow matches, route to the smallest active area.
-5. If the needed workflow, area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
-6. Do not load roles, skills or playbooks before entering the owning area.`
-    : `1. If the founder request is owned by this department and no department workflow exists, route to the smallest active area \`AGENT.md\` or README.
-2. If the request is a state change owned entirely by one area, calibration, clarification, evaluation or definition, route to that area ${areaRoute}.
-3. If the request belongs to one area and one asset family, route to that area ${areaRoute}.
-4. If you are unsure, use \`department.yaml\` and the active area list to choose the smallest active area.
-5. If the needed area, role, skill or playbook is missing, explain what is missing and ask before creating or activating it.
-6. Do not load roles, skills or playbooks before entering the owning area.`;
+    ? `1. Se o pedido do founder precisar de coordenação multiárea, multidepartamento ou de ciclo de vida, abra \`workflows/README.md\` e escolha o menor workflow compatível.
+2. Se o pedido for uma mudança de estado pertencente inteiramente a uma área, calibração, esclarecimento, avaliação ou definição, roteie para essa área via ${areaRoute}.
+3. Se o pedido pertencer a uma área e uma família de assets, roteie para essa área via ${areaRoute}.
+4. Se houver dúvida, verifique \`workflows/README.md\` primeiro; se nenhum workflow corresponder, roteie para a menor área ativa.
+5. Se o workflow, área, papel, skill ou playbook necessário estiver ausente, explique o que falta e peça confirmação antes de criar ou ativar.
+6. Não carregue roles, skills ou playbooks antes de entrar na área dona.`
+    : `1. Se o pedido do founder pertencer a este departamento e não existir workflow departamental, roteie para o menor \`AGENT.md\` ou README de área ativa.
+2. Se o pedido for uma mudança de estado pertencente inteiramente a uma área, calibração, esclarecimento, avaliação ou definição, roteie para essa área via ${areaRoute}.
+3. Se o pedido pertencer a uma área e uma família de assets, roteie para essa área via ${areaRoute}.
+4. Se houver dúvida, use \`department.yaml\` e a lista de áreas ativas para escolher a menor área ativa.
+5. Se a área, papel, skill ou playbook necessário estiver ausente, explique o que falta e peça confirmação antes de criar ou ativar.
+6. Não carregue roles, skills ou playbooks antes de entrar na área dona.`;
   const workflowEntry = hasWorkflows
-    ? `## Workflow Entry
+    ? `## Entrada de Workflow
 
-- Department workflows: \`workflows/README.md\`
+- Workflows do departamento: \`workflows/README.md\`
 
-Use workflows for multi-step journeys and cross-area sequencing. Use area playbooks for tactical execution inside one area.`
-    : `## Playbook Entry
+Use workflows para jornadas com múltiplas etapas e sequenciamento entre áreas. Use playbooks de área para execução tática dentro de uma área.`
+    : `## Entrada de Playbook
 
-This department has no active department-level workflows. Use area playbooks for practical multi-step execution inside the owning area.`;
+Este departamento não tem workflows ativos no nível departamental. Use playbooks de área para execução prática com múltiplas etapas dentro da área dona.`;
   const journeySignals = hasWorkflows
-    ? `Use \`workflows/README.md\` when the founder asks for a multi-step decision or transition, such as:`
-    : `Route multi-step decisions to the owning area playbook when no department workflow exists, such as:`;
+    ? `Use \`workflows/README.md\` quando o founder pedir uma decisão ou transição com múltiplas etapas, como:`
+    : `Roteie decisões com múltiplas etapas para o playbook da área dona quando não existir workflow departamental, como:`;
 
-  return `# ${department.name} Agent
+  return `# Agente de ${department.name}
 
-You are the ${departmentOperatingOwner(department)} for this workspace.
+Você é ${departmentOperatingOwner(department)} deste workspace.
 
-This \`AGENT.md\` is the operating owner for the ${department.name} department.
+Este \`AGENT.md\` é o dono operacional do departamento ${department.name}.
 
-Use \`README.md\` as the directory map. Use \`department.yaml\` when machine-readable structure matters.
+Use \`README.md\` como mapa do diretório. Use \`department.yaml\` quando a estrutura legível por máquina importar.
 
-Roles, skills and playbooks do not live at the department root. They live inside active areas.
+Roles, skills e playbooks não ficam na raiz do departamento. Eles vivem dentro das áreas ativas.
 
-## Operating Scope
+## Escopo Operacional
 
 ${department.purpose}
 
-Use this department for ${department.requestTypes}.
+Use este departamento para ${department.requestTypes}.
 
-## Routing Rules
+## Regras de Roteamento
 
 ${workflowRoutingRules}
 
-## Journey Signals
+## Sinais de Jornada
 
 ${journeySignals}
 
 ${departmentJourneySignals(department)}
 
-## Active Areas
+## Áreas Ativas
 
 ${areas.map((area) => `- ${area.name}: \`${area.slug}/${area.lead ? "AGENT.md" : "README.md"}\` - ${area.purpose}`).join("\n")}
 
 ${workflowEntry}
 
-## Navigation
+## Navegação
 
-\`${department.key}/AGENT.md -> Area ${areas.some((area) => area.lead) ? "AGENT.md/README.md" : "README"} -> Role -> Skills -> Playbook -> Output\`
+\`${department.key}/AGENT.md -> Área ${areas.some((area) => area.lead) ? "AGENT.md/README.md" : "README"} -> Papel -> Skills -> Playbook -> Saída\`
 
-Load one area owner before loading roles, skills or playbooks.
+Carregue um dono de área antes de carregar roles, skills ou playbooks.
 `;
 }
 
@@ -112,20 +112,20 @@ function departmentOperatingOwner(department: RootDepartmentDefinition): string 
 function departmentJourneySignals(department: RootDepartmentDefinition): string {
   const signals: Record<RootDepartmentDefinition["key"], string[]> = {
     strategy: [
-      "deciding whether an idea should enter roadmap",
-      "changing product direction, priority or sequencing",
-      "preparing Product Ops handoff or strategic handoff"
+      "decidir se uma ideia deve entrar no roadmap",
+      "mudar direção, prioridade ou sequência de produto",
+      "preparar handoff para Product Ops ou handoff estratégico"
     ],
     operations: [
-      "turning delivery scope into executable work",
-      "shaping epics or features before implementation",
-      "coordinating design, engineering, security or DevOps handoffs",
-      "moving from issue to implementation, PR or post-merge follow-up"
+      "transformar escopo de entrega em trabalho executável",
+      "formatar Epics ou Features antes da implementação",
+      "coordenar handoffs de Design, Engineering, Security ou DevOps",
+      "mover de issue para implementação, PR ou follow-up pós-merge"
     ],
     growth: [
-      "planning launch, learning or acquisition loops",
-      "connecting customer feedback to product or marketing decisions",
-      "reviewing pricing, finance or growth tradeoffs"
+      "planejar launch, aprendizado ou loops de aquisição",
+      "conectar feedback de clientes a decisões de produto ou marketing",
+      "revisar tradeoffs de pricing, financeiro ou Growth"
     ]
   };
 
@@ -135,32 +135,32 @@ function departmentJourneySignals(department: RootDepartmentDefinition): string 
 function departmentReadme(department: RootDepartmentDefinition, areas: AreaDefinition[]): string {
   return `# ${department.name}
 
-## Purpose
+## Propósito
 
 ${department.purpose}
 
-Use for ${department.requestTypes}.
+Use para ${department.requestTypes}.
 
-## Files
+## Arquivos
 
-- \`AGENT.md\`: department operating owner. It routes requests to the right area or department workflow.
-- \`README.md\`: this map.
-- \`department.yaml\`: machine-readable structure for active areas and workflows.
-- \`workflows/\`: cross-area workflows owned by this department.
+- \`AGENT.md\`: dono operacional do departamento. Ele roteia pedidos para a área ou workflow departamental correto.
+- \`README.md\`: este mapa.
+- \`department.yaml\`: estrutura legível por máquina para áreas e workflows ativos.
+- \`workflows/\`: workflows entre áreas pertencentes a este departamento.
 ${areas.map((area) => `- \`${area.slug}/\`: ${area.purpose}`).join("\n")}
 
-## Start Here
+## Comece Aqui
 
 \`AGENT.md\`
 
-## Related Folders
+## Pastas Relacionadas
 
 - \`../.leanos/index/\`
 - \`../ai-standard/\`
 
-## Agent Notes
+## Notas para Agentes
 
-This department root does not own roles, skills or playbooks directly. Route into an active area before loading execution assets.
+A raiz deste departamento não possui roles, skills ou playbooks diretamente. Roteie para uma área ativa antes de carregar assets de execução.
 `;
 }
 

@@ -13,7 +13,7 @@ TBD
 
 TBD
 
-## Steps
+## Etapas
 
 TBD
 
@@ -25,7 +25,7 @@ TBD
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 `;

@@ -1,31 +1,31 @@
-# Product Roles
+# Papéis de Product
 
-## Purpose
+## Propósito
 
-Roles owned by the Product area.
+Papéis pertencentes à área Product.
 
-## When to Use
+## Use Quando
 
-Use after the area AGENT selects a role.
+Use depois que o AGENT da área selecionar um papel.
 
-## Source of Truth
+## Fonte da Verdade
 
 `../AGENT.md`
 
-## Files
+## Arquivos
 
 - `product-strategist.role.md`
 - `product-manager.role.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../skills/`
 - `../playbooks/`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
-Load one role, then follow its skills and playbooks.
+Carregue um papel e siga suas skills e playbooks.

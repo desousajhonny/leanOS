@@ -1,13 +1,13 @@
 export function productMvpValidationScopeKnowledge(): string {
-  return `# MVP Validation Scope
+  return `# Escopo de Validação do MVP
 
-## Purpose
+## Propósito
 
 Define the smallest MVP validation path that can test the business thesis quickly.
 
-This file is Strategy Product context. It may describe landing-page, manual, concierge and productized parts of the MVP validation path, but it does not create Epics, Features or implementation scope.
+This file is Strategy Product context. It may describe landing-page, manual, concierge and productized parts of the MVP validation path, but it não cria Epics, Features ou escopo de implementação.
 
-## Business Thesis
+## Tese de Negócio
 
 TBD
 
@@ -19,7 +19,7 @@ TBD
 
 TBD
 
-## Promise
+## Promessa
 
 TBD
 
@@ -31,11 +31,11 @@ TBD
 
 TBD
 
-## In Scope
+## Dentro do Escopo
 
 TBD
 
-## Out of Scope
+## Fora do Escopo
 
 TBD
 
@@ -47,15 +47,15 @@ TBD
 
 TBD
 
-## Success Signals
+## Sinais de Sucesso
 
 TBD
 
-## Pivot Signals
+## Sinais de Pivot
 
 TBD
 
-## MVP Validation Sequence
+## Sequência de Validação do MVP
 
 TBD
 
@@ -67,15 +67,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

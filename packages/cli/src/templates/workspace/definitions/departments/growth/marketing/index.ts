@@ -22,12 +22,12 @@ export const growthMarketingArea: AreaDefinition = {
   operatingRules: [
     "Use Strategy Product as the source for ICP, problem, value proposition and positioning claims.",
     "Route visual design or UI structure to Operations Design when needed.",
-    "Keep launch plans focused on learning, not vanity activity."
+    "Mantenha planos de lançamento focados em aprendizado, não em atividade de vaidade."
   ],
   redLines: [
-    "Do not invent proof, testimonials or customer results.",
-    "Do not create visual design direction without Design when UX/brand details matter.",
-    "Do not spend budget or commit channels without Finance review when money is involved."
+    "Não invente prova, depoimentos ou resultados de clientes.",
+    "Não crie direção de design visual sem Design quando detalhes de UX/brand importarem.",
+    "Não gaste orçamento nem comprometa canais sem revisão de Finance quando houver dinheiro envolvido."
   ],
   sourceOfTruth: growthMarketingSourceOfTruth,
   files: growthMarketingFiles,

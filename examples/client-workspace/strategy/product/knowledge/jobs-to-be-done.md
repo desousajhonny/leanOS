@@ -1,10 +1,10 @@
 # Jobs To Be Done
 
-## Purpose
+## Propósito
 
 Describe the job the customer is trying to get done and the progress they want to make.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -32,14 +32,14 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD

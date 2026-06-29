@@ -28,9 +28,9 @@ export const operationsSecurityArea: AreaDefinition = {
   ],
   redLines: [
     "No public production database.",
-    "No secrets in Git, logs, prompts, screenshots or tracked files.",
-    "No private endpoint without server-side authentication and authorization.",
-    "Never trust userId, tenantId, role or isAdmin from the client.",
+    "Nenhum segredo em Git, logs, prompts, screenshots ou arquivos versionados.",
+    "Nenhum endpoint privado sem autenticação e autorização server-side.",
+    "Nunca confie em userId, tenantId, role ou isAdmin vindos do cliente.",
     "Never build SQL with string concatenation.",
     "AI agents must not change auth, secrets, CI/CD, infra or dependencies without human review."
   ],

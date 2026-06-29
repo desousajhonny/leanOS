@@ -1,19 +1,19 @@
-# Structure Examples
+# Exemplos de Estrutura
 
-## Purpose
+## Propósito
 
-Examples of folder and area documentation.
+Exemplos de documentação de pasta e área.
 
-## When to Use
+## Use Quando
 
-Use when reviewing how README-style files should map structure without becoming operators.
+Use quando revisar como arquivos estilo README devem mapear estrutura sem virar operadores.
 
-## Files
+## Arquivos
 
 - `example-folder-readme.md`
 - `example-area-readme.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../`
 - `../../foundation/`
@@ -21,6 +21,6 @@ Use when reviewing how README-style files should map structure without becoming 
 - `../../templates/`
 - `../../checklists/`
 
-## Agent Notes
+## Notas para Agentes
 
-These files are examples only. Use them for shape and quality signals, not as active context.
+Estes arquivos são apenas exemplos. Use-os para formato e sinais de qualidade, não como contexto ativo.

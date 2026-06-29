@@ -1,11 +1,11 @@
 # Department Template
 
-Use this template as a starting point.
+Use este template como ponto de partida.
 
-## Required
+## Obrigatório
 
-- Purpose
-- Inputs
-- Process
-- Output
-- Navigation
+- Propósito
+- Entradas
+- Processo
+- Saída
+- Navegação

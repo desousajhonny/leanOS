@@ -29,7 +29,7 @@ TBD
 
 TBD
 
-## Known Risks
+## Riscos Conhecidos
 
 TBD
 `;

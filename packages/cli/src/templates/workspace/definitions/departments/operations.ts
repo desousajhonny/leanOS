@@ -90,13 +90,13 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "Make clear that PR opened does not mean merge-ready until founder acceptance and PR validation are complete"
       ],
       confirmationGates: [
-        "Ask before creating or updating local Feature files.",
-        "Ask before creating or changing Design component specs.",
-        "Ask before creating a branch.",
-        "Ask before editing product code.",
-        "Ask before marking the PR ready for founder review when the Founder Testing Guide is incomplete.",
-        "Ask before running external GitHub actions, opening a PR or changing remote state.",
-        "Ask before installing dependencies, changing package manager files or adding tooling."
+        "Peça confirmação antes de criar ou atualizar arquivos locais de Feature.",
+        "Peça confirmação antes de criar ou alterar especificações de componente de Design.",
+        "Peça confirmação antes de criar uma branch.",
+        "Peça confirmação antes de editar código de produto.",
+        "Peça confirmação antes de marcar o PR pronto para review do founder quando o Founder Testing Guide estiver incompleto.",
+        "Peça confirmação antes de rodar ações externas do GitHub, abrir PR ou mudar estado remoto.",
+        "Peça confirmação antes de instalar dependências, alterar arquivos do package manager ou adicionar tooling."
       ],
       allowedUpdates: [
         "operations/product-ops/epics/<epic-slug>/<feature-slug>.md",
@@ -120,9 +120,9 @@ export const operationsDepartment: RootDepartmentDefinition = {
       ],
       externalCapabilities: [
         "GitHub branch and PR actions are allowed only after Feature readiness and explicit founder confirmation.",
-        "Do not merge PRs automatically.",
-        "Do not deploy to production from this workflow.",
-        "Do not treat GitHub issue presence as proof that the Feature is ready to develop."
+        "Não faça merge de PRs automaticamente.",
+        "Não faça deploy para produção a partir deste workflow.",
+        "Não trate presença de issue do GitHub como prova de que a Feature está pronta para desenvolver."
       ],
       stopConditions: [
         "The request is a loose idea, roadmap item or unsplit Epic instead of a Feature.",
@@ -149,7 +149,7 @@ export const operationsDepartment: RootDepartmentDefinition = {
         laterTriggers: ["revise o PR", "esta pronto para merge?", "mergeado, vamos para a proxima", "o PR foi aprovado", "o que fazemos depois do merge?"],
         nextRoute: "post-merge-continuation",
         rules: [
-          "Do not automatically merge.",
+          "Não faça merge automaticamente.",
           "Run PR validation before recommending merge readiness.",
           "If the founder confirms merge happened, restart from Root `AGENT.md` and route to `post-merge-continuation`.",
           "If the PR is not ready, explain the gap and stay inside Engineering review assets."
@@ -210,20 +210,20 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "Confirm the merged PR, local Feature or GitHub Feature issue. If the founder only says \"mergeado\", ask which PR or Feature before writing.",
         "Map the merge back to the local Epic and Feature in `operations/product-ops/epics/` or to the confirmed GitHub Feature issue.",
         "Summarize what shipped in founder-friendly language: user impact, technical scope, tests, risks and what did not ship.",
-        "Compare the merged work against the Feature acceptance criteria, PR validation result and Founder Testing Guide.",
+        "Compare the merged work against the Feature acceptance criteria, Resultado de validação do PR and Founder Testing Guide.",
         "Propose the smallest local status/context updates before writing anything.",
         "Ask whether release, deployment, environment or observability follow-up is needed. If yes, route DevOps through `operations/devops/AGENT.md` before any deploy action.",
         "Ask whether the merge touched auth, permissions, data, privacy, payments, APIs or abuse risk. If yes, route Security through `operations/security/AGENT.md` before declaring the Feature fully safe.",
         "Ask whether customer learning, support notes or launch feedback should be captured. If yes, bridge to Growth after the Operations update.",
         "Identify remaining Features in the same Epic and the next likely route, but do not choose priority automatically.",
-        "Offer the founder one clear next step: release/deploy follow-up, next Feature in the Epic, roadmap review or customer learning loop."
+        "Oferta the founder one clear next step: release/deploy follow-up, next Feature in the Epic, roadmap review or customer learning loop."
       ],
       confirmationGates: [
-        "Ask before updating local Epic or Feature status.",
-        "Ask before updating Product Ops Epic/Feature status, Engineering PR log or implementation notes.",
-        "Ask before routing into DevOps, Security, Growth or Strategy follow-up.",
-        "Ask before starting the next Feature delivery cycle.",
-        "Ask before any GitHub write, deployment, release action, branch, code change or PR action."
+        "Peça confirmação antes de atualizar status local de Epic ou Feature.",
+        "Peça confirmação antes de atualizar status de Epic/Feature de Product Ops, PR log de Engineering ou notas de implementação.",
+        "Peça confirmação antes de rotear para follow-up de DevOps, Security, Growth ou Strategy.",
+        "Peça confirmação antes de iniciar o próximo ciclo de delivery de Feature.",
+        "Peça confirmação antes de qualquer escrita no GitHub, deploy, ação de release, branch, mudança de código ou ação de PR."
       ],
       allowedUpdates: [
         "operations/product-ops/epics/<epic-slug>/<feature-slug>.md",
@@ -235,7 +235,7 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "strategy/roadmap/knowledge/current-cycle.md only after Strategy/Roadmap routing and founder confirmation"
       ],
       forbiddenUpdates: [
-        "source code, components, tests or product files",
+        "código-fonte, componentes, testes ou arquivos de produto",
         "branches, commits, PR creation, PR merge or deploy actions",
         ".github/ or GitHub remote state without an explicit GitHub sync/release step",
         "roadmap priority or delivery-scope changes without Strategy/Roadmap handoff",
@@ -245,8 +245,8 @@ export const operationsDepartment: RootDepartmentDefinition = {
       ],
       externalCapabilities: [
         "GitHub may be read only when the founder provides or confirms a PR, issue or repository reference.",
-        "Do not write to GitHub from this workflow unless a future GitHub sync/release workflow is explicitly confirmed.",
-        "Do not deploy, merge, create branches, create PRs or run release automation from this workflow.",
+        "Não escreva no GitHub a partir deste workflow a menos que um futuro workflow de sync/release do GitHub seja explicitamente confirmado.",
+        "Não faça deploy, merge, criação de branches, criação de PRs ou automação de release a partir deste workflow.",
         "If external evidence is unavailable, rely on the founder confirmation and clearly mark it as founder-confirmed."
       ],
       stopConditions: [
@@ -276,7 +276,7 @@ export const operationsDepartment: RootDepartmentDefinition = {
         ],
         nextRoute: "feature-to-delivery-cycle",
         rules: [
-          "Do not automatically start the next Feature.",
+          "Não inicie automaticamente a próxima Feature.",
           "If release or deploy is chosen, route to DevOps first.",
           "If roadmap priority changed, route to Strategy/Roadmap first.",
           "If customer learning is chosen, route to Growth/Customer Experience first.",

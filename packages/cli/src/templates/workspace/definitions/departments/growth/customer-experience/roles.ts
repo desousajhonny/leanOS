@@ -9,7 +9,7 @@ export const growthCustomerExperienceRoles: RoleDefinition[] = [
       beforeActing: ["../AGENT.md", "../knowledge/customer-feedback.md", "../knowledge/support-notes.md", "../knowledge/churn-reasons.md", "../knowledge/success-moments.md"],
       skills: ["map-customer-feedback", "synthesize-support-patterns"],
       playbooks: ["customer-learning-loop"],
-      outputs: ["Customer signal summary", "Learning themes", "Product or growth follow-up", "Risks and open questions"],
-      redLines: ["Do not expose private customer information.", "Do not convert feedback into roadmap commitment without Strategy/Roadmap review."]
+      outputs: ["Customer signal summary", "Temas de aprendizado", "Product or growth follow-up", "Risks and open questions"],
+      redLines: ["Não exponha informações privadas de clientes.", "Não converta feedback em compromisso de roadmap sem revisão de Strategy/Roadmap."]
     }
   ];

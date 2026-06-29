@@ -2,6 +2,38 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-29 - Textos Humanos Gerados Em PT-BR
+
+Decisão:
+
+- Padronizar textos humanos gerados pelo LeanOS em português do Brasil.
+- Aplicar PT-BR em READMEs, `AGENT.md`, runtime `.leanos/`, `ai-standard`, roles, skills, playbooks, workflows, knowledge, templates e exemplos.
+- Manter em inglês IDs técnicos, slugs, paths, nomes de arquivos, chaves YAML/JSON, enums e termos técnicos estabilizados quando a interoperabilidade depender deles.
+- Validar regressões de idioma no generator para evitar retorno de headings, frontmatter e frases operacionais em inglês.
+
+Justificativa:
+
+- A experiência do founder e dos modelos não deve alternar entre português e inglês sem necessidade.
+- Slugs, paths e chaves técnicas precisam permanecer estáveis para evitar churn estrutural.
+- Uma validação automática torna a decisão operacional e reduz regressão em novos assets.
+
+## 2026-06-29 - Engineering Knowledge Como Contratos E Estado
+
+Decisão:
+
+- Manter os arquivos de knowledge de Engineering.
+- Tratar `code-standards.md`, `implementation-rules.md`, `component-guidelines.md`, `data-guidelines.md`, `testing-strategy.md` e `review-criteria.md` como contratos duráveis do framework.
+- Tratar `implementation-notes.md`, `code-review-notes.md` e `pr-log.md` como arquivos de estado, notas de Feature ou handoff de review/PR.
+- Validar que os contratos duráveis de Engineering não sejam gerados com placeholders `TBD`.
+- O `knowledge/README.md` de Engineering deve distinguir responsabilidades de contratos, notas e logs.
+
+Justificativa:
+
+- Engineering precisa de regras operacionais claras antes de escrever código.
+- Arquivos de estado podem começar vazios ou com placeholders porque são preenchidos durante a execução de uma Feature.
+- Separar contrato durável de estado evita transformar notas temporárias em política global do framework.
+- A validação impede que padrões essenciais de implementação, dados, testes e review saiam rasos no scaffold gerado.
+
 ## 2026-06-26 - MVP Backlog Como Fonte Operacional Do MVP
 
 Decisão:

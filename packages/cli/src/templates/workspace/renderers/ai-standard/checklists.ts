@@ -13,277 +13,277 @@ export function checklistFiles(): FileEntry[] {
 function checklistsReadme(checklists: string[]): string {
   return `# Checklists
 
-## Purpose
+## Propósito
 
-Quality gates for LeanOS assets.
+Gates de qualidade para assets LeanOS.
 
-## When to Use
+## Use Quando
 
-Use before accepting a newly created or modified asset.
+Use antes de aceitar um asset recém-criado ou modificado.
 
-## Files
+## Arquivos
 
 ${checklists.map((name) => `- \`${name}-quality-checklist.md\``).join("\n")}
 
-## Related Folders
+## Pastas Relacionadas
 
 - \`../foundation/\`
 - \`../templates/\`
 - \`../instructions/\`
 
-## Navigation
+## Navegação
 
-1. Confirm the asset type in \`../foundation/asset-taxonomy.md\`.
-2. Use the matching checklist only.
-3. If no checklist matches, use \`../foundation/quality-criteria.md\` and ask before creating a new checklist.
+1. Confirme o tipo de asset em \`../foundation/asset-taxonomy.md\`.
+2. Use apenas o checklist correspondente.
+3. Se nenhum checklist corresponder, use \`../foundation/quality-criteria.md\` e peça confirmação antes de criar um novo checklist.
 
-## Agent Notes
+## Notas para Agentes
 
-Do not treat all checklists as interchangeable. Each checklist protects a different asset type.
+Não trate todos os checklists como intercambiáveis. Cada checklist protege um tipo de asset diferente.
 `;
 }
 
 function qualityChecklistContent(name: string): string {
   const checklists: Record<string, string> = {
-    agent: `# Agent Quality Checklist
+    agent: `# Checklist de Qualidade do Agente
 
-Use this checklist before accepting an \`AGENT.md\`.
+Use este checklist antes de aceitar um \`AGENT.md\`.
 
-## Scope
+## Escopo
 
-- [ ] The agent owns routing for exactly one level: root, department or area.
-- [ ] The agent states its operating scope.
-- [ ] The agent does not try to be a full inventory of every child file.
+- [ ] O agente possui roteamento para exatamente um nível: raiz, departamento ou área.
+- [ ] O agente declara seu escopo operacional.
+- [ ] O agente não tenta ser um inventário completo de todos os arquivos filhos.
 
-## Routing
+## Roteamento
 
-- [ ] Root agents route only to departments.
-- [ ] Department agents route to workflows or active areas.
-- [ ] Area agents route to specialist roles before skills or playbooks.
-- [ ] The agent does not skip levels in the Navigation Chain.
+- [ ] Agentes raiz roteiam apenas para departamentos.
+- [ ] Agentes de departamento roteiam para workflows ou áreas ativas.
+- [ ] Agentes de área roteiam para roles especialistas antes de skills ou playbooks.
+- [ ] O agente não pula níveis na Navigation Chain.
 
-## Context Loading
+## Carregamento de Contexto
 
-- [ ] The agent tells models which minimal files to load first.
-- [ ] The agent avoids asking models to load the whole workspace.
-- [ ] Missing paths are handled as gaps, not invented.
+- [ ] O agente informa aos modelos quais arquivos mínimos carregar primeiro.
+- [ ] O agente evita pedir que modelos carreguem o workspace inteiro.
+- [ ] Caminhos ausentes são tratados como lacunas, não inventados.
 
-## Red Lines
+## Linhas Vermelhas
 
-- [ ] The agent protects secrets.
-- [ ] The agent asks before modifying durable files.
-- [ ] The agent does not enrich framework assets with product context during init.
+- [ ] O agente protege segredos.
+- [ ] O agente pede confirmação antes de modificar arquivos duráveis.
+- [ ] O agente não enriquece assets do framework com contexto de produto durante a inicialização.
 
-## Output
+## Saída
 
-- [ ] The agent defines the expected response header or output shape when relevant.
-- [ ] The agent makes the next route clear.
+- [ ] O agente define o cabeçalho de resposta ou formato de saída esperado quando relevante.
+- [ ] O agente deixa clara a próxima rota.
 `,
-    readme: `# README Quality Checklist
+    readme: `# Checklist de Qualidade do README
 
-Use this checklist before accepting a folder \`README.md\`.
+Use este checklist antes de aceitar um \`README.md\` de pasta.
 
-## Folder Map
+## Mapa da Pasta
 
-- [ ] The README explains the folder purpose.
-- [ ] The README says when to use the folder.
-- [ ] The README lists important files and subfolders.
-- [ ] The README points to the operating owner when one exists.
+- [ ] O README explica o propósito da pasta.
+- [ ] O README diz quando usar a pasta.
+- [ ] O README lista arquivos e subpastas importantes.
+- [ ] O README aponta para o owner operacional quando existir.
 
-## Navigation
+## Navegação
 
-- [ ] If the folder has \`AGENT.md\`, the README tells agents to start there for operational work.
-- [ ] The README identifies related folders.
-- [ ] The README avoids routing directly to child roles when an area agent should route first.
+- [ ] Se a pasta tiver \`AGENT.md\`, o README orienta agentes a começar por ele para trabalho operacional.
+- [ ] O README identifica pastas relacionadas.
+- [ ] O README evita rotear diretamente para roles filhas quando um agente de área deve rotear primeiro.
 
-## Boundaries
+## Limites
 
-- [ ] The README is a map, not the operator.
-- [ ] The README does not duplicate the full content of child files.
-- [ ] The README does not hide process rules that belong in a playbook.
-- [ ] The README does not store product facts that belong in knowledge files.
+- [ ] O README é um mapa, não o operador.
+- [ ] O README não duplica o conteúdo completo dos arquivos filhos.
+- [ ] O README não esconde regras de processo que pertencem a um playbook.
+- [ ] O README não armazena fatos de produto que pertencem a arquivos de knowledge.
 `,
-    department: `# Department Quality Checklist
+    department: `# Checklist de Qualidade do Departamento
 
-Use this checklist before accepting a root department.
+Use este checklist antes de aceitar um departamento raiz.
 
-## Structure
+## Estrutura
 
-- [ ] The department has \`AGENT.md\`.
-- [ ] The department has \`README.md\`.
-- [ ] The department has \`department.yaml\`.
-- [ ] The department has \`workflows/\` when cross-area flows exist.
-- [ ] Active areas are listed and routed clearly.
+- [ ] O departamento tem \`AGENT.md\`.
+- [ ] O departamento tem \`README.md\`.
+- [ ] O departamento tem \`department.yaml\`.
+- [ ] O departamento tem \`workflows/\` quando existem fluxos entre áreas.
+- [ ] Áreas ativas estão listadas e roteadas com clareza.
 
 ## Ownership
 
-- [ ] The department owns broad operating direction.
-- [ ] The department does not contain \`roles/\`, \`skills/\` or \`playbooks/\` directly.
-- [ ] Area-level execution assets live inside areas.
-- [ ] Department workflows coordinate across areas or stages.
+- [ ] O departamento possui a direção operacional ampla.
+- [ ] O departamento não contém \`roles/\`, \`skills/\` ou \`playbooks/\` diretamente.
+- [ ] Assets de execução de nível de área vivem dentro das áreas.
+- [ ] Workflows de departamento coordenam entre áreas ou estágios.
 
-## Routing
+## Roteamento
 
-- [ ] The department AGENT routes to workflows or areas.
-- [ ] The README acts as a map.
-- [ ] The YAML is machine-readable and does not store narrative product context.
+- [ ] O AGENT do departamento roteia para workflows ou áreas.
+- [ ] O README atua como mapa.
+- [ ] O YAML é legível por máquina e não armazena contexto narrativo de produto.
 `,
-    area: `# Area Quality Checklist
+    area: `# Checklist de Qualidade da Área
 
-Use this checklist before accepting an area.
+Use este checklist antes de aceitar uma área.
 
-## Structure
+## Estrutura
 
-- [ ] The area has \`README.md\`.
-- [ ] The area has \`area.yaml\`.
-- [ ] The area has \`roles/\`, \`skills/\` and \`playbooks/\` when operational work exists.
-- [ ] The area has \`knowledge/\` when it owns reusable context.
-- [ ] The area has \`AGENT.md\` when specialist routing is needed.
+- [ ] A área tem \`README.md\`.
+- [ ] A área tem \`area.yaml\`.
+- [ ] A área tem \`roles/\`, \`skills/\` e \`playbooks/\` quando existe trabalho operacional.
+- [ ] A área tem \`knowledge/\` quando possui contexto reutilizável.
+- [ ] A área tem \`AGENT.md\` quando roteamento especialista é necessário.
 
 ## Ownership
 
-- [ ] The area has a clear responsibility inside its department.
-- [ ] Roles, skills and playbooks belong to this area.
-- [ ] Knowledge files store confirmed reusable context.
+- [ ] A área tem responsabilidade clara dentro do departamento.
+- [ ] Roles, skills e playbooks pertencem a esta área.
+- [ ] Arquivos de knowledge armazenam contexto reutilizável confirmado.
 
-## Routing
+## Roteamento
 
-- [ ] Area AGENT, when present, chooses the specialist role.
-- [ ] Roles point to skills and playbooks.
-- [ ] The area does not require inactive or missing paths.
+- [ ] O AGENT da área, quando existir, escolhe a role especialista.
+- [ ] Roles apontam para skills e playbooks.
+- [ ] A área não exige caminhos inativos ou ausentes.
 `,
-    role: `# Role Quality Checklist
+    role: `# Checklist de Qualidade da Role
 
-Use this checklist before accepting a \`.role.md\` file.
+Use este checklist antes de aceitar um arquivo \`.role.md\`.
 
-## Metadata
+## Metadados
 
-- [ ] The role has YAML frontmatter with \`name\` and \`description\`.
-- [ ] The \`description\` starts with "Use when" and describes triggering conditions.
+- [ ] A role tem frontmatter YAML com \`name\` e \`description\`.
+- [ ] A \`description\` começa com "Use quando" e descreve condições de gatilho.
 
-## Responsibility
+## Responsabilidade
 
-- [ ] The role defines a clear operating persona.
-- [ ] The role answers "with which hat should the agent act?"
-- [ ] The role does not duplicate a skill or playbook.
+- [ ] A role define uma persona operacional clara.
+- [ ] A role responde "com qual chapéu o agente deve atuar?"
+- [ ] A role não duplica uma skill ou playbook.
 
-## Context
+## Contexto
 
-- [ ] The role lists the context it should read before acting.
-- [ ] The role points to relevant knowledge files when needed.
-- [ ] The role does not ask for unrelated workspace context.
+- [ ] A role lista o contexto que deve ler antes de agir.
+- [ ] A role aponta para arquivos de knowledge relevantes quando necessário.
+- [ ] A role não pede contexto de workspace não relacionado.
 
-## Execution Assets
+## Assets de Execução
 
-- [ ] The role points to relevant skills.
-- [ ] The role points to relevant playbooks.
-- [ ] The role does not reference missing files.
+- [ ] A role aponta para skills relevantes.
+- [ ] A role aponta para playbooks relevantes.
+- [ ] A role não referencia arquivos ausentes.
 
-## Acceptance Criteria
+## Critérios de Aceite
 
-- [ ] The role states the expected output or confirmation state under \`## Acceptance Criteria\`.
-- [ ] The role states when to ask for clarification or confirmation.
+- [ ] A role declara a saída esperada ou estado de confirmação em \`## Critérios de Aceite\`.
+- [ ] A role declara quando pedir esclarecimento ou confirmação.
 `,
-    skill: `# Skill Quality Checklist
+    skill: `# Checklist de Qualidade da Skill
 
-Use this checklist before accepting a skill folder with \`SKILL.md\`.
+Use este checklist antes de aceitar uma pasta de skill com \`SKILL.md\`.
 
-## Capability
+## Capacidade
 
-- [ ] The skill defines one reusable capability.
-- [ ] The skill answers "which capability should be applied?"
-- [ ] The skill is reusable by one or more roles or playbooks.
-- [ ] The skill does not become a full process sequence.
-- [ ] The skill lives at \`skills/<skill-name>/SKILL.md\`.
-- [ ] The skill has YAML frontmatter with \`name\` and \`description\`.
-- [ ] The \`description\` starts with "Use when" and describes triggering conditions.
+- [ ] A skill define uma capacidade reutilizável.
+- [ ] A skill responde "qual capacidade deve ser aplicada?"
+- [ ] A skill é reutilizável por uma ou mais roles ou playbooks.
+- [ ] A skill não se torna uma sequência completa de processo.
+- [ ] A skill vive em \`skills/<skill-name>/SKILL.md\`.
+- [ ] A skill tem frontmatter YAML com \`name\` e \`description\`.
+- [ ] A \`description\` começa com "Use quando" e descreve condições de gatilho.
 
-## Operating Detail
+## Detalhe Operacional
 
-- [ ] The skill states when to use it.
-- [ ] The skill states required context.
-- [ ] The skill states inputs.
-- [ ] The skill uses \`### Step N\` headings inside \`## Process\`.
-- [ ] The skill states checks under \`## Checks & Acceptance Criteria\`.
-- [ ] The skill states outputs.
-- [ ] The skill states red lines.
+- [ ] A skill declara quando usar.
+- [ ] A skill declara contexto obrigatório.
+- [ ] A skill declara entradas.
+- [ ] A skill usa headings \`### Etapa N\` dentro de \`## Processo\`.
+- [ ] A skill declara verificações em \`## Verificações e Critérios de Aceite\`.
+- [ ] A skill declara saídas.
+- [ ] A skill declara linhas vermelhas.
 
-## Boundaries
+## Limites
 
-- [ ] The skill does not invent product facts.
-- [ ] The skill does not update files without confirmation when durable context changes.
-- [ ] The skill does not duplicate another skill.
+- [ ] A skill não inventa fatos de produto.
+- [ ] A skill não atualiza arquivos sem confirmação quando contexto durável muda.
+- [ ] A skill não duplica outra skill.
 `,
-    playbook: `# Playbook Quality Checklist
+    playbook: `# Checklist de Qualidade do Playbook
 
-Use this checklist before accepting a \`.playbook.md\` file.
+Use este checklist antes de aceitar um arquivo \`.playbook.md\`.
 
-## Metadata
+## Metadados
 
-- [ ] The playbook has YAML frontmatter with \`name\` and \`description\`.
-- [ ] The \`description\` starts with "Use when" and describes triggering conditions.
+- [ ] O playbook tem frontmatter YAML com \`name\` e \`description\`.
+- [ ] A \`description\` começa com "Use quando" e descreve condições de gatilho.
 
-## Sequence
+## Sequência
 
-- [ ] The playbook defines an ordered execution sequence.
-- [ ] The playbook answers "in which order should the work happen?"
-- [ ] The playbook uses skills rather than duplicating all skill content.
-- [ ] The playbook has clear start and end conditions.
+- [ ] O playbook define uma sequência ordenada de execução.
+- [ ] O playbook responde "em qual ordem o trabalho deve acontecer?"
+- [ ] O playbook usa skills em vez de duplicar todo o conteúdo delas.
+- [ ] O playbook tem condições claras de início e fim.
 
-## Inputs and Outputs
+## Entradas e Saídas
 
-- [ ] Inputs are listed.
-- [ ] Process steps are listed.
-- [ ] Stop conditions are listed under \`## Stop Conditions\`.
-- [ ] Acceptance criteria and outputs are listed under \`## Acceptance Criteria & Outputs\`.
-- [ ] Files to update are listed under \`## Files to Update\`.
-- [ ] Red lines are listed under \`## Red Lines\`.
+- [ ] Entradas estão listadas.
+- [ ] Etapas de processo estão listadas.
+- [ ] Condições de parada estão listadas em \`## Condições de Parada\`.
+- [ ] Critérios de aceite e saídas estão listados em \`## Critérios de Aceite e Saídas\`.
+- [ ] Arquivos para atualizar estão listados em \`## Arquivos para Atualizar\`.
+- [ ] Linhas vermelhas estão listadas em \`## Linhas Vermelhas\`.
 
-## Guided Conversation
+## Conversa Guiada
 
-- [ ] If the playbook asks the founder to choose, classify, prioritize or confirm, it references \`../foundation/guided-conversation.md\`.
-- [ ] Guided questions use numbered options when the decision has predictable paths.
-- [ ] The founder can answer with a number or free-form text.
-- [ ] Technical paths appear after the founder understands the decision.
+- [ ] Se o playbook pedir que o founder escolha, classifique, priorize ou confirme, ele referencia \`../foundation/guided-conversation.md\`.
+- [ ] Perguntas guiadas usam opções numeradas quando a decisão tem caminhos previsíveis.
+- [ ] O founder pode responder com um número ou texto livre.
+- [ ] Caminhos técnicos aparecem depois que o founder entende a decisão.
 
-## Scope
+## Escopo
 
-- [ ] The playbook belongs to the correct area.
-- [ ] The playbook does not duplicate a department workflow.
-- [ ] The playbook does not reference inactive or missing paths.
+- [ ] O playbook pertence à área correta.
+- [ ] O playbook não duplica um workflow de departamento.
+- [ ] O playbook não referencia caminhos inativos ou ausentes.
 `,
-    workflow: `# Workflow Quality Checklist
+    workflow: `# Checklist de Qualidade do Workflow
 
-Use this checklist before accepting a \`.workflow.md\` file.
+Use este checklist antes de aceitar um arquivo \`.workflow.md\`.
 
 ## Ownership
 
-- [ ] The workflow belongs to a department or a truly area-owned flow.
-- [ ] The workflow coordinates multiple areas, roles or stages.
-- [ ] The workflow does not live in \`.leanos/workflows/\`.
+- [ ] O workflow pertence a um departamento ou a um fluxo realmente owned por uma área.
+- [ ] O workflow coordena múltiplas áreas, roles ou estágios.
+- [ ] O workflow não vive em \`.leanos/workflows/\`.
 
-## Flow
+## Fluxo
 
-- [ ] The workflow defines trigger, required context and end state.
-- [ ] The workflow identifies participating areas or roles.
-- [ ] The workflow defines handoffs between owners.
-- [ ] Conditional participants are marked as conditional.
-- [ ] Missing active areas are handled as gaps.
+- [ ] O workflow define gatilho, contexto obrigatório e estado final.
+- [ ] O workflow identifica áreas ou roles participantes.
+- [ ] O workflow define handoffs entre owners.
+- [ ] Participantes condicionais são marcados como condicionais.
+- [ ] Áreas ativas ausentes são tratadas como lacunas.
 
-## Output
+## Saída
 
-- [ ] The workflow states expected outputs.
-- [ ] The workflow identifies follow-up routes.
-- [ ] The workflow does not duplicate area playbooks.
+- [ ] O workflow declara as saídas esperadas.
+- [ ] O workflow identifica rotas de continuidade.
+- [ ] O workflow não duplica playbooks de área.
 `,
   };
 
-  return checklists[name] ?? `# ${toTitle(name)} Quality Checklist
+  return checklists[name] ?? `# Checklist de Qualidade de ${toTitle(name)}
 
-- [ ] Purpose is clear.
-- [ ] Owner is clear.
-- [ ] Navigation is explicit.
-- [ ] Output expectations are clear.
-- [ ] No inactive or missing paths are required.
+- [ ] O propósito está claro.
+- [ ] O owner está claro.
+- [ ] A navegação está explícita.
+- [ ] Expectativas de saída estão claras.
+- [ ] Nenhum caminho inativo ou ausente é exigido.
 `;
 }

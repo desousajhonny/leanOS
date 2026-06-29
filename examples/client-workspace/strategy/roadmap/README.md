@@ -1,15 +1,15 @@
 # Roadmap
 
-## Purpose
+## Propósito
 
-Own roadmap sequence, milestones, backlog and planning-cycle prioritization for operating or scaling products.
+Possui sequência de roadmap, milestones, backlog e priorização de ciclo de planejamento para produtos operando ou escalando.
 
-## When to Use
+## Use Quando
 
-- sequence product work for product_operating or growth_scaling
-- prioritize multiple backlog candidates
-- define current cycle
-- plan milestones
+- sequenciar trabalho de produto para product_operating ou growth_scaling
+- priorizar múltiplos candidatos de backlog
+- definir ciclo atual
+- planejar milestones
 
 ## Source of Truth
 
@@ -21,22 +21,22 @@ Own roadmap sequence, milestones, backlog and planning-cycle prioritization for 
 
 
 
-## Navigation
+## Navegação
 
-1. For operational work, start with `AGENT.md`.
-2. Use this README as the directory map.
-3. After the area AGENT selects a role, load only required skills and playbooks.
-4. Produce the requested output and update source-of-truth files when needed.
+1. Para trabalho operacional, comece em `AGENT.md`.
+2. Use este README como mapa do diretório.
+3. Depois que o AGENT da área escolher um papel, carregue apenas as skills e playbooks necessários.
+4. Produza a saída solicitada e atualize arquivos de fonte da verdade quando necessário.
 
-## File Responsibilities
+## Responsabilidades dos Arquivos
 
-- `README.md`: area map and explanation.
-- `AGENT.md`: area operating lead when present.
-- `area.yaml`: machine-readable structure for this area.
-- `roles/`: operating personas for this area.
-- `skills/`: focused capabilities used by roles.
-- `playbooks/`: tactical execution sequences.
+- `README.md`: mapa e explicação da área.
+- `AGENT.md`: lead operacional da área quando presente.
+- `area.yaml`: estrutura legível por máquina para esta área.
+- `roles/`: personas operacionais desta área.
+- `skills/`: capacidades focadas usadas pelos papéis.
+- `playbooks/`: sequências táticas de execução.
 
-## Common Paths
+## Caminhos Comuns
 
-- Roadmap request: `AGENT.md` -> role `roles/roadmap-planner.role.md` -> skill `skills/roadmap/SKILL.md` -> playbook `playbooks/roadmap-cycle-planning.playbook.md`.
+- Pedido de roadmap: `AGENT.md` -> role `roles/roadmap-planner.role.md` -> skill `skills/roadmap/SKILL.md` -> playbook `playbooks/roadmap-cycle-planning.playbook.md`.

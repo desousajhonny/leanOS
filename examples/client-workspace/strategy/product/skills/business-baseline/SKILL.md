@@ -1,21 +1,21 @@
 ---
 name: business-baseline
-description: Use when the founder is starting LeanOS; the product idea is raw; the Chief needs to identify the current business stage before roadmap or MVP validation scope
+description: Use quando o founder está iniciando o LeanOS; a ideia de produto é bruta; o Chief precisa identificar o estágio de negócio atual antes de roadmap ou escopo de validação do MVP
 ---
 
 # Business Baseline
 
-## Overview
+## Visão Geral
 
-Map a raw founder idea or current business context into known facts, Strategy Baseline gaps, next guided question and safe next route.
+Mapeie uma ideia bruta do founder ou o contexto atual do negócio em fatos conhecidos, lacunas de Strategy Baseline, próxima pergunta guiada e próxima rota segura.
 
-## Use When
+## Use Quando
 
-- the founder is starting LeanOS
-- the product idea is raw
-- the Chief needs to identify the current business stage before roadmap or MVP validation scope
+- o founder está iniciando o LeanOS
+- a ideia de produto é bruta
+- o Chief precisa identificar o estágio de negócio atual antes de roadmap ou escopo de validação do MVP
 
-## Required Context
+## Contexto Obrigatório
 
 - ../../../leanos.yaml
 - ../../../ai-standard/foundation/founder-progression-model.md
@@ -27,61 +27,61 @@ Map a raw founder idea or current business context into known facts, Strategy Ba
 - ../knowledge/mvp-validation-scope.md
 - ../knowledge/validation-notes.md
 
-## Inputs
+## Entradas
 
-- Seed context
-- Founder message
-- Known product facts
-- Known assumptions
-- Current stage
-- Open Strategy gaps
+- Contexto seed
+- Mensagem do founder
+- Fatos conhecidos de produto
+- Suposições conhecidas
+- Estágio atual
+- Lacunas abertas de Strategy
 
-## Process
+## Processo
 
-### Step 1
+### Etapa 1
 
-Read only active Strategy context.
+Leia apenas o contexto ativo de Strategy.
 
-### Step 2
+### Etapa 2
 
-Restate what is known from seed context and Product knowledge.
+Reafirme o que é conhecido a partir do contexto seed e do knowledge de Product.
 
-### Step 3
+### Etapa 3
 
-Classify the current business stage using the Founder Progression Model.
+Classifique o estágio de negócio atual usando o Founder Progression Model.
 
-### Step 4
+### Etapa 4
 
-Check `progression-gates.md` for required context, allowed next stages and blocked next stages.
+Verifique `progression-gates.md` para contexto obrigatório, próximos estágios permitidos e próximos estágios bloqueados.
 
-### Step 5
+### Etapa 5
 
-Identify Strategy Baseline gaps: target user, problem, promise, alternative, riskiest assumption, immediate focus and MVP validation target.
+Identifique lacunas de Strategy Baseline: usuário-alvo, problema, promessa, alternativa, suposição mais arriscada, foco imediato e alvo de validação do MVP.
 
-### Step 6
+### Etapa 6
 
-Choose the smallest next guided question.
+Escolha a menor próxima pergunta guiada.
 
-### Step 7
+### Etapa 7
 
-Recommend the next route only when the gate is satisfied.
+Recomende a próxima rota apenas quando o gate estiver satisfeito.
 
-## Checks & Acceptance Criteria
+## Verificações e Critérios de Aceite
 
-- The output names baseline gaps instead of asking a generic question.
-- The next question is tied to one missing decision.
-- Roadmap and MVP validation are recommended only after Strategy Baseline is minimally coherent.
-- activation_required is used only for inactive areas after the gate permits it.
+- A saída nomeia lacunas de baseline em vez de fazer uma pergunta genérica.
+- A próxima pergunta está ligada a uma decisão ausente.
+- Roadmap e validação do MVP são recomendados apenas depois que Strategy Baseline estiver minimamente coerente.
+- activation_required é usado apenas para áreas inativas depois que o gate permitir.
 
-## Output
+## Saída
 
-- Current business stage
-- Known context summary
-- Strategy Baseline gaps
-- Next guided question
-- Safe next route
+- Estágio de negócio atual
+- Resumo do contexto conhecido
+- Lacunas de Strategy Baseline
+- Próxima pergunta guiada
+- Próxima rota segura
 
-## Files to Update
+## Arquivos para Atualizar
 
 - ../knowledge/brief.md
 - ../knowledge/problem.md
@@ -90,8 +90,8 @@ Recommend the next route only when the gate is satisfied.
 - ../knowledge/mvp-validation-scope.md
 - ../knowledge/validation-notes.md
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not ask broad empty questions such as tell me more.
-- Do not create roadmap, MVP backlog, Epics, Features or implementation work.
-- Do not activate Operations, Growth or GitHub from idea calibration.
+- Não faça perguntas amplas e vazias como conte mais.
+- Não crie roadmap, backlog de MVP, Epics, Features ou trabalho de implementação.
+- Não ative Operations, Growth ou GitHub a partir da calibração de ideia.

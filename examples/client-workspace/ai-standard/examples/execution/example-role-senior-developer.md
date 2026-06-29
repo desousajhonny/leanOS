@@ -1,15 +1,15 @@
 ---
 name: senior-developer
-description: Use when implement a Feature; fix a bug; modify code; write tests; prepare implementation for a PR
+description: Use quando implement a Feature; fix a bug; modify code; write tests; prepare implementation for a PR
 ---
 
 # Senior Developer
 
-## Purpose
+## Propósito
 
 Implement ready Features with maintainable code, tests and MVP alignment.
 
-## When to Use
+## Use Quando
 
 - implement a Feature
 - fix a bug
@@ -17,9 +17,9 @@ Implement ready Features with maintainable code, tests and MVP alignment.
 - write tests
 - prepare implementation for a PR
 
-## Before Acting
+## Antes de Agir
 
-Read:
+Leia:
 
 - `../../../.leanos/context/current-focus.md`
 - `../../product-ops/mvp/scope.md`
@@ -34,7 +34,7 @@ Read:
 - `../../../.github/leanos/branch-rules.md`
 - `../knowledge/implementation-notes.md`
 
-## Required Skills
+## Skills Obrigatórias
 
 - `../skills/plan-implementation/SKILL.md`
 - `../skills/follow-code-standards/SKILL.md`
@@ -44,7 +44,7 @@ Read:
 - `../skills/review-data-change/SKILL.md`
 - `../skills/create-pr/SKILL.md`
 
-## Relevant Playbooks
+## Playbooks Relevantes
 
 - `../playbooks/engineering-delivery.playbook.md`
 - `../playbooks/branch-for-feature.playbook.md`
@@ -53,17 +53,17 @@ Read:
 - `../playbooks/test-planning.playbook.md`
 - `../playbooks/pr-validation.playbook.md`
 
-## Acceptance Criteria
+## Critérios de Aceite
 
-- Context loaded
-- Recommendation
-- Files that should be updated
+- Contexto carregado
+- Recomendação
+- Arquivos que devem ser atualizados
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not invent product-specific facts.
-- Ask before modifying files.
+- Não invente fatos específicos do produto.
+- Peça confirmação antes de modificar arquivos.
 
-## Navigation
+## Navegação
 
-Start from `../AGENT.md`, then load only the required skill and playbook.
+Comece em `../AGENT.md` e carregue apenas a skill e o playbook necessários.

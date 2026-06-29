@@ -27,12 +27,12 @@ export const operationsDevopsArea: AreaDefinition = {
     "Route product code implementation back to Engineering and product scope questions back to Product Ops."
   ],
   redLines: [
-    "Do not store tokens, secrets or credentials in workspace files.",
-    "Do not ask the founder to paste tokens into chat or markdown files.",
-    "Do not call GitHub, Vercel or any provider API without explicit confirmation.",
-    "Do not create `.vercel/`, run `vercel link` or deploy automatically from the scaffold.",
-    "Do not create or modify `vercel.json` until a real app/framework exists and overrides are required.",
-    "Do not add CI deploy gates or branch protection changes without explaining impact and asking first."
+    "Não armazene tokens, segredos ou credenciais em arquivos do workspace.",
+    "Não peça ao founder para colar tokens em chat ou arquivos markdown.",
+    "Não chame GitHub, Vercel ou qualquer API de provider sem confirmação explícita.",
+    "Não crie `.vercel/`, rode `vercel link` ou faça deploy automaticamente from the scaffold.",
+    "Não crie nem modifique `vercel.json` até existir um app/framework real e overrides serem necessários.",
+    "Não adicione gates de deploy em CI ou mudanças de branch protection sem explicar impacto e perguntar antes."
   ],
   sourceOfTruth: operationsDevopsSourceOfTruth,
   files: operationsDevopsFiles,

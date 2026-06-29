@@ -93,36 +93,36 @@ async function exists(path) {
 export function assertSkillFormat(content, expectedName) {
   assert(content.startsWith("---\n"), `${expectedName} skill should start with YAML frontmatter`);
   assert(content.includes(`name: ${expectedName}`), `${expectedName} skill frontmatter should declare name`);
-  assert(content.includes("description: Use when"), `${expectedName} skill frontmatter should declare trigger description`);
-  assert(content.includes("## Overview"), `${expectedName} skill should use Overview section`);
-  assert(content.includes("## Process"), `${expectedName} skill should include Process section`);
-  assert(content.includes("### Step 1"), `${expectedName} skill should use Step headings inside Process`);
+  assert(content.includes("description: Use quando"), `${expectedName} skill frontmatter should declare PT-BR trigger description`);
+  assert(content.includes("## Visão Geral"), `${expectedName} skill should use Visão Geral section`);
+  assert(content.includes("## Processo"), `${expectedName} skill should include Processo section`);
+  assert(content.includes("### Etapa 1"), `${expectedName} skill should use Etapa headings inside Processo`);
 }
 
 export function assertRoleFormat(content, expectedName) {
   assert(content.startsWith("---\n"), `${expectedName} role should start with YAML frontmatter`);
   assert(content.includes(`name: ${expectedName}`), `${expectedName} role frontmatter should declare name`);
-  assert(content.includes("description: Use when"), `${expectedName} role frontmatter should declare trigger description`);
-  assert(content.includes("## Purpose"), `${expectedName} role should include Purpose section`);
-  assert(content.includes("## When to Use"), `${expectedName} role should include When to Use section`);
-  assert(content.includes("## Before Acting"), `${expectedName} role should include Before Acting section`);
-  assert(content.includes("## Required Skills"), `${expectedName} role should include Required Skills section`);
-  assert(content.includes("## Relevant Playbooks"), `${expectedName} role should include Relevant Playbooks section`);
-  assert(content.includes("## Acceptance Criteria"), `${expectedName} role should include Acceptance Criteria section`);
-  assert(content.includes("## Red Lines"), `${expectedName} role should include Red Lines section`);
+  assert(content.includes("description: Use quando"), `${expectedName} role frontmatter should declare PT-BR trigger description`);
+  assert(content.includes("## Propósito"), `${expectedName} role should include Propósito section`);
+  assert(content.includes("## Use Quando"), `${expectedName} role should include Use Quando section`);
+  assert(content.includes("## Antes de Agir"), `${expectedName} role should include Antes de Agir section`);
+  assert(content.includes("## Skills Obrigatórias"), `${expectedName} role should include Skills Obrigatórias section`);
+  assert(content.includes("## Playbooks Relevantes"), `${expectedName} role should include Playbooks Relevantes section`);
+  assert(content.includes("## Critérios de Aceite"), `${expectedName} role should include Critérios de Aceite section`);
+  assert(content.includes("## Linhas Vermelhas"), `${expectedName} role should include Linhas Vermelhas section`);
 }
 
 export function assertPlaybookFormat(content, expectedName) {
   assert(content.startsWith("---\n"), `${expectedName} playbook should start with YAML frontmatter`);
   assert(content.includes(`name: ${expectedName}`), `${expectedName} playbook frontmatter should declare name`);
-  assert(content.includes("description: Use when"), `${expectedName} playbook frontmatter should declare trigger description`);
-  assert(content.includes("## Purpose"), `${expectedName} playbook should include Purpose section`);
-  assert(content.includes("## When to Use"), `${expectedName} playbook should include When to Use section`);
-  assert(content.includes("## Before Acting"), `${expectedName} playbook should include Before Acting section`);
-  assert(content.includes("## Inputs"), `${expectedName} playbook should include Inputs section`);
-  assert(content.includes("## Process"), `${expectedName} playbook should include Process section`);
-  assert(content.includes("## Stop Conditions"), `${expectedName} playbook should include Stop Conditions section`);
-  assert(content.includes("## Acceptance Criteria & Outputs"), `${expectedName} playbook should include Acceptance Criteria & Outputs section`);
-  assert(content.includes("## Files to Update"), `${expectedName} playbook should include Files to Update section`);
-  assert(content.includes("## Red Lines"), `${expectedName} playbook should include Red Lines section`);
+  assert(content.includes("description: Use quando"), `${expectedName} playbook frontmatter should declare PT-BR trigger description`);
+  assert(content.includes("## Propósito"), `${expectedName} playbook should include Propósito section`);
+  assert(content.includes("## Use Quando"), `${expectedName} playbook should include Use Quando section`);
+  assert(content.includes("## Antes de Agir"), `${expectedName} playbook should include Antes de Agir section`);
+  assert(content.includes("## Entradas"), `${expectedName} playbook should include Entradas section`);
+  assert(content.includes("## Processo"), `${expectedName} playbook should include Processo section`);
+  assert(content.includes("## Condições de Parada"), `${expectedName} playbook should include Condições de Parada section`);
+  assert(content.includes("## Critérios de Aceite e Saídas"), `${expectedName} playbook should include Critérios de Aceite e Saídas section`);
+  assert(content.includes("## Arquivos para Atualizar"), `${expectedName} playbook should include Arquivos para Atualizar section`);
+  assert(content.includes("## Linhas Vermelhas"), `${expectedName} playbook should include Linhas Vermelhas section`);
 }

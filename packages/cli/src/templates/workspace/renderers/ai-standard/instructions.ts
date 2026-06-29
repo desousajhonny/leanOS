@@ -13,332 +13,332 @@ export function instructionFiles(): FileEntry[] {
 function instructionsReadme(instructions: string[]): string {
   return `# Instructions
 
-## Purpose
+## Propósito
 
-Step-by-step creation procedures for LeanOS assets.
+Procedimentos passo a passo para criar assets LeanOS.
 
-## When to Use
+## Use Quando
 
-Use when the user asks to create or update framework assets such as agents, departments, areas, roles, skills, playbooks, workflows or READMEs.
+Use quando o usuário pedir para criar ou atualizar assets do framework, como agentes, departamentos, áreas, roles, skills, playbooks, workflows ou READMEs.
 
-## Files
+## Arquivos
 
 ${instructions.map((name) => `- \`${name}-instructions.md\``).join("\n")}
 
-## Related Folders
+## Pastas Relacionadas
 
 - \`../foundation/\`
 - \`../templates/\`
 - \`../checklists/\`
 
-## Navigation
+## Navegação
 
-1. Confirm the asset type in \`../foundation/asset-taxonomy.md\`.
-2. Read \`../foundation/creation-rules.md\`.
-3. Open the matching instruction file.
-4. Use the matching template.
-5. Validate with the matching checklist.
+1. Confirme o tipo de asset em \`../foundation/asset-taxonomy.md\`.
+2. Leia \`../foundation/creation-rules.md\`.
+3. Abra o arquivo de instrução correspondente.
+4. Use o template correspondente.
+5. Valide com o checklist correspondente.
 
-## Agent Notes
+## Notas para Agentes
 
-Do not use one instruction for every asset type. Each instruction protects a different creation path.
+Não use uma instrução única para todos os tipos de asset. Cada instrução protege um caminho de criação diferente.
 `;
 }
 
 function creationInstructionContent(name: string): string {
   const instructions: Record<string, string> = {
-    "create-agent": `# Create Agent Instructions
+    "create-agent": `# Instruções para Criar Agente
 
-Use when creating or changing an \`AGENT.md\`.
+Use quando criar ou alterar um \`AGENT.md\`.
 
-## Before Creating
+## Antes de Criar
 
-1. Load \`../foundation/asset-taxonomy.md\`.
-2. Load \`../foundation/navigation-chain.md\`.
-3. Confirm whether the agent is root, department or area level.
-4. Check whether a README map is enough instead of an AGENT.
+1. Carregue \`../foundation/asset-taxonomy.md\`.
+2. Carregue \`../foundation/navigation-chain.md\`.
+3. Confirme se o agente é de nível raiz, departamento ou área.
+4. Verifique se um mapa em README é suficiente em vez de um AGENT.
 
-## Choose Template
+## Escolha o Template
 
 - Root agent: \`../templates/agents/root-agent-template.md\`
 - Department agent: \`../templates/agents/department-agent-template.md\`
 - Area agent: \`../templates/agents/area-agent-template.md\`
 
-## Process
+## Processo
 
-1. Define the exact level this agent owns.
-2. Define what it routes to next.
-3. Define red lines for this level.
-4. Keep inventory short; delegate detail to README, workflows, roles, skills and playbooks.
-5. Ask before writing.
+1. Defina o nível exato que este agente possui.
+2. Defina para onde ele roteia em seguida.
+3. Defina linhas vermelhas para este nível.
+4. Mantenha o inventário curto; delegue detalhes para README, workflows, roles, skills e playbooks.
+5. Peça confirmação antes de escrever.
 
-## Validate
+## Valide
 
 Use \`../checklists/agent-quality-checklist.md\`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not make root AGENT route directly to area roles or skills.
-- Do not list every child workflow, role, skill or playbook.
-- Do not duplicate command instructions.
+- Não faça o AGENT raiz rotear diretamente para roles ou skills de área.
+- Não liste todos os workflows, roles, skills ou playbooks filhos.
+- Não duplique instruções de comando.
 `,
-    "create-readme": `# Create README Instructions
+    "create-readme": `# Instruções para Criar README
 
-Use when creating or changing a folder \`README.md\`.
+Use quando criar ou alterar um \`README.md\` de pasta.
 
-## Before Creating
+## Antes de Criar
 
-1. Load \`../foundation/folder-documentation-rules.md\`.
-2. Confirm the folder purpose.
-3. Confirm whether an \`AGENT.md\` owns operational routing for this folder.
+1. Carregue \`../foundation/folder-documentation-rules.md\`.
+2. Confirme o propósito da pasta.
+3. Confirme se um \`AGENT.md\` possui o roteamento operacional desta pasta.
 
-## Choose Template
+## Escolha o Template
 
 - Folder README: \`../templates/structure/folder-readme-template.md\`
 - Area README: \`../templates/structure/area-readme-template.md\`
 - Root README: \`../templates/structure/root-readme-template.md\`
 
-## Process
+## Processo
 
-1. Explain purpose.
-2. Explain when to use the folder.
-3. List important files and subfolders.
-4. Point to operating owner when present.
-5. Add navigation notes.
-6. Keep it a map, not an executor.
+1. Explique o propósito.
+2. Explique quando usar a pasta.
+3. Liste arquivos e subpastas importantes.
+4. Aponte o owner operacional quando existir.
+5. Adicione notas de navegação.
+6. Mantenha como mapa, não como executor.
 
-## Validate
+## Valide
 
 Use \`../checklists/readme-quality-checklist.md\`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not duplicate child file contents.
-- Do not hide process inside README.
-- Do not store product facts that belong in knowledge files.
+- Não duplique o conteúdo de arquivos filhos.
+- Não esconda processo dentro do README.
+- Não armazene fatos de produto que pertencem a arquivos de knowledge.
 `,
-    "create-department": `# Create Department Instructions
+    "create-department": `# Instruções para Criar Departamento
 
-Use when creating a new root department.
+Use quando criar um novo departamento raiz.
 
-## Before Creating
+## Antes de Criar
 
-1. Load \`../foundation/asset-taxonomy.md\`.
-2. Load \`../foundation/navigation-chain.md\`.
-3. Confirm that the scope is broad enough to be a root department.
-4. Check whether an existing department or area should own the work.
+1. Carregue \`../foundation/asset-taxonomy.md\`.
+2. Carregue \`../foundation/navigation-chain.md\`.
+3. Confirme se o escopo é amplo o bastante para ser um departamento raiz.
+4. Verifique se um departamento ou área existente deveria possuir o trabalho.
 
-## Choose Templates
+## Escolha os Templates
 
 - Department AGENT: \`../templates/agents/department-agent-template.md\`
 - Department README: \`../templates/structure/department-template.md\`
 - Department YAML: \`../templates/structure/department-template.yaml\`
 
-## Process
+## Processo
 
-1. Define department scope.
-2. Define active areas.
-3. Define department-local workflows when cross-area work exists.
-4. Create \`AGENT.md\`, \`README.md\`, \`department.yaml\` and \`workflows/\` when needed.
-5. Do not create roles, skills or playbooks at department root.
+1. Defina o escopo do departamento.
+2. Defina as áreas ativas.
+3. Defina workflows locais do departamento quando existir trabalho entre áreas.
+4. Crie \`AGENT.md\`, \`README.md\`, \`department.yaml\` e \`workflows/\` quando necessário.
+5. Não crie roles, skills ou playbooks na raiz do departamento.
 
-## Validate
+## Valide
 
 Use \`../checklists/department-quality-checklist.md\`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not create a department for one capability.
-- Do not place area execution assets at department root.
-- Do not duplicate existing department ownership.
+- Não crie um departamento para uma única capacidade.
+- Não coloque assets de execução de área na raiz do departamento.
+- Não duplique ownership de departamento existente.
 `,
-    "create-area": `# Create Area Instructions
+    "create-area": `# Instruções para Criar Área
 
-Use when creating an area inside a root department.
+Use quando criar uma área dentro de um departamento raiz.
 
-## Before Creating
+## Antes de Criar
 
-1. Confirm the owning department.
-2. Load \`../foundation/navigation-chain.md\`.
-3. Confirm the area has a stable operational responsibility.
-4. Check whether an existing area already owns the work.
+1. Confirme o departamento owner.
+2. Carregue \`../foundation/navigation-chain.md\`.
+3. Confirme se a área tem uma responsabilidade operacional estável.
+4. Verifique se uma área existente já possui o trabalho.
 
-## Choose Templates
+## Escolha os Templates
 
 - Area README: \`../templates/structure/area-readme-template.md\`
 - Area YAML: \`../templates/structure/area-template.yaml\`
 - Area AGENT, when needed: \`../templates/agents/area-agent-template.md\`
 
-## Process
+## Processo
 
-1. Define area purpose.
-2. Define whether it needs \`AGENT.md\`.
-3. Define knowledge files, roles, skills and playbooks.
-4. Create \`README.md\` and \`area.yaml\`.
-5. Create \`roles/\`, \`skills/\`, \`playbooks/\` and \`knowledge/\` only when they are needed.
+1. Defina o propósito da área.
+2. Defina se ela precisa de \`AGENT.md\`.
+3. Defina arquivos de knowledge, roles, skills e playbooks.
+4. Crie \`README.md\` e \`area.yaml\`.
+5. Crie \`roles/\`, \`skills/\`, \`playbooks/\` e \`knowledge/\` apenas quando forem necessários.
 
-## Validate
+## Valide
 
 Use \`../checklists/area-quality-checklist.md\`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not create an area with no clear owner or use case.
-- Do not create empty execution folders just for decoration.
-- Do not bypass department ownership.
+- Não crie uma área sem owner ou caso de uso claro.
+- Não crie pastas de execução vazias apenas por decoração.
+- Não contorne o ownership do departamento.
 `,
-    "create-role": `# Create Role Instructions
+    "create-role": `# Instruções para Criar Role
 
-Use when creating a \`.role.md\` file inside an area.
+Use quando criar um arquivo \`.role.md\` dentro de uma área.
 
-## Before Creating
+## Antes de Criar
 
-1. Confirm the active area.
-2. Load the area \`AGENT.md\` when present.
-3. Load the area \`README.md\` and \`area.yaml\`.
-4. Confirm that a distinct operating persona is needed.
+1. Confirme a área ativa.
+2. Carregue o \`AGENT.md\` da área quando existir.
+3. Carregue o \`README.md\` e o \`area.yaml\` da área.
+4. Confirme se uma persona operacional distinta é necessária.
 
-## Choose Template
+## Escolha o Template
 
 - Role: \`../templates/execution/role-template.md\`
 - Role YAML: \`../templates/execution/role-template.yaml\`
 
-## Process
+## Processo
 
-1. Define what hat the agent should wear.
-2. Add YAML frontmatter with \`name\` and a trigger-only \`description\` that starts with "Use when".
-3. Define when to use the role.
-4. Define required context.
-5. Point to existing skills and playbooks.
-6. Create missing skills or playbooks only after separate confirmation.
+1. Defina qual chapéu operacional o agente deve vestir.
+2. Adicione frontmatter YAML com \`name\` e uma \`description\` apenas de gatilho que começa com "Use quando".
+3. Defina quando usar a role.
+4. Defina o contexto obrigatório.
+5. Aponte para skills e playbooks existentes.
+6. Crie skills ou playbooks ausentes apenas depois de confirmação separada.
 
-## Validate
+## Valide
 
 Use \`../checklists/role-quality-checklist.md\`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not create a role for a one-off task.
-- Do not make the role perform the skill or playbook itself.
-- Do not point to missing files without marking the gap.
+- Não crie uma role para uma tarefa única.
+- Não faça a role executar a skill ou o playbook por conta própria.
+- Não aponte para arquivos ausentes sem marcar a lacuna.
 `,
-    "create-skill": `# Create Skill Instructions
+    "create-skill": `# Instruções para Criar Skill
 
-Use when creating a skill folder inside an area.
+Use quando criar uma pasta de skill dentro de uma área.
 
-## Before Creating
+## Antes de Criar
 
-1. Confirm the active area.
-2. Confirm which role or playbook will use the skill.
-3. Check whether an existing skill already covers the capability.
-4. Create \`skills/<skill-name>/SKILL.md\`.
+1. Confirme a área ativa.
+2. Confirme qual role ou playbook usará a skill.
+3. Verifique se uma skill existente já cobre a capacidade.
+4. Crie \`skills/<skill-name>/SKILL.md\`.
 
-## Choose Template
+## Escolha o Template
 
 - Skill: \`../templates/execution/skill-template.md\`
 - Skill YAML: \`../templates/execution/skill-template.yaml\`
 
-## Process
+## Processo
 
-1. Define one reusable capability.
-2. Add YAML frontmatter with \`name\` and a trigger-only \`description\` that starts with "Use when".
-3. Define when to use it.
-4. Define required context and inputs.
-5. Use \`### Step N\` headings inside \`## Process\`.
-6. Define Checks & Acceptance Criteria and outputs.
-7. Define red lines.
-8. Avoid turning the skill into a full ordered process.
+1. Defina uma capacidade reutilizável.
+2. Adicione frontmatter YAML com \`name\` e uma \`description\` apenas de gatilho que começa com "Use quando".
+3. Defina quando usar.
+4. Defina contexto obrigatório e entradas.
+5. Use headings \`### Etapa N\` dentro de \`## Processo\`.
+6. Defina verificações, critérios de aceite e saídas.
+7. Defina linhas vermelhas.
+8. Evite transformar a skill em um processo ordenado completo.
 
-## Validate
+## Valide
 
 Use \`../checklists/skill-quality-checklist.md\`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not duplicate another skill.
-- Do not create a skill for a one-off answer.
-- Do not put durable product facts in a skill.
+- Não duplique outra skill.
+- Não crie uma skill para uma resposta única.
+- Não coloque fatos duráveis de produto dentro de uma skill.
 `,
-    "create-playbook": `# Create Playbook Instructions
+    "create-playbook": `# Instruções para Criar Playbook
 
-Use when creating a \`.playbook.md\` file inside an area.
+Use quando criar um arquivo \`.playbook.md\` dentro de uma área.
 
-## Before Creating
+## Antes de Criar
 
-1. Confirm the active area.
-2. Confirm the playbook is tactical execution inside one area.
-3. Check whether a department workflow should own the broader flow.
-4. Identify skills the playbook should use.
-5. Load \`../foundation/guided-conversation.md\` when the playbook asks the founder to choose, classify, prioritize or confirm.
+1. Confirme a área ativa.
+2. Confirme se o playbook é execução tática dentro de uma área.
+3. Verifique se um workflow de departamento deveria possuir o fluxo mais amplo.
+4. Identifique as skills que o playbook deve usar.
+5. Carregue \`../foundation/guided-conversation.md\` quando o playbook pedir que o founder escolha, classifique, priorize ou confirme.
 
-## Choose Template
+## Escolha o Template
 
 - Playbook: \`../templates/execution/playbook-template.md\`
 - Playbook YAML: \`../templates/execution/playbook-template.yaml\`
 
-## Process
+## Processo
 
-1. Define trigger and goal.
-2. Add YAML frontmatter with \`name\` and a trigger-only \`description\` that starts with "Use when".
-3. Define inputs.
-4. Define ordered process.
-5. Reference skills instead of duplicating them.
-6. Add \`Guided Conversation\` when founder input or confirmation is part of the playbook.
-7. Define Stop Conditions.
-8. Define Acceptance Criteria & Outputs.
-9. Define Files to Update.
+1. Defina gatilho e objetivo.
+2. Adicione frontmatter YAML com \`name\` e uma \`description\` apenas de gatilho que começa com "Use quando".
+3. Defina entradas.
+4. Defina o processo ordenado.
+5. Referencie skills em vez de duplicá-las.
+6. Adicione \`Conversa Guiada\` quando entrada ou confirmação do founder fizer parte do playbook.
+7. Defina condições de parada.
+8. Defina critérios de aceite e saídas.
+9. Defina arquivos para atualizar.
 
-## Validate
+## Valide
 
 Use \`../checklists/playbook-quality-checklist.md\`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not duplicate a workflow.
-- Do not hide missing role or skill gaps.
-- Do not update durable files without confirmation.
+- Não duplique um workflow.
+- Não esconda lacunas de role ou skill ausente.
+- Não atualize arquivos duráveis sem confirmação.
 `,
-    "create-workflow": `# Create Workflow Instructions
+    "create-workflow": `# Instruções para Criar Workflow
 
-Use when creating a \`.workflow.md\` file.
+Use quando criar um arquivo \`.workflow.md\`.
 
-## Before Creating
+## Antes de Criar
 
-1. Confirm whether the workflow belongs to a department or area.
-2. Confirm that the flow spans multiple areas, roles or stages.
-3. Check whether an existing playbook is enough.
+1. Confirme se o workflow pertence a um departamento ou área.
+2. Confirme se o fluxo atravessa múltiplas áreas, roles ou estágios.
+3. Verifique se um playbook existente é suficiente.
 
-## Choose Template
+## Escolha o Template
 
 - Workflow: \`../templates/execution/workflow-template.md\`
 
-## Process
+## Processo
 
-1. Define trigger.
-2. Define participating areas or roles.
-3. Define required context.
-4. Define ordered stages and handoffs.
-5. Mark conditional participants as conditional.
-6. Define outputs and follow-up routes.
+1. Defina o gatilho.
+2. Defina áreas ou roles participantes.
+3. Defina o contexto obrigatório.
+4. Defina estágios ordenados e handoffs.
+5. Marque participantes condicionais como condicionais.
+6. Defina saídas e rotas de continuidade.
 
-## Validate
+## Valide
 
 Use \`../checklists/workflow-quality-checklist.md\`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not place business workflows in \`.leanos/workflows/\`.
-- Do not duplicate area playbooks.
-- Do not require inactive areas without warning.
+- Não coloque workflows de negócio em \`.leanos/workflows/\`.
+- Não duplique playbooks de área.
+- Não exija áreas inativas sem aviso.
 `,
   };
 
-  return instructions[name] ?? `# ${toTitle(name.replace("create-", ""))} Instructions
+  return instructions[name] ?? `# Instruções para ${toTitle(name.replace("create-", ""))}
 
-1. Load \`../foundation/asset-taxonomy.md\`.
-2. Choose the active department and area.
-3. Use the matching template.
-4. Validate with the matching checklist.
-5. Ask before writing.
+1. Carregue \`../foundation/asset-taxonomy.md\`.
+2. Escolha o departamento e a área ativos.
+3. Use o template correspondente.
+4. Valide com o checklist correspondente.
+5. Peça confirmação antes de escrever.
 `;
 }

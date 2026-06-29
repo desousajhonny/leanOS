@@ -1,86 +1,86 @@
 export function aiStandardReadme(): string {
   return `# AI Standard
 
-## Purpose
+## Propósito
 
-LeanOS source-of-truth for creating, reviewing and routing AI-native framework assets.
+Source of truth do LeanOS para criar, revisar e rotear assets AI-native do framework.
 
-## When to Use
+## Use Quando
 
-Use this folder before creating or changing agents, departments, areas, roles, skills, playbooks, workflows, commands, templates, checklists or instructions.
+Use esta pasta antes de criar ou alterar agentes, departamentos, áreas, roles, skills, playbooks, workflows, comandos, templates, checklists ou instruções.
 
-## Fast Route
+## Rota Rápida
 
-Use this route for most asset creation work:
+Use esta rota para a maior parte do trabalho de criação de assets:
 
-1. Decide the asset type with \`foundation/asset-taxonomy.md\`.
-2. Confirm placement and boundaries with \`foundation/creation-rules.md\`.
-3. Confirm naming with \`foundation/naming-conventions.md\`.
-4. Use \`foundation/guided-conversation.md\` when the asset asks the founder to decide, classify, prioritize or confirm.
-5. Load the matching file in \`instructions/\`.
-6. Use the matching starter in \`templates/\`.
-7. Validate the result with the matching file in \`checklists/\`.
-8. Open \`examples/\` only if a reference would improve quality.
+1. Decida o tipo de asset com \`foundation/asset-taxonomy.md\`.
+2. Confirme posicionamento e limites com \`foundation/creation-rules.md\`.
+3. Confirme a nomenclatura com \`foundation/naming-conventions.md\`.
+4. Use \`foundation/guided-conversation.md\` quando o asset pedir que o founder decida, classifique, priorize ou confirme.
+5. Carregue o arquivo correspondente em \`instructions/\`.
+6. Use o ponto de partida correspondente em \`templates/\`.
+7. Valide o resultado com o arquivo correspondente em \`checklists/\`.
+8. Abra \`examples/\` apenas se uma referência melhorar a qualidade.
 
-## Decision Map
+## Mapa de Decisão
 
-| Need | Go To | Why |
+| Necessidade | Rota | Por quê |
 | --- | --- | --- |
-| Decide what kind of asset something is | \`foundation/asset-taxonomy.md\` | Defines AGENT, README, YAML, role, skill, playbook, knowledge, workflow and command. |
-| Decide how a model should move through the workspace | \`foundation/navigation-chain.md\` | Defines owner-first navigation and prevents route skipping. |
-| Decide the next founder progression stage | \`foundation/founder-progression-model.md\` | Defines Strategy-first progression, gates, activation_required and Chief routing behavior. |
-| Check if a founder progression move is allowed | \`foundation/progression-gates.md\` | Defines required context, allowed next stages and blocked next stages. |
-| Design founder-friendly questions or decisions | \`foundation/guided-conversation.md\` | Defines numbered options, decision pauses and confirmation prompts. |
-| Decide whether a new file should exist | \`foundation/creation-rules.md\` | Prevents asset sprawl and duplicated ownership. |
-| Name a file or folder | \`foundation/naming-conventions.md\` | Keeps names predictable and machine-readable. |
-| Judge quality when no specific checklist is enough | \`foundation/quality-criteria.md\` | Provides universal quality and rejection criteria. |
-| Create a folder README | \`foundation/folder-documentation-rules.md\` and \`instructions/create-readme-instructions.md\` | Keeps README files as maps, not executors. |
-| Create an asset | \`instructions/\` then \`templates/\` | Gives the procedure and the starting shape. |
-| Review an asset before accepting it | \`checklists/\` | Applies the right quality gate for the asset type. |
-| See what good looks like | \`examples/\` | Provides reference shape only, not active context. |
+| Decidir qual é o tipo de asset | \`foundation/asset-taxonomy.md\` | Define AGENT, README, YAML, role, skill, playbook, knowledge, workflow e command. |
+| Decidir como um modelo deve navegar pelo workspace | \`foundation/navigation-chain.md\` | Define navegação por owner primeiro e evita pular rotas. |
+| Decidir o próximo estágio de progressão do founder | \`foundation/founder-progression-model.md\` | Define progressão Strategy-first, gates, activation_required e comportamento de roteamento do Chief. |
+| Verificar se um movimento de progressão do founder é permitido | \`foundation/progression-gates.md\` | Define contexto obrigatório, próximos estágios permitidos e próximos estágios bloqueados. |
+| Desenhar perguntas ou decisões amigáveis ao founder | \`foundation/guided-conversation.md\` | Define opções numeradas, pausas de decisão e prompts de confirmação. |
+| Decidir se um novo arquivo deve existir | \`foundation/creation-rules.md\` | Evita proliferação de assets e ownership duplicado. |
+| Nomear um arquivo ou pasta | \`foundation/naming-conventions.md\` | Mantém nomes previsíveis e legíveis por máquina. |
+| Julgar qualidade quando nenhum checklist específico é suficiente | \`foundation/quality-criteria.md\` | Fornece critérios universais de qualidade e rejeição. |
+| Criar um README de pasta | \`foundation/folder-documentation-rules.md\` e \`instructions/create-readme-instructions.md\` | Mantém READMEs como mapas, não executores. |
+| Criar um asset | \`instructions/\` e depois \`templates/\` | Fornece o procedimento e a estrutura inicial. |
+| Revisar um asset antes de aceitá-lo | \`checklists/\` | Aplica o gate de qualidade certo para o tipo de asset. |
+| Ver como algo bom se parece | \`examples/\` | Fornece apenas formato de referência, não contexto ativo. |
 
-## Routes
+## Rotas
 
 ### \`foundation/\`
 
-Core conceptual rules. Use when deciding what belongs where, how assets relate, how navigation works or whether a proposed asset is valid.
+Regras conceituais centrais. Use quando decidir o que pertence a cada lugar, como assets se relacionam, como a navegação funciona ou se um asset proposto é válido.
 
 ### \`templates/\`
 
-Reusable starting structures. Use after choosing the asset type and before drafting the file.
+Estruturas iniciais reutilizáveis. Use depois de escolher o tipo de asset e antes de rascunhar o arquivo.
 
 ### \`checklists/\`
 
-Quality gates. Use before accepting a newly created or modified asset.
+Gates de qualidade. Use antes de aceitar um asset recém-criado ou modificado.
 
 ### \`instructions/\`
 
-Creation procedures. Use when the user asks to create or update a LeanOS asset.
+Procedimentos de criação. Use quando o usuário pedir para criar ou atualizar um asset LeanOS.
 
 ### \`examples/\`
 
-Illustrative examples. Use only for reference; active workspace context wins.
+Exemplos ilustrativos. Use apenas como referência; o contexto ativo do workspace prevalece.
 
-## Creation Flow
+## Fluxo de Criação
 
-For any new LeanOS asset:
+Para qualquer novo asset LeanOS:
 
-1. Load only this README and the smallest matching files.
-2. State the selected asset type and owner.
-3. State the target path.
-4. Use the matching instruction and template.
-5. Validate with the matching checklist.
-6. Ask before writing framework files.
+1. Carregue apenas este README e os menores arquivos correspondentes.
+2. Declare o tipo de asset selecionado e o owner.
+3. Declare o path de destino.
+4. Use a instrução e o template correspondentes.
+5. Valide com o checklist correspondente.
+6. Peça confirmação antes de escrever arquivos do framework.
 
-## Do Not Load By Default
+## Não Carregar por Padrão
 
-- Do not load every foundation file.
-- Do not load every template category.
-- Do not load every checklist.
-- Do not load examples unless a reference is needed.
-- Do not let examples override active workspace context.
+- Não carregue todos os arquivos de foundation.
+- Não carregue todas as categorias de template.
+- Não carregue todos os checklists.
+- Não carregue exemplos a menos que uma referência seja necessária.
+- Não deixe exemplos sobrescreverem o contexto ativo do workspace.
 
-## Files
+## Arquivos
 
 - \`foundation/\`
 - \`templates/\`
@@ -88,502 +88,502 @@ For any new LeanOS asset:
 - \`instructions/\`
 - \`examples/\`
 
-## Related Folders
+## Pastas Relacionadas
 
 - \`../AGENT.md\`
 
-## Agent Notes
+## Notas para Agentes
 
-Do not load all of \`ai-standard/\` by default. Choose the smallest foundation file, instruction, template and checklist needed for the active request.
+Não carregue todo \`ai-standard/\` por padrão. Escolha o menor arquivo de foundation, instrução, template e checklist necessário para o pedido ativo.
 
-If the next route is unclear, start with \`foundation/asset-taxonomy.md\`.
+Se a próxima rota não estiver clara, comece por \`foundation/asset-taxonomy.md\`.
 `;
 }
 
 export function creationRules(): string {
-  return `# Creation Rules
+  return `# Regras de Criação
 
-Use these rules before creating or changing any LeanOS framework asset.
+Use estas regras antes de criar ou alterar qualquer asset do framework LeanOS.
 
-## Purpose
+## Propósito
 
-Creation rules protect the workspace from asset sprawl, duplicated responsibilities and route-breaking files.
+Regras de criação protegem o workspace contra proliferação de assets, responsabilidades duplicadas e arquivos que quebram rotas.
 
-They answer:
+Elas respondem:
 
-- Should this asset exist?
-- Where should it live?
-- Which existing asset should own this responsibility?
-- What must be loaded before creating it?
-- What should not be created?
+- Este asset deve existir?
+- Onde ele deve viver?
+- Qual asset existente deveria possuir esta responsabilidade?
+- O que deve ser carregado antes de criá-lo?
+- O que não deve ser criado?
 
-## Load First
+## Carregue Primeiro
 
-Before creating an asset, load:
+Antes de criar um asset, carregue:
 
-1. \`asset-taxonomy.md\` to confirm the asset type.
-2. \`navigation-chain.md\` to confirm where the asset belongs.
-3. \`naming-conventions.md\` to name the file correctly.
-4. The matching instruction in \`../instructions/\`.
-5. The matching template in \`../templates/\`.
-6. The matching checklist in \`../checklists/\`.
+1. \`asset-taxonomy.md\` para confirmar o tipo de asset.
+2. \`navigation-chain.md\` para confirmar onde o asset pertence.
+3. \`naming-conventions.md\` para nomear o arquivo corretamente.
+4. A instrução correspondente em \`../instructions/\`.
+5. O template correspondente em \`../templates/\`.
+6. O checklist correspondente em \`../checklists/\`.
 
-## Creation Decision
+## Decisão de Criação
 
-Create a new asset only when all are true:
+Crie um novo asset apenas quando todos os pontos forem verdadeiros:
 
-- The request cannot be handled by an existing asset.
-- The new asset has a clear owner in the Navigation Chain.
-- The new asset has a stable reusable purpose.
-- The asset will reduce ambiguity for future models.
-- The user confirms the creation or update.
+- O pedido não pode ser tratado por um asset existente.
+- O novo asset tem owner claro na Navigation Chain.
+- O novo asset tem propósito reutilizável estável.
+- O asset reduzirá ambiguidade para modelos futuros.
+- O usuário confirma a criação ou atualização.
 
-Do not create an asset when:
+Não crie um asset quando:
 
-- A README note is enough.
-- A role can reference an existing skill.
-- A skill can be reused instead of a new skill.
-- A playbook would duplicate an existing workflow.
-- The asset is only a one-off answer to the current user.
-- The asset would bypass department or area ownership.
+- Uma nota no README é suficiente.
+- Uma role pode referenciar uma skill existente.
+- Uma skill pode ser reutilizada em vez de criar uma nova.
+- Um playbook duplicaria um workflow existente.
+- O asset seria apenas uma resposta única ao usuário atual.
+- O asset contornaria o ownership de departamento ou área.
 
-## Placement Rules
+## Regras de Posicionamento
 
 - Root \`AGENT.md\` lives at workspace root.
 - Department \`AGENT.md\`, \`README.md\`, \`department.yaml\` and \`workflows/\` live at department root.
 - Area \`AGENT.md\`, \`README.md\`, \`area.yaml\`, \`knowledge/\`, \`roles/\`, \`skills/\` and \`playbooks/\` live inside the area.
-- Roles, skills and playbooks do not live directly under root departments.
+- Roles, skills e playbooks não vivem diretamente abaixo de departamentos raiz.
 - Business workflows live in departments or areas, not in \`.leanos/\`.
 - Framework standards, templates, checklists, instructions and examples live in \`ai-standard/\`.
 
-## Responsibility Rules
+## Regras de Responsabilidade
 
 - \`AGENT.md\` routes and sets operating boundaries.
 - \`README.md\` maps a folder.
 - \`department.yaml\` and \`area.yaml\` provide machine-readable structure.
-- Role files define who acts.
-- Skill files define reusable capabilities.
-- Playbook files define execution sequence.
-- Knowledge files store confirmed facts and decisions.
-- Workflow files coordinate multi-step work across owners.
+- Arquivos de role definem quem atua.
+- Arquivos de skill definem capacidades reutilizáveis.
+- Arquivos de playbook definem sequência de execução.
+- Arquivos de knowledge armazenam fatos e decisões confirmadas.
+- Arquivos de workflow coordenam trabalho de múltiplas etapas entre owners.
 
-## Confirmation Rule
+## Regra de Confirmação
 
-Before writing or changing framework assets:
+Antes de escrever ou alterar assets do framework:
 
-1. State the asset type.
-2. State the owner path.
-3. State why an existing asset is not enough.
-4. State which template and checklist will be used.
-5. Ask for explicit confirmation.
+1. Declare o tipo de asset.
+2. Declare o path owner.
+3. Declare por que um asset existente não é suficiente.
+4. Declare qual template e checklist serão usados.
+5. Peça confirmação explícita.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not invent missing roles, skills, playbooks, workflows or templates.
-- Do not create assets outside the owning department or area.
-- Do not place product or company facts inside framework operating assets.
-- Do not update \`ai-standard/\`, roles, skills, playbooks or workflows during startup.
-- Do not create a broad asset when a narrow one would be clearer.
-- Do not create files just to make the workspace look complete.
+- Não invente roles, skills, playbooks, workflows ou templates ausentes.
+- Não crie assets fora do departamento ou área owner.
+- Não coloque fatos de produto ou empresa dentro de assets operacionais do framework.
+- Não atualize \`ai-standard/\`, roles, skills, playbooks ou workflows durante a inicialização.
+- Não crie um asset amplo quando um asset estreito seria mais claro.
+- Não crie arquivos apenas para o workspace parecer completo.
 
-## Design Example
+## Exemplo de Design
 
-If Design needs a reusable capability for evaluating PRs:
+Se Design precisar de uma capacidade reutilizável para avaliar PRs:
 
-- Asset type: skill.
+- Tipo de asset: skill.
 - Owner: \`operations/design/skills/\`.
-- File: \`design-review/SKILL.md\`.
-- Role usage: Product Designer, Accessibility Specialist or UX Writer can load it when relevant.
-- Do not create \`design-review.playbook.md\` unless there is a repeatable execution sequence beyond the skill itself.
+- Arquivo: \`design-review/SKILL.md\`.
+- Uso por role: Product Designer, Accessibility Specialist ou UX Writer podem carregar quando for relevante.
+- Não crie \`design-review.playbook.md\` a menos que exista uma sequência de execução repetível além da própria skill.
 `;
 }
 
 export function qualityCriteria(): string {
-  return `# Quality Criteria
+  return `# Critérios de Qualidade
 
-Use these criteria to judge whether a LeanOS asset is good enough to keep.
+Use estes critérios para julgar se um asset LeanOS é bom o bastante para manter.
 
-## Purpose
+## Propósito
 
-Quality criteria prevent vague assets, duplicated logic and confusing routes.
+Critérios de qualidade evitam assets vagos, lógica duplicada e rotas confusas.
 
-They answer:
+Elas respondem:
 
-- Is this asset clear?
-- Is it owned by the right level?
-- Does it load only necessary context?
-- Does it preserve the Navigation Chain?
-- Does it help future models act better?
+- Este asset está claro?
+- Ele pertence ao nível certo?
+- Ele carrega apenas o contexto necessário?
+- Ele preserva a Navigation Chain?
+- Ele ajuda modelos futuros a agir melhor?
 
-## Universal Criteria
+## Critérios Universais
 
-Every LeanOS asset should have:
+Todo asset LeanOS deve ter:
 
-- Clear purpose.
-- Explicit owner.
-- Correct location.
-- Minimal context loading.
-- Clear inputs.
-- Clear outputs.
-- Boundaries and red lines when relevant.
-- References to related assets only when useful.
-- No duplicated responsibility.
-- No invented product or company facts.
+- Propósito claro.
+- Owner explícito.
+- Local correto.
+- Carregamento mínimo de contexto.
+- Entradas claras.
+- Saídas claras.
+- Limites e linhas vermelhas quando relevante.
+- Referências a assets relacionados apenas quando úteis.
+- Nenhuma responsabilidade duplicada.
+- Nenhum fato inventado de produto ou empresa.
 
-## Routing Quality
+## Qualidade de Roteamento
 
-A good asset:
+Um bom asset:
 
-- Keeps root routing at department level.
-- Lets department AGENTs choose workflows or areas.
-- Lets area AGENTs choose roles.
-- Lets roles load skills and playbooks.
-- Does not skip levels because a later file looks relevant.
-- Does not ask a model to load the whole workspace.
+- Mantém o roteamento raiz no nível de departamento.
+- Permite que AGENTs de departamento escolham workflows ou áreas.
+- Permite que AGENTs de área escolham roles.
+- Permite que roles carreguem skills e playbooks.
+- Não pula níveis porque um arquivo posterior parece relevante.
+- Não pede que um modelo carregue o workspace inteiro.
 
-## Content Quality
+## Qualidade de Conteúdo
 
-A good asset:
+Um bom asset:
 
-- Uses direct language.
-- Says when to use it.
-- Says when not to use it.
-- Names the files it may update.
-- Separates facts from assumptions.
+- Usa linguagem direta.
+- Diz quando usar.
+- Diz quando não usar.
+- Nomeia os arquivos que pode atualizar.
+- Separa fatos de suposições.
 - Uses \`not applicable\` explicitly when a dimension does not apply.
-- Asks for confirmation before mutating durable files.
+- Pede confirmação antes de alterar arquivos duráveis.
 
-## Asset-Specific Signals
+## Sinais Específicos por Asset
 
-| Asset | Quality Signal |
+| Asset | Sinal de Qualidade |
 | --- | --- |
-| \`AGENT.md\` | Routes to the next owner without becoming a giant inventory. |
-| \`README.md\` | Explains folder purpose, files and navigation without becoming an executor. |
-| \`role\` | Defines a clear operating hat and points to relevant skills/playbooks. |
-| \`skill\` | Describes a reusable capability, checks and outputs. |
-| \`playbook\` | Provides an ordered execution sequence with inputs and outputs. |
-| \`knowledge\` | Stores confirmed context without process instructions. |
-| \`workflow\` | Coordinates multi-area or multi-stage work. |
-| \`command\` | Loads minimal context and defines allowed/forbidden updates. |
+| \`AGENT.md\` | Roteia para o próximo owner sem se tornar um inventário gigante. |
+| \`README.md\` | Explica propósito, arquivos e navegação da pasta sem se tornar executor. |
+| \`role\` | Define um chapéu operacional claro e aponta para skills/playbooks relevantes. |
+| \`skill\` | Descreve uma capacidade reutilizável, verificações e saídas. |
+| \`playbook\` | Fornece uma sequência ordenada de execução com entradas e saídas. |
+| \`knowledge\` | Armazena contexto confirmado sem instruções de processo. |
+| \`workflow\` | Coordena trabalho multiárea ou multiestágio. |
+| \`command\` | Carrega contexto mínimo e define atualizações permitidas/proibidas. |
 
-## Rejection Criteria
+## Critérios de Rejeição
 
-Reject or revise an asset when:
+Rejeite ou revise um asset quando:
 
-- It duplicates another asset.
-- It mixes role, skill, playbook and knowledge responsibilities.
-- It has no clear owner.
-- It points to paths that do not exist.
-- It recommends inactive areas without warning.
-- It stores secrets or token values.
-- It makes implementation decisions without loading the required role, skill and playbook.
-- It updates source-of-truth or framework files without confirmation.
+- Ele duplica outro asset.
+- Ele mistura responsabilidades de role, skill, playbook e knowledge.
+- Ele não tem owner claro.
+- Ele aponta para paths que não existem.
+- Ele recomenda áreas inativas sem aviso.
+- Ele armazena segredos ou valores de tokens.
+- Ele toma decisões de implementação sem carregar role, skill e playbook obrigatórios.
+- Ele atualiza source of truth ou arquivos do framework sem confirmação.
 
-## Final Check
+## Checagem Final
 
-Before accepting an asset, answer:
+Antes de aceitar um asset, responda:
 
-1. What type of asset is this?
-2. Who owns it?
-3. What question does it answer?
-4. What should load it?
-5. What should it never do?
-6. Which checklist validates it?
+1. Que tipo de asset é este?
+2. Quem é o owner?
+3. Qual pergunta ele responde?
+4. O que deve carregá-lo?
+5. O que ele nunca deve fazer?
+6. Qual checklist o valida?
 `;
 }
 
 export function folderDocumentationRules(): string {
-  return `# Folder Documentation Rules
+  return `# Regras de Documentação de Pasta
 
 Use these rules when creating or reviewing folder documentation, especially \`README.md\` files.
 
-## Purpose
+## Propósito
 
-Folder documentation helps humans and models understand where they are, what belongs there and where to go next.
+Documentação de pasta ajuda humanos e modelos a entender onde estão, o que pertence ali e para onde ir em seguida.
 
 It answers:
 
-- What is this folder for?
-- When should an agent enter it?
-- Which files are important?
-- Which files are source of truth, operating assets or examples?
-- Where should the agent route next?
+- Para que serve esta pasta?
+- Quando um agente deve entrar nela?
+- Quais arquivos são importantes?
+- Quais arquivos são source of truth, assets operacionais ou exemplos?
+- Para onde o agente deve rotear em seguida?
 
-## README Responsibility
+## Responsabilidade do README
 
-A folder README is a map, not the operator.
+Um README de pasta é um mapa, não o operador.
 
-It should:
+Ele deve:
 
-- Explain the folder purpose.
-- Explain when to use the folder.
-- List important files and subfolders.
-- Point to the operating owner when one exists.
-- Identify related folders.
-- Provide navigation notes.
+- Explicar o propósito da pasta.
+- Explicar quando usar a pasta.
+- Listar arquivos e subpastas importantes.
+- Apontar para o owner operacional quando existir.
+- Identificar pastas relacionadas.
+- Fornecer notas de navegação.
 
-It should not:
+Ele não deve:
 
 - Replace \`AGENT.md\` routing.
-- Replace role instructions.
-- Replace skill capabilities.
-- Replace playbook sequence.
-- Store product facts that belong in knowledge files.
-- Become a catch-all document.
+- Substituir instruções de role.
+- Substituir capacidades de skill.
+- Substituir sequência de playbook.
+- Armazenar fatos de produto que pertencem a arquivos de knowledge.
+- Virar um documento genérico para tudo.
 
-## Required Sections
+## Seções Obrigatórias
 
 Use these sections for important folders:
 
 - \`# <Folder Name>\`
-- \`## Purpose\`
-- \`## When to Use\`
+- \`## Propósito\`
+- \`## Use Quando\`
 - \`## Source of Truth\` when the folder owns knowledge or durable context.
-- \`## Files\`
-- \`## Related Folders\`
-- \`## Navigation\`
-- \`## Agent Notes\`
+- \`## Arquivos\`
+- \`## Pastas Relacionadas\`
+- \`## Navegação\`
+- \`## Notas para Agentes\`
 
 If a section does not apply, omit it or state \`Not applicable\` when the absence matters.
 
-## Navigation Rules
+## Regras de Navegação
 
 - If the folder has \`AGENT.md\`, tell agents to start there for operational work.
 - If the folder has \`department.yaml\` or \`area.yaml\`, mention that it provides machine-readable structure.
 - If the folder has \`roles/\`, \`skills/\` or \`playbooks/\`, explain that the area owner selects them.
-- If the folder contains examples, say examples are references only.
-- If the folder contains templates, say templates are starting structures, not active workspace context.
+- Se a pasta contiver exemplos, diga que exemplos são apenas referências.
+- Se a pasta contiver templates, diga que templates são estruturas iniciais, não contexto ativo do workspace.
 
-## Folder Type Examples
+## Exemplos por Tipo de Pasta
 
-### Department Folder
+### Pasta de Departamento
 
-Example: \`operations/README.md\`
+Exemplo: \`operations/README.md\`
 
-- Explains what Operations owns.
-- Points to \`operations/AGENT.md\`.
-- Lists active areas.
-- Points to \`workflows/\` for cross-area work.
-- Does not list every role, skill or playbook from every area.
+- Explica o que Operations possui.
+- Aponta para \`operations/AGENT.md\`.
+- Lista áreas ativas.
+- Aponta para \`workflows/\` para trabalho entre áreas.
+- Não lista toda role, skill ou playbook de cada área.
 
-### Area Folder
+### Pasta de Área
 
-Example: \`operations/design/README.md\`
+Exemplo: \`operations/design/README.md\`
 
-- Explains what Design owns.
-- Points to \`operations/design/AGENT.md\`.
+- Explica o que Design possui.
+- Aponta para \`operations/design/AGENT.md\`.
 - Lists \`knowledge/\`, \`roles/\`, \`skills/\` and \`playbooks/\`.
-- Explains common paths at a high level.
-- Does not execute the Design process itself.
+- Explica caminhos comuns em alto nível.
+- Não executa o processo de Design por conta própria.
 
-### Knowledge Folder
+### Pasta de Knowledge
 
-Example: \`operations/design/knowledge/README.md\`
+Exemplo: \`operations/design/knowledge/README.md\`
 
-- Explains which durable Design facts live there.
-- Lists knowledge files.
-- Says updates require confirmation.
-- Does not define skills or playbook sequence.
+- Explica quais fatos duráveis de Design vivem ali.
+- Lista arquivos de knowledge.
+- Diz que atualizações exigem confirmação.
+- Não define skills nem sequência de playbook.
 
-### AI Standard Folder
+### Pasta de AI Standard
 
-Example: \`ai-standard/README.md\`
+Exemplo: \`ai-standard/README.md\`
 
-- Routes to foundation, templates, checklists, instructions and examples.
-- Explains when to use each route.
-- Tells models not to load everything by default.
+- Roteia para foundation, templates, checklists, instruções e exemplos.
+- Explica quando usar cada rota.
+- Orienta modelos a não carregar tudo por padrão.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not make folder README files huge inventories.
-- Do not duplicate all content from child files.
-- Do not document paths that do not exist.
-- Do not point directly to a role when an area AGENT should route first.
-- Do not hide process rules inside a README when a playbook should own them.
+- Não transforme READMEs de pasta em inventários enormes.
+- Não duplique todo o conteúdo de arquivos filhos.
+- Não documente paths que não existem.
+- Não aponte diretamente para uma role quando um AGENT de área deve rotear primeiro.
+- Não esconda regras de processo dentro de um README quando um playbook deve possuí-las.
 `;
 }
 
 export function assetTaxonomy(): string {
-  return `# Asset Taxonomy
+  return `# Taxonomia de Assets
 
-Use this taxonomy before creating, changing or routing LeanOS workspace assets.
+Use esta taxonomia antes de criar, alterar ou rotear assets do workspace LeanOS.
 
-## Core Rule
+## Regra Central
 
 \`\`\`text
-Role = who acts.
-Skill = capability used.
-Playbook = practical task execution inside an area.
-Knowledge = information/source of truth.
-Workflow = coordination across areas, stages or handoffs.
+Role = quem atua.
+Skill = capacidade usada.
+Playbook = execução prática de tarefa dentro de uma área.
+Knowledge = informação/source of truth.
+Workflow = coordenação entre áreas, estágios ou handoffs.
 \`\`\`
 
-Do not use one asset type to do another asset type's job.
+Não use um tipo de asset para fazer o trabalho de outro tipo.
 
-## Quick Reference
+## Referência Rápida
 
-| Asset | What It Is | Question It Answers |
+| Asset | O Que É | Pergunta Que Responde |
 | --- | --- | --- |
-| \`AGENT.md\` | Operating owner and router for a workspace level | "Who owns routing at this level?" |
-| \`README.md\` | Directory map and human explanation | "What is here and when should I use it?" |
-| \`department.yaml\` | Machine-readable department structure | "Which areas and workflows belong to this department?" |
-| \`area.yaml\` | Machine-readable area structure | "Which roles, skills, playbooks and knowledge belong to this area?" |
-| \`role\` | Persona/responsibility used by the agent | "Which hat should the agent wear?" |
-| \`skill\` | Reusable capability used by a role | "Which capability should be applied?" |
-| \`playbook\` | Practical task execution inside an area | "In which order should this area execute the task?" |
-| \`knowledge\` | Context, facts and source of truth | "What do we know about this?" |
-| \`workflow\` | Multi-area, multi-stage or handoff coordination | "How should larger work move across owners?" |
-| \`command\` | Portable chat instruction for a known intent | "What should happen when the user invokes this command?" |
+| \`AGENT.md\` | Owner operacional e roteador de um nível do workspace | "Quem possui o roteamento neste nível?" |
+| \`README.md\` | Mapa de diretório e explicação humana | "O que existe aqui e quando devo usar?" |
+| \`department.yaml\` | Estrutura de departamento legível por máquina | "Quais áreas e workflows pertencem a este departamento?" |
+| \`area.yaml\` | Estrutura de área legível por máquina | "Quais roles, skills, playbooks e knowledge pertencem a esta área?" |
+| \`role\` | Persona/responsabilidade usada pelo agente | "Qual chapéu o agente deve vestir?" |
+| \`skill\` | Capacidade reutilizável usada por uma role | "Qual capacidade deve ser aplicada?" |
+| \`playbook\` | Execução prática de tarefa dentro de uma área | "Em qual ordem esta área deve executar a tarefa?" |
+| \`knowledge\` | Contexto, fatos e source of truth | "O que sabemos sobre isso?" |
+| \`workflow\` | Coordenação multiárea, multiestágio ou de handoff | "Como trabalho maior deve se mover entre owners?" |
+| \`command\` | Instrução portátil de chat para uma intenção conhecida | "O que deve acontecer quando o usuário invocar este comando?" |
 
 ## Workflow vs Playbook
 
 Use this distinction when deciding where a process belongs:
 
 \`\`\`text
-Workflow = coordinates multiple areas, stages or handoffs.
-Playbook = executes a practical task inside one area.
+Workflow = coordena múltiplas áreas, estágios ou handoffs.
+Playbook = executa uma tarefa prática dentro de uma área.
 \`\`\`
 
-A workflow should explain who participates, what handoffs happen and when the work moves from one owner to another.
-A playbook should explain the concrete steps an area follows after the correct owner, role and skills are selected.
+Um workflow deve explicar quem participa, quais handoffs acontecem e quando o trabalho passa de um owner para outro.
+Um playbook deve explicar as etapas concretas que uma área segue depois que o owner, a role e as skills corretas são selecionados.
 
-If the process actively coordinates Product Ops, Design, Engineering or Security across owners, it is probably a workflow.
-If the process changes state inside one owning area, such as Product Ops creating an Epic or Feature drafts, it is probably a playbook.
+Se o processo coordena ativamente Product Ops, Design, Engineering ou Security entre owners, provavelmente é um workflow.
+Se o processo muda estado dentro de uma única área owner, como Product Ops criando drafts de Epic ou Feature, provavelmente é um playbook.
 
-## Asset Types
+## Tipos de Asset
 
 ### \`AGENT.md\`
 
-An \`AGENT.md\` is the operating owner for a level of the workspace.
+An \`AGENT.md\` é o owner operacional de um nível do workspace.
 
-- Lives at the root, department root or selected area root.
-- Answers: "Who decides the next route here?"
-- Create when a level needs routing rules, red lines or delegation logic.
-- Do not create when a README map is enough.
-- Agents should load it before entering lower-level roles, skills or playbooks.
+- Vive na raiz, raiz de departamento ou raiz de área selecionada.
+- Responde: "Quem decide a próxima rota aqui?"
+- Crie quando um nível precisar de regras de roteamento, linhas vermelhas ou lógica de delegação.
+- Não crie quando um mapa em README for suficiente.
+- Agentes devem carregá-lo antes de entrar em roles, skills ou playbooks de níveis inferiores.
 
-Example: \`operations/design/AGENT.md\` acts as the Design area lead. It chooses between Product Designer, UX Researcher, Accessibility Specialist and UX Writer.
+Exemplo: \`operations/design/AGENT.md\` atua como lead da área Design. Ele escolhe entre Product Designer, UX Researcher, Accessibility Specialist e UX Writer.
 
 ### \`README.md\`
 
-A \`README.md\` is the map for a folder.
+A \`README.md\` é o mapa de uma pasta.
 
-- Lives in every important folder.
-- Answers: "What is this folder for, what files exist here and how do I navigate?"
-- Create for folders that humans or models will enter.
-- Do not use it as a long operating manual when an \`AGENT.md\`, role, skill or playbook should own that detail.
-- Agents should use it to understand local structure.
+- Vive em toda pasta importante.
+- Responde: "Para que serve esta pasta, quais arquivos existem aqui e como navegar?"
+- Crie para pastas que humanos ou modelos entrarão.
+- Não use como manual operacional longo quando um \`AGENT.md\`, role, skill ou playbook deveria possuir esse detalhe.
+- Agentes devem usá-lo para entender a estrutura local.
 
-Example: \`operations/design/README.md\` explains the Design area, its knowledge files, roles, skills and playbooks.
+Exemplo: \`operations/design/README.md\` explica a área Design, seus arquivos de knowledge, roles, skills e playbooks.
 
 ### \`department.yaml\`
 
-\`department.yaml\` is the structured map for a root department.
+\`department.yaml\` é o mapa estruturado de um departamento raiz.
 
-- Lives at \`strategy/department.yaml\`, \`operations/department.yaml\` or \`growth/department.yaml\`.
-- Answers: "Which areas and workflows are active in this department?"
-- Create for every root department.
-- Do not store narrative product context or company facts in it.
-- Agents should use it when they need machine-readable structure.
+- Vive em \`strategy/department.yaml\`, \`operations/department.yaml\` ou \`growth/department.yaml\`.
+- Responde: "Quais áreas e workflows estão ativos neste departamento?"
+- Crie para todo departamento raiz.
+- Não armazene contexto narrativo de produto ou fatos de empresa nele.
+- Agentes devem usá-lo quando precisarem de estrutura legível por máquina.
 
-Example: \`operations/department.yaml\` lists areas such as Product Ops, Design, Engineering, DevOps and Security.
+Exemplo: \`operations/department.yaml\` lista áreas como Product Ops, Design, Engineering, DevOps e Security.
 
 ### \`area.yaml\`
 
-\`area.yaml\` is the structured map for an area.
+\`area.yaml\` é o mapa estruturado de uma área.
 
-- Lives inside an area, such as \`operations/design/area.yaml\`.
-- Answers: "Which roles, skills, playbooks and knowledge files belong here?"
-- Create for every active area.
-- Do not use it as a replacement for role, skill or playbook instructions.
-- Agents should use it to verify available local assets.
+- Vive dentro de uma área, como \`operations/design/area.yaml\`.
+- Responde: "Quais roles, skills, playbooks e arquivos de knowledge pertencem aqui?"
+- Crie para toda área ativa.
+- Não use como substituto para instruções de role, skill ou playbook.
+- Agentes devem usá-lo para verificar assets locais disponíveis.
 
-Example: \`operations/design/area.yaml\` lists Design roles, skills, playbooks and \`knowledge/\` files.
+Exemplo: \`operations/design/area.yaml\` lista roles, skills, playbooks e arquivos de \`knowledge/\`.
 
 ### Role
 
-A role is an operating persona and responsibility boundary.
+Uma role é uma persona operacional e limite de responsabilidade.
 
-- Lives in \`<area>/roles/<direct-name>.role.md\`.
-- Answers: "With which hat should the agent act?"
-- Create when a recurring responsibility needs a distinct point of view.
-- Do not create a role for a one-off task or a simple capability.
-- Agents should select one role before loading skills or playbooks.
+- Vive em \`<area>/roles/<direct-name>.role.md\`.
+- Responde: "Com qual chapéu o agente deve atuar?"
+- Crie quando uma responsabilidade recorrente precisar de um ponto de vista distinto.
+- Não crie uma role para uma tarefa única ou uma capacidade simples.
+- Agentes devem selecionar uma role antes de carregar skills ou playbooks.
 
-Example: \`operations/design/roles/product-designer.role.md\` owns product design decisions and points to \`design-system/SKILL.md\`, \`user-flow-mapping/SKILL.md\`, \`screen-specification/SKILL.md\` and \`design-review/SKILL.md\`.
+Exemplo: \`operations/design/roles/product-designer.role.md\` possui decisões de product design e aponta para \`design-system/SKILL.md\`, \`user-flow-mapping/SKILL.md\`, \`screen-specification/SKILL.md\` e \`design-review/SKILL.md\`.
 
 ### Skill
 
-A skill is a reusable capability.
+Uma skill é uma capacidade reutilizável.
 
-- Lives in \`<area>/skills/<direct-name>/SKILL.md\`.
-- Answers: "Which capability should be applied?"
-- Create when the same capability is reused by one or more roles or playbooks.
-- Do not make a skill a full process; that belongs in a playbook.
-- Agents should load only the skills required by the active role and task.
+- Vive em \`<area>/skills/<direct-name>/SKILL.md\`.
+- Responde: "Qual capacidade deve ser aplicada?"
+- Crie quando a mesma capacidade for reutilizada por uma ou mais roles ou playbooks.
+- Não transforme uma skill em processo completo; isso pertence a um playbook.
+- Agentes devem carregar apenas as skills exigidas pela role e tarefa ativas.
 
-Example: \`operations/design/skills/accessibility/SKILL.md\` defines how to apply accessibility checks and WCAG 2.2 AA expectations.
+Exemplo: \`operations/design/skills/accessibility/SKILL.md\` define como aplicar verificações de acessibilidade e expectativas WCAG 2.2 AA.
 
 ### Playbook
 
-A playbook is a practical execution sequence inside one area.
+Um playbook é uma sequência prática de execução dentro de uma área.
 
-- Lives in \`<area>/playbooks/<direct-name>.playbook.md\`.
-- Answers: "In which order should this area execute the task?"
-- Create when a task has repeatable steps, inputs, outputs and file update rules.
-- Do not create a playbook for a single check or isolated capability.
-- Do not use a playbook to coordinate multiple areas or cross-department handoffs.
-- Agents should use it after selecting the role and loading required skills.
+- Vive em \`<area>/playbooks/<direct-name>.playbook.md\`.
+- Responde: "Em qual ordem esta área deve executar a tarefa?"
+- Crie quando uma tarefa tiver etapas repetíveis, entradas, saídas e regras de atualização de arquivo.
+- Não crie um playbook para uma única verificação ou capacidade isolada.
+- Não use um playbook para coordenar múltiplas áreas ou handoffs entre departamentos.
+- Agentes devem usá-lo depois de selecionar a role e carregar as skills obrigatórias.
 
-Example: \`operations/design/playbooks/design-foundation.playbook.md\` sequences design-system, accessibility and user-flow work before implementation.
+Exemplo: \`operations/design/playbooks/design-foundation.playbook.md\` sequencia trabalho de design-system, acessibilidade e user-flow antes da implementação.
 
 ### Knowledge
 
-Knowledge files hold context, facts, decisions and source-of-truth notes.
+Arquivos de knowledge guardam contexto, fatos, decisões e notas de source of truth.
 
-- Lives in \`<area>/knowledge/\` when the area uses reusable knowledge.
-- Answers: "What do we know about this?"
-- Create when information must persist across tasks.
-- Do not put operating instructions, role behavior or process steps here.
-- Agents should update knowledge only after explicit user confirmation.
+- Vive em \`<area>/knowledge/\` quando a área usa knowledge reutilizável.
+- Responde: "O que sabemos sobre isso?"
+- Crie quando a informação precisa persistir entre tarefas.
+- Não coloque instruções operacionais, comportamento de role ou etapas de processo aqui.
+- Agentes devem atualizar knowledge apenas depois de confirmação explícita do usuário.
 
-Example: \`operations/design/knowledge/design-system.md\` stores the design-system baseline. It does not decide how to create the design system; the skill and playbook do that.
+Exemplo: \`operations/design/knowledge/design-system.md\` armazena a baseline de design-system. Ele não decide como criar o design system; a skill e o playbook fazem isso.
 
 ### Workflow
 
-A workflow coordinates multiple areas, stages or handoffs.
+Um workflow coordena múltiplas áreas, estágios ou handoffs.
 
-- Lives in \`<department>/workflows/\` or, when truly area-owned, \`<area>/workflows/\`.
-- Answers: "How should larger work move across owners?"
-- Create when the task spans multiple roles, areas or stages.
-- Do not create a workflow for practical execution inside one area; use a playbook for that.
-- Do not place business workflows in \`.leanos/workflows/\`; \`.leanos/\` is runtime support.
-- Agents should use workflows to coordinate owners, then enter the relevant area and role.
+- Vive em \`<department>/workflows/\` ou, quando realmente area-owned, \`<area>/workflows/\`.
+- Responde: "Como trabalho maior deve se mover entre owners?"
+- Crie quando a tarefa atravessar múltiplas roles, áreas ou estágios.
+- Não crie um workflow para execução prática dentro de uma área; use um playbook para isso.
+- Não coloque workflows de negócio em \`.leanos/workflows/\`; \`.leanos/\` é suporte de runtime.
+- Agentes devem usar workflows para coordenar owners e então entrar na área e role relevantes.
 
-Example: \`operations/workflows/feature-to-delivery-cycle.workflow.md\` can coordinate Product Ops, Design, Engineering and Security for feature delivery.
+Exemplo: \`operations/workflows/feature-to-delivery-cycle.workflow.md\` pode coordenar Product Ops, Design, Engineering e Security para delivery de feature.
 
-## Design Example
+## Exemplo de Design
 
-If the founder says, "define the design before implementation":
+Se o founder disser, "defina o design antes da implementação":
 
-1. Root \`AGENT.md\` routes to \`operations/AGENT.md\`.
-2. Operations routes to \`operations/design/AGENT.md\`.
-3. Design area AGENT chooses \`roles/product-designer.role.md\`.
-4. The role loads skills:
+1. Root \`AGENT.md\` roteia para \`operations/AGENT.md\`.
+2. Operations roteia para \`operations/design/AGENT.md\`.
+3. O AGENT da área Design escolhe \`roles/product-designer.role.md\`.
+4. A role carrega skills:
    - \`skills/design-system/SKILL.md\`
    - \`skills/accessibility/SKILL.md\`
    - \`skills/user-flow-mapping/SKILL.md\`
-5. The work follows \`playbooks/design-foundation.playbook.md\`.
-6. Confirmed outputs update:
+5. O trabalho segue \`playbooks/design-foundation.playbook.md\`.
+6. Saídas confirmadas atualizam:
    - \`knowledge/design-system.md\`
    - \`knowledge/accessibility.md\`
    - \`knowledge/user-flows.md\`
 
-This keeps responsibilities separated:
+Isso mantém responsabilidades separadas:
 
-- The role defines the operating perspective.
-- The skills define capabilities.
-- The playbook defines order.
-- The knowledge files store confirmed facts and decisions.
+- A role define a perspectiva operacional.
+- As skills definem capacidades.
+- O playbook define a ordem.
+- Os arquivos de knowledge armazenam fatos e decisões confirmadas.
 `;
 }

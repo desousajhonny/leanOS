@@ -22,12 +22,12 @@ Product Ops is not active. If the founder wants MVP backlog planning, local Epic
 
 ## 4. Implementation Readiness
 
-Engineering is not active. Do not implement product code until delivery scope and Engineering activation are ready.
+Engineering não está ativa. Não implemente código de produto até o escopo de delivery e a ativação de Engineering estarem prontos.
 
 ## GitHub
 
-GitHub management was prepared. Add a local token to `.env.local` only when configuring GitHub Projects or running a future Epics/Features sync flow.
+GitHub management foi preparado. Adicione um token local em `.env.local` apenas ao configurar GitHub Projects ou executar um fluxo futuro de sync de Epics/Features.
 
 ## Future App Bootstrap
 
-Do not create `src/`, `app/`, `pages/`, `package.json` or `vercel.json` during initial LeanOS setup. Use a future product bootstrap workflow after strategy and MVP are clear.
+Não crie `src/`, `app/`, `pages/`, `package.json` ou `vercel.json` durante o setup inicial do LeanOS. Use um futuro workflow de bootstrap de produto depois que Strategy e MVP estiverem claros.

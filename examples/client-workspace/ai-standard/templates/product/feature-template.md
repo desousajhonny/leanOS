@@ -1,6 +1,6 @@
 # [FEATURE: <epic title>] <feature title>
 
-## Metadata
+## Metadados
 
 ~~~yaml
 feature_key: <stable-kebab-key>
@@ -13,42 +13,42 @@ github_issue:
   url:
 ~~~
 
-## Parent Epic
+## Epic Pai
 
 - Epic:
 - Epic outcome:
 - Milestone:
-- Delivery scope:
+- Escopo de delivery:
 
 ## User Story
 
 As a <user>, I want <capability> so that <outcome>.
 
-## Purpose
+## Propósito
 
 Why this feature exists.
 
-## Scope
+## Escopo
 
 What should be implemented.
 
-## Non-goals
+## Não Objetivos
 
 What should not be implemented.
 
-## Acceptance Criteria
+## Critérios de Aceite
 
 - TBD
 
 ## Tasks
 
-Use tasks as the internal implementation checklist. Keep them small enough to guide Engineering.
+Use tarefas como checklist interno de implementação. Mantenha-as pequenas o suficiente para orientar Engineering.
 
 ~~~text
 Create database model
 Create UI
-Add validation
-Add tests
+Adicionar validação
+Adicionar testes
 ~~~
 
 ## Delivery Readiness Matrix
@@ -61,7 +61,7 @@ Add tests
 | Security | not_applicable/TBD/ready | required only for data, auth, permissions, privacy, abuse, API or compliance risk |
 | DevOps | not_applicable/TBD/ready | required only for deploy, env, CI/CD, observability, config or GitHub sync impact |
 
-## Design Criteria
+## Critérios De Design
 
 If not applicable, say why.
 
@@ -70,7 +70,7 @@ If not applicable, say why.
 - Component/design-system notes:
 - Accessibility:
 
-## Engineering Criteria
+## Critérios De Engineering
 
 - Suggested area:
 - Technical notes:
@@ -78,7 +78,7 @@ If not applicable, say why.
 - Test expectations:
 - Observability or operational notes:
 
-## Security Criteria
+## Critérios De Security
 
 If not applicable, say why.
 
@@ -90,7 +90,7 @@ If not applicable, say why.
 
 ## Definition of Ready
 
-- [ ] Parent epic is clear
+- [ ] Epic pai is clear
 - [ ] Acceptance criteria are testable
 - [ ] Product Ops and Engineering criteria are ready
 - [ ] Design is ready or explicitly not applicable
@@ -98,7 +98,7 @@ If not applicable, say why.
 - [ ] DevOps is ready or explicitly not applicable
 - [ ] Tasks are clear enough for implementation
 
-## Definition of Done
+## Definition Of Done
 
 - [ ] Acceptance criteria satisfied
 - [ ] Tasks completed or explicitly descoped
@@ -106,4 +106,4 @@ If not applicable, say why.
 - [ ] Design review completed or explicitly not applicable
 - [ ] Security review completed or explicitly not applicable
 - [ ] DevOps/release notes completed or explicitly not applicable
-- [ ] Parent epic updated with result
+- [ ] Epic pai updated with result

@@ -1,24 +1,24 @@
 ---
 name: mvp-validation-scope
-description: Use when mvp validation scope is required for the active request
+description: Use quando escopo de validação do mvp é necessário para o pedido ativo
 ---
 
-# MVP Validation Scope
+# Escopo de Validação do MVP
 
-## Purpose
+## Propósito
 
-Turn a confirmed Strategy Baseline into the smallest MVP validation scope before Product Ops delivery planning.
+Transformar uma Strategy Baseline confirmada no menor escopo de validação do MVP antes do planejamento de delivery de Product Ops.
 
-## When to Use
+## Use Quando
 
-- Use when this execution sequence matches the active request.
+- Use quando esta sequência de execução corresponder ao pedido ativo.
 
-## Before Acting
+## Antes de Agir
 
 - `../AGENT.md`
 - `../area.yaml`
 
-## Inputs
+## Entradas
 
 - ../knowledge/brief.md
 - ../knowledge/problem.md
@@ -28,55 +28,55 @@ Turn a confirmed Strategy Baseline into the smallest MVP validation scope before
 - ../knowledge/mvp-validation-scope.md
 - ../knowledge/validation-notes.md
 
-## Process
+## Processo
 
-1. Load the confirmed Strategy Baseline from Product knowledge.
-2. Use `skills/mvp-validation-scope/SKILL.md` to identify the first business thesis to validate.
-3. Choose the smallest validation artifact: product slice, landing page, manual/concierge workflow, prototype or simple automation.
-4. Separate In Scope, Out of Scope, Manual / Concierge Parts and Productized Parts.
-5. Define Success Signals and Pivot Signals.
-6. Draft the MVP Validation Sequence without creating roadmap, Epics, Features, GitHub issues or implementation work.
-7. Use `skills/coherence/SKILL.md` before proposing file updates.
-8. Ask the founder to confirm the MVP validation scope before writing.
-9. After confirmation, offer the handoff to Product Ops when the founder wants delivery scope or Epic planning.
+1. Carregue a Strategy Baseline confirmada a partir do knowledge de Product.
+2. Use `skills/mvp-validation-scope/SKILL.md` para identificar a primeira tese de negócio a validar.
+3. Escolha o menor artefato de validação: slice de produto, landing page, workflow manual/concierge, protótipo ou automação simples.
+4. Separe Dentro do Escopo, Fora do Escopo, Partes Manuais / Concierge e Partes Productizadas.
+5. Defina Sinais de Sucesso e Sinais de Pivot.
+6. Rascunhe a Sequência de Validação do MVP sem criar roadmap, Epics, Features, issues do GitHub ou trabalho de implementação.
+7. Use `skills/coherence/SKILL.md` antes de propor atualizações de arquivo.
+8. Peça ao founder para confirmar o escopo de validação do MVP antes de escrever.
+9. Depois da confirmação, ofereça o handoff para Product Ops quando o founder quiser escopo de delivery ou planejamento de Epic.
 
-## Guided Conversation
+## Conversa Guiada
 
 Use `../../../ai-standard/foundation/guided-conversation.md`.
 
-- Start by restating the confirmed Strategy Baseline.
-- Ask only for missing constraints or validation choices.
-- When the founder wants speed, prefer the smallest artifact that can teach the business something real.
-- Make the handoff explicit: Strategy validates what should be tried; Product Ops turns confirmed scope into delivery work.
+- Comece reafirmando a Strategy Baseline confirmada.
+- Peça apenas restrições ausentes ou escolhas de validação.
+- Quando o founder quiser velocidade, prefira o menor artefato capaz de ensinar algo real ao negócio.
+- Deixe o handoff explícito: Strategy valida o que deve ser tentado; Product Ops transforma escopo confirmado em trabalho de delivery.
 
-Do not ask a rigid questionnaire. Ask only what is missing.
+Não faça um questionário rígido. Pergunte apenas o que estiver faltando.
 
-## Stop Conditions
+## Condições de Parada
 
-- Stop and ask for confirmation before changing security-sensitive files.
+- Pare e peça confirmação antes de alterar arquivos sensíveis de segurança.
 
-## Acceptance Criteria & Outputs
+## Critérios de Aceite e Saídas
 
-- MVP Validation Scope
-- Business thesis
+- Escopo de Validação do MVP
+- Tese de negócio
 - MVP slice
-- Success signals
-- Pivot signals
-- MVP Validation Sequence
-- Product Ops handoff recommendation
+- Sinais de sucesso
+- Sinais de pivot
+- Sequência de Validação do MVP
+- Recomendação de handoff para Product Ops
 
-## Files to Update
+## Arquivos para Atualizar
 
 - ../knowledge/mvp-validation-scope.md
 - ../knowledge/validation-notes.md
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not duplicate a workflow.
-- Do not duplicate skills.
-- Do not invent missing context.
-- Do not update files without explicit confirmation.
+- Não duplique um workflow.
+- Não duplique skills.
+- Não invente contexto ausente.
+- Não atualize arquivos sem confirmação explícita.
 
-## Navigation
+## Navegação
 
-Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Comece em `../AGENT.md`, escolha um papel em `../roles/`, carregue as skills necessárias em `../skills/` e então use este playbook.

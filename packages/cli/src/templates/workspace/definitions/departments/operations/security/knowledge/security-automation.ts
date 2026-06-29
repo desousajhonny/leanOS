@@ -12,18 +12,18 @@ export function securityAutomationKnowledge(): string {
       "False-positive triage owner and minimum response expectations."
     ],
     [
-      "Do not create scanner workflows until stack, package manager and stable commands are known.",
+      "Não crie workflows de scanner até stack, package manager e comandos estáveis serem conhecidos.",
       "Secret scanning and dependency audit must be explicitly enabled, planned or deferred with reason before production.",
       "SAST/code scanning should be enabled when the language/framework is supported and code exists.",
       "IaC/config scanning is required only when infrastructure/config files exist.",
       "Security automation status must be reviewed before production deploy."
     ],
     [
-      "Do not add fragile security workflows that fail every project by default.",
-      "Do not disable existing security scanners or dependency alerts without explicit human review.",
-      "Do not mark production deploy ready without a security automation decision.",
-      "Do not bypass a critical scanner finding without owner, reason and follow-up.",
-      "Do not commit scanner tokens, credentials or provider secrets."
+      "Não adicione workflows frágeis de Security que falham em todo projeto por padrão.",
+      "Não desative scanners de Security existentes ou alertas de dependência sem review humano explícito.",
+      "Não marque deploy de produção como pronto sem decisão de automação de Security.",
+      "Não contorne achado crítico de scanner sem owner, motivo e follow-up.",
+      "Não comite tokens de scanner, credenciais ou segredos de provider."
     ],
     [
       "../playbooks/security-automation-readiness.playbook.md",

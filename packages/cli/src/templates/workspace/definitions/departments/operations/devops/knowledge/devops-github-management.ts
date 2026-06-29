@@ -1,11 +1,11 @@
 export function devopsGithubManagementKnowledge(): string {
   return `# GitHub Management
 
-## Purpose
+## Propósito
 
 Define the GitHub repository, Project, labels, milestones and sync readiness without storing secrets in the workspace.
 
-## Current State
+## Estado Atual
 
 GitHub setup is not confirmed yet. Use Setup Status and the Readiness Checklist before any GitHub Epics/Features sync dry-run.
 
@@ -14,14 +14,14 @@ GitHub setup is not confirmed yet. Use Setup Status and the Readiness Checklist 
 - GitHub management: not configured
 - GitHub owner/repository: TBD
 - GitHub Project: TBD
-- Token source: TBD
+- Fonte do token: TBD
 - GitHub CLI status: unknown
 - Ready for dry-run sync: no
 - Capability contract reviewed: no
 
 ## Repository
 
-- Owner or organization: TBD
+- Owner ou organização: TBD
 - Repository: TBD
 - Remote URL: TBD
 - Existing repo or new repo: TBD
@@ -89,12 +89,12 @@ Use these questions when configuration is missing:
 
 ## Readiness Checklist
 
-- [ ] Owner and repository are known.
-- [ ] Project type and URL or number are known.
-- [ ] Project fields are mapped.
+- [ ] Owner e repositório são conhecidos.
+- [ ] Tipo do Project e URL ou número são conhecidos.
+- [ ] Campos do Project estão mapeados.
 - [ ] Labels are declared.
 - [ ] Milestone strategy is clear.
-- [ ] Token source is known without exposing token value.
+- [ ] Fonte do token is known without exposing token value.
 - [ ] \`../../../.github/leanos/project-sync.yaml\` matches the confirmed setup.
 - [ ] \`../../../.github/leanos/sync-state.yaml\` exists and contains no secrets.
 - [ ] \`../../../.github/leanos/capability-contract.md\` was reviewed before any remote execution handoff.
@@ -111,7 +111,7 @@ Record the latest dry-run summary here only when useful:
 - Conflicts: TBD
 - Founder decision: TBD
 
-## Risks
+## Riscos
 
 - Token pasted into chat or tracked file.
 - Project fields differ from LeanOS defaults.
@@ -119,15 +119,15 @@ Record the latest dry-run summary here only when useful:
 - Local Epic/Feature differs from existing GitHub issue.
 - GitHub appears ready but Product Ops work is not ready for sync.
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

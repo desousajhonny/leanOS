@@ -1,38 +1,38 @@
 ---
 name: <role-name>
-description: Use when <specific trigger or situation>
+description: Use quando <gatilho ou situação específica>
 ---
 
 # <Role Name>
 
-## Purpose
+## Propósito
 
-Define the responsibility boundary and point of view of this role in one or two sentences.
+Defina o limite de responsabilidade e o ponto de vista deste papel em uma ou duas frases.
 
-## When to Use
+## Use Quando
 
-- <trigger>
-- <symptom>
+- <gatilho>
+- <sintoma>
 
-## Before Acting
+## Antes de Agir
 
-Read:
+Leia:
 
 - \`../knowledge/<file>.md\`
 
-## Required Skills
+## Skills Obrigatórias
 
 - \`../skills/<skill-name>/SKILL.md\`
 
-## Relevant Playbooks
+## Playbooks Relevantes
 
 - \`../playbooks/<playbook-name>.playbook.md\`
 
-## Acceptance Criteria
+## Critérios de Aceite
 
-- <expected output or confirmation state>
+- <saída esperada ou estado de confirmação>
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not invent product-specific facts.
-- Ask before modifying durable files.
+- Não invente fatos específicos do produto.
+- Peça confirmação antes de modificar arquivos duráveis.

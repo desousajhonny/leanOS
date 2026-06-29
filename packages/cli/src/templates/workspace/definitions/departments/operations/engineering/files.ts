@@ -1,5 +1,5 @@
 import type { AreaFileDefinition } from "../../../../types.js";
-import { businessProfile, checklist, decisionLog, folderReadme, productBrief, stateDraft, titledDraft } from "../../../../content/shared.js";
+import { stateDraft } from "../../../../content/shared.js";
 import { engineeringCodeStandardsKnowledge } from "./knowledge/engineering-code-standards.js";
 import { engineeringComponentGuidelinesKnowledge } from "./knowledge/engineering-component-guidelines.js";
 import { engineeringDataGuidelinesKnowledge } from "./knowledge/engineering-data-guidelines.js";
@@ -11,8 +11,45 @@ import { engineeringTestingStrategyKnowledge } from "./knowledge/engineering-tes
 
 export const operationsEngineeringSourceOfTruth = ["knowledge/code-standards.md", "knowledge/implementation-rules.md", "knowledge/component-guidelines.md", "knowledge/data-guidelines.md", "knowledge/testing-strategy.md", "knowledge/review-criteria.md", "knowledge/implementation-notes.md", "knowledge/code-review-notes.md", "knowledge/pr-log.md"];
 
+function engineeringKnowledgeReadme(): string {
+  return `# Engineering Knowledge
+
+## Propósito
+
+Durable rules, standards and execution notes for Engineering work.
+
+## When To Use
+
+Use this folder before planning code changes, branch work, tests, PRs or reviews.
+
+## Responsabilidades dos Arquivos
+
+- \`code-standards.md\`: durable code quality, modularization, naming, error handling and configuration rules.
+- \`implementation-rules.md\`: required process before and during implementation, including branch, scope, Design, Security, Data and done criteria.
+- \`component-guidelines.md\`: durable rules for component creation, reuse, ownership, accessibility and Design dependency.
+- \`data-guidelines.md\`: durable rules for API, persistence, schema, migration, validation, sensitive data and rollback work.
+- \`testing-strategy.md\`: orientação durável para testes unitários, integração, e2e, validação manual, cobertura de regressão e lacunas de teste.
+- \`review-criteria.md\`: durable criteria for Engineering review and merge recommendation.
+- \`implementation-notes.md\`: active or Feature-specific engineering notes; promote only durable repeated lessons into the framework rule files.
+- \`code-review-notes.md\`: temporary observations from a specific review cycle; do not treat as global policy.
+- \`pr-log.md\`: PR preparation and handoff state; do not treat as global policy.
+
+## Related Inputs
+
+- \`../roles/\`
+- \`../skills/\`
+- \`../playbooks/\`
+- \`../../product-ops/mvp/\`
+- \`../../../.github/leanos/\`
+
+## Boundary
+
+Engineering knowledge defines how code should be changed. It does not replace issue scope, PRD, Design, Security, DevOps or founder approval.
+`;
+}
+
 export const operationsEngineeringFiles: AreaFileDefinition[] = [
-    { path: "knowledge/README.md", content: () => folderReadme("Engineering Knowledge", "Durable Engineering rules, standards and implementation notes.", "Use before planning code changes, branch work, tests, PRs or reviews.", "implementation-rules.md", ["code-standards.md", "implementation-rules.md", "component-guidelines.md", "data-guidelines.md", "testing-strategy.md", "review-criteria.md", "implementation-notes.md", "code-review-notes.md", "pr-log.md"], ["../roles/", "../skills/", "../playbooks/", "../../product-ops/mvp/", "../../../.github/leanos/"], "Engineering knowledge defines how code should be changed. It does not replace issue scope, PRD, Design or Security review.") },
+    { path: "knowledge/README.md", content: engineeringKnowledgeReadme },
     { path: "knowledge/code-standards.md", content: engineeringCodeStandardsKnowledge },
     { path: "knowledge/implementation-rules.md", content: engineeringImplementationRulesKnowledge },
     { path: "knowledge/component-guidelines.md", content: engineeringComponentGuidelinesKnowledge },

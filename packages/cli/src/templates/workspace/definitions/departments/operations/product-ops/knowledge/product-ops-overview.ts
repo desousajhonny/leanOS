@@ -1,11 +1,11 @@
 export function productOpsOverviewKnowledge(): string {
   return `# Product Ops Overview
 
-## Purpose
+## Propósito
 
 Keep the operational bridge between Strategy, Roadmap and Engineering clear enough for implementation.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -29,15 +29,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

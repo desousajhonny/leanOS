@@ -1,21 +1,21 @@
 ---
 name: mvp-validation-scope
-description: Use when a founder has a raw idea and wants the first MVP direction; the business is in seed, strategy_forming or mvp_shaping; validation should happen through an MVP, landing page, manual workflow or concierge slice
+description: Use quando o founder tem uma ideia bruta e quer a primeira direção de MVP; o negócio está em seed, strategy_forming ou mvp_shaping; a validação deve acontecer por MVP, landing page, workflow manual ou slice concierge
 ---
 
-# MVP Validation Scope
+# Escopo de Validação do MVP
 
-## Overview
+## Visão Geral
 
-Define the smallest MVP validation path that can test the business thesis and produce an MVP Validation Sequence.
+Defina o menor caminho de validação do MVP capaz de testar a tese de negócio e produzir uma Sequência de Validação do MVP.
 
-## Use When
+## Use Quando
 
-- a founder has a raw idea and wants the first MVP direction
-- the business is in seed, strategy_forming or mvp_shaping
-- validation should happen through an MVP, landing page, manual workflow or concierge slice
+- o founder tem uma ideia bruta e quer a primeira direção de MVP
+- o negócio está em seed, strategy_forming ou mvp_shaping
+- a validação deve acontecer por MVP, landing page, workflow manual ou slice concierge
 
-## Required Context
+## Contexto Obrigatório
 
 - ../knowledge/brief.md
 - ../knowledge/problem.md
@@ -25,75 +25,75 @@ Define the smallest MVP validation path that can test the business thesis and pr
 - ../knowledge/mvp-validation-scope.md
 - ../knowledge/validation-notes.md
 
-## Inputs
+## Entradas
 
-- Founder idea
-- Business thesis
-- Target user
-- Core problem
-- Promise
-- Known constraints
-- Manual or productized validation options
+- Ideia do founder
+- Tese de Negócio
+- Usuário-alvo
+- Problema central
+- Promessa
+- Restrições conhecidas
+- Opções de validação manual ou productizada
 
-## Process
+## Processo
 
-### Step 1
+### Etapa 1
 
-Restate the business thesis and target user.
+Reafirme a tese de negócio e o usuário-alvo.
 
-### Step 2
+### Etapa 2
 
-Name the core problem and promise.
+Nomeie o problema central e a promessa.
 
-### Step 3
+### Etapa 3
 
-Define the MVP validation goal.
+Defina o objetivo de validação do MVP.
 
-### Step 4
+### Etapa 4
 
-Choose the smallest MVP Slice that can validate the thesis.
+Escolha o menor MVP Slice capaz de validar a tese.
 
-### Step 5
+### Etapa 5
 
-Separate In Scope, Out of Scope, Manual / Concierge Parts and Productized Parts.
+Separe Dentro do Escopo, Fora do Escopo, Partes Manuais / Concierge e Partes Productizadas.
 
-### Step 6
+### Etapa 6
 
-Define Success Signals and Pivot Signals.
+Defina Sinais de Sucesso e Sinais de Pivot.
 
-### Step 7
+### Etapa 7
 
-Draft the MVP Validation Sequence without creating roadmap, Epics or Features.
+Rascunhe a Sequência de Validação do MVP sem criar roadmap, Epics ou Features.
 
-### Step 8
+### Etapa 8
 
-Record open risks and whether the scope is ready for Product Ops.
+Registre riscos abertos e se o escopo está pronto para Product Ops.
 
-## Checks & Acceptance Criteria
+## Verificações e Critérios de Aceite
 
-- The MVP validates the business thesis instead of maximizing feature count.
-- Manual or concierge work is allowed when it speeds validation.
-- Success and pivot signals are observable.
-- The MVP Validation Sequence is not roadmap or delivery scope.
-- Do not update Roadmap files from MVP validation scope.
+- O MVP valida a tese de negócio em vez de maximizar quantidade de features.
+- Trabalho manual ou concierge é permitido quando acelera validação.
+- Sinais de sucesso e pivô são observáveis.
+- A Sequência de Validação do MVP não é roadmap nem escopo de delivery.
+- Não atualize arquivos de Roadmap a partir do escopo de validação do MVP.
 
-## Output
+## Saída
 
-- MVP Validation Scope
-- Business Thesis
+- Escopo de Validação do MVP
+- Tese de Negócio
 - MVP Slice
-- Success Signals
-- Pivot Signals
-- MVP Validation Sequence
-- Ready-for-Product-Ops recommendation
+- Sinais de Sucesso
+- Sinais de Pivot
+- Sequência de Validação do MVP
+- Recomendação ready-for-Product-Ops
 
-## Files to Update
+## Arquivos para Atualizar
 
 - ../knowledge/mvp-validation-scope.md
 - ../knowledge/validation-notes.md
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not require interviews or research before proposing an MVP validation scope when the founder wants speed.
-- Do not create Epics, Features or implementation scope from Strategy Product.
-- Do not update Roadmap files from MVP validation scope.
+- Não exija entrevistas ou pesquisa antes de propor um escopo de validação de MVP quando o founder quer velocidade.
+- Não crie Epics, Features ou escopo de implementação a partir de Strategy Product.
+- Não atualize arquivos de Roadmap a partir do escopo de validação do MVP.

@@ -1,6 +1,6 @@
 # Current Focus
 
-LeanOS is preparing strategy and operations before app/code bootstrap. Do not create product source code during initial setup.
+LeanOS está preparando Strategy e Operations antes do bootstrap de app/código. Não crie código-fonte de produto durante o setup inicial.
 
 Operate only through active workspace areas:
 
@@ -10,4 +10,4 @@ Operate only through active workspace areas:
 
 No complete local workflow is active yet.
 
-Product strategy routes are available.
+Rotas de product strategy estão disponíveis.

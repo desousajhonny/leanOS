@@ -1,19 +1,19 @@
-# Agent Examples
+# Exemplos de Agente
 
-## Purpose
+## Propósito
 
-Examples of root and area AGENT.md routing behavior.
+Exemplos de comportamento de roteamento de AGENT.md raiz e de área.
 
-## When to Use
+## Use Quando
 
-Use when reviewing how an agent should route, set boundaries and delegate to the next owner.
+Use quando revisar como um agente deve rotear, definir limites e delegar ao próximo owner.
 
-## Files
+## Arquivos
 
 - `example-root-agent.md`
 - `example-area-agent.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../`
 - `../../foundation/`
@@ -21,6 +21,6 @@ Use when reviewing how an agent should route, set boundaries and delegate to the
 - `../../templates/`
 - `../../checklists/`
 
-## Agent Notes
+## Notas para Agentes
 
-These files are examples only. Use them for shape and quality signals, not as active context.
+Estes arquivos são apenas exemplos. Use-os para formato e sinais de qualidade, não como contexto ativo.

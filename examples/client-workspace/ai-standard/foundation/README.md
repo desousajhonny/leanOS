@@ -1,18 +1,18 @@
 # Foundation
 
-## Purpose
+## Propósito
 
-Core LeanOS foundation for asset taxonomy, progression, navigation, naming, guided conversation, creation and quality.
+Foundation central do LeanOS para taxonomia de assets, progressão, navegação, nomenclatura, conversa guiada, criação e qualidade.
 
-## When to Use
+## Use Quando
 
-Start here when deciding what kind of asset exists, which founder progression stage is active, where it belongs, how to talk to the founder or how to judge quality.
+Comece aqui ao decidir que tipo de asset existe, qual estágio de progressão do founder está ativo, onde ele pertence, como falar com o founder ou como julgar qualidade.
 
-## Source of Truth
+## Fonte da Verdade
 
 `asset-taxonomy.md`
 
-## Files
+## Arquivos
 
 - `asset-taxonomy.md`
 - `navigation-chain.md`
@@ -24,17 +24,17 @@ Start here when deciding what kind of asset exists, which founder progression st
 - `naming-conventions.md`
 - `folder-documentation-rules.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../templates/`
 - `../checklists/`
 - `../instructions/`
 - `../examples/`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
-Load only the foundation file needed for the active decision. Do not load all foundation files by default.
+Carregue apenas o arquivo de foundation necessário para a decisão ativa. Não carregue todos os arquivos de foundation por padrão.

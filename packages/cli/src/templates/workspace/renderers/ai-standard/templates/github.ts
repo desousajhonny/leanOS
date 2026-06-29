@@ -5,7 +5,7 @@ export function githubEpicTemplate(): string {
 
 - Local epic key:
 - Local epic path:
-- Delivery scope:
+- Escopo de delivery:
 - Roadmap item:
 - GitHub sync status:
 
@@ -13,7 +13,7 @@ export function githubEpicTemplate(): string {
 
 What business, user or validation outcome this epic should create.
 
-## Decision Ownership
+## Decisão Ownership
 
 - Owner: Product Ops / Product Owner
 - Strategy/Roadmap reviewer:
@@ -22,16 +22,16 @@ What business, user or validation outcome this epic should create.
 - Security reviewer when data/auth/privacy/security is affected:
 - DevOps reviewer when GitHub, deploy or environment readiness is affected:
 
-## Strategic Context
+## Contexto Estratégico
 
 - Product:
 - ICP:
 - Problem:
-- Value proposition:
-- Validation assumption:
+- Proposta de valor:
+- Validation suposição:
 - Evidence status:
 
-## Delivery Scope Linkage
+## Vínculo Com Escopo De Delivery
 
 - scope_type:
 - milestone:
@@ -39,15 +39,15 @@ What business, user or validation outcome this epic should create.
 - Non-goals:
 - Roadmap item:
 
-## Scope
+## Escopo
 
 What is included.
 
-## Non-goals
+## Não Objetivos
 
 What is explicitly excluded.
 
-## Product Criteria
+## Critérios De Product
 
 - User value:
 - Jobs to be done:
@@ -87,7 +87,7 @@ Use this matrix to decide which specialists must shape the features under this e
 | Security | conditional | data, auth, permissions, privacy, abuse, API or compliance risk | security criteria for affected features |
 | DevOps | conditional | GitHub sync, CI/CD, env, deploy, observability or config impact | operational criteria |
 
-## Design Criteria
+## Critérios De Design
 
 Use only when the epic affects user experience.
 
@@ -99,7 +99,7 @@ Use only when the epic affects user experience.
 
 If not applicable, write: "Not applicable; no user-facing design change."
 
-## Engineering Criteria
+## Critérios De Engineering
 
 - Technical approach:
 - System boundaries:
@@ -107,9 +107,9 @@ If not applicable, write: "Not applicable; no user-facing design change."
 - Test expectations:
 - Operational risks:
 
-## Security Criteria
+## Critérios De Security
 
-Use when the epic involves data, auth, permissions, privacy, abuse risk or compliance.
+Use quando a Epic envolver dados, auth, permissões, privacidade, risco de abuso ou compliance.
 
 - Data involved:
 - Auth or permissions:
@@ -131,9 +131,9 @@ If not applicable, write: "Not applicable; no security-sensitive surface identif
 
 - Status: not_started
 - Expected features:
-- Open questions:
+- Perguntas abertas:
 
-## Next Step
+## Próximo Passo
 
 After this epic is confirmed, break it into local features with internal tasks before implementation.
 `;
@@ -146,28 +146,28 @@ export function githubFeatureTemplate(): string {
 
 - Local feature key:
 - Local feature path:
-- Parent epic key:
+- Epic pai key:
 - GitHub sync status:
 
-## Parent Epic
+## Epic Pai
 
 - Epic:
 - Milestone:
 - Roadmap item:
 
-## Purpose
+## Propósito
 
 Why this feature exists.
 
-## Scope
+## Escopo
 
 What should be implemented.
 
-## Non-goals
+## Não Objetivos
 
 What should not be implemented.
 
-## Product Criteria
+## Critérios De Product
 
 - User story:
 - User value:
@@ -176,13 +176,13 @@ What should not be implemented.
 
 ## Tasks
 
-Use tasks as an internal checklist for this feature.
+Use tarefas como checklist interno desta Feature.
 
 ~~~text
 Create model
 Create UI
-Add validation
-Add tests
+Adicionar validação
+Adicionar testes
 ~~~
 
 ## Delivery Readiness Matrix
@@ -195,7 +195,7 @@ Add tests
 | Security | not_applicable/TBD/ready | data, auth, permissions, privacy, abuse, API or compliance risk |
 | DevOps | not_applicable/TBD/ready | deploy, env, CI/CD, observability, config or GitHub sync impact |
 
-## Design Criteria
+## Critérios De Design
 
 Use only when this feature changes a user-facing flow, screen, state, copy or interaction.
 
@@ -207,7 +207,7 @@ Use only when this feature changes a user-facing flow, screen, state, copy or in
 
 If not applicable, write: "Not applicable; no user-facing design change."
 
-## Engineering Criteria
+## Critérios De Engineering
 
 - Suggested area:
 - Technical notes:
@@ -215,9 +215,9 @@ If not applicable, write: "Not applicable; no user-facing design change."
 - Test expectations:
 - Observability or operational notes:
 
-## Security Criteria
+## Critérios De Security
 
-Use when this feature touches data, auth, permissions, privacy, abuse risk or compliance.
+Use quando esta Feature tocar dados, auth, permissões, privacidade, risco de abuso ou compliance.
 
 - Data:
 - Permissions:
@@ -229,7 +229,7 @@ If not applicable, write: "Not applicable; no security-sensitive surface identif
 
 ## Definition of Ready
 
-- [ ] Parent epic is clear
+- [ ] Epic pai is clear
 - [ ] Acceptance criteria are testable
 - [ ] Product Ops and Engineering criteria are ready
 - [ ] Design is ready or explicitly not applicable
@@ -237,14 +237,14 @@ If not applicable, write: "Not applicable; no security-sensitive surface identif
 - [ ] DevOps is ready or explicitly not applicable
 - [ ] Tasks are clear enough for implementation
 
-## Definition of Done
+## Definition Of Done
 
-- [ ] Product criteria satisfied
-- [ ] Design criteria satisfied or explicitly not applicable
-- [ ] Engineering criteria satisfied
-- [ ] Security criteria satisfied or explicitly not applicable
-- [ ] Tests or validation plan defined
-- [ ] Parent epic updated if needed
+- [ ] Critérios de Product satisfeitos
+- [ ] Critérios de Design satisfeitos or explicitly not applicable
+- [ ] Critérios de Engineering satisfeitos
+- [ ] Critérios de Security satisfeitos or explicitly not applicable
+- [ ] Testes ou plano de validação definidos
+- [ ] Epic pai updated if needed
 `;
 }
 
@@ -269,7 +269,7 @@ Feature-level DRM turns those dimensions into concrete, testable criteria and in
 
 ## Readiness Rule
 
-Do not create implementation-ready features or GitHub issues until Product Ops and Engineering are clear.
+Não crie features prontas para implementação nem issues do GitHub até Product Ops e Engineering estarem claros.
 
 Design is required only when user experience is affected.
 
@@ -277,7 +277,7 @@ Security is required only when the issue has a security-sensitive surface.
 
 DevOps is required only when delivery, environment, automation, release or operational readiness is affected.
 
-## Output Rule
+## Regra de Saída
 
 If a dimension is not applicable, say why. If it is applicable but unclear, mark it as missing context and stop before creating GitHub issues.
 `;
@@ -303,14 +303,14 @@ issue/554-add-login-rate-limit
 issue/598-fix-onboarding-empty-state
 \`\`\`
 
-## Rules
+## Regras
 
 - Use \`feature/...\` when the Feature exists only in the local LeanOS workspace.
 - Use \`issue/...\` when the Feature is mapped to a real GitHub issue.
 - Always include the real issue number when using the \`issue/...\` format.
 - Use a short kebab-case slug.
-- Do not include secrets, customer names or sensitive details.
-- Do not implement Feature work on the default branch.
+- Não inclua segredos, nomes de clientes ou detalhes sensíveis.
+- Não implemente trabalho de Feature na branch padrão.
 - If the branch already exists, ask before continuing.
 `;
 }
@@ -318,19 +318,19 @@ issue/598-fix-onboarding-empty-state
 export function pullRequestTemplate(): string {
   return `# Pull Request
 
-## Summary
+## Resumo
 
 What changed and why.
 
-## Linked Issue
+## Issue Vinculada
 
 Closes #
 
-## Parent Epic
+## Epic Pai
 
 Epic #
 
-## LeanOS Context
+## Contexto LeanOS
 
 - Department:
 - Area:
@@ -338,18 +338,18 @@ Epic #
 - Skills:
 - Playbook:
 
-## Product / Delivery Scope Alignment
+## Alinhamento De Product / Escopo De Delivery
 
 - Roadmap item:
-- Delivery scope:
+- Escopo de delivery:
 - Acceptance criteria:
 - Validation or learning impact:
 
-## Design Notes
+## Notas De Design
 
 State "Not applicable" when no user-facing design change exists.
 
-## Security Notes
+## Notas De Security
 
 State "Not applicable" when no security-sensitive surface exists.
 
@@ -362,50 +362,50 @@ State "Not applicable" when no security-sensitive surface exists.
 
 Explain how a non-technical founder can test this PR before merge.
 
-### What Changed
+### O Que Mudou
 
 Plain-language summary of the user-facing or business behavior delivered.
 
-### Where to Test
+### Onde Testar
 
 - Preview URL:
 - Local route or screen:
 - Test account or data:
 
-### How to Test
+### Como Testar
 
 1. Open...
 2. Do...
 3. Confirm...
 
-### Expected Result
+### Resultado Esperado
 
 What the founder should see when the PR works.
 
-### Out of Scope
+### Fora Do Escopo
 
 What this PR intentionally does not cover.
 
-### Known Risks or Limits
+### Riscos Conhecidos Ou Limites
 
 Anything the founder should know before approving.
 
-## Risks
+## Riscos
 
 - Scope risk:
 - Technical risk:
 - Product risk:
 - Security risk:
 
-## LeanOS Review Checklist
+## Checklist De Review LeanOS
 
 - [ ] Issue context loaded
 - [ ] Branch follows LeanOS naming
 - [ ] Acceptance criteria addressed
-- [ ] Tests run or explained
+- [ ] Testes executados ou explicados
 - [ ] Founder Testing Guide is clear enough for a non-technical founder
 - [ ] Design criteria addressed or not applicable
 - [ ] Security criteria addressed or not applicable
-- [ ] No unrelated scope added
+- [ ] Nenhum escopo não relacionado adicionado
 `;
 }

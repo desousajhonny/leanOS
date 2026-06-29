@@ -3,8 +3,8 @@ import { stringifyYaml } from "../../../../utils/yaml.js";
 import { guidedConversationSection } from "./sections.js";
 
 function playbookDescription(playbook: PlaybookDefinition): string {
-  const triggers = playbook.useWhen?.length ? playbook.useWhen.join("; ") : `${playbook.title.toLowerCase()} is required for the active request`;
-  return `Use when ${triggers}`;
+  const triggers = playbook.useWhen?.length ? playbook.useWhen.join("; ") : `${playbook.title.toLowerCase()} é necessário para o pedido ativo`;
+  return `Use quando ${triggers}`;
 }
 
 function playbookFrontmatter(playbook: PlaybookDefinition): string {
@@ -27,44 +27,44 @@ export function playbookFile(area: AreaDefinition, playbook: PlaybookDefinition)
 
 # ${playbook.title}
 
-## Purpose
+## Propósito
 
 ${playbook.purpose}
 
-## When to Use
+## Use Quando
 
-${(playbook.useWhen ?? ["Use when this execution sequence matches the active request."]).map((item) => `- ${item}`).join("\n")}
+${(playbook.useWhen ?? ["Use quando esta sequência de execução corresponder ao pedido ativo."]).map((item) => `- ${item}`).join("\n")}
 
-## Before Acting
+## Antes de Agir
 
 ${(playbook.beforeActing ?? [areaOwner, "../area.yaml"]).map((item) => `- \`${item}\``).join("\n")}
 
-## Inputs
+## Entradas
 
-${(playbook.inputs ?? ["Area knowledge", "Active role instructions", "User request"]).map((input) => `- ${input}`).join("\n")}
+${(playbook.inputs ?? ["Knowledge da área", "Instruções do papel ativo", "Pedido do usuário"]).map((input) => `- ${input}`).join("\n")}
 
-## Process
+## Processo
 
 ${playbook.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}${guidedConv}${gatesSec}
 
-## Stop Conditions
+## Condições de Parada
 
-${(playbook.stopConditions ?? ["Stop and ask for confirmation before changing security-sensitive files."]).map((item) => `- ${item}`).join("\n")}
+${(playbook.stopConditions ?? ["Pare e peça confirmação antes de alterar arquivos sensíveis de segurança."]).map((item) => `- ${item}`).join("\n")}
 
-## Acceptance Criteria & Outputs
+## Critérios de Aceite e Saídas
 
-${(playbook.outputs ?? ["Decision or action summary", "Updated knowledge files when requested", "Next recommended LeanOS action"]).map((output) => `- ${output}`).join("\n")}
+${(playbook.outputs ?? ["Resumo da decisão ou ação", "Arquivos de knowledge atualizados quando solicitado", "Próxima ação LeanOS recomendada"]).map((output) => `- ${output}`).join("\n")}
 
-## Files to Update
+## Arquivos para Atualizar
 
-${(playbook.filesToUpdate ?? ["Update relevant area knowledge only after explicit confirmation."]).map((file) => `- ${file}`).join("\n")}
+${(playbook.filesToUpdate ?? ["Atualize knowledge relevante da área somente depois de confirmação explícita."]).map((file) => `- ${file}`).join("\n")}
 
-## Red Lines
+## Linhas Vermelhas
 
-${(playbook.redLines ?? ["Do not duplicate a workflow.", "Do not duplicate skills.", "Do not invent missing context.", "Do not update files without explicit confirmation."]).map((item) => `- ${item}`).join("\n")}
+${(playbook.redLines ?? ["Não duplique um workflow.", "Não duplique skills.", "Não invente contexto ausente.", "Não atualize arquivos sem confirmação explícita."]).map((item) => `- ${item}`).join("\n")}
 
-## Navigation
+## Navegação
 
-Start from \`${areaOwner}\`, choose a role in \`../roles/\`, load required skills in \`../skills/\`, then use this playbook.
+Comece em \`${areaOwner}\`, escolha um papel em \`../roles/\`, carregue as skills necessárias em \`../skills/\` e então use este playbook.
 `;
 }

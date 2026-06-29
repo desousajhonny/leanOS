@@ -1,11 +1,11 @@
 export function securityAutomationReadiness(): string {
   return `# Security Automation Readiness
 
-## Purpose
+## Propósito
 
 Track which automated security checks should be enabled for this repository before production readiness.
 
-This file is guidance-only in the initial scaffold. Do not create scanner workflows from this file alone.
+Este arquivo é apenas orientação no scaffold inicial. Não crie workflows de scanner somente a partir deste arquivo.
 
 ## Read First
 
@@ -28,9 +28,9 @@ This file is guidance-only in the initial scaffold. Do not create scanner workfl
 
 - Enable only after language, framework, package manager and stable commands are known.
 - Prefer GitHub-native security features when available and appropriate.
-- Do not create blocking CI workflows before the project has reliable build/test commands.
-- Do not disable or bypass existing scanners without explicit human review.
-- Do not store scanner tokens, provider tokens or secrets in tracked files.
+- Não crie workflows bloqueantes de CI antes de o projeto ter comandos confiáveis de build/test.
+- Não desabilite nem contorne scanners existentes sem revisão humana explícita.
+- Não armazene tokens de scanner, tokens de provider ou segredos em arquivos versionados.
 
 ## Readiness Matrix
 
@@ -42,7 +42,7 @@ This file is guidance-only in the initial scaffold. Do not create scanner workfl
 | IaC/config scanning | not_applicable | conditional | Required when infra/config files exist. |
 | API security checks | not_configured | conditional | Required for public or sensitive APIs. |
 
-## Stop Conditions
+## Condições de Parada
 
 - Production deploy requested while security automation status is unknown.
 - Critical dependency or secret finding has no owner or mitigation.

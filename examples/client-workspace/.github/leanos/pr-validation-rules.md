@@ -1,12 +1,12 @@
 # PR Validation Rules
 
-## Required Context
+## Contexto Obrigatório
 
 - Linked issue and parent epic when available.
 - Delivery scope and non-goals.
 - Acceptance criteria.
 - Relevant Product, Design, Engineering and Security criteria.
-- Tests or manual validation evidence.
+- Evidência de testes ou validação manual.
 - Founder Testing Guide from the PR description.
 
 ## Review Dimensions

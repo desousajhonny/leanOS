@@ -1,24 +1,24 @@
 ---
 name: business-foundation
-description: Use when business foundation is required for the active request
+description: Use quando business foundation é necessário para o pedido ativo
 ---
 
 # Business Foundation
 
-## Purpose
+## Propósito
 
 Move from raw business context to usable identity, principles and operating model.
 
-## When to Use
+## Use Quando
 
-- Use when this execution sequence matches the active request.
+- Use quando esta sequência de execução corresponder ao pedido ativo.
 
-## Before Acting
+## Antes de Agir
 
 - `../AGENT.md`
 - `../area.yaml`
 
-## Inputs
+## Entradas
 
 - ../knowledge/profile.md
 - ../knowledge/mission.md
@@ -27,27 +27,27 @@ Move from raw business context to usable identity, principles and operating mode
 - ../knowledge/operating-model.md
 - ../knowledge/decision-log.md
 
-## Process
+## Processo
 
-1. Load the Business AGENT and Business Strategist role.
-2. Clarify business profile and mission.
-3. Identify principles that affect product, roadmap and execution decisions.
-4. Define how the founder and AI agents collaborate.
-5. Record decisions and open questions.
-6. Propose file updates and wait for confirmation before writing.
+1. Carregue o AGENT de Business e a role Business Strategist.
+2. Esclareça perfil e missão do negócio.
+3. Identifique princípios que afetam decisões de produto, roadmap e execução.
+4. Defina como founder e agentes de IA colaboram.
+5. Registre decisões e perguntas abertas.
+6. Proponha atualizações de arquivo e aguarde confirmação antes de escrever.
 
-## Stop Conditions
+## Condições de Parada
 
-- Stop and ask for confirmation before changing security-sensitive files.
+- Pare e peça confirmação antes de alterar arquivos sensíveis de segurança.
 
-## Acceptance Criteria & Outputs
+## Critérios de Aceite e Saídas
 
 - Business foundation summary
 - Mission/principles proposal
 - Operating model proposal
 - Decision log entries
 
-## Files to Update
+## Arquivos para Atualizar
 
 - ../knowledge/profile.md
 - ../knowledge/mission.md
@@ -56,13 +56,13 @@ Move from raw business context to usable identity, principles and operating mode
 - ../knowledge/operating-model.md
 - ../knowledge/decision-log.md
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not duplicate a workflow.
-- Do not duplicate skills.
-- Do not invent missing context.
-- Do not update files without explicit confirmation.
+- Não duplique um workflow.
+- Não duplique skills.
+- Não invente contexto ausente.
+- Não atualize arquivos sem confirmação explícita.
 
-## Navigation
+## Navegação
 
-Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Comece em `../AGENT.md`, escolha um papel em `../roles/`, carregue as skills necessárias em `../skills/` e então use este playbook.

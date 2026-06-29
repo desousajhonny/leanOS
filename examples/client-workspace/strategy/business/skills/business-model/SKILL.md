@@ -1,71 +1,71 @@
 ---
 name: business-model
-description: Use when pricing or revenue logic is unclear; business model assumptions affect MVP scope; go-to-market needs a business model baseline
+description: Use quando lógica de pricing ou receita está pouco clara; suposições de modelo de negócio afetam o escopo do MVP; go-to-market precisa de baseline de modelo de negócio
 ---
 
 # Business Model
 
-## Overview
+## Visão Geral
 
-Draft revenue, channels, costs and delivery model at the business level.
+Rascunhar receita, canais, custos e modelo de entrega no nível de negócio.
 
-## Use When
+## Use Quando
 
-- pricing or revenue logic is unclear
-- business model assumptions affect MVP scope
-- go-to-market needs a business model baseline
+- lógica de pricing ou receita está pouco clara
+- suposições de modelo de negócio afetam o escopo do MVP
+- go-to-market precisa de baseline de modelo de negócio
 
-## Required Context
+## Contexto Obrigatório
 
 - ../knowledge/business-model-canvas.md
 - ../../product/knowledge/icp.md
 - ../../product/knowledge/value-proposition.md
 
-## Inputs
+## Entradas
 
-- Customer segment
-- Willingness-to-pay assumption
-- Delivery model
-- Channel assumption
-- Cost drivers
+- Segmento de cliente
+- Suposição de disposição a pagar
+- Modelo de entrega
+- Suposição de canal
+- Drivers de custo
 
-## Process
+## Processo
 
-### Step 1
+### Etapa 1
 
-Draft the simplest viable revenue model.
+Rascunhe o modelo de receita viável mais simples.
 
-### Step 2
+### Etapa 2
 
-List cost and delivery assumptions.
+Liste suposições de custo e entrega.
 
-### Step 3
+### Etapa 3
 
-Identify pricing risks.
+Identifique riscos de pricing.
 
-### Step 4
+### Etapa 4
 
-Route detailed finance modeling to Growth Finance when needed.
+Roteie modelagem financeira detalhada para Growth Finance quando necessário.
 
-## Checks & Acceptance Criteria
+## Verificações e Critérios de Aceite
 
-- Revenue model is plausible for the ICP.
-- Costs and delivery assumptions are visible.
-- Unknowns are recorded.
+- O modelo de receita é plausível para o ICP.
+- Suposições de custo e entrega estão visíveis.
+- Desconhecidos estão registrados.
 
-## Output
+## Saída
 
-- Business model canvas update
-- Pricing assumptions
-- Finance follow-up questions
+- Atualização do business model canvas
+- Suposições de pricing
+- Perguntas de follow-up financeiro
 
-## Files to Update
+## Arquivos para Atualizar
 
 - ../knowledge/business-model-canvas.md
 - ../../../growth/finance/pricing.md
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not invent pricing validation.
-- Do not make financial commitments without evidence.
-- Do not update Growth Finance unless that area is active or the user confirms.
+- Não invente validação de pricing.
+- Não assuma compromissos financeiros sem evidência.
+- Não atualize Growth Finance a menos que a área esteja ativa ou o usuário confirme.

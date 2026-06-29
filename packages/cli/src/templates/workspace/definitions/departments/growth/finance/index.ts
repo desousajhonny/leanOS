@@ -20,14 +20,14 @@ export const growthFinanceArea: AreaDefinition = {
   purpose: "Own pricing, revenue model, unit economics, budget and financial risks.",
   whenToUse: ["define pricing", "review unit economics", "track budget", "reason about revenue model"],
   operatingRules: [
-    "Keep finance lightweight and hypothesis-driven for MVP.",
+    "Mantenha Finance leve e orientado por hipóteses no MVP.",
     "Route pricing assumptions back to Strategy Product when they affect positioning or value proposition.",
     "Route paid acquisition or spend decisions back to Marketing/Founder before committing."
   ],
   redLines: [
-    "Do not present unvalidated pricing as fact.",
-    "Do not make accounting, tax, legal or investment advice claims.",
-    "Do not commit spend, revenue forecast or runway claims without explicit founder confirmation."
+    "Não apresente pricing não validado como fato.",
+    "Não faça alegações de aconselhamento contábil, fiscal, jurídico ou de investimento.",
+    "Não comprometa gasto, previsão de receita ou afirmações de runway sem confirmação explícita do founder."
   ],
   sourceOfTruth: growthFinanceSourceOfTruth,
   files: growthFinanceFiles,

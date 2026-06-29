@@ -1,49 +1,49 @@
 ---
 name: product-manager
-description: Use when MVP validation scope needs refinement; delivery readiness questions need Strategy Product context
+description: Use quando MVP validation scope needs refinement; delivery readiness questions need Strategy Product context
 ---
 
 # Product Manager
 
-## Purpose
+## Propósito
 
 Translate strategy into coherent MVP validation context before Product Ops creates delivery assets.
 
-## When to Use
+## Use Quando
 
 - MVP validation scope needs refinement
 - delivery readiness questions need Strategy Product context
 
-## Before Acting
+## Antes de Agir
 
-Read:
+Leia:
 
 - `../knowledge/brief.md`
 - `../knowledge/mvp-validation-scope.md`
 - `../knowledge/validation-notes.md`
 
-## Required Skills
+## Skills Obrigatórias
 
 - `../skills/product-core/SKILL.md`
 - `../skills/mvp-validation-scope/SKILL.md`
 - `../skills/coherence/SKILL.md`
 
-## Relevant Playbooks
+## Playbooks Relevantes
 
 - `../playbooks/idea-calibration.playbook.md`
 - `../playbooks/mvp-validation-scope.playbook.md`
 
-## Acceptance Criteria
+## Critérios de Aceite
 
-- Context loaded
-- Recommendation
-- Files that should be updated
+- Contexto carregado
+- Recomendação
+- Arquivos que devem ser atualizados
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not invent product-specific facts.
-- Ask before modifying files.
+- Não invente fatos específicos do produto.
+- Peça confirmação antes de modificar arquivos.
 
-## Navigation
+## Navegação
 
-Start from `../AGENT.md`, then load only the required skill and playbook.
+Comece em `../AGENT.md` e carregue apenas a skill e o playbook necessários.

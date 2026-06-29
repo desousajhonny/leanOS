@@ -1,17 +1,17 @@
 # Navigation Chain
 
-LeanOS uses owner-first navigation:
+LeanOS usa navegação owner-first:
 
-`Root AGENT.md -> Department AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Output`
+`Root AGENT.md -> Department AGENT.md -> Area AGENT.md/README.md -> Role -> Skills -> Playbook -> Saída`
 
-Use the chain to choose the next owner, one level at a time.
+Use a cadeia para escolher o próximo owner, um nível por vez.
 
-1. Root chooses the owning department.
-2. Department chooses a workflow or active area.
-3. Area chooses the specialist role when it has `AGENT.md`; otherwise use its `README.md` as the local map.
-4. Role points to the required skills and playbooks.
-5. Skills and playbooks shape the work.
-6. Output updates only the smallest relevant knowledge, decision or project file.
+1. A raiz escolhe o departamento owner.
+2. O departamento escolhe um workflow ou área ativa.
+3. A área escolhe a role especialista quando tem `AGENT.md`; caso contrário, use seu `README.md` como mapa local.
+4. A role aponta para as skills e playbooks obrigatórios.
+5. Skills e playbooks estruturam o trabalho.
+6. A saída atualiza apenas o menor arquivo relevante de knowledge, decisão ou projeto.
 
-Do not skip levels because a later file looks relevant.
-Do not load the whole workspace when a smaller route exists.
+Não pule níveis porque um arquivo posterior parece relevante.
+Não carregue o workspace inteiro quando existe uma rota menor.

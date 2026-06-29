@@ -1,32 +1,32 @@
 # LeanOS Traces
 
-## Purpose
+## Propósito
 
-Local diagnostic traces for LeanOS Chief sessions.
+Traces locais de diagnóstico para sessões do LeanOS Chief.
 
-## When to Use
+## Use Quando
 
-Use only when the founder asks to debug, inspect or share how LeanOS routed a session.
+Use apenas quando o founder pedir para debugar, inspecionar ou compartilhar como o LeanOS roteou uma sessão.
 
-## Source of Truth
+## Fonte da Verdade
 
 `../agent/protocols/chief-trace.md`
 
-## Files
+## Arquivos
 
 - `trace-index.yaml`
 - `trace-template.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../agent/protocols/chief-trace.md`
 - `../index/`
 - `../../AGENT.md`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
-Traces are local, opt-in and safe-by-default. They summarize routing, files loaded, questions, decisions, confirmations and stop reasons. Do not store full transcripts, secrets, tokens, .env values, private code or unnecessary customer data.
+Traces são locais, opt-in e seguros por padrão. Eles resumem roteamento, arquivos carregados, perguntas, decisões, confirmações e motivos de parada. Não armazene transcrições completas, segredos, tokens, valores de .env, código privado ou dados de cliente desnecessários.

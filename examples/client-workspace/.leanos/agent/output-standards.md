@@ -1,8 +1,8 @@
-# Output Standards
+# Padrões de Saída
 
-Every output should include:
+Toda saída deve incluir:
 
-- What was loaded
-- Decision or result
-- Files to update, if any
-- Next recommended route
+- O que foi carregado
+- Decisão ou resultado
+- Arquivos para atualizar, se houver
+- Próxima rota recomendada

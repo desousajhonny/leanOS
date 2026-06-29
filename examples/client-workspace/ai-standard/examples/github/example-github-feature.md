@@ -1,55 +1,55 @@
-# Build patient intake form flow
+# Construir fluxo de formulário de intake do paciente
 
-## Parent Epic
+## Epic Pai
 
 - Epic: #123 Guided clinic intake MVP
 - Milestone: MVP Alpha
-- Roadmap item: MVP Intake Flow
+- Roadmap item: Fluxo De Intake Do MVP
 
-## Purpose
+## Propósito
 
-Create the first patient-facing flow for collecting intake information.
+Criar o primeiro fluxo voltado ao paciente para coletar informações de intake.
 
-## Scope
+## Escopo
 
-Implement start, question flow, review and submitted states.
+Implementar estados de início, fluxo de perguntas, review e enviado.
 
-## Non-goals
+## Não Objetivos
 
-- Staff review dashboard
-- Diagnosis
-- Insurance processing
+- Dashboard de review da equipe
+- Diagnóstico
+- Processamento de seguro
 
-## Product Criteria
+## Critérios De Product
 
-- User value: patient can submit intake before appointment
-- Acceptance criteria: patient can complete and review all required fields
-- Success or learning signal: test users complete the flow without assistance
+- Valor para usuário: paciente consegue enviar intake antes da consulta
+- Critérios de aceite: paciente consegue completar e revisar todos os campos obrigatórios
+- Sinal de sucesso ou aprendizado: usuários de teste completam o fluxo sem ajuda
 
-## Design Criteria
+## Critérios De Design
 
-- Flow: appointment link -> intake questions -> review -> submitted
-- Screens or states: start, step, validation error, review, success
-- UX constraints: clear progress and plain-language questions
-- Accessibility: labeled inputs and keyboard navigation
+- Fluxo: link da consulta -> perguntas de intake -> review -> enviado
+- Telas ou estados: início, etapa, erro de validação, review, sucesso
+- Restrições de UX: progresso claro e perguntas em linguagem simples
+- Acessibilidade: inputs com label e navegação por teclado
 
-## Engineering Criteria
+## Critérios De Engineering
 
-- Suggested area: operations/engineering
-- Technical notes: persist draft state locally or server-side based on selected stack
-- Dependencies: product field list and validation rules
-- Test expectations: validation, navigation and submit tests
+- Área sugerida: operations/engineering
+- Notas técnicas: persistir estado de rascunho localmente ou server-side conforme stack escolhida
+- Dependências: lista de campos de produto e regras de validação
+- Expectativas de teste: testes de validação, navegação e submit
 
-## Security Criteria
+## Critérios De Security
 
-- Data: patient-provided personal information
-- Permissions: no staff-only data exposed to patient
-- Privacy: no sensitive data in analytics events
+- Dados: informações pessoais fornecidas pelo paciente
+- Permissões: nenhum dado apenas da equipe exposto ao paciente
+- Privacidade: nenhum dado sensível em eventos de analytics
 
-## Definition of Done
+## Definição De Pronto
 
-- [ ] Product criteria satisfied
-- [ ] Design criteria satisfied
-- [ ] Engineering criteria satisfied
-- [ ] Security criteria satisfied
-- [ ] Tests or validation plan defined
+- [ ] Critérios de Product satisfeitos
+- [ ] Critérios de Design satisfeitos
+- [ ] Critérios de Engineering satisfeitos
+- [ ] Critérios de Security satisfeitos
+- [ ] Testes ou plano de validação definidos

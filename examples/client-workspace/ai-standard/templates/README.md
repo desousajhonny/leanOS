@@ -1,24 +1,24 @@
 # Templates
 
-## Purpose
+## Propósito
 
-Reusable starting structures for LeanOS framework assets and GitHub collaboration artifacts.
+Estruturas iniciais reutilizáveis para assets do framework LeanOS e artefatos de colaboração no GitHub.
 
-## When to Use
+## Use Quando
 
-Use after selecting the asset type with `../foundation/asset-taxonomy.md` and before drafting a new file.
+Use depois de selecionar o tipo de asset com `../foundation/asset-taxonomy.md` e antes de rascunhar um novo arquivo.
 
-Templates are starting structures. They are not active workspace context and should not override the owning AGENT, role, skill, playbook or workflow.
+Templates são estruturas iniciais. Eles não são contexto ativo do workspace e não devem sobrescrever o AGENT, role, skill, playbook ou workflow owner.
 
-## Categories
+## Categorias
 
 ### `agents/`
 
-Templates for root, department and area AGENT.md files.
+Templates para arquivos AGENT.md de raiz, departamento e área.
 
-Use when: Use when creating an operating owner or routing layer.
+Use quando: Use quando criar um owner operacional ou uma camada de roteamento.
 
-Files:
+Arquivos:
 - `agents/agent-template.md`
 - `agents/root-agent-template.md`
 - `agents/department-agent-template.md`
@@ -26,11 +26,11 @@ Files:
 
 ### `structure/`
 
-Templates for folders, READMEs, departments, areas and YAML structure.
+Templates para pastas, READMEs, departamentos, áreas e estrutura YAML.
 
-Use when: Use when creating or documenting workspace structure.
+Use quando: Use quando criar ou documentar a estrutura do workspace.
 
-Files:
+Arquivos:
 - `structure/root-readme-template.md`
 - `structure/folder-readme-template.md`
 - `structure/area-readme-template.md`
@@ -41,11 +41,11 @@ Files:
 
 ### `execution/`
 
-Templates for area-level roles, skills, playbooks and workflows.
+Templates para roles, skills, playbooks e workflows de nível de área.
 
-Use when: Use when creating operational execution assets inside an area or department workflow folder.
+Use quando: Use quando criar assets de execução operacional dentro de uma área ou pasta de workflow de departamento.
 
-Files:
+Arquivos:
 - `execution/role-template.md`
 - `execution/role-template.yaml`
 - `execution/skill-template.md`
@@ -56,11 +56,11 @@ Files:
 
 ### `github/`
 
-Templates for GitHub issues, epics, features, branch naming, PRs and readiness matrices.
+Templates para issues, epics, features, nomes de branch, PRs e matrizes de prontidão no GitHub.
 
-Use when: Use when shaping GitHub-ready work items or repository collaboration artifacts.
+Use quando: Use quando estruturar itens prontos para GitHub ou artefatos de colaboração do repositório.
 
-Files:
+Arquivos:
 - `github/github-issue-template.md`
 - `github/github-epic-template.md`
 - `github/github-feature-template.md`
@@ -70,44 +70,44 @@ Files:
 
 ### `product/`
 
-Templates for local LeanOS product work before optional GitHub sync.
+Templates para trabalho local de produto no LeanOS antes de sincronização opcional com GitHub.
 
-Use when: Use when shaping local epics and features from delivery scope.
+Use quando: Use quando estruturar epics e features locais a partir do escopo de delivery.
 
-Files:
+Arquivos:
 - `product/epic-template.md`
 - `product/feature-template.md`
 
 ### `design/`
 
-Templates for Design-owned specifications that hand off user-facing structure to Engineering.
+Templates para especificações de Design que entregam estrutura voltada ao usuário para Engineering.
 
-Use when: Use when Design needs to document a component contract before implementation.
+Use quando: Use quando Design precisar documentar um contrato de componente antes da implementação.
 
-Files:
+Arquivos:
 - `design/component-spec-template.md`
 
 ### `review/`
 
-Templates for reviewing code, implementation and delivery quality.
+Templates para revisar código, implementação e qualidade de delivery.
 
-Use when: Use when creating or applying review outputs.
+Use quando: Use quando criar ou aplicar saídas de review.
 
-Files:
+Arquivos:
 - `review/code-review-template.md`
 
-## How to Use
+## Como Usar
 
-1. Confirm the asset type in `../foundation/asset-taxonomy.md`.
-2. Load the matching creation instruction from `../instructions/`.
-3. Open only the smallest matching template category.
-4. Copy the matching template shape.
-5. Adapt it to the active department or area.
-6. Validate with the matching checklist in `../checklists/`.
+1. Confirme o tipo de asset em `../foundation/asset-taxonomy.md`.
+2. Carregue a instrução de criação correspondente em `../instructions/`.
+3. Abra apenas a menor categoria de template correspondente.
+4. Copie a estrutura do template correspondente.
+5. Adapte ao departamento ou área ativa.
+6. Valide com o checklist correspondente em `../checklists/`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not load every template by default.
-- Do not use a GitHub template for a LeanOS framework asset.
-- Do not use an execution template for folder documentation.
-- Do not use examples as templates when a real template exists.
+- Não carregue todos os templates por padrão.
+- Não use um template de GitHub para um asset do framework LeanOS.
+- Não use um template de execução para documentação de pasta.
+- Não use exemplos como templates quando existir um template real.

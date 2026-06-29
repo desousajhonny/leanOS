@@ -3,51 +3,51 @@ import type { AreaDefinition, RootDepartmentDefinition, WorkspaceAnswers } from 
 export function workspaceReadme(answers: WorkspaceAnswers, activeAreas: AreaDefinition[], activeRoots: RootDepartmentDefinition[]): string {
   return `# ${answers.productName}
 
-LeanOS workspace for ${answers.companyName}.
+Workspace LeanOS para ${answers.companyName}.
 
-This workspace separates LeanOS runtime files from the client's operating structure.
+Este workspace separa arquivos de runtime do LeanOS da estrutura operacional do cliente.
 
 ${workspaceModeIntro(answers)}
 
-## Start
+## Início
 
-For any AI model, start in natural language:
+Para qualquer modelo de AI, comece em linguagem natural:
 
 \`\`\`text
 Quero iniciar o LeanOS.
 \`\`\`
 
-Then start from:
+Depois comece por:
 
 \`AGENT.md\`
 
-## Main Structure
+## Estrutura Principal
 
-- \`.github/\` VS Code and GitHub integration files.
-- \`.leanos/\` LeanOS runtime, context and indexes.
-- \`ai-standard/\` templates, checklists and instructions for creating LeanOS assets.
-${activeRoots.map((department) => `- \`${department.key}/\` ${department.name} department.`).join("\n")}
+- \`.github/\` Arquivos de integração com VS Code e GitHub.
+- \`.leanos/\` Runtime, contexto e índices do LeanOS.
+- \`ai-standard/\` templates, checklists e instruções para criar assets LeanOS.
+${activeRoots.map((department) => `- \`${department.key}/\` ${department.name} departamento.`).join("\n")}
 
-## Product Snapshot
+## Snapshot do Produto
 
-- Workspace mode: ${answers.workspaceMode}
-- Company: ${answers.companyName}
-- Product: ${answers.productName}
+- Modo do workspace: ${answers.workspaceMode}
+- Empresa: ${answers.companyName}
+- Produto: ${answers.productName}
 - Status: ${answers.productStatus}
-- Type: ${answers.productType}
-- Stage: ${answers.stage}
-- Mode: ${answers.mode}
-- Primary user: ${answers.targetUser}
-- Description: ${answers.description}
-- GitHub management: ${answers.prepareGithubManagement ? "prepared; add a local token only when configuring GitHub Projects or Epics/Features sync" : "not requested yet"}
+- Tipo: ${answers.productType}
+- Estágio: ${answers.stage}
+- Modo: ${answers.mode}
+- Usuário primário: ${answers.targetUser}
+- Descrição: ${answers.description}
+- GitHub management: ${answers.prepareGithubManagement ? "preparado; adicione um token local apenas ao configurar GitHub Projects ou sync de Epics/Features" : "ainda não solicitado"}
 
-## Active Areas
+## Áreas Ativas
 
 ${activeAreas.map((area) => `- \`${area.path}/\` ${area.purpose}`).join("\n")}
 
-## Next Step
+## Próximo Passo
 
-Open Copilot Chat, select \`LeanOS Chief\`, and ask:
+Abra o Copilot Chat, selecione \`LeanOS Chief\`, e peça:
 
 \`\`\`text
 Quero iniciar o LeanOS.
@@ -57,8 +57,8 @@ Quero iniciar o LeanOS.
 
 function workspaceModeIntro(answers: WorkspaceAnswers): string {
   if (answers.workspaceMode === "existing-product-repo") {
-    return "LeanOS is installed as an operating layer over an existing product repository. It should preserve product code, package files, deployment config and existing repository files unless the user explicitly confirms a change.";
+    return "LeanOS está instalado como camada operacional sobre um repositório de produto existente. Ele deve preservar código de produto, arquivos de pacote, configuração de deploy e arquivos existentes do repositório, a menos que o usuário confirme explicitamente uma mudança.";
   }
 
-  return "LeanOS is preparing strategy and operations before app/code bootstrap. Initial setup does not create `src/`, `app/`, `pages/`, `package.json` or `vercel.json`.";
+  return "LeanOS está preparando Strategy e Operations antes do bootstrap de app/código. O setup inicial não cria `src/`, `app/`, `pages/`, `package.json` ou `vercel.json`.";
 }

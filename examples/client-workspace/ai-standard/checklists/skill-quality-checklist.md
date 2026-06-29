@@ -1,29 +1,29 @@
-# Skill Quality Checklist
+# Checklist de Qualidade da Skill
 
-Use this checklist before accepting a skill folder with `SKILL.md`.
+Use este checklist antes de aceitar uma pasta de skill com `SKILL.md`.
 
-## Capability
+## Capacidade
 
-- [ ] The skill defines one reusable capability.
-- [ ] The skill answers "which capability should be applied?"
-- [ ] The skill is reusable by one or more roles or playbooks.
-- [ ] The skill does not become a full process sequence.
-- [ ] The skill lives at `skills/<skill-name>/SKILL.md`.
-- [ ] The skill has YAML frontmatter with `name` and `description`.
-- [ ] The `description` starts with "Use when" and describes triggering conditions.
+- [ ] A skill define uma capacidade reutilizável.
+- [ ] A skill responde "qual capacidade deve ser aplicada?"
+- [ ] A skill é reutilizável por uma ou mais roles ou playbooks.
+- [ ] A skill não se torna uma sequência completa de processo.
+- [ ] A skill vive em `skills/<skill-name>/SKILL.md`.
+- [ ] A skill tem frontmatter YAML com `name` e `description`.
+- [ ] A `description` começa com "Use quando" e descreve condições de gatilho.
 
-## Operating Detail
+## Detalhe Operacional
 
-- [ ] The skill states when to use it.
-- [ ] The skill states required context.
-- [ ] The skill states inputs.
-- [ ] The skill uses `### Step N` headings inside `## Process`.
-- [ ] The skill states checks under `## Checks & Acceptance Criteria`.
-- [ ] The skill states outputs.
-- [ ] The skill states red lines.
+- [ ] A skill declara quando usar.
+- [ ] A skill declara contexto obrigatório.
+- [ ] A skill declara entradas.
+- [ ] A skill usa headings `### Etapa N` dentro de `## Processo`.
+- [ ] A skill declara verificações em `## Verificações e Critérios de Aceite`.
+- [ ] A skill declara saídas.
+- [ ] A skill declara linhas vermelhas.
 
-## Boundaries
+## Limites
 
-- [ ] The skill does not invent product facts.
-- [ ] The skill does not update files without confirmation when durable context changes.
-- [ ] The skill does not duplicate another skill.
+- [ ] A skill não inventa fatos de produto.
+- [ ] A skill não atualiza arquivos sem confirmação quando contexto durável muda.
+- [ ] A skill não duplica outra skill.

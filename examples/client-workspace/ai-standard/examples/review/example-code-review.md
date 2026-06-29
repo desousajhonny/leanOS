@@ -1,34 +1,34 @@
 # Code Review
 
-## Review Context
+## Contexto Do Review
 
 - PR: #812
-- Linked issue: #554
-- Parent epic: #123
-- Delivery scope: guided intake flow
-- Acceptance criteria: patient can complete and review required fields
+- Issue vinculada: #554
+- Epic pai: #123
+- Escopo de delivery: fluxo guiado de intake
+- Critérios de aceite: paciente consegue completar e revisar campos obrigatórios
 
-## Findings
+## Achados
 
-| Severity | File/Area | Finding | Required Change |
+| Severidade | Arquivo/Área | Achado | Mudança Obrigatória |
 | --- | --- | --- | --- |
-| medium | intake form validation | Error state is not announced to screen readers. | Add accessible error messaging and focus behavior. |
-| low | tests | Missing keyboard-only manual check note. | Add validation note to PR checklist. |
+| medium | intake form validation | Estado de erro não é anunciado para leitores de tela. | Adicione mensagem de erro acessível e comportamento de foco. |
+| low | tests | Nota de check manual apenas por teclado ausente. | Adicione nota de validação ao checklist do PR. |
 
-## Review Dimensions
+## Dimensões Do Review
 
-- Correctness: mostly aligned
-- Scope control: no unrelated scope found
-- Tests: automated validation present
-- Security/privacy: no sensitive logs found
-- Design/UX: accessibility fix required
+- Correção: majoritariamente alinhada
+- Controle de escopo: nenhum escopo não relacionado encontrado
+- Testes: validação automatizada presente
+- Security/privacidade: nenhum log sensível encontrado
+- Design/UX: ajuste de acessibilidade obrigatório
 
-## Decision
+## Decisão
 
-- [ ] Ready to merge
-- [x] Needs changes
-- [ ] Blocked by missing context
+- [ ] Pronto para merge
+- [x] Precisa de mudanças
+- [ ] Bloqueado por contexto ausente
 
-## Open Questions
+## Perguntas em Aberto
 
-- Should intake draft state persist across browser sessions?
+- O estado de rascunho do intake deve persistir entre sessões do navegador?

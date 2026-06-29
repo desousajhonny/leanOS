@@ -10,6 +10,6 @@ export const growthMarketingRoles: RoleDefinition[] = [
       skills: ["define-positioning", "create-landing-page-copy", "create-launch-plan"],
       playbooks: ["mvp-launch"],
       outputs: ["Positioning or launch recommendation", "Customer-facing copy draft", "Acquisition experiment", "Open risks"],
-      redLines: ["Do not invent proof or customer quotes.", "Do not define visual design without Operations Design when required.", "Do not commit paid acquisition spend without Finance review."]
+      redLines: ["Não invente prova ou citações de clientes.", "Não defina design visual sem Operations Design quando necessário.", "Não comprometa gasto de aquisição paga sem review de Finance."]
     }
   ];

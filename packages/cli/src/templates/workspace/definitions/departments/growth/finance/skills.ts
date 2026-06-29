@@ -3,28 +3,28 @@ import type { SkillDefinition } from "../../../../types.js";
 export const growthFinanceSkills: SkillDefinition[] = [
     {
       slug: "model-unit-economics",
-      title: "Model Unit Economics",
-      purpose: "Clarify acquisition, delivery and margin assumptions.",
-      useWhen: ["unit economics are unclear", "pricing or acquisition cost needs rough evaluation", "growth spend is being considered"],
-      requiredContext: ["Pricing", "Revenue model", "Budget", "Known costs"],
-      inputs: ["Acquisition cost", "Delivery cost", "Price", "Gross margin", "Usage or value metric"],
-      process: ["List assumptions", "Separate knowns from guesses", "Estimate unit economics directionally", "Identify sensitivity and missing evidence"],
-      checks: ["Assumptions are explicit", "No false precision", "Risks are visible"],
-      outputs: ["Unit economics summary", "Sensitive assumptions", "Risks", "Validation needs"],
-      filesToUpdate: ["Update `../knowledge/unit-economics.md` after explicit confirmation."],
-      redLines: ["Do not present estimates as validated facts.", "Do not make investment or accounting claims."]
+      title: "Modelar Unit Economics",
+      purpose: "Esclarecer premissas de aquisição, delivery e margem.",
+      useWhen: ["unit economics estão pouco claros", "pricing ou custo de aquisição precisa de avaliação aproximada", "gasto de growth está sendo considerado"],
+      requiredContext: ["Pricing", "Modelo de receita", "Budget", "Custos conhecidos"],
+      inputs: ["Custo de aquisição", "Custo de delivery", "Preço", "Margem bruta", "Métrica de uso ou valor"],
+      process: ["Liste premissas", "Separe fatos conhecidos de chutes", "Estime unit economics de forma direcional", "Identifique sensibilidade e evidência ausente"],
+      checks: ["Suposições estão explícitas", "Sem falsa precisão", "Riscos estão visíveis"],
+      outputs: ["Resumo de unit economics", "Premissas sensíveis", "Risks", "Necessidades de validação"],
+      filesToUpdate: ["Atualize `../knowledge/unit-economics.md` após confirmação explícita."],
+      redLines: ["Não apresente estimativas como fatos validados.", "Não faça afirmações de investimento ou contabilidade."]
     },
     {
       slug: "review-pricing",
-      title: "Review Pricing",
-      purpose: "Evaluate pricing hypotheses against customer value and costs.",
-      useWhen: ["pricing is being considered", "packaging needs review", "willingness to pay is unclear"],
-      requiredContext: ["Pricing", "Value proposition", "ICP", "Revenue model"],
-      inputs: ["Target user", "Value created", "Pricing hypothesis", "Alternatives", "Costs"],
-      process: ["Check value alignment", "Check package simplicity", "Identify willingness-to-pay assumptions", "List validation method"],
-      checks: ["Pricing matches ICP/value", "Assumptions are not treated as proof", "Validation path exists"],
-      outputs: ["Pricing review", "Risks", "Validation plan", "Open questions"],
-      filesToUpdate: ["Update `../knowledge/pricing.md` or `../knowledge/revenue-model.md` after explicit confirmation."],
-      redLines: ["Do not invent willingness-to-pay evidence.", "Do not promise revenue outcomes."]
+      title: "Revisar Pricing",
+      purpose: "Avaliar hipóteses de pricing contra valor ao cliente e custos.",
+      useWhen: ["pricing está sendo considerado", "packaging precisa de revisão", "disposição a pagar está incerta"],
+      requiredContext: ["Pricing", "Proposta de valor", "ICP", "Modelo de receita"],
+      inputs: ["Usuário alvo", "Valor criado", "Hipótese de pricing", "Alternativas", "Costs"],
+      process: ["Cheque alinhamento de valor", "Cheque simplicidade do pacote", "Identifique premissas de disposição a pagar", "Liste método de validação"],
+      checks: ["Pricing combina com ICP/valor", "Suposições não são tratadas como prova", "Caminho de validação existe"],
+      outputs: ["Revisão de pricing", "Risks", "Plano de validação", "Perguntas abertas"],
+      filesToUpdate: ["Atualize `../knowledge/pricing.md` ou `../knowledge/revenue-model.md` após confirmação explícita."],
+      redLines: ["Não invente evidência de disposição a pagar.", "Não prometa resultados de receita."]
     }
   ];

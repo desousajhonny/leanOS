@@ -333,11 +333,11 @@ function assertCommandRequiredSections(content, commandRelativePath) {
   );
 
   assert(
-    content.includes("## Process\n") || content.includes("## What To Do\n"),
+    content.includes("## Processo\n") || content.includes("## What To Do\n"),
     `Command should define Process or What To Do: ${commandRelativePath}`
   );
   assert(
-    content.includes("## Expected Output\n") || content.includes("## Output\n"),
+    content.includes("## Saída Esperada\n") || content.includes("## Saída\n"),
     `Command should define Expected Output or Output: ${commandRelativePath}`
   );
 }

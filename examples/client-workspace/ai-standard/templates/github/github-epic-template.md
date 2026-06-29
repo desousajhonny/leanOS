@@ -4,7 +4,7 @@
 
 - Local epic key:
 - Local epic path:
-- Delivery scope:
+- Escopo de delivery:
 - Roadmap item:
 - GitHub sync status:
 
@@ -12,7 +12,7 @@
 
 What business, user or validation outcome this epic should create.
 
-## Decision Ownership
+## Decisão Ownership
 
 - Owner: Product Ops / Product Owner
 - Strategy/Roadmap reviewer:
@@ -21,16 +21,16 @@ What business, user or validation outcome this epic should create.
 - Security reviewer when data/auth/privacy/security is affected:
 - DevOps reviewer when GitHub, deploy or environment readiness is affected:
 
-## Strategic Context
+## Contexto Estratégico
 
 - Product:
 - ICP:
 - Problem:
-- Value proposition:
-- Validation assumption:
+- Proposta de valor:
+- Validation suposição:
 - Evidence status:
 
-## Delivery Scope Linkage
+## Vínculo Com Escopo De Delivery
 
 - scope_type:
 - milestone:
@@ -38,15 +38,15 @@ What business, user or validation outcome this epic should create.
 - Non-goals:
 - Roadmap item:
 
-## Scope
+## Escopo
 
 What is included.
 
-## Non-goals
+## Não Objetivos
 
 What is explicitly excluded.
 
-## Product Criteria
+## Critérios De Product
 
 - User value:
 - Jobs to be done:
@@ -86,7 +86,7 @@ Use this matrix to decide which specialists must shape the features under this e
 | Security | conditional | data, auth, permissions, privacy, abuse, API or compliance risk | security criteria for affected features |
 | DevOps | conditional | GitHub sync, CI/CD, env, deploy, observability or config impact | operational criteria |
 
-## Design Criteria
+## Critérios De Design
 
 Use only when the epic affects user experience.
 
@@ -98,7 +98,7 @@ Use only when the epic affects user experience.
 
 If not applicable, write: "Not applicable; no user-facing design change."
 
-## Engineering Criteria
+## Critérios De Engineering
 
 - Technical approach:
 - System boundaries:
@@ -106,9 +106,9 @@ If not applicable, write: "Not applicable; no user-facing design change."
 - Test expectations:
 - Operational risks:
 
-## Security Criteria
+## Critérios De Security
 
-Use when the epic involves data, auth, permissions, privacy, abuse risk or compliance.
+Use quando a Epic envolver dados, auth, permissões, privacidade, risco de abuso ou compliance.
 
 - Data involved:
 - Auth or permissions:
@@ -130,8 +130,8 @@ If not applicable, write: "Not applicable; no security-sensitive surface identif
 
 - Status: not_started
 - Expected features:
-- Open questions:
+- Perguntas abertas:
 
-## Next Step
+## Próximo Passo
 
 After this epic is confirmed, break it into local features with internal tasks before implementation.

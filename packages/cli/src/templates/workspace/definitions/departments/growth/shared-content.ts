@@ -3,29 +3,29 @@
 export function growthKnowledge(title: string, purpose: string, sections: string[]): string {
   return `# ${title}
 
-## Purpose
+## Propósito
 
 ${purpose}
 
-## Current State
+## Estado Atual
 
 TBD
 
 ${sections.map((section) => `## ${section}\n\nTBD`).join("\n\n")}
 
-## Decisions
+## Decisões
 
 TBD
 
-## Risks
+## Riscos
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

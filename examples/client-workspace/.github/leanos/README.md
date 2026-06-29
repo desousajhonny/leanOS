@@ -1,18 +1,18 @@
 # GitHub LeanOS
 
-## Purpose
+## Propósito
 
 GitHub support files for LeanOS workflow conventions.
 
 Use this folder when configuring GitHub Projects sync, issue labels, branch rules, PR validation guidance, security automation or deploy readiness.
 
-## Start Here
+## Comece Aqui
 
 `setup-guide.md`
 
 Use the setup guide before the first GitHub Epics/Features sync dry-run or whenever GitHub readiness fails.
 
-## Files
+## Arquivos
 
 `setup-guide.md`
 
@@ -54,13 +54,13 @@ PR review and founder testing expectations.
 
 Security automation readiness notes. Guidance only until stack/build/test commands are known.
 
-## Navigation
+## Navegação
 
-Operations DevOps is not active in this workspace. Ask before configuring GitHub Project sync.
+Operations DevOps não está ativo neste workspace. Peça confirmação antes de configurar sync de GitHub Project.
 
-Operations Engineering is not active in this workspace. Ask before activating it or changing GitHub workflow files.
+Operations Engineering não está ativo neste workspace. Peça confirmação antes de ativá-lo ou alterar arquivos de workflow do GitHub.
 
-Operations Security is not active in this workspace. Ask before adding security automation or scanner workflows.
+Operations Security não está ativo neste workspace. Peça confirmação antes de adicionar automação de Security ou workflows de scanner.
 
 ## Readiness Rule
 

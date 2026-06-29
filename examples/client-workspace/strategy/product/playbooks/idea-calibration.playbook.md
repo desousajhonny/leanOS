@@ -1,24 +1,24 @@
 ---
 name: idea-calibration
-description: Use when idea calibration is required for the active request
+description: Use quando idea calibration é necessário para o pedido ativo
 ---
 
 # Idea Calibration
 
-## Purpose
+## Propósito
 
-Calibrate any founder idea against the current business stage, from first seed idea to product-operating change, without jumping into roadmap, MVP backlog or implementation.
+Calibrate any founder idea against the current estágio de negócio, from first seed idea to product-operating change, without jumping into roadmap, MVP backlog or implementation.
 
-## When to Use
+## Use Quando
 
-- Use when this execution sequence matches the active request.
+- Use quando esta sequência de execução corresponder ao pedido ativo.
 
-## Before Acting
+## Antes de Agir
 
 - `../AGENT.md`
 - `../area.yaml`
 
-## Inputs
+## Entradas
 
 - ../../../leanos.yaml
 - ../knowledge/brief.md
@@ -29,49 +29,49 @@ Calibrate any founder idea against the current business stage, from first seed i
 - ../knowledge/validation-notes.md
 - ../../business/knowledge/business-model-canvas.md
 
-## Process
+## Processo
 
-1. Load the Product AGENT and choose Product Strategist or Product Manager.
-2. Use `skills/business-baseline/SKILL.md` first to read `leanos.yaml`, active Strategy context, business stage and Strategy Baseline gaps.
-3. Choose the calibration path from the business stage: `seed` or `strategy_forming` builds baseline; `mvp_shaping` compares against MVP Validation Scope; `mvp_building` protects current delivery focus; `mvp_live_learning` checks learning signals; `product_operating` and `growth_scaling` evaluate fit with existing product, customers, roadmap, risks and timing.
-4. Ask only the discovery questions needed to mature the idea for the current business stage.
-5. Use `skills/product-core/SKILL.md` when there is enough signal to consolidate product, primary user, core problem, promise, differentiation and riskiest assumption.
-6. Evaluate fit, assumptions, evidence, MVP impact and roadmap impact inside this playbook when the idea affects an existing MVP, product, roadmap, customer signal or operating cadence.
-7. Route pricing, revenue, channel or delivery-model decisions to `../../business/skills/business-model/SKILL.md` only when they block the Product decision.
-8. Separate facts, assumptions, open questions and founder decisions.
-9. Present the calibrated idea with current business-stage reading, Product Core, fit assessment and smallest safe next route.
-10. Ask the founder to confirm, correct or keep calibrating before writing knowledge files.
-11. After confirmation, choose the bridge by business stage: `seed`, `strategy_forming` or `mvp_shaping` -> `playbooks/mvp-validation-scope.playbook.md`; `mvp_building` or `mvp_live_learning` -> `activation_required: operations.product-ops`; `product_operating` or `growth_scaling` -> `../../roadmap/playbooks/roadmap-cycle-planning.playbook.md`. Use a validation note when the idea is not ready. Do not create roadmap, Epics, Features or delivery scope here.
+1. Carregue o AGENT de Product e escolha Product Strategist ou Product Manager.
+2. Use `skills/business-baseline/SKILL.md` primeiro para ler `leanos.yaml`, contexto ativo de Strategy, estágio de negócio e lacunas de Strategy Baseline.
+3. Escolha o caminho de calibração pelo estágio de negócio: `seed` ou `strategy_forming` constrói baseline; `mvp_shaping` compara com Escopo de Validação do MVP; `mvp_building` protege o foco de delivery atual; `mvp_live_learning` verifica sinais de aprendizado; `product_operating` e `growth_scaling` avaliam fit com produto, clientes, roadmap, riscos e timing existentes.
+4. Faça apenas as perguntas de discovery necessárias para amadurecer a ideia para o estágio de negócio atual.
+5. Use `skills/product-core/SKILL.md` quando houver sinal suficiente para consolidar produto, usuário primário, problema central, promessa, diferenciação e suposição mais arriscada.
+6. Avalie fit, suposições, evidência, impacto no MVP e impacto no roadmap dentro deste playbook quando a ideia afetar um MVP, produto, roadmap, sinal de cliente ou cadência operacional existente.
+7. Roteie decisões de pricing, receita, canal ou modelo de delivery para `../../business/skills/business-model/SKILL.md` apenas quando bloquearem a decisão de Product.
+8. Separe fatos, suposições, perguntas abertas e decisões do founder.
+9. Apresente a ideia calibrada com leitura do estágio de negócio atual, Product Core, avaliação de fit e menor próxima rota segura.
+10. Peça ao founder para confirmar, corrigir ou continuar calibrando antes de escrever arquivos de knowledge.
+11. Depois da confirmação, escolha a ponte pelo estágio de negócio: `seed`, `strategy_forming` ou `mvp_shaping` -> `playbooks/mvp-validation-scope.playbook.md`; `mvp_building` ou `mvp_live_learning` -> `activation_required: operations.product-ops`; `product_operating` ou `growth_scaling` -> `../../roadmap/playbooks/roadmap-cycle-planning.playbook.md`. Use uma nota de validação quando a ideia não estiver pronta. Não crie roadmap, Epics, Features ou escopo de delivery aqui.
 
-## Guided Conversation
+## Conversa Guiada
 
 Use `../../../ai-standard/foundation/guided-conversation.md`.
 
-- Ask one useful question at a time, tied to the biggest Strategy Baseline or fit gap for the current business stage.
-- Avoid interview fatigue; do not force every skill when the idea is already clear enough.
-- Do not treat every new idea as MVP when the business is already building, validating, operating or scaling.
-- Use numbered choices only when they make the founder's decision easier.
-- Let the founder answer with a number or free-form text.
-- End with a clear confirmation question before file updates.
+- Faça uma pergunta útil por vez, ligada à maior lacuna de Strategy Baseline ou fit do estágio de negócio atual.
+- Evite fadiga de entrevista; não force toda skill quando a ideia já estiver clara o bastante.
+- Não trate toda nova ideia como MVP quando o negócio já está construindo, validando, operando ou escalando.
+- Use escolhas numeradas apenas quando elas facilitarem a decisão do founder.
+- Deixe o founder responder com número ou texto livre.
+- Termine com uma pergunta clara de confirmação antes de atualizar arquivos.
 
-Do not ask a rigid questionnaire. Ask only what is missing.
+Não faça um questionário rígido. Pergunte apenas o que estiver faltando.
 
-## Stop Conditions
+## Condições de Parada
 
-- Stop and ask for confirmation before changing security-sensitive files.
+- Pare e peça confirmação antes de alterar arquivos sensíveis de segurança.
 
-## Acceptance Criteria & Outputs
+## Critérios de Aceite e Saídas
 
-- Current business-stage reading
-- Calibrated idea summary
-- Fit assessment
-- Strategy Baseline proposal or product-fit recommendation
-- Known facts
-- Assumptions
-- Open questions
-- Recommended next route
+- Leitura do estágio de negócio atual
+- Resumo da ideia calibrada
+- Avaliação de fit
+- Proposta de Strategy Baseline ou recomendação de product-fit
+- Fatos conhecidos
+- Suposições
+- Perguntas abertas
+- Próxima rota recomendada
 
-## Files to Update
+## Arquivos para Atualizar
 
 - ../knowledge/brief.md
 - ../knowledge/problem.md
@@ -80,13 +80,13 @@ Do not ask a rigid questionnaire. Ask only what is missing.
 - ../knowledge/positioning.md
 - ../knowledge/validation-notes.md
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not duplicate a workflow.
-- Do not duplicate skills.
-- Do not invent missing context.
-- Do not update files without explicit confirmation.
+- Não duplique um workflow.
+- Não duplique skills.
+- Não invente contexto ausente.
+- Não atualize arquivos sem confirmação explícita.
 
-## Navigation
+## Navegação
 
-Start from `../AGENT.md`, choose a role in `../roles/`, load required skills in `../skills/`, then use this playbook.
+Comece em `../AGENT.md`, escolha um papel em `../roles/`, carregue as skills necessárias em `../skills/` e então use este playbook.

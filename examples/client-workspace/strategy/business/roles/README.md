@@ -1,30 +1,30 @@
-# Business Roles
+# Papéis de Business
 
-## Purpose
+## Propósito
 
-Roles owned by the Business area.
+Papéis pertencentes à área Business.
 
-## When to Use
+## Use Quando
 
-Use after the area AGENT selects a role.
+Use depois que o AGENT da área selecionar um papel.
 
-## Source of Truth
+## Fonte da Verdade
 
 `../AGENT.md`
 
-## Files
+## Arquivos
 
 - `business-strategist.role.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../skills/`
 - `../playbooks/`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
-Load one role, then follow its skills and playbooks.
+Carregue um papel e siga suas skills e playbooks.

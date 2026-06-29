@@ -1,45 +1,50 @@
-# Model Memory
+# Memória de Modelo
 
-This file exists for agent/model continuity across Claude, Codex and other coding agents.
+Este arquivo existe para continuidade entre agentes/modelos como Claude, Codex e outros coding agents.
 
-Use it as a fast handoff index for the current work, recent decisions, recent changes and open threads. It is not a canonical doctrine file and must not replace `AGENT.md`, `docs/framework/source-of-truth/`, `TEMP-roadmap-ajustes.md`, git history or generated workspace knowledge.
+Use como índice rápido de handoff para trabalho atual, decisões recentes, mudanças recentes e threads abertas. Ele não é um arquivo canônico de doutrina e não substitui `AGENT.md`, `docs/framework/source-of-truth/`, `TEMP-roadmap-ajustes.md`, histórico git ou knowledge gerado do workspace.
 
-## Current State
+## Estado Atual
 
-- Repository: `desousajhonny/leanOS`.
-- Local branch when this memory was created: `feature/asset-contract-workflow-v2`.
-- Remote `origin/main` was pushed to commit `6e1d7508522a1d46ded81cd658f546e07535e0c5` on 2026-06-29.
-- Root `AGENT.md` is the entry point for project-level agent behavior.
-- Framework source of truth lives in `docs/framework/source-of-truth/`.
-- Temporary implementation roadmap lives in `TEMP-roadmap-ajustes.md`.
+- Repositório: `desousajhonny/leanOS`.
+- Branch local quando esta memória foi criada: `feature/asset-contract-workflow-v2`.
+- Remote `origin/main` foi enviado para o commit `6e1d7508522a1d46ded81cd658f546e07535e0c5` em 2026-06-29.
+- `AGENT.md` raiz é o ponto de entrada para comportamento de agente no nível do projeto.
+- Source of truth do framework vive em `docs/framework/source-of-truth/`.
+- Roadmap temporário de implementação vive em `TEMP-roadmap-ajustes.md`.
 
-## Recent Decisions
+## Decisões Recentes
 
-- 2026-06-29: Add a root-level model continuity memory for agents. This memory is for handoff/status/next-step continuity only; durable framework decisions still belong in `docs/framework/source-of-truth/decision-log.md`.
-- 2026-06-29: Keep framework doctrine and decision rules in `docs/framework/source-of-truth/`; do not use model memory as the source of truth for LeanOS behavior.
-- 2026-06-29: Strengthen LeanOS Asset Contract v2 through validation-backed workflow, playbook and skill contracts.
+- 2026-06-29: Adicionar memória de continuidade de modelo na raiz. Esta memória serve apenas para continuidade de handoff/status/próximo passo; decisões duráveis do framework continuam em `docs/framework/source-of-truth/decision-log.md`.
+- 2026-06-29: Manter doutrina e regras de decisão do framework em `docs/framework/source-of-truth/`; não usar a memória de modelo como source of truth do comportamento LeanOS.
+- 2026-06-29: Fortalecer o LeanOS Asset Contract v2 com contratos de workflow, playbook e skill apoiados por validação.
+- 2026-06-29: Manter arquivos de knowledge de Engineering. Tratar `code-standards.md`, `implementation-rules.md`, `component-guidelines.md`, `data-guidelines.md`, `testing-strategy.md` e `review-criteria.md` como contratos duráveis do framework; tratar `implementation-notes.md`, `code-review-notes.md` e `pr-log.md` como estado de Feature/review.
+- 2026-06-29: Padronizar textos humanos gerados pelo LeanOS em PT-BR. Manter IDs, paths, slugs, chaves YAML e termos técnicos de interoperabilidade estáveis em inglês quando fizer sentido.
 
-## Recent Changes
+## Mudanças Recentes
 
+- Working tree: limpeza de Engineering knowledge preenche contratos duráveis de Engineering e adiciona validação do generator para impedir que knowledge de Engineering em nível de framework saia com placeholders `TBD`.
+- Working tree: padronização PT-BR concluída em renderers, ai-standard, `.leanos`, GitHub docs, Strategy, Operations, Growth, skills, playbooks, workflows, knowledge e validações correspondentes.
+- Working tree: `packages/cli/scripts/validation/language.mjs` adicionado ao generator para prevenir regressão de headings, frontmatter e frases operacionais em inglês.
+- Working tree: `examples/client-workspace/` regenerado e validado com `npm test` e `git diff --check`.
 - `2ecf591 Strengthen LeanOS delivery asset contracts`
-  - Strengthened `feature-to-delivery-cycle`, `delivery-item-to-epic`, `epic-to-features` and Product Ops skill contracts.
+  - Fortaleceu `feature-to-delivery-cycle`, `delivery-item-to-epic`, `epic-to-features` e contratos de skills de Product Ops.
 - `be2958a Strengthen engineering skill contracts`
-  - Strengthened Engineering `write-tests`, `create-pr` and `review-pr` with validation-backed RED/GREEN evidence, PR readiness and review evidence.
+  - Fortaleceu `write-tests`, `create-pr` e `review-pr` de Engineering com evidência RED/GREEN, prontidão de PR e evidência de review apoiadas por validação.
 - `6e1d750 Strengthen operations review skill contracts`
-  - Strengthened DevOps, Security and Design review/decision skills with readiness decisions, evidence outputs and red lines.
+  - Fortaleceu skills de review/decisão de DevOps, Security e Design com decisões de prontidão, saídas de evidência e linhas vermelhas.
 
-## Open Threads
+## Threads Abertas
 
-- Update `TEMP-roadmap-ajustes.md` so Asset Contract v2 reflects the work already completed.
-- Run the Founder Journey test from Strategy-only setup through Product Ops activation, Epic/Feature creation, implementation, PR and review simulation.
-- Design and implement `ready-for-launch` after the Founder Journey is validated.
-- Consider adding a framework rule that model memory should be updated at the end of significant local sessions before switching agents.
+- Rodar o teste Founder Journey do setup Strategy-only até ativação de Product Ops, criação de Epic/Feature, implementação, PR e simulação de review.
+- Desenhar e implementar `ready-for-launch` depois que Founder Journey estiver validado.
+- Considerar regra do framework para atualizar esta memória ao fim de sessões locais significativas antes de trocar agentes.
 
-## Update Rules
+## Regras de Atualização
 
-- Read this file at the beginning of any continuation, status, resume, next-step or model-switch session.
-- Update this file after meaningful framework decisions, commits, pushes, roadmap changes or handoff-relevant discoveries.
-- Keep entries short and link to canonical files or commits instead of duplicating full context.
-- Do not record secrets, tokens, credentials, private customer data or speculative claims.
-- If a note becomes a durable framework decision, update `docs/framework/source-of-truth/decision-log.md` as well.
-- If this file conflicts with `AGENT.md` or `docs/framework/source-of-truth/`, treat the source of truth as authoritative and update this file.
+- Leia este arquivo no começo de qualquer sessão de continuação, status, retomada, próximo passo ou troca de modelo.
+- Atualize este arquivo depois de decisões relevantes do framework, commits, pushes, mudanças de roadmap ou descobertas importantes para handoff.
+- Mantenha entradas curtas e aponte para arquivos canônicos ou commits em vez de duplicar contexto completo.
+- Não registre segredos, tokens, credenciais, dados privados de cliente ou alegações especulativas.
+- Se uma nota virar decisão durável do framework, atualize também `docs/framework/source-of-truth/decision-log.md`.
+- Se este arquivo conflitar com `AGENT.md` ou `docs/framework/source-of-truth/`, trate o source of truth como autoritativo e atualize este arquivo.

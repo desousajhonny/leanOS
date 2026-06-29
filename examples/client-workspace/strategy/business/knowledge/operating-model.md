@@ -1,21 +1,21 @@
 # Operating Model
 
-## Purpose
+## Propósito
 
 Define how the business operates with humans and AI models.
 
-## Current State
+## Estado Atual
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD

@@ -49,7 +49,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] `.leanos/commands/` removido do workspace gerado.
 - [x] `ai-standard` deixou de gerar templates/checklists/instructions/examples de commands.
 - [x] Root `AGENT.md` usa `Progression Intent Routing`.
-- [x] Root `AGENT.md` usa `Routing Narration` em vez de `Response Header` tecnico obrigatorio.
+- [x] Root `AGENT.md` usa `Routing Narration` em vez de `Response Header` técnico obrigatório.
 - [x] Preview `examples/client-workspace/` regenerado apos as mudancas estruturais relevantes.
 - [x] `docs/framework/source-of-truth/` criado como base normativa do LeanOS.
 - [x] Root `AGENT.md` aponta para a source of truth antes de decisoes de framework.
@@ -57,12 +57,44 @@ O LeanOS tem um MVP de framework local com:
 - [x] Inventarios macro de skills, playbooks e workflows criados em `docs/framework/`.
 - [x] Jornada inicial consolidada em `idea-calibration -> mvp-validation-scope -> Product Ops handoff`.
 - [x] Fluxo inicial validado com `npm test` e `git diff --check`.
+- [x] Asset Contract v2 fortalecido em workflows, playbooks, skills e validacoes automaticas.
+- [x] Product Ops, Engineering, DevOps, Security e Design tiveram skills rasas fortalecidas com contratos verificaveis.
+- [x] Engineering knowledge separado entre contratos duraveis e arquivos de estado/log.
+- [x] Validacao adicionada para impedir `TBD` nos contratos duraveis de Engineering.
+- [x] Textos humanos gerados padronizados em PT-BR, mantendo IDs, slugs, paths, chaves YAML/JSON e termos tecnicos estaveis.
+- [x] Validacao de idioma adicionada ao generator para prevenir regressao de headings, frontmatter e frases operacionais em ingles.
 
 ## Pendencias Ativas
 
-### 1. LeanOS Asset Contract v2
+### 1. Padronizacao PT-BR Dos Assets Humanos Gerados
 
-Status: prioridade imediata.
+Status: concluido nesta branch; manter aqui apenas ate o roadmap temporario ser limpo ou movido para historico oficial.
+
+Objetivo: garantir que todo texto humano gerado pelo framework esteja em portugues do Brasil, sem misturar portugues e ingles na experiencia do founder ou dos modelos.
+
+Escopo:
+
+- traduzir headings, instrucoes, descricoes, roles, skills, playbooks, workflows, knowledge, READMEs, runtime e ai-standard;
+- manter em ingles apenas IDs tecnicos, slugs, paths, nomes de arquivo, chaves YAML/JSON e termos tecnicos estabilizados como `PR`, `Epic`, `Feature`, `Design`, `DevOps`, `GitHub`, `API`, `MVP` e `LeanOS`;
+- adicionar validacao automatica para evitar regressao de headings, frontmatter e frases operacionais em ingles;
+- regenerar o preview `examples/client-workspace/` depois das mudancas.
+
+Resultado esperado:
+
+- O workspace gerado fala com founder/modelos em PT-BR de forma consistente.
+- Skills deixam de misturar `Use when`, `Purpose`, `Process`, `Red Lines` e conteudo em ingles com trechos em portugues.
+- O generator passa a prevenir regressao de idioma.
+
+Fatia concluida:
+
+- Renderers, `ai-standard`, `.leanos`, GitHub docs, Strategy, Operations, Growth, skills, playbooks, workflows e knowledge foram padronizados para PT-BR no texto humano.
+- `packages/cli/scripts/validation/language.mjs` foi adicionado ao fluxo `validate-generator.mjs`.
+- `examples/client-workspace/` foi regenerado depois da padronizacao.
+- Validado com `npm test` e `git diff --check`.
+
+### 2. LeanOS Asset Contract v2
+
+Status: concluido nesta branch; manter aqui apenas ate o roadmap temporario ser limpo ou movido para historico oficial.
 
 Objetivo: fortalecer workflows, playbooks e skills para ficarem mais parecidos com o padrao operacional do Superpowers: gatilhos claros, hard gates, red flags, stop conditions, outputs verificaveis e validacao automatica.
 
@@ -73,34 +105,37 @@ Motivacao:
 - Skills precisam parecer mais com `SKILL.md` de Superpowers: descricao baseada em gatilho, processo por etapas, red lines, checks e comportamento testavel.
 - O framework deve conseguir validar seus proprios assets, evitando regressao de ordem, filesToUpdate, gates e stop conditions.
 
-Primeira fatia para resolver agora:
+Fatia concluida:
 
-1. Corrigir `feature-to-delivery-cycle`:
+1. Corrigido `feature-to-delivery-cycle`:
    - explicitar fases: Intake -> Product Ops readiness -> areas condicionais -> Engineering -> PR preparation -> PR validation -> founder handoff;
    - garantir `prepare-pr` antes de `pr-validation`;
    - deixar claro que o workflow coordena, mas quem executa codigo e `engineering-delivery`;
    - tornar `activation_required` explicito quando Design, Security ou DevOps forem necessarios mas estiverem inativos.
-2. Corrigir `epic-to-features`:
+2. Corrigido `epic-to-features`:
    - incluir criacao/atualizacao de `../epics/<epic-slug>/<feature-slug>.md` em `filesToUpdate`;
    - pedir confirmacao antes de criar Feature files locais, nao apenas antes de escrita remota;
    - reforcar que nao cria GitHub issue, branch, codigo ou PR.
-3. Fortalecer `delivery-item-to-epic`:
+3. Fortalecido `delivery-item-to-epic`:
    - adicionar lei operacional: este playbook cria Epic local, nao Feature, GitHub issue, branch, codigo ou PR;
    - deixar output esperado mais verificavel.
-4. Expandir skills rasas de Product Ops:
+4. Expandidas skills rasas de Product Ops:
    - `write-acceptance-criteria`;
    - `check-delivery-coherence`;
    - `define-delivery-boundaries`.
-5. Fortalecer Engineering:
+5. Fortalecido Engineering:
    - `write-tests` com red flags semelhantes a TDD;
    - `create-pr` exigindo Founder Testing Guide;
    - `review-pr` com findings por severidade e evidencia antes de merge recommendation.
-6. Adicionar validacoes automaticas:
+6. Adicionadas validacoes automaticas:
    - workflow com `confirmationGates`, `stopConditions` e `expectedOutput`;
    - playbooks importantes com `useWhen`, `gates`, `outputs`, `filesToUpdate` e `stopConditions`;
    - skills com frontmatter, description `Use when...`, steps, checks e red lines;
    - ordem `prepare-pr` antes de `pr-validation`;
    - `epic-to-features.filesToUpdate` contendo Feature file local.
+
+7. Fortalecidas skills de DevOps, Security e Design com contratos ricos, outputs verificaveis e red lines.
+8. Fortalecido Engineering knowledge com contratos duraveis para standards, implementacao, componentes, dados, testes e review.
 
 Resultado esperado:
 
@@ -109,7 +144,7 @@ Resultado esperado:
 - Skills ficam descobriveis e disciplinadas como Superpowers.
 - O generator passa a prevenir regressao nesses contratos.
 
-### 2. Validar Fluxo Inicial Com Founder
+### 3. Validar Fluxo Inicial Com Founder
 
 Status: importante, mas fica depois da primeira fatia do Asset Contract v2.
 
@@ -138,7 +173,7 @@ Perguntas a resolver:
 - O que conta como Strategy Baseline suficiente?
 - Qual e o menor caminho agradavel para o founder nao sentir burocracia?
 
-### 3. Launch Readiness
+### 4. Launch Readiness
 
 Status: planejado.
 
@@ -158,15 +193,15 @@ Deve cobrir:
 - go-to-market;
 - aprendizado pos-lancamento.
 
-### 4. `launch-learning-loop`
+### 5. `launch-learning-loop`
 
 Status: planejado.
 
 Objetivo: manter Growth enxuto, mas pronto para lancamento, feedback, learning loop e decisao de proximo ciclo.
 
-### 5. Localizacao PT-BR
+### 6. Localizacao PT-BR
 
-Status: planejado depois do Asset Contract v2.
+Status: concluido como parte da prioridade 1 deste roadmap.
 
 Objetivo: traduzir textos humanos gerados em roles, skills, playbooks, workflows e knowledge na fonte do gerador.
 
@@ -178,7 +213,7 @@ Nao traduzir:
 - chaves YAML/JSON;
 - enums e IDs internos.
 
-### 6. Teste Externo Da Founder Journey
+### 7. Teste Externo Da Founder Journey
 
 Status: importante antes de release.
 
@@ -194,7 +229,7 @@ Cenario minimo:
 - simular implementacao/review;
 - retomar em nova sessao sem perder contexto.
 
-### 7. Release Publica Do MVP
+### 8. Release Publica Do MVP
 
 Status: pendente.
 

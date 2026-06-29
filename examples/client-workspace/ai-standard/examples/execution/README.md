@@ -1,21 +1,21 @@
-# Execution Examples
+# Exemplos de Execução
 
-## Purpose
+## Propósito
 
-Examples of roles, skills, playbooks and workflows.
+Exemplos de roles, skills, playbooks e workflows.
 
-## When to Use
+## Use Quando
 
-Use when reviewing area-level execution assets or department/area workflows.
+Use quando revisar assets de execução de nível de área ou workflows de departamento/área.
 
-## Files
+## Arquivos
 
 - `example-role-senior-developer.md`
 - `example-skill-coherence.md`
 - `example-playbook-prepare-pr.md`
 - `example-workflow-feature-to-delivery-cycle.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../`
 - `../../foundation/`
@@ -23,6 +23,6 @@ Use when reviewing area-level execution assets or department/area workflows.
 - `../../templates/`
 - `../../checklists/`
 
-## Agent Notes
+## Notas para Agentes
 
-These files are examples only. Use them for shape and quality signals, not as active context.
+Estes arquivos são apenas exemplos. Use-os para formato e sinais de qualidade, não como contexto ativo.

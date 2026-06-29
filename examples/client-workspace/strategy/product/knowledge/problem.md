@@ -1,14 +1,14 @@
 # Problem
 
-## Purpose
+## Propósito
 
 Define the painful, frequent and valuable problem this product should solve.
 
-## Current State
+## Estado Atual
 
 TBD
 
-## Problem Statement
+## Declaração do Problema
 
 TBD
 
@@ -16,11 +16,11 @@ TBD
 
 TBD
 
-## Frequency and Urgency
+## Frequência and Urgency
 
 TBD
 
-## Existing Alternatives
+## Alternativas Existentes
 
 TBD
 
@@ -28,18 +28,18 @@ TBD
 
 TBD
 
-## Evidence
+## Evidência
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD

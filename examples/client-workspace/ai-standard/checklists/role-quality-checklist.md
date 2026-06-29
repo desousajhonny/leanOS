@@ -1,31 +1,31 @@
-# Role Quality Checklist
+# Checklist de Qualidade da Role
 
-Use this checklist before accepting a `.role.md` file.
+Use este checklist antes de aceitar um arquivo `.role.md`.
 
-## Metadata
+## Metadados
 
-- [ ] The role has YAML frontmatter with `name` and `description`.
-- [ ] The `description` starts with "Use when" and describes triggering conditions.
+- [ ] A role tem frontmatter YAML com `name` e `description`.
+- [ ] A `description` começa com "Use quando" e descreve condições de gatilho.
 
-## Responsibility
+## Responsabilidade
 
-- [ ] The role defines a clear operating persona.
-- [ ] The role answers "with which hat should the agent act?"
-- [ ] The role does not duplicate a skill or playbook.
+- [ ] A role define uma persona operacional clara.
+- [ ] A role responde "com qual chapéu o agente deve atuar?"
+- [ ] A role não duplica uma skill ou playbook.
 
-## Context
+## Contexto
 
-- [ ] The role lists the context it should read before acting.
-- [ ] The role points to relevant knowledge files when needed.
-- [ ] The role does not ask for unrelated workspace context.
+- [ ] A role lista o contexto que deve ler antes de agir.
+- [ ] A role aponta para arquivos de knowledge relevantes quando necessário.
+- [ ] A role não pede contexto de workspace não relacionado.
 
-## Execution Assets
+## Assets de Execução
 
-- [ ] The role points to relevant skills.
-- [ ] The role points to relevant playbooks.
-- [ ] The role does not reference missing files.
+- [ ] A role aponta para skills relevantes.
+- [ ] A role aponta para playbooks relevantes.
+- [ ] A role não referencia arquivos ausentes.
 
-## Acceptance Criteria
+## Critérios de Aceite
 
-- [ ] The role states the expected output or confirmation state under `## Acceptance Criteria`.
-- [ ] The role states when to ask for clarification or confirmation.
+- [ ] A role declara a saída esperada ou estado de confirmação em `## Critérios de Aceite`.
+- [ ] A role declara quando pedir esclarecimento ou confirmação.

@@ -1,10 +1,10 @@
 # Business
 
-## Purpose
+## Propósito
 
-Keep business identity, principles, mission, operating decisions and business model coherent.
+Manter identidade do negócio, princípios, missão, decisões operacionais e modelo de negócio coerentes.
 
-## When to Use
+## Use Quando
 
 - define business identity
 - clarify mission
@@ -25,22 +25,22 @@ Keep business identity, principles, mission, operating decisions and business mo
 
 
 
-## Navigation
+## Navegação
 
-1. For operational work, start with `AGENT.md`.
-2. Use this README as the directory map.
-3. After the area AGENT selects a role, load only required skills and playbooks.
-4. Produce the requested output and update source-of-truth files when needed.
+1. Para trabalho operacional, comece em `AGENT.md`.
+2. Use este README como mapa do diretório.
+3. Depois que o AGENT da área escolher um papel, carregue apenas as skills e playbooks necessários.
+4. Produza a saída solicitada e atualize arquivos de fonte da verdade quando necessário.
 
-## File Responsibilities
+## Responsabilidades dos Arquivos
 
-- `README.md`: area map and explanation.
-- `AGENT.md`: area operating lead when present.
-- `area.yaml`: machine-readable structure for this area.
-- `roles/`: operating personas for this area.
-- `skills/`: focused capabilities used by roles.
-- `playbooks/`: tactical execution sequences.
+- `README.md`: mapa e explicação da área.
+- `AGENT.md`: lead operacional da área quando presente.
+- `area.yaml`: estrutura legível por máquina para esta área.
+- `roles/`: personas operacionais desta área.
+- `skills/`: capacidades focadas usadas pelos papéis.
+- `playbooks/`: sequências táticas de execução.
 
-## Common Paths
+## Caminhos Comuns
 
 - Business request: `AGENT.md` -> role `roles/business-strategist.role.md` -> skill `skills/business-identity/SKILL.md`, `skills/operating-model/SKILL.md` or `skills/business-model/SKILL.md` -> playbook `playbooks/business-foundation.playbook.md` when foundation work is needed.

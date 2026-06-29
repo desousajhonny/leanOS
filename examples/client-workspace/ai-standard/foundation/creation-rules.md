@@ -1,94 +1,94 @@
-# Creation Rules
+# Regras de Criação
 
-Use these rules before creating or changing any LeanOS framework asset.
+Use estas regras antes de criar ou alterar qualquer asset do framework LeanOS.
 
-## Purpose
+## Propósito
 
-Creation rules protect the workspace from asset sprawl, duplicated responsibilities and route-breaking files.
+Regras de criação protegem o workspace contra proliferação de assets, responsabilidades duplicadas e arquivos que quebram rotas.
 
-They answer:
+Elas respondem:
 
-- Should this asset exist?
-- Where should it live?
-- Which existing asset should own this responsibility?
-- What must be loaded before creating it?
-- What should not be created?
+- Este asset deve existir?
+- Onde ele deve viver?
+- Qual asset existente deveria possuir esta responsabilidade?
+- O que deve ser carregado antes de criá-lo?
+- O que não deve ser criado?
 
-## Load First
+## Carregue Primeiro
 
-Before creating an asset, load:
+Antes de criar um asset, carregue:
 
-1. `asset-taxonomy.md` to confirm the asset type.
-2. `navigation-chain.md` to confirm where the asset belongs.
-3. `naming-conventions.md` to name the file correctly.
-4. The matching instruction in `../instructions/`.
-5. The matching template in `../templates/`.
-6. The matching checklist in `../checklists/`.
+1. `asset-taxonomy.md` para confirmar o tipo de asset.
+2. `navigation-chain.md` para confirmar onde o asset pertence.
+3. `naming-conventions.md` para nomear o arquivo corretamente.
+4. A instrução correspondente em `../instructions/`.
+5. O template correspondente em `../templates/`.
+6. O checklist correspondente em `../checklists/`.
 
-## Creation Decision
+## Decisão de Criação
 
-Create a new asset only when all are true:
+Crie um novo asset apenas quando todos os pontos forem verdadeiros:
 
-- The request cannot be handled by an existing asset.
-- The new asset has a clear owner in the Navigation Chain.
-- The new asset has a stable reusable purpose.
-- The asset will reduce ambiguity for future models.
-- The user confirms the creation or update.
+- O pedido não pode ser tratado por um asset existente.
+- O novo asset tem owner claro na Navigation Chain.
+- O novo asset tem propósito reutilizável estável.
+- O asset reduzirá ambiguidade para modelos futuros.
+- O usuário confirma a criação ou atualização.
 
-Do not create an asset when:
+Não crie um asset quando:
 
-- A README note is enough.
-- A role can reference an existing skill.
-- A skill can be reused instead of a new skill.
-- A playbook would duplicate an existing workflow.
-- The asset is only a one-off answer to the current user.
-- The asset would bypass department or area ownership.
+- Uma nota no README é suficiente.
+- Uma role pode referenciar uma skill existente.
+- Uma skill pode ser reutilizada em vez de criar uma nova.
+- Um playbook duplicaria um workflow existente.
+- O asset seria apenas uma resposta única ao usuário atual.
+- O asset contornaria o ownership de departamento ou área.
 
-## Placement Rules
+## Regras de Posicionamento
 
 - Root `AGENT.md` lives at workspace root.
 - Department `AGENT.md`, `README.md`, `department.yaml` and `workflows/` live at department root.
 - Area `AGENT.md`, `README.md`, `area.yaml`, `knowledge/`, `roles/`, `skills/` and `playbooks/` live inside the area.
-- Roles, skills and playbooks do not live directly under root departments.
+- Roles, skills e playbooks não vivem diretamente abaixo de departamentos raiz.
 - Business workflows live in departments or areas, not in `.leanos/`.
 - Framework standards, templates, checklists, instructions and examples live in `ai-standard/`.
 
-## Responsibility Rules
+## Regras de Responsabilidade
 
 - `AGENT.md` routes and sets operating boundaries.
 - `README.md` maps a folder.
 - `department.yaml` and `area.yaml` provide machine-readable structure.
-- Role files define who acts.
-- Skill files define reusable capabilities.
-- Playbook files define execution sequence.
-- Knowledge files store confirmed facts and decisions.
-- Workflow files coordinate multi-step work across owners.
+- Arquivos de role definem quem atua.
+- Arquivos de skill definem capacidades reutilizáveis.
+- Arquivos de playbook definem sequência de execução.
+- Arquivos de knowledge armazenam fatos e decisões confirmadas.
+- Arquivos de workflow coordenam trabalho de múltiplas etapas entre owners.
 
-## Confirmation Rule
+## Regra de Confirmação
 
-Before writing or changing framework assets:
+Antes de escrever ou alterar assets do framework:
 
-1. State the asset type.
-2. State the owner path.
-3. State why an existing asset is not enough.
-4. State which template and checklist will be used.
-5. Ask for explicit confirmation.
+1. Declare o tipo de asset.
+2. Declare o path owner.
+3. Declare por que um asset existente não é suficiente.
+4. Declare qual template e checklist serão usados.
+5. Peça confirmação explícita.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not invent missing roles, skills, playbooks, workflows or templates.
-- Do not create assets outside the owning department or area.
-- Do not place product or company facts inside framework operating assets.
-- Do not update `ai-standard/`, roles, skills, playbooks or workflows during startup.
-- Do not create a broad asset when a narrow one would be clearer.
-- Do not create files just to make the workspace look complete.
+- Não invente roles, skills, playbooks, workflows ou templates ausentes.
+- Não crie assets fora do departamento ou área owner.
+- Não coloque fatos de produto ou empresa dentro de assets operacionais do framework.
+- Não atualize `ai-standard/`, roles, skills, playbooks ou workflows durante a inicialização.
+- Não crie um asset amplo quando um asset estreito seria mais claro.
+- Não crie arquivos apenas para o workspace parecer completo.
 
-## Design Example
+## Exemplo de Design
 
-If Design needs a reusable capability for evaluating PRs:
+Se Design precisar de uma capacidade reutilizável para avaliar PRs:
 
-- Asset type: skill.
+- Tipo de asset: skill.
 - Owner: `operations/design/skills/`.
-- File: `design-review/SKILL.md`.
-- Role usage: Product Designer, Accessibility Specialist or UX Writer can load it when relevant.
-- Do not create `design-review.playbook.md` unless there is a repeatable execution sequence beyond the skill itself.
+- Arquivo: `design-review/SKILL.md`.
+- Uso por role: Product Designer, Accessibility Specialist ou UX Writer podem carregar quando for relevante.
+- Não crie `design-review.playbook.md` a menos que exista uma sequência de execução repetível além da própria skill.

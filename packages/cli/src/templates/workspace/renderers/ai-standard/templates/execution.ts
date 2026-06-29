@@ -1,42 +1,42 @@
 export function roleTemplate(): string {
   return `---
 name: <role-name>
-description: Use when <specific trigger or situation>
+description: Use quando <gatilho ou situação específica>
 ---
 
 # <Role Name>
 
-## Purpose
+## Propósito
 
-Define the responsibility boundary and point of view of this role in one or two sentences.
+Defina o limite de responsabilidade e o ponto de vista deste papel em uma ou duas frases.
 
-## When to Use
+## Use Quando
 
-- <trigger>
-- <symptom>
+- <gatilho>
+- <sintoma>
 
-## Before Acting
+## Antes de Agir
 
-Read:
+Leia:
 
 - \\\`../knowledge/<file>.md\\\`
 
-## Required Skills
+## Skills Obrigatórias
 
 - \\\`../skills/<skill-name>/SKILL.md\\\`
 
-## Relevant Playbooks
+## Playbooks Relevantes
 
 - \\\`../playbooks/<playbook-name>.playbook.md\\\`
 
-## Acceptance Criteria
+## Critérios de Aceite
 
-- <expected output or confirmation state>
+- <saída esperada ou estado de confirmação>
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not invent product-specific facts.
-- Ask before modifying durable files.
+- Não invente fatos específicos do produto.
+- Peça confirmação antes de modificar arquivos duráveis.
 `;
 }
 
@@ -44,86 +44,86 @@ export function roleYamlTemplate(): string {
   return `role:
   slug: <role-name>
   title: <Role Name>
-  purpose: <Description of role responsibility>
+  purpose: <Descrição da responsabilidade do papel>
   use_when:
-    - <trigger>
+    - <gatilho>
   before_acting:
-    - <context file>
+    - <arquivo de contexto>
   skills:
     - <skill-name>
   playbooks:
     - <playbook-name>
   outputs:
-    - <expected output>
+    - <saída esperada>
 `;
 }
 
 export function skillTemplate(): string {
   return `---
 name: <skill-name>
-description: Use when <specific trigger or situation>
+description: Use quando <gatilho ou situação específica>
 ---
 
 # <Skill Name>
 
-## Overview
+## Visão Geral
 
-Define one reusable capability in one or two sentences.
+Defina uma capacidade reutilizável em uma ou duas frases.
 
-## Use When
+## Use Quando
 
-- <trigger>
-- <symptom>
-- <situation>
+- <gatilho>
+- <sintoma>
+- <situação>
 
-## Required Context
+## Contexto Obrigatório
 
 - \`../knowledge/<file>.md\`
-- Active role instructions
-- Founder request
+- Instruções do papel ativo
+- Pedido do founder
 
-## Inputs
+## Entradas
 
 - <input>
 - <input>
 
-## Process
+## Processo
 
-### Step 1
+### Etapa 1
 
-Confirm this skill applies to the active request.
+Confirme que esta skill se aplica ao pedido ativo.
 
-### Step 2
+### Etapa 2
 
-Load only the required context.
+Carregue apenas o contexto obrigatório.
 
-### Step 3
+### Etapa 3
 
-Apply the capability and produce the smallest useful output.
+Aplique a capacidade e produza a menor saída útil.
 
-### Step 4
+### Etapa 4
 
-Check red lines before recommending file updates or handoffs.
+Verifique as linhas vermelhas antes de recomendar atualizações de arquivo ou handoffs.
 
-## Checks & Acceptance Criteria
+## Verificações e Critérios de Aceite
 
 - <check>
 - <check>
 
-## Output
+## Saída
 
 - <output>
 - <output>
 
-## Files to Update
+## Arquivos para Atualizar
 
-- Update relevant area knowledge only after explicit confirmation.
+- Atualize knowledge relevante da área somente depois de confirmação explícita.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not invent product-specific facts.
-- Do not turn this skill into a playbook or workflow.
-- Ask before modifying durable files.
+- Não invente fatos específicos do produto.
+- Não transforme esta skill em playbook ou workflow.
+- Peça confirmação antes de modificar arquivos duráveis.
 `;
 }
 
@@ -131,89 +131,89 @@ export function skillYamlTemplate(): string {
   return `skill:
   slug: <skill-name>
   title: <Skill Name>
-  purpose: <One reusable capability>
+  purpose: <Uma capacidade reutilizável>
   use_when:
-    - <trigger>
+    - <gatilho>
   required_context:
-    - <context file>
+    - <arquivo de contexto>
   process:
-    - <step>
+    - <etapa>
   checks:
-    - <check>
+    - <checagem>
   outputs:
-    - <output>
+    - <saída>
 `;
 }
 
 export function playbookTemplate(): string {
   return `---
 name: <playbook-name>
-description: Use when <specific trigger or situation>
+description: Use quando <gatilho ou situação específica>
 ---
 
 # <Playbook Name>
 
-## Purpose
+## Propósito
 
-Explain the practical task this playbook executes inside one area.
+Explique a tarefa prática que este playbook executa dentro de uma área.
 
-## When to Use
-
-- ...
-- ...
-- ...
-
-## Inputs
+## Use Quando
 
 - ...
 - ...
 - ...
 
-## Guided Conversation
+## Entradas
 
-Use \`../../../ai-standard/foundation/guided-conversation.md\` when the playbook needs the founder to choose, classify, prioritize or confirm.
+- ...
+- ...
+- ...
 
-Ask guided questions when:
+## Conversa Guiada
 
-- required context is missing;
-- the founder must choose between predictable paths;
-- a durable file update depends on confirmation;
-- the next step changes roadmap, MVP, issue, PR, implementation, launch or learning state.
+Use \`../../../ai-standard/foundation/guided-conversation.md\` quando o playbook precisar que o founder escolha, classifique, priorize ou confirme.
 
-Do not ask a rigid questionnaire. Ask only what is missing.
+Faça perguntas guiadas quando:
 
-## Process
+- contexto obrigatório estiver ausente;
+- o founder precisar escolher entre caminhos previsíveis;
+- uma atualização durável de arquivo depender de confirmação;
+- o próximo passo mudar roadmap, MVP, issue, PR, implementação, launch ou estado de aprendizado.
+
+Não faça um questionário rígido. Pergunte apenas o que estiver faltando.
+
+## Processo
 
 1. ...
 2. ...
 3. ...
 
-## Stop Conditions
+## Condições de Parada
 
-- Ask before updating durable files.
-- Ask before calling scripts, APIs or external capabilities.
-- Ask before changing roadmap, MVP, issue, PR or implementation state.
+- Peça confirmação antes de atualizar arquivos duráveis.
+- Peça confirmação antes de chamar scripts, APIs ou capacidades externas.
+- Peça confirmação antes de mudar estado de roadmap, MVP, issue, PR ou implementação.
 
-## Acceptance Criteria & Outputs
-
-- ...
-- ...
-- ...
-
-## Files to Update
+## Critérios de Aceite e Saídas
 
 - ...
+- ...
+- ...
 
-## Red Lines
+## Arquivos para Atualizar
 
-- Do not duplicate a workflow.
-- Do not duplicate skills.
-- Do not invent missing context.
-- Do not update files without explicit confirmation.
+- ...
 
-## Navigation
+## Linhas Vermelhas
 
-\`../AGENT.md -> roles/<role>.role.md -> skills/<skill>/SKILL.md -> playbooks/<this-playbook>.playbook.md -> Output\`
+- Não duplique um workflow.
+- Não duplique skills.
+- Não invente contexto ausente.
+- Não atualize arquivos sem confirmação explícita.
+
+## Navegação
+
+\`../AGENT.md -> roles/<role>.role.md -> skills/<skill>/SKILL.md -> playbooks/<this-playbook>.playbook.md -> Saída\`
 `;
 }
 
@@ -222,26 +222,26 @@ export function playbookYamlTemplate(): string {
   key: <playbook-key>
   title: <Playbook Name>
   owner_area: <department.area>
-  purpose: <practical task this playbook executes>
+  purpose: <tarefa prática que este playbook executa>
   use_when:
-    - <trigger>
+    - <gatilho>
   inputs:
-    - <input>
+    - <entrada>
   guided_conversation:
     foundation: ../../../ai-standard/foundation/guided-conversation.md
     use_when:
-      - founder decision is needed
-      - durable update needs confirmation
+      - decisão do founder é necessária
+      - atualização durável precisa de confirmação
   process:
-    - <step>
+    - <etapa>
   outputs:
-    - <output>
+    - <saída>
   files_to_update:
     - <path>
   confirmation_required:
     - durable file updates
     - external actions
   red_lines:
-    - do not duplicate a workflow
+    - não duplicar workflow
 `;
 }

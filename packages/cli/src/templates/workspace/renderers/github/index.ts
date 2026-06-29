@@ -16,18 +16,18 @@ export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefiniti
   const securityActive = activeKeys.has("operations.security");
   const engineeringNote = engineeringActive
     ? "Route GitHub branch, PR and validation work through `../../operations/engineering/AGENT.md` before changing GitHub workflow files."
-    : "Operations Engineering is not active in this workspace. Ask before activating it or changing GitHub workflow files.";
+    : "Operations Engineering não está ativo neste workspace. Peça confirmação antes de ativá-lo ou alterar arquivos de workflow do GitHub.";
   const devopsNote = devopsActive
     ? "Route GitHub setup through `../../operations/devops/AGENT.md` before configuring project sync."
-    : "Operations DevOps is not active in this workspace. Ask before configuring GitHub Project sync.";
+    : "Operations DevOps não está ativo neste workspace. Peça confirmação antes de configurar sync de GitHub Project.";
   const securityNote = securityActive
     ? "Route security automation readiness through `../../operations/security/AGENT.md` before adding scanner workflows or security gates."
-    : "Operations Security is not active in this workspace. Ask before adding security automation or scanner workflows.";
+    : "Operations Security não está ativo neste workspace. Peça confirmação antes de adicionar automação de Security ou workflows de scanner.";
 
   return [
     ...(answers.prepareGithubManagement ? [{ path: ".env.local", content: envLocal() }] : []),
     { path: ".gitignore", content: workspaceGitignore() },
-    { path: ".github/copilot-instructions.md", content: "# LeanOS Instructions\n\nStart from `../AGENT.md` and follow the LeanOS Navigation Chain before implementing product work.\n" },
+    { path: ".github/copilot-instructions.md", content: "# LeanOS Instructions\n\nComece por `../AGENT.md` e siga a Navigation Chain do LeanOS antes de implementar trabalho de produto.\n" },
     { path: ".github/PULL_REQUEST_TEMPLATE.md", content: pullRequestTemplate() },
     { path: ".github/ISSUE_TEMPLATE/epic.yml", content: epicIssueTemplate() },
     { path: ".github/ISSUE_TEMPLATE/feature.yml", content: featureIssueTemplate() },

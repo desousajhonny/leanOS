@@ -1,23 +1,23 @@
 # Decision Log
 
-## Purpose
+## Propósito
 
-Capture durable decisions and why they were made.
+Registrar decisões duráveis e por que elas foram tomadas.
 
-## Current State
+## Estado Atual
 
-No decisions recorded yet.
+Nenhuma decisão registrada ainda.
 
-## Decisions
+## Decisões
 
-| Date | Decision | Context | Owner |
+| Data | Decisão | Contexto | Dono |
 | --- | --- | --- | --- |
 | TBD | TBD | TBD | TBD |
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD

@@ -3,7 +3,7 @@ import { securityKnowledge } from "./security-knowledge-template.js";
 export function securityBaselineKnowledge(): string {
   return securityKnowledge(
     "Security Baseline",
-    "Define the minimum security baseline for an MVP or startup product. Do not try to solve enterprise security completely now. The goal is an initial mandatory baseline that reduces common MVP and AI-generated-code risks.",
+    "Defina a baseline mínima de Security para um MVP ou produto de startup. Não tente resolver Security enterprise completamente agora. O objetivo é uma baseline inicial obrigatória que reduz riscos comuns de MVP e código gerado por IA.",
     [
       "Security posture for the current product stage.",
       "Required gates before implementation, PR and deploy.",
@@ -17,10 +17,10 @@ export function securityBaselineKnowledge(): string {
     ],
     [
       "No public production database.",
-      "No secrets in Git, logs, prompts, screenshots or tracked files.",
-      "No private endpoint without server-side authentication and authorization.",
+      "Nenhum segredo em Git, logs, prompts, screenshots ou arquivos versionados.",
+      "Nenhum endpoint privado sem autenticação e autorização server-side.",
       "Every user-owned or tenant-owned object access must validate ownership server-side.",
-      "Never trust userId, tenantId, role or isAdmin from the client.",
+      "Nunca confie em userId, tenantId, role ou isAdmin vindos do cliente.",
       "Never build SQL with string concatenation.",
       "Sensitive data must not appear in logs, analytics, errors or events.",
       "Admin access requires RBAC, MFA when available and audit trail.",

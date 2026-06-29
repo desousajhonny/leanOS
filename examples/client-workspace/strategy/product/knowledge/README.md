@@ -1,18 +1,18 @@
 # Product Knowledge
 
-## Purpose
+## Propósito
 
-Durable product context produced by Strategy Product.
+Contexto durável de produto produzido por Strategy Product.
 
-## When to Use
+## Use Quando
 
-Use when defining product strategy, product core, ICP, value proposition, MVP validation scope, positioning, lightweight validation notes or product coherence.
+Use ao definir estratégia de produto, Product Core, ICP, proposta de valor, MVP Validation Scope, posicionamento, notas leves de validação ou coerência de produto.
 
-## Source of Truth
+## Fonte da Verdade
 
 `brief.md`
 
-## Files
+## Arquivos
 
 - `brief.md`
 - `problem.md`
@@ -23,7 +23,7 @@ Use when defining product strategy, product core, ICP, value proposition, MVP va
 - `mvp-validation-scope.md`
 - `validation-notes.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../roles/`
 - `../skills/`
@@ -31,10 +31,10 @@ Use when defining product strategy, product core, ICP, value proposition, MVP va
 - `../../business/`
 - `../../roadmap/`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
-Keep company/product context here. Do not enrich roles, skills or playbooks with company-specific facts.
+Mantenha contexto de empresa/produto aqui. Não enriqueça roles, skills ou playbooks com fatos específicos da empresa.

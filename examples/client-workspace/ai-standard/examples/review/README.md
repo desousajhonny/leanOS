@@ -1,18 +1,18 @@
-# Review Examples
+# Exemplos de Review
 
-## Purpose
+## Propósito
 
-Examples of review outputs.
+Exemplos de saídas de review.
 
-## When to Use
+## Use Quando
 
-Use when reviewing how to structure code review findings and decisions.
+Use quando revisar como estruturar findings e decisões de code review.
 
-## Files
+## Arquivos
 
 - `example-code-review.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../`
 - `../../foundation/`
@@ -20,6 +20,6 @@ Use when reviewing how to structure code review findings and decisions.
 - `../../templates/`
 - `../../checklists/`
 
-## Agent Notes
+## Notas para Agentes
 
-These files are examples only. Use them for shape and quality signals, not as active context.
+Estes arquivos são apenas exemplos. Use-os para formato e sinais de qualidade, não como contexto ativo.

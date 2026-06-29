@@ -1,34 +1,34 @@
-# Create Department Instructions
+# Instruções para Criar Departamento
 
-Use when creating a new root department.
+Use quando criar um novo departamento raiz.
 
-## Before Creating
+## Antes de Criar
 
-1. Load `../foundation/asset-taxonomy.md`.
-2. Load `../foundation/navigation-chain.md`.
-3. Confirm that the scope is broad enough to be a root department.
-4. Check whether an existing department or area should own the work.
+1. Carregue `../foundation/asset-taxonomy.md`.
+2. Carregue `../foundation/navigation-chain.md`.
+3. Confirme se o escopo é amplo o bastante para ser um departamento raiz.
+4. Verifique se um departamento ou área existente deveria possuir o trabalho.
 
-## Choose Templates
+## Escolha os Templates
 
 - Department AGENT: `../templates/agents/department-agent-template.md`
 - Department README: `../templates/structure/department-template.md`
 - Department YAML: `../templates/structure/department-template.yaml`
 
-## Process
+## Processo
 
-1. Define department scope.
-2. Define active areas.
-3. Define department-local workflows when cross-area work exists.
-4. Create `AGENT.md`, `README.md`, `department.yaml` and `workflows/` when needed.
-5. Do not create roles, skills or playbooks at department root.
+1. Defina o escopo do departamento.
+2. Defina as áreas ativas.
+3. Defina workflows locais do departamento quando existir trabalho entre áreas.
+4. Crie `AGENT.md`, `README.md`, `department.yaml` e `workflows/` quando necessário.
+5. Não crie roles, skills ou playbooks na raiz do departamento.
 
-## Validate
+## Valide
 
 Use `../checklists/department-quality-checklist.md`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not create a department for one capability.
-- Do not place area execution assets at department root.
-- Do not duplicate existing department ownership.
+- Não crie um departamento para uma única capacidade.
+- Não coloque assets de execução de área na raiz do departamento.
+- Não duplique ownership de departamento existente.

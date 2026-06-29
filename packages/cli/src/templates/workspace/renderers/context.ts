@@ -71,7 +71,7 @@ ${activeAreas.map((area) => `- ${area.key}: \`${area.path}/${area.lead ? "AGENT.
 
 ${activeWorkflows.length > 0 ? `Compatible local workflows:\n\n${activeWorkflows.map((workflow) => `- ${workflow}`).join("\n")}` : "No complete local workflow is active yet."}
 
-${activeKeys.has("strategy.product") ? "Product strategy routes are available." : "Product strategy routes are not active. Ask before activating Strategy Product or creating product-specific assets."}
+${activeKeys.has("strategy.product") ? "Rotas de product strategy estão disponíveis." : "Rotas de product strategy não estão ativas. Peça confirmação antes de ativar Strategy Product ou criar assets específicos de produto."}
 `;
 }
 
@@ -104,15 +104,15 @@ ${productOpsActive ? "Product Ops is active. Route MVP backlog planning, deliver
 
 ## 4. Implementation Readiness
 
-${engineeringActive ? "Engineering is active. Route implementation, branch, PR and review work through `operations/AGENT.md` after Product Ops readiness is clear." : "Engineering is not active. Do not implement product code until delivery scope and Engineering activation are ready."}
+${engineeringActive ? "Engineering está ativa. Roteie implementação, branch, PR e review por `operations/AGENT.md` depois que a prontidão de Product Ops estiver clara." : "Engineering não está ativa. Não implemente código de produto até o escopo de delivery e a ativação de Engineering estarem prontos."}
 
 ## GitHub
 
-${answers.prepareGithubManagement ? "GitHub management was prepared. Add a local token to `.env.local` only when configuring GitHub Projects or running a future Epics/Features sync flow." : "GitHub management was not requested yet. Ask before creating `.env.local` or configuring GitHub Projects sync."}
+${answers.prepareGithubManagement ? "GitHub management foi preparado. Adicione um token local em `.env.local` apenas ao configurar GitHub Projects ou executar um fluxo futuro de sync de Epics/Features." : "GitHub management ainda não foi solicitado. Peça confirmação antes de criar `.env.local` ou configurar sync com GitHub Projects."}
 
 ## Future App Bootstrap
 
-Do not create \`src/\`, \`app/\`, \`pages/\`, \`package.json\` or \`vercel.json\` during initial LeanOS setup. Use a future product bootstrap workflow after strategy and MVP are clear.
+Não crie \`src/\`, \`app/\`, \`pages/\`, \`package.json\` ou \`vercel.json\` durante o setup inicial do LeanOS. Use um futuro workflow de bootstrap de produto depois que Strategy e MVP estiverem claros.
 `;
 }
 
@@ -130,7 +130,7 @@ ${rows.length > 0 ? rows.join("\n") : "| TBD | TBD |"}
 function workspaceModeNote(answers: WorkspaceAnswers): string {
   return answers.workspaceMode === "existing-product-repo"
     ? "LeanOS is installed as an operating layer over an existing product repository. Preserve product code and existing repository files unless the user explicitly confirms a change."
-    : "LeanOS is preparing strategy and operations before app/code bootstrap. Do not create product source code during initial setup.";
+    : "LeanOS está preparando Strategy e Operations antes do bootstrap de app/código. Não crie código-fonte de produto durante o setup inicial.";
 }
 
 function detectedProjectSummary(answers: WorkspaceAnswers): string {

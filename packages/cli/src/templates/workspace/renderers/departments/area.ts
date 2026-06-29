@@ -10,11 +10,11 @@ export function areaFiles(area: AreaDefinition, answers: WorkspaceAnswers): File
     ...(area.lead ? [{ path: `${area.path}/AGENT.md`, content: areaAgent(area) }] : []),
     { path: `${area.path}/README.md`, content: areaReadme(area) },
     { path: `${area.path}/area.yaml`, content: areaYaml(area) },
-    { path: `${area.path}/roles/README.md`, content: folderReadme(`${area.name} Roles`, `Roles owned by the ${area.name} area.`, area.lead ? "Use after the area AGENT selects a role." : "Use after the area README selects a role.", area.lead ? "../AGENT.md" : "../README.md", area.roles.map((role) => `${role.slug}.role.md`), ["../skills/", "../playbooks/"], "Load one role, then follow its skills and playbooks.") },
+    { path: `${area.path}/roles/README.md`, content: folderReadme(`Papéis de ${area.name}`, `Papéis pertencentes à área ${area.name}.`, area.lead ? "Use depois que o AGENT da área selecionar um papel." : "Use depois que o README da área selecionar um papel.", area.lead ? "../AGENT.md" : "../README.md", area.roles.map((role) => `${role.slug}.role.md`), ["../skills/", "../playbooks/"], "Carregue um papel e siga suas skills e playbooks.") },
     ...area.roles.map((role) => ({ path: `${area.path}/roles/${role.slug}.role.md`, content: roleFile(area, role) })),
-    { path: `${area.path}/skills/README.md`, content: folderReadme(`${area.name} Skills`, `Skills owned by the ${area.name} area.`, "Use when a selected role points to a skill.", area.lead ? "../AGENT.md" : "../README.md", area.skills.map((skill) => `${skill.slug}/SKILL.md`), ["../roles/", "../playbooks/"], "Load only skills needed for the active task.") },
+    { path: `${area.path}/skills/README.md`, content: folderReadme(`Skills de ${area.name}`, `Skills pertencentes à área ${area.name}.`, "Use quando um papel selecionado apontar para uma skill.", area.lead ? "../AGENT.md" : "../README.md", area.skills.map((skill) => `${skill.slug}/SKILL.md`), ["../roles/", "../playbooks/"], "Carregue apenas as skills necessárias para a tarefa ativa.") },
     ...area.skills.map((skill) => ({ path: `${area.path}/skills/${skill.slug}/SKILL.md`, content: skillFile(area, skill) })),
-    { path: `${area.path}/playbooks/README.md`, content: folderReadme(`${area.name} Playbooks`, `Execution sequences owned by the ${area.name} area.`, "Use when a selected role points to a playbook.", area.lead ? "../AGENT.md" : "../README.md", area.playbooks.map((playbook) => `${playbook.slug}.playbook.md`), ["../roles/", "../skills/"], "Use playbooks for sequencing, not for duplicating skill details.") },
+    { path: `${area.path}/playbooks/README.md`, content: folderReadme(`Playbooks de ${area.name}`, `Sequências de execução pertencentes à área ${area.name}.`, "Use quando um papel selecionado apontar para um playbook.", area.lead ? "../AGENT.md" : "../README.md", area.playbooks.map((playbook) => `${playbook.slug}.playbook.md`), ["../roles/", "../skills/"], "Use playbooks para sequenciar execução, não para duplicar detalhes das skills.") },
     ...area.playbooks.map((playbook) => ({ path: `${area.path}/playbooks/${playbook.slug}.playbook.md`, content: playbookFile(area, playbook) })),
     ...area.files.map((file) => ({ path: `${area.path}/${file.path}`, content: file.content(answers) }))
   ];
@@ -23,11 +23,11 @@ export function areaFiles(area: AreaDefinition, answers: WorkspaceAnswers): File
 function areaReadme(area: AreaDefinition): string {
   return `# ${area.name}
 
-## Purpose
+## Propósito
 
 ${area.purpose}
 
-## When to Use
+## Use Quando
 
 ${area.whenToUse.map((item) => `- ${item}`).join("\n")}
 
@@ -35,23 +35,23 @@ ${area.whenToUse.map((item) => `- ${item}`).join("\n")}
 
 ${area.sourceOfTruth.length > 0 ? area.sourceOfTruth.map((file) => `- \`${file}\``).join("\n") : "- No loose source-of-truth files yet. Use playbooks for operational procedures and update persistent notes only when the workspace creates them."}
 
-${area.operatingRules?.length ? `## Operating Rules\n\n${area.operatingRules.map((item) => `- ${item}`).join("\n")}\n` : ""}
-${area.redLines?.length ? `## Red Lines\n\n${area.redLines.map((item) => `- ${item}`).join("\n")}\n` : ""}
+${area.operatingRules?.length ? `## Regras Operacionais\n\n${area.operatingRules.map((item) => `- ${item}`).join("\n")}\n` : ""}
+${area.redLines?.length ? `## Linhas Vermelhas\n\n${area.redLines.map((item) => `- ${item}`).join("\n")}\n` : ""}
 
-## Navigation
+## Navegação
 
-${area.lead ? "1. For operational work, start with `AGENT.md`.\n2. Use this README as the directory map.\n3. After the area AGENT selects a role, load only required skills and playbooks.\n4. Produce the requested output and update source-of-truth files when needed." : "1. Choose the relevant role from `roles/`.\n2. Load only the required skills from `skills/`.\n3. Use the matching playbook from `playbooks/`.\n4. Produce the requested output and update source-of-truth files when needed."}
+${area.lead ? "1. Para trabalho operacional, comece em `AGENT.md`.\n2. Use este README como mapa do diretório.\n3. Depois que o AGENT da área escolher um papel, carregue apenas as skills e playbooks necessários.\n4. Produza a saída solicitada e atualize arquivos de fonte da verdade quando necessário." : "1. Escolha o papel relevante em `roles/`.\n2. Carregue apenas as skills necessárias em `skills/`.\n3. Use o playbook correspondente em `playbooks/`.\n4. Produza a saída solicitada e atualize arquivos de fonte da verdade quando necessário."}
 
-## File Responsibilities
+## Responsabilidades dos Arquivos
 
-- \`README.md\`: area map and explanation.
-- \`AGENT.md\`: area operating lead when present.
-- \`area.yaml\`: machine-readable structure for this area.
-- \`roles/\`: operating personas for this area.
-- \`skills/\`: focused capabilities used by roles.
-- \`playbooks/\`: tactical execution sequences.
+- \`README.md\`: mapa e explicação da área.
+- \`AGENT.md\`: lead operacional da área quando presente.
+- \`area.yaml\`: estrutura legível por máquina para esta área.
+- \`roles/\`: personas operacionais desta área.
+- \`skills/\`: capacidades focadas usadas pelos papéis.
+- \`playbooks/\`: sequências táticas de execução.
 
-## Common Paths
+## Caminhos Comuns
 
 ${area.commonPaths.map((item) => `- ${item}`).join("\n")}
 `;
@@ -60,38 +60,38 @@ ${area.commonPaths.map((item) => `- ${item}`).join("\n")}
 function areaAgent(area: AreaDefinition): string {
   if (!area.lead) return "";
 
-  return `# ${area.name} Agent
+  return `# Agente de ${area.name}
 
-You are the ${area.lead.title} for this workspace.
+Você é ${area.lead.title} deste workspace.
 
-This \`AGENT.md\` is the operating owner for the ${area.name} area.
+Este \`AGENT.md\` é o dono operacional da área ${area.name}.
 
-Use \`README.md\` as the directory map. Use \`area.yaml\` when machine-readable structure matters.
+Use \`README.md\` como mapa do diretório. Use \`area.yaml\` quando a estrutura legível por máquina importar.
 
-## Operating Scope
+## Escopo Operacional
 
 ${area.lead.purpose}
 
-${area.operatingRules?.length ? `## Operating Rules\n\n${area.operatingRules.map((item) => `- ${item}`).join("\n")}\n` : ""}
-${area.redLines?.length ? `## Red Lines\n\n${area.redLines.map((item) => `- ${item}`).join("\n")}\n` : ""}
+${area.operatingRules?.length ? `## Regras Operacionais\n\n${area.operatingRules.map((item) => `- ${item}`).join("\n")}\n` : ""}
+${area.redLines?.length ? `## Linhas Vermelhas\n\n${area.redLines.map((item) => `- ${item}`).join("\n")}\n` : ""}
 
-## Role Routing
+## Roteamento de Papéis
 
-Choose the smallest specialist role for the request:
+Escolha o menor papel especialista para o pedido:
 
-${area.roles.map((role) => `- ${role.title}: \`roles/${role.slug}.role.md\` - use when ${role.useWhen.join("; ")}.`).join("\n")}
+${area.roles.map((role) => `- ${role.title}: \`roles/${role.slug}.role.md\` - use quando ${role.useWhen.join("; ")}.`).join("\n")}
 
-## Routing Rules
+## Regras de Roteamento
 
-1. Start from this area AGENT for operational work inside ${area.name}.
-2. Load one specialist role before loading skills or playbooks.
-3. Load only skills and playbooks required by the selected role.
-4. If the request needs a missing specialist, skill or playbook, explain the gap and ask before creating it.
-5. Keep reusable area knowledge in \`knowledge/\`.
+1. Comece por este AGENT da área para trabalho operacional dentro de ${area.name}.
+2. Carregue um papel especialista antes de carregar skills ou playbooks.
+3. Carregue apenas skills e playbooks exigidos pelo papel selecionado.
+4. Se o pedido precisar de especialista, skill ou playbook ausente, explique a lacuna e peça confirmação antes de criar.
+5. Mantenha knowledge reutilizável da área em \`knowledge/\`.
 
-## Navigation
+## Navegação
 
-\`${area.path}/AGENT.md -> Role -> Skills -> Playbook -> Output\`
+\`${area.path}/AGENT.md -> Papel -> Skills -> Playbook -> Saída\`
 `;
 }
 

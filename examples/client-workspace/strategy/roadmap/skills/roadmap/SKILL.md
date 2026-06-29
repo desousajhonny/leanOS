@@ -1,21 +1,21 @@
 ---
 name: roadmap
-description: Use when the founder needs a roadmap for a product_operating business; growth_scaling requires sequencing across multiple priorities; backlog candidates need Now/Next/Later/Not Planned classification
+description: Use quando o founder precisa de roadmap para um negócio product_operating; growth_scaling exige sequenciamento entre múltiplas prioridades; candidatos de backlog precisam de classificação Now/Next/Later/Not Planned
 ---
 
 # Roadmap
 
-## Overview
+## Visão Geral
 
-Sequence roadmap work by business outcome, product value, operating stage and delivery constraints.
+Sequencie trabalho de roadmap por resultado de negócio, valor de produto, estágio operacional e restrições de delivery.
 
-## Use When
+## Use Quando
 
-- the founder needs a roadmap for a product_operating business
-- growth_scaling requires sequencing across multiple priorities
-- backlog candidates need Now/Next/Later/Not Planned classification
+- o founder precisa de roadmap para um negócio product_operating
+- growth_scaling exige sequenciamento entre múltiplas prioridades
+- candidatos de backlog precisam de classificação Now/Next/Later/Not Planned
 
-## Required Context
+## Contexto Obrigatório
 
 - ../../../leanos.yaml
 - ../knowledge/roadmap.md
@@ -25,71 +25,71 @@ Sequence roadmap work by business outcome, product value, operating stage and de
 - ../../product/knowledge/value-proposition.md
 - ../../product/knowledge/validation-notes.md
 
-## Inputs
+## Entradas
 
-- Business stage
-- Product strategy
-- Business constraints
-- Known risks
-- Customer or validation signals
-- Candidate work
+- Estágio de negócio
+- Estratégia de produto
+- Restrições de negócio
+- Riscos conhecidos
+- Sinais de cliente ou validação
+- Trabalho candidato
 
-## Process
+## Processo
 
-### Step 1
+### Etapa 1
 
-Clarify the roadmap objective.
+Esclareça o objetivo do roadmap.
 
-### Step 2
+### Etapa 2
 
-Confirm the business is `product_operating` or `growth_scaling`, or that the founder explicitly asks to sequence multiple priorities.
+Confirme se o negócio está em `product_operating` ou `growth_scaling`, ou se o founder pediu explicitamente para sequenciar múltiplas prioridades.
 
-### Step 3
+### Etapa 3
 
-Do not use Roadmap as the mandatory continuation of first MVP validation.
+Não use Roadmap como continuação obrigatória da primeira validação de MVP.
 
-### Step 4
+### Etapa 4
 
-Separate Now, Next, Later and Not Planned.
+Separe Now, Next, Later e Not Planned.
 
-### Step 5
+### Etapa 5
 
-Connect items to outcomes, customer signals and validation or operating signals.
+Conecte itens a outcomes, sinais de cliente e sinais de validação ou operação.
 
-### Step 6
+### Etapa 6
 
-Identify delivery scope type, milestone and release goal only when confirmed later by Product Ops.
+Identifique tipo de escopo de delivery, milestone e objetivo de release apenas quando confirmado depois por Product Ops.
 
-### Step 7
+### Etapa 7
 
-Identify dependencies and risks.
+Identifique dependências e riscos.
 
-### Step 8
+### Etapa 8
 
-Propose updates before writing.
+Proponha atualizações antes de escrever.
 
-## Checks & Acceptance Criteria
+## Verificações e Critérios de Aceite
 
-- Now items are small enough to reason about.
-- Roadmap items are not vague wishes.
-- Product is operating/scaling or the founder explicitly needs multi-priority sequencing.
-- Delivery scope is not expanded silently.
-- MVP-building items are routed to Product Ops scope/backlog instead of Roadmap when they affect current delivery.
+- Itens Now são pequenos o bastante para raciocinar sobre eles.
+- Itens de roadmap não são desejos vagos.
+- O produto está operando/escalando ou o founder precisa explicitamente de sequenciamento multi-prioridade.
+- Escopo de delivery não é expandido silenciosamente.
+- Itens de construção de MVP são roteados para escopo/backlog de Product Ops em vez de Roadmap quando afetam delivery atual.
 
-## Output
+## Saída
 
-- Roadmap proposal
-- Current cycle proposal
-- Risks and dependencies
-- Open questions
+- Proposta de roadmap
+- Proposta de ciclo atual
+- Riscos e dependências
+- Perguntas abertas
 
-## Files to Update
+## Arquivos para Atualizar
 
 - ../knowledge/roadmap.md
 - ../knowledge/current-cycle.md
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not commit future work without founder confirmation.
-- Do not invent milestones or dates.
-- Do not turn backlog candidates into committed scope silently.
+- Não comprometa trabalho futuro sem confirmação do founder.
+- Não invente milestones ou datas.
+- Não transforme candidatos de backlog em escopo comprometido silenciosamente.

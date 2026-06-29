@@ -1,11 +1,11 @@
 export function productOpsReadyToDevelopKnowledge(): string {
   return `# Ready To Develop
 
-## Purpose
+## Propósito
 
 Define the fixed LeanOS Definition of Ready for deciding whether a Feature can move into implementation.
 
-This is a framework criterion, not a product status log. Do not rewrite it with product-specific progress unless the framework itself changes.
+Isto é um critério do framework, não um log de status de produto. Não reescreva com progresso específico do produto salvo quando o próprio framework mudar.
 
 ## Core Rule
 
@@ -19,7 +19,7 @@ An Epic can be important and still not ready for code. An Epic becomes developab
 - A GitHub issue is optional for readiness when the local Feature file is complete enough to guide implementation.
 - GitHub sync is tracking, not product readiness.
 - If both local Feature and GitHub issue exist, compare them before planning and explain any mismatch to the founder.
-- Do not start \`feature-to-delivery-cycle\` from a vague roadmap item, unsplit Epic or loose idea.
+- Não inicie \`feature-to-delivery-cycle\` a partir de item vago de roadmap, Epic não quebrada ou ideia solta.
 
 ## Product Readiness
 

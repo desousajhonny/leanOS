@@ -1,32 +1,32 @@
-# Create Workflow Instructions
+# Instruções para Criar Workflow
 
-Use when creating a `.workflow.md` file.
+Use quando criar um arquivo `.workflow.md`.
 
-## Before Creating
+## Antes de Criar
 
-1. Confirm whether the workflow belongs to a department or area.
-2. Confirm that the flow spans multiple areas, roles or stages.
-3. Check whether an existing playbook is enough.
+1. Confirme se o workflow pertence a um departamento ou área.
+2. Confirme se o fluxo atravessa múltiplas áreas, roles ou estágios.
+3. Verifique se um playbook existente é suficiente.
 
-## Choose Template
+## Escolha o Template
 
 - Workflow: `../templates/execution/workflow-template.md`
 
-## Process
+## Processo
 
-1. Define trigger.
-2. Define participating areas or roles.
-3. Define required context.
-4. Define ordered stages and handoffs.
-5. Mark conditional participants as conditional.
-6. Define outputs and follow-up routes.
+1. Defina o gatilho.
+2. Defina áreas ou roles participantes.
+3. Defina o contexto obrigatório.
+4. Defina estágios ordenados e handoffs.
+5. Marque participantes condicionais como condicionais.
+6. Defina saídas e rotas de continuidade.
 
-## Validate
+## Valide
 
 Use `../checklists/workflow-quality-checklist.md`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not place business workflows in `.leanos/workflows/`.
-- Do not duplicate area playbooks.
-- Do not require inactive areas without warning.
+- Não coloque workflows de negócio em `.leanos/workflows/`.
+- Não duplique playbooks de área.
+- Não exija áreas inativas sem aviso.

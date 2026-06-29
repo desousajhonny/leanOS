@@ -1,11 +1,11 @@
 export function roadmapKnowledge(): string {
   return `# Roadmap
 
-## Purpose
+## Propósito
 
-Sequence product and business work into visible, decision-ready roadmap items when the business is operating, scaling or explicitly choosing between multiple priorities.
+Sequencie trabalho de produto e negócio em itens visíveis de roadmap prontos para decisão quando o negócio estiver operando, escalando ou escolhendo explicitamente entre múltiplas prioridades.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -17,7 +17,7 @@ TBD
 
 Backlog guarda possibilidades. Roadmap organiza uma sequencia candidata de operacao, crescimento ou multiplas prioridades. Delivery scope transforma um item confirmado em compromisso de entrega.
 
-Roadmap is not mandatory after first MVP validation. The first MVP validation path lives in Strategy Product as MVP Validation Scope; Roadmap enters when the product is operating, scaling or the founder explicitly needs a cycle, backlog order or priority sequence.
+Roadmap não é obrigatório depois da primeira validação de MVP. O primeiro caminho de validação de MVP vive em Strategy Product como Escopo de Validação do MVP; Roadmap entra quando o produto está operando, escalando ou quando o founder precisa explicitamente de ciclo, ordem de backlog ou sequência de prioridades.
 
 Use this lightweight header when a roadmap item becomes delivery-ready:
 
@@ -55,19 +55,19 @@ release_goal: TBD
 
 TBD
 
-## Risks and Dependencies
+## Riscos and Dependencies
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

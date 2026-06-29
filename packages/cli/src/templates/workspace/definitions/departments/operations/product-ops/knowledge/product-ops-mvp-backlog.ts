@@ -1,13 +1,13 @@
 export function productOpsMvpBacklogKnowledge(): string {
   return `# MVP Backlog
 
-## Purpose
+## Propósito
 
 Hold the operational MVP backlog owned by Product Ops after the founder approves the Strategy Product MVP Validation Scope.
 
 This backlog is not Strategy Roadmap and is not implementation work. Each approved item must become a local Epic before it can be split into Features or sent to Engineering.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -41,15 +41,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

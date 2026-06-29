@@ -1,23 +1,23 @@
 export function codeReviewTemplate(): string {
-  return `# Code Review Template
+  return `# Template De Code Review
 
-## Review Context
+## Contexto Do Review
 
 - PR:
-- Linked issue:
-- Parent epic:
-- Delivery scope:
+- Issue vinculada:
+- Epic pai:
+- Escopo de delivery:
 - Acceptance criteria:
 
-## Findings
+## Achados
 
-List findings by severity.
+Liste achados por severidade.
 
-| Severity | File/Area | Finding | Required Change |
+| Severidade | Arquivo/Área | Achado | Mudança Obrigatória |
 | --- | --- | --- | --- |
 | blocker/high/medium/low | TBD | TBD | TBD |
 
-## Review Dimensions
+## Dimensões Do Review
 
 - Correctness
 - Scope control
@@ -27,13 +27,13 @@ List findings by severity.
 - Design/UX when applicable
 - LeanOS source-of-truth alignment
 
-## Decision
+## Decisão
 
-- [ ] Ready to merge
-- [ ] Needs changes
-- [ ] Blocked by missing context
+- [ ] Pronto para merge
+- [ ] Precisa de mudanças
+- [ ] Bloqueado por contexto ausente
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 `;

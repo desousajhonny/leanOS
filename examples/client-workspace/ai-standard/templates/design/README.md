@@ -1,28 +1,28 @@
 # Design Templates
 
-## Purpose
+## Propósito
 
-Templates for Design-owned specifications that hand off user-facing structure to Engineering.
+Templates para especificações de Design que entregam estrutura voltada ao usuário para Engineering.
 
-## When to Use
+## Use Quando
 
-Use when Design needs to document a component contract before implementation.
+Use quando Design precisar documentar um contrato de componente antes da implementação.
 
-## Files
+## Arquivos
 
 - `component-spec-template.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../`
 - `../../instructions/`
 - `../../checklists/`
 - `../../foundation/`
 
-## Navigation
+## Navegação
 
-Use this folder only after `../../foundation/asset-taxonomy.md` confirms the needed asset type.
+Use esta pasta apenas depois que `../../foundation/asset-taxonomy.md` confirmar o tipo de asset necessário.
 
-## Agent Notes
+## Notas para Agentes
 
-Load only the matching template file. Do not load unrelated template categories.
+Carregue apenas o arquivo de template correspondente. Não carregue categorias de template não relacionadas.

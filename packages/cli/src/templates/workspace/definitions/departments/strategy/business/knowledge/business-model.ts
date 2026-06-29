@@ -1,11 +1,11 @@
 export function businessModelKnowledge(): string {
   return `# Business Model Canvas
 
-## Purpose
+## Propósito
 
 Define how the business can create, deliver and capture value as the product evolves.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -13,11 +13,11 @@ TBD
 
 TBD
 
-## Channels
+## Canais
 
 TBD
 
-## Revenue Model
+## Modelo de Receita
 
 TBD
 
@@ -33,19 +33,19 @@ TBD
 
 TBD
 
-## Assumptions to Validate
+## Suposições para Validar
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

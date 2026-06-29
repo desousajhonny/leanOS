@@ -1,3 +1,3 @@
 # LeanOS Instructions
 
-Start from `../AGENT.md` and follow the LeanOS Navigation Chain before implementing product work.
+Comece por `../AGENT.md` e siga a Navigation Chain do LeanOS antes de implementar trabalho de produto.

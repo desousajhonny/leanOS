@@ -1,11 +1,11 @@
 export function engineeringComponentGuidelinesKnowledge(): string {
   return `# Component Guidelines
 
-## Purpose
+## Propósito
 
 Define how Engineering should create, reuse and modify UI components.
 
-## Current State
+## Estado Atual
 
 Component work is implementation work, but the component contract belongs to Design.
 
@@ -17,7 +17,7 @@ Engineering should implement a reusable component only when the Feature requires
 - If no spec exists and the Feature needs a new or adapted component, route back to Design component readiness before branch/code.
 - Use \`../../design/knowledge/component-inventory.md\` to confirm whether a component already exists, is planned or needs a spec.
 - Use \`../../design/knowledge/design-system.md\` and \`../../design/knowledge/accessibility.md\` as the baseline for visual and accessibility decisions.
-- Do not replace Design decisions with improvised UI choices in code.
+- Não substitua decisões de Design por escolhas improvisadas de UI no código.
 
 ## Reuse Existing Components
 
@@ -38,12 +38,12 @@ Engineering should implement a reusable component only when the Feature requires
 - Validate required states before moving to the dependent screen or Feature.
 - Cover default, loading, empty, error, success, disabled and focus states when applicable.
 - Keep side effects predictable and local to the correct layer.
-- Do not hide missing states behind generic fallback UI.
+- Não esconda estados ausentes atrás de fallback genérico de UI.
 
 ## Styling
 
 - Use Design tokens, theme utilities or existing styling conventions before adding new values.
-- Do not hardcode colors, spacing, typography or copy that should come from Design, tokens, data or configuration.
+- Não hardcode cores, espaçamento, tipografia ou copy que deveriam vir de Design, tokens, dados ou configuração.
 - Keep styling composable and consistent with nearby components.
 
 ## Accessibility States
@@ -51,27 +51,27 @@ Engineering should implement a reusable component only when the Feature requires
 - Validate keyboard navigation and focus behavior for interactive components.
 - Respect labels, descriptions, error messages and screen reader notes from the component spec.
 - Confirm contrast and disabled/loading/error states when applicable.
-- Do not ship a component that traps focus, hides essential state or relies only on color.
+- Não entregue componente que prende foco, esconde estado essencial ou depende apenas de cor.
 
-## Do Not Do
+## Não Faça
 
-- Do not create a new user-facing component without a Design spec or explicit Design confirmation.
-- Do not implement a screen first when a reusable component must be built first.
-- Do not mix one-off Feature logic into a reusable component when a clean boundary is practical.
-- Do not bypass tests, examples, stories or manual validation notes for states and accessibility.
+- Não crie um novo componente voltado ao usuário sem uma especificação de Design or explicit Design confirmation.
+- Não implemente uma tela primeiro quando um componente reutilizável deve ser construído antes.
+- Não misture lógica pontual de Feature em um componente reutilizável quando um limite limpo for prático.
+- Não contorne testes, exemplos, stories ou notas de validação manual para estados e acessibilidade.
 
-## Decisions
+## Decisões
 
 - Component implementation decisions may be recorded in \`implementation-notes.md\` after confirmation.
 - Design specs and component inventory are Design-owned; route back to Design before changing them.
 
-## Open Questions
+## Perguntas em Aberto
 
 - Which repository pattern should new reusable components follow?
 - Which validation surface exists in this repo: tests, Storybook, examples, screenshots or manual QA?
 - Does this Feature need a reusable component or a one-off screen pattern?
 
-## Next Update
+## Próxima Atualização
 
 Update this file only when the framework-level Engineering component rules change.
 `;

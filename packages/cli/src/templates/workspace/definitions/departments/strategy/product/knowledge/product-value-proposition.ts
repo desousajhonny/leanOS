@@ -1,15 +1,15 @@
 export function productValuePropositionKnowledge(): string {
   return `# Value Proposition
 
-## Purpose
+## Propósito
 
 Define the promise, outcome, proof and differentiation for the product.
 
-## Current State
+## Estado Atual
 
 TBD
 
-## Promise
+## Promessa
 
 TBD
 
@@ -21,7 +21,7 @@ TBD
 
 TBD
 
-## Differentiation
+## Diferenciação
 
 TBD
 
@@ -29,19 +29,19 @@ TBD
 
 TBD
 
-## Risks
+## Riscos
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

@@ -1,11 +1,11 @@
 export function devopsDeploymentReadinessKnowledge(): string {
   return `# Deployment Readiness
 
-## Purpose
+## Propósito
 
 Define whether the product is ready for deployment planning without creating provider-specific state automatically.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -37,15 +37,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

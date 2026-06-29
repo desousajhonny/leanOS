@@ -1,15 +1,15 @@
 export function productOpsDeliveryScopeKnowledge(): string {
   return `# Delivery Scope
 
-## Purpose
+## Propósito
 
 Define which roadmap items are committed to a concrete delivery scope.
 
-## Current State
+## Estado Atual
 
 TBD
 
-## Scope Header
+## Escopo Header
 
 ~~~yaml
 scope_type: MVP | Release | Experiment | Beta | Internal
@@ -43,15 +43,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

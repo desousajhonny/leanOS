@@ -7,7 +7,7 @@ export const operationsDesignPlaybooks: PlaybookDefinition[] = [
       purpose: "Create the MVP design foundation from product strategy and MVP scope before implementation.",
       inputs: ["Product brief", "ICP", "MVP scope", "Primary user flows", "Accessibility needs", "Brand or product constraints", "Skills: design-system, accessibility, user-flow-mapping"],
       steps: ["Read Product and MVP context", "Use `skills/design-system/SKILL.md` to define the design system baseline", "Use `skills/accessibility/SKILL.md` to define accessibility expectations for the MVP audience", "Use `skills/user-flow-mapping/SKILL.md` to map primary user flows", "Identify missing context", "Propose updates to Design knowledge files before writing"],
-      outputs: ["Design system baseline", "Accessibility baseline", "Primary user flows", "Open questions", "Confirmation question before file updates"],
+      outputs: ["Design system baseline", "Accessibility baseline", "Primary user flows", "Perguntas abertas", "Confirmation question before file updates"],
       filesToUpdate: ["Update `../knowledge/design-system.md` only after explicit confirmation.", "Update `../knowledge/accessibility.md` only after explicit confirmation.", "Update `../knowledge/user-flows.md` only after explicit confirmation."]
     },
     {
@@ -36,7 +36,7 @@ export const operationsDesignPlaybooks: PlaybookDefinition[] = [
       purpose: "Create a usable flow for the first validation cycle.",
       inputs: ["ICP", "MVP scope", "User-flow knowledge", "Accessibility baseline", "Skills: user-flow-mapping, screen-specification when a concrete screen exists"],
       steps: ["Read ICP and MVP scope", "Use `skills/user-flow-mapping/SKILL.md` to map the primary flow", "Check accessibility expectations", "Use `skills/screen-specification/SKILL.md` only when a concrete screen, page, form or modal needs definition", "Record proposed Design knowledge updates"],
-      outputs: ["Primary UX flow", "Edge cases", "Required screens", "Screen-specification needs when applicable", "Open questions"],
+      outputs: ["Primary UX flow", "Edge cases", "Required screens", "Screen-specification needs when applicable", "Perguntas abertas"],
       filesToUpdate: ["Update `../knowledge/user-flows.md` only after explicit confirmation."]
     },
     {
@@ -52,9 +52,9 @@ export const operationsDesignPlaybooks: PlaybookDefinition[] = [
       slug: "ux-writing",
       title: "UX Writing",
       purpose: "Define clear interface language for MVP flows.",
-      inputs: ["Product positioning", "User flows", "Accessibility expectations", "Target user context", "Skill: microcopy"],
+      inputs: ["Product positioning", "User flows", "Accessibility expectations", "Usuário alvo context", "Skill: microcopy"],
       steps: ["Read product and flow context", "Use `skills/microcopy/SKILL.md` to identify labels, helper text, empty states, errors, success messages and onboarding hints", "Draft concise copy", "Check clarity and accessibility", "List open copy questions"],
-      outputs: ["Microcopy draft", "Tone notes", "Accessibility notes", "Open questions"],
-      filesToUpdate: ["Do not create screen-specific copy files until a concrete screen or feature requires them."]
+      outputs: ["Microcopy draft", "Tone notes", "Accessibility notes", "Perguntas abertas"],
+      filesToUpdate: ["Não crie arquivos de copy específicos de tela até uma tela ou feature concreta exigir."]
     }
   ];

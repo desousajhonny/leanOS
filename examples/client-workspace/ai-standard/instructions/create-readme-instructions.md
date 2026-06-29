@@ -1,34 +1,34 @@
-# Create README Instructions
+# Instruções para Criar README
 
-Use when creating or changing a folder `README.md`.
+Use quando criar ou alterar um `README.md` de pasta.
 
-## Before Creating
+## Antes de Criar
 
-1. Load `../foundation/folder-documentation-rules.md`.
-2. Confirm the folder purpose.
-3. Confirm whether an `AGENT.md` owns operational routing for this folder.
+1. Carregue `../foundation/folder-documentation-rules.md`.
+2. Confirme o propósito da pasta.
+3. Confirme se um `AGENT.md` possui o roteamento operacional desta pasta.
 
-## Choose Template
+## Escolha o Template
 
 - Folder README: `../templates/structure/folder-readme-template.md`
 - Area README: `../templates/structure/area-readme-template.md`
 - Root README: `../templates/structure/root-readme-template.md`
 
-## Process
+## Processo
 
-1. Explain purpose.
-2. Explain when to use the folder.
-3. List important files and subfolders.
-4. Point to operating owner when present.
-5. Add navigation notes.
-6. Keep it a map, not an executor.
+1. Explique o propósito.
+2. Explique quando usar a pasta.
+3. Liste arquivos e subpastas importantes.
+4. Aponte o owner operacional quando existir.
+5. Adicione notas de navegação.
+6. Mantenha como mapa, não como executor.
 
-## Validate
+## Valide
 
 Use `../checklists/readme-quality-checklist.md`.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not duplicate child file contents.
-- Do not hide process inside README.
-- Do not store product facts that belong in knowledge files.
+- Não duplique o conteúdo de arquivos filhos.
+- Não esconda processo dentro do README.
+- Não armazene fatos de produto que pertencem a arquivos de knowledge.

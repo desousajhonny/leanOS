@@ -1,21 +1,21 @@
 # Mission
 
-## Purpose
+## Propósito
 
 Define why the business exists and who it serves.
 
-## Current State
+## Estado Atual
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD

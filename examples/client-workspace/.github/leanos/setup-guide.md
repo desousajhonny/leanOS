@@ -1,6 +1,6 @@
 # GitHub Setup Guide
 
-## Purpose
+## Propósito
 
 Guide the founder through GitHub setup before GitHub Epics/Features sync creates a dry-run payload.
 
@@ -18,7 +18,7 @@ To sync local Epics and Features to GitHub, LeanOS needs:
 - token source or GitHub CLI auth;
 - sync state file with no secrets.
 
-## Owner And Repository
+## Responsável e Repositório
 
 Ask the founder which GitHub repository should receive LeanOS work.
 
@@ -84,7 +84,7 @@ Optional labels:
 
 ## Token Source
 
-Do not ask the founder to paste a token into chat or markdown.
+Não peça ao founder para colar um token no chat ou em markdown.
 
 Accepted token sources:
 
@@ -105,9 +105,9 @@ gh auth status
 gh repo view OWNER/REPOSITORY
 ```
 
-Do not require terminal usage when chat guidance is enough.
+Não exija uso de terminal quando orientação por chat for suficiente.
 
-## Setup Output
+## Saída de Setup
 
 After setup, propose updates to:
 
@@ -123,13 +123,13 @@ GitHub is ready for an Epics/Features sync dry-run when:
 
 - owner and repository are known;
 - Project URL or number is known;
-- Project fields are mapped;
+- Campos do Project estão mapeados;
 - labels are declared;
 - token source is known without exposing token value;
 - `sync-state.yaml` exists and contains no secrets;
 - local Epics/Features exist or the founder confirms there is nothing to sync yet.
 
-## Stop Conditions
+## Condições de Parada
 
 - Token value is pasted into chat.
 - Token would be written to a tracked file.

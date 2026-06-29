@@ -31,61 +31,61 @@ Epic #
 
 State "Not applicable" when no user-facing design change exists.
 
-## Security Notes
+## Notas De Security
 
-State "Not applicable" when no security-sensitive surface exists.
+Declare "não aplicável" quando não houver superfície sensível a Security.
 
 ## Tests
 
-- [ ] Build or test command run
-- [ ] Manual validation completed
+- [ ] Comando de build ou teste executado
+- [ ] Validação manual concluída
 
 ## Founder Testing Guide
 
-Explain how a non-technical founder can test this PR before merge.
+Explique como um founder não técnico pode testar este PR antes do merge.
 
-### What Changed
+### O Que Mudou
 
-Plain-language summary of the user-facing or business behavior delivered.
+Resumo em linguagem simples do comportamento de usuário ou negócio entregue.
 
-### Where to Test
+### Onde Testar
 
-- Preview URL:
-- Local route or screen:
-- Test account or data:
+- URL de preview:
+- Rota ou tela local:
+- Conta ou dados de teste:
 
-### How to Test
+### Como Testar
 
-1. Open...
-2. Do...
-3. Confirm...
+1. Abra...
+2. Faça...
+3. Confirme...
 
-### Expected Result
+### Resultado Esperado
 
-What the founder should see when the PR works.
+O que o founder deve ver quando o PR funcionar.
 
-### Out of Scope
+### Fora Do Escopo
 
-What this PR intentionally does not cover.
+O que este PR intencionalmente não cobre.
 
-### Known Risks or Limits
+### Riscos Conhecidos Ou Limites
 
-Anything the founder should know before approving.
+Qualquer coisa que o founder deva saber antes de aprovar.
 
-## Risks
+## Riscos
 
 - Scope risk:
 - Technical risk:
 - Product risk:
 - Security risk:
 
-## LeanOS Review Checklist
+## Checklist De Review LeanOS
 
 - [ ] Issue context loaded
 - [ ] Branch follows LeanOS naming
 - [ ] Acceptance criteria addressed
-- [ ] Tests run or explained
+- [ ] Testes executados ou explicados
 - [ ] Founder Testing Guide is clear enough for a non-technical founder
 - [ ] Design criteria addressed or not applicable
 - [ ] Security criteria addressed or not applicable
-- [ ] No unrelated scope added
+- [ ] Nenhum escopo não relacionado adicionado

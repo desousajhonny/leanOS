@@ -1,29 +1,29 @@
-# Example Folder
+# Pasta de Exemplo
 
-## Purpose
+## Propósito
 
-Example purpose.
+Propósito de exemplo.
 
-## When to Use
+## Use Quando
 
-Use when relevant.
+Use quando for relevante.
 
-## Source of Truth
+## Fonte da Verdade
 
 `README.md`
 
-## Files
+## Arquivos
 
 - `README.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
-Example notes.
+Notas de exemplo.

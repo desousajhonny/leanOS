@@ -56,13 +56,13 @@ export const growthDepartment: RootDepartmentDefinition = {
         "growth/customer-experience/roles/cx-lead.role.md",
         "growth/customer-experience/skills/map-customer-feedback/SKILL.md",
         "growth/customer-experience/playbooks/customer-learning-loop.playbook.md",
-        "growth/finance/AGENT.md when pricing, budget or unit economics are involved",
+        "growth/finance/AGENT.md quando pricing, orçamento ou unit economics estiverem envolvidos",
         "strategy/product/AGENT.md when positioning or ICP should change",
         "operations/product-ops/AGENT.md when learning should become delivery work"
       ],
       steps: [
-        "Read Marketing AGENT and launch knowledge before planning or summarizing launch work.",
-        "Read Customer Experience AGENT and customer feedback before claiming what users learned or felt.",
+        "Leia o AGENT de Marketing and launch knowledge before planning or summarizing launch work.",
+        "Leia o AGENT de Customer Experience and customer feedback before claiming what users learned or felt.",
         "Separate launch activity, customer evidence, founder interpretation and next decision.",
         "Review Finance AGENT only when pricing, budget, revenue, cost or unit economics are involved.",
         "Route to Strategy Product only when learning changes ICP, positioning, problem framing or value proposition.",
@@ -71,11 +71,11 @@ export const growthDepartment: RootDepartmentDefinition = {
         "Ask for confirmation before updating launch, feedback, finance, strategy or delivery files."
       ],
       confirmationGates: [
-        "Ask before updating launch plan or positioning.",
-        "Ask before recording feedback as learning.",
-        "Ask before changing pricing, revenue, budget or unit economics notes.",
-        "Ask before routing learning into Strategy or Product Ops.",
-        "Ask before creating delivery work from customer learning."
+        "Peça confirmação antes de atualizar plano de lançamento ou posicionamento.",
+        "Peça confirmação antes de registrar feedback como aprendizado.",
+        "Peça confirmação antes de alterar notas de pricing, receita, orçamento ou unit economics.",
+        "Peça confirmação antes de rotear aprendizado para Strategy ou Product Ops.",
+        "Peça confirmação antes de criar trabalho de delivery a partir de aprendizado de cliente."
       ],
       allowedUpdates: [
         "growth/marketing/knowledge/launch-plan.md",
@@ -91,13 +91,13 @@ export const growthDepartment: RootDepartmentDefinition = {
         "strategy/roadmap/knowledge/roadmap.md without Strategy route and founder confirmation",
         ".github/",
         ".leanos/",
-        "source code",
+        "código-fonte",
         "branches",
         "pull requests"
       ],
       externalCapabilities: [
         "No external capability is required by default.",
-        "Do not call analytics, CRM, email, payment, GitHub or deployment APIs from this workflow without a separate confirmed tool-specific flow.",
+        "Não chame APIs de analytics, CRM, email, pagamento, GitHub ou deploy a partir deste workflow sem um fluxo separado e confirmado para a ferramenta específica.",
         "When external evidence is missing, ask the founder for the available signal instead of inventing it."
       ],
       stopConditions: [

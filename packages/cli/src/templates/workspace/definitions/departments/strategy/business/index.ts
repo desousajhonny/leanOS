@@ -17,7 +17,7 @@ export const strategyBusinessArea: AreaDefinition = {
   },
   routingKey: "business",
   requestTypes: "business, brand, mission, vision, principles, operating model, business model or revenue logic",
-  purpose: "Keep business identity, principles, mission, operating decisions and business model coherent.",
+  purpose: "Manter identidade do negócio, princípios, missão, decisões operacionais e modelo de negócio coerentes.",
   whenToUse: ["define business identity", "clarify mission", "capture principles", "define business model", "record strategic decisions"],
   sourceOfTruth: strategyBusinessSourceOfTruth,
   files: strategyBusinessFiles,

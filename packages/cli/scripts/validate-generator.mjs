@@ -4,6 +4,7 @@ import { validateAiStandardRendererIsModular } from "./validation/ai-standard.mj
 import { validateClientWorkspaceFixture } from "./validation/client-fixture.mjs";
 import { validateAreaDefinitionsAreModular } from "./validation/definitions.mjs";
 import { validateExistingProductRepoMode } from "./validation/existing-product-repo.mjs";
+import { validateGeneratedHumanLanguage } from "./validation/language.mjs";
 import { validateWorkspaceRenderersAreModular } from "./validation/renderers.mjs";
 import { validateRootModelMemory } from "./validation/root-memory.mjs";
 import {
@@ -21,6 +22,7 @@ await validateAiStandardRendererIsModular();
 await validateWorkspaceRenderersAreModular();
 await validateRootModelMemory();
 await validateAreaDefinitionsAreModular();
+await validateGeneratedHumanLanguage();
 await validateClientWorkspaceFixture();
 await validatePartialAreaSelection();
 await validateEngineeringOnlyContext();

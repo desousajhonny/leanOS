@@ -17,15 +17,15 @@ ${items.map((item, index) => `${index + 1}. ${item}`).join("\n")}
 }
 
 export function ownerSection(owner: NonNullable<DepartmentWorkflowDefinition["owner"]>): string {
-  return `## Owner
+  return `## Dono
 
-- Department: \`${owner.department}\`
-${owner.primaryArea ? `- Primary area: \`${owner.primaryArea}\`\n` : ""}${owner.supportingAreas?.length ? `- Supporting areas: ${owner.supportingAreas.map((area) => `\`${area}\``).join(", ")}\n` : ""}${owner.conditionalAreas?.length ? `- Conditional areas: ${owner.conditionalAreas.map((area) => `\`${area}\``).join(", ")}\n` : ""}
+- Departamento: \`${owner.department}\`
+${owner.primaryArea ? `- Área primária: \`${owner.primaryArea}\`\n` : ""}${owner.supportingAreas?.length ? `- Áreas de apoio: ${owner.supportingAreas.map((area) => `\`${area}\``).join(", ")}\n` : ""}${owner.conditionalAreas?.length ? `- Áreas condicionais: ${owner.conditionalAreas.map((area) => `\`${area}\``).join(", ")}\n` : ""}
 `;
 }
 
 export function conditionalAreasSection(conditionalAreas: NonNullable<DepartmentWorkflowDefinition["conditionalAreas"]>): string {
-  return `## Conditional Areas
+  return `## Áreas Condicionais
 
 ${conditionalAreas.map((item) => `- \`${item.area}\`: ${item.when}`).join("\n")}
 
@@ -39,42 +39,42 @@ export function continuationBridgeSection(workflow: DepartmentWorkflowDefinition
   }
 
   const rules = bridge.rules ?? [
-    "Do not automatically start the next journey without founder confirmation.",
-    "If the founder says yes, declare the new route before loading the next workflow.",
-    "If the founder says no, explain the current outcome and stop without writing anything else.",
-    "If the founder returns in a later session with a matching trigger, restart from Root `AGENT.md` and route normally."
+    "Não inicie automaticamente a próxima jornada sem confirmação do founder.",
+    "Se o founder disser sim, declare a nova rota antes de carregar o próximo workflow.",
+    "Se o founder disser não, explique o resultado atual e pare sem escrever mais nada.",
+    "Se o founder retornar em uma sessão futura com um gatilho compatível, reinicie pelo `AGENT.md` raiz e roteie normalmente."
   ];
 
-  return `## Continuation Bridge
+  return `## Ponte de Continuação
 
-At the end of this workflow, offer one clear next-step bridge when a safe next flow exists.
+Ao final deste workflow, ofereça uma ponte clara para o próximo passo quando existir um fluxo seguinte seguro.
 
-Immediate bridge:
+Ponte imediata:
 
 \`\`\`text
 ${bridge.immediate}
 \`\`\`
 
-Later-session triggers:
+Gatilhos para sessões futuras:
 
 ${bridge.laterTriggers.map((trigger) => `- "${trigger}"`).join("\n")}
 
-Next route:
+Próxima rota:
 
 \`${bridge.nextRoute}\`
 
-Rules:
+Regras:
 
 ${rules.map((rule) => `- ${rule}`).join("\n")}
 `;
 }
 
 export function guidedConversationSection(items: string[]): string {
-  return `## Guided Conversation
+  return `## Conversa Guiada
 
 Use \`../../../ai-standard/foundation/guided-conversation.md\`.
 
 ${items.map((item) => `- ${item}`).join("\n")}
 
-Do not ask a rigid questionnaire. Ask only what is missing.`;
+Não faça um questionário rígido. Pergunte apenas o que estiver faltando.`;
 }

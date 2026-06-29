@@ -1,6 +1,6 @@
 # [EPIC] <epic title>
 
-## Metadata
+## Metadados
 
 ~~~yaml
 epic_key: <stable-kebab-key>
@@ -40,16 +40,16 @@ Use these inputs before shaping the epic:
 - ICP / user segment:
 - Problem:
 - Roadmap item:
-- Delivery scope:
+- Escopo de delivery:
 - PRD or MVP scope:
 - Existing evidence:
 - Known constraints:
 
-## Scope
+## Escopo
 
 What is included.
 
-## Non-goals
+## Não Objetivos
 
 What is explicitly excluded.
 
@@ -99,7 +99,7 @@ Use this to decide which specialists must participate before breaking the epic i
 
 ## Expected Features
 
-List candidate features. Do not fully detail them here; each feature gets its own feature file.
+Liste Features candidatas. Não detalhe tudo aqui; cada Feature recebe seu próprio arquivo de Feature.
 
 | Feature | User Outcome | Required Dimensions | Notes |
 | --- | --- | --- | --- |
@@ -113,7 +113,7 @@ List candidate features. Do not fully detail them here; each feature gets its ow
 - Security:
 - DevOps:
 
-## Risks
+## Riscos
 
 - Product risk:
 - Technical risk:
@@ -121,10 +121,10 @@ List candidate features. Do not fully detail them here; each feature gets its ow
 - Security risk:
 - Delivery risk:
 
-## Open Questions
+## Perguntas em Aberto
 
 - TBD
 
-## Next Step
+## Próximo Passo
 
 After this epic is confirmed, run `epic-to-features` to create feature files with internal tasks and Delivery Readiness Matrix criteria.

@@ -1,14 +1,14 @@
 # GitHub Templates
 
-## Purpose
+## Propósito
 
-Templates for GitHub issues, epics, features, branch naming, PRs and readiness matrices.
+Templates para issues, epics, features, nomes de branch, PRs e matrizes de prontidão no GitHub.
 
-## When to Use
+## Use Quando
 
-Use when shaping GitHub-ready work items or repository collaboration artifacts.
+Use quando estruturar itens prontos para GitHub ou artefatos de colaboração do repositório.
 
-## Files
+## Arquivos
 
 - `github-issue-template.md`
 - `github-epic-template.md`
@@ -17,17 +17,17 @@ Use when shaping GitHub-ready work items or repository collaboration artifacts.
 - `branch-name-template.md`
 - `pull-request-template.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../`
 - `../../instructions/`
 - `../../checklists/`
 - `../../foundation/`
 
-## Navigation
+## Navegação
 
-Use this folder only after `../../foundation/asset-taxonomy.md` confirms the needed asset type.
+Use esta pasta apenas depois que `../../foundation/asset-taxonomy.md` confirmar o tipo de asset necessário.
 
-## Agent Notes
+## Notas para Agentes
 
-Load only the matching template file. Do not load unrelated template categories.
+Carregue apenas o arquivo de template correspondente. Não carregue categorias de template não relacionadas.

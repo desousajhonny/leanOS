@@ -1,14 +1,14 @@
-# Execution Templates
+# Templates de Execução
 
-## Purpose
+## Propósito
 
-Templates for area-level roles, skills, playbooks and workflows.
+Templates para roles, skills, playbooks e workflows de nível de área.
 
-## When to Use
+## Use Quando
 
-Use when creating operational execution assets inside an area or department workflow folder.
+Use quando criar assets de execução operacional dentro de uma área ou pasta de workflow de departamento.
 
-## Files
+## Arquivos
 
 - `role-template.md`
 - `role-template.yaml`
@@ -18,17 +18,17 @@ Use when creating operational execution assets inside an area or department work
 - `playbook-template.yaml`
 - `workflow-template.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../`
 - `../../instructions/`
 - `../../checklists/`
 - `../../foundation/`
 
-## Navigation
+## Navegação
 
-Use this folder only after `../../foundation/asset-taxonomy.md` confirms the needed asset type.
+Use esta pasta apenas depois que `../../foundation/asset-taxonomy.md` confirmar o tipo de asset necessário.
 
-## Agent Notes
+## Notas para Agentes
 
-Load only the matching template file. Do not load unrelated template categories.
+Carregue apenas o arquivo de template correspondente. Não carregue categorias de template não relacionadas.

@@ -1,44 +1,44 @@
 # Examples
 
-## Purpose
+## Propósito
 
-Illustrative examples of LeanOS assets.
+Exemplos ilustrativos de assets LeanOS.
 
-## When to Use
+## Use Quando
 
-Use examples after reading the matching foundation, instruction, template and checklist.
+Use exemplos depois de ler a foundation, instrução, template e checklist correspondentes.
 
-Examples show what "good enough" can look like. They are not active workspace context, not templates and not instructions.
+Exemplos mostram como "bom o bastante" pode parecer. Eles não são contexto ativo do workspace, nem templates, nem instruções.
 
-## Categories
+## Categorias
 
 ### `agents/`
 
-Examples of root and area AGENT.md routing behavior.
+Exemplos de comportamento de roteamento de AGENT.md raiz e de área.
 
-Use when: Use when reviewing how an agent should route, set boundaries and delegate to the next owner.
+Use quando: Use quando revisar como um agente deve rotear, definir limites e delegar ao próximo owner.
 
-Files:
+Arquivos:
 - `agents/example-root-agent.md`
 - `agents/example-area-agent.md`
 
 ### `structure/`
 
-Examples of folder and area documentation.
+Exemplos de documentação de pasta e área.
 
-Use when: Use when reviewing how README-style files should map structure without becoming operators.
+Use quando: Use quando revisar como arquivos estilo README devem mapear estrutura sem virar operadores.
 
-Files:
+Arquivos:
 - `structure/example-folder-readme.md`
 - `structure/example-area-readme.md`
 
 ### `execution/`
 
-Examples of roles, skills, playbooks and workflows.
+Exemplos de roles, skills, playbooks e workflows.
 
-Use when: Use when reviewing area-level execution assets or department/area workflows.
+Use quando: Use quando revisar assets de execução de nível de área ou workflows de departamento/área.
 
-Files:
+Arquivos:
 - `execution/example-role-senior-developer.md`
 - `execution/example-skill-coherence.md`
 - `execution/example-playbook-prepare-pr.md`
@@ -46,35 +46,35 @@ Files:
 
 ### `github/`
 
-Examples of GitHub epics, features and pull requests.
+Exemplos de epics, features e pull requests do GitHub.
 
-Use when: Use when reviewing GitHub-ready collaboration artifacts.
+Use quando: Use quando revisar artefatos de colaboração prontos para GitHub.
 
-Files:
+Arquivos:
 - `github/example-github-epic.md`
 - `github/example-github-feature.md`
 - `github/example-pull-request.md`
 
 ### `review/`
 
-Examples of review outputs.
+Exemplos de saídas de review.
 
-Use when: Use when reviewing how to structure code review findings and decisions.
+Use quando: Use quando revisar como estruturar findings e decisões de code review.
 
-Files:
+Arquivos:
 - `review/example-code-review.md`
 
-## How to Use
+## Como Usar
 
-1. Confirm the asset type in `../foundation/asset-taxonomy.md`.
-2. Load the matching creation instruction in `../instructions/`.
-3. Use the matching template in `../templates/`.
-4. Validate with the matching checklist in `../checklists/`.
-5. Open the smallest example category only if you need a reference.
+1. Confirme o tipo de asset em `../foundation/asset-taxonomy.md`.
+2. Carregue a instrução de criação correspondente em `../instructions/`.
+3. Use o template correspondente em `../templates/`.
+4. Valide com o checklist correspondente em `../checklists/`.
+5. Abra apenas a menor categoria de exemplo se precisar de uma referência.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not copy examples blindly.
-- Do not treat example company, product, issue or PR content as real workspace context.
-- Do not use examples instead of templates.
-- Do not let examples override the active department, area, role, skill, playbook or workflow.
+- Não copie exemplos cegamente.
+- Não trate conteúdo de empresa, produto, issue ou PR de exemplo como contexto real do workspace.
+- Não use exemplos no lugar de templates.
+- Não deixe exemplos sobrescreverem o departamento, área, role, skill, playbook ou workflow ativo.

@@ -1,57 +1,57 @@
 export function guidedConversation(): string {
-  return `# Guided Conversation
+  return `# Conversa Guiada
 
-## Purpose
+## Propósito
 
-Make LeanOS feel guided for founders without turning workflows into rigid forms.
+Fazer o LeanOS parecer guiado para founders sem transformar workflows em formulários rígidos.
 
-Use this foundation when an agent, workflow or playbook needs to ask the founder for context, classification, prioritization, confirmation or a decision.
+Use esta foundation quando um agente, workflow ou playbook precisar pedir contexto, classificação, priorização, confirmação ou decisão ao founder.
 
-## Core Rule
+## Regra Central
 
-When the founder needs to choose between predictable paths, use numbered options instead of only open-ended questions.
+Quando o founder precisar escolher entre caminhos previsíveis, use opções numeradas em vez de apenas perguntas abertas.
 
 Use:
 
-- the host application's native selection UI when available;
-- 3 to 5 numbered options;
-- one "not sure / help me decide" option;
-- one question at a time when the decision changes state, roadmap, MVP, issue, PR or implementation;
-- plain founder-friendly language before technical paths;
-- free-form answers as valid input.
+- a UI nativa de seleção da aplicação host quando disponível;
+- 3 a 5 opções numeradas;
+- uma opção "não tenho certeza / me ajude a decidir";
+- uma pergunta por vez quando a decisão mudar estado, roadmap, MVP, issue, PR ou implementação;
+- linguagem simples e amigável ao founder antes de paths técnicos;
+- respostas livres como entrada válida.
 
-If no native selection UI is available, write numbered options directly in chat.
+Se não houver UI nativa de seleção disponível, escreva opções numeradas diretamente no chat.
 
-Always allow:
+Sempre permita:
 
 \`\`\`text
-You can reply with the number, or describe it in your own words.
+Você pode responder com o número ou descrever com suas próprias palavras.
 \`\`\`
 
-## When To Use Guided Questions
+## Quando Usar Perguntas Guiadas
 
-Use guided questions when:
+Use perguntas guiadas quando:
 
-- the founder needs to choose a destination for an idea;
-- the model lacks required context;
-- a decision changes roadmap, MVP, issue, PR, implementation, launch or learning state;
-- a file update depends on founder confirmation;
-- the founder may not know the correct LeanOS command or workflow name.
+- o founder precisa escolher um destino para uma ideia;
+- o modelo não tem contexto obrigatório;
+- uma decisão muda roadmap, MVP, issue, PR, implementação, launch ou estado de aprendizado;
+- uma atualização de arquivo depende de confirmação do founder;
+- o founder pode não saber o comando ou nome de workflow correto do LeanOS.
 
-Do not use guided questions when:
+Não use perguntas guiadas quando:
 
-- the answer is a simple factual clarification;
-- the founder already gave a clear decision;
-- the model can safely summarize and ask for confirmation;
-- the question would create fake precision too early.
+- a resposta é um esclarecimento factual simples;
+- o founder já deu uma decisão clara;
+- o modelo pode resumir com segurança e pedir confirmação;
+- a pergunta criaria falsa precisão cedo demais.
 
-## Question Types
+## Tipos de Pergunta
 
-### Discovery Question
+### Pergunta de Discovery
 
-Use to understand missing context.
+Use para entender contexto ausente.
 
-Example:
+Exemplo:
 
 \`\`\`text
 Quem essa ideia ajudaria primeiro?
@@ -63,11 +63,11 @@ Quem essa ideia ajudaria primeiro?
 5. Nao sei ainda, me ajude a descobrir
 \`\`\`
 
-### Decision Question
+### Pergunta de Decisão
 
-Use to choose the next path.
+Use para escolher o próximo caminho.
 
-Example:
+Exemplo:
 
 \`\`\`text
 Qual destino faz mais sentido para essa ideia agora?
@@ -79,11 +79,11 @@ Qual destino faz mais sentido para essa ideia agora?
 5. Nao sei, me ajude a decidir
 \`\`\`
 
-### Priority Question
+### Pergunta de Prioridade
 
-Use to rank urgency or impact.
+Use para ordenar urgência ou impacto.
 
-Example:
+Exemplo:
 
 \`\`\`text
 Por que essa ideia parece importante agora?
@@ -95,11 +95,11 @@ Por que essa ideia parece importante agora?
 5. Ainda e so uma intuicao
 \`\`\`
 
-### Confirmation Question
+### Pergunta de Confirmação
 
-Use before durable updates or external actions.
+Use antes de atualizações duráveis ou ações externas.
 
-Example:
+Exemplo:
 
 \`\`\`text
 Posso registrar essa ideia como candidata ao roadmap?
@@ -109,11 +109,11 @@ Posso registrar essa ideia como candidata ao roadmap?
 3. Quero ajustar a ideia antes
 \`\`\`
 
-### Risk Question
+### Pergunta de Risco
 
-Use when a path may introduce risk.
+Use quando um caminho puder introduzir risco.
 
-Example:
+Exemplo:
 
 \`\`\`text
 Essa ideia envolve dados sensiveis, login, pagamento ou permissoes?
@@ -123,41 +123,41 @@ Essa ideia envolve dados sensiveis, login, pagamento ou permissoes?
 3. Talvez, nao tenho certeza
 \`\`\`
 
-## Writing Rules
+## Regras de Escrita
 
-- Ask one important guided question at a time.
-- Prefer native selectable options when the host supports them; otherwise use numbered options.
-- Do not ask a long questionnaire unless the playbook explicitly requires an intake form.
-- Put the human decision before file paths.
-- Explain the recommendation before asking for confirmation.
-- If the founder answers with a number, restate the selected meaning before continuing.
-- If the founder answers freely, map the answer to the closest option and say how you interpreted it.
+- Faça uma pergunta guiada importante por vez.
+- Prefira opções selecionáveis nativas quando o host suportar; caso contrário, use opções numeradas.
+- Não faça um questionário longo a menos que o playbook exija explicitamente um formulário de intake.
+- Coloque a decisão humana antes de paths de arquivo.
+- Explique a recomendação antes de pedir confirmação.
+- Se o founder responder com um número, reafirme o significado selecionado antes de continuar.
+- Se o founder responder livremente, mapeie a resposta para a opção mais próxima e diga como você interpretou.
 
-## Output Shape
+## Formato da Saída
 
-Recommended shape:
+Formato recomendado:
 
 \`\`\`text
 Minha leitura:
-<short evaluation>
+<avaliação curta>
 
 Proximo passo:
-<recommended path>
+<caminho recomendado>
 
 Escolha uma opcao:
-1. <option>
-2. <option>
-3. <option>
+1. <opção>
+2. <opção>
+3. <opção>
 4. Nao sei, me ajude a decidir
 
 Voce pode responder so com o numero ou do seu jeito.
 \`\`\`
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not make a decision for the founder when the decision changes durable state.
-- Do not hide file updates behind friendly language.
-- Do not expose technical paths before the founder understands the decision.
-- Do not force numbered options when the founder needs open exploration.
+- Não tome uma decisão pelo founder quando a decisão mudar estado durável.
+- Não esconda atualizações de arquivo atrás de linguagem amigável.
+- Não exponha paths técnicos antes que o founder entenda a decisão.
+- Não force opções numeradas quando o founder precisar de exploração aberta.
 `;
 }

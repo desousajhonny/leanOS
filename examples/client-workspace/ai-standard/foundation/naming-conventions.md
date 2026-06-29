@@ -1,11 +1,11 @@
-# Naming Conventions
+# Convenções de Nomenclatura
 
-- Use lowercase kebab-case for folders and file basenames.
-- Use direct, singular asset names: `<direct-name>.role.md`, `<direct-name>/SKILL.md`, `<direct-name>.playbook.md`, `<direct-name>.workflow.md`.
-- Roles end with `.role.md`.
-- Skill folders use kebab-case and their main file is `SKILL.md`.
-- Playbooks end with `.playbook.md`.
-- Workflows end with `.workflow.md`.
-- Prefer domain capability names such as `accessibility/SKILL.md` or `design-system/SKILL.md` over generic action names such as `define-accessibility/SKILL.md`.
-- Use action verbs only when the asset is truly procedural, such as `create-branch/SKILL.md`.
-- Knowledge files do not use asset suffixes; use names such as `knowledge/design-system.md`.
+- Use kebab-case minúsculo para pastas e nomes-base de arquivos.
+- Use nomes de asset diretos e no singular: `<direct-name>.role.md`, `<direct-name>/SKILL.md`, `<direct-name>.playbook.md`, `<direct-name>.workflow.md`.
+- Roles terminam com `.role.md`.
+- Pastas de skill usam kebab-case e seu arquivo principal é `SKILL.md`.
+- Playbooks terminam com `.playbook.md`.
+- Workflows terminam com `.workflow.md`.
+- Prefira nomes de capacidade de domínio como `accessibility/SKILL.md` or `design-system/SKILL.md` em vez de nomes de ação genéricos como `define-accessibility/SKILL.md`.
+- Use verbos de ação apenas quando o asset for realmente procedural, como `create-branch/SKILL.md`.
+- Arquivos de knowledge não usam sufixos de asset; use nomes como `knowledge/design-system.md`.

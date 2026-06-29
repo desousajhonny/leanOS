@@ -1,13 +1,13 @@
-# Agent Template
+# Template de Agente
 
-Use the smallest matching agent template.
+Use o menor template de agente compatível.
 
 ## Choose One
 
-- Root workspace agent: `root-agent-template.md`
-- Department agent: `department-agent-template.md`
-- Area agent: `area-agent-template.md`
+- Agente raiz do workspace: `root-agent-template.md`
+- Agente de departamento: `department-agent-template.md`
+- Agente de área: `area-agent-template.md`
 
-## Rule
+## Regra
 
-`AGENT.md` is the operating owner for its level. It should route work, set red lines and delegate details to the next owner. Do not turn an AGENT.md into a full inventory of every workflow, role, skill or playbook.
+`AGENT.md` é o dono operacional do seu nível. Ele deve rotear trabalho, definir linhas vermelhas e delegar detalhes ao próximo dono. Não transforme um AGENT.md em inventário completo de todo workflow, role, skill ou playbook.

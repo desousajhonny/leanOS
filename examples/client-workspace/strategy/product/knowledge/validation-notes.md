@@ -1,14 +1,14 @@
 # Validation Notes
 
-## Purpose
+## Propósito
 
 Capture lightweight product assumptions, evidence, learning and validation needs without requiring a dedicated Validation area.
 
-## Current State
+## Estado Atual
 
 TBD
 
-## Key Assumptions
+## Suposições-Chave
 
 TBD
 
@@ -16,7 +16,7 @@ TBD
 
 TBD
 
-## Evidence
+## Evidência
 
 TBD
 
@@ -28,18 +28,18 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Roadmap Impact
+## Impacto no Roadmap
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD

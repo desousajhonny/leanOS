@@ -1,35 +1,35 @@
 export function founderProgressionModel(): string {
-  return `# Founder Progression Model
+  return `# Modelo de Progressão do Founder
 
-## Purpose
+## Propósito
 
-Define how LeanOS moves a founder from a raw idea to an operating startup without creating the whole workspace too early.
+Define como o LeanOS move um founder de uma ideia bruta para uma startup operando sem criar o workspace inteiro cedo demais.
 
-The model keeps the Chief focused on the current startup stage, active files and next founder decision. It is the source of truth for progressive workspace activation, stage gates and natural-language startup routing.
+O modelo mantém o Chief focado no estágio atual da startup, nos arquivos ativos e na próxima decisão do founder. Ele é o source of truth para ativação progressiva do workspace, gates de estágio e roteamento de startup em linguagem natural.
 
-## When To Use
+## Use Quando
 
-Use this file when the founder asks to start, diagnose an idea, continue from an unclear point, create a roadmap, define an MVP, prepare delivery, launch, learn from evidence or activate a new department.
+Use este arquivo quando o founder pedir para começar, diagnosticar uma ideia, continuar de um ponto incerto, criar roadmap, definir MVP, preparar delivery, lançar, aprender com evidência ou ativar um novo departamento.
 
 Use \`progression-gates.md\` for concrete required context, allowed next stages and blocked next stages. This file explains the journey; the gate matrix decides whether the next step is allowed.
 
 Use \`guided-conversation.md\` for the actual question style after this model identifies the next stage.
 
-## Core Rule
+## Regra Central
 
-Progression is stage-first and activation-aware.
+A progressão é stage-first e activation-aware.
 
-Do not load inactive departments, roles, skills, playbooks, workflows or knowledge.
+Não carregue departamentos, roles, skills, playbooks, workflows ou knowledge inativos.
 
-If the next step needs an inactive workspace area, return an \`activation_required\` decision with the department or area that should be created next. Do not pretend the path exists.
+If the next step needs an inactive workspace area, return an \`activation_required\` decision with the department or area that should be created next. Não finja que o path existe.
 
-## Startup Progression Stages
+## Estágios de Progressão de Startup
 
 | Stage | Active Scope | Founder State | Chief Job | Gate To Next |
 | --- | --- | --- | --- | --- |
-| Setup Seed | \`leanos.yaml\`, root \`AGENT.md\`, minimal Strategy | The founder described the idea in the wizard or has almost no structure. | Read the seed context and orient the founder. | Founder wants to begin and accepts guided diagnosis. |
-| Strategy Seed | Strategy only | There is a rough idea, but problem, customer and value are incomplete. | Ask guided diagnosis questions and fill the minimum Strategy knowledge. | Problem, ICP, value proposition and assumptions are minimally clear. |
-| Strategy Baseline | Strategy only | The business direction is coherent enough to compare options. | Confirm positioning, business model, validation risk and current constraints. | Founder confirms a baseline worth turning into MVP validation scope or operating roadmap planning. |
+| Setup Seed | \`leanos.yaml\`, root \`AGENT.md\`, minimal Strategy | O founder descreveu a ideia no wizard ou quase não tem estrutura. | Leia o contexto seed e oriente o founder. | Founder quer começar e aceita diagnóstico guiado. |
+| Strategy Seed | Strategy only | There is a rough idea, but problem, customer and value are incomplete. | Ask guided diagnosis questions and fill the minimum Strategy knowledge. | Problem, ICP, proposta de valor and suposiçãos are minimally clear. |
+| Strategy Baseline | Strategy only | A direção do negócio está coerente o suficiente para comparar opções. | Confirme posicionamento, modelo de negócio, risco de validação e restrições atuais. | Founder confirma uma baseline que vale virar MVP validation scope ou planejamento operacional de roadmap. |
 | Idea Calibration | Strategy only | The founder needs to understand what the idea is, for whom and why now. | Calibrate clarity, risk and evidence without jumping to execution. | One clear opportunity or validation path is selected. |
 | MVP Validation Scope | Strategy only | The founder wants to validate the business through a first MVP path. | Define business thesis, target user, core problem, MVP slice, manual/concierge parts, productized parts, success signals, pivot signals and MVP Validation Sequence. | Founder confirms the MVP validation scope is ready for Product Ops delivery planning or later operating roadmap planning. |
 | Roadmap Inicial | Strategy only | The product is operating/scaling or the founder explicitly needs to sequence multiple priorities. | Convert Strategy, customer signals and product constraints into roadmap options, prioritization and current cycle planning. | Founder chooses a near-term roadmap item or operating priority. |
@@ -37,23 +37,23 @@ If the next step needs an inactive workspace area, return an \`activation_requir
 | Product Shaping | Product Ops active | A delivery item needs scope, non-goals and acceptance criteria. | Shape epic/feature candidates and delivery readiness. | Feature scope has Product and Engineering readiness inputs. |
 | Delivery Readiness | Product Ops plus required supporting areas | Work is nearly implementation-ready. | Check Design, Security and DevOps applicability before Engineering starts. | Required criteria are ready or explicitly not applicable. |
 | Implementation | Engineering active | The founder approved a ready feature or issue. | Route to delivery workflow, implementation plan, tests and PR readiness. | Feature is merged, shipped or explicitly stopped. |
-| Launch | Marketing/Sales/Customer Success active as needed | The product change needs market, sales or onboarding motion. | Prepare launch, messaging, onboarding and feedback capture. | Launch signals and owner follow-up are recorded. |
-| Learning Loop | Strategy plus active delivery/market areas | Evidence exists after launch, experiment or user feedback. | Compare results against assumptions and update roadmap decisions. | Keep, iterate, pivot or pause decision is confirmed. |
+| Launch | Marketing/Sales/Customer Success ativos conforme necessário | A mudança de produto precisa de movimento de mercado, vendas ou onboarding. | Prepare lançamento, mensagem, onboarding e captura de feedback. | Sinais de lançamento e follow-up de owner são registrados. |
+| Learning Loop | Strategy plus active delivery/market areas | Evidence exists after launch, experiment or user feedback. | Compare results against suposiçãos and update roadmap decisions. | Keep, iterate, pivot or pause decision is confirmed. |
 | Scaling / Operating Cadence | Multiple active departments | The startup needs repeated operating rhythm. | Maintain cadence, metrics, backlog, risks and cross-department focus. | Next operating cycle is scheduled and owners are clear. |
 
-## Chief Behavior At Startup
+## Comportamento do Chief no Startup
 
-When the founder says "quero começar", "como começar", "iniciar leanos", "quero começar agora" or a similar natural-language start intent:
+Quando o founder disser "quero começar", "como começar", "iniciar leanos", "quero começar agora" ou intenção similar de início em linguagem natural:
 
-1. Load only the root routing context, \`leanos.yaml\` and active Strategy files.
+1. Carregue somente o contexto de roteamento raiz, \`leanos.yaml\` e arquivos ativos de Strategy.
 2. Summarize what is already known from \`seed_context\` and Strategy.
-3. State the current stage.
-4. Identify the smallest missing Strategy decision.
-5. Ask one guided question with useful options.
-6. Do not ask empty questions such as "tell me more".
-7. Do not create roadmap, delivery MVP, feature or implementation files until the Strategy gate is satisfied.
+3. Declare o estágio atual.
+4. Identifique a menor decisão de Strategy ausente.
+5. Faça uma pergunta guiada com opções úteis.
+6. Não faça perguntas vazias como "me conte mais".
+7. Não crie roadmap, MVP de delivery, feature ou arquivos de implementação até o gate de Strategy estar satisfeito.
 
-Use this response shape:
+Use este formato de resposta:
 
 \`\`\`text
 O que já temos:
@@ -62,34 +62,34 @@ Próximo passo recomendado:
 Pergunta:
 \`\`\`
 
-## Guided Question Rules
+## Regras de Perguntas Guiadas
 
-- Ask one decision at a time.
-- Offer 3 to 5 concrete options when the founder may not know the answer.
-- Include one "not sure / help me decide" option when uncertainty is likely.
-- Tie every question to the next file or decision it unlocks.
-- Prefer founder language over internal framework terms.
-- After each answer, restate the updated understanding and the next gate.
+- Faça uma decisão por vez.
+- Ofereça 3 a 5 opções concretas quando o founder puder não saber a resposta.
+- Inclua uma opção "não tenho certeza / me ajude a decidir" quando houver incerteza provável.
+- Conecte cada pergunta ao próximo arquivo ou decisão que ela desbloqueia.
+- Prefira linguagem do founder a termos internos do framework.
+- Depois de cada resposta, reafirme o entendimento atualizado e o próximo gate.
 
-## Progression Intent Routing
+## Roteamento de Intenção de Progressão
 
-Use intent routing as a stage-aware decision table:
+Use roteamento de intenção como tabela de decisão consciente do estágio:
 
 \`\`\`text
-Intent -> Current Stage -> Gate -> Active Requirements -> Route
+Intenção -> Estágio Atual -> Gate -> Requisitos Ativos -> Rota
 \`\`\`
 
-Routing rules:
+Regras de roteamento:
 
-1. If the current stage can handle the intent with active files, route to the smallest active workflow or playbook.
-2. If the intent belongs to a future stage, explain the missing gate before proceeding.
+1. Se o estágio atual consegue lidar com a intenção usando arquivos ativos, roteie para o menor workflow ou playbook ativo.
+2. Se a intenção pertence a um estágio futuro, explique o gate ausente antes de prosseguir.
 3. If the future stage requires a missing department or area, return \`activation_required\`.
-4. Root routing must not point directly to roles, skills, playbooks or knowledge.
-5. Root routing must not point to commands.
+4. Roteamento raiz não deve apontar diretamente para roles, skills, playbooks ou knowledge.
+5. Roteamento raiz não deve apontar para commands.
 
-## Activation Gates
+## Portões de Ativação
 
-Activation creates workspace surface area only when the founder's stage needs it.
+Ativação cria superfície de workspace apenas quando o estágio do founder precisa dela.
 
 | Activation | Required When | Must Be True First |
 | --- | --- | --- |
@@ -97,23 +97,23 @@ Activation creates workspace surface area only when the founder's stage needs it
 | Design | User-facing flow, screen, copy, accessibility or design system decisions are needed. | A feature, experiment or MVP scope has UX impact. |
 | Engineering | Implementation, technical planning, branch, tests or PR work begins. | Feature is delivery-ready or an explicitly approved technical spike exists. |
 | Security | Data, auth, permissions, privacy, abuse, API or compliance risk appears. | The active feature or workflow has a security-sensitive surface. |
-| DevOps | Environments, CI/CD, deploy, release, observability or GitHub automation are needed. | Delivery scope requires operational execution. |
+| DevOps | Environments, CI/CD, deploy, release, observability or GitHub automation are needed. | Escopo de delivery requires operational execution. |
 | Marketing / Sales / Customer Success | Launch, acquisition, sales motion, onboarding or retention work begins. | Product or validation direction has a market-facing motion. |
 | Finance / Legal / Data | Pricing, budget, contracts, risk, compliance, analytics or metrics become necessary. | The founder decision depends on that specialty. |
 
-## activation_required Response
+## Resposta activation_required
 
-When activation is required, the Chief should not try to open missing paths.
+Quando ativação for necessária, o Chief não deve tentar abrir paths ausentes.
 
-Do not answer with only \`activation_required\`.
+Não responda apenas com \`activation_required\`.
 
-First explain the next natural operating step in founder language:
+Primeiro explique o próximo passo operacional natural na linguagem do founder:
 
 \`\`\`text
 Esse pedido ja passou do ponto de estrategia. Minha sugestao e abrir Product Ops agora para transformar isso em escopo executavel.
 \`\`\`
 
-Then ask for confirmation before creating or activating any department or area:
+Depois peça confirmação antes de criar ou ativar qualquer departamento ou área:
 
 \`\`\`text
 Posso ativar Operations/Product Ops e criar os arquivos minimos para esse proximo passo?
@@ -121,7 +121,7 @@ Posso ativar Operations/Product Ops e criar os arquivos minimos para esse proxim
 
 After confirmation, run \`lean-os activate <area>\` from the workspace root, then reload \`leanos.yaml\`, context and routing indexes before opening the activated area.
 
-Then include the structured activation decision:
+Depois inclua a decisão estruturada de ativação:
 
 \`\`\`yaml
 activation_required:
@@ -131,20 +131,20 @@ activation_required:
   next_action: create the minimal Product Ops workspace and route to mvp-backlog-planning.playbook.md
 \`\`\`
 
-If the prerequisite is not met, say what Strategy decision must happen first.
+Se o pré-requisito não estiver satisfeito, diga qual decisão de Strategy deve acontecer primeiro.
 
-## Red Lines
+## Linhas Vermelhas
 
-- Do not load inactive departments.
-- Do not access roles, skills, playbooks, workflows or knowledge that are not active or generated.
-- Do not treat "available" as "exists".
-- Do not create all departments during setup.
-- Do not skip Strategy because the founder asks for an MVP.
-- Do not ask broad empty questions when a guided diagnostic question can move the founder forward.
-- Do not route to implementation until Product and Engineering readiness are clear.
-- Do not mutate durable files without confirming the founder-facing summary.
+- Não carregue departamentos inativos.
+- Não acesse roles, skills, playbooks, workflows ou knowledge que não estejam ativos ou gerados.
+- Não trate "available" como "exists".
+- Não crie todos os departamentos durante setup.
+- Não pule Strategy porque o founder pediu um MVP.
+- Não faça perguntas amplas e vazias quando uma pergunta diagnóstica guiada pode mover o founder adiante.
+- Não roteie para implementação até Product e Engineering readiness estarem claras.
+- Não altere arquivos duráveis sem confirmar o resumo voltado ao founder.
 
-## Practical Routing Examples
+## Exemplos Práticos de Roteamento
 
 | Founder Says | Stage | Route |
 | --- | --- | --- |
@@ -152,47 +152,47 @@ If the prerequisite is not met, say what Strategy decision must happen first.
 | "Minha ideia faz sentido?" | Strategy Seed or Idea Calibration | Calibrate problem, ICP, promise, evidence and risk before roadmap. |
 | "Vamos montar o roadmap" | Product operating, growth scaling or explicit multi-priority sequencing | Strategy Roadmap through \`strategy/roadmap/AGENT.md\` if the operating gate is met. |
 | "Vamos definir o MVP" | Idea Calibration or MVP Validation Scope | Strategy Product defines MVP Validation Scope and MVP Validation Sequence. Roadmap is not mandatory after first MVP validation. |
-| "Vamos transformar esse item do MVP em entrega" | MVP Validation Scope or MVP Delivery Decision | MVP Validation Scope can hand off directly to Product Ops. Return \`activation_required\` for Product Ops if not active; then route to MVP backlog planning. |
+| "Vamos transformar esse item do MVP em entrega" | MVP Validation Scope or MVP Delivery Decision | MVP Validation Scope can hand off directly to Product Ops. Retorne \`activation_required\` para Product Ops se não estiver ativo; depois roteie para planejamento de backlog do MVP. |
 | "Quebre isso em features" | Product Shaping | Require Product Ops active and delivery scope confirmed. |
-| "Implemente essa feature" | Delivery Readiness or Implementation | Return \`activation_required\` for Engineering if not active; then route to delivery cycle. |
+| "Implemente essa feature" | Delivery Readiness or Implementation | Retorne \`activation_required\` para Engineering se não estiver ativo; depois roteie para o ciclo de entrega. |
 | "Lance isso" | Launch | Activate market-facing departments only as needed. |
-| "O que aprendemos?" | Learning Loop | Compare evidence with assumptions and update roadmap decisions. |
+| "O que aprendemos?" | Learning Loop | Compare evidence with suposiçãos and update roadmap decisions. |
 
-## Minimum Strategy Gate
+## Gate Mínimo de Strategy
 
-Before MVP Validation Scope, Roadmap Inicial or MVP Delivery Decision, Strategy should contain at least:
+Antes de MVP Validation Scope, Roadmap Inicial ou MVP Delivery Decision, Strategy deve conter pelo menos:
 
-- problem statement
-- ICP or first user segment
-- value proposition
-- MVP validation scope when the founder is asking for the first MVP path
-- key assumptions
-- evidence level
-- business model direction or explicit uncertainty
-- founder priority for the next step
+- declaração do problema
+- ICP ou primeiro segmento de usuário
+- proposta de valor
+- escopo de validação do MVP quando o founder está pedindo o primeiro caminho de MVP
+- suposições-chave
+- nível de evidência
+- direção de modelo de negócio ou incerteza explícita
+- prioridade do founder para o próximo passo
 
-If any item is missing, ask the smallest guided question that fills it.
+Se algum item estiver ausente, faça a menor pergunta guiada que o preencha.
 `;
 }
 
 export function progressionGates(): string {
-  return `# Progression Gates
+  return `# Gates de Progressão
 
-## Purpose
+## Propósito
 
-Define the concrete gates that decide whether LeanOS can move from one founder progression stage to the next.
+Define os gates concretos que decidem se o LeanOS pode mover de um estágio de progressão do founder para o próximo.
 
 Use this file with \`founder-progression-model.md\`. The model explains the journey. This file names the required context, allowed next stages and blocked next stages.
 
-## Gate Matrix
+## Matriz de Gates
 
-| Stage | Required Context | Allowed Next Stages | Blocked Next Stages |
+| Estágio | Contexto Obrigatório | Próximos Estágios Permitidos | Próximos Estágios Bloqueados |
 | --- | --- | --- | --- |
 | Setup Seed | \`leanos.yaml\` seed context, active Strategy routes, founder start intent | Strategy Seed, Idea Calibration | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
 | Strategy Seed | product idea, target user guess, problem guess, value promise guess | Strategy Baseline, Idea Calibration | Roadmap Inicial, MVP Delivery Decision, Product Shaping, Implementation |
-| Strategy Baseline | problem statement, ICP or first user segment, value proposition, alternative, riskiest assumption, business model direction, immediate focus | MVP Validation Scope, Roadmap Inicial when product_operating/growth_scaling or multiple priorities exist, Idea Calibration | MVP Delivery Decision, Product Shaping, Implementation |
-| Idea Calibration | idea restated, user and problem named, fit with ICP/value checked, evidence and assumptions visible | MVP Validation Scope, Roadmap Inicial when product_operating/growth_scaling or multiple priorities exist, Strategy Baseline | MVP Delivery Decision, Product Shaping, Implementation |
-| MVP Validation Scope | Business Thesis, Target User, Core Problem, Promise, MVP Slice, Success Signals, Pivot Signals, MVP Validation Sequence | MVP Delivery Decision, Product Shaping when Product Ops is active, Roadmap Inicial when product_operating/growth_scaling or multiple priorities exist | Implementation |
+| Strategy Baseline | declaração do problema, ICP ou primeiro segmento de usuário, proposta de valor, alternative, riskiest suposição, business model direction, immediate focus | MVP Validation Scope, Roadmap Inicial when product_operating/growth_scaling or multiple priorities exist, Idea Calibration | MVP Delivery Decision, Product Shaping, Implementation |
+| Idea Calibration | idea restated, user and problem named, fit with ICP/value checked, evidence and suposiçãos visible | MVP Validation Scope, Roadmap Inicial when product_operating/growth_scaling or multiple priorities exist, Strategy Baseline | MVP Delivery Decision, Product Shaping, Implementation |
+| MVP Validation Scope | Business Thesis, Target User, Core Problem, Promessa, MVP Slice, Success Signals, Pivot Signals, MVP Validation Sequence | MVP Delivery Decision, Product Shaping when Product Ops is active, Roadmap Inicial when product_operating/growth_scaling or multiple priorities exist | Implementation |
 | MVP Delivery Decision | Product Ops active, MVP backlog or delivery scope, PRD or equivalent scope, non-goals, acceptance criteria, dependencies | Product Shaping, Delivery Readiness | Implementation before Feature readiness |
 | Product Shaping | Epic exists, scope type, milestone or release goal, expected Features, readiness gaps | Delivery Readiness, Feature Shaping | Implementation |
 | Delivery Readiness | Feature exists, Product Ops criteria, Engineering criteria, Design/Security/DevOps criteria satisfied or not applicable | Implementation | Launch, Learning Loop without shipped or tested output |
@@ -201,53 +201,53 @@ Use this file with \`founder-progression-model.md\`. The model explains the jour
 | Learning Loop | evidence, insight, decision, roadmap or backlog impact, next learning action | Strategy Baseline, Roadmap Inicial, MVP Validation Scope, Product Shaping | Scaling / Operating Cadence without recurring usage or operating rhythm |
 | Scaling / Operating Cadence | product in use, recurring feedback or operations, metrics, cadence owner, backlog/launch/learning rhythm | Learning Loop, Roadmap Inicial, Delivery Readiness | Setup Seed |
 
-## Required Context
+## Contexto Obrigatório
 
-Before moving stages, confirm:
+Antes de mover estágios, confirme:
 
-- the current stage is named;
-- required context for the current stage exists in active files or is explicitly unknown;
-- assumptions are not treated as evidence;
+- o estágio atual está nomeado;
+- o contexto obrigatório do estágio atual existe em arquivos ativos ou está explicitamente desconhecido;
+- suposições não são tratadas como evidência;
 - the next route exists or returns \`activation_required\`;
-- the founder has confirmed any durable file update.
+- o founder confirmou qualquer atualização de arquivo durável.
 
-## Allowed Next Stages
+## Próximos Estágios Permitidos
 
-Allowed next stages are the only stages LeanOS may recommend without explaining a blocked gate.
+Próximos estágios permitidos são os únicos que o LeanOS pode recomendar sem explicar um gate bloqueado.
 
-When multiple next stages are allowed, choose the smallest one that answers the founder's intent:
+Quando múltiplos próximos estágios forem permitidos, escolha o menor que responda à intenção do founder:
 
-- if context is unclear, stay in Strategy Seed or Idea Calibration;
-- if the founder wants fast business validation, move to MVP Validation Scope;
-- if the founder wants sequence and the product is product_operating/growth_scaling or has multiple priorities, move to Roadmap Inicial;
-- if the founder chose an MVP backlog, roadmap, backlog or delivery-scope item for delivery, request Product Ops activation and move to MVP Delivery Decision.
-- if the founder confirms the first MVP validation scope and wants delivery, move from MVP Validation Scope directly to Product Ops / MVP Delivery Decision.
+- se o contexto estiver incerto, permaneça em Strategy Seed ou Idea Calibration;
+- se o founder quiser validação rápida de negócio, mova para MVP Validation Scope;
+- se o founder quiser sequência e o produto estiver em product_operating/growth_scaling ou tiver múltiplas prioridades, mova para Roadmap Inicial;
+- se o founder escolheu um item de MVP backlog, roadmap, backlog ou delivery-scope para entrega, peça ativação de Product Ops e mova para MVP Delivery Decision.
+- se o founder confirmar o primeiro escopo de validação do MVP e quiser delivery, mova de MVP Validation Scope diretamente para Product Ops / MVP Delivery Decision.
 
-## Blocked Next Stages
+## Próximos Estágios Bloqueados
 
-Blocked stages require a founder-friendly explanation and the missing gate.
+Estágios bloqueados exigem uma explicação amigável ao founder e o gate ausente.
 
-- Do not allow Engineering before Product Ops delivery readiness.
-- Do not force Roadmap between MVP Validation Scope and Product Ops delivery planning.
-- Do not allow Product Ops to create delivery scope before Strategy Baseline and MVP Validation Scope or a current MVP/backlog item exist.
-- Do not allow Growth launch work before there is a productized, landing-page, concierge or release surface to put in front of users.
-- Do not allow GitHub sync before local delivery assets or GitHub setup readiness exist.
-- Do not allow Scaling / Operating Cadence before usage, feedback, release activity or recurring operations exist.
+- Não permita Engineering antes de Product Ops delivery readiness.
+- Não force Roadmap entre MVP Validation Scope e planejamento de entrega de Product Ops.
+- Não permita Product Ops criar escopo de delivery antes de Strategy Baseline e MVP Validation Scope ou um item atual de MVP/backlog existir.
+- Não permita trabalho de launch de Growth antes de existir superfície productizada, landing page, concierge ou release para colocar diante de usuários.
+- Não permita sync com GitHub antes de existirem assets locais de delivery ou prontidão de setup do GitHub.
+- Não permita Scaling / Operating Cadence antes de existirem uso, feedback, atividade de release ou operações recorrentes.
 
-## Activation Rules
+## Regras de Ativação
 
 Use \`activation_required\` only when:
 
-- the requested next stage belongs to an inactive area;
-- the current stage gate is satisfied;
-- the founder has been told why the active Strategy files are no longer enough;
-- the founder confirms activation.
+- o próximo estágio solicitado pertence a uma área inativa;
+- o gate do estágio atual está satisfeito;
+- o founder foi informado por que os arquivos ativos de Strategy não são mais suficientes;
+- o founder confirma a ativação.
 
-Do not use \`activation_required\` as a substitute for missing Strategy context.
+Não use \`activation_required\` como substituto para contexto de Strategy ausente.
 
 ## Founder-Friendly Output
 
-When a gate blocks progress, say:
+Quando um gate bloquear progresso, diga:
 
 ~~~text
 Ainda falta uma decisao antes desse passo.

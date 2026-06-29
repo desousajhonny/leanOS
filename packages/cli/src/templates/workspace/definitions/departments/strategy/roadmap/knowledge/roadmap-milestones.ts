@@ -1,11 +1,11 @@
 export function roadmapMilestonesKnowledge(): string {
   return `# Milestones
 
-## Purpose
+## Propósito
 
 Define visible checkpoints that connect roadmap work to outcomes.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -23,15 +23,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

@@ -1,37 +1,37 @@
-# Playbook Quality Checklist
+# Checklist de Qualidade do Playbook
 
-Use this checklist before accepting a `.playbook.md` file.
+Use este checklist antes de aceitar um arquivo `.playbook.md`.
 
-## Metadata
+## Metadados
 
-- [ ] The playbook has YAML frontmatter with `name` and `description`.
-- [ ] The `description` starts with "Use when" and describes triggering conditions.
+- [ ] O playbook tem frontmatter YAML com `name` e `description`.
+- [ ] A `description` começa com "Use quando" e descreve condições de gatilho.
 
-## Sequence
+## Sequência
 
-- [ ] The playbook defines an ordered execution sequence.
-- [ ] The playbook answers "in which order should the work happen?"
-- [ ] The playbook uses skills rather than duplicating all skill content.
-- [ ] The playbook has clear start and end conditions.
+- [ ] O playbook define uma sequência ordenada de execução.
+- [ ] O playbook responde "em qual ordem o trabalho deve acontecer?"
+- [ ] O playbook usa skills em vez de duplicar todo o conteúdo delas.
+- [ ] O playbook tem condições claras de início e fim.
 
-## Inputs and Outputs
+## Entradas e Saídas
 
-- [ ] Inputs are listed.
-- [ ] Process steps are listed.
-- [ ] Stop conditions are listed under `## Stop Conditions`.
-- [ ] Acceptance criteria and outputs are listed under `## Acceptance Criteria & Outputs`.
-- [ ] Files to update are listed under `## Files to Update`.
-- [ ] Red lines are listed under `## Red Lines`.
+- [ ] Entradas estão listadas.
+- [ ] Etapas de processo estão listadas.
+- [ ] Condições de parada estão listadas em `## Condições de Parada`.
+- [ ] Critérios de aceite e saídas estão listados em `## Critérios de Aceite e Saídas`.
+- [ ] Arquivos para atualizar estão listados em `## Arquivos para Atualizar`.
+- [ ] Linhas vermelhas estão listadas em `## Linhas Vermelhas`.
 
-## Guided Conversation
+## Conversa Guiada
 
-- [ ] If the playbook asks the founder to choose, classify, prioritize or confirm, it references `../foundation/guided-conversation.md`.
-- [ ] Guided questions use numbered options when the decision has predictable paths.
-- [ ] The founder can answer with a number or free-form text.
-- [ ] Technical paths appear after the founder understands the decision.
+- [ ] Se o playbook pedir que o founder escolha, classifique, priorize ou confirme, ele referencia `../foundation/guided-conversation.md`.
+- [ ] Perguntas guiadas usam opções numeradas quando a decisão tem caminhos previsíveis.
+- [ ] O founder pode responder com um número ou texto livre.
+- [ ] Caminhos técnicos aparecem depois que o founder entende a decisão.
 
-## Scope
+## Escopo
 
-- [ ] The playbook belongs to the correct area.
-- [ ] The playbook does not duplicate a department workflow.
-- [ ] The playbook does not reference inactive or missing paths.
+- [ ] O playbook pertence à área correta.
+- [ ] O playbook não duplica um workflow de departamento.
+- [ ] O playbook não referencia caminhos inativos ou ausentes.

@@ -1,11 +1,11 @@
 export function designComponentSpecsReadme(): string {
   return `# Component Specs
 
-## Purpose
+## Propósito
 
 Store concrete Design component specifications created for real Features.
 
-This folder is intentionally empty in the initial scaffold except for this README. Do not create speculative component specs.
+This folder is intentionally empty in the initial scaffold except for this README. Não crie especificações especulativas de componente.
 
 ## When To Create A Spec
 
@@ -28,11 +28,11 @@ Use:
 
 \`../../../../ai-standard/templates/design/component-spec-template.md\`
 
-## Do Not Do
+## Não Faça
 
-- Do not store source code here.
-- Do not create specs for hypothetical future components.
-- Do not let Engineering implement a new user-facing component from notes that are not a component spec.
-- Do not duplicate a component spec when an approved component can be reused or adapted.
+- Não armazene código-fonte aqui.
+- Não crie especificações para componentes futuros hipotéticos.
+- Não deixe Engineering implementar um novo componente voltado ao usuário a partir de notas que não são uma especificação de componente.
+- Não duplique uma especificação de componente quando um componente aprovado puder ser reutilizado ou adaptado.
 `;
 }

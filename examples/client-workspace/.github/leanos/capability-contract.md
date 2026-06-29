@@ -1,6 +1,6 @@
 # GitHub Capability Contract
 
-## Purpose
+## Propósito
 
 Define the boundary between LeanOS model reasoning and future GitHub execution capabilities.
 
@@ -201,7 +201,7 @@ The patch must not include:
 - private key material;
 - raw API responses containing sensitive headers.
 
-## Stop Conditions
+## Condições de Parada
 
 - Token value appears in chat, markdown, logs or proposed sync-state.
 - Founder has not confirmed the dry-run payload.

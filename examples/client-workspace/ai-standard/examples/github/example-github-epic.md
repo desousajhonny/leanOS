@@ -2,56 +2,56 @@
 
 ## Outcome
 
-Clinic owners can capture structured patient intake before the appointment.
+Donos de clínica conseguem capturar intake estruturado do paciente antes da consulta.
 
-## Strategic Context
+## Contexto Estratégico
 
-- Product: Clinic Assistant AI
-- ICP: small clinic owners
-- Problem: front-desk intake is slow and inconsistent
-- Value proposition: reduce manual intake work before appointments
-- Validation assumption: clinics will trust guided AI intake for low-risk cases
-- Evidence status: assumption
+- Produto: Clinic Assistant AI
+- ICP: donos de clínicas pequenas
+- Problem: o intake da recepção é lento e inconsistente
+- Proposta de valor: reduzir trabalho manual de intake antes das consultas
+- Validation suposição: clínicas confiarão em intake guiado por IA para casos de baixo risco
+- Evidence status: suposição
 
-## Delivery Scope Linkage
+## Vínculo Com Escopo De Delivery
 
 - scope_type: MVP
 - milestone: MVP Alpha
-- release_goal: validate the guided intake flow, intake summary and staff review
-- Non-goals: insurance automation, diagnosis, clinical decision-making
-- Acceptance criteria: staff can review and edit the intake summary
-- Roadmap item: MVP Intake Flow
+- release_goal: validar o fluxo guiado de intake, resumo do intake e review da equipe
+- Non-goals: automação de seguro, diagnóstico, tomada de decisão clínica
+- Acceptance criteria: equipe consegue revisar e editar o resumo do intake
+- Roadmap item: Fluxo De Intake Do MVP
 - Milestone: MVP Alpha
 
-## Product Criteria
+## Critérios De Product
 
-- User value: less front-desk time
-- Jobs to be done: capture intake information before visit
-- Acceptance criteria: intake summary is understandable and editable
-- Learning signal: at least 5 clinics complete test intake sessions
+- Valor para usuário: menos tempo de recepção
+- Jobs to be done: capturar informações de intake antes da visita
+- Critérios de aceite: resumo do intake é compreensível e editável
+- Sinal de aprendizado: pelo menos 5 clínicas completam sessões de teste de intake
 
-## Design Criteria
+## Critérios De Design
 
-- User flow: patient starts from appointment link and submits intake
-- Screens or states: start, question flow, review, submitted
-- UX constraints: simple language, progress indication, error recovery
-- Accessibility considerations: keyboard navigation and readable form labels
+- Fluxo de usuário: paciente começa pelo link da consulta e envia o intake
+- Telas ou estados: início, fluxo de perguntas, review, enviado
+- Restrições de UX: linguagem simples, indicação de progresso, recuperação de erro
+- Considerações de acessibilidade: navegação por teclado e labels de formulário legíveis
 
-## Engineering Criteria
+## Critérios De Engineering
 
-- Technical approach: form flow with persisted draft state
-- System boundaries: patient intake and staff review only
-- Test expectations: form validation and summary generation tests
+- Abordagem técnica: fluxo de formulário com estado de rascunho persistido
+- Limites do sistema: apenas intake do paciente e review da equipe
+- Expectativas de teste: testes de validação de formulário e geração de resumo
 
-## Security Criteria
+## Critérios De Security
 
-- Data involved: patient-provided personal information
-- Auth or permissions: staff-only review
-- Privacy considerations: avoid exposing intake data in logs
-- Abuse cases: spam submissions
+- Dados envolvidos: informações pessoais fornecidas pelo paciente
+- Auth ou permissões: review somente pela equipe
+- Considerações de privacidade: evitar expor dados de intake em logs
+- Casos de abuso: submissões de spam
 
-## Sub-issue Breakdown
+## Quebra Em Sub-Issues
 
 - Status: ready_for_breakdown
-- Expected features: intake form, draft persistence, staff review, security controls
-- Open questions: retention policy
+- Features esperadas: formulário de intake, persistência de rascunho, review da equipe, controles de Security
+- Perguntas abertas: retention policy

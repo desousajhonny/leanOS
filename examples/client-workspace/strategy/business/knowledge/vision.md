@@ -1,21 +1,21 @@
 # Vision
 
-## Purpose
+## Propósito
 
 Describe the future state this business wants to create.
 
-## Current State
+## Estado Atual
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD

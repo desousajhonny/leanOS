@@ -1,33 +1,33 @@
-# Agent Protocols
+# Protocolos de Agente
 
-## Purpose
+## Propósito
 
-Internal LeanOS Chief procedures for session status, routing support, readiness diagnosis and local trace diagnostics.
+Procedimentos internos do LeanOS Chief para status de sessão, apoio de roteamento, diagnóstico de readiness e trace local.
 
-## When to Use
+## Use Quando
 
-Use when the user asks a meta-question about the workspace rather than asking to execute a product workflow.
+Use quando o usuário fizer uma pergunta meta sobre o workspace em vez de pedir execução de um workflow de produto.
 
-## Source of Truth
+## Fonte da Verdade
 
 `where-we-are.md`
 
-## Files
+## Arquivos
 
 - `where-we-are.md`
 - `chief-trace.md`
 
-## Related Folders
+## Pastas Relacionadas
 
 - `../`
 - `../../context/`
 - `../../index/`
 - `../../traces/`
 
-## Navigation
+## Navegação
 
-Use this README to choose the next specific file. Do not load unrelated files.
+Use este README para escolher o próximo arquivo específico. Não carregue arquivos sem relação com o pedido.
 
-## Agent Notes
+## Notas para Agentes
 
-Protocols do not own product decisions. They inspect existing sources, record safe diagnostics when asked and recommend the next safe route.
+Protocolos não possuem decisões de produto. Eles inspecionam fontes existentes, registram diagnósticos seguros quando solicitado e recomendam a próxima rota segura.

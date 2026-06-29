@@ -1,15 +1,15 @@
 export function productOpsMvpAcceptanceCriteriaKnowledge(): string {
-  return `# Acceptance Criteria
+  return `# Critérios De Aceite
 
-## Purpose
+## Propósito
 
 Define the criteria that make MVP work complete, testable and reviewable.
 
-## Current State
+## Estado Atual
 
 TBD
 
-## Global Acceptance Criteria
+## Critérios Globais De Aceite
 
 TBD
 
@@ -29,15 +29,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

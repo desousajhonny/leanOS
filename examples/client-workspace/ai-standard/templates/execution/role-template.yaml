@@ -1,14 +1,14 @@
 role:
   slug: <role-name>
   title: <Role Name>
-  purpose: <Description of role responsibility>
+  purpose: <Descrição da responsabilidade do papel>
   use_when:
-    - <trigger>
+    - <gatilho>
   before_acting:
-    - <context file>
+    - <arquivo de contexto>
   skills:
     - <skill-name>
   playbooks:
     - <playbook-name>
   outputs:
-    - <expected output>
+    - <saída esperada>

@@ -1,11 +1,11 @@
 export function devopsCiCdKnowledge(): string {
   return `# CI/CD
 
-## Purpose
+## Propósito
 
 Define the minimum validation gates required before code can be reviewed, merged or released.
 
-## Current State
+## Estado Atual
 
 TBD
 
@@ -21,7 +21,7 @@ TBD
 
 TBD
 
-## Required Checks
+## Verificações Obrigatórias
 
 TBD
 
@@ -33,15 +33,15 @@ TBD
 
 TBD
 
-## Decisions
+## Decisões
 
 TBD
 
-## Open Questions
+## Perguntas em Aberto
 
 TBD
 
-## Next Update
+## Próxima Atualização
 
 TBD
 `;

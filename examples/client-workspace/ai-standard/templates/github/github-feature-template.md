@@ -4,28 +4,28 @@
 
 - Local feature key:
 - Local feature path:
-- Parent epic key:
+- Epic pai key:
 - GitHub sync status:
 
-## Parent Epic
+## Epic Pai
 
 - Epic:
 - Milestone:
 - Roadmap item:
 
-## Purpose
+## Propósito
 
 Why this feature exists.
 
-## Scope
+## Escopo
 
 What should be implemented.
 
-## Non-goals
+## Não Objetivos
 
 What should not be implemented.
 
-## Product Criteria
+## Critérios De Product
 
 - User story:
 - User value:
@@ -34,13 +34,13 @@ What should not be implemented.
 
 ## Tasks
 
-Use tasks as an internal checklist for this feature.
+Use tarefas como checklist interno desta Feature.
 
 ~~~text
 Create model
 Create UI
-Add validation
-Add tests
+Adicionar validação
+Adicionar testes
 ~~~
 
 ## Delivery Readiness Matrix
@@ -53,7 +53,7 @@ Add tests
 | Security | not_applicable/TBD/ready | data, auth, permissions, privacy, abuse, API or compliance risk |
 | DevOps | not_applicable/TBD/ready | deploy, env, CI/CD, observability, config or GitHub sync impact |
 
-## Design Criteria
+## Critérios De Design
 
 Use only when this feature changes a user-facing flow, screen, state, copy or interaction.
 
@@ -65,7 +65,7 @@ Use only when this feature changes a user-facing flow, screen, state, copy or in
 
 If not applicable, write: "Not applicable; no user-facing design change."
 
-## Engineering Criteria
+## Critérios De Engineering
 
 - Suggested area:
 - Technical notes:
@@ -73,9 +73,9 @@ If not applicable, write: "Not applicable; no user-facing design change."
 - Test expectations:
 - Observability or operational notes:
 
-## Security Criteria
+## Critérios De Security
 
-Use when this feature touches data, auth, permissions, privacy, abuse risk or compliance.
+Use quando esta Feature tocar dados, auth, permissões, privacidade, risco de abuso ou compliance.
 
 - Data:
 - Permissions:
@@ -87,7 +87,7 @@ If not applicable, write: "Not applicable; no security-sensitive surface identif
 
 ## Definition of Ready
 
-- [ ] Parent epic is clear
+- [ ] Epic pai is clear
 - [ ] Acceptance criteria are testable
 - [ ] Product Ops and Engineering criteria are ready
 - [ ] Design is ready or explicitly not applicable
@@ -95,11 +95,11 @@ If not applicable, write: "Not applicable; no security-sensitive surface identif
 - [ ] DevOps is ready or explicitly not applicable
 - [ ] Tasks are clear enough for implementation
 
-## Definition of Done
+## Definition Of Done
 
-- [ ] Product criteria satisfied
-- [ ] Design criteria satisfied or explicitly not applicable
-- [ ] Engineering criteria satisfied
-- [ ] Security criteria satisfied or explicitly not applicable
-- [ ] Tests or validation plan defined
-- [ ] Parent epic updated if needed
+- [ ] Critérios de Product satisfeitos
+- [ ] Critérios de Design satisfeitos or explicitly not applicable
+- [ ] Critérios de Engineering satisfeitos
+- [ ] Critérios de Security satisfeitos or explicitly not applicable
+- [ ] Testes ou plano de validação definidos
+- [ ] Epic pai updated if needed

@@ -31,12 +31,12 @@ export const operationsEngineeringArea: AreaDefinition = {
     "For implementation work that arrives from `feature-to-delivery-cycle`, route to Senior Developer and use `playbooks/engineering-delivery.playbook.md` as the master execution path before sub-playbooks."
   ],
   redLines: [
-    "Do not implement outside the confirmed Feature or PRD scope.",
-    "Do not create new user-facing components before Design defines the structure or confirms the component spec.",
-    "Do not hardcode secrets, configuration, business rules, copy or design values.",
-    "Do not create large unstructured files, components or functions when modular composition is possible.",
-    "Do not make destructive data or migration changes without explicit confirmation and rollback notes.",
-    "Do not open or recommend a PR without tests, manual validation notes or a clear test-gap explanation."
+    "Não implemente fora do escopo confirmado da Feature ou PRD.",
+    "Não crie novos componentes voltados ao usuário antes de Design definir a estrutura ou confirmar a especificação do componente.",
+    "Não hardcode segredos, configuração, regras de negócio, copy ou valores de design.",
+    "Não crie arquivos, componentes ou funções grandes e sem estrutura quando composição modular for possível.",
+    "Não faça mudanças destrutivas de dados ou migração sem confirmação explícita e notas de rollback.",
+    "Não abra nem recomende um PR sem testes, notas de validação manual ou explicação clara de lacuna de teste."
   ],
   sourceOfTruth: operationsEngineeringSourceOfTruth,
   files: operationsEngineeringFiles,

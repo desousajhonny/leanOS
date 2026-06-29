@@ -1,5 +1,5 @@
 import { growthKnowledge } from "../../shared-content.js";
 
-export function acquisitionChannelsKnowledge(): string {
-  return growthKnowledge("Acquisition Channels", "List the first practical acquisition channels and learning experiments.", ["Channel", "Audience Fit", "Experiment", "Cost / Effort", "Success Signal"]);
+export function acquisitionCanaisKnowledge(): string {
+  return growthKnowledge("Acquisition Canais", "List the first practical acquisition channels and learning experiments.", ["Channel", "Audiência Fit", "Experiment", "Cost / Effort", "Success Signal"]);
 }

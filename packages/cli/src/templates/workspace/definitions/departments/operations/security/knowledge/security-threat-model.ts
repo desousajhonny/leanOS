@@ -6,7 +6,7 @@ export function securityThreatModelKnowledge(): string {
     "Capture the most important assets, actors, trust boundaries and abuse paths before implementation or release.",
     ["Assets and data that need protection.", "Users, admins, external systems and attackers.", "Trust boundaries between client, server, database and third-party services.", "Likely abuse cases and mitigations."],
     ["Auth, authorization and tenant boundaries are identified.", "Sensitive data flows are visible.", "High-risk endpoints or jobs have mitigation notes.", "Open threats have owners or stop conditions."],
-    ["Do not mark a feature safe when data ownership or auth boundaries are unknown.", "Do not ignore abuse paths because the product is still MVP.", "Do not assume client-side checks protect server resources."],
+    ["Não marque uma Feature como segura quando ownership de dados ou limites de auth forem desconhecidos.", "Não ignore caminhos de abuso porque o produto ainda é MVP.", "Não presuma que checks client-side protegem recursos de servidor."],
     ["../playbooks/security-foundation.playbook.md", "../playbooks/pre-mvp-security-checklist.playbook.md"],
     ["OWASP Top 10", "OWASP ASVS"]
   );

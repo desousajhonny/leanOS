@@ -1,47 +1,47 @@
 export function productOpsMvpScopeKnowledge(): string {
-  return `# MVP Scope
+  return `# Escopo Do MVP
 
-## Purpose
+## Propósito
 
-Define the smallest coherent product scope that can be implemented, tested and learned from.
+Defina o menor escopo coerente de produto que pode ser implementado, testado e usado para aprendizado.
 
-## Current State
-
-TBD
-
-## In Scope
+## Estado Atual
 
 TBD
 
-## Out of Scope
+## Dentro Do Escopo
 
 TBD
 
-## Primary User Outcome
+## Fora Do Escopo
 
 TBD
 
-## Success Criteria
+## Outcome Primário Do Usuário
 
 TBD
 
-## Dependencies
+## Critérios De Sucesso
 
 TBD
 
-## Risks
+## Dependências
 
 TBD
 
-## Decisions
+## Riscos
 
 TBD
 
-## Open Questions
+## Decisões
 
 TBD
 
-## Next Update
+## Perguntas em Aberto
+
+TBD
+
+## Próxima Atualização
 
 TBD
 `;
