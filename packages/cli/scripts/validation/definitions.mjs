@@ -43,6 +43,9 @@ export async function validateAreaDefinitionsAreModular() {
   assertEpicToFeaturesPlaybookDefinition();
   assertProductOpsSkillContracts();
   assertEngineeringSkillContracts();
+  assertDevopsSkillContracts();
+  assertSecuritySkillContracts();
+  assertDesignSkillContracts();
   assertAllSkillsHaveRedLines();
 }
 
@@ -283,6 +286,135 @@ function assertEngineeringSkillContracts() {
   assert(
     reviewPr.redLines?.some((item) => /merge recommendation/i.test(item) && /evidence/i.test(item)),
     "review-pr should block merge recommendations without evidence"
+  );
+}
+
+function assertDevopsSkillContracts() {
+  const devopsArea = findOperationsArea("devops", "DevOps");
+
+  for (const skillSlug of ["configure-environments", "setup-ci", "plan-deployment", "define-observability", "prepare-release"]) {
+    const skill = findAreaSkill(devopsArea, skillSlug, "DevOps");
+
+    assertRichSkillField(skill, "process", 6, skillSlug);
+    assertRichSkillField(skill, "checks", 4, skillSlug);
+    assertRichSkillField(skill, "outputs", 6, skillSlug);
+    assertRichSkillField(skill, "redLines", 3, skillSlug);
+  }
+
+  assert(
+    findAreaSkill(devopsArea, "configure-environments", "DevOps").outputs?.includes("Environment readiness status"),
+    "configure-environments should output Environment readiness status"
+  );
+  assert(
+    findAreaSkill(devopsArea, "setup-ci", "DevOps").outputs?.includes("CI gate decision"),
+    "setup-ci should output CI gate decision"
+  );
+  assert(
+    findAreaSkill(devopsArea, "plan-deployment", "DevOps").outputs?.includes("Deploy/no-deploy decision"),
+    "plan-deployment should output Deploy/no-deploy decision"
+  );
+  assert(
+    findAreaSkill(devopsArea, "define-observability", "DevOps").outputs?.includes("Signal owner/action map"),
+    "define-observability should output Signal owner/action map"
+  );
+  assert(
+    findAreaSkill(devopsArea, "prepare-release", "DevOps").outputs?.includes("Release readiness status"),
+    "prepare-release should output Release readiness status"
+  );
+}
+
+function assertSecuritySkillContracts() {
+  const securityArea = findOperationsArea("security", "Security");
+
+  for (const skillSlug of ["threat-modeling", "access-control-review", "secrets-management", "secure-code-review", "dependency-supply-chain-review", "infra-hardening-review"]) {
+    const skill = findAreaSkill(securityArea, skillSlug, "Security");
+
+    assertRichSkillField(skill, "process", 6, skillSlug);
+    assertRichSkillField(skill, "checks", 4, skillSlug);
+    assertRichSkillField(skill, "outputs", 5, skillSlug);
+    assertRichSkillField(skill, "redLines", 3, skillSlug);
+  }
+
+  assert(
+    findAreaSkill(securityArea, "threat-modeling", "Security").outputs?.includes("Threat-model decision"),
+    "threat-modeling should output Threat-model decision"
+  );
+  assert(
+    findAreaSkill(securityArea, "access-control-review", "Security").checks?.some((item) => /deny-by-default|unknown ownership/i.test(item)),
+    "access-control-review should use deny-by-default when ownership is unknown"
+  );
+  assert(
+    findAreaSkill(securityArea, "secrets-management", "Security").outputs?.includes("Secret handling decision"),
+    "secrets-management should output Secret handling decision"
+  );
+  assert(
+    findAreaSkill(securityArea, "secure-code-review", "Security").outputs?.includes("Evidence reviewed"),
+    "secure-code-review should output Evidence reviewed"
+  );
+  assert(
+    findAreaSkill(securityArea, "dependency-supply-chain-review", "Security").outputs?.includes("Provenance evidence"),
+    "dependency-supply-chain-review should output Provenance evidence"
+  );
+  assert(
+    findAreaSkill(securityArea, "infra-hardening-review", "Security").outputs?.includes("Hardening decision status"),
+    "infra-hardening-review should output Hardening decision status"
+  );
+}
+
+function assertDesignSkillContracts() {
+  const designArea = findOperationsArea("design", "Design");
+
+  for (const skillSlug of ["user-research", "user-flow-mapping", "design-system", "screen-specification", "microcopy"]) {
+    const skill = findAreaSkill(designArea, skillSlug, "Design");
+
+    assertRichSkillField(skill, "process", 6, skillSlug);
+    assertRichSkillField(skill, "checks", 4, skillSlug);
+    assertRichSkillField(skill, "outputs", 6, skillSlug);
+    assertRichSkillField(skill, "redLines", 3, skillSlug);
+  }
+
+  assert(
+    findAreaSkill(designArea, "user-research", "Design").outputs?.includes("Evidence confidence"),
+    "user-research should output Evidence confidence"
+  );
+  assert(
+    findAreaSkill(designArea, "user-flow-mapping", "Design").outputs?.includes("Flow decision status"),
+    "user-flow-mapping should output Flow decision status"
+  );
+  assert(
+    findAreaSkill(designArea, "design-system", "Design").outputs?.includes("MVP design-system decision"),
+    "design-system should output MVP design-system decision"
+  );
+  assert(
+    findAreaSkill(designArea, "screen-specification", "Design").outputs?.includes("Implementation-ready screen spec"),
+    "screen-specification should output Implementation-ready screen spec"
+  );
+  assert(
+    findAreaSkill(designArea, "microcopy", "Design").outputs?.includes("Copy decision status"),
+    "microcopy should output Copy decision status"
+  );
+}
+
+function findOperationsArea(slug, label) {
+  const area = operationsDepartment.areas.find((item) => item.slug === slug);
+
+  assert(area, `Operations should define ${label} area`);
+
+  return area;
+}
+
+function findAreaSkill(area, skillSlug, label) {
+  const skill = area.skills.find((item) => item.slug === skillSlug);
+
+  assert(skill, `${label} should define ${skillSlug} skill`);
+
+  return skill;
+}
+
+function assertRichSkillField(skill, field, minimumLength, skillSlug) {
+  assert(
+    Array.isArray(skill[field]) && skill[field].length >= minimumLength,
+    `${skillSlug} should define a rich ${field} contract`
   );
 }
 
