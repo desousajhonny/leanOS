@@ -2,6 +2,33 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-29 - Padrões De Branch E PR Mais Completos
+
+Decisão:
+
+- Expandir a convenção de branches gerada pelo LeanOS para suportar:
+  - `feature/<feature-slug>-<short-kebab-slug>` para Features locais;
+  - `issue/<issue-number>-<short-kebab-slug>` para Features mapeadas para issue real;
+  - `fix/<issue-number>-<short-kebab-slug>` para bugfix vinculado a issue real;
+  - `chore/<short-kebab-slug>` para manutenção interna;
+  - `docs/<short-kebab-slug>` para documentação;
+  - `spike/<short-kebab-slug>` para investigação técnica aprovada.
+- Manter `feature/...` e `issue/...` como caminhos preferenciais para delivery de produto, preservando a taxonomia Product-first.
+- Adicionar ao template de PR:
+  - título em estilo Conventional Commit quando fizer sentido;
+  - status de prontidão `draft | founder-ready | blocked-by-tests | blocked-by-context`;
+  - seção `Deploy / Rollback`;
+  - headings humanos em PT-BR.
+- Fazer Engineering exigir esses campos via `create-pr`, `branch-for-feature` e `prepare-pr`.
+- Validar regressão desses padrões no generator.
+
+Justificativa:
+
+- O padrão anterior cobria bem delivery de Feature, mas era estreito para bugfixes, manutenção, documentação e spikes.
+- Títulos compatíveis com Conventional Commit melhoram legibilidade, changelog e release notes sem impor automação prematura.
+- Status de prontidão e `Deploy / Rollback` tornam PRs mais claros para founder, reviewer e agentes futuros.
+- A mudança preserva a regra local-first/Product-first: GitHub continua sendo espelho/colaboração, não fonte primária automática.
+
 ## 2026-06-29 - Textos Humanos Gerados Em PT-BR
 
 Decisão:

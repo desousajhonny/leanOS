@@ -1,18 +1,35 @@
 # Pull Request
 
-## Summary
+## Título Do PR
 
-Describe what changed and why.
+Use um título curto em estilo Conventional Commit quando fizer sentido:
 
-## Linked Issue
+```text
+feat(<escopo>): <resumo curto>
+fix(<escopo>): <resumo curto>
+chore(<escopo>): <resumo curto>
+docs(<escopo>): <resumo curto>
+```
+
+## Resumo
+
+Descreva o que mudou e por quê.
+
+## Issue Vinculada
 
 Closes #
 
-## Parent Epic
+## Epic Pai
 
 Epic #
 
-## LeanOS Context
+## Status De Prontidão
+
+Status: draft | founder-ready | blocked-by-tests | blocked-by-context
+
+Explique em uma frase por que este status é correto.
+
+## Contexto LeanOS
 
 - Active Department:
 - Active Area:
@@ -20,22 +37,22 @@ Epic #
 - Loaded Skills:
 - Relevant Playbook:
 
-## Product / Delivery Scope Alignment
+## Alinhamento De Produto / Escopo De Delivery
 
-- Strategy alignment:
-- Delivery scope alignment:
-- Acceptance criteria:
-- Validation or learning impact:
+- Alinhamento com Strategy:
+- Alinhamento com escopo de delivery:
+- Critérios de aceite:
+- Impacto de validação ou aprendizado:
 
-## Design Notes
+## Notas De Design
 
-State "Not applicable" when no user-facing design change exists.
+Declare "não aplicável" quando não houver mudança de UX voltada ao usuário.
 
 ## Notas De Security
 
 Declare "não aplicável" quando não houver superfície sensível a Security.
 
-## Tests
+## Testes
 
 - [ ] Comando de build ou teste executado
 - [ ] Validação manual concluída
@@ -72,20 +89,27 @@ O que este PR intencionalmente não cobre.
 
 Qualquer coisa que o founder deva saber antes de aprovar.
 
+## Deploy / Rollback
+
+- Impacto de deploy:
+- Migração necessária:
+- Caminho de rollback:
+- Observabilidade ou monitoramento:
+
 ## Riscos
 
-- Scope risk:
-- Technical risk:
-- Product risk:
-- Security risk:
+- Risco de escopo:
+- Risco técnico:
+- Risco de produto:
+- Risco de Security:
 
 ## Checklist De Review LeanOS
 
-- [ ] Issue context loaded
-- [ ] Branch follows LeanOS naming
-- [ ] Acceptance criteria addressed
+- [ ] Contexto da issue carregado
+- [ ] Branch segue a nomenclatura LeanOS
+- [ ] Critérios de aceite atendidos
 - [ ] Testes executados ou explicados
 - [ ] Founder Testing Guide is clear enough for a non-technical founder
-- [ ] Design criteria addressed or not applicable
-- [ ] Security criteria addressed or not applicable
+- [ ] Critérios de Design atendidos ou não aplicáveis
+- [ ] Critérios de Security atendidos ou não aplicáveis
 - [ ] Nenhum escopo não relacionado adicionado

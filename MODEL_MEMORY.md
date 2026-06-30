@@ -15,6 +15,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 ## Decisões Recentes
 
+- 2026-06-29: Expandir padrões gerados de branch e PR. Branches agora cobrem `feature`, `issue`, `fix`, `chore`, `docs` e `spike`; templates de PR passam a exigir título estilo Conventional Commit quando fizer sentido, status de prontidão e seção `Deploy / Rollback`.
 - 2026-06-29: Adicionar memória de continuidade de modelo na raiz. Esta memória serve apenas para continuidade de handoff/status/próximo passo; decisões duráveis do framework continuam em `docs/framework/source-of-truth/decision-log.md`.
 - 2026-06-29: Manter doutrina e regras de decisão do framework em `docs/framework/source-of-truth/`; não usar a memória de modelo como source of truth do comportamento LeanOS.
 - 2026-06-29: Fortalecer o LeanOS Asset Contract v2 com contratos de workflow, playbook e skill apoiados por validação.
@@ -23,6 +24,8 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 ## Mudanças Recentes
 
+- Working tree: padrões de branch/PR fortalecidos em `.github/leanos/branch-rules.md`, `.github/PULL_REQUEST_TEMPLATE.md`, templates GitHub do `ai-standard`, skill `create-pr`, playbooks `branch-for-feature` e `prepare-pr`, com validação `validateBranchAndPrStandards`.
+- Working tree: documentação da jornada `Review e PR` adicionada em `docs/framework/founder-journeys/review-pr.md`, `journey-map.md` marcado como concluído para a etapa 7 e validação `validateFounderJourneyReviewPr` adicionada ao generator. A validação cobre documentação da jornada e ativação sequencial Strategy-only -> Product Ops -> Engineering para rota de PR/review.
 - Working tree: limpeza de Engineering knowledge preenche contratos duráveis de Engineering e adiciona validação do generator para impedir que knowledge de Engineering em nível de framework saia com placeholders `TBD`.
 - Working tree: padronização PT-BR concluída em renderers, ai-standard, `.leanos`, GitHub docs, Strategy, Operations, Growth, skills, playbooks, workflows, knowledge e validações correspondentes.
 - Working tree: `packages/cli/scripts/validation/language.mjs` adicionado ao generator para prevenir regressão de headings, frontmatter e frases operacionais em inglês.
@@ -36,7 +39,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 ## Threads Abertas
 
-- Rodar o teste Founder Journey do setup Strategy-only até ativação de Product Ops, criação de Epic/Feature, implementação, PR e simulação de review.
+- Continuar teste Founder Journey do setup Strategy-only até ativação de Product Ops, criação de Epic/Feature, implementação, PR e simulação de review. A fatia de Review/PR agora tem jornada documentada e validação automatizada da rota sequencial até Engineering; ainda falta a simulação externa completa com Epic/Feature e implementação.
 - Desenhar e implementar `ready-for-launch` depois que Founder Journey estiver validado.
 - Considerar regra do framework para atualizar esta memória ao fim de sessões locais significativas antes de trocar agentes.
 

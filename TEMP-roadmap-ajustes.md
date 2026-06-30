@@ -63,6 +63,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] Validacao adicionada para impedir `TBD` nos contratos duraveis de Engineering.
 - [x] Textos humanos gerados padronizados em PT-BR, mantendo IDs, slugs, paths, chaves YAML/JSON e termos tecnicos estaveis.
 - [x] Validacao de idioma adicionada ao generator para prevenir regressao de headings, frontmatter e frases operacionais em ingles.
+- [x] Padroes de branch e PR fortalecidos com formatos `feature`, `issue`, `fix`, `chore`, `docs`, `spike`, titulo de PR estilo Conventional Commit, status de prontidao e `Deploy / Rollback`.
 
 ## Pendencias Ativas
 
@@ -228,6 +229,12 @@ Cenario minimo:
 - criar Epic e Features;
 - simular implementacao/review;
 - retomar em nova sessao sem perder contexto.
+
+Fatia concluida em 2026-06-29:
+
+- Jornada `Review e PR` documentada em `docs/framework/founder-journeys/review-pr.md`.
+- `docs/framework/founder-journeys/journey-map.md` marcou a etapa 7 como concluida via `operations/engineering/playbooks/pr-validation.playbook.md`, sem criar workflow novo.
+- `packages/cli/scripts/validation/founder-journey.mjs` valida a documentacao da jornada e uma ativacao sequencial Strategy-only -> Product Ops -> Engineering para garantir rota de PR/review sem pular Product Ops.
 
 ### 8. Release Publica Do MVP
 

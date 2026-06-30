@@ -44,8 +44,11 @@ Preparar um pull request revisável a partir de uma implementação de Feature c
 11. Use `skills/review-data-change/SKILL.md` quando dados/API/persistência estiverem envolvidos
 12. Use `skills/write-tests/SKILL.md` para atualizar testes ou explicar lacunas
 13. Use `skills/create-pr/SKILL.md` para preparar o PR usando o template de PR
-14. Preencha o `Founder Testing Guide` com passos em linguagem simples, onde testar, resultado esperado, notas fora de escopo e limites conhecidos
-15. Se não houver URL de preview, forneça a rota local, comando ou fallback manual que o founder consiga usar de forma realista
+14. Preencha o Título do PR em formato Conventional Commit quando fizer sentido
+15. Preencha o Status De Prontidão como draft, founder-ready, blocked-by-tests ou blocked-by-context
+16. Preencha o `Founder Testing Guide` com passos em linguagem simples, onde testar, resultado esperado, notas fora de escopo e limites conhecidos
+17. Preencha Deploy / Rollback quando houver impacto em deploy, migração, rollback, observabilidade ou monitoramento
+18. Se não houver URL de preview, forneça a rota local, comando ou fallback manual que o founder consiga usar de forma realista
 
 ## Condições de Parada
 
@@ -53,11 +56,14 @@ Preparar um pull request revisável a partir de uma implementação de Feature c
 
 ## Critérios de Aceite e Saídas
 
+- Título do PR em formato Conventional Commit
 - Resumo de implementação
+- Status De Prontidão
 - Branch usada
 - Arquivos alterados
 - Testes executados ou propostos
 - Founder Testing Guide
+- Deploy / Rollback
 - Rascunho de PR
 - Riscos conhecidos
 

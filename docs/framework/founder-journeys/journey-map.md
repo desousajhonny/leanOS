@@ -11,7 +11,7 @@ Use este mapa para acompanhar quais jornadas do founder foram desenhadas com `jo
 | [x] | 4 | Feature Shaping | `epic-to-features.md` | `operations/product-ops/playbooks/epic-to-features.playbook.md` | "Quebre o epic #123 em features" |
 | [x] | 5 | GitHub tracking opcional | `github-sync.md` | Root `AGENT.md` -> DevOps/Product Ops readiness + `.github/leanos/capability-contract.md` | "Sincronize Epics/Features com GitHub", "configura GitHub para o LeanOS" |
 | [x] | 6 | Implementação | `feature-to-delivery-cycle.md` | `operations/workflows/feature-to-delivery-cycle.workflow.md` | "Implemente a feature", "implemente a issue #554", "vamos começar essa feature" |
-| [ ] | 7 | Review e PR | `review-pr.md` | Dentro de `feature-to-delivery-cycle` ou futuro workflow de review | "Revise o PR", "está pronto para merge?" |
+| [x] | 7 | Review e PR | `review-pr.md` | `operations/engineering/playbooks/pr-validation.playbook.md` | "Revise o PR", "está pronto para merge?" |
 | [x] | 8 | Pós-merge | `post-merge-continuation.md` | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a próxima issue", "o que atualizamos depois do merge?" |
 | [ ] | 9 | Lançamento e aprendizado | `launch-learning-loop.md` | `growth/workflows/launch-learning-loop.workflow.md` | "Lançamos, o que aprendemos?", "como melhorar aquisição/conversão?" |
 

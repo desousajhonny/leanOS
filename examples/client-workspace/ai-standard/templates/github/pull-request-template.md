@@ -1,8 +1,19 @@
 # Pull Request
 
+## Título Do PR
+
+Use um título curto em estilo Conventional Commit quando fizer sentido:
+
+```text
+feat(<escopo>): <resumo curto>
+fix(<escopo>): <resumo curto>
+chore(<escopo>): <resumo curto>
+docs(<escopo>): <resumo curto>
+```
+
 ## Resumo
 
-What changed and why.
+Descreva o que mudou e por quê.
 
 ## Issue Vinculada
 
@@ -12,6 +23,12 @@ Closes #
 
 Epic #
 
+## Status De Prontidão
+
+Status: draft | founder-ready | blocked-by-tests | blocked-by-context
+
+Explique em uma frase por que este status é correto.
+
 ## Contexto LeanOS
 
 - Department:
@@ -20,72 +37,79 @@ Epic #
 - Skills:
 - Playbook:
 
-## Alinhamento De Product / Escopo De Delivery
+## Alinhamento De Produto / Escopo De Delivery
 
-- Roadmap item:
+- Item de roadmap:
 - Escopo de delivery:
-- Acceptance criteria:
-- Validation or learning impact:
+- Critérios de aceite:
+- Impacto de validação ou aprendizado:
 
 ## Notas De Design
 
-State "Not applicable" when no user-facing design change exists.
+Declare "não aplicável" quando não houver mudança de UX voltada ao usuário.
 
 ## Notas De Security
 
-State "Not applicable" when no security-sensitive surface exists.
+Declare "não aplicável" quando não houver superfície sensível a Security.
 
-## Tests
+## Testes
 
-- [ ] Automated tests run or updated
-- [ ] Manual validation completed or explained
+- [ ] Testes automatizados executados ou atualizados
+- [ ] Validação manual concluída ou explicada
 
 ## Founder Testing Guide
 
-Explain how a non-technical founder can test this PR before merge.
+Explique como um founder não técnico pode testar este PR antes do merge.
 
 ### O Que Mudou
 
-Plain-language summary of the user-facing or business behavior delivered.
+Resumo em linguagem simples do comportamento de usuário ou negócio entregue.
 
 ### Onde Testar
 
-- Preview URL:
-- Local route or screen:
-- Test account or data:
+- URL de preview:
+- Rota ou tela local:
+- Conta ou dados de teste:
 
 ### Como Testar
 
-1. Open...
-2. Do...
-3. Confirm...
+1. Abra...
+2. Faça...
+3. Confirme...
 
 ### Resultado Esperado
 
-What the founder should see when the PR works.
+O que o founder deve ver quando o PR funcionar.
 
 ### Fora Do Escopo
 
-What this PR intentionally does not cover.
+O que este PR intencionalmente não cobre.
 
 ### Riscos Conhecidos Ou Limites
 
-Anything the founder should know before approving.
+Qualquer coisa que o founder deva saber antes de aprovar.
+
+## Deploy / Rollback
+
+- Impacto de deploy:
+- Migração necessária:
+- Caminho de rollback:
+- Observabilidade ou monitoramento:
 
 ## Riscos
 
-- Scope risk:
-- Technical risk:
-- Product risk:
-- Security risk:
+- Risco de escopo:
+- Risco técnico:
+- Risco de produto:
+- Risco de Security:
 
 ## Checklist De Review LeanOS
 
-- [ ] Issue context loaded
-- [ ] Branch follows LeanOS naming
-- [ ] Acceptance criteria addressed
+- [ ] Contexto da issue carregado
+- [ ] Branch segue a nomenclatura LeanOS
+- [ ] Critérios de aceite atendidos
 - [ ] Testes executados ou explicados
 - [ ] Founder Testing Guide is clear enough for a non-technical founder
-- [ ] Design criteria addressed or not applicable
-- [ ] Security criteria addressed or not applicable
+- [ ] Critérios de Design atendidos ou não aplicáveis
+- [ ] Critérios de Security atendidos ou não aplicáveis
 - [ ] Nenhum escopo não relacionado adicionado
