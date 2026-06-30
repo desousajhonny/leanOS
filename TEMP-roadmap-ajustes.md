@@ -20,6 +20,7 @@ O LeanOS tem um MVP de framework local com:
 - `<product-slug>-os/strategy/` ativa no setup inicial.
 - `<product-slug>-os/operations/` e `<product-slug>-os/growth/` disponiveis para ativacao progressiva, nao criadas no setup inicial.
 - GitHub readiness local em `.github/leanos/`, sem token versionado e sem escrita remota automatica.
+- Workflow `ready-for-launch` em Operations quando Product Ops, Engineering e DevOps estao ativos, separando readiness de launch da execucao/aprendizado de Growth.
 
 ## Decisoes Canonicas Atuais
 
@@ -36,6 +37,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] GitHub nunca vira fonte primaria automatica do LeanOS; local Product Ops continua sendo a fonte operacional primaria.
 - [x] Business OS vive em `<product-slug>-os/`; runtime do agente vive em `.leanos/runtime/`; padroes do framework vivem em `.leanos/standard/`.
 - [x] Atualizacao de workspaces existentes deve ser feita por `lean-os update`, com preview via `--dry-run`, conflitos explicitos e preservacao de arquivos de produto.
+- [x] Readiness de launch, go-live, beta ou usuarios reais pertence a Operations via `ready-for-launch`; Growth executa `mvp-launch` e `launch-learning-loop` depois do gate ou depois de lancamento executado.
 
 ## Concluido Nesta Branch
 
@@ -72,6 +74,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] Layout Business OS implementado no scaffold: `<product-slug>-os/` para Strategy/Operations/Growth, `.leanos/standard/` para padroes e `.leanos/runtime/` para contexto, indices, traces e integracoes locais.
 - [x] `lean-os update [--dry-run]` implementado para migrar workspaces legados, mover paths antigos quando nao ha conflito, reportar conflitos e preservar arquivos de produto existentes.
 - [x] `examples/client-workspace/` regenerado no novo layout e validado com `npm test` e `git diff --check`.
+- [x] `ready-for-launch` implementado como workflow de Operations, com decisao explicita (`ready_to_launch`, `ready_with_known_risks`, bloqueios por area e `not_ready_to_learn`), roteamento raiz separado de Growth, jornada do founder documentada e validacao automatica de ativacao sequencial Product Ops -> Engineering -> DevOps.
 
 ## Pendencias Ativas
 
@@ -185,7 +188,7 @@ Perguntas a resolver:
 
 ### 4. Launch Readiness
 
-Status: planejado.
+Status: concluido nesta branch; manter aqui apenas ate o roadmap temporario ser limpo ou movido para historico oficial.
 
 Objetivo: criar `ready-for-launch` para decidir se uma release/produto esta pronto para usuarios reais.
 
@@ -203,9 +206,20 @@ Deve cobrir:
 - go-to-market;
 - aprendizado pos-lancamento.
 
+Fatia concluida:
+
+- `operations/workflows/ready-for-launch.workflow.md` passa a existir quando Product Ops, Engineering e DevOps estao ativos.
+- Root `AGENT.md` separa readiness de launch/go-live/beta/usuarios reais de execucao de launch, aquisicao, onboarding e learning loop de Growth.
+- O workflow exige Product Ops, Engineering e DevOps como areas obrigatorias, com DevOps como owner primario do gate.
+- Design, Security, Growth Marketing, Growth Customer Experience e Strategy Product entram como gates condicionais.
+- O output do workflow inclui decisoes explicitas: `ready_to_launch`, `ready_with_known_risks`, `blocked_by_product`, `blocked_by_design`, `blocked_by_security`, `blocked_by_engineering`, `blocked_by_devops`, `blocked_by_growth` e `not_ready_to_learn`.
+- `docs/framework/founder-journeys/ready-for-launch.md` documenta a jornada founder-facing.
+- `packages/cli/scripts/validation/founder-journey.mjs` valida a jornada e a ativacao sequencial ate DevOps.
+- Validado com `npm test`.
+
 ### 5. `launch-learning-loop`
 
-Status: planejado.
+Status: planejado; agora explicitamente depois de `ready-for-launch` ou depois de um lancamento ja executado.
 
 Objetivo: manter Growth enxuto, mas pronto para lancamento, feedback, learning loop e decisao de proximo ciclo.
 

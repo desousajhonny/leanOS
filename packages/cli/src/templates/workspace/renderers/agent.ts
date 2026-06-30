@@ -86,7 +86,8 @@ Regras:
 - Escopo inicial de validação do MVP, roadmap, priorização ou rota de validação: \`${strategyAgent}\`.
 - Planejamento de backlog do MVP, Epic, Feature ou formatação de entrega: \`${operationsAgent}\` somente quando a área obrigatória de Operations estiver ativa.
 - Implementação, branch, PR ou review: \`${operationsAgent}\` somente quando Engineering estiver ativo e a readiness de entrega estiver clara.
-- Launch, aquisição, onboarding ou learning loop: \`${growthAgent}\` somente quando a área obrigatória de Growth estiver ativa.
+- Readiness de launch, go-live, beta ou usuários reais: \`${operationsAgent}\` somente quando Product Ops, Engineering e DevOps estiverem ativos; se faltar área, retorne \`activation_required\` para a menor área bloqueadora.
+- Execução de launch, aquisição, onboarding ou learning loop: \`${growthAgent}\` somente quando a área obrigatória de Growth estiver ativa e o gate de readiness não estiver bloqueado.
 - Se o próximo passo exigir departamento ou área inativa/ausente, retorne \`activation_required\` em vez de abrir ou inventar paths.
 - Não carregue departamentos inativos.
 - Não trate \`available\` como \`exists\`.
@@ -142,6 +143,8 @@ Use este mapa como orientação de roteamento, não como detalhe de execução. 
 - Setup de GitHub, configuração de GitHub Projects ou sync de Epics/Features: retorne \`activation_required\` para \`operations.devops\` até DevOps estar ativo
 - Preparação ou review de PR: retorne \`activation_required\` para \`operations.engineering\` até Engineering estar ativo
 - Continuação pós-merge: retorne \`activation_required\` para \`operations.product-ops\` até Operations estar ativo
+- Readiness de launch, go-live, beta ou usuários reais: retorne \`activation_required\` para \`operations.product-ops\`, \`operations.engineering\` ou \`operations.devops\` conforme a menor área bloqueadora até o workflow \`ready-for-launch\` estar ativo
+- Execução de launch, aquisição, onboarding ou learning loop: retorne \`activation_required\` para \`growth.marketing\` ou \`growth.customer-experience\` até Growth estar ativo
 
 Se nenhuma rota corresponder claramente, roteie pela Cadeia de Navegação.
 
@@ -389,7 +392,8 @@ Se algo estiver ausente, explique a lacuna e recomende a próxima rota LeanOS em
 - Features ausentes -> playbook Product Ops \`epic-to-features\` quando Product Ops estiver ativo
 - Implementação pronta -> workflow Engineering \`feature-to-delivery-cycle\`
 - PR/review necessário -> rota de validação de PR em Engineering
-- Launch/readiness necessário -> Growth ou DevOps conforme a lacuna
+- Readiness de launch, go-live, beta ou usuários reais -> Operations workflow \`ready-for-launch\` quando Product Ops, Engineering e DevOps estiverem ativos
+- Execução de lançamento ou aprendizado pós-lançamento -> Growth workflow \`launch-learning-loop\` quando Growth estiver ativo
 
 ## Formato de Resposta ao Founder
 

@@ -19,7 +19,8 @@ Regra de manutenção: sempre que um workflow for criado, removido, renomeado, m
 | --- | --- | --- | --- | --- | --- |
 | `feature-to-delivery-cycle` | `operations` | Coordenar Product Ops, Engineering e áreas condicionais da interpretação da Feature até branch, implementação, revisão e PR. | `product-ops`, `engineering` | `design`, `security`, `devops` | "implemente a feature", "podemos iniciar o desenvolvimento?", "essa feature já pode ir para código?". |
 | `post-merge-continuation` | `operations` | Continuar o delivery depois de merge sem perder contexto de produto, engenharia, release ou aprendizado. | `product-ops`, `engineering` | `devops`, `security`, `growth/customer-experience`, `strategy/roadmap` | "o PR foi mergeado", "terminamos essa feature", "o que fazemos depois do merge?", "vamos para a próxima". |
-| `launch-learning-loop` | `growth` | Coordenar marketing, customer experience e finance depois de lançamento. | `marketing`, `customer-experience` | `growth/finance`, `strategy/product`, `operations/product-ops` | "vamos lançar", "como aprendemos com os usuários?", "o que fazer depois do lançamento?", "vamos analisar feedback". |
+| `ready-for-launch` | `operations` | Decidir se uma release, beta ou MVP pode ir para usuários reais antes de Growth, deploy ou learning loop. | `product-ops`, `engineering`, `devops` | `design`, `security`, `growth/marketing`, `growth/customer-experience`, `strategy/product` | "está pronto para lançar?", "podemos lançar?", "vamos abrir beta?", "pode ir para usuários reais?". |
+| `launch-learning-loop` | `growth` | Coordenar marketing, customer experience e finance depois de lançamento aprovado ou executado. | `marketing`, `customer-experience` | `growth/finance`, `strategy/product`, `operations/product-ops` | "lançamento aprovado, prepare a execução", "como aprendemos com os usuários?", "o que fazer depois do lançamento?", "vamos analisar feedback". |
 
 ## Observações Operacionais
 
@@ -31,4 +32,5 @@ Regra de manutenção: sempre que um workflow for criado, removido, renomeado, m
 - `mvp-backlog-planning` é playbook de Product Ops, não workflow. Ele recebe um MVP Validation Scope aprovado e registra os itens em `operations/product-ops/mvp/backlog.md`.
 - `delivery-item-to-epic` e `epic-to-features` são playbooks de Product Ops, não workflows. Eles operam dentro da área para criar Epic local e Feature drafts.
 - `feature-to-delivery-cycle` só deve começar quando a Feature tiver readiness suficiente ou quando um spike técnico for explicitamente aprovado.
-- `launch-learning-loop` pertence a Growth e deve transformar sinais de mercado/cliente em aprendizado antes de criar novo trabalho de produto.
+- `ready-for-launch` pertence a Operations porque é gate de readiness para usuários reais. Ele não executa deploy nem Growth automaticamente.
+- `launch-learning-loop` pertence a Growth e deve transformar sinais de mercado/cliente em aprendizado depois que o lançamento foi aprovado/executado, antes de criar novo trabalho de produto.

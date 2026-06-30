@@ -6,7 +6,7 @@ import { validateClientWorkspaceFixture } from "./validation/client-fixture.mjs"
 import { validateCliWizardProgressiveSetup } from "./validation/cli-wizard.mjs";
 import { validateAreaDefinitionsAreModular } from "./validation/definitions.mjs";
 import { validateExistingProductRepoMode } from "./validation/existing-product-repo.mjs";
-import { validateFounderJourneyReviewPr } from "./validation/founder-journey.mjs";
+import { validateFounderJourneyReadyForLaunch, validateFounderJourneyReviewPr } from "./validation/founder-journey.mjs";
 import { validateGeneratedHumanLanguage } from "./validation/language.mjs";
 import { validateBusinessOsLayout } from "./validation/layout.mjs";
 import { validateWorkspaceRenderersAreModular } from "./validation/renderers.mjs";
@@ -40,6 +40,7 @@ await validateProductOpsActivation();
 await validateActivationCliCommand();
 await validateExistingProductRepoMode();
 await validateFounderJourneyReviewPr();
+await validateFounderJourneyReadyForLaunch();
 await validateWorkspaceUpdateCommand();
 await validateWriterSkipsExistingFiles();
 await validateWriterOverwritesWhenAllowed();

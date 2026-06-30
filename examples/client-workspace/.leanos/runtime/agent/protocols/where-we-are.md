@@ -113,7 +113,8 @@ Se algo estiver ausente, explique a lacuna e recomende a próxima rota LeanOS em
 - Features ausentes -> playbook Product Ops `epic-to-features` quando Product Ops estiver ativo
 - Implementação pronta -> workflow Engineering `feature-to-delivery-cycle`
 - PR/review necessário -> rota de validação de PR em Engineering
-- Launch/readiness necessário -> Growth ou DevOps conforme a lacuna
+- Readiness de launch, go-live, beta ou usuários reais -> Operations workflow `ready-for-launch` quando Product Ops, Engineering e DevOps estiverem ativos
+- Execução de lançamento ou aprendizado pós-lançamento -> Growth workflow `launch-learning-loop` quando Growth estiver ativo
 
 ## Formato de Resposta ao Founder
 

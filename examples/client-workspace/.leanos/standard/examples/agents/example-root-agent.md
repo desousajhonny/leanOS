@@ -71,7 +71,8 @@ Regras:
 - Escopo inicial de validação do MVP, roadmap, priorização ou rota de validação: `clinic-assistant-ai-os/strategy/AGENT.md`.
 - Planejamento de backlog do MVP, Epic, Feature ou formatação de entrega: `clinic-assistant-ai-os/operations/AGENT.md` somente quando a área obrigatória de Operations estiver ativa.
 - Implementação, branch, PR ou review: `clinic-assistant-ai-os/operations/AGENT.md` somente quando Engineering estiver ativo e a readiness de entrega estiver clara.
-- Launch, aquisição, onboarding ou learning loop: `clinic-assistant-ai-os/growth/AGENT.md` somente quando a área obrigatória de Growth estiver ativa.
+- Readiness de launch, go-live, beta ou usuários reais: `clinic-assistant-ai-os/operations/AGENT.md` somente quando Product Ops, Engineering e DevOps estiverem ativos; se faltar área, retorne `activation_required` para a menor área bloqueadora.
+- Execução de launch, aquisição, onboarding ou learning loop: `clinic-assistant-ai-os/growth/AGENT.md` somente quando a área obrigatória de Growth estiver ativa e o gate de readiness não estiver bloqueado.
 - Se o próximo passo exigir departamento ou área inativa/ausente, retorne `activation_required` em vez de abrir ou inventar paths.
 - Não carregue departamentos inativos.
 - Não trate `available` como `exists`.
@@ -127,6 +128,8 @@ Use este mapa como orientação de roteamento, não como detalhe de execução. 
 - Setup de GitHub, configuração de GitHub Projects ou sync de Epics/Features: retorne `activation_required` para `operations.devops` até DevOps estar ativo
 - Preparação ou review de PR: retorne `activation_required` para `operations.engineering` até Engineering estar ativo
 - Continuação pós-merge: retorne `activation_required` para `operations.product-ops` até Operations estar ativo
+- Readiness de launch, go-live, beta ou usuários reais: retorne `activation_required` para `operations.product-ops`, `operations.engineering` ou `operations.devops` conforme a menor área bloqueadora até o workflow `ready-for-launch` estar ativo
+- Execução de launch, aquisição, onboarding ou learning loop: retorne `activation_required` para `growth.marketing` ou `growth.customer-experience` até Growth estar ativo
 
 Se nenhuma rota corresponder claramente, roteie pela Cadeia de Navegação.
 

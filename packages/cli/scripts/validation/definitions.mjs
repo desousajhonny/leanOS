@@ -39,6 +39,7 @@ export async function validateAreaDefinitionsAreModular() {
   }
 
   assertFeatureDeliveryWorkflowDefinition();
+  assertReadyForLaunchWorkflowDefinition();
   assertDeliveryItemToEpicPlaybookDefinition();
   assertEpicToFeaturesPlaybookDefinition();
   assertProductOpsSkillContracts();
@@ -69,6 +70,83 @@ async function assertMissing(path, message) {
   }
 
   assert.fail(message);
+}
+
+function assertReadyForLaunchWorkflowDefinition() {
+  const workflow = operationsDepartment.workflows.find((item) => item.slug === "ready-for-launch");
+
+  assert(workflow, "Operations should define ready-for-launch workflow");
+  assert.deepEqual(
+    workflow.requiredAreas,
+    ["product-ops", "engineering", "devops"],
+    "ready-for-launch should require Product Ops, Engineering and DevOps"
+  );
+  assert.equal(workflow.owner?.department, "operations", "ready-for-launch should be owned by Operations");
+  assert.equal(workflow.owner?.primaryArea, "devops", "ready-for-launch should use DevOps as the primary release gate owner");
+  assert(workflow.owner?.supportingAreas?.includes("product-ops"), "ready-for-launch should include Product Ops as a supporting area");
+  assert(workflow.owner?.supportingAreas?.includes("engineering"), "ready-for-launch should include Engineering as a supporting area");
+
+  const triggerText = (workflow.founderTriggers ?? []).join("\n");
+  for (const expectedTrigger of ["pronto para lancar", "podemos lancar", "go-live", "abrir beta", "usuarios reais"]) {
+    assert(
+      triggerText.includes(expectedTrigger),
+      `ready-for-launch should include founder trigger '${expectedTrigger}'`
+    );
+  }
+
+  const phaseText = (workflow.phases ?? []).join("\n");
+  for (const expectedPhase of [
+    "Release candidate",
+    "Product scope",
+    "Engineering evidence",
+    "DevOps readiness",
+    "Conditional gates",
+    "Launch decision",
+    "Growth bridge"
+  ]) {
+    assert(
+      phaseText.includes(expectedPhase),
+      `ready-for-launch should include phase '${expectedPhase}'`
+    );
+  }
+
+  const fullText = [
+    workflow.purpose,
+    ...(workflow.entryGate ?? []),
+    ...(workflow.activeRequirements ?? []),
+    ...(workflow.phases ?? []),
+    ...(workflow.decisionOutputs ?? []),
+    ...(workflow.steps ?? []),
+    ...(workflow.stopConditions ?? []),
+    ...(workflow.expectedOutput ?? []),
+    workflow.continuationBridge?.immediate ?? "",
+    workflow.continuationBridge?.nextRoute ?? "",
+    ...(workflow.continuationBridge?.rules ?? [])
+  ].join("\n");
+
+  for (const expectedDecision of [
+    "ready_to_launch",
+    "ready_with_known_risks",
+    "blocked_by_product",
+    "blocked_by_engineering",
+    "blocked_by_devops",
+    "blocked_by_growth",
+    "not_ready_to_learn"
+  ]) {
+    assert(
+      fullText.includes(expectedDecision),
+      `ready-for-launch should output decision status '${expectedDecision}'`
+    );
+  }
+
+  assert(fullText.includes("activation_required"), "ready-for-launch should explain activation_required for missing launch areas");
+  assert(fullText.includes("mvp-launch"), "ready-for-launch should bridge approved launch execution to Growth mvp-launch");
+  assert(fullText.includes("launch-learning-loop"), "ready-for-launch should bridge launched evidence to launch-learning-loop");
+  assert(fullText.includes("feature-to-delivery-cycle"), "ready-for-launch should send unfinished delivery back to feature-to-delivery-cycle");
+  assert(
+    (workflow.forbiddenUpdates ?? []).some((item) => /deploy|deployment|produção|producao/i.test(item)),
+    "ready-for-launch should forbid automatic production deployment"
+  );
 }
 
 function assertFeatureDeliveryWorkflowDefinition() {

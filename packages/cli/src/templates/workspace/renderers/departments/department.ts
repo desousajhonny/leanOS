@@ -124,7 +124,8 @@ function departmentJourneySignals(department: RootDepartmentDefinition): string 
       "transformar escopo de entrega em trabalho executável",
       "formatar Epics ou Features antes da implementação",
       "coordenar handoffs de Design, Engineering, Security ou DevOps",
-      "mover de issue para implementação, PR ou follow-up pós-merge"
+      "mover de issue para implementação, PR ou follow-up pós-merge",
+      "decidir se uma release pode ir para usuários reais"
     ],
     growth: [
       "planejar launch, aprendizado ou loops de aquisição",

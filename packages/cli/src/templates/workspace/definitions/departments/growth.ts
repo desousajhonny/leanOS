@@ -12,10 +12,11 @@ export const growthDepartment: RootDepartmentDefinition = {
   workflows: [
     {
       slug: "launch-learning-loop",
-      purpose: "Coordinate marketing, customer experience and finance after launch.",
+      purpose: "Coordinate marketing, customer experience and finance after an approved or executed launch.",
       requiredAreas: ["marketing", "customer-experience"],
       founderTriggers: [
-        "vamos lancar",
+        "lancamento aprovado, prepare a execucao",
+        "execute o lancamento aprovado",
         "como aprendemos com os usuarios?",
         "o que fazer depois do lancamento?",
         "vamos analisar feedback dos clientes",
@@ -61,8 +62,8 @@ export const growthDepartment: RootDepartmentDefinition = {
         "operations/product-ops/AGENT.md when learning should become delivery work"
       ],
       steps: [
-        "Leia o AGENT de Marketing and launch knowledge before planning or summarizing launch work.",
-        "Leia o AGENT de Customer Experience and customer feedback before claiming what users learned or felt.",
+        "Leia o AGENT de Marketing e o launch knowledge antes de planejar ou resumir trabalho de lançamento.",
+        "Leia o AGENT de Customer Experience e customer feedback antes de afirmar o que usuários aprenderam, sentiram ou fizeram.",
         "Separate launch activity, customer evidence, founder interpretation and next decision.",
         "Review Finance AGENT only when pricing, budget, revenue, cost or unit economics are involved.",
         "Route to Strategy Product only when learning changes ICP, positioning, problem framing or value proposition.",

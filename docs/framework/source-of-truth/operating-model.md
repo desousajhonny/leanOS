@@ -15,6 +15,7 @@ Ideia / Contexto Inicial
 -> Features
 -> Delivery
 -> PR / Release
+-> Ready for Launch
 -> Learning Loop
 ```
 
@@ -125,7 +126,32 @@ Delivery começa apenas quando uma Feature está pronta para desenvolvimento ou 
 
 Engineering entra depois da readiness de Product Ops e de qualquer gate aplicável de Design, Security ou DevOps.
 
-### 10. Ciclo De Aprendizado
+### 10. Ready For Launch
+
+Ready for Launch é o gate operacional antes de expor uma release, beta, MVP slice ou versão a usuários reais.
+
+Ele pertence a Operations porque precisa combinar:
+
+- escopo, release goal, critérios de aceite e não objetivos de Product Ops;
+- evidência de PR, testes, build, validação manual e riscos técnicos de Engineering;
+- ambiente alvo, deploy path, rollback, release notes, observabilidade e post-release checks de DevOps;
+- Design, Security, Growth ou Strategy apenas quando seus gatilhos forem aplicáveis.
+
+O resultado deve ser uma decisão explícita:
+
+- `ready_to_launch`;
+- `ready_with_known_risks`;
+- `blocked_by_product`;
+- `blocked_by_design`;
+- `blocked_by_security`;
+- `blocked_by_engineering`;
+- `blocked_by_devops`;
+- `blocked_by_growth`;
+- `not_ready_to_learn`.
+
+Growth executa lançamento aprovado e aprendizado pós-lançamento. Ele não substitui o gate de readiness operacional.
+
+### 11. Ciclo De Aprendizado
 
 Depois da entrega, o LeanOS deve capturar o que mudou, o que foi aprendido, o que continua incerto e qual rota deve acontecer em seguida.
 

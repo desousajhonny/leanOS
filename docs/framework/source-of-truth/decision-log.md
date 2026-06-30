@@ -2,6 +2,36 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-30 - Ready For Launch Como Workflow De Operations
+
+Decisão:
+
+- Criar `ready-for-launch` como workflow departamental de Operations.
+- O workflow vive em `operations/workflows/ready-for-launch.workflow.md` quando `operations.product-ops`, `operations.engineering` e `operations.devops` estão ativos.
+- Readiness de launch, go-live, beta ou exposição a usuários reais pertence a Operations antes de Growth.
+- DevOps é a área primária do gate; Product Ops e Engineering são áreas obrigatórias de apoio.
+- Design, Security, Growth Marketing, Growth Customer Experience e Strategy Product entram apenas como gates condicionais.
+- O workflow deve produzir decisão explícita:
+  - `ready_to_launch`;
+  - `ready_with_known_risks`;
+  - `blocked_by_product`;
+  - `blocked_by_design`;
+  - `blocked_by_security`;
+  - `blocked_by_engineering`;
+  - `blocked_by_devops`;
+  - `blocked_by_growth`;
+  - `not_ready_to_learn`.
+- Growth continua dono de `mvp-launch` e `launch-learning-loop`, mas apenas depois do gate de readiness ou quando o lançamento já ocorreu.
+- O root `AGENT.md` deve separar pedidos de readiness ("está pronto para lançar?") de pedidos de execução/aprendizado de Growth ("lançamento aprovado", "o que aprendemos?").
+- O workflow não faz deploy, campanha, email, CRM, analytics, pagamento, GitHub write ou qualquer ação externa automaticamente.
+
+Justificativa:
+
+- "Pode lançar?" é uma decisão de prontidão operacional, não uma execução de marketing.
+- Um lançamento para usuários reais depende de escopo, critérios, evidência de entrega, ambiente, rollback, observabilidade, riscos de produto e riscos técnicos.
+- Colocar o gate em Operations preserva ownership de Product Ops, Engineering e DevOps sem impedir Growth de executar lançamento e aprendizado depois.
+- A decisão explícita reduz ambiguidade para founders e modelos, deixando claro se o próximo passo é launch, risco aceito, desbloqueio ou retorno para delivery.
+
 ## 2026-06-30 - Layout Business OS E Comando De Update
 
 Decisão:

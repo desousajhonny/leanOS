@@ -166,6 +166,7 @@ export type DepartmentWorkflowDefinition = {
   activeRequirements?: string[];
   activationRequirements?: string[];
   phases?: string[];
+  decisionOutputs?: string[];
   skillsUsed?: string[];
   playbooksUsed?: string[];
   founderTriggers?: string[];

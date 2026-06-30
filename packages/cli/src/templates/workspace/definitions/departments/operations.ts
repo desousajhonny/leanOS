@@ -283,6 +283,197 @@ export const operationsDepartment: RootDepartmentDefinition = {
           "If the founder chooses the next Feature, restart from Root `AGENT.md` and route to `feature-to-delivery-cycle`."
         ]
       }
+    },
+    {
+      slug: "ready-for-launch",
+      purpose: "Decidir se uma release, beta ou MVP está pronto para usuários reais antes de acionar lançamento, deploy ou learning loop.",
+      requiredAreas: ["product-ops", "engineering", "devops"],
+      progressionStage: "PR / Release -> Ready for Launch -> Launch / Learning Loop",
+      founderTriggers: [
+        "esta pronto para lancar?",
+        "pronto para lancar",
+        "podemos lancar?",
+        "podemos abrir para usuarios reais?",
+        "essa release pode ir para usuario real?",
+        "podemos fazer go-live?",
+        "vamos abrir beta",
+        "coloca em producao para clientes",
+        "o que falta para lancar?"
+      ],
+      entryGate: [
+        "Existe release candidate, Feature mergeada, PR validado ou escopo de MVP/release identificado.",
+        "O pedido é sobre readiness de launch, go-live, beta ou usuários reais, não sobre criar uma Feature nova.",
+        "Se o pedido for uma ideia solta ou Feature ainda não entregue, volte para Strategy, Product Ops ou `feature-to-delivery-cycle`."
+      ],
+      activeRequirements: [
+        "Product Ops ativo para confirmar escopo, não objetivos, critérios de aceite, release goal e impacto no usuário.",
+        "Engineering ativo para confirmar PR, testes, lacunas técnicas, evidência de build e riscos restantes.",
+        "DevOps ativo para confirmar ambiente, deploy path, rollback, release notes, observabilidade e post-release checks."
+      ],
+      owner: {
+        department: "operations",
+        primaryArea: "devops",
+        supportingAreas: ["product-ops", "engineering"],
+        conditionalAreas: ["design", "security", "growth/marketing", "growth/customer-experience", "strategy/product"]
+      },
+      conditionalAreas: [
+        { area: "design", when: "Entre quando UX, UI, fluxo, acessibilidade, copy pública ou componentes ainda forem risco para usuários reais." },
+        { area: "security", when: "Entre quando houver auth, permissões, dados, pagamentos, privacidade, API, banco, secrets, abuso, compliance ou infraestrutura sensível." },
+        { area: "growth/marketing", when: "Entre depois do gate operacional quando posicionamento público, canal, campanha, landing page ou plano de lançamento precisarem execução." },
+        { area: "growth/customer-experience", when: "Entre quando onboarding, suporte, coleta de feedback, notas para clientes ou rotina de aprendizado precisarem existir no lançamento." },
+        { area: "strategy/product", when: "Entre quando o gate revelar mudança de ICP, promessa, posicionamento, problema, hipótese central ou escopo de validação." }
+      ],
+      phases: [
+        "Release candidate - identificar o que exatamente está candidato a lançamento, beta, go-live ou exposição a usuários reais.",
+        "Product scope - Product Ops confirma escopo, não objetivos, critérios de aceite, release goal, checklist de MVP/release e riscos de produto.",
+        "Engineering evidence - Engineering confirma PR/merge, testes, build, regressões, Founder Testing Guide e lacunas técnicas.",
+        "DevOps readiness - DevOps confirma ambiente alvo, deploy path, rollback, release notes, observabilidade, post-release checks e limites de produção.",
+        "Conditional gates - Design, Security, Growth e Strategy entram apenas quando seus gatilhos forem aplicáveis ou quando uma área inativa bloquear o lançamento.",
+        "Launch decision - classificar a decisão em status explícito, explicar riscos e escolher a menor próxima ação.",
+        "Growth bridge - se o lançamento estiver aprovado, rotear execução para `mvp-launch` e aprendizado posterior para `launch-learning-loop`."
+      ],
+      decisionOutputs: [
+        "ready_to_launch",
+        "ready_with_known_risks",
+        "blocked_by_product",
+        "blocked_by_design",
+        "blocked_by_security",
+        "blocked_by_engineering",
+        "blocked_by_devops",
+        "blocked_by_growth",
+        "not_ready_to_learn"
+      ],
+      loadFirst: [
+        "AGENT.md",
+        "operations/AGENT.md",
+        "operations/workflows/README.md",
+        "operations/workflows/ready-for-launch.workflow.md",
+        "operations/product-ops/AGENT.md",
+        "operations/product-ops/knowledge/delivery-scope.md",
+        "operations/product-ops/knowledge/issue-readiness.md",
+        "operations/product-ops/knowledge/ready-to-develop.md",
+        "operations/product-ops/mvp/release-checklist.md",
+        "operations/engineering/AGENT.md",
+        "operations/engineering/knowledge/pr-log.md",
+        "operations/engineering/knowledge/review-criteria.md",
+        "operations/engineering/knowledge/testing-strategy.md",
+        "operations/devops/AGENT.md",
+        "operations/devops/knowledge/deployment-readiness.md",
+        "operations/devops/knowledge/environments.md",
+        "operations/devops/knowledge/release-notes.md",
+        "operations/devops/knowledge/observability.md"
+      ],
+      navigationRoute: [
+        "AGENT.md",
+        "operations/AGENT.md",
+        "operations/workflows/ready-for-launch.workflow.md",
+        "operations/product-ops/AGENT.md",
+        "operations/product-ops/roles/product-owner.role.md",
+        "operations/product-ops/skills/check-delivery-coherence/SKILL.md",
+        "operations/product-ops/playbooks/delivery-readiness.playbook.md",
+        "operations/engineering/AGENT.md",
+        "operations/engineering/roles/pr-reviewer.role.md",
+        "operations/engineering/skills/review-pr/SKILL.md",
+        "operations/engineering/playbooks/pr-validation.playbook.md",
+        "operations/devops/AGENT.md",
+        "operations/devops/roles/release-manager.role.md",
+        "operations/devops/skills/prepare-release/SKILL.md",
+        "operations/devops/playbooks/release-operations.playbook.md",
+        "operations/security/AGENT.md quando risco de security for aplicável",
+        "operations/design/AGENT.md quando UX, copy, acessibilidade ou componente bloquear lançamento",
+        "growth/AGENT.md quando execução de lançamento, suporte ou learning loop precisar ser ativado",
+        "strategy/AGENT.md quando a decisão mudar ICP, posicionamento, promessa ou hipótese central"
+      ],
+      steps: [
+        "Identifique o release candidate: PR, merge, Feature, Epic, MVP slice, beta ou versão que o founder quer expor a usuários reais.",
+        "Se não houver release candidate identificável, pare com `not_ready_to_learn` e roteie para Product Ops, Engineering ou `feature-to-delivery-cycle` conforme a lacuna.",
+        "Carregue Product Ops para confirmar escopo, release goal, critérios de aceite, não objetivos, checklist de release e riscos de produto.",
+        "Carregue Engineering para confirmar evidência: PR/merge, testes, build, validação manual, Founder Testing Guide, regressões conhecidas e lacunas técnicas.",
+        "Carregue DevOps para confirmar ambiente alvo, deploy path, rollback, release notes, observabilidade, post-release checks e limites de produção.",
+        "Classifique Design como aplicável ou não aplicável. Se UI, copy, fluxo, acessibilidade ou componentes ainda bloquearem usuários reais e Design estiver inativo, retorne `activation_required: operations.design`.",
+        "Classifique Security como aplicável ou não aplicável. Se dados, auth, permissões, privacy, pagamento, API, database, secrets, compliance ou abuso forem risco e Security estiver inativo, retorne `activation_required: operations.security`.",
+        "Classifique Growth como aplicável ou não aplicável. Se execução de lançamento, campanha, landing page, onboarding, suporte ou coleta de feedback forem necessários e Growth estiver inativo, retorne `activation_required: growth.marketing` ou `activation_required: growth.customer-experience`.",
+        "Classifique Strategy como aplicável ou não aplicável. Se a decisão mudar ICP, posicionamento, problema, promessa ou hipótese central, volte para Strategy antes de lançamento público.",
+        "Produza uma matriz curta de Product, Engineering, DevOps, Design, Security, Growth e Strategy com status: ready, known-risk, blocked ou not-applicable.",
+        "Escolha exatamente uma decisão final entre `ready_to_launch`, `ready_with_known_risks`, `blocked_by_product`, `blocked_by_design`, `blocked_by_security`, `blocked_by_engineering`, `blocked_by_devops`, `blocked_by_growth` ou `not_ready_to_learn`.",
+        "Quando a decisão for `ready_to_launch`, explique que o próximo passo é Growth executar o lançamento via `mvp-launch` ou DevOps conduzir deploy apenas depois de confirmação humana explícita.",
+        "Quando a decisão for `ready_with_known_risks`, liste os riscos aceitos, owner, mitigação mínima e confirmação necessária antes de qualquer exposição a usuário real.",
+        "Quando a decisão for bloqueada, recomende a menor rota de desbloqueio e não acione lançamento, deploy ou campanha.",
+        "Depois de lançamento executado e com evidência de usuário, roteie aprendizado para `launch-learning-loop`."
+      ],
+      confirmationGates: [
+        "Peça confirmação antes de marcar qualquer decisão como `ready_to_launch` ou `ready_with_known_risks`.",
+        "Peça confirmação antes de atualizar checklist de release, PR log, release notes, deployment readiness ou observability.",
+        "Peça confirmação antes de ativar Design, Security, Growth, Customer Experience ou Strategy por bloqueio de lançamento.",
+        "Peça confirmação antes de acionar Growth para `mvp-launch`.",
+        "Peça confirmação explícita antes de qualquer ação externa de deploy, GitHub, analytics, CRM, email, pagamento ou API."
+      ],
+      allowedUpdates: [
+        "operations/product-ops/mvp/release-checklist.md após confirmação de Product Ops",
+        "operations/product-ops/epics/<epic-slug>/<feature-slug>.md após confirmação de Product Ops",
+        "operations/engineering/knowledge/pr-log.md após confirmação de Engineering",
+        "operations/engineering/knowledge/implementation-notes.md após confirmação de Engineering",
+        "operations/devops/knowledge/release-notes.md após confirmação de DevOps",
+        "operations/devops/knowledge/deployment-readiness.md após confirmação de DevOps",
+        "operations/devops/knowledge/observability.md após confirmação de DevOps",
+        "growth/marketing/knowledge/launch-plan.md somente após ativação de Growth e confirmação do founder",
+        "growth/customer-experience/knowledge/customer-feedback.md somente após ativação de Growth e confirmação do founder"
+      ],
+      forbiddenUpdates: [
+        "produção, deployment ou estado de provider sem confirmação explícita",
+        "deploy automático para produção",
+        "campanha, email, CRM, analytics ou pagamento sem workflow/ferramenta confirmado",
+        "código-fonte, testes ou componentes de produto",
+        "branches, commits, criação de PR, merge de PR ou tags de release",
+        ".github/ ou estado remoto do GitHub sem fluxo separado e confirmado de GitHub/release",
+        ".env, .env.local, secrets, tokens ou credenciais de produção",
+        "arquivos de launch de Growth enquanto Growth estiver inativo",
+        "roles/, skills/, playbooks/, workflows/ ou .leanos/standard/"
+      ],
+      externalCapabilities: [
+        "Este workflow decide readiness; ele não executa deploy, campanha, email, analytics, CRM, pagamento ou escrita no GitHub por padrão.",
+        "Não faça deploy automaticamente.",
+        "GitHub, provider de deploy, analytics, CRM ou email podem ser lidos somente quando o founder fornecer referência e autorizar a consulta.",
+        "Toda escrita remota exige fluxo separado, dry-run quando aplicável e confirmação explícita.",
+        "Se evidência externa não estiver disponível, marque como lacuna ou founder-confirmed; não invente métricas, status de deploy ou feedback."
+      ],
+      stopConditions: [
+        "Não existe release candidate, PR, merge, Feature, Epic, MVP slice, beta ou versão identificável.",
+        "Product Ops não consegue confirmar escopo, release goal, critérios de aceite ou não objetivos.",
+        "Engineering não consegue confirmar PR/merge, testes, build, validação manual ou riscos técnicos.",
+        "DevOps não consegue confirmar ambiente alvo, deploy path, rollback, release notes, observabilidade ou post-release checks.",
+        "Design, Security ou Growth são aplicáveis, mas a área necessária está inativa; retorne `activation_required`.",
+        "O founder quer continuar implementando Feature; volte para `feature-to-delivery-cycle`.",
+        "O founder quer executar campanha ou learning loop antes de decidir readiness; primeiro feche este gate.",
+        "O founder não confirma decisão `ready_to_launch`, risco aceito, update local ou ação externa."
+      ],
+      expectedOutput: [
+        "Release candidate identificado.",
+        "Matriz de readiness por Product, Engineering, DevOps, Design, Security, Growth e Strategy.",
+        "Decisão final: `ready_to_launch`, `ready_with_known_risks`, `blocked_by_product`, `blocked_by_design`, `blocked_by_security`, `blocked_by_engineering`, `blocked_by_devops`, `blocked_by_growth` ou `not_ready_to_learn`.",
+        "Riscos aceitos ou bloqueios com owner e menor rota de desbloqueio.",
+        "Confirmações necessárias antes de launch, deploy, Growth ou escrita externa.",
+        "Ponte recomendada: `mvp-launch`, `launch-learning-loop` ou retorno para `feature-to-delivery-cycle`."
+      ],
+      continuationBridge: {
+        immediate: "A release candidate passou pelo gate de launch readiness.\nQuer que eu siga para Growth preparar o `mvp-launch`, para DevOps planejar o deploy confirmado, ou para desbloquear o item que ficou pendente?",
+        laterTriggers: [
+          "esta pronto para lancar?",
+          "podemos lancar?",
+          "vamos abrir beta",
+          "o que falta para lancar?",
+          "lancamento aprovado, prepare a execucao",
+          "lancamos, o que aprendemos?"
+        ],
+        nextRoute: "growth/marketing/playbooks/mvp-launch.playbook.md, growth/workflows/launch-learning-loop.workflow.md ou feature-to-delivery-cycle",
+        rules: [
+          "Não execute Growth automaticamente; se Growth estiver inativo e a próxima ação for lançamento, retorne `activation_required: growth.marketing`.",
+          "Não faça deploy automaticamente; DevOps só planeja ou executa ação externa depois de confirmação explícita.",
+          "Se a decisão for bloqueada por delivery, volte para `feature-to-delivery-cycle` ou para a área bloqueadora.",
+          "Se o lançamento já aconteceu e há evidência de usuários, roteie para `launch-learning-loop`.",
+          "Se o founder retornar depois com gatilho de readiness, reinicie pelo Root `AGENT.md` e carregue este workflow."
+        ]
+      }
     }
   ]
 };
