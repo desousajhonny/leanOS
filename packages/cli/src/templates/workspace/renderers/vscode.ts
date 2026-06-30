@@ -1,15 +1,18 @@
-import type { FileEntry } from "../types.js";
+import { createWorkspacePaths, departmentPath, runtimePath } from "../paths.js";
+import type { FileEntry, WorkspaceAnswers } from "../types.js";
 
-export function vscodeIntegrationFiles(): FileEntry[] {
+export function vscodeIntegrationFiles(answers: WorkspaceAnswers): FileEntry[] {
   return [
-    { path: ".github/agents/leanos-chief.agent.md", content: leanosChiefAgent() },
-    { path: ".github/prompts/start-leanos.prompt.md", content: startLeanOsPrompt() },
-    { path: ".github/prompts/leanos-init.prompt.md", content: leanosInitPrompt() },
+    { path: ".github/agents/leanos-chief.agent.md", content: leanosChiefAgent(answers) },
+    { path: ".github/prompts/start-leanos.prompt.md", content: startLeanOsPrompt(answers) },
+    { path: ".github/prompts/leanos-init.prompt.md", content: leanosInitPrompt(answers) },
     { path: ".leanos/vscode/README.md", content: vscodeReadme() }
   ];
 }
 
-function leanosChiefAgent(): string {
+function leanosChiefAgent(answers: WorkspaceAnswers): string {
+  const paths = createWorkspacePaths(answers);
+
   return `---
 name: LeanOS Chief
 description: Operate LeanOS workspaces through AGENT.md, context, active departments, areas, roles, skills and playbooks.
@@ -22,19 +25,19 @@ You operate LeanOS workspaces inside VS Code.
 
 Always start from \`AGENT.md\` and \`leanos.yaml\`.
 
-\`.leanos/\` is runtime: context, indexes and VS Code support.
-\`strategy/\`, \`operations/\` and \`growth/\` own business workflows.
-\`ai-standard/\` is the standard library for creating and validating LeanOS assets.
-The client operating workspace lives in \`strategy/\`, \`operations/\` and \`growth/\`.
+\`${paths.runtimeRoot}/\` is runtime: context, indexes and VS Code support.
+\`${paths.businessOsRoot}/strategy/\`, \`${paths.businessOsRoot}/operations/\` and \`${paths.businessOsRoot}/growth/\` own business workflows.
+\`${paths.standardRoot}/\` is the standard library for creating and validating LeanOS assets.
+The client operating workspace lives in \`${paths.businessOsRoot}/\`.
 
 For startup, restart or continuation requests, load:
 
 - [AGENT.md](../../AGENT.md)
 - [leanos.yaml](../../leanos.yaml)
-- [.leanos/context/workspace-summary.md](../../.leanos/context/workspace-summary.md)
-- [.leanos/context/current-focus.md](../../.leanos/context/current-focus.md)
-- [.leanos/context/next-actions.md](../../.leanos/context/next-actions.md)
-- [.leanos/index/routing-map.yaml](../../.leanos/index/routing-map.yaml)
+- [${runtimePath("context/workspace-summary.md", paths)}](../../${runtimePath("context/workspace-summary.md", paths)})
+- [${runtimePath("context/current-focus.md", paths)}](../../${runtimePath("context/current-focus.md", paths)})
+- [${runtimePath("context/next-actions.md", paths)}](../../${runtimePath("context/next-actions.md", paths)})
+- [${runtimePath("index/routing-map.yaml", paths)}](../../${runtimePath("index/routing-map.yaml", paths)})
 
 Founder requests can be natural language. Use root \`AGENT.md\` to route to the correct department. Then use the department \`AGENT.md\` to choose either a coordination workflow or the smallest active area. Startup and idea evaluation usually go to Strategy Product and \`idea-calibration.playbook.md\`.
 
@@ -44,7 +47,7 @@ Follow the LeanOS Navigation Chain:
 
 During startup, restart or continuation, use propose-first mode: propose source-of-truth updates and write only after explicit user confirmation.
 Use company/product context to update source-of-truth files, primarily in \`strategy/\`.
-Não enriqueça roles, skills, playbooks, workflows, \`ai-standard/\` ou \`.github/\` com contexto de empresa/produto durante startup.
+Não enriqueça roles, skills, playbooks, workflows, \`${paths.standardRoot}/\` ou \`.github/\` com contexto de empresa/produto durante startup.
 
 Respect active departments and areas in \`leanos.yaml\`.
 Não carregue paths de áreas ausentes.
@@ -56,7 +59,12 @@ For PR validation or review requests, load the relevant validation criteria befo
 `;
 }
 
-function startLeanOsPrompt(): string {
+function startLeanOsPrompt(answers: WorkspaceAnswers): string {
+  const paths = createWorkspacePaths(answers);
+  const strategyAgent = `${departmentPath("strategy", paths)}/AGENT.md`;
+  const strategyProductAgent = `${paths.businessOsRoot}/strategy/product/AGENT.md`;
+  const ideaCalibration = `${paths.businessOsRoot}/strategy/product/playbooks/idea-calibration.playbook.md`;
+
   return `---
 name: start-leanos
 description: Start LeanOS Chief for this workspace.
@@ -70,12 +78,12 @@ Load:
 
 - [AGENT.md](../../AGENT.md)
 - [leanos.yaml](../../leanos.yaml)
-- [.leanos/context/workspace-summary.md](../../.leanos/context/workspace-summary.md)
-- [.leanos/context/current-focus.md](../../.leanos/context/current-focus.md)
-- [.leanos/context/next-actions.md](../../.leanos/context/next-actions.md)
-- [.leanos/index/routing-map.yaml](../../.leanos/index/routing-map.yaml)
+- [${runtimePath("context/workspace-summary.md", paths)}](../../${runtimePath("context/workspace-summary.md", paths)})
+- [${runtimePath("context/current-focus.md", paths)}](../../${runtimePath("context/current-focus.md", paths)})
+- [${runtimePath("context/next-actions.md", paths)}](../../${runtimePath("context/next-actions.md", paths)})
+- [${runtimePath("index/routing-map.yaml", paths)}](../../${runtimePath("index/routing-map.yaml", paths)})
 
-Then route startup through \`AGENT.md\` -> \`strategy/AGENT.md\` -> \`strategy/product/AGENT.md\` -> \`strategy/product/playbooks/idea-calibration.playbook.md\`.
+Then route startup through \`AGENT.md\` -> \`${strategyAgent}\` -> \`${strategyProductAgent}\` -> \`${ideaCalibration}\`.
 
 Use propose-first mode:
 
@@ -83,11 +91,16 @@ Use propose-first mode:
 - Propose Strategy-first source-of-truth updates before editing.
 - Write only after explicit user confirmation.
 - If confirmation is missing or ambiguous, do not write.
-- Não modifique roles, skills, playbooks, workflows, \`ai-standard/\`, \`.github/\` ou arquivos de Operations/Growth durante startup, a menos que o usuário peça explicitamente depois do startup.
+- Não modifique roles, skills, playbooks, workflows, \`${paths.standardRoot}/\`, \`.github/\` ou arquivos de Operations/Growth durante startup, a menos que o usuário peça explicitamente depois do startup.
 `;
 }
 
-function leanosInitPrompt(): string {
+function leanosInitPrompt(answers: WorkspaceAnswers): string {
+  const paths = createWorkspacePaths(answers);
+  const strategyAgent = `${departmentPath("strategy", paths)}/AGENT.md`;
+  const strategyProductAgent = `${paths.businessOsRoot}/strategy/product/AGENT.md`;
+  const ideaCalibration = `${paths.businessOsRoot}/strategy/product/playbooks/idea-calibration.playbook.md`;
+
   return `---
 name: leanos-init
 description: Legacy alias for start-leanos.
@@ -103,12 +116,12 @@ Load:
 
 - [AGENT.md](../../AGENT.md)
 - [leanos.yaml](../../leanos.yaml)
-- [.leanos/context/workspace-summary.md](../../.leanos/context/workspace-summary.md)
-- [.leanos/context/current-focus.md](../../.leanos/context/current-focus.md)
-- [.leanos/context/next-actions.md](../../.leanos/context/next-actions.md)
-- [.leanos/index/routing-map.yaml](../../.leanos/index/routing-map.yaml)
+- [${runtimePath("context/workspace-summary.md", paths)}](../../${runtimePath("context/workspace-summary.md", paths)})
+- [${runtimePath("context/current-focus.md", paths)}](../../${runtimePath("context/current-focus.md", paths)})
+- [${runtimePath("context/next-actions.md", paths)}](../../${runtimePath("context/next-actions.md", paths)})
+- [${runtimePath("index/routing-map.yaml", paths)}](../../${runtimePath("index/routing-map.yaml", paths)})
 
-Then route startup through \`AGENT.md\` -> \`strategy/AGENT.md\` -> \`strategy/product/AGENT.md\` -> \`strategy/product/playbooks/idea-calibration.playbook.md\`.
+Then route startup through \`AGENT.md\` -> \`${strategyAgent}\` -> \`${strategyProductAgent}\` -> \`${ideaCalibration}\`.
 
 Use propose-first mode:
 
@@ -116,7 +129,7 @@ Use propose-first mode:
 - Propose Strategy-first source-of-truth updates before editing.
 - Write only after explicit user confirmation.
 - If confirmation is missing or ambiguous, do not write.
-- Não modifique roles, skills, playbooks, workflows, \`ai-standard/\`, \`.github/\` ou arquivos de Operations/Growth durante startup, a menos que o usuário peça explicitamente depois do startup.
+- Não modifique roles, skills, playbooks, workflows, \`${paths.standardRoot}/\`, \`.github/\` ou arquivos de Operations/Growth durante startup, a menos que o usuário peça explicitamente depois do startup.
 `;
 }
 

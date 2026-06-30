@@ -128,7 +128,7 @@ export const operationsSecuritySkills: SkillDefinition[] = [
       process: ["Identifique stack e package manager", "Verifique se código e comandos estáveis existem", "Decida status para secret scanning, dependency audit, SAST/code scanning, IaC/config scanning e API/security checks", "Classifique cada check como enable now, defer with reason ou not applicable", "Defina impacto de gate de PR/pre-deploy", "Peça confirmação antes de criar ou editar workflows de CI"],
       checks: ["Secret scanning status is explicit", "Dependency audit status is explicit", "SAST/code scanning status is explicit when language is supported", "IaC/config scanning is considered when config exists", "No scanner workflow is created without stable commands"],
       outputs: ["Security automation readiness matrix", "Enable/defer/not-applicable decisions", "Required CI gate updates", "Risks and owners", "Próxima ação"],
-      filesToUpdate: ["Update `../knowledge/security-automation.md` after explicit confirmation.", "Update `../../../.github/leanos/security-automation.md` after explicit confirmation."],
+      filesToUpdate: ["Update `../knowledge/security-automation.md` after explicit confirmation.", "Update `.github/leanos/security-automation.md` after explicit confirmation."],
       redLines: ["Não crie workflows de scanner antes de stack, package manager e comandos serem conhecidos.", "Não desative scanners existentes ou alertas de dependência sem review humano.", "Não marque deploy de produção como pronto sem decisão de automação de Security.", "Não faça commit de tokens de scanner ou segredos de provider."]
     },
     {

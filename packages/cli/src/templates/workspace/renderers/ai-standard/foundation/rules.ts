@@ -94,7 +94,7 @@ Para qualquer novo asset LeanOS:
 
 ## Notas para Agentes
 
-Não carregue todo \`ai-standard/\` por padrão. Escolha o menor arquivo de foundation, instrução, template e checklist necessário para o pedido ativo.
+Não carregue todo \`.leanos/standard/\` por padrão. Escolha o menor arquivo de foundation, instrução, template e checklist necessário para o pedido ativo.
 
 Se a próxima rota não estiver clara, comece por \`foundation/asset-taxonomy.md\`.
 `;
@@ -154,7 +154,7 @@ Não crie um asset quando:
 - Area \`AGENT.md\`, \`README.md\`, \`area.yaml\`, \`knowledge/\`, \`roles/\`, \`skills/\` and \`playbooks/\` live inside the area.
 - Roles, skills e playbooks não vivem diretamente abaixo de departamentos raiz.
 - Business workflows live in departments or areas, not in \`.leanos/\`.
-- Framework standards, templates, checklists, instructions and examples live in \`ai-standard/\`.
+- Framework standards, templates, checklists, instructions and examples live in \`.leanos/standard/\`.
 
 ## Regras de Responsabilidade
 
@@ -182,7 +182,7 @@ Antes de escrever ou alterar assets do framework:
 - Não invente roles, skills, playbooks, workflows ou templates ausentes.
 - Não crie assets fora do departamento ou área owner.
 - Não coloque fatos de produto ou empresa dentro de assets operacionais do framework.
-- Não atualize \`ai-standard/\`, roles, skills, playbooks ou workflows durante a inicialização.
+- Não atualize \`.leanos/standard/\`, roles, skills, playbooks ou workflows durante a inicialização.
 - Não crie um asset amplo quando um asset estreito seria mais claro.
 - Não crie arquivos apenas para o workspace parecer completo.
 
@@ -387,7 +387,7 @@ Exemplo: \`operations/design/knowledge/README.md\`
 
 ### Pasta de AI Standard
 
-Exemplo: \`ai-standard/README.md\`
+Exemplo: \`.leanos/standard/README.md\`
 
 - Roteia para foundation, templates, checklists, instruções e exemplos.
 - Explica quando usar cada rota.

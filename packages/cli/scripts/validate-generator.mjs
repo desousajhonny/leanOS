@@ -8,8 +8,10 @@ import { validateAreaDefinitionsAreModular } from "./validation/definitions.mjs"
 import { validateExistingProductRepoMode } from "./validation/existing-product-repo.mjs";
 import { validateFounderJourneyReviewPr } from "./validation/founder-journey.mjs";
 import { validateGeneratedHumanLanguage } from "./validation/language.mjs";
+import { validateBusinessOsLayout } from "./validation/layout.mjs";
 import { validateWorkspaceRenderersAreModular } from "./validation/renderers.mjs";
 import { validateRootModelMemory } from "./validation/root-memory.mjs";
+import { validateWorkspaceUpdateCommand } from "./validation/update.mjs";
 import {
   validateWorkspaceFiles,
   validatePartialAreaSelection,
@@ -26,6 +28,7 @@ await validateWorkspaceRenderersAreModular();
 await validateRootModelMemory();
 await validateAreaDefinitionsAreModular();
 await validateGeneratedHumanLanguage();
+await validateBusinessOsLayout();
 await validateBranchAndPrStandards();
 await validateCliWizardProgressiveSetup();
 await validateClientWorkspaceFixture();
@@ -37,6 +40,7 @@ await validateProductOpsActivation();
 await validateActivationCliCommand();
 await validateExistingProductRepoMode();
 await validateFounderJourneyReviewPr();
+await validateWorkspaceUpdateCommand();
 await validateWriterSkipsExistingFiles();
 await validateWriterOverwritesWhenAllowed();
 

@@ -2,6 +2,27 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-30 - Layout Business OS E Comando De Update
+
+Decisão:
+
+- O scaffold passa a separar a operação do produto da infraestrutura do LeanOS:
+  - `<product-slug>-os/` contém `strategy/`, `operations/` e `growth/`;
+  - `.leanos/standard/` contém templates, checklists, instructions, examples e foundation do framework;
+  - `.leanos/runtime/` contém `agent/`, `context/`, `index/`, `traces/` e `vscode/`.
+- O setup progressivo continua criando Strategy como primeira superfície de negócio; Operations e Growth aparecem fisicamente quando ativados ou quando o modo avançado `all-at-once` é usado.
+- `leanos.yaml` passa a registrar `paths.business_os`, `paths.runtime`, `paths.standard_library`, `paths.strategy`, `paths.operations` e `paths.growth`.
+- A CLI passa a oferecer `lean-os update [--dry-run]` para migrar workspaces existentes para o layout atual.
+- O update move paths legados somente quando o destino ainda não existe, reporta conflitos e preserva arquivos de produto existentes como missing-only.
+- Modelos devem tratar pedidos como "atualizar LeanOS" ou "migrar LeanOS" como atualização de framework via `lean-os update`, não como reorganização manual de código de produto.
+
+Justificativa:
+
+- Founders precisam enxergar o sistema operacional do negócio como uma área própria e legível, sem misturar padrões internos do framework com operação do produto.
+- `.leanos/` deve ser runtime/standard do LeanOS, não um lugar onde toda a empresa fica escondida.
+- O novo layout é mais founder-friendly e também mais claro para modelos: negócio em `<product-slug>-os/`, padrões em `.leanos/standard/`, estado operacional do agente em `.leanos/runtime/`.
+- O comando de update dá uma rota segura para evoluir workspaces existentes sem quebrar produto, código, knowledge ou arquivos que já rodam.
+
 ## 2026-06-30 - Wizard CLI Curto Com Ativação Progressiva Por Padrão
 
 Decisão:

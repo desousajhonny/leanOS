@@ -171,7 +171,7 @@ Explique a tarefa prática que este playbook executa dentro de uma área.
 
 ## Conversa Guiada
 
-Use \`../../../ai-standard/foundation/guided-conversation.md\` quando o playbook precisar que o founder escolha, classifique, priorize ou confirme.
+Use \`.leanos/standard/foundation/guided-conversation.md\` quando o playbook precisar que o founder escolha, classifique, priorize ou confirme.
 
 Faça perguntas guiadas quando:
 
@@ -228,7 +228,7 @@ export function playbookYamlTemplate(): string {
   inputs:
     - <entrada>
   guided_conversation:
-    foundation: ../../../ai-standard/foundation/guided-conversation.md
+    foundation: .leanos/standard/foundation/guided-conversation.md
     use_when:
       - decisão do founder é necessária
       - atualização durável precisa de confirmação

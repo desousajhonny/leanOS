@@ -93,8 +93,8 @@ export async function validateExistingProductRepoMode() {
   assert.equal(await readFile(join(rootDir, ".github", "workflows", "existing.yml"), "utf8"), "name: Existing\n", "Existing GitHub workflow should be preserved");
 
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
-  const workspaceSummary = await readFile(join(rootDir, ".leanos", "context", "workspace-summary.md"), "utf8");
-  const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
+  const workspaceSummary = await readFile(join(rootDir, ".leanos", "runtime", "context", "workspace-summary.md"), "utf8");
+  const nextActions = await readFile(join(rootDir, ".leanos", "runtime", "context", "next-actions.md"), "utf8");
   const projectSync = parse(await readFile(join(rootDir, ".github", "leanos", "project-sync.yaml"), "utf8"));
 
   assert.equal(yaml.workspace.mode, "existing-product-repo");

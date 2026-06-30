@@ -40,23 +40,25 @@ function createdGroupsFromFiles(paths: string[]): string[] {
       "AGENT.md",
       "README.md",
       "leanos.yaml",
-      "ai-standard/",
-      ".leanos/agent",
+      ".leanos/standard/",
+      ".leanos/runtime/agent",
       ".leanos/workflows",
-      ".leanos/context",
-      ".leanos/index",
-      "strategy/",
-      "operations/",
-      "growth/",
+      ".leanos/runtime/context",
+      ".leanos/runtime/index",
+      "-os/",
       ".github/",
       ".github/leanos",
       ".github/agents",
       ".github/prompts",
-      ".leanos/vscode"
+      ".leanos/runtime/vscode"
     ].filter((group) => hasGeneratedGroup(paths, group));
 }
 
 function hasGeneratedGroup(paths: string[], group: string): boolean {
+  if (group === "-os/") {
+    return paths.some((path) => path.includes("-os/"));
+  }
+
   if (group.endsWith("/")) {
     return paths.some((path) => path.startsWith(group));
   }

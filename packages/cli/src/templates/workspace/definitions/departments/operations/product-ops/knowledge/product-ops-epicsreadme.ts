@@ -21,13 +21,13 @@ operations/product-ops/epics/
 
 - Each Epic gets one folder.
 - The Epic folder name must use stable kebab-case.
-- The Epic README must follow \`../../../ai-standard/templates/product/epic-template.md\`.
+- The Epic README must follow \`../../../.leanos/standard/templates/product/epic-template.md\`.
 - Every markdown file inside an Epic folder, except \`README.md\`, is a Feature that belongs to that Epic.
-- Feature files must follow \`../../../ai-standard/templates/product/feature-template.md\`.
+- Feature files must follow \`../../../.leanos/standard/templates/product/feature-template.md\`.
 - Não crie uma subpasta \`features/\` no scaffold de MVP.
 - Tasks stay inside Feature files as internal checklists unless separate tracking is explicitly needed.
 - GitHub sync is optional and must be confirmed by the founder.
-- GitHub mapping rules live in \`../../../.github/leanos/work-mapping.md\`.
+- GitHub mapping rules live in \`.github/leanos/work-mapping.md\`.
 
 ## Naming
 
@@ -65,7 +65,7 @@ Feature title:
 - Feature markdown file -> GitHub issue with labels \`leanos\` and \`feature\`.
 - Feature Tasks -> checklist inside the Feature GitHub issue.
 - Separate Task issue -> only when assignment, review, deployment, security or tracking needs separate ownership.
-- Remote IDs and issue numbers -> \`../../../.github/leanos/sync-state.yaml\`, not product status.
+- Remote IDs and issue numbers -> \`.github/leanos/sync-state.yaml\`, not product status.
 
 ## Sync Location Decision
 
@@ -73,7 +73,7 @@ Keep synced and unsynced Epics in this folder.
 
 Não crie \`operations/product-ops/epics/synced/\` no scaffold de MVP.
 
-Use \`../../../.github/leanos/sync-state.yaml\` to know whether an Epic or Feature is \`not_synced\`, \`sync_ready\`, \`synced\` or \`conflict\`.
+Use \`.github/leanos/sync-state.yaml\` to know whether an Epic or Feature is \`not_synced\`, \`sync_ready\`, \`synced\` or \`conflict\`.
 
 This keeps Product Ops context visible to the model without forcing it to reread a second archive folder.
 

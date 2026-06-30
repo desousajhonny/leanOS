@@ -2,6 +2,7 @@
 
 import { runAiCommand } from "./commands/ai.js";
 import { runActivateCommand } from "./commands/activate.js";
+import { runUpdateCommand } from "./commands/update.js";
 import { ui } from "./ui/theme.js";
 
 const [command, ...args] = process.argv.slice(2);
@@ -22,6 +23,11 @@ async function main(): Promise<void> {
     return;
   }
 
+  if (command === "update") {
+    await runUpdateCommand(args);
+    return;
+  }
+
   console.log(ui.error(`Unknown command: ${command}`));
   showHelp();
   process.exitCode = 1;
@@ -35,10 +41,12 @@ ${ui.muted("Agent-native startup operating system")}
 Usage:
   ${ui.command("lean-os ai")}
   ${ui.command("lean-os activate <area>")}
+  ${ui.command("lean-os update [--dry-run]")}
 
 Commands:
   ${ui.command("ai")}          Create an agent-native LeanOS startup workspace
   ${ui.command("activate")}    Activate a progressive LeanOS workspace area
+  ${ui.command("update")}      Migrate an existing LeanOS workspace to the current layout
 `);
 }
 

@@ -32,12 +32,12 @@ export const operationsSecurityPlaybooks: PlaybookDefinition[] = [
       title: "Security Automation Readiness",
       purpose: "Decide which automated security checks are required, enabled, deferred or not applicable for this workspace.",
       useWhen: ["before production readiness", "before adding security CI workflows", "when stack and repository commands become clear", "when DevOps prepares release gates"],
-      beforeActing: ["../AGENT.md", "../knowledge/security-automation.md", "../knowledge/security-baseline.md", "../../devops/AGENT.md", "../../devops/knowledge/ci-cd.md", "../../../.github/leanos/security-automation.md"],
+      beforeActing: ["../AGENT.md", "../knowledge/security-automation.md", "../knowledge/security-baseline.md", "../../devops/AGENT.md", "../../devops/knowledge/ci-cd.md", ".github/leanos/security-automation.md"],
       inputs: ["Repository stack", "Package manager", "Build/test/lint commands", "Existing CI/CD", "Deployment target", "Security baseline", "Known GitHub/security features"],
       steps: ["Carregue Security Lead e Cloud Security Reviewer", "Use `skills/security-automation-readiness/SKILL.md`", "Classifique secret scanning, dependency audit, SAST/code scanning, IaC/config scanning e API/security checks", "Marque cada item como enable now, defer with reason ou not applicable", "Defina se cada check deve bloquear PR, bloquear deploy ou apenas alertar", "Peça confirmação antes de editar CI, configurações do GitHub ou configuração de scanner"],
       securityGate: ["Production deploy requires explicit security automation status.", "Block production readiness if secret scanning and dependency audit are neither enabled nor explicitly deferred with reason.", "Block creating scanner workflows when stack, package manager or commands are unknown."],
       outputs: ["Security automation readiness matrix", "Required security gates", "Deferred checks and reasons", "Suggested next file changes", "Safe-to-continue decision"],
-      filesToUpdate: ["Update `../knowledge/security-automation.md` after explicit confirmation.", "Update `../../../.github/leanos/security-automation.md` after explicit confirmation."],
+      filesToUpdate: ["Update `../knowledge/security-automation.md` after explicit confirmation.", "Update `.github/leanos/security-automation.md` after explicit confirmation."],
       stopConditions: ["The repository stack is unknown.", "Build/test commands are unstable or missing.", "The request asks to enable scanners without understanding false-positive or CI impact.", "The request would require provider credentials or paid features not configured by the founder."]
     },
     {

@@ -1,17 +1,20 @@
 import { stringifyYaml } from "../../../../utils/yaml.js";
 import type { AreaDefinition, DepartmentWorkflowDefinition, FileEntry, RootDepartmentDefinition, WorkspaceAnswers } from "../../types.js";
 import { folderReadme } from "../../content/shared.js";
+import { createWorkspacePaths, departmentPath } from "../../paths.js";
 import { areaFiles } from "./area.js";
 import { departmentWorkflowFile } from "./workflow.js";
 
 export function rootDepartmentFiles(answers: WorkspaceAnswers, activeAreas: AreaDefinition[], activeRoots: RootDepartmentDefinition[]): FileEntry[] {
+  const paths = createWorkspacePaths(answers);
+
   return activeRoots.flatMap((department) => {
     const areas = activeAreas.filter((area) => area.root === department.key);
     const workflows = activeDepartmentWorkflows(department, areas);
 
     return [
-      { path: `${department.key}/AGENT.md`, content: departmentAgent(department, areas, workflows) },
-      { path: `${department.key}/README.md`, content: departmentReadme(department, areas) },
+      { path: `${department.key}/AGENT.md`, content: departmentAgent(department, areas, workflows, answers) },
+      { path: `${department.key}/README.md`, content: departmentReadme(department, areas, answers) },
       { path: `${department.key}/department.yaml`, content: departmentYaml(department, areas, workflows) },
       ...(workflows.length > 0
         ? [{ path: `${department.key}/workflows/README.md`, content: folderReadme(`Workflows de ${department.name}`, `Workflows internos entre áreas de ${department.name}.`, "Use quando o trabalho atravessar mais de uma área ativa dentro deste departamento.", "../department.yaml", workflows.map((workflow) => `${workflow.slug}.workflow.md`), areas.map((area) => `../${area.slug}/`), "Workflows roteiam entre áreas ativas; se um workflow estiver ausente, pergunte antes de ativar ou criar a área ausente.") }]
@@ -30,7 +33,8 @@ function activeDepartmentWorkflows(department: RootDepartmentDefinition, areas: 
   return department.workflows.filter((workflow) => workflow.requiredAreas.every((area) => activeSlugs.has(area)));
 }
 
-function departmentAgent(department: RootDepartmentDefinition, areas: AreaDefinition[], workflows: DepartmentWorkflowDefinition[]): string {
+function departmentAgent(department: RootDepartmentDefinition, areas: AreaDefinition[], workflows: DepartmentWorkflowDefinition[], answers: WorkspaceAnswers): string {
+  const paths = createWorkspacePaths(answers);
   const hasWorkflows = workflows.length > 0;
   const areaRoute = areas.some((area) => area.lead) ? "\`AGENT.md\` quando existir; caso contrário, roteie para o README" : "README";
   const workflowRoutingRules = hasWorkflows
@@ -93,7 +97,7 @@ ${workflowEntry}
 
 ## Navegação
 
-\`${department.key}/AGENT.md -> Área ${areas.some((area) => area.lead) ? "AGENT.md/README.md" : "README"} -> Papel -> Skills -> Playbook -> Saída\`
+\`${departmentPath(department.key, paths)}/AGENT.md -> Área ${areas.some((area) => area.lead) ? "AGENT.md/README.md" : "README"} -> Papel -> Skills -> Playbook -> Saída\`
 
 Carregue um dono de área antes de carregar roles, skills ou playbooks.
 `;
@@ -132,7 +136,9 @@ function departmentJourneySignals(department: RootDepartmentDefinition): string 
   return signals[department.key].map((signal) => `- ${signal}`).join("\n");
 }
 
-function departmentReadme(department: RootDepartmentDefinition, areas: AreaDefinition[]): string {
+function departmentReadme(department: RootDepartmentDefinition, areas: AreaDefinition[], answers: WorkspaceAnswers): string {
+  const paths = createWorkspacePaths(answers);
+
   return `# ${department.name}
 
 ## Propósito
@@ -155,8 +161,8 @@ ${areas.map((area) => `- \`${area.slug}/\`: ${area.purpose}`).join("\n")}
 
 ## Pastas Relacionadas
 
-- \`../.leanos/index/\`
-- \`../ai-standard/\`
+- \`../../${paths.runtimeRoot}/index/\`
+- \`../../${paths.standardRoot}/\`
 
 ## Notas para Agentes
 

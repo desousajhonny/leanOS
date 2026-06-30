@@ -1,9 +1,11 @@
 import { stringifyYaml } from "../../../utils/yaml.js";
 import { rootDepartments } from "../definitions/departments.js";
+import { createWorkspacePaths, departmentPath, standardPath, runtimePath, areaPath } from "../paths.js";
 import { getActiveWorkflowKeys, getAllAreas } from "../selectors.js";
 import type { AreaDefinition, RootDepartmentDefinition, WorkspaceAnswers } from "../types.js";
 
 export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDefinition[], activeRoots: RootDepartmentDefinition[]): string {
+  const paths = createWorkspacePaths(answers);
   const initialActivationMode = answers.initialActivationMode ?? "progressive";
   const activeDepartmentKeys = activeRoots.map((department) => department.key);
   const activeAreaKeys = activeAreas.map((area) => area.key);
@@ -39,11 +41,19 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
           }
         : null
     },
+    paths: {
+      business_os: paths.businessOsRoot,
+      runtime: paths.runtimeRoot,
+      standard_library: paths.standardRoot,
+      strategy: departmentPath("strategy", paths),
+      operations: departmentPath("operations", paths),
+      growth: departmentPath("growth", paths)
+    },
     activation: {
       mode: initialActivationMode,
       current_stage: "setup-seed",
-      progression_model: "ai-standard/foundation/founder-progression-model.md",
-      progression_gates: "ai-standard/foundation/progression-gates.md",
+      progression_model: standardPath("foundation/founder-progression-model.md", paths),
+      progression_gates: standardPath("foundation/progression-gates.md", paths),
       active_departments: activeDepartmentKeys,
       inactive_departments: availableDepartmentKeys.filter((department) => !activeDepartmentSet.has(department)),
       available_departments: availableDepartmentKeys,
@@ -74,17 +84,17 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
       context_loading: "lazy",
       navigation_chain: {
         enabled: true,
-        doc: "ai-standard/foundation/navigation-chain.md"
+        doc: standardPath("foundation/navigation-chain.md", paths)
       },
-      standard_library: "ai-standard"
+      standard_library: paths.standardRoot
     },
     departments: {
       active: activeRoots.map((department) => department.key),
       routes: Object.fromEntries(activeRoots.map((department) => [
         department.key,
         {
-          agent: `${department.key}/AGENT.md`,
-          readme: `${department.key}/README.md`
+          agent: `${departmentPath(department.key, paths)}/AGENT.md`,
+          readme: `${departmentPath(department.key, paths)}/README.md`
         }
       ]))
     },
@@ -92,9 +102,9 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
       active: activeAreas.map((area) => ({
         key: area.key,
         department: area.root,
-        path: `${area.path}/README.md`,
-        agent: area.lead ? `${area.path}/AGENT.md` : null,
-        readme: `${area.path}/README.md`
+        path: `${areaPath(area, paths)}/README.md`,
+        agent: area.lead ? `${areaPath(area, paths)}/AGENT.md` : null,
+        readme: `${areaPath(area, paths)}/README.md`
       }))
     },
     roles: {
@@ -117,17 +127,25 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
           department.key,
           activeDepartmentWorkflows(department, activeAreas).map((workflow) => ({
             key: workflow.slug,
-            path: `${department.key}/workflows/${workflow.slug}.workflow.md`
+            path: `${departmentPath(department.key, paths)}/workflows/${workflow.slug}.workflow.md`
           }))
         ])
       )
     },
     ai_standard: {
-      path: "ai-standard/README.md",
-      foundation: "ai-standard/foundation",
-      templates: "ai-standard/templates",
-      checklists: "ai-standard/checklists",
-      instructions: "ai-standard/instructions"
+      path: standardPath("README.md", paths),
+      foundation: standardPath("foundation", paths),
+      templates: standardPath("templates", paths),
+      checklists: standardPath("checklists", paths),
+      instructions: standardPath("instructions", paths)
+    },
+    runtime: {
+      path: runtimePath("", paths),
+      agent: runtimePath("agent", paths),
+      context: runtimePath("context", paths),
+      index: runtimePath("index", paths),
+      traces: runtimePath("traces", paths),
+      vscode: runtimePath("vscode", paths)
     },
     github: {
       status: answers.prepareGithubManagement ? "pending_user_token" : "not_configured",

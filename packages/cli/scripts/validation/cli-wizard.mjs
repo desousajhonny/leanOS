@@ -64,11 +64,11 @@ async function assertAdvancedSetupGeneratesAllAreas() {
 
   await generateWorkspace(rootDir, advancedAnswers);
 
-  await assertExists(join(rootDir, "strategy", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "AGENT.md"));
-  await assertExists(join(rootDir, "growth", "AGENT.md"));
-  await assertExists(join(rootDir, "growth", "marketing", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "growth", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "AGENT.md"));
 
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
 

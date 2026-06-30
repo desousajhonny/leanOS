@@ -1,6 +1,6 @@
 import { rootDepartments } from "../../definitions/departments.js";
 import { getAllAreas, getArea } from "../../selectors.js";
-import type { FileEntry } from "../../types.js";
+import type { FileEntry, WorkspaceAnswers } from "../../types.js";
 import { folderReadme, toTitle } from "../../content/shared.js";
 import { rootAgent } from "../agent.js";
 import { playbookFile, roleFile, skillFile } from "../departments.js";
@@ -50,6 +50,21 @@ const exampleGroups: ExampleGroup[] = [
     files: ["example-code-review.md"]
   }
 ];
+
+const exampleWorkspaceAnswers: WorkspaceAnswers = {
+  workspaceMode: "new-product-workspace",
+  initialActivationMode: "all-at-once",
+  prepareGithubManagement: true,
+  companyName: "Clinic AI",
+  productName: "Clinic Assistant AI",
+  productStatus: "new-product",
+  productType: "ai-agent-product",
+  description: "Example product for LeanOS asset examples.",
+  targetUser: "Small clinic owners",
+  stage: "idea",
+  mode: "founder-plus-ai-agents",
+  subareas: getAllAreas().map((area) => area.key)
+};
 
 export function exampleFiles(): FileEntry[] {
   return [
@@ -129,7 +144,7 @@ function exampleContent(_groupKey: string, fileName: string): string {
   const coherence = product.skills.find((skill) => skill.slug === "coherence") ?? product.skills[0];
   const preparePr = engineering.playbooks.find((playbook) => playbook.slug === "prepare-pr") ?? engineering.playbooks[0];
   const examples: Record<string, string> = {
-    "example-root-agent.md": rootAgent(getAllAreas(), rootDepartments),
+    "example-root-agent.md": rootAgent(getAllAreas(), rootDepartments, exampleWorkspaceAnswers),
     "example-area-agent.md": exampleAreaAgent(),
     "example-folder-readme.md": folderReadme("Pasta de Exemplo", "Propósito de exemplo.", "Use quando for relevante.", "README.md", ["README.md"], ["../"], "Notas de exemplo."),
     "example-area-readme.md": exampleAreaReadme(),

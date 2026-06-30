@@ -1,0 +1,13 @@
+roles:
+  - key: business-strategist
+    area: strategy.business
+    path: ../../../example-ai-product-os/strategy/business/roles/business-strategist.role.md
+  - key: product-strategist
+    area: strategy.product
+    path: ../../../example-ai-product-os/strategy/product/roles/product-strategist.role.md
+  - key: product-manager
+    area: strategy.product
+    path: ../../../example-ai-product-os/strategy/product/roles/product-manager.role.md
+  - key: roadmap-planner
+    area: strategy.roadmap
+    path: ../../../example-ai-product-os/strategy/roadmap/roles/roadmap-planner.role.md

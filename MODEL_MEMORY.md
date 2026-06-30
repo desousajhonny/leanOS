@@ -7,7 +7,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 ## Estado Atual
 
 - Repositório: `desousajhonny/leanOS`.
-- Branch local de trabalho atual: `feature/short-progressive-cli-wizard`.
+- Branch local de trabalho atual: `feature/business-os-layout`.
 - Remote `origin/main` foi enviado para o commit `765ec67` em 2026-06-29.
 - `AGENT.md` raiz é o ponto de entrada para comportamento de agente no nível do projeto.
 - Source of truth do framework vive em `docs/framework/source-of-truth/`.
@@ -15,6 +15,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 ## Decisões Recentes
 
+- 2026-06-30: Adotar layout Business OS no scaffold: `<product-slug>-os/` para Strategy/Operations/Growth, `.leanos/standard/` para padrões do framework e `.leanos/runtime/` para agent/context/index/traces/vscode. Adicionar `lean-os update` para migrar workspaces existentes com preview via `--dry-run`.
 - 2026-06-30: Simplificar o wizard CLI em PT-BR. O setup recomendado passa a ser `progressive`; a opção avançada `all-at-once` prepara todas as áreas, mas não reintroduz multiselect manual de departamentos.
 - 2026-06-29: Expandir padrões gerados de branch e PR. Branches agora cobrem `feature`, `issue`, `fix`, `chore`, `docs` e `spike`; templates de PR passam a exigir título estilo Conventional Commit quando fizer sentido, status de prontidão e seção `Deploy / Rollback`.
 - 2026-06-29: Adicionar memória de continuidade de modelo na raiz. Esta memória serve apenas para continuidade de handoff/status/próximo passo; decisões duráveis do framework continuam em `docs/framework/source-of-truth/decision-log.md`.
@@ -25,6 +26,8 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 ## Mudanças Recentes
 
+- Working tree: scaffold reorganizado para gerar `<product-slug>-os/README.md`, departamentos dentro do Business OS, `.leanos/standard/` e `.leanos/runtime/`; `leanos.yaml.paths` registra os novos roots; validação `validateBusinessOsLayout` cobre paths físicos e impede referências antigas como `ai-standard/` e `.leanos/context`.
+- Working tree: comando `lean-os update [--dry-run]` adicionado. Ele move diretórios legados (`strategy`, `operations`, `growth`, `ai-standard`, `.leanos/context|index|agent|traces|vscode`) para o novo layout quando o destino não existe, reporta conflitos e sobrescreve apenas arquivos de framework/runtime/roteamento, preservando arquivos de produto existentes como missing-only.
 - Working tree: wizard `lean-os ai` simplificado para nome do produto, tipo, descrição, modo de preparação e GitHub; perguntas de usuário alvo, estágio e modo de operação foram removidas do fluxo interativo; generator ganhou `initialActivationMode` com `progressive` e `all-at-once`; validação `validateCliWizardProgressiveSetup` adicionada.
 - Working tree: padrões de branch/PR fortalecidos em `.github/leanos/branch-rules.md`, `.github/PULL_REQUEST_TEMPLATE.md`, templates GitHub do `ai-standard`, skill `create-pr`, playbooks `branch-for-feature` e `prepare-pr`, com validação `validateBranchAndPrStandards`.
 - Working tree: documentação da jornada `Review e PR` adicionada em `docs/framework/founder-journeys/review-pr.md`, `journey-map.md` marcado como concluído para a etapa 7 e validação `validateFounderJourneyReviewPr` adicionada ao generator. A validação cobre documentação da jornada e ativação sequencial Strategy-only -> Product Ops -> Engineering para rota de PR/review.

@@ -111,7 +111,7 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "skills/",
         "playbooks/",
         "workflows/",
-        "ai-standard/",
+        ".leanos/standard/",
         ".leanos/",
         ".github/ without explicit GitHub step confirmation",
         ".env",
@@ -241,7 +241,7 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "roadmap priority or delivery-scope changes without Strategy/Roadmap handoff",
         "parent Epic completion when only one Feature was merged",
         "new Features, Epics or roadmap items without routing to the proper workflow",
-        "roles/, skills/, playbooks/, workflows/, commands/ or ai-standard/"
+        "roles/, skills/, playbooks/, workflows/, commands/ or .leanos/standard/"
       ],
       externalCapabilities: [
         "GitHub may be read only when the founder provides or confirms a PR, issue or repository reference.",

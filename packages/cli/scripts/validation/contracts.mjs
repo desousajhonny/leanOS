@@ -70,7 +70,7 @@ import {
 } from "./areas.mjs";
 
 export async function assertWorkflowContract(rootDir) {
-  const workflowsIndexPath = join(rootDir, ".leanos", "index", "workflows.yaml");
+  const workflowsIndexPath = join(rootDir, ".leanos", "runtime", "index", "workflows.yaml");
   const workflowsIndex = parse(await readFile(workflowsIndexPath, "utf8"));
   const workflows = workflowsIndex.workflows ?? [];
   const runtimeWorkflowDir = join(rootDir, ".leanos", "workflows");

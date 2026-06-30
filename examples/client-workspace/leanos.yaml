@@ -11,11 +11,18 @@ workspace:
     has_github_dir: false
     has_vercel_config: false
     git_remote_origin: null
+paths:
+  business_os: example-ai-product-os
+  runtime: .leanos/runtime
+  standard_library: .leanos/standard
+  strategy: example-ai-product-os/strategy
+  operations: example-ai-product-os/operations
+  growth: example-ai-product-os/growth
 activation:
   mode: progressive
   current_stage: setup-seed
-  progression_model: ai-standard/foundation/founder-progression-model.md
-  progression_gates: ai-standard/foundation/progression-gates.md
+  progression_model: .leanos/standard/foundation/founder-progression-model.md
+  progression_gates: .leanos/standard/foundation/progression-gates.md
   active_departments:
     - strategy
   inactive_departments:
@@ -85,32 +92,32 @@ agent:
   context_loading: lazy
   navigation_chain:
     enabled: true
-    doc: ai-standard/foundation/navigation-chain.md
-  standard_library: ai-standard
+    doc: .leanos/standard/foundation/navigation-chain.md
+  standard_library: .leanos/standard
 departments:
   active:
     - strategy
   routes:
     strategy:
-      agent: strategy/AGENT.md
-      readme: strategy/README.md
+      agent: example-ai-product-os/strategy/AGENT.md
+      readme: example-ai-product-os/strategy/README.md
 subareas:
   active:
     - key: strategy.business
       department: strategy
-      path: strategy/business/README.md
-      agent: strategy/business/AGENT.md
-      readme: strategy/business/README.md
+      path: example-ai-product-os/strategy/business/README.md
+      agent: example-ai-product-os/strategy/business/AGENT.md
+      readme: example-ai-product-os/strategy/business/README.md
     - key: strategy.product
       department: strategy
-      path: strategy/product/README.md
-      agent: strategy/product/AGENT.md
-      readme: strategy/product/README.md
+      path: example-ai-product-os/strategy/product/README.md
+      agent: example-ai-product-os/strategy/product/AGENT.md
+      readme: example-ai-product-os/strategy/product/README.md
     - key: strategy.roadmap
       department: strategy
-      path: strategy/roadmap/README.md
-      agent: strategy/roadmap/AGENT.md
-      readme: strategy/roadmap/README.md
+      path: example-ai-product-os/strategy/roadmap/README.md
+      agent: example-ai-product-os/strategy/roadmap/AGENT.md
+      readme: example-ai-product-os/strategy/roadmap/README.md
 roles:
   ownership: area-first
   active:
@@ -152,11 +159,18 @@ workflows:
   by_department:
     strategy: []
 ai_standard:
-  path: ai-standard/README.md
-  foundation: ai-standard/foundation
-  templates: ai-standard/templates
-  checklists: ai-standard/checklists
-  instructions: ai-standard/instructions
+  path: .leanos/standard/README.md
+  foundation: .leanos/standard/foundation
+  templates: .leanos/standard/templates
+  checklists: .leanos/standard/checklists
+  instructions: .leanos/standard/instructions
+runtime:
+  path: .leanos/runtime
+  agent: .leanos/runtime/agent
+  context: .leanos/runtime/context
+  index: .leanos/runtime/index
+  traces: .leanos/runtime/traces
+  vscode: .leanos/runtime/vscode
 github:
   status: pending_user_token
   project_management: prepared

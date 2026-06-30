@@ -40,7 +40,7 @@ Use this folder before planning code changes, branch work, tests, PRs or reviews
 - \`../skills/\`
 - \`../playbooks/\`
 - \`../../product-ops/mvp/\`
-- \`../../../.github/leanos/\`
+- \`.github/leanos/\`
 
 ## Boundary
 

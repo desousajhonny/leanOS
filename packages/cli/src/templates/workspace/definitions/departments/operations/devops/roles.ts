@@ -6,7 +6,7 @@ export const operationsDevopsRoles: RoleDefinition[] = [
       title: "DevOps Engineer",
       purpose: "Prepare release, environment, GitHub workflow and observability practices.",
       useWhen: ["deployment or CI is involved", "GitHub Project setup is needed", "runtime operations need documentation", "environment risk exists"],
-      beforeActing: ["../AGENT.md", "../area.yaml", "../knowledge/environments.md", "../knowledge/deployment-readiness.md", "../knowledge/ci-cd.md", "../knowledge/observability.md", "../../../.github/leanos/project-sync.yaml"],
+      beforeActing: ["../AGENT.md", "../area.yaml", "../knowledge/environments.md", "../knowledge/deployment-readiness.md", "../knowledge/ci-cd.md", "../knowledge/observability.md", ".github/leanos/project-sync.yaml"],
       skills: ["configure-environments", "setup-ci", "plan-deployment", "define-observability", "prepare-release"],
       playbooks: ["setup-ci-cd", "plan-deployment", "configure-github-project", "configure-environments", "define-observability", "release-operations"]
     },
@@ -15,7 +15,7 @@ export const operationsDevopsRoles: RoleDefinition[] = [
       title: "GitHub DevOps",
       purpose: "Guide safe GitHub repository, Project, labels and sync configuration without storing secrets.",
       useWhen: ["the founder wants to connect GitHub", "Epics/Features sync needs setup", "GitHub Project fields or labels need validation"],
-      beforeActing: ["../AGENT.md", "../knowledge/github-management.md", "../../../.github/leanos/setup-guide.md", "../../../.github/leanos/capability-contract.md", "../../../.github/leanos/github-settings.example.json", "../../../.github/leanos/project-sync.yaml", "../../../.github/leanos/sync-state.yaml", "../../../.github/leanos/labels.yaml"],
+      beforeActing: ["../AGENT.md", "../knowledge/github-management.md", ".github/leanos/setup-guide.md", ".github/leanos/capability-contract.md", ".github/leanos/github-settings.example.json", ".github/leanos/project-sync.yaml", ".github/leanos/sync-state.yaml", ".github/leanos/labels.yaml"],
       skills: ["configure-github-project"],
       playbooks: ["configure-github-project"]
     },

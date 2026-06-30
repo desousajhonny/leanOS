@@ -11,7 +11,7 @@ export function traceFiles(): FileEntry[] {
         "Use apenas quando o founder pedir para debugar, inspecionar ou compartilhar como o LeanOS roteou uma sessão.",
         "../agent/protocols/chief-trace.md",
         ["trace-index.yaml", "trace-template.md"],
-        ["../agent/protocols/chief-trace.md", "../index/", "../../AGENT.md"],
+        ["../agent/protocols/chief-trace.md", "../index/", "../../../AGENT.md"],
         "Traces são locais, opt-in e seguros por padrão. Eles resumem roteamento, arquivos carregados, perguntas, decisões, confirmações e motivos de parada. Não armazene transcrições completas, segredos, tokens, valores de .env, código privado ou dados de cliente desnecessários."
       )
     },
@@ -79,10 +79,10 @@ Não crie trace por padrão para toda interação normal de produto.
 
 Read:
 
-- \`../../traces/README.md\`
-- \`../../traces/trace-template.md\`
-- \`../../traces/trace-index.yaml\`
-- \`../../../AGENT.md\`
+- \`.leanos/runtime/traces/README.md\`
+- \`.leanos/runtime/traces/trace-template.md\`
+- \`.leanos/runtime/traces/trace-index.yaml\`
+- \`AGENT.md\`
 
 Depois inspecione apenas os arquivos já envolvidos na rota da sessão ou a menor rota ausente necessária para explicar o diagnóstico.
 
@@ -91,14 +91,14 @@ Depois inspecione apenas os arquivos já envolvidos na rota da sessão ou a meno
 Use:
 
 \`\`\`text
-.leanos/traces/YYYY-MM-DD-<short-kebab-intent>.trace.md
+.leanos/runtime/traces/YYYY-MM-DD-<short-kebab-intent>.trace.md
 \`\`\`
 
 Exemplos:
 
-- \`.leanos/traces/2026-06-24-github-sync.trace.md\`
-- \`.leanos/traces/2026-06-24-feature-delivery.trace.md\`
-- \`.leanos/traces/2026-06-24-start-leanos.trace.md\`
+- \`.leanos/runtime/traces/2026-06-24-github-sync.trace.md\`
+- \`.leanos/runtime/traces/2026-06-24-feature-delivery.trace.md\`
+- \`.leanos/runtime/traces/2026-06-24-start-leanos.trace.md\`
 
 ## Processo
 
@@ -117,8 +117,8 @@ Exemplos:
 
 Depois de confirmação explícita do founder, escreva:
 
-- \`../../traces/YYYY-MM-DD-<short-kebab-intent>.trace.md\`
-- \`../../traces/trace-index.yaml\`
+- \`.leanos/runtime/traces/YYYY-MM-DD-<short-kebab-intent>.trace.md\`
+- \`.leanos/runtime/traces/trace-index.yaml\`
 
 ## Atualizações Proibidas
 

@@ -1,4 +1,0 @@
-departments:
-  - key: strategy
-    agent: ../../strategy/AGENT.md
-    readme: ../../strategy/README.md

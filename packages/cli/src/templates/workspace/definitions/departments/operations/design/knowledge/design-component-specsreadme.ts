@@ -26,7 +26,7 @@ Create \`<component-name>.md\` only when:
 
 Use:
 
-\`../../../../ai-standard/templates/design/component-spec-template.md\`
+\`../../../../.leanos/standard/templates/design/component-spec-template.md\`
 
 ## Não Faça
 

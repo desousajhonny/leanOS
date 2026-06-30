@@ -74,7 +74,7 @@ export async function assertVsCodeIntegration(rootDir) {
   const agentFile = await readFile(join(rootDir, ".github", "agents", "leanos-chief.agent.md"), "utf8");
   const startPromptFile = await readFile(join(rootDir, ".github", "prompts", "start-leanos.prompt.md"), "utf8");
   const aliasPromptFile = await readFile(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"), "utf8");
-  const vscodeReadme = await readFile(join(rootDir, ".leanos", "vscode", "README.md"), "utf8");
+  const vscodeReadme = await readFile(join(rootDir, ".leanos", "runtime", "vscode", "README.md"), "utf8");
 
   assert(agentFile.includes("name: LeanOS Chief"), "LeanOS Chief agent should declare its VS Code name");
   assert(agentFile.includes("AGENT.md"), "LeanOS Chief agent should point to AGENT.md");
@@ -83,16 +83,16 @@ export async function assertVsCodeIntegration(rootDir) {
   assert(agentFile.includes("Respect active departments and areas in `leanos.yaml`"), "LeanOS Chief agent should respect active departments and areas");
   assert(agentFile.includes("Não carregue paths de áreas ausentes"), "LeanOS Chief agent should avoid missing area paths");
   assert(agentFile.includes("propose-first mode"), "LeanOS Chief agent should use propose-first mode during init");
-  assert(agentFile.includes("Não enriqueça roles, skills, playbooks, workflows, `ai-standard/` ou `.github/`"), "LeanOS Chief agent should protect operating assets during init");
+  assert(agentFile.includes("Não enriqueça roles, skills, playbooks, workflows, `.leanos/standard/` ou `.github/`"), "LeanOS Chief agent should protect operating assets during init");
   assert.equal(agentFile.includes(".leanos/commands"), false, "LeanOS Chief agent should not depend on generated command files");
 
   for (const expectedLink of [
     "../../AGENT.md",
     "../../leanos.yaml",
-    "../../.leanos/context/workspace-summary.md",
-    "../../.leanos/context/current-focus.md",
-    "../../.leanos/context/next-actions.md",
-    "../../.leanos/index/routing-map.yaml"
+    "../../.leanos/runtime/context/workspace-summary.md",
+    "../../.leanos/runtime/context/current-focus.md",
+    "../../.leanos/runtime/context/next-actions.md",
+    "../../.leanos/runtime/index/routing-map.yaml"
   ]) {
     assert(startPromptFile.includes(expectedLink), `LeanOS start prompt should reference ${expectedLink}`);
     assert(aliasPromptFile.includes(expectedLink), `LeanOS init alias prompt should reference ${expectedLink}`);
@@ -104,7 +104,7 @@ export async function assertVsCodeIntegration(rootDir) {
   assert(startPromptFile.includes("Ask the Required Founder Interview questions only when the loaded context does not already answer them"), "LeanOS start prompt should avoid duplicate founder questions");
   assert(startPromptFile.includes("Use propose-first mode"), "LeanOS start prompt should use propose-first mode");
   assert(startPromptFile.includes("Write only after explicit user confirmation"), "LeanOS start prompt should require confirmation before writes");
-  assert(startPromptFile.includes("Não modifique roles, skills, playbooks, workflows, `ai-standard/`, `.github/`"), "LeanOS start prompt should protect operating assets");
+  assert(startPromptFile.includes("Não modifique roles, skills, playbooks, workflows, `.leanos/standard/`, `.github/`"), "LeanOS start prompt should protect operating assets");
   assert(aliasPromptFile.includes("name: leanos-init"), "LeanOS init alias prompt should keep the legacy slash command name");
   assert(aliasPromptFile.includes("compatibility alias"), "LeanOS init alias prompt should be compatibility-only");
   assert.equal(aliasPromptFile.includes(".leanos/commands"), false, "LeanOS init alias prompt should not defer to command files");
@@ -126,9 +126,9 @@ export async function assertGitHubReadiness(rootDir) {
   const githubReadme = await readFile(join(rootDir, ".github", "leanos", "README.md"), "utf8");
   const githubSetupGuide = await readFile(join(rootDir, ".github", "leanos", "setup-guide.md"), "utf8");
   const githubCapabilityContract = await readFile(join(rootDir, ".github", "leanos", "capability-contract.md"), "utf8");
-  const githubRole = await readFile(join(rootDir, "operations", "devops", "roles", "github-devops.role.md"), "utf8");
-  const githubSkill = await readFile(join(rootDir, "operations", "devops", "skills", "configure-github-project/SKILL.md"), "utf8");
-  const githubPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "configure-github-project.playbook.md"), "utf8");
+  const githubRole = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "roles", "github-devops.role.md"), "utf8");
+  const githubSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "configure-github-project/SKILL.md"), "utf8");
+  const githubPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "configure-github-project.playbook.md"), "utf8");
   const settings = JSON.parse(settingsExample);
   const projectSyncYaml = parse(projectSync);
 
@@ -204,21 +204,21 @@ export async function assertGitHubIssuePrWorkflow(rootDir) {
   const prTemplate = await readFile(join(rootDir, ".github", "PULL_REQUEST_TEMPLATE.md"), "utf8");
   const branchRules = await readFile(join(rootDir, ".github", "leanos", "branch-rules.md"), "utf8");
   const prRules = await readFile(join(rootDir, ".github", "leanos", "pr-validation-rules.md"), "utf8");
-  const aiEpicTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "github-epic-template.md"), "utf8");
-  const aiFeatureTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "github-feature-template.md"), "utf8");
-  const productEpicTemplate = await readFile(join(rootDir, "ai-standard", "templates", "product", "epic-template.md"), "utf8");
-  const productFeatureTemplate = await readFile(join(rootDir, "ai-standard", "templates", "product", "feature-template.md"), "utf8");
-  const productOpsEpicsReadme = await readFile(join(rootDir, "operations", "product-ops", "epics", "README.md"), "utf8");
-  const issueMatrix = await readFile(join(rootDir, "ai-standard", "templates", "github", "delivery-readiness-matrix-template.md"), "utf8");
-  const branchTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "branch-name-template.md"), "utf8");
-  const aiPrTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "pull-request-template.md"), "utf8");
-  const codeReviewTemplate = await readFile(join(rootDir, "ai-standard", "templates", "review", "code-review-template.md"), "utf8");
-  const epicToFeaturesPlaybook = await readFile(join(rootDir, "operations", "product-ops", "playbooks", "epic-to-features.playbook.md"), "utf8");
-  const shapeEpicSkill = await readFile(join(rootDir, "operations", "product-ops", "skills", "shape-epic/SKILL.md"), "utf8");
-  const branchSkill = await readFile(join(rootDir, "operations", "engineering", "skills", "create-branch/SKILL.md"), "utf8");
-  const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
-  const preparePrPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
-  const prValidationPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
+  const aiEpicTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "github", "github-epic-template.md"), "utf8");
+  const aiFeatureTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "github", "github-feature-template.md"), "utf8");
+  const productEpicTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "product", "epic-template.md"), "utf8");
+  const productFeatureTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "product", "feature-template.md"), "utf8");
+  const productOpsEpicsReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "epics", "README.md"), "utf8");
+  const issueMatrix = await readFile(join(rootDir, ".leanos", "standard", "templates", "github", "delivery-readiness-matrix-template.md"), "utf8");
+  const branchTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "github", "branch-name-template.md"), "utf8");
+  const aiPrTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "github", "pull-request-template.md"), "utf8");
+  const codeReviewTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "review", "code-review-template.md"), "utf8");
+  const epicToFeaturesPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "playbooks", "epic-to-features.playbook.md"), "utf8");
+  const shapeEpicSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "skills", "shape-epic/SKILL.md"), "utf8");
+  const branchSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "create-branch/SKILL.md"), "utf8");
+  const branchPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
+  const preparePrPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
+  const prValidationPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
   assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Fully activated workspace should not generate command files");
 
   assert(epicTemplate.includes('title: "[EPIC] "'), "Epic issue form should use canonical EPIC title prefix");
@@ -331,16 +331,16 @@ export async function assertGitHubIssuePrWorkflow(rootDir) {
 
 export async function assertFounderIntentRouting(rootDir) {
   const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
-  const strategyAgent = await readFile(join(rootDir, "strategy", "AGENT.md"), "utf8");
+  const strategyAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "AGENT.md"), "utf8");
   const runtimeReadme = await readFile(join(rootDir, ".leanos", "README.md"), "utf8");
-  const operatingRules = await readFile(join(rootDir, ".leanos", "agent", "operating-rules.md"), "utf8");
-  const whereWeAreProtocol = await readFile(join(rootDir, ".leanos", "agent", "protocols", "where-we-are.md"), "utf8");
+  const operatingRules = await readFile(join(rootDir, ".leanos", "runtime", "agent", "operating-rules.md"), "utf8");
+  const whereWeAreProtocol = await readFile(join(rootDir, ".leanos", "runtime", "agent", "protocols", "where-we-are.md"), "utf8");
   const vscodeAgent = await readFile(join(rootDir, ".github", "agents", "leanos-chief.agent.md"), "utf8");
-  const workflowsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "workflows.yaml"), "utf8"));
-  const rootAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "agents", "root-agent-template.md"), "utf8");
-  const departmentAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "agents", "department-agent-template.md"), "utf8");
-  const areaAgentTemplate = await readFile(join(rootDir, "ai-standard", "templates", "agents", "area-agent-template.md"), "utf8");
-  const areaReadmeTemplate = await readFile(join(rootDir, "ai-standard", "templates", "structure", "area-readme-template.md"), "utf8");
+  const workflowsIndex = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "workflows.yaml"), "utf8"));
+  const rootAgentTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "agents", "root-agent-template.md"), "utf8");
+  const departmentAgentTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "agents", "department-agent-template.md"), "utf8");
+  const areaAgentTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "agents", "area-agent-template.md"), "utf8");
+  const areaReadmeTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "structure", "area-readme-template.md"), "utf8");
 
   assert.equal(rootAgent.includes("## Founder Intent Routing"), false, "Root AGENT.md should not contain separate Founder Intent Routing");
   assert.equal(rootAgent.includes("strategy/workflows/idea-to-roadmap.workflow.md"), false, "Root AGENT.md should not bypass Strategy AGENT for workflows");
@@ -360,8 +360,8 @@ export async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("## Tratamento de Linguagem Natural"), "Root AGENT.md should route natural-language requests");
   assert.equal(rootAgent.includes("If a natural-language request clearly matches an existing LeanOS command"), false, "Root AGENT.md should not route natural language through command files");
   assert(rootAgent.includes("## Roteamento de Intenção de Progressão"), "Root AGENT.md should include progression intent routing");
-  assert(rootAgent.includes("`ai-standard/foundation/founder-progression-model.md`"), "Root AGENT.md should reference the Founder Progression Model");
-  assert(rootAgent.includes("`ai-standard/foundation/progression-gates.md`"), "Root AGENT.md should reference progression gates");
+  assert(rootAgent.includes("`.leanos/standard/foundation/founder-progression-model.md`"), "Root AGENT.md should reference the Founder Progression Model");
+  assert(rootAgent.includes("`.leanos/standard/foundation/progression-gates.md`"), "Root AGENT.md should reference progression gates");
   assert(rootAgent.includes("Intenção -> Estágio Atual -> Gate -> Requisitos Ativos -> Rota"), "Root AGENT.md should define the progression routing decision shape");
   assert(rootAgent.includes("retorne `activation_required` em vez de abrir ou inventar paths"), "Root AGENT.md should return activation_required instead of inventing missing areas");
   assert(rootAgent.includes("Não responda apenas com `activation_required`"), "Root AGENT.md should require natural activation language");
@@ -371,51 +371,51 @@ export async function assertFounderIntentRouting(rootDir) {
   assert(rootAgent.includes("Leia `leanos.yaml` primeiro e diferencie `active_*`, `inactive_*` e `founder_selected_*`"), "Root AGENT.md should distinguish activation state fields");
   assert(rootAgent.includes("Não carregue departamentos inativos"), "Root AGENT.md should forbid inactive department loading");
   assert(rootAgent.includes("Não trate `available` como `exists`"), "Root AGENT.md should distinguish available from existing workspace assets");
-  assert(rootAgent.includes("Começo, retomada ou calibração de ideia: `strategy/AGENT.md`"), "Root AGENT.md should route start and idea calibration through Strategy Product");
-  assert(rootAgent.includes("Escopo inicial de validação do MVP, roadmap, priorização ou rota de validação: `strategy/AGENT.md`"), "Root AGENT.md should route initial MVP validation scope through Strategy");
-  assert(rootAgent.includes("Escopo de validação do MVP ou primeiro roadmap do MVP: `strategy/AGENT.md`"), "Root AGENT.md should keep first MVP roadmap in Strategy");
+  assert(rootAgent.includes("Começo, retomada ou calibração de ideia: `clinic-assistant-ai-os/strategy/AGENT.md`"), "Root AGENT.md should route start and idea calibration through Strategy Product");
+  assert(rootAgent.includes("Escopo inicial de validação do MVP, roadmap, priorização ou rota de validação: `clinic-assistant-ai-os/strategy/AGENT.md`"), "Root AGENT.md should route initial MVP validation scope through Strategy");
+  assert(rootAgent.includes("Escopo de validação do MVP ou primeiro roadmap do MVP: `clinic-assistant-ai-os/strategy/AGENT.md`"), "Root AGENT.md should keep first MVP roadmap in Strategy");
   assert(rootAgent.includes("Planejamento de backlog do MVP: retorne `activation_required` para `operations.product-ops`"), "Root AGENT.md should gate MVP backlog planning behind Product Ops activation");
   assert(rootAgent.includes("## Mapa de Intenções Naturais"), "Root AGENT.md should include a compact natural intent map");
   assert(rootAgent.includes("Use este mapa como orientação de roteamento, não como detalhe de execução"), "Root AGENT.md should keep intent map lightweight");
-  assert(rootAgent.includes("Nova ideia ou avaliação de Feature: `strategy/AGENT.md`"), "Root AGENT.md should route idea evaluation through Strategy AGENT");
+  assert(rootAgent.includes("Nova ideia ou avaliação de Feature: `clinic-assistant-ai-os/strategy/AGENT.md`"), "Root AGENT.md should route idea evaluation through Strategy AGENT");
   assert(rootAgent.includes("Item de entrega para Epic ou Epic para Features: retorne `activation_required` para `operations.product-ops`"), "Root AGENT.md should gate delivery planning behind Product Ops activation");
   assert(rootAgent.includes("Implementação de Feature: retorne `activation_required` para `operations.engineering`"), "Root AGENT.md should gate implementation behind Engineering activation");
   assert(rootAgent.includes("Setup de GitHub, configuração de GitHub Projects ou sync de Epics/Features: retorne `activation_required` para `operations.devops`"), "Root AGENT.md should gate GitHub sync behind DevOps activation");
   assert(rootAgent.includes("## Perguntas de Status e Readiness"), "Root AGENT.md should handle status and readiness questions");
-  assert(rootAgent.includes("`.leanos/agent/protocols/where-we-are.md`"), "Root AGENT.md should route status and readiness questions to the where-we-are protocol");
+  assert(rootAgent.includes("`.leanos/runtime/agent/protocols/where-we-are.md`"), "Root AGENT.md should route status and readiness questions to the where-we-are protocol");
   assert(rootAgent.includes("## Trace e Diagnóstico"), "Root AGENT.md should handle trace and diagnostic questions");
-  assert(rootAgent.includes("`.leanos/agent/protocols/chief-trace.md`"), "Root AGENT.md should route trace diagnostics to the chief-trace protocol");
+  assert(rootAgent.includes("`.leanos/runtime/agent/protocols/chief-trace.md`"), "Root AGENT.md should route trace diagnostics to the chief-trace protocol");
   assert(rootAgent.includes("não responda de memória"), "Root AGENT.md should avoid memory-only status answers");
   assert(rootAgent.includes("## Roteamento de Padrões do Framework"), "Root AGENT.md should route framework standards through AI Standard");
-  assert(rootAgent.includes("Use `ai-standard/README.md` somente quando o usuário pedir para criar, alterar, revisar ou validar assets do framework LeanOS"), "Root AGENT.md should load AI Standard only for framework asset work");
+  assert(rootAgent.includes("Use `.leanos/standard/README.md` somente quando o usuário pedir para criar, alterar, revisar ou validar assets do framework LeanOS"), "Root AGENT.md should load AI Standard only for framework asset work");
   assert(rootAgent.includes("Não adivinhe o template, checklist ou instrução correta de memória"), "Root AGENT.md should prevent framework asset hallucination");
   assert(rootAgent.includes("Siga sua rota até a menor foundation, instrução, template, checklist ou exemplo necessário"), "Root AGENT.md should delegate AI Standard internals to AI Standard README");
-  assert(rootAgent.includes("Não use `ai-standard/` para definir estratégia de produto"), "Root AGENT.md should keep product work on the Navigation Chain");
-  assert.equal(rootAgent.includes("Load the matching creation instruction from `ai-standard/instructions/`"), false, "Root AGENT.md should not list AI Standard internals directly");
-  assert.equal(rootAgent.includes("Use the matching template from `ai-standard/templates/`"), false, "Root AGENT.md should not list template internals directly");
-  assert.equal(rootAgent.includes("Validate with the matching checklist from `ai-standard/checklists/`"), false, "Root AGENT.md should not list checklist internals directly");
+  assert(rootAgent.includes("Não use `.leanos/standard/` para definir estratégia de produto"), "Root AGENT.md should keep product work on the Navigation Chain");
+  assert.equal(rootAgent.includes("Load the matching creation instruction from `.leanos/standard/instructions/`"), false, "Root AGENT.md should not list AI Standard internals directly");
+  assert.equal(rootAgent.includes("Use the matching template from `.leanos/standard/templates/`"), false, "Root AGENT.md should not list template internals directly");
+  assert.equal(rootAgent.includes("Validate with the matching checklist from `.leanos/standard/checklists/`"), false, "Root AGENT.md should not list checklist internals directly");
   assert(rootAgent.includes("`AGENT.md`: dono operacional daquele nível"), "Root AGENT.md should define AGENT.md responsibility");
   assert(rootAgent.includes("`README.md`: mapa e explicação do diretório"), "Root AGENT.md should define README responsibility");
   assert(rootAgent.includes("Entre no departamento ou área dona antes de agir"), "Root AGENT.md should use owner-first red lines");
   assert(rootAgent.includes("Quando uma área tiver seu próprio `AGENT.md`"), "Root AGENT.md should understand area-level agents");
   assert(rootAgent.includes("Não invente workflows, roles, skills, playbooks ou templates ausentes"), "Root AGENT.md should prevent asset invention");
   assert(rootAgent.includes("## Roteamento Raiz"), "Root AGENT.md should have a single root routing section");
-  assert(rootAgent.includes("Strategy: `strategy/AGENT.md`"), "Root AGENT.md should route Strategy through its AGENT");
-  assert.equal(rootAgent.includes("Operations: `operations/AGENT.md`"), false, "Root AGENT.md should not expose inactive Operations as an active route");
-  assert.equal(rootAgent.includes("Growth: `growth/AGENT.md`"), false, "Root AGENT.md should not expose inactive Growth as an active route");
+  assert(rootAgent.includes("Strategy: `clinic-assistant-ai-os/strategy/AGENT.md`"), "Root AGENT.md should route Strategy through its AGENT");
+  assert.equal(rootAgent.includes("Operations: `clinic-assistant-ai-os/operations/AGENT.md`"), false, "Root AGENT.md should not expose inactive Operations as an active route");
+  assert.equal(rootAgent.includes("Growth: `clinic-assistant-ai-os/growth/AGENT.md`"), false, "Root AGENT.md should not expose inactive Growth as an active route");
   assert.equal(rootAgent.includes("## Active Root Departments"), false, "Root AGENT.md should not duplicate active departments and routing");
   assert.equal(rootAgent.includes("## Roteamento\n"), false, "Root AGENT.md should use Root Routing instead of a separate Routing section");
   assert.equal(rootAgent.includes("## Workspace Mutation Rules"), false, "Root AGENT.md should not keep the old mutation rules section");
   assert.equal(rootAgent.includes("`strategy/product/README.md`"), false, "Root AGENT.md should not route directly to Strategy Product area");
   assert.equal(rootAgent.includes("`operations/engineering/README.md`"), false, "Root AGENT.md should not route directly to Operations Engineering area");
-  assert(rootAgent.includes("Workflows operacionais vivem nos departamentos raiz"), "AGENT.md should keep business workflows out of .leanos");
+  assert(rootAgent.includes("Workflows operacionais vivem no OS do produto"), "AGENT.md should keep business workflows out of .leanos");
   assert(strategyAgent.includes("CEO / PMO / Product Strategy operator"), "Strategy AGENT should define its executive operating owner");
   assert(strategyAgent.includes("## Regras de Roteamento"), "Strategy AGENT should define department-level routing rules");
-  assert.equal(await exists(join(rootDir, "strategy", "workflows", "README.md")), false, "Strategy should not generate workflow index when no Strategy workflow is active");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "workflows", "README.md")), false, "Strategy should not generate workflow index when no Strategy workflow is active");
   assert.equal(strategyAgent.includes("workflows/README.md"), false, "Strategy AGENT should not point to workflow index when no Strategy workflow is active");
   assert(strategyAgent.includes("## Entrada de Playbook"), "Strategy AGENT should route multi-step Strategy work through area playbooks");
   assert.equal(strategyAgent.includes("workflows/idea-to-roadmap.workflow.md"), false, "Strategy AGENT should not enumerate every workflow path");
-  assert(runtimeReadme.includes("Workflows de negócio vivem em departamentos ou áreas"), ".leanos README should keep workflows local to departments or areas");
+  assert(runtimeReadme.includes("Workflows de negócio vivem no OS do produto"), ".leanos README should keep workflows local to the product OS");
   assert(operatingRules.includes("Pedidos em linguagem natural do founder são first-class"), "Operating rules should support natural-language founder intent");
   assert(operatingRules.includes("O AGENT.md raiz roteia para o departamento correto"), "Operating rules should route workflow selection through department agents");
   assert(operatingRules.includes("Para pedidos de status, retomada, readiness"), "Operating rules should route status and readiness through where-we-are protocol");
@@ -432,7 +432,7 @@ export async function assertFounderIntentRouting(rootDir) {
   assert(operatingRules.includes("`AGENT.md` é o dono operacional do seu nível; `README.md` é o mapa do diretório"), "Operating rules should define AGENT and README responsibilities");
   assert(operatingRules.includes("Arquivos `AGENT.md` de área, quando presentes, escolhem o papel especialista"), "Operating rules should define area AGENT responsibility");
   assert.equal(operatingRules.includes("Root AGENT.md must not bypass department AGENT.md"), false, "Operating rules should avoid narrow workflow-bypass prohibitions");
-  assert(operatingRules.includes("Workflows de negócio vivem em departamentos raiz ou áreas, não em `.leanos/`"), "Operating rules should keep business workflows out of .leanos");
+  assert(operatingRules.includes("Workflows de negócio vivem no OS do produto, não em `.leanos/`"), "Operating rules should keep business workflows out of .leanos");
   assert(vscodeAgent.includes("Founder requests can be natural language"), "VS Code agent should support founder intent routing");
   assert(vscodeAgent.includes("Then use the department `AGENT.md` to choose either a coordination workflow or the smallest active area"), "VS Code agent should route workflows and area work through department AGENT files");
   assert(vscodeAgent.includes("Enter the owning department or area before acting"), "VS Code agent should use owner-first routing");
@@ -462,11 +462,11 @@ export async function assertFounderIntentRouting(rootDir) {
   assert(rootAgentTemplate.includes("## Narração de Rota"), "Root agent template should include routing narration");
   assert(rootAgentTemplate.includes("## Tratamento de Linguagem Natural"), "Root agent template should include natural language handling");
   assert(rootAgentTemplate.includes("## Perguntas de Status e Readiness"), "Root agent template should include status and readiness handling");
-  assert(rootAgentTemplate.includes("`.leanos/agent/protocols/where-we-are.md`"), "Root agent template should point to where-we-are protocol");
+  assert(rootAgentTemplate.includes("`.leanos/runtime/agent/protocols/where-we-are.md`"), "Root agent template should point to where-we-are protocol");
   assert(rootAgentTemplate.includes("## Trace e Diagnóstico"), "Root agent template should include trace diagnostics handling");
-  assert(rootAgentTemplate.includes("`.leanos/agent/protocols/chief-trace.md`"), "Root agent template should point to chief-trace protocol");
+  assert(rootAgentTemplate.includes("`.leanos/runtime/agent/protocols/chief-trace.md`"), "Root agent template should point to chief-trace protocol");
   assert(rootAgentTemplate.includes("## Roteamento de Padrões do Framework"), "Root agent template should include framework standards routing");
-  assert(rootAgentTemplate.includes("Use `ai-standard/README.md` somente quando o usuário pedir para criar, alterar, revisar ou validar assets do framework LeanOS"), "Root agent template should route framework standards through AI Standard README");
+  assert(rootAgentTemplate.includes("Use `.leanos/standard/README.md` somente quando o usuário pedir para criar, alterar, revisar ou validar assets do framework LeanOS"), "Root agent template should route framework standards through AI Standard README");
   assert(rootAgentTemplate.includes("Não adivinhe o template, checklist ou instrução correta de memória"), "Root agent template should prevent framework asset hallucination");
   assert(rootAgentTemplate.includes("Quando uma área tiver seu próprio `AGENT.md`, use esse arquivo como dono operacional da área"), "Root agent template should include area AGENT rule");
   assert(departmentAgentTemplate.includes("Se o pedido do founder precisar de coordenação multiárea"), "Department agent template should route coordination journeys through workflow index");

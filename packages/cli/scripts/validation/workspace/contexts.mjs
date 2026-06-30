@@ -101,19 +101,19 @@ export async function validateGrowthValidationContext() {
 
 async function assertProgressiveStrategyOnlyWorkspace(rootDir, founderSelectedSubareas) {
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
-  const rolesIndex = parse(await readFile(join(rootDir, ".leanos", "index", "roles.yaml"), "utf8"));
-  const skillsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "skills.yaml"), "utf8"));
-  const playbooksIndex = parse(await readFile(join(rootDir, ".leanos", "index", "playbooks.yaml"), "utf8"));
-  const routingMap = parse(await readFile(join(rootDir, ".leanos", "index", "routing-map.yaml"), "utf8"));
-  const workspaceSummary = await readFile(join(rootDir, ".leanos", "context", "workspace-summary.md"), "utf8");
+  const rolesIndex = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "roles.yaml"), "utf8"));
+  const skillsIndex = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "skills.yaml"), "utf8"));
+  const playbooksIndex = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "playbooks.yaml"), "utf8"));
+  const routingMap = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "routing-map.yaml"), "utf8"));
+  const workspaceSummary = await readFile(join(rootDir, ".leanos", "runtime", "context", "workspace-summary.md"), "utf8");
 
-  await assertExists(join(rootDir, "strategy", "AGENT.md"));
-  await assertExists(join(rootDir, "strategy", "business", "AGENT.md"));
-  await assertExists(join(rootDir, "strategy", "product", "AGENT.md"));
-  await assertExists(join(rootDir, "strategy", "roadmap", "AGENT.md"));
-  assert.equal(await exists(join(rootDir, "strategy", "validation")), false, "Strategy Validation should not be generated");
-  assert.equal(await exists(join(rootDir, "operations")), false, "Operations should wait for progressive activation");
-  assert.equal(await exists(join(rootDir, "growth")), false, "Growth should wait for progressive activation");
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "AGENT.md"));
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "validation")), false, "Strategy Validation should not be generated");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations")), false, "Operations should wait for progressive activation");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "growth")), false, "Growth should wait for progressive activation");
   assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Progressive workspaces should not generate slash-command files");
 
   assert.deepEqual(yaml.departments.active, ["strategy"]);
@@ -135,10 +135,10 @@ async function assertProgressiveStrategyOnlyWorkspace(rootDir, founderSelectedSu
   assert.equal(skillsIndex.skills.some((skill) => skill.key === "create-launch-plan"), false, "Growth skill should wait for Growth activation");
   assert.equal(playbooksIndex.playbooks.some((playbook) => playbook.key === "mvp-backlog-planning"), false, "Product Ops playbook should wait for Operations activation");
 
-  assert.equal(routingMap.routing.departments.strategy.agent, "../../strategy/AGENT.md");
+  assert.equal(routingMap.routing.departments.strategy.agent, "../../../clinic-assistant-ai-os/strategy/AGENT.md");
   assert.equal(routingMap.routing.departments.operations, undefined);
   assert.equal(routingMap.routing.departments.growth, undefined);
-  assert.equal(routingMap.routing.areas.product.agent, "../../strategy/product/AGENT.md");
+  assert.equal(routingMap.routing.areas.product.agent, "../../../clinic-assistant-ai-os/strategy/product/AGENT.md");
   assert.equal(routingMap.routing.areas.validation, undefined);
   assert.equal(routingMap.routing.areas.engineering, undefined);
   assert.equal(routingMap.routing.areas.marketing, undefined);

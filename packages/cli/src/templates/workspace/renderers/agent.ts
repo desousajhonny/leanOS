@@ -1,9 +1,17 @@
-import type { AreaDefinition, FileEntry, RootDepartmentDefinition } from "../types.js";
+import { createWorkspacePaths, departmentPath, runtimePath, standardPath } from "../paths.js";
+import type { AreaDefinition, FileEntry, RootDepartmentDefinition, WorkspaceAnswers } from "../types.js";
 import { folderReadme } from "../content/shared.js";
 import { chiefTraceProtocol } from "./traces.js";
 
-export function rootAgent(_activeAreas: AreaDefinition[], activeRoots: RootDepartmentDefinition[]): string {
-  const routingLines = activeRoots.map((department) => `- ${department.name}: \`${department.key}/AGENT.md\`\n  Use para ${department.requestTypes}.\n  Mapa: \`${department.key}/README.md\``);
+export function rootAgent(_activeAreas: AreaDefinition[], activeRoots: RootDepartmentDefinition[], answers: WorkspaceAnswers): string {
+  const paths = createWorkspacePaths(answers);
+  const strategyAgent = `${departmentPath("strategy", paths)}/AGENT.md`;
+  const operationsAgent = `${departmentPath("operations", paths)}/AGENT.md`;
+  const growthAgent = `${departmentPath("growth", paths)}/AGENT.md`;
+  const whereWeAre = runtimePath("agent/protocols/where-we-are.md", paths);
+  const chiefTrace = runtimePath("agent/protocols/chief-trace.md", paths);
+  const standardReadme = standardPath("README.md", paths);
+  const routingLines = activeRoots.map((department) => `- ${department.name}: \`${departmentPath(department.key, paths)}/AGENT.md\`\n  Use para ${department.requestTypes}.\n  Mapa: \`${departmentPath(department.key, paths)}/README.md\``);
 
   return `# Agente LeanOS
 
@@ -16,10 +24,10 @@ Seu trabalho é ajudar o usuário a operar uma empresa de produto com coerência
 Leia estes arquivos primeiro:
 
 - \`leanos.yaml\`
-- \`.leanos/context/workspace-summary.md\`
-- \`.leanos/context/current-focus.md\`
-- \`.leanos/context/next-actions.md\`
-- \`.leanos/index/routing-map.yaml\`
+- \`${runtimePath("context/workspace-summary.md", paths)}\`
+- \`${runtimePath("context/current-focus.md", paths)}\`
+- \`${runtimePath("context/next-actions.md", paths)}\`
+- \`${runtimePath("index/routing-map.yaml", paths)}\`
 
 ## Linhas Vermelhas / Regras Não Negociáveis
 
@@ -32,11 +40,11 @@ Leia estes arquivos primeiro:
 - Não carregue o workspace inteiro quando existir uma rota menor.
 - Não escreva secrets em arquivos versionados.
 - Peça confirmação antes de modificar arquivos de knowledge, decisão ou framework.
-- Não crie nem modifique assets do framework LeanOS de memória. Roteie por \`ai-standard/README.md\`.
-- Para pedidos de status/readiness como "onde estamos?", "o que temos?", "o que falta?", "já podemos desenvolver?" ou similares, carregue \`.leanos/agent/protocols/where-we-are.md\` antes de recomendar próximo passo ou implementação.
-- Para pedidos de trace, debug, diagnóstico, "o que o LeanOS fez?" ou "envie um relatório para o framework", carregue \`.leanos/agent/protocols/chief-trace.md\` e crie apenas um trace local seguro depois de confirmação.
-- Durante startup, não enriqueça roles, skills, playbooks, workflows, \`ai-standard/\` ou \`.github/\` com contexto da empresa/produto.
-- Não modifique roles, skills, playbooks, workflows, \`ai-standard/\` ou \`.github/\` durante startup.
+- Não crie nem modifique assets do framework LeanOS de memória. Roteie por \`${standardReadme}\`.
+- Para pedidos de status/readiness como "onde estamos?", "o que temos?", "o que falta?", "já podemos desenvolver?" ou similares, carregue \`${whereWeAre}\` antes de recomendar próximo passo ou implementação.
+- Para pedidos de trace, debug, diagnóstico, "o que o LeanOS fez?" ou "envie um relatório para o framework", carregue \`${chiefTrace}\` e crie apenas um trace local seguro depois de confirmação.
+- Durante startup, não enriqueça roles, skills, playbooks, workflows, \`${paths.standardRoot}/\` ou \`.github/\` com contexto da empresa/produto.
+- Não modifique roles, skills, playbooks, workflows, \`${paths.standardRoot}/\` ou \`.github/\` durante startup.
 - Durante startup, proponha atualizações primeiro e escreva somente depois de confirmação explícita do usuário.
 - Não escreva durante a primeira resposta.
 - Não modifique arquivos de fonte da verdade, decisão, framework ou runtime até o usuário confirmar explicitamente as mudanças propostas.
@@ -57,14 +65,14 @@ Linguagem natural é a interface principal. Roteie pedidos do founder pelo Rotea
 
 Exemplos:
 
-- "me ajude a definir o ICP" -> \`strategy/AGENT.md\`
-- "defina o escopo de validação do MVP" ou "o que o primeiro MVP deve validar?" -> \`strategy/AGENT.md\`
+- "me ajude a definir o ICP" -> \`${strategyAgent}\`
+- "defina o escopo de validação do MVP" ou "o que o primeiro MVP deve validar?" -> \`${strategyAgent}\`
 - "transforme este item de MVP em backlog ou Epic" -> retorne \`activation_required\` para \`operations.product-ops\` quando Product Ops estiver inativo
 - "revise este PR" -> retorne \`activation_required\` para \`operations.engineering\` quando Engineering estiver inativo
 
 ## Roteamento de Intenção de Progressão
 
-Para decisões de progressão do founder, use \`ai-standard/foundation/founder-progression-model.md\` como regra operacional para estágio e comportamento de ativação, e \`ai-standard/foundation/progression-gates.md\` como matriz concreta de gates para contexto obrigatório, próximos estágios permitidos e próximos estágios bloqueados. Use esses arquivos apenas para disciplina de roteamento; decisões de produto continuam pertencendo ao departamento ativo pela Cadeia de Navegação.
+Para decisões de progressão do founder, use \`${standardPath("foundation/founder-progression-model.md", paths)}\` como regra operacional para estágio e comportamento de ativação, e \`${standardPath("foundation/progression-gates.md", paths)}\` como matriz concreta de gates para contexto obrigatório, próximos estágios permitidos e próximos estágios bloqueados. Use esses arquivos apenas para disciplina de roteamento; decisões de produto continuam pertencendo ao departamento ativo pela Cadeia de Navegação.
 
 Aplique este formato de decisão:
 
@@ -74,11 +82,11 @@ Intenção -> Estágio Atual -> Gate -> Requisitos Ativos -> Rota
 
 Regras:
 
-- Começo, retomada ou calibração de ideia: \`strategy/AGENT.md\`, depois Strategy Product e \`idea-calibration.playbook.md\`.
-- Escopo inicial de validação do MVP, roadmap, priorização ou rota de validação: \`strategy/AGENT.md\`.
-- Planejamento de backlog do MVP, Epic, Feature ou formatação de entrega: \`operations/AGENT.md\` somente quando a área obrigatória de Operations estiver ativa.
-- Implementação, branch, PR ou review: \`operations/AGENT.md\` somente quando Engineering estiver ativo e a readiness de entrega estiver clara.
-- Launch, aquisição, onboarding ou learning loop: \`growth/AGENT.md\` somente quando a área obrigatória de Growth estiver ativa.
+- Começo, retomada ou calibração de ideia: \`${strategyAgent}\`, depois Strategy Product e \`idea-calibration.playbook.md\`.
+- Escopo inicial de validação do MVP, roadmap, priorização ou rota de validação: \`${strategyAgent}\`.
+- Planejamento de backlog do MVP, Epic, Feature ou formatação de entrega: \`${operationsAgent}\` somente quando a área obrigatória de Operations estiver ativa.
+- Implementação, branch, PR ou review: \`${operationsAgent}\` somente quando Engineering estiver ativo e a readiness de entrega estiver clara.
+- Launch, aquisição, onboarding ou learning loop: \`${growthAgent}\` somente quando a área obrigatória de Growth estiver ativa.
 - Se o próximo passo exigir departamento ou área inativa/ausente, retorne \`activation_required\` em vez de abrir ou inventar paths.
 - Não carregue departamentos inativos.
 - Não trate \`available\` como \`exists\`.
@@ -106,17 +114,29 @@ Posso ativar Operations/Product Ops e criar os arquivos minimos para esse proxim
 activation_required: operations.product-ops
 \`\`\`
 
+## Atualização do LeanOS
+
+Quando o founder pedir "atualizar LeanOS", "migrar LeanOS", "reorganizar para o layout atual" ou algo equivalente, trate como atualização do framework, não como trabalho de produto.
+
+Regras:
+
+1. Leia \`leanos.yaml\` e identifique o layout atual.
+2. Se houver acesso a ferramentas locais, rode \`lean-os update\` na raiz do workspace.
+3. Use \`lean-os update --dry-run\` quando o founder quiser prévia antes de mover arquivos.
+4. Não mova código de produto, \`src/\`, \`tests/\`, \`package.json\` ou arquivos existentes do app.
+5. Se o comando reportar conflito, pare e explique quais paths precisam de decisão humana.
+
 ## Mapa de Intenções Naturais
 
 Use este mapa como orientação de roteamento, não como detalhe de execução. Depois de selecionar a rota, carregue o departamento dono e deixe esse arquivo decidir o próximo workflow ou área.
 
-- Setup ou retomada do LeanOS: \`strategy/AGENT.md\` -> Strategy Product -> \`idea-calibration.playbook.md\`
-- Status, retomada ou readiness: \`.leanos/agent/protocols/where-we-are.md\`
-- Escopo de validação do MVP ou primeiro roadmap do MVP: \`strategy/AGENT.md\`
+- Setup ou retomada do LeanOS: \`${strategyAgent}\` -> Strategy Product -> \`idea-calibration.playbook.md\`
+- Status, retomada ou readiness: \`${whereWeAre}\`
+- Escopo de validação do MVP ou primeiro roadmap do MVP: \`${strategyAgent}\`
 - Planejamento de backlog do MVP: retorne \`activation_required\` para \`operations.product-ops\` até Product Ops estar ativo
-- Checagem de coerência: \`strategy/AGENT.md\`
-- Nova ideia ou avaliação de Feature: \`strategy/AGENT.md\` -> Strategy Product -> \`idea-calibration.playbook.md\`
-- Promoção de roadmap/backlog: \`strategy/AGENT.md\`
+- Checagem de coerência: \`${strategyAgent}\`
+- Nova ideia ou avaliação de Feature: \`${strategyAgent}\` -> Strategy Product -> \`idea-calibration.playbook.md\`
+- Promoção de roadmap/backlog: \`${strategyAgent}\`
 - Item de entrega para Epic ou Epic para Features: retorne \`activation_required\` para \`operations.product-ops\` até Operations estar ativo
 - Implementação de Feature: retorne \`activation_required\` para \`operations.engineering\` até Engineering estar ativo
 - Setup de GitHub, configuração de GitHub Projects ou sync de Epics/Features: retorne \`activation_required\` para \`operations.devops\` até DevOps estar ativo
@@ -131,7 +151,7 @@ Quando o founder perguntar onde o produto está, o que existe até agora, o que 
 
 Carregue:
 
-\`.leanos/agent/protocols/where-we-are.md\`
+\`${whereWeAre}\`
 
 Use esse protocolo para inspecionar os menores arquivos relevantes de readiness de Strategy, Operations e GitHub. Depois explique o momento atual do produto, pré-requisitos ausentes, risco de pular etapas e rota mais segura.
 
@@ -141,9 +161,9 @@ Quando o founder pedir para debugar comportamento do LeanOS, inspecionar o que o
 
 Carregue:
 
-\`.leanos/agent/protocols/chief-trace.md\`
+\`${chiefTrace}\`
 
-Use esse protocolo para criar um trace local, estruturado e redigido em \`.leanos/traces/\` somente depois de confirmação explícita.
+Use esse protocolo para criar um trace local, estruturado e redigido em \`${runtimePath("traces", paths)}/\` somente depois de confirmação explícita.
 
 ## Cadeia de Navegação
 
@@ -179,14 +199,14 @@ ${routingLines.join("\n\n")}
 
 ## LeanOS Runtime
 
-\`.leanos/\` contém arquivos de runtime para contexto, índices, traces locais e integração com VS Code.
-\`.leanos/\` não possui workflows de negócio. Workflows operacionais vivem nos departamentos raiz ou em suas áreas quando o departamento tem workflows ativos, como \`operations/workflows/\`.
+\`${paths.runtimeRoot}/\` contém arquivos de runtime para contexto, índices, traces locais e integração com VS Code.
+\`.leanos/\` não possui workflows de negócio. Workflows operacionais vivem no OS do produto, como \`${departmentPath("operations", paths)}/workflows/\`.
 
-\`ai-standard/\` é o roteador de padrões do framework para criar, alterar, revisar ou validar assets LeanOS.
+\`${paths.standardRoot}/\` é o roteador de padrões do framework para criar, alterar, revisar ou validar assets LeanOS.
 
 ## Roteamento de Padrões do Framework
 
-Use \`ai-standard/README.md\` somente quando o usuário pedir para criar, alterar, revisar ou validar assets do framework LeanOS.
+Use \`${standardReadme}\` somente quando o usuário pedir para criar, alterar, revisar ou validar assets do framework LeanOS.
 
 Assets de framework incluem:
 
@@ -199,32 +219,61 @@ Não adivinhe o template, checklist ou instrução correta de memória.
 
 Quando padrões de framework forem necessários:
 
-1. Carregue \`ai-standard/README.md\`.
+1. Carregue \`${standardReadme}\`.
 2. Siga sua rota até a menor foundation, instrução, template, checklist ou exemplo necessário.
 3. Declare o tipo de asset selecionado, dono e path alvo.
 4. Proponha a mudança antes de escrever.
 5. Valide com o checklist correspondente antes da saída final.
 
-Não use \`ai-standard/\` para definir estratégia de produto, MVP, roadmap, design, trabalho de engineering ou trabalho de growth. Roteie isso pela Cadeia de Navegação primeiro.
+Não use \`${paths.standardRoot}/\` para definir estratégia de produto, MVP, roadmap, design, trabalho de engineering ou trabalho de growth. Roteie isso pela Cadeia de Navegação primeiro.
 `;
 }
 
-export function leanosRuntimeFiles(): FileEntry[] {
+export function leanosRuntimeFiles(answers: WorkspaceAnswers): FileEntry[] {
+  const paths = createWorkspacePaths(answers);
+  const strategyAgent = `${departmentPath("strategy", paths)}/AGENT.md`;
+  const standardRoot = paths.standardRoot;
+  const runtimeRoot = paths.runtimeRoot;
+
   return [
-    { path: ".leanos/README.md", content: folderReadme("Runtime LeanOS", "Arquivos de runtime para o LeanOS Chief.", "Use para contexto, índices, traces locais e integração com VS Code.", "context/current-focus.md", ["agent/", "context/", "index/", "traces/", "vscode/"], ["../AGENT.md", "../ai-standard/", "../strategy/", "../operations/", "../growth/"], "Esta pasta é suporte de runtime. Workflows de negócio vivem em departamentos ou áreas quando ativos, como `operations/workflows/`. Roles, skills e playbooks operacionais vivem nas áreas do workspace. Traces são diagnósticos locais, não telemetria.") },
-    { path: ".leanos/agent/README.md", content: folderReadme("Agente", "Orientação operacional do Chief Agent.", "Use ao definir como o LeanOS Chief carrega contexto, ativa rotas e formata saída.", "chief-agent.md", ["chief-agent.md", "operating-rules.md", "context-loading.md", "role-activation.md", "output-standards.md", "protocols/"], ["../../ai-standard/", "../context/"], "Mantenha esta pasta concisa. Roteie trabalho de produto para departamentos e áreas raiz. Protocolos são procedimentos internos do agente, não workflows de produto.") },
+    { path: ".leanos/README.md", content: folderReadme("LeanOS", "Shell local do LeanOS.", "Use para localizar runtime, standard library e arquivos internos do agente.", "runtime/context/current-focus.md", ["runtime/context/", "runtime/index/", "runtime/traces/", "standard/"], ["../AGENT.md", `../${paths.businessOsRoot}/`], `Runtime vive em \`${runtimeRoot}/\`. Padrões do framework vivem em \`${standardRoot}/\`. Workflows de negócio vivem no OS do produto. Traces são diagnósticos locais, não telemetria.`) },
+    { path: ".leanos/agent/README.md", content: folderReadme("Agente", "Orientação operacional do Chief Agent.", "Use ao definir como o LeanOS Chief carrega contexto, ativa rotas e formata saída.", "chief-agent.md", ["chief-agent.md", "operating-rules.md", "context-loading.md", "role-activation.md", "output-standards.md", "protocols/"], ["../../standard/", "../context/", "../index/"], "Mantenha esta pasta concisa. Roteie trabalho de produto para o OS do produto. Protocolos são procedimentos internos do agente, não workflows de produto.") },
     { path: ".leanos/agent/chief-agent.md", content: "# Chief Agent\n\nO LeanOS Chief é o bootloader e dispatcher do workspace.\n\nEle deve carregar AGENT.md, leanos.yaml, arquivos de contexto e o mapa de roteamento antes de agir.\n" },
-    { path: ".leanos/agent/operating-rules.md", content: "# Regras Operacionais\n\n- Comece em `../../AGENT.md`.\n- Pedidos em linguagem natural do founder são first-class e a interface principal. O AGENT.md raiz roteia para o departamento correto; arquivos AGENT.md de departamento roteiam para workflows ou áreas.\n- `AGENT.md` é o dono operacional do seu nível; `README.md` é o mapa do diretório.\n- Arquivos `AGENT.md` de área, quando presentes, escolhem o papel especialista antes de carregar skills e playbooks.\n- Para pedidos de startup, roteie por `../../AGENT.md` e `../../strategy/AGENT.md`.\n- Para pedidos de status, retomada, readiness ou \"podemos desenvolver?\", carregue `protocols/where-we-are.md` antes de recomendar próximo passo.\n- Para pedidos de trace, debug ou diagnóstico, carregue `protocols/chief-trace.md` e crie apenas um trace local seguro depois de confirmação.\n- Carregue apenas contexto relevante.\n- Entre no departamento ou área dona antes de agir.\n- Não implemente antes de carregar o workflow, área, papel, skill e playbook correspondentes.\n- Workflows de negócio vivem em departamentos raiz ou áreas, não em `.leanos/`.\n- Durante startup, proponha atualizações primeiro e escreva apenas depois de confirmação explícita do usuário.\n- Não escreva durante a primeira resposta.\n- Não modifique roles, skills, playbooks, workflows, `ai-standard/` ou `.github/` durante startup.\n- Não escreva secrets em arquivos versionados.\n- Customize arquivos do framework somente quando o usuário pedir explicitamente para alterar o próprio LeanOS.\n" },
+    { path: ".leanos/agent/operating-rules.md", content: `# Regras Operacionais
+
+- Comece em \`AGENT.md\`.
+- Pedidos em linguagem natural do founder são first-class e a interface principal. O AGENT.md raiz roteia para o departamento correto; arquivos AGENT.md de departamento roteiam para workflows ou áreas.
+- \`AGENT.md\` é o dono operacional do seu nível; \`README.md\` é o mapa do diretório.
+- Arquivos \`AGENT.md\` de área, quando presentes, escolhem o papel especialista antes de carregar skills e playbooks.
+- Para pedidos de startup, roteie por \`AGENT.md\` e \`${strategyAgent}\`.
+- Para pedidos de status, retomada, readiness ou "podemos desenvolver?", carregue \`protocols/where-we-are.md\` antes de recomendar próximo passo.
+- Para pedidos de trace, debug ou diagnóstico, carregue \`protocols/chief-trace.md\` e crie apenas um trace local seguro depois de confirmação.
+- Carregue apenas contexto relevante.
+- Entre no departamento ou área dona antes de agir.
+- Não implemente antes de carregar o workflow, área, papel, skill e playbook correspondentes.
+- Workflows de negócio vivem no OS do produto, não em \`.leanos/\`.
+- Durante startup, proponha atualizações primeiro e escreva apenas depois de confirmação explícita do usuário.
+- Não escreva durante a primeira resposta.
+- Não modifique roles, skills, playbooks, workflows, \`${standardRoot}/\` ou \`.github/\` durante startup.
+- Não escreva secrets em arquivos versionados.
+- Customize arquivos do framework somente quando o usuário pedir explicitamente para alterar o próprio LeanOS.
+` },
     { path: ".leanos/agent/context-loading.md", content: "# Carregamento de Contexto\n\nLeanOS usa carregamento preguiçoso de contexto.\n\nCarregue `../context/` primeiro e depois use `../index/` para escolher o menor path relevante.\n" },
     { path: ".leanos/agent/role-activation.md", content: "# Ativação de Papel\n\nRoles vivem dentro de áreas ativas do workspace.\n\nNão ative um papel de uma área inativa ou ausente sem perguntar ao usuário.\n" },
     { path: ".leanos/agent/output-standards.md", content: "# Padrões de Saída\n\nToda saída deve incluir:\n\n- O que foi carregado\n- Decisão ou resultado\n- Arquivos para atualizar, se houver\n- Próxima rota recomendada\n" },
     { path: ".leanos/agent/protocols/README.md", content: folderReadme("Protocolos de Agente", "Procedimentos internos do LeanOS Chief para status de sessão, apoio de roteamento, diagnóstico de readiness e trace local.", "Use quando o usuário fizer uma pergunta meta sobre o workspace em vez de pedir execução de um workflow de produto.", "where-we-are.md", ["where-we-are.md", "chief-trace.md"], ["../", "../../context/", "../../index/", "../../traces/"], "Protocolos não possuem decisões de produto. Eles inspecionam fontes existentes, registram diagnósticos seguros quando solicitado e recomendam a próxima rota segura.") },
-    { path: ".leanos/agent/protocols/where-we-are.md", content: whereWeAreProtocol() },
+    { path: ".leanos/agent/protocols/where-we-are.md", content: whereWeAreProtocol(answers) },
     { path: ".leanos/agent/protocols/chief-trace.md", content: chiefTraceProtocol() }
   ];
 }
 
-function whereWeAreProtocol(): string {
+function whereWeAreProtocol(answers: WorkspaceAnswers): string {
+  const paths = createWorkspacePaths(answers);
+  const strategyAgent = `${departmentPath("strategy", paths)}/AGENT.md`;
+  const strategyProduct = `${departmentPath("strategy", paths)}/product`;
+  const strategyRoadmap = `${departmentPath("strategy", paths)}/roadmap`;
+  const operationsProductOps = `${departmentPath("operations", paths)}/product-ops`;
+
   return `# Protocolo Onde Estamos
 
 ## Propósito
@@ -265,32 +314,32 @@ Carregue apenas os menores arquivos relevantes. Comece aqui:
 2. \`../../context/current-focus.md\`
 3. \`../../context/next-actions.md\`
 4. \`../../index/workflows.yaml\`
-5. \`../../../leanos.yaml\`
+5. \`leanos.yaml\`
 
 Depois inspecione fontes conforme a pergunta:
 
 ### Baseline de Strategy
 
-- \`../../../strategy/product/knowledge/brief.md\`
-- \`../../../strategy/product/knowledge/problem.md\`
-- \`../../../strategy/product/knowledge/icp.md\`
-- \`../../../strategy/roadmap/knowledge/backlog.md\`
-- \`../../../strategy/roadmap/knowledge/roadmap.md\`
+- \`${strategyProduct}/knowledge/brief.md\`
+- \`${strategyProduct}/knowledge/problem.md\`
+- \`${strategyProduct}/knowledge/icp.md\`
+- \`${strategyRoadmap}/knowledge/backlog.md\`
+- \`${strategyRoadmap}/knowledge/roadmap.md\`
 
 ### Readiness de Entrega
 
-- \`../../../operations/product-ops/knowledge/delivery-scope.md\`
-- \`../../../operations/product-ops/knowledge/issue-readiness.md\`
-- \`../../../operations/product-ops/knowledge/ready-to-develop.md\`
-- \`../../../operations/product-ops/mvp/prd.md\`
-- \`../../../operations/product-ops/mvp/acceptance-criteria.md\`
-- \`../../../operations/product-ops/mvp/release-checklist.md\`
+- \`${operationsProductOps}/knowledge/delivery-scope.md\`
+- \`${operationsProductOps}/knowledge/issue-readiness.md\`
+- \`${operationsProductOps}/knowledge/ready-to-develop.md\`
+- \`${operationsProductOps}/mvp/prd.md\`
+- \`${operationsProductOps}/mvp/acceptance-criteria.md\`
+- \`${operationsProductOps}/mvp/release-checklist.md\`
 
 ### Readiness de GitHub / Execução
 
-- \`../../../.github/leanos/project-sync.yaml\`
-- \`../../../.github/leanos/sync-state.yaml\`
-- \`../../../.leanos/index/workflows.yaml\`
+- \`.github/leanos/project-sync.yaml\`
+- \`.github/leanos/sync-state.yaml\`
+- \`${runtimePath("index/workflows.yaml", paths)}\`
 
 Não leia todos estes arquivos se a resposta já estiver clara pelos arquivos anteriores.
 
@@ -314,7 +363,7 @@ Classifique o momento atual como um destes:
 
 ## Gate de Desenvolvimento
 
-Antes de responder que o produto, item de roadmap, Epic ou issue está pronto para desenvolver, compare o workspace atual com \`../../../operations/product-ops/knowledge/ready-to-develop.md\`.
+Antes de responder que o produto, item de roadmap, Epic ou issue está pronto para desenvolver, compare o workspace atual com \`${operationsProductOps}/knowledge/ready-to-develop.md\`.
 
 Não recomende implementação até o diagnóstico confirmar:
 
@@ -331,11 +380,11 @@ Se algo estiver ausente, explique a lacuna e recomende a próxima rota LeanOS em
 
 ## Rotas Recomendadas por Lacuna
 
-- Strategy ausente -> \`strategy/AGENT.md\`
-- Estratégia de produto fraca -> Strategy Product via \`strategy/AGENT.md\`
-- Escopo de validação do MVP ausente ou fraco -> Strategy Product via \`strategy/AGENT.md\`
+- Strategy ausente -> \`${strategyAgent}\`
+- Estratégia de produto fraca -> Strategy Product via \`${strategyAgent}\`
+- Escopo de validação do MVP ausente ou fraco -> Strategy Product via \`${strategyAgent}\`
 - Backlog do MVP ausente depois que o MVP Validation Scope de Strategy foi aprovado -> playbook Product Ops \`mvp-backlog-planning\` quando Product Ops estiver ativo; caso contrário, ativar \`operations.product-ops\`
-- Roadmap ausente para produto operando -> Strategy Roadmap via \`strategy/AGENT.md\`
+- Roadmap ausente para produto operando -> Strategy Roadmap via \`${strategyAgent}\`
 - Epic local ausente -> playbook Product Ops \`delivery-item-to-epic\`
 - Features ausentes -> playbook Product Ops \`epic-to-features\` quando Product Ops estiver ativo
 - Implementação pronta -> workflow Engineering \`feature-to-delivery-cycle\`

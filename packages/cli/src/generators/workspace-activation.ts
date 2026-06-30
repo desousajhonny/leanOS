@@ -9,6 +9,7 @@ import { indexFiles } from "../templates/workspace/renderers/indexes.js";
 import { createLeanOsYaml } from "../templates/workspace/renderers/leanos-yaml.js";
 import { workspaceReadme } from "../templates/workspace/renderers/root-readme.js";
 import { rootAgent } from "../templates/workspace/renderers/agent.js";
+import { createWorkspacePaths, materializeWorkspaceFiles } from "../templates/workspace/paths.js";
 import type { AreaDefinition, FileEntry, RootDepartment, Subarea, WorkspaceAnswers } from "../templates/workspace/types.js";
 
 export type WorkspaceActivationResult = WriteWorkspaceResult & {
@@ -46,6 +47,7 @@ export async function activateWorkspaceArea(rootDir: string, answersOrAreaKey: W
 }
 
 export function createWorkspaceActivationFiles(answers: WorkspaceAnswers, activeAreaKeys: Subarea[], activatedArea: AreaDefinition): FileEntry[] {
+  const paths = createWorkspacePaths(answers);
   const activeAreas = getAreaDefinitions(activeAreaKeys);
   const activeRoots = getActiveRootDepartments(activeAreas);
   const activatedRoot = activatedArea.root;
@@ -63,14 +65,14 @@ export function createWorkspaceActivationFiles(answers: WorkspaceAnswers, active
     return isDepartmentStateFile(file.path, activatedRoot);
   });
 
-  return [
-    { path: "AGENT.md", content: rootAgent(activeAreas, activeRoots) },
+  return materializeWorkspaceFiles([
+    { path: "AGENT.md", content: rootAgent(activeAreas, activeRoots, answers) },
     { path: "README.md", content: workspaceReadme(answers, activeAreas, activeRoots) },
     { path: "leanos.yaml", content: createLeanOsYaml(answers, activeAreas, activeRoots) },
-    ...indexFiles(activeAreas, activeRoots),
+    ...indexFiles(activeAreas, activeRoots, answers),
     ...contextFiles(answers, activeAreas, activeRoots),
     ...activatedRootFiles
-  ];
+  ], paths);
 }
 
 async function readLeanOsYaml(rootDir: string): Promise<Record<string, unknown>> {

@@ -72,7 +72,7 @@ ${rules.map((rule) => `- ${rule}`).join("\n")}
 export function guidedConversationSection(items: string[]): string {
   return `## Conversa Guiada
 
-Use \`../../../ai-standard/foundation/guided-conversation.md\`.
+Use \`.leanos/standard/foundation/guided-conversation.md\`.
 
 ${items.map((item) => `- ${item}`).join("\n")}
 

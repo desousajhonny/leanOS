@@ -27,10 +27,10 @@ Seu trabalho é ajudar o usuário a operar uma empresa de produto com coerência
 Leia estes arquivos primeiro:
 
 - \`leanos.yaml\`
-- \`.leanos/context/workspace-summary.md\`
-- \`.leanos/context/current-focus.md\`
-- \`.leanos/context/next-actions.md\`
-- \`.leanos/index/routing-map.yaml\`
+- \`.leanos/runtime/context/workspace-summary.md\`
+- \`.leanos/runtime/context/current-focus.md\`
+- \`.leanos/runtime/context/next-actions.md\`
+- \`.leanos/runtime/index/routing-map.yaml\`
 
 ## Linhas Vermelhas / Regras Não Negociáveis
 
@@ -43,11 +43,11 @@ Leia estes arquivos primeiro:
 - Não carregue o workspace inteiro quando existir uma rota menor.
 - Não escreva secrets em arquivos versionados.
 - Peça confirmação antes de modificar arquivos de knowledge, decisão ou framework.
-- Não crie nem modifique assets do framework LeanOS de memória. Roteie por \`ai-standard/README.md\`.
-- Para pedidos de status/readiness como "onde estamos?", "o que temos?", "o que falta?", "já podemos desenvolver?" ou similares, carregue \`.leanos/agent/protocols/where-we-are.md\` antes de recomendar próximo passo ou implementação.
-- Para pedidos de trace, debug, diagnóstico, "o que o LeanOS fez?" ou "envie um relatório para o framework", carregue \`.leanos/agent/protocols/chief-trace.md\` e crie apenas um trace local seguro depois de confirmação.
-- Durante startup, não enriqueça roles, skills, playbooks, workflows, \`ai-standard/\` ou \`.github/\` com contexto da empresa/produto.
-- Não modifique roles, skills, playbooks, workflows, \`ai-standard/\` ou \`.github/\` durante startup.
+- Não crie nem modifique assets do framework LeanOS de memória. Roteie por \`.leanos/standard/README.md\`.
+- Para pedidos de status/readiness como "onde estamos?", "o que temos?", "o que falta?", "já podemos desenvolver?" ou similares, carregue \`.leanos/runtime/agent/protocols/where-we-are.md\` antes de recomendar próximo passo ou implementação.
+- Para pedidos de trace, debug, diagnóstico, "o que o LeanOS fez?" ou "envie um relatório para o framework", carregue \`.leanos/runtime/agent/protocols/chief-trace.md\` e crie apenas um trace local seguro depois de confirmação.
+- Durante startup, não enriqueça roles, skills, playbooks, workflows, \`.leanos/standard/\` ou \`.github/\` com contexto da empresa/produto.
+- Não modifique roles, skills, playbooks, workflows, \`.leanos/standard/\` ou \`.github/\` durante startup.
 - Durante startup, proponha atualizações primeiro e escreva somente depois de confirmação explícita do usuário.
 - Não escreva durante a primeira resposta.
 - Não modifique arquivos de fonte da verdade, decisão, framework ou runtime até o usuário confirmar explicitamente as mudanças propostas.
@@ -75,13 +75,25 @@ Exemplos:
 
 Se nenhuma rota corresponder claramente, roteie pela Cadeia de Navegação.
 
+## Atualização do LeanOS
+
+Quando o founder pedir "atualizar LeanOS", "migrar LeanOS", "reorganizar para o layout atual" ou algo equivalente, trate como atualização do framework, não como trabalho de produto.
+
+Regras:
+
+1. Leia \`leanos.yaml\` e identifique o layout atual.
+2. Se houver acesso a ferramentas locais, rode \`lean-os update\` na raiz do workspace.
+3. Use \`lean-os update --dry-run\` quando o founder quiser prévia antes de mover arquivos.
+4. Não mova código de produto, \`src/\`, \`tests/\`, \`package.json\` ou arquivos existentes do app.
+5. Se o comando reportar conflito, pare e explique quais paths precisam de decisão humana.
+
 ## Perguntas de Status e Readiness
 
 Quando o founder perguntar onde o produto está, o que existe até agora, o que falta, qual deve ser o próximo passo ou se o desenvolvimento pode começar, não responda de memória e não pule direto para implementação.
 
 Carregue:
 
-\`.leanos/agent/protocols/where-we-are.md\`
+\`.leanos/runtime/agent/protocols/where-we-are.md\`
 
 Use esse protocolo para inspecionar os menores arquivos relevantes de readiness de Strategy, Operations e GitHub. Depois explique o momento atual do produto, pré-requisitos ausentes, risco de pular etapas e rota mais segura.
 
@@ -91,9 +103,9 @@ Quando o founder pedir para debugar comportamento do LeanOS, inspecionar o que o
 
 Carregue:
 
-\`.leanos/agent/protocols/chief-trace.md\`
+\`.leanos/runtime/agent/protocols/chief-trace.md\`
 
-Use esse protocolo para criar um trace local, estruturado e redigido em \`.leanos/traces/\` somente depois de confirmação explícita.
+Use esse protocolo para criar um trace local, estruturado e redigido em \`.leanos/runtime/traces/\` somente depois de confirmação explícita.
 
 ## Cadeia de Navegação
 
@@ -134,11 +146,11 @@ Use esta seção apenas para escolher o departamento dono. O \`AGENT.md\` do dep
 \`.leanos/\` contém arquivos de runtime para contexto, índices, traces locais e integração com VS Code.
 \`.leanos/\` não possui workflows de negócio. Workflows operacionais vivem nos departamentos raiz ou em suas áreas.
 
-\`ai-standard/\` é o roteador de padrões do framework para criar, alterar, revisar ou validar assets LeanOS.
+\`.leanos/standard/\` é o roteador de padrões do framework para criar, alterar, revisar ou validar assets LeanOS.
 
 ## Roteamento de Padrões do Framework
 
-Use \`ai-standard/README.md\` somente quando o usuário pedir para criar, alterar, revisar ou validar assets do framework LeanOS.
+Use \`.leanos/standard/README.md\` somente quando o usuário pedir para criar, alterar, revisar ou validar assets do framework LeanOS.
 
 Assets de framework incluem:
 
@@ -151,13 +163,13 @@ Não adivinhe o template, checklist ou instrução correta de memória.
 
 Quando padrões de framework forem necessários:
 
-1. Carregue \`ai-standard/README.md\`.
+1. Carregue \`.leanos/standard/README.md\`.
 2. Siga sua rota até a menor foundation, instrução, template, checklist ou exemplo necessário.
 3. Declare o tipo de asset selecionado, dono e path alvo.
 4. Proponha a mudança antes de escrever.
 5. Valide com o checklist correspondente antes da saída final.
 
-Não use \`ai-standard/\` para definir estratégia de produto, MVP, roadmap, design, trabalho de engineering ou trabalho de growth. Roteie isso pela Cadeia de Navegação primeiro.
+Não use \`.leanos/standard/\` para definir estratégia de produto, MVP, roadmap, design, trabalho de engineering ou trabalho de growth. Roteie isso pela Cadeia de Navegação primeiro.
 `;
 }
 

@@ -1,0 +1,16 @@
+routing:
+  departments:
+    strategy:
+      agent: ../../../example-ai-product-os/strategy/AGENT.md
+      readme: ../../../example-ai-product-os/strategy/README.md
+  areas:
+    business:
+      agent: ../../../example-ai-product-os/strategy/business/AGENT.md
+      readme: ../../../example-ai-product-os/strategy/business/README.md
+    product:
+      agent: ../../../example-ai-product-os/strategy/product/AGENT.md
+      readme: ../../../example-ai-product-os/strategy/product/README.md
+    roadmap:
+      agent: ../../../example-ai-product-os/strategy/roadmap/AGENT.md
+      readme: ../../../example-ai-product-os/strategy/roadmap/README.md
+  asset_creation: ../../standard/README.md

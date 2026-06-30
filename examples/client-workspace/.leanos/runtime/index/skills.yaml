@@ -1,0 +1,28 @@
+skills:
+  - key: business-identity
+    area: strategy.business
+    path: ../../../example-ai-product-os/strategy/business/skills/business-identity/SKILL.md
+  - key: operating-model
+    area: strategy.business
+    path: ../../../example-ai-product-os/strategy/business/skills/operating-model/SKILL.md
+  - key: business-model
+    area: strategy.business
+    path: ../../../example-ai-product-os/strategy/business/skills/business-model/SKILL.md
+  - key: business-baseline
+    area: strategy.product
+    path: ../../../example-ai-product-os/strategy/product/skills/business-baseline/SKILL.md
+  - key: product-core
+    area: strategy.product
+    path: ../../../example-ai-product-os/strategy/product/skills/product-core/SKILL.md
+  - key: mvp-validation-scope
+    area: strategy.product
+    path: ../../../example-ai-product-os/strategy/product/skills/mvp-validation-scope/SKILL.md
+  - key: coherence
+    area: strategy.product
+    path: ../../../example-ai-product-os/strategy/product/skills/coherence/SKILL.md
+  - key: roadmap
+    area: strategy.roadmap
+    path: ../../../example-ai-product-os/strategy/roadmap/skills/roadmap/SKILL.md
+  - key: backlog-prioritization
+    area: strategy.roadmap
+    path: ../../../example-ai-product-os/strategy/roadmap/skills/backlog-prioritization/SKILL.md

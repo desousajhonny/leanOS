@@ -54,28 +54,28 @@ import {
 } from "../ai-standard.mjs";
 
 export async function assertGrowthAreaPattern(rootDir) {
-  const cxReadme = await readFile(join(rootDir, "growth", "customer-experience", "README.md"), "utf8");
-  const cxAgent = await readFile(join(rootDir, "growth", "customer-experience", "AGENT.md"), "utf8");
-  const cxYaml = parse(await readFile(join(rootDir, "growth", "customer-experience", "area.yaml"), "utf8"));
-  const customerFeedback = await readFile(join(rootDir, "growth", "customer-experience", "knowledge", "customer-feedback.md"), "utf8");
-  const supportNotes = await readFile(join(rootDir, "growth", "customer-experience", "knowledge", "support-notes.md"), "utf8");
-  const cxRole = await readFile(join(rootDir, "growth", "customer-experience", "roles", "cx-lead.role.md"), "utf8");
-  const customerLearningLoop = await readFile(join(rootDir, "growth", "customer-experience", "playbooks", "customer-learning-loop.playbook.md"), "utf8");
+  const cxReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "customer-experience", "README.md"), "utf8");
+  const cxAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "customer-experience", "AGENT.md"), "utf8");
+  const cxYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "customer-experience", "area.yaml"), "utf8"));
+  const customerFeedback = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "customer-experience", "knowledge", "customer-feedback.md"), "utf8");
+  const supportNotes = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "customer-experience", "knowledge", "support-notes.md"), "utf8");
+  const cxRole = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "customer-experience", "roles", "cx-lead.role.md"), "utf8");
+  const customerLearningLoop = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "customer-experience", "playbooks", "customer-learning-loop.playbook.md"), "utf8");
 
-  const marketingReadme = await readFile(join(rootDir, "growth", "marketing", "README.md"), "utf8");
-  const marketingAgent = await readFile(join(rootDir, "growth", "marketing", "AGENT.md"), "utf8");
-  const marketingYaml = parse(await readFile(join(rootDir, "growth", "marketing", "area.yaml"), "utf8"));
-  const landingPage = await readFile(join(rootDir, "growth", "marketing", "knowledge", "landing-page.md"), "utf8");
-  const growthLead = await readFile(join(rootDir, "growth", "marketing", "roles", "growth-lead.role.md"), "utf8");
-  const mvpLaunch = await readFile(join(rootDir, "growth", "marketing", "playbooks", "mvp-launch.playbook.md"), "utf8");
+  const marketingReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "README.md"), "utf8");
+  const marketingAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "AGENT.md"), "utf8");
+  const marketingYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "area.yaml"), "utf8"));
+  const landingPage = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "knowledge", "landing-page.md"), "utf8");
+  const growthLead = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "roles", "growth-lead.role.md"), "utf8");
+  const mvpLaunch = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "playbooks", "mvp-launch.playbook.md"), "utf8");
 
-  const financeReadme = await readFile(join(rootDir, "growth", "finance", "README.md"), "utf8");
-  const financeAgent = await readFile(join(rootDir, "growth", "finance", "AGENT.md"), "utf8");
-  const financeYaml = parse(await readFile(join(rootDir, "growth", "finance", "area.yaml"), "utf8"));
-  const pricing = await readFile(join(rootDir, "growth", "finance", "knowledge", "pricing.md"), "utf8");
-  const financeOperator = await readFile(join(rootDir, "growth", "finance", "roles", "finance-operator.role.md"), "utf8");
-  const financeReview = await readFile(join(rootDir, "growth", "finance", "playbooks", "finance-review.playbook.md"), "utf8");
-  const growthWorkflow = await readFile(join(rootDir, "growth", "workflows", "launch-learning-loop.workflow.md"), "utf8");
+  const financeReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "README.md"), "utf8");
+  const financeAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "AGENT.md"), "utf8");
+  const financeYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "area.yaml"), "utf8"));
+  const pricing = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "knowledge", "pricing.md"), "utf8");
+  const financeOperator = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "roles", "finance-operator.role.md"), "utf8");
+  const financeReview = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "playbooks", "finance-review.playbook.md"), "utf8");
+  const growthWorkflow = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "workflows", "launch-learning-loop.workflow.md"), "utf8");
 
   for (const oldPath of [
     "growth/customer-experience/customer-feedback.md",
@@ -129,16 +129,16 @@ export async function assertGrowthAreaPattern(rootDir) {
 
 export async function assertNaturalStartupRules(rootDir) {
   const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
-  const productPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "idea-calibration.playbook.md"), "utf8");
+  const productPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "playbooks", "idea-calibration.playbook.md"), "utf8");
 
   assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Startup should not depend on generated command files");
-  assert(rootAgent.includes("Setup ou retomada do LeanOS: `strategy/AGENT.md`"), "Root AGENT should route startup intent through Strategy");
+  assert(rootAgent.includes("Setup ou retomada do LeanOS: `clinic-assistant-ai-os/strategy/AGENT.md`"), "Root AGENT should route startup intent through Strategy");
   assert(rootAgent.includes("Strategy Product -> `idea-calibration.playbook.md`"), "Root AGENT should route startup and ideas to Strategy Product idea calibration");
   assert(rootAgent.includes("Intenção -> Estágio Atual -> Gate -> Requisitos Ativos -> Rota"), "Root AGENT should use progression intent routing");
   assert(rootAgent.includes("Não escreva durante a primeira resposta"), "Root AGENT should avoid writing during the first startup response");
-  assert(rootAgent.includes("Não modifique roles, skills, playbooks, workflows, `ai-standard/` ou `.github/` durante startup"), "Root AGENT should protect operating assets during startup");
-  assert.equal(await exists(join(rootDir, "strategy", "workflows", "business-intake.workflow.md")), false, "Startup should not depend on business-intake workflow");
-  assert.equal(await exists(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md")), false, "Startup should not depend on new-idea-intake workflow");
+  assert(rootAgent.includes("Não modifique roles, skills, playbooks, workflows, `.leanos/standard/` ou `.github/` durante startup"), "Root AGENT should protect operating assets during startup");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "workflows", "business-intake.workflow.md")), false, "Startup should not depend on business-intake workflow");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "workflows", "new-idea-intake.workflow.md")), false, "Startup should not depend on new-idea-intake workflow");
   assert(productPlaybook.includes("Use `skills/business-baseline/SKILL.md` primeiro para ler `leanos.yaml`"), "Idea calibration should start with baseline mapping");
   assert(productPlaybook.includes("estágio de negócio"), "Idea calibration should use the current estágio de negócio");
   assert(productPlaybook.includes("Faça uma pergunta útil por vez"), "Idea calibration playbook should keep startup guided and incremental");
@@ -147,18 +147,18 @@ export async function assertNaturalStartupRules(rootDir) {
 
 export async function assertRootAgentMutationRules(rootDir) {
   const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
-  const operatingRules = await readFile(join(rootDir, ".leanos", "agent", "operating-rules.md"), "utf8");
+  const operatingRules = await readFile(join(rootDir, ".leanos", "runtime", "agent", "operating-rules.md"), "utf8");
 
   assert.equal(rootAgent.includes("## Workspace Mutation Rules"), false, "AGENT.md should not include the old Workspace Mutation Rules section");
   assert.equal(rootAgent.includes("## Command Handling"), false, "AGENT.md should not include generated slash-command handling");
   assert.equal(rootAgent.includes("LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface"), false, "AGENT.md should not present slash commands as the interface");
   assert.equal(rootAgent.includes("`.leanos/commands/start-leanos.md`"), false, "AGENT.md should not map startup to command files");
-  assert(rootAgent.includes("Não crie nem modifique assets do framework LeanOS de memória. Roteie por `ai-standard/README.md`"), "AGENT.md should route framework asset changes through AI Standard README");
+  assert(rootAgent.includes("Não crie nem modifique assets do framework LeanOS de memória. Roteie por `.leanos/standard/README.md`"), "AGENT.md should route framework asset changes through AI Standard README");
   assert(rootAgent.includes("## Roteamento de Padrões do Framework"), "AGENT.md should include Framework Standards Routing");
-  assert(rootAgent.includes("Não modifique roles, skills, playbooks, workflows, `ai-standard/` ou `.github/` durante startup"), "AGENT.md should protect framework assets during startup from Red Lines");
+  assert(rootAgent.includes("Não modifique roles, skills, playbooks, workflows, `.leanos/standard/` ou `.github/` durante startup"), "AGENT.md should protect framework assets during startup from Red Lines");
   assert(rootAgent.includes("Peça confirmação antes de modificar arquivos de knowledge, decisão ou framework"), "AGENT.md should require confirmation before file mutation");
   assert(rootAgent.includes("## Trace e Diagnóstico"), "AGENT.md should include Trace And Diagnostics");
-  assert(rootAgent.includes("`.leanos/agent/protocols/chief-trace.md`"), "AGENT.md should route trace diagnostics to chief-trace protocol");
+  assert(rootAgent.includes("`.leanos/runtime/agent/protocols/chief-trace.md`"), "AGENT.md should route trace diagnostics to chief-trace protocol");
   assert(rootAgent.includes("Setup de GitHub, configuração de GitHub Projects ou sync de Epics/Features"), "AGENT.md should route natural GitHub sync requests to DevOps");
   assert.equal(rootAgent.includes("Source-of-truth files describe what the company knows"), false, "AGENT.md should avoid old source-of-truth taxonomy");
   assert.equal(rootAgent.includes("Operating assets describe how LeanOS works"), false, "AGENT.md should avoid old operating-assets taxonomy");
@@ -166,16 +166,16 @@ export async function assertRootAgentMutationRules(rootDir) {
   assert.equal(operatingRules.includes("For `/start-leanos`, load `../commands/start-leanos.md` before acting"), false, "operating rules should not map startup to command files");
   assert(operatingRules.includes("Para pedidos de trace, debug ou diagnóstico, carregue `protocols/chief-trace.md`"), "operating rules should route trace diagnostics");
   assert(operatingRules.includes("Durante startup, proponha atualizações primeiro"), "operating rules should require propose-first startup");
-  assert(operatingRules.includes("Não modifique roles, skills, playbooks, workflows, `ai-standard/` ou `.github/` durante startup"), "operating rules should protect operating assets during startup");
+  assert(operatingRules.includes("Não modifique roles, skills, playbooks, workflows, `.leanos/standard/` ou `.github/` durante startup"), "operating rules should protect operating assets during startup");
 }
 
 export async function assertTraceDiagnostics(rootDir) {
   const runtimeReadme = await readFile(join(rootDir, ".leanos", "README.md"), "utf8");
-  const protocolReadme = await readFile(join(rootDir, ".leanos", "agent", "protocols", "README.md"), "utf8");
-  const traceReadme = await readFile(join(rootDir, ".leanos", "traces", "README.md"), "utf8");
-  const traceTemplate = await readFile(join(rootDir, ".leanos", "traces", "trace-template.md"), "utf8");
-  const chiefTrace = await readFile(join(rootDir, ".leanos", "agent", "protocols", "chief-trace.md"), "utf8");
-  const traceIndex = parse(await readFile(join(rootDir, ".leanos", "traces", "trace-index.yaml"), "utf8"));
+  const protocolReadme = await readFile(join(rootDir, ".leanos", "runtime", "agent", "protocols", "README.md"), "utf8");
+  const traceReadme = await readFile(join(rootDir, ".leanos", "runtime", "traces", "README.md"), "utf8");
+  const traceTemplate = await readFile(join(rootDir, ".leanos", "runtime", "traces", "trace-template.md"), "utf8");
+  const chiefTrace = await readFile(join(rootDir, ".leanos", "runtime", "agent", "protocols", "chief-trace.md"), "utf8");
+  const traceIndex = parse(await readFile(join(rootDir, ".leanos", "runtime", "traces", "trace-index.yaml"), "utf8"));
 
   assert(runtimeReadme.includes("traces/"), "LeanOS runtime README should list traces folder");
   assert(runtimeReadme.includes("Traces são diagnósticos locais, não telemetria"), "LeanOS runtime README should explain trace scope");
@@ -188,6 +188,6 @@ export async function assertTraceDiagnostics(rootDir) {
   assert(traceTemplate.includes("## Revisão de Dados Sensíveis"), "Trace template should capture sensitive data review");
   assert(chiefTrace.includes("Peça confirmação antes de escrever um arquivo de trace"), "Chief trace protocol should require confirmation before writing");
   assert(chiefTrace.includes("Não armazene transcrições completas de chat"), "Chief trace protocol should forbid full transcript storage");
-  assert(chiefTrace.includes(".leanos/traces/YYYY-MM-DD-<short-kebab-intent>.trace.md"), "Chief trace protocol should define trace naming");
+  assert(chiefTrace.includes(".leanos/runtime/traces/YYYY-MM-DD-<short-kebab-intent>.trace.md"), "Chief trace protocol should define trace naming");
   assert(chiefTrace.includes("Não atualize:"), "Chief trace protocol should forbid product/runtime mutations outside traces");
 }

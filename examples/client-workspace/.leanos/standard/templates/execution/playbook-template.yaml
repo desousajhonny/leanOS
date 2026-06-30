@@ -1,0 +1,25 @@
+playbook:
+  key: <playbook-key>
+  title: <Playbook Name>
+  owner_area: <department.area>
+  purpose: <tarefa prática que este playbook executa>
+  use_when:
+    - <gatilho>
+  inputs:
+    - <entrada>
+  guided_conversation:
+    foundation: .leanos/standard/foundation/guided-conversation.md
+    use_when:
+      - decisão do founder é necessária
+      - atualização durável precisa de confirmação
+  process:
+    - <etapa>
+  outputs:
+    - <saída>
+  files_to_update:
+    - <path>
+  confirmation_required:
+    - durable file updates
+    - external actions
+  red_lines:
+    - não duplicar workflow

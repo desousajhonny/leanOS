@@ -38,6 +38,7 @@ import {
   assertPathInside,
   collectPathStrings,
   exists,
+  expectedGeneratedPath,
   isInitialStrategyWorkspacePath,
   listFiles,
   resolveFixturePath
@@ -369,7 +370,8 @@ export async function validateWorkspaceFiles() {
   ];
 
   for (const expectedPath of expectedWorkspacePaths.filter(isInitialStrategyWorkspacePath)) {
-    assert(paths.has(expectedPath), `Expected generated path missing: ${expectedPath}`);
+    const generatedPath = expectedGeneratedPath(expectedPath, answers);
+    assert(paths.has(generatedPath), `Expected generated path missing: ${generatedPath}`);
   }
 
   for (const forbiddenPath of [
@@ -524,43 +526,43 @@ export async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, ".env.local"));
   await assertExists(join(rootDir, ".gitignore"));
   await assertExists(join(rootDir, "leanos.yaml"));
-  await assertExists(join(rootDir, "ai-standard", "README.md"));
-  await assertExists(join(rootDir, "ai-standard", "foundation", "README.md"));
-  await assertExists(join(rootDir, "ai-standard", "foundation", "asset-taxonomy.md"));
-  await assertExists(join(rootDir, "ai-standard", "foundation", "navigation-chain.md"));
-  await assertExists(join(rootDir, "ai-standard", "foundation", "progression-gates.md"));
-  await assertExists(join(rootDir, "ai-standard", "foundation", "creation-rules.md"));
-  await assertExists(join(rootDir, "ai-standard", "foundation", "quality-criteria.md"));
-  await assertExists(join(rootDir, "ai-standard", "foundation", "folder-documentation-rules.md"));
-  await assertExists(join(rootDir, "strategy", "AGENT.md"));
-  assert.equal(await exists(join(rootDir, "operations")), false, "Operations should not be generated during initial Strategy-only setup");
-  assert.equal(await exists(join(rootDir, "growth")), false, "Growth should not be generated during initial Strategy-only setup");
-  await assertExists(join(rootDir, "strategy", "business", "AGENT.md"));
-  await assertExists(join(rootDir, "strategy", "business", "knowledge", "profile.md"));
-  await assertExists(join(rootDir, "strategy", "business", "knowledge", "business-model-canvas.md"));
-  await assertExists(join(rootDir, "strategy", "business", "roles", "business-strategist.role.md"));
-  await assertExists(join(rootDir, "strategy", "business", "skills", "business-model/SKILL.md"));
-  await assertExists(join(rootDir, "strategy", "product", "AGENT.md"));
-  await assertExists(join(rootDir, "strategy", "product", "knowledge", "README.md"));
-  await assertExists(join(rootDir, "strategy", "product", "knowledge", "brief.md"));
-  await assertExists(join(rootDir, "strategy", "product", "knowledge", "icp.md"));
-  await assertExists(join(rootDir, "strategy", "product", "knowledge", "validation-notes.md"));
-  await assertExists(join(rootDir, "strategy", "product", "knowledge", "mvp-validation-scope.md"));
-  await assertExists(join(rootDir, "strategy", "roadmap", "AGENT.md"));
-  await assertExists(join(rootDir, "strategy", "roadmap", "knowledge", "roadmap.md"));
-  await assertExists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-cycle-planning.playbook.md"));
-  assert.equal(await exists(join(rootDir, "strategy", "validation")), false, "Strategy Validation should not be generated");
-  assert.equal(await exists(join(rootDir, "strategy", "workflows", "idea-to-roadmap.workflow.md")), false, "Strategy should not generate idea-to-roadmap workflow");
-  assert.equal(await exists(join(rootDir, "strategy", "workflows", "business-intake.workflow.md")), false, "Business intake workflow should not be generated");
-  assert.equal(await exists(join(rootDir, "strategy", "workflows", "new-idea-intake.workflow.md")), false, "New idea intake workflow should not be generated");
-  assert.equal(await exists(join(rootDir, "strategy", "workflows", "strategy-validation-cycle.workflow.md")), false, "Strategy validation workflow should not be generated");
-  assert.equal(await exists(join(rootDir, "strategy", "workflows", "roadmap-to-github-project.workflow.md")), false, "Roadmap-to-GitHub workflow should not be generated");
-  await assertExists(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"));
-  await assertExists(join(rootDir, "strategy", "product", "skills", "business-baseline/SKILL.md"));
-  await assertExists(join(rootDir, "strategy", "product", "skills", "product-core/SKILL.md"));
-  await assertExists(join(rootDir, "strategy", "product", "skills", "mvp-validation-scope/SKILL.md"));
-  assert.equal(await exists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync/SKILL.md")), false, "Strategy Roadmap should not own GitHub sync skills");
-  assert.equal(await exists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md")), false, "Strategy Roadmap should not own GitHub sync playbooks");
+  await assertExists(join(rootDir, ".leanos", "standard", "README.md"));
+  await assertExists(join(rootDir, ".leanos", "standard", "foundation", "README.md"));
+  await assertExists(join(rootDir, ".leanos", "standard", "foundation", "asset-taxonomy.md"));
+  await assertExists(join(rootDir, ".leanos", "standard", "foundation", "navigation-chain.md"));
+  await assertExists(join(rootDir, ".leanos", "standard", "foundation", "progression-gates.md"));
+  await assertExists(join(rootDir, ".leanos", "standard", "foundation", "creation-rules.md"));
+  await assertExists(join(rootDir, ".leanos", "standard", "foundation", "quality-criteria.md"));
+  await assertExists(join(rootDir, ".leanos", "standard", "foundation", "folder-documentation-rules.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "AGENT.md"));
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations")), false, "Operations should not be generated during initial Strategy-only setup");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "growth")), false, "Growth should not be generated during initial Strategy-only setup");
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "knowledge", "profile.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "knowledge", "business-model-canvas.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "roles", "business-strategist.role.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "skills", "business-model/SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "README.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "brief.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "icp.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "validation-notes.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "mvp-validation-scope.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "knowledge", "roadmap.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "playbooks", "roadmap-cycle-planning.playbook.md"));
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "validation")), false, "Strategy Validation should not be generated");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "workflows", "idea-to-roadmap.workflow.md")), false, "Strategy should not generate idea-to-roadmap workflow");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "workflows", "business-intake.workflow.md")), false, "Business intake workflow should not be generated");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "workflows", "new-idea-intake.workflow.md")), false, "New idea intake workflow should not be generated");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "workflows", "strategy-validation-cycle.workflow.md")), false, "Strategy validation workflow should not be generated");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "workflows", "roadmap-to-github-project.workflow.md")), false, "Roadmap-to-GitHub workflow should not be generated");
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "roles", "product-strategist.role.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "skills", "business-baseline/SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "skills", "product-core/SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "skills", "mvp-validation-scope/SKILL.md"));
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "skills", "prepare-roadmap-sync/SKILL.md")), false, "Strategy Roadmap should not own GitHub sync skills");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md")), false, "Strategy Roadmap should not own GitHub sync playbooks");
   await assertExists(join(rootDir, ".github", "agents", "leanos-chief.agent.md"));
   await assertExists(join(rootDir, ".github", "leanos", "github-settings.example.json"));
   await assertExists(join(rootDir, ".github", "leanos", "work-mapping.md"));
@@ -570,13 +572,12 @@ export async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, ".github", "prompts", "start-leanos.prompt.md"));
   await assertExists(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"));
   assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Generated workspaces should not use slash-command files as an interface");
-  await assertExists(join(rootDir, ".leanos", "vscode", "README.md"));
+  await assertExists(join(rootDir, ".leanos", "runtime", "vscode", "README.md"));
   assert.equal(await exists(join(rootDir, ".leanos", "workflows")), false, "Business workflows should not be generated under .leanos/workflows");
 
-  assert(result.createdGroups.includes("ai-standard/"), "Expected created groups to mention root AI Standard");
-  assert(result.createdGroups.includes("strategy/"), "Expected created groups to mention Strategy");
-  assert.equal(result.createdGroups.includes("operations/"), false, "Initial setup should not mention Operations as created");
-  assert.equal(result.createdGroups.includes("growth/"), false, "Initial setup should not mention Growth as created");
+  assert(result.createdGroups.includes(".leanos/standard/"), "Expected created groups to mention AI Standard under .leanos");
+  assert(result.createdGroups.includes("-os/"), "Expected created groups to mention the product OS folder");
+  assert.equal(result.createdGroups.some((group) => group === "operations/" || group === "growth/"), false, "Initial setup should not mention root Operations or Growth as created");
   assert(result.createdGroups.includes(".github/leanos"), "Expected created groups to mention GitHub LeanOS support files");
 
   await assertVsCodeIntegration(rootDir);
@@ -679,15 +680,21 @@ export async function validateWorkspaceFiles() {
   assert.equal(yaml.workspace.product_code_policy, "do_not_create_app_code_during_initial_setup");
   assert.equal(yaml.github.status, "pending_user_token");
   assert.equal(yaml.github.project_management, "prepared");
-  assert.equal(yaml.agent.navigation_chain.doc, "ai-standard/foundation/navigation-chain.md");
-  assert.equal(yaml.ai_standard.path, "ai-standard/README.md");
-  assert.equal(yaml.ai_standard.foundation, "ai-standard/foundation");
+  assert.equal(yaml.paths.business_os, "clinic-assistant-ai-os");
+  assert.equal(yaml.paths.runtime, ".leanos/runtime");
+  assert.equal(yaml.paths.standard_library, ".leanos/standard");
+  assert.equal(yaml.paths.strategy, "clinic-assistant-ai-os/strategy");
+  assert.equal(yaml.paths.operations, "clinic-assistant-ai-os/operations");
+  assert.equal(yaml.paths.growth, "clinic-assistant-ai-os/growth");
+  assert.equal(yaml.agent.navigation_chain.doc, ".leanos/standard/foundation/navigation-chain.md");
+  assert.equal(yaml.ai_standard.path, ".leanos/standard/README.md");
+  assert.equal(yaml.ai_standard.foundation, ".leanos/standard/foundation");
   assert.equal(yaml.roles.ownership, "area-first");
   assert.equal(yaml.skills.ownership, "area-first");
   assert.equal(yaml.playbooks.ownership, "area-first");
   assert.equal(yaml.workflows.ownership, "department-local");
-  assert.equal(yaml.departments.routes.strategy.agent, "strategy/AGENT.md");
-  assert.equal(yaml.departments.routes.strategy.readme, "strategy/README.md");
+  assert.equal(yaml.departments.routes.strategy.agent, "clinic-assistant-ai-os/strategy/AGENT.md");
+  assert.equal(yaml.departments.routes.strategy.readme, "clinic-assistant-ai-os/strategy/README.md");
   assert.equal(yaml.departments.routes.operations, undefined, "Operations should not be an active route during initial setup");
   assert.equal(yaml.departments.routes.growth, undefined, "Growth should not be an active route during initial setup");
   assert.equal(yaml.workflows.active.includes("idea-to-roadmap"), false, "Strategy should not expose idea-to-roadmap workflow");
@@ -704,8 +711,8 @@ export async function validateWorkspaceFiles() {
   assert.deepEqual(yaml.departments.active, ["strategy"]);
   assert.equal(yaml.activation.mode, "progressive", "leanos.yaml should declare progressive activation mode");
   assert.equal(yaml.activation.current_stage, "setup-seed", "leanos.yaml should start at setup seed");
-  assert.equal(yaml.activation.progression_model, "ai-standard/foundation/founder-progression-model.md", "leanos.yaml should point to the Founder Progression Model");
-  assert.equal(yaml.activation.progression_gates, "ai-standard/foundation/progression-gates.md", "leanos.yaml should point to Progression Gates");
+  assert.equal(yaml.activation.progression_model, ".leanos/standard/foundation/founder-progression-model.md", "leanos.yaml should point to the Founder Progression Model");
+  assert.equal(yaml.activation.progression_gates, ".leanos/standard/foundation/progression-gates.md", "leanos.yaml should point to Progression Gates");
   assert.deepEqual(yaml.activation.inactive_departments, ["operations", "growth"], "leanos.yaml should mark Operations and Growth inactive at setup");
   assert.deepEqual(yaml.activation.available_departments, ["strategy", "operations", "growth"], "leanos.yaml should list departments that can be activated later");
   assert.deepEqual(yaml.activation.active_departments, yaml.departments.active, "leanos.yaml activation state should mirror active departments");

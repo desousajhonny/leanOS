@@ -1,0 +1,13 @@
+playbooks:
+  - key: business-foundation
+    area: strategy.business
+    path: ../../../example-ai-product-os/strategy/business/playbooks/business-foundation.playbook.md
+  - key: idea-calibration
+    area: strategy.product
+    path: ../../../example-ai-product-os/strategy/product/playbooks/idea-calibration.playbook.md
+  - key: mvp-validation-scope
+    area: strategy.product
+    path: ../../../example-ai-product-os/strategy/product/playbooks/mvp-validation-scope.playbook.md
+  - key: roadmap-cycle-planning
+    area: strategy.roadmap
+    path: ../../../example-ai-product-os/strategy/roadmap/playbooks/roadmap-cycle-planning.playbook.md

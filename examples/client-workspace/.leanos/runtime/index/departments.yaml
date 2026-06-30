@@ -1,0 +1,4 @@
+departments:
+  - key: strategy
+    agent: ../../../example-ai-product-os/strategy/AGENT.md
+    readme: ../../../example-ai-product-os/strategy/README.md

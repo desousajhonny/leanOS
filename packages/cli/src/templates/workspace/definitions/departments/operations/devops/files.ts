@@ -17,7 +17,7 @@ export const operationsDevopsSourceOfTruth = [
   ];
 
 export const operationsDevopsFiles: AreaFileDefinition[] = [
-    { path: "knowledge/README.md", content: () => folderReadme("DevOps Knowledge", "Contexto operacional persistente para GitHub, ambientes, CI/CD, prontidão de deploy, observabilidade e notas de release.", "Use ao preparar automação, operações de release, sync de GitHub Project ou prontidão de deploy.", "github-management.md", ["github-management.md", "environments.md", "deployment-readiness.md", "ci-cd.md", "observability.md", "release-notes.md"], ["../AGENT.md", "../../../.github/leanos/", "../playbooks/"], "Mantenha segredos fora destes arquivos. Registre fonte de token e decisões de prontidão, nunca valores de token.") },
+    { path: "knowledge/README.md", content: () => folderReadme("DevOps Knowledge", "Contexto operacional persistente para GitHub, ambientes, CI/CD, prontidão de deploy, observabilidade e notas de release.", "Use ao preparar automação, operações de release, sync de GitHub Project ou prontidão de deploy.", "github-management.md", ["github-management.md", "environments.md", "deployment-readiness.md", "ci-cd.md", "observability.md", "release-notes.md"], ["../AGENT.md", ".github/leanos/", "../playbooks/"], "Mantenha segredos fora destes arquivos. Registre fonte de token e decisões de prontidão, nunca valores de token.") },
     { path: "knowledge/github-management.md", content: () => devopsGithubManagementKnowledge() },
     { path: "knowledge/environments.md", content: () => devopsEnvironmentsKnowledge() },
     { path: "knowledge/deployment-readiness.md", content: () => devopsDeploymentReadinessKnowledge() },

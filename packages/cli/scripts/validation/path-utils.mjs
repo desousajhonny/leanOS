@@ -5,9 +5,14 @@ import { isAbsolute, join, relative, resolve } from "node:path";
 import { parse } from "yaml";
 import { clientWorkspaceFixtureDir } from "./fixtures.mjs";
 import { assertExists } from "./assertions.mjs";
+import { createWorkspacePaths, materializeWorkspacePath } from "../../dist/templates/workspace/paths.js";
+
+export function expectedGeneratedPath(path, answers) {
+  return materializeWorkspacePath(path, createWorkspacePaths(answers));
+}
 
 export async function assertIndexPathsExist(rootDir) {
-  const indexRoot = join(rootDir, ".leanos", "index");
+  const indexRoot = join(rootDir, ".leanos", "runtime", "index");
   const files = ["departments.yaml", "areas.yaml", "roles.yaml", "skills.yaml", "playbooks.yaml", "workflows.yaml", "routing-map.yaml"];
 
   for (const file of files) {
@@ -53,14 +58,14 @@ export async function assertInitialContextCoherence(rootDir) {
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
   const activeSubareas = new Set(yaml.activation?.active_areas ?? yaml.subareas.active.map((subarea) => subarea.key));
   const initialFiles = [
-    join(".leanos", "context", "current-focus.md"),
-    join(".leanos", "context", "next-actions.md"),
-    join(".leanos", "context", "active-workflow.md")
+    join(".leanos", "runtime", "context", "current-focus.md"),
+    join(".leanos", "runtime", "context", "next-actions.md"),
+    join(".leanos", "runtime", "context", "active-workflow.md")
   ];
   const initialContent = (
     await Promise.all(initialFiles.map((file) => readFile(join(rootDir, file), "utf8")))
   ).join("\n");
-  const activeWorkflow = await readFile(join(rootDir, ".leanos", "context", "active-workflow.md"), "utf8");
+  const activeWorkflow = await readFile(join(rootDir, ".leanos", "runtime", "context", "active-workflow.md"), "utf8");
 
   const commandRequirements = [
     { command: "/define icp", area: "strategy.product" },

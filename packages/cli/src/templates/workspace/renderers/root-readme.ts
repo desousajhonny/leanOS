@@ -1,6 +1,9 @@
 import type { AreaDefinition, RootDepartmentDefinition, WorkspaceAnswers } from "../types.js";
+import { areaPath, createWorkspacePaths, departmentPath } from "../paths.js";
 
 export function workspaceReadme(answers: WorkspaceAnswers, activeAreas: AreaDefinition[], activeRoots: RootDepartmentDefinition[]): string {
+  const paths = createWorkspacePaths(answers);
+
   return `# ${answers.productName}
 
 Workspace LeanOS para ${answers.companyName}.
@@ -24,9 +27,11 @@ Depois comece por:
 ## Estrutura Principal
 
 - \`.github/\` Arquivos de integração com VS Code e GitHub.
-- \`.leanos/\` Runtime, contexto e índices do LeanOS.
-- \`ai-standard/\` templates, checklists e instruções para criar assets LeanOS.
-${activeRoots.map((department) => `- \`${department.key}/\` ${department.name} departamento.`).join("\n")}
+- \`.leanos/\` shell local do LeanOS.
+- \`${paths.runtimeRoot}/\` contexto, índices, traces e integração local.
+- \`${paths.standardRoot}/\` templates, checklists e instruções para criar assets LeanOS.
+- \`${paths.businessOsRoot}/\` sistema operacional de negócio do produto.
+${activeRoots.map((department) => `- \`${departmentPath(department.key, paths)}/\` ${department.name} departamento.`).join("\n")}
 
 ## Snapshot do Produto
 
@@ -43,7 +48,7 @@ ${activeRoots.map((department) => `- \`${department.key}/\` ${department.name} d
 
 ## Áreas Ativas
 
-${activeAreas.map((area) => `- \`${area.path}/\` ${area.purpose}`).join("\n")}
+${activeAreas.map((area) => `- \`${areaPath(area, paths)}/\` ${area.purpose}`).join("\n")}
 
 ## Próximo Passo
 

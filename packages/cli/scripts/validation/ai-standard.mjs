@@ -82,22 +82,22 @@ export async function validateAiStandardRendererIsModular() {
 }
 
 export async function assertAiStandardAssetTaxonomy(rootDir) {
-  const aiStandardReadme = await readFile(join(rootDir, "ai-standard", "README.md"), "utf8");
-  const foundationReadme = await readFile(join(rootDir, "ai-standard", "foundation", "README.md"), "utf8");
-  const founderProgressionModel = await readFile(join(rootDir, "ai-standard", "foundation", "founder-progression-model.md"), "utf8");
-  const progressionGates = await readFile(join(rootDir, "ai-standard", "foundation", "progression-gates.md"), "utf8");
-  const assetTaxonomy = await readFile(join(rootDir, "ai-standard", "foundation", "asset-taxonomy.md"), "utf8");
-  const guidedConversation = await readFile(join(rootDir, "ai-standard", "foundation", "guided-conversation.md"), "utf8");
-  const creationRules = await readFile(join(rootDir, "ai-standard", "foundation", "creation-rules.md"), "utf8");
-  const qualityCriteria = await readFile(join(rootDir, "ai-standard", "foundation", "quality-criteria.md"), "utf8");
-  const folderDocumentationRules = await readFile(join(rootDir, "ai-standard", "foundation", "folder-documentation-rules.md"), "utf8");
+  const aiStandardReadme = await readFile(join(rootDir, ".leanos", "standard", "README.md"), "utf8");
+  const foundationReadme = await readFile(join(rootDir, ".leanos", "standard", "foundation", "README.md"), "utf8");
+  const founderProgressionModel = await readFile(join(rootDir, ".leanos", "standard", "foundation", "founder-progression-model.md"), "utf8");
+  const progressionGates = await readFile(join(rootDir, ".leanos", "standard", "foundation", "progression-gates.md"), "utf8");
+  const assetTaxonomy = await readFile(join(rootDir, ".leanos", "standard", "foundation", "asset-taxonomy.md"), "utf8");
+  const guidedConversation = await readFile(join(rootDir, ".leanos", "standard", "foundation", "guided-conversation.md"), "utf8");
+  const creationRules = await readFile(join(rootDir, ".leanos", "standard", "foundation", "creation-rules.md"), "utf8");
+  const qualityCriteria = await readFile(join(rootDir, ".leanos", "standard", "foundation", "quality-criteria.md"), "utf8");
+  const folderDocumentationRules = await readFile(join(rootDir, ".leanos", "standard", "foundation", "folder-documentation-rules.md"), "utf8");
 
   assert(aiStandardReadme.includes("foundation/"), "AI Standard README should route to foundation");
   assert(aiStandardReadme.includes("templates/"), "AI Standard README should route to templates");
   assert(aiStandardReadme.includes("checklists/"), "AI Standard README should route to checklists");
   assert(aiStandardReadme.includes("instructions/"), "AI Standard README should route to instructions");
   assert(aiStandardReadme.includes("examples/"), "AI Standard README should route to examples");
-  assert(aiStandardReadme.includes("Não carregue todo `ai-standard/` por padrão"), "AI Standard README should encourage minimal loading");
+  assert(aiStandardReadme.includes("Não carregue todo `.leanos/standard/` por padrão"), "AI Standard README should encourage minimal loading");
   assert(foundationReadme.includes("asset-taxonomy.md"), "Foundation README should list asset taxonomy");
   assert(foundationReadme.includes("navigation-chain.md"), "Foundation README should list navigation chain");
   assert(foundationReadme.includes("founder-progression-model.md"), "Foundation README should list founder progression model");
@@ -196,21 +196,21 @@ export async function assertAiStandardAssetTaxonomy(rootDir) {
 }
 
 export async function assertAiStandardTemplates(rootDir) {
-  const templatesReadme = await readFile(join(rootDir, "ai-standard", "templates", "README.md"), "utf8");
-  const agentsReadme = await readFile(join(rootDir, "ai-standard", "templates", "agents", "README.md"), "utf8");
-  const structureReadme = await readFile(join(rootDir, "ai-standard", "templates", "structure", "README.md"), "utf8");
-  const executionReadme = await readFile(join(rootDir, "ai-standard", "templates", "execution", "README.md"), "utf8");
-  const githubReadme = await readFile(join(rootDir, "ai-standard", "templates", "github", "README.md"), "utf8");
-  const designReadme = await readFile(join(rootDir, "ai-standard", "templates", "design", "README.md"), "utf8");
-  const reviewReadme = await readFile(join(rootDir, "ai-standard", "templates", "review", "README.md"), "utf8");
-  const playbookTemplate = await readFile(join(rootDir, "ai-standard", "templates", "execution", "playbook-template.md"), "utf8");
-  const componentSpecTemplate = await readFile(join(rootDir, "ai-standard", "templates", "design", "component-spec-template.md"), "utf8");
+  const templatesReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "README.md"), "utf8");
+  const agentsReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "agents", "README.md"), "utf8");
+  const structureReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "structure", "README.md"), "utf8");
+  const executionReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "execution", "README.md"), "utf8");
+  const githubReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "github", "README.md"), "utf8");
+  const designReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "design", "README.md"), "utf8");
+  const reviewReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "review", "README.md"), "utf8");
+  const playbookTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "execution", "playbook-template.md"), "utf8");
+  const componentSpecTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "design", "component-spec-template.md"), "utf8");
 
   assert(templatesReadme.includes("agents/"), "Templates README should route to agents");
   assert(templatesReadme.includes("structure/"), "Templates README should route to structure");
   assert(templatesReadme.includes("execution/"), "Templates README should route to execution");
   assert.equal(templatesReadme.includes("commands/"), false, "Templates README should not route to command templates");
-  assert.equal(await exists(join(rootDir, "ai-standard", "templates", "commands")), false, "Command templates should not be generated");
+  assert.equal(await exists(join(rootDir, ".leanos", "standard", "templates", "commands")), false, "Command templates should not be generated");
   assert(templatesReadme.includes("github/"), "Templates README should route to GitHub");
   assert(templatesReadme.includes("design/"), "Templates README should route to Design templates");
   assert(templatesReadme.includes("review/"), "Templates README should route to review");
@@ -221,7 +221,7 @@ export async function assertAiStandardTemplates(rootDir) {
   assert(executionReadme.includes("playbook-template.md"), "Execution templates README should list playbook template");
   assert(executionReadme.includes("workflow-template.md"), "Execution templates README should list workflow template");
   assert(playbookTemplate.includes("## Conversa Guiada"), "Playbook template should include guided conversation section");
-  assert(playbookTemplate.includes("../../../ai-standard/foundation/guided-conversation.md"), "Playbook template should point to guided conversation foundation");
+  assert(playbookTemplate.includes(".leanos/standard/foundation/guided-conversation.md"), "Playbook template should point to guided conversation foundation");
   assert(githubReadme.includes("github-epic-template.md"), "GitHub templates README should list epic template");
   assert(githubReadme.includes("github-feature-template.md"), "GitHub templates README should list feature template");
   assert(githubReadme.includes("pull-request-template.md"), "GitHub templates README should list PR template");
@@ -233,18 +233,18 @@ export async function assertAiStandardTemplates(rootDir) {
 }
 
 export async function assertAiStandardChecklists(rootDir) {
-  const checklistsReadme = await readFile(join(rootDir, "ai-standard", "checklists", "README.md"), "utf8");
-  const agentChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "agent-quality-checklist.md"), "utf8");
-  const readmeChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "readme-quality-checklist.md"), "utf8");
-  const departmentChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "department-quality-checklist.md"), "utf8");
-  const areaChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "area-quality-checklist.md"), "utf8");
-  const roleChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "role-quality-checklist.md"), "utf8");
-  const skillChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "skill-quality-checklist.md"), "utf8");
-  const playbookChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "playbook-quality-checklist.md"), "utf8");
-  const workflowChecklist = await readFile(join(rootDir, "ai-standard", "checklists", "workflow-quality-checklist.md"), "utf8");
+  const checklistsReadme = await readFile(join(rootDir, ".leanos", "standard", "checklists", "README.md"), "utf8");
+  const agentChecklist = await readFile(join(rootDir, ".leanos", "standard", "checklists", "agent-quality-checklist.md"), "utf8");
+  const readmeChecklist = await readFile(join(rootDir, ".leanos", "standard", "checklists", "readme-quality-checklist.md"), "utf8");
+  const departmentChecklist = await readFile(join(rootDir, ".leanos", "standard", "checklists", "department-quality-checklist.md"), "utf8");
+  const areaChecklist = await readFile(join(rootDir, ".leanos", "standard", "checklists", "area-quality-checklist.md"), "utf8");
+  const roleChecklist = await readFile(join(rootDir, ".leanos", "standard", "checklists", "role-quality-checklist.md"), "utf8");
+  const skillChecklist = await readFile(join(rootDir, ".leanos", "standard", "checklists", "skill-quality-checklist.md"), "utf8");
+  const playbookChecklist = await readFile(join(rootDir, ".leanos", "standard", "checklists", "playbook-quality-checklist.md"), "utf8");
+  const workflowChecklist = await readFile(join(rootDir, ".leanos", "standard", "checklists", "workflow-quality-checklist.md"), "utf8");
   assert(checklistsReadme.includes("workflow-quality-checklist.md"), "Checklists README should list workflow checklist");
   assert.equal(checklistsReadme.includes("command-quality-checklist.md"), false, "Checklists README should not list command checklist");
-  assert.equal(await exists(join(rootDir, "ai-standard", "checklists", "command-quality-checklist.md")), false, "Command checklist should not be generated");
+  assert.equal(await exists(join(rootDir, ".leanos", "standard", "checklists", "command-quality-checklist.md")), false, "Command checklist should not be generated");
   assert(checklistsReadme.includes("Não trate todos os checklists como intercambiáveis"), "Checklists README should explain checklist specificity");
   assert(agentChecklist.includes("Agentes raiz roteiam apenas para departamentos"), "Agent checklist should validate root routing boundaries");
   assert(agentChecklist.includes("não tenta ser um inventário completo"), "Agent checklist should prevent giant inventories");
@@ -267,7 +267,7 @@ export async function assertAiStandardChecklists(rootDir) {
 }
 
 export async function assertAiStandardInstructions(rootDir) {
-  const instructionsRoot = join(rootDir, "ai-standard", "instructions");
+  const instructionsRoot = join(rootDir, ".leanos", "standard", "instructions");
   const instructionsReadme = await readFile(join(instructionsRoot, "README.md"), "utf8");
   const instructionFiles = [
     "create-agent",
@@ -342,7 +342,7 @@ export async function assertAiStandardInstructions(rootDir) {
 }
 
 export async function assertAiStandardExamples(rootDir) {
-  const examplesRoot = join(rootDir, "ai-standard", "examples");
+  const examplesRoot = join(rootDir, ".leanos", "standard", "examples");
   const examplesReadme = await readFile(join(examplesRoot, "README.md"), "utf8");
   const agentsReadme = await readFile(join(examplesRoot, "agents", "README.md"), "utf8");
   const structureReadme = await readFile(join(examplesRoot, "structure", "README.md"), "utf8");
@@ -459,7 +459,7 @@ export async function assertNoOldAiStandardReferences(rootDir) {
 }
 
 export async function assertAiStandardReadiness(rootDir) {
-  const aiStandardReadme = await readFile(join(rootDir, "ai-standard", "README.md"), "utf8");
+  const aiStandardReadme = await readFile(join(rootDir, ".leanos", "standard", "README.md"), "utf8");
   const requiredRoutes = [
     "foundation/asset-taxonomy.md",
     "foundation/navigation-chain.md",
@@ -495,12 +495,12 @@ export async function assertAiStandardReadiness(rootDir) {
   assert(aiStandardReadme.includes("Não deixe exemplos sobrescreverem o contexto ativo do workspace"), "AI Standard README should keep examples subordinate to context");
 
   const fileChecks = [
-    ["ai-standard/foundation/asset-taxonomy.md", ["Role = quem atua.", "Skill = capacidade usada.", "Playbook = execução prática de tarefa dentro de uma área.", "Knowledge = informação/source of truth.", "Workflow = coordenação entre áreas, estágios ou handoffs."]],
-    ["ai-standard/checklists/agent-quality-checklist.md", ["Agentes raiz roteiam apenas para departamentos", "não tenta ser um inventário completo"]],
-    ["ai-standard/checklists/skill-quality-checklist.md", ["uma capacidade reutilizável", "não se torna uma sequência completa de processo"]],
-    ["ai-standard/instructions/create-skill-instructions.md", ["Defina uma capacidade reutilizável", "../templates/execution/skill-template.md", "../checklists/skill-quality-checklist.md"]],
-    ["ai-standard/templates/execution/skill-template.md", ["name: <skill-name>", "description: Use quando", "## Visão Geral", "### Etapa 1"]],
-    ["ai-standard/examples/README.md", ["Eles não são contexto ativo do workspace, nem templates, nem instruções"]]
+    [".leanos/standard/foundation/asset-taxonomy.md", ["Role = quem atua.", "Skill = capacidade usada.", "Playbook = execução prática de tarefa dentro de uma área.", "Knowledge = informação/source of truth.", "Workflow = coordenação entre áreas, estágios ou handoffs."]],
+    [".leanos/standard/checklists/agent-quality-checklist.md", ["Agentes raiz roteiam apenas para departamentos", "não tenta ser um inventário completo"]],
+    [".leanos/standard/checklists/skill-quality-checklist.md", ["uma capacidade reutilizável", "não se torna uma sequência completa de processo"]],
+    [".leanos/standard/instructions/create-skill-instructions.md", ["Defina uma capacidade reutilizável", "../templates/execution/skill-template.md", "../checklists/skill-quality-checklist.md"]],
+    [".leanos/standard/templates/execution/skill-template.md", ["name: <skill-name>", "description: Use quando", "## Visão Geral", "### Etapa 1"]],
+    [".leanos/standard/examples/README.md", ["Eles não são contexto ativo do workspace, nem templates, nem instruções"]]
   ];
 
   for (const [path, snippets] of fileChecks) {

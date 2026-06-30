@@ -54,67 +54,67 @@ import {
 } from "../ai-standard.mjs";
 
 export async function assertDesignFoundation(rootDir) {
-  const designReadme = await readFile(join(rootDir, "operations", "design", "README.md"), "utf8");
-  const designAgent = await readFile(join(rootDir, "operations", "design", "AGENT.md"), "utf8");
-  const designKnowledgeReadme = await readFile(join(rootDir, "operations", "design", "knowledge", "README.md"), "utf8");
-  const areaYaml = parse(await readFile(join(rootDir, "operations", "design", "area.yaml"), "utf8"));
-  const productDesigner = await readFile(join(rootDir, "operations", "design", "roles", "product-designer.role.md"), "utf8");
-  const uxResearcher = await readFile(join(rootDir, "operations", "design", "roles", "ux-researcher.role.md"), "utf8");
-  const accessibilitySpecialist = await readFile(join(rootDir, "operations", "design", "roles", "accessibility-specialist.role.md"), "utf8");
-  const uxWriter = await readFile(join(rootDir, "operations", "design", "roles", "ux-writer.role.md"), "utf8");
-  const designFoundationPlaybook = await readFile(join(rootDir, "operations", "design", "playbooks", "design-foundation.playbook.md"), "utf8");
-  const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
-  const skillsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "skills.yaml"), "utf8"));
-  const designSystemKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "design-system.md"), "utf8");
-  const accessibilityKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "accessibility.md"), "utf8");
-  const userFlowsKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "user-flows.md"), "utf8");
-  const componentInventoryKnowledge = await readFile(join(rootDir, "operations", "design", "knowledge", "component-inventory.md"), "utf8");
-  const componentSpecsReadme = await readFile(join(rootDir, "operations", "design", "knowledge", "components", "README.md"), "utf8");
-  const userResearchSkill = await readFile(join(rootDir, "operations", "design", "skills", "user-research/SKILL.md"), "utf8");
-  const userFlowMappingSkill = await readFile(join(rootDir, "operations", "design", "skills", "user-flow-mapping/SKILL.md"), "utf8");
-  const designSystemSkill = await readFile(join(rootDir, "operations", "design", "skills", "design-system/SKILL.md"), "utf8");
-  const componentAnalysisSkill = await readFile(join(rootDir, "operations", "design", "skills", "component-analysis/SKILL.md"), "utf8");
-  const screenSpecificationSkill = await readFile(join(rootDir, "operations", "design", "skills", "screen-specification/SKILL.md"), "utf8");
-  const microcopySkill = await readFile(join(rootDir, "operations", "design", "skills", "microcopy/SKILL.md"), "utf8");
-  const accessibilitySkill = await readFile(join(rootDir, "operations", "design", "skills", "accessibility/SKILL.md"), "utf8");
-  const designReviewSkill = await readFile(join(rootDir, "operations", "design", "skills", "design-review/SKILL.md"), "utf8");
-  const componentReadinessPlaybook = await readFile(join(rootDir, "operations", "design", "playbooks", "component-readiness.playbook.md"), "utf8");
+  const designReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "README.md"), "utf8");
+  const designAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "AGENT.md"), "utf8");
+  const designKnowledgeReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "knowledge", "README.md"), "utf8");
+  const areaYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "area.yaml"), "utf8"));
+  const productDesigner = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "roles", "product-designer.role.md"), "utf8");
+  const uxResearcher = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "roles", "ux-researcher.role.md"), "utf8");
+  const accessibilitySpecialist = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "roles", "accessibility-specialist.role.md"), "utf8");
+  const uxWriter = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "roles", "ux-writer.role.md"), "utf8");
+  const designFoundationPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "playbooks", "design-foundation.playbook.md"), "utf8");
+  const nextActions = await readFile(join(rootDir, ".leanos", "runtime", "context", "next-actions.md"), "utf8");
+  const skillsIndex = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "skills.yaml"), "utf8"));
+  const designSystemKnowledge = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "knowledge", "design-system.md"), "utf8");
+  const accessibilityKnowledge = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "knowledge", "accessibility.md"), "utf8");
+  const userFlowsKnowledge = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "knowledge", "user-flows.md"), "utf8");
+  const componentInventoryKnowledge = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "knowledge", "component-inventory.md"), "utf8");
+  const componentSpecsReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "knowledge", "components", "README.md"), "utf8");
+  const userResearchSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "user-research/SKILL.md"), "utf8");
+  const userFlowMappingSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "user-flow-mapping/SKILL.md"), "utf8");
+  const designSystemSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "design-system/SKILL.md"), "utf8");
+  const componentAnalysisSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "component-analysis/SKILL.md"), "utf8");
+  const screenSpecificationSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "screen-specification/SKILL.md"), "utf8");
+  const microcopySkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "microcopy/SKILL.md"), "utf8");
+  const accessibilitySkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "accessibility/SKILL.md"), "utf8");
+  const designReviewSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "design-review/SKILL.md"), "utf8");
+  const componentReadinessPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "playbooks", "component-readiness.playbook.md"), "utf8");
 
-  await assertExists(join(rootDir, "operations", "design", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "design", "knowledge", "README.md"));
-  await assertExists(join(rootDir, "operations", "design", "knowledge", "design-system.md"));
-  await assertExists(join(rootDir, "operations", "design", "knowledge", "accessibility.md"));
-  await assertExists(join(rootDir, "operations", "design", "knowledge", "user-flows.md"));
-  await assertExists(join(rootDir, "operations", "design", "knowledge", "component-inventory.md"));
-  await assertExists(join(rootDir, "operations", "design", "knowledge", "components", "README.md"));
-  await assertExists(join(rootDir, "operations", "design", "roles", "ux-researcher.role.md"));
-  await assertExists(join(rootDir, "operations", "design", "roles", "product-designer.role.md"));
-  await assertExists(join(rootDir, "operations", "design", "roles", "accessibility-specialist.role.md"));
-  await assertExists(join(rootDir, "operations", "design", "roles", "ux-writer.role.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "design-system/SKILL.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "accessibility/SKILL.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "user-research/SKILL.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "user-flow-mapping/SKILL.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "component-analysis/SKILL.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "screen-specification/SKILL.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "microcopy/SKILL.md"));
-  await assertExists(join(rootDir, "operations", "design", "skills", "design-review/SKILL.md"));
-  await assertExists(join(rootDir, "operations", "design", "playbooks", "user-research.playbook.md"));
-  await assertExists(join(rootDir, "operations", "design", "playbooks", "component-readiness.playbook.md"));
-  await assertExists(join(rootDir, "operations", "design", "playbooks", "accessibility-review.playbook.md"));
-  await assertExists(join(rootDir, "operations", "design", "playbooks", "ux-writing.playbook.md"));
-  assert.equal(await exists(join(rootDir, "operations", "design", "design-principles.md")), false, "Design principles should move out of the Design area root");
-  assert.equal(await exists(join(rootDir, "operations", "design", "user-flows.md")), false, "User flows should move into Design knowledge");
-  assert.equal(await exists(join(rootDir, "operations", "design", "screen-specs.md")), false, "Screen specs should not be generated in the initial Design scaffold");
-  assert.equal(await exists(join(rootDir, "operations", "design", "ux-decisions.md")), false, "UX decisions should not be generated in the initial Design scaffold");
-  assert.equal(await exists(join(rootDir, "operations", "design", "usability-notes.md")), false, "Usability notes should not be generated in the initial Design scaffold");
-  assert.equal(await exists(join(rootDir, "operations", "design", "roles", "ux-lead.role.md")), false, "UX Lead should be the area AGENT, not a specialist role file");
-  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-design-system/SKILL.md")), false, "Design skill should use direct naming without define- prefix");
-  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-accessibility/SKILL.md")), false, "Accessibility skill should use direct naming without define- prefix");
-  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "map-user-flow/SKILL.md")), false, "User flow skill should use direct naming");
-  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "create-screen-spec/SKILL.md")), false, "Screen spec skill should use direct naming");
-  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "ux-states/SKILL.md")), false, "UX states should be incorporated into screen specification");
-  assert.equal(await exists(join(rootDir, "operations", "design", "skills", "define-ux-states/SKILL.md")), false, "UX states skill should use direct naming");
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "knowledge", "README.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "knowledge", "design-system.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "knowledge", "accessibility.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "knowledge", "user-flows.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "knowledge", "component-inventory.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "knowledge", "components", "README.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "roles", "ux-researcher.role.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "roles", "product-designer.role.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "roles", "accessibility-specialist.role.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "roles", "ux-writer.role.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "design-system/SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "accessibility/SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "user-research/SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "user-flow-mapping/SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "component-analysis/SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "screen-specification/SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "microcopy/SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "design-review/SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "playbooks", "user-research.playbook.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "playbooks", "component-readiness.playbook.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "playbooks", "accessibility-review.playbook.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "playbooks", "ux-writing.playbook.md"));
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "design-principles.md")), false, "Design principles should move out of the Design area root");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "user-flows.md")), false, "User flows should move into Design knowledge");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "screen-specs.md")), false, "Screen specs should not be generated in the initial Design scaffold");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "ux-decisions.md")), false, "UX decisions should not be generated in the initial Design scaffold");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "usability-notes.md")), false, "Usability notes should not be generated in the initial Design scaffold");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "roles", "ux-lead.role.md")), false, "UX Lead should be the area AGENT, not a specialist role file");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "define-design-system/SKILL.md")), false, "Design skill should use direct naming without define- prefix");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "define-accessibility/SKILL.md")), false, "Accessibility skill should use direct naming without define- prefix");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "map-user-flow/SKILL.md")), false, "User flow skill should use direct naming");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "create-screen-spec/SKILL.md")), false, "Screen spec skill should use direct naming");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "ux-states/SKILL.md")), false, "UX states should be incorporated into screen specification");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "skills", "define-ux-states/SKILL.md")), false, "UX states skill should use direct naming");
 
   for (const heading of ["## Tokens", "## Typography", "## Color Intent", "## Spacing", "## Components", "## Interaction Principles", "## Não Faça", "## Perguntas em Aberto"]) {
     assert(designSystemKnowledge.includes(heading), `Design system knowledge should include ${heading}`);
@@ -135,8 +135,8 @@ export async function assertDesignFoundation(rootDir) {
   assert(componentSpecsReadme.includes("Store concrete Design component specifications created for real Features"), "Component specs README should explain its purpose");
   assert(componentSpecsReadme.includes("intentionally empty in the initial scaffold except for this README"), "Component specs folder should avoid speculative specs");
   assert(componentSpecsReadme.includes("<component-name>.md"), "Component specs README should define component spec naming");
-  assert(componentSpecsReadme.includes("../../../../ai-standard/templates/design/component-spec-template.md"), "Component specs README should point to the component spec template");
-  const componentSpecEntries = await readdir(join(rootDir, "operations", "design", "knowledge", "components"));
+  assert(componentSpecsReadme.includes(".leanos/standard/templates/design/component-spec-template.md"), "Component specs README should point to the component spec template");
+  const componentSpecEntries = await readdir(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "knowledge", "components"));
   assert.deepEqual(componentSpecEntries, ["README.md"], "Component specs folder should not generate concrete component specs in the initial scaffold");
 
   for (const skillContent of [userResearchSkill, userFlowMappingSkill, designSystemSkill, componentAnalysisSkill, screenSpecificationSkill, microcopySkill, accessibilitySkill, designReviewSkill]) {
@@ -217,35 +217,35 @@ export async function assertDesignFoundation(rootDir) {
 }
 
 export async function assertEngineeringAreaPattern(rootDir) {
-  const engineeringReadme = await readFile(join(rootDir, "operations", "engineering", "README.md"), "utf8");
-  const engineeringAgent = await readFile(join(rootDir, "operations", "engineering", "AGENT.md"), "utf8");
-  const areaYaml = parse(await readFile(join(rootDir, "operations", "engineering", "area.yaml"), "utf8"));
-  const skillsIndex = parse(await readFile(join(rootDir, ".leanos", "index", "skills.yaml"), "utf8"));
-  const playbooksIndex = parse(await readFile(join(rootDir, ".leanos", "index", "playbooks.yaml"), "utf8"));
-  const codeStandards = await readFile(join(rootDir, "operations", "engineering", "knowledge", "code-standards.md"), "utf8");
-  const implementationRules = await readFile(join(rootDir, "operations", "engineering", "knowledge", "implementation-rules.md"), "utf8");
-  const componentGuidelines = await readFile(join(rootDir, "operations", "engineering", "knowledge", "component-guidelines.md"), "utf8");
-  const dataGuidelines = await readFile(join(rootDir, "operations", "engineering", "knowledge", "data-guidelines.md"), "utf8");
-  const testingStrategy = await readFile(join(rootDir, "operations", "engineering", "knowledge", "testing-strategy.md"), "utf8");
-  const reviewCriteria = await readFile(join(rootDir, "operations", "engineering", "knowledge", "review-criteria.md"), "utf8");
-  const seniorDeveloper = await readFile(join(rootDir, "operations", "engineering", "roles", "senior-developer.role.md"), "utf8");
-  const testEngineer = await readFile(join(rootDir, "operations", "engineering", "roles", "test-engineer.role.md"), "utf8");
-  const prReviewer = await readFile(join(rootDir, "operations", "engineering", "roles", "pr-reviewer.role.md"), "utf8");
-  const planImplementation = await readFile(join(rootDir, "operations", "engineering", "skills", "plan-implementation/SKILL.md"), "utf8");
-  const followCodeStandards = await readFile(join(rootDir, "operations", "engineering", "skills", "follow-code-standards/SKILL.md"), "utf8");
-  const implementComponent = await readFile(join(rootDir, "operations", "engineering", "skills", "implement-component/SKILL.md"), "utf8");
-  const reviewDataChange = await readFile(join(rootDir, "operations", "engineering", "skills", "review-data-change/SKILL.md"), "utf8");
-  const engineeringDelivery = await readFile(join(rootDir, "operations", "engineering", "playbooks", "engineering-delivery.playbook.md"), "utf8");
-  const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
-  const componentImplementation = await readFile(join(rootDir, "operations", "engineering", "playbooks", "component-implementation.playbook.md"), "utf8");
-  const preparePr = await readFile(join(rootDir, "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
-  const prValidation = await readFile(join(rootDir, "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
+  const engineeringReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "README.md"), "utf8");
+  const engineeringAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "AGENT.md"), "utf8");
+  const areaYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "area.yaml"), "utf8"));
+  const skillsIndex = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "skills.yaml"), "utf8"));
+  const playbooksIndex = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "playbooks.yaml"), "utf8"));
+  const codeStandards = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "knowledge", "code-standards.md"), "utf8");
+  const implementationRules = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "knowledge", "implementation-rules.md"), "utf8");
+  const componentGuidelines = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "knowledge", "component-guidelines.md"), "utf8");
+  const dataGuidelines = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "knowledge", "data-guidelines.md"), "utf8");
+  const testingStrategy = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "knowledge", "testing-strategy.md"), "utf8");
+  const reviewCriteria = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "knowledge", "review-criteria.md"), "utf8");
+  const seniorDeveloper = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "roles", "senior-developer.role.md"), "utf8");
+  const testEngineer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "roles", "test-engineer.role.md"), "utf8");
+  const prReviewer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "roles", "pr-reviewer.role.md"), "utf8");
+  const planImplementation = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "plan-implementation/SKILL.md"), "utf8");
+  const followCodeStandards = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "follow-code-standards/SKILL.md"), "utf8");
+  const implementComponent = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "implement-component/SKILL.md"), "utf8");
+  const reviewDataChange = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "review-data-change/SKILL.md"), "utf8");
+  const engineeringDelivery = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "engineering-delivery.playbook.md"), "utf8");
+  const branchPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
+  const componentImplementation = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "component-implementation.playbook.md"), "utf8");
+  const preparePr = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
+  const prValidation = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
 
-  await assertExists(join(rootDir, "operations", "engineering", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "knowledge", "README.md"));
-  assert.equal(await exists(join(rootDir, "operations", "engineering", "implementation-notes.md")), false, "Engineering notes should move into knowledge/");
-  assert.equal(await exists(join(rootDir, "operations", "engineering", "code-review-notes.md")), false, "Code review notes should move into knowledge/");
-  assert.equal(await exists(join(rootDir, "operations", "engineering", "pr-log.md")), false, "PR log should move into knowledge/");
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "knowledge", "README.md"));
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "implementation-notes.md")), false, "Engineering notes should move into knowledge/");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "code-review-notes.md")), false, "Code review notes should move into knowledge/");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "pr-log.md")), false, "PR log should move into knowledge/");
 
   assert(engineeringReadme.includes("comece em `AGENT.md`"), "Engineering README should route operational work through AGENT.md");
   assert(engineeringReadme.includes("Read the approved Design component spec before implementing a new reusable component"), "Engineering README should require Design component spec before component work");
@@ -350,37 +350,37 @@ export async function assertEngineeringAreaPattern(rootDir) {
 }
 
 export async function assertDevOpsAreaPattern(rootDir) {
-  const devopsReadme = await readFile(join(rootDir, "operations", "devops", "README.md"), "utf8");
-  const devopsAgent = await readFile(join(rootDir, "operations", "devops", "AGENT.md"), "utf8");
-  const areaYaml = parse(await readFile(join(rootDir, "operations", "devops", "area.yaml"), "utf8"));
-  const githubManagement = await readFile(join(rootDir, "operations", "devops", "knowledge", "github-management.md"), "utf8");
-  const environments = await readFile(join(rootDir, "operations", "devops", "knowledge", "environments.md"), "utf8");
-  const deploymentReadiness = await readFile(join(rootDir, "operations", "devops", "knowledge", "deployment-readiness.md"), "utf8");
-  const ciCd = await readFile(join(rootDir, "operations", "devops", "knowledge", "ci-cd.md"), "utf8");
-  const observability = await readFile(join(rootDir, "operations", "devops", "knowledge", "observability.md"), "utf8");
-  const releaseNotes = await readFile(join(rootDir, "operations", "devops", "knowledge", "release-notes.md"), "utf8");
-  const devopsEngineer = await readFile(join(rootDir, "operations", "devops", "roles", "devops-engineer.role.md"), "utf8");
-  const githubDevops = await readFile(join(rootDir, "operations", "devops", "roles", "github-devops.role.md"), "utf8");
-  const releaseManager = await readFile(join(rootDir, "operations", "devops", "roles", "release-manager.role.md"), "utf8");
-  const configureGithubProject = await readFile(join(rootDir, "operations", "devops", "skills", "configure-github-project/SKILL.md"), "utf8");
-  const configureEnvironments = await readFile(join(rootDir, "operations", "devops", "skills", "configure-environments/SKILL.md"), "utf8");
-  const setupCi = await readFile(join(rootDir, "operations", "devops", "skills", "setup-ci/SKILL.md"), "utf8");
-  const planDeployment = await readFile(join(rootDir, "operations", "devops", "skills", "plan-deployment/SKILL.md"), "utf8");
-  const defineObservability = await readFile(join(rootDir, "operations", "devops", "skills", "define-observability/SKILL.md"), "utf8");
-  const prepareRelease = await readFile(join(rootDir, "operations", "devops", "skills", "prepare-release/SKILL.md"), "utf8");
-  const githubProjectPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "configure-github-project.playbook.md"), "utf8");
-  const setupCiCdPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "setup-ci-cd.playbook.md"), "utf8");
-  const planDeploymentPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "plan-deployment.playbook.md"), "utf8");
-  const releaseOperationsPlaybook = await readFile(join(rootDir, "operations", "devops", "playbooks", "release-operations.playbook.md"), "utf8");
+  const devopsReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "README.md"), "utf8");
+  const devopsAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "AGENT.md"), "utf8");
+  const areaYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "area.yaml"), "utf8"));
+  const githubManagement = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "knowledge", "github-management.md"), "utf8");
+  const environments = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "knowledge", "environments.md"), "utf8");
+  const deploymentReadiness = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "knowledge", "deployment-readiness.md"), "utf8");
+  const ciCd = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "knowledge", "ci-cd.md"), "utf8");
+  const observability = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "knowledge", "observability.md"), "utf8");
+  const releaseNotes = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "knowledge", "release-notes.md"), "utf8");
+  const devopsEngineer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "roles", "devops-engineer.role.md"), "utf8");
+  const githubDevops = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "roles", "github-devops.role.md"), "utf8");
+  const releaseManager = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "roles", "release-manager.role.md"), "utf8");
+  const configureGithubProject = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "configure-github-project/SKILL.md"), "utf8");
+  const configureEnvironments = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "configure-environments/SKILL.md"), "utf8");
+  const setupCi = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "setup-ci/SKILL.md"), "utf8");
+  const planDeployment = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "plan-deployment/SKILL.md"), "utf8");
+  const defineObservability = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "define-observability/SKILL.md"), "utf8");
+  const prepareRelease = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "prepare-release/SKILL.md"), "utf8");
+  const githubProjectPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "configure-github-project.playbook.md"), "utf8");
+  const setupCiCdPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "setup-ci-cd.playbook.md"), "utf8");
+  const planDeploymentPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "plan-deployment.playbook.md"), "utf8");
+  const releaseOperationsPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "release-operations.playbook.md"), "utf8");
 
-  await assertExists(join(rootDir, "operations", "devops", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "devops", "knowledge", "README.md"));
-  assert.equal(await exists(join(rootDir, "operations", "devops", "github-management.md")), false, "DevOps GitHub management should live in knowledge/");
-  assert.equal(await exists(join(rootDir, "operations", "devops", "environments.md")), false, "DevOps environments should live in knowledge/");
-  assert.equal(await exists(join(rootDir, "operations", "devops", "deployment-readiness.md")), false, "DevOps deployment readiness should live in knowledge/");
-  assert.equal(await exists(join(rootDir, "operations", "devops", "ci-cd.md")), false, "DevOps CI/CD should live in knowledge/");
-  assert.equal(await exists(join(rootDir, "operations", "devops", "observability.md")), false, "DevOps observability should live in knowledge/");
-  assert.equal(await exists(join(rootDir, "operations", "devops", "release-notes.md")), false, "DevOps release notes should live in knowledge/");
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "knowledge", "README.md"));
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "github-management.md")), false, "DevOps GitHub management should live in knowledge/");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "environments.md")), false, "DevOps environments should live in knowledge/");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "deployment-readiness.md")), false, "DevOps deployment readiness should live in knowledge/");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "ci-cd.md")), false, "DevOps CI/CD should live in knowledge/");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "observability.md")), false, "DevOps observability should live in knowledge/");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "release-notes.md")), false, "DevOps release notes should live in knowledge/");
 
   assert(devopsReadme.includes("comece em `AGENT.md`"), "DevOps README should route operational work through AGENT.md");
   assert(devopsReadme.includes("Não armazene tokens, segredos ou credenciais em arquivos do workspace"), "DevOps README should include token storage red line");
@@ -461,35 +461,35 @@ export async function assertDevOpsAreaPattern(rootDir) {
 }
 
 export async function assertSecurityAreaPattern(rootDir) {
-  const securityReadme = await readFile(join(rootDir, "operations", "security", "README.md"), "utf8");
-  const securityAgent = await readFile(join(rootDir, "operations", "security", "AGENT.md"), "utf8");
-  const areaYaml = parse(await readFile(join(rootDir, "operations", "security", "area.yaml"), "utf8"));
-  const baseline = await readFile(join(rootDir, "operations", "security", "knowledge", "security-baseline.md"), "utf8");
-  const threatModel = await readFile(join(rootDir, "operations", "security", "knowledge", "threat-model.md"), "utf8");
-  const accessControl = await readFile(join(rootDir, "operations", "security", "knowledge", "access-control.md"), "utf8");
-  const dataProtection = await readFile(join(rootDir, "operations", "security", "knowledge", "data-protection.md"), "utf8");
-  const databaseSecurity = await readFile(join(rootDir, "operations", "security", "knowledge", "database-security.md"), "utf8");
-  const secretsManagement = await readFile(join(rootDir, "operations", "security", "knowledge", "secrets-management.md"), "utf8");
-  const infraHardening = await readFile(join(rootDir, "operations", "security", "knowledge", "infra-hardening.md"), "utf8");
-  const secureCoding = await readFile(join(rootDir, "operations", "security", "knowledge", "secure-coding.md"), "utf8");
-  const incidentResponse = await readFile(join(rootDir, "operations", "security", "knowledge", "incident-response.md"), "utf8");
-  const securityAutomation = await readFile(join(rootDir, "operations", "security", "knowledge", "security-automation.md"), "utf8");
-  const securityReviewer = await readFile(join(rootDir, "operations", "security", "roles", "security-reviewer.role.md"), "utf8");
-  const appSecEngineer = await readFile(join(rootDir, "operations", "security", "roles", "application-security-engineer.role.md"), "utf8");
-  const cloudSecurityReviewer = await readFile(join(rootDir, "operations", "security", "roles", "cloud-security-reviewer.role.md"), "utf8");
-  const dataProtectionReviewer = await readFile(join(rootDir, "operations", "security", "roles", "data-protection-reviewer.role.md"), "utf8");
-  const aiGeneratedCodeSecurity = await readFile(join(rootDir, "operations", "security", "skills", "ai-generated-code-security/SKILL.md"), "utf8");
-  const securityAutomationReadiness = await readFile(join(rootDir, "operations", "security", "skills", "security-automation-readiness/SKILL.md"), "utf8");
-  const apiSecurityReview = await readFile(join(rootDir, "operations", "security", "skills", "api-security-review/SKILL.md"), "utf8");
-  const databaseSecurityReview = await readFile(join(rootDir, "operations", "security", "skills", "database-security-review/SKILL.md"), "utf8");
-  const preDeployReview = await readFile(join(rootDir, "operations", "security", "playbooks", "pre-deploy-security-review.playbook.md"), "utf8");
-  const aiGeneratedReview = await readFile(join(rootDir, "operations", "security", "playbooks", "ai-generated-code-security-review.playbook.md"), "utf8");
-  const securityAutomationPlaybook = await readFile(join(rootDir, "operations", "security", "playbooks", "security-automation-readiness.playbook.md"), "utf8");
+  const securityReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "README.md"), "utf8");
+  const securityAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "AGENT.md"), "utf8");
+  const areaYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "area.yaml"), "utf8"));
+  const baseline = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "security-baseline.md"), "utf8");
+  const threatModel = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "threat-model.md"), "utf8");
+  const accessControl = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "access-control.md"), "utf8");
+  const dataProtection = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "data-protection.md"), "utf8");
+  const databaseSecurity = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "database-security.md"), "utf8");
+  const secretsManagement = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "secrets-management.md"), "utf8");
+  const infraHardening = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "infra-hardening.md"), "utf8");
+  const secureCoding = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "secure-coding.md"), "utf8");
+  const incidentResponse = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "incident-response.md"), "utf8");
+  const securityAutomation = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "security-automation.md"), "utf8");
+  const securityReviewer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "roles", "security-reviewer.role.md"), "utf8");
+  const appSecEngineer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "roles", "application-security-engineer.role.md"), "utf8");
+  const cloudSecurityReviewer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "roles", "cloud-security-reviewer.role.md"), "utf8");
+  const dataProtectionReviewer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "roles", "data-protection-reviewer.role.md"), "utf8");
+  const aiGeneratedCodeSecurity = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "skills", "ai-generated-code-security/SKILL.md"), "utf8");
+  const securityAutomationReadiness = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "skills", "security-automation-readiness/SKILL.md"), "utf8");
+  const apiSecurityReview = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "skills", "api-security-review/SKILL.md"), "utf8");
+  const databaseSecurityReview = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "skills", "database-security-review/SKILL.md"), "utf8");
+  const preDeployReview = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "playbooks", "pre-deploy-security-review.playbook.md"), "utf8");
+  const aiGeneratedReview = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "playbooks", "ai-generated-code-security-review.playbook.md"), "utf8");
+  const securityAutomationPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "playbooks", "security-automation-readiness.playbook.md"), "utf8");
   const githubSecurityAutomation = await readFile(join(rootDir, ".github", "leanos", "security-automation.md"), "utf8");
-  const epicToFeaturesPlaybook = await readFile(join(rootDir, "operations", "product-ops", "playbooks", "epic-to-features.playbook.md"), "utf8");
+  const epicToFeaturesPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "playbooks", "epic-to-features.playbook.md"), "utf8");
 
   for (const oldPath of ["threat-model.md", "access-control.md", "data-protection.md"]) {
-    assert.equal(await exists(join(rootDir, "operations", "security", oldPath)), false, `Security ${oldPath} should live in knowledge/`);
+    assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "security", oldPath)), false, `Security ${oldPath} should live in knowledge/`);
   }
 
   assert(securityReadme.includes("comece em `AGENT.md`"), "Security README should route operational work through AGENT.md");
@@ -710,7 +710,7 @@ export async function assertSourceScaffoldSections(rootDir) {
 }
 
 export async function assertProductOpsPrdSections(rootDir) {
-  const prd = await readFile(join(rootDir, "operations", "product-ops", "mvp", "prd.md"), "utf8");
+  const prd = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "mvp", "prd.md"), "utf8");
   const requiredSections = [
     "## Product Outcome",
     "## Problem",

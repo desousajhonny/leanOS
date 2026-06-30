@@ -6,7 +6,7 @@ export const operationsEngineeringPlaybooks: PlaybookDefinition[] = [
       title: "Entrega De Engineering",
       purpose: "Orquestrar o caminho interno de Engineering de uma Feature pronta até branch, implementação, testes, PR e validação de PR.",
       useWhen: ["uma Feature passou pelo ready-to-develop", "a implementação deve começar", "Engineering precisa da ordem segura de execução", "o founder pede para implementar uma Feature"],
-      beforeActing: ["../AGENT.md", "../../product-ops/knowledge/ready-to-develop.md", "../../product-ops/epics/README.md", "../knowledge/implementation-rules.md", "../knowledge/code-standards.md", "../knowledge/component-guidelines.md", "../knowledge/data-guidelines.md", "../knowledge/testing-strategy.md", "../../../.github/leanos/branch-rules.md", "../../../.github/leanos/pr-validation-rules.md"],
+      beforeActing: ["../AGENT.md", "../../product-ops/knowledge/ready-to-develop.md", "../../product-ops/epics/README.md", "../knowledge/implementation-rules.md", "../knowledge/code-standards.md", "../knowledge/component-guidelines.md", "../knowledge/data-guidelines.md", "../knowledge/testing-strategy.md", ".github/leanos/branch-rules.md", ".github/leanos/pr-validation-rules.md"],
       inputs: ["Feature local confirmada ou issue de Feature do GitHub mapeada", "Resultado ready-to-develop", "Epic pai", "Critérios de aceite", "Especificação de componente de Design quando aplicável", "Prontidão de Security e DevOps quando aplicável", "Regras de branch", "Regras de validação de PR"],
       steps: [
         "Confirme que a solicitação é uma Feature pronta, não uma ideia solta, item de roadmap ou Epic não quebrado",

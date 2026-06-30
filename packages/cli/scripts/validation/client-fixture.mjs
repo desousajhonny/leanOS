@@ -38,6 +38,7 @@ import {
   assertPathInside,
   collectPathStrings,
   exists,
+  expectedGeneratedPath,
   isInitialStrategyWorkspacePath,
   listFiles,
   resolveFixturePath
@@ -213,8 +214,9 @@ export async function validateClientWorkspaceFixture() {
   ];
 
   for (const requiredPath of requiredPaths.filter(isInitialStrategyWorkspacePath)) {
-    if (!(await exists(resolveFixturePath(requiredPath)))) {
-      failOutOfDate([`Missing fixture file: ${requiredPath}`]);
+    const generatedPath = expectedGeneratedPath(requiredPath, exampleAnswers);
+    if (!(await exists(resolveFixturePath(generatedPath)))) {
+      failOutOfDate([`Missing fixture file: ${generatedPath}`]);
     }
   }
 

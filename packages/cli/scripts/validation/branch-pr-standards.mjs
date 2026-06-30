@@ -13,8 +13,8 @@ export async function validateBranchAndPrStandards() {
 
   const branchRules = await readFile(join(rootDir, ".github", "leanos", "branch-rules.md"), "utf8");
   const pullRequestTemplate = await readFile(join(rootDir, ".github", "PULL_REQUEST_TEMPLATE.md"), "utf8");
-  const branchNameTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "branch-name-template.md"), "utf8");
-  const aiPullRequestTemplate = await readFile(join(rootDir, "ai-standard", "templates", "github", "pull-request-template.md"), "utf8");
+  const branchNameTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "github", "branch-name-template.md"), "utf8");
+  const aiPullRequestTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "github", "pull-request-template.md"), "utf8");
 
   assertBranchStandards(branchRules, "Generated branch rules");
   assertBranchStandards(branchNameTemplate, "AI Standard branch template");
@@ -24,9 +24,9 @@ export async function validateBranchAndPrStandards() {
   await activateWorkspaceArea(rootDir, "operations.product-ops");
   await activateWorkspaceArea(rootDir, "operations.engineering");
 
-  const createPrSkill = await readFile(join(rootDir, "operations", "engineering", "skills", "create-pr", "SKILL.md"), "utf8");
-  const branchPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
-  const preparePrPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
+  const createPrSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "create-pr", "SKILL.md"), "utf8");
+  const branchPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
+  const preparePrPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
 
   assert(createPrSkill.includes("Título do PR em formato Conventional Commit"), "Create PR skill should require a Conventional Commit style title");
   assert(createPrSkill.includes("Status de prontidão"), "Create PR skill should output PR readiness status");

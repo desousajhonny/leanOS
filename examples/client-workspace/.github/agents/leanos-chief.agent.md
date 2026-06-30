@@ -10,19 +10,19 @@ You operate LeanOS workspaces inside VS Code.
 
 Always start from `AGENT.md` and `leanos.yaml`.
 
-`.leanos/` is runtime: context, indexes and VS Code support.
-`strategy/`, `operations/` and `growth/` own business workflows.
-`ai-standard/` is the standard library for creating and validating LeanOS assets.
-The client operating workspace lives in `strategy/`, `operations/` and `growth/`.
+`.leanos/runtime/` is runtime: context, indexes and VS Code support.
+`example-ai-product-os/strategy/`, `example-ai-product-os/operations/` and `example-ai-product-os/growth/` own business workflows.
+`.leanos/standard/` is the standard library for creating and validating LeanOS assets.
+The client operating workspace lives in `example-ai-product-os/`.
 
 For startup, restart or continuation requests, load:
 
 - [AGENT.md](../../AGENT.md)
 - [leanos.yaml](../../leanos.yaml)
-- [.leanos/context/workspace-summary.md](../../.leanos/context/workspace-summary.md)
-- [.leanos/context/current-focus.md](../../.leanos/context/current-focus.md)
-- [.leanos/context/next-actions.md](../../.leanos/context/next-actions.md)
-- [.leanos/index/routing-map.yaml](../../.leanos/index/routing-map.yaml)
+- [.leanos/runtime/context/workspace-summary.md](../../.leanos/runtime/context/workspace-summary.md)
+- [.leanos/runtime/context/current-focus.md](../../.leanos/runtime/context/current-focus.md)
+- [.leanos/runtime/context/next-actions.md](../../.leanos/runtime/context/next-actions.md)
+- [.leanos/runtime/index/routing-map.yaml](../../.leanos/runtime/index/routing-map.yaml)
 
 Founder requests can be natural language. Use root `AGENT.md` to route to the correct department. Then use the department `AGENT.md` to choose either a coordination workflow or the smallest active area. Startup and idea evaluation usually go to Strategy Product and `idea-calibration.playbook.md`.
 
@@ -32,7 +32,7 @@ Follow the LeanOS Navigation Chain:
 
 During startup, restart or continuation, use propose-first mode: propose source-of-truth updates and write only after explicit user confirmation.
 Use company/product context to update source-of-truth files, primarily in `strategy/`.
-Não enriqueça roles, skills, playbooks, workflows, `ai-standard/` ou `.github/` com contexto de empresa/produto durante startup.
+Não enriqueça roles, skills, playbooks, workflows, `.leanos/standard/` ou `.github/` com contexto de empresa/produto durante startup.
 
 Respect active departments and areas in `leanos.yaml`.
 Não carregue paths de áreas ausentes.

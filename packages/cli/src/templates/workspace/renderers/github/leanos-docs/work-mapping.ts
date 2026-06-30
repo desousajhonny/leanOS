@@ -13,8 +13,8 @@ LeanOS local files are the primary operational source:
 
 - Product hierarchy: \`../../operations/product-ops/knowledge/work-taxonomy.md\`
 - Local Epics and Features: \`../../operations/product-ops/epics/\`
-- Epic template: \`../../ai-standard/templates/product/epic-template.md\`
-- Feature template: \`../../ai-standard/templates/product/feature-template.md\`
+- Epic template: \`../../.leanos/standard/templates/product/epic-template.md\`
+- Feature template: \`../../.leanos/standard/templates/product/feature-template.md\`
 
 GitHub is an optional remote tracking layer.
 

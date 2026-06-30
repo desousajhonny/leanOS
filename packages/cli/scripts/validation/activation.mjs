@@ -79,32 +79,32 @@ export async function validateProductOpsActivation() {
   assert(result.writtenPaths.length > 0, "Product Ops activation should write files");
   assert.equal(result.activatedArea, "operations.product-ops");
   assert.equal(result.activatedDepartment, "operations");
-  assert(result.writtenPaths.includes("operations/AGENT.md"), "Product Ops activation should create Operations");
-  assert(result.writtenPaths.includes("operations/product-ops/AGENT.md"), "Product Ops activation should create Product Ops");
+  assert(result.writtenPaths.includes("clinic-assistant-ai-os/operations/AGENT.md"), "Product Ops activation should create Operations");
+  assert(result.writtenPaths.includes("clinic-assistant-ai-os/operations/product-ops/AGENT.md"), "Product Ops activation should create Product Ops");
   assert.equal(result.writtenPaths.some((writtenPath) => writtenPath.startsWith(".leanos/commands/")), false, "Activation should not create slash-command files");
   assert(result.writtenPaths.includes("leanos.yaml"), "Product Ops activation should update leanos.yaml");
-  assert.equal(result.writtenPaths.some((writtenPath) => writtenPath.startsWith("ai-standard/")), false, "Activation should not regenerate AI Standard");
+  assert.equal(result.writtenPaths.some((writtenPath) => writtenPath.startsWith(".leanos/standard/")), false, "Activation should not regenerate AI Standard");
   assert.equal(result.writtenPaths.some((writtenPath) => writtenPath.startsWith(".github/")), false, "Activation should not regenerate GitHub support files");
-  assert.equal(await exists(join(rootDir, "operations", "design")), false, "Product Ops activation should not generate Design");
-  assert.equal(await exists(join(rootDir, "operations", "engineering")), false, "Product Ops activation should not generate Engineering");
-  assert.equal(await exists(join(rootDir, "growth")), false, "Product Ops activation should not generate Growth");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "design")), false, "Product Ops activation should not generate Design");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering")), false, "Product Ops activation should not generate Engineering");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "growth")), false, "Product Ops activation should not generate Growth");
 
-  await assertExists(join(rootDir, "operations", "AGENT.md"));
-  assert.equal(await exists(join(rootDir, "operations", "workflows", "define-mvp.workflow.md")), false, "Product Ops activation should not create define-mvp workflow");
-  assert.equal(await exists(join(rootDir, "operations", "workflows", "roadmap-item-to-epic.workflow.md")), false, "Product Ops activation should not create obsolete roadmap-item-to-epic workflow");
-  assert.equal(await exists(join(rootDir, "operations", "workflows", "delivery-item-to-epic.workflow.md")), false, "Product Ops activation should not create delivery-item-to-epic workflow");
-  assert.equal(await exists(join(rootDir, "operations", "workflows", "epic-to-features.workflow.md")), false, "Product Ops activation should not create epic-to-features workflow");
-  await assertExists(join(rootDir, "operations", "product-ops", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "mvp-decision-gate.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "ready-to-develop.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "mvp", "backlog.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "mvp", "prd.md"));
-  assert.equal(await exists(join(rootDir, "operations", "product-ops", "skills", "define-mvp", "SKILL.md")), false, "Product Ops should not generate broad define-mvp skill");
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "AGENT.md"));
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "workflows", "define-mvp.workflow.md")), false, "Product Ops activation should not create define-mvp workflow");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "workflows", "roadmap-item-to-epic.workflow.md")), false, "Product Ops activation should not create obsolete roadmap-item-to-epic workflow");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "workflows", "delivery-item-to-epic.workflow.md")), false, "Product Ops activation should not create delivery-item-to-epic workflow");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "workflows", "epic-to-features.workflow.md")), false, "Product Ops activation should not create epic-to-features workflow");
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "knowledge", "mvp-decision-gate.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "knowledge", "ready-to-develop.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "mvp", "backlog.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "mvp", "prd.md"));
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "skills", "define-mvp", "SKILL.md")), false, "Product Ops should not generate broad define-mvp skill");
   assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Product Ops activation should not create commands");
 
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
   assert.deepEqual(yaml.departments.active, ["strategy", "operations"]);
-  assert.equal(yaml.departments.routes.operations.agent, "operations/AGENT.md");
+  assert.equal(yaml.departments.routes.operations.agent, "clinic-assistant-ai-os/operations/AGENT.md");
   assert.deepEqual(yaml.activation.active_departments, ["strategy", "operations"]);
   assert.deepEqual(yaml.activation.inactive_departments, ["growth"]);
   assert(yaml.activation.active_areas.includes("operations.product-ops"), "Product Ops should become active");
@@ -116,15 +116,15 @@ export async function validateProductOpsActivation() {
   assert.equal(yaml.workflows.active.includes("epic-to-features"), false, "Product Ops activation should not enable epic-to-features as workflow");
   assert.equal(yaml.workflows.active.includes("feature-to-delivery-cycle"), false, "Engineering workflows should wait for Engineering activation");
 
-  const routingMap = parse(await readFile(join(rootDir, ".leanos", "index", "routing-map.yaml"), "utf8"));
-  const rolesIndex = parse(await readFile(join(rootDir, ".leanos", "index", "roles.yaml"), "utf8"));
-  const playbooksIndex = parse(await readFile(join(rootDir, ".leanos", "index", "playbooks.yaml"), "utf8"));
-  const workspaceSummary = await readFile(join(rootDir, ".leanos", "context", "workspace-summary.md"), "utf8");
-  const nextActions = await readFile(join(rootDir, ".leanos", "context", "next-actions.md"), "utf8");
+  const routingMap = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "routing-map.yaml"), "utf8"));
+  const rolesIndex = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "roles.yaml"), "utf8"));
+  const playbooksIndex = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "playbooks.yaml"), "utf8"));
+  const workspaceSummary = await readFile(join(rootDir, ".leanos", "runtime", "context", "workspace-summary.md"), "utf8");
+  const nextActions = await readFile(join(rootDir, ".leanos", "runtime", "context", "next-actions.md"), "utf8");
   const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
 
-  assert.equal(routingMap.routing.departments.operations.agent, "../../operations/AGENT.md");
-  assert.equal(routingMap.routing.areas.product_ops.agent, "../../operations/product-ops/AGENT.md");
+  assert.equal(routingMap.routing.departments.operations.agent, "../../../clinic-assistant-ai-os/operations/AGENT.md");
+  assert.equal(routingMap.routing.areas.product_ops.agent, "../../../clinic-assistant-ai-os/operations/product-ops/AGENT.md");
   assert(rolesIndex.roles.some((role) => role.key === "product-owner"), "Product Owner role should be indexed after Product Ops activation");
   assert(playbooksIndex.playbooks.some((playbook) => playbook.key === "mvp-backlog-planning"), "MVP backlog planning playbook should be indexed after Product Ops activation");
   assert(playbooksIndex.playbooks.some((playbook) => playbook.key === "delivery-item-to-epic"), "Delivery item to Epic playbook should be indexed after Product Ops activation");
@@ -133,7 +133,7 @@ export async function validateProductOpsActivation() {
   assert(workspaceSummary.includes("Active departments: strategy, operations"), "Workspace summary should include active Operations");
   assert(workspaceSummary.includes("operations.product-ops"), "Workspace summary should include Product Ops");
   assert(nextActions.includes("Product Ops"), "Next actions should mention active Product Ops without exposing slash commands");
-  assert(rootAgent.includes("- Operations: `operations/AGENT.md`"), "Root AGENT should route to Operations after activation");
+  assert(rootAgent.includes("- Operations: `clinic-assistant-ai-os/operations/AGENT.md`"), "Root AGENT should route to Operations after activation");
 
   await assertIndexPathsExist(rootDir);
 }
@@ -151,13 +151,13 @@ export async function validateActivationCliCommand() {
   });
 
   assert(stdout.includes("Activated operations.product-ops"), "Activation CLI should report the activated area");
-  assert(stdout.includes("operations/AGENT.md"), "Activation CLI should report created Operations files");
+  assert(stdout.includes("clinic-assistant-ai-os/operations/AGENT.md"), "Activation CLI should report created Operations files");
   assert.equal(stdout.includes(".leanos/commands/"), false, "Activation CLI should not report command files");
 
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
 
   assert(yaml.activation.active_areas.includes("operations.product-ops"), "Activation CLI should update leanos.yaml");
-  await assertExists(join(rootDir, "operations", "product-ops", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "AGENT.md"));
   assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Activation CLI should not create commands");
-  assert.equal(await exists(join(rootDir, "operations", "engineering")), false, "Activation CLI should not activate Engineering with Product Ops");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering")), false, "Activation CLI should not activate Engineering with Product Ops");
 }

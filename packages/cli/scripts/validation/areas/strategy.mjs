@@ -54,17 +54,17 @@ import {
 } from "../ai-standard.mjs";
 
 export async function assertBusinessAreaPattern(rootDir) {
-  const businessAgent = await readFile(join(rootDir, "strategy", "business", "AGENT.md"), "utf8");
-  const businessReadme = await readFile(join(rootDir, "strategy", "business", "README.md"), "utf8");
-  const businessAreaYaml = parse(await readFile(join(rootDir, "strategy", "business", "area.yaml"), "utf8"));
-  const knowledgeReadme = await readFile(join(rootDir, "strategy", "business", "knowledge", "README.md"), "utf8");
-  const profile = await readFile(join(rootDir, "strategy", "business", "knowledge", "profile.md"), "utf8");
-  const businessModel = await readFile(join(rootDir, "strategy", "business", "knowledge", "business-model-canvas.md"), "utf8");
-  const role = await readFile(join(rootDir, "strategy", "business", "roles", "business-strategist.role.md"), "utf8");
-  const identitySkill = await readFile(join(rootDir, "strategy", "business", "skills", "business-identity/SKILL.md"), "utf8");
-  const operatingModelSkill = await readFile(join(rootDir, "strategy", "business", "skills", "operating-model/SKILL.md"), "utf8");
-  const businessModelSkill = await readFile(join(rootDir, "strategy", "business", "skills", "business-model/SKILL.md"), "utf8");
-  const playbook = await readFile(join(rootDir, "strategy", "business", "playbooks", "business-foundation.playbook.md"), "utf8");
+  const businessAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "AGENT.md"), "utf8");
+  const businessReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "README.md"), "utf8");
+  const businessAreaYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "area.yaml"), "utf8"));
+  const knowledgeReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "knowledge", "README.md"), "utf8");
+  const profile = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "knowledge", "profile.md"), "utf8");
+  const businessModel = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "knowledge", "business-model-canvas.md"), "utf8");
+  const role = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "roles", "business-strategist.role.md"), "utf8");
+  const identitySkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "skills", "business-identity/SKILL.md"), "utf8");
+  const operatingModelSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "skills", "operating-model/SKILL.md"), "utf8");
+  const businessModelSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "skills", "business-model/SKILL.md"), "utf8");
+  const playbook = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "business", "playbooks", "business-foundation.playbook.md"), "utf8");
 
   assert(businessAgent.includes("# Agente de Business"), "Business should have an area AGENT");
   assert(businessAgent.includes("Você é Business Lead"), "Business AGENT should act as Business Lead");
@@ -93,27 +93,27 @@ export async function assertBusinessAreaPattern(rootDir) {
   assert(playbook.includes("../knowledge/operating-model.md"), "Business foundation playbook should update operating model knowledge");
   assertPlaybookFormat(playbook, "business-foundation");
 
-  assert.equal(await exists(join(rootDir, "strategy", "company")), false, "Old strategy/company path should not be generated");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "company")), false, "Old strategy/company path should not be generated");
 }
 
 export async function assertProductAreaPattern(rootDir) {
-  const productAgent = await readFile(join(rootDir, "strategy", "product", "AGENT.md"), "utf8");
-  const productReadme = await readFile(join(rootDir, "strategy", "product", "README.md"), "utf8");
-  const productAreaYaml = parse(await readFile(join(rootDir, "strategy", "product", "area.yaml"), "utf8"));
-  const knowledgeReadme = await readFile(join(rootDir, "strategy", "product", "knowledge", "README.md"), "utf8");
-  const problem = await readFile(join(rootDir, "strategy", "product", "knowledge", "problem.md"), "utf8");
-  const icp = await readFile(join(rootDir, "strategy", "product", "knowledge", "icp.md"), "utf8");
-  const valueProposition = await readFile(join(rootDir, "strategy", "product", "knowledge", "value-proposition.md"), "utf8");
-  const positioning = await readFile(join(rootDir, "strategy", "product", "knowledge", "positioning.md"), "utf8");
-  const validationNotes = await readFile(join(rootDir, "strategy", "product", "knowledge", "validation-notes.md"), "utf8");
-  const mvpValidationScope = await readFile(join(rootDir, "strategy", "product", "knowledge", "mvp-validation-scope.md"), "utf8");
-  const productStrategistRole = await readFile(join(rootDir, "strategy", "product", "roles", "product-strategist.role.md"), "utf8");
-  const productManagerRole = await readFile(join(rootDir, "strategy", "product", "roles", "product-manager.role.md"), "utf8");
-  const diagnoseFounderIdeaSkill = await readFile(join(rootDir, "strategy", "product", "skills", "business-baseline/SKILL.md"), "utf8");
-  const defineProductCoreSkill = await readFile(join(rootDir, "strategy", "product", "skills", "product-core/SKILL.md"), "utf8");
-  const defineMvpValidationScopeSkill = await readFile(join(rootDir, "strategy", "product", "skills", "mvp-validation-scope/SKILL.md"), "utf8");
-  const productStrategyPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "idea-calibration.playbook.md"), "utf8");
-  const mvpValidationScopePlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "mvp-validation-scope.playbook.md"), "utf8");
+  const productAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "AGENT.md"), "utf8");
+  const productReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "README.md"), "utf8");
+  const productAreaYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "area.yaml"), "utf8"));
+  const knowledgeReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "README.md"), "utf8");
+  const problem = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "problem.md"), "utf8");
+  const icp = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "icp.md"), "utf8");
+  const valueProposition = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "value-proposition.md"), "utf8");
+  const positioning = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "positioning.md"), "utf8");
+  const validationNotes = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "validation-notes.md"), "utf8");
+  const mvpValidationScope = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "mvp-validation-scope.md"), "utf8");
+  const productStrategistRole = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "roles", "product-strategist.role.md"), "utf8");
+  const productManagerRole = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "roles", "product-manager.role.md"), "utf8");
+  const diagnoseFounderIdeaSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "skills", "business-baseline/SKILL.md"), "utf8");
+  const defineProductCoreSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "skills", "product-core/SKILL.md"), "utf8");
+  const defineMvpValidationScopeSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "skills", "mvp-validation-scope/SKILL.md"), "utf8");
+  const productStrategyPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "playbooks", "idea-calibration.playbook.md"), "utf8");
+  const mvpValidationScopePlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "playbooks", "mvp-validation-scope.playbook.md"), "utf8");
 
   assert(productAgent.includes("# Agente de Product"), "Product should have an area AGENT");
   assert(productAgent.includes("Você é Product Lead"), "Product AGENT should act as Product Lead");
@@ -173,7 +173,7 @@ export async function assertProductAreaPattern(rootDir) {
   assertPlaybookFormat(mvpValidationScopePlaybook, "mvp-validation-scope");
   assert(diagnoseFounderIdeaSkill.includes("# Business Baseline"), "Product should have a dedicated business baseline mapping skill");
   assert(diagnoseFounderIdeaSkill.includes("Strategy Baseline"), "Business baseline mapping skill should build Strategy Baseline");
-  assert(diagnoseFounderIdeaSkill.includes("../../../ai-standard/foundation/progression-gates.md"), "Business baseline mapping skill should load progression gates");
+  assert(diagnoseFounderIdeaSkill.includes(".leanos/standard/foundation/progression-gates.md"), "Business baseline mapping skill should load progression gates");
   assert(diagnoseFounderIdeaSkill.includes("lacunas de baseline"), "Business baseline mapping skill should identify lacunas de baseline");
   assert(diagnoseFounderIdeaSkill.includes("Não crie roadmap, backlog de MVP, Epics, Features ou trabalho de implementação"), "Business baseline mapping skill should stop before roadmap and delivery");
   assert(defineProductCoreSkill.includes("# Product Core"), "Product should have a dedicated product core definition skill");
@@ -202,7 +202,7 @@ export async function assertProductAreaPattern(rootDir) {
   assert(defineMvpValidationScopeSkill.includes("Não atualize arquivos de Roadmap a partir do escopo de validação do MVP"), "MVP validation scope skill should not update Roadmap files");
   assert(defineMvpValidationScopeSkill.includes("Não crie Epics, Features ou escopo de implementação"), "MVP validation scope skill should stop before delivery work");
   assert(productStrategyPlaybook.includes("## Conversa Guiada"), "Idea calibration playbook should include guided conversation");
-  assert(productStrategyPlaybook.includes("../../../ai-standard/foundation/guided-conversation.md"), "Idea calibration playbook should point to guided conversation standard");
+  assert(productStrategyPlaybook.includes(".leanos/standard/foundation/guided-conversation.md"), "Idea calibration playbook should point to guided conversation standard");
   assert(productStrategyPlaybook.includes("Faça uma pergunta útil por vez"), "Idea calibration playbook should keep calibration conversational");
   assert(productStrategyPlaybook.includes("skills/product-core/SKILL.md"), "Idea calibration playbook should use product core skill");
   assert(productStrategyPlaybook.includes("Avalie fit, suposições, evidência, impacto no MVP e impacto no roadmap dentro deste playbook"), "Idea calibration playbook should absorb idea evaluation");
@@ -229,10 +229,10 @@ export async function assertProductAreaPattern(rootDir) {
     "business-model",
     "evaluate-idea"
   ]) {
-    assert.equal(await exists(join(rootDir, "strategy", "product", "skills", oldSkill, "SKILL.md")), false, `Product should not generate removed skill ${oldSkill}`);
+    assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "skills", oldSkill, "SKILL.md")), false, `Product should not generate removed skill ${oldSkill}`);
   }
 
-  assert.equal(await exists(join(rootDir, "strategy", "product", "knowledge", "business-model-canvas.md")), false, "Product should not generate business model canvas knowledge");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "business-model-canvas.md")), false, "Product should not generate business model canvas knowledge");
 
   for (const oldPath of [
     "brief.md",
@@ -243,23 +243,23 @@ export async function assertProductAreaPattern(rootDir) {
     "positioning.md",
     "business-model-canvas.md"
   ]) {
-    assert.equal(await exists(join(rootDir, "strategy", "product", oldPath)), false, `Product should not generate loose root file ${oldPath}`);
+    assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", oldPath)), false, `Product should not generate loose root file ${oldPath}`);
   }
 }
 
 export async function assertRoadmapAreaPattern(rootDir) {
-  const roadmapAgent = await readFile(join(rootDir, "strategy", "roadmap", "AGENT.md"), "utf8");
-  const roadmapReadme = await readFile(join(rootDir, "strategy", "roadmap", "README.md"), "utf8");
-  const roadmapAreaYaml = parse(await readFile(join(rootDir, "strategy", "roadmap", "area.yaml"), "utf8"));
-  const knowledgeReadme = await readFile(join(rootDir, "strategy", "roadmap", "knowledge", "README.md"), "utf8");
-  const roadmap = await readFile(join(rootDir, "strategy", "roadmap", "knowledge", "roadmap.md"), "utf8");
-  const milestones = await readFile(join(rootDir, "strategy", "roadmap", "knowledge", "milestones.md"), "utf8");
-  const currentCycle = await readFile(join(rootDir, "strategy", "roadmap", "knowledge", "current-cycle.md"), "utf8");
-  const backlog = await readFile(join(rootDir, "strategy", "roadmap", "knowledge", "backlog.md"), "utf8");
-  const role = await readFile(join(rootDir, "strategy", "roadmap", "roles", "roadmap-planner.role.md"), "utf8");
-  const roadmapSkill = await readFile(join(rootDir, "strategy", "roadmap", "skills", "roadmap/SKILL.md"), "utf8");
-  const prioritizeBacklogSkill = await readFile(join(rootDir, "strategy", "roadmap", "skills", "backlog-prioritization/SKILL.md"), "utf8");
-  const cyclePlaybook = await readFile(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-cycle-planning.playbook.md"), "utf8");
+  const roadmapAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "AGENT.md"), "utf8");
+  const roadmapReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "README.md"), "utf8");
+  const roadmapAreaYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "area.yaml"), "utf8"));
+  const knowledgeReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "knowledge", "README.md"), "utf8");
+  const roadmap = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "knowledge", "roadmap.md"), "utf8");
+  const milestones = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "knowledge", "milestones.md"), "utf8");
+  const currentCycle = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "knowledge", "current-cycle.md"), "utf8");
+  const backlog = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "knowledge", "backlog.md"), "utf8");
+  const role = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "roles", "roadmap-planner.role.md"), "utf8");
+  const roadmapSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "skills", "roadmap/SKILL.md"), "utf8");
+  const prioritizeBacklogSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "skills", "backlog-prioritization/SKILL.md"), "utf8");
+  const cyclePlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "playbooks", "roadmap-cycle-planning.playbook.md"), "utf8");
   const projectSync = await readFile(join(rootDir, ".github", "leanos", "project-sync.yaml"), "utf8");
 
   assert(roadmapAgent.includes("# Agente de Roadmap"), "Roadmap should have an area AGENT");
@@ -293,7 +293,7 @@ export async function assertRoadmapAreaPattern(rootDir) {
   assert(roadmapSkill.includes("Não use Roadmap como continuação obrigatória da primeira validação de MVP"), "Roadmap should prevent forced Roadmap after MVP validation");
   assert.equal(roadmapSkill.includes("../../../operations/product-ops/mvp/scope.md"), false, "Roadmap should not depend on inactive Product Ops MVP scope");
   assert(prioritizeBacklogSkill.includes("Itens grandes são marcados para quebra em Epic"), "Prioritize backlog skill should identify large items");
-  assert.equal(await exists(join(rootDir, "strategy", "roadmap", "skills", "prepare-roadmap-sync/SKILL.md")), false, "Roadmap should not generate prepare-roadmap-sync skill");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "skills", "prepare-roadmap-sync/SKILL.md")), false, "Roadmap should not generate prepare-roadmap-sync skill");
   assert(cyclePlaybook.includes("Roadmap Cycle Planning"), "Roadmap cycle playbook should replace validation cycle planning");
   assert(cyclePlaybook.includes("../knowledge/current-cycle.md"), "Roadmap cycle playbook should update current-cycle knowledge");
   assert.equal(cyclePlaybook.includes("../../product/knowledge/mvp-validation-scope.md"), false, "Roadmap cycle playbook should not require Product MVP validation scope");
@@ -301,22 +301,22 @@ export async function assertRoadmapAreaPattern(rootDir) {
   assert(cyclePlaybook.includes("Use apenas quando o produto estiver em `product_operating` ou `growth_scaling`"), "Roadmap cycle playbook should be stage-gated to operating products");
   assert(cyclePlaybook.includes("Se o negócio estiver em `mvp_building` ou `mvp_live_learning`"), "Roadmap cycle playbook should route active MVP work to Product Ops");
   assert.equal(cyclePlaybook.includes("../../../operations/product-ops/mvp/scope.md"), false, "Roadmap cycle playbook should not depend on inactive Product Ops MVP scope");
-  assert.equal(await exists(join(rootDir, "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md")), false, "Roadmap should not generate roadmap-sync-prep playbook");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md")), false, "Roadmap should not generate roadmap-sync-prep playbook");
   assert(projectSync.includes("operations/product-ops/epics/"), "GitHub project sync should point to local Epics/Features");
 
   for (const oldPath of ["roadmap.md", "milestones.md", "current-cycle.md", "backlog.md"]) {
-    assert.equal(await exists(join(rootDir, "strategy", "roadmap", oldPath)), false, `Roadmap should not generate loose root file ${oldPath}`);
+    assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", oldPath)), false, `Roadmap should not generate loose root file ${oldPath}`);
   }
 
-  assert.equal(await exists(join(rootDir, "strategy", "roadmap", "playbooks", "validation-cycle-planning.playbook.md")), false, "Roadmap should not generate validation-cycle-planning playbook in MVP roadmap scaffold");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "playbooks", "validation-cycle-planning.playbook.md")), false, "Roadmap should not generate validation-cycle-planning playbook in MVP roadmap scaffold");
 }
 
 export async function assertMvpValidationScopeSections(rootDir) {
-  const mvpValidationScope = await readFile(join(rootDir, "strategy", "product", "knowledge", "mvp-validation-scope.md"), "utf8");
-  const mvpValidationScopeSkill = await readFile(join(rootDir, "strategy", "product", "skills", "mvp-validation-scope/SKILL.md"), "utf8");
-  const productPlaybook = await readFile(join(rootDir, "strategy", "product", "playbooks", "idea-calibration.playbook.md"), "utf8");
+  const mvpValidationScope = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "knowledge", "mvp-validation-scope.md"), "utf8");
+  const mvpValidationScopeSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "skills", "mvp-validation-scope/SKILL.md"), "utf8");
+  const productPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "playbooks", "idea-calibration.playbook.md"), "utf8");
 
-  assert.equal(await exists(join(rootDir, "strategy", "validation")), false, "Strategy Validation folder should not exist");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "validation")), false, "Strategy Validation folder should not exist");
   assert(mvpValidationScope.includes("Tese de Negócio"), "MVP validation scope should capture the business thesis");
   assert(mvpValidationScope.includes("MVP Slice"), "MVP validation scope should define the validation slice");
   assert(mvpValidationScope.includes("Sinais de Sucesso"), "MVP validation scope should define success signals");

@@ -9,10 +9,10 @@ Seu trabalho é ajudar o usuário a operar uma empresa de produto com coerência
 Leia estes arquivos primeiro:
 
 - `leanos.yaml`
-- `.leanos/context/workspace-summary.md`
-- `.leanos/context/current-focus.md`
-- `.leanos/context/next-actions.md`
-- `.leanos/index/routing-map.yaml`
+- `.leanos/runtime/context/workspace-summary.md`
+- `.leanos/runtime/context/current-focus.md`
+- `.leanos/runtime/context/next-actions.md`
+- `.leanos/runtime/index/routing-map.yaml`
 
 ## Linhas Vermelhas / Regras Não Negociáveis
 
@@ -25,11 +25,11 @@ Leia estes arquivos primeiro:
 - Não carregue o workspace inteiro quando existir uma rota menor.
 - Não escreva secrets em arquivos versionados.
 - Peça confirmação antes de modificar arquivos de knowledge, decisão ou framework.
-- Não crie nem modifique assets do framework LeanOS de memória. Roteie por `ai-standard/README.md`.
-- Para pedidos de status/readiness como "onde estamos?", "o que temos?", "o que falta?", "já podemos desenvolver?" ou similares, carregue `.leanos/agent/protocols/where-we-are.md` antes de recomendar próximo passo ou implementação.
-- Para pedidos de trace, debug, diagnóstico, "o que o LeanOS fez?" ou "envie um relatório para o framework", carregue `.leanos/agent/protocols/chief-trace.md` e crie apenas um trace local seguro depois de confirmação.
-- Durante startup, não enriqueça roles, skills, playbooks, workflows, `ai-standard/` ou `.github/` com contexto da empresa/produto.
-- Não modifique roles, skills, playbooks, workflows, `ai-standard/` ou `.github/` durante startup.
+- Não crie nem modifique assets do framework LeanOS de memória. Roteie por `.leanos/standard/README.md`.
+- Para pedidos de status/readiness como "onde estamos?", "o que temos?", "o que falta?", "já podemos desenvolver?" ou similares, carregue `.leanos/runtime/agent/protocols/where-we-are.md` antes de recomendar próximo passo ou implementação.
+- Para pedidos de trace, debug, diagnóstico, "o que o LeanOS fez?" ou "envie um relatório para o framework", carregue `.leanos/runtime/agent/protocols/chief-trace.md` e crie apenas um trace local seguro depois de confirmação.
+- Durante startup, não enriqueça roles, skills, playbooks, workflows, `.leanos/standard/` ou `.github/` com contexto da empresa/produto.
+- Não modifique roles, skills, playbooks, workflows, `.leanos/standard/` ou `.github/` durante startup.
 - Durante startup, proponha atualizações primeiro e escreva somente depois de confirmação explícita do usuário.
 - Não escreva durante a primeira resposta.
 - Não modifique arquivos de fonte da verdade, decisão, framework ou runtime até o usuário confirmar explicitamente as mudanças propostas.
@@ -50,14 +50,14 @@ Linguagem natural é a interface principal. Roteie pedidos do founder pelo Rotea
 
 Exemplos:
 
-- "me ajude a definir o ICP" -> `strategy/AGENT.md`
-- "defina o escopo de validação do MVP" ou "o que o primeiro MVP deve validar?" -> `strategy/AGENT.md`
+- "me ajude a definir o ICP" -> `example-ai-product-os/strategy/AGENT.md`
+- "defina o escopo de validação do MVP" ou "o que o primeiro MVP deve validar?" -> `example-ai-product-os/strategy/AGENT.md`
 - "transforme este item de MVP em backlog ou Epic" -> retorne `activation_required` para `operations.product-ops` quando Product Ops estiver inativo
 - "revise este PR" -> retorne `activation_required` para `operations.engineering` quando Engineering estiver inativo
 
 ## Roteamento de Intenção de Progressão
 
-Para decisões de progressão do founder, use `ai-standard/foundation/founder-progression-model.md` como regra operacional para estágio e comportamento de ativação, e `ai-standard/foundation/progression-gates.md` como matriz concreta de gates para contexto obrigatório, próximos estágios permitidos e próximos estágios bloqueados. Use esses arquivos apenas para disciplina de roteamento; decisões de produto continuam pertencendo ao departamento ativo pela Cadeia de Navegação.
+Para decisões de progressão do founder, use `.leanos/standard/foundation/founder-progression-model.md` como regra operacional para estágio e comportamento de ativação, e `.leanos/standard/foundation/progression-gates.md` como matriz concreta de gates para contexto obrigatório, próximos estágios permitidos e próximos estágios bloqueados. Use esses arquivos apenas para disciplina de roteamento; decisões de produto continuam pertencendo ao departamento ativo pela Cadeia de Navegação.
 
 Aplique este formato de decisão:
 
@@ -67,11 +67,11 @@ Intenção -> Estágio Atual -> Gate -> Requisitos Ativos -> Rota
 
 Regras:
 
-- Começo, retomada ou calibração de ideia: `strategy/AGENT.md`, depois Strategy Product e `idea-calibration.playbook.md`.
-- Escopo inicial de validação do MVP, roadmap, priorização ou rota de validação: `strategy/AGENT.md`.
-- Planejamento de backlog do MVP, Epic, Feature ou formatação de entrega: `operations/AGENT.md` somente quando a área obrigatória de Operations estiver ativa.
-- Implementação, branch, PR ou review: `operations/AGENT.md` somente quando Engineering estiver ativo e a readiness de entrega estiver clara.
-- Launch, aquisição, onboarding ou learning loop: `growth/AGENT.md` somente quando a área obrigatória de Growth estiver ativa.
+- Começo, retomada ou calibração de ideia: `example-ai-product-os/strategy/AGENT.md`, depois Strategy Product e `idea-calibration.playbook.md`.
+- Escopo inicial de validação do MVP, roadmap, priorização ou rota de validação: `example-ai-product-os/strategy/AGENT.md`.
+- Planejamento de backlog do MVP, Epic, Feature ou formatação de entrega: `example-ai-product-os/operations/AGENT.md` somente quando a área obrigatória de Operations estiver ativa.
+- Implementação, branch, PR ou review: `example-ai-product-os/operations/AGENT.md` somente quando Engineering estiver ativo e a readiness de entrega estiver clara.
+- Launch, aquisição, onboarding ou learning loop: `example-ai-product-os/growth/AGENT.md` somente quando a área obrigatória de Growth estiver ativa.
 - Se o próximo passo exigir departamento ou área inativa/ausente, retorne `activation_required` em vez de abrir ou inventar paths.
 - Não carregue departamentos inativos.
 - Não trate `available` como `exists`.
@@ -99,17 +99,29 @@ Posso ativar Operations/Product Ops e criar os arquivos minimos para esse proxim
 activation_required: operations.product-ops
 ```
 
+## Atualização do LeanOS
+
+Quando o founder pedir "atualizar LeanOS", "migrar LeanOS", "reorganizar para o layout atual" ou algo equivalente, trate como atualização do framework, não como trabalho de produto.
+
+Regras:
+
+1. Leia `leanos.yaml` e identifique o layout atual.
+2. Se houver acesso a ferramentas locais, rode `lean-os update` na raiz do workspace.
+3. Use `lean-os update --dry-run` quando o founder quiser prévia antes de mover arquivos.
+4. Não mova código de produto, `src/`, `tests/`, `package.json` ou arquivos existentes do app.
+5. Se o comando reportar conflito, pare e explique quais paths precisam de decisão humana.
+
 ## Mapa de Intenções Naturais
 
 Use este mapa como orientação de roteamento, não como detalhe de execução. Depois de selecionar a rota, carregue o departamento dono e deixe esse arquivo decidir o próximo workflow ou área.
 
-- Setup ou retomada do LeanOS: `strategy/AGENT.md` -> Strategy Product -> `idea-calibration.playbook.md`
-- Status, retomada ou readiness: `.leanos/agent/protocols/where-we-are.md`
-- Escopo de validação do MVP ou primeiro roadmap do MVP: `strategy/AGENT.md`
+- Setup ou retomada do LeanOS: `example-ai-product-os/strategy/AGENT.md` -> Strategy Product -> `idea-calibration.playbook.md`
+- Status, retomada ou readiness: `.leanos/runtime/agent/protocols/where-we-are.md`
+- Escopo de validação do MVP ou primeiro roadmap do MVP: `example-ai-product-os/strategy/AGENT.md`
 - Planejamento de backlog do MVP: retorne `activation_required` para `operations.product-ops` até Product Ops estar ativo
-- Checagem de coerência: `strategy/AGENT.md`
-- Nova ideia ou avaliação de Feature: `strategy/AGENT.md` -> Strategy Product -> `idea-calibration.playbook.md`
-- Promoção de roadmap/backlog: `strategy/AGENT.md`
+- Checagem de coerência: `example-ai-product-os/strategy/AGENT.md`
+- Nova ideia ou avaliação de Feature: `example-ai-product-os/strategy/AGENT.md` -> Strategy Product -> `idea-calibration.playbook.md`
+- Promoção de roadmap/backlog: `example-ai-product-os/strategy/AGENT.md`
 - Item de entrega para Epic ou Epic para Features: retorne `activation_required` para `operations.product-ops` até Operations estar ativo
 - Implementação de Feature: retorne `activation_required` para `operations.engineering` até Engineering estar ativo
 - Setup de GitHub, configuração de GitHub Projects ou sync de Epics/Features: retorne `activation_required` para `operations.devops` até DevOps estar ativo
@@ -124,7 +136,7 @@ Quando o founder perguntar onde o produto está, o que existe até agora, o que 
 
 Carregue:
 
-`.leanos/agent/protocols/where-we-are.md`
+`.leanos/runtime/agent/protocols/where-we-are.md`
 
 Use esse protocolo para inspecionar os menores arquivos relevantes de readiness de Strategy, Operations e GitHub. Depois explique o momento atual do produto, pré-requisitos ausentes, risco de pular etapas e rota mais segura.
 
@@ -134,9 +146,9 @@ Quando o founder pedir para debugar comportamento do LeanOS, inspecionar o que o
 
 Carregue:
 
-`.leanos/agent/protocols/chief-trace.md`
+`.leanos/runtime/agent/protocols/chief-trace.md`
 
-Use esse protocolo para criar um trace local, estruturado e redigido em `.leanos/traces/` somente depois de confirmação explícita.
+Use esse protocolo para criar um trace local, estruturado e redigido em `.leanos/runtime/traces/` somente depois de confirmação explícita.
 
 ## Cadeia de Navegação
 
@@ -168,20 +180,20 @@ Não carregue o workspace inteiro quando existir uma rota menor.
 
 Use esta seção apenas para escolher o departamento dono. O `AGENT.md` do departamento escolhe o workflow ou área.
 
-- Strategy: `strategy/AGENT.md`
+- Strategy: `example-ai-product-os/strategy/AGENT.md`
   Use para business, product strategy, roadmap, validation, ICP or assumptions.
-  Mapa: `strategy/README.md`
+  Mapa: `example-ai-product-os/strategy/README.md`
 
 ## LeanOS Runtime
 
-`.leanos/` contém arquivos de runtime para contexto, índices, traces locais e integração com VS Code.
-`.leanos/` não possui workflows de negócio. Workflows operacionais vivem nos departamentos raiz ou em suas áreas quando o departamento tem workflows ativos, como `operations/workflows/`.
+`.leanos/runtime/` contém arquivos de runtime para contexto, índices, traces locais e integração com VS Code.
+`.leanos/` não possui workflows de negócio. Workflows operacionais vivem no OS do produto, como `example-ai-product-os/operations/workflows/`.
 
-`ai-standard/` é o roteador de padrões do framework para criar, alterar, revisar ou validar assets LeanOS.
+`.leanos/standard/` é o roteador de padrões do framework para criar, alterar, revisar ou validar assets LeanOS.
 
 ## Roteamento de Padrões do Framework
 
-Use `ai-standard/README.md` somente quando o usuário pedir para criar, alterar, revisar ou validar assets do framework LeanOS.
+Use `.leanos/standard/README.md` somente quando o usuário pedir para criar, alterar, revisar ou validar assets do framework LeanOS.
 
 Assets de framework incluem:
 
@@ -194,10 +206,10 @@ Não adivinhe o template, checklist ou instrução correta de memória.
 
 Quando padrões de framework forem necessários:
 
-1. Carregue `ai-standard/README.md`.
+1. Carregue `.leanos/standard/README.md`.
 2. Siga sua rota até a menor foundation, instrução, template, checklist ou exemplo necessário.
 3. Declare o tipo de asset selecionado, dono e path alvo.
 4. Proponha a mudança antes de escrever.
 5. Valide com o checklist correspondente antes da saída final.
 
-Não use `ai-standard/` para definir estratégia de produto, MVP, roadmap, design, trabalho de engineering ou trabalho de growth. Roteie isso pela Cadeia de Navegação primeiro.
+Não use `.leanos/standard/` para definir estratégia de produto, MVP, roadmap, design, trabalho de engineering ou trabalho de growth. Roteie isso pela Cadeia de Navegação primeiro.

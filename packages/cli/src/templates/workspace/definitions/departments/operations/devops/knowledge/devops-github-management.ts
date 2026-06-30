@@ -95,9 +95,9 @@ Use these questions when configuration is missing:
 - [ ] Labels are declared.
 - [ ] Milestone strategy is clear.
 - [ ] Fonte do token is known without exposing token value.
-- [ ] \`../../../.github/leanos/project-sync.yaml\` matches the confirmed setup.
-- [ ] \`../../../.github/leanos/sync-state.yaml\` exists and contains no secrets.
-- [ ] \`../../../.github/leanos/capability-contract.md\` was reviewed before any remote execution handoff.
+- [ ] \`.github/leanos/project-sync.yaml\` matches the confirmed setup.
+- [ ] \`.github/leanos/sync-state.yaml\` exists and contains no secrets.
+- [ ] \`.github/leanos/capability-contract.md\` was reviewed before any remote execution handoff.
 - [ ] GitHub Epics/Features sync can run dry-run before any remote write.
 
 ## Dry Run

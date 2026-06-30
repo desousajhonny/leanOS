@@ -42,35 +42,35 @@ async function assertReviewPrRouteAfterSequentialActivation() {
   const rootDir = await mkdtemp(join(tmpdir(), "leanos-founder-review-pr-"));
 
   await generateWorkspace(rootDir, answers);
-  assert.equal(await exists(join(rootDir, "operations")), false, "Initial Founder Journey should start Strategy-only");
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations")), false, "Initial Founder Journey should start Strategy-only");
 
   await activateWorkspaceArea(rootDir, "operations.product-ops");
   await activateWorkspaceArea(rootDir, "operations.engineering");
 
-  await assertExists(join(rootDir, "operations", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "product-ops", "knowledge", "ready-to-develop.md"));
-  await assertExists(join(rootDir, "operations", "workflows", "feature-to-delivery-cycle.workflow.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "AGENT.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "skills", "review-pr", "SKILL.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "playbooks", "prepare-pr.playbook.md"));
-  await assertExists(join(rootDir, "operations", "engineering", "playbooks", "pr-validation.playbook.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "knowledge", "ready-to-develop.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "workflows", "feature-to-delivery-cycle.workflow.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "review-pr", "SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "prepare-pr.playbook.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "pr-validation.playbook.md"));
 
   const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
   const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
-  const operationsAgent = await readFile(join(rootDir, "operations", "AGENT.md"), "utf8");
-  const operationsWorkflowsReadme = await readFile(join(rootDir, "operations", "workflows", "README.md"), "utf8");
-  const engineeringAgent = await readFile(join(rootDir, "operations", "engineering", "AGENT.md"), "utf8");
-  const prReviewerRole = await readFile(join(rootDir, "operations", "engineering", "roles", "pr-reviewer.role.md"), "utf8");
-  const prValidationPlaybook = await readFile(join(rootDir, "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
-  const reviewPrSkill = await readFile(join(rootDir, "operations", "engineering", "skills", "review-pr", "SKILL.md"), "utf8");
+  const operationsAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "AGENT.md"), "utf8");
+  const operationsWorkflowsReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "workflows", "README.md"), "utf8");
+  const engineeringAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "AGENT.md"), "utf8");
+  const prReviewerRole = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "roles", "pr-reviewer.role.md"), "utf8");
+  const prValidationPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
+  const reviewPrSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "review-pr", "SKILL.md"), "utf8");
 
   assert.deepEqual(yaml.departments.active, ["strategy", "operations"], "Sequential activation should keep Operations active");
   assert(yaml.activation.active_areas.includes("operations.product-ops"), "Product Ops should be active before PR review");
   assert(yaml.activation.active_areas.includes("operations.engineering"), "Engineering should be active for PR review");
   assert(yaml.workflows.active.includes("feature-to-delivery-cycle"), "Feature delivery workflow should be active after Engineering activation");
-  assert(rootAgent.includes("- Operations: `operations/AGENT.md`"), "Root AGENT should route delivery work to Operations after activation");
-  assert.equal(rootAgent.includes("`operations/engineering/README.md`"), false, "Root AGENT should not bypass Operations for Engineering review");
+  assert(rootAgent.includes("- Operations: `clinic-assistant-ai-os/operations/AGENT.md`"), "Root AGENT should route delivery work to Operations after activation");
+  assert.equal(rootAgent.includes("`clinic-assistant-ai-os/operations/engineering/README.md`"), false, "Root AGENT should not bypass Operations for Engineering review");
   assert(operationsAgent.includes("workflows/README.md"), "Operations AGENT should route multi-area delivery work through the workflow index");
   assert(operationsWorkflowsReadme.includes("feature-to-delivery-cycle.workflow.md"), "Operations workflow index should expose feature-to-delivery-cycle");
   assert(engineeringAgent.includes("PR Reviewer"), "Engineering AGENT should expose the PR Reviewer role");

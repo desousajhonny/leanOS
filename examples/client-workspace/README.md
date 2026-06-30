@@ -21,9 +21,11 @@ Depois comece por:
 ## Estrutura Principal
 
 - `.github/` Arquivos de integração com VS Code e GitHub.
-- `.leanos/` Runtime, contexto e índices do LeanOS.
-- `ai-standard/` templates, checklists e instruções para criar assets LeanOS.
-- `strategy/` Strategy departamento.
+- `.leanos/` shell local do LeanOS.
+- `.leanos/runtime/` contexto, índices, traces e integração local.
+- `.leanos/standard/` templates, checklists e instruções para criar assets LeanOS.
+- `example-ai-product-os/` sistema operacional de negócio do produto.
+- `example-ai-product-os/strategy/` Strategy departamento.
 
 ## Snapshot do Produto
 
@@ -40,9 +42,9 @@ Depois comece por:
 
 ## Áreas Ativas
 
-- `strategy/business/` Manter identidade do negócio, princípios, missão, decisões operacionais e modelo de negócio coerentes.
-- `strategy/product/` Own product strategy, product core, ICP, value proposition, MVP validation scope and positioning coherence.
-- `strategy/roadmap/` Possui sequência de roadmap, milestones, backlog e priorização de ciclo de planejamento para produtos operando ou escalando.
+- `example-ai-product-os/strategy/business/` Manter identidade do negócio, princípios, missão, decisões operacionais e modelo de negócio coerentes.
+- `example-ai-product-os/strategy/product/` Own product strategy, product core, ICP, value proposition, MVP validation scope and positioning coherence.
+- `example-ai-product-os/strategy/roadmap/` Possui sequência de roadmap, milestones, backlog e priorização de ciclo de planejamento para produtos operando ou escalando.
 
 ## Próximo Passo
 
