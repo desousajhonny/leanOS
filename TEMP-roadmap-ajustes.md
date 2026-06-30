@@ -2,21 +2,23 @@
 
 Este arquivo e temporario. Ele deve ser removido quando os itens relevantes forem implementados, validados e movidos para issues oficiais ou documentacao permanente.
 
-Ultima limpeza: 2026-06-26.
-Ultima priorizacao: 2026-06-29.
+Ultima limpeza: 2026-06-30.
+Ultima priorizacao: 2026-06-30.
 
 ## Estado Atual
 
 O LeanOS tem um MVP de framework local com:
 
 - CLI `lean-os ai`.
-- Scaffold inicial Strategy-first.
+- CLI `lean-os activate <area>` para ativacao progressiva.
+- CLI `lean-os update [--dry-run]` para migrar workspaces existentes para o layout atual.
+- Scaffold inicial Strategy-first dentro de `<product-slug>-os/`.
 - `AGENT.md` raiz como ponto de entrada canonico do MVP.
-- `leanos.yaml` com activation state progressivo.
-- `.leanos/` como runtime leve: agent rules, context, indexes, traces e VS Code notes.
-- `ai-standard/` como biblioteca de templates, checklists, instructions, examples e foundation.
-- `strategy/` ativa no setup inicial.
-- Operations e Growth disponiveis para ativacao progressiva, nao criadas no setup inicial.
+- `leanos.yaml` com activation state progressivo e `paths.*` para Business OS, runtime e standard library.
+- `.leanos/runtime/` como runtime leve: agent rules, context, indexes, traces e VS Code notes.
+- `.leanos/standard/` como biblioteca de templates, checklists, instructions, examples e foundation.
+- `<product-slug>-os/strategy/` ativa no setup inicial.
+- `<product-slug>-os/operations/` e `<product-slug>-os/growth/` disponiveis para ativacao progressiva, nao criadas no setup inicial.
 - GitHub readiness local em `.github/leanos/`, sem token versionado e sem escrita remota automatica.
 
 ## Decisoes Canonicas Atuais
@@ -32,6 +34,8 @@ O LeanOS tem um MVP de framework local com:
 - [x] `roadmap-to-github-project` nao deve existir como workflow Strategy.
 - [x] GitHub sync deve espelhar Epics/Features locais para GitHub Projects por DevOps/Product Ops, com readiness, dry-run, confirmacao e capability segura futura.
 - [x] GitHub nunca vira fonte primaria automatica do LeanOS; local Product Ops continua sendo a fonte operacional primaria.
+- [x] Business OS vive em `<product-slug>-os/`; runtime do agente vive em `.leanos/runtime/`; padroes do framework vivem em `.leanos/standard/`.
+- [x] Atualizacao de workspaces existentes deve ser feita por `lean-os update`, com preview via `--dry-run`, conflitos explicitos e preservacao de arquivos de produto.
 
 ## Concluido Nesta Branch
 
@@ -65,6 +69,9 @@ O LeanOS tem um MVP de framework local com:
 - [x] Validacao de idioma adicionada ao generator para prevenir regressao de headings, frontmatter e frases operacionais em ingles.
 - [x] Padroes de branch e PR fortalecidos com formatos `feature`, `issue`, `fix`, `chore`, `docs`, `spike`, titulo de PR estilo Conventional Commit, status de prontidao e `Deploy / Rollback`.
 - [x] Wizard CLI simplificado em PT-BR, com setup progressivo como default e opcao avancada `all-at-once` para preparar todas as areas.
+- [x] Layout Business OS implementado no scaffold: `<product-slug>-os/` para Strategy/Operations/Growth, `.leanos/standard/` para padroes e `.leanos/runtime/` para contexto, indices, traces e integracoes locais.
+- [x] `lean-os update [--dry-run]` implementado para migrar workspaces legados, mover paths antigos quando nao ha conflito, reportar conflitos e preservar arquivos de produto existentes.
+- [x] `examples/client-workspace/` regenerado no novo layout e validado com `npm test` e `git diff --check`.
 
 ## Pendencias Ativas
 
@@ -251,13 +258,6 @@ Antes de publicar:
 - publicar somente com confirmacao explicita.
 
 ## Pendencias Futuras Nao Bloqueantes
-
-### Update/Migration
-
-- [ ] Definir futuro `lean-os update`.
-- [ ] Separar runtime atualizavel de contexto do cliente.
-- [ ] Propor diff antes de aplicar.
-- [ ] Preservar alteracoes do usuario.
 
 ### Bootstrap Product
 
