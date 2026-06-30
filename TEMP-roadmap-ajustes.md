@@ -9,6 +9,7 @@ Ultima priorizacao: 2026-06-30.
 
 O LeanOS tem um MVP de framework local com:
 
+- Comando principal de setup `npm create lean-os` via pacote `create-lean-os`.
 - CLI `lean-os ai`.
 - CLI `lean-os activate <area>` para ativacao progressiva.
 - CLI `lean-os update [--dry-run]` para migrar workspaces existentes para o layout atual.
@@ -41,6 +42,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] Depois do sync remoto verificado, Epics/Features locais devem receber `github_issue.url` e `sync_status: synced`.
 - [x] GitHub nunca vira fonte primaria automatica do LeanOS; local Product Ops continua sendo a fonte operacional primaria.
 - [x] Business OS vive em `<product-slug>-os/`; runtime do agente vive em `.leanos/runtime/`; padroes do framework vivem em `.leanos/standard/`.
+- [x] Setup inicial deve usar `npm create lean-os` como comando primario; `npx lean-os ai` fica como compatibilidade.
 - [x] Atualizacao de workspaces existentes deve ser feita por `lean-os update`, com preview via `--dry-run`, conflitos explicitos e preservacao de arquivos de produto.
 - [x] Readiness de launch, go-live, beta ou usuarios reais pertence a Operations via `ready-for-launch`; Growth executa `mvp-launch` e `launch-learning-loop` depois do gate ou depois de lancamento executado.
 - [x] README do produto deve ser roteado pela Navigation Chain: Strategy Product -> Product Narrative Editor -> write-product-readme, preservando README existente e propondo diff antes de escrever.
@@ -86,6 +88,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] Capability contract de GitHub agora exige read-back verification antes de patch local, e Product Ops/DevOps registram a regra de atualizar `github_issue.url` e `sync_status: synced` apenas depois da verificacao remota.
 - [x] README raiz product-first implementado no scaffold, com role `Product Narrative Editor`, skill `write-product-readme`, template `.leanos/standard/templates/product/product-readme-template.md`, rota em Strategy/Product e validacao automatica do contrato.
 - [x] Gate `README-ready` adicionado ao bootstrap de repositório GitHub em DevOps/GitHub DevOps, com validação `validateGithubRepositoryReadmeGate` e fixture regenerado.
+- [x] Pacote `create-lean-os` adicionado para suportar `npm create lean-os`, reaproveitando o wizard do `lean-os ai` e com validacao automatica do contrato.
 
 ## Pendencias Ativas
 

@@ -2,6 +2,33 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-30 - `npm create lean-os` Como Comando Principal De Setup
+
+Decisão:
+
+- O comando principal para criar um novo workspace LeanOS passa a ser:
+
+```bash
+npm create lean-os
+```
+
+- O pacote npm responsável por esse fluxo é `create-lean-os`.
+- `create-lean-os` deve ser um wrapper fino que chama o mesmo wizard do pacote `lean-os`, sem duplicar lógica de scaffold.
+- `npx lean-os ai` permanece como caminho de compatibilidade.
+- `lean-os` continua sendo o pacote operacional para comandos depois que o workspace existe, como:
+  - `lean-os activate <area>`;
+  - `lean-os update [--dry-run]`.
+- A publicação deve publicar `lean-os` antes de `create-lean-os`, porque o pacote create depende do CLI operacional.
+- A validação do framework deve impedir regressão do pacote `create-lean-os`, do binário `create-lean-os` e da documentação do comando principal.
+
+Justificativa:
+
+- `npm create <name>` é o padrão mais reconhecível para scaffold inicial no ecossistema npm.
+- Separar `create-lean-os` de `lean-os` clarifica a experiência:
+  - create package para primeiro setup;
+  - CLI operacional para manutenção do workspace.
+- Manter `npx lean-os ai` evita quebrar usuários, docs ou scripts existentes.
+
 ## 2026-06-30 - Novo Repositório GitHub Exige `README-ready`
 
 Decisão:

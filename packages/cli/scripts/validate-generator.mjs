@@ -4,6 +4,7 @@ import { validateAiStandardRendererIsModular } from "./validation/ai-standard.mj
 import { validateBranchAndPrStandards } from "./validation/branch-pr-standards.mjs";
 import { validateClientWorkspaceFixture } from "./validation/client-fixture.mjs";
 import { validateCliWizardProgressiveSetup } from "./validation/cli-wizard.mjs";
+import { validateCreateLeanOsPackage } from "./validation/create-package.mjs";
 import { validateAreaDefinitionsAreModular } from "./validation/definitions.mjs";
 import { validateExistingProductRepoMode } from "./validation/existing-product-repo.mjs";
 import { validateFounderJourneyReadyForLaunch, validateFounderJourneyReviewPr } from "./validation/founder-journey.mjs";
@@ -37,6 +38,7 @@ await validateGithubRepositoryReadmeGate();
 await validateProductReadmeContract();
 await validateBranchAndPrStandards();
 await validateCliWizardProgressiveSetup();
+await validateCreateLeanOsPackage();
 await validateClientWorkspaceFixture();
 await validatePartialAreaSelection();
 await validateEngineeringOnlyContext();

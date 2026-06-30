@@ -64,6 +64,12 @@ This means:
 LeanOS should be installed and started with:
 
 ```bash
+npm create lean-os
+```
+
+For compatibility, the same setup wizard remains available as:
+
+```bash
 npx lean-os ai
 ```
 

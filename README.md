@@ -9,7 +9,8 @@ It is not just a code generator. The CLI creates a workspace, and the AI agent o
 LeanOS currently includes:
 
 - A TypeScript/Node CLI package published as `lean-os`.
-- A guided terminal wizard exposed through `lean-os ai`.
+- A create package published as `create-lean-os` for the standard `npm create lean-os` setup flow.
+- A guided terminal wizard exposed through `npm create lean-os` and kept available through `lean-os ai` for compatibility.
 - A generated client workspace with `AGENT.md`, `leanos.yaml`, `.leanos/`, `ai-standard/`, active `strategy/` and GitHub/VS Code integration files.
 - A workspace-level VS Code/Copilot custom agent called `LeanOS Chief`.
 - A portable agent entrypoint for any model or chat surface through the root `AGENT.md`.
@@ -51,10 +52,16 @@ The product is what the company builds. The business is the system that decides 
 After the current package version is published, users can run:
 
 ```bash
-npx lean-os ai
+npm create lean-os
 ```
 
 The CLI asks a short set of questions and creates the LeanOS workspace in the current directory.
+
+For compatibility, the same wizard remains available through:
+
+```bash
+npx lean-os ai
+```
 
 After generation, open the folder in your preferred AI coding environment and start in natural language:
 
@@ -267,14 +274,29 @@ To publish the public CLI package:
 ```bash
 pnpm install
 pnpm build
-cd packages/cli
-npm publish --access public
+pnpm --filter lean-os publish --access public
 ```
 
-After publishing, users can run:
+The create package lives in `packages/create` and exposes this binary:
+
+```json
+{
+  "bin": {
+    "create-lean-os": "index.js"
+  }
+}
+```
+
+Publish `lean-os` first, then publish `create-lean-os`:
 
 ```bash
-npx lean-os ai
+pnpm --filter create-lean-os publish --access public
+```
+
+After publishing both packages, users can create a new LeanOS workspace with:
+
+```bash
+npm create lean-os
 ```
 
 ## Example Agent Requests

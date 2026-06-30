@@ -39,12 +39,13 @@ ${ui.title("LeanOS CLI")}
 ${ui.muted("Agent-native startup operating system")}
 
 Usage:
+  ${ui.command("npm create lean-os")}            Create a new LeanOS workspace
   ${ui.command("lean-os ai")}
   ${ui.command("lean-os activate <area>")}
   ${ui.command("lean-os update [--dry-run]")}
 
 Commands:
-  ${ui.command("ai")}          Create an agent-native LeanOS startup workspace
+  ${ui.command("ai")}          Create an agent-native LeanOS startup workspace (compatibility path)
   ${ui.command("activate")}    Activate a progressive LeanOS workspace area
   ${ui.command("update")}      Migrate an existing LeanOS workspace to the current layout
 `);
