@@ -2,6 +2,39 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-30 - Growth Experiment Ledger Como Fonte De Aprendizado De Mercado
+
+Decisão:
+
+- Growth Marketing é owner do Growth Experiment Ledger em `growth/marketing/knowledge/growth-experiments.md`.
+- Toda decisão de Growth depois de lançamento, campanha, landing page, aquisição, oferta ou onboarding deve usar experimento registrado ou feedback registrado em Customer Experience.
+- O ledger registra hipótese, canal, asset, fonte de medição, critérios de sucesso/falha, resultado, decisão e relação com spend quando aplicável.
+- Marketing ganha:
+  - skill `plan-growth-experiment`;
+  - skill `analyze-growth-result`;
+  - playbook `growth-experiment`.
+- `launch-learning-loop` deve exigir evidência antes de recomendar decisão e deve produzir `Decision output` com o enum:
+  - `continue`;
+  - `iterate_copy`;
+  - `iterate_pricing`;
+  - `open_product_ops_item`;
+  - `route_to_strategy`;
+  - `scale_spend`;
+  - `pause`.
+- O framework deve funcionar sem integração automática de analytics: o founder pode colar resultados por Manual Result Input Template.
+- Skills e playbooks não podem chamar APIs externas de analytics, CRM, email, ads, suporte ou pagamentos por padrão.
+- Quando houver spend, mídia paga, ferramenta paga ou decisão `scale_spend`, Growth Finance deve revisar Spend Ledger antes de execução ou escala.
+- Quando o resultado mudar ICP, problema, proposta, categoria ou posicionamento, Strategy Product deve entrar.
+- Quando o resultado virar escopo de produto, Product Ops deve entrar antes de Epic, Feature ou GitHub.
+- O generator valida esse contrato com `validateGrowthExperimentContract`.
+
+Justificativa:
+
+- Founders AI builders frequentemente rodam landing pages, mensagens e campanhas sem registrar hipótese, métrica ou decisão, criando aprendizado perdido.
+- Exigir integração automática cedo demais atrasaria a v1; input manual preserva velocidade e disciplina.
+- Um ledger simples evita que Growth tome decisões por intuição ou métricas de vaidade.
+- Conectar Marketing, Customer Experience, Finance, Strategy e Product Ops cria um loop claro entre mercado, aprendizado e execução.
+
 ## 2026-06-30 - Pricing Catalog Como Fonte Canônica De Planos E Entitlements
 
 Decisão:
@@ -29,6 +62,34 @@ Justificativa:
 - Separar decisão de negócio de runtime source evita usar markdown como config de produção, sem perder clareza operacional.
 - Conectar Finance, Marketing, CX, Product Ops, Engineering, DevOps e Security cria uma rota única para mudar pricing sem drift.
 - A validação automática impede que o framework volte a gerar apenas uma hipótese rasa de pricing.
+
+## 2026-06-30 - Spend Ledger Como Fonte Canônica De Gastos E Runway
+
+Decisão:
+
+- Growth Finance é o owner do Spend Ledger em `growth/finance/knowledge/spend-ledger.md`.
+- O Spend Ledger é a fonte canônica leve de gastos recorrentes, pontuais, ferramentas pagas, mídia paga, providers, custos variáveis e compromissos financeiros operacionais.
+- `growth/finance/knowledge/budget.md` registra Monthly Budget, Runway Snapshot e Approval Thresholds.
+- O root `AGENT.md` deve rotear pedidos de gastos, orçamento, budget, burn, runway, custos, ferramentas pagas, infra paga, mídia paga ou unit economics para `growth.finance`; se Finance estiver inativo, retorna `activation_required: growth.finance`.
+- Finance ganha:
+  - skill `review-spend`;
+  - skill `runway-check`;
+  - skill `budget-planning`;
+  - playbook `spend-approval`;
+  - playbook `monthly-finance-check`.
+- Marketing deve consultar Finance antes de mídia paga, campanha com orçamento ou ferramenta de aquisição paga.
+- Product Ops deve exigir Cost/Spend readiness quando uma Feature cria gasto recorrente, provider pago, ferramenta paga ou custo variável relevante.
+- Engineering deve rotear AI/API, storage, worker, queue, vector DB, logging, analytics e paid providers para Finance quando houver custo variável relevante.
+- DevOps deve mapear providers pagos, quotas, budgets, usage caps e cost alerts sem criar gasto escondido.
+- Security mantém cost/rate abuse como guardrail quando usuários, agentes, automações ou APIs podem gerar custo fora de controle.
+- O generator valida esse contrato com `validateSpendBudgetSourceOfTruthContract`.
+
+Justificativa:
+
+- Founders AI builders frequentemente perdem controle de custos de IA, infra, ferramentas e mídia paga antes de terem receita previsível.
+- O framework precisa ajudar na decisão prática sem virar contabilidade, ERP ou aconselhamento financeiro.
+- Um ledger leve com owner, motivo, categoria, custo, review date e automações candidatas reduz desperdício e cria clareza para runway.
+- Conectar Finance a Marketing, Product Ops, Engineering, DevOps e Security evita custos escondidos no código, em providers, campanhas ou automações.
 
 ## 2026-06-30 - Security Hardening E AI App Security Como Gate De Produto
 

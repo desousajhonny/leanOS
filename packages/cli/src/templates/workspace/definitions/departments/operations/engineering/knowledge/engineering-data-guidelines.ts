@@ -46,6 +46,14 @@ Use these rules for data implementation. Security owns risk review; Engineering 
 - Não hardcode plano, preço, trial, limite, quota ou entitlement in UI, API, tests or seed data unless the Feature explicitly defines a temporary fixture and links it to the Pricing Catalog.
 - Route money, access or customer-data risk to Security before implementation.
 
+## Cost And Usage Controls
+
+- If implementation introduces AI/API, storage, worker, queue, vector DB, logging, analytics or paid provider cost that scales with usage, read \`../../growth/finance/knowledge/spend-ledger.md\` and Product Ops Cost/Spend readiness before implementation.
+- Identify the cost driver, usage unit, expected cap, owner and monitoring path before coding usage-based behavior.
+- Prefer explicit limits, rate limits, quotas, batching or backoff when a provider can generate runaway cost.
+- Não adicione provider pago, usage-based API, background job, log volume, vector DB, analytics pipeline or AI call path without naming the cost owner or Finance gap.
+- Route cost/rate abuse risk to Security when public traffic, automation, agents or untrusted users can trigger the cost.
+
 ## Indexes and Performance
 
 - Consider indexes for new filters, joins, lookups, ordering and uniqueness requirements.

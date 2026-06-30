@@ -19,6 +19,8 @@ Use esta pasta para desenhar e testar a jornada humana antes de alterar o scaffo
 - `ready-for-launch.md`: jornada de readiness de lançamento antes de Growth, deploy ou learning loop.
 - `security-hardening-cycle.md`: jornada de auditoria e fortalecimento de Security para vulnerabilidades, LGPD, dados de cliente, token vazado, APIs e AI app security.
 - `pricing-source-of-truth.md`: jornada para planos, preços, cobrança, paywall, checkout e entitlements via Growth Finance.
+- `spend-budget-control.md`: jornada para gastos, orçamento, burn, runway, ferramentas pagas, mídia paga e custos variáveis via Growth Finance.
+- `growth-experiment-learning.md`: jornada para planejar experimento de Growth, colar resultados manuais e tomar decisão com evidência.
 
 ## Regra
 

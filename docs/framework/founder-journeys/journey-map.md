@@ -16,7 +16,9 @@ Use este mapa para acompanhar quais jornadas do founder foram desenhadas com `jo
 | [x] | 9 | Ready for launch | `ready-for-launch.md` | `operations/workflows/ready-for-launch.workflow.md` | "Está pronto para lançar?", "podemos abrir para usuários reais?", "o que falta para lançar?" |
 | [x] | 10 | Security hardening | `security-hardening-cycle.md` | `operations/workflows/security-hardening-cycle.workflow.md` | "Audite segurança", "tem vulnerabilidade?", "LGPD", "dados de cliente", "vazou token", "proteger API" |
 | [x] | 11 | Pricing source of truth | `pricing-source-of-truth.md` | Root `AGENT.md` -> `activation_required: growth.finance` -> `growth/finance/playbooks/finance-review.playbook.md` | "defina planos/preços", "implemente checkout/paywall", "temos planos divergentes" |
-| [ ] | 12 | Lançamento e aprendizado | `launch-learning-loop.md` | `growth/workflows/launch-learning-loop.workflow.md` | "Lançamos, o que aprendemos?", "como melhorar aquisição/conversão?" |
+| [x] | 12 | Spend/budget control | `spend-budget-control.md` | Root `AGENT.md` -> `activation_required: growth.finance` -> `growth/finance/playbooks/spend-approval.playbook.md` ou `monthly-finance-check.playbook.md` | "quanto estamos gastando?", "qual nosso burn/runway?", "posso contratar essa ferramenta?" |
+| [x] | 13 | Growth experiment learning | `growth-experiment-learning.md` | `growth/workflows/launch-learning-loop.workflow.md` -> `growth/marketing/playbooks/growth-experiment.playbook.md` | "vamos testar essa landing page", "analise o resultado do experimento", "como melhorar aquisição/conversão?" |
+| [ ] | 14 | Lançamento e aprendizado amplo | `launch-learning-loop.md` | `growth/workflows/launch-learning-loop.workflow.md` | "Lançamos, o que aprendemos?", "o que fazer depois do lançamento?" |
 
 ## Regra
 

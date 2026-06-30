@@ -16,18 +16,20 @@ export const growthFinanceArea: AreaDefinition = {
     purpose: "Route pricing, revenue model, unit economics, budget and finance-risk questions without overbuilding finance operations."
   },
   routingKey: "finance",
-  requestTypes: "pricing, revenue model, budget, unit economics or finance",
-  purpose: "Own pricing, Pricing Catalog, revenue model, unit economics, budget and financial risks.",
-  whenToUse: ["define pricing", "review plans and entitlements", "review unit economics", "track budget", "reason about revenue model"],
+  requestTypes: "pricing, spend, budget, burn, runway, revenue model, unit economics or finance",
+  purpose: "Own pricing, Pricing Catalog, Spend Ledger, revenue model, unit economics, budget, runway and financial risks.",
+  whenToUse: ["define pricing", "review plans and entitlements", "review spend", "check runway", "review unit economics", "track budget", "reason about revenue model"],
   operatingRules: [
     "Mantenha Finance leve e orientado por hipóteses no MVP.",
     "Mantenha `knowledge/pricing.md` como fonte canônica de planos, preços, trials, limites e entitlements.",
+    "Mantenha `knowledge/spend-ledger.md` como fonte canônica leve de gastos, ferramentas pagas, campanhas, providers e custos variáveis.",
     "Route pricing assumptions back to Strategy Product when they affect positioning or value proposition.",
     "Route paid acquisition or spend decisions back to Marketing/Founder before committing."
   ],
   redLines: [
     "Não apresente pricing não validado como fato.",
     "Não aprove plano, preço, trial, limite ou entitlement fora do Pricing Catalog.",
+    "Não aprove gasto recorrente, ferramenta paga, campanha paga, provider novo ou custo variável relevante fora do Spend Ledger.",
     "Não faça alegações de aconselhamento contábil, fiscal, jurídico ou de investimento.",
     "Não comprometa gasto, previsão de receita ou afirmações de runway sem confirmação explícita do founder."
   ],

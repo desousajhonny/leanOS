@@ -133,6 +133,7 @@ Use este mapa como orientação de roteamento, não como detalhe de execução. 
 - Preparação ou review de PR: retorne `activation_required` para `operations.engineering` até Engineering estar ativo
 - Continuação pós-merge: retorne `activation_required` para `operations.product-ops` até Operations estar ativo
 - Planos, preços, pricing, cobrança, pacotes, assinatura ou entitlements: retorne `activation_required` para `growth.finance` até Growth Finance estar ativo
+- Gastos, orçamento, budget, burn, runway, custos, ferramentas pagas, infra paga, mídia paga ou unit economics: retorne `activation_required` para `growth.finance` até Growth Finance estar ativo
 - Readiness de launch, go-live, beta ou usuários reais: retorne `activation_required` para `operations.product-ops`, `operations.engineering` ou `operations.devops` conforme a menor área bloqueadora até o workflow `ready-for-launch` estar ativo
 - Execução de launch, aquisição, onboarding ou learning loop: retorne `activation_required` para `growth.marketing` ou `growth.customer-experience` até Growth estar ativo
 

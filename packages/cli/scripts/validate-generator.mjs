@@ -12,11 +12,13 @@ import { validateGeneratedHumanLanguage } from "./validation/language.mjs";
 import { validateBusinessOsLayout } from "./validation/layout.mjs";
 import { validateGithubRepositoryReadmeGate } from "./validation/github-repository-readme-gate.mjs";
 import { validateGithubSyncContract } from "./validation/github-sync.mjs";
+import { validateGrowthExperimentContract } from "./validation/growth-experiments.mjs";
 import { validateNpmPublishReleaseProtocol } from "./validation/npm-publish-release.mjs";
 import { validatePricingSourceOfTruthContract } from "./validation/pricing-source-of-truth.mjs";
 import { validateProductReadmeContract } from "./validation/product-readme.mjs";
 import { validateWorkspaceRenderersAreModular } from "./validation/renderers.mjs";
 import { validateRootModelMemory } from "./validation/root-memory.mjs";
+import { validateSpendBudgetSourceOfTruthContract } from "./validation/spend-budget-source-of-truth.mjs";
 import { validateWorkspaceUpdateCommand } from "./validation/update.mjs";
 import {
   validateWorkspaceFiles,
@@ -40,6 +42,8 @@ await validateNpmPublishReleaseProtocol();
 await validateGithubRepositoryReadmeGate();
 await validateProductReadmeContract();
 await validatePricingSourceOfTruthContract();
+await validateSpendBudgetSourceOfTruthContract();
+await validateGrowthExperimentContract();
 await validateBranchAndPrStandards();
 await validateCliWizardProgressiveSetup();
 await validateCreateLeanOsPackage();

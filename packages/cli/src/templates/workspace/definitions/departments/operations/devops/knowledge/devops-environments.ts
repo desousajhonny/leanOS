@@ -42,6 +42,21 @@ Use this section when the product has plans, checkout, subscription, usage limit
 
 Do not store secret values here. This file records where provider IDs, webhook secrets, environment variables and runtime config are managed.
 
+## Cost Controls
+
+Use this section when environments, providers, observability, AI/API, storage, queues, workers, logs, analytics or CI/CD can create meaningful recurring or usage-based cost.
+
+- Finance source: \`../../growth/finance/knowledge/spend-ledger.md\`
+- paid providers: TBD
+- quotas: TBD
+- budgets: TBD
+- usage caps: TBD
+- cost alerts: TBD
+- owner: TBD
+- review date: TBD
+
+Do not create paid providers, quotas, budgets or usage caps without a clear owner and Finance route.
+
 ## Secrets
 
 TBD

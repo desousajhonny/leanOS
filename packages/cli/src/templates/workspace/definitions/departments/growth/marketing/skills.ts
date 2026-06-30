@@ -31,13 +31,39 @@ export const growthMarketingSkills: SkillDefinition[] = [
       slug: "create-launch-plan",
       title: "Criar Plano De Lançamento",
       purpose: "Planejar ações de lançamento, canais e loops de aprendizado.",
-      useWhen: ["o lançamento do MVP está sendo planejado", "canais de aquisição precisam de priorização", "aprendizado de lançamento precisa de estrutura"],
-      requiredContext: ["Positioning", "Landing page", "Canais de aquisição", "Objetivos de aprendizado com clientes"],
-      inputs: ["Objetivo de lançamento", "Audiência", "Canais", "Assets", "Timeline", "Métricas de aprendizado"],
-      process: ["Esclareça objetivo de lançamento", "Escolha os menores canais viáveis", "Liste assets necessários", "Defina métricas de aprendizado", "Roteie perguntas de orçamento para Finance"],
-      checks: ["O lançamento é viável", "O objetivo de aprendizado está explícito", "Implicações de orçamento estão visíveis"],
-      outputs: ["Plano de lançamento", "Experimentos de canal", "Métricas de aprendizado", "Risks"],
+      useWhen: ["o lançamento do MVP está sendo planejado", "canais de aquisição precisam de priorização", "aprendizado de lançamento precisa de estrutura", "mídia paga ou ferramenta de aquisição paga está sendo considerada"],
+      requiredContext: ["Positioning", "Landing page", "Canais de aquisição", "Objetivos de aprendizado com clientes", "../finance/knowledge/spend-ledger.md quando houver mídia paga, ferramenta paga ou orçamento"],
+      inputs: ["Objetivo de lançamento", "Audiência", "Canais", "Assets", "Timeline", "Métricas de aprendizado", "Budget ou gasto proposto"],
+      process: ["Esclareça objetivo de lançamento", "Escolha os menores canais viáveis", "Liste assets necessários", "Defina métricas de aprendizado", "Se houver mídia paga, ferramenta paga ou orçamento, carregue `../finance/knowledge/spend-ledger.md` e roteie decisão para Growth Finance", "Roteie perguntas de orçamento para Finance"],
+      checks: ["O lançamento é viável", "O objetivo de aprendizado está explícito", "Implicações de orçamento estão visíveis", "Mídia paga e ferramentas pagas têm owner e limite ou estão bloqueadas por Finance"],
+      outputs: ["Plano de lançamento", "Experimentos de canal", "Métricas de aprendizado", "Budget impact quando aplicável", "Risks"],
       filesToUpdate: ["Atualize `../knowledge/launch-plan.md` e `../knowledge/acquisition-channels.md` após confirmação explícita."],
-      redLines: ["Não comprometa gasto sem revisão de Finance.", "Não otimize apenas para métricas de vaidade."]
+      redLines: ["Não comprometa gasto sem revisão de Finance.", "Não comprometa mídia paga, ferramenta paga ou campanha com orçamento sem Spend Ledger e confirmação de Finance.", "Não otimize apenas para métricas de vaidade."]
+    },
+    {
+      slug: "plan-growth-experiment",
+      title: "Planejar Experimento De Growth",
+      purpose: "Transformar uma hipótese de aquisição, landing page, mensagem, oferta, onboarding ou venda assistida em experimento mensurável e leve.",
+      useWhen: ["o founder quer validar uma landing page, canal, mensagem, oferta ou campanha", "um lançamento precisa de métrica de aprendizado", "há gasto, mídia paga ou ferramenta paga em Growth", "o modelo precisa preparar um teste sem integração automática de analytics"],
+      requiredContext: ["../knowledge/growth-experiments.md", "../knowledge/positioning.md", "../knowledge/landing-page.md quando o asset for landing page", "../knowledge/acquisition-channels.md quando houver canal", "growth/finance/knowledge/spend-ledger.md quando houver gasto, mídia paga, ferramenta paga ou custo variável", "../customer-experience/knowledge/customer-feedback.md quando houver feedback de cliente existente"],
+      inputs: ["Hipótese", "Canal", "Asset", "Audiência", "Duração", "Measurement source", "Critério de sucesso", "Critério de falha", "Budget ou spend proposto quando aplicável"],
+      process: ["Defina a hipótese em uma frase testável e conectada a produto, canal ou oferta.", "Escolha o menor asset capaz de gerar aprendizado: landing page, post, email, DM, call script, anúncio, formulário, onboarding ou suporte.", "Crie um Measurement plan com fonte de medição, janela, métricas, sucesso, falha e owner. Fontes leves possíveis: Plausible, Google Analytics, Vercel Analytics, PostHog, formulário, CRM, agenda de calls, plataforma de anúncios ou input manual do founder.", "Quando houver spend, carregue `growth/finance/knowledge/spend-ledger.md` e roteie aprovação para Growth Finance antes de recomendar execução.", "Entregue um Manual Result Input Template para o founder colar resultados depois da execução.", "Proponha atualização de `../knowledge/growth-experiments.md` somente depois de confirmação explícita."],
+      checks: ["A hipótese é mensurável", "Measurement source está explícito", "Success criteria e failure criteria foram definidos antes do resultado", "Gasto relevante passou por Growth Finance", "O template manual permite registrar visitors, leads, qualified_leads, calls, spend e objections"],
+      outputs: ["Measurement plan", "Experiment Register update proposal", "Manual Result Input Template", "Rota de Finance/CX/Product Ops/Strategy quando aplicável"],
+      filesToUpdate: ["Atualize `../knowledge/growth-experiments.md` somente após confirmação explícita.", "Atualize `../knowledge/launch-plan.md` ou `../knowledge/acquisition-channels.md` apenas quando a decisão de experimento mudar contexto durável de lançamento ou canal."],
+      redLines: ["Não chame APIs externas de analytics, CRM, email, anúncios, pagamentos ou suporte a partir desta skill.", "Não invente telemetria, conversões, tráfego, receita, CAC ou feedback.", "Não aprove gasto sem Spend Ledger e confirmação de Finance quando orçamento estiver envolvido."]
+    },
+    {
+      slug: "analyze-growth-result",
+      title: "Analisar Resultado De Growth",
+      purpose: "Transformar resultados de experimento ou feedback registrado em decisão de Growth sem inventar telemetria.",
+      useWhen: ["o founder cola resultado manual de experimento", "um teste de Growth terminou", "há métricas de landing page, canal, oferta, campanha ou venda assistida para interpretar", "o launch-learning-loop precisa decidir o próximo ciclo"],
+      requiredContext: ["../knowledge/growth-experiments.md", "Resultado colado pelo founder ou evidência registrada", "../customer-experience/knowledge/customer-feedback.md quando houver feedback qualitativo", "growth/finance/knowledge/spend-ledger.md quando o resultado incluir spend", "../finance/knowledge/pricing.md quando a decisão tocar preço, plano ou oferta"],
+      inputs: ["experiment_id", "Measurement source", "Período", "visitors", "leads", "qualified_leads", "calls", "conversions", "revenue", "spend", "objections", "evidence links"],
+      process: ["Valide se o resultado tem `experiment_id`, período e measurement_source. Se faltar evidência, peça o input manual em vez de concluir.", "Calcule métricas simples quando houver dados: conversion_rate = leads / visitors, qualified_rate = qualified_leads / leads, call_rate = calls / leads, cost_per_lead = spend / leads e cost_per_qualified_lead = spend / qualified_leads.", "Separe observação, interpretação e decisão. Não misture métrica com opinião.", "Compare resultado com success_criteria e failure_criteria definidos no experimento.", "Produza um Decision output usando exatamente uma decisão: continue, iterate_copy, iterate_pricing, open_product_ops_item, route_to_strategy, scale_spend or pause.", "Roteie `iterate_pricing` para Growth Finance, `open_product_ops_item` para Product Ops, `route_to_strategy` para Strategy Product e `scale_spend` para Finance antes de qualquer aumento de orçamento."],
+      checks: ["conversion_rate foi calculado apenas quando havia visitors e leads", "cost_per_qualified_lead foi calculado apenas quando havia spend e qualified_leads", "A decisão usa o enum permitido", "Feedback qualitativo está separado de métrica", "Nenhum dado pessoal de lead ou cliente foi persistido"],
+      outputs: ["Decision output", "Métricas calculadas com fórmulas", "Aprendizado confirmado ou lacuna de evidência", "Próxima rota LeanOS", "Atualização proposta do Experiment Register"],
+      filesToUpdate: ["Atualize `../knowledge/growth-experiments.md` somente após confirmação explícita.", "Atualize Customer Experience, Finance, Strategy ou Product Ops apenas via rota da área correspondente e confirmação."],
+      redLines: ["Não invente telemetria.", "Não trate um resultado sem fonte como decisão.", "Não aumente spend sem Growth Finance.", "Não transforme feedback em Feature sem Product Ops."]
     }
   ];

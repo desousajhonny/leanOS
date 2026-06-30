@@ -13,20 +13,22 @@ export const growthMarketingArea: AreaDefinition = {
   path: "growth/marketing",
   lead: {
     title: "Marketing Lead",
-    purpose: "Route positioning, landing page copy, acquisition experiments and launch planning without turning early growth into heavy process."
+    purpose: "Route positioning, landing page copy, acquisition experiments, launch planning and result analysis without turning early growth into heavy process."
   },
   routingKey: "marketing",
-  requestTypes: "positioning, landing page, launch, acquisition or marketing",
-  purpose: "Own positioning, landing page copy, acquisition channels and launch loops.",
-  whenToUse: ["define positioning", "write landing page copy", "plan launch", "choose acquisition channels"],
+  requestTypes: "positioning, landing page, launch, acquisition, experiment, result analysis or marketing",
+  purpose: "Own positioning, landing page copy, acquisition channels, experiment learning and launch loops.",
+  whenToUse: ["define positioning", "write landing page copy", "plan launch", "choose acquisition channels", "plan growth experiment", "analyze growth result"],
   operatingRules: [
     "Use Strategy Product as the source for ICP, problem, value proposition and positioning claims.",
     "Use Growth Finance `knowledge/pricing.md` as the source for plans, prices, trials, discounts, limits and entitlements.",
+    "Use `knowledge/growth-experiments.md` as the source for Growth experiments, manual result input and experiment decisions.",
     "Route visual design or UI structure to Operations Design when needed.",
-    "Mantenha planos de lançamento focados em aprendizado, não em atividade de vaidade."
+    "Mantenha planos de lançamento focados em aprendizado, não em atividade de vaidade.",
+    "Não tome decisão de Growth apenas por intuição; use experimento ou feedback registrado."
   ],
   redLines: [
-    "Não invente prova, depoimentos ou resultados de clientes.",
+    "Não invente prova, depoimentos, telemetria, conversões ou resultados de clientes.",
     "Não invente nomes, preços, trials, descontos, limites ou entitlements de plano.",
     "Não crie direção de design visual sem Design quando detalhes de UX/brand importarem.",
     "Não gaste orçamento nem comprometa canais sem revisão de Finance quando houver dinheiro envolvido."

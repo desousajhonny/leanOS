@@ -66,8 +66,10 @@ export async function assertGrowthAreaPattern(rootDir) {
   const marketingAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "AGENT.md"), "utf8");
   const marketingYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "area.yaml"), "utf8"));
   const landingPage = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "knowledge", "landing-page.md"), "utf8");
+  const growthExperiments = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "knowledge", "growth-experiments.md"), "utf8");
   const growthLead = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "roles", "growth-lead.role.md"), "utf8");
   const mvpLaunch = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "playbooks", "mvp-launch.playbook.md"), "utf8");
+  const growthExperiment = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "playbooks", "growth-experiment.playbook.md"), "utf8");
 
   const financeReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "README.md"), "utf8");
   const financeAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "AGENT.md"), "utf8");
@@ -106,7 +108,7 @@ export async function assertGrowthAreaPattern(rootDir) {
     assert.equal(yaml.area.agent, "AGENT.md", "Growth area.yaml should declare AGENT.md");
   }
 
-  for (const content of [customerFeedback, supportNotes, landingPage, pricing]) {
+  for (const content of [customerFeedback, supportNotes, landingPage, growthExperiments, pricing]) {
     for (const section of ["## Propósito", "## Estado Atual", "## Decisões", "## Riscos", "## Perguntas em Aberto", "## Próxima Atualização"]) {
       assert(content.includes(section), `Growth knowledge should include ${section}`);
     }
@@ -114,6 +116,7 @@ export async function assertGrowthAreaPattern(rootDir) {
 
   assert(cxYaml.area.source_of_truth.includes("knowledge/customer-feedback.md"), "CX area.yaml should list customer feedback knowledge");
   assert(marketingYaml.area.source_of_truth.includes("knowledge/landing-page.md"), "Marketing area.yaml should list landing page knowledge");
+  assert(marketingYaml.area.source_of_truth.includes("knowledge/growth-experiments.md"), "Marketing area.yaml should list growth experiments knowledge");
   assert(financeYaml.area.source_of_truth.includes("knowledge/pricing.md"), "Finance area.yaml should list pricing knowledge");
   assert(cxRole.includes("## Linhas Vermelhas"), "CX role should include red lines");
   assert(growthLead.includes("## Linhas Vermelhas"), "Growth Lead should include red lines");
@@ -122,6 +125,8 @@ export async function assertGrowthAreaPattern(rootDir) {
   assert(customerLearningLoop.includes("Strategy/Product ou Product Ops"), "Customer learning loop should route product changes back to product owners");
   assert(mvpLaunch.includes("Roteie design visual para Operations Design"), "MVP launch should route design work to Operations Design");
   assert(mvpLaunch.includes("Roteie implicações de orçamento/pricing para Growth Finance"), "MVP launch should route finance work to Finance");
+  assert(growthExperiment.includes("skills/plan-growth-experiment/SKILL.md"), "Growth experiment playbook should route to planning skill");
+  assert(growthExperiment.includes("skills/analyze-growth-result/SKILL.md"), "Growth experiment playbook should route to analysis skill");
   assert(financeReadme.includes("Não faça alegações de aconselhamento contábil, fiscal, jurídico ou de investimento"), "Finance should avoid professional advice claims");
   assertPricingSourceOfTruthContract({ pricing, financeOperator, reviewPricing, financeReview, landingPage, supportNotes, mvpLaunch });
   assert(growthWorkflow.includes("Leia o AGENT de Marketing"), "Growth workflow should route through Marketing AGENT");

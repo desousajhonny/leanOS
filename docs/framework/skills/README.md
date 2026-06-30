@@ -142,6 +142,8 @@ Ativação padrão: `AGENT.md` -> `growth/AGENT.md` -> `growth/marketing/AGENT.m
 | `define-positioning` | Definir categoria, audiência, promessa e diferenciação. | Workflow `launch-learning-loop`; role `growth-lead`; playbook `mvp-launch`. |
 | `create-landing-page-copy` | Criar copy para landing page inicial de validação ou lançamento, consumindo Pricing Catalog quando houver plano ou preço. | Role `growth-lead`; playbook `mvp-launch`; pedidos de landing page, validação, pricing ou lançamento. |
 | `create-launch-plan` | Planejar ações, canais e ciclos de aprendizado de lançamento. | Workflow `launch-learning-loop`; role `growth-lead`; playbook `mvp-launch`. |
+| `plan-growth-experiment` | Planejar experimento de Growth com hipótese, Measurement plan, critérios de sucesso/falha e Manual Result Input Template. | Role `growth-lead`; playbook `growth-experiment`; workflow `launch-learning-loop` quando ainda não há resultado. |
+| `analyze-growth-result` | Analisar resultado manual ou registrado, calcular métricas simples e produzir Decision output sem inventar telemetria. | Role `growth-lead`; playbook `growth-experiment`; workflow `launch-learning-loop` quando há resultado de experimento ou feedback. |
 
 ### Finance
 
@@ -151,3 +153,6 @@ Ativação padrão: `AGENT.md` -> `growth/AGENT.md` -> `growth/finance/AGENT.md`
 | --- | --- | --- |
 | `model-unit-economics` | Esclarecer hipóteses de aquisição, entrega, margem e custos. | Role `finance-operator`; playbook `finance-review`; rotas de Growth/Finance com custo, margem ou spend. |
 | `review-pricing` | Avaliar e manter o Pricing Catalog: planos, preços, trials, limites, entitlements, status e Runtime Source. | Role `finance-operator`; playbook `finance-review`; rotas de pricing, packaging, cobrança, subscription, paywall ou receita. |
+| `review-spend` | Avaliar gasto recorrente, ferramenta paga, campanha paga, provider novo ou custo variável relevante contra budget, runway e unit economics. | Role `finance-operator`; playbook `spend-approval`; rotas de gastos, ferramentas pagas, mídia paga, providers ou custos variáveis. |
+| `runway-check` | Estimar burn mensal, runway e riscos financeiros com premissas explícitas. | Role `finance-operator`; playbook `monthly-finance-check`; pedidos de burn, runway, caixa ou impacto de novo gasto. |
+| `budget-planning` | Definir guardrails de budget, limites por categoria, approval thresholds e automações candidatas de alerta/limite. | Role `finance-operator`; playbooks `monthly-finance-check` e `spend-approval`; planejamento de orçamento e limites. |

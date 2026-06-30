@@ -40,6 +40,7 @@ export const growthDepartment: RootDepartmentDefinition = {
         "growth/marketing/AGENT.md",
         "growth/marketing/knowledge/launch-plan.md",
         "growth/marketing/knowledge/positioning.md",
+        "growth/marketing/knowledge/growth-experiments.md",
         "growth/customer-experience/AGENT.md",
         "growth/customer-experience/knowledge/customer-feedback.md",
         "growth/customer-experience/knowledge/success-moments.md",
@@ -52,7 +53,10 @@ export const growthDepartment: RootDepartmentDefinition = {
         "growth/marketing/AGENT.md",
         "growth/marketing/roles/growth-lead.role.md",
         "growth/marketing/skills/create-launch-plan/SKILL.md",
+        "growth/marketing/skills/plan-growth-experiment/SKILL.md",
+        "growth/marketing/skills/analyze-growth-result/SKILL.md",
         "growth/marketing/playbooks/mvp-launch.playbook.md",
+        "growth/marketing/playbooks/growth-experiment.playbook.md",
         "growth/customer-experience/AGENT.md",
         "growth/customer-experience/roles/cx-lead.role.md",
         "growth/customer-experience/skills/map-customer-feedback/SKILL.md",
@@ -62,8 +66,11 @@ export const growthDepartment: RootDepartmentDefinition = {
         "operations/product-ops/AGENT.md when learning should become delivery work"
       ],
       steps: [
-        "Leia o AGENT de Marketing e o launch knowledge antes de planejar ou resumir trabalho de lançamento.",
+        "Leia o AGENT de Marketing, launch knowledge e Growth Experiment Ledger antes de planejar ou resumir trabalho de lançamento.",
         "Leia o AGENT de Customer Experience e customer feedback antes de afirmar o que usuários aprenderam, sentiram ou fizeram.",
+        "Use `growth/marketing/knowledge/growth-experiments.md` ou feedback registrado antes de recomendar qualquer decisão de Growth.",
+        "Quando ainda não houver experimento, use `growth/marketing/skills/plan-growth-experiment/SKILL.md` e entregue o Manual Result Input Template para execução manual.",
+        "Quando houver resultado colado pelo founder ou evidência registrada, use `growth/marketing/skills/analyze-growth-result/SKILL.md` e produza Decision output.",
         "Separate launch activity, customer evidence, founder interpretation and next decision.",
         "Review Finance AGENT only when pricing, budget, revenue, cost or unit economics are involved.",
         "Route to Strategy Product only when learning changes ICP, positioning, problem framing or value proposition.",
@@ -80,6 +87,7 @@ export const growthDepartment: RootDepartmentDefinition = {
       ],
       allowedUpdates: [
         "growth/marketing/knowledge/launch-plan.md",
+        "growth/marketing/knowledge/growth-experiments.md",
         "growth/marketing/knowledge/positioning.md after founder confirmation",
         "growth/customer-experience/knowledge/customer-feedback.md",
         "growth/customer-experience/knowledge/success-moments.md",
@@ -103,17 +111,20 @@ export const growthDepartment: RootDepartmentDefinition = {
       ],
       stopConditions: [
         "There is no launch activity or customer evidence to review.",
+        "Não existe experimento registrado nem feedback registrado para sustentar uma decisão de Growth.",
         "The founder asks for implementation rather than learning-loop planning.",
         "Customer feedback is too vague to turn into learning.",
         "The founder does not confirm updates or next routing.",
         "External analytics or CRM access is required but not available."
       ],
       expectedOutput: [
-        "Launch status summary.",
-        "Customer evidence summary separated from interpretation.",
-        "Learning, risk and opportunity list.",
-        "Recommended next loop: marketing, CX, finance, strategy or delivery.",
-        "Founder-friendly confirmation question before any update."
+        "Resumo do status de lançamento.",
+        "Resumo de evidência de cliente separado de interpretação.",
+        "Decision output: continue | iterate_copy | iterate_pricing | open_product_ops_item | route_to_strategy | scale_spend | pause.",
+        "Aprendizados, riscos e oportunidades.",
+        "Próximo loop recomendado: marketing, CX, finance, strategy ou delivery.",
+        "Não tome decisão de Growth apenas por intuição.",
+        "Pergunta de confirmação founder-friendly antes de qualquer atualização."
       ],
       continuationBridge: {
         immediate: "Esse aprendizado parece apontar para o proximo ciclo.\nQuer que eu transforme isso em ajuste de marketing/CX, revisao de estrategia ou trabalho de produto?",

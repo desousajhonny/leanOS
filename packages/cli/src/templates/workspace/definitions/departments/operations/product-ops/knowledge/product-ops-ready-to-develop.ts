@@ -86,6 +86,17 @@ Required when the work touches plans, prices, billing, checkout, paywall, subscr
 - If Pricing/Plan is not applicable, the reason is explicit.
 - If Growth Finance is inactive and the Feature touches pricing or plan behavior, the Feature is not \`ready-to-code\`; activate \`growth.finance\` first.
 
+## Cost And Spend Readiness
+
+Required when the work introduces or materially changes recurring spend, paid tools, paid campaigns, paid providers, AI/API usage, storage, workers, queues, vector DB, observability cost, payment fees or other variable costs.
+
+- Check \`growth/finance/knowledge/spend-ledger.md\` before accepting a new recurring expense, provider, campaign budget or variable cost driver.
+- The Feature states whether Cost/Spend readiness is ready, blocked, known-risk or not-applicable.
+- Expense category, owner, estimated amount, period, cost driver and review date are explicit when cost is applicable.
+- Budget impact and runway risk are listed or marked unknown.
+- Engineering, DevOps, Marketing and Security impacts are listed when the cost can scale with usage, traffic, agents, API calls, storage, logs or abuse.
+- If Growth Finance is inactive and the Feature introduces meaningful cost, the Feature is not \`ready-to-code\`; activate \`growth.finance\` first.
+
 ## Security Readiness
 
 Required when the work touches data, authentication, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure, AI-generated-code risk or AI app runtime risk.
@@ -133,6 +144,7 @@ Required when the work touches environments, CI/CD, deploy, observability, GitHu
 - \`needs-design\`: UX/UI/accessibility context is required before coding.
 - \`needs-component-spec\`: the Feature needs a new or adapted reusable component before Engineering can code it.
 - \`needs-pricing\`: plan, price, billing, paywall, subscription, trial, quota, limit or entitlement context is required from Growth Finance before coding.
+- \`needs-finance\`: spend, budget, burn, runway, provider cost or variable-cost context is required from Growth Finance before coding.
 - \`needs-security\`: data/auth/privacy/API/security context or AI-native Security readiness is required before coding.
 - \`needs-devops\`: environment/deploy/CI/GitHub readiness is required before coding.
 - \`ready-to-plan\`: enough context exists to create a development plan and implementation approach.
@@ -146,6 +158,7 @@ Required when the work touches environments, CI/CD, deploy, observability, GitHu
 - Use \`feature-to-delivery-cycle\` only after readiness is confirmed.
 - Route missing component specs to Design before Engineering.
 - Route missing plan, price, billing, trial, quota, limit or entitlement context to Growth Finance before Engineering.
+- Route missing spend, budget, burn, runway, provider cost or variable-cost context to Growth Finance before Engineering.
 - Never treat importance as readiness.
 - Never treat GitHub sync as readiness by itself.
 - If the founder asks to code too early, name the current state and offer the smallest next step.

@@ -28,6 +28,8 @@ O LeanOS tem um MVP de framework local com:
 - README raiz gerado como README de produto/empresa, com skill dedicada em Strategy Product para melhorar README sem poluir o `AGENT.md` raiz.
 - Novo repositório GitHub exige gate `README-ready`: DevOps verifica, mas Strategy Product escreve ou confirma o README product-first antes de create/publish/connect remoto.
 - Pricing Catalog canonico em `growth/finance/knowledge/pricing.md`, com Runtime Source, Consumer Contract e gates em Marketing, Customer Experience, Product Ops, Engineering, DevOps e Security.
+- Spend Ledger canonico em `growth/finance/knowledge/spend-ledger.md`, com budget, burn, runway, approval thresholds e gates em Marketing, Product Ops, Engineering, DevOps e Security.
+- Growth Experiment Ledger canonico em `growth/marketing/knowledge/growth-experiments.md`, com planejamento/análise de experimentos, input manual de resultados, Decision output e gates para Finance, Strategy e Product Ops.
 
 ## Decisoes Canonicas Atuais
 
@@ -54,6 +56,8 @@ O LeanOS tem um MVP de framework local com:
 - [x] README do produto deve ser roteado pela Navigation Chain: Strategy Product -> Product Narrative Editor -> write-product-readme, preservando README existente e propondo diff antes de escrever.
 - [x] Novo repositório GitHub não deve ser criado ou publicado por DevOps sem `README-ready` confirmado; se faltar README, roteie para Strategy Product -> Product Narrative Editor -> write-product-readme.
 - [x] Planos, preços, cobrança, trials, quotas, limites e entitlements pertencem ao Pricing Catalog de Growth Finance; áreas consumidoras não devem inventar valores ou direitos fora dessa fonte.
+- [x] Gastos, budget, burn, runway, ferramentas pagas, mídia paga, providers e custos variáveis pertencem ao Spend Ledger de Growth Finance; áreas consumidoras não devem criar custo relevante fora dessa fonte.
+- [x] Decisões de Growth pós-lançamento, landing page, aquisição, campanha ou oferta devem usar experimento registrado em `growth/marketing/knowledge/growth-experiments.md` ou feedback registrado em Customer Experience.
 
 ## Concluido Nesta Branch
 
@@ -100,6 +104,8 @@ O LeanOS tem um MVP de framework local com:
 - [x] Runbook de publish npm adicionado para futuras versoes, com validacao automatica do protocolo.
 - [x] Security hardening implementado como workflow `operations/workflows/security-hardening-cycle.workflow.md`, role `AI Security Engineer`, skill `ai-runtime-security-review`, playbook `ai-app-security-review`, knowledge `ai-app-security.md`, rota root de `activation_required: operations.security`, gates AI-native em `ready-to-develop`, Engineering review e `ready-for-launch`, e validações automáticas da jornada.
 - [x] Pricing Source of Truth implementado: root `AGENT.md` roteia pricing para `activation_required: growth.finance`, `pricing.md` virou Pricing Catalog com Runtime Source e Consumer Contract, Marketing/CX/Product Ops/Engineering/DevOps/Security consomem o catálogo, jornada `pricing-source-of-truth.md` criada e validação `validatePricingSourceOfTruthContract` adicionada.
+- [x] Spend/Budget Source of Truth implementado: root `AGENT.md` roteia gastos/budget/burn/runway para `activation_required: growth.finance`, `spend-ledger.md` virou fonte canonica de gastos, `budget.md` ganhou Monthly Budget/Runway Snapshot/Approval Thresholds, Finance ganhou `review-spend`, `runway-check`, `budget-planning`, `spend-approval` e `monthly-finance-check`, e validação `validateSpendBudgetSourceOfTruthContract` adicionada.
+- [x] Growth Experiment Learning implementado: Marketing ganhou `growth-experiments.md`, skills `plan-growth-experiment` e `analyze-growth-result`, playbook `growth-experiment`, `launch-learning-loop` passou a exigir experimento ou feedback registrado antes de decisão, e validação `validateGrowthExperimentContract` adicionada.
 
 ## Pendencias Ativas
 
@@ -244,9 +250,18 @@ Fatia concluida:
 
 ### 5. `launch-learning-loop`
 
-Status: planejado; agora explicitamente depois de `ready-for-launch` ou depois de um lancamento ja executado.
+Status: fatia de experimento/aprendizado implementada; jornada ampla de lançamento ainda pode ser refinada depois.
 
 Objetivo: manter Growth enxuto, mas pronto para lancamento, feedback, learning loop e decisao de proximo ciclo.
+
+Fatia concluida:
+
+- `growth/marketing/knowledge/growth-experiments.md` criado como ledger de experimentos de Growth.
+- Skills `plan-growth-experiment` e `analyze-growth-result` adicionadas.
+- Playbook `growth-experiment` adicionado com modo de planejamento e modo de análise.
+- `launch-learning-loop` exige experimento ou feedback registrado antes de qualquer decisão de Growth.
+- Founder pode colar resultados manualmente pelo Manual Result Input Template.
+- Decision output usa enum `continue`, `iterate_copy`, `iterate_pricing`, `open_product_ops_item`, `route_to_strategy`, `scale_spend` ou `pause`.
 
 ### 6. Localizacao PT-BR
 

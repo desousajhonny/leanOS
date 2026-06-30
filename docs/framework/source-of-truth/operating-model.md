@@ -122,6 +122,8 @@ Cada Feature deve conter critérios de aceite, tasks internas e dimensões de re
 
 Pricing/Plan readiness é aplicável quando a Feature toca planos, preços, cobrança, checkout, paywall, subscription, trial, quota, limite de uso ou entitlement. Nesses casos, Product Ops deve exigir `growth/finance/knowledge/pricing.md` antes de Engineering começar.
 
+Cost/Spend readiness é aplicável quando a Feature introduz gasto recorrente, ferramenta paga, campanha paga, provider pago, AI/API, storage, worker, queue, vector DB, logs, analytics, observabilidade paga ou custo variável relevante. Nesses casos, Product Ops deve exigir `growth/finance/knowledge/spend-ledger.md` antes de Engineering começar.
+
 Security é aplicável quando a Feature toca dados, autenticação, permissões, privacidade, abuso, API, banco, secrets, compliance, infraestrutura, código gerado por IA ou risco AI-native como LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection e cost/rate abuse.
 
 ### 9. Delivery
@@ -163,6 +165,8 @@ Depois da entrega, o LeanOS deve capturar o que mudou, o que foi aprendido, o qu
 
 O aprendizado pode rotear de volta para Strategy, Roadmap, Product Ops, Growth ou outra área ativa.
 
+Decisões de Growth devem usar `growth/marketing/knowledge/growth-experiments.md` ou feedback registrado em Customer Experience. Quando ainda não houver resultado, Marketing deve planejar o experimento e entregar um Manual Result Input Template para o founder colar resultados depois. Quando houver resultado, Marketing deve produzir Decision output com uma decisão explícita antes de sugerir próximo loop.
+
 ## Modelo De Ativação
 
 O LeanOS distingue:
@@ -196,6 +200,10 @@ Growth é ativado apenas quando operações voltadas ao mercado ou ao cliente se
 Growth Finance é dono do Pricing Catalog em `growth/finance/knowledge/pricing.md`. Esse arquivo é a fonte canônica de negócio para plano, preço, trial, desconto, limite, quota e entitlement. Marketing, Customer Experience, Product Ops, Engineering, DevOps e Security consomem essa fonte, mas não a redefinem fora de Finance.
 
 O runtime source de pricing fica separado do markdown: billing provider, banco, app config, code paths, env vars e webhooks devem ser mapeados por Finance/DevOps/Engineering quando a implementação existir. O markdown registra a decisão de negócio; o app deve ler o runtime source aprovado.
+
+Growth Finance também é dono do Spend Ledger em `growth/finance/knowledge/spend-ledger.md`. Esse arquivo é a fonte canônica leve para gastos recorrentes, pontuais, ferramentas pagas, mídia paga, providers, custos variáveis e automações candidatas de alerta/limite. Ele não substitui contabilidade, fiscal, banco ou ERP; ele ajuda o founder a tomar decisões de produto e operação com budget, burn, runway e unit economics visíveis.
+
+Growth Marketing é dono do Growth Experiment Ledger em `growth/marketing/knowledge/growth-experiments.md`. Esse arquivo é a fonte canônica leve para hipóteses, experimentos, resultados manuais, critérios de sucesso/falha e decisões de aquisição, landing page, oferta, onboarding, campanha ou venda assistida. Ele não substitui analytics, CRM ou BI; ele torna o aprendizado acionável para Strategy, Product Ops, Finance e Customer Experience.
 
 ## Modelo GitHub
 

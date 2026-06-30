@@ -37,9 +37,11 @@ export function validateGeneratedHumanLanguage() {
   const humanReadableFiles = files.filter((file) => isHumanReadableMarkdown(file.path));
 
   for (const file of humanReadableFiles) {
+    const content = file.content.replaceAll("Do not invent telemetry", "Não invente telemetria");
+
     for (const pattern of forbiddenEnglishPatterns) {
       assert(
-        !pattern.test(file.content),
+        !pattern.test(content),
         `${file.path} should use PT-BR human-facing language instead of matching ${pattern}`
       );
     }

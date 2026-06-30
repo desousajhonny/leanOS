@@ -668,7 +668,10 @@ export async function assertOperationalPlaybookSections(rootDir) {
     "operations/security/playbooks/ai-generated-code-security-review.playbook.md",
     "growth/customer-experience/playbooks/customer-learning-loop.playbook.md",
     "growth/marketing/playbooks/mvp-launch.playbook.md",
-    "growth/finance/playbooks/finance-review.playbook.md"
+    "growth/marketing/playbooks/growth-experiment.playbook.md",
+    "growth/finance/playbooks/finance-review.playbook.md",
+    "growth/finance/playbooks/spend-approval.playbook.md",
+    "growth/finance/playbooks/monthly-finance-check.playbook.md"
   ];
   const requiredSections = ["## Propósito", "## Entradas", "## Saída", "## Arquivos para Atualizar", "## Navegação"];
 
@@ -722,7 +725,9 @@ export async function assertSourceScaffoldSections(rootDir) {
     "growth/marketing/knowledge/landing-page.md",
     "growth/marketing/knowledge/acquisition-channels.md",
     "growth/marketing/knowledge/launch-plan.md",
+    "growth/marketing/knowledge/growth-experiments.md",
     "growth/finance/knowledge/pricing.md",
+    "growth/finance/knowledge/spend-ledger.md",
     "growth/finance/knowledge/revenue-model.md",
     "growth/finance/knowledge/unit-economics.md",
     "growth/finance/knowledge/budget.md",
