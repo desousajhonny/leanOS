@@ -59,6 +59,12 @@ Depois inspecione fontes conforme a pergunta:
 - `example-ai-product-os/operations/product-ops/mvp/acceptance-criteria.md`
 - `example-ai-product-os/operations/product-ops/mvp/release-checklist.md`
 
+### Readiness de Pricing e Planos
+
+- `example-ai-product-os/growth/finance/knowledge/pricing.md`
+
+Use esta fonte quando a pergunta envolver planos, preços, cobrança, pacotes, assinatura, trial, paywall, limites, quota ou entitlements. Se Growth Finance ainda não estiver ativo, explique que a lacuna é comercial/financeira e recomende ativar `growth.finance`.
+
 ### Readiness de GitHub / Execução
 
 - `.github/leanos/project-sync.yaml`
@@ -99,6 +105,7 @@ Não recomende implementação até o diagnóstico confirmar:
 - Design foi checado quando UX, UI, copy, acessibilidade, telas, estados ou fluxos de usuário são afetados;
 - Security foi checado quando há risco de dados, auth, permissões, privacidade, abuso, API, banco de dados, secrets, compliance, infraestrutura, código gerado por IA, LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection ou cost/rate abuse;
 - DevOps foi checado quando ambientes, CI/CD, deploy, observabilidade, GitHub Project, config ou release readiness são afetados.
+- Growth Finance foi checado quando planos, preços, cobrança, pacotes, assinatura, trial, paywall, quota, limite de uso ou entitlement são afetados.
 
 Se algo estiver ausente, explique a lacuna e recomende a próxima rota LeanOS em vez de codar.
 
@@ -111,6 +118,7 @@ Se algo estiver ausente, explique a lacuna e recomende a próxima rota LeanOS em
 - Roadmap ausente para produto operando -> Strategy Roadmap via `example-ai-product-os/strategy/AGENT.md`
 - Epic local ausente -> playbook Product Ops `delivery-item-to-epic`
 - Features ausentes -> playbook Product Ops `epic-to-features` quando Product Ops estiver ativo
+- Pricing Catalog ausente ou fraco -> Growth Finance via `example-ai-product-os/growth/finance/AGENT.md` quando Finance estiver ativo; caso contrário, ativar `growth.finance`
 - Implementação pronta -> workflow Engineering `feature-to-delivery-cycle`
 - PR/review necessário -> rota de validação de PR em Engineering
 - Readiness de launch, go-live, beta ou usuários reais -> Operations workflow `ready-for-launch` quando Product Ops, Engineering e DevOps estiverem ativos

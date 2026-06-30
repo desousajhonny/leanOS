@@ -69,6 +69,7 @@ Exemplos:
 - "defina o escopo de validação do MVP" ou "o que o primeiro MVP deve validar?" -> \`${strategyAgent}\`
 - "transforme este item de MVP em backlog ou Epic" -> retorne \`activation_required\` para \`operations.product-ops\` quando Product Ops estiver inativo
 - "revise este PR" -> retorne \`activation_required\` para \`operations.engineering\` quando Engineering estiver inativo
+- "defina planos, preços, cobrança, assinatura ou entitlements" -> retorne \`activation_required\` para \`growth.finance\` quando Finance estiver inativo
 
 ## Roteamento de Intenção de Progressão
 
@@ -89,6 +90,7 @@ Regras:
 - Auditoria de segurança, vulnerabilidade, LGPD, dados de cliente, vazamento de token, proteção de API ou hardening: \`${operationsAgent}\` somente quando Security estiver ativo; se faltar área, retorne \`activation_required\` para \`operations.security\`.
 - Readiness de launch, go-live, beta ou usuários reais: \`${operationsAgent}\` somente quando Product Ops, Engineering e DevOps estiverem ativos; se faltar área, retorne \`activation_required\` para a menor área bloqueadora.
 - Execução de launch, aquisição, onboarding ou learning loop: \`${growthAgent}\` somente quando a área obrigatória de Growth estiver ativa e o gate de readiness não estiver bloqueado.
+- Planos, preços, pricing, cobrança, pacotes, assinatura ou entitlements: \`${growthAgent}\` somente quando Growth Finance estiver ativo; se faltar área, retorne \`activation_required\` para \`growth.finance\`.
 - Se o próximo passo exigir departamento ou área inativa/ausente, retorne \`activation_required\` em vez de abrir ou inventar paths.
 - Não carregue departamentos inativos.
 - Não trate \`available\` como \`exists\`.
@@ -145,6 +147,7 @@ Use este mapa como orientação de roteamento, não como detalhe de execução. 
 - Setup de GitHub, configuração de GitHub Projects ou sync de Epics/Features: retorne \`activation_required\` para \`operations.devops\` até DevOps estar ativo
 - Preparação ou review de PR: retorne \`activation_required\` para \`operations.engineering\` até Engineering estar ativo
 - Continuação pós-merge: retorne \`activation_required\` para \`operations.product-ops\` até Operations estar ativo
+- Planos, preços, pricing, cobrança, pacotes, assinatura ou entitlements: retorne \`activation_required\` para \`growth.finance\` até Growth Finance estar ativo
 - Readiness de launch, go-live, beta ou usuários reais: retorne \`activation_required\` para \`operations.product-ops\`, \`operations.engineering\` ou \`operations.devops\` conforme a menor área bloqueadora até o workflow \`ready-for-launch\` estar ativo
 - Execução de launch, aquisição, onboarding ou learning loop: retorne \`activation_required\` para \`growth.marketing\` ou \`growth.customer-experience\` até Growth estar ativo
 
@@ -278,6 +281,7 @@ function whereWeAreProtocol(answers: WorkspaceAnswers): string {
   const strategyProduct = `${departmentPath("strategy", paths)}/product`;
   const strategyRoadmap = `${departmentPath("strategy", paths)}/roadmap`;
   const operationsProductOps = `${departmentPath("operations", paths)}/product-ops`;
+  const growthFinance = `${departmentPath("growth", paths)}/finance`;
 
   return `# Protocolo Onde Estamos
 
@@ -340,6 +344,12 @@ Depois inspecione fontes conforme a pergunta:
 - \`${operationsProductOps}/mvp/acceptance-criteria.md\`
 - \`${operationsProductOps}/mvp/release-checklist.md\`
 
+### Readiness de Pricing e Planos
+
+- \`${growthFinance}/knowledge/pricing.md\`
+
+Use esta fonte quando a pergunta envolver planos, preços, cobrança, pacotes, assinatura, trial, paywall, limites, quota ou entitlements. Se Growth Finance ainda não estiver ativo, explique que a lacuna é comercial/financeira e recomende ativar \`growth.finance\`.
+
 ### Readiness de GitHub / Execução
 
 - \`.github/leanos/project-sync.yaml\`
@@ -380,6 +390,7 @@ Não recomende implementação até o diagnóstico confirmar:
 - Design foi checado quando UX, UI, copy, acessibilidade, telas, estados ou fluxos de usuário são afetados;
 - Security foi checado quando há risco de dados, auth, permissões, privacidade, abuso, API, banco de dados, secrets, compliance, infraestrutura, código gerado por IA, LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection ou cost/rate abuse;
 - DevOps foi checado quando ambientes, CI/CD, deploy, observabilidade, GitHub Project, config ou release readiness são afetados.
+- Growth Finance foi checado quando planos, preços, cobrança, pacotes, assinatura, trial, paywall, quota, limite de uso ou entitlement são afetados.
 
 Se algo estiver ausente, explique a lacuna e recomende a próxima rota LeanOS em vez de codar.
 
@@ -392,6 +403,7 @@ Se algo estiver ausente, explique a lacuna e recomende a próxima rota LeanOS em
 - Roadmap ausente para produto operando -> Strategy Roadmap via \`${strategyAgent}\`
 - Epic local ausente -> playbook Product Ops \`delivery-item-to-epic\`
 - Features ausentes -> playbook Product Ops \`epic-to-features\` quando Product Ops estiver ativo
+- Pricing Catalog ausente ou fraco -> Growth Finance via \`${growthFinance}/AGENT.md\` quando Finance estiver ativo; caso contrário, ativar \`growth.finance\`
 - Implementação pronta -> workflow Engineering \`feature-to-delivery-cycle\`
 - PR/review necessário -> rota de validação de PR em Engineering
 - Readiness de launch, go-live, beta ou usuários reais -> Operations workflow \`ready-for-launch\` quando Product Ops, Engineering e DevOps estiverem ativos

@@ -15,7 +15,8 @@ Use este mapa para acompanhar quais jornadas do founder foram desenhadas com `jo
 | [x] | 8 | Pós-merge | `post-merge-continuation.md` | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a próxima issue", "o que atualizamos depois do merge?" |
 | [x] | 9 | Ready for launch | `ready-for-launch.md` | `operations/workflows/ready-for-launch.workflow.md` | "Está pronto para lançar?", "podemos abrir para usuários reais?", "o que falta para lançar?" |
 | [x] | 10 | Security hardening | `security-hardening-cycle.md` | `operations/workflows/security-hardening-cycle.workflow.md` | "Audite segurança", "tem vulnerabilidade?", "LGPD", "dados de cliente", "vazou token", "proteger API" |
-| [ ] | 11 | Lançamento e aprendizado | `launch-learning-loop.md` | `growth/workflows/launch-learning-loop.workflow.md` | "Lançamos, o que aprendemos?", "como melhorar aquisição/conversão?" |
+| [x] | 11 | Pricing source of truth | `pricing-source-of-truth.md` | Root `AGENT.md` -> `activation_required: growth.finance` -> `growth/finance/playbooks/finance-review.playbook.md` | "defina planos/preços", "implemente checkout/paywall", "temos planos divergentes" |
+| [ ] | 12 | Lançamento e aprendizado | `launch-learning-loop.md` | `growth/workflows/launch-learning-loop.workflow.md` | "Lançamos, o que aprendemos?", "como melhorar aquisição/conversão?" |
 
 ## Regra
 

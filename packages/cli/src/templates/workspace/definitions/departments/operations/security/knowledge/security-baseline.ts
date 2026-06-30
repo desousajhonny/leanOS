@@ -27,6 +27,7 @@ export function securityBaselineKnowledge(): string {
       "Admin access requires RBAC, MFA when available and audit trail.",
       "Production, staging and development must use separate databases, secrets and permissions.",
       "Production deploy requires backup, rollback path and security review.",
+      "No payment, billing, pricing or entitlement change without Security review when money, access or customer data is affected.",
       "AI agents must not change auth, secrets, CI/CD, infra or dependencies without human review.",
       "LLM input/output must be treated as untrusted product surface.",
       "Tool permissions must be least-privilege and explicit.",

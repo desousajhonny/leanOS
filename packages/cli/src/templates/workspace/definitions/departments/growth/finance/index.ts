@@ -17,15 +17,17 @@ export const growthFinanceArea: AreaDefinition = {
   },
   routingKey: "finance",
   requestTypes: "pricing, revenue model, budget, unit economics or finance",
-  purpose: "Own pricing, revenue model, unit economics, budget and financial risks.",
-  whenToUse: ["define pricing", "review unit economics", "track budget", "reason about revenue model"],
+  purpose: "Own pricing, Pricing Catalog, revenue model, unit economics, budget and financial risks.",
+  whenToUse: ["define pricing", "review plans and entitlements", "review unit economics", "track budget", "reason about revenue model"],
   operatingRules: [
     "Mantenha Finance leve e orientado por hipóteses no MVP.",
+    "Mantenha `knowledge/pricing.md` como fonte canônica de planos, preços, trials, limites e entitlements.",
     "Route pricing assumptions back to Strategy Product when they affect positioning or value proposition.",
     "Route paid acquisition or spend decisions back to Marketing/Founder before committing."
   ],
   redLines: [
     "Não apresente pricing não validado como fato.",
+    "Não aprove plano, preço, trial, limite ou entitlement fora do Pricing Catalog.",
     "Não faça alegações de aconselhamento contábil, fiscal, jurídico ou de investimento.",
     "Não comprometa gasto, previsão de receita ou afirmações de runway sem confirmação explícita do founder."
   ],

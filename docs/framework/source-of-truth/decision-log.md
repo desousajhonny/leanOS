@@ -2,6 +2,34 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-30 - Pricing Catalog Como Fonte Canônica De Planos E Entitlements
+
+Decisão:
+
+- Growth Finance é o owner do Pricing Catalog em `growth/finance/knowledge/pricing.md`.
+- O Pricing Catalog é a fonte canônica de negócio para plano, preço, trial, desconto, limite, quota e entitlement.
+- O runtime source do produto continua separado do markdown e deve ser mapeado quando existir implementação:
+  - billing provider;
+  - database table;
+  - code path;
+  - runtime config;
+  - webhook/event source;
+  - status de sync/verificação.
+- O root `AGENT.md` deve rotear pedidos de planos, preços, cobrança, pacotes, assinatura ou entitlements para `growth.finance`; se Finance estiver inativo, retorna `activation_required: growth.finance`.
+- Marketing e Customer Experience podem consumir planos e preços, mas não podem inventar nomes, valores, trials, limites ou entitlements.
+- Product Ops deve exigir Pricing/Plan readiness antes de marcar Feature como pronta quando o trabalho tocar checkout, billing, paywall, subscription, trial, quota, limite ou entitlement.
+- Engineering deve bloquear hardcoding de plano, preço, trial, quota, limite ou entitlement sem vínculo com Pricing Catalog e runtime source aprovado.
+- DevOps deve mapear provider IDs, env vars, webhook secrets e runtime config sem salvar segredos em markdown.
+- Security deve revisar mudanças de payment, billing, pricing ou entitlement quando dinheiro, acesso ou dados de cliente forem afetados.
+- O generator valida esse contrato com `validatePricingSourceOfTruthContract`.
+
+Justificativa:
+
+- Founders sofrem quando plano, preço e limite aparecem divergentes em landing page, código, banco, provider de pagamento e suporte.
+- Separar decisão de negócio de runtime source evita usar markdown como config de produção, sem perder clareza operacional.
+- Conectar Finance, Marketing, CX, Product Ops, Engineering, DevOps e Security cria uma rota única para mudar pricing sem drift.
+- A validação automática impede que o framework volte a gerar apenas uma hipótese rasa de pricing.
+
 ## 2026-06-30 - Security Hardening E AI App Security Como Gate De Produto
 
 Decisão:

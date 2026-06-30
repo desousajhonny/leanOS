@@ -7,8 +7,8 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 ## Estado Atual
 
 - Repositório: `desousajhonny/leanOS`.
-- Branch local de trabalho atual: `feature/ai-security-hardening`.
-- Remote `origin/main` foi enviado para o commit `3159666` em 2026-06-30 antes do runbook de release npm.
+- Branch local de trabalho atual: `feature/pricing-source-of-truth`.
+- Remote `origin/main` está em `6e7e472` em 2026-06-30.
 - `AGENT.md` raiz é o ponto de entrada para comportamento de agente no nível do projeto.
 - Source of truth do framework vive em `docs/framework/source-of-truth/`.
 - Roadmap temporário de implementação vive em `TEMP-roadmap-ajustes.md`.
@@ -20,6 +20,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 - 2026-06-30: Publicações futuras de `lean-os` + `create-lean-os` devem usar `npm run release:npm`, com token preparado localmente em `.npmrc`, validações automáticas, publish `lean-os` antes de `create-lean-os`, verificação do registry e remoção de `.npmrc`.
 - 2026-06-30: Security hardening fica em Operations/Security via workflow `security-hardening-cycle`. Pedidos como auditoria, vulnerabilidade, LGPD, dados de cliente, token vazado e proteção de API roteiam para `operations.security`; se inativo, retornam `activation_required: operations.security`.
 - 2026-06-30: AI app security passa a ser gate explícito de produto com role `AI Security Engineer`, skill `ai-runtime-security-review`, playbook `ai-app-security-review` e knowledge `ai-app-security.md`. Riscos AI-native cobertos: LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection e cost/rate abuse.
+- 2026-06-30: Pricing Catalog passa a ser fonte canônica de Growth Finance em `growth/finance/knowledge/pricing.md`, com Runtime Source separado. Root `AGENT.md` roteia planos/preços/cobrança/entitlements para `activation_required: growth.finance`; Marketing, CX, Product Ops, Engineering, DevOps e Security consomem o catálogo sem reinventar valores.
 - 2026-06-30: README raiz gerado deve ser product-first e founder-friendly. Melhorias de README devem entrar pela Navigation Chain `Strategy Product -> Product Narrative Editor -> write-product-readme`, usando template em `.leanos/standard/templates/product/` e preservando README existente com diff antes de escrita.
 - 2026-06-30: Novo repositório GitHub exige gate `README-ready`. DevOps/GitHub DevOps verifica o gate, mas não escreve narrativa de produto; se faltar README confirmado, deve rotear para `Strategy Product -> Product Narrative Editor -> write-product-readme` antes de create/publish/connect remoto.
 - 2026-06-30: Fortalecer sync GitHub de Epics/Features. Epic local canônico passa a ser `epics/<epic-slug>/epic.md` com fallback legado para `README.md`; sync exige body rico, milestone, Size/Effort, relações Epic/Feature, read-back verification e patch local de `github_issue.url` + `sync_status: synced`.
@@ -36,7 +37,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 - Working tree: scaffold reorganizado para gerar `<product-slug>-os/README.md`, departamentos dentro do Business OS, `.leanos/standard/` e `.leanos/runtime/`; `leanos.yaml.paths` registra os novos roots; validação `validateBusinessOsLayout` cobre paths físicos e impede referências antigas como `ai-standard/` e `.leanos/context`.
 - Working tree: pacote `packages/create` adicionado como `create-lean-os`; o binário chama o wizard `runAiCommand` do pacote `lean-os`, docs promovem `npm create lean-os` e validação `validateCreateLeanOsPackage` cobre o contrato.
-- Working tree: Security hardening em implementação na branch `feature/ai-security-hardening`. Foram adicionados contratos para `security-hardening-cycle`, `AI Security Engineer`, `ai-runtime-security-review`, `ai-app-security-review`, `ai-app-security.md`, rota root de Security e gates AI-native em delivery/review/launch.
+- Working tree: Pricing Source of Truth em implementação na branch `feature/pricing-source-of-truth`. Foram adicionados contratos para Pricing Catalog, Runtime Source, Consumer Contract, rota root de Finance, gates de Product Ops/Engineering/DevOps/Security e validação `validatePricingSourceOfTruthContract`.
 - Working tree: runbook `scripts/publish-npm-create-leanos.mjs` existe para futuras publicações npm; `AGENT.md`, README e decision log apontam para `npm run release:npm`.
 - Working tree: README raiz do scaffold agora explica produto/empresa antes do LeanOS; Strategy Product ganhou role `Product Narrative Editor`, skill `write-product-readme`, common path no AGENT da área e template `.leanos/standard/templates/product/product-readme-template.md`; validação `validateProductReadmeContract` cobre rota, preservação de README existente e sections obrigatórias.
 - Working tree: DevOps/GitHub DevOps agora exige `README-ready` para novo repositório GitHub, registra Repository mode/README status/source em `github-management.md`, bloqueia create/publish/connect remoto sem README product-first confirmado e valida isso com `validateGithubRepositoryReadmeGate`.

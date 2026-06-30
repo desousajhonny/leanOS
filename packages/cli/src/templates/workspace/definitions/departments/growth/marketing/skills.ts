@@ -18,14 +18,14 @@ export const growthMarketingSkills: SkillDefinition[] = [
       slug: "create-landing-page-copy",
       title: "Criar Copy De Landing Page",
       purpose: "Rascunhar copy clara para a primeira página de validação ou lançamento.",
-      useWhen: ["copy de landing page é necessária", "uma página de validação do MVP é necessária", "a página de lançamento precisa de mensagem concisa"],
-      requiredContext: ["Positioning", "Product context", "Fundação de Design quando estrutura visual/UI for necessária"],
-      inputs: ["Audiência", "Problem", "Oferta", "CTA", "Objeções", "Objetivo de validação"],
-      process: ["Carregue posicionamento", "Rascunhe hero, problema, oferta e CTA", "Trate objeções", "Defina sinal de validação", "Roteie necessidades de design visual para Operations Design"],
-      checks: ["A copy está clara", "O CTA combina com o objetivo de aprendizado", "Nenhuma prova ou depoimento falso", "Dependência de Design é sinalizada quando necessária"],
-      outputs: ["Copy de landing page", "CTA", "Sinal de validação", "Follow-up de Design se necessário"],
+      useWhen: ["copy de landing page é necessária", "uma página de validação do MVP é necessária", "a página de lançamento precisa de mensagem concisa", "a landing page mostra plano, preço, trial, desconto, pacote ou entitlement"],
+      requiredContext: ["Positioning", "Product context", "../finance/knowledge/pricing.md quando houver plano ou preço", "Fundação de Design quando estrutura visual/UI for necessária"],
+      inputs: ["Audiência", "Problem", "Oferta", "Planos exibidos se aplicável", "CTA", "Objeções", "Objetivo de validação"],
+      process: ["Carregue posicionamento", "Se houver plano, preço, trial, desconto, pacote, limite ou entitlement, carregue `../finance/knowledge/pricing.md` antes de escrever a oferta", "Rascunhe hero, problema, oferta e CTA", "Trate objeções", "Defina sinal de validação", "Roteie necessidades de design visual para Operations Design", "Roteie alterações de plano, preço ou entitlement para Growth Finance"],
+      checks: ["A copy está clara", "O CTA combina com o objetivo de aprendizado", "Nenhuma prova ou depoimento falso", "Planos e preços vêm do Pricing Catalog quando aparecem na página", "Dependência de Design é sinalizada quando necessária"],
+      outputs: ["Copy de landing page", "CTA", "Sinal de validação", "Pricing Catalog references quando aplicável", "Follow-up de Design se necessário"],
       filesToUpdate: ["Atualize `../knowledge/landing-page.md` após confirmação explícita."],
-      redLines: ["Não invente depoimentos ou métricas.", "Não defina design final de UI quando Design for necessário."]
+      redLines: ["Não invente depoimentos ou métricas.", "Não crie preço, desconto, trial, limite ou entitlement novo; use `../finance/knowledge/pricing.md` ou bloqueie por Finance.", "Não defina design final de UI quando Design for necessário."]
     },
     {
       slug: "create-launch-plan",

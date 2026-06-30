@@ -38,6 +38,14 @@ Use these rules for data implementation. Security owns risk review; Engineering 
 - Não coloque dados reais de clientes em seeds, fixtures, screenshots, markdown ou testes.
 - Route privacy, auth, permission or compliance risk to Security before implementation.
 
+## Pricing And Entitlements
+
+- If code touches plans, prices, billing, checkout, paywall, subscription, trial, usage limit, quota or entitlement, read \`../../growth/finance/knowledge/pricing.md\` and Product Ops readiness before implementation.
+- Identify the runtime source before coding: billing provider, database table, code path, runtime config and webhook/event source when applicable.
+- Do not treat markdown as runtime config; markdown records the business decision, while code must read from the approved runtime source.
+- Não hardcode plano, preço, trial, limite, quota ou entitlement in UI, API, tests or seed data unless the Feature explicitly defines a temporary fixture and links it to the Pricing Catalog.
+- Route money, access or customer-data risk to Security before implementation.
+
 ## Indexes and Performance
 
 - Consider indexes for new filters, joins, lookups, ordering and uniqueness requirements.

@@ -74,6 +74,7 @@ export async function assertGrowthAreaPattern(rootDir) {
   const financeYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "area.yaml"), "utf8"));
   const pricing = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "knowledge", "pricing.md"), "utf8");
   const financeOperator = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "roles", "finance-operator.role.md"), "utf8");
+  const reviewPricing = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "skills", "review-pricing", "SKILL.md"), "utf8");
   const financeReview = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "playbooks", "finance-review.playbook.md"), "utf8");
   const growthWorkflow = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "workflows", "launch-learning-loop.workflow.md"), "utf8");
 
@@ -122,9 +123,46 @@ export async function assertGrowthAreaPattern(rootDir) {
   assert(mvpLaunch.includes("Roteie design visual para Operations Design"), "MVP launch should route design work to Operations Design");
   assert(mvpLaunch.includes("Roteie implicações de orçamento/pricing para Growth Finance"), "MVP launch should route finance work to Finance");
   assert(financeReadme.includes("Não faça alegações de aconselhamento contábil, fiscal, jurídico ou de investimento"), "Finance should avoid professional advice claims");
+  assertPricingSourceOfTruthContract({ pricing, financeOperator, reviewPricing, financeReview, landingPage, supportNotes, mvpLaunch });
   assert(growthWorkflow.includes("Leia o AGENT de Marketing"), "Growth workflow should route through Marketing AGENT");
   assert(growthWorkflow.includes("Leia o AGENT de Customer Experience"), "Growth workflow should route through Customer Experience AGENT");
   assert(growthWorkflow.includes("growth/finance/AGENT.md quando pricing, orçamento ou unit economics estiverem envolvidos"), "Growth workflow should make Finance conditional");
+}
+
+function assertPricingSourceOfTruthContract({ pricing, financeOperator, reviewPricing, financeReview, landingPage, supportNotes, mvpLaunch }) {
+  for (const requiredContent of [
+    "Growth Finance é o owner do Pricing Catalog",
+    "## Pricing Catalog",
+    "plan_id",
+    "Nome público",
+    "Preço",
+    "Status",
+    "Entitlements",
+    "Provider ID",
+    "draft, active, deprecated, grandfathered, hidden, archived",
+    "## Runtime Source",
+    "billing provider",
+    "database table",
+    "code path",
+    "## Consumer Contract",
+    "Não use chat, landing page, código ou README como fonte canônica de preço.",
+    "## Change Control"
+  ]) {
+    assert(pricing.includes(requiredContent), `Pricing knowledge should include source-of-truth contract content: ${requiredContent}`);
+  }
+
+  assert(financeOperator.includes("skills/review-pricing/SKILL.md"), "Finance Operator should point directly to review-pricing skill");
+  assert(financeOperator.includes("playbooks/finance-review.playbook.md"), "Finance Operator should point directly to finance-review playbook");
+  assert(reviewPricing.includes("Pricing Catalog decision"), "review-pricing should produce a Pricing Catalog decision");
+  assert(reviewPricing.includes("Runtime Source"), "review-pricing should require runtime source mapping");
+  assert(reviewPricing.includes("Não aprove plano, preço, trial, limite ou entitlement fora de `../knowledge/pricing.md`"), "review-pricing should block off-catalog pricing");
+  assert(financeReview.includes("Confirme `../knowledge/pricing.md` como fonte canônica"), "finance-review should confirm pricing source of truth");
+  assert(financeReview.includes("provider IDs, database table e code paths"), "finance-review should verify runtime mappings");
+  assert(landingPage.includes("../finance/knowledge/pricing.md"), "Landing page knowledge should reference Finance pricing catalog");
+  assert(landingPage.includes("Não invente nomes, preços, trials, limites ou entitlements"), "Landing page knowledge should forbid invented plan details");
+  assert(supportNotes.includes("../finance/knowledge/pricing.md"), "Support notes should reference Finance pricing catalog");
+  assert(supportNotes.includes("Não prometa limite, desconto, upgrade, trial ou direito de plano"), "Support notes should forbid unsupported plan promises");
+  assert(mvpLaunch.includes("Se a landing page mostrar plano ou preço, leia `../finance/knowledge/pricing.md`"), "MVP launch should require pricing catalog for plan/price copy");
 }
 
 export async function assertNaturalStartupRules(rootDir) {

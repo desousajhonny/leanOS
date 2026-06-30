@@ -17,14 +17,14 @@ export const growthFinanceSkills: SkillDefinition[] = [
     {
       slug: "review-pricing",
       title: "Revisar Pricing",
-      purpose: "Avaliar hipóteses de pricing contra valor ao cliente e custos.",
-      useWhen: ["pricing está sendo considerado", "packaging precisa de revisão", "disposição a pagar está incerta"],
-      requiredContext: ["Pricing", "Proposta de valor", "ICP", "Modelo de receita"],
-      inputs: ["Usuário alvo", "Valor criado", "Hipótese de pricing", "Alternativas", "Costs"],
-      process: ["Cheque alinhamento de valor", "Cheque simplicidade do pacote", "Identifique premissas de disposição a pagar", "Liste método de validação"],
-      checks: ["Pricing combina com ICP/valor", "Suposições não são tratadas como prova", "Caminho de validação existe"],
-      outputs: ["Revisão de pricing", "Risks", "Plano de validação", "Perguntas abertas"],
+      purpose: "Avaliar hipóteses de pricing, planos, trials, limites e entitlements contra valor ao cliente, custos e runtime source.",
+      useWhen: ["pricing está sendo considerado", "packaging precisa de revisão", "planos, cobrança, assinatura, trial, limites ou entitlements estão sendo definidos", "disposição a pagar está incerta"],
+      requiredContext: ["../knowledge/pricing.md", "../knowledge/revenue-model.md", "Proposta de valor", "ICP", "Runtime Source quando existir", "Billing provider ou banco quando existir"],
+      inputs: ["Usuário alvo", "Valor criado", "Hipótese de pricing", "plan_id", "Nome público", "Preço", "Entitlements", "Provider ID ou lacuna", "Alternativas", "Costs"],
+      process: ["Carregue `../knowledge/pricing.md` antes de aceitar qualquer nome, preço, trial, limite ou entitlement.", "Cheque alinhamento de valor e ICP.", "Cheque simplicidade do pacote e entitlements.", "Classifique cada plano como draft, active, deprecated, grandfathered, hidden ou archived.", "Mapeie Runtime Source: billing provider, database table, code path, runtime config e sync status.", "Identifique premissas de disposição a pagar.", "Liste método de validação e impacto em Marketing, CX, Product Ops, Engineering, DevOps e Security."],
+      checks: ["Pricing combina com ICP/valor", "Suposições não são tratadas como prova", "Cada plano tem plan_id, nome público, preço, status e entitlements", "Runtime Source está mapeado ou a lacuna está explícita", "Caminho de validação existe", "Consumidores não estão criando preço fora do Pricing Catalog"],
+      outputs: ["Pricing Catalog decision", "Runtime Source", "Planos e entitlements afetados", "Risks", "Plano de validação", "Impacto em áreas consumidoras", "Perguntas abertas"],
       filesToUpdate: ["Atualize `../knowledge/pricing.md` ou `../knowledge/revenue-model.md` após confirmação explícita."],
-      redLines: ["Não invente evidência de disposição a pagar.", "Não prometa resultados de receita."]
+      redLines: ["Não invente evidência de disposição a pagar.", "Não aprove plano, preço, trial, limite ou entitlement fora de `../knowledge/pricing.md`.", "Não salve secrets, tokens, webhook secrets ou credenciais de billing no markdown.", "Não prometa resultados de receita."]
     }
   ];

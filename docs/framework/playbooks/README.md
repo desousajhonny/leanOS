@@ -89,4 +89,4 @@ Regra de manutenção: sempre que um playbook for criado, removido, renomeado ou
 | --- | --- | --- | --- |
 | `customer-learning-loop` | `growth.customer-experience` | Transformar sinais de cliente em próximas ações sem overbuild de processo. | Role `cx-lead`; workflow `launch-learning-loop`. |
 | `mvp-launch` | `growth.marketing` | Lançar MVP dentro de um ciclo focado de aprendizado. | Role `growth-lead`; workflow `launch-learning-loop`. |
-| `finance-review` | `growth.finance` | Revisar premissas de negócio e risco financeiro. | Role `finance-operator`; rotas com pricing, budget, receita ou unit economics. |
+| `finance-review` | `growth.finance` | Revisar premissas de negócio, Pricing Catalog, Runtime Source e risco financeiro. | Role `finance-operator`; rotas com pricing, planos, billing, budget, receita ou unit economics. |

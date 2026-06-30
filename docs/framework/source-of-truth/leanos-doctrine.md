@@ -100,6 +100,8 @@ Depois disso, outras capacidades do negócio vão nascendo conforme o estágio r
 
 Essas capacidades não são criadas porque uma empresa "deveria ter departamentos". Elas são ativadas porque o negócio chegou a um estágio em que aquela capacidade é necessária para tomar a próxima decisão, executar o próximo ciclo ou reduzir o próximo risco.
 
+Quando pricing se torna relevante, Growth Finance é o owner do Pricing Catalog. Planos, preços, trials, limites, quotas e entitlements devem ter uma fonte canônica em Finance antes de aparecerem em landing page, suporte, checkout, código ou billing provider.
+
 Progressive Workspace Activation é a implementação padrão dessa Business Progression Layer no filesystem e no framework gerado.
 
 O wizard inicial pode oferecer uma opção avançada para preparar toda a superfície do LeanOS de uma vez. Essa opção existe para power users, demos, testes e casos em que o founder quer inspecionar tudo desde o primeiro momento. Ela não muda o padrão do produto: o caminho recomendado continua sendo começar pequeno e ativar Operations, Growth e áreas especializadas apenas quando a próxima decisão do negócio exigir.

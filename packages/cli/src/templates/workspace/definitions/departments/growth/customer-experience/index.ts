@@ -22,11 +22,13 @@ export const growthCustomerExperienceArea: AreaDefinition = {
   operatingRules: [
     "Treat customer signals as evidence, not product decisions by themselves.",
     "Route product changes back to Strategy Product or Product Ops when feedback affects scope.",
+    "Route plan, billing, limit or entitlement questions through Growth Finance `knowledge/pricing.md`.",
     "Mantenha feedback leve e útil para loops de aprendizado."
   ],
   redLines: [
     "Não armazene dados sensíveis de clientes, identificadores privados ou segredos de suporte nestes arquivos.",
     "Não trate um cliente barulhento como evidência validada de mercado.",
+    "Não prometa plano, preço, desconto, trial, upgrade, limite ou entitlement fora do Pricing Catalog.",
     "Não prometa mudanças de roadmap sem confirmação de Strategy/Roadmap."
   ],
   sourceOfTruth: growthCustomerExperienceSourceOfTruth,

@@ -18,13 +18,13 @@ export const growthCustomerExperienceSkills: SkillDefinition[] = [
       slug: "synthesize-support-patterns",
       title: "Sintetizar Padrões De Suporte",
       purpose: "Transformar notas de suporte em aprendizado e ações.",
-      useWhen: ["notas de suporte se repetem", "fricção de onboarding aparece", "padrões de retenção ou sucesso precisam de síntese"],
-      requiredContext: ["Notas de suporte", "Momentos de sucesso", "Razões de churn"],
-      inputs: ["Notas de suporte", "Frequência", "Segmento de usuário afetado", "Workarounds", "Outcome"],
-      process: ["Identifique problemas recorrentes", "Separe defeitos de produto de lacunas de educação", "Mapeie fricção para onboarding/produto/growth", "Recomende próxima ação"],
-      checks: ["Detalhes sensíveis de suporte removidos", "O padrão tem sinal suficiente", "O owner está claro"],
-      outputs: ["Resumo de padrão de suporte", "Temas de fricção", "Ação recomendada"],
+      useWhen: ["notas de suporte se repetem", "fricção de onboarding aparece", "padrões de retenção ou sucesso precisam de síntese", "clientes perguntam sobre plano, cobrança, trial, limite, upgrade ou entitlement"],
+      requiredContext: ["Notas de suporte", "Momentos de sucesso", "Razões de churn", "../finance/knowledge/pricing.md quando plano, billing ou entitlement aparecer"],
+      inputs: ["Notas de suporte", "Frequência", "Segmento de usuário afetado", "Workarounds", "Outcome", "Plano citado se aplicável"],
+      process: ["Identifique problemas recorrentes", "Separe defeitos de produto de lacunas de educação", "Se houver plano, cobrança, trial, upgrade, limite ou entitlement, carregue `../finance/knowledge/pricing.md` antes de sintetizar ou responder", "Mapeie fricção para onboarding/produto/growth", "Roteie dúvidas ou inconsistências de plano para Growth Finance", "Recomende próxima ação"],
+      checks: ["Detalhes sensíveis de suporte removidos", "O padrão tem sinal suficiente", "O owner está claro", "Questões de plano ou entitlement usam o Pricing Catalog"],
+      outputs: ["Resumo de padrão de suporte", "Temas de fricção", "Questões de plano ou billing quando aplicável", "Ação recomendada"],
       filesToUpdate: ["Atualize `../knowledge/support-notes.md`, `../knowledge/success-moments.md` ou `../knowledge/churn-reasons.md` após confirmação explícita."],
-      redLines: ["Não armazene segredos nem dados privados de cliente.", "Não prometa correções sem revisão de Product Ops ou Roadmap."]
+      redLines: ["Não armazene segredos nem dados privados de cliente.", "Não prometa upgrade, desconto, limite, trial ou entitlement sem `../finance/knowledge/pricing.md`.", "Não prometa correções sem revisão de Product Ops ou Roadmap."]
     }
   ];

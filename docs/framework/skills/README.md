@@ -131,7 +131,7 @@ Ativação padrão: `AGENT.md` -> `growth/AGENT.md` -> `growth/customer-experien
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
 | `map-customer-feedback` | Agrupar feedback em sinais de produto, suporte e growth. | Workflow `launch-learning-loop`; role `cx-lead`; playbook `customer-learning-loop`. |
-| `synthesize-support-patterns` | Transformar notas de suporte em aprendizado e ações. | Role `cx-lead`; playbook `customer-learning-loop`; pedidos sobre padrões de suporte ou feedback. |
+| `synthesize-support-patterns` | Transformar notas de suporte em aprendizado e ações, usando Pricing Catalog quando plano, cobrança ou entitlement aparecer. | Role `cx-lead`; playbook `customer-learning-loop`; pedidos sobre padrões de suporte, feedback, planos ou billing. |
 
 ### Marketing
 
@@ -140,7 +140,7 @@ Ativação padrão: `AGENT.md` -> `growth/AGENT.md` -> `growth/marketing/AGENT.m
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
 | `define-positioning` | Definir categoria, audiência, promessa e diferenciação. | Workflow `launch-learning-loop`; role `growth-lead`; playbook `mvp-launch`. |
-| `create-landing-page-copy` | Criar copy para landing page inicial de validação ou lançamento. | Role `growth-lead`; playbook `mvp-launch`; pedidos de landing page, validação ou lançamento. |
+| `create-landing-page-copy` | Criar copy para landing page inicial de validação ou lançamento, consumindo Pricing Catalog quando houver plano ou preço. | Role `growth-lead`; playbook `mvp-launch`; pedidos de landing page, validação, pricing ou lançamento. |
 | `create-launch-plan` | Planejar ações, canais e ciclos de aprendizado de lançamento. | Workflow `launch-learning-loop`; role `growth-lead`; playbook `mvp-launch`. |
 
 ### Finance
@@ -150,4 +150,4 @@ Ativação padrão: `AGENT.md` -> `growth/AGENT.md` -> `growth/finance/AGENT.md`
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
 | `model-unit-economics` | Esclarecer hipóteses de aquisição, entrega, margem e custos. | Role `finance-operator`; playbook `finance-review`; rotas de Growth/Finance com custo, margem ou spend. |
-| `review-pricing` | Avaliar hipóteses de pricing contra valor do cliente e custos. | Role `finance-operator`; playbook `finance-review`; rotas de pricing, packaging ou receita. |
+| `review-pricing` | Avaliar e manter o Pricing Catalog: planos, preços, trials, limites, entitlements, status e Runtime Source. | Role `finance-operator`; playbook `finance-review`; rotas de pricing, packaging, cobrança, subscription, paywall ou receita. |

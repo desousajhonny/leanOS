@@ -120,6 +120,8 @@ Features quebram um Epic em unidades implementáveis.
 
 Cada Feature deve conter critérios de aceite, tasks internas e dimensões de readiness para Product Ops, Engineering e, quando aplicável, Design, Security e DevOps.
 
+Pricing/Plan readiness é aplicável quando a Feature toca planos, preços, cobrança, checkout, paywall, subscription, trial, quota, limite de uso ou entitlement. Nesses casos, Product Ops deve exigir `growth/finance/knowledge/pricing.md` antes de Engineering começar.
+
 Security é aplicável quando a Feature toca dados, autenticação, permissões, privacidade, abuso, API, banco, secrets, compliance, infraestrutura, código gerado por IA ou risco AI-native como LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection e cost/rate abuse.
 
 ### 9. Delivery
@@ -190,6 +192,10 @@ Operations é ativado apenas quando o founder chega ao trabalho de entrega.
 É dono de lançamento, aquisição, feedback, onboarding, retenção, pricing e ciclos de aprendizado depois que existe algo relevante para lançar ou medir.
 
 Growth é ativado apenas quando operações voltadas ao mercado ou ao cliente se tornam relevantes.
+
+Growth Finance é dono do Pricing Catalog em `growth/finance/knowledge/pricing.md`. Esse arquivo é a fonte canônica de negócio para plano, preço, trial, desconto, limite, quota e entitlement. Marketing, Customer Experience, Product Ops, Engineering, DevOps e Security consomem essa fonte, mas não a redefinem fora de Finance.
+
+O runtime source de pricing fica separado do markdown: billing provider, banco, app config, code paths, env vars e webhooks devem ser mapeados por Finance/DevOps/Engineering quando a implementação existir. O markdown registra a decisão de negócio; o app deve ler o runtime source aprovado.
 
 ## Modelo GitHub
 

@@ -53,6 +53,15 @@ Use estes critérios antes de recomendar prontidão de merge. A evidência revis
 - Check tenant/user isolation and server-side permission enforcement.
 - Block destructive data changes without explicit confirmation and rollback notes.
 
+## Pricing/Plan Review
+
+- Required when the PR changes plans, prices, billing, checkout, paywall, subscription, trial, usage limit, quota or entitlement behavior.
+- Confirm the Feature references Growth Finance \`pricing.md\` and Product Ops Pricing/Plan readiness.
+- Confirm runtime source mapping exists: billing provider, database table, code path, runtime config and webhook/event source when applicable.
+- Compare UI copy, API behavior, tests, seed data and provider IDs against the Pricing Catalog.
+- Block hardcoded prices, plan names, provider IDs or entitlements unless explicitly approved as a temporary test fixture linked to the Pricing Catalog.
+- Route unclear payment, access, entitlement or customer-data risk to Security before merge recommendation.
+
 ## Findings By Severity
 
 - Critical: must be fixed before proceeding; likely breakage, security risk, data loss or wrong product behavior.

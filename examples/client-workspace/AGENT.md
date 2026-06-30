@@ -54,6 +54,7 @@ Exemplos:
 - "defina o escopo de validação do MVP" ou "o que o primeiro MVP deve validar?" -> `example-ai-product-os/strategy/AGENT.md`
 - "transforme este item de MVP em backlog ou Epic" -> retorne `activation_required` para `operations.product-ops` quando Product Ops estiver inativo
 - "revise este PR" -> retorne `activation_required` para `operations.engineering` quando Engineering estiver inativo
+- "defina planos, preços, cobrança, assinatura ou entitlements" -> retorne `activation_required` para `growth.finance` quando Finance estiver inativo
 
 ## Roteamento de Intenção de Progressão
 
@@ -74,6 +75,7 @@ Regras:
 - Auditoria de segurança, vulnerabilidade, LGPD, dados de cliente, vazamento de token, proteção de API ou hardening: `example-ai-product-os/operations/AGENT.md` somente quando Security estiver ativo; se faltar área, retorne `activation_required` para `operations.security`.
 - Readiness de launch, go-live, beta ou usuários reais: `example-ai-product-os/operations/AGENT.md` somente quando Product Ops, Engineering e DevOps estiverem ativos; se faltar área, retorne `activation_required` para a menor área bloqueadora.
 - Execução de launch, aquisição, onboarding ou learning loop: `example-ai-product-os/growth/AGENT.md` somente quando a área obrigatória de Growth estiver ativa e o gate de readiness não estiver bloqueado.
+- Planos, preços, pricing, cobrança, pacotes, assinatura ou entitlements: `example-ai-product-os/growth/AGENT.md` somente quando Growth Finance estiver ativo; se faltar área, retorne `activation_required` para `growth.finance`.
 - Se o próximo passo exigir departamento ou área inativa/ausente, retorne `activation_required` em vez de abrir ou inventar paths.
 - Não carregue departamentos inativos.
 - Não trate `available` como `exists`.
@@ -130,6 +132,7 @@ Use este mapa como orientação de roteamento, não como detalhe de execução. 
 - Setup de GitHub, configuração de GitHub Projects ou sync de Epics/Features: retorne `activation_required` para `operations.devops` até DevOps estar ativo
 - Preparação ou review de PR: retorne `activation_required` para `operations.engineering` até Engineering estar ativo
 - Continuação pós-merge: retorne `activation_required` para `operations.product-ops` até Operations estar ativo
+- Planos, preços, pricing, cobrança, pacotes, assinatura ou entitlements: retorne `activation_required` para `growth.finance` até Growth Finance estar ativo
 - Readiness de launch, go-live, beta ou usuários reais: retorne `activation_required` para `operations.product-ops`, `operations.engineering` ou `operations.devops` conforme a menor área bloqueadora até o workflow `ready-for-launch` estar ativo
 - Execução de launch, aquisição, onboarding ou learning loop: retorne `activation_required` para `growth.marketing` ou `growth.customer-experience` até Growth estar ativo
 
