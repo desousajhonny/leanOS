@@ -38,3 +38,29 @@ When changing LeanOS framework skills, playbooks or workflows, update the matchi
 3. `docs/framework/workflows/README.md`
 
 These files are the framework-level map for what exists, what each asset is for, which department/area owns it and where it can be activated. Do not add, remove, rename or move generated skills, playbooks or workflows without keeping these inventories aligned.
+
+## NPM Release Protocol
+
+When the user asks to update, publish or release the public LeanOS packages, use the repository runbook instead of reconstructing commands from memory.
+
+Route requests such as "atualizar o pacote", "publicar nova versao", "atualizar npm create lean-os" or "publicar no npm" to:
+
+```bash
+npm run release:npm
+```
+
+Before running it:
+
+1. Confirm package versions in `packages/cli/package.json` and `packages/create/package.json`.
+2. Commit and push framework changes, leaving only a local `.npmrc` if npm auth is needed.
+3. Ask the user to prepare npm auth locally without pasting tokens in chat:
+
+```powershell
+$token = [System.Net.NetworkCredential]::new("", (Read-Host "Cole o token npm_" -AsSecureString)).Password
+"//registry.npmjs.org/:_authToken=$token" | Set-Content -Encoding ascii .npmrc
+npm whoami
+```
+
+Then run `npm run release:npm`. The script validates npm auth, tests, build, package dry-runs, publishes `lean-os` before `create-lean-os`, verifies the registry, and removes the local `.npmrc`.
+
+Never store npm tokens in committed files, logs, docs, model memory or chat. If a token is pasted into chat, treat it as compromised and ask the user to revoke it.

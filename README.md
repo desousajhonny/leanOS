@@ -259,41 +259,30 @@ node packages/cli/dist/index.js --help
 
 ## Publishing
 
-The CLI package lives in `packages/cli` and exposes this binary:
+LeanOS publishes two npm packages:
 
-```json
-{
-  "bin": {
-    "lean-os": "dist/index.js"
-  }
-}
+- `lean-os`: the operational CLI.
+- `create-lean-os`: the wrapper that powers `npm create lean-os`.
+
+Before publishing, bump both package versions as needed, commit the framework changes, and prepare npm auth locally. Do not paste npm tokens into chat or committed files.
+
+PowerShell token setup:
+
+```powershell
+$token = [System.Net.NetworkCredential]::new("", (Read-Host "Cole o token npm_" -AsSecureString)).Password
+"//registry.npmjs.org/:_authToken=$token" | Set-Content -Encoding ascii .npmrc
+npm whoami
 ```
 
-To publish the public CLI package:
+Then run the release runbook:
 
 ```bash
-pnpm install
-pnpm build
-pnpm --filter lean-os publish --access public
+npm run release:npm
 ```
 
-The create package lives in `packages/create` and exposes this binary:
+The runbook validates npm auth, clean git state except local `.npmrc`, `npm test`, build, package dry-runs, publishes `lean-os` before `create-lean-os`, verifies npm registry versions, and removes `.npmrc` after the publish attempt.
 
-```json
-{
-  "bin": {
-    "create-lean-os": "index.js"
-  }
-}
-```
-
-Publish `lean-os` first, then publish `create-lean-os`:
-
-```bash
-pnpm --filter create-lean-os publish --access public
-```
-
-After publishing both packages, users can create a new LeanOS workspace with:
+After publishing, users can create a new LeanOS workspace with:
 
 ```bash
 npm create lean-os

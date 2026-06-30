@@ -2,6 +2,38 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-30 - Runbook Versionado Para Publicar `npm create lean-os`
+
+Decisão:
+
+- Publicações futuras dos pacotes npm do LeanOS devem usar o script versionado:
+
+```bash
+npm run release:npm
+```
+
+- O script vive em `scripts/publish-npm-create-leanos.mjs`.
+- O agente não deve reconstruir manualmente os comandos de publish a partir da memória.
+- O usuário prepara autenticação npm localmente via `.npmrc` ou `NODE_AUTH_TOKEN`; o token nunca deve ser colado em chat ou commitado.
+- O script deve:
+  - validar `npm whoami`;
+  - impedir publish com working tree suja, exceto `.npmrc` local;
+  - rodar `npm test`;
+  - rodar `npx pnpm@10.12.1 -r build`;
+  - rodar dry-run/pack dos pacotes;
+  - publicar `lean-os` antes de `create-lean-os`;
+  - verificar versões no registry;
+  - validar que `create-lean-os` depende de `lean-os`;
+  - remover `.npmrc` local ao final da tentativa.
+- O root `AGENT.md` deve rotear pedidos como "atualizar o pacote", "publicar nova versão" ou "atualizar npm create lean-os" para esse runbook.
+- Se um token for colado em chat, ele deve ser tratado como comprometido e o usuário deve revogá-lo.
+
+Justificativa:
+
+- O publish de `npm create lean-os` tem ordem e validações específicas; depender da memória do modelo aumenta risco operacional.
+- Um runbook versionado reduz repetição manual, preserva segurança de token e evita publicar `create-lean-os` contra uma versão de `lean-os` ainda não disponível.
+- A regra mantém o framework alinhado com a decisão anterior: `npm create lean-os` é o comando principal de setup, enquanto `lean-os` continua sendo o CLI operacional.
+
 ## 2026-06-30 - `npm create lean-os` Como Comando Principal De Setup
 
 Decisão:

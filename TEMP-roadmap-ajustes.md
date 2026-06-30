@@ -10,6 +10,7 @@ Ultima priorizacao: 2026-06-30.
 O LeanOS tem um MVP de framework local com:
 
 - Comando principal de setup `npm create lean-os` via pacote `create-lean-os`.
+- Runbook versionado `npm run release:npm` para publicar `lean-os` e `create-lean-os` com validações, ordem correta e limpeza de `.npmrc`.
 - CLI `lean-os ai`.
 - CLI `lean-os activate <area>` para ativacao progressiva.
 - CLI `lean-os update [--dry-run]` para migrar workspaces existentes para o layout atual.
@@ -43,6 +44,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] GitHub nunca vira fonte primaria automatica do LeanOS; local Product Ops continua sendo a fonte operacional primaria.
 - [x] Business OS vive em `<product-slug>-os/`; runtime do agente vive em `.leanos/runtime/`; padroes do framework vivem em `.leanos/standard/`.
 - [x] Setup inicial deve usar `npm create lean-os` como comando primario; `npx lean-os ai` fica como compatibilidade.
+- [x] Publicacao npm deve usar runbook versionado `npm run release:npm`, sem depender de memoria do modelo ou token colado em chat.
 - [x] Atualizacao de workspaces existentes deve ser feita por `lean-os update`, com preview via `--dry-run`, conflitos explicitos e preservacao de arquivos de produto.
 - [x] Readiness de launch, go-live, beta ou usuarios reais pertence a Operations via `ready-for-launch`; Growth executa `mvp-launch` e `launch-learning-loop` depois do gate ou depois de lancamento executado.
 - [x] README do produto deve ser roteado pela Navigation Chain: Strategy Product -> Product Narrative Editor -> write-product-readme, preservando README existente e propondo diff antes de escrever.
@@ -89,6 +91,8 @@ O LeanOS tem um MVP de framework local com:
 - [x] README raiz product-first implementado no scaffold, com role `Product Narrative Editor`, skill `write-product-readme`, template `.leanos/standard/templates/product/product-readme-template.md`, rota em Strategy/Product e validacao automatica do contrato.
 - [x] Gate `README-ready` adicionado ao bootstrap de repositório GitHub em DevOps/GitHub DevOps, com validação `validateGithubRepositoryReadmeGate` e fixture regenerado.
 - [x] Pacote `create-lean-os` adicionado para suportar `npm create lean-os`, reaproveitando o wizard do `lean-os ai` e com validacao automatica do contrato.
+- [x] `lean-os@0.1.1` e `create-lean-os@0.1.1` publicados no npm em 2026-06-30.
+- [x] Runbook de publish npm adicionado para futuras versoes, com validacao automatica do protocolo.
 
 ## Pendencias Ativas
 
@@ -275,15 +279,13 @@ Fatia concluida em 2026-06-29:
 
 ### 8. Release Publica Do MVP
 
-Status: pendente.
+Status: primeira release publica concluida; manter runbook para proximas versoes.
 
 Antes de publicar:
 
-- rodar build;
-- rodar validacao do generator;
-- rodar smoke test local;
-- rodar `npm publish --dry-run --access public`;
-- publicar somente com confirmacao explicita.
+- preparar token npm localmente sem colar em chat;
+- rodar `npm run release:npm`;
+- o script roda build, validacao do generator, dry-runs/pack, publica na ordem `lean-os` -> `create-lean-os`, verifica registry e remove `.npmrc`.
 
 ## Pendencias Futuras Nao Bloqueantes
 

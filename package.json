@@ -7,6 +7,7 @@
     "build": "pnpm -r build",
     "dev": "pnpm --filter lean-os dev",
     "generate:client-workspace": "npm --prefix packages/cli run generate:client-workspace",
+    "release:npm": "node scripts/publish-npm-create-leanos.mjs",
     "refresh": "npm run generate:client-workspace && npm test",
     "test": "npm --prefix packages/cli run test:generator"
   },
