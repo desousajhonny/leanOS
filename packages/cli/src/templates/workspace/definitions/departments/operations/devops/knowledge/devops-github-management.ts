@@ -12,6 +12,9 @@ GitHub setup is not confirmed yet. Use Setup Status and the Readiness Checklist 
 ## Setup Status
 
 - GitHub management: not configured
+- Repository mode: existing | new | TBD
+- README status: missing | draft | confirmed | preserved | TBD
+- README source: Strategy Product | existing repo | TBD
 - GitHub owner/repository: TBD
 - GitHub Project: TBD
 - Fonte do token: TBD
@@ -25,7 +28,19 @@ GitHub setup is not confirmed yet. Use Setup Status and the Readiness Checklist 
 - Repository: TBD
 - Remote URL: TBD
 - Existing repo or new repo: TBD
+- New repository README gate: README-ready required before create, publish or remote connect.
 - Notes: TBD
+
+## README Gate
+
+Para novo repositório GitHub, DevOps verifica o gate, mas não escreve a narrativa do produto.
+
+- New repository README gate: required.
+- README-ready: no until the root \`README.md\` is product-first and confirmed.
+- Owner do conteúdo: Strategy Product -> Product Narrative Editor -> write-product-readme.
+- Não crie ou publique um novo repositório GitHub sem README product-first confirmado.
+- Se o README estiver ausente, fraco, genérico ou incerto, pare o bootstrap de DevOps e roteie para Strategy Product antes de qualquer escrita remota.
+- Em repositório existente, preserve README, comandos, badges, links e setup úteis; registre \`README status: preserved\` quando isso estiver confirmado.
 
 ## GitHub Project
 
@@ -82,15 +97,21 @@ Use these questions when configuration is missing:
 
 1. Which GitHub owner or organization should LeanOS use?
 2. Which repository should receive Epics and Features?
-3. Is the GitHub Project owned by a user or organization?
-4. What is the GitHub Project URL or number?
-5. Do the default fields match your Project, or should LeanOS map to different field names?
-6. Should LeanOS create missing labels/milestones in a future sync capability, or only report them?
-7. Which token source will be used locally?
+3. Is this an existing GitHub repository or a new repository bootstrap?
+4. Is the product-first root README confirmed, preserved or still missing?
+5. If README is not confirmed, should Strategy Product prepare it through Product Narrative Editor?
+6. Is the GitHub Project owned by a user or organization?
+7. What is the GitHub Project URL or number?
+8. Do the default fields match your Project, or should LeanOS map to different field names?
+9. Should LeanOS create missing labels/milestones in a future sync capability, or only report them?
+10. Which token source will be used locally?
 
 ## Readiness Checklist
 
 - [ ] Owner e repositório são conhecidos.
+- [ ] Repository mode está explícito como existing ou new.
+- [ ] README status está explícito.
+- [ ] Para novo repositório, README-ready está confirmado antes de create/publish/connect remoto.
 - [ ] Tipo do Project e URL ou número são conhecidos.
 - [ ] Campos do Project estão mapeados.
 - [ ] Campo \`Effort\` está mapeado quando GitHub Projects for usado para estimativa.

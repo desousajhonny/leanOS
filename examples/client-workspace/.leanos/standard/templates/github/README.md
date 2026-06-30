@@ -28,6 +28,7 @@ Use quando estruturar itens prontos para GitHub ou artefatos de colaboração do
 
 Use esta pasta apenas depois que `../../foundation/asset-taxonomy.md` confirmar o tipo de asset necessário.
 
+
 ## Notas para Agentes
 
 Carregue apenas o arquivo de template correspondente. Não carregue categorias de template não relacionadas.

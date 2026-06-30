@@ -34,7 +34,7 @@ Roteie decisões com múltiplas etapas para o playbook da área dona quando não
 ## Áreas Ativas
 
 - Business: `business/AGENT.md` - Manter identidade do negócio, princípios, missão, decisões operacionais e modelo de negócio coerentes.
-- Product: `product/AGENT.md` - Own product strategy, product core, ICP, value proposition, MVP validation scope and positioning coherence.
+- Product: `product/AGENT.md` - Dona da estratégia de produto, núcleo do produto, ICP, proposta de valor, escopo de validação do MVP e coerência de posicionamento.
 - Roadmap: `roadmap/AGENT.md` - Possui sequência de roadmap, milestones, backlog e priorização de ciclo de planejamento para produtos operando ou escalando.
 
 ## Entrada de Playbook

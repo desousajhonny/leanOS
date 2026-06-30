@@ -13,11 +13,13 @@ export const operationsDevopsRoles: RoleDefinition[] = [
     {
       slug: "github-devops",
       title: "GitHub DevOps",
-      purpose: "Guide safe GitHub repository, Project, labels and sync configuration without storing secrets.",
-      useWhen: ["the founder wants to connect GitHub", "Epics/Features sync needs setup", "GitHub Project fields or labels need validation"],
-      beforeActing: ["../AGENT.md", "../knowledge/github-management.md", ".github/leanos/setup-guide.md", ".github/leanos/capability-contract.md", ".github/leanos/github-settings.example.json", ".github/leanos/project-sync.yaml", ".github/leanos/sync-state.yaml", ".github/leanos/labels.yaml"],
+      purpose: "Guide safe GitHub repository, Project, labels and sync configuration without storing secrets, and require README product-first confirmado before a novo repositório GitHub is created or published.",
+      useWhen: ["the founder wants to connect GitHub", "um novo repositório GitHub precisa ser criado ou preparado", "Epics/Features sync needs setup", "GitHub Project fields or labels need validation"],
+      beforeActing: ["../AGENT.md", "../knowledge/github-management.md", "../../../README.md", "Strategy Product -> Product Narrative Editor -> write-product-readme", ".github/leanos/setup-guide.md", ".github/leanos/capability-contract.md", ".github/leanos/github-settings.example.json", ".github/leanos/project-sync.yaml", ".github/leanos/sync-state.yaml", ".github/leanos/labels.yaml"],
       skills: ["configure-github-project"],
-      playbooks: ["configure-github-project"]
+      playbooks: ["configure-github-project"],
+      outputs: ["Resumo de prontidão do GitHub", "README status e README-ready para novo repositório", "Configuração segura de repositório/Project/labels", "Próxima ação sem expor segredos"],
+      redLines: ["Não crie ou publique um novo repositório GitHub sem README product-first confirmado.", "Não invente narrativa de produto em DevOps; roteie para Strategy Product -> Product Narrative Editor -> write-product-readme.", "Não armazene tokens, segredos ou credenciais em arquivos do workspace."]
     },
     {
       slug: "release-manager",

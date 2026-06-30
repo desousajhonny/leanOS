@@ -19,6 +19,10 @@ Escolha o menor papel especialista para o pedido:
 
 - Roadmap Planner: `roles/roadmap-planner.role.md` - use quando a ordem do roadmap não está clara; o backlog precisa de priorização; planejamento de ciclo é necessário; o negócio está em product_operating ou growth_scaling.
 
+## Caminhos Comuns
+
+- Pedido de roadmap: `AGENT.md` -> role `roles/roadmap-planner.role.md` -> skill `skills/roadmap/SKILL.md` -> playbook `playbooks/roadmap-cycle-planning.playbook.md`.
+
 ## Regras de Roteamento
 
 1. Comece por este AGENT da área para trabalho operacional dentro de Roadmap.

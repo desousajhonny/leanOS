@@ -8,7 +8,7 @@ Use `README.md` como mapa do diretório. Use `area.yaml` quando a estrutura leg�
 
 ## Escopo Operacional
 
-Route product strategy work, choose the right product role and keep product decisions aligned with validation, roadmap and delivery scope.
+Roteia trabalho de estratégia de produto, escolhe a role certa e mantém decisões de produto alinhadas com validação, roadmap e escopo de entrega.
 
 
 
@@ -17,8 +17,15 @@ Route product strategy work, choose the right product role and keep product deci
 
 Escolha o menor papel especialista para o pedido:
 
-- Product Strategist: `roles/product-strategist.role.md` - use quando strategy is unclear; a founder idea needs calibration; product core needs definition; MVP validation scope needs definition; roadmap coherence is at risk.
-- Product Manager: `roles/product-manager.role.md` - use quando MVP validation scope needs refinement; delivery readiness questions need Strategy Product context.
+- Product Strategist: `roles/product-strategist.role.md` - use quando estratégia está pouco clara; uma ideia do founder precisa de calibragem; núcleo do produto precisa ser definido; escopo de validação do MVP precisa ser definido; coerência do roadmap está em risco.
+- Product Manager: `roles/product-manager.role.md` - use quando escopo de validação do MVP precisa de refinamento; perguntas de readiness de entrega precisam de contexto de Strategy Product.
+- Product Narrative Editor: `roles/product-narrative-editor.role.md` - use quando README do produto precisa ser criado; README existente está fraco ou genérico; modelo cria um novo repositório para o founder; modelo edita um repositório existente e precisa melhorar a apresentação do produto.
+
+## Caminhos Comuns
+
+- Idea calibration request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/business-baseline/SKILL.md` -> skill `skills/product-core/SKILL.md` when enough signal exists -> playbook `playbooks/idea-calibration.playbook.md`.
+- MVP validation request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/mvp-validation-scope/SKILL.md` -> playbook `playbooks/mvp-validation-scope.playbook.md`.
+- Pedido de README do produto: `AGENT.md` -> role Product Narrative Editor `roles/product-narrative-editor.role.md` -> skill `skills/write-product-readme/SKILL.md` -> propor diff do README antes de atualizar o root `../../../README.md`.
 
 ## Regras de Roteamento
 

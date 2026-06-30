@@ -157,6 +157,7 @@ client-workspace/
 |   |   |   |-- product/
 |   |   |   |   |-- epic-template.md
 |   |   |   |   |-- feature-template.md
+|   |   |   |   |-- product-readme-template.md
 |   |   |   |   `-- README.md
 |   |   |   |-- review/
 |   |   |   |   |-- code-review-template.md
@@ -219,6 +220,7 @@ client-workspace/
 |   |   |   |   `-- README.md
 |   |   |   |-- roles/
 |   |   |   |   |-- product-manager.role.md
+|   |   |   |   |-- product-narrative-editor.role.md
 |   |   |   |   |-- product-strategist.role.md
 |   |   |   |   `-- README.md
 |   |   |   |-- skills/
@@ -229,6 +231,8 @@ client-workspace/
 |   |   |   |   |-- mvp-validation-scope/
 |   |   |   |   |   `-- SKILL.md
 |   |   |   |   |-- product-core/
+|   |   |   |   |   `-- SKILL.md
+|   |   |   |   |-- write-product-readme/
 |   |   |   |   |   `-- SKILL.md
 |   |   |   |   `-- README.md
 |   |   |   |-- AGENT.md

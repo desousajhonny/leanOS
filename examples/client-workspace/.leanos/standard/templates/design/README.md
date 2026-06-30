@@ -23,6 +23,7 @@ Use quando Design precisar documentar um contrato de componente antes da impleme
 
 Use esta pasta apenas depois que `../../foundation/asset-taxonomy.md` confirmar o tipo de asset necessário.
 
+
 ## Notas para Agentes
 
 Carregue apenas o arquivo de template correspondente. Não carregue categorias de template não relacionadas.

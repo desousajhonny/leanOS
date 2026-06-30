@@ -8,6 +8,9 @@ roles:
   - key: product-manager
     area: strategy.product
     path: ../../../example-ai-product-os/strategy/product/roles/product-manager.role.md
+  - key: product-narrative-editor
+    area: strategy.product
+    path: ../../../example-ai-product-os/strategy/product/roles/product-narrative-editor.role.md
   - key: roadmap-planner
     area: strategy.roadmap
     path: ../../../example-ai-product-os/strategy/roadmap/roles/roadmap-planner.role.md

@@ -126,6 +126,7 @@ roles:
     strategy.product:
       - product-strategist
       - product-manager
+      - product-narrative-editor
     strategy.roadmap:
       - roadmap-planner
 skills:
@@ -140,6 +141,7 @@ skills:
       - product-core
       - mvp-validation-scope
       - coherence
+      - write-product-readme
     strategy.roadmap:
       - roadmap
       - backlog-prioritization

@@ -70,11 +70,12 @@ Arquivos:
 
 ### `product/`
 
-Templates para trabalho local de produto no LeanOS antes de sincronização opcional com GitHub.
+Templates para README de produto e trabalho local de produto no LeanOS antes de sincronização opcional com GitHub.
 
-Use quando: Use quando estruturar epics e features locais a partir do escopo de delivery.
+Use quando: Use quando estruturar README de produto, epics e features locais a partir do contexto de Strategy/Product.
 
 Arquivos:
+- `product/product-readme-template.md`
 - `product/epic-template.md`
 - `product/feature-template.md`
 

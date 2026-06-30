@@ -20,6 +20,9 @@ skills:
   - key: coherence
     area: strategy.product
     path: ../../../example-ai-product-os/strategy/product/skills/coherence/SKILL.md
+  - key: write-product-readme
+    area: strategy.product
+    path: ../../../example-ai-product-os/strategy/product/skills/write-product-readme/SKILL.md
   - key: roadmap
     area: strategy.roadmap
     path: ../../../example-ai-product-os/strategy/roadmap/skills/roadmap/SKILL.md

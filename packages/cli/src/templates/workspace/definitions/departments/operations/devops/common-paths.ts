@@ -1,5 +1,6 @@
 export const operationsDevopsCommonPaths: string[] = [
     "GitHub setup request: area lead `AGENT.md` -> role `roles/github-devops.role.md` -> skill `skills/configure-github-project/SKILL.md` -> playbook `playbooks/configure-github-project.playbook.md`.",
+    "Repository bootstrap request: area lead `AGENT.md` -> role `roles/github-devops.role.md` -> verify `README-ready`; if missing, route to `Strategy Product -> Product Narrative Editor -> write-product-readme` before creating or publishing a new GitHub repository.",
     "Environment request: area lead `AGENT.md` -> role `roles/devops-engineer.role.md` -> skill `skills/configure-environments/SKILL.md` -> playbook `playbooks/configure-environments.playbook.md`.",
     "Deployment request: area lead `AGENT.md` -> role `roles/devops-engineer.role.md` -> skill `skills/plan-deployment/SKILL.md` -> playbook `playbooks/plan-deployment.playbook.md`.",
     "CI request: area lead `AGENT.md` -> role `roles/devops-engineer.role.md` -> skill `skills/setup-ci/SKILL.md` -> playbook `playbooks/setup-ci-cd.playbook.md`.",

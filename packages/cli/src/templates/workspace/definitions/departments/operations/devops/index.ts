@@ -13,17 +13,18 @@ export const operationsDevopsArea: AreaDefinition = {
   path: "operations/devops",
   lead: {
     title: "DevOps Lead",
-    purpose: "Route GitHub setup, environments, CI/CD, deployment readiness, observability and release operations without storing secrets or deploying automatically."
+    purpose: "Route GitHub setup, repository bootstrap, environments, CI/CD, deployment readiness, observability and release operations without storing secrets or deploying automatically."
   },
   routingKey: "devops",
-  requestTypes: "deployment, environments, CI, observability, GitHub Projects or operations runbooks",
-  purpose: "Own delivery infrastructure, environments, deployment, GitHub workflow setup and observability notes.",
-  whenToUse: ["plan deployment", "configure CI", "configure GitHub Projects", "document environments", "define observability"],
+  requestTypes: "deployment, environments, CI, observability, GitHub repository bootstrap, GitHub Projects or operations runbooks",
+  purpose: "Own delivery infrastructure, environments, deployment, GitHub workflow setup, repository bootstrap readiness and observability notes.",
+  whenToUse: ["plan deployment", "configure CI", "configure GitHub Projects", "prepare GitHub repository bootstrap", "document environments", "define observability"],
   operatingRules: [
     "Treat DevOps as readiness and operational guidance first, execution second.",
     "Use GitHub/Vercel/provider files as configuration drafts until the founder confirms execution.",
     "Keep local, preview/staging and production environments distinct.",
     "Prefer dry-run, status checks and proposed payloads before any remote write.",
+    "For a new GitHub repository, require README-ready from Strategy Product before create, publish or remote connect.",
     "Route product code implementation back to Engineering and product scope questions back to Product Ops."
   ],
   redLines: [

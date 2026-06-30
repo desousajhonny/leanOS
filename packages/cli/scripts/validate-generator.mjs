@@ -9,7 +9,9 @@ import { validateExistingProductRepoMode } from "./validation/existing-product-r
 import { validateFounderJourneyReadyForLaunch, validateFounderJourneyReviewPr } from "./validation/founder-journey.mjs";
 import { validateGeneratedHumanLanguage } from "./validation/language.mjs";
 import { validateBusinessOsLayout } from "./validation/layout.mjs";
+import { validateGithubRepositoryReadmeGate } from "./validation/github-repository-readme-gate.mjs";
 import { validateGithubSyncContract } from "./validation/github-sync.mjs";
+import { validateProductReadmeContract } from "./validation/product-readme.mjs";
 import { validateWorkspaceRenderersAreModular } from "./validation/renderers.mjs";
 import { validateRootModelMemory } from "./validation/root-memory.mjs";
 import { validateWorkspaceUpdateCommand } from "./validation/update.mjs";
@@ -31,6 +33,8 @@ await validateAreaDefinitionsAreModular();
 await validateGeneratedHumanLanguage();
 await validateBusinessOsLayout();
 await validateGithubSyncContract();
+await validateGithubRepositoryReadmeGate();
+await validateProductReadmeContract();
 await validateBranchAndPrStandards();
 await validateCliWizardProgressiveSetup();
 await validateClientWorkspaceFixture();

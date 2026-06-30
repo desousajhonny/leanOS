@@ -2,6 +2,56 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-30 - Novo Repositório GitHub Exige `README-ready`
+
+Decisão:
+
+- DevOps/GitHub DevOps é dono de setup, bootstrap, Project, labels, token source, dry-run e limites de escrita remota do GitHub.
+- DevOps não é dono da narrativa do produto.
+- Antes de criar, publicar ou conectar um novo repositório GitHub, DevOps deve verificar `README-ready`.
+- `README-ready` significa que o root `README.md` está product-first, confirmado e adequado para founder, colaborador novo e modelo que abre o repo.
+- Se o README estiver ausente, fraco, genérico, em draft ou incerto, DevOps deve parar o bootstrap remoto e rotear para:
+  - Strategy Product;
+  - Product Narrative Editor;
+  - `write-product-readme`.
+- Em repositório existente, DevOps deve registrar se o README foi preservado e não deve sobrescrever comandos, badges, links, setup ou documentação técnica útil.
+- O knowledge de GitHub deve registrar:
+  - `Repository mode`;
+  - `README status`;
+  - `README source`;
+  - regra de gate para novo repositório.
+- A validação do generator deve impedir regressão desse gate em DevOps/GitHub DevOps.
+
+Justificativa:
+
+- Um repositório novo é frequentemente a primeira superfície pública ou colaborativa do produto; se o README sair fraco, o GitHub vira um espelho pobre do negócio.
+- Strategy Product tem contexto e skill para escrever a narrativa correta; DevOps tem contexto para segurança operacional e GitHub.
+- Separar ownership evita que DevOps invente proposta de valor ou transforme README em setup técnico sem contexto de produto.
+- O gate cria uma ordem prática: narrativa de produto confirmada primeiro, publicação/configuração remota depois.
+
+## 2026-06-30 - README Do Produto Via Strategy Product
+
+Decisão:
+
+- O `README.md` raiz gerado pelo scaffold deve ser product-first e founder-friendly.
+- O início do README deve explicar produto/empresa, usuário, problema, proposta de valor, status, estrutura e foco atual antes de explicar o LeanOS.
+- A seção LeanOS deve existir, mas ficar curta e no fim.
+- Melhorias de README devem entrar pela Navigation Chain, sem adicionar regra específica no `AGENT.md` raiz:
+  - Strategy Product;
+  - role `Product Narrative Editor`;
+  - skill `write-product-readme`;
+  - template `.leanos/standard/templates/product/product-readme-template.md`.
+- Em repositório existente, o modelo deve ler e preservar o README atual, manter instruções técnicas úteis e propor diff antes de escrever.
+- A skill não pode inventar clientes, métricas, provas, features, stack ou comandos.
+- A validação do generator deve cobrir o README raiz, a rota da Navigation Chain, a skill, a role e o template de README de produto.
+
+Justificativa:
+
+- Founders e colaboradores novos precisam entender o negócio/produto primeiro, não o framework.
+- Modelos também se orientam melhor quando o README apresenta contexto de produto antes de regras operacionais.
+- Colocar a instrução em Strategy Product preserva o root `AGENT.md` como roteador enxuto e evita duplicar política fora da Navigation Chain.
+- Preservar README existente reduz risco de quebrar projetos que já rodam e já possuem comandos, badges, links, setup ou documentação técnica útil.
+
 ## 2026-06-30 - Sync GitHub Rico E Epic Como `epic.md`
 
 Decisão:

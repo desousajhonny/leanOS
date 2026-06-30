@@ -6,9 +6,35 @@ export function workspaceReadme(answers: WorkspaceAnswers, activeAreas: AreaDefi
 
   return `# ${answers.productName}
 
-Workspace LeanOS para ${answers.companyName}.
+${answers.description}
 
-Este workspace separa arquivos de runtime do LeanOS da estrutura operacional do cliente.
+## O Que É
+
+${answers.productName} é um produto de ${answers.companyName} do tipo ${answers.productType}. Este README deve ajudar um founder, colaborador ou modelo de AI a entender rapidamente o negócio, o produto e o estado atual do repositório.
+
+## Para Quem É
+
+- Usuário primário: ${answers.targetUser}
+- Empresa: ${answers.companyName}
+- Produto: ${answers.productName}
+
+## Problema
+
+Problema central ainda será refinado por Strategy Product em \`${paths.businessOsRoot}/strategy/product/knowledge/problem.md\`.
+
+## Proposta De Valor
+
+Proposta de valor inicial: ${answers.description}
+
+Strategy Product deve amadurecer esta promessa em \`${paths.businessOsRoot}/strategy/product/knowledge/value-proposition.md\`.
+
+## Status Atual
+
+- Status do produto: ${answers.productStatus}
+- Estágio: ${answers.stage}
+- Modo do workspace: ${answers.workspaceMode}
+- Modo operacional: ${answers.mode}
+- GitHub management: ${answers.prepareGithubManagement ? "preparado; adicione um token local apenas ao configurar GitHub Projects ou sync de Epics/Features" : "ainda não solicitado"}
 
 ${workspaceModeIntro(answers)}
 
@@ -24,7 +50,15 @@ Depois comece por:
 
 \`AGENT.md\`
 
-## Estrutura Principal
+## O Que Existe Neste Repositório
+
+${repositoryContentsSummary(answers, paths.businessOsRoot)}
+
+## Como Rodar Localmente
+
+${localRunInstructions(answers)}
+
+## Estrutura
 
 - \`.github/\` Arquivos de integração com VS Code e GitHub.
 - \`.leanos/\` shell local do LeanOS.
@@ -33,24 +67,27 @@ Depois comece por:
 - \`${paths.businessOsRoot}/\` sistema operacional de negócio do produto.
 ${activeRoots.map((department) => `- \`${departmentPath(department.key, paths)}/\` ${department.name} departamento.`).join("\n")}
 
-## Snapshot do Produto
+## Foco Atual
 
-- Modo do workspace: ${answers.workspaceMode}
-- Empresa: ${answers.companyName}
-- Produto: ${answers.productName}
-- Status: ${answers.productStatus}
-- Tipo: ${answers.productType}
-- Estágio: ${answers.stage}
-- Modo: ${answers.mode}
-- Usuário primário: ${answers.targetUser}
-- Descrição: ${answers.description}
-- GitHub management: ${answers.prepareGithubManagement ? "preparado; adicione um token local apenas ao configurar GitHub Projects ou sync de Epics/Features" : "ainda não solicitado"}
+- Primeiro foco: consolidar Strategy Baseline em \`${paths.businessOsRoot}/strategy/\`.
+- Produto: refinar problema, ICP, proposta de valor e escopo de validação.
+- Próxima decisão: pedir ao LeanOS Chief para iniciar a conversa guiada.
 
 ## Áreas Ativas
 
 ${activeAreas.map((area) => `- \`${areaPath(area, paths)}/\` ${area.purpose}`).join("\n")}
 
-## Próximo Passo
+## LeanOS
+
+LeanOS organiza o negócio como um produto: Strategy define direção, Operations transforma escopo em entrega, e Growth apoia lançamento, aprendizado e escala quando essas áreas estiverem ativas.
+
+Este repositório usa a Navigation Chain do LeanOS. O root \`AGENT.md\` escolhe o departamento dono; a área dona escolhe role, skill e playbook. Para melhorar este README depois que houver mais contexto de produto, use:
+
+\`\`\`text
+Strategy Product -> Product Narrative Editor -> write-product-readme
+\`\`\`
+
+## Próximo Passo Para O Founder
 
 Abra o Copilot Chat, selecione \`LeanOS Chief\`, e peça:
 
@@ -62,8 +99,24 @@ Quero iniciar o LeanOS.
 
 function workspaceModeIntro(answers: WorkspaceAnswers): string {
   if (answers.workspaceMode === "existing-product-repo") {
-    return "LeanOS está instalado como camada operacional sobre um repositório de produto existente. Ele deve preservar código de produto, arquivos de pacote, configuração de deploy e arquivos existentes do repositório, a menos que o usuário confirme explicitamente uma mudança.";
+    return "LeanOS foi adicionado como camada operacional sobre um produto existente. Ao melhorar este README, preserve o README existente, comandos, links, badges e instruções úteis, a menos que o founder confirme uma mudança.";
   }
 
-  return "LeanOS está preparando Strategy e Operations antes do bootstrap de app/código. O setup inicial não cria `src/`, `app/`, `pages/`, `package.json` ou `vercel.json`.";
+  return "LeanOS está preparando Strategy antes do bootstrap de app/código. O setup inicial não cria `src/`, `app/`, `pages/`, `package.json` ou `vercel.json`.";
+}
+
+function repositoryContentsSummary(answers: WorkspaceAnswers, businessOsRoot: string): string {
+  if (answers.workspaceMode === "existing-product-repo") {
+    return `Este repositório já possuía estrutura de produto antes do LeanOS. Use o código, scripts e documentação existentes como fonte operacional do app. O LeanOS fica em \`${businessOsRoot}/\`, \`.leanos/\` e \`.github/leanos/\` para organizar estratégia, operação e integração.`;
+  }
+
+  return `Este repositório contém o Business OS inicial do produto em \`${businessOsRoot}/\`. O app ou código de produto ainda não foi criado pelo LeanOS. Crie código somente quando Strategy/Product e, depois, Product Ops/Engineering indicarem que existe escopo pronto.`;
+}
+
+function localRunInstructions(answers: WorkspaceAnswers): string {
+  if (answers.workspaceMode === "existing-product-repo") {
+    return "Use os comandos já existentes do projeto. Se houver `package.json`, confira os scripts reais antes de rodar build, teste ou dev server. Não invente comandos neste README.";
+  }
+
+  return "Ainda não há app ou código de produto para rodar localmente. Depois que uma Feature estiver pronta para Engineering, registre aqui os comandos reais de desenvolvimento, build e teste.";
 }

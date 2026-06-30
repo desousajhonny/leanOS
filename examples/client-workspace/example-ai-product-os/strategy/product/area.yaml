@@ -7,11 +7,13 @@ area:
   roles:
     - product-strategist
     - product-manager
+    - product-narrative-editor
   skills:
     - business-baseline
     - product-core
     - mvp-validation-scope
     - coherence
+    - write-product-readme
   playbooks:
     - idea-calibration
     - mvp-validation-scope

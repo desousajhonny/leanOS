@@ -18,6 +18,7 @@ Use quando um papel selecionado apontar para uma skill.
 - `product-core/SKILL.md`
 - `mvp-validation-scope/SKILL.md`
 - `coherence/SKILL.md`
+- `write-product-readme/SKILL.md`
 
 ## Pastas Relacionadas
 

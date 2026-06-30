@@ -19,6 +19,10 @@ Escolha o menor papel especialista para o pedido:
 
 - Business Strategist: `roles/business-strategist.role.md` - use quando business direction is unclear; operating model needs definition; business model or revenue logic needs definition; a strategic decision must be recorded.
 
+## Caminhos Comuns
+
+- Business request: `AGENT.md` -> role `roles/business-strategist.role.md` -> skill `skills/business-identity/SKILL.md`, `skills/operating-model/SKILL.md` or `skills/business-model/SKILL.md` -> playbook `playbooks/business-foundation.playbook.md` when foundation work is needed.
+
 ## Regras de Roteamento
 
 1. Comece por este AGENT da área para trabalho operacional dentro de Business.

@@ -16,6 +16,7 @@ Use depois que o AGENT da área selecionar um papel.
 
 - `product-strategist.role.md`
 - `product-manager.role.md`
+- `product-narrative-editor.role.md`
 
 ## Pastas Relacionadas
 

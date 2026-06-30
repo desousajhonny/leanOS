@@ -29,6 +29,7 @@ Use quando criar assets de execução operacional dentro de uma área ou pasta d
 
 Use esta pasta apenas depois que `../../foundation/asset-taxonomy.md` confirmar o tipo de asset necessário.
 
+
 ## Notas para Agentes
 
 Carregue apenas o arquivo de template correspondente. Não carregue categorias de template não relacionadas.

@@ -29,6 +29,7 @@ Use quando criar ou documentar a estrutura do workspace.
 
 Use esta pasta apenas depois que `../../foundation/asset-taxonomy.md` confirmar o tipo de asset necessário.
 
+
 ## Notas para Agentes
 
 Carregue apenas o arquivo de template correspondente. Não carregue categorias de template não relacionadas.

@@ -13,7 +13,7 @@ Use para business, product strategy, roadmap, validation, ICP or assumptions.
 - `department.yaml`: estrutura legível por máquina para áreas e workflows ativos.
 - `workflows/`: workflows entre áreas pertencentes a este departamento.
 - `business/`: Manter identidade do negócio, princípios, missão, decisões operacionais e modelo de negócio coerentes.
-- `product/`: Own product strategy, product core, ICP, value proposition, MVP validation scope and positioning coherence.
+- `product/`: Dona da estratégia de produto, núcleo do produto, ICP, proposta de valor, escopo de validação do MVP e coerência de posicionamento.
 - `roadmap/`: Possui sequência de roadmap, milestones, backlog e priorização de ciclo de planejamento para produtos operando ou escalando.
 
 ## Comece Aqui

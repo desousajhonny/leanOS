@@ -81,6 +81,10 @@ Escolha o menor papel especialista para o pedido:
 
 ${area.roles.map((role) => `- ${role.title}: \`roles/${role.slug}.role.md\` - use quando ${role.useWhen.join("; ")}.`).join("\n")}
 
+## Caminhos Comuns
+
+${area.commonPaths.map((item) => `- ${item}`).join("\n")}
+
 ## Regras de Roteamento
 
 1. Comece por este AGENT da área para trabalho operacional dentro de ${area.name}.

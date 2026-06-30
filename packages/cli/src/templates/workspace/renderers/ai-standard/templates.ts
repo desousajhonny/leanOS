@@ -4,7 +4,7 @@ import { agentTemplate, areaAgentTemplate, departmentAgentTemplate, rootAgentTem
 import { componentSpecTemplate } from "./templates/design.js";
 import { playbookTemplate, playbookYamlTemplate, roleTemplate, roleYamlTemplate, skillTemplate, skillYamlTemplate } from "./templates/execution.js";
 import { branchNameTemplate, deliveryReadinessMatrixTemplate, githubEpicTemplate, githubFeatureTemplate, pullRequestTemplate } from "./templates/github.js";
-import { productEpicTemplate, productFeatureTemplate } from "./templates/product.js";
+import { productEpicTemplate, productFeatureTemplate, productReadmeTemplate } from "./templates/product.js";
 import { codeReviewTemplate } from "./templates/review.js";
 import { areaReadmeTemplate } from "./templates/structure.js";
 
@@ -48,9 +48,9 @@ const templateGroups: TemplateGroup[] = [
   {
     key: "product",
     title: "Templates de Trabalho de Produto",
-    purpose: "Templates para trabalho local de produto no LeanOS antes de sincronização opcional com GitHub.",
-    use: "Use quando estruturar epics e features locais a partir do escopo de delivery.",
-    files: ["epic-template.md", "feature-template.md"]
+    purpose: "Templates para README de produto e trabalho local de produto no LeanOS antes de sincronização opcional com GitHub.",
+    use: "Use quando estruturar README de produto, epics e features locais a partir do contexto de Strategy/Product.",
+    files: ["product-readme-template.md", "epic-template.md", "feature-template.md"]
   },
   {
     key: "design",
@@ -89,6 +89,7 @@ function templateContent(fileName: string): string {
     "skill-template.yaml": skillYamlTemplate(),
     "playbook-template.md": playbookTemplate(),
     "playbook-template.yaml": playbookYamlTemplate(),
+    "product-readme-template.md": productReadmeTemplate(),
     "epic-template.md": productEpicTemplate(),
     "feature-template.md": productFeatureTemplate(),
     "github-epic-template.md": githubEpicTemplate(),
@@ -139,6 +140,10 @@ ${groups.map((group) => `### \`${group.key}/\`\n\n${group.purpose}\n\nUse quando
 }
 
 function templateGroupReadme(group: TemplateGroup): string {
+  const productNotes = group.key === "product"
+    ? "\n## Regra de Navegação\n\nUse `product-readme-template.md` como estrutura de escrita depois que Strategy/Product escolher a role e a skill corretas. Este template não substitua a Navigation Chain; ele apoia a saída da skill `write-product-readme`.\n"
+    : "";
+
   return `# ${group.title}
 
 ## Propósito
@@ -163,6 +168,7 @@ ${group.files.map((file) => `- \`${file}\``).join("\n")}
 ## Navegação
 
 Use esta pasta apenas depois que \`../../foundation/asset-taxonomy.md\` confirmar o tipo de asset necessário.
+${productNotes}
 
 ## Notas para Agentes
 

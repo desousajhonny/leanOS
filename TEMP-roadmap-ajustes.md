@@ -22,6 +22,8 @@ O LeanOS tem um MVP de framework local com:
 - GitHub readiness local em `.github/leanos/`, sem token versionado e sem escrita remota automatica.
 - GitHub Epics/Features sync com contrato rico: `epic.md` canonico, body completo, milestone, Size/Effort, relacionamentos e patch local pos-verificacao.
 - Workflow `ready-for-launch` em Operations quando Product Ops, Engineering e DevOps estao ativos, separando readiness de launch da execucao/aprendizado de Growth.
+- README raiz gerado como README de produto/empresa, com skill dedicada em Strategy Product para melhorar README sem poluir o `AGENT.md` raiz.
+- Novo repositório GitHub exige gate `README-ready`: DevOps verifica, mas Strategy Product escreve ou confirma o README product-first antes de create/publish/connect remoto.
 
 ## Decisoes Canonicas Atuais
 
@@ -41,6 +43,8 @@ O LeanOS tem um MVP de framework local com:
 - [x] Business OS vive em `<product-slug>-os/`; runtime do agente vive em `.leanos/runtime/`; padroes do framework vivem em `.leanos/standard/`.
 - [x] Atualizacao de workspaces existentes deve ser feita por `lean-os update`, com preview via `--dry-run`, conflitos explicitos e preservacao de arquivos de produto.
 - [x] Readiness de launch, go-live, beta ou usuarios reais pertence a Operations via `ready-for-launch`; Growth executa `mvp-launch` e `launch-learning-loop` depois do gate ou depois de lancamento executado.
+- [x] README do produto deve ser roteado pela Navigation Chain: Strategy Product -> Product Narrative Editor -> write-product-readme, preservando README existente e propondo diff antes de escrever.
+- [x] Novo repositório GitHub não deve ser criado ou publicado por DevOps sem `README-ready` confirmado; se faltar README, roteie para Strategy Product -> Product Narrative Editor -> write-product-readme.
 
 ## Concluido Nesta Branch
 
@@ -80,6 +84,8 @@ O LeanOS tem um MVP de framework local com:
 - [x] `ready-for-launch` implementado como workflow de Operations, com decisao explicita (`ready_to_launch`, `ready_with_known_risks`, bloqueios por area e `not_ready_to_learn`), roteamento raiz separado de Growth, jornada do founder documentada e validacao automatica de ativacao sequencial Product Ops -> Engineering -> DevOps.
 - [x] Contrato de sync GitHub fortalecido: Epics usam `epic.md` como fonte canonica com fallback legado para `README.md`, Project sync aponta para `<product-slug>-os/operations/product-ops/epics/`, payload exige body rico, milestone, Size, Effort, Priority, Area, Roadmap Item, Epic e relacoes.
 - [x] Capability contract de GitHub agora exige read-back verification antes de patch local, e Product Ops/DevOps registram a regra de atualizar `github_issue.url` e `sync_status: synced` apenas depois da verificacao remota.
+- [x] README raiz product-first implementado no scaffold, com role `Product Narrative Editor`, skill `write-product-readme`, template `.leanos/standard/templates/product/product-readme-template.md`, rota em Strategy/Product e validacao automatica do contrato.
+- [x] Gate `README-ready` adicionado ao bootstrap de repositório GitHub em DevOps/GitHub DevOps, com validação `validateGithubRepositoryReadmeGate` e fixture regenerado.
 
 ## Pendencias Ativas
 

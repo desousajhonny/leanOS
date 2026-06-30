@@ -13,12 +13,12 @@ export const strategyProductArea: AreaDefinition = {
   path: "strategy/product",
   lead: {
     title: "Product Lead",
-    purpose: "Route product strategy work, choose the right product role and keep product decisions aligned with validation, roadmap and delivery scope."
+    purpose: "Roteia trabalho de estratégia de produto, escolhe a role certa e mantém decisões de produto alinhadas com validação, roadmap e escopo de entrega."
   },
   routingKey: "product",
-  requestTypes: "idea calibration, product strategy, product core, ICP, value proposition, MVP validation scope or positioning",
-  purpose: "Own product strategy, product core, ICP, value proposition, MVP validation scope and positioning coherence.",
-  whenToUse: ["start or calibrate a founder idea", "define product core", "clarify ICP", "shape value proposition", "define MVP validation scope", "check product coherence"],
+  requestTypes: "calibragem de ideia, estratégia de produto, núcleo do produto, ICP, proposta de valor, escopo de validação do MVP, posicionamento ou README do produto",
+  purpose: "Dona da estratégia de produto, núcleo do produto, ICP, proposta de valor, escopo de validação do MVP e coerência de posicionamento.",
+  whenToUse: ["iniciar ou calibrar uma ideia do founder", "definir núcleo do produto", "clarificar ICP", "desenhar proposta de valor", "definir escopo de validação do MVP", "checar coerência de produto", "criar ou melhorar o README do produto"],
   sourceOfTruth: strategyProductSourceOfTruth,
   files: strategyProductFiles,
   roles: strategyProductRoles,

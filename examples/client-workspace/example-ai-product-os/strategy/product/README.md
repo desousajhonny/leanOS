@@ -2,16 +2,17 @@
 
 ## Propósito
 
-Own product strategy, product core, ICP, value proposition, MVP validation scope and positioning coherence.
+Dona da estratégia de produto, núcleo do produto, ICP, proposta de valor, escopo de validação do MVP e coerência de posicionamento.
 
 ## Use Quando
 
-- start or calibrate a founder idea
-- define product core
-- clarify ICP
-- shape value proposition
-- define MVP validation scope
-- check product coherence
+- iniciar ou calibrar uma ideia do founder
+- definir núcleo do produto
+- clarificar ICP
+- desenhar proposta de valor
+- definir escopo de validação do MVP
+- checar coerência de produto
+- criar ou melhorar o README do produto
 
 ## Source of Truth
 
@@ -47,3 +48,4 @@ Own product strategy, product core, ICP, value proposition, MVP validation scope
 
 - Idea calibration request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/business-baseline/SKILL.md` -> skill `skills/product-core/SKILL.md` when enough signal exists -> playbook `playbooks/idea-calibration.playbook.md`.
 - MVP validation request: `AGENT.md` -> role `roles/product-strategist.role.md` -> skill `skills/mvp-validation-scope/SKILL.md` -> playbook `playbooks/mvp-validation-scope.playbook.md`.
+- Pedido de README do produto: `AGENT.md` -> role Product Narrative Editor `roles/product-narrative-editor.role.md` -> skill `skills/write-product-readme/SKILL.md` -> propor diff do README antes de atualizar o root `../../../README.md`.
