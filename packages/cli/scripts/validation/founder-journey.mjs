@@ -19,6 +19,81 @@ export async function validateFounderJourneyReadyForLaunch() {
   await assertReadyForLaunchRouteAfterSequentialActivation();
 }
 
+export async function validateFounderJourneySecurityHardeningCycle() {
+  await assertSecurityHardeningJourneyDoc();
+  await assertSecurityHardeningRouteAfterActivation();
+}
+
+async function assertSecurityHardeningJourneyDoc() {
+  const journeyMap = await readFile(join(projectRoot, "docs", "framework", "founder-journeys", "journey-map.md"), "utf8");
+  const workflowsInventory = await readFile(join(projectRoot, "docs", "framework", "workflows", "README.md"), "utf8");
+  const securityHardeningPath = join(projectRoot, "docs", "framework", "founder-journeys", "security-hardening-cycle.md");
+
+  assert(
+    journeyMap.includes("| [x] | 10 | Security hardening | `security-hardening-cycle.md` | `operations/workflows/security-hardening-cycle.workflow.md`"),
+    "Founder journey map should mark Security hardening as complete through Operations security-hardening-cycle"
+  );
+  assert(
+    workflowsInventory.includes("| `security-hardening-cycle` | `operations` | Auditar e fortalecer riscos de Security"),
+    "Workflow inventory should include security-hardening-cycle as an Operations workflow"
+  );
+
+  await assertExists(securityHardeningPath);
+
+  const securityHardeningJourney = await readFile(securityHardeningPath, "utf8");
+
+  assert(securityHardeningJourney.includes("# Jornada: Security Hardening Cycle"), "Security hardening journey should have a clear title");
+  assert(securityHardeningJourney.includes('founder pergunta "audite segurança"'), "Security hardening journey should document the founder trigger");
+  assert(securityHardeningJourney.includes("operations/workflows/security-hardening-cycle.workflow.md"), "Security hardening journey should route through security-hardening-cycle");
+  assert(securityHardeningJourney.includes("operations/security/playbooks/ai-app-security-review.playbook.md"), "Security hardening journey should load AI app security review");
+  assert(securityHardeningJourney.includes("operations/security/skills/ai-runtime-security-review/SKILL.md"), "Security hardening journey should load AI runtime security skill");
+  assert(securityHardeningJourney.includes("activation_required: operations.security"), "Security hardening journey should document progressive activation");
+  assert(securityHardeningJourney.includes("LLM input/output"), "Security hardening journey should include AI-native security risk");
+  assert(securityHardeningJourney.includes("RAG/vector DB"), "Security hardening journey should include RAG/vector DB risk");
+  assert(securityHardeningJourney.includes("Não altere código, infra, secrets ou permissões automaticamente"), "Security hardening journey should forbid automatic risky changes");
+  assert(securityHardeningJourney.includes("## Checklist De Validação Da Jornada"), "Security hardening journey should include a validation checklist");
+}
+
+async function assertSecurityHardeningRouteAfterActivation() {
+  const rootDir = await mkdtemp(join(tmpdir(), "leanos-founder-security-hardening-"));
+
+  await generateWorkspace(rootDir, answers);
+  assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations")), false, "Initial Founder Journey should start Strategy-only");
+
+  let rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
+
+  assert(rootAgent.includes("Auditoria de segurança, vulnerabilidade, LGPD, dados de cliente, vazamento de token, proteção de API ou hardening"), "Root AGENT should route direct security hardening requests");
+  assert(rootAgent.includes("activation_required` para `operations.security`"), "Root AGENT should return activation_required for inactive Security");
+
+  await activateWorkspaceArea(rootDir, "operations.security");
+
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "AGENT.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "roles", "ai-security-engineer.role.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "skills", "ai-runtime-security-review", "SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "playbooks", "ai-app-security-review.playbook.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "ai-app-security.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "workflows", "security-hardening-cycle.workflow.md"));
+
+  const yaml = parse(await readFile(join(rootDir, "leanos.yaml"), "utf8"));
+  rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
+  const operationsAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "AGENT.md"), "utf8");
+  const operationsWorkflowsReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "workflows", "README.md"), "utf8");
+  const securityWorkflow = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "workflows", "security-hardening-cycle.workflow.md"), "utf8");
+  const workflowsIndex = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "workflows.yaml"), "utf8"));
+
+  assert.deepEqual(yaml.departments.active, ["strategy", "operations"], "Security activation should keep Operations active");
+  assert(yaml.activation.active_areas.includes("operations.security"), "Security should be active for security hardening");
+  assert(yaml.workflows.active.includes("security-hardening-cycle"), "security-hardening-cycle workflow should be active after Security activation");
+  assert(workflowsIndex.workflows.some((workflow) => workflow.key === "security-hardening-cycle"), "Workflows index should expose security-hardening-cycle");
+  assert(rootAgent.includes("- Operations: `clinic-assistant-ai-os/operations/AGENT.md`"), "Root AGENT should route Security work to Operations after activation");
+  assert(operationsAgent.includes("workflows/README.md"), "Operations AGENT should route multi-step Security work through the workflow index");
+  assert(operationsWorkflowsReadme.includes("security-hardening-cycle.workflow.md"), "Operations workflow index should expose security-hardening-cycle");
+  assert(securityWorkflow.includes("ai-app-security-review"), "Security hardening workflow should call the AI app security review playbook");
+  assert(securityWorkflow.includes("LLM input/output"), "Security hardening workflow should cover LLM input/output");
+  assert(securityWorkflow.includes("prompt injection"), "Security hardening workflow should cover prompt injection");
+}
+
 async function assertReadyForLaunchJourneyDoc() {
   const journeyMap = await readFile(join(projectRoot, "docs", "framework", "founder-journeys", "journey-map.md"), "utf8");
   const workflowsInventory = await readFile(join(projectRoot, "docs", "framework", "workflows", "README.md"), "utf8");

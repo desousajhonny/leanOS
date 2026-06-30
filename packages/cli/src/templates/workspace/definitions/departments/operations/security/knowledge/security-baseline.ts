@@ -11,29 +11,36 @@ export function securityBaselineKnowledge(): string {
       "Where security context lives across Product Ops, Engineering, DevOps and Security."
     ],
     [
-      "Security review is required when work touches data, auth, permissions, privacy, abuse, compliance, dependencies, CI/CD, infra or deploy.",
+      "Security review is required when work touches data, auth, permissions, privacy, abuse, compliance, dependencies, CI/CD, infra, deploy or AI runtime surfaces.",
       "PRs must state whether Security is applicable or not applicable.",
-      "Deploy readiness must include backup, rollback and security review for sensitive changes."
+      "Deploy readiness must include backup, rollback and security review for sensitive changes.",
+      "AI features must explicitly review LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection and cost/rate abuse."
     ],
     [
       "No public production database.",
-      "Nenhum segredo em Git, logs, prompts, screenshots ou arquivos versionados.",
-      "Nenhum endpoint privado sem autenticação e autorização server-side.",
+      "No secrets in Git, logs, prompts, screenshots or tracked files.",
+      "No private endpoint without server-side authentication and authorization.",
       "Every user-owned or tenant-owned object access must validate ownership server-side.",
-      "Nunca confie em userId, tenantId, role ou isAdmin vindos do cliente.",
+      "Never trust userId, tenantId, role or isAdmin from the client.",
       "Never build SQL with string concatenation.",
       "Sensitive data must not appear in logs, analytics, errors or events.",
       "Admin access requires RBAC, MFA when available and audit trail.",
       "Production, staging and development must use separate databases, secrets and permissions.",
       "Production deploy requires backup, rollback path and security review.",
-      "AI agents must not change auth, secrets, CI/CD, infra or dependencies without human review."
+      "AI agents must not change auth, secrets, CI/CD, infra or dependencies without human review.",
+      "LLM input/output must be treated as untrusted product surface.",
+      "Tool permissions must be least-privilege and explicit.",
+      "RAG/vector DB retrieval must preserve customer data boundaries.",
+      "Prompt injection must be reviewed before agent or AI feature launch.",
+      "Cost/rate abuse must have limits or accepted risk owner."
     ],
     [
       "../playbooks/security-foundation.playbook.md",
       "../playbooks/pre-mvp-security-checklist.playbook.md",
       "../playbooks/pre-deploy-security-review.playbook.md",
+      "../playbooks/ai-app-security-review.playbook.md",
       "../playbooks/ai-generated-code-security-review.playbook.md"
     ],
-    ["OWASP Top 10", "OWASP API Security Top 10", "OWASP ASVS", "NIST SSDF", "CIS Controls", "OWASP Secure Coding with AI"]
+    ["OWASP Top 10", "OWASP Top 10 for Large Language Model Applications", "OWASP API Security Top 10", "OWASP ASVS", "NIST SSDF", "CIS Controls", "OWASP Secure Coding with AI"]
   );
 }

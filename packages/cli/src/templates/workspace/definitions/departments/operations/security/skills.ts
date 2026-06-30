@@ -106,6 +106,19 @@ export const operationsSecuritySkills: SkillDefinition[] = [
       redLines: ["Não aprove service accounts permissivas demais.", "Não aprove deploy de produção sem backup e caminho de rollback.", "Não aprove admin público, CORS aberto ou rate limits ausentes como defaults inofensivos."]
     },
     {
+      slug: "ai-runtime-security-review",
+      title: "AI Runtime Security Review",
+      purpose: "Review AI product runtime risk before implementation, PR, launch or automation loops.",
+      useWhen: ["LLM input/output influences product behavior", "agent tools can read, write, contact customers or call external APIs", "RAG/vector DB retrieval is used", "customer data can enter prompts, logs, traces or embeddings", "prompt injection, jailbreak, model confusion or cost/rate abuse is plausible"],
+      requiredContext: ["AI app security knowledge", "Security baseline", "Feature or agent scope", "Data flows and customer data boundary", "Tool permission map", "RAG/vector DB retrieval plan", "Rate-limit/cost expectations"],
+      inputs: ["LLM input/output surfaces", "Tool permissions", "RAG/vector DB sources", "Customer data boundary", "Prompt injection exposure", "Cost/rate abuse path", "Model-output action path"],
+      process: ["Identify every LLM input/output surface and mark it untrusted", "Map tool permissions, external actions and write operations", "Map RAG/vector DB sources, filters, tenant boundaries and retrieval outputs", "Confirm customer data boundary across prompts, logs, traces, embeddings and analytics", "Review prompt injection and indirect prompt injection from user content, files, tickets, CRM, GitHub, docs or web pages", "Review cost/rate abuse, quota exhaustion and automation loops", "Define mitigations, owners, accepted risks and stop conditions", "Mark AI runtime security decision as pass, concerns, blocked or not applicable"],
+      checks: ["LLM input/output is validated before customer-visible or write actions", "Tool permissions are least-privilege and tied to an explicit owner/gate", "RAG/vector DB retrieval preserves customer data boundary and tenant isolation", "Prompt injection has mitigation or the feature is blocked", "Cost/rate abuse has limits, monitoring or an accepted risk owner", "No sensitive customer data enters prompts, logs, traces, embeddings or analytics without approved handling"],
+      outputs: ["AI runtime security decision", "LLM input/output risk summary", "Tool permissions decision", "RAG/vector DB boundary result", "Customer data boundary result", "Prompt injection findings", "Cost/rate abuse decision", "Required mitigations"],
+      filesToUpdate: ["Update `../knowledge/ai-app-security.md` after explicit confirmation.", "Update `../knowledge/threat-model.md`, `../knowledge/access-control.md` or `../knowledge/data-protection.md` when durable risk context changes."],
+      redLines: ["Não trate LLM input/output como fonte confiável.", "Não aprove tool permissions amplas sem owner, escopo e confirmação explícita.", "Não aprove RAG/vector DB sem customer data boundary e isolamento quando dados de clientes estiverem envolvidos.", "Não ignore prompt injection de conteúdo de usuário, tickets, arquivos, CRM, GitHub, docs ou web.", "Não lance feature AI com cost/rate abuse sem limite, monitoramento ou owner de risco."]
+    },
+    {
       slug: "incident-response",
       title: "Incident Response",
       purpose: "Guide lightweight response for leaks, vulnerabilities, abuse, outages and production security regressions.",

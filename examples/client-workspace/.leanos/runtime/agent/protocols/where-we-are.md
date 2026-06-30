@@ -97,7 +97,7 @@ Não recomende implementação até o diagnóstico confirmar:
 - existem PRD ou critérios de aceite quando comportamento de produto é afetado;
 - existe Epic/Feature local, issue GitHub, ou o founder pediu explicitamente um fluxo de bootstrap em vez de trabalho baseado em issue;
 - Design foi checado quando UX, UI, copy, acessibilidade, telas, estados ou fluxos de usuário são afetados;
-- Security foi checado quando há risco de dados, auth, permissões, privacidade, abuso, API, banco de dados, secrets, compliance, infraestrutura ou código gerado por IA;
+- Security foi checado quando há risco de dados, auth, permissões, privacidade, abuso, API, banco de dados, secrets, compliance, infraestrutura, código gerado por IA, LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection ou cost/rate abuse;
 - DevOps foi checado quando ambientes, CI/CD, deploy, observabilidade, GitHub Project, config ou release readiness são afetados.
 
 Se algo estiver ausente, explique a lacuna e recomende a próxima rota LeanOS em vez de codar.

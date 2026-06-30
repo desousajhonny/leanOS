@@ -75,6 +75,7 @@ Regra de manutenção: sempre que um playbook for criado, removido, renomeado ou
 | `pre-mvp-security-checklist` | `operations.security` | Rodar checklist leve antes de implementação de MVP ou quebra de issues. | Roles `security-reviewer` e `data-protection-reviewer`; gates antes de delivery. |
 | `security-automation-readiness` | `operations.security` | Decidir checks automatizados necessários, habilitados, adiados ou não aplicáveis. | Roles `security-reviewer` e `cloud-security-reviewer`; readiness de Security/DevOps. |
 | `pre-deploy-security-review` | `operations.security` | Ser gate de segurança antes de produção ou preview sensível. | Roles de Security; pré-deploy. |
+| `ai-app-security-review` | `operations.security` | Revisar produto AI, agente, RAG ou automação por risco de runtime antes de implementação, PR, launch ou operação contínua. | Role `ai-security-engineer`; skill `ai-runtime-security-review`; workflow `security-hardening-cycle`; Features AI e gates de launch. |
 | `api-security-review` | `operations.security` | Revisar endpoint ou mudança de API antes de implementação, PR ou deploy. | Role `application-security-engineer`; Features com API. |
 | `database-security-review` | `operations.security` | Revisar mudanças de banco por privacidade, isolamento, backup, query e permissões. | Role `data-protection-reviewer`; Features com persistência. |
 | `secrets-rotation` | `operations.security` | Guiar rotação segura de secrets após leak, suspeita ou mudança de credencial. | Role `cloud-security-reviewer`; incidentes/secrets. |

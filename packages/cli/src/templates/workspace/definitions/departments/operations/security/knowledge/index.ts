@@ -1,4 +1,5 @@
 export { securityAccessControlKnowledge } from "./security-access-control.js";
+export { securityAiAppSecurityKnowledge } from "./security-ai-app-security.js";
 export { securityAutomationKnowledge } from "./security-automation.js";
 export { securityBaselineKnowledge } from "./security-baseline.js";
 export { securityDatabaseSecurityKnowledge } from "./security-database-security.js";

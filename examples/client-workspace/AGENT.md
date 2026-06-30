@@ -71,6 +71,7 @@ Regras:
 - Escopo inicial de validação do MVP, roadmap, priorização ou rota de validação: `example-ai-product-os/strategy/AGENT.md`.
 - Planejamento de backlog do MVP, Epic, Feature ou formatação de entrega: `example-ai-product-os/operations/AGENT.md` somente quando a área obrigatória de Operations estiver ativa.
 - Implementação, branch, PR ou review: `example-ai-product-os/operations/AGENT.md` somente quando Engineering estiver ativo e a readiness de entrega estiver clara.
+- Auditoria de segurança, vulnerabilidade, LGPD, dados de cliente, vazamento de token, proteção de API ou hardening: `example-ai-product-os/operations/AGENT.md` somente quando Security estiver ativo; se faltar área, retorne `activation_required` para `operations.security`.
 - Readiness de launch, go-live, beta ou usuários reais: `example-ai-product-os/operations/AGENT.md` somente quando Product Ops, Engineering e DevOps estiverem ativos; se faltar área, retorne `activation_required` para a menor área bloqueadora.
 - Execução de launch, aquisição, onboarding ou learning loop: `example-ai-product-os/growth/AGENT.md` somente quando a área obrigatória de Growth estiver ativa e o gate de readiness não estiver bloqueado.
 - Se o próximo passo exigir departamento ou área inativa/ausente, retorne `activation_required` em vez de abrir ou inventar paths.
@@ -125,6 +126,7 @@ Use este mapa como orientação de roteamento, não como detalhe de execução. 
 - Promoção de roadmap/backlog: `example-ai-product-os/strategy/AGENT.md`
 - Item de entrega para Epic ou Epic para Features: retorne `activation_required` para `operations.product-ops` até Operations estar ativo
 - Implementação de Feature: retorne `activation_required` para `operations.engineering` até Engineering estar ativo
+- Auditoria de segurança, vulnerabilidade, LGPD, dados de cliente, vazamento de token, proteção de API ou hardening: retorne `activation_required` para `operations.security` até Security estar ativo
 - Setup de GitHub, configuração de GitHub Projects ou sync de Epics/Features: retorne `activation_required` para `operations.devops` até DevOps estar ativo
 - Preparação ou review de PR: retorne `activation_required` para `operations.engineering` até Engineering estar ativo
 - Continuação pós-merge: retorne `activation_required` para `operations.product-ops` até Operations estar ativo

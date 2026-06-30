@@ -24,6 +24,7 @@ O LeanOS tem um MVP de framework local com:
 - GitHub readiness local em `.github/leanos/`, sem token versionado e sem escrita remota automatica.
 - GitHub Epics/Features sync com contrato rico: `epic.md` canonico, body completo, milestone, Size/Effort, relacionamentos e patch local pos-verificacao.
 - Workflow `ready-for-launch` em Operations quando Product Ops, Engineering e DevOps estao ativos, separando readiness de launch da execucao/aprendizado de Growth.
+- Workflow `security-hardening-cycle` em Operations quando Security esta ativo, com AI app security, auditoria, vulnerabilidades, LGPD, dados de cliente, token vazado e protecao de API.
 - README raiz gerado como README de produto/empresa, com skill dedicada em Strategy Product para melhorar README sem poluir o `AGENT.md` raiz.
 - Novo repositório GitHub exige gate `README-ready`: DevOps verifica, mas Strategy Product escreve ou confirma o README product-first antes de create/publish/connect remoto.
 
@@ -47,6 +48,8 @@ O LeanOS tem um MVP de framework local com:
 - [x] Publicacao npm deve usar runbook versionado `npm run release:npm`, sem depender de memoria do modelo ou token colado em chat.
 - [x] Atualizacao de workspaces existentes deve ser feita por `lean-os update`, com preview via `--dry-run`, conflitos explicitos e preservacao de arquivos de produto.
 - [x] Readiness de launch, go-live, beta ou usuarios reais pertence a Operations via `ready-for-launch`; Growth executa `mvp-launch` e `launch-learning-loop` depois do gate ou depois de lancamento executado.
+- [x] Security hardening pertence a Operations/Security via `security-hardening-cycle`; pedidos diretos de auditoria, vulnerabilidade, LGPD, dados de cliente, token vazado e protecao de API retornam `activation_required: operations.security` quando Security esta inativo.
+- [x] AI app security e gate explicito de produto: LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection e cost/rate abuse entram em Security readiness.
 - [x] README do produto deve ser roteado pela Navigation Chain: Strategy Product -> Product Narrative Editor -> write-product-readme, preservando README existente e propondo diff antes de escrever.
 - [x] Novo repositório GitHub não deve ser criado ou publicado por DevOps sem `README-ready` confirmado; se faltar README, roteie para Strategy Product -> Product Narrative Editor -> write-product-readme.
 
@@ -93,6 +96,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] Pacote `create-lean-os` adicionado para suportar `npm create lean-os`, reaproveitando o wizard do `lean-os ai` e com validacao automatica do contrato.
 - [x] `lean-os@0.1.1` e `create-lean-os@0.1.1` publicados no npm em 2026-06-30.
 - [x] Runbook de publish npm adicionado para futuras versoes, com validacao automatica do protocolo.
+- [x] Security hardening implementado como workflow `operations/workflows/security-hardening-cycle.workflow.md`, role `AI Security Engineer`, skill `ai-runtime-security-review`, playbook `ai-app-security-review`, knowledge `ai-app-security.md`, rota root de `activation_required: operations.security`, gates AI-native em `ready-to-develop`, Engineering review e `ready-for-launch`, e validações automáticas da jornada.
 
 ## Pendencias Ativas
 

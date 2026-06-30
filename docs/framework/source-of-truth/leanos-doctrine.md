@@ -95,7 +95,7 @@ Depois disso, outras capacidades do negócio vão nascendo conforme o estágio r
 - Design nasce quando a experiência do produto precisa de fluxos, telas, componentes, UX, acessibilidade ou copy;
 - Engineering nasce quando uma Feature está pronta para implementação ou quando um spike técnico foi explicitamente aprovado;
 - DevOps nasce quando a entrega precisa de ambientes, CI/CD, deploy, observabilidade, release ou sincronização com GitHub;
-- Security nasce quando surgem dados, autenticação, permissões, privacidade, API, banco, secrets, abuso ou compliance;
+- Security nasce quando surgem dados, autenticação, permissões, privacidade, API, banco, secrets, abuso, compliance, AI app runtime, agentes, RAG/vector DB, LLM input/output, tool permissions, prompt injection ou cost/rate abuse;
 - Growth nasce quando lançamento, aquisição, feedback, retenção, onboarding, pricing ou aprendizado de mercado se tornam relevantes.
 
 Essas capacidades não são criadas porque uma empresa "deveria ter departamentos". Elas são ativadas porque o negócio chegou a um estágio em que aquela capacidade é necessária para tomar a próxima decisão, executar o próximo ciclo ou reduzir o próximo risco.

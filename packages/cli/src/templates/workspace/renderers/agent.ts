@@ -86,6 +86,7 @@ Regras:
 - Escopo inicial de validação do MVP, roadmap, priorização ou rota de validação: \`${strategyAgent}\`.
 - Planejamento de backlog do MVP, Epic, Feature ou formatação de entrega: \`${operationsAgent}\` somente quando a área obrigatória de Operations estiver ativa.
 - Implementação, branch, PR ou review: \`${operationsAgent}\` somente quando Engineering estiver ativo e a readiness de entrega estiver clara.
+- Auditoria de segurança, vulnerabilidade, LGPD, dados de cliente, vazamento de token, proteção de API ou hardening: \`${operationsAgent}\` somente quando Security estiver ativo; se faltar área, retorne \`activation_required\` para \`operations.security\`.
 - Readiness de launch, go-live, beta ou usuários reais: \`${operationsAgent}\` somente quando Product Ops, Engineering e DevOps estiverem ativos; se faltar área, retorne \`activation_required\` para a menor área bloqueadora.
 - Execução de launch, aquisição, onboarding ou learning loop: \`${growthAgent}\` somente quando a área obrigatória de Growth estiver ativa e o gate de readiness não estiver bloqueado.
 - Se o próximo passo exigir departamento ou área inativa/ausente, retorne \`activation_required\` em vez de abrir ou inventar paths.
@@ -140,6 +141,7 @@ Use este mapa como orientação de roteamento, não como detalhe de execução. 
 - Promoção de roadmap/backlog: \`${strategyAgent}\`
 - Item de entrega para Epic ou Epic para Features: retorne \`activation_required\` para \`operations.product-ops\` até Operations estar ativo
 - Implementação de Feature: retorne \`activation_required\` para \`operations.engineering\` até Engineering estar ativo
+- Auditoria de segurança, vulnerabilidade, LGPD, dados de cliente, vazamento de token, proteção de API ou hardening: retorne \`activation_required\` para \`operations.security\` até Security estar ativo
 - Setup de GitHub, configuração de GitHub Projects ou sync de Epics/Features: retorne \`activation_required\` para \`operations.devops\` até DevOps estar ativo
 - Preparação ou review de PR: retorne \`activation_required\` para \`operations.engineering\` até Engineering estar ativo
 - Continuação pós-merge: retorne \`activation_required\` para \`operations.product-ops\` até Operations estar ativo
@@ -376,7 +378,7 @@ Não recomende implementação até o diagnóstico confirmar:
 - existem PRD ou critérios de aceite quando comportamento de produto é afetado;
 - existe Epic/Feature local, issue GitHub, ou o founder pediu explicitamente um fluxo de bootstrap em vez de trabalho baseado em issue;
 - Design foi checado quando UX, UI, copy, acessibilidade, telas, estados ou fluxos de usuário são afetados;
-- Security foi checado quando há risco de dados, auth, permissões, privacidade, abuso, API, banco de dados, secrets, compliance, infraestrutura ou código gerado por IA;
+- Security foi checado quando há risco de dados, auth, permissões, privacidade, abuso, API, banco de dados, secrets, compliance, infraestrutura, código gerado por IA, LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection ou cost/rate abuse;
 - DevOps foi checado quando ambientes, CI/CD, deploy, observabilidade, GitHub Project, config ou release readiness são afetados.
 
 Se algo estiver ausente, explique a lacuna e recomende a próxima rota LeanOS em vez de codar.

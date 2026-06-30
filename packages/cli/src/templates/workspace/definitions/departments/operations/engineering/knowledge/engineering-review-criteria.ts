@@ -39,9 +39,11 @@ Use estes critérios antes de recomendar prontidão de merge. A evidência revis
 
 ## Security Review
 
-- Required when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved.
+- Required when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure, AI-generated-code risk or AI app runtime risk is involved.
 - Confirm Security review or a clear not-applicable reason.
 - Block hardcoded secrets, unsafe permissions, missing server-side authorization and sensitive data leakage.
+- For AI features, confirm LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection and cost/rate abuse were reviewed or explicitly marked not applicable.
+- Do not recommend merge when Security is applicable but \`security_gate_passed\` or accepted known-risk evidence is missing.
 - Route unclear risk back to Security before merge recommendation.
 
 ## Data Review

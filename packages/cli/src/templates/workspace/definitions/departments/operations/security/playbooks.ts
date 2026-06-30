@@ -54,6 +54,19 @@ export const operationsSecurityPlaybooks: PlaybookDefinition[] = [
       stopConditions: ["Any Security Gate blocker is present.", "Deploy target or environment cannot be identified.", "Backup/rollback path is unknown for production."]
     },
     {
+      slug: "ai-app-security-review",
+      title: "AI App Security Review",
+      purpose: "Review AI app, agent, RAG or automation runtime risk before implementation, PR, launch or always-on operation.",
+      useWhen: ["LLM input/output exists", "agent or AI feature can call tools", "RAG/vector DB retrieval exists", "customer data may enter prompts, logs, traces or embeddings", "prompt injection or cost/rate abuse can affect the product"],
+      beforeActing: ["../AGENT.md", "../knowledge/security-baseline.md", "../knowledge/ai-app-security.md", "../knowledge/data-protection.md", "../knowledge/access-control.md", "../knowledge/secrets-management.md", "../../product-ops/knowledge/ready-to-develop.md", "../../engineering/knowledge/review-criteria.md"],
+      inputs: ["Feature or AI agent scope", "LLM input/output surfaces", "Tool permissions", "RAG/vector DB sources and filters", "Customer data boundary", "Prompt injection exposure", "Cost/rate abuse expectation", "Accepted product risk when any"],
+      steps: ["Load AI Security Engineer", "Use `skills/ai-runtime-security-review/SKILL.md`", "Map LLM input/output surfaces and mark untrusted boundaries", "Map tool permissions and external actions including writes, customer contact, payments, CRM, email, files and APIs", "Map RAG/vector DB retrieval sources, tenant filters, embedding storage and retrieval output handling", "Confirm customer data boundary across prompts, logs, traces, analytics and embeddings", "Review prompt injection and indirect prompt injection from user content, files, tickets, CRM, GitHub, docs or web pages", "Review cost/rate abuse, quota exhaustion and unattended automation loops", "Define mitigations, owners, residual risks and explicit Security gate decision", "Return pass, concerns, blocked or not applicable with evidence"],
+      securityGate: ["Block when LLM input/output can drive writes or customer-visible decisions without validation.", "Block when tool permissions are broad, unexplained or not tied to an owner/gate.", "Block when RAG/vector DB can cross customer data boundary or tenant isolation.", "Block when prompt injection can trigger actions, data leakage or harmful output without mitigation.", "Block when cost/rate abuse can create runaway spend or service exhaustion without limits.", "Block when sensitive customer data enters prompts, logs, traces, embeddings or analytics without approved handling."],
+      outputs: ["AI app security result", "LLM input/output risk summary", "Tool permissions decision", "RAG/vector DB boundary result", "Customer data boundary result", "Prompt injection findings", "Cost/rate abuse decision", "Required mitigations", "Safe-to-continue decision"],
+      filesToUpdate: ["Update `../knowledge/ai-app-security.md` after explicit confirmation.", "Update `../knowledge/threat-model.md`, `../knowledge/data-protection.md`, `../knowledge/access-control.md` or `../knowledge/secrets-management.md` only when durable context changes.", "Update Product Ops Feature Security criteria only through Product Ops after confirmation."],
+      stopConditions: ["AI feature scope is unclear.", "Tool permissions cannot be enumerated.", "Customer data boundary is unknown.", "RAG/vector DB sources or filters cannot be identified.", "Prompt injection exposure exists without mitigation.", "Cost/rate abuse is plausible and limits or owner are missing.", "The request would alter code, infra, secrets or permissions automatically."]
+    },
+    {
       slug: "api-security-review",
       title: "API Security Review",
       purpose: "Review an API endpoint or API change before implementation, PR or deploy.",

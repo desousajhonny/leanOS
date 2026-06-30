@@ -76,12 +76,24 @@ Required when a Feature includes UI that depends on a reusable component.
 
 ## Security Readiness
 
-Required when the work touches data, authentication, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk.
+Required when the work touches data, authentication, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure, AI-generated-code risk or AI app runtime risk.
 
 - Sensitive data and access rules are understood.
 - Security acceptance criteria are defined when needed.
 - Secret handling is safe.
 - If Security is not applicable, the reason is explicit.
+
+### AI-Native Security Readiness
+
+Required when the Feature includes an AI agent, LLM workflow, RAG/vector DB retrieval, customer-facing AI output or automated tool use.
+
+- LLM input/output surfaces are listed and treated as untrusted.
+- Tool permissions are explicit, least-privilege and tied to a human-approved gate when actions can write, contact users or call external systems.
+- RAG/vector DB sources, retrieval filters and tenant/customer boundaries are clear.
+- Customer data boundary is explicit for prompts, logs, traces, embeddings, analytics and support data.
+- Prompt injection and indirect prompt injection risks are reviewed or marked not applicable with reason.
+- Cost/rate abuse has limits, monitoring or an accepted risk owner.
+- Product Ops records the Security gate result as ready, blocked, known-risk or not-applicable before Engineering starts.
 
 ## Engineering Readiness
 
@@ -108,7 +120,7 @@ Required when the work touches environments, CI/CD, deploy, observability, GitHu
 - \`needs-feature-definition\`: the Feature is local but lacks acceptance criteria, boundaries, tasks or readiness criteria.
 - \`needs-design\`: UX/UI/accessibility context is required before coding.
 - \`needs-component-spec\`: the Feature needs a new or adapted reusable component before Engineering can code it.
-- \`needs-security\`: data/auth/privacy/API/security context is required before coding.
+- \`needs-security\`: data/auth/privacy/API/security context or AI-native Security readiness is required before coding.
 - \`needs-devops\`: environment/deploy/CI/GitHub readiness is required before coding.
 - \`ready-to-plan\`: enough context exists to create a development plan and implementation approach.
 - \`ready-to-code\`: enough context exists to begin implementation after the plan is confirmed.

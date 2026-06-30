@@ -105,7 +105,7 @@ Ativação padrão: `AGENT.md` -> `operations/AGENT.md` -> `operations/devops/AG
 
 ### Security
 
-Ativação padrão: `AGENT.md` -> `operations/AGENT.md` -> `operations/security/AGENT.md` -> roles `security-reviewer`, `application-security-engineer`, `cloud-security-reviewer` ou `data-protection-reviewer`.
+Ativação padrão: `AGENT.md` -> `operations/AGENT.md` -> `operations/security/AGENT.md` -> roles `security-reviewer`, `application-security-engineer`, `ai-security-engineer`, `cloud-security-reviewer` ou `data-protection-reviewer`.
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
@@ -117,6 +117,7 @@ Ativação padrão: `AGENT.md` -> `operations/AGENT.md` -> `operations/security/
 | `secure-code-review` | Revisar falhas comuns de segurança e escolhas inseguras de implementação. | Roles `security-reviewer`, `application-security-engineer` e `data-protection-reviewer`; playbooks de review e pré-deploy. |
 | `dependency-supply-chain-review` | Revisar dependências por pacotes inexistentes, versões vulneráveis e supply chain. | Role `application-security-engineer`; playbook `vulnerability-response`; PRs com dependências. |
 | `infra-hardening-review` | Revisar exposição de infra, CORS, rate limits, service accounts e permissões de deploy. | Role `cloud-security-reviewer`; playbook `pre-deploy-security-review`; deploy/release. |
+| `ai-runtime-security-review` | Revisar runtime de produto AI: LLM input/output, permissões de ferramentas, RAG/vector DB, fronteira de dados de cliente, prompt injection e abuso de custo/rate. | Role `ai-security-engineer`; playbook `ai-app-security-review`; workflow `security-hardening-cycle`; gates de Feature/launch com AI. |
 | `incident-response` | Guiar resposta leve a vazamentos, vulnerabilidades, abuso, outages e regressões de produção. | Role `cloud-security-reviewer`; playbook `incident-response`; incidentes e pós-release. |
 | `security-automation-readiness` | Decidir quais scanners/checks entram sem criar automação frágil cedo demais. | Roles `security-reviewer` e `cloud-security-reviewer`; playbook `security-automation-readiness`; readiness de segurança. |
 | `ai-generated-code-security` | Revisar riscos criados por agentes de IA, diffs gerados e permissões amplas. | Roles `security-reviewer` e `application-security-engineer`; playbook `ai-generated-code-security-review`; PRs ou código gerado por IA. |

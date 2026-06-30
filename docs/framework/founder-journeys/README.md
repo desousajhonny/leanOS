@@ -17,6 +17,7 @@ Use esta pasta para desenhar e testar a jornada humana antes de alterar o scaffo
 - `idea-calibration.md`: jornada canônica para começar, calibrar ou avaliar qualquer ideia antes de MVP, roadmap ou delivery.
 - `review-pr.md`: jornada de review de PR via Engineering e `pr-validation`.
 - `ready-for-launch.md`: jornada de readiness de lançamento antes de Growth, deploy ou learning loop.
+- `security-hardening-cycle.md`: jornada de auditoria e fortalecimento de Security para vulnerabilidades, LGPD, dados de cliente, token vazado, APIs e AI app security.
 
 ## Regra
 

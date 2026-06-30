@@ -31,7 +31,7 @@ export const operationsDepartment: RootDepartmentDefinition = {
       },
       conditionalAreas: [
         { area: "design", when: "Enter before Engineering when the Feature affects UI, screens, flows, copy, accessibility, interaction, design system usage or reusable components." },
-        { area: "security", when: "Enter before Engineering when the Feature touches data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk." },
+        { area: "security", when: "Enter before Engineering when the Feature touches data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure, AI-generated-code risk, LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection or cost/rate abuse." },
         { area: "devops", when: "Enter before Engineering when the Feature touches environments, CI/CD, deploy, observability, config, GitHub sync or release readiness." }
       ],
       phases: [
@@ -78,7 +78,7 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "If the Feature affects UI, screens, flows, copy, accessibility or reusable components, route Design before Engineering",
         "Ask Design to confirm whether the Feature can reuse an existing component, adapt an existing component or needs a new component contract",
         "If a new component spec is needed and no approved spec exists, route to `operations/design/playbooks/component-readiness.playbook.md` before branch or code",
-        "Route Security only when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure or AI-generated-code risk is involved",
+        "Route Security when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure, AI-generated-code risk, LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection or cost/rate abuse is involved",
         "Route DevOps only when environments, CI/CD, deploy, observability, configuration, GitHub sync or release readiness are affected",
         "Record why Design, Security or DevOps are not applicable when they do not enter the flow",
         "After Product Ops, Design, Security and DevOps readiness are ready or explicitly not applicable, route to `operations/engineering/AGENT.md` and load `operations/engineering/playbooks/engineering-delivery.playbook.md`",
@@ -285,6 +285,177 @@ export const operationsDepartment: RootDepartmentDefinition = {
       }
     },
     {
+      slug: "security-hardening-cycle",
+      purpose: "Auditar e fortalecer riscos de Security em produto, código, dados, APIs, AI app runtime, automações e readiness sem alterar código, infra ou segredos automaticamente.",
+      requiredAreas: ["security"],
+      progressionStage: "Security concern -> Security hardening -> Product/Engineering/DevOps follow-up",
+      founderTriggers: [
+        "audite seguranca",
+        "tem vulnerabilidade?",
+        "tem vulnerabilidade",
+        "dados de cliente",
+        "LGPD",
+        "vazou token",
+        "proteger API",
+        "fortalecer seguranca",
+        "hardening de seguranca",
+        "revise risco de AI",
+        "revise risco de agente",
+        "revise RAG"
+      ],
+      entryGate: [
+        "O pedido do founder é sobre auditoria, vulnerabilidade, LGPD, dados de cliente, vazamento de token, proteção de API, hardening, AI app security ou risco operacional de Security.",
+        "Se Security estiver inativo, o Root `AGENT.md` deve retornar `activation_required: operations.security` antes de carregar paths de Security.",
+        "Não trate esta jornada como implementação; ela produz achados, gates, mitigação e rotas de follow-up."
+      ],
+      activeRequirements: [
+        "Security ativo para ler baseline, knowledge, roles, skills e playbooks.",
+        "Product Ops ativo somente quando for preciso alterar Feature, critérios de aceite, escopo ou readiness.",
+        "Engineering ativo somente quando for preciso revisar código, PR, testes, dependências ou plano técnico.",
+        "DevOps ativo somente quando for preciso revisar CI/CD, deploy, ambientes, secrets de provider, observabilidade ou automação."
+      ],
+      owner: {
+        department: "operations",
+        primaryArea: "security",
+        supportingAreas: ["product-ops", "engineering", "devops"],
+        conditionalAreas: ["growth/customer-experience", "strategy/product"]
+      },
+      conditionalAreas: [
+        { area: "product-ops", when: "Entre quando a mitigação mudar Feature, critérios de aceite, não objetivos, release goal ou readiness." },
+        { area: "engineering", when: "Entre quando a auditoria precisar revisar código, PR, testes, dependências ou plano de implementação." },
+        { area: "devops", when: "Entre quando o risco tocar CI/CD, deploy, ambiente, provider, secrets, observabilidade, backup, rollback ou scanner." },
+        { area: "growth/customer-experience", when: "Entre apenas quando o risco afetar suporte, comunicação com cliente, incident response externo ou feedback pós-lançamento." },
+        { area: "strategy/product", when: "Entre quando a mitigação alterar promessa, ICP, posicionamento, escopo de validação ou risco aceito de produto." }
+      ],
+      phases: [
+        "Security intake - classificar pedido: auditoria geral, vulnerabilidade, LGPD/dados de cliente, token/secrets, API, AI app security, incidente ou pre-launch hardening.",
+        "Baseline review - carregar Security baseline e selecionar menor role, skill e playbook aplicável.",
+        "AI app runtime review - quando houver produto AI, agente, RAG ou automação, usar `ai-app-security-review` e `ai-runtime-security-review`.",
+        "Evidence review - revisar arquivos, PRs, configs, logs sanitizados ou contexto fornecido sem expor secrets.",
+        "Risk decision - classificar pass, concerns, blocked, rotate, revoke, not applicable ou needs-owner.",
+        "Follow-up routing - devolver mudanças de produto para Product Ops, código para Engineering, infraestrutura para DevOps e comunicação/learning para Growth quando aplicável."
+      ],
+      decisionOutputs: [
+        "security_pass",
+        "security_concerns",
+        "blocked_by_security",
+        "needs_product_ops",
+        "needs_engineering",
+        "needs_devops",
+        "needs_rotation",
+        "incident_response_required",
+        "not_applicable"
+      ],
+      loadFirst: [
+        "AGENT.md",
+        "operations/AGENT.md",
+        "operations/workflows/README.md",
+        "operations/workflows/security-hardening-cycle.workflow.md",
+        "operations/security/AGENT.md",
+        "operations/security/knowledge/security-baseline.md",
+        "operations/security/knowledge/ai-app-security.md",
+        "operations/security/knowledge/threat-model.md",
+        "operations/security/knowledge/secrets-management.md",
+        "operations/security/knowledge/data-protection.md"
+      ],
+      navigationRoute: [
+        "AGENT.md",
+        "operations/AGENT.md",
+        "operations/workflows/security-hardening-cycle.workflow.md",
+        "operations/security/AGENT.md",
+        "operations/security/roles/security-reviewer.role.md",
+        "operations/security/roles/ai-security-engineer.role.md quando LLM, agente, RAG ou automação estiver envolvido",
+        "operations/security/skills/ai-runtime-security-review/SKILL.md quando houver LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection ou cost/rate abuse",
+        "operations/security/playbooks/ai-app-security-review.playbook.md quando houver produto AI, agente, RAG ou automação",
+        "operations/security/playbooks/pre-deploy-security-review.playbook.md quando o risco bloquear launch/deploy",
+        "operations/security/playbooks/secrets-rotation.playbook.md quando houver token, secret ou credential exposto",
+        "operations/security/playbooks/vulnerability-response.playbook.md quando houver vulnerabilidade concreta",
+        "operations/security/playbooks/incident-response.playbook.md quando houver incidente ativo ou possível exposição de dados"
+      ],
+      steps: [
+        "Mostre a rota curta para Security e confirme que esta jornada não altera código, infra, secrets ou permissões automaticamente.",
+        "Classifique a intenção do founder: auditoria geral, vulnerabilidade, dados de cliente/LGPD, token vazado, API, AI app security, pre-launch hardening ou incidente.",
+        "Carregue Security pelo `operations/security/AGENT.md` e escolha o menor papel especialista.",
+        "Se o risco envolver LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection ou cost/rate abuse, carregue `roles/ai-security-engineer.role.md`, use `skills/ai-runtime-security-review/SKILL.md` e execute `playbooks/ai-app-security-review.playbook.md`.",
+        "Se o risco envolver token, secret ou credencial, use `secrets-management` e `secrets-rotation` sem pedir ou registrar valores de segredo.",
+        "Se o risco envolver API, auth, permissões ou dados de cliente, use `api-security-review`, `access-control-review`, `database-security-review` ou `threat-modeling` conforme a menor superfície.",
+        "Se o risco bloquear deploy, release, beta ou usuários reais, conecte o resultado ao status `blocked_by_security` do workflow `ready-for-launch`.",
+        "Classifique cada achado por severidade, evidência, owner, mitigação mínima, risco residual e rota de follow-up.",
+        "Quando uma correção exigir Product Ops, Engineering ou DevOps inativo, retorne `activation_required` para a área menor necessária em vez de carregar paths ausentes.",
+        "Peça confirmação antes de atualizar knowledge, Feature criteria, PR notes, release notes, scanner configs ou qualquer arquivo operacional.",
+        "Não rotacione token, não edite `.env`, não rode scanners remotos, não abra PR e não faça deploy a partir deste workflow sem fluxo separado e confirmação explícita."
+      ],
+      confirmationGates: [
+        "Peça confirmação antes de ler arquivos potencialmente sensíveis que não sejam necessários para a menor auditoria.",
+        "Peça confirmação antes de registrar achados em knowledge, Feature, PR log, release notes ou incident notes.",
+        "Peça confirmação antes de rotear para Product Ops, Engineering, DevOps, Growth ou Strategy.",
+        "Peça confirmação explícita antes de qualquer scanner externo, GitHub write, deploy, revogação, rotação ou chamada de API."
+      ],
+      allowedUpdates: [
+        "operations/security/knowledge/ai-app-security.md após confirmação",
+        "operations/security/knowledge/threat-model.md após confirmação",
+        "operations/security/knowledge/access-control.md após confirmação",
+        "operations/security/knowledge/data-protection.md após confirmação",
+        "operations/security/knowledge/secrets-management.md após confirmação",
+        "operations/security/knowledge/incident-response.md após confirmação",
+        "operations/product-ops/epics/<epic-slug>/<feature-slug>.md somente via Product Ops e confirmação",
+        "operations/engineering/knowledge/code-review-notes.md somente via Engineering e confirmação",
+        "operations/devops/knowledge/deployment-readiness.md somente via DevOps e confirmação"
+      ],
+      forbiddenUpdates: [
+        "código-fonte, testes, dependências ou lockfiles",
+        "auth, permissões, RBAC, middleware ou políticas de acesso",
+        ".env, .env.local, secrets, tokens ou credenciais",
+        "CI/CD, provider, scanner remoto, GitHub settings ou deploy state",
+        "produção, banco de dados, dados de cliente ou dados de suporte",
+        "roles/, skills/, playbooks/, workflows/ ou .leanos/standard/"
+      ],
+      externalCapabilities: [
+        "Read-only local inspection is allowed when the founder asks for audit and the files are relevant.",
+        "Não altere código, infra, secrets ou permissões automaticamente.",
+        "Não peça token ou segredo em chat; se um segredo aparecer, trate como comprometido e recomende rotação.",
+        "Scanners, GitHub, providers, CRM, email, analytics or payment systems require separate confirmed flow and dry-run when applicable."
+      ],
+      stopConditions: [
+        "Security está inativo; retorne `activation_required: operations.security`.",
+        "O pedido exige aconselhamento legal/compliance além de orientação operacional de produto.",
+        "O founder pede para colar, salvar ou versionar segredo.",
+        "A auditoria precisa alterar código, infra, secrets ou permissões automaticamente.",
+        "O risco envolve dados de cliente e a customer data boundary é desconhecida.",
+        "LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection ou cost/rate abuse são aplicáveis e não têm evidência suficiente para decisão.",
+        "Há possível incidente ativo, vazamento de token ou exposição de dados e contenção não está definida."
+      ],
+      expectedOutput: [
+        "Tipo de pedido de Security identificado.",
+        "Evidência revisada e lacunas de evidência.",
+        "Matriz de riscos incluindo LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection e cost/rate abuse quando aplicáveis.",
+        "Achados por severidade com owner e menor mitigação.",
+        "Decisão de Security: `security_pass`, `security_concerns`, `blocked_by_security`, `needs_rotation`, `incident_response_required` ou `not_applicable`.",
+        "Rotas de follow-up para Product Ops, Engineering, DevOps, Growth ou Strategy.",
+        "Confirmações necessárias antes de qualquer escrita local ou ação externa."
+      ],
+      continuationBridge: {
+        immediate: "A auditoria de Security produziu achados e uma decisão.\nQuer que eu siga para a menor rota de mitigação, registre os achados confirmados ou trate um bloqueio crítico primeiro?",
+        laterTriggers: [
+          "audite seguranca",
+          "tem vulnerabilidade?",
+          "vazou token",
+          "proteger API",
+          "LGPD",
+          "dados de cliente",
+          "revise risco de AI",
+          "corrija esse risco"
+        ],
+        nextRoute: "operations/security/playbooks/ai-app-security-review.playbook.md, operations/security/playbooks/vulnerability-response.playbook.md, operations/security/playbooks/secrets-rotation.playbook.md, feature-to-delivery-cycle ou ready-for-launch",
+        rules: [
+          "Se a próxima ação for correção de código, volte para `feature-to-delivery-cycle` depois que a Feature ou issue estiver pronta.",
+          "Se a próxima ação for deploy/launch, leve o bloqueio para `ready-for-launch`.",
+          "Se houver token exposto, trate como rotação/revogação antes de qualquer outro trabalho.",
+          "Se houver incidente ativo, use `incident-response` antes de otimizações ou melhorias."
+        ]
+      }
+    },
+    {
       slug: "ready-for-launch",
       purpose: "Decidir se uma release, beta ou MVP está pronto para usuários reais antes de acionar lançamento, deploy ou learning loop.",
       requiredAreas: ["product-ops", "engineering", "devops"],
@@ -318,7 +489,7 @@ export const operationsDepartment: RootDepartmentDefinition = {
       },
       conditionalAreas: [
         { area: "design", when: "Entre quando UX, UI, fluxo, acessibilidade, copy pública ou componentes ainda forem risco para usuários reais." },
-        { area: "security", when: "Entre quando houver auth, permissões, dados, pagamentos, privacidade, API, banco, secrets, abuso, compliance ou infraestrutura sensível." },
+        { area: "security", when: "Entre quando houver auth, permissões, dados, pagamentos, privacidade, API, banco, secrets, abuso, compliance, infraestrutura sensível, LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection ou cost/rate abuse." },
         { area: "growth/marketing", when: "Entre depois do gate operacional quando posicionamento público, canal, campanha, landing page ou plano de lançamento precisarem execução." },
         { area: "growth/customer-experience", when: "Entre quando onboarding, suporte, coleta de feedback, notas para clientes ou rotina de aprendizado precisarem existir no lançamento." },
         { area: "strategy/product", when: "Entre quando o gate revelar mudança de ICP, promessa, posicionamento, problema, hipótese central ou escopo de validação." }
@@ -391,10 +562,11 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "Carregue Engineering para confirmar evidência: PR/merge, testes, build, validação manual, Founder Testing Guide, regressões conhecidas e lacunas técnicas.",
         "Carregue DevOps para confirmar ambiente alvo, deploy path, rollback, release notes, observabilidade, post-release checks e limites de produção.",
         "Classifique Design como aplicável ou não aplicável. Se UI, copy, fluxo, acessibilidade ou componentes ainda bloquearem usuários reais e Design estiver inativo, retorne `activation_required: operations.design`.",
-        "Classifique Security como aplicável ou não aplicável. Se dados, auth, permissões, privacy, pagamento, API, database, secrets, compliance ou abuso forem risco e Security estiver inativo, retorne `activation_required: operations.security`.",
+        "Classifique Security como aplicável ou não aplicável. Se dados, auth, permissões, privacy, pagamento, API, database, secrets, compliance, abuso, LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection ou cost/rate abuse forem risco e Security estiver inativo, retorne `activation_required: operations.security`.",
+        "Quando Security for aplicável, exija `security_gate_passed` com evidência de Security antes de `ready_to_launch`; sem isso, use `blocked_by_security`.",
         "Classifique Growth como aplicável ou não aplicável. Se execução de lançamento, campanha, landing page, onboarding, suporte ou coleta de feedback forem necessários e Growth estiver inativo, retorne `activation_required: growth.marketing` ou `activation_required: growth.customer-experience`.",
         "Classifique Strategy como aplicável ou não aplicável. Se a decisão mudar ICP, posicionamento, problema, promessa ou hipótese central, volte para Strategy antes de lançamento público.",
-        "Produza uma matriz curta de Product, Engineering, DevOps, Design, Security, Growth e Strategy com status: ready, known-risk, blocked ou not-applicable.",
+        "Produza uma matriz curta de Product, Engineering, DevOps, Design, Security, Growth e Strategy com status: ready, known-risk, blocked ou not-applicable; para Security aplicável, use `security_gate_passed`, `security_known_risk_accepted` ou `blocked_by_security`.",
         "Escolha exatamente uma decisão final entre `ready_to_launch`, `ready_with_known_risks`, `blocked_by_product`, `blocked_by_design`, `blocked_by_security`, `blocked_by_engineering`, `blocked_by_devops`, `blocked_by_growth` ou `not_ready_to_learn`.",
         "Quando a decisão for `ready_to_launch`, explique que o próximo passo é Growth executar o lançamento via `mvp-launch` ou DevOps conduzir deploy apenas depois de confirmação humana explícita.",
         "Quando a decisão for `ready_with_known_risks`, liste os riscos aceitos, owner, mitigação mínima e confirmação necessária antes de qualquer exposição a usuário real.",
@@ -443,13 +615,14 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "Engineering não consegue confirmar PR/merge, testes, build, validação manual ou riscos técnicos.",
         "DevOps não consegue confirmar ambiente alvo, deploy path, rollback, release notes, observabilidade ou post-release checks.",
         "Design, Security ou Growth são aplicáveis, mas a área necessária está inativa; retorne `activation_required`.",
+        "Security é aplicável, mas não existe `security_gate_passed` nem risco aceito explicitamente; retorne `blocked_by_security`.",
         "O founder quer continuar implementando Feature; volte para `feature-to-delivery-cycle`.",
         "O founder quer executar campanha ou learning loop antes de decidir readiness; primeiro feche este gate.",
         "O founder não confirma decisão `ready_to_launch`, risco aceito, update local ou ação externa."
       ],
       expectedOutput: [
         "Release candidate identificado.",
-        "Matriz de readiness por Product, Engineering, DevOps, Design, Security, Growth e Strategy.",
+        "Matriz de readiness por Product, Engineering, DevOps, Design, Security, Growth e Strategy, incluindo `security_gate_passed` quando Security for aplicável.",
         "Decisão final: `ready_to_launch`, `ready_with_known_risks`, `blocked_by_product`, `blocked_by_design`, `blocked_by_security`, `blocked_by_engineering`, `blocked_by_devops`, `blocked_by_growth` ou `not_ready_to_learn`.",
         "Riscos aceitos ou bloqueios com owner e menor rota de desbloqueio.",
         "Confirmações necessárias antes de launch, deploy, Growth ou escrita externa.",

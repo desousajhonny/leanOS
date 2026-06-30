@@ -120,6 +120,8 @@ Features quebram um Epic em unidades implementáveis.
 
 Cada Feature deve conter critérios de aceite, tasks internas e dimensões de readiness para Product Ops, Engineering e, quando aplicável, Design, Security e DevOps.
 
+Security é aplicável quando a Feature toca dados, autenticação, permissões, privacidade, abuso, API, banco, secrets, compliance, infraestrutura, código gerado por IA ou risco AI-native como LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection e cost/rate abuse.
+
 ### 9. Delivery
 
 Delivery começa apenas quando uma Feature está pronta para desenvolvimento ou quando um spike técnico explícito foi aprovado.
@@ -136,6 +138,8 @@ Ele pertence a Operations porque precisa combinar:
 - evidência de PR, testes, build, validação manual e riscos técnicos de Engineering;
 - ambiente alvo, deploy path, rollback, release notes, observabilidade e post-release checks de DevOps;
 - Design, Security, Growth ou Strategy apenas quando seus gatilhos forem aplicáveis.
+
+Quando Security for aplicável, Ready for Launch deve exigir `security_gate_passed`, risco conhecido aceito explicitamente ou decisão `blocked_by_security` antes de qualquer exposição a usuários reais.
 
 O resultado deve ser uma decisão explícita:
 

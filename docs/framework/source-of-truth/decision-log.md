@@ -2,6 +2,33 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-30 - Security Hardening E AI App Security Como Gate De Produto
+
+Decisão:
+
+- Security continua sendo área de Operations, não um novo departamento.
+- Pedidos diretos como "audite segurança", "tem vulnerabilidade?", "dados de cliente", "LGPD", "vazou token", "proteger API" e "hardening" devem rotear para Security.
+- Se Security estiver inativo, o root `AGENT.md` deve retornar `activation_required: operations.security`.
+- Criar workflow `operations/workflows/security-hardening-cycle.workflow.md` quando `operations.security` estiver ativo.
+- O workflow exige apenas Security para preservar ativação progressiva, mas pode rotear follow-up para Product Ops, Engineering, DevOps, Growth ou Strategy quando necessário.
+- AI app security passa a ser parte explícita de Security, cobrindo:
+  - LLM input/output;
+  - tool permissions;
+  - RAG/vector DB;
+  - customer data boundary;
+  - prompt injection;
+  - cost/rate abuse.
+- Security ganha role `AI Security Engineer`, skill `ai-runtime-security-review`, playbook `ai-app-security-review` e knowledge `ai-app-security.md`.
+- `feature-to-delivery-cycle`, Product Ops `ready-to-develop`, Engineering `review-criteria` e `ready-for-launch` devem tratar risco AI-native como Security readiness.
+- Quando Security for aplicável em Ready for Launch, o gate exige `security_gate_passed`, risco conhecido aceito explicitamente ou `blocked_by_security`.
+
+Justificativa:
+
+- Produtos AI-first criam riscos que não aparecem em AppSec tradicional: prompt injection, tool use, RAG leakage, dados de cliente em embeddings/logs e abuso de custo/rate.
+- Founders pedem segurança em linguagem natural; o framework precisa responder com rota clara, sem exigir que o usuário conheça departamentos.
+- Manter tudo dentro de Operations/Security preserva o modelo progressivo e evita criar burocracia ou setor novo.
+- O gate impede que uma release vá para usuários reais com Security aplicável mas sem evidência de revisão.
+
 ## 2026-06-30 - Runbook Versionado Para Publicar `npm create lean-os`
 
 Decisão:

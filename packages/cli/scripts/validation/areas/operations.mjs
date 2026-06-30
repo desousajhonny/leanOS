@@ -472,17 +472,21 @@ export async function assertSecurityAreaPattern(rootDir) {
   const secretsManagement = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "secrets-management.md"), "utf8");
   const infraHardening = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "infra-hardening.md"), "utf8");
   const secureCoding = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "secure-coding.md"), "utf8");
+  const aiAppSecurity = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "ai-app-security.md"), "utf8");
   const incidentResponse = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "incident-response.md"), "utf8");
   const securityAutomation = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "security-automation.md"), "utf8");
   const securityReviewer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "roles", "security-reviewer.role.md"), "utf8");
   const appSecEngineer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "roles", "application-security-engineer.role.md"), "utf8");
+  const aiSecurityEngineer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "roles", "ai-security-engineer.role.md"), "utf8");
   const cloudSecurityReviewer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "roles", "cloud-security-reviewer.role.md"), "utf8");
   const dataProtectionReviewer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "roles", "data-protection-reviewer.role.md"), "utf8");
   const aiGeneratedCodeSecurity = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "skills", "ai-generated-code-security/SKILL.md"), "utf8");
+  const aiRuntimeSecurity = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "skills", "ai-runtime-security-review/SKILL.md"), "utf8");
   const securityAutomationReadiness = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "skills", "security-automation-readiness/SKILL.md"), "utf8");
   const apiSecurityReview = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "skills", "api-security-review/SKILL.md"), "utf8");
   const databaseSecurityReview = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "skills", "database-security-review/SKILL.md"), "utf8");
   const preDeployReview = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "playbooks", "pre-deploy-security-review.playbook.md"), "utf8");
+  const aiAppSecurityReview = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "playbooks", "ai-app-security-review.playbook.md"), "utf8");
   const aiGeneratedReview = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "playbooks", "ai-generated-code-security-review.playbook.md"), "utf8");
   const securityAutomationPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "playbooks", "security-automation-readiness.playbook.md"), "utf8");
   const githubSecurityAutomation = await readFile(join(rootDir, ".github", "leanos", "security-automation.md"), "utf8");
@@ -497,6 +501,7 @@ export async function assertSecurityAreaPattern(rootDir) {
   assert(securityReadme.includes("quality gate"), "Security README should explain quality gate role");
   assert(securityAgent.includes("Você é Security Lead"), "Security AGENT should define Security Lead");
   assert(securityAgent.includes("Application Security Engineer: `roles/application-security-engineer.role.md`"), "Security AGENT should route AppSec work");
+  assert(securityAgent.includes("AI Security Engineer: `roles/ai-security-engineer.role.md`"), "Security AGENT should route AI Security work");
   assert(securityAgent.includes("Cloud Security Reviewer: `roles/cloud-security-reviewer.role.md`"), "Security AGENT should route cloud security work");
   assert(securityAgent.includes("Data Protection Reviewer: `roles/data-protection-reviewer.role.md`"), "Security AGENT should route data protection work");
   assert(securityAgent.includes("No public production database"), "Security AGENT should include public database red line");
@@ -504,14 +509,18 @@ export async function assertSecurityAreaPattern(rootDir) {
   assert.equal(areaYaml.area.agent, "AGENT.md", "Security area.yaml should declare AGENT.md");
   assert(areaYaml.area.source_of_truth.includes("knowledge/security-baseline.md"), "Security area.yaml should list security baseline");
   assert(areaYaml.area.source_of_truth.includes("knowledge/security-automation.md"), "Security area.yaml should list security automation readiness");
+  assert(areaYaml.area.source_of_truth.includes("knowledge/ai-app-security.md"), "Security area.yaml should list AI app security knowledge");
   assert(areaYaml.area.source_of_truth.includes("knowledge/database-security.md"), "Security area.yaml should list database security");
   assert(areaYaml.area.roles.includes("application-security-engineer"), "Security area.yaml should list AppSec role");
+  assert(areaYaml.area.roles.includes("ai-security-engineer"), "Security area.yaml should list AI Security Engineer role");
   assert(areaYaml.area.skills.includes("ai-generated-code-security"), "Security area.yaml should list AI generated code security skill");
+  assert(areaYaml.area.skills.includes("ai-runtime-security-review"), "Security area.yaml should list AI runtime security skill");
   assert(areaYaml.area.skills.includes("security-automation-readiness"), "Security area.yaml should list security automation readiness skill");
   assert(areaYaml.area.playbooks.includes("pre-deploy-security-review"), "Security area.yaml should list pre-deploy security review");
+  assert(areaYaml.area.playbooks.includes("ai-app-security-review"), "Security area.yaml should list AI app security review playbook");
   assert(areaYaml.area.playbooks.includes("security-automation-readiness"), "Security area.yaml should list security automation readiness playbook");
 
-  for (const content of [baseline, threatModel, accessControl, dataProtection, databaseSecurity, secretsManagement, infraHardening, secureCoding, incidentResponse, securityAutomation]) {
+  for (const content of [baseline, threatModel, accessControl, dataProtection, databaseSecurity, secretsManagement, infraHardening, secureCoding, aiAppSecurity, incidentResponse, securityAutomation]) {
     for (const section of ["## Propósito", "## O Que Documentar", "## Verificações Obrigatórias", "## Linhas Vermelhas", "## Related Playbooks"]) {
       assert(content.includes(section), `Security knowledge should include ${section}`);
     }
@@ -528,12 +537,18 @@ export async function assertSecurityAreaPattern(rootDir) {
     "Admin access requires RBAC, MFA when available and audit trail.",
     "Production, staging and development must use separate databases, secrets and permissions.",
     "Production deploy requires backup, rollback path and security review.",
-    "AI agents must not change auth, secrets, CI/CD, infra or dependencies without human review."
+    "AI agents must not change auth, secrets, CI/CD, infra or dependencies without human review.",
+    "LLM input/output must be treated as untrusted product surface.",
+    "Tool permissions must be least-privilege and explicit.",
+    "RAG/vector DB retrieval must preserve customer data boundaries.",
+    "Prompt injection must be reviewed before agent or AI feature launch.",
+    "Cost/rate abuse must have limits or accepted risk owner."
   ]) {
     assert(baseline.includes(redLine), `Security baseline should include red line: ${redLine}`);
   }
 
   assert(baseline.includes("OWASP Top 10"), "Security baseline should reference OWASP Top 10");
+  assert(baseline.includes("OWASP Top 10 for Large Language Model Applications"), "Security baseline should reference OWASP LLM Top 10");
   assert(baseline.includes("OWASP API Security Top 10"), "Security baseline should reference OWASP API Security Top 10");
   assert(baseline.includes("NIST SSDF"), "Security baseline should reference NIST SSDF");
   assert(databaseSecurity.includes("OWASP Database Security Cheat Sheet"), "Database security should reference OWASP Database Security Cheat Sheet");
@@ -544,13 +559,13 @@ export async function assertSecurityAreaPattern(rootDir) {
   assert(securityAutomation.includes("IaC/config scanning"), "Security automation knowledge should mention IaC/config scanning");
   assert(securityAutomation.includes("Não crie workflows de scanner até stack, package manager e comandos estáveis serem conhecidos"), "Security automation knowledge should avoid fragile early workflows");
 
-  for (const roleContent of [securityReviewer, appSecEngineer, cloudSecurityReviewer, dataProtectionReviewer]) {
+  for (const roleContent of [securityReviewer, appSecEngineer, aiSecurityEngineer, cloudSecurityReviewer, dataProtectionReviewer]) {
     for (const section of ["## Propósito", "## Use Quando", "## Fonte da Verdade", "## Skills Obrigatórias", "## Playbooks Relevantes", "## Saída", "## Linhas Vermelhas"]) {
       assert(roleContent.includes(section), `Security role should include ${section}`);
     }
   }
 
-  for (const skillContent of [aiGeneratedCodeSecurity, apiSecurityReview, databaseSecurityReview, securityAutomationReadiness]) {
+  for (const skillContent of [aiGeneratedCodeSecurity, aiRuntimeSecurity, apiSecurityReview, databaseSecurityReview, securityAutomationReadiness]) {
     assert(skillContent.includes("---\nname:"), "Security skill should include YAML frontmatter");
     assert(skillContent.includes("description: Use quando"), "Security skill should include trigger-only description");
     assert(skillContent.includes("### Etapa 1"), "Security skill should use Step headings inside Process");
@@ -574,8 +589,22 @@ export async function assertSecurityAreaPattern(rootDir) {
     assert(aiGeneratedCodeSecurity.includes(aiRisk), `AI generated code security skill should cover ${aiRisk}`);
   }
 
+  for (const aiAppRisk of [
+    "LLM input/output",
+    "tool permissions",
+    "RAG/vector DB",
+    "customer data boundary",
+    "prompt injection",
+    "cost/rate abuse"
+  ]) {
+    assert(aiRuntimeSecurity.includes(aiAppRisk), `AI runtime security skill should cover ${aiAppRisk}`);
+    assert(aiAppSecurity.includes(aiAppRisk), `AI app security knowledge should cover ${aiAppRisk}`);
+    assert(aiAppSecurityReview.includes(aiAppRisk), `AI app security review playbook should cover ${aiAppRisk}`);
+  }
+
   for (const section of ["## Propósito", "## Use Quando", "## Antes de Agir", "## Etapas", "## Gate de Segurança", "## Saída", "## Arquivos para Atualizar", "## Stop Conditions"]) {
     assert(preDeployReview.includes(section), `Pre-deploy security review should include ${section}`);
+    assert(aiAppSecurityReview.includes(section), `AI app security review playbook should include ${section}`);
     assert(aiGeneratedReview.includes(section), `AI generated code review playbook should include ${section}`);
     assert(securityAutomationPlaybook.includes(section), `Security automation readiness playbook should include ${section}`);
   }
@@ -630,6 +659,7 @@ export async function assertOperationalPlaybookSections(rootDir) {
     "operations/security/playbooks/security-foundation.playbook.md",
     "operations/security/playbooks/pre-mvp-security-checklist.playbook.md",
     "operations/security/playbooks/pre-deploy-security-review.playbook.md",
+    "operations/security/playbooks/ai-app-security-review.playbook.md",
     "operations/security/playbooks/api-security-review.playbook.md",
     "operations/security/playbooks/database-security-review.playbook.md",
     "operations/security/playbooks/secrets-rotation.playbook.md",

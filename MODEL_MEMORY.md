@@ -7,7 +7,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 ## Estado Atual
 
 - Repositório: `desousajhonny/leanOS`.
-- Branch local de trabalho atual: `main`.
+- Branch local de trabalho atual: `feature/ai-security-hardening`.
 - Remote `origin/main` foi enviado para o commit `3159666` em 2026-06-30 antes do runbook de release npm.
 - `AGENT.md` raiz é o ponto de entrada para comportamento de agente no nível do projeto.
 - Source of truth do framework vive em `docs/framework/source-of-truth/`.
@@ -18,6 +18,8 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 - 2026-06-30: Adotar layout Business OS no scaffold: `<product-slug>-os/` para Strategy/Operations/Growth, `.leanos/standard/` para padrões do framework e `.leanos/runtime/` para agent/context/index/traces/vscode. Adicionar `lean-os update` para migrar workspaces existentes com preview via `--dry-run`.
 - 2026-06-30: Adotar `npm create lean-os` como comando principal de criação de workspace via pacote `create-lean-os`. Manter `npx lean-os ai` como compatibilidade e `npx lean-os activate/update` como comandos operacionais.
 - 2026-06-30: Publicações futuras de `lean-os` + `create-lean-os` devem usar `npm run release:npm`, com token preparado localmente em `.npmrc`, validações automáticas, publish `lean-os` antes de `create-lean-os`, verificação do registry e remoção de `.npmrc`.
+- 2026-06-30: Security hardening fica em Operations/Security via workflow `security-hardening-cycle`. Pedidos como auditoria, vulnerabilidade, LGPD, dados de cliente, token vazado e proteção de API roteiam para `operations.security`; se inativo, retornam `activation_required: operations.security`.
+- 2026-06-30: AI app security passa a ser gate explícito de produto com role `AI Security Engineer`, skill `ai-runtime-security-review`, playbook `ai-app-security-review` e knowledge `ai-app-security.md`. Riscos AI-native cobertos: LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection e cost/rate abuse.
 - 2026-06-30: README raiz gerado deve ser product-first e founder-friendly. Melhorias de README devem entrar pela Navigation Chain `Strategy Product -> Product Narrative Editor -> write-product-readme`, usando template em `.leanos/standard/templates/product/` e preservando README existente com diff antes de escrita.
 - 2026-06-30: Novo repositório GitHub exige gate `README-ready`. DevOps/GitHub DevOps verifica o gate, mas não escreve narrativa de produto; se faltar README confirmado, deve rotear para `Strategy Product -> Product Narrative Editor -> write-product-readme` antes de create/publish/connect remoto.
 - 2026-06-30: Fortalecer sync GitHub de Epics/Features. Epic local canônico passa a ser `epics/<epic-slug>/epic.md` com fallback legado para `README.md`; sync exige body rico, milestone, Size/Effort, relações Epic/Feature, read-back verification e patch local de `github_issue.url` + `sync_status: synced`.
@@ -34,7 +36,8 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 - Working tree: scaffold reorganizado para gerar `<product-slug>-os/README.md`, departamentos dentro do Business OS, `.leanos/standard/` e `.leanos/runtime/`; `leanos.yaml.paths` registra os novos roots; validação `validateBusinessOsLayout` cobre paths físicos e impede referências antigas como `ai-standard/` e `.leanos/context`.
 - Working tree: pacote `packages/create` adicionado como `create-lean-os`; o binário chama o wizard `runAiCommand` do pacote `lean-os`, docs promovem `npm create lean-os` e validação `validateCreateLeanOsPackage` cobre o contrato.
-- Working tree: runbook `scripts/publish-npm-create-leanos.mjs` em criação para futuras publicações npm; `AGENT.md`, README e decision log devem apontar para `npm run release:npm`.
+- Working tree: Security hardening em implementação na branch `feature/ai-security-hardening`. Foram adicionados contratos para `security-hardening-cycle`, `AI Security Engineer`, `ai-runtime-security-review`, `ai-app-security-review`, `ai-app-security.md`, rota root de Security e gates AI-native em delivery/review/launch.
+- Working tree: runbook `scripts/publish-npm-create-leanos.mjs` existe para futuras publicações npm; `AGENT.md`, README e decision log apontam para `npm run release:npm`.
 - Working tree: README raiz do scaffold agora explica produto/empresa antes do LeanOS; Strategy Product ganhou role `Product Narrative Editor`, skill `write-product-readme`, common path no AGENT da área e template `.leanos/standard/templates/product/product-readme-template.md`; validação `validateProductReadmeContract` cobre rota, preservação de README existente e sections obrigatórias.
 - Working tree: DevOps/GitHub DevOps agora exige `README-ready` para novo repositório GitHub, registra Repository mode/README status/source em `github-management.md`, bloqueia create/publish/connect remoto sem README product-first confirmado e valida isso com `validateGithubRepositoryReadmeGate`.
 - Working tree: contrato GitHub sync fortalecido em `.github/leanos/project-sync.yaml`, `work-mapping.md`, `capability-contract.md`, Product Ops e DevOps. Nova validação `validateGithubSyncContract` cobre `epic.md`, fallback README legado, body rico, milestone, Effort, relações, read-back verification e patch local de `github_issue.url`/`sync_status`.

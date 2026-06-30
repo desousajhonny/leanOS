@@ -24,6 +24,17 @@ export const operationsSecurityRoles: RoleDefinition[] = [
       redLines: ["Não aprove construção insegura de query.", "Não aceite testes fabricados ou testes de Security deletados.", "Não deixe código gerado alterar auth, segredos, CI/CD ou infra sem review."]
     },
     {
+      slug: "ai-security-engineer",
+      title: "AI Security Engineer",
+      purpose: "Review AI app runtime risk across LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection and cost/rate abuse.",
+      useWhen: ["AI feature or agent handles user/customer data", "LLM output drives product behavior", "agent tools or automations can write, contact users or call external APIs", "RAG/vector DB retrieval is used", "prompt injection or cost/rate abuse is plausible"],
+      beforeActing: ["../AGENT.md", "../knowledge/security-baseline.md", "../knowledge/ai-app-security.md", "../knowledge/data-protection.md", "../knowledge/access-control.md", "../knowledge/secrets-management.md", "../../product-ops/AGENT.md", "../../engineering/AGENT.md"],
+      skills: ["ai-runtime-security-review", "threat-modeling", "access-control-review", "secrets-management", "secure-code-review"],
+      playbooks: ["ai-app-security-review", "pre-mvp-security-checklist", "pre-deploy-security-review", "incident-response"],
+      outputs: ["AI app security findings", "AI runtime risk matrix", "Required mitigations", "Security gate result", "Product/Engineering/DevOps follow-up"],
+      redLines: ["Não aprove LLM input/output como confiável.", "Não aprove ferramentas de agente com permissões amplas sem owner e gate.", "Não aprove RAG/vector DB sem fronteira de dados de cliente.", "Não aprove prompt injection ou cost/rate abuse sem mitigação, limite ou aceite explícito."]
+    },
+    {
       slug: "cloud-security-reviewer",
       title: "Cloud Security Reviewer",
       purpose: "Review deployment, infrastructure, CORS, service accounts, environment separation and runtime exposure.",
