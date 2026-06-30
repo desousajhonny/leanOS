@@ -12,7 +12,7 @@ export const ui = {
 };
 
 export function stepLabel(step: number, total: number, label: string): string {
-  return `${ui.brand(`Step ${step}/${total}`)} ${ui.muted("-")} ${ui.title(label)}`;
+  return `${ui.brand(`Etapa ${step}/${total}`)} ${ui.muted("-")} ${ui.title(label)}`;
 }
 
 export function keyValue(label: string, value: string): string {

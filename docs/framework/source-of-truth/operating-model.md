@@ -34,15 +34,19 @@ Toda ideia entra por `idea-calibration`, e essa calibragem deve considerar o est
 
 A CLI captura apenas o contexto suficiente para começar:
 
-- nome da empresa ou do produto;
+- nome do produto;
+- se o LeanOS parte de uma ideia/produto novo ou será conectado a um projeto existente;
 - tipo de produto;
 - descrição curta da ideia;
-- usuário alvo;
-- estágio;
-- modo de operação;
 - sinal de repo ou produto existente.
+- modo de preparação do ambiente:
+  - progressivo recomendado: Strategy ativa agora, Operations e Growth disponíveis para ativação posterior;
+  - avançado: preparar todas as áreas de uma vez.
+- preferência inicial de suporte GitHub.
 
 Isso não é a verdade final. É um insumo inicial para Strategy.
+
+O wizard não deve perguntar usuário alvo, estágio inicial ou modo de operação no setup curto. Para ideia nova, esses campos podem começar com defaults internos e ser refinados por Strategy. Para projeto existente, o LeanOS deve tratar o contexto real do repositório e da conversa como fonte para calibrar estágio e público depois.
 
 ### 2. Idea Calibration E Strategy Baseline
 

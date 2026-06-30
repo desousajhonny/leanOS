@@ -120,6 +120,7 @@ function workspaceAnswersFromYaml(yaml: Record<string, unknown>): WorkspaceAnswe
 
   return {
     workspaceMode: requiredString(workspace.mode, "workspace.mode") as WorkspaceAnswers["workspaceMode"],
+    initialActivationMode: requiredString(activation.mode, "activation.mode") as WorkspaceAnswers["initialActivationMode"],
     detectedProject: detectedProjectFromYaml(workspace.detected_project),
     prepareGithubManagement: github.project_management === "prepared" || github.status === "pending_user_token",
     companyName: requiredString(company.name, "company.name"),

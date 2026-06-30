@@ -5,110 +5,86 @@ import { bullet, keyValue, stepLabel, ui } from "./theme.js";
 
 const productTypeLabels: Record<string, string> = {
   "b2b-saas": "B2B SaaS",
-  "b2c-app": "B2C app",
-  "ai-agent-product": "AI agent product",
-  "developer-tool": "Developer tool",
+  "b2c-app": "App B2C",
+  "ai-agent-product": "Produto com agente de IA",
+  "developer-tool": "Ferramenta para desenvolvedores",
   marketplace: "Marketplace",
-  "internal-tool": "Internal tool",
-  "api-product": "API product",
-  "not-sure": "Not sure yet"
+  "internal-tool": "Ferramenta interna",
+  "api-product": "Produto de API",
+  "not-sure": "Ainda não sei"
 };
 
-const stageLabels: Record<string, string> = {
-  idea: "Idea only",
-  "researching-problem": "Researching the problem",
-  "designing-mvp": "Designing MVP",
-  "building-mvp": "Building MVP",
-  "mvp-launched": "MVP launched",
-  "existing-product-with-users": "Existing product with users",
-  scaling: "Scaling"
+const workspaceModeLabels: Record<string, string> = {
+  "new-product-workspace": "Ideia ou produto novo",
+  "existing-product-repo": "Projeto existente"
 };
 
-const modeLabels: Record<string, string> = {
-  "solo-founder": "Solo founder",
-  "founder-plus-ai-agents": "Founder + AI agents",
-  "small-team": "Small team",
-  "existing-startup-team": "Existing startup team",
-  "internal-innovation-team": "Internal corporate innovation team"
+const activationModeLabels: Record<string, string> = {
+  progressive: "Progressivo",
+  "all-at-once": "Avançado: tudo agora"
 };
-
-export function printComingSoonOutro(label: string): void {
-  outro(`${ui.title(label)} is coming soon. For now, use ${ui.command("Create a new LeanOS workspace")}.`);
-}
 
 export function printCreatedWorkspaceOutro(answers: WorkspaceAnswers, result: WorkspaceGenerationResult): void {
   const headline =
     result.mode === "missing-only"
-      ? "LeanOS workspace updated"
+      ? "Ambiente LeanOS atualizado"
       : result.mode === "overwrite"
-        ? "LeanOS workspace regenerated"
+        ? "Ambiente LeanOS regenerado"
         : answers.workspaceMode === "existing-product-repo"
-          ? "LeanOS installed as operating layer"
-          : "LeanOS workspace created";
+          ? "LeanOS instalado como camada operacional"
+          : "Ambiente LeanOS criado";
   const fileModeNote =
     result.mode === "missing-only"
-      ? "Some files already existed and were preserved. LeanOS created only the missing files."
+      ? "Alguns arquivos já existiam e foram preservados. O LeanOS criou apenas os arquivos ausentes."
       : result.mode === "overwrite"
-        ? "Existing conflicting files were overwritten because you selected overwrite."
+        ? "Arquivos conflitantes foram sobrescritos porque você escolheu sobrescrever."
         : "";
+  const activationMode = answers.initialActivationMode ?? "progressive";
 
   const message = [
     ui.success(headline),
     "",
-    keyValue("Company", answers.companyName),
-    keyValue("Product", answers.productName),
-    keyValue("Workspace mode", answers.workspaceMode),
-    keyValue("Type", productTypeLabels[answers.productType]),
-    keyValue("Stage", stageLabels[answers.stage]),
-    keyValue("Mode", modeLabels[answers.mode]),
-    keyValue("GitHub management", answers.prepareGithubManagement ? "Prepared" : "Not now"),
-    keyValue("Areas", answers.subareas.join(", ")),
+    keyValue("Produto", answers.productName),
+    keyValue("Modo", workspaceModeLabels[answers.workspaceMode] ?? answers.workspaceMode),
+    keyValue("Tipo", productTypeLabels[answers.productType]),
+    keyValue("Setup", activationModeLabels[activationMode] ?? activationMode),
+    keyValue("GitHub", answers.prepareGithubManagement ? "Suporte preparado" : "Agora não"),
     "",
-    ui.title("Files"),
-    keyValue("Written", ui.success(String(result.writtenPaths.length))),
-    keyValue("Skipped", result.skippedPaths.length > 0 ? ui.warning(String(result.skippedPaths.length)) : "0"),
+    ui.title("Arquivos"),
+    keyValue("Escritos", ui.success(String(result.writtenPaths.length))),
+    keyValue("Ignorados", result.skippedPaths.length > 0 ? ui.warning(String(result.skippedPaths.length)) : "0"),
     fileModeNote ? ui.warning(fileModeNote) : "",
     "",
-    ui.title("Main entrypoints"),
-    bullet(`${ui.path("AGENT.md")} ${ui.muted("universal agent entrypoint")}`),
-    bullet(`${ui.path("leanos.yaml")} ${ui.muted("workspace configuration")}`),
-    bullet(`${ui.path(".leanos/")} ${ui.muted("LeanOS runtime, context and indexes")}`),
-    bullet(`${ui.path("ai-standard/")} ${ui.muted("templates, checklists and instructions")}`),
-    bullet(`${ui.path(".github/agents/leanos-chief.agent.md")} ${ui.muted("VS Code custom agent")}`),
-    bullet(`${ui.path(".github/prompts/start-leanos.prompt.md")} ${ui.muted("VS Code start prompt")}`),
+    ui.title("Entrypoints"),
+    bullet(`${ui.path("AGENT.md")} ${ui.muted("entrada principal do agente")}`),
+    bullet(`${ui.path("leanos.yaml")} ${ui.muted("configuração do ambiente")}`),
+    bullet(`${ui.path(".leanos/")} ${ui.muted("runtime, contexto e índices")}`),
+    bullet(`${ui.path("ai-standard/")} ${ui.muted("templates, checklists e instruções")}`),
+    bullet(`${ui.path(".github/agents/leanos-chief.agent.md")} ${ui.muted("agente customizado do VS Code")}`),
     "",
-    ui.title("Workspace areas"),
-    bullet(ui.path("strategy/")),
-    bullet(ui.path("operations/")),
-    bullet(ui.path("growth/")),
-    bullet(ui.path(".leanos/index")),
-    bullet(ui.path(".github")),
-    "",
-    stepLabel(5, 5, "Next actions"),
+    stepLabel(3, 3, "Próximos passos"),
     "",
     answers.workspaceMode === "existing-product-repo"
-      ? "Existing product files were preserved unless you explicitly chose overwrite. Start by capturing product and codebase context."
-      : "Define strategy and MVP before bootstrapping product app/code. Initial setup does not create source code.",
+      ? "Arquivos do produto existente foram preservados, salvo se você escolheu sobrescrever conflitos. Comece capturando contexto de produto e codebase."
+      : "Comece por Strategy antes de criar app/código. O setup inicial não cria código de produto.",
     answers.prepareGithubManagement
-      ? `GitHub management was prepared. Ask LeanOS Chief to configure GitHub Projects or sync Epics/Features when you are ready. Add a token to ${ui.path(".env.local")} only when you are ready to connect GitHub.`
-      : `GitHub management was not requested. ${ui.path(".github/leanos/setup-guide.md")} documents optional future setup and token sources.`,
+      ? `Suporte de GitHub preparado. Peça ao LeanOS Chief para configurar GitHub Projects ou sincronizar Epics/Features quando estiver pronto. Adicione token em ${ui.path(".env.local")} só quando for conectar o GitHub.`
+      : `Suporte de GitHub não solicitado agora. ${ui.path(".github/leanos/setup-guide.md")} documenta o setup opcional futuro.`,
     "",
-    "To use LeanOS in VS Code:",
-    `1. Open this folder in ${ui.title("VS Code")}`,
-    "2. Open Copilot Chat",
-    `3. Select ${ui.title("\"LeanOS Chief\"")}`,
-    "4. Ask, in natural language: Quero iniciar o LeanOS",
+    "Para usar no VS Code:",
+    `1. Abra esta pasta no ${ui.title("VS Code")}`,
+    "2. Abra o Copilot Chat",
+    `3. Selecione ${ui.title("\"LeanOS Chief\"")}`,
+    "4. Peça em linguagem natural: Quero iniciar o LeanOS",
     "",
-    "LeanOS still includes VS Code prompt files for compatibility, but the primary interface is natural language.",
+    "A interface principal é linguagem natural.",
     "",
-    "Useful first requests:",
+    "Primeiros pedidos úteis:",
     "",
-    bullet('"Help me define the ICP."'),
-    bullet('"Turn this idea into an MVP."'),
-    bullet('"Create a roadmap for the first validation cycle."'),
-    bullet('"Check if my MVP is coherent."'),
-    answers.workspaceMode === "existing-product-repo" ? bullet('"Summarize this existing product and codebase."') : bullet('"Plan the future /bootstrap product workflow."'),
-    bullet('"Create a new UX research role using LeanOS standards."')
+    bullet('"Quero iniciar o LeanOS."'),
+    bullet('"Ajude a calibrar essa ideia."'),
+    bullet('"Transforme essa ideia em um escopo mínimo de validação."'),
+    answers.workspaceMode === "existing-product-repo" ? bullet('"Resuma este produto e codebase existentes."') : bullet('"O que falta antes de construir o MVP?"')
   ].join("\n");
 
   outro(message);

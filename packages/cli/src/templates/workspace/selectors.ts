@@ -11,6 +11,11 @@ export function getActiveAreas(answers: WorkspaceAnswers): AreaDefinition[] {
 }
 
 export function getInitialActiveAreas(_answers: WorkspaceAnswers): AreaDefinition[] {
+  if (_answers.initialActivationMode === "all-at-once") {
+    const selectedSubareas = new Set(_answers.subareas);
+    return getAllAreas().filter((area) => selectedSubareas.has(area.key));
+  }
+
   return getAllAreas().filter((area) => area.root === "strategy");
 }
 

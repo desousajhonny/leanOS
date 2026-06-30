@@ -1,6 +1,7 @@
 export type {
   Department,
   DetectedProject,
+  InitialActivationMode,
   OperatingMode,
   ProductStage,
   ProductStatus,

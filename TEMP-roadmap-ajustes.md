@@ -64,6 +64,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] Textos humanos gerados padronizados em PT-BR, mantendo IDs, slugs, paths, chaves YAML/JSON e termos tecnicos estaveis.
 - [x] Validacao de idioma adicionada ao generator para prevenir regressao de headings, frontmatter e frases operacionais em ingles.
 - [x] Padroes de branch e PR fortalecidos com formatos `feature`, `issue`, `fix`, `chore`, `docs`, `spike`, titulo de PR estilo Conventional Commit, status de prontidao e `Deploy / Rollback`.
+- [x] Wizard CLI simplificado em PT-BR, com setup progressivo como default e opcao avancada `all-at-once` para preparar todas as areas.
 
 ## Pendencias Ativas
 
@@ -158,13 +159,14 @@ Base obrigatoria:
 Objetivo: revisar a jornada real de um founder novo:
 
 1. cria workspace com `lean-os ai`;
-2. abre o workspace no agente;
-3. diz "vamos comecar";
-4. Chief le `leanos.yaml` e Strategy ativa;
-5. Chief faz uma pergunta guiada por vez;
-6. Strategy Baseline fica clara;
-7. roadmap candidate e MVP scope aparecem no momento certo;
-8. Operations/Product Ops so e ativado quando o founder entra em escopo de entrega.
+2. escolhe setup progressivo recomendado ou avancado `all-at-once`;
+3. abre o workspace no agente;
+4. diz "vamos comecar";
+5. Chief le `leanos.yaml` e Strategy ativa no modo progressivo;
+6. Chief faz uma pergunta guiada por vez;
+7. Strategy Baseline fica clara;
+8. roadmap candidate e MVP scope aparecem no momento certo;
+9. Operations/Product Ops so e ativado quando o founder entra em escopo de entrega, exceto quando o founder escolheu explicitamente o modo avancado.
 
 Perguntas a resolver:
 

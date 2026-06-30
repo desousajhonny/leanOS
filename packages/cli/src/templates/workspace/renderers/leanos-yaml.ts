@@ -4,6 +4,7 @@ import { getActiveWorkflowKeys, getAllAreas } from "../selectors.js";
 import type { AreaDefinition, RootDepartmentDefinition, WorkspaceAnswers } from "../types.js";
 
 export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDefinition[], activeRoots: RootDepartmentDefinition[]): string {
+  const initialActivationMode = answers.initialActivationMode ?? "progressive";
   const activeDepartmentKeys = activeRoots.map((department) => department.key);
   const activeAreaKeys = activeAreas.map((area) => area.key);
   const activeDepartmentSet = new Set(activeDepartmentKeys);
@@ -39,7 +40,7 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
         : null
     },
     activation: {
-      mode: "progressive",
+      mode: initialActivationMode,
       current_stage: "setup-seed",
       progression_model: "ai-standard/foundation/founder-progression-model.md",
       progression_gates: "ai-standard/foundation/progression-gates.md",

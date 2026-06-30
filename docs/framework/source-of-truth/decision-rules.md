@@ -20,9 +20,11 @@ Adicione estrutura apenas quando isso ajudar o founder ou o agente a tomar uma p
 
 ## 3. Mantenha O Workspace Inicial Pequeno
 
-O workspace inicial deve continuar Strategy-first.
+O workspace inicial deve continuar Strategy-first por padrão.
 
-Não ative Operations, Growth, Design, Engineering, Security ou DevOps durante o scaffold inicial, a menos que a direção do produto mude explicitamente e a doutrina seja atualizada.
+Não ative Operations, Growth, Design, Engineering, Security ou DevOps durante o scaffold inicial recomendado.
+
+Exceção: o wizard pode oferecer uma opção avançada única para preparar todas as áreas de uma vez. Essa opção não deve virar multiselect de departamentos/áreas e não deve ser o default. Mesmo no modo avançado, readiness, activation gates e fonte da verdade local continuam valendo.
 
 ## 4. Não Roteie Para Caminhos Inativos
 

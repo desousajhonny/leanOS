@@ -2,6 +2,34 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-30 - Wizard CLI Curto Com Ativação Progressiva Por Padrão
+
+Decisão:
+
+- Simplificar o wizard `lean-os ai` para perguntar apenas:
+  - ideia/produto novo ou projeto existente;
+  - nome do produto;
+  - tipo de produto;
+  - descrição curta;
+  - modo de preparação do ambiente;
+  - suporte inicial de GitHub.
+- Remover do wizard curto as perguntas de usuário alvo, estágio inicial e modo de operação.
+- Usar defaults internos para esses campos:
+  - ideia/produto novo: `stage: idea`, `target_user: A definir com Strategy`, `mode: founder-plus-ai-agents`;
+  - projeto existente: `stage: existing-product-with-users`, `target_user: Usuários atuais do produto`, `mode: founder-plus-ai-agents`.
+- Substituir a seleção manual de áreas/departamentos por duas opções:
+  - `progressive`: padrão recomendado, cria Strategy agora e deixa Operations/Growth disponíveis para ativação posterior;
+  - `all-at-once`: opção avançada que prepara Strategy, Operations, Growth e todas as áreas desde o setup.
+- Não reintroduzir multiselect de departamentos/áreas no wizard.
+- Mostrar o wizard em português do Brasil.
+
+Justificativa:
+
+- O setup inicial estava longo e ainda refletia a mentalidade antiga de escolher departamentos manualmente.
+- Business as a Product pede que a estrutura operacional apareça conforme a necessidade do negócio.
+- A opção avançada preserva flexibilidade para power users, demos e testes, mas não muda o caminho recomendado.
+- Remover perguntas prematuras reduz fricção e deixa Strategy calibrar usuário, estágio e operação com melhor contexto.
+
 ## 2026-06-29 - Padrões De Branch E PR Mais Completos
 
 Decisão:

@@ -7,14 +7,15 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 ## Estado Atual
 
 - Repositório: `desousajhonny/leanOS`.
-- Branch local quando esta memória foi criada: `feature/asset-contract-workflow-v2`.
-- Remote `origin/main` foi enviado para o commit `6e1d7508522a1d46ded81cd658f546e07535e0c5` em 2026-06-29.
+- Branch local de trabalho atual: `feature/short-progressive-cli-wizard`.
+- Remote `origin/main` foi enviado para o commit `765ec67` em 2026-06-29.
 - `AGENT.md` raiz é o ponto de entrada para comportamento de agente no nível do projeto.
 - Source of truth do framework vive em `docs/framework/source-of-truth/`.
 - Roadmap temporário de implementação vive em `TEMP-roadmap-ajustes.md`.
 
 ## Decisões Recentes
 
+- 2026-06-30: Simplificar o wizard CLI em PT-BR. O setup recomendado passa a ser `progressive`; a opção avançada `all-at-once` prepara todas as áreas, mas não reintroduz multiselect manual de departamentos.
 - 2026-06-29: Expandir padrões gerados de branch e PR. Branches agora cobrem `feature`, `issue`, `fix`, `chore`, `docs` e `spike`; templates de PR passam a exigir título estilo Conventional Commit quando fizer sentido, status de prontidão e seção `Deploy / Rollback`.
 - 2026-06-29: Adicionar memória de continuidade de modelo na raiz. Esta memória serve apenas para continuidade de handoff/status/próximo passo; decisões duráveis do framework continuam em `docs/framework/source-of-truth/decision-log.md`.
 - 2026-06-29: Manter doutrina e regras de decisão do framework em `docs/framework/source-of-truth/`; não usar a memória de modelo como source of truth do comportamento LeanOS.
@@ -24,6 +25,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 ## Mudanças Recentes
 
+- Working tree: wizard `lean-os ai` simplificado para nome do produto, tipo, descrição, modo de preparação e GitHub; perguntas de usuário alvo, estágio e modo de operação foram removidas do fluxo interativo; generator ganhou `initialActivationMode` com `progressive` e `all-at-once`; validação `validateCliWizardProgressiveSetup` adicionada.
 - Working tree: padrões de branch/PR fortalecidos em `.github/leanos/branch-rules.md`, `.github/PULL_REQUEST_TEMPLATE.md`, templates GitHub do `ai-standard`, skill `create-pr`, playbooks `branch-for-feature` e `prepare-pr`, com validação `validateBranchAndPrStandards`.
 - Working tree: documentação da jornada `Review e PR` adicionada em `docs/framework/founder-journeys/review-pr.md`, `journey-map.md` marcado como concluído para a etapa 7 e validação `validateFounderJourneyReviewPr` adicionada ao generator. A validação cobre documentação da jornada e ativação sequencial Strategy-only -> Product Ops -> Engineering para rota de PR/review.
 - Working tree: limpeza de Engineering knowledge preenche contratos duráveis de Engineering e adiciona validação do generator para impedir que knowledge de Engineering em nível de framework saia com placeholders `TBD`.
@@ -39,7 +41,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 ## Threads Abertas
 
-- Continuar teste Founder Journey do setup Strategy-only até ativação de Product Ops, criação de Epic/Feature, implementação, PR e simulação de review. A fatia de Review/PR agora tem jornada documentada e validação automatizada da rota sequencial até Engineering; ainda falta a simulação externa completa com Epic/Feature e implementação.
+- Continuar teste Founder Journey do setup progressivo Strategy-only até ativação de Product Ops, criação de Epic/Feature, implementação, PR e simulação de review. A fatia de Review/PR agora tem jornada documentada e validação automatizada da rota sequencial até Engineering; ainda falta a simulação externa completa com Epic/Feature e implementação.
 - Desenhar e implementar `ready-for-launch` depois que Founder Journey estiver validado.
 - Considerar regra do framework para atualizar esta memória ao fim de sessões locais significativas antes de trocar agentes.
 

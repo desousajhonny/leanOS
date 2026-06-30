@@ -100,7 +100,9 @@ Depois disso, outras capacidades do negócio vão nascendo conforme o estágio r
 
 Essas capacidades não são criadas porque uma empresa "deveria ter departamentos". Elas são ativadas porque o negócio chegou a um estágio em que aquela capacidade é necessária para tomar a próxima decisão, executar o próximo ciclo ou reduzir o próximo risco.
 
-Progressive Workspace Activation é a implementação dessa Business Progression Layer no filesystem e no framework gerado.
+Progressive Workspace Activation é a implementação padrão dessa Business Progression Layer no filesystem e no framework gerado.
+
+O wizard inicial pode oferecer uma opção avançada para preparar toda a superfície do LeanOS de uma vez. Essa opção existe para power users, demos, testes e casos em que o founder quer inspecionar tudo desde o primeiro momento. Ela não muda o padrão do produto: o caminho recomendado continua sendo começar pequeno e ativar Operations, Growth e áreas especializadas apenas quando a próxima decisão do negócio exigir.
 
 O LeanOS organiza essa progressão em três camadas:
 
@@ -199,7 +201,9 @@ No mínimo, Strategy deve esclarecer:
 
 O LeanOS começa pequeno e ativa mais superfície operacional apenas quando o estágio do founder exige.
 
-O workspace inicial é Strategy-first. Operations e Growth ficam disponíveis depois, mas não ficam ativos por padrão.
+O workspace inicial é Strategy-first por padrão. Operations e Growth ficam disponíveis depois, mas não ficam ativos no caminho recomendado.
+
+Uma opção avançada explícita pode preparar todas as áreas no setup inicial, desde que o wizard deixe claro que isso é menos progressivo e não substitui os gates de readiness.
 
 ### 3. Linguagem Natural É A Interface
 

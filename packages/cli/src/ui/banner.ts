@@ -18,7 +18,7 @@ export function printBanner(): void {
 
   console.log(ui.brand(banner || fallbackBanner));
   console.log(ui.title("LeanOS AI"));
-  console.log(ui.brand("Agent-native startup operating system"));
-  console.log(ui.muted("Strategy, validation and execution for AI-first products."));
+  console.log(ui.brand("Sistema operacional de startup nativo de agentes"));
+  console.log(ui.muted("Estratégia, validação e execução para produtos AI-first."));
   console.log("");
 }

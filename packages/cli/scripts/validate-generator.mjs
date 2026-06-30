@@ -3,6 +3,7 @@ import { validateProductOpsActivation, validateActivationCliCommand } from "./va
 import { validateAiStandardRendererIsModular } from "./validation/ai-standard.mjs";
 import { validateBranchAndPrStandards } from "./validation/branch-pr-standards.mjs";
 import { validateClientWorkspaceFixture } from "./validation/client-fixture.mjs";
+import { validateCliWizardProgressiveSetup } from "./validation/cli-wizard.mjs";
 import { validateAreaDefinitionsAreModular } from "./validation/definitions.mjs";
 import { validateExistingProductRepoMode } from "./validation/existing-product-repo.mjs";
 import { validateFounderJourneyReviewPr } from "./validation/founder-journey.mjs";
@@ -26,6 +27,7 @@ await validateRootModelMemory();
 await validateAreaDefinitionsAreModular();
 await validateGeneratedHumanLanguage();
 await validateBranchAndPrStandards();
+await validateCliWizardProgressiveSetup();
 await validateClientWorkspaceFixture();
 await validatePartialAreaSelection();
 await validateEngineeringOnlyContext();

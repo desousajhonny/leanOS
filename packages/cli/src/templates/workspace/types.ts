@@ -29,6 +29,7 @@ export type OperatingMode =
 export type RootDepartment = "strategy" | "operations" | "growth";
 export type Department = RootDepartment;
 export type WorkspaceMode = "new-product-workspace" | "existing-product-repo";
+export type InitialActivationMode = "progressive" | "all-at-once";
 export type DetectedProject = {
   hasGit: boolean;
   hasPackageJson: boolean;
@@ -52,6 +53,7 @@ export type Subarea =
 
 export type WorkspaceAnswers = {
   workspaceMode: WorkspaceMode;
+  initialActivationMode?: InitialActivationMode;
   detectedProject?: DetectedProject;
   prepareGithubManagement: boolean;
   companyName: string;
