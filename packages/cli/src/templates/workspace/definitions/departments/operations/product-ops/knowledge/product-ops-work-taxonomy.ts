@@ -89,11 +89,13 @@ Local Epic structure:
 
 ~~~text
 operations/product-ops/epics/<epic-slug>/
-  README.md
+  epic.md
   <feature-slug>.md
 ~~~
 
-The Epic README owns the epic context. Files inside the Epic folder are Features that belong to that Epic.
+The Epic artifact is \`epic.md\`. Files inside the Epic folder are Features that belong to that Epic.
+
+README.md legado is supported only for existing workspaces created before \`epic.md\` became the canonical Epic artifact. When both files exist, use \`epic.md\` as the source of truth and keep README as a folder map only.
 
 ## Feature
 
@@ -144,6 +146,9 @@ Use stable keys in metadata or body when needed:
 ~~~yaml
 epic_key: customer-management
 feature_key: create-customer-profile
+priority: high
+size: M
+effort: 5
 ~~~
 
 Avoid manual ordering names like [EPIC A] because they break when priority changes.
@@ -198,7 +203,21 @@ Default mapping:
 
 Task issues are exceptions, not the default. Create a separate Task issue only when a task needs separate assignment, review, timeline, deployment, security review or external tracking.
 
-Metadados de sync remoto devem viver em \`.github/leanos/sync-state.yaml\`. Não armazene IDs do GitHub dentro do status de trabalho de produto salvo quando o template incluir explicitamente um campo de sync.
+The GitHub sync must preserve rich local content. Do not turn a detailed Epic or Feature into a short summary issue.
+
+GitHub issues must include milestone, Size, Effort, Priority, Area, Roadmap Item and Epic relationship when those values exist locally.
+
+Epic issues must list their Features. Feature issues must point back to the parent Epic.
+
+Metadados de sync remoto devem viver em \`.github/leanos/sync-state.yaml\`. Cada Epic e Feature também pode guardar o link verificável no campo explícito do template:
+
+~~~yaml
+sync_status: synced
+github_issue:
+  url: https://github.com/<owner>/<repo>/issues/<number>
+~~~
+
+Do not set \`sync_status: synced\` until the GitHub capability has verified the remote issue body, milestone, Project fields and relationships after writing.
 
 ## Sync State Decision
 

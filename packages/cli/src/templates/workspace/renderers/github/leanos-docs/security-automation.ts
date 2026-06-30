@@ -9,10 +9,10 @@ Este arquivo é apenas orientação no scaffold inicial. Não crie workflows de 
 
 ## Read First
 
-- \`../../operations/security/AGENT.md\`
-- \`../../operations/security/knowledge/security-automation.md\`
-- \`../../operations/security/playbooks/security-automation-readiness.playbook.md\`
-- \`../../operations/devops/knowledge/ci-cd.md\`
+- \`../../<product-slug>-os/operations/security/AGENT.md\`
+- \`../../<product-slug>-os/operations/security/knowledge/security-automation.md\`
+- \`../../<product-slug>-os/operations/security/playbooks/security-automation-readiness.playbook.md\`
+- \`../../<product-slug>-os/operations/devops/knowledge/ci-cd.md\`
 
 ## Candidate Checks
 

@@ -11,6 +11,10 @@ delivery_scope:
   release_goal:
 status: candidate | scoped | ready | in-progress | blocked | done
 sync_status: not_synced | sync_ready | synced | conflict
+priority: low | medium | high | critical
+size: XS | S | M | L | XL
+effort: 1 | 2 | 3 | 5 | 8 | 13
+area: Product Ops
 owner: Product Ops
 decision_owner: Product Owner
 supporting_roles:

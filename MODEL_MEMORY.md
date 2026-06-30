@@ -16,6 +16,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 ## Decisões Recentes
 
 - 2026-06-30: Adotar layout Business OS no scaffold: `<product-slug>-os/` para Strategy/Operations/Growth, `.leanos/standard/` para padrões do framework e `.leanos/runtime/` para agent/context/index/traces/vscode. Adicionar `lean-os update` para migrar workspaces existentes com preview via `--dry-run`.
+- 2026-06-30: Fortalecer sync GitHub de Epics/Features. Epic local canônico passa a ser `epics/<epic-slug>/epic.md` com fallback legado para `README.md`; sync exige body rico, milestone, Size/Effort, relações Epic/Feature, read-back verification e patch local de `github_issue.url` + `sync_status: synced`.
 - 2026-06-30: Implementar `ready-for-launch` como workflow de Operations. Readiness de launch/go-live/beta/usuários reais fica em Operations com Product Ops + Engineering + DevOps; Growth executa `mvp-launch`/`launch-learning-loop` depois do gate ou depois de lançamento executado.
 - 2026-06-30: Simplificar o wizard CLI em PT-BR. O setup recomendado passa a ser `progressive`; a opção avançada `all-at-once` prepara todas as áreas, mas não reintroduz multiselect manual de departamentos.
 - 2026-06-29: Expandir padrões gerados de branch e PR. Branches agora cobrem `feature`, `issue`, `fix`, `chore`, `docs` e `spike`; templates de PR passam a exigir título estilo Conventional Commit quando fizer sentido, status de prontidão e seção `Deploy / Rollback`.
@@ -28,6 +29,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 ## Mudanças Recentes
 
 - Working tree: scaffold reorganizado para gerar `<product-slug>-os/README.md`, departamentos dentro do Business OS, `.leanos/standard/` e `.leanos/runtime/`; `leanos.yaml.paths` registra os novos roots; validação `validateBusinessOsLayout` cobre paths físicos e impede referências antigas como `ai-standard/` e `.leanos/context`.
+- Working tree: contrato GitHub sync fortalecido em `.github/leanos/project-sync.yaml`, `work-mapping.md`, `capability-contract.md`, Product Ops e DevOps. Nova validação `validateGithubSyncContract` cobre `epic.md`, fallback README legado, body rico, milestone, Effort, relações, read-back verification e patch local de `github_issue.url`/`sync_status`.
 - Working tree: workflow `ready-for-launch` adicionado em Operations, com `decisionOutputs`, gate Product Ops + Engineering + DevOps, bridges para Growth e retorno para `feature-to-delivery-cycle`; root `AGENT.md` agora separa readiness de launch de execução/aprendizado de Growth.
 - Working tree: jornada `docs/framework/founder-journeys/ready-for-launch.md`, inventário `docs/framework/workflows/README.md`, source-of-truth e roadmap temporário atualizados para Launch Readiness.
 - Working tree: validação `validateFounderJourneyReadyForLaunch` adicionada ao generator; cobre docs da jornada e ativação sequencial Strategy-only -> Product Ops -> Engineering -> DevOps sem ativar Growth automaticamente.

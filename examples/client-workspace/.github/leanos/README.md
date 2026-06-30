@@ -69,7 +69,7 @@ GitHub Epics/Features sync must check GitHub readiness before preparing any sync
 If owner, repository, Project, labels, token source or sync state are incomplete, route to DevOps setup first:
 
 ```text
-operations/devops/AGENT.md
+<product-slug>-os/operations/devops/AGENT.md
 -> roles/github-devops.role.md
 -> skills/configure-github-project/SKILL.md
 -> playbooks/configure-github-project.playbook.md

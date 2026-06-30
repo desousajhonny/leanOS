@@ -1,5 +1,6 @@
 import { getActiveSubareaKeys } from "../../selectors.js";
 import type { AreaDefinition, FileEntry, WorkspaceAnswers } from "../../types.js";
+import { createWorkspacePaths } from "../../paths.js";
 import { toTitle } from "../../content/shared.js";
 import { githubLeanOsReadme, githubSetupGuide, githubCapabilityContract, githubSettingsExampleJson, securityAutomationReadiness, workMappingRules } from "./leanos-docs.js";
 import { issueTemplate, epicIssueTemplate, featureIssueTemplate } from "./issue-templates.js";
@@ -11,17 +12,18 @@ import { prValidationWorkflow } from "./workflows.js";
 
 export function githubFiles(answers: WorkspaceAnswers, activeAreas: AreaDefinition[]): FileEntry[] {
   const activeKeys = getActiveSubareaKeys(activeAreas);
+  const paths = createWorkspacePaths(answers);
   const engineeringActive = activeKeys.has("operations.engineering");
   const devopsActive = activeKeys.has("operations.devops");
   const securityActive = activeKeys.has("operations.security");
   const engineeringNote = engineeringActive
-    ? "Route GitHub branch, PR and validation work through `../../operations/engineering/AGENT.md` before changing GitHub workflow files."
+    ? `Route GitHub branch, PR and validation work through \`../../${paths.businessOsRoot}/operations/engineering/AGENT.md\` before changing GitHub workflow files.`
     : "Operations Engineering não está ativo neste workspace. Peça confirmação antes de ativá-lo ou alterar arquivos de workflow do GitHub.";
   const devopsNote = devopsActive
-    ? "Route GitHub setup through `../../operations/devops/AGENT.md` before configuring project sync."
+    ? `Route GitHub setup through \`../../${paths.businessOsRoot}/operations/devops/AGENT.md\` before configuring project sync.`
     : "Operations DevOps não está ativo neste workspace. Peça confirmação antes de configurar sync de GitHub Project.";
   const securityNote = securityActive
-    ? "Route security automation readiness through `../../operations/security/AGENT.md` before adding scanner workflows or security gates."
+    ? `Route security automation readiness through \`../../${paths.businessOsRoot}/operations/security/AGENT.md\` before adding scanner workflows or security gates.`
     : "Operations Security não está ativo neste workspace. Peça confirmação antes de adicionar automação de Security ou workflows de scanner.";
 
   return [

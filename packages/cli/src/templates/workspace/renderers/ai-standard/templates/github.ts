@@ -7,6 +7,11 @@ export function githubEpicTemplate(): string {
 - Local epic path:
 - Escopo de delivery:
 - Roadmap item:
+- Milestone:
+- Priority:
+- Size:
+- Effort:
+- Area:
 - GitHub sync status:
 
 ## Outcome
@@ -147,6 +152,11 @@ export function githubFeatureTemplate(): string {
 - Local feature key:
 - Local feature path:
 - Epic pai key:
+- Milestone:
+- Priority:
+- Size:
+- Effort:
+- Area:
 - GitHub sync status:
 
 ## Epic Pai

@@ -9,6 +9,7 @@ import { validateExistingProductRepoMode } from "./validation/existing-product-r
 import { validateFounderJourneyReadyForLaunch, validateFounderJourneyReviewPr } from "./validation/founder-journey.mjs";
 import { validateGeneratedHumanLanguage } from "./validation/language.mjs";
 import { validateBusinessOsLayout } from "./validation/layout.mjs";
+import { validateGithubSyncContract } from "./validation/github-sync.mjs";
 import { validateWorkspaceRenderersAreModular } from "./validation/renderers.mjs";
 import { validateRootModelMemory } from "./validation/root-memory.mjs";
 import { validateWorkspaceUpdateCommand } from "./validation/update.mjs";
@@ -29,6 +30,7 @@ await validateRootModelMemory();
 await validateAreaDefinitionsAreModular();
 await validateGeneratedHumanLanguage();
 await validateBusinessOsLayout();
+await validateGithubSyncContract();
 await validateBranchAndPrStandards();
 await validateCliWizardProgressiveSetup();
 await validateClientWorkspaceFixture();

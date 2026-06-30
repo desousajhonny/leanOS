@@ -11,8 +11,9 @@ This file is a sync contract. It does not make GitHub the source of truth, and i
 
 LeanOS local files are the primary operational source:
 
-- Product hierarchy: \`../../operations/product-ops/knowledge/work-taxonomy.md\`
-- Local Epics and Features: \`../../operations/product-ops/epics/\`
+- Product hierarchy: \`../../<product-slug>-os/operations/product-ops/knowledge/work-taxonomy.md\`
+- Business OS path: read \`../../leanos.yaml\` and use \`paths.business_os\`
+- Local Epics and Features: \`../../<product-slug>-os/operations/product-ops/epics/\`
 - Epic template: \`../../.leanos/standard/templates/product/epic-template.md\`
 - Feature template: \`../../.leanos/standard/templates/product/feature-template.md\`
 
@@ -22,7 +23,7 @@ GitHub is an optional remote tracking layer.
 
 | Local LeanOS item | GitHub item | Required labels | Notes |
 | --- | --- | --- | --- |
-| Epic folder README | Issue | \`leanos\`, \`epic\` | One GitHub issue per local Epic. |
+| Epic artifact | Issue | \`leanos\`, \`epic\` | One GitHub issue per local Epic. Use \`epic.md\` as canonical source. Use \`README.md\` legado only when \`epic.md\` does not exist. |
 | Feature markdown file | Issue | \`leanos\`, \`feature\` | One GitHub issue per local Feature. |
 | Feature Tasks | Checklist inside Feature issue | none by default | Tasks stay inside the Feature issue unless separate tracking is justified. |
 | Exceptional Task | Issue | \`leanos\`, \`task\` | Use only for separate ownership, review, deployment, security or external dependency. |
@@ -46,6 +47,66 @@ Exceptional task issue:
 ~~~text
 [TASK: Create customer profile] Add database migration
 ~~~
+
+## Rich Body Contract
+
+GitHub issue bodies must be rendered from the local Epic or Feature markdown and must preserve the useful local sections. O sync não deve resumir o conteúdo local em um parágrafo.
+
+Epic bodies must include, when present locally:
+
+- local source path and stable Epic key;
+- product status and \`sync_status\`;
+- milestone real da issue;
+- \`Size\`, \`Effort\`, \`Priority\`, \`Area\`, \`Roadmap Item\` e \`Epic\`;
+- outcome, why now, scope, non-goals, decision criteria and success metrics;
+- readiness matrix;
+- risks, dependencies and open questions;
+- Feature Breakdown with each child Feature key, title and GitHub issue URL when available.
+
+Feature bodies must include, when present locally:
+
+- local source path and stable Feature key;
+- parent Epic key and Epic issue URL when available;
+- product status and \`sync_status\`;
+- milestone real da issue;
+- \`Size\`, \`Effort\`, \`Priority\`, \`Area\`, \`Roadmap Item\` e \`Epic\`;
+- purpose, user story, scope, non-goals and acceptance criteria;
+- tasks as a checklist;
+- Delivery Readiness Matrix;
+- Design, Engineering, Security and DevOps criteria when applicable;
+- Definition of Ready and Definition of Done.
+
+If the local markdown is too long, preserve section headings and compress only repetitive prose. Do not remove acceptance criteria, tasks, milestone, size, effort, relationship links or readiness decisions.
+
+## Milestone And Project Fields
+
+When local metadata contains a milestone, the GitHub issue must use that milestone as the issue milestone. If the milestone is missing for an item marked \`sync_ready\`, stop and report \`milestone_required_missing\` instead of inventing one.
+
+GitHub Projects fields must mirror local metadata:
+
+| Local metadata | GitHub Project field |
+| --- | --- |
+| \`status\` | \`Status\` |
+| \`priority\` | \`Priority\` |
+| \`size\` | \`Size\` |
+| \`effort\` | \`Effort\` |
+| \`area\` | \`Area\` |
+| \`source_roadmap_item\` | \`Roadmap Item\` |
+| \`parent_epic_key\` or \`epic_key\` | \`Epic\` |
+
+If a Project field is missing remotely, report a setup conflict and route to DevOps before writing.
+
+## Relationships
+
+Epic lista suas Features in the Epic issue body. Feature aponta para o Epic pai in the Feature issue body.
+
+Use relationships in this order:
+
+1. Native GitHub parent/sub-issue relationship when the capability supports it.
+2. GitHub Project \`Epic\` field on each Feature.
+3. Markdown links in both issue bodies.
+
+Do not rely on only one relationship mechanism when the body can safely include a backlink.
 
 ## Sync Metadata
 
@@ -71,11 +132,27 @@ Before creating or updating GitHub:
 
 1. Read Product Ops work taxonomy.
 2. Read the local Epic folder.
-3. Read each Feature file being synced.
-4. Compare local state with \`sync-state.yaml\`.
-5. Prepare a dry-run summary.
-6. Ask the founder for confirmation.
-7. Only then call a future CLI/script capability for the remote write.
+3. Read \`epic.md\`; if it does not exist, read \`README.md\` legado.
+4. Read each Feature file being synced.
+5. Compare local state with \`sync-state.yaml\`.
+6. Prepare a dry-run summary with full body, milestone, Project fields and relationships.
+7. Ask the founder for confirmation.
+8. Only then call a future CLI/script capability for the remote write.
+9. The capability must verificar o remoto depois da escrita by reading back issues and Project items.
+10. After verification passes, atualizar o arquivo local com \`github_issue.url\` e \`sync_status: synced\`.
+11. Update \`sync-state.yaml\` with non-secret IDs, URLs, Project item IDs and verification status.
+
+## Local Patch After Verified Sync
+
+After a confirmed and verified remote sync, patch each local Epic and Feature metadata:
+
+~~~yaml
+sync_status: synced
+github_issue:
+  url: https://github.com/<owner>/<repo>/issues/<number>
+~~~
+
+Do not mark local files as \`synced\` before remote read-back proves that issue body sections, labels, milestone, Project fields and relationships exist.
 
 ## Conflict Rule
 

@@ -228,13 +228,13 @@ function assertDeliveryItemToEpicPlaybookDefinition() {
   assert(playbook, "Product Ops should define delivery-item-to-epic playbook");
 
   assert(
-    playbook.filesToUpdate?.some((item) => item.includes("../epics/<epic-slug>/README.md")),
-    "delivery-item-to-epic filesToUpdate should include local Epic README path"
+    playbook.filesToUpdate?.some((item) => item.includes("../epics/<epic-slug>/epic.md")),
+    "delivery-item-to-epic filesToUpdate should include local Epic artifact path"
   );
 
   assert(
-    playbook.outputs?.includes("Caminho do README da Epic local"),
-    "delivery-item-to-epic should output the local Epic README path"
+    playbook.outputs?.includes("Caminho do `epic.md` local"),
+    "delivery-item-to-epic should output the local Epic artifact path"
   );
 
   assert(

@@ -5,8 +5,14 @@
 ~~~yaml
 feature_key: <stable-kebab-key>
 parent_epic_key: <epic-key>
+source_roadmap_item: <roadmap item or backlog reference>
+milestone:
 status: candidate | scoped | ready | in-progress | blocked | done
 sync_status: not_synced | sync_ready | synced | conflict
+priority: low | medium | high | critical
+size: XS | S | M | L | XL
+effort: 1 | 2 | 3 | 5 | 8 | 13
+area: Product Ops | Engineering | Design | Security | DevOps
 owner: Product Ops
 execution_owner: Engineering
 github_issue:

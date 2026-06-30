@@ -5,6 +5,11 @@
 - Local feature key:
 - Local feature path:
 - Epic pai key:
+- Milestone:
+- Priority:
+- Size:
+- Effort:
+- Area:
 - GitHub sync status:
 
 ## Epic Pai

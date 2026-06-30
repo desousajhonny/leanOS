@@ -41,6 +41,7 @@ GitHub setup is not confirmed yet. Use Setup Status and the Readiness Checklist 
 | Status | Status | TBD |  |
 | Priority | Priority | TBD |  |
 | Size | Size | TBD |  |
+| Effort | Effort | TBD |  |
 | Area | Area | TBD |  |
 | Roadmap Item | Roadmap Item | TBD |  |
 | Epic | Epic | TBD |  |
@@ -92,6 +93,7 @@ Use these questions when configuration is missing:
 - [ ] Owner e repositório são conhecidos.
 - [ ] Tipo do Project e URL ou número são conhecidos.
 - [ ] Campos do Project estão mapeados.
+- [ ] Campo \`Effort\` está mapeado quando GitHub Projects for usado para estimativa.
 - [ ] Labels are declared.
 - [ ] Milestone strategy is clear.
 - [ ] Fonte do token is known without exposing token value.
@@ -99,6 +101,31 @@ Use these questions when configuration is missing:
 - [ ] \`.github/leanos/sync-state.yaml\` exists and contains no secrets.
 - [ ] \`.github/leanos/capability-contract.md\` was reviewed before any remote execution handoff.
 - [ ] GitHub Epics/Features sync can run dry-run before any remote write.
+- [ ] Read-back verification is planned before local files are marked synced.
+
+## Sync Verification Contract
+
+After a confirmed GitHub Epics/Features sync, require Read-back verification before accepting success.
+
+Verification must confirm:
+
+- GitHub issue body contains the rich local Epic/Feature sections, not only a short summary.
+- Labels \`leanos\`, \`epic\` or \`feature\` are present.
+- Milestone is set when required by local metadata.
+- Project fields Status, Priority, Size, Effort, Area, Roadmap Item and Epic are set.
+- Epic/Feature relationships exist through native relationship when available, Project field or markdown links.
+
+After verification passes, the capability must return a local file patch for each synced Epic and Feature:
+
+~~~yaml
+sync_status: synced
+github_issue:
+  url: https://github.com/<owner>/<repo>/issues/<number>
+~~~
+
+Also update \`.github/leanos/sync-state.yaml\` with non-secret issue IDs, Project item IDs, milestone IDs or URLs and verification status.
+
+Do not set \`sync_status: synced\` or write \`github_issue.url\` if verification failed or only a partial sync happened.
 
 ## Dry Run
 

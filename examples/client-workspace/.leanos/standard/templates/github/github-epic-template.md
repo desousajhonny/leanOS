@@ -6,6 +6,11 @@
 - Local epic path:
 - Escopo de delivery:
 - Roadmap item:
+- Milestone:
+- Priority:
+- Size:
+- Effort:
+- Area:
 - GitHub sync status:
 
 ## Outcome

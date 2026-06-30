@@ -154,7 +154,8 @@ export async function assertGitHubReadiness(rootDir) {
   assert.equal(projectSyncYaml.github.rules.never_store_token, true, "GitHub project sync should forbid token storage");
   assert.equal(projectSyncYaml.github.rules.dry_run_before_remote_write, true, "GitHub project sync should require dry-run before remote writes");
   assert.equal(projectSyncYaml.github.rules.require_confirmation_before_api_write, true, "GitHub project sync should require confirmation before API writes");
-  assert(workMapping.includes("Epic folder README"), "GitHub work mapping should map local Epic README files");
+  assert(workMapping.includes("Epic artifact"), "GitHub work mapping should map local Epic artifacts");
+  assert(workMapping.includes("`epic.md`"), "GitHub work mapping should prefer epic.md as canonical Epic source");
   assert(workMapping.includes("Feature markdown file"), "GitHub work mapping should map local Feature files");
   assert(workMapping.includes("Feature Tasks"), "GitHub work mapping should keep Feature tasks as checklists");
   assert(workMapping.includes("Exceptional Task"), "GitHub work mapping should define task issue exceptions");
@@ -162,7 +163,7 @@ export async function assertGitHubReadiness(rootDir) {
   assert(workMapping.includes("Não crie nem dependa de `operations/product-ops/epics/synced/`"), "GitHub work mapping should avoid a synced archive folder");
   assert(workMapping.includes("use `sync-state.yaml` as the index"), "GitHub work mapping should use sync-state as the sync index");
   assert.equal(await exists(join(rootDir, ".leanos", "commands", "github-sync.md")), false, "GitHub sync command should not be generated");
-  assert.equal(projectSyncYaml.github.project_sync.source.epics, "../../operations/product-ops/epics/", "GitHub project sync should read local Epics and Features");
+  assert.equal(projectSyncYaml.github.project_sync.source.epics, "../../clinic-assistant-ai-os/operations/product-ops/epics/", "GitHub project sync should read local Epics and Features");
   assert.equal(projectSyncYaml.github.project_sync.source.work_mapping, "../../.github/leanos/work-mapping.md", "GitHub project sync should reference work mapping");
   assert(syncState.includes("must never store tokens"), "GitHub sync state should warn against storing tokens");
   assert(syncState.includes("features: {}"), "GitHub sync state should track features");
@@ -171,7 +172,7 @@ export async function assertGitHubReadiness(rootDir) {
   assert(labels.includes("name: epic"), "GitHub labels should include epic");
   assert(labels.includes("name: feature"), "GitHub labels should include feature");
   assert(labels.includes("name: task"), "GitHub labels should include exceptional task issues");
-  assert(githubReadme.includes("Route GitHub setup through `../../operations/devops/AGENT.md`"), "GitHub README should route setup through DevOps when active");
+  assert(githubReadme.includes("Route GitHub setup through `../../clinic-assistant-ai-os/operations/devops/AGENT.md`"), "GitHub README should route setup through DevOps when active");
   assert(githubReadme.includes("setup-guide.md"), "GitHub README should point to setup guide");
   assert(githubReadme.includes("capability-contract.md"), "GitHub README should point to capability contract");
   assert(githubReadme.includes("GitHub Epics/Features sync must check GitHub readiness before preparing any sync payload"), "GitHub README should document readiness-first sync");
@@ -280,7 +281,8 @@ export async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(aiPrTemplate.includes("## Deploy / Rollback"), "AI Standard PR template should include deploy and rollback notes");
   assert(productOpsEpicsReadme.includes("operations/product-ops/epics/"), "Product Ops epics README should describe local epic root");
   assert(productOpsEpicsReadme.includes("<epic-slug>/"), "Product Ops epics README should describe local epic folders");
-  assert(productOpsEpicsReadme.includes("Every markdown file inside an Epic folder, except `README.md`, is a Feature"), "Product Ops epics README should define files as features");
+  assert(productOpsEpicsReadme.includes("The Epic artifact is `epic.md`"), "Product Ops epics README should define epic.md as canonical artifact");
+  assert(productOpsEpicsReadme.includes("Every markdown file inside an Epic folder, except `README.md` and `epic.md`, is a Feature"), "Product Ops epics README should define files as features");
   assert(productOpsEpicsReadme.includes("GitHub sync is optional"), "Product Ops epics README should keep GitHub sync optional");
   assert(productOpsEpicsReadme.includes("Não use `synced` como status de produto"), "Product Ops epics README should separate sync status from product status");
   assert(shapeEpicSkill.includes("local LeanOS Epic"), "Shape Epic skill should be local-first, not GitHub-first");

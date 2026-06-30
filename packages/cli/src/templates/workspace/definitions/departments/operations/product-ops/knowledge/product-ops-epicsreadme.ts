@@ -13,7 +13,7 @@ Use this folder only after a roadmap item has become a confirmed Delivery Scope.
 operations/product-ops/epics/
   README.md
   <epic-slug>/
-    README.md
+    epic.md
     <feature-slug>.md
 ~~~
 
@@ -21,9 +21,11 @@ operations/product-ops/epics/
 
 - Each Epic gets one folder.
 - The Epic folder name must use stable kebab-case.
-- The Epic README must follow \`../../../.leanos/standard/templates/product/epic-template.md\`.
-- Every markdown file inside an Epic folder, except \`README.md\`, is a Feature that belongs to that Epic.
+- The Epic artifact is \`epic.md\` and must follow \`../../../.leanos/standard/templates/product/epic-template.md\`.
+- README.md legado may exist in older workspaces; use it only when \`epic.md\` is absent.
+- Every markdown file inside an Epic folder, except \`README.md\` and \`epic.md\`, is a Feature that belongs to that Epic.
 - Feature files must follow \`../../../.leanos/standard/templates/product/feature-template.md\`.
+- Epic and Feature metadata must include \`sync_status\`, \`github_issue\`, milestone, Size and Effort when the item is prepared for GitHub sync.
 - Não crie uma subpasta \`features/\` no scaffold de MVP.
 - Tasks stay inside Feature files as internal checklists unless separate tracking is explicitly needed.
 - GitHub sync is optional and must be confirmed by the founder.
@@ -34,7 +36,7 @@ operations/product-ops/epics/
 Use stable, searchable names:
 
 ~~~text
-operations/product-ops/epics/customer-management/README.md
+operations/product-ops/epics/customer-management/epic.md
 operations/product-ops/epics/customer-management/create-customer-profile.md
 operations/product-ops/epics/customer-management/import-customers-csv.md
 ~~~
@@ -61,11 +63,24 @@ Feature title:
 
 ## GitHub Mapping
 
-- Epic folder README -> GitHub issue with labels \`leanos\` and \`epic\`.
+- Epic \`epic.md\` -> GitHub issue with labels \`leanos\` and \`epic\`.
+- Epic README.md legado -> GitHub issue only when \`epic.md\` does not exist.
 - Feature markdown file -> GitHub issue with labels \`leanos\` and \`feature\`.
 - Feature Tasks -> checklist inside the Feature GitHub issue.
 - Separate Task issue -> only when assignment, review, deployment, security or tracking needs separate ownership.
 - Remote IDs and issue numbers -> \`.github/leanos/sync-state.yaml\`, not product status.
+
+GitHub issue bodies must preserve the local Epic/Feature sections. Do not publish only a short summary when local markdown contains outcome, scope, criteria, tasks, risks or readiness matrix.
+
+GitHub sync must carry milestone, Size, Effort, Priority, Area, Roadmap Item and Epic relationship into GitHub Projects when those values exist locally.
+
+After the remote write, the GitHub capability must verify the issue body, milestone, Project fields and Epic/Feature relationships. Only then update local files:
+
+~~~yaml
+sync_status: synced
+github_issue:
+  url: https://github.com/<owner>/<repo>/issues/<number>
+~~~
 
 ## Sync Location Decision
 

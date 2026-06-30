@@ -2,6 +2,33 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-06-30 - Sync GitHub Rico E Epic Como `epic.md`
+
+Decisão:
+
+- O artefato canônico de Epic local passa a ser `operations/product-ops/epics/<epic-slug>/epic.md`.
+- `README.md` dentro da pasta de Epic é fallback legado e mapa de pasta; quando `epic.md` existir, ele vence.
+- O sync de Epics/Features para GitHub não pode publicar apenas um resumo simples quando o markdown local contém conteúdo rico.
+- O payload aprovado de sync deve preservar body rico, seções locais, milestone, labels, campos de GitHub Projects e relações Epic/Feature.
+- Campos mínimos de Project para sync de produto: `Status`, `Priority`, `Size`, `Effort`, `Area`, `Roadmap Item` e `Epic`.
+- Milestone local deve virar milestone real da issue quando definido; se faltar em item `sync_ready`, o sync deve bloquear ou reportar conflito em vez de inventar.
+- Relações devem existir em camadas:
+  - relação nativa parent/sub-issue quando a capability suportar;
+  - campo `Epic` no GitHub Project;
+  - links markdown no body das issues.
+- Depois da escrita remota, a capability deve fazer read-back verification para confirmar body, milestone, labels, Project fields e relacionamentos.
+- Somente depois da verificação remota passar, o LeanOS pode atualizar arquivos locais com:
+  - `sync_status: synced`;
+  - `github_issue.url`.
+- `.github/leanos/sync-state.yaml` continua sendo índice remoto sem segredos, com IDs, URLs, Project item IDs, milestone IDs/URLs e status de verificação.
+
+Justificativa:
+
+- GitHub é espelho operacional e colaboração, não substituto da fonte local de Product Ops.
+- Issues pobres fazem o founder e os modelos perderem critérios, riscos, tasks e decisões que já existiam localmente.
+- `epic.md` reduz ambiguidade: README volta a ser mapa de pasta, enquanto Epic é um artefato de produto.
+- Read-back verification evita marcar localmente `synced` quando o GitHub recebeu apenas um resumo, perdeu milestone, não entrou no Project ou perdeu relações.
+
 ## 2026-06-30 - Ready For Launch Como Workflow De Operations
 
 Decisão:

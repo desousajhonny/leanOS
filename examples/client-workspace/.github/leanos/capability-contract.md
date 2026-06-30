@@ -30,6 +30,7 @@ The future capability/script may:
 - create branches;
 - open pull requests;
 - return non-secret IDs and URLs for sync state.
+- return a local file patch only after read-back verification passes.
 
 ## Ownership
 
@@ -93,8 +94,13 @@ Inputs:
 
 - approved dry-run payload from GitHub Epics/Features sync;
 - local Epic and Feature source paths;
+- canonical Epic source path using `epic.md`, with `README.md` legacy fallback;
 - current sync-state;
 - target repository and Project;
+- full rendered GitHub issue body for every Epic and Feature;
+- milestone for each issue when local metadata requires one;
+- Project field values for Status, Priority, Size, Effort, Area, Roadmap Item and Epic;
+- relationship plan between Epics and Features;
 - dry-run flag.
 
 Returns:
@@ -103,9 +109,42 @@ Returns:
 - created or updated Feature issue numbers;
 - Project item IDs;
 - milestone IDs or URLs;
+- read-back verification result;
+- verified issue URLs;
+- relationship status;
 - conflicts;
 - skipped items and reasons;
-- sync-state patch with no secrets.
+- sync-state patch with no secrets;
+- local file patch for each verified Epic and Feature.
+
+Required behavior:
+
+1. Create or update milestones, labels, issues and Project items only from an approved dry-run.
+2. Render issue bodies from local markdown sections. Do not publish a one-paragraph summary when the local source contains richer Product Ops content.
+3. Set the issue milestone when local metadata contains a milestone.
+4. Set Project fields for Status, Priority, Size, Effort, Area, Roadmap Item and Epic.
+5. Link Features to their parent Epic using native parent/sub-issue relationships when available, Project field `Epic` and markdown backlinks.
+6. Run Read-back verification after every remote write.
+7. Return local patches only after verification passes.
+
+Read-back verification must confirm:
+
+- expected issue title, labels and state;
+- required body sections are present;
+- milestone is set;
+- Project fields are set;
+- relationships exist through native relationship when available, Project field or markdown links;
+- issue URL is stable enough to write back locally.
+
+The local file patch must update the source Epic and Feature markdown metadata:
+
+~~~yaml
+sync_status: synced
+github_issue:
+  url: https://github.com/<owner>/<repo>/issues/<number>
+~~~
+
+The capability must do not mark `synced` before remote verification passes. If read-back verification fails, return `conflict`, `verification_failed` or `partial_sync` and leave local `sync_status` unchanged unless the founder explicitly chooses a recovery path.
 
 ### github.readIssue
 
@@ -191,6 +230,9 @@ The patch may include:
 - milestone IDs or URLs;
 - timestamps;
 - conflict state;
+- verification status;
+- source file path;
+- body hash or comparable non-secret checksum when useful;
 - last sync status.
 
 The patch must not include:
@@ -200,6 +242,24 @@ The patch must not include:
 - personal credentials;
 - private key material;
 - raw API responses containing sensitive headers.
+
+## Local File Patch Rules
+
+Capabilities may return a local file patch for Product Ops Epic and Feature files after verified sync.
+
+The patch may include:
+
+- `sync_status: synced`;
+- `github_issue.url`;
+- non-secret issue number or Project item reference when a local template explicitly supports it;
+- verification timestamp when a local template explicitly supports it.
+
+The patch must not include:
+
+- tokens;
+- secrets;
+- raw API responses;
+- remote body text that would overwrite richer local Product Ops context.
 
 ## Condições de Parada
 

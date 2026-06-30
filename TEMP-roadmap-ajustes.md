@@ -20,6 +20,7 @@ O LeanOS tem um MVP de framework local com:
 - `<product-slug>-os/strategy/` ativa no setup inicial.
 - `<product-slug>-os/operations/` e `<product-slug>-os/growth/` disponiveis para ativacao progressiva, nao criadas no setup inicial.
 - GitHub readiness local em `.github/leanos/`, sem token versionado e sem escrita remota automatica.
+- GitHub Epics/Features sync com contrato rico: `epic.md` canonico, body completo, milestone, Size/Effort, relacionamentos e patch local pos-verificacao.
 - Workflow `ready-for-launch` em Operations quando Product Ops, Engineering e DevOps estao ativos, separando readiness de launch da execucao/aprendizado de Growth.
 
 ## Decisoes Canonicas Atuais
@@ -34,6 +35,8 @@ O LeanOS tem um MVP de framework local com:
 - [x] `strategy-validation-cycle` nao faz parte dos workflows atuais.
 - [x] `roadmap-to-github-project` nao deve existir como workflow Strategy.
 - [x] GitHub sync deve espelhar Epics/Features locais para GitHub Projects por DevOps/Product Ops, com readiness, dry-run, confirmacao e capability segura futura.
+- [x] GitHub sync nao pode publicar apenas resumo simples: deve preservar body rico, metadata, milestone, Project fields e relacoes Epic/Feature.
+- [x] Depois do sync remoto verificado, Epics/Features locais devem receber `github_issue.url` e `sync_status: synced`.
 - [x] GitHub nunca vira fonte primaria automatica do LeanOS; local Product Ops continua sendo a fonte operacional primaria.
 - [x] Business OS vive em `<product-slug>-os/`; runtime do agente vive em `.leanos/runtime/`; padroes do framework vivem em `.leanos/standard/`.
 - [x] Atualizacao de workspaces existentes deve ser feita por `lean-os update`, com preview via `--dry-run`, conflitos explicitos e preservacao de arquivos de produto.
@@ -75,6 +78,8 @@ O LeanOS tem um MVP de framework local com:
 - [x] `lean-os update [--dry-run]` implementado para migrar workspaces legados, mover paths antigos quando nao ha conflito, reportar conflitos e preservar arquivos de produto existentes.
 - [x] `examples/client-workspace/` regenerado no novo layout e validado com `npm test` e `git diff --check`.
 - [x] `ready-for-launch` implementado como workflow de Operations, com decisao explicita (`ready_to_launch`, `ready_with_known_risks`, bloqueios por area e `not_ready_to_learn`), roteamento raiz separado de Growth, jornada do founder documentada e validacao automatica de ativacao sequencial Product Ops -> Engineering -> DevOps.
+- [x] Contrato de sync GitHub fortalecido: Epics usam `epic.md` como fonte canonica com fallback legado para `README.md`, Project sync aponta para `<product-slug>-os/operations/product-ops/epics/`, payload exige body rico, milestone, Size, Effort, Priority, Area, Roadmap Item, Epic e relacoes.
+- [x] Capability contract de GitHub agora exige read-back verification antes de patch local, e Product Ops/DevOps registram a regra de atualizar `github_issue.url` e `sync_status: synced` apenas depois da verificacao remota.
 
 ## Pendencias Ativas
 

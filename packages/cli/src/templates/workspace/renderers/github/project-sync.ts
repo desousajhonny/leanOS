@@ -1,4 +1,5 @@
 import type { WorkspaceAnswers } from "../../types.js";
+import { createWorkspacePaths } from "../../paths.js";
 
 export function envLocal(): string {
   return `# LeanOS local environment
@@ -12,6 +13,8 @@ GITHUB_TOKEN=
 
 export function projectSyncYaml(answers: WorkspaceAnswers): string {
   const githubRemote = parseGithubRemote(answers.detectedProject?.gitRemoteOrigin);
+  const paths = createWorkspacePaths(answers);
+  const productOpsRoot = `${paths.businessOsRoot}/operations/product-ops`;
   const owner = githubRemote?.owner ?? "TODO";
   const repository = githubRemote?.repository ?? "TODO";
 
@@ -28,6 +31,7 @@ export function projectSyncYaml(answers: WorkspaceAnswers): string {
     status: Status
     priority: Priority
     size: Size
+    effort: Effort
     area: Area
     roadmap_item: Roadmap Item
     epic: Epic
@@ -35,16 +39,17 @@ export function projectSyncYaml(answers: WorkspaceAnswers): string {
     status: ${answers.prepareGithubManagement ? "pending_configuration" : "not_requested"}
     enabled: false
     source:
-      epics: ../../operations/product-ops/epics/
+      epics: ../../${productOpsRoot}/epics/
       work_mapping: ../../.github/leanos/work-mapping.md
   work_mapping:
     epic:
-      local_source: operations/product-ops/epics/<epic-slug>/README.md
+      local_source: ${productOpsRoot}/epics/<epic-slug>/epic.md
+      legacy_local_source: ${productOpsRoot}/epics/<epic-slug>/README.md
       github_target: issue
       required_labels: [leanos, epic]
       title_format: "[EPIC] <epic title>"
     feature:
-      local_source: operations/product-ops/epics/<epic-slug>/<feature-slug>.md
+      local_source: ${productOpsRoot}/epics/<epic-slug>/<feature-slug>.md
       github_target: issue
       required_labels: [leanos, feature]
       title_format: "[FEATURE: <epic title>] <feature title>"
@@ -52,6 +57,31 @@ export function projectSyncYaml(answers: WorkspaceAnswers): string {
       local_source: feature_file_checklist
       github_target: feature_issue_checklist
       separate_issue_default: false
+  body:
+    body_renderer: rich_markdown
+    preserve_local_sections: true
+    forbid_summary_only_body: true
+    required_epic_sections: [Local Source, Metadados, Outcome, Escopo, Nao Objetivos, Success Metrics, Feature Breakdown]
+    required_feature_sections: [Local Source, Metadados, Epic Pai, Proposito, Escopo, Criterios de Aceite, Tasks, Delivery Readiness Matrix]
+  metadata:
+    require_milestone: true
+    required_project_fields: [Status, Priority, Size, Effort, Area, Roadmap Item, Epic]
+  relationships:
+    epic_lists_features: true
+    feature_points_to_parent_epic: true
+    project_epic_field_required: true
+    native_parent_child_preferred: true
+  remote_verification:
+    required_after_write: true
+    verify_body_sections: true
+    verify_milestone: true
+    verify_project_fields: [Status, Priority, Size, Effort, Area, Roadmap Item, Epic]
+    verify_relationships: true
+  local_patch:
+    update_source_files_after_verified_remote: true
+    set_sync_status: synced
+    set_github_issue_url: true
+    update_sync_state: true
   rules:
     never_store_token: true
     dry_run_before_remote_write: true
