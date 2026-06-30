@@ -49,17 +49,21 @@ Route requests such as "atualizar o pacote", "publicar nova versao", "atualizar 
 npm run release:npm
 ```
 
+Before anything else in these requests, send the user this exact PowerShell command block to prepare the local npm token. Do this every time, without trying OTP first:
+
+```powershell
+$secureToken = Read-Host "Cole seu token npm granular" -AsSecureString
+$token = [System.Net.NetworkCredential]::new("", $secureToken).Password
+Set-Content -LiteralPath ".npmrc" -Value "//registry.npmjs.org/:_authToken=$token" -Encoding ASCII
+Remove-Variable token, secureToken
+npm whoami
+```
+
 Before running it:
 
 1. Confirm package versions in `packages/cli/package.json` and `packages/create/package.json`.
 2. Commit and push framework changes, leaving only a local `.npmrc` if npm auth is needed.
-3. Ask the user to prepare npm auth locally without pasting tokens in chat:
-
-```powershell
-$token = [System.Net.NetworkCredential]::new("", (Read-Host "Cole o token npm_" -AsSecureString)).Password
-"//registry.npmjs.org/:_authToken=$token" | Set-Content -Encoding ascii .npmrc
-npm whoami
-```
+3. Ask the user to prepare npm auth locally with the command block above, without pasting tokens in chat.
 
 Then run `npm run release:npm`. The script validates npm auth, tests, build, package dry-runs, publishes `lean-os` before `create-lean-os`, verifies the registry, and removes the local `.npmrc`.
 

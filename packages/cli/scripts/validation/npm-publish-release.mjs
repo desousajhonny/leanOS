@@ -19,11 +19,17 @@ export async function validateNpmPublishReleaseProtocol() {
   for (const [label, content] of [
     ["AGENT.md", agent],
     ["README.md", readme],
-    ["decision-log.md", decisionLog]
+    ["decision-log.md", decisionLog],
+    ["publish script", script]
   ]) {
     assert(content.includes("release:npm"), `${label} should route future npm package updates to release:npm`);
-    assert(content.includes("npm create lean-os"), `${label} should mention npm create lean-os`);
-    assert(content.includes("create-lean-os"), `${label} should mention create-lean-os`);
+    assert(content.includes("Set-Content -LiteralPath"), `${label} should show the safe local .npmrc token command`);
+    assert(content.includes("Remove-Variable token, secureToken"), `${label} should clear local token variables after writing .npmrc`);
+
+    if (label !== "publish script") {
+      assert(content.includes("npm create lean-os"), `${label} should mention npm create lean-os`);
+      assert(content.includes("create-lean-os"), `${label} should mention create-lean-os`);
+    }
   }
 
   assert(script.includes("npm whoami"), "release script should verify npm authentication first");

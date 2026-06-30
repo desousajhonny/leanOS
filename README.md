@@ -269,8 +269,10 @@ Before publishing, bump both package versions as needed, commit the framework ch
 PowerShell token setup:
 
 ```powershell
-$token = [System.Net.NetworkCredential]::new("", (Read-Host "Cole o token npm_" -AsSecureString)).Password
-"//registry.npmjs.org/:_authToken=$token" | Set-Content -Encoding ascii .npmrc
+$secureToken = Read-Host "Cole seu token npm granular" -AsSecureString
+$token = [System.Net.NetworkCredential]::new("", $secureToken).Password
+Set-Content -LiteralPath ".npmrc" -Value "//registry.npmjs.org/:_authToken=$token" -Encoding ASCII
+Remove-Variable token, secureToken
 npm whoami
 ```
 

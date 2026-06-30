@@ -131,6 +131,16 @@ npm run release:npm
 - O script vive em `scripts/publish-npm-create-leanos.mjs`.
 - O agente não deve reconstruir manualmente os comandos de publish a partir da memória.
 - O usuário prepara autenticação npm localmente via `.npmrc` ou `NODE_AUTH_TOKEN`; o token nunca deve ser colado em chat ou commitado.
+- Sempre que o usuário pedir para atualizar, publicar ou fazer release do pacote/framework/npm, o agente deve primeiro entregar este comando PowerShell, sem tentar OTP:
+
+```powershell
+$secureToken = Read-Host "Cole seu token npm granular" -AsSecureString
+$token = [System.Net.NetworkCredential]::new("", $secureToken).Password
+Set-Content -LiteralPath ".npmrc" -Value "//registry.npmjs.org/:_authToken=$token" -Encoding ASCII
+Remove-Variable token, secureToken
+npm whoami
+```
+
 - O script deve:
   - validar `npm whoami`;
   - impedir publish com working tree suja, exceto `.npmrc` local;
