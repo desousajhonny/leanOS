@@ -2,13 +2,28 @@
 
 ## Propósito
 
-Define how the business can create, deliver and capture value as the product evolves.
+Definir como o negócio cria, entrega e captura valor sem transformar hipóteses iniciais em fatos validados.
+
+## Status e Evidência
+
+- business_foundation_status: draft
+- confidence: founder-assumption
+- evidence_status: assumption
+- last_confirmed_by: pending-founder-confirmation
 
 ## Estado Atual
 
 TBD
 
-## Customer Segments
+## Segmentos de Clientes
+
+TBD
+
+## Problema / Jobs To Be Done
+
+TBD
+
+## Proposta de Valor
 
 TBD
 
@@ -20,19 +35,27 @@ TBD
 
 TBD
 
-## Cost Drivers
+## Modelo de Entrega
 
 TBD
 
-## Key Activities
+## Drivers de Custo
 
 TBD
 
-## Key Partners
+## Atividades-Chave
+
+TBD
+
+## Parceiros-Chave
 
 TBD
 
 ## Suposições para Validar
+
+TBD
+
+## Evidências Disponíveis
 
 TBD
 

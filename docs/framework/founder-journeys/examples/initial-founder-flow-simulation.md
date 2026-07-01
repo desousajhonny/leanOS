@@ -50,6 +50,7 @@ O que já temos:
 - uma direção de valor: reduzir faltas e organizar retornos.
 
 O que ainda falta:
+- escolher a primeira fundação de negócio sem fingir validação;
 - escolher a dor principal do primeiro ciclo;
 - entender quem sente essa dor com mais urgência;
 - separar o que é hipótese do que já sabemos.
@@ -58,14 +59,20 @@ Próximo passo recomendado:
 fechar uma Strategy Baseline mínima para decidir o foco inicial sem transformar a ideia em escopo de entrega cedo demais.
 
 Pergunta:
-para o primeiro cliente ideal, qual dor parece mais crítica agora: faltas em consultas, confirmação manual pelo WhatsApp ou perda de retornos?
+quem vamos ajudar primeiro?
+
+1. Recepcionistas de clínicas pequenas
+2. Donos/gestores de clínicas pequenas
+3. Médicos que administram a própria agenda
+4. Pacientes que esquecem consultas
+5. Ainda não sei; recomende pelo problema
 ```
 
 Análise do framework:
 
 ```text
 Estágio: Ideia / Contexto Inicial
-Rota: Root AGENT -> Strategy -> Product -> map-business-baseline/idea-calibration
+Rota: Root AGENT -> Strategy -> Product -> business-baseline -> Business Foundation se bloquear -> idea-calibration
 Área ativa: Strategy
 Operations/Product Ops: não ativa
 Roadmap: ainda não nasce
@@ -100,14 +107,20 @@ Próximo passo recomendado:
 transformar essa dor em uma hipótese de negócio testável.
 
 Pergunta:
-quando a recepcionista confirma consultas hoje, o maior problema é gastar tempo enviando mensagens, controlar quem respondeu, ou lidar com remarcações/cancelamentos?
+qual mudança o negócio promete primeiro?
+
+1. Economizar tempo da recepcionista
+2. Reduzir erro e confusão operacional
+3. Aumentar comparecimento às consultas
+4. Organizar decisão e follow-up
+5. Melhorar experiência do paciente
 ```
 
 Análise do framework:
 
 ```text
 Estágio: Strategy Baseline em formação
-Rota: Strategy -> Product Strategist -> map-business-baseline/idea-calibration
+Rota: Strategy -> Product Strategist -> business-baseline -> Business Foundation/idea-calibration
 Área ativa: Strategy
 Operations/Product Ops: ainda não ativa
 Roadmap: ainda não nasce

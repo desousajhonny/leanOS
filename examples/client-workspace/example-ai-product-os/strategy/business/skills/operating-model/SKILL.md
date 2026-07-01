@@ -20,41 +20,53 @@ Definir como humanos e modelos de IA colaboram no negócio.
 - ../knowledge/operating-model.md
 - ../knowledge/principles.md
 - ../knowledge/decision-log.md
+- ../../../.leanos/standard/foundation/guided-conversation.md
 
 ## Entradas
 
-- Modo operacional
 - Papel do founder
 - Responsabilidades dos modelos de IA
 - Restrições de decisão
+- Respostas guiadas sobre operação
 
 ## Processo
 
 ### Etapa 1
 
-Defina o que humanos possuem.
+Não faça pergunta aberta como caminho principal; ofereça opções numeradas e aceite resposta por número.
 
 ### Etapa 2
 
-Defina em que agentes de IA podem ajudar.
+Use esta pergunta quando o modelo operacional estiver ausente: `Como founder e IA devem operar?` Opções: IA propõe, founder decide; IA executa tarefas aprovadas; IA monitora e sugere próximos passos; IA automatiza rotinas de baixo risco; ainda não definido.
 
 ### Etapa 3
 
-Nomeie decisões que exigem confirmação do founder.
+Defina o que humanos possuem.
 
 ### Etapa 4
 
-Registre decisões duráveis no decision log.
+Defina em que agentes de IA podem ajudar.
+
+### Etapa 5
+
+Nomeie decisões que exigem confirmação do founder.
+
+### Etapa 6
+
+Registre decisões duráveis no decision log apenas depois de confirmação.
 
 ## Verificações e Critérios de Aceite
 
 - Pontos de aprovação humana estão explícitos.
 - Responsabilidades de IA não excedem as regras do workspace.
 - Decisões são registradas com contexto.
+- Automação de baixo risco não virou autorização ampla.
 
 ## Saída
 
-- Modo operacionall update
+- Operating model update
+- business_foundation_status: draft
+- confidence: founder-assumption
 - Proposta de decision log
 - Riscos em aberto
 

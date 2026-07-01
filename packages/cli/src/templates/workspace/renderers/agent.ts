@@ -83,7 +83,7 @@ Intenção -> Estágio Atual -> Gate -> Requisitos Ativos -> Rota
 
 Regras:
 
-- Começo, retomada ou calibração de ideia: \`${strategyAgent}\`, depois Strategy Product e \`idea-calibration.playbook.md\`.
+- Começo, retomada ou calibração de ideia: \`${strategyAgent}\`, depois Strategy Product, Business Foundation quando bloquear a baseline, e \`idea-calibration.playbook.md\`.
 - Escopo inicial de validação do MVP, roadmap, priorização ou rota de validação: \`${strategyAgent}\`.
 - Planejamento de backlog do MVP, Epic, Feature ou formatação de entrega: \`${operationsAgent}\` somente quando a área obrigatória de Operations estiver ativa.
 - Implementação, branch, PR ou review: \`${operationsAgent}\` somente quando Engineering estiver ativo e a readiness de entrega estiver clara.
@@ -134,7 +134,7 @@ Regras:
 
 Use este mapa como orientação de roteamento, não como detalhe de execução. Depois de selecionar a rota, carregue o departamento dono e deixe esse arquivo decidir o próximo workflow ou área.
 
-- Setup ou retomada do LeanOS: \`${strategyAgent}\` -> Strategy Product -> \`idea-calibration.playbook.md\`
+- Setup ou retomada do LeanOS: \`${strategyAgent}\` -> Strategy Product -> Business Foundation quando bloquear a baseline -> \`idea-calibration.playbook.md\`
 - Status, retomada ou readiness: \`${whereWeAre}\`
 - Escopo de validação do MVP ou primeiro roadmap do MVP: \`${strategyAgent}\`
 - Planejamento de backlog do MVP: retorne \`activation_required\` para \`operations.product-ops\` até Product Ops estar ativo

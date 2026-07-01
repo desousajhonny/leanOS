@@ -20,12 +20,15 @@ Mapeie uma ideia bruta do founder ou o contexto atual do negócio em fatos conhe
 - ../../../leanos.yaml
 - ../../../.leanos/standard/foundation/founder-progression-model.md
 - ../../../.leanos/standard/foundation/progression-gates.md
+- ../../../.leanos/standard/foundation/guided-conversation.md
 - ../knowledge/brief.md
 - ../knowledge/problem.md
 - ../knowledge/icp.md
 - ../knowledge/value-proposition.md
 - ../knowledge/mvp-validation-scope.md
 - ../knowledge/validation-notes.md
+- ../../business/knowledge/profile.md
+- ../../business/knowledge/business-model-canvas.md
 
 ## Entradas
 
@@ -56,13 +59,21 @@ Verifique `progression-gates.md` para contexto obrigatório, próximos estágios
 
 ### Etapa 5
 
-Identifique lacunas de Strategy Baseline: usuário-alvo, problema, promessa, alternativa, suposição mais arriscada, foco imediato e alvo de validação do MVP.
+Identifique lacunas de Strategy Baseline: usuário-alvo, problema, promessa, alternativa, suposição mais arriscada, foco imediato, direção de modelo de negócio, princípios, limites de promessa e alvo de validação do MVP.
 
 ### Etapa 6
 
-Escolha a menor próxima pergunta guiada.
+Quando missão, princípio, modelo de receita, canal, modelo de entrega ou colaboração founder/IA estiverem ausentes e bloquearem a Strategy Baseline, roteie para `../../business/playbooks/business-foundation.playbook.md`.
 
 ### Etapa 7
+
+Use perguntas guiadas de Business Foundation quando a lacuna for de negócio; não faça intake livre antes de oferecer opções.
+
+### Etapa 8
+
+Escolha a menor próxima pergunta guiada.
+
+### Etapa 9
 
 Recomende a próxima rota apenas quando o gate estiver satisfeito.
 
@@ -70,6 +81,7 @@ Recomende a próxima rota apenas quando o gate estiver satisfeito.
 
 - A saída nomeia lacunas de baseline em vez de fazer uma pergunta genérica.
 - A próxima pergunta está ligada a uma decisão ausente.
+- Lacunas de Business Foundation foram roteadas para Strategy Business antes de Product Core quando bloqueiam a baseline.
 - Roadmap e validação do MVP são recomendados apenas depois que Strategy Baseline estiver minimamente coerente.
 - activation_required é usado apenas para áreas inativas depois que o gate permitir.
 
@@ -78,6 +90,7 @@ Recomende a próxima rota apenas quando o gate estiver satisfeito.
 - Estágio de negócio atual
 - Resumo do contexto conhecido
 - Lacunas de Strategy Baseline
+- Lacunas de Business Foundation
 - Próxima pergunta guiada
 - Próxima rota segura
 

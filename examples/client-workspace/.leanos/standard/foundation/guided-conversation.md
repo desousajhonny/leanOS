@@ -17,15 +17,17 @@ Use:
 - uma opção "não tenho certeza / me ajude a decidir";
 - uma pergunta por vez quando a decisão mudar estado, roadmap, MVP, issue, PR ou implementação;
 - linguagem simples e amigável ao founder antes de paths técnicos;
-- respostas livres como entrada válida.
+- resposta livre apenas como fallback se o founder não escolher uma opção.
 
 Se não houver UI nativa de seleção disponível, escreva opções numeradas diretamente no chat.
 
 Sempre permita:
 
 ```text
-Você pode responder com o número ou descrever com suas próprias palavras.
+Você pode responder com o número da opção.
 ```
+
+Não apresente texto livre como caminho principal quando a decisão puder ser guiada por opções.
 
 ## Quando Usar Perguntas Guiadas
 
@@ -130,7 +132,7 @@ Essa ideia envolve dados sensiveis, login, pagamento ou permissoes?
 - Coloque a decisão humana antes de paths de arquivo.
 - Explique a recomendação antes de pedir confirmação.
 - Se o founder responder com um número, reafirme o significado selecionado antes de continuar.
-- Se o founder responder livremente, mapeie a resposta para a opção mais próxima e diga como você interpretou.
+- Se o founder responder livremente mesmo assim, mapeie a resposta para a opção mais próxima e diga como você interpretou.
 
 ## Formato da Saída
 
@@ -157,4 +159,4 @@ Voce pode responder so com o numero ou do seu jeito.
 - Não tome uma decisão pelo founder quando a decisão mudar estado durável.
 - Não esconda atualizações de arquivo atrás de linguagem amigável.
 - Não exponha paths técnicos antes que o founder entenda a decisão.
-- Não force opções numeradas quando o founder precisar de exploração aberta.
+- Não use exploração aberta como padrão para decisões previsíveis.

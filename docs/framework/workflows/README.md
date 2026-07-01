@@ -26,7 +26,7 @@ Regra de manutenção: sempre que um workflow for criado, removido, renomeado, m
 ## Observações Operacionais
 
 - Calibrar uma ideia não é workflow. A entrada padrão para "vamos começar", "tenho uma ideia" ou "vamos avaliar essa ideia" é `strategy/product/playbooks/idea-calibration.playbook.md`.
-- `idea-calibration` usa `map-business-baseline` para ler `leanos.yaml`, estágio do negócio e knowledge ativa, depois usa `define-product-core` quando houver sinal suficiente para consolidar produto, usuário, problema e promessa.
+- `idea-calibration` usa `business-baseline` para ler `leanos.yaml`, estágio do negócio e knowledge ativa. Quando a lacuna é de missão, princípio, receita, canal, entrega ou colaboração founder/IA, chama `strategy/business/playbooks/business-foundation.playbook.md`; depois usa `product-core` quando houver sinal suficiente para consolidar produto, usuário, problema e promessa.
 - Strategy não possui workflow ativo no scaffold inicial; decisões de ideia, MVP Validation Scope e roadmap são conduzidas por playbooks de área.
 - `mvp-validation-scope` não cria Roadmap ou backlog. Ele cria uma sequência de validação e pode fazer handoff direto para Product Ops quando o founder quiser delivery.
 - `roadmap-cycle-planning` é playbook de Strategy/Roadmap para `product_operating`, `growth_scaling` ou pedidos explícitos de ciclo/priorização entre múltiplas frentes.

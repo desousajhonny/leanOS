@@ -603,3 +603,18 @@ Justificativa:
 - O formato fica mais próximo do padrão de skills usado pelo Superpowers.
 - `SKILL.md` melhora descoberta, leitura e evolução futura das skills.
 - Steps com headings permitem detalhar capacidades complexas sem transformar a skill em playbook.
+
+## 2026-07-01 - Business Foundation Guiada No Start LeanOS
+
+Decisão:
+
+- A jornada "vamos começar" deve incluir Business Foundation mínima quando missão, princípios, modelo de receita, canal, entrega, limites de promessa ou colaboração founder/IA bloquearem a Strategy Baseline.
+- Strategy Product continua detectando lacunas por `business-baseline`, mas lacunas de negócio são roteadas para `strategy/business/playbooks/business-foundation.playbook.md`.
+- Business Foundation deve usar perguntas guiadas com opções, uma por vez, sem entrevista aberta como padrão.
+- Respostas iniciais entram como `business_foundation_status: draft` e `confidence: founder-assumption` até existir evidência.
+
+Justificativa:
+
+- Founders precisam de orientação simples, não formulários livres difíceis de responder.
+- Product não deve inventar missão, princípios ou modelo de negócio para conseguir avançar Product Core.
+- Marcar hipóteses evita que o LeanOS trate crenças iniciais como fatos validados.

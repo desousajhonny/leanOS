@@ -7,11 +7,50 @@ export function businessProfile(answers: WorkspaceAnswers): string {
 
 Registrar o contexto inicial de negócio coletado pelo LeanOS.
 
+## Status e Evidência
+
+- business_foundation_status: draft
+- confidence: founder-assumption
+- evidence_status: assumption
+- last_confirmed_by: pending-founder-confirmation
+
 ## Estado Atual
 
 - Empresa: ${answers.companyName}
 - Modo de operação: ${answers.mode}
 - Estágio atual: ${answers.stage}
+
+## Decisões
+
+TBD
+
+## Perguntas em Aberto
+
+TBD
+
+## Próxima Atualização
+
+TBD
+`;
+}
+
+export function businessFoundationDraft(title: string, purpose: string): string {
+  return `# ${title}
+
+## Propósito
+
+${purpose}
+
+## Status e Evidência
+
+- business_foundation_status: draft
+- confidence: founder-assumption
+- evidence_status: assumption
+- last_confirmed_by: pending-founder-confirmation
+
+## Estado Atual
+
+TBD
 
 ## Decisões
 

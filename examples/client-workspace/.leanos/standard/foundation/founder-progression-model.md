@@ -48,9 +48,10 @@ Quando o founder disser "quero começar", "como começar", "iniciar leanos", "qu
 2. Summarize what is already known from `seed_context` and Strategy.
 3. Declare o estágio atual.
 4. Identifique a menor decisão de Strategy ausente.
-5. Faça uma pergunta guiada com opções úteis.
-6. Não faça perguntas vazias como "me conte mais".
-7. Não crie roadmap, MVP de delivery, feature ou arquivos de implementação até o gate de Strategy estar satisfeito.
+5. Se a decisão ausente for missão, princípio, modelo de receita, canal, modelo de entrega, limite de promessa ou colaboração founder/IA, roteie para Business Foundation antes de Product Core.
+6. Faça uma pergunta guiada com opções úteis.
+7. Não faça perguntas vazias como "me conte mais".
+8. Não crie roadmap, MVP de delivery, feature ou arquivos de implementação até o gate de Strategy estar satisfeito.
 
 Use este formato de resposta:
 
@@ -66,6 +67,7 @@ Pergunta:
 - Faça uma decisão por vez.
 - Ofereça 3 a 5 opções concretas quando o founder puder não saber a resposta.
 - Inclua uma opção "não tenho certeza / me ajude a decidir" quando houver incerteza provável.
+- Não use entrevista aberta como padrão quando a decisão tiver opções razoáveis.
 - Conecte cada pergunta ao próximo arquivo ou decisão que ela desbloqueia.
 - Prefira linguagem do founder a termos internos do framework.
 - Depois de cada resposta, reafirme o entendimento atualizado e o próximo gate.
@@ -167,6 +169,7 @@ Antes de MVP Validation Scope, Roadmap Inicial ou MVP Delivery Decision, Strateg
 - escopo de validação do MVP quando o founder está pedindo o primeiro caminho de MVP
 - suposições-chave
 - nível de evidência
+- Business Foundation mínima: missão ou propósito inicial, princípio de tradeoff, modelo de receita/canal/entrega ou incerteza explícita, limite do que não prometer e colaboração founder/IA quando isso afetar execução
 - direção de modelo de negócio ou incerteza explícita
 - prioridade do founder para o próximo passo
 

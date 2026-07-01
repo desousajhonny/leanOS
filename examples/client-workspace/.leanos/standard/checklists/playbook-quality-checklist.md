@@ -27,7 +27,7 @@ Use este checklist antes de aceitar um arquivo `.playbook.md`.
 
 - [ ] Se o playbook pedir que o founder escolha, classifique, priorize ou confirme, ele referencia `../foundation/guided-conversation.md`.
 - [ ] Perguntas guiadas usam opções numeradas quando a decisão tem caminhos previsíveis.
-- [ ] O founder pode responder com um número ou texto livre.
+- [ ] O caminho principal de resposta é número/opção; texto livre é apenas fallback interpretado e confirmado.
 - [ ] Caminhos técnicos aparecem depois que o founder entende a decisão.
 
 ## Escopo

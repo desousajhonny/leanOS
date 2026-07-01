@@ -51,7 +51,8 @@ Trabalho principal do Chief:
 
 Rotas típicas:
 
-- `strategy/product/skills/map-business-baseline/SKILL.md`
+- `strategy/product/skills/business-baseline/SKILL.md`
+- `strategy/business/playbooks/business-foundation.playbook.md` quando missão, princípios, modelo de negócio ou operação bloquearem a baseline
 - `strategy/product/playbooks/idea-calibration.playbook.md`
 
 Próximo estágio saudável:
@@ -83,6 +84,7 @@ Gate mínimo para avançar:
 - dor principal;
 - alternativa atual;
 - promessa inicial;
+- Business Foundation mínima: missão/proposição inicial, princípio de tradeoff, limite do que não prometer, modelo de receita/canal/entrega ou incerteza explícita;
 - premissa mais arriscada;
 - foco imediato.
 

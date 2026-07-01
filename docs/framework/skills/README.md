@@ -21,9 +21,9 @@ Ativação padrão: `AGENT.md` -> `strategy/AGENT.md` -> `strategy/business/AGEN
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
-| `business-identity` | Definir identidade do negócio, missão, princípios e contexto base. | Role `business-strategist`; playbook `business-foundation`; pedidos sobre negócio, missão, visão ou princípios. |
-| `operating-model` | Definir como founder, humanos e agentes de IA colaboram no negócio. | Role `business-strategist`; playbook `business-foundation`; pedidos sobre modelo operacional, ownership ou colaboração humano/IA. |
-| `business-model` | Definir receita, canais, custos, modelo de entrega e hipóteses financeiras no nível do negócio. | Role `business-strategist`; pedidos sobre pricing, receita, canais, custos ou modelo de negócio; rota chamada por Product quando isso bloquear uma decisão. |
+| `business-identity` | Definir identidade do negócio, missão, visão, princípios e limites de promessa com perguntas guiadas. | Role `business-strategist`; playbook `business-foundation`; pedidos sobre negócio, missão, visão ou princípios. |
+| `operating-model` | Definir como founder, humanos e agentes de IA colaboram no negócio com opções de operação seguras. | Role `business-strategist`; playbook `business-foundation`; pedidos sobre modelo operacional, ownership ou colaboração humano/IA. |
+| `business-model` | Definir receita, canais, custos, modelo de entrega e hipóteses financeiras no nível do negócio, sem inventar validação. | Role `business-strategist`; pedidos sobre pricing, receita, canais, custos ou modelo de negócio; rota chamada por Product quando isso bloquear uma decisão. |
 
 ### Product
 
@@ -31,7 +31,7 @@ Ativação padrão: `AGENT.md` -> `strategy/AGENT.md` -> `strategy/product/AGENT
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
-| `business-baseline` | Mapear contexto inicial, estágio do negócio, lacunas da Strategy Baseline e próxima pergunta segura. | Primeiro passo do playbook `idea-calibration`; role `product-strategist`; início do LeanOS ou qualquer ideia nova. |
+| `business-baseline` | Mapear contexto inicial, estágio do negócio, lacunas da Strategy Baseline e próxima pergunta segura; roteia lacunas de negócio para Business Foundation. | Primeiro passo do playbook `idea-calibration`; role `product-strategist`; início do LeanOS ou qualquer ideia nova. |
 | `product-core` | Consolidar produto, usuário primário, problema central, alternativa, promessa, diferenciação e hipótese mais arriscada. | Roles `product-strategist` e `product-manager`; playbook `idea-calibration`; pedidos de descoberta, maturação ou clareza da ideia. |
 | `mvp-validation-scope` | Definir o menor caminho e sequência de validação do MVP sem criar Roadmap, Epic, Feature ou escopo de implementação. | Playbook `mvp-validation-scope`; handoff vindo de `idea-calibration`; roles `product-strategist` e `product-manager`. |
 | `coherence` | Checar coerência entre ICP, problema, proposta de valor, escopo de MVP, roadmap e issue. | Roles `product-strategist` e `product-manager`; playbook `idea-calibration`; revisões de coerência antes de avançar. |

@@ -68,7 +68,7 @@ Intenção -> Estágio Atual -> Gate -> Requisitos Ativos -> Rota
 
 Regras:
 
-- Começo, retomada ou calibração de ideia: `example-ai-product-os/strategy/AGENT.md`, depois Strategy Product e `idea-calibration.playbook.md`.
+- Começo, retomada ou calibração de ideia: `example-ai-product-os/strategy/AGENT.md`, depois Strategy Product, Business Foundation quando bloquear a baseline, e `idea-calibration.playbook.md`.
 - Escopo inicial de validação do MVP, roadmap, priorização ou rota de validação: `example-ai-product-os/strategy/AGENT.md`.
 - Planejamento de backlog do MVP, Epic, Feature ou formatação de entrega: `example-ai-product-os/operations/AGENT.md` somente quando a área obrigatória de Operations estiver ativa.
 - Implementação, branch, PR ou review: `example-ai-product-os/operations/AGENT.md` somente quando Engineering estiver ativo e a readiness de entrega estiver clara.
@@ -119,7 +119,7 @@ Regras:
 
 Use este mapa como orientação de roteamento, não como detalhe de execução. Depois de selecionar a rota, carregue o departamento dono e deixe esse arquivo decidir o próximo workflow ou área.
 
-- Setup ou retomada do LeanOS: `example-ai-product-os/strategy/AGENT.md` -> Strategy Product -> `idea-calibration.playbook.md`
+- Setup ou retomada do LeanOS: `example-ai-product-os/strategy/AGENT.md` -> Strategy Product -> Business Foundation quando bloquear a baseline -> `idea-calibration.playbook.md`
 - Status, retomada ou readiness: `.leanos/runtime/agent/protocols/where-we-are.md`
 - Escopo de validação do MVP ou primeiro roadmap do MVP: `example-ai-product-os/strategy/AGENT.md`
 - Planejamento de backlog do MVP: retorne `activation_required` para `operations.product-ops` até Product Ops estar ativo
