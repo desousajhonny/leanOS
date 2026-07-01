@@ -1,6 +1,6 @@
 {
   "name": "lean-os",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "LeanOS agent-native startup operating system CLI.",
   "type": "module",
   "bin": {
