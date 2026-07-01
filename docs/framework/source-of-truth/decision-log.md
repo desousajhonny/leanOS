@@ -832,3 +832,25 @@ Justificativa:
 - O agente decide rota por gatilho; gatilhos circulares fazem o modelo depender de memória ou adivinhação.
 - Framework genérico não significa linguagem vaga. O produto pode ser desconhecido, mas a classe de trabalho precisa ser operacionalmente precisa.
 - A validação precisa barrar regressão no scaffold, não apenas orientar modelos em texto.
+
+## 2026-07-01 - Capability Packs De Product Analytics E External Integrations
+
+Decisão:
+
+- O LeanOS passa a incluir dois capability packs opcionais dentro de Operations:
+  - `operations.product-analytics`;
+  - `operations.external-integrations`.
+- `operations.product-analytics` é a fonte de verdade para tracking plan, event taxonomy, funnel map, UTM/lead attribution e tracking privacy.
+- `operations.external-integrations` é a fonte de verdade para integration catalog, API contracts, webhook contracts, reliability/retry/idempotency/fallback/logs e auth/secrets.
+- O `intent-map.yaml` roteia telemetria, eventos, funis, UTM, origem de lead e resultado de experimento para Product Analytics.
+- O `intent-map.yaml` roteia API externa, webhook, provider, payload, OAuth/API key, retry, idempotência e logs de integração para External Integrations.
+- `feature-to-delivery-cycle` deve verificar esses packs antes de Engineering quando a Feature tocar analytics ou integrações externas.
+- Se o pack estiver inativo, o modelo deve retornar `activation_required: operations.product-analytics` ou `activation_required: operations.external-integrations` em vez de improvisar requisitos em Engineering, Growth ou DevOps.
+- O generator passa a validar a existência, indexação, qualidade semântica e contratos mínimos desses packs.
+
+Justificativa:
+
+- Founder AI builders frequentemente misturam eventos, UTMs, origem de lead, funis e evidência de Growth em lugares diferentes, gerando métricas duplicadas e decisões frágeis.
+- Integrações externas costumam quebrar por falta de payload contract, retry, idempotência, fallback, auth boundaries e logs seguros antes do código.
+- Esses assuntos são classes recorrentes de trabalho operacional, mas não devem virar áreas obrigatórias no setup inicial.
+- Mantê-los como packs opcionais preserva a ativação progressiva e dá ao modelo uma rota clara antes de Engineering implementar comportamento que depende de dados ou terceiros.

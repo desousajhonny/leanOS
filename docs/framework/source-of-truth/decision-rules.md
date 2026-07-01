@@ -135,7 +135,18 @@ Skills e playbooks gerados precisam ter `description` começando com "Use quando
 
 Toda skill e todo playbook devem declarar 2 ou mais sinais concretos em `description` e `## Use Quando`.
 
-## 14. Use O Registro De Decisões Para Escolhas Duráveis
+## 14. Use Capability Packs Para Classes Recorrentes De Trabalho
+
+Quando uma Feature ou workflow tocar uma classe operacional recorrente que atravessa áreas, use um capability pack explícito antes de Engineering.
+
+Na v1, os packs opcionais de Operations são:
+
+- `operations.product-analytics`: eventos, tracking plan, funis, UTM, origem de lead, deduplicação e privacidade de analytics;
+- `operations.external-integrations`: APIs externas, webhooks, payloads, retry, idempotência, autenticação, fallback e logs seguros.
+
+Se o pack estiver inativo, retorne `activation_required` para a menor área necessária. Não deixe Engineering, Growth ou DevOps improvisarem source of truth paralelo.
+
+## 15. Use O Registro De Decisões Para Escolhas Duráveis
 
 Registre decisões duráveis quando elas afetarem:
 

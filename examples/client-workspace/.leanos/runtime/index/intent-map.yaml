@@ -201,6 +201,61 @@ intents:
       playbooks:
         - github-project-management
         - github-safety-baseline
+  product_analytics:
+    signals:
+      - analytics
+      - telemetria
+      - eventos
+      - tracking
+      - funil
+      - UTM
+      - origem do lead
+      - conversão
+      - resultado de experimento
+    owner_department: operations
+    required_areas:
+      - operations.product-analytics
+    activation_required: operations.product-analytics
+    expected_chain:
+      area: operations.product-analytics
+      role: product-analytics-lead
+      skills:
+        - tracking-plan
+        - event-taxonomy
+        - funnel-analysis
+        - utm-attribution
+        - tracking-privacy
+      playbooks:
+        - analytics-readiness
+        - growth-evidence-review
+  external_integrations:
+    signals:
+      - API externa
+      - webhook
+      - integração
+      - provider
+      - retry
+      - idempotência
+      - payload
+      - OAuth
+      - API key
+      - logs de integração
+    owner_department: operations
+    required_areas:
+      - operations.external-integrations
+    activation_required: operations.external-integrations
+    expected_chain:
+      area: operations.external-integrations
+      role: integration-architect
+      skills:
+        - api-contract
+        - webhook-reliability
+        - idempotency
+        - integration-auth
+        - safe-integration-logging
+      playbooks:
+        - integration-readiness
+        - webhook-readiness
   launch_readiness:
     signals:
       - pronto para lançar

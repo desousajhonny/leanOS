@@ -4,13 +4,15 @@ import { operationsDesignArea } from "./operations/design/index.js";
 import { operationsEngineeringArea } from "./operations/engineering/index.js";
 import { operationsDevopsArea } from "./operations/devops/index.js";
 import { operationsSecurityArea } from "./operations/security/index.js";
+import { operationsProductAnalyticsArea } from "./operations/product-analytics/index.js";
+import { operationsExternalIntegrationsArea } from "./operations/external-integrations/index.js";
 
 export const operationsDepartment: RootDepartmentDefinition = {
   key: "operations",
   name: "Operations",
-  purpose: "Own product operations, Feature implementation packets, design, engineering, DevOps and security for delivery.",
-  requestTypes: "delivery scope, issue readiness, design, engineering, implementation, DevOps or security",
-  areas: [operationsProductOpsArea, operationsDesignArea, operationsEngineeringArea, operationsDevopsArea, operationsSecurityArea],
+  purpose: "Own product operations, Feature implementation packets, design, engineering, DevOps, security, product analytics and external integration readiness for delivery.",
+  requestTypes: "delivery scope, issue readiness, design, engineering, implementation, DevOps, security, product analytics or external integrations",
+  areas: [operationsProductOpsArea, operationsDesignArea, operationsEngineeringArea, operationsDevopsArea, operationsSecurityArea, operationsProductAnalyticsArea, operationsExternalIntegrationsArea],
   workflows: [
     {
       slug: "feature-to-delivery-cycle",
@@ -27,18 +29,20 @@ export const operationsDepartment: RootDepartmentDefinition = {
         department: "operations",
         primaryArea: "product-ops",
         supportingAreas: ["engineering"],
-        conditionalAreas: ["design", "security", "devops"]
+        conditionalAreas: ["design", "security", "devops", "product-analytics", "external-integrations"]
       },
       conditionalAreas: [
         { area: "design", when: "Enter before Engineering when the Feature affects UI, screens, flows, copy, accessibility, interaction, design system usage or reusable components." },
         { area: "security", when: "Enter before Engineering when the Feature touches data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure, AI-generated-code risk, LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection or cost/rate abuse." },
-        { area: "devops", when: "Enter before Engineering when the Feature touches environments, CI/CD, deploy, observability, config, GitHub sync or release readiness." }
+        { area: "devops", when: "Enter before Engineering when the Feature touches environments, CI/CD, deploy, observability, config, GitHub sync or release readiness." },
+        { area: "product-analytics", when: "Enter before Engineering when the Feature needs events, funnel measurement, lead source, UTM attribution, tracking privacy or analytics verification." },
+        { area: "external-integrations", when: "Enter before Engineering when the Feature calls an external API, provider, webhook, CRM, email, payment, automation service or AI provider." }
       ],
       phases: [
         "Intake - accept only a local Feature or mapped GitHub Feature issue.",
         "Product Ops readiness - identify the Feature, parent Epic, delivery scope and ready-to-develop state.",
         "Implementation packet - create or confirm `operations/product-ops/knowledge/implementation-packets/<feature-slug>/README.md` as the Feature handoff hub.",
-        "Conditional area readiness - resolve Design, Security and DevOps applicability and write applicable screen specs, component specs, Security or DevOps artifacts into the Feature implementation packet before Engineering.",
+        "Conditional area readiness - resolve Design, Security, DevOps, Product Analytics and External Integrations applicability and write applicable screen specs, component specs, Security, DevOps, analytics or integration artifacts into the Feature implementation packet before Engineering.",
         "Engineering delivery - delegate branch, implementation and tests to `engineering-delivery.playbook.md`.",
         "PR preparation - prepare PR scope, test notes, risks and Founder Testing Guide through `prepare-pr.playbook.md`.",
         "PR validation - validate implementation through `pr-validation.playbook.md` before merge readiness.",
@@ -66,6 +70,8 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "operations/design/playbooks/product-ui-spec-readiness.playbook.md when shell, menus, tables, forms, panels, action priority or navigation patterns are new or unclear",
         "operations/security/AGENT.md when security risk is involved",
         "operations/devops/AGENT.md when delivery infrastructure is involved",
+        "operations/product-analytics/AGENT.md when events, funnel measurement, lead source, UTM attribution, tracking privacy or analytics verification are involved",
+        "operations/external-integrations/AGENT.md when external APIs, providers, webhooks, CRM, email, payments, automation services or AI providers are involved",
         "operations/engineering/AGENT.md",
         "operations/engineering/roles/senior-developer.role.md",
         "operations/engineering/playbooks/engineering-delivery.playbook.md",
@@ -79,7 +85,7 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "Load Product Ops through `operations/product-ops/AGENT.md` first to identify the Feature, parent Epic, delivery scope and readiness state",
         "Run `operations/product-ops/knowledge/ready-to-develop.md` before branch, code or PR work",
         "Create or confirm the Feature implementation packet at `operations/product-ops/knowledge/implementation-packets/<feature-slug>/README.md` before Engineering; use it as the hub for screen specs, component specs, Security, DevOps and Engineering handoff artifacts",
-        "If Design, Security or DevOps is required but the area is inactive, return `activation_required: operations.<area>` instead of loading missing area paths or inventing the answer",
+        "If Design, Security, DevOps, Product Analytics or External Integrations is required but the area is inactive, return `activation_required: operations.<area>` instead of loading missing area paths or inventing the answer",
         "If the Feature affects UI, screens, flows, copy, accessibility or reusable components, route Design before Engineering",
         "If the Feature introduces or changes product UI patterns such as shell, menus, tables, forms, panels, action priority or navigation, require Product UI Spec readiness before screen or component specs",
         "If the Feature affects a concrete screen, state, form, modal or page and no approved screen spec exists in the packet, route to `operations/design/playbooks/screen-readiness.playbook.md` before branch or code",
@@ -87,8 +93,10 @@ export const operationsDepartment: RootDepartmentDefinition = {
         "If a new component spec is needed and no approved spec exists, route to `operations/design/playbooks/component-readiness.playbook.md` before branch or code",
         "Route Security when data, auth, permissions, privacy, abuse, API, database, secrets, compliance, infrastructure, AI-generated-code risk, LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection or cost/rate abuse is involved",
         "Route DevOps only when environments, CI/CD, deploy, observability, configuration, GitHub sync or release readiness are affected",
-        "Record why Design, Security or DevOps are not applicable when they do not enter the flow",
-        "After Product Ops, Design, Security and DevOps readiness are ready or explicitly not applicable, route to `operations/engineering/AGENT.md` and load `operations/engineering/playbooks/engineering-delivery.playbook.md`",
+        "Route Product Analytics when events, funnel measurement, UTM, lead source, tracking privacy, analytics verification or experiment measurement is involved",
+        "Route External Integrations when external APIs, providers, webhooks, CRM, email, payments, automation services, payload contracts, retry, idempotency or provider auth are involved",
+        "Record why Design, Security, DevOps, Product Analytics or External Integrations are not applicable when they do not enter the flow",
+        "After Product Ops, Design, Security, DevOps, Product Analytics and External Integrations readiness are ready or explicitly not applicable, route to `operations/engineering/AGENT.md` and load `operations/engineering/playbooks/engineering-delivery.playbook.md`",
         "This workflow coordinates gates and handoffs; `engineering-delivery.playbook.md` executes the Feature-linked branch, implementation, tests, PR preparation and PR validation",
         "Use `operations/engineering/playbooks/engineering-delivery.playbook.md` to create or confirm the Feature-linked branch, plan implementation, run component implementation when needed, update code and execute tests",
         "Run tests or explain gaps",
@@ -139,19 +147,19 @@ export const operationsDepartment: RootDepartmentDefinition = {
       stopConditions: [
         "The request is a loose idea, roadmap item or unsplit Epic instead of a Feature.",
         "The Feature cannot be mapped to a local Feature or GitHub Feature issue.",
-        "`ready-to-develop.md` shows missing Product Ops, Design, Security, DevOps or Engineering readiness.",
+        "`ready-to-develop.md` shows missing Product Ops, Design, Security, DevOps, Product Analytics, External Integrations or Engineering readiness.",
         "The Feature implementation packet is missing, draft, pending or blocked.",
-        "Design, Security or DevOps is required but inactive; return `activation_required: operations.<area>` instead of loading missing paths.",
+        "Design, Security, DevOps, Product Analytics or External Integrations is required but inactive; return `activation_required: operations.<area>` instead of loading missing paths.",
         "A required Design screen spec is missing.",
         "A required Design component spec is missing.",
-        "Security or DevOps triggers apply and cannot be resolved or marked not applicable with a reason.",
+        "Security, DevOps, Product Analytics or External Integrations triggers apply and cannot be resolved or marked not applicable with a reason.",
         "The founder does not confirm branch, code changes, external actions or PR preparation.",
         "Tests cannot be run or meaningfully replaced with a documented validation plan."
       ],
       expectedOutput: [
         "Feature readiness summary.",
         "Feature implementation packet status and artifact paths.",
-        "Design, Security and DevOps applicability notes with reasons.",
+        "Design, Security, DevOps, Product Analytics and External Integrations applicability notes with reasons.",
         "Component readiness decision before Engineering when UI components are affected.",
         "Branch name and implementation plan after confirmation.",
         "Code and test changes summary.",

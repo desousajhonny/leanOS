@@ -11,6 +11,7 @@ import { validateFounderJourneyReadyForLaunch, validateFounderJourneyReviewPr, v
 import { validateFrameworkGovernance } from "./validation/framework-governance.mjs";
 import { validateGeneratedHumanLanguage } from "./validation/language.mjs";
 import { validateBusinessOsLayout } from "./validation/layout.mjs";
+import { validateCapabilityPacks } from "./validation/capability-packs.mjs";
 import { validateGithubRepositoryReadmeGate } from "./validation/github-repository-readme-gate.mjs";
 import { validateGithubSyncContract } from "./validation/github-sync.mjs";
 import { validateGrowthExperimentContract } from "./validation/growth-experiments.mjs";
@@ -42,6 +43,7 @@ await validateFrameworkGovernance();
 await validateAreaDefinitionsAreModular();
 await validateGeneratedHumanLanguage();
 await validateBusinessOsLayout();
+await validateCapabilityPacks();
 await validateGithubSyncContract();
 await validateNpmPublishReleaseProtocol();
 await validateGithubRepositoryReadmeGate();

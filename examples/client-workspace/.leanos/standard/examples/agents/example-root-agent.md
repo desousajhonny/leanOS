@@ -165,7 +165,7 @@ Use esta seção apenas para escolher o departamento dono. O `AGENT.md` do depar
   Mapa: `clinic-assistant-ai-os/strategy/README.md`
 
 - Operations: `clinic-assistant-ai-os/operations/AGENT.md`
-  Use para delivery scope, issue readiness, design, engineering, implementation, DevOps or security.
+  Use para delivery scope, issue readiness, design, engineering, implementation, DevOps, security, product analytics or external integrations.
   Mapa: `clinic-assistant-ai-os/operations/README.md`
 
 - Growth: `clinic-assistant-ai-os/growth/AGENT.md`

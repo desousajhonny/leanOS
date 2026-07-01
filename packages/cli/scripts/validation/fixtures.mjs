@@ -19,6 +19,8 @@ export const allSubareas = [
   "operations.engineering",
   "operations.devops",
   "operations.security",
+  "operations.product-analytics",
+  "operations.external-integrations",
   "growth.customer-experience",
   "growth.marketing",
   "growth.finance"
