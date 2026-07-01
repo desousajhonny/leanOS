@@ -22,6 +22,7 @@ export async function validateSpendBudgetSourceOfTruthContract() {
   await activateWorkspaceArea(rootDir, "operations.security");
 
   const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
+  const intentMap = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "intent-map.yaml"), "utf8"));
   const financeYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "area.yaml"), "utf8"));
   const spendLedger = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "knowledge", "spend-ledger.md"), "utf8");
   const budget = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "knowledge", "budget.md"), "utf8");
@@ -38,8 +39,9 @@ export async function validateSpendBudgetSourceOfTruthContract() {
   const configureEnvironments = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "configure-environments", "SKILL.md"), "utf8");
   const securityBaseline = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "security-baseline.md"), "utf8");
 
-  assert(rootAgent.includes("Gastos, orçamento, budget, burn, runway, custos, ferramentas pagas, infra paga, mídia paga ou unit economics"), "Root AGENT should route spend and budget requests tersely");
-  assert(rootAgent.includes("activation_required` para `growth.finance`"), "Root AGENT should activate Growth Finance for spend and budget requests");
+  assert(rootAgent.includes("`.leanos/runtime/index/intent-map.yaml`"), "Root AGENT should route spend and budget requests through intent map");
+  assert(intentMap.intents.spend_budget.signals.includes("budget"), "Intent map should route spend and budget requests tersely");
+  assert.equal(intentMap.intents.spend_budget.activation_required, "growth.finance", "Intent map should activate Growth Finance for spend and budget requests");
   assert(financeYaml.area.source_of_truth.includes("knowledge/spend-ledger.md"), "Finance area.yaml should list spend-ledger knowledge");
 
   for (const requiredContent of [

@@ -61,9 +61,11 @@ async function assertSecurityHardeningRouteAfterActivation() {
   assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations")), false, "Initial Founder Journey should start Strategy-only");
 
   let rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
+  const initialIntentMap = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "intent-map.yaml"), "utf8"));
 
-  assert(rootAgent.includes("Auditoria de segurança, vulnerabilidade, LGPD, dados de cliente, vazamento de token, proteção de API ou hardening"), "Root AGENT should route direct security hardening requests");
-  assert(rootAgent.includes("activation_required` para `operations.security`"), "Root AGENT should return activation_required for inactive Security");
+  assert(rootAgent.includes("`.leanos/runtime/index/intent-map.yaml`"), "Root AGENT should use the intent map for Security classification");
+  assert(initialIntentMap.intents.security.signals.includes("hardening"), "Intent map should classify direct Security hardening requests");
+  assert.equal(initialIntentMap.intents.security.activation_required, "operations.security", "Intent map should return activation_required for inactive Security");
 
   await activateWorkspaceArea(rootDir, "operations.security");
 
@@ -150,6 +152,7 @@ async function assertReadyForLaunchRouteAfterSequentialActivation() {
   const operationsWorkflowsReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "workflows", "README.md"), "utf8");
   const readyForLaunchWorkflow = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "workflows", "ready-for-launch.workflow.md"), "utf8");
   const workflowsIndex = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "workflows.yaml"), "utf8"));
+  const intentMap = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "intent-map.yaml"), "utf8"));
 
   assert.deepEqual(yaml.departments.active, ["strategy", "operations"], "Sequential activation should keep Operations active");
   assert(yaml.activation.active_areas.includes("operations.product-ops"), "Product Ops should be active for launch readiness");
@@ -157,8 +160,11 @@ async function assertReadyForLaunchRouteAfterSequentialActivation() {
   assert(yaml.activation.active_areas.includes("operations.devops"), "DevOps should be active for launch readiness");
   assert(yaml.workflows.active.includes("ready-for-launch"), "ready-for-launch workflow should be active after DevOps activation");
   assert(workflowsIndex.workflows.some((workflow) => workflow.key === "ready-for-launch"), "Workflows index should expose ready-for-launch");
-  assert(rootAgent.includes("Readiness de launch, go-live, beta ou usuários reais"), "Root AGENT should route launch readiness distinctly from Growth execution");
-  assert(rootAgent.includes("Execução de launch, aquisição, onboarding ou learning loop"), "Root AGENT should keep launch execution and learning with Growth");
+  assert(rootAgent.includes("`.leanos/runtime/index/intent-map.yaml`"), "Root AGENT should use the intent map for launch intent classification");
+  assert(intentMap.intents.launch_readiness.signals.includes("go-live"), "Intent map should classify launch readiness distinctly from Growth execution");
+  assert.equal(intentMap.intents.launch_readiness.expected_chain.workflow, "ready-for-launch", "Intent map should route launch readiness to ready-for-launch");
+  assert.equal(intentMap.intents.launch_learning.owner_department, "growth", "Intent map should keep launch execution and learning with Growth");
+  assert.equal(intentMap.intents.launch_learning.expected_chain.workflow, "launch-learning-loop", "Intent map should route launch learning to Growth launch-learning-loop");
   assert(operationsAgent.includes("decidir se uma release pode ir para usuários reais"), "Operations AGENT should recognize launch readiness as an Operations journey");
   assert(operationsWorkflowsReadme.includes("ready-for-launch.workflow.md"), "Operations workflow index should expose ready-for-launch");
   assert(readyForLaunchWorkflow.includes("## Decisões Possíveis"), "ready-for-launch workflow should name its possible decisions");

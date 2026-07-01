@@ -172,11 +172,12 @@ function assertPricingSourceOfTruthContract({ pricing, financeOperator, reviewPr
 
 export async function assertNaturalStartupRules(rootDir) {
   const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
+  const intentMap = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "intent-map.yaml"), "utf8"));
   const productPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "playbooks", "idea-calibration.playbook.md"), "utf8");
 
   assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Startup should not depend on generated command files");
-  assert(rootAgent.includes("Setup ou retomada do LeanOS: `clinic-assistant-ai-os/strategy/AGENT.md`"), "Root AGENT should route startup intent through Strategy");
-  assert(rootAgent.includes("Strategy Product -> `idea-calibration.playbook.md`"), "Root AGENT should route startup and ideas to Strategy Product idea calibration");
+  assert.equal(intentMap.intents.setup_or_resume.owner_department, "strategy", "Intent map should route startup intent through Strategy");
+  assert.equal(intentMap.intents.setup_or_resume.expected_chain.playbook, "idea-calibration", "Intent map should route startup and ideas to Strategy Product idea calibration");
   assert(rootAgent.includes("Intenção -> Estágio Atual -> Gate -> Requisitos Ativos -> Rota"), "Root AGENT should use progression intent routing");
   assert(rootAgent.includes("Não escreva durante a primeira resposta"), "Root AGENT should avoid writing during the first startup response");
   assert(rootAgent.includes("Não modifique roles, skills, playbooks, workflows, `.leanos/standard/` ou `.github/` durante startup"), "Root AGENT should protect operating assets during startup");
@@ -202,7 +203,7 @@ export async function assertRootAgentMutationRules(rootDir) {
   assert(rootAgent.includes("Peça confirmação antes de modificar arquivos de knowledge, decisão ou framework"), "AGENT.md should require confirmation before file mutation");
   assert(rootAgent.includes("## Trace e Diagnóstico"), "AGENT.md should include Trace And Diagnostics");
   assert(rootAgent.includes("`.leanos/runtime/agent/protocols/chief-trace.md`"), "AGENT.md should route trace diagnostics to chief-trace protocol");
-  assert(rootAgent.includes("Setup de GitHub, configuração de GitHub Projects ou sync de Epics/Features"), "AGENT.md should route natural GitHub sync requests to DevOps");
+  assert(rootAgent.includes("`.leanos/runtime/index/intent-map.yaml`"), "AGENT.md should route natural intent requests through intent map");
   assert.equal(rootAgent.includes("Source-of-truth files describe what the company knows"), false, "AGENT.md should avoid old source-of-truth taxonomy");
   assert.equal(rootAgent.includes("Operating assets describe how LeanOS works"), false, "AGENT.md should avoid old operating-assets taxonomy");
   assert.equal(operatingRules.includes("LeanOS slash commands are portable across VS Code, Claude, Codex, terminal agents and any chat interface"), false, "operating rules should not promote slash commands");

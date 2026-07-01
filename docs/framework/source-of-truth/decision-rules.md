@@ -38,7 +38,15 @@ Não reintroduza `.leanos/commands/` gerados como interface operacional.
 
 Arquivos de prompt para um editor hospedeiro podem existir como auxiliares de integração, mas devem rotear pelo `AGENT.md` raiz e pelas regras de intenção em linguagem natural.
 
-## 6. Proteja A Taxonomia De Trabalho Product-First
+## 6. Não Transforme O Root AGENT Em Inventário
+
+O root `AGENT.md` deve conter red lines, contexto mínimo de boot, protocolo de ativação e regras de navegação.
+
+Novas intenções naturais duráveis devem ser adicionadas em `.leanos/runtime/index/intent-map.yaml` e cobertas por validação automatizada.
+
+O root pode usar pistas do intent map para conferir coerência, mas deve carregar apenas o departamento dono ativo. Roles, skills, playbooks, workflows e knowledge continuam sendo escolhidos pelo departamento ou área dona.
+
+## 7. Proteja A Taxonomia De Trabalho Product-First
 
 O LeanOS usa:
 
@@ -48,7 +56,7 @@ Roadmap -> Escopo de MVP -> Epic -> Feature -> Task
 
 A linguagem de issues do GitHub é uma representação remota, não a taxonomia central de produto.
 
-## 7. Separe Planejamento De Implementação
+## 8. Separe Planejamento De Implementação
 
 Não permita que:
 
@@ -59,7 +67,7 @@ Não permita que:
 
 Engineering começa depois que a Feature passa pelos gates de readiness.
 
-## 8. Trate MVP Como Aprendizado, Não Como Perfeição
+## 9. Trate MVP Como Aprendizado, Não Como Perfeição
 
 O MVP deve ser pequeno o suficiente para validar uma premissa de negócio ou produto, mas bom o suficiente para criar uma primeira experiência crível.
 
@@ -68,7 +76,7 @@ Evite os dois extremos:
 - discovery interminável sem aprendizado de produto;
 - implementação apressada sem aprendizado estratégico.
 
-## 9. Deixe Limites De Confirmação Explícitos
+## 10. Deixe Limites De Confirmação Explícitos
 
 Peça confirmação antes de:
 
@@ -79,7 +87,7 @@ Peça confirmação antes de:
 - executar ações remotas de GitHub/API;
 - atualizar estado de sync depois de execução remota.
 
-## 10. Use O Registro De Decisões Para Escolhas Duráveis
+## 11. Use O Registro De Decisões Para Escolhas Duráveis
 
 Registre decisões duráveis quando elas afetarem:
 
@@ -99,6 +107,7 @@ Rejeite ou adie uma mudança quando ela:
 - faz o setup parecer burocracia;
 - cria completude falsa;
 - adiciona roteamento entre áreas sem gate;
+- adiciona casos longos de intenção natural diretamente no root `AGENT.md`;
 - depende da memória do modelo em vez da fonte da verdade local;
 - mistura responsabilidades de Strategy, Product Ops e Engineering;
 - torna o GitHub a fonte da verdade padrão;

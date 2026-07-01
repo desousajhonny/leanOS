@@ -16,6 +16,7 @@ O LeanOS tem um MVP de framework local com:
 - CLI `lean-os update [--dry-run]` para migrar workspaces existentes para o layout atual.
 - Scaffold inicial Strategy-first dentro de `<product-slug>-os/`.
 - `AGENT.md` raiz como ponto de entrada canonico do MVP.
+- `.leanos/runtime/index/intent-map.yaml` como mapa estruturado de intencoes naturais, mantendo o root `AGENT.md` enxuto.
 - `leanos.yaml` com activation state progressivo e `paths.*` para Business OS, runtime e standard library.
 - `.leanos/runtime/` como runtime leve: agent rules, context, indexes, traces e VS Code notes.
 - `.leanos/standard/` como biblioteca de templates, checklists, instructions, examples e foundation.
@@ -36,7 +37,8 @@ O LeanOS tem um MVP de framework local com:
 
 - [x] A interface principal e linguagem natural no chat, nao slash command.
 - [x] `.leanos/commands/` nao e gerado e nao deve ser reintroduzido como interface operacional.
-- [x] O root `AGENT.md` roteia intencoes naturais por estagio, gate, area ativa e `activation_required`.
+- [x] O root `AGENT.md` roteia intencoes naturais por estagio, gate, area ativa e `activation_required` usando `.leanos/runtime/index/intent-map.yaml`.
+- [x] Novas intencoes naturais duraveis entram no intent map e em validacoes, nao como listas longas dentro do root.
 - [x] `AGENT.md` fica como nome canonico do MVP.
 - [x] Nao migrar para `AGENTS.md` agora; isso geraria churn grande de paths sem melhorar o fluxo inicial.
 - [x] Se a decisao `AGENTS.md` voltar no futuro, ela deve ser tratada como migracao propria, com compatibilidade e testes.
@@ -77,6 +79,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] `.leanos/commands/` removido do workspace gerado.
 - [x] `ai-standard` deixou de gerar templates/checklists/instructions/examples de commands.
 - [x] Root `AGENT.md` usa `Progression Intent Routing`.
+- [x] Root `AGENT.md` ficou enxuto: preserva red lines e boot de navegacao, mas delega o inventario de intencoes para `.leanos/runtime/index/intent-map.yaml`.
 - [x] Root `AGENT.md` usa `Routing Narration` em vez de `Response Header` técnico obrigatório.
 - [x] Preview `examples/client-workspace/` regenerado apos as mudancas estruturais relevantes.
 - [x] `docs/framework/source-of-truth/` criado como base normativa do LeanOS.

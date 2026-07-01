@@ -29,6 +29,17 @@ Before making or recommending changes to LeanOS framework behavior, generated wo
 
 Use these files as the canonical basis for analysis. If a proposed change conflicts with them, explain the conflict and either reject the change or update the source of truth and decision log explicitly.
 
+## Generated Root Agent Contract
+
+When changing the generated workspace root `AGENT.md` or routing behavior:
+
+1. Preserve the generated root red lines and confirmation gates.
+2. Do not add long natural-intent inventories directly to the generated root.
+3. Put durable natural intents in `.leanos/runtime/index/intent-map.yaml` and cover them with generator validation.
+4. The generated root must classify with `intent-map.yaml`, check `leanos.yaml`, then route through `.leanos/runtime/index/routing-map.yaml` to the active owner department only.
+5. Deep hints in the intent map may name area, role, skill, playbook or workflow, but they are not permission for the root to load those files directly.
+6. Departments and areas remain responsible for choosing roles, skills, playbooks, workflows and local knowledge.
+
 ## Framework Inventory Maintenance
 
 When changing LeanOS framework skills, playbooks or workflows, update the matching macro inventory in the same change:

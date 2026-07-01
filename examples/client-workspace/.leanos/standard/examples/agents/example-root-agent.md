@@ -13,6 +13,7 @@ Leia estes arquivos primeiro:
 - `.leanos/runtime/context/current-focus.md`
 - `.leanos/runtime/context/next-actions.md`
 - `.leanos/runtime/index/routing-map.yaml`
+- `.leanos/runtime/index/intent-map.yaml`
 
 ## Linhas Vermelhas / Regras Não Negociáveis
 
@@ -46,37 +47,31 @@ Exemplos:
 
 ## Tratamento de Linguagem Natural
 
-Linguagem natural é a interface principal. Roteie pedidos do founder pelo Roteamento de Intenção de Progressão e depois pelo departamento, área, papel, skill e playbook donos. Use workflows apenas quando o pedido precisar de coordenação multiárea, multidepartamento ou de ciclo de vida. Use playbooks de área para mudanças de estado pertencentes inteiramente a uma área, como Product Ops transformar um item aprovado em Epic ou Features.
+Linguagem natural é a interface principal. Use o intent map para classificar a intenção, verificar o departamento dono e identificar áreas obrigatórias antes de abrir qualquer rota.
 
-Exemplos:
-
-- "me ajude a definir o ICP" -> `clinic-assistant-ai-os/strategy/AGENT.md`
-- "defina o escopo de validação do MVP" ou "o que o primeiro MVP deve validar?" -> `clinic-assistant-ai-os/strategy/AGENT.md`
-- "transforme este item de MVP em backlog ou Epic" -> retorne `activation_required` para `operations.product-ops` quando Product Ops estiver inativo
-- "revise este PR" -> retorne `activation_required` para `operations.engineering` quando Engineering estiver inativo
-- "defina planos, preços, cobrança, assinatura ou entitlements" -> retorne `activation_required` para `growth.finance` quando Finance estiver inativo
+O intent map pode nomear área, role, skill e playbook esperados, mas o root não carrega esses arquivos diretamente. Use essas pistas apenas para conferir se a cadeia está coerente. Depois entre no departamento dono e deixe o `AGENT.md` do departamento ou da área escolher o menor próximo owner.
 
 ## Roteamento de Intenção de Progressão
 
 Para decisões de progressão do founder, use `.leanos/standard/foundation/founder-progression-model.md` como regra operacional para estágio e comportamento de ativação, e `.leanos/standard/foundation/progression-gates.md` como matriz concreta de gates para contexto obrigatório, próximos estágios permitidos e próximos estágios bloqueados. Use esses arquivos apenas para disciplina de roteamento; decisões de produto continuam pertencendo ao departamento ativo pela Cadeia de Navegação.
 
-Aplique este formato de decisão:
+Aplique este formato de decisão ao usar `.leanos/runtime/index/intent-map.yaml`:
 
 ```text
 Intenção -> Estágio Atual -> Gate -> Requisitos Ativos -> Rota
 ```
 
-Regras:
+Algoritmo:
 
-- Começo, retomada ou calibração de ideia: `clinic-assistant-ai-os/strategy/AGENT.md`, depois Strategy Product, Business Foundation quando bloquear a baseline, e `idea-calibration.playbook.md`.
-- Escopo inicial de validação do MVP, roadmap, priorização ou rota de validação: `clinic-assistant-ai-os/strategy/AGENT.md`.
-- Planejamento de backlog do MVP, Epic, Feature ou formatação de entrega: `clinic-assistant-ai-os/operations/AGENT.md` somente quando a área obrigatória de Operations estiver ativa.
-- Implementação, branch, PR ou review: `clinic-assistant-ai-os/operations/AGENT.md` somente quando Engineering estiver ativo e a readiness de entrega estiver clara.
-- Auditoria de segurança, vulnerabilidade, LGPD, dados de cliente, vazamento de token, proteção de API ou hardening: `clinic-assistant-ai-os/operations/AGENT.md` somente quando Security estiver ativo; se faltar área, retorne `activation_required` para `operations.security`.
-- Readiness de launch, go-live, beta ou usuários reais: `clinic-assistant-ai-os/operations/AGENT.md` somente quando Product Ops, Engineering e DevOps estiverem ativos; se faltar área, retorne `activation_required` para a menor área bloqueadora.
-- Execução de launch, aquisição, onboarding ou learning loop: `clinic-assistant-ai-os/growth/AGENT.md` somente quando a área obrigatória de Growth estiver ativa e o gate de readiness não estiver bloqueado.
-- Planos, preços, pricing, cobrança, pacotes, assinatura ou entitlements: `clinic-assistant-ai-os/growth/AGENT.md` somente quando Growth Finance estiver ativo; se faltar área, retorne `activation_required` para `growth.finance`.
-- Se o próximo passo exigir departamento ou área inativa/ausente, retorne `activation_required` em vez de abrir ou inventar paths.
+1. Classifique a intenção usando `.leanos/runtime/index/intent-map.yaml`.
+2. Leia `leanos.yaml` e confirme se o departamento e as áreas obrigatórias estão ativos.
+3. Se faltar área obrigatória, retorne `activation_required` com explicação founder-friendly.
+4. Se o departamento dono estiver ativo, use `.leanos/runtime/index/routing-map.yaml` para abrir apenas o `AGENT.md` do departamento.
+5. O departamento escolhe workflow ou área; a área escolhe role, skill e playbook.
+6. Se nenhuma intenção casar claramente, roteie pela Cadeia de Navegação sem inventar assets.
+
+Regras duras:
+
 - Não carregue departamentos inativos.
 - Não trate `available` como `exists`.
 - Não roteie diretamente da raiz para roles, skills, playbooks, workflows ou knowledge.
@@ -114,30 +109,6 @@ Regras:
 3. Use `lean-os update --dry-run` quando o founder quiser prévia antes de mover arquivos.
 4. Não mova código de produto, `src/`, `tests/`, `package.json` ou arquivos existentes do app.
 5. Se o comando reportar conflito, pare e explique quais paths precisam de decisão humana.
-
-## Mapa de Intenções Naturais
-
-Use este mapa como orientação de roteamento, não como detalhe de execução. Depois de selecionar a rota, carregue o departamento dono e deixe esse arquivo decidir o próximo workflow ou área.
-
-- Setup ou retomada do LeanOS: `clinic-assistant-ai-os/strategy/AGENT.md` -> Strategy Product -> Business Foundation quando bloquear a baseline -> `idea-calibration.playbook.md`
-- Status, retomada ou readiness: `.leanos/runtime/agent/protocols/where-we-are.md`
-- Escopo de validação do MVP ou primeiro roadmap do MVP: `clinic-assistant-ai-os/strategy/AGENT.md`
-- Planejamento de backlog do MVP: retorne `activation_required` para `operations.product-ops` até Product Ops estar ativo
-- Checagem de coerência: `clinic-assistant-ai-os/strategy/AGENT.md`
-- Nova ideia ou avaliação de Feature: `clinic-assistant-ai-os/strategy/AGENT.md` -> Strategy Product -> `idea-calibration.playbook.md`
-- Promoção de roadmap/backlog: `clinic-assistant-ai-os/strategy/AGENT.md`
-- Item de entrega para Epic ou Epic para Features: retorne `activation_required` para `operations.product-ops` até Operations estar ativo
-- Implementação de Feature: retorne `activation_required` para `operations.engineering` até Engineering estar ativo
-- Auditoria de segurança, vulnerabilidade, LGPD, dados de cliente, vazamento de token, proteção de API ou hardening: retorne `activation_required` para `operations.security` até Security estar ativo
-- Setup de GitHub, configuração de GitHub Projects ou sync de Epics/Features: retorne `activation_required` para `operations.devops` até DevOps estar ativo
-- Preparação ou review de PR: retorne `activation_required` para `operations.engineering` até Engineering estar ativo
-- Continuação pós-merge: retorne `activation_required` para `operations.product-ops` até Operations estar ativo
-- Planos, preços, pricing, cobrança, pacotes, assinatura ou entitlements: retorne `activation_required` para `growth.finance` até Growth Finance estar ativo
-- Gastos, orçamento, budget, burn, runway, custos, ferramentas pagas, infra paga, mídia paga ou unit economics: retorne `activation_required` para `growth.finance` até Growth Finance estar ativo
-- Readiness de launch, go-live, beta ou usuários reais: retorne `activation_required` para `operations.product-ops`, `operations.engineering` ou `operations.devops` conforme a menor área bloqueadora até o workflow `ready-for-launch` estar ativo
-- Execução de launch, aquisição, onboarding ou learning loop: retorne `activation_required` para `growth.marketing` ou `growth.customer-experience` até Growth estar ativo
-
-Se nenhuma rota corresponder claramente, roteie pela Cadeia de Navegação.
 
 ## Perguntas de Status e Readiness
 

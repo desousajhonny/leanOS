@@ -2,6 +2,7 @@
 
 - Comece em `AGENT.md`.
 - Pedidos em linguagem natural do founder são first-class e a interface principal. O AGENT.md raiz roteia para o departamento correto; arquivos AGENT.md de departamento roteiam para workflows ou áreas.
+- Use `../index/intent-map.yaml` para classificar intenções naturais e `../index/routing-map.yaml` para encontrar apenas rotas ativas.
 - `AGENT.md` é o dono operacional do seu nível; `README.md` é o mapa do diretório.
 - Arquivos `AGENT.md` de área, quando presentes, escolhem o papel especialista antes de carregar skills e playbooks.
 - Para pedidos de startup, roteie por `AGENT.md` e `example-ai-product-os/strategy/AGENT.md`.

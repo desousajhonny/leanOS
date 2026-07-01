@@ -21,6 +21,7 @@ Use quando um modelo precisa de um mapa rápido de roteamento.
 - `playbooks.yaml`
 - `workflows.yaml`
 - `routing-map.yaml`
+- `intent-map.yaml`
 
 ## Pastas Relacionadas
 

@@ -13,7 +13,7 @@ export function expectedGeneratedPath(path, answers) {
 
 export async function assertIndexPathsExist(rootDir) {
   const indexRoot = join(rootDir, ".leanos", "runtime", "index");
-  const files = ["departments.yaml", "areas.yaml", "roles.yaml", "skills.yaml", "playbooks.yaml", "workflows.yaml", "routing-map.yaml"];
+  const files = ["departments.yaml", "areas.yaml", "roles.yaml", "skills.yaml", "playbooks.yaml", "workflows.yaml", "routing-map.yaml", "intent-map.yaml"];
 
   for (const file of files) {
     await assertExists(join(indexRoot, file));

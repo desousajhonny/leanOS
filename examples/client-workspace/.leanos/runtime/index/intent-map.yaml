@@ -1,0 +1,278 @@
+version: 1
+purpose: Classificar pedidos em linguagem natural sem transformar o root AGENT.md em inventário de casos.
+routing_policy:
+  root_loads_department_only: true
+  deep_hints_are_not_direct_loads: true
+  check_leanos_yaml_before_route: true
+  use_routing_map_for_active_department_path: true
+  inactive_area_response: activation_required
+global_protocols:
+  status_readiness: where-we-are
+  trace_diagnostics: chief-trace
+  leanos_update: lean-os update
+  framework_assets: standard-library
+intents:
+  setup_or_resume:
+    signals:
+      - vamos começar
+      - iniciar LeanOS
+      - retomar
+      - continuar
+      - tenho uma ideia
+      - calibrar ideia
+    owner_department: strategy
+    required_areas:
+      - strategy.product
+    activation_required: null
+    expected_chain:
+      area: strategy.product
+      role: product-strategist
+      skills:
+        - business-baseline
+        - product-core
+      playbook: idea-calibration
+  business_foundation:
+    signals:
+      - missão
+      - visão
+      - princípios
+      - modelo de negócio
+      - business model canvas
+      - como a empresa opera
+    owner_department: strategy
+    required_areas:
+      - strategy.business
+    activation_required: null
+    expected_chain:
+      area: strategy.business
+      role: business-strategist
+      skills:
+        - business-identity
+        - operating-model
+        - business-model
+      playbook: business-foundation
+  product_readme:
+    signals:
+      - melhorar README
+      - README do produto
+      - criar repositório
+      - apresentação do produto no GitHub
+    owner_department: strategy
+    required_areas:
+      - strategy.product
+    activation_required: null
+    expected_chain:
+      area: strategy.product
+      role: product-narrative-editor
+      skill: write-product-readme
+      playbook: null
+  mvp_validation_scope:
+    signals:
+      - escopo de validação
+      - primeiro MVP
+      - validar ideia
+      - menor MVP
+      - o que o MVP deve validar
+    owner_department: strategy
+    required_areas:
+      - strategy.product
+    activation_required: null
+    expected_chain:
+      area: strategy.product
+      role: product-strategist
+      skill: mvp-validation-scope
+      playbook: mvp-validation-scope
+  roadmap_prioritization:
+    signals:
+      - roadmap
+      - priorizar
+      - backlog
+      - ciclo
+      - milestone
+    owner_department: strategy
+    required_areas:
+      - strategy.roadmap
+    activation_required: null
+    expected_chain:
+      area: strategy.roadmap
+      role: roadmap-planner
+      skills:
+        - roadmap
+        - backlog-prioritization
+      playbook: roadmap-cycle-planning
+  delivery_planning:
+    signals:
+      - MVP backlog
+      - criar Epic
+      - quebrar Epic
+      - criar Features
+      - escopo de entrega
+    owner_department: operations
+    required_areas:
+      - operations.product-ops
+    activation_required: operations.product-ops
+    expected_chain:
+      area: operations.product-ops
+      role: product-owner
+      skills:
+        - define-delivery-scope
+        - shape-epic
+        - write-feature-criteria
+      playbooks:
+        - mvp-backlog-planning
+        - delivery-item-to-epic
+        - epic-to-features
+  implementation:
+    signals:
+      - implementar
+      - desenvolver feature
+      - codar
+      - criar branch
+      - abrir PR
+    owner_department: operations
+    required_areas:
+      - operations.product-ops
+      - operations.engineering
+    activation_required: operations.engineering
+    expected_chain:
+      area: operations.engineering
+      role: senior-developer
+      skills:
+        - plan-implementation
+        - create-branch
+        - write-tests
+        - create-pr
+      workflow: feature-to-delivery-cycle
+  pr_review:
+    signals:
+      - revisar PR
+      - review do PR
+      - validar PR
+      - rodar revisão agora
+    owner_department: operations
+    required_areas:
+      - operations.engineering
+    activation_required: operations.engineering
+    expected_chain:
+      area: operations.engineering
+      role: pr-reviewer
+      skill: review-pr
+      playbook: pr-validation
+  security:
+    signals:
+      - segurança
+      - auditar segurança
+      - vulnerabilidade
+      - LGPD
+      - token vazado
+      - proteger API
+      - hardening
+    owner_department: operations
+    required_areas:
+      - operations.security
+    activation_required: operations.security
+    expected_chain:
+      area: operations.security
+      role: security-reviewer
+      skills:
+        - threat-modeling
+        - secure-code-review
+      workflow: security-hardening-cycle
+  github_operations:
+    signals:
+      - GitHub
+      - GitHub Projects
+      - sync de Epics
+      - sync de Features
+      - branch protection
+      - PR Validation
+      - release no GitHub
+    owner_department: operations
+    required_areas:
+      - operations.devops
+    activation_required: operations.devops
+    expected_chain:
+      area: operations.devops
+      role: github-devops
+      skills:
+        - configure-github-project
+        - repository-profile
+        - branch-protection
+      playbooks:
+        - configure-github-project
+        - github-safety-baseline
+  launch_readiness:
+    signals:
+      - pronto para lançar
+      - ready for launch
+      - go-live
+      - beta
+      - usuários reais
+    owner_department: operations
+    required_areas:
+      - operations.product-ops
+      - operations.engineering
+      - operations.devops
+    activation_required: smallest_missing_required_area
+    expected_chain:
+      department: operations
+      workflow: ready-for-launch
+  launch_learning:
+    signals:
+      - lançamento
+      - aquisição
+      - onboarding
+      - learning loop
+      - aprendizado de lançamento
+      - experimento de growth
+    owner_department: growth
+    required_areas:
+      - growth.marketing
+      - growth.customer-experience
+    activation_required: growth.marketing
+    expected_chain:
+      department: growth
+      workflow: launch-learning-loop
+  pricing:
+    signals:
+      - preço
+      - planos
+      - pricing
+      - cobrança
+      - assinatura
+      - entitlements
+      - trial
+      - quota
+    owner_department: growth
+    required_areas:
+      - growth.finance
+    activation_required: growth.finance
+    expected_chain:
+      area: growth.finance
+      role: finance-operator
+      skill: review-pricing
+      playbook: finance-review
+  spend_budget:
+    signals:
+      - gasto
+      - orçamento
+      - budget
+      - burn
+      - runway
+      - custo
+      - ferramenta paga
+      - mídia paga
+    owner_department: growth
+    required_areas:
+      - growth.finance
+    activation_required: growth.finance
+    expected_chain:
+      area: growth.finance
+      role: finance-operator
+      skills:
+        - review-spend
+        - runway-check
+        - budget-planning
+      playbooks:
+        - spend-approval
+        - monthly-finance-check

@@ -671,3 +671,23 @@ Justificativa:
 - PR Validation deve se adaptar ao projeto em vez de exigir stack fixa ou falhar em repositórios sem Node.
 - Branch protection só é segura depois que os checks existem no GitHub; aplicar antes pode travar a main por configuração fantasma.
 - Release tag é ato de distribuição, não consequência automática de merge.
+
+## 2026-07-01 - Root AGENT Enxuto Com Intent Map
+
+Decisão:
+
+- O root `AGENT.md` continua sendo o bootloader e guardião das linhas vermelhas do workspace.
+- Casos detalhados de linguagem natural não devem ficar inline no root `AGENT.md`.
+- O scaffold gera `.leanos/runtime/index/intent-map.yaml` como mapa estruturado de intenção natural.
+- O root deve usar o intent map para classificar intenção, identificar departamento dono, áreas obrigatórias e `activation_required`.
+- O root deve conferir `leanos.yaml` antes de qualquer rota e usar `.leanos/runtime/index/routing-map.yaml` para abrir somente o `AGENT.md` do departamento ativo.
+- O intent map pode declarar pistas profundas de área, role, skill, playbook e workflow esperados, mas essas pistas não autorizam o root a carregar esses arquivos diretamente.
+- Departamentos e áreas continuam donos de escolher role, skill, playbook, workflow e knowledge local.
+- Novas intenções naturais duráveis devem entrar no intent map e em validações, não como listas longas dentro do root.
+
+Justificativa:
+
+- O root precisa barrar ações perigosas e preservar activation gates, mas não deve virar inventário frágil de casos.
+- Um mapa YAML é mais fácil de validar, versionar e atualizar sem poluir a experiência do founder.
+- Separar classificação de intenção e navegação real preserva a Nav Chain LeanOS: root -> departamento -> área -> role -> skill/playbook -> output.
+- A mudança mantém força nas red lines e melhora escalabilidade de novas áreas, roles, skills e workflows.

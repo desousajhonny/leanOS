@@ -38,8 +38,9 @@ For startup, restart or continuation requests, load:
 - [${runtimePath("context/current-focus.md", paths)}](../../${runtimePath("context/current-focus.md", paths)})
 - [${runtimePath("context/next-actions.md", paths)}](../../${runtimePath("context/next-actions.md", paths)})
 - [${runtimePath("index/routing-map.yaml", paths)}](../../${runtimePath("index/routing-map.yaml", paths)})
+- [${runtimePath("index/intent-map.yaml", paths)}](../../${runtimePath("index/intent-map.yaml", paths)})
 
-Founder requests can be natural language. Use root \`AGENT.md\` to route to the correct department. Then use the department \`AGENT.md\` to choose either a coordination workflow or the smallest active area. Startup and idea evaluation usually go to Strategy Product and \`idea-calibration.playbook.md\`.
+Founder requests can be natural language. Use root \`AGENT.md\` and \`${paths.runtimeRoot}/index/intent-map.yaml\` to classify intent, then use \`${paths.runtimeRoot}/index/routing-map.yaml\` to route only to active departments. Then use the department \`AGENT.md\` to choose either a coordination workflow or the smallest active area. Deep hints in the intent map are not direct-load permission for roles, skills or playbooks.
 
 Follow the LeanOS Navigation Chain:
 
@@ -82,6 +83,7 @@ Load:
 - [${runtimePath("context/current-focus.md", paths)}](../../${runtimePath("context/current-focus.md", paths)})
 - [${runtimePath("context/next-actions.md", paths)}](../../${runtimePath("context/next-actions.md", paths)})
 - [${runtimePath("index/routing-map.yaml", paths)}](../../${runtimePath("index/routing-map.yaml", paths)})
+- [${runtimePath("index/intent-map.yaml", paths)}](../../${runtimePath("index/intent-map.yaml", paths)})
 
 Then route startup through \`AGENT.md\` -> \`${strategyAgent}\` -> \`${strategyProductAgent}\` -> \`${ideaCalibration}\`.
 
@@ -120,6 +122,7 @@ Load:
 - [${runtimePath("context/current-focus.md", paths)}](../../${runtimePath("context/current-focus.md", paths)})
 - [${runtimePath("context/next-actions.md", paths)}](../../${runtimePath("context/next-actions.md", paths)})
 - [${runtimePath("index/routing-map.yaml", paths)}](../../${runtimePath("index/routing-map.yaml", paths)})
+- [${runtimePath("index/intent-map.yaml", paths)}](../../${runtimePath("index/intent-map.yaml", paths)})
 
 Then route startup through \`AGENT.md\` -> \`${strategyAgent}\` -> \`${strategyProductAgent}\` -> \`${ideaCalibration}\`.
 

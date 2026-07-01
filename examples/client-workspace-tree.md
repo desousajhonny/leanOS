@@ -59,6 +59,7 @@ client-workspace/
 |   |   |-- index/
 |   |   |   |-- areas.yaml
 |   |   |   |-- departments.yaml
+|   |   |   |-- intent-map.yaml
 |   |   |   |-- playbooks.yaml
 |   |   |   |-- README.md
 |   |   |   |-- roles.yaml

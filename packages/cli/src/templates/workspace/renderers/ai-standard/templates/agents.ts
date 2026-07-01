@@ -31,6 +31,7 @@ Leia estes arquivos primeiro:
 - \`.leanos/runtime/context/current-focus.md\`
 - \`.leanos/runtime/context/next-actions.md\`
 - \`.leanos/runtime/index/routing-map.yaml\`
+- \`.leanos/runtime/index/intent-map.yaml\`
 
 ## Linhas Vermelhas / Regras Não Negociáveis
 
@@ -64,16 +65,11 @@ Examples:
 
 ## Tratamento de Linguagem Natural
 
-Linguagem natural é a interface principal. Roteie pedidos do founder pelo Roteamento de Intenção de Progressão e depois pelo departamento, área, papel, skill e playbook donos. Use workflow apenas quando o pedido precisar de coordenação multiárea, multidepartamento ou de ciclo de vida.
+Linguagem natural é a interface principal. Use \`.leanos/runtime/index/intent-map.yaml\` para classificar a intenção, verificar o departamento dono e identificar áreas obrigatórias antes de abrir qualquer rota.
 
-Exemplos:
+O intent-map.yaml pode nomear área, role, skill e playbook esperados, mas o root não carrega esses arquivos diretamente. Use essas pistas apenas para conferir se a cadeia está coerente. Depois entre no departamento dono e deixe o \`AGENT.md\` do departamento ou da área escolher o menor próximo owner.
 
-- "me ajude a definir o ICP" -> \`strategy/AGENT.md\`
-- "defina o escopo de validação do MVP" -> roteie para Strategy Product ativo antes de existir escopo de entrega
-- "transforme este item de MVP em backlog ou Epic" -> retorne \`activation_required\` para \`operations.product-ops\` quando Product Ops estiver inativo
-- "revise este PR" -> retorne \`activation_required\` para \`operations.engineering\` quando Engineering estiver inativo
-
-Se nenhuma rota corresponder claramente, roteie pela Cadeia de Navegação.
+Se nenhuma intenção corresponder claramente, roteie pela Cadeia de Navegação.
 
 ## Atualização do LeanOS
 

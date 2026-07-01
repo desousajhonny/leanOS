@@ -15,6 +15,7 @@ Load:
 - [.leanos/runtime/context/current-focus.md](../../.leanos/runtime/context/current-focus.md)
 - [.leanos/runtime/context/next-actions.md](../../.leanos/runtime/context/next-actions.md)
 - [.leanos/runtime/index/routing-map.yaml](../../.leanos/runtime/index/routing-map.yaml)
+- [.leanos/runtime/index/intent-map.yaml](../../.leanos/runtime/index/intent-map.yaml)
 
 Then route startup through `AGENT.md` -> `example-ai-product-os/strategy/AGENT.md` -> `example-ai-product-os/strategy/product/AGENT.md` -> `example-ai-product-os/strategy/product/playbooks/idea-calibration.playbook.md`.
 

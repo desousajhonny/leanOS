@@ -15,6 +15,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 ## Decisões Recentes
 
+- 2026-07-01: Root `AGENT.md` deve ficar enxuto como bootloader e guardião das red lines. Intenções naturais duráveis entram em `.leanos/runtime/index/intent-map.yaml`, que pode declarar departamento, áreas obrigatórias e pistas de role/skill/playbook/workflow; o root usa essas pistas só para classificar e conferir, depois carrega apenas o departamento ativo via routing map.
 - 2026-06-30: Adotar layout Business OS no scaffold: `<product-slug>-os/` para Strategy/Operations/Growth, `.leanos/standard/` para padrões do framework e `.leanos/runtime/` para agent/context/index/traces/vscode. Adicionar `lean-os update` para migrar workspaces existentes com preview via `--dry-run`.
 - 2026-06-30: Adotar `npm create lean-os` como comando principal de criação de workspace via pacote `create-lean-os`. Manter `npx lean-os ai` como compatibilidade e `npx lean-os activate/update` como comandos operacionais.
 - 2026-06-30: Publicações futuras de `lean-os` + `create-lean-os` devem começar mostrando ao usuário o comando PowerShell explícito que cria `.npmrc` via token granular npm com bypass 2FA, depois usar `npm run release:npm`, com validações automáticas, publish `lean-os` antes de `create-lean-os`, verificação do registry e remoção de `.npmrc`.
@@ -39,6 +40,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 ## Mudanças Recentes
 
+- Working tree: root `AGENT.md` gerado foi simplificado e passou a carregar `.leanos/runtime/index/intent-map.yaml`; o generator cria esse mapa, os prompts/agent do VS Code apontam para ele, validações cobrem rotas críticas e impedem reintroduzir o mapa natural inline no root.
 - Working tree: scaffold reorganizado para gerar `<product-slug>-os/README.md`, departamentos dentro do Business OS, `.leanos/standard/` e `.leanos/runtime/`; `leanos.yaml.paths` registra os novos roots; validação `validateBusinessOsLayout` cobre paths físicos e impede referências antigas como `ai-standard/` e `.leanos/context`.
 - Working tree: pacote `packages/create` adicionado como `create-lean-os`; o binário chama o wizard `runAiCommand` do pacote `lean-os`, docs promovem `npm create lean-os` e validação `validateCreateLeanOsPackage` cobre o contrato.
 - Working tree: Pricing Source of Truth em implementação na branch `feature/pricing-source-of-truth`. Foram adicionados contratos para Pricing Catalog, Runtime Source, Consumer Contract, rota root de Finance, gates de Product Ops/Engineering/DevOps/Security e validação `validatePricingSourceOfTruthContract`.

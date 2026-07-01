@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { mkdtemp, readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { parse } from "yaml";
 import { activateWorkspaceArea } from "../../dist/generators/workspace-activation.js";
 import { generateWorkspace } from "../../dist/generators/workspace-generator.js";
 import { answers, projectRoot } from "./fixtures.mjs";
@@ -21,6 +22,7 @@ export async function validatePricingSourceOfTruthContract() {
   await activateWorkspaceArea(rootDir, "operations.security");
 
   const rootAgent = await readFile(join(rootDir, "AGENT.md"), "utf8");
+  const intentMap = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "intent-map.yaml"), "utf8"));
   const whereWeAre = await readFile(join(rootDir, ".leanos", "runtime", "agent", "protocols", "where-we-are.md"), "utf8");
   const pricing = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "knowledge", "pricing.md"), "utf8");
   const financeOperator = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "roles", "finance-operator.role.md"), "utf8");
@@ -40,8 +42,9 @@ export async function validatePricingSourceOfTruthContract() {
   const securityBaseline = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "security-baseline.md"), "utf8");
   const threatModeling = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "skills", "threat-modeling", "SKILL.md"), "utf8");
 
-  assert(rootAgent.includes("Planos, preços, pricing, cobrança, pacotes, assinatura ou entitlements"), "Root AGENT should route pricing and plan requests");
-  assert(rootAgent.includes("activation_required` para `growth.finance`"), "Root AGENT should activate Growth Finance for pricing requests");
+  assert(rootAgent.includes("`.leanos/runtime/index/intent-map.yaml`"), "Root AGENT should route pricing and plan requests through intent map");
+  assert(intentMap.intents.pricing.signals.includes("planos"), "Intent map should route pricing and plan requests");
+  assert.equal(intentMap.intents.pricing.activation_required, "growth.finance", "Intent map should activate Growth Finance for pricing requests");
   assert(whereWeAre.includes("growth/finance/knowledge/pricing.md"), "Where-we-are should load the Pricing Catalog for pricing readiness");
 
   for (const requiredContent of [

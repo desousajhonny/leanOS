@@ -23,8 +23,9 @@ For startup, restart or continuation requests, load:
 - [.leanos/runtime/context/current-focus.md](../../.leanos/runtime/context/current-focus.md)
 - [.leanos/runtime/context/next-actions.md](../../.leanos/runtime/context/next-actions.md)
 - [.leanos/runtime/index/routing-map.yaml](../../.leanos/runtime/index/routing-map.yaml)
+- [.leanos/runtime/index/intent-map.yaml](../../.leanos/runtime/index/intent-map.yaml)
 
-Founder requests can be natural language. Use root `AGENT.md` to route to the correct department. Then use the department `AGENT.md` to choose either a coordination workflow or the smallest active area. Startup and idea evaluation usually go to Strategy Product and `idea-calibration.playbook.md`.
+Founder requests can be natural language. Use root `AGENT.md` and `.leanos/runtime/index/intent-map.yaml` to classify intent, then use `.leanos/runtime/index/routing-map.yaml` to route only to active departments. Then use the department `AGENT.md` to choose either a coordination workflow or the smallest active area. Deep hints in the intent map are not direct-load permission for roles, skills or playbooks.
 
 Follow the LeanOS Navigation Chain:
 
