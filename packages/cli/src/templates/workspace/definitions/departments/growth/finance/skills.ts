@@ -8,14 +8,14 @@ export const growthFinanceSkills: SkillDefinition[] = [
       useWhen: ["unit economics estão pouco claros", "pricing ou custo de aquisição precisa de avaliação aproximada", "gasto de Growth está sendo considerado", "margem, payback, CAC, custo de IA/API, infra ou delivery afeta decisão", "founder quer entender viabilidade econômica de plano, canal ou campanha"],
       requiredContext: ["../knowledge/pricing.md", "../knowledge/spend-ledger.md", "../knowledge/budget.md", "../knowledge/revenue-model.md", "../knowledge/unit-economics.md", "../knowledge/finance-risks.md"],
       inputs: ["Preço ou ARPA", "Custo de aquisição", "Custo de delivery", "Custo variável de IA/API/infra", "Payment fees", "Suporte ou operação manual", "Gross revenue", "Margem bruta", "Budget ou spend proposto", "Cash disponível quando informado", "Métrica de uso ou valor"],
-      process: ["Use Pricing Catalog e Spend Ledger como fontes antes de aceitar preço, custo, spend ou provider.", "Liste fatos conhecidos, estimativas e unknowns em grupos separados.", "Calcule de forma direcional: gross_margin, contribution_margin, payback e break_even quando houver dados suficientes.", "Quando faltar dado, não calcule; marque lacuna e pergunte pelo menor input necessário.", "Classifique confidence_level: low, medium ou high conforme qualidade das fontes.", "Identifique sensibilidade principal: aquisição, IA/API, infra, payment fees, suporte/manual ops ou churn.", "Recomende próxima decisão de founder, experimento ou rota para Pricing, Spend Ledger ou runway-check."],
+      process: ["Use Pricing Catalog e Spend Ledger como fontes antes de aceitar preço, custo, spend ou provider.", "Liste fatos conhecidos, estimativas e unknowns em grupos separados.", "Calcule de forma direcional: gross_margin, contribution_margin, payback e break_even quando houver dados suficientes.", "Quando faltar dado, não calcule; marque lacuna e pergunte pelo menor input necessário.", "Classifique confidence_level: low, medium ou high conforme qualidade das fontes.", "Identifique sensibilidade principal: aquisição, IA/API, infra, payment fees, suporte/manual ops ou churn.", "Recomende próxima decisão de founder, experimento ou rota para Pricing, Spend Ledger ou runway-analysis."],
       checks: ["Use Pricing Catalog e Spend Ledger como fontes.", "Fatos conhecidos, estimativas e unknowns estão separados.", "Fórmulas e premissas estão explícitas quando houver cálculo.", "confidence_level: low, medium ou high está explícito.", "Gross margin, contribution margin, payback ou break_even não são calculados quando inputs essenciais faltam.", "Sensibilidade e risco financeiro têm owner ou próxima revisão."],
       outputs: ["Resumo de unit economics", "Fórmulas e premissas", "gross_margin, contribution_margin, payback e break_even quando calculáveis", "confidence_level: low, medium ou high", "Premissas sensíveis", "Riscos financeiros", "Lacunas de dados", "Necessidades de validação", "Próxima rota financeira"],
       filesToUpdate: ["Atualize `../knowledge/unit-economics.md` após confirmação explícita."],
       redLines: ["Não apresente estimativas como fatos validados.", "Não apresente unit economics como certeza quando dados forem incompletos.", "Não invente preço, custo, CAC, churn, receita, margem ou cash.", "Não faça afirmações de investimento, contabilidade, fiscal, jurídica ou promessa de retorno.", "Não aprove aumento de spend sem Spend Ledger e budget."]
     },
     {
-      slug: "review-pricing",
+      slug: "pricing-review",
       title: "Revisar Pricing",
       purpose: "Avaliar hipóteses de pricing, planos, trials, limites e entitlements contra valor ao cliente, custos e runtime source.",
       useWhen: ["pricing está sendo considerado", "packaging precisa de revisão", "planos, cobrança, assinatura, trial, limites ou entitlements estão sendo definidos", "disposição a pagar está incerta"],
@@ -28,7 +28,7 @@ export const growthFinanceSkills: SkillDefinition[] = [
       redLines: ["Não invente evidência de disposição a pagar.", "Não aprove plano, preço, trial, limite ou entitlement fora de `../knowledge/pricing.md`.", "Não salve secrets, tokens, webhook secrets ou credenciais de billing no markdown.", "Não prometa resultados de receita."]
     },
     {
-      slug: "review-spend",
+      slug: "spend-review",
       title: "Revisar Gasto",
       purpose: "Avaliar se um gasto recorrente, ferramenta paga, campanha paga, provider novo ou custo variável relevante faz sentido para o estágio atual.",
       useWhen: ["um novo gasto está sendo considerado", "uma ferramenta paga deve ser contratada", "mídia paga ou campanha com orçamento aparece", "um provider novo ou custo variável relevante entra em produto ou operação"],
@@ -41,7 +41,7 @@ export const growthFinanceSkills: SkillDefinition[] = [
       redLines: ["Não aprove gasto recorrente, ferramenta paga, campanha paga, provider novo ou custo variável relevante fora de `../knowledge/spend-ledger.md`.", "Não trate estimativa como gasto verificado.", "Não forneça aconselhamento contábil, fiscal, jurídico ou de investimento."]
     },
     {
-      slug: "runway-check",
+      slug: "runway-analysis",
       title: "Checar Runway",
       purpose: "Estimar burn mensal, runway e riscos financeiros com base em gastos conhecidos e premissas explícitas.",
       useWhen: ["founder pergunta quanto tempo de runway existe", "burn mensal está incerto", "novo gasto pode reduzir runway", "release ou campanha depende de orçamento"],

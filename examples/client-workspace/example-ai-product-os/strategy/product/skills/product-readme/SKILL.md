@@ -1,5 +1,5 @@
 ---
-name: write-product-readme
+name: product-readme
 description: Use quando o modelo criar um novo repositório para o founder; um repositório existente tiver README fraco, genérico ou desatualizado; o modelo editar um repositório existente e precisar melhorar a apresentação do produto; o founder pedir para melhorar o README do produto; o README atual falar mais do LeanOS do que do negócio/produto
 ---
 
@@ -46,11 +46,11 @@ Transformar contexto de empresa/produto em um README.md user-friendly, claro par
 
 ### Etapa 1
 
-Entre pela Navigation Chain: Root -> Strategy -> Product -> Product Narrative Editor -> write-product-readme.
+Entre pela Navigation Chain: Root -> Strategy -> Product -> Product Narrative Editor -> product-readme.
 
 ### Etapa 2
 
-Rota oficial da área: Strategy Product -> Product Narrative Editor -> write-product-readme.
+Rota oficial da área: Strategy Product -> Product Narrative Editor -> product-readme.
 
 ### Etapa 3
 

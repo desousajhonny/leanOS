@@ -2,7 +2,7 @@ import type { SkillDefinition } from "../../../../types.js";
 
 export const operationsProductOpsSkills: SkillDefinition[] = [
     {
-      slug: "define-delivery-scope",
+      slug: "delivery-scope",
       title: "Definir Escopo De Delivery",
       purpose: "Decidir se um item de MVP backlog, roadmap ou candidato de delivery vira escopo concreto de entrega e registrar scope_type, milestone e release_goal.",
       useWhen: ["um item de MVP backlog pode virar Epic", "um item de roadmap pode entrar na próxima entrega", "o founder pergunta se algo entra no escopo de MVP, release, beta ou experimento", "um item de delivery precisa de shaping de Product Ops antes da criação de Epic"],
@@ -15,7 +15,7 @@ export const operationsProductOpsSkills: SkillDefinition[] = [
       redLines: ["Não trate prioridade de roadmap como compromisso de delivery.", "Não marque um item como MVP só porque ele é importante.", "Não crie epics nem features nesta etapa."]
     },
     {
-      slug: "write-acceptance-criteria",
+      slug: "acceptance-criteria",
       title: "Escrever Critérios De Aceite",
       purpose: "Definir critérios de aceite testáveis de Product Ops para trabalho de MVP, Epic ou Feature sem transformar critérios em instruções de implementação.",
       useWhen: ["trabalho de MVP, Epic ou Feature precisa de critérios de conclusão", "um item de delivery tem expectativa de passa/falha pouco clara", "Product Ops precisa de critérios de aceite antes de prontidão ou handoff", "critérios existentes misturam escopo, detalhes de implementação e outcomes"],
@@ -28,7 +28,7 @@ export const operationsProductOpsSkills: SkillDefinition[] = [
       redLines: ["Não escreva instruções de implementação, tarefas de código ou escolhas de arquitetura como critérios de aceite.", "Não expanda escopo ao escrever critérios.", "Não aceite critérios vagos que não podem ser testados.", "Não crie Epics, arquivos de Feature, issues do GitHub, branches, código ou PRs."]
     },
     {
-      slug: "check-delivery-coherence",
+      slug: "delivery-coherence",
       title: "Checar Coerência De Delivery",
       purpose: "Checar se escopo de delivery, contexto do MVP, intenção de roadmap e critérios de aceite estão alinhados antes de Product Ops avançar o trabalho.",
       useWhen: ["escopo de delivery pode não combinar com Strategy ou escopo do MVP", "uma Epic, Feature ou item de backlog parece inconsistente", "critérios conflitam com roadmap, PRD, não objetivos ou prontidão", "Product Ops precisa de um gate de coerência antes de Epic, Feature ou handoff para Engineering"],
@@ -54,7 +54,7 @@ export const operationsProductOpsSkills: SkillDefinition[] = [
       redLines: ["Não quebre um epic sem outcome ou escopo.", "Não invente critérios de aceite.", "Não contorne Design, Security ou DevOps quando seus critérios forem aplicáveis."]
     },
     {
-      slug: "write-feature-criteria",
+      slug: "feature-criteria",
       title: "Escrever Critérios De Feature",
       purpose: "Aplicar a Delivery Readiness Matrix (DRM) para rascunhar Features prontas para implementação com tarefas internas.",
       useWhen: ["uma Epic está pronta para ser quebrada em Features", "Features precisam de critérios de Product, Design, Engineering, Security ou DevOps", "rascunhos de issue do GitHub precisam ser preparados antes de criação remota"],
@@ -67,7 +67,7 @@ export const operationsProductOpsSkills: SkillDefinition[] = [
       redLines: ["Não crie features prontas para implementação sem critérios de Product Ops e Engineering.", "Não adicione critérios falsos de Design, Security ou DevOps quando não aplicável.", "Não chame a API do GitHub diretamente pelo modelo."]
     },
     {
-      slug: "define-delivery-boundaries",
+      slug: "delivery-boundaries",
       title: "Definir Limites De Delivery",
       purpose: "Definir os limites mínimos de produto, técnicos e operacionais necessários para implementação segura sem criar artefatos prematuros de arquitetura.",
       useWhen: ["uma issue ou fatia de MVP precisa de prontidão de delivery", "Product Ops deve esclarecer limites de implementação antes de Engineering", "aplicabilidade de Design, Security, DevOps ou Engineering está incerta", "restrições técnicas ou riscos operacionais podem mudar o escopo de delivery"],

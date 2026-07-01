@@ -178,10 +178,10 @@ async function assertReadyForLaunchRouteAfterSequentialActivation() {
 
 async function assertReviewPrJourneyDoc() {
   const journeyMap = await readFile(join(projectRoot, "docs", "framework", "founder-journeys", "journey-map.md"), "utf8");
-  const reviewJourneyPath = join(projectRoot, "docs", "framework", "founder-journeys", "review-pr.md");
+  const reviewJourneyPath = join(projectRoot, "docs", "framework", "founder-journeys", "pull-request-review.md");
 
   assert(
-    journeyMap.includes("| [x] | 7 | Review e PR | `review-pr.md` | `operations/engineering/playbooks/pr-validation.playbook.md`"),
+    journeyMap.includes("| [x] | 7 | Review e PR | `pull-request-review.md` | `operations/engineering/playbooks/pr-validation.playbook.md`"),
     "Founder journey map should mark Review e PR as complete through Engineering pr-validation"
   );
 
@@ -192,7 +192,7 @@ async function assertReviewPrJourneyDoc() {
   assert(reviewJourney.includes("# Jornada: Review E PR"), "Review PR journey should have a clear title");
   assert(reviewJourney.includes('founder diz "revise o PR"'), "Review PR journey should document the founder trigger");
   assert(reviewJourney.includes("operations/engineering/playbooks/pr-validation.playbook.md"), "Review PR journey should route through pr-validation");
-  assert(reviewJourney.includes("operations/engineering/skills/review-pr/SKILL.md"), "Review PR journey should load the review-pr skill");
+  assert(reviewJourney.includes("operations/engineering/skills/pull-request-review/SKILL.md"), "Review PR journey should load the pull-request-review skill");
   assert(reviewJourney.includes("Founder Testing Guide"), "Review PR journey should validate the Founder Testing Guide");
   assert(reviewJourney.includes("achados por severidade"), "Review PR journey should require severity-ordered findings");
   assert(reviewJourney.includes("Não faça merge automaticamente"), "Review PR journey should forbid automatic merge");
@@ -201,7 +201,7 @@ async function assertReviewPrJourneyDoc() {
 }
 
 async function assertReviewPrRouteAfterSequentialActivation() {
-  const rootDir = await mkdtemp(join(tmpdir(), "leanos-founder-review-pr-"));
+  const rootDir = await mkdtemp(join(tmpdir(), "leanos-founder-pull-request-review-"));
 
   await generateWorkspace(rootDir, answers);
   assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations")), false, "Initial Founder Journey should start Strategy-only");
@@ -214,7 +214,7 @@ async function assertReviewPrRouteAfterSequentialActivation() {
   await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "knowledge", "ready-to-develop.md"));
   await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "workflows", "feature-to-delivery-cycle.workflow.md"));
   await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "AGENT.md"));
-  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "review-pr", "SKILL.md"));
+  await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "pull-request-review", "SKILL.md"));
   await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "prepare-pr.playbook.md"));
   await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "pr-validation.playbook.md"));
 
@@ -225,7 +225,7 @@ async function assertReviewPrRouteAfterSequentialActivation() {
   const engineeringAgent = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "AGENT.md"), "utf8");
   const prReviewerRole = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "roles", "pr-reviewer.role.md"), "utf8");
   const prValidationPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
-  const reviewPrSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "review-pr", "SKILL.md"), "utf8");
+  const reviewPrSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "pull-request-review", "SKILL.md"), "utf8");
 
   assert.deepEqual(yaml.departments.active, ["strategy", "operations"], "Sequential activation should keep Operations active");
   assert(yaml.activation.active_areas.includes("operations.product-ops"), "Product Ops should be active before PR review");

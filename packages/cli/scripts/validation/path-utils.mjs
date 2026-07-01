@@ -150,9 +150,9 @@ export function isInitialStrategyWorkspacePath(path) {
     ".leanos/commands/create-features.md",
     ".leanos/commands/github-sync.md",
     ".leanos/commands/workon-feature.md",
-    ".leanos/commands/create-branch.md",
-    ".leanos/commands/create-pr.md",
-    ".leanos/commands/review-pr.md"
+    ".leanos/commands/feature-branching.md",
+    ".leanos/commands/pull-request.md",
+    ".leanos/commands/pull-request-review.md"
   ]);
 
   if (path.startsWith(".leanos/commands/") || inactiveCommandPaths.has(path)) {

@@ -24,7 +24,7 @@ export async function validateBranchAndPrStandards() {
   await activateWorkspaceArea(rootDir, "operations.product-ops");
   await activateWorkspaceArea(rootDir, "operations.engineering");
 
-  const createPrSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "create-pr", "SKILL.md"), "utf8");
+  const createPrSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "pull-request", "SKILL.md"), "utf8");
   const branchPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
   const preparePrPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
   const postMergeReminder = "Quando você mergear, avisa aqui que continuamos. Basta um 'merge feito, vamos seguir'.";

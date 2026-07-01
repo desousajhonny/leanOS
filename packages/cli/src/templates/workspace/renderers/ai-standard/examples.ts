@@ -420,7 +420,7 @@ Epic #123
 - Department: Operations
 - Area: Engineering
 - Role: Senior Developer
-- Skills: plan-implementation, create-pr
+- Skills: implementation-planning, pull-request
 - Playbook: prepare-pr
 
 ## Alinhamento De Product / Escopo De Delivery

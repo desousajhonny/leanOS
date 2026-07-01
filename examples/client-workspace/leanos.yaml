@@ -141,7 +141,7 @@ skills:
       - product-core
       - mvp-validation-scope
       - coherence
-      - write-product-readme
+      - product-readme
     strategy.roadmap:
       - roadmap
       - backlog-prioritization

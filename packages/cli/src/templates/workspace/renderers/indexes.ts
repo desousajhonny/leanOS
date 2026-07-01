@@ -92,7 +92,7 @@ function intentMap() {
         expected_chain: {
           area: "strategy.product",
           role: "product-narrative-editor",
-          skill: "write-product-readme",
+          skill: "product-readme",
           playbook: null
         }
       },
@@ -128,7 +128,7 @@ function intentMap() {
         expected_chain: {
           area: "operations.product-ops",
           role: "product-owner",
-          skills: ["define-delivery-scope", "shape-epic", "write-feature-criteria"],
+          skills: ["delivery-scope", "shape-epic", "feature-criteria"],
           playbooks: ["mvp-backlog-planning", "delivery-item-to-epic", "epic-to-features"]
         }
       },
@@ -140,7 +140,7 @@ function intentMap() {
         expected_chain: {
           area: "operations.engineering",
           role: "senior-developer",
-          skills: ["plan-implementation", "create-branch", "write-tests", "create-pr"],
+          skills: ["implementation-planning", "feature-branching", "test-coverage", "pull-request"],
           workflow: "feature-to-delivery-cycle"
         }
       },
@@ -152,7 +152,7 @@ function intentMap() {
         expected_chain: {
           area: "operations.engineering",
           role: "pr-reviewer",
-          skill: "review-pr",
+          skill: "pull-request-review",
           playbook: "pr-validation"
         }
       },
@@ -176,8 +176,8 @@ function intentMap() {
         expected_chain: {
           area: "operations.devops",
           role: "github-devops",
-          skills: ["configure-github-project", "repository-profile", "branch-protection"],
-          playbooks: ["configure-github-project", "github-safety-baseline"]
+          skills: ["github-project-management", "repository-profile", "branch-protection"],
+          playbooks: ["github-project-management", "github-safety-baseline"]
         }
       },
       launch_readiness: {
@@ -208,7 +208,7 @@ function intentMap() {
         expected_chain: {
           area: "growth.finance",
           role: "finance-operator",
-          skill: "review-pricing",
+          skill: "pricing-review",
           playbook: "finance-review"
         }
       },
@@ -220,7 +220,7 @@ function intentMap() {
         expected_chain: {
           area: "growth.finance",
           role: "finance-operator",
-          skills: ["review-spend", "runway-check", "budget-planning"],
+          skills: ["spend-review", "runway-analysis", "budget-planning"],
           playbooks: ["spend-approval", "monthly-finance-check"]
         }
       }

@@ -17,7 +17,7 @@ O founder pede algo como:
 2. Se `growth.finance` estiver inativo, retorna `activation_required: growth.finance`.
 3. Quando Growth Finance está ativo, o agente entra em `growth/finance/AGENT.md`.
 4. Finance Operator lê `growth/finance/knowledge/pricing.md`.
-5. `skills/review-pricing/SKILL.md` revisa Pricing Catalog, status, entitlements e Runtime Source.
+5. `skills/pricing-review/SKILL.md` revisa Pricing Catalog, status, entitlements e Runtime Source.
 6. `playbooks/finance-review.playbook.md` produz decisão, lacunas e impactos nas áreas consumidoras.
 7. Marketing, Customer Experience, Product Ops, Engineering, DevOps e Security consomem o catálogo conforme aplicável.
 

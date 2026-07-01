@@ -43,7 +43,7 @@ Engineering starts only after a Feature is ready for development or an explicit 
 ## Security and Data Dependency
 
 - Route data, auth, permissions, privacy, API, database, secrets, compliance, infrastructure or AI-generated-code risk through Security when applicable.
-- Use \`data-guidelines.md\` and \`skills/review-data-change/SKILL.md\` before schema, migration, API, persistence or permission changes.
+- Use \`data-guidelines.md\` and \`skills/data-change-review/SKILL.md\` before schema, migration, API, persistence or permission changes.
 - Não faça mudanças destrutivas de dados sem confirmação explícita e notas de rollback.
 - Não armazene nem exponha segredos, credenciais, tokens ou dados sensíveis de cliente.
 

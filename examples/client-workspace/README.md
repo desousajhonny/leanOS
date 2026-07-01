@@ -80,7 +80,7 @@ LeanOS organiza o negócio como um produto: Strategy define direção, Operation
 Este repositório usa a Navigation Chain do LeanOS. O root `AGENT.md` escolhe o departamento dono; a área dona escolhe role, skill e playbook. Para melhorar este README depois que houver mais contexto de produto, use:
 
 ```text
-Strategy Product -> Product Narrative Editor -> write-product-readme
+Strategy Product -> Product Narrative Editor -> product-readme
 ```
 
 ## Próximo Passo Para O Founder

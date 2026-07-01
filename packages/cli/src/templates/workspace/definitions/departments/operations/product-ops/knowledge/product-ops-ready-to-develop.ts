@@ -85,7 +85,7 @@ Required when a Feature includes UI that depends on a reusable component.
 - If an existing component needs adaptation, Design must state whether the change belongs in the reusable component or only in this Feature.
 - If a new component is required, the Feature is not \`ready-to-code\` until Design creates or confirms a component spec in \`operations/product-ops/knowledge/implementation-packets/<feature-slug>/design/component-specs/<component-slug>.md\`.
 - A component with status \`specified\` is not implemented. It can guide Engineering, but it is not available in code until post-merge updates mark it implemented/available.
-- Engineering must read the component spec before using \`operations/engineering/skills/implement-component/SKILL.md\` or \`operations/engineering/playbooks/component-implementation.playbook.md\`.
+- Engineering must read the component spec before using \`operations/engineering/skills/component-implementation/SKILL.md\` or \`operations/engineering/playbooks/component-implementation.playbook.md\`.
 - A missing component spec should create a Design task or route to \`operations/design/playbooks/component-readiness.playbook.md\`, not trigger immediate code.
 
 ## Pricing And Plan Readiness

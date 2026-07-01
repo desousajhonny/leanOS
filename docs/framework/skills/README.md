@@ -66,12 +66,12 @@ Ativação padrão: `AGENT.md` -> `operations/AGENT.md` -> `operations/product-o
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
-| `define-delivery-scope` | Decidir se item de MVP backlog, roadmap, backlog ou delivery candidate vira escopo concreto de entrega com `scope_type`, milestone e release goal. | Role `product-owner`; playbooks `delivery-item-to-epic` e `delivery-scope-planning`. |
-| `write-acceptance-criteria` | Definir critérios de aceite para trabalho de MVP. | Role `product-owner`; playbooks de Product Ops quando critérios forem necessários. |
-| `check-delivery-coherence` | Checar se escopo de entrega combina com Strategy, MVP backlog, roadmap e critérios de aceite. | Roles `product-owner` e `delivery-architect`; playbooks `mvp-backlog-planning`, `delivery-scope-planning` ou `delivery-readiness`. |
+| `delivery-scope` | Decidir se item de MVP backlog, roadmap, backlog ou delivery candidate vira escopo concreto de entrega com `scope_type`, milestone e release goal. | Role `product-owner`; playbooks `delivery-item-to-epic` e `delivery-scope-planning`. |
+| `acceptance-criteria` | Definir critérios de aceite para trabalho de MVP. | Role `product-owner`; playbooks de Product Ops quando critérios forem necessários. |
+| `delivery-coherence` | Checar se escopo de entrega combina com Strategy, MVP backlog, roadmap e critérios de aceite. | Roles `product-owner` e `delivery-architect`; playbooks `mvp-backlog-planning`, `delivery-scope-planning` ou `delivery-readiness`. |
 | `shape-epic` | Transformar item aprovado de MVP backlog, roadmap, backlog ou delivery scope em Epic local com fronteiras, outcome, escopo e não objetivos. | Role `product-owner`; playbooks `delivery-item-to-epic` e `epic-to-features`. |
-| `write-feature-criteria` | Aplicar a Delivery Readiness Matrix e escrever Feature drafts com critérios e tasks internas. | Role `product-owner`; playbook `epic-to-features`. |
-| `define-delivery-boundaries` | Definir limites técnicos e operacionais mínimos para implementação segura sem arquitetura prematura. | Role `delivery-architect`; playbook `delivery-readiness`; pedidos sobre boundaries de entrega. |
+| `feature-criteria` | Aplicar a Delivery Readiness Matrix e escrever Feature drafts com critérios e tasks internas. | Role `product-owner`; playbook `epic-to-features`. |
+| `delivery-boundaries` | Definir limites técnicos e operacionais mínimos para implementação segura sem arquitetura prematura. | Role `delivery-architect`; playbook `delivery-readiness`; pedidos sobre boundaries de entrega. |
 
 ### Design
 
@@ -94,14 +94,14 @@ Ativação padrão: `AGENT.md` -> `operations/AGENT.md` -> `operations/engineeri
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
-| `plan-implementation` | Transformar Feature pronta em plano técnico antes de editar código. | Role `senior-developer`; playbooks `engineering-delivery` e `prepare-pr`; workflow `feature-to-delivery-cycle`. |
+| `implementation-planning` | Transformar Feature pronta em plano técnico antes de editar código. | Role `senior-developer`; playbooks `engineering-delivery` e `prepare-pr`; workflow `feature-to-delivery-cycle`. |
 | `follow-code-standards` | Aplicar padrões de código, modularidade, naming e regras contra hardcoding. | Roles `senior-developer` e `pr-reviewer`; playbooks `engineering-delivery`, `prepare-pr` e `pr-validation`. |
-| `implement-component` | Implementar componente reutilizável a partir de spec aprovada por Design. | Role `senior-developer`; playbook `component-implementation`; workflow `feature-to-delivery-cycle` quando Feature depende de componente. |
-| `create-branch` | Definir branch segura vinculada à Feature antes de implementação. | Role `senior-developer`; playbook `branch-for-feature`; workflow `feature-to-delivery-cycle`. |
-| `write-tests` | Definir ou atualizar testes para comportamento alterado. | Roles `senior-developer` e `test-engineer`; playbooks `test-planning`, `engineering-delivery` e `pr-validation`. |
-| `review-data-change` | Revisar mudanças de banco, API, persistência, migração ou dados sensíveis. | Roles `senior-developer` e `pr-reviewer`; playbooks de delivery/revisão quando há mudança de dados. |
-| `create-pr` | Preparar resumo de PR vinculado a escopo, testes e critérios de revisão. | Role `senior-developer`; playbook `prepare-pr`; workflow `feature-to-delivery-cycle`. |
-| `review-pr` | Revisar PR por correção, escopo e coerência com LeanOS. | Roles `test-engineer` e `pr-reviewer`; playbook `pr-validation`; workflow `feature-to-delivery-cycle`. |
+| `component-implementation` | Implementar componente reutilizável a partir de spec aprovada por Design. | Role `senior-developer`; playbook `component-implementation`; workflow `feature-to-delivery-cycle` quando Feature depende de componente. |
+| `feature-branching` | Definir branch segura vinculada à Feature antes de implementação. | Role `senior-developer`; playbook `branch-for-feature`; workflow `feature-to-delivery-cycle`. |
+| `test-coverage` | Definir ou atualizar testes para comportamento alterado. | Roles `senior-developer` e `test-engineer`; playbooks `test-planning`, `engineering-delivery` e `pr-validation`. |
+| `data-change-review` | Revisar mudanças de banco, API, persistência, migração ou dados sensíveis. | Roles `senior-developer` e `pr-reviewer`; playbooks de delivery/revisão quando há mudança de dados. |
+| `pull-request` | Preparar resumo de PR vinculado a escopo, testes e critérios de revisão. | Role `senior-developer`; playbook `prepare-pr`; workflow `feature-to-delivery-cycle`. |
+| `pull-request-review` | Revisar PR por correção, escopo e coerência com LeanOS. | Roles `test-engineer` e `pr-reviewer`; playbook `pr-validation`; workflow `feature-to-delivery-cycle`. |
 
 ### DevOps
 
@@ -109,14 +109,14 @@ Ativação padrão: `AGENT.md` -> `operations/AGENT.md` -> `operations/devops/AG
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
-| `configure-github-project` | Orientar configuração de repo, GitHub Project, labels e origem de tokens sem guardar secrets. | Roles `devops-engineer` e `github-devops`; playbook `configure-github-project`; sync de Epics/Features. |
+| `github-project-management` | Orientar configuração de repo, GitHub Project, labels e origem de tokens sem guardar secrets. | Roles `devops-engineer` e `github-devops`; playbook `github-project-management`; sync de Epics/Features. |
 | `repository-profile` | Preparar description, website e topics do repositório GitHub a partir do README product-first, preservando perfil existente com diff antes de escrita. | Role `github-devops`; playbook `github-safety-baseline`; criação/conexão de repositório GitHub. |
-| `configure-environments` | Definir fronteiras de local, preview/staging e produção sem inventar infraestrutura. | Role `devops-engineer`; playbook `configure-environments`; preparação de delivery/deploy. |
-| `setup-ci` | Definir automação de build, teste e validação antes de PRs serem merge-ready. | Role `devops-engineer`; playbook `setup-ci-cd`; readiness de entrega. |
+| `environment-management` | Definir fronteiras de local, preview/staging e produção sem inventar infraestrutura. | Role `devops-engineer`; playbook `environment-management`; preparação de delivery/deploy. |
+| `ci-pipeline` | Definir automação de build, teste e validação antes de PRs serem merge-ready. | Role `devops-engineer`; playbook `ci-pipeline-cd`; readiness de entrega. |
 | `branch-protection` | Definir baseline obrigatório de proteção da branch principal, required checks, reviews e bloqueio de push direto. | Roles `github-devops` e `devops-engineer`; depois que PR Validation rodar ao menos uma vez. |
-| `plan-deployment` | Planejar release e rollback sem criar estado em provider automaticamente. | Roles `devops-engineer` e `release-manager`; playbook `plan-deployment`; pré-release. |
-| `define-observability` | Definir logs, erros, métricas, alertas e checks pós-deploy. | Roles `devops-engineer` e `release-manager`; playbook `define-observability`; operação/release. |
-| `prepare-release` | Resumir escopo, readiness, riscos, rollback e follow-up de release. | Roles `devops-engineer` e `release-manager`; playbook `release-operations`; pós-merge/release. |
+| `deployment-readiness` | Planejar release e rollback sem criar estado em provider automaticamente. | Roles `devops-engineer` e `release-manager`; playbook `deployment-readiness`; pré-release. |
+| `observability` | Definir logs, erros, métricas, alertas e checks pós-deploy. | Roles `devops-engineer` e `release-manager`; playbook `observability`; operação/release. |
+| `release-readiness` | Resumir escopo, readiness, riscos, rollback e follow-up de release. | Roles `devops-engineer` e `release-manager`; playbook `release-operations`; pós-merge/release. |
 
 ### Security
 
@@ -145,8 +145,8 @@ Ativação padrão: `AGENT.md` -> `growth/AGENT.md` -> `growth/customer-experien
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
-| `map-customer-feedback` | Sanitizar feedback, classificar força do sinal e rotear aprendizado sem transformar feedback isolado em Feature. | Workflow `launch-learning-loop`; role `cx-lead`; playbook `customer-learning-loop`. |
-| `synthesize-support-patterns` | Transformar notas de suporte em aprendizado e ações, usando Pricing Catalog quando plano, cobrança ou entitlement aparecer. | Role `cx-lead`; playbook `customer-learning-loop`; pedidos sobre padrões de suporte, feedback, planos ou billing. |
+| `customer-feedback-mapping` | Sanitizar feedback, classificar força do sinal e rotear aprendizado sem transformar feedback isolado em Feature. | Workflow `launch-learning-loop`; role `cx-lead`; playbook `customer-learning-loop`. |
+| `support-patterns` | Transformar notas de suporte em aprendizado e ações, usando Pricing Catalog quando plano, cobrança ou entitlement aparecer. | Role `cx-lead`; playbook `customer-learning-loop`; pedidos sobre padrões de suporte, feedback, planos ou billing. |
 
 ### Marketing
 
@@ -154,11 +154,11 @@ Ativação padrão: `AGENT.md` -> `growth/AGENT.md` -> `growth/marketing/AGENT.m
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
-| `define-positioning` | Definir categoria, ICP, alternativa, promessa, diferenciação, prova disponível e mapa de claims. | Workflow `launch-learning-loop`; role `growth-lead`; playbook `mvp-launch`. |
-| `create-landing-page-copy` | Criar copy para landing page inicial de validação ou lançamento, consumindo Pricing Catalog quando houver plano ou preço. | Role `growth-lead`; playbook `mvp-launch`; pedidos de landing page, validação, pricing ou lançamento. |
-| `create-launch-plan` | Planejar ações, canais e ciclos de aprendizado de lançamento. | Workflow `launch-learning-loop`; role `growth-lead`; playbook `mvp-launch`. |
-| `plan-growth-experiment` | Planejar experimento de Growth com hipótese, Measurement plan, critérios de sucesso/falha e Manual Result Input Template. | Role `growth-lead`; playbook `growth-experiment`; workflow `launch-learning-loop` quando ainda não há resultado. |
-| `analyze-growth-result` | Analisar resultado manual ou registrado, calcular métricas simples e produzir Decision output sem inventar telemetria. | Role `growth-lead`; playbook `growth-experiment`; workflow `launch-learning-loop` quando há resultado de experimento ou feedback. |
+| `positioning` | Definir categoria, ICP, alternativa, promessa, diferenciação, prova disponível e mapa de claims. | Workflow `launch-learning-loop`; role `growth-lead`; playbook `mvp-launch`. |
+| `landing-page-copy` | Criar copy para landing page inicial de validação ou lançamento, consumindo Pricing Catalog quando houver plano ou preço. | Role `growth-lead`; playbook `mvp-launch`; pedidos de landing page, validação, pricing ou lançamento. |
+| `launch-plan` | Planejar ações, canais e ciclos de aprendizado de lançamento. | Workflow `launch-learning-loop`; role `growth-lead`; playbook `mvp-launch`. |
+| `growth-experiment-planning` | Planejar experimento de Growth com hipótese, Measurement plan, critérios de sucesso/falha e Manual Result Input Template. | Role `growth-lead`; playbook `growth-experiment`; workflow `launch-learning-loop` quando ainda não há resultado. |
+| `growth-result-analysis` | Analisar resultado manual ou registrado, calcular métricas simples e produzir Decision output sem inventar telemetria. | Role `growth-lead`; playbook `growth-experiment`; workflow `launch-learning-loop` quando há resultado de experimento ou feedback. |
 
 ### Finance
 
@@ -167,7 +167,7 @@ Ativação padrão: `AGENT.md` -> `growth/AGENT.md` -> `growth/finance/AGENT.md`
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
 | `model-unit-economics` | Modelar unit economics direcional com fórmulas, premissas, confidence level, Pricing Catalog e Spend Ledger. | Role `finance-operator`; playbook `finance-review`; rotas de Growth/Finance com custo, margem ou spend. |
-| `review-pricing` | Avaliar e manter o Pricing Catalog: planos, preços, trials, limites, entitlements, status e Runtime Source. | Role `finance-operator`; playbook `finance-review`; rotas de pricing, packaging, cobrança, subscription, paywall ou receita. |
-| `review-spend` | Avaliar gasto recorrente, ferramenta paga, campanha paga, provider novo ou custo variável relevante contra budget, runway e unit economics. | Role `finance-operator`; playbook `spend-approval`; rotas de gastos, ferramentas pagas, mídia paga, providers ou custos variáveis. |
-| `runway-check` | Estimar burn mensal, runway e riscos financeiros com premissas explícitas. | Role `finance-operator`; playbook `monthly-finance-check`; pedidos de burn, runway, caixa ou impacto de novo gasto. |
+| `pricing-review` | Avaliar e manter o Pricing Catalog: planos, preços, trials, limites, entitlements, status e Runtime Source. | Role `finance-operator`; playbook `finance-review`; rotas de pricing, packaging, cobrança, subscription, paywall ou receita. |
+| `spend-review` | Avaliar gasto recorrente, ferramenta paga, campanha paga, provider novo ou custo variável relevante contra budget, runway e unit economics. | Role `finance-operator`; playbook `spend-approval`; rotas de gastos, ferramentas pagas, mídia paga, providers ou custos variáveis. |
+| `runway-analysis` | Estimar burn mensal, runway e riscos financeiros com premissas explícitas. | Role `finance-operator`; playbook `monthly-finance-check`; pedidos de burn, runway, caixa ou impacto de novo gasto. |
 | `budget-planning` | Definir guardrails de budget, limites por categoria, approval thresholds e automações candidatas de alerta/limite. | Role `finance-operator`; playbooks `monthly-finance-check` e `spend-approval`; planejamento de orçamento e limites. |

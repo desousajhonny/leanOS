@@ -7,5 +7,5 @@
 - Playbooks terminam com `.playbook.md`.
 - Workflows terminam com `.workflow.md`.
 - Prefira nomes de capacidade de domínio como `accessibility/SKILL.md` or `design-system/SKILL.md` em vez de nomes de ação genéricos como `define-accessibility/SKILL.md`.
-- Use verbos de ação apenas quando o asset for realmente procedural, como `create-branch/SKILL.md`.
+- Use verbos de ação apenas quando o asset for realmente procedural, como `feature-branching/SKILL.md`.
 - Arquivos de knowledge não usam sufixos de asset; use nomes como `knowledge/design-system.md`.

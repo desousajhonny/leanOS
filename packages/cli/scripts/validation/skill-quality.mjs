@@ -6,6 +6,7 @@ export function validateSkillQualityPass() {
   const files = createWorkspaceFiles({ ...answers, initialActivationMode: "all-at-once" });
   const byPath = new Map(files.map((file) => [file.path, file.content]));
 
+  assertSkillNamesAreCapabilities(byPath);
   assertSkillTemplate(byPath);
   assertSecuritySkillQuality(byPath);
   assertGrowthSkillQuality(byPath);
@@ -44,6 +45,34 @@ function assertSkillTemplate(byPath) {
   }
 }
 
+function assertSkillNamesAreCapabilities(byPath) {
+  const forbiddenActionPrefixes = [
+    "analyze",
+    "check",
+    "configure",
+    "create",
+    "define",
+    "implement",
+    "map",
+    "plan",
+    "prepare",
+    "review",
+    "setup",
+    "synthesize",
+    "write"
+  ];
+  const forbiddenActionSuffixes = ["check"];
+  const skillSlugs = [...byPath.keys()]
+    .map((path) => path.match(/\/skills\/([^/]+)\/SKILL\.md$/)?.[1])
+    .filter(Boolean);
+  const actionNamedSkills = skillSlugs.filter((slug) =>
+    forbiddenActionPrefixes.some((prefix) => slug.startsWith(`${prefix}-`)) ||
+    forbiddenActionSuffixes.some((suffix) => slug.endsWith(`-${suffix}`))
+  );
+
+  assert.deepEqual(actionNamedSkills, [], "Generated skill slugs should name stable capabilities, not imperative actions");
+}
+
 function assertSecuritySkillQuality(byPath) {
   const apiSecurityReview = requiredFile(byPath, "clinic-assistant-ai-os/operations/security/skills/api-security-review/SKILL.md");
   const databaseSecurityReview = requiredFile(byPath, "clinic-assistant-ai-os/operations/security/skills/database-security-review/SKILL.md");
@@ -70,8 +99,8 @@ function assertSecuritySkillQuality(byPath) {
 }
 
 function assertGrowthSkillQuality(byPath) {
-  const definePositioning = requiredFile(byPath, "clinic-assistant-ai-os/growth/marketing/skills/define-positioning/SKILL.md");
-  const mapCustomerFeedback = requiredFile(byPath, "clinic-assistant-ai-os/growth/customer-experience/skills/map-customer-feedback/SKILL.md");
+  const definePositioning = requiredFile(byPath, "clinic-assistant-ai-os/growth/marketing/skills/positioning/SKILL.md");
+  const mapCustomerFeedback = requiredFile(byPath, "clinic-assistant-ai-os/growth/customer-experience/skills/customer-feedback-mapping/SKILL.md");
   const modelUnitEconomics = requiredFile(byPath, "clinic-assistant-ai-os/growth/finance/skills/model-unit-economics/SKILL.md");
 
   assert(definePositioning.includes("categoria, ICP, alternativa, promessa, diferenciação e prova disponível"), "Positioning skill should cover complete positioning components");

@@ -20,8 +20,8 @@ flowchart TD
   E["Retornar activation_required: operations.devops"]
   F["DevOps AGENT"]
   G["role GitHub DevOps"]
-  H["skill configure-github-project"]
-  I["playbook configure-github-project"]
+  H["skill github-project-management"]
+  I["playbook github-project-management"]
   J["Verificação de readiness do GitHub"]
   K{"GitHub pronto?"}
   L["Orientação de setup + updates de config propostos"]
@@ -82,8 +82,8 @@ github_issue:
 
 - Área primária para setup: `<product-slug>-os/operations/devops/`
 - Role primária para setup: `<product-slug>-os/operations/devops/roles/github-devops.role.md`
-- Skill primária: `<product-slug>-os/operations/devops/skills/configure-github-project/SKILL.md`
-- Playbook primário: `<product-slug>-os/operations/devops/playbooks/configure-github-project.playbook.md`
+- Skill primária: `<product-slug>-os/operations/devops/skills/github-project-management/SKILL.md`
+- Playbook primário: `<product-slug>-os/operations/devops/playbooks/github-project-management.playbook.md`
 - Owner do trabalho de produto: `<product-slug>-os/operations/product-ops/AGENT.md`
 - Limite de capability: `.github/leanos/capability-contract.md`
 
@@ -104,8 +104,8 @@ Quando DevOps está ativo:
 Root AGENT.md
 -> <product-slug>-os/operations/devops/AGENT.md
 -> <product-slug>-os/operations/devops/roles/github-devops.role.md
--> <product-slug>-os/operations/devops/skills/configure-github-project/SKILL.md
--> <product-slug>-os/operations/devops/playbooks/configure-github-project.playbook.md
+-> <product-slug>-os/operations/devops/skills/github-project-management/SKILL.md
+-> <product-slug>-os/operations/devops/playbooks/github-project-management.playbook.md
 -> .github/leanos/setup-guide.md
 -> .github/leanos/project-sync.yaml
 -> .github/leanos/sync-state.yaml

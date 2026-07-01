@@ -37,7 +37,7 @@ Para novo repositório GitHub, DevOps verifica o gate, mas não escreve a narrat
 
 - New repository README gate: required.
 - README-ready: no until the root \`README.md\` is product-first and confirmed.
-- Owner do conteúdo: Strategy Product -> Product Narrative Editor -> write-product-readme.
+- Owner do conteúdo: Strategy Product -> Product Narrative Editor -> product-readme.
 - Não crie ou publique um novo repositório GitHub sem README product-first confirmado.
 - Se o README estiver ausente, fraco, genérico ou incerto, pare o bootstrap de DevOps e roteie para Strategy Product antes de qualquer escrita remota.
 - Em repositório existente, preserve README, comandos, badges, links e setup úteis; registre \`README status: preserved\` quando isso estiver confirmado.

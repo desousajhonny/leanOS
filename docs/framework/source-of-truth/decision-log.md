@@ -10,8 +10,8 @@ Decisão:
 - Toda decisão de Growth depois de lançamento, campanha, landing page, aquisição, oferta ou onboarding deve usar experimento registrado ou feedback registrado em Customer Experience.
 - O ledger registra hipótese, canal, asset, fonte de medição, critérios de sucesso/falha, resultado, decisão e relação com spend quando aplicável.
 - Marketing ganha:
-  - skill `plan-growth-experiment`;
-  - skill `analyze-growth-result`;
+  - skill `growth-experiment-planning`;
+  - skill `growth-result-analysis`;
   - playbook `growth-experiment`.
 - `launch-learning-loop` deve exigir evidência antes de recomendar decisão e deve produzir `Decision output` com o enum:
   - `continue`;
@@ -72,8 +72,8 @@ Decisão:
 - `growth/finance/knowledge/budget.md` registra Monthly Budget, Runway Snapshot e Approval Thresholds.
 - O root `AGENT.md` deve rotear pedidos de gastos, orçamento, budget, burn, runway, custos, ferramentas pagas, infra paga, mídia paga ou unit economics para `growth.finance`; se Finance estiver inativo, retorna `activation_required: growth.finance`.
 - Finance ganha:
-  - skill `review-spend`;
-  - skill `runway-check`;
+  - skill `spend-review`;
+  - skill `runway-analysis`;
   - skill `budget-planning`;
   - playbook `spend-approval`;
   - playbook `monthly-finance-check`.
@@ -198,7 +198,7 @@ Decisão:
 - Se o README estiver ausente, fraco, genérico, em draft ou incerto, DevOps deve parar o bootstrap remoto e rotear para:
   - Strategy Product;
   - Product Narrative Editor;
-  - `write-product-readme`.
+  - `product-readme`.
 - Em repositório existente, DevOps deve registrar se o README foi preservado e não deve sobrescrever comandos, badges, links, setup ou documentação técnica útil.
 - O knowledge de GitHub deve registrar:
   - `Repository mode`;
@@ -224,7 +224,7 @@ Decisão:
 - Melhorias de README devem entrar pela Navigation Chain, sem adicionar regra específica no `AGENT.md` raiz:
   - Strategy Product;
   - role `Product Narrative Editor`;
-  - skill `write-product-readme`;
+  - skill `product-readme`;
   - template `.leanos/standard/templates/product/product-readme-template.md`.
 - Em repositório existente, o modelo deve ler e preservar o README atual, manter instruções técnicas úteis e propor diff antes de escrever.
 - A skill não pode inventar clientes, métricas, provas, features, stack ou comandos.
@@ -360,7 +360,7 @@ Decisão:
   - status de prontidão `draft | founder-ready | blocked-by-tests | blocked-by-context`;
   - seção `Deploy / Rollback`;
   - headings humanos em PT-BR.
-- Fazer Engineering exigir esses campos via `create-pr`, `branch-for-feature` e `prepare-pr`.
+- Fazer Engineering exigir esses campos via `pull-request`, `branch-for-feature` e `prepare-pr`.
 - Validar regressão desses padrões no generator.
 
 Justificativa:
@@ -699,7 +699,7 @@ Decisão:
 - Skills críticas devem seguir o template completo gerado: frontmatter `name`/`description`, visão geral, use quando, contexto obrigatório, entradas, processo com `### Etapa N`, verificações, saída, arquivos para atualizar e linhas vermelhas.
 - Security ganhou contratos mais fortes em `api-security-review`, `database-security-review` e `incident-response`, com decisão explícita, evidência revisada, stop conditions, contenção, rotação de secrets, comunicação e postmortem.
 - Design ganhou skills em PT-BR com decisões estruturadas para research, fluxo, design system, componentes, tela, microcopy, acessibilidade e review.
-- Growth/CX/Finance ganhou contratos mais objetivos em `define-positioning`, `map-customer-feedback` e `model-unit-economics`, evitando posicionamento genérico, feedback superestimado e falsa precisão financeira.
+- Growth/CX/Finance ganhou contratos mais objetivos em `positioning`, `customer-feedback-mapping` e `model-unit-economics`, evitando posicionamento genérico, feedback superestimado e falsa precisão financeira.
 - Strategy Product `coherence` passa a usar Matriz de coerência com classificação por dimensão, critérios e evidência, sem aprovar implementação.
 - O generator valida esse quality pass com `validateSkillQualityPass` para impedir regressão em estrutura, idioma e decisões críticas.
 

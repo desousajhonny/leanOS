@@ -196,7 +196,7 @@ Bloqueios aqui retornam `blocked_by_engineering`.
 DevOps carrega:
 
 - `operations/devops/playbooks/release-operations.playbook.md`
-- `operations/devops/skills/prepare-release/SKILL.md`
+- `operations/devops/skills/release-readiness/SKILL.md`
 - `operations/devops/knowledge/deployment-readiness.md`
 - `operations/devops/knowledge/release-notes.md`
 - `operations/devops/knowledge/observability.md`

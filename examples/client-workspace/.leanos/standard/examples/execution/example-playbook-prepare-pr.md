@@ -38,12 +38,12 @@ Preparar um pull request revisável a partir de uma implementação de Feature c
 5. Verifique se critérios de Design são obrigatórios para UX voltada ao usuário
 6. Verifique se critérios de Security/Data são obrigatórios para dados, auth, privacidade, abuso ou compliance
 7. Crie ou confirme uma branch vinculada à Feature antes de mudanças de código
-8. Use `skills/plan-implementation/SKILL.md` para planejar a implementação
+8. Use `skills/implementation-planning/SKILL.md` para planejar a implementação
 9. Execute `playbooks/component-implementation.playbook.md` antes de trabalho de tela ou Feature quando um novo componente reutilizável for necessário
 10. Use `skills/follow-code-standards/SKILL.md` ao alterar código
-11. Use `skills/review-data-change/SKILL.md` quando dados/API/persistência estiverem envolvidos
-12. Use `skills/write-tests/SKILL.md` para atualizar testes ou explicar lacunas
-13. Use `skills/create-pr/SKILL.md` para preparar o PR usando o template de PR
+11. Use `skills/data-change-review/SKILL.md` quando dados/API/persistência estiverem envolvidos
+12. Use `skills/test-coverage/SKILL.md` para atualizar testes ou explicar lacunas
+13. Use `skills/pull-request/SKILL.md` para preparar o PR usando o template de PR
 14. Preencha o Título do PR em formato Conventional Commit quando fizer sentido
 15. Preencha o Status De Prontidão como draft, founder-ready, blocked-by-tests ou blocked-by-context
 16. Preencha o `Founder Testing Guide` com passos em linguagem simples, onde testar, resultado esperado, notas fora de escopo e limites conhecidos

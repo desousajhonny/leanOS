@@ -13,7 +13,7 @@ area:
     - product-core
     - mvp-validation-scope
     - coherence
-    - write-product-readme
+    - product-readme
   playbooks:
     - idea-calibration
     - mvp-validation-scope

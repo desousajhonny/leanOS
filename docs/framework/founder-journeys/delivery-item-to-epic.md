@@ -5,7 +5,7 @@
 - **Trigger:** founder quer transformar um item aprovado de MVP backlog, roadmap, backlog ou delivery scope em Epic local.
 - **Objetivo:** criar ou atualizar um Epic local antes de qualquer Feature, GitHub sync, branch ou código.
 - **Começa em:** `AGENT.md` raiz, depois `operations/AGENT.md` e Product Ops.
-- **Passa por:** Product Ops, Product Owner, skills `define-delivery-scope` e `shape-epic`, playbook `delivery-item-to-epic`.
+- **Passa por:** Product Ops, Product Owner, skills `delivery-scope` e `shape-epic`, playbook `delivery-item-to-epic`.
 - **Termina com:** Epic local confirmado pelo founder ou decisão de manter, refinar, adiar ou rejeitar o item.
 - **Não faz:** criar Features, escrever issues no GitHub, criar branch, escrever código ou abrir PR.
 
@@ -18,7 +18,7 @@ flowchart TD
   C["Operations AGENT.md"]
   D["Product Ops AGENT.md"]
   E["Product Owner"]
-  F["skill define-delivery-scope"]
+  F["skill delivery-scope"]
   G["skill shape-epic"]
   H["playbook delivery-item-to-epic"]
   I{"Item aprovado e claro?"}
@@ -49,7 +49,7 @@ Se Design, Security, Engineering ou DevOps puderem mudar o Epic, Product Ops mar
 - Playbook: `operations/product-ops/playbooks/delivery-item-to-epic.playbook.md`
 - Role primária: `operations/product-ops/roles/product-owner.role.md`
 - Skills:
-  - `operations/product-ops/skills/define-delivery-scope/SKILL.md`
+  - `operations/product-ops/skills/delivery-scope/SKILL.md`
   - `operations/product-ops/skills/shape-epic/SKILL.md`
 - Template: `ai-standard/templates/product/epic-template.md`
 
@@ -60,7 +60,7 @@ Root AGENT.md
 -> operations/AGENT.md
 -> operations/product-ops/AGENT.md
 -> operations/product-ops/roles/product-owner.role.md
--> operations/product-ops/skills/define-delivery-scope/SKILL.md
+-> operations/product-ops/skills/delivery-scope/SKILL.md
 -> operations/product-ops/skills/shape-epic/SKILL.md
 -> operations/product-ops/playbooks/delivery-item-to-epic.playbook.md
 -> operations/product-ops/epics/<epic-id>/

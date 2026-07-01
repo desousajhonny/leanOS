@@ -58,8 +58,8 @@ O LeanOS tem um MVP de framework local com:
 - [x] Readiness de launch, go-live, beta ou usuarios reais pertence a Operations via `ready-for-launch`; Growth executa `mvp-launch` e `launch-learning-loop` depois do gate ou depois de lancamento executado.
 - [x] Security hardening pertence a Operations/Security via `security-hardening-cycle`; pedidos diretos de auditoria, vulnerabilidade, LGPD, dados de cliente, token vazado e protecao de API retornam `activation_required: operations.security` quando Security esta inativo.
 - [x] AI app security e gate explicito de produto: LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection e cost/rate abuse entram em Security readiness.
-- [x] README do produto deve ser roteado pela Navigation Chain: Strategy Product -> Product Narrative Editor -> write-product-readme, preservando README existente e propondo diff antes de escrever.
-- [x] Novo repositório GitHub não deve ser criado ou publicado por DevOps sem `README-ready` confirmado; se faltar README, roteie para Strategy Product -> Product Narrative Editor -> write-product-readme.
+- [x] README do produto deve ser roteado pela Navigation Chain: Strategy Product -> Product Narrative Editor -> product-readme, preservando README existente e propondo diff antes de escrever.
+- [x] Novo repositório GitHub não deve ser criado ou publicado por DevOps sem `README-ready` confirmado; se faltar README, roteie para Strategy Product -> Product Narrative Editor -> product-readme.
 - [x] Planos, preços, cobrança, trials, quotas, limites e entitlements pertencem ao Pricing Catalog de Growth Finance; áreas consumidoras não devem inventar valores ou direitos fora dessa fonte.
 - [x] Gastos, budget, burn, runway, ferramentas pagas, mídia paga, providers e custos variáveis pertencem ao Spend Ledger de Growth Finance; áreas consumidoras não devem criar custo relevante fora dessa fonte.
 - [x] Decisões de Growth pós-lançamento, landing page, aquisição, campanha ou oferta devem usar experimento registrado em `growth/marketing/knowledge/growth-experiments.md` ou feedback registrado em Customer Experience.
@@ -104,17 +104,17 @@ O LeanOS tem um MVP de framework local com:
 - [x] `ready-for-launch` implementado como workflow de Operations, com decisao explicita (`ready_to_launch`, `ready_with_known_risks`, bloqueios por area e `not_ready_to_learn`), roteamento raiz separado de Growth, jornada do founder documentada e validacao automatica de ativacao sequencial Product Ops -> Engineering -> DevOps.
 - [x] Contrato de sync GitHub fortalecido: Epics usam `epic.md` como fonte canonica com fallback legado para `README.md`, Project sync aponta para `<product-slug>-os/operations/product-ops/epics/`, payload exige body rico, milestone, Size, Effort, Priority, Area, Roadmap Item, Epic e relacoes.
 - [x] Capability contract de GitHub agora exige read-back verification antes de patch local, e Product Ops/DevOps registram a regra de atualizar `github_issue.url` e `sync_status: synced` apenas depois da verificacao remota.
-- [x] README raiz product-first implementado no scaffold, com role `Product Narrative Editor`, skill `write-product-readme`, template `.leanos/standard/templates/product/product-readme-template.md`, rota em Strategy/Product e validacao automatica do contrato.
+- [x] README raiz product-first implementado no scaffold, com role `Product Narrative Editor`, skill `product-readme`, template `.leanos/standard/templates/product/product-readme-template.md`, rota em Strategy/Product e validacao automatica do contrato.
 - [x] Gate `README-ready` adicionado ao bootstrap de repositório GitHub em DevOps/GitHub DevOps, com validação `validateGithubRepositoryReadmeGate` e fixture regenerado.
 - [x] Pacote `create-lean-os` adicionado para suportar `npm create lean-os`, reaproveitando o wizard do `lean-os ai` e com validacao automatica do contrato.
 - [x] `lean-os@0.1.1` e `create-lean-os@0.1.1` publicados no npm em 2026-06-30.
 - [x] Runbook de publish npm adicionado para futuras versoes, com validacao automatica do protocolo.
 - [x] Security hardening implementado como workflow `operations/workflows/security-hardening-cycle.workflow.md`, role `AI Security Engineer`, skill `ai-runtime-security-review`, playbook `ai-app-security-review`, knowledge `ai-app-security.md`, rota root de `activation_required: operations.security`, gates AI-native em `ready-to-develop`, Engineering review e `ready-for-launch`, e validações automáticas da jornada.
 - [x] Pricing Source of Truth implementado: root `AGENT.md` roteia pricing para `activation_required: growth.finance`, `pricing.md` virou Pricing Catalog com Runtime Source e Consumer Contract, Marketing/CX/Product Ops/Engineering/DevOps/Security consomem o catálogo, jornada `pricing-source-of-truth.md` criada e validação `validatePricingSourceOfTruthContract` adicionada.
-- [x] Spend/Budget Source of Truth implementado: root `AGENT.md` roteia gastos/budget/burn/runway para `activation_required: growth.finance`, `spend-ledger.md` virou fonte canonica de gastos, `budget.md` ganhou Monthly Budget/Runway Snapshot/Approval Thresholds, Finance ganhou `review-spend`, `runway-check`, `budget-planning`, `spend-approval` e `monthly-finance-check`, e validação `validateSpendBudgetSourceOfTruthContract` adicionada.
-- [x] Growth Experiment Learning implementado: Marketing ganhou `growth-experiments.md`, skills `plan-growth-experiment` e `analyze-growth-result`, playbook `growth-experiment`, `launch-learning-loop` passou a exigir experimento ou feedback registrado antes de decisão, e validação `validateGrowthExperimentContract` adicionada.
+- [x] Spend/Budget Source of Truth implementado: root `AGENT.md` roteia gastos/budget/burn/runway para `activation_required: growth.finance`, `spend-ledger.md` virou fonte canonica de gastos, `budget.md` ganhou Monthly Budget/Runway Snapshot/Approval Thresholds, Finance ganhou `spend-review`, `runway-analysis`, `budget-planning`, `spend-approval` e `monthly-finance-check`, e validação `validateSpendBudgetSourceOfTruthContract` adicionada.
+- [x] Growth Experiment Learning implementado: Marketing ganhou `growth-experiments.md`, skills `growth-experiment-planning` e `growth-result-analysis`, playbook `growth-experiment`, `launch-learning-loop` passou a exigir experimento ou feedback registrado antes de decisão, e validação `validateGrowthExperimentContract` adicionada.
 - [x] GitHub Safety Baseline implementado: DevOps ganhou skill `repository-profile`, playbook `github-safety-baseline`, workflow `.github/workflows/pr-validation.yml` adaptativo, capability contract para `repositoryProfile`, `prValidationWorkflow`, `branchProtection` e `createRelease`, além de validações automáticas e fixture regenerado.
-- [x] Skill Quality Pass implementado: `api-security-review`, `database-security-review`, `incident-response`, Design skills, `define-positioning`, `map-customer-feedback`, `model-unit-economics` e `coherence` fortalecidas; validação `validateSkillQualityPass` adicionada e fixture regenerado.
+- [x] Skill Quality Pass implementado: `api-security-review`, `database-security-review`, `incident-response`, Design skills, `positioning`, `customer-feedback-mapping`, `model-unit-economics` e `coherence` fortalecidas; validação `validateSkillQualityPass` adicionada e fixture regenerado.
 
 ## Pendencias Ativas
 
@@ -172,13 +172,13 @@ Fatia concluida:
    - adicionar lei operacional: este playbook cria Epic local, nao Feature, GitHub issue, branch, codigo ou PR;
    - deixar output esperado mais verificavel.
 4. Expandidas skills rasas de Product Ops:
-   - `write-acceptance-criteria`;
-   - `check-delivery-coherence`;
-   - `define-delivery-boundaries`.
+   - `acceptance-criteria`;
+   - `delivery-coherence`;
+   - `delivery-boundaries`.
 5. Fortalecido Engineering:
-   - `write-tests` com red flags semelhantes a TDD;
-   - `create-pr` exigindo Founder Testing Guide;
-   - `review-pr` com findings por severidade e evidencia antes de merge recommendation.
+   - `test-coverage` com red flags semelhantes a TDD;
+   - `pull-request` exigindo Founder Testing Guide;
+   - `pull-request-review` com findings por severidade e evidencia antes de merge recommendation.
 6. Adicionadas validacoes automaticas:
    - workflow com `confirmationGates`, `stopConditions` e `expectedOutput`;
    - playbooks importantes com `useWhen`, `gates`, `outputs`, `filesToUpdate` e `stopConditions`;
@@ -266,7 +266,7 @@ Objetivo: manter Growth enxuto, mas pronto para lancamento, feedback, learning l
 Fatia concluida:
 
 - `growth/marketing/knowledge/growth-experiments.md` criado como ledger de experimentos de Growth.
-- Skills `plan-growth-experiment` e `analyze-growth-result` adicionadas.
+- Skills `growth-experiment-planning` e `growth-result-analysis` adicionadas.
 - Playbook `growth-experiment` adicionado com modo de planejamento e modo de análise.
 - `launch-learning-loop` exige experimento ou feedback registrado antes de qualquer decisão de Growth.
 - Founder pode colar resultados manualmente pelo Manual Result Input Template.
@@ -304,7 +304,7 @@ Cenario minimo:
 
 Fatia concluida em 2026-06-29:
 
-- Jornada `Review e PR` documentada em `docs/framework/founder-journeys/review-pr.md`.
+- Jornada `Review e PR` documentada em `docs/framework/founder-journeys/pull-request-review.md`.
 - `docs/framework/founder-journeys/journey-map.md` marcou a etapa 7 como concluida via `operations/engineering/playbooks/pr-validation.playbook.md`, sem criar workflow novo.
 - `packages/cli/scripts/validation/founder-journey.mjs` valida a documentacao da jornada e uma ativacao sequencial Strategy-only -> Product Ops -> Engineering para garantir rota de PR/review sem pular Product Ops.
 

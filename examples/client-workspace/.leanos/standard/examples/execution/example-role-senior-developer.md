@@ -36,13 +36,13 @@ Leia:
 
 ## Skills Obrigatórias
 
-- `../skills/plan-implementation/SKILL.md`
+- `../skills/implementation-planning/SKILL.md`
 - `../skills/follow-code-standards/SKILL.md`
-- `../skills/implement-component/SKILL.md`
-- `../skills/create-branch/SKILL.md`
-- `../skills/write-tests/SKILL.md`
-- `../skills/review-data-change/SKILL.md`
-- `../skills/create-pr/SKILL.md`
+- `../skills/component-implementation/SKILL.md`
+- `../skills/feature-branching/SKILL.md`
+- `../skills/test-coverage/SKILL.md`
+- `../skills/data-change-review/SKILL.md`
+- `../skills/pull-request/SKILL.md`
 
 ## Playbooks Relevantes
 

@@ -132,7 +132,7 @@ async function assertProgressiveStrategyOnlyWorkspace(rootDir, founderSelectedSu
   assert(skillsIndex.skills.some((skill) => skill.key === "mvp-validation-scope"), "MVP Validation Scope skill should be indexed in initial Strategy");
   assert.equal(rolesIndex.roles.some((role) => role.key === "senior-developer"), false, "Engineering role should wait for Operations activation");
   assert.equal(rolesIndex.roles.some((role) => role.key === "growth-lead"), false, "Growth role should wait for Growth activation");
-  assert.equal(skillsIndex.skills.some((skill) => skill.key === "create-launch-plan"), false, "Growth skill should wait for Growth activation");
+  assert.equal(skillsIndex.skills.some((skill) => skill.key === "launch-plan"), false, "Growth skill should wait for Growth activation");
   assert.equal(playbooksIndex.playbooks.some((playbook) => playbook.key === "mvp-backlog-planning"), false, "Product Ops playbook should wait for Operations activation");
 
   assert.equal(routingMap.routing.departments.strategy.agent, "../../../clinic-assistant-ai-os/strategy/AGENT.md");

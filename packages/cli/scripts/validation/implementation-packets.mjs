@@ -176,8 +176,8 @@ function assertDesignImplementationPacketContract(byPath) {
 function assertEngineeringImplementationPacketContract(byPath) {
   const componentGuidelines = requiredFile(byPath, "clinic-assistant-ai-os/operations/engineering/knowledge/component-guidelines.md");
   const reviewCriteria = requiredFile(byPath, "clinic-assistant-ai-os/operations/engineering/knowledge/review-criteria.md");
-  const planImplementation = requiredFile(byPath, "clinic-assistant-ai-os/operations/engineering/skills/plan-implementation/SKILL.md");
-  const implementComponent = requiredFile(byPath, "clinic-assistant-ai-os/operations/engineering/skills/implement-component/SKILL.md");
+  const planImplementation = requiredFile(byPath, "clinic-assistant-ai-os/operations/engineering/skills/implementation-planning/SKILL.md");
+  const implementComponent = requiredFile(byPath, "clinic-assistant-ai-os/operations/engineering/skills/component-implementation/SKILL.md");
   const engineeringDelivery = requiredFile(byPath, "clinic-assistant-ai-os/operations/engineering/playbooks/engineering-delivery.playbook.md");
   const componentImplementation = requiredFile(byPath, "clinic-assistant-ai-os/operations/engineering/playbooks/component-implementation.playbook.md");
   const prValidation = requiredFile(byPath, "clinic-assistant-ai-os/operations/engineering/playbooks/pr-validation.playbook.md");

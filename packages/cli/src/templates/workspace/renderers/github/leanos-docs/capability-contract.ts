@@ -320,7 +320,7 @@ Inputs:
 - target branch or commit;
 - proposed tag;
 - release title;
-- GitHub Release notes from DevOps \`prepare-release\`;
+- GitHub Release notes from DevOps \`release-readiness\`;
 - linked issues or PRs;
 - ready-for-launch or release-operations decision;
 - dry-run flag.

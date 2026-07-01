@@ -18,8 +18,8 @@ O founder pede algo como:
 2. Se `growth.finance` estiver inativo, retorna `activation_required: growth.finance`.
 3. Quando Growth Finance está ativo, o agente entra em `growth/finance/AGENT.md`.
 4. Finance Operator lê `growth/finance/knowledge/spend-ledger.md`, `budget.md`, `unit-economics.md` e `finance-risks.md`.
-5. `skills/review-spend/SKILL.md` revisa gasto novo ou existente.
-6. `skills/runway-check/SKILL.md` estima burn mensal e runway quando houver dados suficientes.
+5. `skills/spend-review/SKILL.md` revisa gasto novo ou existente.
+6. `skills/runway-analysis/SKILL.md` estima burn mensal e runway quando houver dados suficientes.
 7. `skills/budget-planning/SKILL.md` define limites por categoria, thresholds e automações candidatas.
 8. `spend-approval.playbook.md` decide gasto pontual/recorrente.
 9. `monthly-finance-check.playbook.md` revisa monthly burn, runway, gastos sem owner e riscos.
@@ -62,6 +62,6 @@ O founder pede algo como:
 - [x] Root `AGENT.md` roteia gastos, budget, burn e runway para `growth.finance`.
 - [x] `spend-ledger.md` contém Expense Register, categorias, status, automações candidatas e Consumer Contract.
 - [x] `budget.md` contém Monthly Budget, Runway Snapshot e Approval Thresholds.
-- [x] Finance Operator expõe `review-spend`, `runway-check`, `budget-planning`, `spend-approval` e `monthly-finance-check`.
+- [x] Finance Operator expõe `spend-review`, `runway-analysis`, `budget-planning`, `spend-approval` e `monthly-finance-check`.
 - [x] Marketing, Product Ops, Engineering, DevOps e Security consomem a fonte financeira sem inventar gasto.
 - [x] Generator valida regressão com `validateSpendBudgetSourceOfTruthContract`.

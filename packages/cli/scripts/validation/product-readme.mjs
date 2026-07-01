@@ -12,7 +12,7 @@ export async function validateProductReadmeContract() {
   const productAgent = requiredFile(byPath, "clinic-assistant-ai-os/strategy/product/AGENT.md");
   const productAreaReadme = requiredFile(byPath, "clinic-assistant-ai-os/strategy/product/README.md");
   const narrativeRole = requiredFile(byPath, "clinic-assistant-ai-os/strategy/product/roles/product-narrative-editor.role.md");
-  const productReadmeSkill = requiredFile(byPath, "clinic-assistant-ai-os/strategy/product/skills/write-product-readme/SKILL.md");
+  const productReadmeSkill = requiredFile(byPath, "clinic-assistant-ai-os/strategy/product/skills/product-readme/SKILL.md");
   const productTemplatesReadme = requiredFile(byPath, ".leanos/standard/templates/product/README.md");
   const productReadmeTemplate = requiredFile(byPath, ".leanos/standard/templates/product/product-readme-template.md");
   const existingRepoReadme = requiredFile(existingRepoByPath, "README.md");
@@ -41,7 +41,7 @@ export async function validateProductReadmeContract() {
   for (const snippet of [
     "Product Narrative Editor",
     "roles/product-narrative-editor.role.md",
-    "write-product-readme",
+    "product-readme",
     "README do produto"
   ]) {
     assertIncludes(productAgent, snippet, "strategy/product/AGENT.md");
@@ -51,7 +51,7 @@ export async function validateProductReadmeContract() {
   for (const snippet of [
     "Product Narrative Editor",
     "README do produto",
-    "../skills/write-product-readme/SKILL.md",
+    "../skills/product-readme/SKILL.md",
     "não invente fatos",
     "preserve README existente"
   ]) {
@@ -66,9 +66,9 @@ export async function validateProductReadmeContract() {
     "Não sobrescreva README existente sem confirmação explícita",
     "Não transforme o README em landing page",
     "propor diff antes de escrever",
-    "Strategy Product -> Product Narrative Editor -> write-product-readme"
+    "Strategy Product -> Product Narrative Editor -> product-readme"
   ]) {
-    assertIncludes(productReadmeSkill, snippet, "write-product-readme/SKILL.md");
+    assertIncludes(productReadmeSkill, snippet, "product-readme/SKILL.md");
   }
 
   for (const snippet of [

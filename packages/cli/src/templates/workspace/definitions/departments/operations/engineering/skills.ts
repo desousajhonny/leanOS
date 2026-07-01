@@ -2,7 +2,7 @@ import type { SkillDefinition } from "../../../../types.js";
 
 export const operationsEngineeringSkills: SkillDefinition[] = [
     {
-      slug: "plan-implementation",
+      slug: "implementation-planning",
       title: "Planejar Implementação",
       purpose: "Transformar uma Feature pronta em um plano técnico escopado antes de alterar código.",
       useWhen: ["uma Feature local ou issue do GitHub mapeada deve ser implementada", "uma correção de bug precisa de escopo", "o trabalho de implementação precisa de sequência"],
@@ -28,7 +28,7 @@ export const operationsEngineeringSkills: SkillDefinition[] = [
       redLines: ["Não invente arquitetura que o repositório não precisa", "Não hardcode valores que pertencem a config, dados, design tokens ou fontes de copy."]
     },
     {
-      slug: "implement-component",
+      slug: "component-implementation",
       title: "Implementar Componente",
       purpose: "Implementar componentes de UI reutilizáveis a partir de uma especificação de componente de Design antes da tela ou Feature dependente.",
       useWhen: ["uma Feature exige um novo componente voltado ao usuário", "Design produziu ou confirmou uma especificação de componente", "uma tela depende de um componente reutilizável que ainda não existe", "comportamento, estados ou acessibilidade do componente precisam existir antes da entrega da Feature"],
@@ -41,7 +41,7 @@ export const operationsEngineeringSkills: SkillDefinition[] = [
       redLines: ["Não implemente um novo componente voltado ao usuário sem uma especificação de Design ou confirmação explícita de Design", "Não hardcode cores, espaçamento, copy, regras de negócio ou estados que pertencem a Design, dados ou configuração", "Não misture código de componente reutilizável com comportamento pontual de tela quando a separação for prática", "Não contorne estados de acessibilidade, comportamento de teclado ou requisitos de foco."]
     },
     {
-      slug: "create-branch",
+      slug: "feature-branching",
       title: "Criar Branch",
       purpose: "Definir um nome de branch seguro e vinculado à Feature, com checklist de criação antes de alterar código.",
       useWhen: ["a implementação está prestes a começar", "uma Feature local ou issue do GitHub mapeada foi selecionada", "o nome da branch precisa de validação", "um fix, chore, docs ou spike precisa de branch segura"],
@@ -54,7 +54,7 @@ export const operationsEngineeringSkills: SkillDefinition[] = [
       redLines: ["Não crie nem reutilize uma branch sem confirmação explícita do founder.", "Não crie branch a partir de ideia solta, item de roadmap ou Epic não quebrado.", "Não inclua segredos, dados de cliente ou escopo vago em nomes de branch."]
     },
     {
-      slug: "write-tests",
+      slug: "test-coverage",
       title: "Escrever Testes",
       purpose: "Definir ou atualizar testes e evidência de validação para comportamento alterado antes da prontidão de PR.",
       useWhen: ["comportamento mudou", "correções de bug precisam de cobertura de regressão", "critérios de aceite exigem validação", "antes de implementar comportamento quando test-first for viável", "validação manual é a única opção prática", "lacunas de teste do PR precisam de explicação"],
@@ -67,7 +67,7 @@ export const operationsEngineeringSkills: SkillDefinition[] = [
       redLines: ["Não trate testes escritos depois da implementação como evidência RED/GREEN.", "Não alegue que validação manual cobre edge cases não testados sem passos concretos.", "Não alegue cobertura sem execução de teste, plano de teste ou lacuna explícita de validação.", "Não esconda lacunas de teste ou comportamento arriscado não testado.", "Não teste detalhes de implementação quando comportamento de aceite pode ser testado."]
     },
     {
-      slug: "review-data-change",
+      slug: "data-change-review",
       title: "Revisar Mudança De Dados",
       purpose: "Revisar banco de dados, API, persistência, migração e mudanças sensíveis a dados antes da implementação ou aprovação do PR.",
       useWhen: ["há modelo de dados, migração, contrato de API, persistência, auth, permissões, privacidade ou dados sensíveis envolvidos"],
@@ -80,7 +80,7 @@ export const operationsEngineeringSkills: SkillDefinition[] = [
       redLines: ["Não aprove mudanças destrutivas de dados sem confirmação explícita e notas de rollback.", "Não pule roteamento para Security quando auth, privacidade, compliance ou dados sensíveis estiverem envolvidos.", "Não armazene segredos, credenciais ou dados sensíveis de cliente em notas."]
     },
     {
-      slug: "create-pr",
+      slug: "pull-request",
       title: "Criar PR",
       purpose: "Preparar um pacote de PR revisável, vinculado ao escopo da Feature, testes, Founder Testing Guide e riscos.",
       useWhen: ["a implementação está pronta para revisão", "a descrição do PR precisa de estrutura", "o risco de merge precisa ser comunicado", "o founder precisa de um caminho de validação em linguagem simples"],
@@ -93,7 +93,7 @@ export const operationsEngineeringSkills: SkillDefinition[] = [
       redLines: ["Não prepare um PR sem escopo de Feature ou issue vinculada.", "Não omita testes, lacunas de validação ou riscos conhecidos do corpo do PR.", "Não marque um PR como founder-ready sem testes, lacunas e riscos documentados.", "Não marque um PR como founder-ready sem Founder Testing Guide usável."]
     },
     {
-      slug: "review-pr",
+      slug: "pull-request-review",
       title: "Revisar PR",
       purpose: "Revisar mudanças de PR por correção, escopo, evidência e prontidão de merge no LeanOS.",
       useWhen: ["revisar um PR", "validar prontidão da implementação", "verificar risco de merge", "fazer code review"],

@@ -42,9 +42,9 @@ Estes playbooks são de uso interno do framework e não são gerados no workspac
 | Playbook | Área | Serve Para | Pode Ser Ativado Por |
 | --- | --- | --- | --- |
 | `mvp-backlog-planning` | `operations.product-ops` | Transformar um MVP Validation Scope aprovado pelo founder em itens de MVP backlog antes de qualquer Epic ou Feature. | Role `product-owner`; handoff vindo de Strategy Product; ativa quando Product Ops está ativo. |
-| `delivery-item-to-epic` | `operations.product-ops` | Transformar item aprovado de MVP backlog, roadmap, backlog ou delivery scope em Epic local antes de Feature, GitHub ou código. | Role `product-owner`; skills `define-delivery-scope` e `shape-epic`. |
+| `delivery-item-to-epic` | `operations.product-ops` | Transformar item aprovado de MVP backlog, roadmap, backlog ou delivery scope em Epic local antes de Feature, GitHub ou código. | Role `product-owner`; skills `delivery-scope` e `shape-epic`. |
 | `delivery-scope-planning` | `operations.product-ops` | Decidir se um item de MVP backlog, roadmap, backlog ou delivery candidate vira escopo confirmado sem criar issue ou código. | Role `product-owner`; usado por Product Ops quando escopo precisa ser isolado antes do Epic. |
-| `epic-to-features` | `operations.product-ops` | Quebrar Epic local em Feature drafts com tasks internas e DRM antes de Engineering. | Role `product-owner`; skills `shape-epic` e `write-feature-criteria`. |
+| `epic-to-features` | `operations.product-ops` | Quebrar Epic local em Feature drafts com tasks internas e DRM antes de Engineering. | Role `product-owner`; skills `shape-epic` e `feature-criteria`. |
 | `delivery-readiness` | `operations.product-ops` | Confirmar se uma issue ou slice de MVP tem clareza para entrar em Engineering. | Role `delivery-architect`; workflows de delivery quando readiness está em dúvida. |
 
 ### Design
@@ -74,12 +74,12 @@ Estes playbooks são de uso interno do framework e não são gerados no workspac
 
 | Playbook | Área | Serve Para | Pode Ser Ativado Por |
 | --- | --- | --- | --- |
-| `setup-ci-cd` | `operations.devops` | Planejar automação de build, teste, release e branch protection quando checks obrigatórios já existirem. | Role `devops-engineer`; readiness de CI/CD. |
-| `plan-deployment` | `operations.devops` | Planejar deploy seguro. | Roles `devops-engineer` e `release-manager`; release/deploy. |
-| `configure-github-project` | `operations.devops` | Preparar settings de GitHub para sync de Epics/Features sem chamar API diretamente. | Roles `devops-engineer` e `github-devops`; fluxo de sync GitHub. |
+| `ci-pipeline-cd` | `operations.devops` | Planejar automação de build, teste, release e branch protection quando checks obrigatórios já existirem. | Role `devops-engineer`; readiness de CI/CD. |
+| `deployment-readiness` | `operations.devops` | Planejar deploy seguro. | Roles `devops-engineer` e `release-manager`; release/deploy. |
+| `github-project-management` | `operations.devops` | Preparar settings de GitHub para sync de Epics/Features sem chamar API diretamente. | Roles `devops-engineer` e `github-devops`; fluxo de sync GitHub. |
 | `github-safety-baseline` | `operations.devops` | Preparar About do repositório, PR Validation, checks mínimos e branch protection com dry-run e confirmação explícita. | Role `github-devops`; quando um repositório GitHub novo ou existente vira base de delivery real. |
-| `configure-environments` | `operations.devops` | Planejar ambientes e configuração sem inventar infraestrutura. | Role `devops-engineer`; preparação de entrega. |
-| `define-observability` | `operations.devops` | Definir visibilidade de runtime para logs, métricas, alertas e traces. | Roles `devops-engineer` e `release-manager`; pós-deploy/release. |
+| `environment-management` | `operations.devops` | Planejar ambientes e configuração sem inventar infraestrutura. | Role `devops-engineer`; preparação de entrega. |
+| `observability` | `operations.devops` | Definir visibilidade de runtime para logs, métricas, alertas e traces. | Roles `devops-engineer` e `release-manager`; pós-deploy/release. |
 | `release-operations` | `operations.devops` | Preparar caminho operacional de release. | Roles `devops-engineer` e `release-manager`; workflow `post-merge-continuation` quando release for necessário. |
 
 ### Security

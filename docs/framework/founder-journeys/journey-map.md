@@ -11,7 +11,7 @@ Use este mapa para acompanhar quais jornadas do founder foram desenhadas com `jo
 | [x] | 4 | Feature Shaping | `epic-to-features.md` | `operations/product-ops/playbooks/epic-to-features.playbook.md` | "Quebre o epic #123 em features" |
 | [x] | 5 | GitHub tracking opcional | `github-sync.md` | Root `AGENT.md` -> DevOps/Product Ops readiness + `.github/leanos/capability-contract.md` | "Sincronize Epics/Features com GitHub", "configura GitHub para o LeanOS" |
 | [x] | 6 | Implementação | `feature-to-delivery-cycle.md` | `operations/workflows/feature-to-delivery-cycle.workflow.md` | "Implemente a feature", "implemente a issue #554", "vamos começar essa feature" |
-| [x] | 7 | Review e PR | `review-pr.md` | `operations/engineering/playbooks/pr-validation.playbook.md` | "Revise o PR", "está pronto para merge?" |
+| [x] | 7 | Review e PR | `pull-request-review.md` | `operations/engineering/playbooks/pr-validation.playbook.md` | "Revise o PR", "está pronto para merge?" |
 | [x] | 8 | Pós-merge | `post-merge-continuation.md` | `operations/workflows/post-merge-continuation.workflow.md` | "Mergeado, vamos para a próxima issue", "o que atualizamos depois do merge?" |
 | [x] | 9 | Ready for launch | `ready-for-launch.md` | `operations/workflows/ready-for-launch.workflow.md` | "Está pronto para lançar?", "podemos abrir para usuários reais?", "o que falta para lançar?" |
 | [x] | 10 | Security hardening | `security-hardening-cycle.md` | `operations/workflows/security-hardening-cycle.workflow.md` | "Audite segurança", "tem vulnerabilidade?", "LGPD", "dados de cliente", "vazou token", "proteger API" |

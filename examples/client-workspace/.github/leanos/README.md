@@ -71,8 +71,8 @@ If owner, repository, Project, labels, token source or sync state are incomplete
 ```text
 <product-slug>-os/operations/devops/AGENT.md
 -> roles/github-devops.role.md
--> skills/configure-github-project/SKILL.md
--> playbooks/configure-github-project.playbook.md
+-> skills/github-project-management/SKILL.md
+-> playbooks/github-project-management.playbook.md
 ```
 
 ## Secret Rule

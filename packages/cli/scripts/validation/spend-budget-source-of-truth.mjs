@@ -27,16 +27,16 @@ export async function validateSpendBudgetSourceOfTruthContract() {
   const spendLedger = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "knowledge", "spend-ledger.md"), "utf8");
   const budget = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "knowledge", "budget.md"), "utf8");
   const financeOperator = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "roles", "finance-operator.role.md"), "utf8");
-  const reviewSpend = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "skills", "review-spend", "SKILL.md"), "utf8");
-  const runwayCheck = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "skills", "runway-check", "SKILL.md"), "utf8");
+  const reviewSpend = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "skills", "spend-review", "SKILL.md"), "utf8");
+  const runwayCheck = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "skills", "runway-analysis", "SKILL.md"), "utf8");
   const budgetPlanning = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "skills", "budget-planning", "SKILL.md"), "utf8");
   const spendApproval = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "playbooks", "spend-approval.playbook.md"), "utf8");
   const monthlyFinanceCheck = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "playbooks", "monthly-finance-check.playbook.md"), "utf8");
-  const marketingLaunch = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "skills", "create-launch-plan", "SKILL.md"), "utf8");
+  const marketingLaunch = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "skills", "launch-plan", "SKILL.md"), "utf8");
   const readyToDevelop = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "knowledge", "ready-to-develop.md"), "utf8");
   const engineeringData = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "knowledge", "data-guidelines.md"), "utf8");
   const devopsEnvironments = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "knowledge", "environments.md"), "utf8");
-  const configureEnvironments = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "configure-environments", "SKILL.md"), "utf8");
+  const configureEnvironments = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "environment-management", "SKILL.md"), "utf8");
   const securityBaseline = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "security-baseline.md"), "utf8");
 
   assert(rootAgent.includes("`.leanos/runtime/index/intent-map.yaml`"), "Root AGENT should route spend and budget requests through intent map");
@@ -72,15 +72,15 @@ export async function validateSpendBudgetSourceOfTruthContract() {
   assert(budget.includes("## Approval Thresholds"), "Budget knowledge should include approval thresholds");
   assert(budget.includes("growth/finance/knowledge/spend-ledger.md"), "Budget should point to Spend Ledger");
 
-  for (const requiredRoute of ["review-spend", "runway-check", "budget-planning", "spend-approval", "monthly-finance-check"]) {
+  for (const requiredRoute of ["spend-review", "runway-analysis", "budget-planning", "spend-approval", "monthly-finance-check"]) {
     assert(financeOperator.includes(requiredRoute), `Finance Operator should expose ${requiredRoute}`);
   }
 
-  assert(reviewSpend.includes("Spend decision"), "review-spend should output a Spend decision");
-  assert(reviewSpend.includes("../knowledge/spend-ledger.md"), "review-spend should require Spend Ledger");
-  assert(reviewSpend.includes("Não aprove gasto recorrente, ferramenta paga, campanha paga, provider novo ou custo variável relevante fora de `../knowledge/spend-ledger.md`"), "review-spend should block off-ledger spend");
-  assert(runwayCheck.includes("Runway estimate"), "runway-check should output runway estimate");
-  assert(runwayCheck.includes("burn mensal"), "runway-check should estimate monthly burn");
+  assert(reviewSpend.includes("Spend decision"), "spend-review should output a Spend decision");
+  assert(reviewSpend.includes("../knowledge/spend-ledger.md"), "spend-review should require Spend Ledger");
+  assert(reviewSpend.includes("Não aprove gasto recorrente, ferramenta paga, campanha paga, provider novo ou custo variável relevante fora de `../knowledge/spend-ledger.md`"), "spend-review should block off-ledger spend");
+  assert(runwayCheck.includes("Runway estimate"), "runway-analysis should output runway estimate");
+  assert(runwayCheck.includes("burn mensal"), "runway-analysis should estimate monthly burn");
   assert(budgetPlanning.includes("Budget guardrails"), "budget-planning should output budget guardrails");
   assert(budgetPlanning.includes("limites por categoria"), "budget-planning should define category limits");
   assert(spendApproval.includes("spend_approved"), "spend-approval should produce spend approval decision");

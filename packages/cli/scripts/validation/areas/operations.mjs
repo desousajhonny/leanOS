@@ -231,10 +231,10 @@ export async function assertEngineeringAreaPattern(rootDir) {
   const seniorDeveloper = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "roles", "senior-developer.role.md"), "utf8");
   const testEngineer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "roles", "test-engineer.role.md"), "utf8");
   const prReviewer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "roles", "pr-reviewer.role.md"), "utf8");
-  const planImplementation = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "plan-implementation/SKILL.md"), "utf8");
+  const planImplementation = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "implementation-planning/SKILL.md"), "utf8");
   const followCodeStandards = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "follow-code-standards/SKILL.md"), "utf8");
-  const implementComponent = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "implement-component/SKILL.md"), "utf8");
-  const reviewDataChange = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "review-data-change/SKILL.md"), "utf8");
+  const implementComponent = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "component-implementation/SKILL.md"), "utf8");
+  const reviewDataChange = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "data-change-review/SKILL.md"), "utf8");
   const engineeringDelivery = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "engineering-delivery.playbook.md"), "utf8");
   const branchPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
   const componentImplementation = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "component-implementation.playbook.md"), "utf8");
@@ -262,11 +262,11 @@ export async function assertEngineeringAreaPattern(rootDir) {
   assert(areaYaml.area.source_of_truth.includes("knowledge/code-standards.md"), "Engineering area.yaml should list code standards");
   assert(areaYaml.area.roles.includes("test-engineer"), "Engineering area.yaml should list test-engineer");
   assert(areaYaml.area.skills.includes("follow-code-standards"), "Engineering area.yaml should list follow-code-standards");
-  assert(areaYaml.area.skills.includes("implement-component"), "Engineering area.yaml should list implement-component");
-  assert(areaYaml.area.skills.includes("review-data-change"), "Engineering area.yaml should list review-data-change");
+  assert(areaYaml.area.skills.includes("component-implementation"), "Engineering area.yaml should list component-implementation");
+  assert(areaYaml.area.skills.includes("data-change-review"), "Engineering area.yaml should list data-change-review");
   assert(areaYaml.area.playbooks.includes("engineering-delivery"), "Engineering area.yaml should list engineering-delivery");
   assert(areaYaml.area.playbooks.includes("component-implementation"), "Engineering area.yaml should list component-implementation");
-  assert(skillsIndex.skills.some((skill) => skill.key === "implement-component" && skill.path === "../../operations/engineering/skills/implement-component/SKILL.md"), "Skills index should list implement-component");
+  assert(skillsIndex.skills.some((skill) => skill.key === "component-implementation" && skill.path === "../../operations/engineering/skills/component-implementation/SKILL.md"), "Skills index should list component-implementation");
   assert(playbooksIndex.playbooks.some((playbook) => playbook.key === "engineering-delivery" && playbook.path === "../../operations/engineering/playbooks/engineering-delivery.playbook.md"), "Playbooks index should list engineering-delivery");
   assert(playbooksIndex.playbooks.some((playbook) => playbook.key === "component-implementation" && playbook.path === "../../operations/engineering/playbooks/component-implementation.playbook.md"), "Playbooks index should list component-implementation");
 
@@ -289,7 +289,7 @@ export async function assertEngineeringAreaPattern(rootDir) {
   assert(seniorDeveloper.includes("../knowledge/code-standards.md"), "Senior Developer should read code standards");
   assert(seniorDeveloper.includes("../knowledge/component-guidelines.md"), "Senior Developer should read component guidelines");
   assert(seniorDeveloper.includes("../playbooks/engineering-delivery.playbook.md"), "Senior Developer should use engineering delivery playbook");
-  assert(seniorDeveloper.includes("../skills/implement-component/SKILL.md"), "Senior Developer should use implement-component skill");
+  assert(seniorDeveloper.includes("../skills/component-implementation/SKILL.md"), "Senior Developer should use component-implementation skill");
   assert(seniorDeveloper.includes("../playbooks/component-implementation.playbook.md"), "Senior Developer should use component implementation playbook");
   assert(testEngineer.includes("../knowledge/testing-strategy.md"), "Test Engineer should read testing strategy");
   assert(prReviewer.includes("../knowledge/review-criteria.md"), "PR Reviewer should read review criteria");
@@ -312,11 +312,11 @@ export async function assertEngineeringAreaPattern(rootDir) {
   assert(implementComponent.includes("Não implemente um novo componente voltado ao usuário sem uma especificação de Design"), "Implement component skill should block component work without Design spec");
   assert(engineeringDelivery.includes("Orchestrate the internal Engineering path"), "Engineering delivery playbook should define the master Engineering path");
   assert(engineeringDelivery.includes("playbooks/branch-for-feature.playbook.md"), "Engineering delivery playbook should start with branch playbook");
-  assert(engineeringDelivery.includes("skills/plan-implementation/SKILL.md"), "Engineering delivery playbook should require implementation planning");
+  assert(engineeringDelivery.includes("skills/implementation-planning/SKILL.md"), "Engineering delivery playbook should require implementation planning");
   assert(engineeringDelivery.includes("playbooks/component-implementation.playbook.md"), "Engineering delivery playbook should include component implementation when needed");
   assert(engineeringDelivery.includes("skills/follow-code-standards/SKILL.md"), "Engineering delivery playbook should use code standards skill");
-  assert(engineeringDelivery.includes("skills/review-data-change/SKILL.md"), "Engineering delivery playbook should use data review when applicable");
-  assert(engineeringDelivery.includes("skills/write-tests/SKILL.md"), "Engineering delivery playbook should require tests or test-gap explanation");
+  assert(engineeringDelivery.includes("skills/data-change-review/SKILL.md"), "Engineering delivery playbook should use data review when applicable");
+  assert(engineeringDelivery.includes("skills/test-coverage/SKILL.md"), "Engineering delivery playbook should require tests or test-gap explanation");
   assert(engineeringDelivery.includes("playbooks/prepare-pr.playbook.md"), "Engineering delivery playbook should prepare PR through prepare-pr");
   assert(engineeringDelivery.includes("playbooks/pr-validation.playbook.md"), "Engineering delivery playbook should end with PR validation");
   assert(engineeringDelivery.includes("Founder Testing Guide"), "Engineering delivery should require Founder Testing Guide before founder review");
@@ -331,12 +331,12 @@ export async function assertEngineeringAreaPattern(rootDir) {
   assert(componentImplementation.includes("../../design/knowledge/component-inventory.md"), "Component implementation playbook should read component inventory");
   assert(componentImplementation.includes("component step of `engineering-delivery.playbook.md`"), "Component implementation playbook should identify itself as engineering-delivery component step");
   assert(componentImplementation.includes("Implement the reusable component before the screen or Feature"), "Component implementation playbook should implement component before dependent Feature");
-  assert(componentImplementation.includes("skills/implement-component/SKILL.md"), "Component implementation playbook should use implement-component skill");
+  assert(componentImplementation.includes("skills/component-implementation/SKILL.md"), "Component implementation playbook should use component-implementation skill");
   assert(reviewDataChange.includes("No destructive change without confirmation"), "Data review skill should block destructive changes");
   assert(preparePr.includes("skills/follow-code-standards/SKILL.md"), "Prepare PR playbook should use code standards skill");
   assert(preparePr.includes("PR preparation step of `engineering-delivery.playbook.md`"), "Prepare PR playbook should identify itself as engineering-delivery PR preparation step");
   assert(preparePr.includes("playbooks/component-implementation.playbook.md"), "Prepare PR playbook should run component implementation when needed");
-  assert(preparePr.includes("skills/review-data-change/SKILL.md"), "Prepare PR playbook should use data review when applicable");
+  assert(preparePr.includes("skills/data-change-review/SKILL.md"), "Prepare PR playbook should use data review when applicable");
   assert(preparePr.includes("Founder Testing Guide"), "Prepare PR playbook should prepare Founder Testing Guide");
   assert(preparePr.includes("where to test"), "Prepare PR playbook should tell the founder where to test");
   assert(prValidation.includes("knowledge/review-criteria.md"), "PR validation should load review criteria");
@@ -362,18 +362,18 @@ export async function assertDevOpsAreaPattern(rootDir) {
   const devopsEngineer = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "roles", "devops-engineer.role.md"), "utf8");
   const githubDevops = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "roles", "github-devops.role.md"), "utf8");
   const releaseManager = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "roles", "release-manager.role.md"), "utf8");
-  const configureGithubProject = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "configure-github-project/SKILL.md"), "utf8");
+  const configureGithubProject = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "github-project-management/SKILL.md"), "utf8");
   const repositoryProfile = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "repository-profile/SKILL.md"), "utf8");
   const branchProtection = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "branch-protection/SKILL.md"), "utf8");
-  const configureEnvironments = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "configure-environments/SKILL.md"), "utf8");
-  const setupCi = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "setup-ci/SKILL.md"), "utf8");
-  const planDeployment = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "plan-deployment/SKILL.md"), "utf8");
-  const defineObservability = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "define-observability/SKILL.md"), "utf8");
-  const prepareRelease = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "prepare-release/SKILL.md"), "utf8");
-  const githubProjectPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "configure-github-project.playbook.md"), "utf8");
+  const configureEnvironments = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "environment-management/SKILL.md"), "utf8");
+  const setupCi = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "ci-pipeline/SKILL.md"), "utf8");
+  const planDeployment = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "deployment-readiness/SKILL.md"), "utf8");
+  const defineObservability = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "observability/SKILL.md"), "utf8");
+  const prepareRelease = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "release-readiness/SKILL.md"), "utf8");
+  const githubProjectPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "github-project-management.playbook.md"), "utf8");
   const githubSafetyBaselinePlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "github-safety-baseline.playbook.md"), "utf8");
-  const setupCiCdPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "setup-ci-cd.playbook.md"), "utf8");
-  const planDeploymentPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "plan-deployment.playbook.md"), "utf8");
+  const setupCiCdPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "ci-pipeline-cd.playbook.md"), "utf8");
+  const planDeploymentPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "deployment-readiness.playbook.md"), "utf8");
   const releaseOperationsPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "release-operations.playbook.md"), "utf8");
 
   await assertExists(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "AGENT.md"));
@@ -399,7 +399,7 @@ export async function assertDevOpsAreaPattern(rootDir) {
   assert(areaYaml.area.roles.includes("release-manager"), "DevOps area.yaml should list release-manager");
   assert(areaYaml.area.skills.includes("repository-profile"), "DevOps area.yaml should list repository-profile");
   assert(areaYaml.area.skills.includes("branch-protection"), "DevOps area.yaml should list branch-protection");
-  assert(areaYaml.area.skills.includes("prepare-release"), "DevOps area.yaml should list prepare-release");
+  assert(areaYaml.area.skills.includes("release-readiness"), "DevOps area.yaml should list release-readiness");
   assert(areaYaml.area.playbooks.includes("github-safety-baseline"), "DevOps area.yaml should list github-safety-baseline");
 
   for (const content of [environments, deploymentReadiness, ciCd, observability, releaseNotes]) {
@@ -442,7 +442,7 @@ export async function assertDevOpsAreaPattern(rootDir) {
   assert(repositoryProfile.includes("---\nname: repository-profile"), "Repository profile skill should use repository-profile as its direct noun name");
   assert(repositoryProfile.includes("Repository description"), "Repository profile skill should prepare repository description");
   assert(repositoryProfile.includes("topics"), "Repository profile skill should prepare repository topics");
-  assert(repositoryProfile.includes("Strategy Product -> Product Narrative Editor -> write-product-readme"), "Repository profile skill should route weak product narrative to Strategy Product");
+  assert(repositoryProfile.includes("Strategy Product -> Product Narrative Editor -> product-readme"), "Repository profile skill should route weak product narrative to Strategy Product");
   assert(repositoryProfile.includes("Não sobrescreva um repository profile existente sem mostrar um diff"), "Repository profile skill should protect existing repo profile");
   assert(branchProtection.includes("---\nname: branch-protection"), "Branch protection skill should use branch-protection as its direct noun name");
   assert.equal(branchProtection.includes("name: configure-branch-protection"), false, "Branch protection skill should not use configure-branch-protection");
@@ -482,9 +482,9 @@ export async function assertDevOpsAreaPattern(rootDir) {
   assert(githubSafetyBaselinePlaybook.includes("branch-protection"), "GitHub safety baseline should include branch protection");
   assert(githubSafetyBaselinePlaybook.includes("Não aplique branch protection até que PR validation rode ao menos uma vez"), "GitHub safety baseline should gate branch protection after first PR validation run");
   assert(githubProjectPlaybook.includes("knowledge/github-management.md"), "GitHub project playbook should update GitHub knowledge");
-  assert(setupCiCdPlaybook.includes("skills/setup-ci/SKILL.md"), "Setup CI/CD playbook should use setup-ci skill");
+  assert(setupCiCdPlaybook.includes("skills/ci-pipeline/SKILL.md"), "Setup CI/CD playbook should use ci-pipeline skill");
   assert(planDeploymentPlaybook.includes("do not create `.vercel/`, run `vercel link` or deploy automatically"), "Plan deployment playbook should preserve Vercel safety");
-  assert(releaseOperationsPlaybook.includes("skills/prepare-release/SKILL.md"), "Release operations should use prepare-release skill");
+  assert(releaseOperationsPlaybook.includes("skills/release-readiness/SKILL.md"), "Release operations should use release-readiness skill");
   assert(releaseOperationsPlaybook.includes("knowledge/release-notes.md"), "Release operations should update release notes");
 }
 
@@ -678,11 +678,11 @@ export async function assertOperationalPlaybookSections(rootDir) {
     "operations/product-ops/playbooks/delivery-readiness.playbook.md",
     "operations/design/playbooks/design-foundation.playbook.md",
     "operations/engineering/playbooks/test-planning.playbook.md",
-    "operations/devops/playbooks/setup-ci-cd.playbook.md",
-    "operations/devops/playbooks/plan-deployment.playbook.md",
-    "operations/devops/playbooks/configure-github-project.playbook.md",
-    "operations/devops/playbooks/configure-environments.playbook.md",
-    "operations/devops/playbooks/define-observability.playbook.md",
+    "operations/devops/playbooks/ci-pipeline-cd.playbook.md",
+    "operations/devops/playbooks/deployment-readiness.playbook.md",
+    "operations/devops/playbooks/github-project-management.playbook.md",
+    "operations/devops/playbooks/environment-management.playbook.md",
+    "operations/devops/playbooks/observability.playbook.md",
     "operations/devops/playbooks/release-operations.playbook.md",
     "operations/security/playbooks/security-foundation.playbook.md",
     "operations/security/playbooks/pre-mvp-security-checklist.playbook.md",

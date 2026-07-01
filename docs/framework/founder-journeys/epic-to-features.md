@@ -5,7 +5,7 @@
 - **Trigger:** founder diz "quebre esse Epic em Features", "quais Features precisamos?" ou "prepara esse Epic para desenvolvimento".
 - **Objetivo:** transformar um Epic local confirmado em Feature drafts com tasks internas e critérios da Delivery Readiness Matrix.
 - **Começa em:** `AGENT.md` raiz, depois `operations/AGENT.md` e Product Ops.
-- **Passa por:** Product Ops, Product Owner, skills `shape-epic` e `write-feature-criteria`, playbook `epic-to-features`.
+- **Passa por:** Product Ops, Product Owner, skills `shape-epic` e `feature-criteria`, playbook `epic-to-features`.
 - **Termina com:** arquivos locais de Feature propostos e escritos só após confirmação do founder.
 - **Não faz:** implementação, branch, PR, GitHub sync remoto ou aprovação técnica de Engineering.
 
@@ -21,7 +21,7 @@ flowchart TD
   F["shape-epic/SKILL.md"]
   G{"Epic pronto para quebra?"}
   H["Explicar lacunas do Epic"]
-  I["write-feature-criteria/SKILL.md"]
+  I["feature-criteria/SKILL.md"]
   J["playbook epic-to-features"]
   K["Rascunhar Feature drafts + DRM"]
   L{"Founder confirma escrita?"}
@@ -50,7 +50,7 @@ O workflow começa depois, em `feature-to-delivery-cycle`, quando uma Feature j�
 - Role primária: `operations/product-ops/roles/product-owner.role.md`
 - Skills:
   - `operations/product-ops/skills/shape-epic/SKILL.md`
-  - `operations/product-ops/skills/write-feature-criteria/SKILL.md`
+  - `operations/product-ops/skills/feature-criteria/SKILL.md`
 - Templates:
   - `ai-standard/templates/product/epic-template.md`
   - `ai-standard/templates/product/feature-template.md`
@@ -63,7 +63,7 @@ Root AGENT.md
 -> operations/product-ops/AGENT.md
 -> operations/product-ops/roles/product-owner.role.md
 -> operations/product-ops/skills/shape-epic/SKILL.md
--> operations/product-ops/skills/write-feature-criteria/SKILL.md
+-> operations/product-ops/skills/feature-criteria/SKILL.md
 -> operations/product-ops/playbooks/epic-to-features.playbook.md
 -> operations/product-ops/epics/<epic-slug>/<feature-slug>.md
 ```

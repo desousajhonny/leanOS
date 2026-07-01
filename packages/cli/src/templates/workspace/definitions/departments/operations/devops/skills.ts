@@ -2,33 +2,33 @@ import type { SkillDefinition } from "../../../../types.js";
 
 export const operationsDevopsSkills: SkillDefinition[] = [
     {
-      slug: "configure-github-project",
+      slug: "github-project-management",
       title: "Configurar GitHub Project",
       purpose: "Guiar configuração de repositório GitHub, campos do Project, labels e fonte de token sem armazenar segredos.",
       useWhen: ["sync de GitHub Project foi solicitado", "novo repositório GitHub precisa ser criado, preparado ou publicado", "mapeamento de repositório/project está incerto", "labels ou milestones precisam de configuração", "sync local de Epics/Features precisa de checks de prontidão"],
-      requiredContext: ["DevOps AGENT", "GitHub setup guide", "GitHub capability contract", "GitHub management knowledge", "README.md raiz", "Strategy Product -> Product Narrative Editor -> write-product-readme", "Project sync file", "Labels file", "Sync state file", "Repository owner/name", "Fonte do token", "Intenção de sync de Epic/Feature"],
+      requiredContext: ["DevOps AGENT", "GitHub setup guide", "GitHub capability contract", "GitHub management knowledge", "README.md raiz", "Strategy Product -> Product Narrative Editor -> product-readme", "Project sync file", "Labels file", "Sync state file", "Repository owner/name", "Fonte do token", "Intenção de sync de Epic/Feature"],
       inputs: ["Owner ou organização", "Repository", "Repository mode", "README status", "README source", "Project type", "Project URL or number", "Project fields", "Labels", "Milestone approach", "Fonte do token", "Status opcional de auth do GitHub CLI"],
-      process: ["Carregue `.github/leanos/setup-guide.md` antes de fazer perguntas de setup", "Carregue `.github/leanos/capability-contract.md` antes de descrever execução remota", "Verifique `../knowledge/github-management.md` por Repository mode, README status e README source", "Quando Repository mode for `new`, confirme `README-ready` antes de criar, publicar ou conectar um novo repositório GitHub", "Se README status for missing, draft ou incerto, pare DevOps e roteie para Strategy Product -> Product Narrative Editor -> write-product-readme", "Verifique `project-sync.yaml` por valores TODO de owner/repository/project", "Verifique `labels.yaml` por labels mínimas", "Verifique que `sync-state.yaml` existe e não contém segredos", "Separe setup local, prontidão de README, prontidão de token, prontidão de Project, prontidão de labels/milestones e prontidão de dry-run", "Confirme que fields de Project incluem Status, Priority, Size, Effort, Area, Roadmap Item e Epic", "Confirme que o dry-run inclui body rico, milestone, Project fields e relacionamentos", "Exija Read-back verification antes de aceitar sync remoto como concluído", "Garanta que a capability retorne local file patch com `github_issue.url` e `sync_status: synced` somente após verificação", "Confirme a fonte do token sem pedir valores de token", "Prepare um resumo de prontidão e atualizações propostas antes de escrever"],
+      process: ["Carregue `.github/leanos/setup-guide.md` antes de fazer perguntas de setup", "Carregue `.github/leanos/capability-contract.md` antes de descrever execução remota", "Verifique `../knowledge/github-management.md` por Repository mode, README status e README source", "Quando Repository mode for `new`, confirme `README-ready` antes de criar, publicar ou conectar um novo repositório GitHub", "Se README status for missing, draft ou incerto, pare DevOps e roteie para Strategy Product -> Product Narrative Editor -> product-readme", "Verifique `project-sync.yaml` por valores TODO de owner/repository/project", "Verifique `labels.yaml` por labels mínimas", "Verifique que `sync-state.yaml` existe e não contém segredos", "Separe setup local, prontidão de README, prontidão de token, prontidão de Project, prontidão de labels/milestones e prontidão de dry-run", "Confirme que fields de Project incluem Status, Priority, Size, Effort, Area, Roadmap Item e Epic", "Confirme que o dry-run inclui body rico, milestone, Project fields e relacionamentos", "Exija Read-back verification antes de aceitar sync remoto como concluído", "Garanta que a capability retorne local file patch com `github_issue.url` e `sync_status: synced` somente após verificação", "Confirme a fonte do token sem pedir valores de token", "Prepare um resumo de prontidão e atualizações propostas antes de escrever"],
       checks: ["Nenhum token armazenado no workspace", "O founder nunca cola token no chat", "Owner e repositório são conhecidos", "Repository mode está explícito como existing ou new", "README status está explícito", "Novo repositório só avança quando README-ready estiver confirmado", "Tipo do Project e URL ou número são conhecidos", "Campos do Project estão mapeados", "Campo Effort está mapeado ou o bloqueio está claro", "Labels e milestones estão declarados ou planejados", "Dry-run obrigatório antes de escrita", "Read-back verification obrigatória depois da escrita", "Patch local só marca `synced` depois de verificação remota", "Risco de sync duplicado está visível"],
       outputs: ["Resumo de prontidão do GitHub", "README status e README-ready", "Configuração ausente", "Orientação de setup amigável ao founder", "Atualização proposta de project-sync", "Orientação de fonte de token", "Prontidão de dry-run", "Critério de Read-back verification", "Regras de local file patch", "Próxima ação para sync de Epics/Features no GitHub"],
       filesToUpdate: ["Atualize `../knowledge/github-management.md` após confirmação.", "Não atualize `../../../README.md` a partir de DevOps; quando o README faltar ou estiver fraco, roteie para Strategy Product.", "Atualize `.github/leanos/project-sync.yaml` somente após confirmação explícita.", "Atualize `.github/leanos/labels.yaml` somente após confirmação explícita."],
-      redLines: ["Não crie ou publique um novo repositório GitHub sem README product-first confirmado.", "Não invente narrativa de produto em DevOps; use Strategy Product -> Product Narrative Editor -> write-product-readme.", "Não peça ao founder para colar tokens no chat ou em arquivos.", "Não faça escritas remotas no GitHub sem confirmação explícita e prontidão de dry-run.", "Não torne o GitHub a fonte primária da verdade acima de Epics e Features locais."]
+      redLines: ["Não crie ou publique um novo repositório GitHub sem README product-first confirmado.", "Não invente narrativa de produto em DevOps; use Strategy Product -> Product Narrative Editor -> product-readme.", "Não peça ao founder para colar tokens no chat ou em arquivos.", "Não faça escritas remotas no GitHub sem confirmação explícita e prontidão de dry-run.", "Não torne o GitHub a fonte primária da verdade acima de Epics e Features locais."]
     },
     {
       slug: "repository-profile",
       title: "Repository Profile",
       purpose: "Preparar description, website e topics do repositório GitHub a partir da narrativa product-first confirmada, sem inventar posicionamento nem sobrescrever perfil existente sem diff.",
       useWhen: ["repositório GitHub novo precisa de About", "repository description está vazia, genérica ou desatualizada", "topics ou website do repositório precisam refletir o produto", "github-safety-baseline está preparando o repositório do founder"],
-      requiredContext: ["DevOps AGENT", "GitHub management knowledge", "Root README product-first", "Strategy Product -> Product Narrative Editor -> write-product-readme", "Product brief, positioning and value proposition when available", "Existing repository profile when available"],
+      requiredContext: ["DevOps AGENT", "GitHub management knowledge", "Root README product-first", "Strategy Product -> Product Narrative Editor -> product-readme", "Product brief, positioning and value proposition when available", "Existing repository profile when available"],
       inputs: ["README status", "Repository mode", "Produto", "Descrição curta", "Website URL quando existir", "Topics atuais", "Topics propostos", "Perfil GitHub atual quando existir"],
-      process: ["Verifique `../knowledge/github-management.md` por Repository mode, README status e README source", "Confirme que o root `README.md` está product-first antes de derivar description ou topics", "Se o README estiver fraco, genérico ou ausente, pare DevOps e roteie para Strategy Product -> Product Narrative Editor -> write-product-readme", "Prepare uma Repository description curta, clara e específica do produto", "Prepare website URL somente quando uma URL real existir ou for confirmada pelo founder", "Prepare topics em lowercase, curtos e coerentes com produto, mercado, stack ou categoria", "Compare perfil atual com perfil proposto e mostre diff antes de qualquer escrita remota", "Peça confirmação explícita antes de aplicar via capability GitHub"],
+      process: ["Verifique `../knowledge/github-management.md` por Repository mode, README status e README source", "Confirme que o root `README.md` está product-first antes de derivar description ou topics", "Se o README estiver fraco, genérico ou ausente, pare DevOps e roteie para Strategy Product -> Product Narrative Editor -> product-readme", "Prepare uma Repository description curta, clara e específica do produto", "Prepare website URL somente quando uma URL real existir ou for confirmada pelo founder", "Prepare topics em lowercase, curtos e coerentes com produto, mercado, stack ou categoria", "Compare perfil atual com perfil proposto e mostre diff antes de qualquer escrita remota", "Peça confirmação explícita antes de aplicar via capability GitHub"],
       checks: ["Repository description vem de narrativa product-first confirmada", "Website URL não é inventada", "topics são específicos, lowercase e não sensíveis", "Perfil existente é preservado até o founder aprovar diff", "DevOps não escreve narrativa de produto quando Strategy Product precisa atuar", "Nenhum segredo ou dado sensível entra em description, website ou topics"],
       outputs: ["Repository description", "Repository website URL", "Repository topics", "Diff do repository profile", "README-ready status", "Bloqueios de narrativa", "Próxima ação segura"],
       filesToUpdate: ["Atualize `../knowledge/github-management.md` após confirmação.", "Não atualize o root `README.md` a partir de DevOps; roteie narrativa fraca para Strategy Product.", "Não atualize estado remoto sem confirmação explícita."],
       redLines: ["Não sobrescreva um repository profile existente sem mostrar um diff.", "Não invente description, website ou topics sem fonte product-first.", "Não use topics genéricos ou sensíveis como nomes de clientes, segredos ou dados privados.", "Não trate README fraco como fonte suficiente para About público do GitHub."]
     },
     {
-      slug: "configure-environments",
+      slug: "environment-management",
       title: "Configurar Ambientes",
       purpose: "Definir limites de local, preview/staging e produção com status explícito de prontidão e tratamento de segredos.",
       useWhen: ["variáveis de ambiente são necessárias", "comportamento de preview ou produção está incerto", "segredos ou integrações precisam de limites", "deploy ou CI depende de configuração de runtime", "billing provider price IDs, checkout webhooks ou subscription config precisam de ambiente", "paid providers, quotas, budgets or usage caps precisam de mapeamento"],
@@ -41,7 +41,7 @@ export const operationsDevopsSkills: SkillDefinition[] = [
       redLines: ["Não escreva valores secretos em markdown, `.env` ou instruções geradas.", "Não escreva price IDs, webhook secrets ou billing secrets em markdown sem distinguir IDs públicos de segredos e confirmar o owner.", "Não invente nomes de ambiente, owners de acesso ou detalhes de provider sem confirmação.", "Não confunda comportamento de preview/staging com comportamento de produção.", "Não marque ambientes como prontos enquanto segredos, owners ou alvos de provider obrigatórios forem desconhecidos."]
     },
     {
-      slug: "setup-ci",
+      slug: "ci-pipeline",
       title: "Configurar CI",
       purpose: "Definir automação de build, teste e validação com decisão explícita de gate de CI antes de PRs serem considerados prontos para merge.",
       useWhen: ["checks de CI estão ausentes", "validação de PR precisa de automação", "branch protection ou checks obrigatórios precisam de planejamento", "checks existentes estão flaky ou pouco claros"],
@@ -67,7 +67,7 @@ export const operationsDevopsSkills: SkillDefinition[] = [
       redLines: ["Não aplique branch protection remota antes que PR validation rode ao menos uma vez.", "Não use nome de skill com verbo de ação para esta capacidade; o nome da skill é `branch-protection`.", "Não permita push direto, force push ou deleção da branch principal em repositório ativo.", "Não torne obrigatório um check que não existe, não rodou ou está flaky sem owner.", "Não trate branch protection como opcional quando GitHub estiver ativo para delivery."]
     },
     {
-      slug: "plan-deployment",
+      slug: "deployment-readiness",
       title: "Planejar Deploy",
       purpose: "Planejar release segura, smoke checks e fluxo de rollback sem criar estado de provider automaticamente.",
       useWhen: ["alvo de deploy está sendo discutido", "prontidão de release está incerta", "rollback ou smoke checks são necessários", "configuração de provider pode ser necessária"],
@@ -80,7 +80,7 @@ export const operationsDevopsSkills: SkillDefinition[] = [
       redLines: ["Não faça deploy, link de providers ou crie estado remoto a partir desta skill.", "Não crie config de provider a menos que um app/framework real exija.", "Não declare deployment pronto sem notas de ambiente, rollback e smoke-check.", "Não esconda bloqueios de no-deploy atrás de notas genéricas de provider."]
     },
     {
-      slug: "define-observability",
+      slug: "observability",
       title: "Definir Observabilidade",
       purpose: "Definir visibilidade de runtime para logs, erros, métricas, alertas e checks pós-deploy com owners e ações.",
       useWhen: ["fluxos críticos precisam de monitoramento", "risco de release precisa de visibilidade", "suporte/debugging precisa de sinais baseline", "confiança pós-deploy depende de evidência de runtime"],
@@ -93,7 +93,7 @@ export const operationsDevopsSkills: SkillDefinition[] = [
       redLines: ["Não registre segredos, credenciais, tokens ou dados sensíveis de cliente.", "Não crie alertas ruidosos sem owner ou ação clara.", "Não trate chutes de instrumentação como visibilidade de runtime verificada.", "Não marque visibilidade de release como pronta sem checks pós-deploy ou lacunas conhecidas."]
     },
     {
-      slug: "prepare-release",
+      slug: "release-readiness",
       title: "Preparar Release",
       purpose: "Resumir escopo de release, prontidão, riscos, rollback, checks pós-release, tag e GitHub Release sem criar lançamento antes do gate correto.",
       useWhen: ["uma release está sendo preparada", "um PR está pronto para merge", "checks pós-merge são necessários", "notas de release foram solicitadas", "tag ou GitHub Release foi solicitado"],

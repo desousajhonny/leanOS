@@ -9,14 +9,14 @@ export async function validateGithubRepositoryReadmeGate() {
 
   const devopsAgent = requiredFile(byPath, `${devopsRoot}/AGENT.md`);
   const githubRole = requiredFile(byPath, `${devopsRoot}/roles/github-devops.role.md`);
-  const githubSkill = requiredFile(byPath, `${devopsRoot}/skills/configure-github-project/SKILL.md`);
-  const githubPlaybook = requiredFile(byPath, `${devopsRoot}/playbooks/configure-github-project.playbook.md`);
+  const githubSkill = requiredFile(byPath, `${devopsRoot}/skills/github-project-management/SKILL.md`);
+  const githubPlaybook = requiredFile(byPath, `${devopsRoot}/playbooks/github-project-management.playbook.md`);
   const githubKnowledge = requiredFile(byPath, `${devopsRoot}/knowledge/github-management.md`);
 
   for (const snippet of [
     "Repository bootstrap request",
     "README-ready",
-    "Strategy Product -> Product Narrative Editor -> write-product-readme"
+    "Strategy Product -> Product Narrative Editor -> product-readme"
   ]) {
     assertIncludes(devopsAgent, snippet, "operations/devops/AGENT.md");
   }
@@ -24,7 +24,7 @@ export async function validateGithubRepositoryReadmeGate() {
   for (const snippet of [
     "novo repositório GitHub",
     "README product-first confirmado",
-    "Strategy Product -> Product Narrative Editor -> write-product-readme"
+    "Strategy Product -> Product Narrative Editor -> product-readme"
   ]) {
     assertIncludes(githubRole, snippet, "github-devops.role.md");
   }
@@ -33,10 +33,10 @@ export async function validateGithubRepositoryReadmeGate() {
     "README status",
     "README-ready",
     "Não crie ou publique um novo repositório GitHub sem README product-first confirmado",
-    "Strategy Product -> Product Narrative Editor -> write-product-readme"
+    "Strategy Product -> Product Narrative Editor -> product-readme"
   ]) {
-    assertIncludes(githubSkill, snippet, "configure-github-project/SKILL.md");
-    assertIncludes(githubPlaybook, snippet, "configure-github-project.playbook.md");
+    assertIncludes(githubSkill, snippet, "github-project-management/SKILL.md");
+    assertIncludes(githubPlaybook, snippet, "github-project-management.playbook.md");
   }
 
   for (const snippet of [

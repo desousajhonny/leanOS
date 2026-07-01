@@ -2,7 +2,7 @@ import type { SkillDefinition } from "../../../../types.js";
 
 export const growthMarketingSkills: SkillDefinition[] = [
     {
-      slug: "define-positioning",
+      slug: "positioning",
       title: "Definir Posicionamento",
       purpose: "Definir posicionamento de mercado com categoria, ICP, alternativa, promessa, diferenciação, prova disponível e claims permitidos sem criar narrativa genérica ou promessas sem evidência.",
       useWhen: ["a mensagem de mercado está pouco clara", "a landing page precisa de posicionamento", "o lançamento precisa de uma narrativa focada", "copy ou oferta parecem genéricas", "claims de marketing precisam de prova ou experimento"],
@@ -15,7 +15,7 @@ export const growthMarketingSkills: SkillDefinition[] = [
       redLines: ["Não invente evidência.", "Não prometa além da capacidade do produto.", "Não use posicionamento genérico que poderia servir para qualquer produto.", "Não use claim incerto ou proibido em landing page, anúncio ou sales copy sem experimento ou aprovação explícita.", "Não transforme posicionamento em mudança de produto sem Product Ops ou Strategy."]
     },
     {
-      slug: "create-landing-page-copy",
+      slug: "landing-page-copy",
       title: "Criar Copy De Landing Page",
       purpose: "Rascunhar copy clara para a primeira página de validação ou lançamento.",
       useWhen: ["copy de landing page é necessária", "uma página de validação do MVP é necessária", "a página de lançamento precisa de mensagem concisa", "a landing page mostra plano, preço, trial, desconto, pacote ou entitlement"],
@@ -28,7 +28,7 @@ export const growthMarketingSkills: SkillDefinition[] = [
       redLines: ["Não invente depoimentos ou métricas.", "Não crie preço, desconto, trial, limite ou entitlement novo; use `../finance/knowledge/pricing.md` ou bloqueie por Finance.", "Não defina design final de UI quando Design for necessário."]
     },
     {
-      slug: "create-launch-plan",
+      slug: "launch-plan",
       title: "Criar Plano De Lançamento",
       purpose: "Planejar ações de lançamento, canais e loops de aprendizado.",
       useWhen: ["o lançamento do MVP está sendo planejado", "canais de aquisição precisam de priorização", "aprendizado de lançamento precisa de estrutura", "mídia paga ou ferramenta de aquisição paga está sendo considerada"],
@@ -41,7 +41,7 @@ export const growthMarketingSkills: SkillDefinition[] = [
       redLines: ["Não comprometa gasto sem revisão de Finance.", "Não comprometa mídia paga, ferramenta paga ou campanha com orçamento sem Spend Ledger e confirmação de Finance.", "Não otimize apenas para métricas de vaidade."]
     },
     {
-      slug: "plan-growth-experiment",
+      slug: "growth-experiment-planning",
       title: "Planejar Experimento De Growth",
       purpose: "Transformar uma hipótese de aquisição, landing page, mensagem, oferta, onboarding ou venda assistida em experimento mensurável e leve.",
       useWhen: ["o founder quer validar uma landing page, canal, mensagem, oferta ou campanha", "um lançamento precisa de métrica de aprendizado", "há gasto, mídia paga ou ferramenta paga em Growth", "o modelo precisa preparar um teste sem integração automática de analytics"],
@@ -54,7 +54,7 @@ export const growthMarketingSkills: SkillDefinition[] = [
       redLines: ["Não chame APIs externas de analytics, CRM, email, anúncios, pagamentos ou suporte a partir desta skill.", "Não invente telemetria, conversões, tráfego, receita, CAC ou feedback.", "Não aprove gasto sem Spend Ledger e confirmação de Finance quando orçamento estiver envolvido."]
     },
     {
-      slug: "analyze-growth-result",
+      slug: "growth-result-analysis",
       title: "Analisar Resultado De Growth",
       purpose: "Transformar resultados de experimento ou feedback registrado em decisão de Growth sem inventar telemetria.",
       useWhen: ["o founder cola resultado manual de experimento", "um teste de Growth terminou", "há métricas de landing page, canal, oferta, campanha ou venda assistida para interpretar", "o launch-learning-loop precisa decidir o próximo ciclo"],

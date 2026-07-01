@@ -20,8 +20,8 @@ flowchart TD
   E["growth/marketing/AGENT.md"]
   F["Growth Lead"]
   G{"Tem resultado?"}
-  H["plan-growth-experiment"]
-  I["analyze-growth-result"]
+  H["growth-experiment-planning"]
+  I["growth-result-analysis"]
   J["growth-experiment.playbook.md"]
   K["Decision output ou Manual Result Input Template"]
   L["Confirmação antes de atualizar arquivos"]
@@ -33,7 +33,7 @@ flowchart TD
 
 ## Fluxo Em Linguagem Simples
 
-O modelo entra por Growth porque a intenção fala de validação de mercado, aquisição, landing page, campanha ou resultado de lançamento. O workflow `launch-learning-loop` obriga o modelo a usar `growth/marketing/knowledge/growth-experiments.md` ou feedback registrado antes de recomendar uma decisão. Marketing escolhe Growth Lead, que chama `plan-growth-experiment` quando o teste ainda será planejado ou `analyze-growth-result` quando o founder já colou resultados.
+O modelo entra por Growth porque a intenção fala de validação de mercado, aquisição, landing page, campanha ou resultado de lançamento. O workflow `launch-learning-loop` obriga o modelo a usar `growth/marketing/knowledge/growth-experiments.md` ou feedback registrado antes de recomendar uma decisão. Marketing escolhe Growth Lead, que chama `growth-experiment-planning` quando o teste ainda será planejado ou `growth-result-analysis` quando o founder já colou resultados.
 
 ## Trigger Do Founder
 
@@ -85,7 +85,7 @@ Root AGENT.md
 -> growth/marketing/roles/growth-lead.role.md
 -> growth/marketing/knowledge/growth-experiments.md
 -> growth/marketing/playbooks/growth-experiment.playbook.md
--> growth/marketing/skills/plan-growth-experiment/SKILL.md ou growth/marketing/skills/analyze-growth-result/SKILL.md
+-> growth/marketing/skills/growth-experiment-planning/SKILL.md ou growth/marketing/skills/growth-result-analysis/SKILL.md
 -> Output
 ```
 
@@ -138,7 +138,7 @@ O modelo abre:
 Por quê:
 
 - Growth Lead é a role que planeja lançamento, experimentos de aquisição e análise de resultado.
-- A role aponta para `growth-experiment`, `plan-growth-experiment` e `analyze-growth-result`.
+- A role aponta para `growth-experiment`, `growth-experiment-planning` e `growth-result-analysis`.
 
 Próxima etapa:
 
@@ -158,11 +158,11 @@ Por quê:
 
 Se ainda não há resultado:
 
-`growth/marketing/skills/plan-growth-experiment/SKILL.md`
+`growth/marketing/skills/growth-experiment-planning/SKILL.md`
 
 Se já há resultado:
 
-`growth/marketing/skills/analyze-growth-result/SKILL.md`
+`growth/marketing/skills/growth-result-analysis/SKILL.md`
 
 ## Roles Ativas
 
@@ -176,8 +176,8 @@ Se já há resultado:
 
 | Skill | Usada Por | Propósito | Evidência De Rota |
 | --- | --- | --- | --- |
-| `plan-growth-experiment` | Growth Lead | Criar Measurement plan e Manual Result Input Template | Role `growth-lead` aponta para ela |
-| `analyze-growth-result` | Growth Lead | Calcular métricas e produzir Decision output | Role `growth-lead` aponta para ela |
+| `growth-experiment-planning` | Growth Lead | Criar Measurement plan e Manual Result Input Template | Role `growth-lead` aponta para ela |
+| `growth-result-analysis` | Growth Lead | Calcular métricas e produzir Decision output | Role `growth-lead` aponta para ela |
 
 ## Playbooks Ativos
 
@@ -281,7 +281,7 @@ Próxima rota:
 ## Checklist De Validação Da Jornada
 
 - [x] `growth/marketing/knowledge/growth-experiments.md` existe no scaffold.
-- [x] `growth-lead` aponta para `plan-growth-experiment`, `analyze-growth-result` e `growth-experiment`.
+- [x] `growth-lead` aponta para `growth-experiment-planning`, `growth-result-analysis` e `growth-experiment`.
 - [x] `growth-experiment.playbook.md` possui modo de planejamento e modo de análise.
 - [x] `launch-learning-loop.workflow.md` exige experimento ou feedback registrado antes de decisão.
 - [x] O input manual está documentado como Manual Result Input Template.

@@ -76,7 +76,7 @@ export async function assertGrowthAreaPattern(rootDir) {
   const financeYaml = parse(await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "area.yaml"), "utf8"));
   const pricing = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "knowledge", "pricing.md"), "utf8");
   const financeOperator = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "roles", "finance-operator.role.md"), "utf8");
-  const reviewPricing = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "skills", "review-pricing", "SKILL.md"), "utf8");
+  const reviewPricing = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "skills", "pricing-review", "SKILL.md"), "utf8");
   const financeReview = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "playbooks", "finance-review.playbook.md"), "utf8");
   const growthWorkflow = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "workflows", "launch-learning-loop.workflow.md"), "utf8");
 
@@ -121,12 +121,12 @@ export async function assertGrowthAreaPattern(rootDir) {
   assert(cxRole.includes("## Linhas Vermelhas"), "CX role should include red lines");
   assert(growthLead.includes("## Linhas Vermelhas"), "Growth Lead should include red lines");
   assert(financeOperator.includes("## Linhas Vermelhas"), "Finance Operator should include red lines");
-  assert(customerLearningLoop.includes("skills/map-customer-feedback/SKILL.md"), "Customer learning loop should use feedback mapping skill");
+  assert(customerLearningLoop.includes("skills/customer-feedback-mapping/SKILL.md"), "Customer learning loop should use feedback mapping skill");
   assert(customerLearningLoop.includes("Strategy/Product ou Product Ops"), "Customer learning loop should route product changes back to product owners");
   assert(mvpLaunch.includes("Roteie design visual para Operations Design"), "MVP launch should route design work to Operations Design");
   assert(mvpLaunch.includes("Roteie implicações de orçamento/pricing para Growth Finance"), "MVP launch should route finance work to Finance");
-  assert(growthExperiment.includes("skills/plan-growth-experiment/SKILL.md"), "Growth experiment playbook should route to planning skill");
-  assert(growthExperiment.includes("skills/analyze-growth-result/SKILL.md"), "Growth experiment playbook should route to analysis skill");
+  assert(growthExperiment.includes("skills/growth-experiment-planning/SKILL.md"), "Growth experiment playbook should route to planning skill");
+  assert(growthExperiment.includes("skills/growth-result-analysis/SKILL.md"), "Growth experiment playbook should route to analysis skill");
   assert(financeReadme.includes("Não faça alegações de aconselhamento contábil, fiscal, jurídico ou de investimento"), "Finance should avoid professional advice claims");
   assertPricingSourceOfTruthContract({ pricing, financeOperator, reviewPricing, financeReview, landingPage, supportNotes, mvpLaunch });
   assert(growthWorkflow.includes("Leia o AGENT de Marketing"), "Growth workflow should route through Marketing AGENT");
@@ -156,11 +156,11 @@ function assertPricingSourceOfTruthContract({ pricing, financeOperator, reviewPr
     assert(pricing.includes(requiredContent), `Pricing knowledge should include source-of-truth contract content: ${requiredContent}`);
   }
 
-  assert(financeOperator.includes("skills/review-pricing/SKILL.md"), "Finance Operator should point directly to review-pricing skill");
+  assert(financeOperator.includes("skills/pricing-review/SKILL.md"), "Finance Operator should point directly to pricing-review skill");
   assert(financeOperator.includes("playbooks/finance-review.playbook.md"), "Finance Operator should point directly to finance-review playbook");
-  assert(reviewPricing.includes("Pricing Catalog decision"), "review-pricing should produce a Pricing Catalog decision");
-  assert(reviewPricing.includes("Runtime Source"), "review-pricing should require runtime source mapping");
-  assert(reviewPricing.includes("Não aprove plano, preço, trial, limite ou entitlement fora de `../knowledge/pricing.md`"), "review-pricing should block off-catalog pricing");
+  assert(reviewPricing.includes("Pricing Catalog decision"), "pricing-review should produce a Pricing Catalog decision");
+  assert(reviewPricing.includes("Runtime Source"), "pricing-review should require runtime source mapping");
+  assert(reviewPricing.includes("Não aprove plano, preço, trial, limite ou entitlement fora de `../knowledge/pricing.md`"), "pricing-review should block off-catalog pricing");
   assert(financeReview.includes("Confirme `../knowledge/pricing.md` como fonte canônica"), "finance-review should confirm pricing source of truth");
   assert(financeReview.includes("provider IDs, database table e code paths"), "finance-review should verify runtime mappings");
   assert(landingPage.includes("../finance/knowledge/pricing.md"), "Landing page knowledge should reference Finance pricing catalog");

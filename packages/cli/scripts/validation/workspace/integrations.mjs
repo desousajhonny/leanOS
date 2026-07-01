@@ -127,8 +127,8 @@ export async function assertGitHubReadiness(rootDir) {
   const githubSetupGuide = await readFile(join(rootDir, ".github", "leanos", "setup-guide.md"), "utf8");
   const githubCapabilityContract = await readFile(join(rootDir, ".github", "leanos", "capability-contract.md"), "utf8");
   const githubRole = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "roles", "github-devops.role.md"), "utf8");
-  const githubSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "configure-github-project/SKILL.md"), "utf8");
-  const githubPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "configure-github-project.playbook.md"), "utf8");
+  const githubSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "github-project-management/SKILL.md"), "utf8");
+  const githubPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "github-project-management.playbook.md"), "utf8");
   const settings = JSON.parse(settingsExample);
   const projectSyncYaml = parse(projectSync);
 
@@ -224,7 +224,7 @@ export async function assertGitHubIssuePrWorkflow(rootDir) {
   const codeReviewTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "review", "code-review-template.md"), "utf8");
   const epicToFeaturesPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "playbooks", "epic-to-features.playbook.md"), "utf8");
   const shapeEpicSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "skills", "shape-epic/SKILL.md"), "utf8");
-  const branchSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "create-branch/SKILL.md"), "utf8");
+  const branchSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "feature-branching/SKILL.md"), "utf8");
   const branchPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
   const preparePrPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
   const prValidationPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "pr-validation.playbook.md"), "utf8");
@@ -326,7 +326,7 @@ export async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(epicToFeaturesPlaybook.includes("Add Security criteria only when"), "Epic breakdown should make Security conditional");
   assert(epicToFeaturesPlaybook.includes("Add DevOps criteria only when"), "Epic breakdown should make DevOps conditional");
   assert(epicToFeaturesPlaybook.includes("Stop before any GitHub API write until the user explicitly confirms"), "Epic breakdown should require confirmation before GitHub writes");
-  assert(branchSkill.includes("safe Feature-linked branch name"), "Engineering should include create-branch skill");
+  assert(branchSkill.includes("safe Feature-linked branch name"), "Engineering should include feature-branching skill");
   assert(branchPlaybook.includes("Load `.github/leanos/branch-rules.md`"), "Branch playbook should load branch rules");
   assert(preparePrPlaybook.includes("Check whether Design criteria are required for user-facing UX"), "Prepare PR playbook should conditionally check Design");
   assert(preparePrPlaybook.includes("Check whether Security/Data criteria are required for data, auth, privacy, abuse or compliance"), "Prepare PR playbook should conditionally check Security/Data");
@@ -345,7 +345,7 @@ export async function assertGitHubIssuePrWorkflow(rootDir) {
   assert(branchTemplate.includes("docs/<short-kebab-slug>"), "AI Standard branch template should include docs branches");
   assert(branchTemplate.includes("spike/<short-kebab-slug>"), "AI Standard branch template should include spike branches");
   assert(preparePrPlaybook.includes("Founder Testing Guide"), "Prepare PR playbook should require Founder Testing Guide");
-  assert(preparePrPlaybook.includes("Use `skills/create-pr/SKILL.md` to prepare PR using the PR template"), "Prepare PR playbook should keep PR write as a prepared output");
+  assert(preparePrPlaybook.includes("Use `skills/pull-request/SKILL.md` to prepare PR using the PR template"), "Prepare PR playbook should keep PR write as a prepared output");
   assert(prValidationPlaybook.includes("Founder Testing Guide"), "PR validation playbook should validate Founder Testing Guide");
   assert(prValidationPlaybook.includes("List findings by severity"), "PR validation playbook should enforce code review output shape");
 }
@@ -410,7 +410,7 @@ export async function assertFounderIntentRouting(rootDir) {
   assert.equal(intentMap.intents.implementation.required_areas.includes("operations.engineering"), true, "Intent map should gate implementation behind Engineering");
   assert.equal(intentMap.intents.github_operations.activation_required, "operations.devops", "Intent map should gate GitHub operations behind DevOps");
   assert.equal(intentMap.intents.pr_review.expected_chain.role, "pr-reviewer", "Intent map should preserve PR reviewer role hint");
-  assert.equal(intentMap.intents.product_readme.expected_chain.skill, "write-product-readme", "Intent map should preserve product README skill hint");
+  assert.equal(intentMap.intents.product_readme.expected_chain.skill, "product-readme", "Intent map should preserve product README skill hint");
   assert.equal(intentMap.intents.pricing.activation_required, "growth.finance", "Intent map should gate pricing behind Growth Finance");
   assert(intentMapRaw.includes("github-safety-baseline"), "Intent map should route GitHub safety baseline requests");
   assert(intentMapRaw.includes("ready-for-launch"), "Intent map should route launch readiness requests");

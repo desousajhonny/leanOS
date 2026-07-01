@@ -31,7 +31,7 @@ Leia:
 
 ## Skills Obrigatórias
 
-- `../skills/write-product-readme/SKILL.md`
+- `../skills/product-readme/SKILL.md`
 
 ## Playbooks Relevantes
 

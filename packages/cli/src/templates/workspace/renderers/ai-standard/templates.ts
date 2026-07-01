@@ -144,7 +144,7 @@ ${groups.map((group) => `### \`${group.key}/\`\n\n${group.purpose}\n\nUse quando
 
 function templateGroupReadme(group: TemplateGroup): string {
   const productNotes = group.key === "product"
-    ? "\n## Regra de Navegação\n\nUse `product-readme-template.md` como estrutura de escrita depois que Strategy/Product escolher a role e a skill corretas. Este template não substitua a Navigation Chain; ele apoia a saída da skill `write-product-readme`.\n"
+    ? "\n## Regra de Navegação\n\nUse `product-readme-template.md` como estrutura de escrita depois que Strategy/Product escolher a role e a skill corretas. Este template não substitua a Navigation Chain; ele apoia a saída da skill `product-readme`.\n"
     : "";
 
   return `# ${group.title}

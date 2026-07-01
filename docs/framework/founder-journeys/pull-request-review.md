@@ -5,7 +5,7 @@
 - **Trigger:** founder diz "revise o PR", "está pronto para merge?", "confere esse pull request" ou algo similar.
 - **Objetivo:** validar um PR contra escopo, Feature, critérios de aceite, testes, riscos e guia de teste do founder antes de qualquer recomendação de merge.
 - **Começa em:** `AGENT.md` raiz.
-- **Passa por:** Operations, Engineering, role PR Reviewer ou Test Engineer, skill `review-pr` e playbook `pr-validation`.
+- **Passa por:** Operations, Engineering, role PR Reviewer ou Test Engineer, skill `pull-request-review` e playbook `pr-validation`.
 - **Termina com:** achados por severidade, recomendação de merge/mudanças/bloqueio e ponte para `post-merge-continuation` depois que o merge acontecer.
 - **Não faz:** merge automático, alteração de escopo de produto, criação de Feature, sync remoto de GitHub ou aprovação sem evidência.
 
@@ -21,7 +21,7 @@ flowchart TD
   F{"PR tem contexto de Feature/Epic?"}
   G["Pedir contexto ou bloquear por falta de escopo"]
   H["Carregar regras de PR, critérios de review e Feature"]
-  I["Usar skills/review-pr/SKILL.md"]
+  I["Usar skills/pull-request-review/SKILL.md"]
   J["Validar Founder Testing Guide"]
   K["Listar achados por severidade"]
   L{"Resultado"}
@@ -40,7 +40,7 @@ flowchart TD
 
 ## Fluxo Em Linguagem Simples
 
-O modelo começa no `AGENT.md` raiz porque o founder fala em linguagem natural. A intenção é review de entrega, então a rota entra em Operations. Como PR e review pertencem à implementação, Operations direciona para Engineering. Engineering escolhe `PR Reviewer` ou `Test Engineer`, carrega `operations/engineering/playbooks/pr-validation.playbook.md` e usa `operations/engineering/skills/review-pr/SKILL.md` para revisar escopo, corretude, testes e riscos.
+O modelo começa no `AGENT.md` raiz porque o founder fala em linguagem natural. A intenção é review de entrega, então a rota entra em Operations. Como PR e review pertencem à implementação, Operations direciona para Engineering. Engineering escolhe `PR Reviewer` ou `Test Engineer`, carrega `operations/engineering/playbooks/pr-validation.playbook.md` e usa `operations/engineering/skills/pull-request-review/SKILL.md` para revisar escopo, corretude, testes e riscos.
 
 Esta jornada não cria um workflow novo. Review e PR ficam dentro de `feature-to-delivery-cycle` quando a implementação ainda está em andamento, ou entram diretamente por Engineering quando o founder traz um PR já preparado.
 
@@ -81,7 +81,7 @@ Esta jornada termina quando:
 - Área: `operations/engineering/`
 - Role primária: `operations/engineering/roles/pr-reviewer.role.md`
 - Role condicional: `operations/engineering/roles/test-engineer.role.md`
-- Skill primária: `operations/engineering/skills/review-pr/SKILL.md`
+- Skill primária: `operations/engineering/skills/pull-request-review/SKILL.md`
 - Playbook: `operations/engineering/playbooks/pr-validation.playbook.md`
 
 ## Contrato De Rota
@@ -92,9 +92,9 @@ AGENT.md
 -> operations/engineering/AGENT.md
 -> operations/engineering/roles/pr-reviewer.role.md
 -> operations/engineering/playbooks/pr-validation.playbook.md
--> operations/engineering/skills/review-pr/SKILL.md
+-> operations/engineering/skills/pull-request-review/SKILL.md
 -> operations/engineering/skills/follow-code-standards/SKILL.md
--> conditional operations/engineering/skills/review-data-change/SKILL.md
+-> conditional operations/engineering/skills/data-change-review/SKILL.md
 ```
 
 Regras:
@@ -150,9 +150,9 @@ Depois carrega:
 - `.github/leanos/pr-validation-rules.md`
 - `operations/engineering/knowledge/review-criteria.md`
 - `operations/engineering/knowledge/code-standards.md`
-- `operations/engineering/skills/review-pr/SKILL.md`
+- `operations/engineering/skills/pull-request-review/SKILL.md`
 - `operations/engineering/skills/follow-code-standards/SKILL.md`
-- `operations/engineering/skills/review-data-change/SKILL.md` quando dados, API ou persistência estiverem envolvidos
+- `operations/engineering/skills/data-change-review/SKILL.md` quando dados, API ou persistência estiverem envolvidos
 
 ### Etapa 4 - Validar Escopo E Critérios
 
@@ -281,7 +281,7 @@ Regras:
 - [ ] `operations/engineering/AGENT.md` existe.
 - [ ] `operations/engineering/roles/pr-reviewer.role.md` existe.
 - [ ] `operations/engineering/roles/test-engineer.role.md` existe.
-- [ ] `operations/engineering/skills/review-pr/SKILL.md` existe.
+- [ ] `operations/engineering/skills/pull-request-review/SKILL.md` existe.
 - [ ] `operations/engineering/skills/follow-code-standards/SKILL.md` existe.
 - [ ] `operations/engineering/playbooks/pr-validation.playbook.md` existe.
 - [ ] `.github/leanos/pr-validation-rules.md` existe.
@@ -291,8 +291,8 @@ Regras:
 - [ ] `AGENT.md` raiz roteia PR/review para Operations quando Engineering está ativo.
 - [ ] `operations/AGENT.md` direciona review de implementação para Engineering.
 - [ ] `operations/engineering/AGENT.md` expõe `pr-validation`.
-- [ ] `pr-validation.playbook.md` usa `review-pr/SKILL.md`.
-- [ ] `review-pr/SKILL.md` exige evidência antes de recomendação.
+- [ ] `pr-validation.playbook.md` usa `pull-request-review/SKILL.md`.
+- [ ] `pull-request-review/SKILL.md` exige evidência antes de recomendação.
 
 ### Execução Da Jornada
 

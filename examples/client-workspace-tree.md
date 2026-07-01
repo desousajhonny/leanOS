@@ -236,7 +236,7 @@ client-workspace/
 |   |   |   |   |   `-- SKILL.md
 |   |   |   |   |-- product-core/
 |   |   |   |   |   `-- SKILL.md
-|   |   |   |   |-- write-product-readme/
+|   |   |   |   |-- product-readme/
 |   |   |   |   |   `-- SKILL.md
 |   |   |   |   `-- README.md
 |   |   |   |-- AGENT.md

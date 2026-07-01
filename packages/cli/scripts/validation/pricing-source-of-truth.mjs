@@ -26,19 +26,19 @@ export async function validatePricingSourceOfTruthContract() {
   const whereWeAre = await readFile(join(rootDir, ".leanos", "runtime", "agent", "protocols", "where-we-are.md"), "utf8");
   const pricing = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "knowledge", "pricing.md"), "utf8");
   const financeOperator = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "roles", "finance-operator.role.md"), "utf8");
-  const reviewPricing = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "skills", "review-pricing", "SKILL.md"), "utf8");
+  const reviewPricing = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "skills", "pricing-review", "SKILL.md"), "utf8");
   const financeReview = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "finance", "playbooks", "finance-review.playbook.md"), "utf8");
   const landingPage = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "knowledge", "landing-page.md"), "utf8");
-  const landingPageSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "skills", "create-landing-page-copy", "SKILL.md"), "utf8");
+  const landingPageSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "marketing", "skills", "landing-page-copy", "SKILL.md"), "utf8");
   const supportNotes = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "customer-experience", "knowledge", "support-notes.md"), "utf8");
-  const supportPatternsSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "customer-experience", "skills", "synthesize-support-patterns", "SKILL.md"), "utf8");
+  const supportPatternsSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "growth", "customer-experience", "skills", "support-patterns", "SKILL.md"), "utf8");
   const readyToDevelop = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "knowledge", "ready-to-develop.md"), "utf8");
-  const writeFeatureCriteria = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "skills", "write-feature-criteria", "SKILL.md"), "utf8");
-  const deliveryBoundaries = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "skills", "define-delivery-boundaries", "SKILL.md"), "utf8");
+  const writeFeatureCriteria = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "skills", "feature-criteria", "SKILL.md"), "utf8");
+  const deliveryBoundaries = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "product-ops", "skills", "delivery-boundaries", "SKILL.md"), "utf8");
   const dataGuidelines = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "knowledge", "data-guidelines.md"), "utf8");
   const reviewCriteria = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "knowledge", "review-criteria.md"), "utf8");
   const environments = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "knowledge", "environments.md"), "utf8");
-  const configureEnvironments = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "configure-environments", "SKILL.md"), "utf8");
+  const configureEnvironments = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "environment-management", "SKILL.md"), "utf8");
   const securityBaseline = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "knowledge", "security-baseline.md"), "utf8");
   const threatModeling = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "security", "skills", "threat-modeling", "SKILL.md"), "utf8");
 
@@ -68,11 +68,11 @@ export async function validatePricingSourceOfTruthContract() {
     assert(pricing.includes(requiredContent), `Pricing knowledge should include source-of-truth contract content: ${requiredContent}`);
   }
 
-  assert(financeOperator.includes("skills/review-pricing/SKILL.md"), "Finance Operator should point directly to review-pricing skill");
+  assert(financeOperator.includes("skills/pricing-review/SKILL.md"), "Finance Operator should point directly to pricing-review skill");
   assert(financeOperator.includes("playbooks/finance-review.playbook.md"), "Finance Operator should point directly to finance-review playbook");
-  assert(reviewPricing.includes("Pricing Catalog decision"), "review-pricing should produce a Pricing Catalog decision");
-  assert(reviewPricing.includes("Runtime Source"), "review-pricing should require runtime source mapping");
-  assert(reviewPricing.includes("Não aprove plano, preço, trial, limite ou entitlement fora de `../knowledge/pricing.md`"), "review-pricing should block off-catalog pricing");
+  assert(reviewPricing.includes("Pricing Catalog decision"), "pricing-review should produce a Pricing Catalog decision");
+  assert(reviewPricing.includes("Runtime Source"), "pricing-review should require runtime source mapping");
+  assert(reviewPricing.includes("Não aprove plano, preço, trial, limite ou entitlement fora de `../knowledge/pricing.md`"), "pricing-review should block off-catalog pricing");
   assert(financeReview.includes("Confirme `../knowledge/pricing.md` como fonte canônica"), "finance-review should confirm pricing source of truth");
   assert(financeReview.includes("provider IDs, database table e code paths"), "finance-review should verify runtime mappings");
 

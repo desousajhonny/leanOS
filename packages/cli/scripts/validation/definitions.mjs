@@ -370,7 +370,7 @@ function assertProductOpsSkillContracts() {
 
   assert(productOpsArea, "Operations should define Product Ops area");
 
-  for (const skillSlug of ["write-acceptance-criteria", "check-delivery-coherence", "define-delivery-boundaries"]) {
+  for (const skillSlug of ["acceptance-criteria", "delivery-coherence", "delivery-boundaries"]) {
     const skill = productOpsArea.skills.find((item) => item.slug === skillSlug);
 
     assert(skill, `Product Ops should define ${skillSlug} skill`);
@@ -383,39 +383,39 @@ function assertProductOpsSkillContracts() {
     }
   }
 
-  const acceptanceCriteria = productOpsArea.skills.find((item) => item.slug === "write-acceptance-criteria");
-  const deliveryCoherence = productOpsArea.skills.find((item) => item.slug === "check-delivery-coherence");
-  const deliveryBoundaries = productOpsArea.skills.find((item) => item.slug === "define-delivery-boundaries");
+  const acceptanceCriteria = productOpsArea.skills.find((item) => item.slug === "acceptance-criteria");
+  const deliveryCoherence = productOpsArea.skills.find((item) => item.slug === "delivery-coherence");
+  const deliveryBoundaries = productOpsArea.skills.find((item) => item.slug === "delivery-boundaries");
 
   assert(
     acceptanceCriteria.checks?.some((item) => /testable|testável|pass\/fail|passa\/falha/i.test(item)),
-    "write-acceptance-criteria should require testable pass/fail criteria"
+    "acceptance-criteria should require testable pass/fail criteria"
   );
   assert(
     acceptanceCriteria.redLines?.some(
       (item) => /implementation|implementação|code|código/i.test(item)
     ),
-    "write-acceptance-criteria should block implementation details and code work"
+    "acceptance-criteria should block implementation details and code work"
   );
 
   assert(
     deliveryCoherence.outputs?.includes("Resultado de coerência"),
-    "check-delivery-coherence should output a Coherence result"
+    "delivery-coherence should output a Coherence result"
   );
   assert(
     deliveryCoherence.redLines?.some((item) => /rewrite|reescreva|silently|silenciosamente/i.test(item)),
-    "check-delivery-coherence should block silent scope rewrites"
+    "delivery-coherence should block silent scope rewrites"
   );
 
   assert(
     deliveryBoundaries.outputs?.includes("Aplicabilidade de Design/Security/DevOps"),
-    "define-delivery-boundaries should output Design/Security/DevOps applicability"
+    "delivery-boundaries should output Design/Security/DevOps applicability"
   );
   assert(
     deliveryBoundaries.redLines?.some(
       (item) => /architecture artifact|artefatos? de arquitetura|source code|código-fonte|código/i.test(item)
     ),
-    "define-delivery-boundaries should block premature architecture artifacts or source code"
+    "delivery-boundaries should block premature architecture artifacts or source code"
   );
 }
 
@@ -424,59 +424,59 @@ function assertEngineeringSkillContracts() {
 
   assert(engineeringArea, "Operations should define Engineering area");
 
-  const writeTests = engineeringArea.skills.find((item) => item.slug === "write-tests");
-  const createPr = engineeringArea.skills.find((item) => item.slug === "create-pr");
-  const reviewPr = engineeringArea.skills.find((item) => item.slug === "review-pr");
+  const writeTests = engineeringArea.skills.find((item) => item.slug === "test-coverage");
+  const createPr = engineeringArea.skills.find((item) => item.slug === "pull-request");
+  const reviewPr = engineeringArea.skills.find((item) => item.slug === "pull-request-review");
 
-  assert(writeTests, "Engineering should define write-tests skill");
-  assert(createPr, "Engineering should define create-pr skill");
-  assert(reviewPr, "Engineering should define review-pr skill");
+  assert(writeTests, "Engineering should define test-coverage skill");
+  assert(createPr, "Engineering should define pull-request skill");
+  assert(reviewPr, "Engineering should define pull-request-review skill");
 
   assert(
     writeTests.process?.some((item) => /failing test|RED/i.test(item)),
-    "write-tests should require failing test or RED evidence when test-first is feasible"
+    "test-coverage should require failing test or RED evidence when test-first is feasible"
   );
   assert(
     writeTests.outputs?.includes("Evidência RED/GREEN"),
-    "write-tests should output RED/GREEN evidence"
+    "test-coverage should output RED/GREEN evidence"
   );
   assert(
     writeTests.outputs?.includes("Explicação de lacuna de teste"),
-    "write-tests should output explicit test-gap explanation"
+    "test-coverage should output explicit test-gap explanation"
   );
   assert(
     writeTests.redLines?.some(
       (item) => /tests written after implementation|testes escritos depois da implementação|manual validation|validação manual/i.test(item)
     ),
-    "write-tests should block weak after-the-fact test or manual-validation claims"
+    "test-coverage should block weak after-the-fact test or manual-validation claims"
   );
 
   assert(
     createPr.outputs?.includes("Status de prontidão do PR"),
-    "create-pr should output PR readiness status"
+    "pull-request should output PR readiness status"
   );
   assert(
     createPr.checks?.some((item) => /tests run or test-gap explanation|testes executados ou explicação de lacuna de teste/i.test(item)),
-    "create-pr should require tests run or test-gap explanation"
+    "pull-request should require tests run or test-gap explanation"
   );
   assert(
     createPr.redLines?.some(
       (item) => /founder-ready/i.test(item) && /tests|testes|gaps|lacunas|risks|riscos/i.test(item)
     ),
-    "create-pr should block founder-ready PRs without tests, gaps and risks"
+    "pull-request should block founder-ready PRs without tests, gaps and risks"
   );
 
   assert(
     reviewPr.outputs?.includes("Evidência revisada"),
-    "review-pr should output evidence reviewed"
+    "pull-request-review should output evidence reviewed"
   );
   assert(
     reviewPr.checks?.some((item) => /file\/line|arquivo\/linha|line reference|artifact reference|referência de artefato/i.test(item)),
-    "review-pr should require file/line or artifact references when possible"
+    "pull-request-review should require file/line or artifact references when possible"
   );
   assert(
     reviewPr.redLines?.some((item) => /merge recommendation|recomendação de merge/i.test(item) && /evidence|evidência/i.test(item)),
-    "review-pr should block merge recommendations without evidence"
+    "pull-request-review should block merge recommendations without evidence"
   );
 }
 
@@ -546,7 +546,7 @@ function assertDevopsSkillContracts() {
 
   assert.equal(configureBranchProtection, undefined, "DevOps should not define configure-branch-protection skill");
 
-  for (const skillSlug of ["configure-environments", "setup-ci", "repository-profile", "branch-protection", "plan-deployment", "define-observability", "prepare-release"]) {
+  for (const skillSlug of ["environment-management", "ci-pipeline", "repository-profile", "branch-protection", "deployment-readiness", "observability", "release-readiness"]) {
     const skill = findAreaSkill(devopsArea, skillSlug, "DevOps");
 
     assertRichSkillField(skill, "process", 6, skillSlug);
@@ -556,12 +556,12 @@ function assertDevopsSkillContracts() {
   }
 
   assert(
-    findAreaSkill(devopsArea, "configure-environments", "DevOps").outputs?.includes("Status de prontidão de ambiente"),
-    "configure-environments should output Environment readiness status"
+    findAreaSkill(devopsArea, "environment-management", "DevOps").outputs?.includes("Status de prontidão de ambiente"),
+    "environment-management should output Environment readiness status"
   );
   assert(
-    findAreaSkill(devopsArea, "setup-ci", "DevOps").outputs?.includes("Decisão de gate de CI"),
-    "setup-ci should output CI gate decision"
+    findAreaSkill(devopsArea, "ci-pipeline", "DevOps").outputs?.includes("Decisão de gate de CI"),
+    "ci-pipeline should output CI gate decision"
   );
   assert(
     findAreaSkill(devopsArea, "repository-profile", "DevOps").outputs?.includes("Repository description"),
@@ -580,16 +580,16 @@ function assertDevopsSkillContracts() {
     "branch-protection should block remote enforcement before PR validation has run at least once"
   );
   assert(
-    findAreaSkill(devopsArea, "plan-deployment", "DevOps").outputs?.includes("Decisão deploy/no-deploy"),
-    "plan-deployment should output Deploy/no-deploy decision"
+    findAreaSkill(devopsArea, "deployment-readiness", "DevOps").outputs?.includes("Decisão deploy/no-deploy"),
+    "deployment-readiness should output Deploy/no-deploy decision"
   );
   assert(
-    findAreaSkill(devopsArea, "define-observability", "DevOps").outputs?.includes("Mapa de owner/ação por sinal"),
-    "define-observability should output Signal owner/action map"
+    findAreaSkill(devopsArea, "observability", "DevOps").outputs?.includes("Mapa de owner/ação por sinal"),
+    "observability should output Signal owner/action map"
   );
   assert(
-    findAreaSkill(devopsArea, "prepare-release", "DevOps").outputs?.includes("Status de prontidão de release"),
-    "prepare-release should output Release readiness status"
+    findAreaSkill(devopsArea, "release-readiness", "DevOps").outputs?.includes("Status de prontidão de release"),
+    "release-readiness should output Release readiness status"
   );
 }
 

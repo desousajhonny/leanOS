@@ -2,7 +2,7 @@ import type { SkillDefinition } from "../../../../types.js";
 
 export const growthCustomerExperienceSkills: SkillDefinition[] = [
     {
-      slug: "map-customer-feedback",
+      slug: "customer-feedback-mapping",
       title: "Mapear Feedback De Cliente",
       purpose: "Transformar feedback bruto de cliente em sinais seguros, privados e acionáveis, separando PII, opinião, evidência, força do sinal, owner e próxima rota sem promover feedback isolado a Feature.",
       useWhen: ["novo feedback de cliente chega", "feedback precisa informar roadmap ou Growth", "sinais precisam de agrupamento", "suporte, call, ticket, formulário ou entrevista trouxe aprendizado", "o founder quer saber se um pedido de cliente deve virar produto"],
@@ -15,7 +15,7 @@ export const growthCustomerExperienceSkills: SkillDefinition[] = [
       redLines: ["Não invente evidência.", "Não trate feedback isolado como validação.", "Não transforme feedback isolado em Feature sem Product Ops.", "Não armazene PII, segredos, dados sensíveis ou identificadores desnecessários.", "Não prometa correção, desconto, limite, upgrade ou mudança de produto sem a rota dona."]
     },
     {
-      slug: "synthesize-support-patterns",
+      slug: "support-patterns",
       title: "Sintetizar Padrões De Suporte",
       purpose: "Transformar notas de suporte em aprendizado e ações.",
       useWhen: ["notas de suporte se repetem", "fricção de onboarding aparece", "padrões de retenção ou sucesso precisam de síntese", "clientes perguntam sobre plano, cobrança, trial, limite, upgrade ou entitlement"],

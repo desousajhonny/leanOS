@@ -28,7 +28,7 @@ Use esta pasta apenas depois que `../../foundation/asset-taxonomy.md` confirmar 
 
 ## Regra de Navegação
 
-Use `product-readme-template.md` como estrutura de escrita depois que Strategy/Product escolher a role e a skill corretas. Este template não substitua a Navigation Chain; ele apoia a saída da skill `write-product-readme`.
+Use `product-readme-template.md` como estrutura de escrita depois que Strategy/Product escolher a role e a skill corretas. Este template não substitua a Navigation Chain; ele apoia a saída da skill `product-readme`.
 
 
 ## Notas para Agentes

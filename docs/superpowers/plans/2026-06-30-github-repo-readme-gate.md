@@ -4,7 +4,7 @@
 
 **Goal:** Ensure any new GitHub repository setup routes through Strategy Product to prepare a product-first README before DevOps finalizes repository creation or publication.
 
-**Architecture:** Keep root `AGENT.md` clean. Add the contract to DevOps/GitHub DevOps as a handoff gate, referencing `Strategy Product -> Product Narrative Editor -> write-product-readme`. Cover the behavior through generator validation and regenerated client workspace fixtures.
+**Architecture:** Keep root `AGENT.md` clean. Add the contract to DevOps/GitHub DevOps as a handoff gate, referencing `Strategy Product -> Product Narrative Editor -> product-readme`. Cover the behavior through generator validation and regenerated client workspace fixtures.
 
 **Tech Stack:** TypeScript workspace generator, Node.js validation scripts, Markdown/YAML generated assets.
 
@@ -23,7 +23,7 @@ Create a validation that asserts DevOps/GitHub generated assets contain:
 ```text
 README status
 README-ready
-Strategy Product -> Product Narrative Editor -> write-product-readme
+Strategy Product -> Product Narrative Editor -> product-readme
 Não crie ou publique um novo repositório GitHub sem README product-first confirmado
 ```
 
@@ -47,7 +47,7 @@ Add a repository bootstrap path and checks that require README readiness before 
 
 - [ ] **Step 2: Route missing README to Strategy Product**
 
-Every new repository path must explicitly point to `Strategy Product -> Product Narrative Editor -> write-product-readme`.
+Every new repository path must explicitly point to `Strategy Product -> Product Narrative Editor -> product-readme`.
 
 - [ ] **Step 3: Preserve DevOps boundary**
 
