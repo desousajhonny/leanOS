@@ -203,7 +203,7 @@ Default mapping:
 
 Task issues are exceptions, not the default. Create a separate Task issue only when a task needs separate assignment, review, timeline, deployment, security review or external tracking.
 
-The GitHub sync must preserve rich local content. Do not turn a detailed Epic or Feature into a short summary issue.
+O GitHub sync precisa preservar conteúdo local rico. Não transforme um Epic ou Feature detalhado em issue de resumo curto.
 
 GitHub issues must include milestone, Size, Effort, Priority, Area, Roadmap Item and Epic relationship when those values exist locally.
 
@@ -217,7 +217,7 @@ github_issue:
   url: https://github.com/<owner>/<repo>/issues/<number>
 ~~~
 
-Do not set \`sync_status: synced\` until the GitHub capability has verified the remote issue body, milestone, Project fields and relationships after writing.
+Não defina \`sync_status: synced\` até que a capability GitHub tenha verificado, depois da escrita, o issue body remoto, milestone, Project fields e relacionamentos.
 
 ## Sync State Decision
 

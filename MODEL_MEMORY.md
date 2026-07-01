@@ -7,8 +7,8 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 ## Estado Atual
 
 - Repositório: `desousajhonny/leanOS`.
-- Branch local de trabalho atual: `feature/pricing-source-of-truth`.
-- Remote `origin/main` está em `6e7e472` em 2026-06-30.
+- Branch local de trabalho atual: `main`.
+- Remote `origin/main` está em `d8aef7c` em 2026-07-01.
 - `AGENT.md` raiz é o ponto de entrada para comportamento de agente no nível do projeto.
 - Source of truth do framework vive em `docs/framework/source-of-truth/`.
 - Roadmap temporário de implementação vive em `TEMP-roadmap-ajustes.md`.
@@ -26,6 +26,8 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 - 2026-06-30: README raiz gerado deve ser product-first e founder-friendly. Melhorias de README devem entrar pela Navigation Chain `Strategy Product -> Product Narrative Editor -> write-product-readme`, usando template em `.leanos/standard/templates/product/` e preservando README existente com diff antes de escrita.
 - 2026-06-30: Novo repositório GitHub exige gate `README-ready`. DevOps/GitHub DevOps verifica o gate, mas não escreve narrativa de produto; se faltar README confirmado, deve rotear para `Strategy Product -> Product Narrative Editor -> write-product-readme` antes de create/publish/connect remoto.
 - 2026-06-30: Fortalecer sync GitHub de Epics/Features. Epic local canônico passa a ser `epics/<epic-slug>/epic.md` com fallback legado para `README.md`; sync exige body rico, milestone, Size/Effort, relações Epic/Feature, read-back verification e patch local de `github_issue.url` + `sync_status: synced`.
+- 2026-07-01: GitHub branch protection usa skill `branch-protection` em DevOps/GitHub DevOps, nunca `configure-branch-protection`. Required checks só entram depois que PR Validation rodar ao menos uma vez. Após criar PR, o modelo deve perguntar: `Acabei de criar o PR #<number>: <url>. Você deseja rodar a revisão agora?` e, se aceito, rotear para Engineering `pr-validation`.
+- 2026-07-01: GitHub Safety Baseline passa a ser playbook de DevOps/GitHub DevOps para repository profile, PR validation workflow real, branch protection e release gates. A skill `repository-profile` deriva About do README product-first; PR Validation roda scripts existentes, secret scan e LeanOS structure check; tags/GitHub Releases exigem `ready-for-launch` ou `release-operations`.
 - 2026-06-30: Implementar `ready-for-launch` como workflow de Operations. Readiness de launch/go-live/beta/usuários reais fica em Operations com Product Ops + Engineering + DevOps; Growth executa `mvp-launch`/`launch-learning-loop` depois do gate ou depois de lançamento executado.
 - 2026-06-30: Simplificar o wizard CLI em PT-BR. O setup recomendado passa a ser `progressive`; a opção avançada `all-at-once` prepara todas as áreas, mas não reintroduz multiselect manual de departamentos.
 - 2026-06-29: Expandir padrões gerados de branch e PR. Branches agora cobrem `feature`, `issue`, `fix`, `chore`, `docs` e `spike`; templates de PR passam a exigir título estilo Conventional Commit quando fizer sentido, status de prontidão e seção `Deploy / Rollback`.
@@ -42,6 +44,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 - Working tree: Pricing Source of Truth em implementação na branch `feature/pricing-source-of-truth`. Foram adicionados contratos para Pricing Catalog, Runtime Source, Consumer Contract, rota root de Finance, gates de Product Ops/Engineering/DevOps/Security e validação `validatePricingSourceOfTruthContract`.
 - Working tree: Spend/Budget Source of Truth em implementação na branch `feature/pricing-source-of-truth`. Foram adicionados `spend-ledger.md`, Budget fortalecido, skills `review-spend`, `runway-check`, `budget-planning`, playbooks `spend-approval`, `monthly-finance-check`, gates de Marketing/Product Ops/Engineering/DevOps/Security e validação `validateSpendBudgetSourceOfTruthContract`.
 - Working tree: Growth Experiment Learning em implementação na branch `feature/pricing-source-of-truth`. Foram adicionados `growth-experiments.md`, skills `plan-growth-experiment` e `analyze-growth-result`, playbook `growth-experiment`, journey `growth-experiment-learning.md` e validação `validateGrowthExperimentContract`.
+- Working tree: GitHub Safety Baseline em implementação na `main`. Foram adicionados `repository-profile`, playbook `github-safety-baseline`, PR Validation adaptativo, capabilities `github.repositoryProfile`, `github.prValidationWorkflow`, `github.branchProtection` e `github.createRelease`, além de validações de DevOps/GitHub.
 - Working tree: runbook `scripts/publish-npm-create-leanos.mjs` existe para futuras publicações npm; `AGENT.md`, README e decision log apontam para `npm run release:npm` e para o comando seguro `Set-Content -LiteralPath ".npmrc"` antes de publicar.
 - Working tree: README raiz do scaffold agora explica produto/empresa antes do LeanOS; Strategy Product ganhou role `Product Narrative Editor`, skill `write-product-readme`, common path no AGENT da área e template `.leanos/standard/templates/product/product-readme-template.md`; validação `validateProductReadmeContract` cobre rota, preservação de README existente e sections obrigatórias.
 - Working tree: DevOps/GitHub DevOps agora exige `README-ready` para novo repositório GitHub, registra Repository mode/README status/source em `github-management.md`, bloqueia create/publish/connect remoto sem README product-first confirmado e valida isso com `validateGithubRepositoryReadmeGate`.

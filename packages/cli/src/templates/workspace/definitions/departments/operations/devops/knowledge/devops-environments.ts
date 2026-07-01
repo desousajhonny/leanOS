@@ -40,7 +40,7 @@ Use this section when the product has plans, checkout, subscription, usage limit
 - code path: TBD
 - verification status: not-started | mapped | implemented | verified | drift-detected
 
-Do not store secret values here. This file records where provider IDs, webhook secrets, environment variables and runtime config are managed.
+Não armazene valores secretos aqui. Este arquivo registra onde provider IDs, webhook secrets, variáveis de ambiente e runtime config são gerenciados.
 
 ## Cost Controls
 
@@ -55,7 +55,7 @@ Use this section when environments, providers, observability, AI/API, storage, q
 - owner: TBD
 - review date: TBD
 
-Do not create paid providers, quotas, budgets or usage caps without a clear owner and Finance route.
+Não crie providers pagos, quotas, budgets ou usage caps sem owner claro e rota de Finance.
 
 ## Secrets
 

@@ -60,9 +60,10 @@ Regra de manutenção: sempre que um playbook for criado, removido, renomeado ou
 
 | Playbook | Área | Serve Para | Pode Ser Ativado Por |
 | --- | --- | --- | --- |
-| `setup-ci-cd` | `operations.devops` | Planejar automação de build, teste e release. | Role `devops-engineer`; readiness de CI/CD. |
+| `setup-ci-cd` | `operations.devops` | Planejar automação de build, teste, release e branch protection quando checks obrigatórios já existirem. | Role `devops-engineer`; readiness de CI/CD. |
 | `plan-deployment` | `operations.devops` | Planejar deploy seguro. | Roles `devops-engineer` e `release-manager`; release/deploy. |
 | `configure-github-project` | `operations.devops` | Preparar settings de GitHub para sync de Epics/Features sem chamar API diretamente. | Roles `devops-engineer` e `github-devops`; fluxo de sync GitHub. |
+| `github-safety-baseline` | `operations.devops` | Preparar About do repositório, PR Validation, checks mínimos e branch protection com dry-run e confirmação explícita. | Role `github-devops`; quando um repositório GitHub novo ou existente vira base de delivery real. |
 | `configure-environments` | `operations.devops` | Planejar ambientes e configuração sem inventar infraestrutura. | Role `devops-engineer`; preparação de entrega. |
 | `define-observability` | `operations.devops` | Definir visibilidade de runtime para logs, métricas, alertas e traces. | Roles `devops-engineer` e `release-manager`; pós-deploy/release. |
 | `release-operations` | `operations.devops` | Preparar caminho operacional de release. | Roles `devops-engineer` e `release-manager`; workflow `post-merge-continuation` quando release for necessário. |

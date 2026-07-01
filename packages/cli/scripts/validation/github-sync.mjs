@@ -61,7 +61,7 @@ export async function validateGithubSyncContract() {
     "local file patch",
     "github_issue:",
     "sync_status: synced",
-    "do not mark `synced` before remote verification passes"
+    "não deve marcar `synced` antes da verificação remota passar"
   ]) {
     assertIncludes(capabilityContract, snippet, ".github/leanos/capability-contract.md");
   }

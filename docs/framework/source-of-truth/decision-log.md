@@ -618,3 +618,56 @@ Justificativa:
 - Founders precisam de orientação simples, não formulários livres difíceis de responder.
 - Product não deve inventar missão, princípios ou modelo de negócio para conseguir avançar Product Core.
 - Marcar hipóteses evita que o LeanOS trate crenças iniciais como fatos validados.
+
+## 2026-07-01 - Branch Protection E Convite Pós-PR
+
+Decisão:
+
+- A capacidade de proteção de branch deve se chamar `branch-protection`, não `configure-branch-protection`.
+- DevOps/GitHub DevOps é dono de branch protection, required status checks, review policy, bloqueio de force push e bloqueio de deleção da branch principal.
+- Branch protection é obrigatória quando GitHub estiver ativo para delivery real, mas required checks só podem ser aplicados depois que PR Validation existir e rodar ao menos uma vez.
+- Depois de criar um PR, o modelo deve responder: `Acabei de criar o PR #<number>: <url>. Você deseja rodar a revisão agora?`
+- Se o founder aceitar, a rota entra em `operations/engineering/playbooks/pr-validation.playbook.md` antes de qualquer recomendação de merge.
+
+Justificativa:
+
+- Skills devem usar nomes diretos de capacidade, não verbos de ação, para preservar a semântica do framework.
+- Branch protection reduz risco operacional de push direto, merge sem validação, force push, branch deletion e PR sem checks.
+- Required checks precisam existir no GitHub antes de virarem obrigatórios; caso contrário a automação pode travar o time com um check inexistente ou flaky.
+- PR criado não significa PR validado; o convite pós-PR cria uma transição natural para review sem executar merge ou validação automaticamente.
+
+## 2026-07-01 - GitHub Safety Baseline Para Repositórios Do Founder
+
+Decisão:
+
+- DevOps/GitHub DevOps ganha o playbook `github-safety-baseline` para preparar repositórios GitHub novos ou existentes antes de delivery real.
+- A baseline cobre:
+  - `Repository profile` público: description, website e topics;
+  - workflow `.github/workflows/pr-validation.yml`;
+  - template de PR, regras de branch e regras de PR validation;
+  - labels/Project readiness quando houver sync;
+  - `branch-protection` depois que PR Validation rodar ao menos uma vez.
+- DevOps ganha a skill `repository-profile`, derivando description, website e topics somente de README product-first ou narrativa confirmada por Strategy Product.
+- Repository profile existente não pode ser sobrescrito sem diff e confirmação explícita do founder.
+- O PR Validation gerado deixa de ser placeholder e passa a ser adaptativo:
+  - detecta `npm`, `pnpm` ou `yarn`;
+  - instala dependências quando `package.json` existe;
+  - roda lint, typecheck, test e build quando os scripts existem;
+  - roda secret scan;
+  - roda LeanOS structure check quando `leanos.yaml` existe.
+- O contrato de capabilities GitHub passa a declarar:
+  - `github.repositoryProfile`;
+  - `github.prValidationWorkflow`;
+  - `github.branchProtection`;
+  - `github.createRelease`.
+- Nenhuma capability de escrita remota pode aplicar profile, workflow, branch protection, tag ou GitHub Release sem dry-run/preview e confirmação explícita.
+- Tags e GitHub Releases só podem ser criadas depois de `ready-for-launch` ou `release-operations` aprovado.
+- O generator valida a baseline com contratos de DevOps, capability contract, workflow real de PR Validation e fixture `examples/client-workspace`.
+
+Justificativa:
+
+- Founder precisa de um GitHub pronto para operar produto, não apenas um repositório criado.
+- Repository About fraco, PR Validation ausente e branch principal desprotegida criam risco operacional e passam má impressão para cliente, colaborador e agente.
+- PR Validation deve se adaptar ao projeto em vez de exigir stack fixa ou falhar em repositórios sem Node.
+- Branch protection só é segura depois que os checks existem no GitHub; aplicar antes pode travar a main por configuração fantasma.
+- Release tag é ato de distribuição, não consequência automática de merge.

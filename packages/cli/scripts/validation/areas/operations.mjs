@@ -363,12 +363,15 @@ export async function assertDevOpsAreaPattern(rootDir) {
   const githubDevops = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "roles", "github-devops.role.md"), "utf8");
   const releaseManager = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "roles", "release-manager.role.md"), "utf8");
   const configureGithubProject = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "configure-github-project/SKILL.md"), "utf8");
+  const repositoryProfile = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "repository-profile/SKILL.md"), "utf8");
+  const branchProtection = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "branch-protection/SKILL.md"), "utf8");
   const configureEnvironments = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "configure-environments/SKILL.md"), "utf8");
   const setupCi = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "setup-ci/SKILL.md"), "utf8");
   const planDeployment = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "plan-deployment/SKILL.md"), "utf8");
   const defineObservability = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "define-observability/SKILL.md"), "utf8");
   const prepareRelease = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "skills", "prepare-release/SKILL.md"), "utf8");
   const githubProjectPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "configure-github-project.playbook.md"), "utf8");
+  const githubSafetyBaselinePlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "github-safety-baseline.playbook.md"), "utf8");
   const setupCiCdPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "setup-ci-cd.playbook.md"), "utf8");
   const planDeploymentPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "plan-deployment.playbook.md"), "utf8");
   const releaseOperationsPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "devops", "playbooks", "release-operations.playbook.md"), "utf8");
@@ -394,7 +397,10 @@ export async function assertDevOpsAreaPattern(rootDir) {
   assert(areaYaml.area.source_of_truth.includes("knowledge/github-management.md"), "DevOps area.yaml should list GitHub management knowledge");
   assert(areaYaml.area.source_of_truth.includes("knowledge/deployment-readiness.md"), "DevOps area.yaml should list deployment readiness knowledge");
   assert(areaYaml.area.roles.includes("release-manager"), "DevOps area.yaml should list release-manager");
+  assert(areaYaml.area.skills.includes("repository-profile"), "DevOps area.yaml should list repository-profile");
+  assert(areaYaml.area.skills.includes("branch-protection"), "DevOps area.yaml should list branch-protection");
   assert(areaYaml.area.skills.includes("prepare-release"), "DevOps area.yaml should list prepare-release");
+  assert(areaYaml.area.playbooks.includes("github-safety-baseline"), "DevOps area.yaml should list github-safety-baseline");
 
   for (const content of [environments, deploymentReadiness, ciCd, observability, releaseNotes]) {
     for (const section of ["## Propósito", "## Estado Atual", "## Decisões", "## Perguntas em Aberto", "## Próxima Atualização"]) {
@@ -428,9 +434,25 @@ export async function assertDevOpsAreaPattern(rootDir) {
   assert(devopsEngineer.includes("../knowledge/deployment-readiness.md"), "DevOps Engineer should load deployment readiness knowledge");
   assert(githubDevops.includes("../knowledge/github-management.md"), "GitHub DevOps should load GitHub management knowledge");
   assert(githubDevops.includes("../../../.github/leanos/capability-contract.md"), "GitHub DevOps should load capability contract");
+  assert(githubDevops.includes("../skills/repository-profile/SKILL.md"), "GitHub DevOps should route repository profile through the repository-profile skill");
+  assert(githubDevops.includes("../skills/branch-protection/SKILL.md"), "GitHub DevOps should route branch protection through the branch-protection skill");
+  assert(githubDevops.includes("../playbooks/github-safety-baseline.playbook.md"), "GitHub DevOps should expose the GitHub safety baseline playbook");
   assert(releaseManager.includes("../knowledge/release-notes.md"), "Release Manager should load release notes knowledge");
 
-  for (const skillContent of [configureGithubProject, configureEnvironments, setupCi, planDeployment, defineObservability, prepareRelease]) {
+  assert(repositoryProfile.includes("---\nname: repository-profile"), "Repository profile skill should use repository-profile as its direct noun name");
+  assert(repositoryProfile.includes("Repository description"), "Repository profile skill should prepare repository description");
+  assert(repositoryProfile.includes("topics"), "Repository profile skill should prepare repository topics");
+  assert(repositoryProfile.includes("Strategy Product -> Product Narrative Editor -> write-product-readme"), "Repository profile skill should route weak product narrative to Strategy Product");
+  assert(repositoryProfile.includes("Não sobrescreva um repository profile existente sem mostrar um diff"), "Repository profile skill should protect existing repo profile");
+  assert(branchProtection.includes("---\nname: branch-protection"), "Branch protection skill should use branch-protection as its direct noun name");
+  assert.equal(branchProtection.includes("name: configure-branch-protection"), false, "Branch protection skill should not use configure-branch-protection");
+  assert(branchProtection.includes("require PR before merge"), "Branch protection skill should require PR before merge");
+  assert(branchProtection.includes("required status checks"), "Branch protection skill should require required status checks");
+  assert(branchProtection.includes("dismiss stale approvals"), "Branch protection skill should require stale approval dismissal");
+  assert(branchProtection.includes("block force pushes and deletion"), "Branch protection skill should block force pushes and branch deletion");
+  assert(branchProtection.includes("Não aplique branch protection remota antes que PR validation rode ao menos uma vez"), "Branch protection skill should avoid making unknown checks mandatory");
+
+  for (const skillContent of [configureGithubProject, repositoryProfile, branchProtection, configureEnvironments, setupCi, planDeployment, defineObservability, prepareRelease]) {
     assert(skillContent.includes("---\nname:"), "DevOps skill should include YAML frontmatter");
     assert(skillContent.includes("description: Use quando"), "DevOps skill should include trigger-only description");
     assert(skillContent.includes("### Etapa 1"), "DevOps skill should use Step headings inside Process");
@@ -448,11 +470,17 @@ export async function assertDevOpsAreaPattern(rootDir) {
   assert(planDeployment.includes("No `.vercel/` creation"), "Plan Deployment should block Vercel metadata creation");
   assert(defineObservability.includes("Post-deploy checks"), "Define Observability should include post-deploy checks");
   assert(prepareRelease.includes("Rollback is explicit"), "Prepare Release should include rollback checks");
+  assert(prepareRelease.includes("GitHub Release"), "Prepare Release should include GitHub Release notes");
+  assert(prepareRelease.includes("tag"), "Prepare Release should include tag planning");
   assert(githubProjectPlaybook.includes("Read DevOps AGENT and choose GitHub DevOps"), "GitHub project playbook should start at DevOps AGENT");
   assert(githubProjectPlaybook.includes("../../../.github/leanos/setup-guide.md"), "GitHub project playbook should load setup guide");
   assert(githubProjectPlaybook.includes("../../../.github/leanos/capability-contract.md"), "GitHub project playbook should load capability contract");
   assert(githubProjectPlaybook.includes("where the founder can find owner/repository and Project URL/number"), "GitHub project playbook should guide founders to find GitHub details");
   assert(githubProjectPlaybook.includes("End with whether GitHub Epics/Features sync is ready for dry-run"), "GitHub project playbook should bridge back to Epics/Features sync");
+  assert(githubSafetyBaselinePlaybook.includes("Repository profile"), "GitHub safety baseline should include repository profile");
+  assert(githubSafetyBaselinePlaybook.includes("PR validation workflow"), "GitHub safety baseline should include PR validation workflow");
+  assert(githubSafetyBaselinePlaybook.includes("branch-protection"), "GitHub safety baseline should include branch protection");
+  assert(githubSafetyBaselinePlaybook.includes("Não aplique branch protection até que PR validation rode ao menos uma vez"), "GitHub safety baseline should gate branch protection after first PR validation run");
   assert(githubProjectPlaybook.includes("knowledge/github-management.md"), "GitHub project playbook should update GitHub knowledge");
   assert(setupCiCdPlaybook.includes("skills/setup-ci/SKILL.md"), "Setup CI/CD playbook should use setup-ci skill");
   assert(planDeploymentPlaybook.includes("do not create `.vercel/`, run `vercel link` or deploy automatically"), "Plan deployment playbook should preserve Vercel safety");

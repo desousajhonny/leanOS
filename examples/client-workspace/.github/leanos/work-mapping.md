@@ -75,7 +75,7 @@ Feature bodies must include, when present locally:
 - Design, Engineering, Security and DevOps criteria when applicable;
 - Definition of Ready and Definition of Done.
 
-If the local markdown is too long, preserve section headings and compress only repetitive prose. Do not remove acceptance criteria, tasks, milestone, size, effort, relationship links or readiness decisions.
+Se o markdown local for longo demais, preserve os headings de seção e compacte somente prosa repetitiva. Não remova acceptance criteria, tasks, milestone, size, effort, links de relacionamento ou decisões de readiness.
 
 ## Milestone And Project Fields
 
@@ -105,7 +105,7 @@ Use relationships in this order:
 2. GitHub Project `Epic` field on each Feature.
 3. Markdown links in both issue bodies.
 
-Do not rely on only one relationship mechanism when the body can safely include a backlink.
+Não dependa de apenas um mecanismo de relacionamento quando o body puder incluir backlink com segurança.
 
 ## Sync Metadata
 
@@ -151,11 +151,11 @@ github_issue:
   url: https://github.com/<owner>/<repo>/issues/<number>
 ~~~
 
-Do not mark local files as `synced` before remote read-back proves that issue body sections, labels, milestone, Project fields and relationships exist.
+Não marque arquivos locais como `synced` antes que o read-back remoto prove que seções do issue body, labels, milestone, Project fields e relacionamentos existem.
 
 ## Conflict Rule
 
-If local and GitHub disagree, do not overwrite either side automatically.
+Se local e GitHub divergirem, não sobrescreva nenhum lado automaticamente.
 
 Explain:
 

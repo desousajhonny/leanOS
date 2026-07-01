@@ -5,13 +5,166 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
 
+permissions:
+  contents: read
+
 jobs:
-  static-validation:
+  validate:
+    name: Validate PR
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - name: LeanOS placeholder validation
-        run: echo "LeanOS PR validation rules are documented in .github/leanos/pr-validation-rules.md"
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Detect package manager and scripts
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "LEANOS_HAS_NODE=false" >> "$GITHUB_ENV"
+          echo "LEANOS_PACKAGE_MANAGER=none" >> "$GITHUB_ENV"
+          echo "LEANOS_HAS_LINT=false" >> "$GITHUB_ENV"
+          echo "LEANOS_HAS_TYPECHECK=false" >> "$GITHUB_ENV"
+          echo "LEANOS_HAS_TEST=false" >> "$GITHUB_ENV"
+          echo "LEANOS_HAS_BUILD=false" >> "$GITHUB_ENV"
+
+          if [ ! -f package.json ]; then
+            echo "No package.json found. Skipping Node package checks."
+            exit 0
+          fi
+
+          node <<'NODE'
+          const fs = require("node:fs");
+          const envFile = process.env.GITHUB_ENV;
+          const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+          const scripts = pkg.scripts || {};
+          const packageManager = fs.existsSync("pnpm-lock.yaml")
+            ? "pnpm"
+            : fs.existsSync("yarn.lock")
+              ? "yarn"
+              : "npm";
+          const entries = [
+            ["LEANOS_HAS_NODE", "true"],
+            ["LEANOS_PACKAGE_MANAGER", packageManager],
+            ["LEANOS_HAS_LINT", String(Boolean(scripts.lint))],
+            ["LEANOS_HAS_TYPECHECK", String(Boolean(scripts.typecheck))],
+            ["LEANOS_HAS_TEST", String(Boolean(scripts.test))],
+            ["LEANOS_HAS_BUILD", String(Boolean(scripts.build))]
+          ];
+          fs.appendFileSync(envFile, entries.map(([key, value]) => key + "=" + value).join("\\n") + "\\n");
+          NODE
+
+      - name: Install dependencies when package.json exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$LEANOS_HAS_NODE" != "true" ]; then
+            echo "No Node project detected."
+            exit 0
+          fi
+
+          case "$LEANOS_PACKAGE_MANAGER" in
+            pnpm)
+              corepack enable
+              pnpm install --frozen-lockfile
+              ;;
+            yarn)
+              corepack enable
+              if yarn --version | grep -q '^1\\.'; then
+                yarn install --frozen-lockfile
+              else
+                yarn install --immutable
+              fi
+              ;;
+            npm)
+              if [ -f package-lock.json ]; then
+                npm ci
+              else
+                npm install
+              fi
+              ;;
+          esac
+
+      - name: Run lint when available
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$LEANOS_HAS_LINT" != "true" ]; then
+            echo "No lint script found."
+            exit 0
+          fi
+          case "$LEANOS_PACKAGE_MANAGER" in
+            pnpm) pnpm run lint ;;
+            yarn) yarn run lint ;;
+            npm) npm run lint ;;
+          esac
+
+      - name: Run typecheck when available
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$LEANOS_HAS_TYPECHECK" != "true" ]; then
+            echo "No typecheck script found."
+            exit 0
+          fi
+          case "$LEANOS_PACKAGE_MANAGER" in
+            pnpm) pnpm run typecheck ;;
+            yarn) yarn run typecheck ;;
+            npm) npm run typecheck ;;
+          esac
+
+      - name: Run tests when available
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$LEANOS_HAS_TEST" != "true" ]; then
+            echo "No test script found."
+            exit 0
+          fi
+          case "$LEANOS_PACKAGE_MANAGER" in
+            pnpm) pnpm run test ;;
+            yarn) yarn run test ;;
+            npm) npm run test ;;
+          esac
+
+      - name: Run build when available
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$LEANOS_HAS_BUILD" != "true" ]; then
+            echo "No build script found."
+            exit 0
+          fi
+          case "$LEANOS_PACKAGE_MANAGER" in
+            pnpm) pnpm run build ;;
+            yarn) yarn run build ;;
+            npm) npm run build ;;
+          esac
+
+      - name: Secret scan
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git grep -n -I -E '(BEGIN (RSA|OPENSSH|EC|DSA) PRIVATE KEY|github_pat_[A-Za-z0-9_]{20,}|ghp_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9]{20,}|npm_[A-Za-z0-9]{20,})' -- . ':!package-lock.json' ':!pnpm-lock.yaml' ':!yarn.lock'; then
+            echo "::error::Potential secret-like value found. Remove it before merge."
+            exit 1
+          fi
+          echo "No common secret patterns found."
+
+      - name: LeanOS structure check
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f leanos.yaml ]; then
+            echo "No leanos.yaml found. Skipping LeanOS structure check."
+            exit 0
+          fi
+          test -f AGENT.md
+          test -d .leanos
+          test -f .github/leanos/pr-validation-rules.md
 `;
 }

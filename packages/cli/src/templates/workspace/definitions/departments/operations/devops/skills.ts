@@ -15,6 +15,19 @@ export const operationsDevopsSkills: SkillDefinition[] = [
       redLines: ["Não crie ou publique um novo repositório GitHub sem README product-first confirmado.", "Não invente narrativa de produto em DevOps; use Strategy Product -> Product Narrative Editor -> write-product-readme.", "Não peça ao founder para colar tokens no chat ou em arquivos.", "Não faça escritas remotas no GitHub sem confirmação explícita e prontidão de dry-run.", "Não torne o GitHub a fonte primária da verdade acima de Epics e Features locais."]
     },
     {
+      slug: "repository-profile",
+      title: "Repository Profile",
+      purpose: "Preparar description, website e topics do repositório GitHub a partir da narrativa product-first confirmada, sem inventar posicionamento nem sobrescrever perfil existente sem diff.",
+      useWhen: ["repositório GitHub novo precisa de About", "repository description está vazia, genérica ou desatualizada", "topics ou website do repositório precisam refletir o produto", "github-safety-baseline está preparando o repositório do founder"],
+      requiredContext: ["DevOps AGENT", "GitHub management knowledge", "Root README product-first", "Strategy Product -> Product Narrative Editor -> write-product-readme", "Product brief, positioning and value proposition when available", "Existing repository profile when available"],
+      inputs: ["README status", "Repository mode", "Produto", "Descrição curta", "Website URL quando existir", "Topics atuais", "Topics propostos", "Perfil GitHub atual quando existir"],
+      process: ["Verifique `../knowledge/github-management.md` por Repository mode, README status e README source", "Confirme que o root `README.md` está product-first antes de derivar description ou topics", "Se o README estiver fraco, genérico ou ausente, pare DevOps e roteie para Strategy Product -> Product Narrative Editor -> write-product-readme", "Prepare uma Repository description curta, clara e específica do produto", "Prepare website URL somente quando uma URL real existir ou for confirmada pelo founder", "Prepare topics em lowercase, curtos e coerentes com produto, mercado, stack ou categoria", "Compare perfil atual com perfil proposto e mostre diff antes de qualquer escrita remota", "Peça confirmação explícita antes de aplicar via capability GitHub"],
+      checks: ["Repository description vem de narrativa product-first confirmada", "Website URL não é inventada", "topics são específicos, lowercase e não sensíveis", "Perfil existente é preservado até o founder aprovar diff", "DevOps não escreve narrativa de produto quando Strategy Product precisa atuar", "Nenhum segredo ou dado sensível entra em description, website ou topics"],
+      outputs: ["Repository description", "Repository website URL", "Repository topics", "Diff do repository profile", "README-ready status", "Bloqueios de narrativa", "Próxima ação segura"],
+      filesToUpdate: ["Atualize `../knowledge/github-management.md` após confirmação.", "Não atualize o root `README.md` a partir de DevOps; roteie narrativa fraca para Strategy Product.", "Não atualize estado remoto sem confirmação explícita."],
+      redLines: ["Não sobrescreva um repository profile existente sem mostrar um diff.", "Não invente description, website ou topics sem fonte product-first.", "Não use topics genéricos ou sensíveis como nomes de clientes, segredos ou dados privados.", "Não trate README fraco como fonte suficiente para About público do GitHub."]
+    },
+    {
       slug: "configure-environments",
       title: "Configurar Ambientes",
       purpose: "Definir limites de local, preview/staging e produção com status explícito de prontidão e tratamento de segredos.",
@@ -39,6 +52,19 @@ export const operationsDevopsSkills: SkillDefinition[] = [
       outputs: ["Prontidão de CI", "Decisão de gate de CI", "Checks obrigatórios", "Evidência de validação", "Lacunas de workflow", "Notas de branch protection", "Próxima ação"],
       filesToUpdate: ["Atualize `../knowledge/ci-cd.md` após confirmação.", "Atualize `.github/workflows/*` somente após confirmação explícita do usuário."],
       redLines: ["Não crie workflows de CI antes de comandos estáveis de build e test serem conhecidos.", "Não faça deploy por workflows de validação por padrão.", "Não adicione checks obrigatórios que não conseguem rodar de forma confiável no repositório atual.", "Não chame um PR de merge-ready quando o status do gate de CI estiver bloqueado ou desconhecido."]
+    },
+    {
+      slug: "branch-protection",
+      title: "Branch Protection",
+      purpose: "Definir o baseline obrigatório de proteção da branch principal e checks de merge para impedir push direto, merge sem PR, force push, deleção de branch e PR sem validação.",
+      useWhen: ["branch protection precisa ser definida", "main precisa ser protegida", "required checks precisam virar gate de merge", "o repositório GitHub foi criado ou conectado", "PR validation já existe e precisa virar regra obrigatória"],
+      requiredContext: ["DevOps AGENT", "GitHub capability contract", "GitHub management knowledge", "PR validation rules", "Branch rules", "Workflow de PR validation", "Branch principal", "Resultado da última execução de PR validation quando disponível"],
+      inputs: ["Owner/repository", "Branch principal", "Lista de checks de PR validation", "Status do workflow de PR validation", "Política de review", "Time solo founder ou equipe", "Exceções administrativas necessárias", "Confirmação do founder antes de escrita remota"],
+      process: ["Carregue `../knowledge/github-management.md`, `.github/leanos/capability-contract.md`, `.github/leanos/pr-validation-rules.md` e `.github/leanos/branch-rules.md`", "Confirme a branch principal e se o repositório usa branch protection ou rulesets", "Confirme que PR validation existe e já rodou ao menos uma vez antes de tornar checks obrigatórios", "Defina require PR before merge, required status checks, branch up to date, resolved conversations and review policy", "Defina dismiss stale approvals quando novos commits forem enviados", "Defina block force pushes and deletion para a branch protegida", "Classifique regras extras para auth, billing, dados, deploy, secrets e segurança", "Prepare dry-run da regra ou ruleset antes de qualquer escrita remota", "Peça confirmação explícita antes de aplicar ou alterar proteção remota"],
+      checks: ["require PR before merge está definido", "required status checks usam apenas checks que existem e rodam no repositório", "dismiss stale approvals está definido quando review humano ou agente formal for exigido", "conversas resolvidas são obrigatórias antes de merge", "branch up to date ou política equivalente está definida", "block force pushes and deletion está definido", "exceções administrativas estão explícitas", "Security extra review é exigido quando auth, billing, dados, deploy, secrets ou privacidade forem tocados"],
+      outputs: ["Branch protection baseline", "Lista de required status checks", "Política de review", "Ruleset ou regra proposta", "Dry-run de mudança remota", "Bloqueios abertos", "Próxima ação segura"],
+      filesToUpdate: ["Atualize `../knowledge/github-management.md` após confirmação.", "Atualize `../knowledge/ci-cd.md` quando checks obrigatórios mudarem.", "Não atualize estado remoto sem confirmação explícita."],
+      redLines: ["Não aplique branch protection remota antes que PR validation rode ao menos uma vez.", "Não use nome de skill com verbo de ação para esta capacidade; o nome da skill é `branch-protection`.", "Não permita push direto, force push ou deleção da branch principal em repositório ativo.", "Não torne obrigatório um check que não existe, não rodou ou está flaky sem owner.", "Não trate branch protection como opcional quando GitHub estiver ativo para delivery."]
     },
     {
       slug: "plan-deployment",
@@ -69,14 +95,14 @@ export const operationsDevopsSkills: SkillDefinition[] = [
     {
       slug: "prepare-release",
       title: "Preparar Release",
-      purpose: "Resumir escopo de release, prontidão, riscos, rollback, checks pós-release e decisão de release.",
-      useWhen: ["uma release está sendo preparada", "um PR está pronto para merge", "checks pós-merge são necessários", "notas de release foram solicitadas"],
+      purpose: "Resumir escopo de release, prontidão, riscos, rollback, checks pós-release, tag e GitHub Release sem criar lançamento antes do gate correto.",
+      useWhen: ["uma release está sendo preparada", "um PR está pronto para merge", "checks pós-merge são necessários", "notas de release foram solicitadas", "tag ou GitHub Release foi solicitado"],
       requiredContext: ["Issues vinculadas", "Resultado de validação do PR", "CI/CD readiness", "Prontidão de deploy", "Baseline de observabilidade", "Riscos conhecidos"],
-      inputs: ["Escopo de release", "Issues vinculadas", "Testes/CI", "Deployment target", "Risks", "Rollback", "Post-release checks"],
-      process: ["Resuma escopo e issues vinculadas", "Cheque validação do PR, testes e prontidão de CI/CD", "Cheque prontidão de deploy e status de ambiente", "Cheque observabilidade e checks pós-release", "Liste riscos conhecidos, lacunas de teste e lacunas de rollback", "Marque status de prontidão de release como ready, blocked-by-tests, blocked-by-deploy, blocked-by-rollback ou blocked-by-risk", "Prepare notas de release e notas de follow-up"],
-      checks: ["Release não esconde risco conhecido", "Testes/CI ou lacunas explícitas de teste estão presentes", "Rollback está explícito", "Checks pós-release estão visíveis", "Status de prontidão de release corresponde aos bloqueios"],
-      outputs: ["Status de prontidão de release", "Notas de release", "Resumo de prontidão", "Evidência de validação", "Riscos", "Notas de rollback", "Checklist pós-release"],
+      inputs: ["Escopo de release", "Issues vinculadas", "Testes/CI", "Deployment target", "Risks", "Rollback", "Post-release checks", "Tag proposta", "GitHub Release target"],
+      process: ["Resuma escopo e issues vinculadas", "Cheque validação do PR, testes e prontidão de CI/CD", "Cheque prontidão de deploy e status de ambiente", "Cheque observabilidade e checks pós-release", "Confirme que `ready-for-launch` ou `release-operations` aprovou a decisão antes de criar tag ou GitHub Release", "Prepare tag proposta em formato semver quando o produto usar versionamento público", "Prepare GitHub Release notes com impacto para usuário, mudanças, riscos, rollback e checks pós-release", "Liste riscos conhecidos, lacunas de teste e lacunas de rollback", "Marque status de prontidão de release como ready, blocked-by-tests, blocked-by-deploy, blocked-by-rollback ou blocked-by-risk", "Prepare notas de release e notas de follow-up"],
+      checks: ["Release não esconde risco conhecido", "Testes/CI ou lacunas explícitas de teste estão presentes", "Rollback está explícito", "Checks pós-release estão visíveis", "Tag proposta corresponde ao escopo e não é criada antes do gate de release", "GitHub Release inclui notas úteis para founder, usuários e time", "Status de prontidão de release corresponde aos bloqueios"],
+      outputs: ["Status de prontidão de release", "Tag proposta", "GitHub Release notes", "Resumo de prontidão", "Evidência de validação", "Riscos", "Notas de rollback", "Checklist pós-release"],
       filesToUpdate: ["Atualize `../knowledge/release-notes.md` somente após confirmação explícita."],
-      redLines: ["Não esconda riscos conhecidos de release, lacunas de teste ou lacunas de rollback.", "Não marque uma release como pronta sem testes/CI ou lacunas explícitas de teste.", "Não marque uma release como pronta sem checks pós-release.", "Não faça merge, deploy ou mudança de estado remoto automaticamente."]
+      redLines: ["Não esconda riscos conhecidos de release, lacunas de teste ou lacunas de rollback.", "Não marque uma release como pronta sem testes/CI ou lacunas explícitas de teste.", "Não marque uma release como pronta sem checks pós-release.", "Não crie tag ou GitHub Release sem gate `ready-for-launch` ou `release-operations` aprovado.", "Não faça merge, deploy ou mudança de estado remoto automaticamente."]
     }
   ];

@@ -42,7 +42,7 @@ Use these rules for data implementation. Security owns risk review; Engineering 
 
 - If code touches plans, prices, billing, checkout, paywall, subscription, trial, usage limit, quota or entitlement, read \`../../growth/finance/knowledge/pricing.md\` and Product Ops readiness before implementation.
 - Identify the runtime source before coding: billing provider, database table, code path, runtime config and webhook/event source when applicable.
-- Do not treat markdown as runtime config; markdown records the business decision, while code must read from the approved runtime source.
+- Não trate markdown como runtime config; markdown registra a decisão de negócio, enquanto o código deve ler da fonte runtime aprovada.
 - Não hardcode plano, preço, trial, limite, quota ou entitlement in UI, API, tests or seed data unless the Feature explicitly defines a temporary fixture and links it to the Pricing Catalog.
 - Route money, access or customer-data risk to Security before implementation.
 

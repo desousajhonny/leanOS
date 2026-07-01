@@ -49,7 +49,7 @@ export async function validateGrowthExperimentContract() {
     "calls",
     "spend",
     "objections",
-    "Do not invent telemetry"
+    "Não invente telemetria"
   ]) {
     assert(growthExperiments.includes(requiredContent), `Growth experiments knowledge should include ${requiredContent}`);
   }

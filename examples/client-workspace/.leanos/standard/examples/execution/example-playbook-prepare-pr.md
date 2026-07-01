@@ -49,6 +49,7 @@ Preparar um pull request revisável a partir de uma implementação de Feature c
 16. Preencha o `Founder Testing Guide` com passos em linguagem simples, onde testar, resultado esperado, notas fora de escopo e limites conhecidos
 17. Preencha Deploy / Rollback quando houver impacto em deploy, migração, rollback, observabilidade ou monitoramento
 18. Se não houver URL de preview, forneça a rota local, comando ou fallback manual que o founder consiga usar de forma realista
+19. Depois que o PR for criado, diga: `Acabei de criar o PR #<number>: <url>. Você deseja rodar a revisão agora?` Se o founder aceitar, siga para `playbooks/pr-validation.playbook.md`
 
 ## Condições de Parada
 
@@ -65,6 +66,7 @@ Preparar um pull request revisável a partir de uma implementação de Feature c
 - Founder Testing Guide
 - Deploy / Rollback
 - Rascunho de PR
+- Convite pós-PR para revisão
 - Riscos conhecidos
 
 ## Arquivos para Atualizar

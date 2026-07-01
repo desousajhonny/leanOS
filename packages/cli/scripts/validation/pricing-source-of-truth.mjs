@@ -95,7 +95,7 @@ export async function validatePricingSourceOfTruthContract() {
   assert(reviewCriteria.includes("Block hardcoded prices, plan names, provider IDs or entitlements"), "Engineering review criteria should block pricing drift");
 
   assert(environments.includes("## Billing Provider Mapping"), "DevOps environments should include billing provider mapping");
-  assert(environments.includes("provider IDs, webhook secrets, environment variables and runtime config"), "DevOps environments should define billing runtime config");
+  assert(environments.includes("provider IDs, webhook secrets, variáveis de ambiente e runtime config"), "DevOps environments should define billing runtime config");
   assert(configureEnvironments.includes("billing provider price IDs"), "DevOps configure environments should handle billing provider price IDs");
   assert(configureEnvironments.includes("Não escreva price IDs, webhook secrets ou billing secrets"), "DevOps configure environments should protect billing secrets");
 

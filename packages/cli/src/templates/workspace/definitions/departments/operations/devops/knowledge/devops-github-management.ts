@@ -146,7 +146,7 @@ github_issue:
 
 Also update \`.github/leanos/sync-state.yaml\` with non-secret issue IDs, Project item IDs, milestone IDs or URLs and verification status.
 
-Do not set \`sync_status: synced\` or write \`github_issue.url\` if verification failed or only a partial sync happened.
+Não defina \`sync_status: synced\` nem escreva \`github_issue.url\` se a verificação falhou ou se houve apenas sync parcial.
 
 ## Dry Run
 

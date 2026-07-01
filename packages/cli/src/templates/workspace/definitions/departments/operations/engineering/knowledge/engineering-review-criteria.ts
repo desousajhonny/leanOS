@@ -43,7 +43,7 @@ Use estes critérios antes de recomendar prontidão de merge. A evidência revis
 - Confirm Security review or a clear not-applicable reason.
 - Block hardcoded secrets, unsafe permissions, missing server-side authorization and sensitive data leakage.
 - For AI features, confirm LLM input/output, tool permissions, RAG/vector DB, customer data boundary, prompt injection and cost/rate abuse were reviewed or explicitly marked not applicable.
-- Do not recommend merge when Security is applicable but \`security_gate_passed\` or accepted known-risk evidence is missing.
+- Não recomende merge quando Security for aplicável, mas \`security_gate_passed\` ou evidência aceita de risco conhecido estiver ausente.
 - Route unclear risk back to Security before merge recommendation.
 
 ## Data Review

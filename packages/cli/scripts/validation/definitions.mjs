@@ -526,8 +526,11 @@ function assertEngineeringKnowledgeContracts() {
 
 function assertDevopsSkillContracts() {
   const devopsArea = findOperationsArea("devops", "DevOps");
+  const configureBranchProtection = devopsArea.skills.find((item) => item.slug === "configure-branch-protection");
 
-  for (const skillSlug of ["configure-environments", "setup-ci", "plan-deployment", "define-observability", "prepare-release"]) {
+  assert.equal(configureBranchProtection, undefined, "DevOps should not define configure-branch-protection skill");
+
+  for (const skillSlug of ["configure-environments", "setup-ci", "repository-profile", "branch-protection", "plan-deployment", "define-observability", "prepare-release"]) {
     const skill = findAreaSkill(devopsArea, skillSlug, "DevOps");
 
     assertRichSkillField(skill, "process", 6, skillSlug);
@@ -543,6 +546,22 @@ function assertDevopsSkillContracts() {
   assert(
     findAreaSkill(devopsArea, "setup-ci", "DevOps").outputs?.includes("Decisão de gate de CI"),
     "setup-ci should output CI gate decision"
+  );
+  assert(
+    findAreaSkill(devopsArea, "repository-profile", "DevOps").outputs?.includes("Repository description"),
+    "repository-profile should output Repository description"
+  );
+  assert(
+    findAreaSkill(devopsArea, "repository-profile", "DevOps").redLines?.some((item) => /overwrite an existing repository profile|sobrescreva.*repository profile existente|sobrescreva.*perfil existente/i.test(item)),
+    "repository-profile should protect existing repository profile"
+  );
+  assert(
+    findAreaSkill(devopsArea, "branch-protection", "DevOps").checks?.some((item) => /required status checks|required checks|checks obrigatórios/i.test(item)),
+    "branch-protection should require required status checks"
+  );
+  assert(
+    findAreaSkill(devopsArea, "branch-protection", "DevOps").redLines?.some((item) => /PR validation has run at least once|PR validation rode ao menos uma vez|validação de PR rodou ao menos uma vez/i.test(item)),
+    "branch-protection should block remote enforcement before PR validation has run at least once"
   );
   assert(
     findAreaSkill(devopsArea, "plan-deployment", "DevOps").outputs?.includes("Decisão deploy/no-deploy"),

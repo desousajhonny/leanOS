@@ -23,6 +23,7 @@ O LeanOS tem um MVP de framework local com:
 - `<product-slug>-os/operations/` e `<product-slug>-os/growth/` disponiveis para ativacao progressiva, nao criadas no setup inicial.
 - GitHub readiness local em `.github/leanos/`, sem token versionado e sem escrita remota automatica.
 - GitHub Epics/Features sync com contrato rico: `epic.md` canonico, body completo, milestone, Size/Effort, relacionamentos e patch local pos-verificacao.
+- GitHub Safety Baseline em DevOps/GitHub DevOps: repository profile, PR Validation real, branch protection e release gates com dry-run e confirmacao.
 - Workflow `ready-for-launch` em Operations quando Product Ops, Engineering e DevOps estao ativos, separando readiness de launch da execucao/aprendizado de Growth.
 - Workflow `security-hardening-cycle` em Operations quando Security esta ativo, com AI app security, auditoria, vulnerabilidades, LGPD, dados de cliente, token vazado e protecao de API.
 - README raiz gerado como README de produto/empresa, com skill dedicada em Strategy Product para melhorar README sem poluir o `AGENT.md` raiz.
@@ -46,6 +47,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] GitHub sync nao pode publicar apenas resumo simples: deve preservar body rico, metadata, milestone, Project fields e relacoes Epic/Feature.
 - [x] Depois do sync remoto verificado, Epics/Features locais devem receber `github_issue.url` e `sync_status: synced`.
 - [x] GitHub nunca vira fonte primaria automatica do LeanOS; local Product Ops continua sendo a fonte operacional primaria.
+- [x] Repositorios GitHub usados para delivery real devem passar por `github-safety-baseline`: README-ready, repository profile, PR Validation, branch protection e release gates.
 - [x] Business OS vive em `<product-slug>-os/`; runtime do agente vive em `.leanos/runtime/`; padroes do framework vivem em `.leanos/standard/`.
 - [x] Setup inicial deve usar `npm create lean-os` como comando primario; `npx lean-os ai` fica como compatibilidade.
 - [x] Publicacao npm deve usar runbook versionado `npm run release:npm`, sem depender de memoria do modelo ou token colado em chat.
@@ -106,6 +108,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] Pricing Source of Truth implementado: root `AGENT.md` roteia pricing para `activation_required: growth.finance`, `pricing.md` virou Pricing Catalog com Runtime Source e Consumer Contract, Marketing/CX/Product Ops/Engineering/DevOps/Security consomem o catálogo, jornada `pricing-source-of-truth.md` criada e validação `validatePricingSourceOfTruthContract` adicionada.
 - [x] Spend/Budget Source of Truth implementado: root `AGENT.md` roteia gastos/budget/burn/runway para `activation_required: growth.finance`, `spend-ledger.md` virou fonte canonica de gastos, `budget.md` ganhou Monthly Budget/Runway Snapshot/Approval Thresholds, Finance ganhou `review-spend`, `runway-check`, `budget-planning`, `spend-approval` e `monthly-finance-check`, e validação `validateSpendBudgetSourceOfTruthContract` adicionada.
 - [x] Growth Experiment Learning implementado: Marketing ganhou `growth-experiments.md`, skills `plan-growth-experiment` e `analyze-growth-result`, playbook `growth-experiment`, `launch-learning-loop` passou a exigir experimento ou feedback registrado antes de decisão, e validação `validateGrowthExperimentContract` adicionada.
+- [x] GitHub Safety Baseline implementado: DevOps ganhou skill `repository-profile`, playbook `github-safety-baseline`, workflow `.github/workflows/pr-validation.yml` adaptativo, capability contract para `repositoryProfile`, `prValidationWorkflow`, `branchProtection` e `createRelease`, além de validações automáticas e fixture regenerado.
 
 ## Pendencias Ativas
 

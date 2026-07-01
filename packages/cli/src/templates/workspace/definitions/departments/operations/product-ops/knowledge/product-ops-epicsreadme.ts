@@ -70,7 +70,7 @@ Feature title:
 - Separate Task issue -> only when assignment, review, deployment, security or tracking needs separate ownership.
 - Remote IDs and issue numbers -> \`.github/leanos/sync-state.yaml\`, not product status.
 
-GitHub issue bodies must preserve the local Epic/Feature sections. Do not publish only a short summary when local markdown contains outcome, scope, criteria, tasks, risks or readiness matrix.
+GitHub issue bodies precisam preservar as seções locais de Epic/Feature. Não publique apenas um resumo curto quando o markdown local contém outcome, scope, critérios, tasks, riscos ou readiness matrix.
 
 GitHub sync must carry milestone, Size, Effort, Priority, Area, Roadmap Item and Epic relationship into GitHub Projects when those values exist locally.
 

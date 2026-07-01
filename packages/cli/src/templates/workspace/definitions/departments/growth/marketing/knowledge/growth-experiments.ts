@@ -41,7 +41,7 @@ Campos obrigatórios:
 - Use \`growth/customer-experience/knowledge/customer-feedback.md\` quando o aprendizado vier de conversa, suporte, call ou ticket.
 - Use Strategy Product quando o resultado mudar ICP, problema, promessa, categoria ou posicionamento.
 - Use Product Ops quando o resultado precisar virar Epic, Feature, critério de aceite ou item de delivery.
-- Do not invent telemetry.
+- Não invente telemetria.
 
 ## Manual Result Input Template
 

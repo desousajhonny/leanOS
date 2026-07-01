@@ -97,8 +97,10 @@ Ativação padrão: `AGENT.md` -> `operations/AGENT.md` -> `operations/devops/AG
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
 | `configure-github-project` | Orientar configuração de repo, GitHub Project, labels e origem de tokens sem guardar secrets. | Roles `devops-engineer` e `github-devops`; playbook `configure-github-project`; sync de Epics/Features. |
+| `repository-profile` | Preparar description, website e topics do repositório GitHub a partir do README product-first, preservando perfil existente com diff antes de escrita. | Role `github-devops`; playbook `github-safety-baseline`; criação/conexão de repositório GitHub. |
 | `configure-environments` | Definir fronteiras de local, preview/staging e produção sem inventar infraestrutura. | Role `devops-engineer`; playbook `configure-environments`; preparação de delivery/deploy. |
 | `setup-ci` | Definir automação de build, teste e validação antes de PRs serem merge-ready. | Role `devops-engineer`; playbook `setup-ci-cd`; readiness de entrega. |
+| `branch-protection` | Definir baseline obrigatório de proteção da branch principal, required checks, reviews e bloqueio de push direto. | Roles `github-devops` e `devops-engineer`; depois que PR Validation rodar ao menos uma vez. |
 | `plan-deployment` | Planejar release e rollback sem criar estado em provider automaticamente. | Roles `devops-engineer` e `release-manager`; playbook `plan-deployment`; pré-release. |
 | `define-observability` | Definir logs, erros, métricas, alertas e checks pós-deploy. | Roles `devops-engineer` e `release-manager`; playbook `define-observability`; operação/release. |
 | `prepare-release` | Resumir escopo, readiness, riscos, rollback e follow-up de release. | Roles `devops-engineer` e `release-manager`; playbook `release-operations`; pós-merge/release. |
