@@ -27,6 +27,9 @@ const skills = [
 export async function validateFrameworkGovernance() {
   const agent = await readFile(join(projectRoot, "AGENT.md"), "utf8");
   const frameworkReadme = await readFile(join(projectRoot, "docs", "framework", "README.md"), "utf8");
+  const doctrine = await readFile(join(projectRoot, "docs", "framework", "source-of-truth", "leanos-doctrine.md"), "utf8");
+  const operatingModel = await readFile(join(projectRoot, "docs", "framework", "source-of-truth", "operating-model.md"), "utf8");
+  const decisionRules = await readFile(join(projectRoot, "docs", "framework", "source-of-truth", "decision-rules.md"), "utf8");
   const skillsInventory = await readFile(join(projectRoot, "docs", "framework", "skills", "README.md"), "utf8");
   const playbooksInventory = await readFile(join(projectRoot, "docs", "framework", "playbooks", "README.md"), "utf8");
   const governanceReadmePath = join(governanceRoot, "README.md");
@@ -45,6 +48,19 @@ export async function validateFrameworkGovernance() {
   assert(agent.includes("Framework Governance"), "Root AGENT should name the governance gate for future agents");
   assert(skillsInventory.includes("## Framework Governance"), "Skills inventory should list internal governance skills separately");
   assert(playbooksInventory.includes("## Framework Governance"), "Playbooks inventory should list internal governance playbooks separately");
+
+  assert(doctrine.includes("Topologia Operacional Como Produto"), "LeanOS doctrine should define operational topology as doctrine");
+  assert(doctrine.includes("Lei de Conway"), "LeanOS doctrine should include Conway's Law as a framework design constraint");
+  assert(doctrine.includes("Team Topologies"), "LeanOS doctrine should include Team Topologies as a practical lens");
+  assert(doctrine.includes("topologia operacional orientada a fluxo de valor"), "LeanOS doctrine should reject org-chart-first structure");
+  assert(doctrine.includes("Topologia De Comunicação Acima De Organograma"), "LeanOS doctrine should make communication topology a non-negotiable principle");
+  assert(operatingModel.includes("## Topologia Operacional"), "Operating model should map LeanOS areas to operational topology");
+  assert(operatingModel.includes("Stream-aligned de delivery orchestration"), "Operating model should classify Product Ops in the value stream");
+  assert(operatingModel.includes("Enabling / specialist"), "Operating model should classify specialist/enabling capabilities");
+  assert(operatingModel.includes("Platform"), "Operating model should classify platform capabilities");
+  assert(decisionRules.includes("Preserve Topologia De Fluxo, Não Organograma"), "Decision rules should prevent org-chart-first changes");
+  assert(decisionRules.includes("Use a Lei de Conway como restrição"), "Decision rules should use Conway as an evaluation rule");
+  assert(decisionRules.includes("Use Team Topologies como lente prática"), "Decision rules should use Team Topologies as an evaluation rule");
 
   for (const playbook of playbooks) {
     const content = await readFile(join(governanceRoot, "playbooks", `${playbook}.playbook.md`), "utf8");
@@ -76,22 +92,46 @@ export async function validateFrameworkGovernance() {
     assert(content.includes("## Exemplo De Saída"), `${skill} should include a concrete output example`);
   }
 
+  const doctrineSkill = await readFile(join(governanceRoot, "skills", "doctrine-alignment", "SKILL.md"), "utf8");
+  assert(doctrineSkill.includes("topologia de fluxo de valor"), "Doctrine alignment skill should evaluate value-stream topology");
+  assert(doctrineSkill.includes("organograma em pasta"), "Doctrine alignment skill should reject org-chart-first structure");
+  assert(doctrineSkill.includes("Especialista revisando tudo aumenta qualidade"), "Doctrine alignment skill should counter specialist-by-default rationalization");
+
+  const navChainSkill = await readFile(join(governanceRoot, "skills", "nav-chain", "SKILL.md"), "utf8");
+  assert(navChainSkill.includes("Checar fluxo de valor"), "Nav Chain skill should verify value-stream routing");
+  assert(navChainSkill.includes("platform não assume decisão de produto"), "Nav Chain skill should prevent platform ownership drift");
+  assert(navChainSkill.includes("Especialista acionado sem gatilho"), "Nav Chain skill should warn on specialist routes without triggers");
+
+  const handoffSkill = await readFile(join(governanceRoot, "skills", "department-handoff", "SKILL.md"), "utf8");
+  assert(handoffSkill.includes("Use Team Topologies como lente"), "Department handoff skill should use Team Topologies as a lens");
+  assert(handoffSkill.includes("Carga cognitiva"), "Department handoff skill should evaluate cognitive load");
+  assert(handoffSkill.includes("Handoff por organograma"), "Department handoff skill should reject org-chart handoffs");
+
   const frameworkChangeReview = await readFile(join(governanceRoot, "playbooks", "framework-change-review.playbook.md"), "utf8");
   assert(frameworkChangeReview.includes("Mudança de scaffold"), "Framework change review should map scaffold changes to required governance checks");
   assert(frameworkChangeReview.includes("Mudança de GitHub/release"), "Framework change review should map GitHub/release changes to required governance checks");
   assert(frameworkChangeReview.includes("Mudança de skill/playbook/workflow/role"), "Framework change review should map asset changes to required governance checks");
   assert(frameworkChangeReview.includes("não pode seguir para commit/PR"), "Framework change review should define a hard stop for blocked governance");
+  assert(frameworkChangeReview.includes("topologia de fluxo de valor"), "Framework change review should evaluate operational topology");
+  assert(frameworkChangeReview.includes("organograma em pasta"), "Framework change review should reject org-chart-first changes");
+
+  const frameworkChangeSkill = await readFile(join(governanceRoot, "skills", "framework-change", "SKILL.md"), "utf8");
+  assert(frameworkChangeSkill.includes("fluxo de valor"), "Framework change skill should evaluate value flow");
+  assert(frameworkChangeSkill.includes("Especialistas, platform ou Product Ops"), "Framework change skill should check capability ownership");
 
   const doctrineAlignment = await readFile(join(governanceRoot, "playbooks", "doctrine-alignment-review.playbook.md"), "utf8");
   for (const principle of [
     "Business as a Product",
     "Strategy antes de Delivery",
     "Progressão acima de scaffolding",
+    "Topologia de fluxo de valor",
     "Trabalho local de produto é primário",
     "Delivery exige readiness"
   ]) {
     assert(doctrineAlignment.includes(principle), `Doctrine alignment review should explicitly check principle: ${principle}`);
   }
+  assert(doctrineAlignment.includes("organograma em pasta"), "Doctrine alignment review should block org-chart-first structure");
+  assert(doctrineAlignment.includes("especialista sem gatilho"), "Doctrine alignment review should block specialist capabilities without triggers");
 
   const navChainAudit = await readFile(join(governanceRoot, "playbooks", "nav-chain-audit.playbook.md"), "utf8");
   assert(navChainAudit.includes("intent-map.yaml"), "Nav Chain audit should verify intent-map usage");
@@ -100,6 +140,8 @@ export async function validateFrameworkGovernance() {
   assert(navChainAudit.includes("activation_required"), "Nav Chain audit should protect inactive-area activation gates");
   assert(navChainAudit.includes("root não carrega skills profundas"), "Nav Chain audit should protect root AGENT boundaries");
   assert(navChainAudit.includes("root -> departamento -> área -> role/skill/playbook"), "Nav Chain audit should define the canonical navigation chain");
+  assert(navChainAudit.includes("Fluxo de valor"), "Nav Chain audit should evaluate value-stream routing");
+  assert(navChainAudit.includes("especialista sem gatilho"), "Nav Chain audit should prevent specialist routes without clear triggers");
 
   const assetQuality = await readFile(join(governanceRoot, "playbooks", "asset-quality-review.playbook.md"), "utf8");
   assert(assetQuality.includes("nome por capacidade/tema"), "Asset quality review should prevent action-only skill names");
@@ -111,6 +153,8 @@ export async function validateFrameworkGovernance() {
   assert(handoffReview.includes("Evidência de handoff"), "Department handoff review should require handoff evidence");
   assert(handoffReview.includes("Engineering não recebeu ideia bruta"), "Department handoff review should block raw ideas reaching Engineering");
   assert(handoffReview.includes("produtor / consumidor / validador"), "Department handoff review should identify producer, consumer and verifier");
+  assert(handoffReview.includes("Team Topologies"), "Department handoff review should classify interactions with Team Topologies");
+  assert(handoffReview.includes("Carga cognitiva"), "Department handoff review should evaluate cognitive load");
 
   const founderExperience = await readFile(join(governanceRoot, "playbooks", "founder-experience-review.playbook.md"), "utf8");
   assert(founderExperience.includes("O que já temos"), "Founder experience review should enforce founder-friendly response framing");

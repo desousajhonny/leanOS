@@ -108,6 +108,39 @@ Progressive Workspace Activation é a implementação padrão dessa Business Pro
 
 O wizard inicial pode oferecer uma opção avançada para preparar toda a superfície do LeanOS de uma vez. Essa opção existe para power users, demos, testes e casos em que o founder quer inspecionar tudo desde o primeiro momento. Ela não muda o padrão do produto: o caminho recomendado continua sendo começar pequeno e ativar Operations, Growth e áreas especializadas apenas quando a próxima decisão do negócio exigir.
 
+## Topologia Operacional Como Produto
+
+O LeanOS aplica a Lei de Conway como regra de design do framework: o produto tende a refletir a estrutura de comunicação do sistema que o constrói.
+
+No LeanOS, essa estrutura de comunicação não é apenas humana. Ela é codificada em pastas, `AGENT.md`, `intent-map.yaml`, `routing-map.yaml`, `leanos.yaml`, roles, skills, playbooks, workflows, knowledge e source of truth. Portanto, a organização do framework molda diretamente o tipo de produto e operação que o agente tende a gerar.
+
+Isso cria uma regra doutrinária:
+
+```text
+Não desenhe o LeanOS como organograma.
+Desenhe o LeanOS como uma topologia operacional orientada a fluxo de valor.
+```
+
+Departamentos e áreas existem para reduzir carga cognitiva, proteger ownership e melhorar a próxima decisão do founder. Eles não existem para simular uma empresa grande, criar handoffs desnecessários ou fazer o founder entender uma burocracia interna.
+
+Team Topologies é usado como lente prática:
+
+- `Strategy` mantém direção, contexto de negócio e coerência estratégica;
+- `Product Ops` orquestra o fluxo de valor de delivery e transforma intenção em artefato implementável;
+- `Engineering` entrega mudança técnica somente quando readiness existe;
+- `Design`, `Security` e `Finance` atuam como capacidades enabling/specialist quando reduzem risco, aumentam qualidade ou protegem uma fonte da verdade;
+- `DevOps` atua como platform para GitHub, CI, ambientes, release, observabilidade e automação operacional;
+- `Growth`, `Marketing` e `Customer Experience` fecham o loop de mercado, aquisição, feedback e aprendizado;
+- `.leanos/standard` e `.leanos/runtime` são platform interno do framework, não fonte de estratégia de produto.
+
+O critério não é "qual departamento deveria existir?". O critério é:
+
+```text
+Qual comunicação, ownership ou capacidade precisa existir agora para que o negócio tome a próxima decisão sem quebrar coerência, segurança ou velocidade?
+```
+
+Se uma nova área, role, skill, playbook, workflow ou source of truth aumenta handoff sem reduzir risco, carga cognitiva ou ambiguidade, ela deve ser rejeitada ou adiada.
+
 O LeanOS organiza essa progressão em três camadas:
 
 ### 1. Camada De Negócio
@@ -265,12 +298,29 @@ O founder deve sempre entender:
 - o que será alterado;
 - quando confirmação é necessária.
 
+### 11. Topologia De Comunicação Acima De Organograma
+
+O LeanOS deve desenhar comunicação e ownership para que o produto final reflita clareza operacional.
+
+Conway é uma restrição de arquitetura: se o framework comunica por silos, o produto tende a sair siloizado. Se o framework comunica por fluxo de valor, com source of truth claro e especialistas entrando por gatilho, o produto tende a sair mais coerente.
+
+Toda mudança estrutural deve responder:
+
+- qual fluxo de valor ela melhora;
+- qual carga cognitiva ela reduz;
+- qual ownership ela esclarece;
+- qual handoff ela elimina, simplifica ou torna verificável;
+- qual risco ela reduz.
+
+Se a resposta principal for "fica mais completo" ou "parece uma empresa de verdade", a mudança não está alinhada à doutrina.
+
 ## Padrão De Decisão
 
 Uma mudança no framework é boa apenas se melhorar pelo menos um destes resultados sem quebrar outro:
 
 - clareza para o founder;
 - correção da progressão;
+- fluxo de valor e topologia de comunicação;
 - readiness de delivery;
 - integridade da fonte da verdade local;
 - ativação segura;

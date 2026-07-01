@@ -52,6 +52,7 @@ Verifique se a mudança:
 - melhora clareza para o founder;
 - preserva Business as a Product;
 - preserva Strategy-first e progressão acima de scaffolding;
+- preserva topologia de fluxo de valor em vez de organograma em pasta;
 - evita transformar GitHub em source of truth primário;
 - mantém activation gates;
 - não polui o root `AGENT.md`;
@@ -77,6 +78,7 @@ Produza `pass / risk / blocked` com evidências e próximos passos.
 | --- | --- | --- | --- |
 | Doutrina | Preserva ou reforça princípios | Ambígua ou sem decision log | Contradiz princípio não negociável |
 | Progressão | Mantém Strategy-first e readiness | Adiciona etapa útil, mas pouco clara | Pula gates ou ativa área cedo demais |
+| Topologia | Reduz carga cognitiva, handoff ou ambiguidade | Estrutura útil com owner/gatilho fraco | Cria organograma, silo ou especialista sem gatilho |
 | Founder clarity | Reduz confusão | Pode aumentar carga cognitiva | Exige que o founder entenda estrutura interna |
 | Nav Chain | Mantém root enxuto e roteamento por owner | Falta validação de rota | Root carrega deep asset ou ignora ativação |
 | Source of truth | Preserva ownership local | Ownership precisa ser explicitado | GitHub/memória/chat viram fonte primária |
@@ -98,6 +100,7 @@ Teste a mudança contra estas pressões:
 - "É só documentação": se altera comportamento esperado de agentes, precisa governança e validação.
 - "O teste demora": se o comportamento é mecânico, rode ou crie validação.
 - "O founder pediu": ainda precisa respeitar doutrina, gates e source of truth.
+- "Parece uma empresa real": LeanOS precisa de fluxo de valor, não organograma.
 - "Funciona no caso atual": verifique impacto em progressive mode, all-at-once e projeto existente.
 - "Depois ajustamos": se é blocker, não avance para commit/PR.
 
@@ -106,6 +109,7 @@ Teste a mudança contra estas pressões:
 | Racionalização | Resposta Correta |
 | --- | --- |
 | "Está mais completo, então é melhor" | Completude sem clareza para founder é regressão. |
+| "Mais área especialista aumenta qualidade" | Especialista sem gatilho aumenta handoff e carga cognitiva. |
 | "O root pode resolver isso direto" | Root classifica e roteia; departamentos e áreas decidem deep assets. |
 | "GitHub já registra tudo" | GitHub é espelho opcional, não source of truth primário. |
 | "É interno, então não precisa validação" | Mudança interna no framework afeta todos os workspaces gerados. |

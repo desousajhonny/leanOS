@@ -52,6 +52,8 @@ Retorne status `pass, risk ou blocked`.
 - Qual comportamento do framework muda na prática?
 - Qual princípio do LeanOS pode ser afetado?
 - A mudança melhora a próxima decisão do founder ou só adiciona estrutura?
+- A mudança melhora fluxo de valor ou cria organograma em pasta?
+- Especialistas, platform ou Product Ops têm gatilho e ownership corretos?
 - Há impacto em progressive mode, all-at-once e projeto existente?
 - Existe validação automatizada para o que é mecânico?
 
@@ -61,6 +63,7 @@ Retorne status `pass, risk ou blocked`.
 | --- | --- | --- | --- |
 | Doutrina | Alinhada e evidenciada | Ambígua | Contraditória |
 | Progressão | Mantém gates | Gate pouco claro | Pula gate |
+| Topologia | Melhora fluxo/ownership | Gatilho fraco | Organograma/silo |
 | Founder | Reduz confusão | Aumenta detalhe | Exige organograma |
 | Assets | Inventariados e testados | Inventário pendente | Invisíveis/duplicados |
 | Source of truth | Preservado | Ambíguo | Redefinido por lugar errado |
@@ -72,6 +75,8 @@ Retorne status `pass, risk ou blocked`.
 - GitHub usado como prova primária.
 - Falta de teste para contrato mecânico.
 - Nova estrutura que o founder precisa entender manualmente.
+- Especialista sem gatilho claro.
+- Handoff sem artefato verificável.
 
 ## Racionalizações Comuns
 
@@ -80,6 +85,7 @@ Retorne status `pass, risk ou blocked`.
 | "É só uma melhoria interna" | Interno no framework vira comportamento gerado. |
 | "O modelo vai lembrar" | Comportamento durável precisa arquivo/validação. |
 | "O founder pediu" | Pedido ainda passa por doutrina e gates. |
+| "Fica mais parecido com empresa" | LeanOS segue fluxo de valor, não organograma. |
 | "Depois testamos" | Se é contrato mecânico, teste antes de concluir. |
 
 ## Exemplo De Saída

@@ -84,6 +84,7 @@ export async function validateAiStandardRendererIsModular() {
 export async function assertAiStandardAssetTaxonomy(rootDir) {
   const aiStandardReadme = await readFile(join(rootDir, ".leanos", "standard", "README.md"), "utf8");
   const foundationReadme = await readFile(join(rootDir, ".leanos", "standard", "foundation", "README.md"), "utf8");
+  const navigationChain = await readFile(join(rootDir, ".leanos", "standard", "foundation", "navigation-chain.md"), "utf8");
   const founderProgressionModel = await readFile(join(rootDir, ".leanos", "standard", "foundation", "founder-progression-model.md"), "utf8");
   const progressionGates = await readFile(join(rootDir, ".leanos", "standard", "foundation", "progression-gates.md"), "utf8");
   const assetTaxonomy = await readFile(join(rootDir, ".leanos", "standard", "foundation", "asset-taxonomy.md"), "utf8");
@@ -107,6 +108,11 @@ export async function assertAiStandardAssetTaxonomy(rootDir) {
   assert(aiStandardReadme.includes("foundation/founder-progression-model.md"), "AI Standard README should route founder progression decisions");
   assert(aiStandardReadme.includes("foundation/progression-gates.md"), "AI Standard README should route progression gate decisions");
   assert(aiStandardReadme.includes("foundation/guided-conversation.md"), "AI Standard README should route guided conversation decisions");
+  assert(navigationChain.includes("Lei de Conway"), "Navigation Chain foundation should apply Conway's Law");
+  assert(navigationChain.includes("Team Topologies"), "Navigation Chain foundation should use Team Topologies as a lens");
+  assert(navigationChain.includes("fluxo de valor, não organograma"), "Navigation Chain foundation should reject org-chart routing");
+  assert(navigationChain.includes("reduz carga cognitiva"), "Navigation Chain foundation should evaluate cognitive load");
+  assert(navigationChain.includes("source of truth"), "Navigation Chain foundation should protect source of truth ownership");
   for (const expected of [
     "Setup Seed",
     "Strategy Seed",

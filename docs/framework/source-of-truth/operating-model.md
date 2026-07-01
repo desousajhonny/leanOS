@@ -1,5 +1,62 @@
 # Modelo Operacional Do LeanOS
 
+## Topologia Operacional
+
+O LeanOS usa Team Topologies como lente de operação, adaptada para um founder trabalhando com agentes.
+
+O objetivo não é copiar cargos de uma empresa grande. O objetivo é manter o fluxo de valor claro, reduzir carga cognitiva e definir quando uma capacidade especialista deve entrar sem virar gargalo.
+
+### Fluxo Principal De Valor
+
+O fluxo principal passa por:
+
+```text
+Strategy
+-> Product Ops
+-> Design / Security / Finance / DevOps quando aplicável
+-> Engineering
+-> PR / Ready for Launch
+-> Growth / Customer Experience
+-> Learning Loop
+```
+
+Strategy define a direção. Product Ops transforma direção em artefatos de entrega. Engineering implementa apenas quando a Feature está pronta. Growth e Customer Experience capturam sinais de mercado e cliente para alimentar o próximo ciclo.
+
+### Mapeamento De Capacidades
+
+| LeanOS | Tipo operacional | Responsabilidade |
+| --- | --- | --- |
+| Strategy Business/Product/Roadmap | Stream-aligned de direção | Define negócio, produto, problema, ICP, proposta de valor, roadmap e coerência estratégica. |
+| Operations Product Ops | Stream-aligned de delivery orchestration | Converte intenção aprovada em MVP Backlog, Delivery Scope, Epic, Feature, readiness e implementation packet. |
+| Operations Engineering | Stream-aligned de implementação | Entrega mudança técnica a partir de Feature pronta, critérios e handoff verificável. |
+| Operations Design | Enabling / specialist | Define Product UI Spec, screen specs, component specs, UX, acessibilidade e design review quando o fluxo exige. |
+| Operations Security | Enabling / specialist | Avalia riscos de dados, auth, permissões, secrets, API, banco, AI app runtime e abuse quando aplicável. |
+| Operations DevOps | Platform | Fornece GitHub, CI, branch protection, ambientes, release, observabilidade e deploy readiness. |
+| Growth Marketing | Stream-aligned de mercado | Planeja lançamento, aquisição, posicionamento, landing page e experimentos de Growth. |
+| Growth Customer Experience | Stream-aligned de feedback | Transforma suporte, feedback e sinais de cliente em aprendizado consumível. |
+| Growth Finance | Enabling / governance | Mantém pricing, spend, budget, runway e unit economics como fontes da verdade de negócio. |
+| `.leanos/standard` e `.leanos/runtime` | Platform interna do framework | Fornece padrões, templates, runtime index, traces e navegação; não define estratégia do produto. |
+
+### Regras De Interação
+
+- Stream-aligned teams devem permanecer próximos ao resultado do founder e ao fluxo de valor.
+- Enabling/specialist teams entram por gatilho claro, reduzem risco e deixam output consumível; não devem criar aprovação permanente sem necessidade.
+- Platform teams devem reduzir fricção operacional e padronizar caminhos seguros; não devem assumir ownership de produto, pricing, UX ou estratégia.
+- Product Ops coordena delivery, mas não deve virar proxy para todas as decisões do negócio.
+- O root `AGENT.md` preserva a Navigation Chain; ele não substitui a topologia local de áreas, roles e source of truth.
+
+### Critério De Carga Cognitiva
+
+Toda ativação, área, role, skill, playbook ou workflow deve reduzir a carga cognitiva total do founder ou do agente.
+
+Uma mudança falha nesse critério quando:
+
+- exige que o founder escolha departamentos manualmente;
+- cria handoff sem artefato verificável;
+- duplica source of truth;
+- pede que Engineering reconstrua contexto de Strategy, Product Ops ou Design;
+- transforma especialista em gargalo permanente sem gatilho.
+
 ## Sequência Operacional
 
 O LeanOS opera por meio desta progressão:

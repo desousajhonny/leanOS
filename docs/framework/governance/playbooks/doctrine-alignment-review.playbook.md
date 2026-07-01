@@ -7,13 +7,14 @@ description: Use quando uma mudança no LeanOS pode afetar doutrina, princípios
 
 ## Propósito
 
-Checar se uma decisão ou mudança do framework continua alinhada ao Business as a Product, à progressão Strategy-first e às regras de decisão do LeanOS.
+Checar se uma decisão ou mudança do framework continua alinhada ao Business as a Product, à progressão Strategy-first, à topologia operacional orientada a fluxo de valor e às regras de decisão do LeanOS.
 
 ## Use Quando
 
 - Checklist Antes De Commit/PR para mudança estrutural.
 - Auditoria Sob Demanda sobre visão, princípios, valores ou coerência estratégica.
 - Alterações em source of truth, roadmap, journeys, activation policy, generated layout ou ownership.
+- Mudanças que criam, removem ou reposicionam áreas, roles, skills, playbooks, workflows ou handoffs.
 
 ## Quando Este Playbook É Obrigatório
 
@@ -23,6 +24,7 @@ Use antes de commit/PR quando a mudança:
 - cria, remove ou muda gate;
 - muda ownership de source of truth;
 - muda layout gerado ou estrutura do workspace;
+- muda topologia de comunicação, fluxo de valor ou carga cognitiva do founder/agente;
 - altera regras de GitHub como source/espelho;
 - muda comportamento de Strategy, Product Ops, Engineering, Growth ou Security;
 - contradiz ou substitui decisão anterior.
@@ -42,7 +44,7 @@ Leia a fonte canônica antes de avaliar: `leanos-doctrine.md`, `operating-model.
 
 ### Etapa 1: Mapear princípio afetado
 
-Classifique se a mudança toca Strategy antes de Delivery, progressão acima de scaffolding, linguagem natural, `AGENT.md` canônico, activation gates, source of truth local, delivery readiness ou founder clarity.
+Classifique se a mudança toca Business as a Product, Strategy antes de Delivery, progressão acima de scaffolding, topologia de fluxo de valor, linguagem natural, `AGENT.md` canônico, activation gates, source of truth local, delivery readiness ou founder clarity.
 
 ### Etapa 2: Comparar contra decisões existentes
 
@@ -58,6 +60,9 @@ Procure sinais de drift:
 - root `AGENT.md` vira inventário;
 - readiness vira sugestão em vez de gate;
 - founder precisa entender organograma para usar o sistema.
+- nova área/role/skill/playbook existe por completude, não por fluxo de valor;
+- especialista entra sem gatilho claro ou vira gargalo permanente;
+- Product Ops concentra decisões que pertencem a Strategy, Design, Finance, Security, DevOps ou Growth.
 
 ### Etapa 4: Emitir decisão
 
@@ -70,6 +75,7 @@ Produza `pass / risk / blocked` com evidências e ajuste necessário.
 | Business as a Product | Melhora decisão de negócio/produto | Benefício indireto ou pouco explícito | Trata LeanOS como gerador de código/template |
 | Strategy antes de Delivery | Mantém Strategy Baseline antes de delivery | Permite exceção com justificativa fraca | Permite MVP/Epic/Feature/código sem baseline |
 | Progressão acima de scaffolding | Ativa só o necessário | Adiciona superfície cedo demais, mas com gate | Reintroduz escolha manual de departamentos |
+| Topologia de fluxo de valor | Reduz carga cognitiva, esclarece ownership ou melhora handoff | Adiciona estrutura útil, mas com gatilho fraco | Cria organograma em pasta, silo ou especialista sem gatilho |
 | Trabalho local de produto é primário | Preserva arquivos locais como fonte | Github ganha peso ambíguo | GitHub/memória/chat vira fonte primária |
 | Delivery exige readiness | Reforça gates e packets | Readiness pouco verificável | Engineering recebe ideia bruta ou Epic cru |
 | Clareza para founder | Reduz confusão | Aumenta carga cognitiva sem blocker | Founder precisa entender organograma |
@@ -88,6 +94,8 @@ Use `blocker / high / medium / low`.
 - "A mudança ajuda power users": verifique se não quebra progressive default.
 - "É só um atalho": confirme se não pula Strategy, activation gate ou readiness.
 - "GitHub fica mais prático": confirme se não vira source of truth primário.
+- "Parece uma empresa real": confirme se a estrutura melhora fluxo de valor, não organograma.
+- "Especialista garante qualidade": confirme se há gatilho, output consumível e saída clara do especialista.
 - "O modelo entende pelo contexto": se é comportamento durável, precisa estar em source of truth ou validação.
 
 ## Racionalizações Comuns
@@ -97,6 +105,8 @@ Use `blocker / high / medium / low`.
 | "Isso economiza perguntas" | Economizar pergunta não justifica pular confirmação crítica. |
 | "Todos os departamentos prontos é mais completo" | O default é progressão, não completude inicial. |
 | "A issue do GitHub já prova escopo" | Issue remota não substitui Feature/readiness local. |
+| "Mais áreas deixam o LeanOS mais profissional" | Área só entra se reduzir carga cognitiva, risco ou ambiguidade no fluxo de valor. |
+| "O especialista revisa tudo por segurança" | Especialista precisa de gatilho claro para não virar gargalo permanente. |
 | "É uma exceção pequena" | Exceções estruturais precisam decision log. |
 
 ## Resultado Obrigatório

@@ -2,6 +2,27 @@
 
 Este arquivo registra decisões duráveis do framework LeanOS. Adicione novas decisões quando uma escolha afetar estrutura gerada, roteamento, ownership da fonte da verdade, ativação, comportamento do GitHub ou ordem do roadmap.
 
+## 2026-07-01 - Conway E Team Topologies Como Critério De Arquitetura Do Framework
+
+Decisão:
+
+- O LeanOS passa a tratar a Lei de Conway como restrição de arquitetura do framework: a comunicação modelada por pastas, `AGENT.md`, intent map, routing map, roles, skills, playbooks, workflows e source of truth tende a aparecer no produto gerado.
+- A doutrina passa a declarar que o LeanOS deve ser desenhado como topologia operacional orientada a fluxo de valor, não como organograma em pasta.
+- Team Topologies passa a ser a lente prática para classificar capacidades:
+  - Strategy, Product Ops, Engineering, Growth Marketing e Customer Experience ficam ligados ao fluxo principal de valor;
+  - Design, Security e Finance entram como enabling/specialist quando seus gatilhos reduzem risco ou aumentam qualidade;
+  - DevOps, `.leanos/standard` e `.leanos/runtime` operam como platform e não assumem decisões de produto, pricing, UX ou estratégia.
+- Regras de decisão passam a rejeitar estrutura que apenas aumenta completude aparente, cria handoff sem artefato verificável, duplica source of truth, aciona especialista sem gatilho claro ou exige que o founder entenda organograma.
+- Governance passa a avaliar topologia de fluxo de valor em `doctrine-alignment-review`, `department-handoff-review` e `nav-chain-audit`.
+- A foundation gerada da Navigation Chain passa a registrar essa regra de forma curta para orientar agentes em workspaces do founder sem poluir o root `AGENT.md`.
+- As validações do generator passam a exigir esses conceitos nos source-of-truth, governance e AI Standard gerado.
+
+Justificativa:
+
+- Em um framework agent-native, estrutura de arquivos e rotas são a arquitetura de comunicação do time simulado.
+- Se o framework comunica por silos, o produto tende a sair siloizado; se comunica por fluxo de valor com ownership claro, o produto tende a sair mais coerente.
+- Founders não devem pagar o custo cognitivo de um organograma. O LeanOS deve ativar a menor capacidade necessária para a próxima decisão, com especialistas entrando por gatilho e saindo com output consumível.
+
 ## 2026-06-30 - Growth Experiment Ledger Como Fonte De Aprendizado De Mercado
 
 Decisão:

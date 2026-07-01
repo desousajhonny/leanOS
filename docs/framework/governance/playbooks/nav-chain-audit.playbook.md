@@ -7,13 +7,14 @@ description: Use quando uma mudança toca Navigation Chain LeanOS, root AGENT, i
 
 ## Propósito
 
-Auditar se a Navigation Chain LeanOS continua funcionando sem atalhos: root classifica intenção, checa ativação e roteia para o departamento ativo correto sem carregar skills profundas diretamente.
+Auditar se a Navigation Chain LeanOS continua funcionando sem atalhos e preserva a topologia de fluxo de valor: root classifica intenção, checa ativação e roteia para o departamento ativo correto sem carregar skills profundas diretamente.
 
 ## Use Quando
 
 - Checklist Antes De Commit/PR para mudanças em roteamento, `AGENT.md`, `intent-map.yaml`, `routing-map.yaml`, `leanos.yaml` ou ativação.
 - Auditoria Sob Demanda quando alguém perguntar se o Nav Chain está sendo seguido.
 - Mudanças em journeys que alteram dono, área ou gate.
+- Mudanças que podem transformar fluxo de valor em organograma, atalho ou silo.
 
 ## Quando Este Playbook É Obrigatório
 
@@ -58,7 +59,19 @@ Confirme se `.leanos/runtime/index/routing-map.yaml` leva ao departamento dono a
 
 Confirme se o departamento ou área escolhe role, skill, playbook, workflow e knowledge. O root não carrega skills profundas nem decide handoffs internos.
 
-### Etapa 5: Emitir decisão
+### Etapa 5: Validar fluxo de valor
+
+Confirme se a rota representa o menor caminho owner-first para a próxima decisão do founder.
+
+A Nav Chain deve reduzir carga cognitiva e evitar:
+
+- root como gerente universal;
+- Product Ops como gargalo para decisões que pertencem a Strategy, Design, Finance, Security, DevOps ou Growth;
+- especialista acionado sem gatilho;
+- plataforma assumindo decisão de produto;
+- área consumidora redefinindo source of truth alheio.
+
+### Etapa 6: Emitir decisão
 
 Produza `pass / risk / blocked`.
 
@@ -71,6 +84,7 @@ Produza `pass / risk / blocked`.
 | Rota | Segue root -> departamento -> área -> role/skill/playbook | Rota correta, mas pouco documentada | Root pula departamento/área |
 | Ownership | Departamento/área escolhe deep assets | Ownership implícito | Root decide skill/playbook profundo |
 | Bloqueio | `activation_required` explica e pede confirmação | Bloqueio sem copy clara | Rota finge que arquivo inativo existe |
+| Fluxo de valor | Menor owner necessário reduz carga cognitiva | Rota passa, mas cria handoff extra | Rota cria silo, organograma ou especialista sem gatilho |
 
 ## Escala De Severidade
 
@@ -88,6 +102,8 @@ Use `blocker / high / medium / low`.
 - "A área está available": available não é active.
 - "Quero evitar pedir confirmação": ativação exige confirmação.
 - "A rota funciona no all-at-once": teste também progressive mode.
+- "Product Ops pode decidir tudo": Product Ops coordena delivery, mas não redefine owner de Strategy, Design, Finance, Security, DevOps ou Growth.
+- "Platform consegue automatizar": platform reduz fricção, mas não assume decisão de produto ou source of truth.
 
 ## Racionalizações Comuns
 
@@ -97,6 +113,8 @@ Use `blocker / high / medium / low`.
 | "O modelo consegue inferir ativação" | Ativação vem de `leanos.yaml`. |
 | "É só para casos comuns" | Casos comuns duráveis pertencem ao intent map validado. |
 | "A área existe no catálogo" | Catálogo disponível não é área ativa. |
+| "Um especialista sempre ajuda" | Especialista sem gatilho quebra progressão e aumenta handoff. |
+| "Rota mais completa é mais segura" | Rota segura é a menor rota owner-first com gates aplicáveis. |
 
 ## Resultado Obrigatório
 
@@ -108,6 +126,7 @@ Nav Chain audit:
 - Estado em leanos.yaml:
 - Rota esperada:
 - Rota observada:
+- Fluxo de valor:
 - Evidências:
 - Correção necessária:
 ```

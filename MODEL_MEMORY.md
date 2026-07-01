@@ -7,14 +7,15 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 ## Estado Atual
 
 - Repositório: `desousajhonny/leanOS`.
-- Branch local de trabalho atual: `main`.
-- Remote `origin/main` está em `183bddf` em 2026-07-01.
+- Branch local de trabalho atual: `docs/conway-team-topologies-doctrine`.
+- Remote `origin/main` foi atualizado para a release npm `0.1.5` em 2026-07-01.
 - `AGENT.md` raiz é o ponto de entrada para comportamento de agente no nível do projeto.
 - Source of truth do framework vive em `docs/framework/source-of-truth/`.
 - Roadmap temporário de implementação vive em `TEMP-roadmap-ajustes.md`.
 
 ## Decisões Recentes
 
+- 2026-07-01: Conway e Team Topologies passam a ser critério explícito de arquitetura do framework. Doutrina deve tratar LeanOS como topologia operacional orientada a fluxo de valor, não organograma em pasta; Operating Model mapeia stream-aligned/enabling/specialist/platform; Decision Rules rejeitam handoff sem artefato, source of truth duplicado, especialista sem gatilho e carga cognitiva desnecessária. Governance e AI Standard devem validar esses conceitos.
 - 2026-07-01: Framework Governance interna passa a existir em `docs/framework/governance/`, com dois modos: Checklist Antes De Commit/PR e Auditoria Sob Demanda. Inclui playbooks `framework-change-review`, `doctrine-alignment-review`, `nav-chain-audit`, `asset-quality-review`, `department-handoff-review` e `founder-experience-review`, além de skills internas nomeadas por capacidade: `framework-change`, `doctrine-alignment`, `nav-chain`, `framework-asset`, `department-handoff` e `founder-experience`. Playbooks devem ter obrigatoriedade, matriz, severidade, cenários de pressão, racionalizações e resultado obrigatório; skills devem ter perguntas de auditoria, matriz, sinais de alerta, racionalizações e exemplo de saída.
 - 2026-07-01: Root `AGENT.md` deve ficar enxuto como bootloader e guardião das red lines. Intenções naturais duráveis entram em `.leanos/runtime/index/intent-map.yaml`, que pode declarar departamento, áreas obrigatórias e pistas de role/skill/playbook/workflow; o root usa essas pistas só para classificar e conferir, depois carrega apenas o departamento ativo via routing map.
 - 2026-07-01: Skill Quality Pass fortalece skills críticas sem mudar slugs: Security (`api-security-review`, `database-security-review`, `incident-response`), Design, Growth/CX/Finance (`positioning`, `customer-feedback-mapping`, `model-unit-economics`) e Strategy Product `coherence`. Skills críticas devem ter decisão explícita, evidência, outputs estruturados, arquivos permitidos e red lines; validação `validateSkillQualityPass` impede regressão.
@@ -43,6 +44,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 ## Mudanças Recentes
 
+- Working tree: Conway/Team Topologies sendo incorporados em `docs/framework/source-of-truth/leanos-doctrine.md`, `operating-model.md`, `decision-rules.md`, governance playbooks, AI Standard foundation e validações.
 - Working tree: camada interna `docs/framework/governance/` adicionada e fortalecida com playbooks/skills de auditoria do próprio framework; root `AGENT.md`, inventários de skills/playbooks, framework README, decision log e validação `validateFrameworkGovernance` foram atualizados.
 - Working tree: root `AGENT.md` gerado foi simplificado e passou a carregar `.leanos/runtime/index/intent-map.yaml`; o generator cria esse mapa, os prompts/agent do VS Code apontam para ele, validações cobrem rotas críticas e impedem reintroduzir o mapa natural inline no root.
 - Working tree: Skill Quality Pass em andamento na `main`: definições de skills críticas foram fortalecidas em `packages/cli/src/templates/workspace/definitions/departments/**/skills.ts`, `examples/client-workspace/` foi regenerado e `packages/cli/scripts/validation/skill-quality.mjs` foi adicionado.

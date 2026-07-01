@@ -7,13 +7,14 @@ description: Use quando uma decisão ou mudança precisa ser checada contra dout
 
 ## Visão Geral
 
-Skill de uso interno do framework para checar alinhamento com Business as a Product, Strategy-first, progressão e regras não negociáveis.
+Skill de uso interno do framework para checar alinhamento com Business as a Product, Strategy-first, progressão, topologia de fluxo de valor e regras não negociáveis.
 
 ## Use Quando
 
 - Mudança altera comportamento central, layout, progressão, activation gates ou source of truth.
 - O mantenedor pergunta se algo segue visão, princípios ou valores.
 - Uma decisão nova pode contradizer decisão anterior.
+- Uma mudança cria, remove ou reposiciona área, role, skill, playbook, workflow ou handoff.
 
 ## Contexto Obrigatório
 
@@ -33,7 +34,7 @@ Skill de uso interno do framework para checar alinhamento com Business as a Prod
 
 ### Etapa 1: Mapear princípios afetados
 
-Identifique Business as a Product, Strategy antes de Delivery, progressão acima de scaffolding, linguagem natural, local source of truth, readiness ou founder clarity.
+Identifique Business as a Product, Strategy antes de Delivery, progressão acima de scaffolding, topologia de fluxo de valor, linguagem natural, local source of truth, readiness ou founder clarity.
 
 ### Etapa 2: Comparar contra decisões
 
@@ -52,6 +53,9 @@ Retorne `pass, risk ou blocked`.
 - A mudança trata o negócio como produto ou só o software?
 - Strategy continua antes de Delivery?
 - A progressão continua menor e guiada?
+- A mudança melhora fluxo de valor ou só cria organograma em pasta?
+- A estrutura reduz carga cognitiva, esclarece ownership ou protege source of truth?
+- Especialistas entram por gatilho claro e saem com output consumível?
 - A fonte local continua primária?
 - Alguma decisão anterior foi contradita sem update no decision log?
 
@@ -62,6 +66,7 @@ Retorne `pass, risk ou blocked`.
 | Business as a Product | Conecta negócio, produto e aprendizado | Conexão indireta | Vira template/código |
 | Strategy-first | Mantém baseline antes de delivery | Exceção pouco clara | Implementação sem baseline |
 | Progressão | Ativa por necessidade | Completa cedo demais | Força áreas/departamentos |
+| Topologia | Reduz carga cognitiva e melhora fluxo de valor | Gatilho ou owner fraco | Cria organograma/silo |
 | Source of truth | Local e owner claro | Owner ambíguo | GitHub/chat/memória primário |
 | Readiness | Gate verificável | Gate informal | Engineering recebe ideia bruta |
 
@@ -69,6 +74,9 @@ Retorne `pass, risk ou blocked`.
 
 - Mais arquivos sem melhorar decisão.
 - Área ativada porque "é bom ter".
+- Especialista criado sem gatilho claro.
+- Product Ops concentrando decisão que pertence a Strategy, Design, Finance, Security, DevOps ou Growth.
+- Handoff criado sem artefato verificável.
 - Decisão durável fora do decision log.
 - MVP tratado como perfeição ou como build apressado sem aprendizado.
 
@@ -78,6 +86,8 @@ Retorne `pass, risk ou blocked`.
 | --- | --- |
 | "Isso é padrão de mercado" | Só importa se melhora o LeanOS e o founder. |
 | "É mais completo" | Progressão vale mais que completude inicial. |
+| "Parece uma empresa real" | LeanOS precisa de fluxo de valor, não organograma. |
+| "Especialista revisando tudo aumenta qualidade" | Especialista sem gatilho vira gargalo e aumenta carga cognitiva. |
 | "A mudança é pequena" | Pequena mudança em gate pode causar grande drift. |
 | "Já está no roadmap temporário" | Roadmap temporário não é source of truth. |
 

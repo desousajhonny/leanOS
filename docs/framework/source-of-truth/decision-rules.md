@@ -18,7 +18,28 @@ Não adicione arquivos, papéis, workflows ou áreas apenas porque o framework p
 
 Adicione estrutura apenas quando isso ajudar o founder ou o agente a tomar uma próxima decisão melhor.
 
-## 3. Mantenha O Workspace Inicial Pequeno
+## 3. Preserve Topologia De Fluxo, Não Organograma
+
+Antes de criar ou mover área, role, skill, playbook, workflow ou source of truth, responda:
+
+- qual fluxo de valor melhora;
+- qual carga cognitiva reduz;
+- qual ownership esclarece;
+- qual handoff elimina, simplifica ou torna verificável;
+- qual risco reduz.
+
+Não aprove mudança estrutural apenas porque ela parece "mais completa" ou "mais parecida com uma empresa".
+
+Use a Lei de Conway como restrição: a comunicação modelada pelo LeanOS tende a aparecer no produto gerado. Se a mudança cria silo, duplicação de fonte da verdade ou handoff sem evidência, ela aumenta risco arquitetural e operacional.
+
+Use Team Topologies como lente prática:
+
+- stream-aligned deve ficar perto do resultado do founder;
+- enabling/specialist deve entrar por gatilho claro e sair com output consumível;
+- platform deve reduzir fricção e padronizar caminhos seguros;
+- Product Ops coordena delivery, mas não deve concentrar toda decisão do negócio.
+
+## 4. Mantenha O Workspace Inicial Pequeno
 
 O workspace inicial deve continuar Strategy-first por padrão.
 
@@ -26,19 +47,19 @@ Não ative Operations, Growth, Design, Engineering, Security ou DevOps durante o
 
 Exceção: o wizard pode oferecer uma opção avançada única para preparar todas as áreas de uma vez. Essa opção não deve virar multiselect de departamentos/áreas e não deve ser o default. Mesmo no modo avançado, readiness, activation gates e fonte da verdade local continuam valendo.
 
-## 4. Não Roteie Para Caminhos Inativos
+## 5. Não Roteie Para Caminhos Inativos
 
 Se uma rota precisar de uma área inativa, retorne `activation_required`.
 
 Não referencie roles, skills, playbooks, workflows ou arquivos de knowledge de áreas inativas como se eles existissem.
 
-## 5. Mantenha Linguagem Natural Como Interface Principal
+## 6. Mantenha Linguagem Natural Como Interface Principal
 
 Não reintroduza `.leanos/commands/` gerados como interface operacional.
 
 Arquivos de prompt para um editor hospedeiro podem existir como auxiliares de integração, mas devem rotear pelo `AGENT.md` raiz e pelas regras de intenção em linguagem natural.
 
-## 6. Não Transforme O Root AGENT Em Inventário
+## 7. Não Transforme O Root AGENT Em Inventário
 
 O root `AGENT.md` deve conter red lines, contexto mínimo de boot, protocolo de ativação e regras de navegação.
 
@@ -46,7 +67,7 @@ Novas intenções naturais duráveis devem ser adicionadas em `.leanos/runtime/i
 
 O root pode usar pistas do intent map para conferir coerência, mas deve carregar apenas o departamento dono ativo. Roles, skills, playbooks, workflows e knowledge continuam sendo escolhidos pelo departamento ou área dona.
 
-## 7. Proteja A Taxonomia De Trabalho Product-First
+## 8. Proteja A Taxonomia De Trabalho Product-First
 
 O LeanOS usa:
 
@@ -56,7 +77,7 @@ Roadmap -> Escopo de MVP -> Epic -> Feature -> Task
 
 A linguagem de issues do GitHub é uma representação remota, não a taxonomia central de produto.
 
-## 8. Separe Planejamento De Implementação
+## 9. Separe Planejamento De Implementação
 
 Não permita que:
 
@@ -67,7 +88,7 @@ Não permita que:
 
 Engineering começa depois que a Feature passa pelos gates de readiness.
 
-## 9. Trate MVP Como Aprendizado, Não Como Perfeição
+## 10. Trate MVP Como Aprendizado, Não Como Perfeição
 
 O MVP deve ser pequeno o suficiente para validar uma premissa de negócio ou produto, mas bom o suficiente para criar uma primeira experiência crível.
 
@@ -76,7 +97,7 @@ Evite os dois extremos:
 - discovery interminável sem aprendizado de produto;
 - implementação apressada sem aprendizado estratégico.
 
-## 10. Deixe Limites De Confirmação Explícitos
+## 11. Deixe Limites De Confirmação Explícitos
 
 Peça confirmação antes de:
 
@@ -87,7 +108,7 @@ Peça confirmação antes de:
 - executar ações remotas de GitHub/API;
 - atualizar estado de sync depois de execução remota.
 
-## 11. Use O Registro De Decisões Para Escolhas Duráveis
+## 12. Use O Registro De Decisões Para Escolhas Duráveis
 
 Registre decisões duráveis quando elas afetarem:
 
@@ -106,6 +127,10 @@ Rejeite ou adie uma mudança quando ela:
 - faz o founder escolher departamentos manualmente;
 - faz o setup parecer burocracia;
 - cria completude falsa;
+- cria organograma em pasta em vez de fluxo de valor;
+- cria área especialista sem gatilho claro;
+- duplica source of truth entre áreas;
+- adiciona handoff sem artefato verificável;
 - adiciona roteamento entre áreas sem gate;
 - adiciona casos longos de intenção natural diretamente no root `AGENT.md`;
 - depende da memória do modelo em vez da fonte da verdade local;
