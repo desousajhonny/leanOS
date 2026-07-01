@@ -15,6 +15,10 @@ build/
 # Vercel local project metadata
 .vercel/
 
+# LeanOS local scratch artifacts
+.leanos/runtime/scratch/*
+!.leanos/runtime/scratch/README.md
+
 # Logs and OS files
 *.log
 .DS_Store

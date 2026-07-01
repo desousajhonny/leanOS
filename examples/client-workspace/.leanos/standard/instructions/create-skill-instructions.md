@@ -25,6 +25,16 @@ Use quando criar uma pasta de skill dentro de uma área.
 7. Defina linhas vermelhas.
 8. Evite transformar a skill em um processo ordenado completo.
 
+## Qualidade Semântica
+
+O LeanOS deve ser genérico no contexto de produto, mas específico na governança do trabalho.
+
+Descriptions não podem ser circulares, repetir o nome da skill ou dizer apenas que a skill "é necessária". A `description` e `## Use Quando` precisam conter 2 ou mais sinais concretos de ativação, como artefato ausente, risco, decisão pendente, contexto técnico, handoff ou sintoma operacional.
+
+Exemplo ruim: `description: Use quando data-change-review é necessário para o pedido ativo`
+
+Exemplo bom: `description: Use quando uma Feature altera schema, contrato de API ou dados persistidos; migração, rollback ou privacidade precisam ser avaliados antes do PR`
+
 ## Valide
 
 Use `../checklists/skill-quality-checklist.md`.

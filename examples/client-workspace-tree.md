@@ -7,8 +7,6 @@ Do not edit `examples/client-workspace/` manually. Run `npm run generate:client-
 ```text
 client-workspace/
 |-- .github/
-|   |-- agents/
-|   |   `-- leanos-chief.agent.md
 |   |-- ISSUE_TEMPLATE/
 |   |   |-- bug.yml
 |   |   |-- epic.yml
@@ -29,9 +27,6 @@ client-workspace/
 |   |   |-- setup-guide.md
 |   |   |-- sync-state.yaml
 |   |   `-- work-mapping.md
-|   |-- prompts/
-|   |   |-- leanos-init.prompt.md
-|   |   `-- start-leanos.prompt.md
 |   |-- workflows/
 |   |   `-- pr-validation.yml
 |   |-- copilot-instructions.md
@@ -66,12 +61,12 @@ client-workspace/
 |   |   |   |-- routing-map.yaml
 |   |   |   |-- skills.yaml
 |   |   |   `-- workflows.yaml
-|   |   |-- traces/
-|   |   |   |-- README.md
-|   |   |   |-- trace-index.yaml
-|   |   |   `-- trace-template.md
-|   |   `-- vscode/
-|   |       `-- README.md
+|   |   |-- scratch/
+|   |   |   `-- README.md
+|   |   `-- traces/
+|   |       |-- README.md
+|   |       |-- trace-index.yaml
+|   |       `-- trace-template.md
 |   |-- standard/
 |   |   |-- checklists/
 |   |   |   |-- agent-quality-checklist.md

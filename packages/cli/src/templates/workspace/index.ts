@@ -9,7 +9,6 @@ import { indexFiles } from "./renderers/indexes.js";
 import { createLeanOsYaml } from "./renderers/leanos-yaml.js";
 import { workspaceReadme } from "./renderers/root-readme.js";
 import { traceFiles } from "./renderers/traces.js";
-import { vscodeIntegrationFiles } from "./renderers/vscode.js";
 import { createWorkspacePaths, materializeWorkspaceFiles } from "./paths.js";
 
 export { getAllSubareas } from "./selectors.js";
@@ -30,8 +29,7 @@ export function createWorkspaceFiles(answers: WorkspaceAnswers): FileEntry[] {
     ...indexFiles(activeAreas, activeRoots, answers),
     ...rootDepartmentFiles(answers, activeAreas, activeRoots),
     ...contextFiles(answers, activeAreas, activeRoots),
-    ...githubFiles(answers, activeAreas),
-    ...vscodeIntegrationFiles(answers)
+    ...githubFiles(answers, activeAreas)
   ];
 
   return materializeWorkspaceFiles(logicalFiles, paths);

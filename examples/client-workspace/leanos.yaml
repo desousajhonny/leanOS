@@ -171,8 +171,8 @@ runtime:
   agent: .leanos/runtime/agent
   context: .leanos/runtime/context
   index: .leanos/runtime/index
+  scratch: .leanos/runtime/scratch
   traces: .leanos/runtime/traces
-  vscode: .leanos/runtime/vscode
 github:
   status: pending_user_token
   project_management: prepared

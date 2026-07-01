@@ -8,7 +8,7 @@ export type WorkspacePaths = {
 };
 
 const rootDepartments = new Set(["strategy", "operations", "growth"]);
-const runtimeFolders = new Set(["agent", "context", "index", "traces", "vscode"]);
+const runtimeFolders = new Set(["agent", "context", "index", "scratch", "traces"]);
 
 export function createWorkspacePaths(answers: WorkspaceAnswers): WorkspacePaths {
   return {

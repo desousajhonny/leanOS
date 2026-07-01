@@ -16,6 +16,10 @@ build/
 # Vercel local project metadata
 .vercel/
 
+# LeanOS local scratch artifacts
+.leanos/runtime/scratch/*
+!.leanos/runtime/scratch/README.md
+
 # Logs and OS files
 *.log
 .DS_Store
@@ -78,6 +82,7 @@ export function prValidationRules(): string {
 - Relevant Product, Design, Engineering and Security criteria.
 - Evidência de testes ou validação manual.
 - Founder Testing Guide from the PR description.
+- Temporary Artifact Sweep.
 
 ## Review Dimensions
 
@@ -88,6 +93,7 @@ export function prValidationRules(): string {
 - Design: required only when user-facing UX changed.
 - Security: required when data, auth, permissions, privacy, abuse or compliance is involved.
 - Tests: are automated or manual checks sufficient?
+- Workspace hygiene: no temporary scripts, probes or scratch files should remain in the PR.
 - LeanOS coherence: does it contradict source-of-truth files?
 
 ## Decision
@@ -95,6 +101,7 @@ export function prValidationRules(): string {
 - Approve only when acceptance criteria are addressed, risks are clear and the Founder Testing Guide is usable.
 - Request changes for bugs, missing tests, scope drift or security/design gaps.
 - Request changes when the PR cannot be tested by the founder from the provided steps or preview/local route instructions.
+- Request changes when debug-*, temp-*, scratch-*, check-* or verify-* scripts remain without owner, purpose, documentation and official command.
 - Mark "blocked by missing context" when issue, MVP or criteria are unclear.
 `;
 }

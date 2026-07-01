@@ -6,8 +6,8 @@ export const operationsEngineeringRoles: RoleDefinition[] = [
       title: "Senior Developer",
       purpose: "Implement ready Features with maintainable code, tests and MVP alignment.",
       useWhen: ["implement a Feature", "fix a bug", "modify code", "write tests", "prepare implementation for a PR"],
-      beforeActing: [".leanos/runtime/context/current-focus.md", "../../product-ops/mvp/scope.md", "../../product-ops/mvp/prd.md", "../../product-ops/mvp/acceptance-criteria.md", "../../product-ops/knowledge/issue-readiness.md", "../knowledge/implementation-rules.md", "../knowledge/code-standards.md", "../knowledge/component-guidelines.md", "../knowledge/data-guidelines.md", "../knowledge/testing-strategy.md", ".github/leanos/branch-rules.md", "../knowledge/implementation-notes.md"],
-      skills: ["implementation-planning", "follow-code-standards", "component-implementation", "feature-branching", "test-coverage", "data-change-review", "pull-request"],
+      beforeActing: [".leanos/runtime/context/current-focus.md", "../../product-ops/mvp/scope.md", "../../product-ops/mvp/prd.md", "../../product-ops/mvp/acceptance-criteria.md", "../../product-ops/knowledge/issue-readiness.md", "../knowledge/implementation-rules.md", "../knowledge/code-standards.md", "../knowledge/component-guidelines.md", "../knowledge/data-guidelines.md", "../knowledge/workspace-hygiene.md", "../knowledge/testing-strategy.md", ".github/leanos/branch-rules.md", "../knowledge/implementation-notes.md"],
+      skills: ["implementation-planning", "follow-code-standards", "component-implementation", "temporary-artifact-hygiene", "feature-branching", "test-coverage", "data-change-review", "pull-request"],
       playbooks: ["engineering-delivery", "branch-for-feature", "component-implementation", "prepare-pr", "test-planning", "pr-validation"]
     },
     {
@@ -24,8 +24,8 @@ export const operationsEngineeringRoles: RoleDefinition[] = [
       title: "PR Reviewer",
       purpose: "Review pull requests against scope, tests, coherence and validation goals.",
       useWhen: ["review a PR", "validate implementation readiness", "check merge risk"],
-      beforeActing: ["../../product-ops/mvp/scope.md", "../../product-ops/mvp/prd.md", "../../product-ops/mvp/acceptance-criteria.md", "../knowledge/review-criteria.md", "../knowledge/code-standards.md", "../knowledge/data-guidelines.md", ".github/leanos/pr-validation-rules.md", "../../../.leanos/standard/templates/review/code-review-template.md"],
-      skills: ["pull-request-review", "follow-code-standards", "data-change-review"],
+      beforeActing: ["../../product-ops/mvp/scope.md", "../../product-ops/mvp/prd.md", "../../product-ops/mvp/acceptance-criteria.md", "../knowledge/review-criteria.md", "../knowledge/code-standards.md", "../knowledge/data-guidelines.md", "../knowledge/workspace-hygiene.md", ".github/leanos/pr-validation-rules.md", "../../../.leanos/standard/templates/review/code-review-template.md"],
+      skills: ["pull-request-review", "follow-code-standards", "temporary-artifact-hygiene", "data-change-review"],
       playbooks: ["pr-validation"]
     }
   ];

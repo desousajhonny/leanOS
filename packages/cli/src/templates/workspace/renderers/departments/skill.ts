@@ -15,7 +15,7 @@ ${skill.purpose}
 
 ## Use Quando
 
-${(skill.useWhen ?? ["Use quando esta capacidade for necessária para o pedido ativo."]).map((item) => `- ${item}`).join("\n")}
+${skill.useWhen.map((item) => `- ${item}`).join("\n")}
 
 ## Contexto Obrigatório
 
@@ -87,8 +87,7 @@ ${stringifyYaml({
 }
 
 function skillDescription(skill: SkillDefinition): string {
-  const triggers = skill.useWhen?.length ? skill.useWhen.join("; ") : `${skill.title.toLowerCase()} é necessário para o pedido ativo`;
-  return `Use quando ${triggers}`;
+  return `Use quando ${skill.useWhen.join("; ")}`;
 }
 
 function renderSkillProcess(steps: string[]): string {

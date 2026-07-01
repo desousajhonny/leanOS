@@ -52,6 +52,7 @@ import {
   assertAiStandardTemplates,
   assertNoOldAiStandardReferences
 } from "../ai-standard.mjs";
+import { assertEngineeringWorkspaceHygiene } from "./operations-engineering-hygiene.mjs";
 
 export async function assertDesignFoundation(rootDir) {
   const designReadme = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "design", "README.md"), "utf8");
@@ -246,6 +247,7 @@ export async function assertEngineeringAreaPattern(rootDir) {
   assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "implementation-notes.md")), false, "Engineering notes should move into knowledge/");
   assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "code-review-notes.md")), false, "Code review notes should move into knowledge/");
   assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "pr-log.md")), false, "PR log should move into knowledge/");
+  await assertEngineeringWorkspaceHygiene(rootDir);
 
   assert(engineeringReadme.includes("comece em `AGENT.md`"), "Engineering README should route operational work through AGENT.md");
   assert(engineeringReadme.includes("Read the approved Design component spec before implementing a new reusable component"), "Engineering README should require Design component spec before component work");
@@ -608,6 +610,8 @@ export async function assertSecurityAreaPattern(rootDir) {
     "outdated dependencies with CVEs",
     "prompt injection via issues, PRs, docs or logs",
     "unsafe shell commands",
+    "temporary scripts or scratch files",
+    "debug-*, temp-*, scratch-*, check-* or verify-*",
     "out-of-scope file edits",
     "test deletion or fabricated tests",
     "secrets/context leakage",
@@ -615,6 +619,7 @@ export async function assertSecurityAreaPattern(rootDir) {
     "broad MCP/tool permissions"
   ]) {
     assert(aiGeneratedCodeSecurity.includes(aiRisk), `AI generated code security skill should cover ${aiRisk}`);
+    assert(aiGeneratedReview.includes(aiRisk), `AI generated code security review playbook should cover ${aiRisk}`);
   }
 
   for (const aiAppRisk of [

@@ -144,8 +144,8 @@ export function createLeanOsYaml(answers: WorkspaceAnswers, activeAreas: AreaDef
       agent: runtimePath("agent", paths),
       context: runtimePath("context", paths),
       index: runtimePath("index", paths),
-      traces: runtimePath("traces", paths),
-      vscode: runtimePath("vscode", paths)
+      scratch: runtimePath("scratch", paths),
+      traces: runtimePath("traces", paths)
     },
     github: {
       status: answers.prepareGithubManagement ? "pending_user_token" : "not_configured",

@@ -1,6 +1,6 @@
 ---
 name: mvp-validation-scope
-description: Use quando escopo de validação do mvp é necessário para o pedido ativo
+description: Use quando Strategy Baseline foi confirmada e o founder quer definir o menor MVP validável; a ideia já tem problema, ICP e proposta de valor suficientes para escolher uma tese de validação; o próximo passo precisa separar MVP slice, partes manuais, sinais de sucesso e sinais de pivot antes de Product Ops
 ---
 
 # Escopo de Validação do MVP
@@ -11,7 +11,9 @@ Transformar uma Strategy Baseline confirmada no menor escopo de validação do M
 
 ## Use Quando
 
-- Use quando esta sequência de execução corresponder ao pedido ativo.
+- Strategy Baseline foi confirmada e o founder quer definir o menor MVP validável
+- a ideia já tem problema, ICP e proposta de valor suficientes para escolher uma tese de validação
+- o próximo passo precisa separar MVP slice, partes manuais, sinais de sucesso e sinais de pivot antes de Product Ops
 
 ## Antes de Agir
 

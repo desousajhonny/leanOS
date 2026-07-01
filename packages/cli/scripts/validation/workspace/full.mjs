@@ -75,7 +75,7 @@ import {
   assertFounderIntentRouting,
   assertGitHubIssuePrWorkflow,
   assertGitHubReadiness,
-  assertVsCodeIntegration
+  assertNoEditorAgentIntegration
 } from "./integrations.mjs";
 export async function validateWorkspaceFiles() {
   const files = createWorkspaceFiles(answers);
@@ -153,6 +153,7 @@ export async function validateWorkspaceFiles() {
     ".leanos/index/areas.yaml",
     ".leanos/index/routing-map.yaml",
     ".leanos/agent/protocols/chief-trace.md",
+    ".leanos/scratch/README.md",
     ".leanos/traces/README.md",
     ".leanos/traces/trace-index.yaml",
     ".leanos/traces/trace-template.md",
@@ -245,6 +246,7 @@ export async function validateWorkspaceFiles() {
     "operations/engineering/knowledge/implementation-rules.md",
     "operations/engineering/knowledge/component-guidelines.md",
     "operations/engineering/knowledge/data-guidelines.md",
+    "operations/engineering/knowledge/workspace-hygiene.md",
     "operations/engineering/knowledge/testing-strategy.md",
     "operations/engineering/knowledge/review-criteria.md",
     "operations/engineering/knowledge/implementation-notes.md",
@@ -253,6 +255,7 @@ export async function validateWorkspaceFiles() {
     "operations/engineering/roles/test-engineer.role.md",
     "operations/engineering/skills/follow-code-standards/SKILL.md",
     "operations/engineering/skills/component-implementation/SKILL.md",
+    "operations/engineering/skills/temporary-artifact-hygiene/SKILL.md",
     "operations/engineering/skills/data-change-review/SKILL.md",
     "operations/engineering/playbooks/engineering-delivery.playbook.md",
     "operations/engineering/playbooks/prepare-pr.playbook.md",
@@ -366,11 +369,7 @@ export async function validateWorkspaceFiles() {
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/leanos/branch-rules.md",
     ".github/leanos/pr-validation-rules.md",
-    ".github/leanos/security-automation.md",
-    ".github/agents/leanos-chief.agent.md",
-    ".github/prompts/start-leanos.prompt.md",
-    ".github/prompts/leanos-init.prompt.md",
-    ".leanos/vscode/README.md"
+    ".github/leanos/security-automation.md"
   ];
 
   for (const expectedPath of expectedWorkspacePaths.filter(isInitialStrategyWorkspacePath)) {
@@ -447,6 +446,10 @@ export async function validateWorkspaceFiles() {
     "operations/design/skills/map-user-flow/SKILL.md",
     "operations/design/skills/create-screen-spec/SKILL.md",
     "operations/design/skills/define-ux-states/SKILL.md",
+    ".github/agents",
+    ".github/prompts",
+    ".leanos/vscode",
+    ".leanos/runtime/vscode",
     ".leanos/workflows/README.md",
     ".leanos/workflows/idea-to-roadmap.workflow.md",
     ".leanos/workflows/roadmap-to-github-project.workflow.md",
@@ -538,6 +541,7 @@ export async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, ".leanos", "standard", "foundation", "creation-rules.md"));
   await assertExists(join(rootDir, ".leanos", "standard", "foundation", "quality-criteria.md"));
   await assertExists(join(rootDir, ".leanos", "standard", "foundation", "folder-documentation-rules.md"));
+  await assertExists(join(rootDir, ".leanos", "runtime", "scratch", "README.md"));
   await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "AGENT.md"));
   assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "operations")), false, "Operations should not be generated during initial Strategy-only setup");
   assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "growth")), false, "Growth should not be generated during initial Strategy-only setup");
@@ -567,16 +571,12 @@ export async function validateWorkspaceFiles() {
   await assertExists(join(rootDir, "clinic-assistant-ai-os", "strategy", "product", "skills", "mvp-validation-scope/SKILL.md"));
   assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "skills", "prepare-roadmap-sync/SKILL.md")), false, "Strategy Roadmap should not own GitHub sync skills");
   assert.equal(await exists(join(rootDir, "clinic-assistant-ai-os", "strategy", "roadmap", "playbooks", "roadmap-sync-prep.playbook.md")), false, "Strategy Roadmap should not own GitHub sync playbooks");
-  await assertExists(join(rootDir, ".github", "agents", "leanos-chief.agent.md"));
   await assertExists(join(rootDir, ".github", "leanos", "github-settings.example.json"));
   await assertExists(join(rootDir, ".github", "leanos", "work-mapping.md"));
   await assertExists(join(rootDir, ".github", "leanos", "project-sync.yaml"));
   await assertExists(join(rootDir, ".github", "leanos", "sync-state.yaml"));
   await assertExists(join(rootDir, ".github", "leanos", "security-automation.md"));
-  await assertExists(join(rootDir, ".github", "prompts", "start-leanos.prompt.md"));
-  await assertExists(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"));
   assert.equal(await exists(join(rootDir, ".leanos", "commands")), false, "Generated workspaces should not use slash-command files as an interface");
-  await assertExists(join(rootDir, ".leanos", "runtime", "vscode", "README.md"));
   assert.equal(await exists(join(rootDir, ".leanos", "workflows")), false, "Business workflows should not be generated under .leanos/workflows");
 
   assert(result.createdGroups.includes(".leanos/standard/"), "Expected created groups to mention AI Standard under .leanos");
@@ -584,7 +584,7 @@ export async function validateWorkspaceFiles() {
   assert.equal(result.createdGroups.some((group) => group === "operations/" || group === "growth/"), false, "Initial setup should not mention root Operations or Growth as created");
   assert(result.createdGroups.includes(".github/leanos"), "Expected created groups to mention GitHub LeanOS support files");
 
-  await assertVsCodeIntegration(rootDir);
+  await assertNoEditorAgentIntegration(rootDir);
   await assertFounderIntentRouting(rootDir);
   await assertBusinessAreaPattern(rootDir);
   await assertProductAreaPattern(rootDir);
@@ -690,6 +690,7 @@ export async function validateWorkspaceFiles() {
   assert.equal(yaml.paths.strategy, "clinic-assistant-ai-os/strategy");
   assert.equal(yaml.paths.operations, "clinic-assistant-ai-os/operations");
   assert.equal(yaml.paths.growth, "clinic-assistant-ai-os/growth");
+  assert.equal(yaml.runtime.scratch, ".leanos/runtime/scratch", "leanos.yaml should point runtime scratch to .leanos/runtime/scratch");
   assert.equal(yaml.agent.navigation_chain.doc, ".leanos/standard/foundation/navigation-chain.md");
   assert.equal(yaml.ai_standard.path, ".leanos/standard/README.md");
   assert.equal(yaml.ai_standard.foundation, ".leanos/standard/foundation");

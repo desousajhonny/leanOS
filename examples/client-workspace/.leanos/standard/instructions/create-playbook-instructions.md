@@ -27,6 +27,16 @@ Use quando criar um arquivo `.playbook.md` dentro de uma área.
 8. Defina critérios de aceite e saídas.
 9. Defina arquivos para atualizar.
 
+## Qualidade Semântica
+
+O LeanOS deve ser genérico no contexto de produto, mas específico na governança do trabalho.
+
+Descriptions não podem ser circulares, repetir o nome do playbook ou dizer apenas que o playbook "é necessário". A `description` e `## Use Quando` precisam conter 2 ou mais sinais concretos de ativação, como artefato pronto, etapa de delivery, lacuna bloqueante, decisão do founder, handoff entre áreas ou risco operacional.
+
+Exemplo ruim: `description: Use quando release operations é necessário para o pedido ativo`
+
+Exemplo bom: `description: Use quando uma release precisa consolidar escopo, validação, rollback e observabilidade; tag ou GitHub Release só podem ser preparados depois do gate de release aprovado`
+
 ## Valide
 
 Use `../checklists/playbook-quality-checklist.md`.

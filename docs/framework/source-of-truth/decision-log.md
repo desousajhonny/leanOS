@@ -322,7 +322,7 @@ Decisão:
 - O scaffold passa a separar a operação do produto da infraestrutura do LeanOS:
   - `<product-slug>-os/` contém `strategy/`, `operations/` e `growth/`;
   - `.leanos/standard/` contém templates, checklists, instructions, examples e foundation do framework;
-  - `.leanos/runtime/` contém `agent/`, `context/`, `index/`, `traces/` e `vscode/`.
+  - `.leanos/runtime/` contém `agent/`, `context/`, `index/` e `traces/`.
 - O setup progressivo continua criando Strategy como primeira superfície de negócio; Operations e Growth aparecem fisicamente quando ativados ou quando o modo avançado `all-at-once` é usado.
 - `leanos.yaml` passa a registrar `paths.business_os`, `paths.runtime`, `paths.standard_library`, `paths.strategy`, `paths.operations` e `paths.growth`.
 - A CLI passa a oferecer `lean-os update [--dry-run]` para migrar workspaces existentes para o layout atual.
@@ -777,3 +777,58 @@ Justificativa:
 - O framework precisa de critérios estáveis para avaliar se mudanças continuam seguindo Business as a Product, Strategy-first, Navigation Chain, source of truth local e founder-friendliness.
 - Sem playbooks internos, cada modelo poderia inventar critérios diferentes ao revisar Nav Chain, skills, handoffs ou alinhamento doutrinário.
 - A governança deve melhorar qualidade antes de commit/PR e também responder auditorias sob demanda, sem criar burocracia para o founder.
+
+## 2026-07-01 - Remoção De Integração VS Code/Copilot Gerada
+
+Decisão:
+
+- O scaffold não gera mais `.github/agents/`, `.github/prompts/`, `.leanos/runtime/vscode/` ou `.leanos/vscode/`.
+- O LeanOS não gera `.leanos/commands/` como interface operacional.
+- A interface principal permanece linguagem natural iniciada pelo `AGENT.md` raiz, `leanos.yaml`, contexto em `.leanos/runtime/` e `intent-map.yaml`.
+- `lean-os update` remove os arquivos legados conhecidos de VS Code/Copilot e o diretório antigo `.leanos/commands/`.
+
+Justificativa:
+
+- Integrações específicas de editor pareciam parte obrigatória do framework e aumentavam ruído no workspace do founder.
+- O LeanOS deve funcionar em qualquer ambiente de agente/tooling sem depender de um host específico.
+- Manter `AGENT.md` como ponto de entrada reduz duplicação de instruções e evita drift entre prompts, agentes e a Navigation Chain.
+
+## 2026-07-01 - Higiene De Artefatos Temporários
+
+Decisão:
+
+- O scaffold passa a gerar `.leanos/runtime/scratch/README.md` como área local ignorada pelo Git para scripts temporários, probes e rascunhos de diagnóstico.
+- `.gitignore` deve ignorar `.leanos/runtime/scratch/*` e manter apenas o README versionado.
+- Engineering passa a ter `operations/engineering/knowledge/workspace-hygiene.md` como fonte de verdade para higiene de workspace.
+- Engineering passa a ter a skill `temporary-artifact-hygiene` para classificar, remover ou justificar scripts temporários.
+- `engineering-delivery`, `prepare-pr`, `pr-validation`, `pull-request` e `pull-request-review` passam a exigir `Temporary Artifact Sweep`.
+- Security AI-generated code review deve verificar scripts temporários, scratch files e padrões `debug-*`, `temp-*`, `scratch-*`, `check-*` e `verify-*` quando agentes gerarem código.
+- Scripts permanentes novos só podem entrar em PR com owner, propósito, documentação, comando oficial, entradas, saídas, riscos e validação.
+
+Justificativa:
+
+- Projetos gerados por AI acumulam scripts descartáveis quando não existe um local explícito para scratch nem um gate antes de PR.
+- A limpeza precisa ser parte do fluxo de delivery, não uma recomendação opcional lembrada pelo modelo.
+- Scripts temporários podem tocar dados, secrets, APIs, banco ou filesystem amplo; por isso o sweep também é um ponto de roteamento para Security/DevOps quando houver risco.
+
+## 2026-07-01 - Qualidade Semântica De Gatilhos
+
+Decisão:
+
+- Skills e playbooks gerados pelo LeanOS devem ser genéricos no contexto de produto, mas específicos na governança do trabalho.
+- `description` deve começar com "Use quando" e conter 2 ou mais sinais concretos de ativação.
+- `## Use Quando` deve conter 2 ou mais sinais concretos de ativação.
+- Descriptions circulares ou genéricas são inválidas, incluindo padrões como:
+  - `<asset> é necessário para o pedido ativo`;
+  - `esta sequência de execução corresponder ao pedido ativo`;
+  - repetição do nome da skill ou playbook como gatilho.
+- O renderer de skills/playbooks não deve gerar fallback circular quando `useWhen` estiver ausente.
+- O contrato TypeScript passa a exigir `useWhen` para `SkillDefinition` e `PlaybookDefinition`.
+- Templates, instruções e checklists do AI Standard passam a explicar gatilho válido, exemplos bons/ruins e validação semântica.
+- O generator passa a validar automaticamente a qualidade semântica de descriptions e `Use Quando`.
+
+Justificativa:
+
+- O agente decide rota por gatilho; gatilhos circulares fazem o modelo depender de memória ou adivinhação.
+- Framework genérico não significa linguagem vaga. O produto pode ser desconhecido, mas a classe de trabalho precisa ser operacionalmente precisa.
+- A validação precisa barrar regressão no scaffold, não apenas orientar modelos em texto.

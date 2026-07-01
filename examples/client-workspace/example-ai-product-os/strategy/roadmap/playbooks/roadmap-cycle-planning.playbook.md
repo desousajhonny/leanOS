@@ -1,6 +1,6 @@
 ---
 name: roadmap-cycle-planning
-description: Use quando roadmap cycle planning é necessário para o pedido ativo
+description: Use quando o produto já opera com múltiplas prioridades e precisa escolher Now/Next/Later; o founder pede para sequenciar roadmap, backlog ou ciclo atual sem virar implementação imediata; sinais de cliente, validação ou restrições operacionais precisam mudar a ordem do roadmap
 ---
 
 # Roadmap Cycle Planning
@@ -11,7 +11,9 @@ Planeje o próximo ciclo coerente de roadmap a partir de estratégia de produto,
 
 ## Use Quando
 
-- Use quando esta sequência de execução corresponder ao pedido ativo.
+- o produto já opera com múltiplas prioridades e precisa escolher Now/Next/Later
+- o founder pede para sequenciar roadmap, backlog ou ciclo atual sem virar implementação imediata
+- sinais de cliente, validação ou restrições operacionais precisam mudar a ordem do roadmap
 
 ## Antes de Agir
 

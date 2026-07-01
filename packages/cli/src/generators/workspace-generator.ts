@@ -47,10 +47,7 @@ function createdGroupsFromFiles(paths: string[]): string[] {
       ".leanos/runtime/index",
       "-os/",
       ".github/",
-      ".github/leanos",
-      ".github/agents",
-      ".github/prompts",
-      ".leanos/runtime/vscode"
+      ".github/leanos"
     ].filter((group) => hasGeneratedGroup(paths, group));
 }
 

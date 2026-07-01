@@ -47,12 +47,20 @@ Engineering starts only after a Feature is ready for development or an explicit 
 - Não faça mudanças destrutivas de dados sem confirmação explícita e notas de rollback.
 - Não armazene nem exponha segredos, credenciais, tokens ou dados sensíveis de cliente.
 
+## Workspace Hygiene
+
+- Use \`workspace-hygiene.md\` and \`skills/temporary-artifact-hygiene/SKILL.md\` when scripts temporários, probes locais or debug files are created.
+- Use \`.leanos/runtime/scratch/\` for temporary scripts instead of repo root, \`src/\`, \`tests/\` or product folders.
+- Run a Temporary Artifact Sweep before PR preparation.
+- Não deixe \`debug-*\`, \`temp-*\`, \`scratch-*\`, \`check-*\`, \`verify-*\` or one-off scripts enter a PR without owner, purpose, documentation and official command.
+
 ## Done Criteria
 
 - Feature scope implemented or explicitly blocked.
 - Testes executados, evidência RED/GREEN capturada quando viável ou explicação de lacuna de teste escrita.
 - Design/Security/DevOps criteria are satisfied or marked not applicable with reasons.
 - PR preparation includes implementation summary, changed files, validation, risks and Founder Testing Guide.
+- Temporary Artifact Sweep completed and any permanent script justified.
 - PR validation runs before merge recommendation.
 
 ## Linhas Vermelhas
@@ -61,6 +69,7 @@ Engineering starts only after a Feature is ready for development or an explicit 
 - Não implemente UI inventando decisões de Design.
 - Não coloque responsabilidades não relacionadas em um arquivo grande quando limites modulares estiverem disponíveis.
 - Não confie em dados de usuário, tenant, role ou permissão enviados pelo cliente para decisões server-side.
+- Não recomende PR ou merge com scripts temporários acumulados.
 - Não recomende merge sem evidência de validação.
 
 ## Decisões

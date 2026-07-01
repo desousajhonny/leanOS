@@ -1,6 +1,6 @@
 ---
 name: idea-calibration
-description: Use quando idea calibration é necessário para o pedido ativo
+description: Use quando o founder traz uma ideia bruta, nova hipótese ou mudança de produto sem contexto suficiente; o estágio do negócio precisa ser lido antes de roadmap, MVP backlog ou implementação; uma ideia precisa ser separada em fatos, suposições, fit estratégico e próxima rota segura
 ---
 
 # Idea Calibration
@@ -11,7 +11,9 @@ Calibrate any founder idea against the current estágio de negócio, from first 
 
 ## Use Quando
 
-- Use quando esta sequência de execução corresponder ao pedido ativo.
+- o founder traz uma ideia bruta, nova hipótese ou mudança de produto sem contexto suficiente
+- o estágio do negócio precisa ser lido antes de roadmap, MVP backlog ou implementação
+- uma ideia precisa ser separada em fatos, suposições, fit estratégico e próxima rota segura
 
 ## Antes de Agir
 

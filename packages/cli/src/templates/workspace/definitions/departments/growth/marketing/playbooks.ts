@@ -5,6 +5,7 @@ export const growthMarketingPlaybooks: PlaybookDefinition[] = [
       slug: "mvp-launch",
       title: "MVP Launch",
       purpose: "Launch the MVP into a focused learning loop.",
+      useWhen: ["o MVP passou por ready-for-launch e precisa de plano de lançamento ou primeira campanha", "landing page, mensagem, canal ou CTA precisam ser preparados para aprendizado de mercado", "Growth precisa conectar lançamento, experimento, feedback de CX e próximos sinais de validação"],
       inputs: ["Product positioning", "Copy de landing page", "Canais de aquisição", "Objetivo de lançamento", "Customer feedback plan"],
       steps: ["Leia o AGENT de Marketing e escolha Growth Lead", "Use `skills/positioning/SKILL.md` se o posicionamento estiver pouco claro", "Se a landing page mostrar plano ou preço, leia `../finance/knowledge/pricing.md` antes de escrever oferta, tabela ou CTA", "Use `skills/landing-page-copy/SKILL.md` para preparar copy de lançamento", "Use `skills/launch-plan/SKILL.md` para escolher canais e métricas de aprendizado", "Use `playbooks/growth-experiment.playbook.md` quando o lançamento precisar de hipótese, métrica, input manual ou análise de resultado", "Roteie design visual para Operations Design quando necessário", "Roteie implicações de orçamento/pricing para Growth Finance quando necessário", "Planeje como Customer Experience capturará feedback"],
       outputs: ["Plano de lançamento", "Copy de landing page", "Acquisition experiment", "Learning loop", "Open risks"],

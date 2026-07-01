@@ -211,6 +211,7 @@ export async function assertAiStandardTemplates(rootDir) {
   const productReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "product", "README.md"), "utf8");
   const reviewReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "review", "README.md"), "utf8");
   const playbookTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "execution", "playbook-template.md"), "utf8");
+  const skillTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "execution", "skill-template.md"), "utf8");
   const componentSpecTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "design", "component-spec-template.md"), "utf8");
 
   assert(templatesReadme.includes("agents/"), "Templates README should route to agents");
@@ -229,6 +230,12 @@ export async function assertAiStandardTemplates(rootDir) {
   assert(executionReadme.includes("workflow-template.md"), "Execution templates README should list workflow template");
   assert(playbookTemplate.includes("## Conversa Guiada"), "Playbook template should include guided conversation section");
   assert(playbookTemplate.includes(".leanos/standard/foundation/guided-conversation.md"), "Playbook template should point to guided conversation foundation");
+  assert(skillTemplate.includes("Gatilho válido"), "Skill template should explain valid trigger semantics");
+  assert(skillTemplate.includes("Exemplo ruim"), "Skill template should include bad trigger examples");
+  assert(skillTemplate.includes("Exemplo bom"), "Skill template should include good trigger examples");
+  assert(playbookTemplate.includes("Gatilho válido"), "Playbook template should explain valid trigger semantics");
+  assert(playbookTemplate.includes("Exemplo ruim"), "Playbook template should include bad trigger examples");
+  assert(playbookTemplate.includes("Exemplo bom"), "Playbook template should include good trigger examples");
   assert(githubReadme.includes("github-epic-template.md"), "GitHub templates README should list epic template");
   assert(githubReadme.includes("github-feature-template.md"), "GitHub templates README should list feature template");
   assert(githubReadme.includes("pull-request-template.md"), "GitHub templates README should list PR template");
@@ -267,8 +274,12 @@ export async function assertAiStandardChecklists(rootDir) {
   assert(roleChecklist.includes("aponta para skills relevantes"), "Role checklist should require skill pointers");
   assert(skillChecklist.includes("uma capacidade reutilizável"), "Skill checklist should validate reusable capability");
   assert(skillChecklist.includes("não se torna uma sequência completa de processo"), "Skill checklist should avoid playbook duplication");
+  assert(skillChecklist.includes("não é circular"), "Skill checklist should reject circular descriptions");
+  assert(skillChecklist.includes("2 ou mais sinais concretos de ativação"), "Skill checklist should require concrete activation signals");
   assert(playbookChecklist.includes("sequência ordenada de execução"), "Playbook checklist should validate sequencing");
   assert(playbookChecklist.includes("usa skills em vez de duplicar todo o conteúdo delas"), "Playbook checklist should avoid skill duplication");
+  assert(playbookChecklist.includes("não é circular"), "Playbook checklist should reject circular descriptions");
+  assert(playbookChecklist.includes("2 ou mais sinais concretos de ativação"), "Playbook checklist should require concrete activation signals");
   assert(playbookChecklist.includes("## Conversa Guiada"), "Playbook checklist should include guided conversation criteria");
   assert(playbookChecklist.includes("opções numeradas"), "Playbook checklist should validate guided numbered options");
   assert(workflowChecklist.includes("não vive em `.leanos/workflows/`"), "Workflow checklist should keep workflows local to departments or areas");
@@ -330,6 +341,8 @@ export async function assertAiStandardInstructions(rootDir) {
   assert(contents["create-skill"].includes("../checklists/skill-quality-checklist.md"), "Create skill instructions should point to skill checklist");
   assert(contents["create-skill"].includes("Defina uma capacidade reutilizável"), "Create skill instructions should define reusable capability");
   assert(contents["create-skill"].includes("Evite transformar a skill em um processo ordenado completo"), "Create skill instructions should avoid playbook duplication");
+  assert(contents["create-skill"].includes("Descriptions não podem ser circulares"), "Create skill instructions should reject circular descriptions");
+  assert(contents["create-skill"].includes("2 ou mais sinais concretos de ativação"), "Create skill instructions should require concrete activation signals");
 
   assert(contents["create-playbook"].includes("../templates/execution/playbook-template.md"), "Create playbook instructions should point to playbook template");
   assert(contents["create-playbook"].includes("../foundation/guided-conversation.md"), "Create playbook instructions should point to guided conversation foundation when needed");
@@ -337,6 +350,8 @@ export async function assertAiStandardInstructions(rootDir) {
   assert(contents["create-playbook"].includes("Referencie skills em vez de duplicá-las"), "Create playbook instructions should reference skills");
   assert(contents["create-playbook"].includes("Conversa Guiada"), "Create playbook instructions should require guided conversation when founder input is needed");
   assert(contents["create-playbook"].includes("Não duplique um workflow"), "Create playbook instructions should avoid workflow duplication");
+  assert(contents["create-playbook"].includes("Descriptions não podem ser circulares"), "Create playbook instructions should reject circular descriptions");
+  assert(contents["create-playbook"].includes("2 ou mais sinais concretos de ativação"), "Create playbook instructions should require concrete activation signals");
 
   assert(contents["create-workflow"].includes("../templates/execution/workflow-template.md"), "Create workflow instructions should point to workflow template");
   assert(contents["create-workflow"].includes("../checklists/workflow-quality-checklist.md"), "Create workflow instructions should point to workflow checklist");

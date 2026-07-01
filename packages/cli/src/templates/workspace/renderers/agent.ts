@@ -177,7 +177,7 @@ ${routingLines.join("\n\n")}
 
 ## LeanOS Runtime
 
-\`${paths.runtimeRoot}/\` contém arquivos de runtime para contexto, índices, traces locais e integração com VS Code.
+\`${paths.runtimeRoot}/\` contém arquivos de runtime para contexto, índices e traces locais.
 \`.leanos/\` não possui workflows de negócio. Workflows operacionais vivem no OS do produto, como \`${departmentPath("operations", paths)}/workflows/\`.
 
 \`${paths.standardRoot}/\` é o roteador de padrões do framework para criar, alterar, revisar ou validar assets LeanOS.
@@ -214,7 +214,7 @@ export function leanosRuntimeFiles(answers: WorkspaceAnswers): FileEntry[] {
   const runtimeRoot = paths.runtimeRoot;
 
   return [
-    { path: ".leanos/README.md", content: folderReadme("LeanOS", "Shell local do LeanOS.", "Use para localizar runtime, standard library e arquivos internos do agente.", "runtime/context/current-focus.md", ["runtime/context/", "runtime/index/", "runtime/traces/", "standard/"], ["../AGENT.md", `../${paths.businessOsRoot}/`], `Runtime vive em \`${runtimeRoot}/\`. Padrões do framework vivem em \`${standardRoot}/\`. Workflows de negócio vivem no OS do produto. Traces são diagnósticos locais, não telemetria.`) },
+    { path: ".leanos/README.md", content: folderReadme("LeanOS", "Shell local do LeanOS.", "Use para localizar runtime, standard library e arquivos internos do agente.", "runtime/context/current-focus.md", ["runtime/context/", "runtime/index/", "runtime/scratch/", "runtime/traces/", "standard/"], ["../AGENT.md", `../${paths.businessOsRoot}/`], `Runtime vive em \`${runtimeRoot}/\`. Padrões do framework vivem em \`${standardRoot}/\`. Workflows de negócio vivem no OS do produto. Traces são diagnósticos locais, não telemetria. Scratch é local e ignorado pelo Git para scripts temporários.`) },
     { path: ".leanos/agent/README.md", content: folderReadme("Agente", "Orientação operacional do Chief Agent.", "Use ao definir como o LeanOS Chief carrega contexto, ativa rotas e formata saída.", "chief-agent.md", ["chief-agent.md", "operating-rules.md", "context-loading.md", "role-activation.md", "output-standards.md", "protocols/"], ["../../standard/", "../context/", "../index/"], "Mantenha esta pasta concisa. Roteie trabalho de produto para o OS do produto. Protocolos são procedimentos internos do agente, não workflows de produto.") },
     { path: ".leanos/agent/chief-agent.md", content: "# Chief Agent\n\nO LeanOS Chief é o bootloader e dispatcher do workspace.\n\nEle deve carregar AGENT.md, leanos.yaml, arquivos de contexto e o mapa de roteamento antes de agir.\n" },
     { path: ".leanos/agent/operating-rules.md", content: `# Regras Operacionais
@@ -241,6 +241,7 @@ export function leanosRuntimeFiles(answers: WorkspaceAnswers): FileEntry[] {
     { path: ".leanos/agent/role-activation.md", content: "# Ativação de Papel\n\nRoles vivem dentro de áreas ativas do workspace.\n\nNão ative um papel de uma área inativa ou ausente sem perguntar ao usuário.\n" },
     { path: ".leanos/agent/output-standards.md", content: "# Padrões de Saída\n\nToda saída deve incluir:\n\n- O que foi carregado\n- Decisão ou resultado\n- Arquivos para atualizar, se houver\n- Próxima rota recomendada\n" },
     { path: ".leanos/agent/protocols/README.md", content: folderReadme("Protocolos de Agente", "Procedimentos internos do LeanOS Chief para status de sessão, apoio de roteamento, diagnóstico de readiness e trace local.", "Use quando o usuário fizer uma pergunta meta sobre o workspace em vez de pedir execução de um workflow de produto.", "where-we-are.md", ["where-we-are.md", "chief-trace.md"], ["../", "../../context/", "../../index/", "../../traces/"], "Protocolos não possuem decisões de produto. Eles inspecionam fontes existentes, registram diagnósticos seguros quando solicitado e recomendam a próxima rota segura.") },
+    { path: ".leanos/scratch/README.md", content: "# Scratch Runtime\n\nUse esta pasta para scripts temporários, probes locais e rascunhos de diagnóstico criados por agentes durante uma sessão.\n\nRegras:\n\n- Arquivos aqui são locais e ignorados pelo Git.\n- Não coloque segredos, tokens, dados de cliente ou exports sensíveis aqui.\n- Remova arquivos temporários quando terminarem de cumprir sua função.\n- Se um script virar permanente, mova para um local versionado apropriado somente depois de dar owner, propósito, documentação e comando oficial.\n" },
     { path: ".leanos/agent/protocols/where-we-are.md", content: whereWeAreProtocol(answers) },
     { path: ".leanos/agent/protocols/chief-trace.md", content: chiefTraceProtocol() }
   ];

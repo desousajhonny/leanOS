@@ -3,8 +3,7 @@ import { stringifyYaml } from "../../../../utils/yaml.js";
 import { guidedConversationSection } from "./sections.js";
 
 function playbookDescription(playbook: PlaybookDefinition): string {
-  const triggers = playbook.useWhen?.length ? playbook.useWhen.join("; ") : `${playbook.title.toLowerCase()} é necessário para o pedido ativo`;
-  return `Use quando ${triggers}`;
+  return `Use quando ${playbook.useWhen.join("; ")}`;
 }
 
 function playbookFrontmatter(playbook: PlaybookDefinition): string {
@@ -33,7 +32,7 @@ ${playbook.purpose}
 
 ## Use Quando
 
-${(playbook.useWhen ?? ["Use quando esta sequência de execução corresponder ao pedido ativo."]).map((item) => `- ${item}`).join("\n")}
+${playbook.useWhen.map((item) => `- ${item}`).join("\n")}
 
 ## Antes de Agir
 

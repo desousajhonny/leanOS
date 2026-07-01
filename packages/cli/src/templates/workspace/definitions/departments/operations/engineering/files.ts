@@ -8,8 +8,9 @@ import { engineeringImplementationRulesKnowledge } from "./knowledge/engineering
 import { engineeringPrLogKnowledge } from "./knowledge/engineering-pr-log.js";
 import { engineeringReviewCriteriaKnowledge } from "./knowledge/engineering-review-criteria.js";
 import { engineeringTestingStrategyKnowledge } from "./knowledge/engineering-testing-strategy.js";
+import { engineeringWorkspaceHygieneKnowledge } from "./knowledge/engineering-workspace-hygiene.js";
 
-export const operationsEngineeringSourceOfTruth = ["knowledge/code-standards.md", "knowledge/implementation-rules.md", "knowledge/component-guidelines.md", "knowledge/data-guidelines.md", "knowledge/testing-strategy.md", "knowledge/review-criteria.md", "knowledge/implementation-notes.md", "knowledge/code-review-notes.md", "knowledge/pr-log.md"];
+export const operationsEngineeringSourceOfTruth = ["knowledge/code-standards.md", "knowledge/implementation-rules.md", "knowledge/component-guidelines.md", "knowledge/data-guidelines.md", "knowledge/workspace-hygiene.md", "knowledge/testing-strategy.md", "knowledge/review-criteria.md", "knowledge/implementation-notes.md", "knowledge/code-review-notes.md", "knowledge/pr-log.md"];
 
 function engineeringKnowledgeReadme(): string {
   return `# Engineering Knowledge
@@ -28,6 +29,7 @@ Use this folder before planning code changes, branch work, tests, PRs or reviews
 - \`implementation-rules.md\`: required process before and during implementation, including branch, scope, Design, Security, Data and done criteria.
 - \`component-guidelines.md\`: durable rules for component creation, reuse, ownership, accessibility and Design dependency.
 - \`data-guidelines.md\`: durable rules for API, persistence, schema, migration, validation, sensitive data and rollback work.
+- \`workspace-hygiene.md\`: regras para scripts temporários, scratch local, sweep antes de PR e promoção de scripts permanentes.
 - \`testing-strategy.md\`: orientação durável para testes unitários, integração, e2e, validação manual, cobertura de regressão e lacunas de teste.
 - \`review-criteria.md\`: durable criteria for Engineering review and merge recommendation.
 - \`implementation-notes.md\`: active or Feature-specific engineering notes; promote only durable repeated lessons into the framework rule files.
@@ -54,6 +56,7 @@ export const operationsEngineeringFiles: AreaFileDefinition[] = [
     { path: "knowledge/implementation-rules.md", content: engineeringImplementationRulesKnowledge },
     { path: "knowledge/component-guidelines.md", content: engineeringComponentGuidelinesKnowledge },
     { path: "knowledge/data-guidelines.md", content: engineeringDataGuidelinesKnowledge },
+    { path: "knowledge/workspace-hygiene.md", content: engineeringWorkspaceHygieneKnowledge },
     { path: "knowledge/testing-strategy.md", content: engineeringTestingStrategyKnowledge },
     { path: "knowledge/review-criteria.md", content: engineeringReviewCriteriaKnowledge },
     { path: "knowledge/implementation-notes.md", content: engineeringImplementationNotesKnowledge },

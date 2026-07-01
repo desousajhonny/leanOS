@@ -54,9 +54,9 @@ Ainda não há app ou código de produto para rodar localmente. Depois que uma F
 
 ## Estrutura
 
-- `.github/` Arquivos de integração com VS Code e GitHub.
+- `.github/` arquivos de integração com GitHub.
 - `.leanos/` shell local do LeanOS.
-- `.leanos/runtime/` contexto, índices, traces e integração local.
+- `.leanos/runtime/` contexto, índices e traces locais.
 - `.leanos/standard/` templates, checklists e instruções para criar assets LeanOS.
 - `example-ai-product-os/` sistema operacional de negócio do produto.
 - `example-ai-product-os/strategy/` Strategy departamento.
@@ -85,7 +85,7 @@ Strategy Product -> Product Narrative Editor -> product-readme
 
 ## Próximo Passo Para O Founder
 
-Abra o Copilot Chat, selecione `LeanOS Chief`, e peça:
+Abra o chat/agente de AI que você usa neste repositório e peça:
 
 ```text
 Quero iniciar o LeanOS.

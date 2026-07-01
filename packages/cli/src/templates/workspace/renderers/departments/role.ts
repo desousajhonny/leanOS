@@ -2,8 +2,7 @@ import type { AreaDefinition, RoleDefinition } from "../../types.js";
 import { stringifyYaml } from "../../../../utils/yaml.js";
 
 function roleDescription(role: RoleDefinition): string {
-  const triggers = role.useWhen?.length ? role.useWhen.join("; ") : `${role.title.toLowerCase()} é necessário para o pedido ativo`;
-  return `Use quando ${triggers}`;
+  return `Use quando ${role.useWhen.join("; ")}`;
 }
 
 function roleFrontmatter(role: RoleDefinition): string {

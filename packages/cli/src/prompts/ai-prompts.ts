@@ -151,7 +151,7 @@ export async function runAiPrompts(): Promise<AiPromptResult> {
     [
       `Pasta: ${ui.path(process.cwd())}`,
       `Entrypoints: ${ui.path("AGENT.md")}, ${ui.path("leanos.yaml")}, ${ui.path(".leanos/")}`,
-      "Depois do setup, continue no chat pedindo ao LeanOS Chief para iniciar ou continuar."
+      "Depois do setup, continue no chat/agente de AI pedindo para iniciar ou continuar."
     ].join("\n"),
     stepLabel(2, 3, "Estrutura")
   );

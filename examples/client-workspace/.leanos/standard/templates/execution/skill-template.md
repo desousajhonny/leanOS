@@ -9,11 +9,29 @@ description: Use quando <gatilho ou situação específica>
 
 Defina uma capacidade reutilizável em uma ou duas frases.
 
+## Gatilhos De Ativação
+
+Gatilho válido é um sinal concreto de trabalho: sintoma, contexto, artefato ausente, risco, decisão pendente ou handoff que permite ao agente decidir se esta skill se aplica.
+
+A `description` deve começar com "Use quando" e conter 2 ou mais sinais concretos de ativação. Ela não pode repetir o nome da skill nem dizer apenas que a skill "é necessária".
+
+Exemplo ruim:
+
+```yaml
+description: Use quando <skill-name> é necessário para o pedido ativo
+```
+
+Exemplo bom:
+
+```yaml
+description: Use quando uma Feature altera contrato de API, dados persistidos ou permissões; migração, rollback ou compatibilidade precisam ser avaliados antes do PR
+```
+
 ## Use Quando
 
-- <gatilho>
-- <sintoma>
-- <situação>
+- <gatilho concreto 1>
+- <gatilho concreto 2>
+- <situação ou risco que ativa a skill>
 
 ## Contexto Obrigatório
 

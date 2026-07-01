@@ -123,7 +123,7 @@ export type SkillDefinition = {
   slug: string;
   title: string;
   purpose: string;
-  useWhen?: string[];
+  useWhen: string[];
   requiredContext?: string[];
   inputs?: string[];
   process?: string[];
@@ -137,7 +137,7 @@ export type PlaybookDefinition = {
   slug: string;
   title: string;
   purpose: string;
-  useWhen?: string[];
+  useWhen: string[];
   beforeActing?: string[];
   inputs?: string[];
   steps: string[];

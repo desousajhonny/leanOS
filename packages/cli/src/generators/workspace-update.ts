@@ -1,5 +1,5 @@
 import { constants } from "node:fs";
-import { access, mkdir, readFile, rename } from "node:fs/promises";
+import { access, mkdir, readdir, readFile, rename, rm, rmdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { parse } from "yaml";
 import { writeWorkspaceFiles } from "./file-writer.js";
@@ -10,6 +10,7 @@ import type { FileEntry, InitialActivationMode, ProductStage, ProductStatus, Pro
 
 export type WorkspaceUpdateResult = {
   movedPaths: string[];
+  removedPaths: string[];
   conflictPaths: string[];
   writtenPaths: string[];
   skippedPaths: string[];
@@ -31,6 +32,7 @@ export async function updateWorkspaceLayout(rootDir: string, options: WorkspaceU
   const paths = createWorkspacePaths(answers);
   const migrations = legacyPathMigrations(paths.businessOsRoot);
   const movedPaths: string[] = [];
+  const removedPaths = await removeObsoleteGeneratedArtifacts(rootDir, dryRun);
   const conflictPaths: string[] = [];
 
   for (const migration of migrations) {
@@ -61,12 +63,14 @@ export async function updateWorkspaceLayout(rootDir: string, options: WorkspaceU
   });
   const overwriteFiles = files.filter((file) => isFrameworkControlledPath(file, paths.businessOsRoot));
   const missingOnlyFiles = files.filter((file) => !isFrameworkControlledPath(file, paths.businessOsRoot));
+  const shouldPatchGitignore = await gitignoreNeedsScratchRules(rootDir);
 
   if (dryRun) {
     return {
       movedPaths,
+      removedPaths,
       conflictPaths,
-      writtenPaths: overwriteFiles.map((file) => file.path),
+      writtenPaths: [...overwriteFiles.map((file) => file.path), ...(shouldPatchGitignore ? [".gitignore"] : [])],
       skippedPaths: missingOnlyFiles.map((file) => file.path),
       dryRun
     };
@@ -78,11 +82,13 @@ export async function updateWorkspaceLayout(rootDir: string, options: WorkspaceU
   const missingOnlyResult = await writeWorkspaceFiles(rootDir, missingOnlyFiles, {
     overwriteExisting: false
   });
+  const patchedGitignore = await ensureScratchGitignoreRules(rootDir);
 
   return {
     movedPaths,
+    removedPaths,
     conflictPaths,
-    writtenPaths: [...overwriteResult.writtenPaths, ...missingOnlyResult.writtenPaths],
+    writtenPaths: [...overwriteResult.writtenPaths, ...missingOnlyResult.writtenPaths, ...(patchedGitignore ? [".gitignore"] : [])],
     skippedPaths: [...overwriteResult.skippedPaths, ...missingOnlyResult.skippedPaths],
     dryRun
   };
@@ -97,9 +103,110 @@ function legacyPathMigrations(businessOsRoot: string): PathMigration[] {
     { from: ".leanos/agent", to: ".leanos/runtime/agent" },
     { from: ".leanos/context", to: ".leanos/runtime/context" },
     { from: ".leanos/index", to: ".leanos/runtime/index" },
-    { from: ".leanos/traces", to: ".leanos/runtime/traces" },
-    { from: ".leanos/vscode", to: ".leanos/runtime/vscode" }
+    { from: ".leanos/traces", to: ".leanos/runtime/traces" }
   ];
+}
+
+async function removeObsoleteGeneratedArtifacts(rootDir: string, dryRun: boolean): Promise<string[]> {
+  const removedPaths: string[] = [];
+
+  for (const path of [
+    ".github/agents/leanos-chief.agent.md",
+    ".github/prompts/start-leanos.prompt.md",
+    ".github/prompts/leanos-init.prompt.md",
+    ".leanos/runtime/vscode/README.md",
+    ".leanos/vscode/README.md"
+  ]) {
+    const targetPath = join(rootDir, path);
+
+    if (await pathExists(targetPath)) {
+      removedPaths.push(path);
+
+      if (!dryRun) {
+        await rm(targetPath, { force: true });
+      }
+    }
+  }
+
+  for (const path of [".leanos/commands"]) {
+    const targetPath = join(rootDir, path);
+
+    if (await pathExists(targetPath)) {
+      removedPaths.push(path);
+
+      if (!dryRun) {
+        await rm(targetPath, { recursive: true, force: true });
+      }
+    }
+  }
+
+  for (const path of [
+    ".github/agents",
+    ".github/prompts",
+    ".leanos/runtime/vscode",
+    ".leanos/vscode"
+  ]) {
+    const targetPath = join(rootDir, path);
+
+    if (await isDirectoryEmpty(targetPath)) {
+      removedPaths.push(path);
+
+      if (!dryRun) {
+        await rmdir(targetPath);
+      }
+    }
+  }
+
+  return removedPaths;
+}
+
+async function isDirectoryEmpty(path: string): Promise<boolean> {
+  try {
+    const entries = await readdir(path);
+    return entries.length === 0;
+  } catch {
+    return false;
+  }
+}
+
+async function gitignoreNeedsScratchRules(rootDir: string): Promise<boolean> {
+  const targetPath = join(rootDir, ".gitignore");
+
+  if (!(await pathExists(targetPath))) {
+    return false;
+  }
+
+  const content = await readFile(targetPath, "utf8");
+  return !hasScratchGitignoreRules(content);
+}
+
+async function ensureScratchGitignoreRules(rootDir: string): Promise<boolean> {
+  const targetPath = join(rootDir, ".gitignore");
+
+  if (!(await pathExists(targetPath))) {
+    return false;
+  }
+
+  const content = await readFile(targetPath, "utf8");
+
+  if (hasScratchGitignoreRules(content)) {
+    return false;
+  }
+
+  const separator = content.endsWith("\n") ? "\n" : "\n\n";
+  await writeFile(targetPath, `${content}${separator}${scratchGitignoreRules()}`, "utf8");
+  return true;
+}
+
+function hasScratchGitignoreRules(content: string): boolean {
+  return content.includes(".leanos/runtime/scratch/*") && content.includes("!.leanos/runtime/scratch/README.md");
+}
+
+function scratchGitignoreRules(): string {
+  return `# LeanOS local scratch artifacts
+.leanos/runtime/scratch/*
+!.leanos/runtime/scratch/README.md
+`;
 }
 
 function isFrameworkControlledPath(file: FileEntry, businessOsRoot: string): boolean {

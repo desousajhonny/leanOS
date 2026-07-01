@@ -20,6 +20,7 @@ import { validatePricingSourceOfTruthContract } from "./validation/pricing-sourc
 import { validateProductReadmeContract } from "./validation/product-readme.mjs";
 import { validateWorkspaceRenderersAreModular } from "./validation/renderers.mjs";
 import { validateRootModelMemory } from "./validation/root-memory.mjs";
+import { validateSemanticTriggerQuality } from "./validation/semantic-triggers.mjs";
 import { validateSkillQualityPass } from "./validation/skill-quality.mjs";
 import { validateSpendBudgetSourceOfTruthContract } from "./validation/spend-budget-source-of-truth.mjs";
 import { validateWorkspaceUpdateCommand } from "./validation/update.mjs";
@@ -49,6 +50,7 @@ await validatePricingSourceOfTruthContract();
 await validateSpendBudgetSourceOfTruthContract();
 await validateGrowthExperimentContract();
 await validateImplementationPacketContract();
+await validateSemanticTriggerQuality();
 await validateSkillQualityPass();
 await validateBranchAndPrStandards();
 await validateCliWizardProgressiveSetup();

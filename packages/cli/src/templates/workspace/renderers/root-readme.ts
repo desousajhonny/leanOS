@@ -60,9 +60,9 @@ ${localRunInstructions(answers)}
 
 ## Estrutura
 
-- \`.github/\` Arquivos de integração com VS Code e GitHub.
+- \`.github/\` arquivos de integração com GitHub.
 - \`.leanos/\` shell local do LeanOS.
-- \`${paths.runtimeRoot}/\` contexto, índices, traces e integração local.
+- \`${paths.runtimeRoot}/\` contexto, índices e traces locais.
 - \`${paths.standardRoot}/\` templates, checklists e instruções para criar assets LeanOS.
 - \`${paths.businessOsRoot}/\` sistema operacional de negócio do produto.
 ${activeRoots.map((department) => `- \`${departmentPath(department.key, paths)}/\` ${department.name} departamento.`).join("\n")}
@@ -89,7 +89,7 @@ Strategy Product -> Product Narrative Editor -> product-readme
 
 ## Próximo Passo Para O Founder
 
-Abra o Copilot Chat, selecione \`LeanOS Chief\`, e peça:
+Abra o chat/agente de AI que você usa neste repositório e peça:
 
 \`\`\`text
 Quero iniciar o LeanOS.

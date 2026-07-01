@@ -32,6 +32,14 @@ Use estes critérios antes de recomendar prontidão de merge. A evidência revis
 - Flag large unstructured files, mixed concerns and hidden business rules.
 - Check dependencies, generated code and broad file edits for necessity.
 
+## Workspace Hygiene Review
+
+- Review temporary scripts or scratch files before merge recommendation.
+- Confirm the PR includes a Temporary Artifact Sweep.
+- Block \`debug-*\`, \`temp-*\`, \`scratch-*\`, \`check-*\` or \`verify-*\` files unless they have owner, purpose, documentation and official command.
+- Block scripts soltos na raiz do repositório unless the repository already has that convention and the script is permanent.
+- Route scripts touching data, secrets, external APIs, database, broad filesystem access or remote automation to Security/DevOps when applicable.
+
 ## Test Review
 
 - Confirme que testes ou validação manual mapeiam para critérios de aceite.
@@ -86,6 +94,7 @@ Findings should include file/line or artifact references when possible.
 ## Merge Recommendation
 
 - Recommend \`merge-ready\` only when scope, code, tests, founder testing path and applicable Design/Security/Data/DevOps checks have evidence.
+- Recommend \`changes-requested\` when temporary scripts, probes or scratch files remain without justification.
 - Recommend \`changes-requested\` when fixable issues remain.
 - Recommend \`blocked-by-context\` when required Product, Design, Security, Data, DevOps or validation context is missing.
 - State evidence reviewed before the recommendation.

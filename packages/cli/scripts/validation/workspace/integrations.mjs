@@ -70,49 +70,18 @@ import {
   assertTraceDiagnostics
 } from "../areas.mjs";
 
-export async function assertVsCodeIntegration(rootDir) {
-  const agentFile = await readFile(join(rootDir, ".github", "agents", "leanos-chief.agent.md"), "utf8");
-  const startPromptFile = await readFile(join(rootDir, ".github", "prompts", "start-leanos.prompt.md"), "utf8");
-  const aliasPromptFile = await readFile(join(rootDir, ".github", "prompts", "leanos-init.prompt.md"), "utf8");
-  const vscodeReadme = await readFile(join(rootDir, ".leanos", "runtime", "vscode", "README.md"), "utf8");
-
-  assert(agentFile.includes("name: LeanOS Chief"), "LeanOS Chief agent should declare its VS Code name");
-  assert(agentFile.includes("AGENT.md"), "LeanOS Chief agent should point to AGENT.md");
-  assert(agentFile.includes("leanos.yaml"), "LeanOS Chief agent should point to leanos.yaml");
-  assert(agentFile.includes("LeanOS Navigation Chain"), "LeanOS Chief agent should mention the Navigation Chain");
-  assert(agentFile.includes("Respect active departments and areas in `leanos.yaml`"), "LeanOS Chief agent should respect active departments and areas");
-  assert(agentFile.includes("Não carregue paths de áreas ausentes"), "LeanOS Chief agent should avoid missing area paths");
-  assert(agentFile.includes("propose-first mode"), "LeanOS Chief agent should use propose-first mode during init");
-  assert(agentFile.includes("Não enriqueça roles, skills, playbooks, workflows, `.leanos/standard/` ou `.github/`"), "LeanOS Chief agent should protect operating assets during init");
-  assert.equal(agentFile.includes(".leanos/commands"), false, "LeanOS Chief agent should not depend on generated command files");
-
-  for (const expectedLink of [
-    "../../AGENT.md",
-    "../../leanos.yaml",
-    "../../.leanos/runtime/context/workspace-summary.md",
-    "../../.leanos/runtime/context/current-focus.md",
-    "../../.leanos/runtime/context/next-actions.md",
-    "../../.leanos/runtime/index/routing-map.yaml"
+export async function assertNoEditorAgentIntegration(rootDir) {
+  for (const forbiddenPath of [
+    ".github/agents",
+    ".github/prompts",
+    ".leanos/runtime/vscode",
+    ".leanos/vscode",
+    ".leanos/commands",
+    ".vscode/settings.json",
+    ".vscode/extensions.json"
   ]) {
-    assert(startPromptFile.includes(expectedLink), `LeanOS start prompt should reference ${expectedLink}`);
-    assert(aliasPromptFile.includes(expectedLink), `LeanOS init alias prompt should reference ${expectedLink}`);
+    assert.equal(await exists(join(rootDir, forbiddenPath)), false, `Generated workspaces should not include editor agent or command integration: ${forbiddenPath}`);
   }
-
-  assert(startPromptFile.includes("name: start-leanos"), "LeanOS start prompt should use the primary slash command name");
-  assert(startPromptFile.includes("agent: 'LeanOS Chief'"), "LeanOS start prompt should target LeanOS Chief");
-  assert.equal(startPromptFile.includes(".leanos/commands"), false, "LeanOS start prompt should not defer to command files");
-  assert(startPromptFile.includes("Ask the Required Founder Interview questions only when the loaded context does not already answer them"), "LeanOS start prompt should avoid duplicate founder questions");
-  assert(startPromptFile.includes("Use propose-first mode"), "LeanOS start prompt should use propose-first mode");
-  assert(startPromptFile.includes("Write only after explicit user confirmation"), "LeanOS start prompt should require confirmation before writes");
-  assert(startPromptFile.includes("Não modifique roles, skills, playbooks, workflows, `.leanos/standard/`, `.github/`"), "LeanOS start prompt should protect operating assets");
-  assert(aliasPromptFile.includes("name: leanos-init"), "LeanOS init alias prompt should keep the legacy slash command name");
-  assert(aliasPromptFile.includes("compatibility alias"), "LeanOS init alias prompt should be compatibility-only");
-  assert.equal(aliasPromptFile.includes(".leanos/commands"), false, "LeanOS init alias prompt should not defer to command files");
-  assert(vscodeReadme.includes(".github/agents/leanos-chief.agent.md"), "VS Code README should document the agent path");
-  assert(vscodeReadme.includes("linguagem natural"), "VS Code README should document natural-language startup");
-  assert.equal(vscodeReadme.includes("\n/start-leanos\n"), false, "VS Code README should not advertise slash commands");
-  assert.equal(vscodeReadme.includes("\n/leanos-init\n"), false, "VS Code README should not advertise legacy slash commands");
-  assert.equal(await exists(join(rootDir, ".vscode", "settings.json")), false, "Generator should not write VS Code workspace settings");
 }
 
 export async function assertGitHubReadiness(rootDir) {
@@ -139,6 +108,8 @@ export async function assertGitHubReadiness(rootDir) {
   assert(gitignore.includes(".env.local"), ".gitignore should ignore .env.local");
   assert(gitignore.includes(".env.*.local"), ".gitignore should ignore local env variants");
   assert(gitignore.includes(".vercel/"), ".gitignore should ignore Vercel local metadata");
+  assert(gitignore.includes(".leanos/runtime/scratch/*"), ".gitignore should ignore LeanOS runtime scratch files");
+  assert(gitignore.includes("!.leanos/runtime/scratch/README.md"), ".gitignore should keep the scratch README tracked");
   assert.equal(settings.security.store_token_in_workspace, false, "GitHub settings example should forbid token storage");
   assert.equal(settingsExample.includes('"token":'), false, "GitHub settings example should not include a token value field");
   assert(settingsExample.includes("env:LEANOS_GITHUB_TOKEN"), "GitHub settings example should document LEANOS_GITHUB_TOKEN as a token source");
@@ -356,7 +327,6 @@ export async function assertFounderIntentRouting(rootDir) {
   const runtimeReadme = await readFile(join(rootDir, ".leanos", "README.md"), "utf8");
   const operatingRules = await readFile(join(rootDir, ".leanos", "runtime", "agent", "operating-rules.md"), "utf8");
   const whereWeAreProtocol = await readFile(join(rootDir, ".leanos", "runtime", "agent", "protocols", "where-we-are.md"), "utf8");
-  const vscodeAgent = await readFile(join(rootDir, ".github", "agents", "leanos-chief.agent.md"), "utf8");
   const workflowsIndex = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "workflows.yaml"), "utf8"));
   const intentMap = parse(await readFile(join(rootDir, ".leanos", "runtime", "index", "intent-map.yaml"), "utf8"));
   const intentMapRaw = await readFile(join(rootDir, ".leanos", "runtime", "index", "intent-map.yaml"), "utf8");
@@ -466,11 +436,6 @@ export async function assertFounderIntentRouting(rootDir) {
   assert(operatingRules.includes("Arquivos `AGENT.md` de área, quando presentes, escolhem o papel especialista"), "Operating rules should define area AGENT responsibility");
   assert.equal(operatingRules.includes("Root AGENT.md must not bypass department AGENT.md"), false, "Operating rules should avoid narrow workflow-bypass prohibitions");
   assert(operatingRules.includes("Workflows de negócio vivem no OS do produto, não em `.leanos/`"), "Operating rules should keep business workflows out of .leanos");
-  assert(vscodeAgent.includes("Founder requests can be natural language"), "VS Code agent should support founder intent routing");
-  assert(vscodeAgent.includes("Then use the department `AGENT.md` to choose either a coordination workflow or the smallest active area"), "VS Code agent should route workflows and area work through department AGENT files");
-  assert(vscodeAgent.includes("Enter the owning department or area before acting"), "VS Code agent should use owner-first routing");
-  assert(vscodeAgent.includes("When an area has its own `AGENT.md`, use it before loading roles, skills or playbooks"), "VS Code agent should understand area-level agents");
-  assert.equal(vscodeAgent.includes("Não contorne o `AGENT.md` do departamento"), false, "VS Code agent should avoid narrow workflow-bypass prohibitions");
   assert.equal(await exists(join(rootDir, ".leanos", "workflows")), false, ".leanos/workflows should not be generated");
 
   assert.equal(workflowsIndex.workflows.some((workflow) => workflow.key === "idea-to-roadmap"), false, "Workflows index should not include removed idea-to-roadmap workflow");

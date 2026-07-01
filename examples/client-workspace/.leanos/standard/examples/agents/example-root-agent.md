@@ -174,7 +174,7 @@ Use esta seção apenas para escolher o departamento dono. O `AGENT.md` do depar
 
 ## LeanOS Runtime
 
-`.leanos/runtime/` contém arquivos de runtime para contexto, índices, traces locais e integração com VS Code.
+`.leanos/runtime/` contém arquivos de runtime para contexto, índices e traces locais.
 `.leanos/` não possui workflows de negócio. Workflows operacionais vivem no OS do produto, como `clinic-assistant-ai-os/operations/workflows/`.
 
 `.leanos/standard/` é o roteador de padrões do framework para criar, alterar, revisar ou validar assets LeanOS.

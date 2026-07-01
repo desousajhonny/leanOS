@@ -18,6 +18,7 @@ export async function runUpdateCommand(args: string[] = []): Promise<void> {
 
   console.log(ui.success(dryRun ? "LeanOS update preview" : "Updated LeanOS workspace"));
   console.log(ui.muted(`Moved paths: ${result.movedPaths.length}`));
+  console.log(ui.muted(`Removed obsolete files: ${result.removedPaths.length}`));
   console.log(ui.muted(`Written files: ${result.writtenPaths.length}`));
   console.log(ui.muted(`Skipped existing product files: ${result.skippedPaths.length}`));
 
@@ -26,6 +27,7 @@ export async function runUpdateCommand(args: string[] = []): Promise<void> {
   }
 
   printSection("Moved", result.movedPaths);
+  printSection("Removed obsolete files", result.removedPaths);
   printSection("Conflicts", result.conflictPaths);
 
   if (result.conflictPaths.length > 0) {

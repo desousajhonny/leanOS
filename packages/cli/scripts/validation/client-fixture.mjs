@@ -127,11 +127,13 @@ export async function validateClientWorkspaceFixture() {
     "operations/engineering/knowledge/implementation-rules.md",
     "operations/engineering/knowledge/component-guidelines.md",
     "operations/engineering/knowledge/data-guidelines.md",
+    "operations/engineering/knowledge/workspace-hygiene.md",
     "operations/engineering/knowledge/testing-strategy.md",
     "operations/engineering/knowledge/review-criteria.md",
     "operations/engineering/roles/test-engineer.role.md",
     "operations/engineering/skills/follow-code-standards/SKILL.md",
     "operations/engineering/skills/component-implementation/SKILL.md",
+    "operations/engineering/skills/temporary-artifact-hygiene/SKILL.md",
     "operations/engineering/skills/data-change-review/SKILL.md",
     "operations/engineering/skills/feature-branching/SKILL.md",
     "operations/engineering/playbooks/branch-for-feature.playbook.md",
@@ -210,11 +212,7 @@ export async function validateClientWorkspaceFixture() {
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/leanos/branch-rules.md",
     ".github/leanos/pr-validation-rules.md",
-    ".github/leanos/security-automation.md",
-    ".github/agents/leanos-chief.agent.md",
-    ".github/prompts/start-leanos.prompt.md",
-    ".github/prompts/leanos-init.prompt.md",
-    ".leanos/vscode/README.md"
+    ".github/leanos/security-automation.md"
   ];
 
   for (const requiredPath of requiredPaths.filter(isInitialStrategyWorkspacePath)) {
@@ -227,6 +225,11 @@ export async function validateClientWorkspaceFixture() {
   for (const forbiddenPath of [
     ".leanos/departments",
     ".leanos/workflows",
+    ".leanos/commands",
+    ".leanos/vscode",
+    ".leanos/runtime/vscode",
+    ".github/agents",
+    ".github/prompts",
     "src",
     "app",
     "pages",

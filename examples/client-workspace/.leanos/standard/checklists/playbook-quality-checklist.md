@@ -7,6 +7,14 @@ Use este checklist antes de aceitar um arquivo `.playbook.md`.
 - [ ] O playbook tem frontmatter YAML com `name` e `description`.
 - [ ] A `description` começa com "Use quando" e descreve condições de gatilho.
 
+## Qualidade Semântica
+
+- [ ] A `description` não é circular, não repete o nome do playbook e não diz apenas que o playbook "é necessário".
+- [ ] A `description` contém 2 ou mais sinais concretos de ativação.
+- [ ] `## Use Quando` contém 2 ou mais sinais concretos de ativação.
+- [ ] Os gatilhos descrevem artefato pronto, lacuna bloqueante, decisão do founder, handoff, risco operacional ou etapa de delivery.
+- [ ] O playbook é genérico no contexto de produto, mas específico na sequência de trabalho.
+
 ## Sequência
 
 - [ ] O playbook define uma sequência ordenada de execução.

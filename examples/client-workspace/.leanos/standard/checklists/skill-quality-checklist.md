@@ -12,6 +12,14 @@ Use este checklist antes de aceitar uma pasta de skill com `SKILL.md`.
 - [ ] A skill tem frontmatter YAML com `name` e `description`.
 - [ ] A `description` começa com "Use quando" e descreve condições de gatilho.
 
+## Qualidade Semântica
+
+- [ ] A `description` não é circular, não repete o nome da skill e não diz apenas que a skill "é necessária".
+- [ ] A `description` contém 2 ou mais sinais concretos de ativação.
+- [ ] `## Use Quando` contém 2 ou mais sinais concretos de ativação.
+- [ ] Os gatilhos descrevem sintomas, artefatos, riscos, decisões pendentes, handoffs ou contexto técnico.
+- [ ] A skill é genérica no contexto de produto, mas específica na classe de trabalho.
+
 ## Detalhe Operacional
 
 - [ ] A skill declara quando usar.

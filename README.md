@@ -11,12 +11,12 @@ LeanOS currently includes:
 - A TypeScript/Node CLI package published as `lean-os`.
 - A create package published as `create-lean-os` for the standard `npm create lean-os` setup flow.
 - A guided terminal wizard exposed through `npm create lean-os` and kept available through `lean-os ai` for compatibility.
-- A generated client workspace with `AGENT.md`, `leanos.yaml`, `.leanos/`, `ai-standard/`, active `strategy/` and GitHub/VS Code integration files.
-- A workspace-level VS Code/Copilot custom agent called `LeanOS Chief`.
+- A generated client workspace with `AGENT.md`, `leanos.yaml`, `.leanos/`, `<product-slug>-os/`, active `strategy/` and GitHub readiness files.
+- A portable LeanOS Chief entrypoint through the root `AGENT.md`.
 - A portable agent entrypoint for any model or chat surface through the root `AGENT.md`.
 - A generated preview in `examples/client-workspace/` that shows exactly what the CLI creates.
 
-The current version is a local, file-based framework. It does not yet include hosted services, real GitHub API sync, marketplace distribution, remote auth, analytics or a VS Code extension.
+The current version is a local, file-based framework. It does not yet include hosted services, real GitHub API sync, marketplace distribution, remote auth or analytics.
 
 ## Core Principle
 
@@ -69,7 +69,7 @@ After generation, open the folder in your preferred AI coding environment and st
 Vamos comecar com o LeanOS.
 ```
 
-The root `AGENT.md` is the portable entrypoint. It lets VS Code Copilot Chat, Claude, Codex, terminal agents or other assistants route the request without relying on generated command files.
+The root `AGENT.md` is the portable entrypoint. It lets Claude, Codex, terminal agents, IDE assistants or other chat surfaces route the request without relying on generated command files.
 
 ## LeanOS Chief
 
@@ -84,13 +84,7 @@ It is intentionally small. It does not duplicate the whole framework. Its job is
 - Avoid missing paths and avoid inventing workflows.
 - Propose source-of-truth updates before writing during startup or any routed workflow.
 
-Generated VS Code/Copilot files:
-
-- `.github/agents/leanos-chief.agent.md`
-- `.github/prompts/start-leanos.prompt.md`
-- `.github/prompts/leanos-init.prompt.md` as a legacy alias
-
-The root `AGENT.md` also keeps command-like requests portable outside VS Code by mapping natural phrases to the right workflow or to `activation_required` when an area is not active yet.
+LeanOS does not generate editor-specific agent, prompt or command files. The root `AGENT.md` keeps command-like requests portable by mapping natural phrases to the right workflow or to `activation_required` when an area is not active yet.
 
 ## Navigation Chain
 
@@ -109,23 +103,32 @@ The generated client workspace separates LeanOS runtime files from the client's 
 ```text
 .github/
 .leanos/
-ai-standard/
-strategy/
+<product-slug>-os/
 AGENT.md
 leanos.yaml
 README.md
 ```
 
+### `.github/`
+
+GitHub readiness files:
+
+- PR template
+- issue templates
+- LeanOS GitHub setup, branch rules, PR validation rules and project sync contract
+
 ### `.leanos/`
 
-LeanOS runtime support:
+LeanOS local support:
 
-- `agent/` operating rules for LeanOS Chief
-- `context/` current focus, next actions and workspace summary
-- `index/` routing maps for departments, areas, roles, skills, playbooks and workflows
-- `vscode/` notes for VS Code/Copilot setup
+- `runtime/agent/` operating rules for LeanOS Chief
+- `runtime/context/` current focus, next actions and workspace summary
+- `runtime/index/` routing maps for departments, areas, roles, skills, playbooks and workflows
+- `runtime/scratch/` local ignored scratch area for temporary scripts and probes
+- `runtime/traces/` local diagnostics when explicitly requested
+- `standard/` standard library for creating and validating LeanOS assets
 
-### `ai-standard/`
+### `.leanos/standard/`
 
 The standard library for creating and validating LeanOS assets:
 
@@ -137,7 +140,7 @@ The standard library for creating and validating LeanOS assets:
 
 ### Client Departments
 
-Active root departments live at the workspace root. The initial MVP scaffold starts Strategy-first:
+Active root departments live inside `<product-slug>-os/`. The initial MVP scaffold starts Strategy-first:
 
 - `strategy/`
 
@@ -176,9 +179,9 @@ It loads the workspace map, summarizes the current state and proposes Strategy-f
 
 During startup, LeanOS Chief may propose updates to:
 
-- `.leanos/context/workspace-summary.md`
-- `.leanos/context/current-focus.md`
-- `.leanos/context/next-actions.md`
+- `.leanos/runtime/context/workspace-summary.md`
+- `.leanos/runtime/context/current-focus.md`
+- `.leanos/runtime/context/next-actions.md`
 - Strategy source-of-truth files such as business profile, product brief, ICP, validation notes and roadmap context
 
 In the MVP scaffold, lightweight validation lives in `strategy/product/knowledge/validation-notes.md`. Formal discovery can be designed later as a separate optional capability, but it is not part of the default MVP scaffold.
@@ -189,7 +192,7 @@ It must not modify during init:
 - `skills/`
 - `playbooks/`
 - `workflows/`
-- `ai-standard/`
+- `.leanos/standard/`
 - `.github/`
 - product code
 - Operations or Growth files unless the user explicitly asks after init

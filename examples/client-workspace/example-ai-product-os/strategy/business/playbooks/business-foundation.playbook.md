@@ -1,6 +1,6 @@
 ---
 name: business-foundation
-description: Use quando business foundation é necessário para o pedido ativo
+description: Use quando o founder está iniciando o LeanOS e ainda não existe Business Foundation confiável; missão, princípios, modelo operacional ou business model bloqueiam decisões de Product; Strategy Product precisa entender receita, canal, promessa ou limites antes de calibrar uma ideia
 ---
 
 # Business Foundation
@@ -11,7 +11,9 @@ Transformar contexto bruto do founder em identidade, princípios, modelo operaci
 
 ## Use Quando
 
-- Use quando esta sequência de execução corresponder ao pedido ativo.
+- o founder está iniciando o LeanOS e ainda não existe Business Foundation confiável
+- missão, princípios, modelo operacional ou business model bloqueiam decisões de Product
+- Strategy Product precisa entender receita, canal, promessa ou limites antes de calibrar uma ideia
 
 ## Antes de Agir
 

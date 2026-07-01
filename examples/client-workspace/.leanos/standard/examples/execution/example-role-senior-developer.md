@@ -30,6 +30,7 @@ Leia:
 - `../knowledge/code-standards.md`
 - `../knowledge/component-guidelines.md`
 - `../knowledge/data-guidelines.md`
+- `../knowledge/workspace-hygiene.md`
 - `../knowledge/testing-strategy.md`
 - `.github/leanos/branch-rules.md`
 - `../knowledge/implementation-notes.md`
@@ -39,6 +40,7 @@ Leia:
 - `../skills/implementation-planning/SKILL.md`
 - `../skills/follow-code-standards/SKILL.md`
 - `../skills/component-implementation/SKILL.md`
+- `../skills/temporary-artifact-hygiene/SKILL.md`
 - `../skills/feature-branching/SKILL.md`
 - `../skills/test-coverage/SKILL.md`
 - `../skills/data-change-review/SKILL.md`

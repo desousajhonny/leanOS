@@ -57,7 +57,7 @@ Não referencie roles, skills, playbooks, workflows ou arquivos de knowledge de 
 
 Não reintroduza `.leanos/commands/` gerados como interface operacional.
 
-Arquivos de prompt para um editor hospedeiro podem existir como auxiliares de integração, mas devem rotear pelo `AGENT.md` raiz e pelas regras de intenção em linguagem natural.
+Não gere arquivos de agente/prompt específicos de editor como interface do LeanOS. O ponto de entrada operacional é o `AGENT.md` raiz, com linguagem natural e roteamento por `intent-map.yaml`.
 
 ## 7. Não Transforme O Root AGENT Em Inventário
 
@@ -108,7 +108,34 @@ Peça confirmação antes de:
 - executar ações remotas de GitHub/API;
 - atualizar estado de sync depois de execução remota.
 
-## 12. Use O Registro De Decisões Para Escolhas Duráveis
+## 12. Não Deixe Artefatos Temporários Virarem Produto
+
+Scripts temporários, probes locais, arquivos de debug e checagens descartáveis criados por humanos ou agentes devem ir para `.leanos/runtime/scratch/` quando precisarem existir como arquivo.
+
+Antes de preparar PR, validar PR ou recomendar merge:
+
+- rode um `Temporary Artifact Sweep`;
+- remova scripts temporários que não pertencem ao produto;
+- confirme que `.leanos/runtime/scratch/` não tem arquivo versionado além do README;
+- bloqueie `debug-*`, `temp-*`, `scratch-*`, `check-*`, `verify-*` e equivalentes sem owner, propósito, documentação e comando oficial;
+- roteie para Security/DevOps quando o script tocar dados, secrets, APIs externas, banco, filesystem amplo ou automação remota.
+
+Script permanente precisa ser tratado como produto interno: ter owner, propósito, comando oficial, documentação, entradas, saídas, riscos e validação.
+
+## 13. Exija Gatilhos Semânticos Concretos
+
+O LeanOS deve ser genérico no contexto de produto, mas específico na governança do trabalho.
+
+Skills e playbooks gerados precisam ter `description` começando com "Use quando" e contendo sinais concretos de ativação. Não aceite descriptions que:
+
+- repetem o nome do asset;
+- dizem que o asset "é necessário para o pedido ativo";
+- dizem que "esta sequência de execução corresponder ao pedido ativo";
+- descrevem apenas intenção genérica sem artefato, risco, sintoma, decisão, handoff ou estado de prontidão.
+
+Toda skill e todo playbook devem declarar 2 ou mais sinais concretos em `description` e `## Use Quando`.
+
+## 14. Use O Registro De Decisões Para Escolhas Duráveis
 
 Registre decisões duráveis quando elas afetarem:
 
@@ -137,4 +164,6 @@ Rejeite ou adie uma mudança quando ela:
 - mistura responsabilidades de Strategy, Product Ops e Engineering;
 - torna o GitHub a fonte da verdade padrão;
 - reintroduz arquivos de comando como interface principal;
+- deixa scripts temporários, probes ou arquivos de debug acumularem no repositório;
+- gera skill ou playbook com description circular, genérica ou sem sinais concretos de ativação;
 - contradiz decisões aceitas sem atualizar o registro de decisões.

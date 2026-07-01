@@ -12,7 +12,7 @@ export async function runAiCommand(): Promise<void> {
   note(
     [
       `Este wizard prepara a estrutura do ambiente e o ${ui.title("LeanOS Chief")}.`,
-      "Depois do setup, continue no chat do editor pedindo ao LeanOS Chief para iniciar ou continuar em linguagem natural."
+      "Depois do setup, continue no chat/agente de AI pedindo para iniciar ou continuar em linguagem natural."
     ].join("\n"),
     "Bem-vindo"
   );
@@ -91,7 +91,7 @@ export async function runAiCommand(): Promise<void> {
           ? "Gerando workspace LeanOS e sobrescrevendo conflitos selecionados..."
           : "Preparando ambiente LeanOS..."
     );
-    generationSpinner.message("Gerando AGENT.md, contexto de roteamento e agente LeanOS Chief...");
+    generationSpinner.message("Gerando AGENT.md e contexto de roteamento...");
     const result = await generateWorkspace(process.cwd(), promptResult.answers, {
       overwriteExisting,
       mode: generationMode
