@@ -123,6 +123,7 @@ function departmentJourneySignals(department: RootDepartmentDefinition): string 
     operations: [
       "transformar escopo de entrega em trabalho executável",
       "formatar Epics ou Features antes da implementação",
+      "criar ou confirmar implementation packet antes de Engineering",
       "coordenar handoffs de Design, Engineering, Security ou DevOps",
       "mover de issue para implementação, PR ou follow-up pós-merge",
       "decidir se uma release pode ir para usuários reais"

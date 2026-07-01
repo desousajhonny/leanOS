@@ -13,6 +13,19 @@ Regra de manutenção: sempre que um playbook for criado, removido, renomeado ou
 - Skills são capacidades reutilizáveis chamadas por roles e playbooks.
 - Caminho padrão quando a área está ativa: `<departamento>/<area>/playbooks/<playbook>.playbook.md`.
 
+## Framework Governance
+
+Estes playbooks são de uso interno do framework e não são gerados no workspace do founder. Fonte: `docs/framework/governance/playbooks/`.
+
+| Playbook | Área | Serve Para | Pode Ser Ativado Por |
+| --- | --- | --- | --- |
+| `framework-change-review` | `framework.governance` | Rodar Checklist Antes De Commit/PR ou Auditoria Sob Demanda para mudanças relevantes no LeanOS. | Mudanças em scaffold, CLI, source of truth, journeys, GitHub, release, assets ou validações. |
+| `doctrine-alignment-review` | `framework.governance` | Verificar aderência à doutrina, visão, princípios, valores e decision log. | Mudanças estruturais, decisões duráveis ou pedidos de alinhamento estratégico. |
+| `nav-chain-audit` | `framework.governance` | Auditar Navigation Chain: root, intent map, `leanos.yaml`, routing map, activation gates e owner ativo. | Mudanças em roteamento, `AGENT.md`, ativação ou intenção natural. |
+| `asset-quality-review` | `framework.governance` | Revisar qualidade, contrato, owner e inventário de skills, playbooks, workflows, roles e knowledge. | Criação, alteração, remoção ou renomeação de assets. |
+| `department-handoff-review` | `framework.governance` | Avaliar comunicação entre áreas, source of truth, evidência de handoff e validação posterior. | Mudanças em workflows, readiness, implementation packets, PR validation, launch ou learning loop. |
+| `founder-experience-review` | `framework.governance` | Avaliar clareza, carga cognitiva, perguntas, confirmações e linguagem para founder. | Mudanças em wizard, journeys, respostas do Chief, README ou prompts visíveis. |
+
 ## Strategy
 
 | Playbook | Área | Serve Para | Pode Ser Ativado Por |
@@ -39,6 +52,7 @@ Regra de manutenção: sempre que um playbook for criado, removido, renomeado ou
 | Playbook | Área | Serve Para | Pode Ser Ativado Por |
 | --- | --- | --- | --- |
 | `design-foundation` | `operations.design` | Criar fundação de design do MVP antes da implementação. | Role `product-designer`; item de MVP backlog ou gates de Feature com UI. |
+| `screen-readiness` | `operations.design` | Criar screen spec concreta dentro do implementation packet da Feature antes de Engineering. | Role `product-designer`; workflow `feature-to-delivery-cycle`; Features com tela, estado, form, modal ou view user-facing. |
 | `component-readiness` | `operations.design` | Preparar decisão de componente ou spec quando uma Feature precisa de clareza de UI. | Role `product-designer`; playbook `epic-to-features` ou workflow `feature-to-delivery-cycle`. |
 | `user-research` | `operations.design` | Esclarecer evidência de usuário antes de decisões de UX. | Role `ux-researcher`; rotas de Design com evidência insuficiente. |
 | `mvp-ux-flow` | `operations.design` | Criar fluxo usável para o primeiro ciclo de validação. | Roles `ux-researcher` e `product-designer`; item de MVP backlog ou Feature com impacto de UX. |

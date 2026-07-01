@@ -1,10 +1,10 @@
 # Plano Do Template De Spec De Tela
 
-Este documento é interno ao framework LeanOS. Ele ainda não deve ser gerado no workspace do cliente.
+Este documento registra a decisão implementada no framework LeanOS em 2026-07-01.
 
 ## Propósito
 
-Planejar o futuro `screen-spec-template.md` para que Design possa documentar telas concretas antes de Engineering implementá-las.
+Registrar o contrato de `screen-spec-template.md` para que Design documente telas concretas antes de Engineering implementá-las.
 
 Specs de tela são diferentes de specs de componente:
 
@@ -13,15 +13,15 @@ Specs de tela são diferentes de specs de componente:
 
 ## Local Proposto
 
-Template futuro:
+Template gerado:
 
-`ai-standard/templates/design/screen-spec-template.md`
+`.leanos/standard/templates/design/screen-spec-template.md`
 
-Specs concretas futuras:
+Specs concretas:
 
-`operations/design/knowledge/screens/<screen-name>.md`
+`operations/product-ops/knowledge/implementation-packets/<feature-slug>/design/screen-specs/<screen-slug>.md`
 
-Não crie `screens/` nem specs concretas de tela no scaffold inicial até que uma Feature real exija isso.
+Não crie specs concretas de tela no scaffold inicial até que uma Feature real exija isso.
 
 ## Quando Criar Uma Spec De Tela
 
@@ -35,7 +35,7 @@ Crie uma spec de tela apenas quando:
 
 ## Seções Sugeridas Para O Template
 
-O template futuro deve incluir:
+O template deve incluir:
 
 - `# <Screen Name>`
 - `## Propósito`
@@ -88,14 +88,16 @@ Specs de tela devem considerar estes estados quando aplicável:
 - Não deixe Engineering inventar layout, copy, comportamento de componente ou estados que Design não definiu ou confirmou.
 - Não crie um sistema completo de screen-spec antes que uma entrega real de Feature precise disso.
 
-## Notas De Implementação Futura
+## Implementado Em 2026-07-01
 
-Quando isso virar parte do scaffold, atualize:
+Arquivos e contratos atualizados:
 
-- `ai-standard/templates/design/README.md`
+- `.leanos/standard/templates/design/README.md`
 - `operations/design/knowledge/README.md`
 - `operations/design/skills/screen-specification/SKILL.md`
-- `operations/design/playbooks/component-readiness.playbook.md` or a future screen-readiness playbook
+- `operations/design/playbooks/screen-readiness.playbook.md`
+- `operations/design/playbooks/component-readiness.playbook.md`
 - `operations/workflows/feature-to-delivery-cycle.workflow.md`
 - `operations/engineering/knowledge/component-guidelines.md`
-- validação do generator para impedir specs de tela especulativas no scaffold inicial
+- `operations/engineering/playbooks/pr-validation.playbook.md`
+- validação `validateImplementationPacketContract`

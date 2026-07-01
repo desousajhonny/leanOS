@@ -4,15 +4,15 @@ export const growthMarketingSkills: SkillDefinition[] = [
     {
       slug: "define-positioning",
       title: "Definir Posicionamento",
-      purpose: "Definir categoria, audiência, promessa e diferenciação.",
-      useWhen: ["a mensagem de mercado está pouco clara", "a landing page precisa de posicionamento", "o lançamento precisa de uma narrativa focada"],
-      requiredContext: ["Problema de produto", "ICP", "Proposta de valor", "Posicionamento existente"],
-      inputs: ["Audiência", "Problem", "Promessa", "Alternativas", "Diferenciação"],
-      process: ["Carregue contexto de produto", "Defina audiência e categoria", "Esclareça promessa e prova", "Identifique diferenciação", "Capture afirmações abertas que precisam de validação"],
-      checks: ["Nenhuma prova inventada", "A mensagem combina com ICP/problema", "Diferenciação is specific enough for MVP"],
-      outputs: ["Declaração de posicionamento", "Riscos de mensagem", "Perguntas abertas sobre prova"],
+      purpose: "Definir posicionamento de mercado com categoria, ICP, alternativa, promessa, diferenciação, prova disponível e claims permitidos sem criar narrativa genérica ou promessas sem evidência.",
+      useWhen: ["a mensagem de mercado está pouco clara", "a landing page precisa de posicionamento", "o lançamento precisa de uma narrativa focada", "copy ou oferta parecem genéricas", "claims de marketing precisam de prova ou experimento"],
+      requiredContext: ["../knowledge/positioning.md", "../../strategy/product/knowledge/icp.md quando existir", "../../strategy/product/knowledge/problem.md quando existir", "../../strategy/product/knowledge/value-proposition.md quando existir", "../../strategy/product/knowledge/positioning.md quando existir", "../knowledge/growth-experiments.md quando claims precisarem de validação"],
+      inputs: ["Categoria", "ICP ou audiência", "Problema", "Alternativa atual", "Promessa", "Diferenciação", "Prova disponível", "Claims desejados", "Objeções", "Objetivo de validação"],
+      process: ["Carregue contexto de produto e Growth antes de escrever mensagem.", "Defina categoria, ICP, alternativa, promessa, diferenciação e prova disponível em campos separados.", "Compare a promessa com problema, alternativa e capacidade real do produto.", "Crie Mapa de claims: permitido, incerto, proibido, com motivo e fonte.", "Roteie claims sem prova para experimento de Growth antes de usar em landing page, anúncio ou sales copy.", "Escreva uma declaração de posicionamento curta e específica para o ICP.", "Liste riscos de mensagem, lacunas de prova e próxima validação recomendada."],
+      checks: ["Categoria, ICP, alternativa, promessa, diferenciação e prova disponível estão explícitos.", "Mapa de claims: permitido, incerto, proibido existe.", "A promessa combina com ICP/problema e não exagera capacidade do produto.", "Diferenciação é específica o suficiente para o MVP.", "Claims sem prova foram roteados para experimento de Growth.", "A mensagem não poderia servir igualmente para qualquer produto da categoria."],
+      outputs: ["Declaração de posicionamento", "Categoria e ICP", "Alternativa atual", "Promessa e diferenciação", "Prova disponível", "Mapa de claims: permitido, incerto, proibido", "Riscos de mensagem", "Experimentos necessários"],
       filesToUpdate: ["Atualize `../knowledge/positioning.md` após confirmação explícita."],
-      redLines: ["Não invente evidência.", "Não prometa além da capacidade do produto."]
+      redLines: ["Não invente evidência.", "Não prometa além da capacidade do produto.", "Não use posicionamento genérico que poderia servir para qualquer produto.", "Não use claim incerto ou proibido em landing page, anúncio ou sales copy sem experimento ou aprovação explícita.", "Não transforme posicionamento em mudança de produto sem Product Ops ou Strategy."]
     },
     {
       slug: "create-landing-page-copy",

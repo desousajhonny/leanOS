@@ -43,15 +43,15 @@ export const strategyProductSkills: SkillDefinition[] = [
     {
       slug: "coherence",
       title: "Checagem De Coerência",
-      purpose: "Checar alinhamento entre ICP, problema, proposta de valor, MVP Validation Scope, roadmap e issue.",
-      useWhen: ["strategy parece inconsistente", "MVP Validation Scope pode não combinar com o problema", "roadmap ou issue precisa de review de produto"],
-      requiredContext: ["../knowledge/icp.md", "../knowledge/problem.md", "../knowledge/value-proposition.md", "../knowledge/mvp-validation-scope.md", "../../roadmap/knowledge/roadmap.md"],
-      inputs: ["ICP", "Problema", "Proposta de valor", "Escopo de Validação do MVP", "Roadmap ou issue"],
-      process: ["Cheque fit entre ICP e problema.", "Cheque fit entre proposta de valor e problema.", "Cheque fit entre MVP Validation Scope e valor.", "Cheque fit entre roadmap e MVP Validation Scope.", "Liste contradições e próximos ajustes."],
-      checks: ["Achados separam alinhamento de inconsistência.", "Riscos são acionáveis.", "Próximo comando ou workflow está claro."],
-      outputs: ["Score de coerência", "Pontos alinhados", "Inconsistências", "Riscos", "Próxima ação recomendada"],
+      purpose: "Checar alinhamento entre ICP, problema, promessa, alternativa, MVP Validation Scope, roadmap, Feature e evidência usando uma matriz explícita, sem aprovar implementação.",
+      useWhen: ["strategy parece inconsistente", "MVP Validation Scope pode não combinar com o problema", "roadmap, Epic, Feature ou issue precisa de review de produto", "founder quer saber se uma ideia faz sentido antes de delivery", "Product Ops precisa de checagem antes de promover trabalho"],
+      requiredContext: ["../knowledge/icp.md", "../knowledge/problem.md", "../knowledge/value-proposition.md", "../knowledge/positioning.md", "../knowledge/mvp-validation-scope.md", "../knowledge/validation-notes.md", "../../roadmap/knowledge/roadmap.md", "Epic, Feature ou issue quando existir"],
+      inputs: ["ICP", "Problema", "Promessa", "Alternativa", "Proposta de valor", "Escopo de Validação do MVP", "Roadmap", "Feature ou issue", "Evidência disponível"],
+      process: ["Monte uma Matriz de coerência com ICP, problema, promessa, alternativa, MVP Validation Scope, roadmap, Feature e evidência.", "Classifique cada dimensão como aligned, weak, conflict ou missing.", "Explique o critério usado em cada classificação e cite o contexto que sustenta a decisão.", "Identifique contradições entre ICP/problema, promessa/capacidade, MVP/roadmap e Feature/evidência.", "Separe risco de produto, risco de escopo, risco de evidência e risco de delivery.", "Recomende a menor próxima rota: continuar em Strategy Product, voltar para Business Foundation, ir para Roadmap, pedir Product Ops ou bloquear.", "Peça confirmação antes de atualizar qualquer knowledge."],
+      checks: ["Matriz de coerência existe.", "ICP, problema, promessa, alternativa, MVP Validation Scope, roadmap, Feature e evidência foram avaliados quando aplicáveis.", "Cada dimensão foi classificada como aligned, weak, conflict ou missing.", "Score ou recomendação explica critérios e evidência.", "A checagem não aprova implementação nem cria Epic/Feature.", "Próxima rota está clara e respeita activation gates."],
+      outputs: ["Matriz de coerência", "Classificação por dimensão: aligned, weak, conflict ou missing", "Pontos alinhados", "Inconsistências", "Riscos por tipo", "Contexto ausente", "Próxima ação recomendada"],
       filesToUpdate: ["Não atualize arquivos salvo se o usuário pedir após revisar os achados."],
-      redLines: ["Não reescreva estratégia silenciosamente.", "Não trate review de coerência como aprovação para implementar."]
+      redLines: ["Não reescreva estratégia silenciosamente.", "Não use score sem explicar critérios e evidência.", "Não aprove implementação a partir de uma checagem de coerência.", "Não transforme inconsistência em roadmap, Epic ou Feature sem rota dona.", "Não esconda conflito entre promessa, evidência e escopo."]
     },
     {
       slug: "write-product-readme",

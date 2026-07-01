@@ -137,7 +137,9 @@ client-workspace/
 |   |   |   |   `-- root-agent-template.md
 |   |   |   |-- design/
 |   |   |   |   |-- component-spec-template.md
-|   |   |   |   `-- README.md
+|   |   |   |   |-- product-ui-spec-template.md
+|   |   |   |   |-- README.md
+|   |   |   |   `-- screen-spec-template.md
 |   |   |   |-- execution/
 |   |   |   |   |-- playbook-template.md
 |   |   |   |   |-- playbook-template.yaml
@@ -158,6 +160,7 @@ client-workspace/
 |   |   |   |-- product/
 |   |   |   |   |-- epic-template.md
 |   |   |   |   |-- feature-template.md
+|   |   |   |   |-- implementation-packet-template.md
 |   |   |   |   |-- product-readme-template.md
 |   |   |   |   `-- README.md
 |   |   |   |-- review/

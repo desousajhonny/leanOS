@@ -4,15 +4,15 @@ export const growthFinanceSkills: SkillDefinition[] = [
     {
       slug: "model-unit-economics",
       title: "Modelar Unit Economics",
-      purpose: "Esclarecer premissas de aquisição, delivery e margem.",
-      useWhen: ["unit economics estão pouco claros", "pricing ou custo de aquisição precisa de avaliação aproximada", "gasto de growth está sendo considerado"],
-      requiredContext: ["Pricing", "Modelo de receita", "Budget", "Custos conhecidos"],
-      inputs: ["Custo de aquisição", "Custo de delivery", "Preço", "Margem bruta", "Métrica de uso ou valor"],
-      process: ["Liste premissas", "Separe fatos conhecidos de chutes", "Estime unit economics de forma direcional", "Identifique sensibilidade e evidência ausente"],
-      checks: ["Suposições estão explícitas", "Sem falsa precisão", "Riscos estão visíveis"],
-      outputs: ["Resumo de unit economics", "Premissas sensíveis", "Risks", "Necessidades de validação"],
+      purpose: "Modelar unit economics de forma direcional, com fórmulas, premissas, confidence level e vínculo com Pricing Catalog, Spend Ledger, budget e runway sem falsa precisão.",
+      useWhen: ["unit economics estão pouco claros", "pricing ou custo de aquisição precisa de avaliação aproximada", "gasto de Growth está sendo considerado", "margem, payback, CAC, custo de IA/API, infra ou delivery afeta decisão", "founder quer entender viabilidade econômica de plano, canal ou campanha"],
+      requiredContext: ["../knowledge/pricing.md", "../knowledge/spend-ledger.md", "../knowledge/budget.md", "../knowledge/revenue-model.md", "../knowledge/unit-economics.md", "../knowledge/finance-risks.md"],
+      inputs: ["Preço ou ARPA", "Custo de aquisição", "Custo de delivery", "Custo variável de IA/API/infra", "Payment fees", "Suporte ou operação manual", "Gross revenue", "Margem bruta", "Budget ou spend proposto", "Cash disponível quando informado", "Métrica de uso ou valor"],
+      process: ["Use Pricing Catalog e Spend Ledger como fontes antes de aceitar preço, custo, spend ou provider.", "Liste fatos conhecidos, estimativas e unknowns em grupos separados.", "Calcule de forma direcional: gross_margin, contribution_margin, payback e break_even quando houver dados suficientes.", "Quando faltar dado, não calcule; marque lacuna e pergunte pelo menor input necessário.", "Classifique confidence_level: low, medium ou high conforme qualidade das fontes.", "Identifique sensibilidade principal: aquisição, IA/API, infra, payment fees, suporte/manual ops ou churn.", "Recomende próxima decisão de founder, experimento ou rota para Pricing, Spend Ledger ou runway-check."],
+      checks: ["Use Pricing Catalog e Spend Ledger como fontes.", "Fatos conhecidos, estimativas e unknowns estão separados.", "Fórmulas e premissas estão explícitas quando houver cálculo.", "confidence_level: low, medium ou high está explícito.", "Gross margin, contribution margin, payback ou break_even não são calculados quando inputs essenciais faltam.", "Sensibilidade e risco financeiro têm owner ou próxima revisão."],
+      outputs: ["Resumo de unit economics", "Fórmulas e premissas", "gross_margin, contribution_margin, payback e break_even quando calculáveis", "confidence_level: low, medium ou high", "Premissas sensíveis", "Riscos financeiros", "Lacunas de dados", "Necessidades de validação", "Próxima rota financeira"],
       filesToUpdate: ["Atualize `../knowledge/unit-economics.md` após confirmação explícita."],
-      redLines: ["Não apresente estimativas como fatos validados.", "Não faça afirmações de investimento ou contabilidade."]
+      redLines: ["Não apresente estimativas como fatos validados.", "Não apresente unit economics como certeza quando dados forem incompletos.", "Não invente preço, custo, CAC, churn, receita, margem ou cash.", "Não faça afirmações de investimento, contabilidade, fiscal, jurídica ou promessa de retorno.", "Não aprove aumento de spend sem Spend Ledger e budget."]
     },
     {
       slug: "review-pricing",

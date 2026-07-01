@@ -50,6 +50,10 @@ When changing LeanOS framework skills, playbooks or workflows, update the matchi
 
 These files are the framework-level map for what exists, what each asset is for, which department/area owns it and where it can be activated. Do not add, remove, rename or move generated skills, playbooks or workflows without keeping these inventories aligned.
 
+## Framework Governance
+
+Before commits, PRs or meaningful LeanOS framework changes, consult `docs/framework/governance/` and apply the internal governance playbooks that match the change. Use them as a lightweight gate for framework behavior, Nav Chain integrity, asset quality, department handoffs, doctrine alignment and founder experience; keep detailed criteria in governance docs instead of expanding this root file.
+
 ## NPM Release Protocol
 
 When the user asks to update, publish or release the public LeanOS packages, use the repository runbook instead of reconstructing commands from memory.

@@ -249,6 +249,16 @@ function assertFeatureDeliveryWorkflowDefinition() {
 
   const fullText = [...workflow.steps, ...(workflow.conditionalAreas ?? []).map((item) => item.when), ...(workflow.stopConditions ?? []), ...(workflow.expectedOutput ?? [])].join("\n");
 
+  assert(fullText.includes("Feature implementation packet"), "feature-to-delivery-cycle should route through the Feature implementation packet");
+  assert(
+    fullText.includes("operations/product-ops/knowledge/implementation-packets/<feature-slug>/README.md"),
+    "feature-to-delivery-cycle should name the implementation packet README path"
+  );
+  assert(
+    fullText.includes("screen specs, component specs"),
+    "feature-to-delivery-cycle should include Design artifacts in the implementation packet"
+  );
+
   for (const expectedRisk of ["LLM input/output", "tool permissions", "RAG/vector DB", "customer data boundary", "prompt injection", "cost/rate abuse"]) {
     assert(
       fullText.includes(expectedRisk),
@@ -269,6 +279,10 @@ function assertEpicToFeaturesPlaybookDefinition() {
   assert(
     playbook.filesToUpdate?.some((item) => item.includes("../epics/<epic-slug>/<feature-slug>.md")),
     "epic-to-features filesToUpdate should include local Feature file path"
+  );
+  assert(
+    playbook.outputs?.some((item) => item.includes("implementation packet")),
+    "epic-to-features should identify whether each Feature will need an implementation packet"
   );
 
   assert(
@@ -522,6 +536,8 @@ function assertEngineeringKnowledgeContracts() {
   for (const expectedContent of ["## Findings By Severity", "## Merge Recommendation", "Design Review"]) {
     assert(reviewCriteria.includes(expectedContent), `review-criteria.md should include ${expectedContent}`);
   }
+  assert(reviewCriteria.includes("## Implementation Packet Review"), "review-criteria.md should require implementation packet review");
+  assert(reviewCriteria.includes("screen specs and component specs"), "review-criteria.md should compare UI changes to Design specs");
 }
 
 function assertDevopsSkillContracts() {
@@ -642,24 +658,43 @@ function assertDesignSkillContracts() {
   }
 
   assert(
-    findAreaSkill(designArea, "user-research", "Design").outputs?.includes("Evidence confidence"),
-    "user-research should output Evidence confidence"
+    findAreaSkill(designArea, "user-research", "Design").outputs?.includes("Confiança da evidência: alta, média, baixa ou suposição"),
+    "user-research should output PT-BR evidence confidence"
   );
   assert(
-    findAreaSkill(designArea, "user-flow-mapping", "Design").outputs?.includes("Flow decision status"),
-    "user-flow-mapping should output Flow decision status"
+    findAreaSkill(designArea, "user-flow-mapping", "Design").outputs?.includes("Decisão de fluxo: pronto, com ressalvas, bloqueado ou não aplicável"),
+    "user-flow-mapping should output PT-BR flow decision"
   );
   assert(
-    findAreaSkill(designArea, "design-system", "Design").outputs?.includes("MVP design-system decision"),
-    "design-system should output MVP design-system decision"
+    findAreaSkill(designArea, "design-system", "Design").outputs?.includes("Decisão de design system do MVP: pronto, com ressalvas, bloqueado ou não aplicável"),
+    "design-system should output PT-BR MVP design-system decision"
   );
   assert(
-    findAreaSkill(designArea, "screen-specification", "Design").outputs?.includes("Implementation-ready screen spec"),
-    "screen-specification should output Implementation-ready screen spec"
+    findAreaSkill(designArea, "screen-specification", "Design").outputs?.includes("Spec de tela pronta para implementação"),
+    "screen-specification should output PT-BR implementation-ready screen spec"
   );
   assert(
-    findAreaSkill(designArea, "microcopy", "Design").outputs?.includes("Copy decision status"),
-    "microcopy should output Copy decision status"
+    findAreaSkill(designArea, "screen-specification", "Design").filesToUpdate?.some((item) => item.includes("implementation-packets/<feature-slug>/design/screen-specs/<screen-slug>.md")),
+    "screen-specification should write screen specs into the Feature implementation packet"
+  );
+  assert(
+    findAreaSkill(designArea, "component-analysis", "Design").filesToUpdate?.some((item) => item.includes("implementation-packets/<feature-slug>/design/component-specs/<component-slug>.md")),
+    "component-analysis should write component specs into the Feature implementation packet"
+  );
+  assert(
+    findAreaSkill(designArea, "component-analysis", "Design").checks?.some((item) => item.includes("specified, not implemented")),
+    "component-analysis should distinguish specified components from implemented components"
+  );
+  assert(
+    findAreaSkill(designArea, "microcopy", "Design").outputs?.includes("Decisão de copy: pronta, com ressalvas, bloqueada ou não aplicável"),
+    "microcopy should output PT-BR copy decision"
+  );
+
+  const screenReadiness = designArea.playbooks.find((item) => item.slug === "screen-readiness");
+  assert(screenReadiness, "Design should define screen-readiness playbook");
+  assert(
+    screenReadiness.filesToUpdate?.some((item) => item.includes("implementation-packets/<feature-slug>/design/screen-specs/<screen-slug>.md")),
+    "screen-readiness should update screen specs in the Feature implementation packet"
   );
 }
 

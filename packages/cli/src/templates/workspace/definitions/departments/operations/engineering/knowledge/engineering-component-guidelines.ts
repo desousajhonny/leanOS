@@ -13,11 +13,14 @@ Engineering should implement a reusable component only when the Feature requires
 
 ## Design Dependency
 
+- Read the Feature implementation packet before component work: \`../../product-ops/knowledge/implementation-packets/<feature-slug>/README.md\`.
 - Read the approved Design component spec before implementing a new user-facing component.
+- Prefer the packet spec path when the spec is Feature-scoped: \`../../product-ops/knowledge/implementation-packets/<feature-slug>/design/component-specs/<component-slug>.md\`.
 - If no spec exists and the Feature needs a new or adapted component, route back to Design component readiness before branch/code.
 - Use \`../../design/knowledge/component-inventory.md\` to confirm whether a component already exists, is planned or needs a spec.
 - Use \`../../design/knowledge/design-system.md\` and \`../../design/knowledge/accessibility.md\` as the baseline for visual and accessibility decisions.
 - Não substitua decisões de Design por escolhas improvisadas de UI no código.
+- A component marked \`specified, not implemented\` is a contract for work, not an available component in code.
 
 ## Reuse Existing Components
 
@@ -64,6 +67,7 @@ Engineering should implement a reusable component only when the Feature requires
 
 - Component implementation decisions may be recorded in \`implementation-notes.md\` after confirmation.
 - Design specs and component inventory are Design-owned; route back to Design before changing them.
+- During post-merge, propose a Design inventory update when the PR shipped a reusable component: status, code path, tests or validation evidence and PR reference.
 
 ## Perguntas em Aberto
 

@@ -27,11 +27,13 @@ export async function validateBranchAndPrStandards() {
   const createPrSkill = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "skills", "create-pr", "SKILL.md"), "utf8");
   const branchPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "branch-for-feature.playbook.md"), "utf8");
   const preparePrPlaybook = await readFile(join(rootDir, "clinic-assistant-ai-os", "operations", "engineering", "playbooks", "prepare-pr.playbook.md"), "utf8");
+  const postMergeReminder = "Quando você mergear, avisa aqui que continuamos. Basta um 'merge feito, vamos seguir'.";
 
   assert(createPrSkill.includes("Título do PR em formato Conventional Commit"), "Create PR skill should require a Conventional Commit style title");
   assert(createPrSkill.includes("Status de prontidão"), "Create PR skill should output PR readiness status");
   assert(createPrSkill.includes("Deploy / Rollback"), "Create PR skill should require deploy and rollback notes");
   assert(createPrSkill.includes("Acabei de criar o PR #<number>: <url>. Você deseja rodar a revisão agora?"), "Create PR skill should prompt the founder to run PR validation after creating the PR");
+  assert(createPrSkill.includes(postMergeReminder), "Create PR skill should remind founder to trigger post-merge continuation after merge");
   assert(createPrSkill.includes("playbooks/pr-validation.playbook.md"), "Create PR skill should route the post-PR review prompt to PR validation");
   assert(branchPlaybook.includes("fix/..."), "Branch playbook should mention fix branches");
   assert(branchPlaybook.includes("chore/..."), "Branch playbook should mention chore branches");
@@ -41,6 +43,7 @@ export async function validateBranchAndPrStandards() {
   assert(preparePrPlaybook.includes("Status De Prontidão"), "Prepare PR playbook should fill readiness status");
   assert(preparePrPlaybook.includes("Deploy / Rollback"), "Prepare PR playbook should fill deploy and rollback notes");
   assert(preparePrPlaybook.includes("Acabei de criar o PR #<number>: <url>. Você deseja rodar a revisão agora?"), "Prepare PR playbook should ask whether to run PR validation after PR creation");
+  assert(preparePrPlaybook.includes(postMergeReminder), "Prepare PR playbook should remind founder to trigger post-merge continuation after merge");
 }
 
 function assertBranchStandards(content, label) {

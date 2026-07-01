@@ -13,6 +13,7 @@ Use quando estruturar README de produto, epics e features locais a partir do con
 - `product-readme-template.md`
 - `epic-template.md`
 - `feature-template.md`
+- `implementation-packet-template.md`
 
 ## Pastas Relacionadas
 

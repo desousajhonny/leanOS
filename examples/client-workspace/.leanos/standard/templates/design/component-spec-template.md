@@ -1,32 +1,33 @@
 # Component Spec: <component-name>
 
-Use this template when a Feature needs a reusable UI component that is not already approved in the Design component inventory.
+Use este template quando uma Feature precisar de um componente reutilizável ainda não aprovado no inventário de Design.
 
-This file is owned by Design. Engineering uses it as an implementation contract.
+Este arquivo pertence a Design. Engineering usa como contrato de implementação.
 
 ## Status
 
 - Status: draft / approved / needs-review / deprecated
-- Owner: Design
-- Related Feature:
-- Related Epic:
-- Last Updated:
+- Dono: Design
+- Feature relacionada:
+- Epic relacionada:
+- Origem: Feature / PR / decisão de Design
+- Última atualização:
 
-## Propósito
+## O Que É
 
-Explain what this component does and what user problem it helps solve.
+Explique o que este componente é, qual problema de usuário resolve e por que deve existir como componente reutilizável.
 
-## When To Use
+## Quando Usar
 
 - Use quando...
 - Use quando...
 
-## When Not To Use
+## Quando Não Usar
 
 - Não use quando...
 - Não use quando...
 
-## Anatomy
+## Anatomia
 
 Liste as partes visíveis e estruturais do componente.
 
@@ -37,15 +38,15 @@ Liste as partes visíveis e estruturais do componente.
 - Supporting text:
 - Feedback area:
 
-## Variants
+## Variantes
 
-| Variant | Purpose | When To Use | Notes |
+| Variante | Propósito | Quando Usar | Notas |
 | --- | --- | --- | --- |
 | Default | TBD | TBD | TBD |
 
-## States
+## Estados
 
-| State | Expected Behavior | UX Copy | Accessibility Notes |
+| Estado | Comportamento Esperado | Copy De UX | Notas De Acessibilidade |
 | --- | --- | --- | --- |
 | Default | TBD | TBD | TBD |
 | Hover | TBD | TBD | TBD |
@@ -56,7 +57,7 @@ Liste as partes visíveis e estruturais do componente.
 | Error | TBD | TBD | TBD |
 | Success | TBD | TBD | TBD |
 
-## Behavior
+## Comportamento
 
 - Interaction:
 - Validation:
@@ -64,7 +65,16 @@ Liste as partes visíveis e estruturais do componente.
 - Error handling:
 - Responsive behavior:
 
-## Accessibility
+## Dicas De Usabilidade
+
+- Densidade:
+- Hierarquia visual:
+- Clareza de ação:
+- Feedback esperado:
+- Limites de complexidade:
+- Erros comuns de uso:
+
+## Acessibilidade
 
 - Keyboard behavior:
 - Focus order:
@@ -73,7 +83,7 @@ Liste as partes visíveis e estruturais do componente.
 - Screen reader notes:
 - Reduced motion notes:
 
-## Content Rules
+## Regras De Conteúdo
 
 - Labels:
 - Helper text:
@@ -92,7 +102,15 @@ Liste as partes visíveis e estruturais do componente.
 - Shadow:
 - Motion:
 
-## Composition Rules
+## Alinhamento Com Product UI Spec
+
+- Product UI Spec: `operations/design/knowledge/product-ui-spec.md`
+- Padrão existente seguido:
+- Novo padrão ou extensão proposta:
+- Por que padrões existentes não bastam:
+- Candidato a promoção: sim / não
+
+## Regras De Composição
 
 - Can contain:
 - Can be contained by:
@@ -100,7 +118,19 @@ Liste as partes visíveis e estruturais do componente.
 - Maximum recommended complexity:
 - Reuse guidance:
 
-## Engineering Notes
+## Exemplos
+
+| Exemplo | Quando Usar | Observação |
+| --- | --- | --- |
+| TBD | TBD | TBD |
+
+## Faça / Não Faça
+
+| Faça | Não Faça | Motivo |
+| --- | --- | --- |
+| TBD | TBD | TBD |
+
+## Notas Para Engineering
 
 - Expected props or inputs:
 - Data dependencies:
@@ -108,6 +138,17 @@ Liste as partes visíveis e estruturais do componente.
 - Testing expectations:
 - Performance concerns:
 - Existing patterns to follow:
+
+## Evidência De Handoff
+
+- Caminho da spec:
+- Caminho da documentação durável em `operations/design/knowledge/components/<component-slug>.md`:
+- Code path esperado:
+- Code path confirmado após merge:
+- PR ou referência:
+- Screenshot, preview ou Storybook:
+- Evidência de teste ou validação no PR:
+- Lacunas conhecidas:
 
 ## Não Faça
 

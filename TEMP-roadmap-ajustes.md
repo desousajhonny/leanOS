@@ -32,6 +32,7 @@ O LeanOS tem um MVP de framework local com:
 - Pricing Catalog canonico em `growth/finance/knowledge/pricing.md`, com Runtime Source, Consumer Contract e gates em Marketing, Customer Experience, Product Ops, Engineering, DevOps e Security.
 - Spend Ledger canonico em `growth/finance/knowledge/spend-ledger.md`, com budget, burn, runway, approval thresholds e gates em Marketing, Product Ops, Engineering, DevOps e Security.
 - Growth Experiment Ledger canonico em `growth/marketing/knowledge/growth-experiments.md`, com planejamento/análise de experimentos, input manual de resultados, Decision output e gates para Finance, Strategy e Product Ops.
+- Skill Quality Pass em Security, Design, Growth/CX/Finance e Strategy Coherence, com validação automatica para impedir skills críticas rasas ou genéricas.
 
 ## Decisoes Canonicas Atuais
 
@@ -62,6 +63,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] Planos, preços, cobrança, trials, quotas, limites e entitlements pertencem ao Pricing Catalog de Growth Finance; áreas consumidoras não devem inventar valores ou direitos fora dessa fonte.
 - [x] Gastos, budget, burn, runway, ferramentas pagas, mídia paga, providers e custos variáveis pertencem ao Spend Ledger de Growth Finance; áreas consumidoras não devem criar custo relevante fora dessa fonte.
 - [x] Decisões de Growth pós-lançamento, landing page, aquisição, campanha ou oferta devem usar experimento registrado em `growth/marketing/knowledge/growth-experiments.md` ou feedback registrado em Customer Experience.
+- [x] Skills críticas precisam de contrato forte: decisão explícita, evidência, outputs estruturados, arquivos permitidos e linhas vermelhas.
 
 ## Concluido Nesta Branch
 
@@ -112,6 +114,7 @@ O LeanOS tem um MVP de framework local com:
 - [x] Spend/Budget Source of Truth implementado: root `AGENT.md` roteia gastos/budget/burn/runway para `activation_required: growth.finance`, `spend-ledger.md` virou fonte canonica de gastos, `budget.md` ganhou Monthly Budget/Runway Snapshot/Approval Thresholds, Finance ganhou `review-spend`, `runway-check`, `budget-planning`, `spend-approval` e `monthly-finance-check`, e validação `validateSpendBudgetSourceOfTruthContract` adicionada.
 - [x] Growth Experiment Learning implementado: Marketing ganhou `growth-experiments.md`, skills `plan-growth-experiment` e `analyze-growth-result`, playbook `growth-experiment`, `launch-learning-loop` passou a exigir experimento ou feedback registrado antes de decisão, e validação `validateGrowthExperimentContract` adicionada.
 - [x] GitHub Safety Baseline implementado: DevOps ganhou skill `repository-profile`, playbook `github-safety-baseline`, workflow `.github/workflows/pr-validation.yml` adaptativo, capability contract para `repositoryProfile`, `prValidationWorkflow`, `branchProtection` e `createRelease`, além de validações automáticas e fixture regenerado.
+- [x] Skill Quality Pass implementado: `api-security-review`, `database-security-review`, `incident-response`, Design skills, `define-positioning`, `map-customer-feedback`, `model-unit-economics` e `coherence` fortalecidas; validação `validateSkillQualityPass` adicionada e fixture regenerado.
 
 ## Pendencias Ativas
 
@@ -314,6 +317,23 @@ Antes de publicar:
 - preparar token npm localmente sem colar em chat;
 - rodar `npm run release:npm`;
 - o script roda build, validacao do generator, dry-runs/pack, publica na ordem `lean-os` -> `create-lean-os`, verifica registry e remove `.npmrc`.
+
+### 9. Implementation Packet De Feature
+
+Status: implementado e validado.
+
+Objetivo: garantir que Design, Security, DevOps e outras areas entreguem artefatos de Feature no mesmo lugar antes de Engineering implementar.
+
+Fatia concluida:
+
+- Template `.leanos/standard/templates/product/implementation-packet-template.md` adicionado.
+- Template `.leanos/standard/templates/design/screen-spec-template.md` adicionado.
+- Product Ops ganhou `knowledge/implementation-packets/README.md` como hub de artefatos por Feature.
+- `ready-to-develop` agora bloqueia `ready-to-code` quando falta packet, screen spec ou component spec aplicavel.
+- Design ganhou playbook `screen-readiness` e atualizou `component-readiness` para gravar specs dentro do packet.
+- Component inventory diferencia `specified` de `implemented/available`; post-merge atualiza disponibilidade real.
+- Engineering e PR Validation passam a ler o packet e validar PR contra screen specs/component specs quando existirem.
+- Validado com `npm test`.
 
 ## Pendencias Futuras Nao Bloqueantes
 

@@ -1,70 +1,92 @@
 ---
 name: coherence
-description: Use quando strategy parece inconsistente; MVP Validation Scope pode não combinar com o problema; roadmap ou issue precisa de review de produto
+description: Use quando strategy parece inconsistente; MVP Validation Scope pode não combinar com o problema; roadmap, Epic, Feature ou issue precisa de review de produto; founder quer saber se uma ideia faz sentido antes de delivery; Product Ops precisa de checagem antes de promover trabalho
 ---
 
 # Checagem De Coerência
 
 ## Visão Geral
 
-Checar alinhamento entre ICP, problema, proposta de valor, MVP Validation Scope, roadmap e issue.
+Checar alinhamento entre ICP, problema, promessa, alternativa, MVP Validation Scope, roadmap, Feature e evidência usando uma matriz explícita, sem aprovar implementação.
 
 ## Use Quando
 
 - strategy parece inconsistente
 - MVP Validation Scope pode não combinar com o problema
-- roadmap ou issue precisa de review de produto
+- roadmap, Epic, Feature ou issue precisa de review de produto
+- founder quer saber se uma ideia faz sentido antes de delivery
+- Product Ops precisa de checagem antes de promover trabalho
 
 ## Contexto Obrigatório
 
 - ../knowledge/icp.md
 - ../knowledge/problem.md
 - ../knowledge/value-proposition.md
+- ../knowledge/positioning.md
 - ../knowledge/mvp-validation-scope.md
+- ../knowledge/validation-notes.md
 - ../../roadmap/knowledge/roadmap.md
+- Epic, Feature ou issue quando existir
 
 ## Entradas
 
 - ICP
 - Problema
+- Promessa
+- Alternativa
 - Proposta de valor
 - Escopo de Validação do MVP
-- Roadmap ou issue
+- Roadmap
+- Feature ou issue
+- Evidência disponível
 
 ## Processo
 
 ### Etapa 1
 
-Cheque fit entre ICP e problema.
+Monte uma Matriz de coerência com ICP, problema, promessa, alternativa, MVP Validation Scope, roadmap, Feature e evidência.
 
 ### Etapa 2
 
-Cheque fit entre proposta de valor e problema.
+Classifique cada dimensão como aligned, weak, conflict ou missing.
 
 ### Etapa 3
 
-Cheque fit entre MVP Validation Scope e valor.
+Explique o critério usado em cada classificação e cite o contexto que sustenta a decisão.
 
 ### Etapa 4
 
-Cheque fit entre roadmap e MVP Validation Scope.
+Identifique contradições entre ICP/problema, promessa/capacidade, MVP/roadmap e Feature/evidência.
 
 ### Etapa 5
 
-Liste contradições e próximos ajustes.
+Separe risco de produto, risco de escopo, risco de evidência e risco de delivery.
+
+### Etapa 6
+
+Recomende a menor próxima rota: continuar em Strategy Product, voltar para Business Foundation, ir para Roadmap, pedir Product Ops ou bloquear.
+
+### Etapa 7
+
+Peça confirmação antes de atualizar qualquer knowledge.
 
 ## Verificações e Critérios de Aceite
 
-- Achados separam alinhamento de inconsistência.
-- Riscos são acionáveis.
-- Próximo comando ou workflow está claro.
+- Matriz de coerência existe.
+- ICP, problema, promessa, alternativa, MVP Validation Scope, roadmap, Feature e evidência foram avaliados quando aplicáveis.
+- Cada dimensão foi classificada como aligned, weak, conflict ou missing.
+- Score ou recomendação explica critérios e evidência.
+- A checagem não aprova implementação nem cria Epic/Feature.
+- Próxima rota está clara e respeita activation gates.
 
 ## Saída
 
-- Score de coerência
+- Matriz de coerência
+- Classificação por dimensão: aligned, weak, conflict ou missing
 - Pontos alinhados
 - Inconsistências
-- Riscos
+- Riscos por tipo
+- Contexto ausente
 - Próxima ação recomendada
 
 ## Arquivos para Atualizar
@@ -74,4 +96,7 @@ Liste contradições e próximos ajustes.
 ## Linhas Vermelhas
 
 - Não reescreva estratégia silenciosamente.
-- Não trate review de coerência como aprovação para implementar.
+- Não use score sem explicar critérios e evidência.
+- Não aprove implementação a partir de uma checagem de coerência.
+- Não transforme inconsistência em roadmap, Epic ou Feature sem rota dona.
+- Não esconda conflito entre promessa, evidência e escopo.

@@ -78,15 +78,18 @@ Arquivos:
 - `product/product-readme-template.md`
 - `product/epic-template.md`
 - `product/feature-template.md`
+- `product/implementation-packet-template.md`
 
 ### `design/`
 
 Templates para especificações de Design que entregam estrutura voltada ao usuário para Engineering.
 
-Use quando: Use quando Design precisar documentar um contrato de componente antes da implementação.
+Use quando: Use quando Design precisar documentar um contrato de tela ou componente antes da implementação.
 
 Arquivos:
+- `design/product-ui-spec-template.md`
 - `design/component-spec-template.md`
+- `design/screen-spec-template.md`
 
 ### `review/`
 

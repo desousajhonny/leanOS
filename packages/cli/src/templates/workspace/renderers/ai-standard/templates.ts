@@ -1,10 +1,10 @@
 import type { FileEntry } from "../../types.js";
 import { standardTemplate } from "../../content/shared.js";
 import { agentTemplate, areaAgentTemplate, departmentAgentTemplate, rootAgentTemplate } from "./templates/agents.js";
-import { componentSpecTemplate } from "./templates/design.js";
+import { componentSpecTemplate, productUiSpecTemplate, screenSpecTemplate } from "./templates/design.js";
 import { playbookTemplate, playbookYamlTemplate, roleTemplate, roleYamlTemplate, skillTemplate, skillYamlTemplate } from "./templates/execution.js";
 import { branchNameTemplate, deliveryReadinessMatrixTemplate, githubEpicTemplate, githubFeatureTemplate, pullRequestTemplate } from "./templates/github.js";
-import { productEpicTemplate, productFeatureTemplate, productReadmeTemplate } from "./templates/product.js";
+import { implementationPacketTemplate, productEpicTemplate, productFeatureTemplate, productReadmeTemplate } from "./templates/product.js";
 import { codeReviewTemplate } from "./templates/review.js";
 import { areaReadmeTemplate } from "./templates/structure.js";
 
@@ -50,14 +50,14 @@ const templateGroups: TemplateGroup[] = [
     title: "Templates de Trabalho de Produto",
     purpose: "Templates para README de produto e trabalho local de produto no LeanOS antes de sincronização opcional com GitHub.",
     use: "Use quando estruturar README de produto, epics e features locais a partir do contexto de Strategy/Product.",
-    files: ["product-readme-template.md", "epic-template.md", "feature-template.md"]
+    files: ["product-readme-template.md", "epic-template.md", "feature-template.md", "implementation-packet-template.md"]
   },
   {
     key: "design",
     title: "Design Templates",
     purpose: "Templates para especificações de Design que entregam estrutura voltada ao usuário para Engineering.",
-    use: "Use quando Design precisar documentar um contrato de componente antes da implementação.",
-    files: ["component-spec-template.md"]
+    use: "Use quando Design precisar documentar um contrato de tela ou componente antes da implementação.",
+    files: ["product-ui-spec-template.md", "component-spec-template.md", "screen-spec-template.md"]
   },
   {
     key: "review",
@@ -92,13 +92,16 @@ function templateContent(fileName: string): string {
     "product-readme-template.md": productReadmeTemplate(),
     "epic-template.md": productEpicTemplate(),
     "feature-template.md": productFeatureTemplate(),
+    "implementation-packet-template.md": implementationPacketTemplate(),
     "github-epic-template.md": githubEpicTemplate(),
     "github-feature-template.md": githubFeatureTemplate(),
     "delivery-readiness-matrix-template.md": deliveryReadinessMatrixTemplate(),
     "branch-name-template.md": branchNameTemplate(),
     "pull-request-template.md": pullRequestTemplate(),
     "code-review-template.md": codeReviewTemplate(),
-    "component-spec-template.md": componentSpecTemplate()
+    "product-ui-spec-template.md": productUiSpecTemplate(),
+    "component-spec-template.md": componentSpecTemplate(),
+    "screen-spec-template.md": screenSpecTemplate()
   };
 
   return templates[fileName] ?? standardTemplate(fileName);

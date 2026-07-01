@@ -15,9 +15,9 @@ export const operationsDesignRoles: RoleDefinition[] = [
       title: "Product Designer",
       purpose: "Translate product, MVP and user context into coherent UI structure, flows and design system decisions.",
       useWhen: ["design foundation, UI, user flows, onboarding, layout, components or interaction design are involved"],
-      beforeActing: ["../../../strategy/product/knowledge/brief.md", "../../product-ops/mvp/scope.md", "../knowledge/design-system.md", "../knowledge/user-flows.md", "../knowledge/component-inventory.md"],
-      skills: ["design-system", "user-flow-mapping", "component-analysis", "screen-specification", "design-review"],
-      playbooks: ["design-foundation", "component-readiness", "mvp-ux-flow"]
+      beforeActing: ["../../../strategy/product/knowledge/brief.md", "../../product-ops/mvp/scope.md", "../../product-ops/knowledge/implementation-packets/README.md", "../knowledge/design-system.md", "../knowledge/product-ui-spec.md", "../knowledge/user-flows.md", "../knowledge/component-inventory.md"],
+      skills: ["design-system", "product-ui-spec", "user-flow-mapping", "component-analysis", "screen-specification", "design-review"],
+      playbooks: ["design-foundation", "product-ui-spec-readiness", "screen-readiness", "component-readiness", "mvp-ux-flow"]
     },
     {
       slug: "accessibility-specialist",

@@ -8,14 +8,17 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 - Repositório: `desousajhonny/leanOS`.
 - Branch local de trabalho atual: `main`.
-- Remote `origin/main` está em `d8aef7c` em 2026-07-01.
+- Remote `origin/main` está em `183bddf` em 2026-07-01.
 - `AGENT.md` raiz é o ponto de entrada para comportamento de agente no nível do projeto.
 - Source of truth do framework vive em `docs/framework/source-of-truth/`.
 - Roadmap temporário de implementação vive em `TEMP-roadmap-ajustes.md`.
 
 ## Decisões Recentes
 
+- 2026-07-01: Framework Governance interna passa a existir em `docs/framework/governance/`, com dois modos: Checklist Antes De Commit/PR e Auditoria Sob Demanda. Inclui playbooks `framework-change-review`, `doctrine-alignment-review`, `nav-chain-audit`, `asset-quality-review`, `department-handoff-review` e `founder-experience-review`, além de skills internas nomeadas por capacidade: `framework-change`, `doctrine-alignment`, `nav-chain`, `framework-asset`, `department-handoff` e `founder-experience`. Playbooks devem ter obrigatoriedade, matriz, severidade, cenários de pressão, racionalizações e resultado obrigatório; skills devem ter perguntas de auditoria, matriz, sinais de alerta, racionalizações e exemplo de saída.
 - 2026-07-01: Root `AGENT.md` deve ficar enxuto como bootloader e guardião das red lines. Intenções naturais duráveis entram em `.leanos/runtime/index/intent-map.yaml`, que pode declarar departamento, áreas obrigatórias e pistas de role/skill/playbook/workflow; o root usa essas pistas só para classificar e conferir, depois carrega apenas o departamento ativo via routing map.
+- 2026-07-01: Skill Quality Pass fortalece skills críticas sem mudar slugs: Security (`api-security-review`, `database-security-review`, `incident-response`), Design, Growth/CX/Finance (`define-positioning`, `map-customer-feedback`, `model-unit-economics`) e Strategy Product `coherence`. Skills críticas devem ter decisão explícita, evidência, outputs estruturados, arquivos permitidos e red lines; validação `validateSkillQualityPass` impede regressão.
+- 2026-07-01: Feature delivery passa a usar `operations/product-ops/knowledge/implementation-packets/<feature-slug>/README.md` como handoff central. Product Ops cria/confirma o packet; Design escreve screen specs e component specs dentro dele; Engineering lê antes de branch/código; PR Validation compara PR contra Feature + packet; post-merge atualiza component inventory de `specified` para `implemented/available` quando componente reutilizável foi entregue.
 - 2026-06-30: Adotar layout Business OS no scaffold: `<product-slug>-os/` para Strategy/Operations/Growth, `.leanos/standard/` para padrões do framework e `.leanos/runtime/` para agent/context/index/traces/vscode. Adicionar `lean-os update` para migrar workspaces existentes com preview via `--dry-run`.
 - 2026-06-30: Adotar `npm create lean-os` como comando principal de criação de workspace via pacote `create-lean-os`. Manter `npx lean-os ai` como compatibilidade e `npx lean-os activate/update` como comandos operacionais.
 - 2026-06-30: Publicações futuras de `lean-os` + `create-lean-os` devem começar mostrando ao usuário o comando PowerShell explícito que cria `.npmrc` via token granular npm com bypass 2FA, depois usar `npm run release:npm`, com validações automáticas, publish `lean-os` antes de `create-lean-os`, verificação do registry e remoção de `.npmrc`.
@@ -40,7 +43,10 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 ## Mudanças Recentes
 
+- Working tree: camada interna `docs/framework/governance/` adicionada e fortalecida com playbooks/skills de auditoria do próprio framework; root `AGENT.md`, inventários de skills/playbooks, framework README, decision log e validação `validateFrameworkGovernance` foram atualizados.
 - Working tree: root `AGENT.md` gerado foi simplificado e passou a carregar `.leanos/runtime/index/intent-map.yaml`; o generator cria esse mapa, os prompts/agent do VS Code apontam para ele, validações cobrem rotas críticas e impedem reintroduzir o mapa natural inline no root.
+- Working tree: Skill Quality Pass em andamento na `main`: definições de skills críticas foram fortalecidas em `packages/cli/src/templates/workspace/definitions/departments/**/skills.ts`, `examples/client-workspace/` foi regenerado e `packages/cli/scripts/validation/skill-quality.mjs` foi adicionado.
+- Working tree: Implementation Packet de Feature adicionado ao scaffold. Inclui templates de packet e screen spec, `operations/product-ops/knowledge/implementation-packets/README.md`, playbook Design `screen-readiness`, gates de `ready-to-develop`, Engineering/PR Validation lendo o packet e validação `validateImplementationPacketContract`.
 - Working tree: scaffold reorganizado para gerar `<product-slug>-os/README.md`, departamentos dentro do Business OS, `.leanos/standard/` e `.leanos/runtime/`; `leanos.yaml.paths` registra os novos roots; validação `validateBusinessOsLayout` cobre paths físicos e impede referências antigas como `ai-standard/` e `.leanos/context`.
 - Working tree: pacote `packages/create` adicionado como `create-lean-os`; o binário chama o wizard `runAiCommand` do pacote `lean-os`, docs promovem `npm create lean-os` e validação `validateCreateLeanOsPackage` cobre o contrato.
 - Working tree: Pricing Source of Truth em implementação na branch `feature/pricing-source-of-truth`. Foram adicionados contratos para Pricing Catalog, Runtime Source, Consumer Contract, rota root de Finance, gates de Product Ops/Engineering/DevOps/Security e validação `validatePricingSourceOfTruthContract`.

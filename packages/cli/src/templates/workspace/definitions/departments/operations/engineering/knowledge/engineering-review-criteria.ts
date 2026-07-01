@@ -12,9 +12,18 @@ Use estes critérios antes de recomendar prontidão de merge. A evidência revis
 ## Escopo Review
 
 - Confirm the PR maps to a local Feature or mapped GitHub Feature issue.
+- Confirm the PR maps to the Feature implementation packet when one exists.
 - Compare changed behavior with PRD, MVP scope and acceptance criteria.
 - Flag scope expansion, hidden refactors, unrelated files and missing non-goal explanations.
 - Confirm Design, Security, Data and DevOps dimensions are satisfied or explicitly not applicable.
+
+## Implementation Packet Review
+
+- Read \`operations/product-ops/knowledge/implementation-packets/<feature-slug>/README.md\` before recommending merge when a packet exists.
+- Compare implementation against Feature acceptance criteria and packet gates.
+- For UI changes, compare the PR with screen specs and component specs from the packet.
+- For Security, DevOps, Finance or Growth gates, confirm the relevant packet artifact is ready or not applicable with a reason.
+- Block merge recommendation when the PR ignores an applicable packet artifact without explicit scope change.
 
 ## Code Review
 
@@ -34,6 +43,9 @@ Use estes critérios antes de recomendar prontidão de merge. A evidência revis
 
 - Required when UX, UI, layout, copy, accessibility, screens, states, flows or components changed.
 - Confirm Design readiness, component spec or not-applicable reason.
+- Compare UI changes to screen specs and component specs when the Feature implementation packet includes them.
+- Compare UI changes to the Product UI Spec in \`operations/design/knowledge/product-ui-spec.md\` when shell, navigation, menus, forms, tables, panels, action priority, feedback patterns or reusable layout changed.
+- Confirm reusable components reference durable docs in \`operations/design/knowledge/components/<component-slug>.md\` when they are already promoted.
 - Check screenshots, preview URL or Founder Testing Guide when user-facing UI changed.
 - Não aprove decisões improvisadas de UI que contornam Design.
 

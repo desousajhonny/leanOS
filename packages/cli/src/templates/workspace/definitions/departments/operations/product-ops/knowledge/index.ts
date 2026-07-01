@@ -1,6 +1,7 @@
 export { productOpsDeliveryScopeKnowledge } from "./product-ops-delivery-scope.js";
 export { productOpsEpicsReadmeKnowledge } from "./product-ops-epicsreadme.js";
 export { productOpsIssueReadinessKnowledge } from "./product-ops-issue-readiness.js";
+export { productOpsImplementationPacketsKnowledge } from "./product-ops-implementation-packets.js";
 export { productOpsMvpAcceptanceCriteriaKnowledge } from "./product-ops-mvp-acceptance-criteria.js";
 export { productOpsMvpBacklogKnowledge } from "./product-ops-mvp-backlog.js";
 export { productOpsMvpDecisionGateKnowledge } from "./product-ops-mvp-decision-gate.js";

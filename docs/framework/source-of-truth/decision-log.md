@@ -691,3 +691,68 @@ Justificativa:
 - Um mapa YAML é mais fácil de validar, versionar e atualizar sem poluir a experiência do founder.
 - Separar classificação de intenção e navegação real preserva a Nav Chain LeanOS: root -> departamento -> área -> role -> skill/playbook -> output.
 - A mudança mantém força nas red lines e melhora escalabilidade de novas áreas, roles, skills e workflows.
+
+## 2026-07-01 - Skill Quality Pass Para Áreas Críticas
+
+Decisão:
+
+- Skills críticas devem seguir o template completo gerado: frontmatter `name`/`description`, visão geral, use quando, contexto obrigatório, entradas, processo com `### Etapa N`, verificações, saída, arquivos para atualizar e linhas vermelhas.
+- Security ganhou contratos mais fortes em `api-security-review`, `database-security-review` e `incident-response`, com decisão explícita, evidência revisada, stop conditions, contenção, rotação de secrets, comunicação e postmortem.
+- Design ganhou skills em PT-BR com decisões estruturadas para research, fluxo, design system, componentes, tela, microcopy, acessibilidade e review.
+- Growth/CX/Finance ganhou contratos mais objetivos em `define-positioning`, `map-customer-feedback` e `model-unit-economics`, evitando posicionamento genérico, feedback superestimado e falsa precisão financeira.
+- Strategy Product `coherence` passa a usar Matriz de coerência com classificação por dimensão, critérios e evidência, sem aprovar implementação.
+- O generator valida esse quality pass com `validateSkillQualityPass` para impedir regressão em estrutura, idioma e decisões críticas.
+
+Justificativa:
+
+- Skills são o ponto onde o modelo transforma contexto em ação; skills rasas geram resposta genérica, decisão sem evidência ou risco operacional.
+- Security, dados, incidentes, pricing, feedback e Design handoff têm risco alto para founders e clientes.
+- Uma skill deve ser uma capacidade reutilizável com critérios claros, não uma opinião solta do modelo nem um playbook disfarçado.
+
+## 2026-07-01 - Implementation Packet Como Handoff Central De Feature
+
+Decisão:
+
+- Toda Feature em delivery normal deve passar por um Feature implementation packet em `operations/product-ops/knowledge/implementation-packets/<feature-slug>/README.md`.
+- Product Ops é dono do packet e do gate de readiness.
+- Design, Security, DevOps, Growth, Finance e Engineering escrevem artefatos Feature-scoped dentro do packet quando seus gates forem aplicáveis.
+- Screen specs ficam em `operations/product-ops/knowledge/implementation-packets/<feature-slug>/design/screen-specs/<screen-slug>.md`.
+- Component specs Feature-scoped ficam em `operations/product-ops/knowledge/implementation-packets/<feature-slug>/design/component-specs/<component-slug>.md`.
+- `operations/design/knowledge/components/` fica reservado para specs duráveis/reutilizáveis que devem sobreviver a uma Feature específica.
+- Component inventory diferencia `specified` de `implemented/available`; Design pode registrar a spec como `specified`, mas o componente só vira `implemented/available` depois de implementação, merge e post-merge update.
+- Engineering deve ler o packet antes de branch/código; PR Validation deve comparar PR contra Feature + packet, incluindo screen specs e component specs quando existirem.
+- `post-merge-continuation` deve propor atualização de component inventory quando um componente reutilizável foi entregue.
+
+Justificativa:
+
+- Founder não consegue lembrar todos os gates de Design/Security/DevOps/Engineering; o framework precisa forçar o caminho seguro.
+- Centralizar artefatos da Feature reduz risco de Engineering implementar a partir de issue resumida, memória solta ou UI improvisada.
+- Separar spec de disponibilidade evita tratar componente desenhado como componente já existente em código.
+
+## 2026-07-01 - Framework Governance Interna
+
+Decisão:
+
+- O LeanOS passa a ter uma camada interna de Framework Governance em `docs/framework/governance/`.
+- Essa camada não é gerada no workspace do founder e serve apenas para manutenção/evolução do framework.
+- A governança opera em dois modos:
+  - Checklist Antes De Commit/PR;
+  - Auditoria Sob Demanda.
+- O gate interno cobre:
+  - `framework-change-review`;
+  - `doctrine-alignment-review`;
+  - `nav-chain-audit`;
+  - `asset-quality-review`;
+  - `department-handoff-review`;
+  - `founder-experience-review`.
+- Skills internas de governança usam nomes de capacidade/tema, não verbos: `framework-change`, `doctrine-alignment`, `nav-chain`, `framework-asset`, `department-handoff` e `founder-experience`.
+- Playbooks internos de governança devem declarar quando são obrigatórios, matriz de avaliação, escala `blocker / high / medium / low`, cenários de pressão, racionalizações comuns e resultado obrigatório.
+- Skills internas de governança devem declarar perguntas de auditoria, matriz de avaliação, sinais de alerta, racionalizações comuns e exemplo de saída com `Status` e `Severity`.
+- O root `AGENT.md` deve apontar para `docs/framework/governance/` com uma regra curta, sem absorver critérios detalhados nem virar inventário.
+- O generator passa a validar a existência e o contrato mínimo dessa governança para evitar regressão.
+
+Justificativa:
+
+- O framework precisa de critérios estáveis para avaliar se mudanças continuam seguindo Business as a Product, Strategy-first, Navigation Chain, source of truth local e founder-friendliness.
+- Sem playbooks internos, cada modelo poderia inventar critérios diferentes ao revisar Nav Chain, skills, handoffs ou alinhamento doutrinário.
+- A governança deve melhorar qualidade antes de commit/PR e também responder auditorias sob demanda, sem criar burocracia para o founder.

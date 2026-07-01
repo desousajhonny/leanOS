@@ -131,8 +131,8 @@ export async function assertDesignFoundation(rootDir) {
   for (const heading of ["## Propósito", "## How To Use", "## Component List", "## Lacunas Conhecidas", "## Reuse Rules", "## Perguntas em Aberto"]) {
     assert(componentInventoryKnowledge.includes(heading), `Component inventory knowledge should include ${heading}`);
   }
-  assert(componentInventoryKnowledge.includes("approved, planned, needs-spec, deprecated or unknown"), "Component inventory should define practical component statuses");
-  assert(componentSpecsReadme.includes("Store concrete Design component specifications created for real Features"), "Component specs README should explain its purpose");
+  assert(componentSpecsReadme.includes("Store durable, reusable Design component specifications"), "Component specs README should explain durable component specs");
+  assert(componentSpecsReadme.includes("implementation-packets/<feature-slug>/design/component-specs"), "Component specs README should route Feature-scoped specs to implementation packets");
   assert(componentSpecsReadme.includes("intentionally empty in the initial scaffold except for this README"), "Component specs folder should avoid speculative specs");
   assert(componentSpecsReadme.includes("<component-name>.md"), "Component specs README should define component spec naming");
   assert(componentSpecsReadme.includes(".leanos/standard/templates/design/component-spec-template.md"), "Component specs README should point to the component spec template");
@@ -149,10 +149,10 @@ export async function assertDesignFoundation(rootDir) {
     }
   }
 
-  assert(userResearchSkill.includes("Separate evidence from assumptions"), "User research skill should separate evidence from assumptions");
+  assert(userResearchSkill.includes("Separe evidência, suposição, opinião e lacuna"), "User research skill should separate evidence from assumptions");
   assert(userResearchSkill.includes("Não trate hipóteses como fatos"), "User research skill should avoid treating hypotheses as facts");
-  assert(userFlowMappingSkill.includes("Avoid flows larger than the MVP"), "User flow mapping should avoid oversized MVP flows");
-  assert(designSystemSkill.includes("Prioritize flow clarity before visual polish"), "Design system skill should avoid polish before flow clarity");
+  assert(userFlowMappingSkill.includes("O fluxo não é maior que o MVP"), "User flow mapping should avoid oversized MVP flows");
+  assert(designSystemSkill.includes("Clareza de fluxo vem antes de polimento visual"), "Design system skill should avoid polish before flow clarity");
   assert(componentAnalysisSkill.includes("reuse, adapt, create-new, not-applicable or blocked"), "Component analysis should classify component readiness decisions");
   assert(componentAnalysisSkill.includes("component-inventory.md"), "Component analysis should read component inventory");
   assert(componentAnalysisSkill.includes("component-spec-template.md"), "Component analysis should use the component spec template");
@@ -160,11 +160,11 @@ export async function assertDesignFoundation(rootDir) {
   assert(microcopySkill.includes("labels, helper text, empty states, errors, success messages and onboarding hints"), "Microcopy skill should cover key copy surfaces");
   assert(accessibilitySkill.includes("WCAG 2.2 AA"), "Accessibility skill should use WCAG 2.2 AA baseline");
   assert(designReviewSkill.includes("pass, concerns, blocked or not applicable"), "Design review skill should classify review result");
-  assert(designReviewSkill.includes("Findings are ordered by severity"), "Design review skill should order findings by severity");
+  assert(designReviewSkill.includes("Achados estão ordenados por severidade"), "Design review skill should order findings by severity");
 
   assert(designReadme.includes("knowledge/design-system.md"), "Design README should point to Design knowledge");
   assert(designKnowledgeReadme.includes("components/README.md"), "Design knowledge README should include component specs folder guidance");
-  assert(designKnowledgeReadme.includes("Create component specs inside `components/` only when a real Feature requires them"), "Design knowledge README should prevent speculative component specs");
+  assert(designKnowledgeReadme.includes("Write Feature-scoped screen specs and component specs inside"), "Design knowledge README should route Feature-scoped specs to packets");
   assert(designReadme.includes("Design foundation request"), "Design README should expose the design foundation common path");
   assert(designReadme.includes("For operational work, comece em `AGENT.md`"), "Design README should point operational work to the area AGENT");
   assert(designAgent.includes("Você é UX Lead"), "Design AGENT should define UX Lead as the area owner");

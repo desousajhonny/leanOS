@@ -52,6 +52,18 @@ An Epic can be important and still not ready for code. An Epic becomes developab
 - The Feature can be traced back to roadmap item, delivery scope and Epic.
 - If GitHub is used, the GitHub issue should mirror the local Feature before code starts.
 
+## Implementation Packet Readiness
+
+Required before Engineering starts branch or code for a normal Feature delivery.
+
+- The Feature has a packet at \`operations/product-ops/knowledge/implementation-packets/<feature-slug>/README.md\`.
+- The packet links back to the local Feature and parent Epic.
+- The packet records Product Ops, Design, Security, DevOps, Finance/Growth and Engineering gates.
+- Applicable gates are \`ready\`; non-applicable gates include a reason.
+- Missing specialist artifacts are listed in the packet before Engineering.
+- Engineering não inicia código while the packet is missing, draft, pending or blocked.
+- A spike can bypass the full packet only when the founder explicitly accepts a documented spike with narrow scope and no production code promise.
+
 ## Design Readiness
 
 Required when the work touches UX, UI, copy, accessibility, onboarding, screens, states, flows or user interaction.
@@ -59,6 +71,7 @@ Required when the work touches UX, UI, copy, accessibility, onboarding, screens,
 - Design foundation or user-flow context exists.
 - Accessibility impact is checked.
 - Required screens, states or components are described enough for Engineering.
+- If the Feature needs a new or materially changed screen, Design must create a screen spec in \`operations/product-ops/knowledge/implementation-packets/<feature-slug>/design/screen-specs/<screen-slug>.md\`.
 - If the Feature needs a new user-facing component, Design must create or confirm a component spec before Engineering starts code.
 - If the Feature reuses an existing component, name the component and any usage constraints.
 - If Design is not applicable, the reason is explicit.
@@ -70,7 +83,8 @@ Required when a Feature includes UI that depends on a reusable component.
 - Check \`operations/design/knowledge/component-inventory.md\` before assuming a component exists.
 - Reuse an approved component when it satisfies the Feature.
 - If an existing component needs adaptation, Design must state whether the change belongs in the reusable component or only in this Feature.
-- If a new component is required, the Feature is not \`ready-to-code\` until Design creates or confirms a component spec.
+- If a new component is required, the Feature is not \`ready-to-code\` until Design creates or confirms a component spec in \`operations/product-ops/knowledge/implementation-packets/<feature-slug>/design/component-specs/<component-slug>.md\`.
+- A component with status \`specified\` is not implemented. It can guide Engineering, but it is not available in code until post-merge updates mark it implemented/available.
 - Engineering must read the component spec before using \`operations/engineering/skills/implement-component/SKILL.md\` or \`operations/engineering/playbooks/component-implementation.playbook.md\`.
 - A missing component spec should create a Design task or route to \`operations/design/playbooks/component-readiness.playbook.md\`, not trigger immediate code.
 
@@ -141,7 +155,9 @@ Required when the work touches environments, CI/CD, deploy, observability, GitHu
 - \`needs-delivery-scope\`: roadmap item exists but no delivery scope is confirmed.
 - \`needs-epic-breakdown\`: an Epic exists but has not been broken into Features.
 - \`needs-feature-definition\`: the Feature is local but lacks acceptance criteria, boundaries, tasks or readiness criteria.
+- \`needs-implementation-packet\`: the Feature lacks \`operations/product-ops/knowledge/implementation-packets/<feature-slug>/README.md\` or the packet has unresolved applicable gates.
 - \`needs-design\`: UX/UI/accessibility context is required before coding.
+- \`needs-screen-spec\`: the Feature changes a concrete screen, state, flow, form, modal or page and needs a Design screen spec before Engineering can code it.
 - \`needs-component-spec\`: the Feature needs a new or adapted reusable component before Engineering can code it.
 - \`needs-pricing\`: plan, price, billing, paywall, subscription, trial, quota, limit or entitlement context is required from Growth Finance before coding.
 - \`needs-finance\`: spend, budget, burn, runway, provider cost or variable-cost context is required from Growth Finance before coding.
@@ -156,7 +172,9 @@ Required when the work touches environments, CI/CD, deploy, observability, GitHu
 - Recommend the next LeanOS route instead of writing code too early.
 - Use \`where-we-are.md\` for status/readiness questions.
 - Use \`feature-to-delivery-cycle\` only after readiness is confirmed.
+- Create or update the Feature implementation packet before Engineering starts normal Feature work.
 - Route missing component specs to Design before Engineering.
+- Route missing screen specs to Design before Engineering.
 - Route missing plan, price, billing, trial, quota, limit or entitlement context to Growth Finance before Engineering.
 - Route missing spend, budget, burn, runway, provider cost or variable-cost context to Growth Finance before Engineering.
 - Never treat importance as readiness.

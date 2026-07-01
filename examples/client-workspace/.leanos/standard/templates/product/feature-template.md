@@ -19,6 +19,12 @@ github_issue:
   url:
 ~~~
 
+## Implementation Packet
+
+- Path: operations/product-ops/knowledge/implementation-packets/<feature-slug>/README.md
+- Status: missing | draft | ready | blocked | done
+- Required before code: yes, unless the founder explicitly accepts a documented spike.
+
 ## Epic Pai
 
 - Epic:

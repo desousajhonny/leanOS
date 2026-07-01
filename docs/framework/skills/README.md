@@ -13,6 +13,19 @@ Regra de manutenção: sempre que uma skill for criada, removida, renomeada ou m
 - Uma skill normalmente é ativada por uma role da área, por um playbook da área ou por um workflow que roteia para aquela área.
 - Caminho padrão quando a área está ativa: `<departamento>/<area>/skills/<skill>/SKILL.md`.
 
+## Framework Governance
+
+Estas skills são de uso interno do framework e não são geradas no workspace do founder. Fonte: `docs/framework/governance/skills/`.
+
+| Skill | Serve Para | Pode Ser Ativada Por |
+| --- | --- | --- |
+| `framework-change` | Avaliar impacto geral de uma mudança no LeanOS antes de commit/PR ou auditoria sob demanda. | Playbook `framework-change-review`; pedidos como "avalie essa mudança no framework". |
+| `doctrine-alignment` | Checar aderência à doutrina, princípios, modelo operacional e decision log. | Playbook `doctrine-alignment-review`; mudanças estruturais ou decisões duráveis. |
+| `nav-chain` | Auditar root -> intent-map -> leanos.yaml -> routing-map -> departamento/área. | Playbook `nav-chain-audit`; mudanças de roteamento, ativação ou `AGENT.md`. |
+| `framework-asset` | Revisar qualidade, ownership, trigger, output e inventário de skills, playbooks, workflows, roles e knowledge. | Playbook `asset-quality-review`; revisões de assets do framework. |
+| `department-handoff` | Avaliar se uma área entrega evidência, decisão e source of truth consumível pela próxima. | Playbook `department-handoff-review`; mudanças entre áreas e workflows. |
+| `founder-experience` | Revisar clareza, carga cognitiva, perguntas, confirmações e ergonomia para o founder. | Playbook `founder-experience-review`; wizard, journeys e respostas do Chief. |
+
 ## Strategy
 
 ### Business
@@ -34,7 +47,7 @@ Ativação padrão: `AGENT.md` -> `strategy/AGENT.md` -> `strategy/product/AGENT
 | `business-baseline` | Mapear contexto inicial, estágio do negócio, lacunas da Strategy Baseline e próxima pergunta segura; roteia lacunas de negócio para Business Foundation. | Primeiro passo do playbook `idea-calibration`; role `product-strategist`; início do LeanOS ou qualquer ideia nova. |
 | `product-core` | Consolidar produto, usuário primário, problema central, alternativa, promessa, diferenciação e hipótese mais arriscada. | Roles `product-strategist` e `product-manager`; playbook `idea-calibration`; pedidos de descoberta, maturação ou clareza da ideia. |
 | `mvp-validation-scope` | Definir o menor caminho e sequência de validação do MVP sem criar Roadmap, Epic, Feature ou escopo de implementação. | Playbook `mvp-validation-scope`; handoff vindo de `idea-calibration`; roles `product-strategist` e `product-manager`. |
-| `coherence` | Checar coerência entre ICP, problema, proposta de valor, escopo de MVP, roadmap e issue. | Roles `product-strategist` e `product-manager`; playbook `idea-calibration`; revisões de coerência antes de avançar. |
+| `coherence` | Checar ICP, problema, promessa, alternativa, MVP Validation Scope, roadmap, Feature e evidência com matriz explícita, sem aprovar implementação. | Roles `product-strategist` e `product-manager`; playbook `idea-calibration`; revisões de coerência antes de avançar. |
 
 ### Roadmap
 
@@ -66,14 +79,14 @@ Ativação padrão: `AGENT.md` -> `operations/AGENT.md` -> `operations/design/AG
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
-| `user-research` | Extrair evidências, suposições e perguntas de UX a partir do contexto de produto. | Role `ux-researcher`; playbook `user-research`; rotas de design quando evidência de usuário for necessária. |
-| `user-flow-mapping` | Mapear os passos do usuário até o resultado do MVP. | Roles `ux-researcher`, `product-designer` e `ux-writer`; playbooks `design-foundation` e `mvp-ux-flow`. |
-| `design-system` | Definir tokens, regras visuais, componentes esperados e princípios de interação do MVP. | Role `product-designer`; playbooks `design-foundation` e `component-readiness`. |
-| `component-analysis` | Decidir se uma Feature reutiliza componente, adapta componente ou precisa de spec de componente. | Role `product-designer`; playbook `component-readiness`; gates de Feature com UI. |
-| `screen-specification` | Definir tela, estado, interação e notas de handoff para Engineering. | Role `product-designer`; playbook `mvp-ux-flow`; Features com tela concreta. |
-| `microcopy` | Escrever labels, helper texts, estados vazios, erros e mensagens de sucesso. | Role `ux-writer`; playbook `ux-writing`; Features com texto de interface. |
+| `user-research` | Extrair evidência, suposições, confiança e lacunas de usuário que informam decisões concretas de UX. | Role `ux-researcher`; playbook `user-research`; rotas de design quando evidência de usuário for necessária. |
+| `user-flow-mapping` | Mapear passos, edge cases, telas e decisão de fluxo do usuário até o resultado do MVP. | Roles `ux-researcher`, `product-designer` e `ux-writer`; playbooks `design-foundation` e `mvp-ux-flow`. |
+| `design-system` | Definir baseline mínima de tokens, hierarquia visual, componentes, interação e acessibilidade do MVP. | Role `product-designer`; playbooks `design-foundation` e `component-readiness`. |
+| `component-analysis` | Decidir se uma Feature reutiliza componente, adapta componente ou precisa de spec de componente no implementation packet. | Role `product-designer`; playbook `component-readiness`; gates de Feature com UI. |
+| `screen-specification` | Definir tela, estado, interação e notas de handoff em screen spec dentro do implementation packet. | Role `product-designer`; playbooks `screen-readiness` e `mvp-ux-flow`; Features com tela concreta. |
+| `microcopy` | Escrever labels, helper texts, estados vazios, erros e sucessos sem esconder restrição, risco, preço ou promessa sem fonte. | Role `ux-writer`; playbook `ux-writing`; Features com texto de interface. |
 | `accessibility` | Definir baseline de acessibilidade, teclado, foco, contraste, forms e screen reader. | Role `accessibility-specialist`; playbooks de Design e workflow `feature-to-delivery-cycle` quando aplicável. |
-| `design-review` | Avaliar impacto de UX/design em issues, PRs, telas, fluxos ou decisões. | Roles `product-designer`, `accessibility-specialist` e `ux-writer`; playbook `accessibility-review`; revisões de Design. |
+| `design-review` | Avaliar impacto de UX/design com achados por severidade e recomendação de próxima ação. | Roles `product-designer`, `accessibility-specialist` e `ux-writer`; playbook `accessibility-review`; revisões de Design. |
 
 ### Engineering
 
@@ -113,14 +126,14 @@ Ativação padrão: `AGENT.md` -> `operations/AGENT.md` -> `operations/security/
 | --- | --- | --- |
 | `threat-modeling` | Identificar ativos, atores, trust boundaries, abusos prováveis e mitigações. | Role `security-reviewer`; playbook `security-foundation`; Features com risco de abuso ou dados. |
 | `access-control-review` | Revisar autenticação, autorização, ownership e acesso admin. | Roles `security-reviewer` e `data-protection-reviewer`; playbooks de Security quando auth/permissão existir. |
-| `api-security-review` | Revisar APIs por auth, autorização, rate limit, validação, CORS e abuso. | Role `application-security-engineer`; playbook `api-security-review`; Features/API/PRs com endpoints. |
-| `database-security-review` | Revisar privacidade, isolamento, queries, backup e permissões de banco. | Role `data-protection-reviewer`; playbook `database-security-review`; Features com dados persistentes. |
+| `api-security-review` | Revisar APIs com decisão explícita sobre authn/authz, validação, rate limit, CORS, abuso, vazamento e evidência. | Role `application-security-engineer`; playbook `api-security-review`; Features/API/PRs com endpoints. |
+| `database-security-review` | Revisar banco, schema, query, tenant isolation, backup, rollback, privacidade e permissões com decisão explícita. | Role `data-protection-reviewer`; playbook `database-security-review`; Features com dados persistentes. |
 | `secrets-management` | Revisar armazenamento de secrets, tokens, rotação e resposta a vazamento. | Roles `application-security-engineer` e `cloud-security-reviewer`; playbook `secrets-rotation`; DevOps/Security. |
 | `secure-code-review` | Revisar falhas comuns de segurança e escolhas inseguras de implementação. | Roles `security-reviewer`, `application-security-engineer` e `data-protection-reviewer`; playbooks de review e pré-deploy. |
 | `dependency-supply-chain-review` | Revisar dependências por pacotes inexistentes, versões vulneráveis e supply chain. | Role `application-security-engineer`; playbook `vulnerability-response`; PRs com dependências. |
 | `infra-hardening-review` | Revisar exposição de infra, CORS, rate limits, service accounts e permissões de deploy. | Role `cloud-security-reviewer`; playbook `pre-deploy-security-review`; deploy/release. |
 | `ai-runtime-security-review` | Revisar runtime de produto AI: LLM input/output, permissões de ferramentas, RAG/vector DB, fronteira de dados de cliente, prompt injection e abuso de custo/rate. | Role `ai-security-engineer`; playbook `ai-app-security-review`; workflow `security-hardening-cycle`; gates de Feature/launch com AI. |
-| `incident-response` | Guiar resposta leve a vazamentos, vulnerabilidades, abuso, outages e regressões de produção. | Role `cloud-security-reviewer`; playbook `incident-response`; incidentes e pós-release. |
+| `incident-response` | Guiar severidade, contenção, rotação de secrets, comunicação, verificação, monitoramento e postmortem de incidentes. | Role `cloud-security-reviewer`; playbook `incident-response`; incidentes e pós-release. |
 | `security-automation-readiness` | Decidir quais scanners/checks entram sem criar automação frágil cedo demais. | Roles `security-reviewer` e `cloud-security-reviewer`; playbook `security-automation-readiness`; readiness de segurança. |
 | `ai-generated-code-security` | Revisar riscos criados por agentes de IA, diffs gerados e permissões amplas. | Roles `security-reviewer` e `application-security-engineer`; playbook `ai-generated-code-security-review`; PRs ou código gerado por IA. |
 
@@ -132,7 +145,7 @@ Ativação padrão: `AGENT.md` -> `growth/AGENT.md` -> `growth/customer-experien
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
-| `map-customer-feedback` | Agrupar feedback em sinais de produto, suporte e growth. | Workflow `launch-learning-loop`; role `cx-lead`; playbook `customer-learning-loop`. |
+| `map-customer-feedback` | Sanitizar feedback, classificar força do sinal e rotear aprendizado sem transformar feedback isolado em Feature. | Workflow `launch-learning-loop`; role `cx-lead`; playbook `customer-learning-loop`. |
 | `synthesize-support-patterns` | Transformar notas de suporte em aprendizado e ações, usando Pricing Catalog quando plano, cobrança ou entitlement aparecer. | Role `cx-lead`; playbook `customer-learning-loop`; pedidos sobre padrões de suporte, feedback, planos ou billing. |
 
 ### Marketing
@@ -141,7 +154,7 @@ Ativação padrão: `AGENT.md` -> `growth/AGENT.md` -> `growth/marketing/AGENT.m
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
-| `define-positioning` | Definir categoria, audiência, promessa e diferenciação. | Workflow `launch-learning-loop`; role `growth-lead`; playbook `mvp-launch`. |
+| `define-positioning` | Definir categoria, ICP, alternativa, promessa, diferenciação, prova disponível e mapa de claims. | Workflow `launch-learning-loop`; role `growth-lead`; playbook `mvp-launch`. |
 | `create-landing-page-copy` | Criar copy para landing page inicial de validação ou lançamento, consumindo Pricing Catalog quando houver plano ou preço. | Role `growth-lead`; playbook `mvp-launch`; pedidos de landing page, validação, pricing ou lançamento. |
 | `create-launch-plan` | Planejar ações, canais e ciclos de aprendizado de lançamento. | Workflow `launch-learning-loop`; role `growth-lead`; playbook `mvp-launch`. |
 | `plan-growth-experiment` | Planejar experimento de Growth com hipótese, Measurement plan, critérios de sucesso/falha e Manual Result Input Template. | Role `growth-lead`; playbook `growth-experiment`; workflow `launch-learning-loop` quando ainda não há resultado. |
@@ -153,7 +166,7 @@ Ativação padrão: `AGENT.md` -> `growth/AGENT.md` -> `growth/finance/AGENT.md`
 
 | Skill | Serve Para | Pode Ser Ativada Por |
 | --- | --- | --- |
-| `model-unit-economics` | Esclarecer hipóteses de aquisição, entrega, margem e custos. | Role `finance-operator`; playbook `finance-review`; rotas de Growth/Finance com custo, margem ou spend. |
+| `model-unit-economics` | Modelar unit economics direcional com fórmulas, premissas, confidence level, Pricing Catalog e Spend Ledger. | Role `finance-operator`; playbook `finance-review`; rotas de Growth/Finance com custo, margem ou spend. |
 | `review-pricing` | Avaliar e manter o Pricing Catalog: planos, preços, trials, limites, entitlements, status e Runtime Source. | Role `finance-operator`; playbook `finance-review`; rotas de pricing, packaging, cobrança, subscription, paywall ou receita. |
 | `review-spend` | Avaliar gasto recorrente, ferramenta paga, campanha paga, provider novo ou custo variável relevante contra budget, runway e unit economics. | Role `finance-operator`; playbook `spend-approval`; rotas de gastos, ferramentas pagas, mídia paga, providers ou custos variáveis. |
 | `runway-check` | Estimar burn mensal, runway e riscos financeiros com premissas explícitas. | Role `finance-operator`; playbook `monthly-finance-check`; pedidos de burn, runway, caixa ou impacto de novo gasto. |

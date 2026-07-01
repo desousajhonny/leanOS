@@ -2,6 +2,7 @@ import type { AreaFileDefinition } from "../../../../types.js";
 import { businessProfile, checklist, decisionLog, folderReadme, productBrief, stateDraft, titledDraft } from "../../../../content/shared.js";
 import { productOpsDeliveryScopeKnowledge } from "./knowledge/product-ops-delivery-scope.js";
 import { productOpsEpicsReadmeKnowledge } from "./knowledge/product-ops-epicsreadme.js";
+import { productOpsImplementationPacketsKnowledge } from "./knowledge/product-ops-implementation-packets.js";
 import { productOpsIssueReadinessKnowledge } from "./knowledge/product-ops-issue-readiness.js";
 import { productOpsMvpAcceptanceCriteriaKnowledge } from "./knowledge/product-ops-mvp-acceptance-criteria.js";
 import { productOpsMvpBacklogKnowledge } from "./knowledge/product-ops-mvp-backlog.js";
@@ -13,14 +14,15 @@ import { productOpsOverviewKnowledge } from "./knowledge/product-ops-overview.js
 import { productOpsReadyToDevelopKnowledge } from "./knowledge/product-ops-ready-to-develop.js";
 import { productOpsWorkTaxonomyKnowledge } from "./knowledge/product-ops-work-taxonomy.js";
 
-export const operationsProductOpsSourceOfTruth = ["knowledge/overview.md", "knowledge/work-taxonomy.md", "knowledge/delivery-scope.md", "knowledge/issue-readiness.md", "knowledge/mvp-decision-gate.md", "knowledge/ready-to-develop.md", "knowledge/technical-decisions.md", "mvp/backlog.md", "mvp/scope.md", "mvp/prd.md", "mvp/user-stories.md", "mvp/acceptance-criteria.md", "epics/README.md"];
+export const operationsProductOpsSourceOfTruth = ["knowledge/overview.md", "knowledge/work-taxonomy.md", "knowledge/delivery-scope.md", "knowledge/issue-readiness.md", "knowledge/implementation-packets/README.md", "knowledge/mvp-decision-gate.md", "knowledge/ready-to-develop.md", "knowledge/technical-decisions.md", "mvp/backlog.md", "mvp/scope.md", "mvp/prd.md", "mvp/user-stories.md", "mvp/acceptance-criteria.md", "epics/README.md"];
 
 export const operationsProductOpsFiles: AreaFileDefinition[] = [
-    { path: "knowledge/README.md", content: () => folderReadme("Product Ops Knowledge", "Contexto operacional durável produzido por Product Ops.", "Use ao transformar strategy e roadmap em MVP backlog, escopo de delivery, prontidão de issue e limites de delivery.", "overview.md", ["overview.md", "work-taxonomy.md", "delivery-scope.md", "issue-readiness.md", "mvp-decision-gate.md", "ready-to-develop.md", "technical-decisions.md"], ["../roles/", "../skills/", "../playbooks/", "../mvp/", "../epics/", "../../../strategy/product/", "../../../strategy/roadmap/"], "Mantenha esta pasta focada em critérios e escopo de delivery. O estado atual de delivery deve viver em MVP backlog e Epics/Features, enquanto memória de PR e implementação vive no knowledge de Engineering.") },
+    { path: "knowledge/README.md", content: () => folderReadme("Product Ops Knowledge", "Contexto operacional durável produzido por Product Ops.", "Use ao transformar strategy e roadmap em MVP backlog, escopo de delivery, prontidão de issue, implementation packets e limites de delivery.", "overview.md", ["overview.md", "work-taxonomy.md", "delivery-scope.md", "issue-readiness.md", "implementation-packets/README.md", "mvp-decision-gate.md", "ready-to-develop.md", "technical-decisions.md"], ["../roles/", "../skills/", "../playbooks/", "../mvp/", "../epics/", "../../../strategy/product/", "../../../strategy/roadmap/"], "Mantenha esta pasta focada em critérios, escopo de delivery e implementation packets de Feature. O packet centraliza artefatos de Design, Security, DevOps e Engineering para uma Feature específica; memória durável de PR continua no knowledge de Engineering.") },
     { path: "knowledge/overview.md", content: productOpsOverviewKnowledge },
     { path: "knowledge/work-taxonomy.md", content: productOpsWorkTaxonomyKnowledge },
     { path: "knowledge/delivery-scope.md", content: productOpsDeliveryScopeKnowledge },
     { path: "knowledge/issue-readiness.md", content: productOpsIssueReadinessKnowledge },
+    { path: "knowledge/implementation-packets/README.md", content: productOpsImplementationPacketsKnowledge },
     { path: "knowledge/mvp-decision-gate.md", content: productOpsMvpDecisionGateKnowledge },
     { path: "knowledge/ready-to-develop.md", content: productOpsReadyToDevelopKnowledge },
     { path: "knowledge/technical-decisions.md", content: () => decisionLog("Technical Decisions") },

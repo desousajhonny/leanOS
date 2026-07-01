@@ -6,11 +6,13 @@ Templates para especificações de Design que entregam estrutura voltada ao usu�
 
 ## Use Quando
 
-Use quando Design precisar documentar um contrato de componente antes da implementação.
+Use quando Design precisar documentar um contrato de tela ou componente antes da implementação.
 
 ## Arquivos
 
+- `product-ui-spec-template.md`
 - `component-spec-template.md`
+- `screen-spec-template.md`
 
 ## Pastas Relacionadas
 

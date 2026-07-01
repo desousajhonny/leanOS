@@ -202,6 +202,7 @@ export async function assertAiStandardTemplates(rootDir) {
   const executionReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "execution", "README.md"), "utf8");
   const githubReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "github", "README.md"), "utf8");
   const designReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "design", "README.md"), "utf8");
+  const productReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "product", "README.md"), "utf8");
   const reviewReadme = await readFile(join(rootDir, ".leanos", "standard", "templates", "review", "README.md"), "utf8");
   const playbookTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "execution", "playbook-template.md"), "utf8");
   const componentSpecTemplate = await readFile(join(rootDir, ".leanos", "standard", "templates", "design", "component-spec-template.md"), "utf8");
@@ -226,7 +227,9 @@ export async function assertAiStandardTemplates(rootDir) {
   assert(githubReadme.includes("github-feature-template.md"), "GitHub templates README should list feature template");
   assert(githubReadme.includes("pull-request-template.md"), "GitHub templates README should list PR template");
   assert(designReadme.includes("component-spec-template.md"), "Design templates README should list component spec template");
-  for (const heading of ["## When To Use", "## Anatomy", "## Variants", "## States", "## Accessibility", "## Composition Rules", "## Engineering Notes", "## Não Faça"]) {
+  assert(designReadme.includes("screen-spec-template.md"), "Design templates README should list screen spec template");
+  assert(productReadme.includes("implementation-packet-template.md"), "Product templates README should list implementation packet template");
+  for (const heading of ["## Quando Usar", "## Anatomia", "## Variantes", "## Estados", "## Acessibilidade", "## Regras De Composição", "## Notas Para Engineering", "## Evidência De Handoff", "## Não Faça"]) {
     assert(componentSpecTemplate.includes(heading), `Component spec template should include ${heading}`);
   }
   assert(reviewReadme.includes("code-review-template.md"), "Review templates README should list code review template");
