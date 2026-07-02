@@ -8,7 +8,7 @@ Use como índice rápido de handoff para trabalho atual, decisões recentes, mud
 
 - Repositório: `desousajhonny/leanOS`.
 - Branch local de trabalho atual: `docs/conway-team-topologies-doctrine`.
-- Remote `origin/main` foi atualizado para a release npm `0.1.5` em 2026-07-01.
+- Remote `origin/main` foi atualizado para a release npm `0.1.6` em 2026-07-01.
 - `AGENT.md` raiz é o ponto de entrada para comportamento de agente no nível do projeto.
 - Source of truth do framework vive em `docs/framework/source-of-truth/`.
 - Roadmap temporário de implementação vive em `TEMP-roadmap-ajustes.md`.
