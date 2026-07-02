@@ -854,3 +854,27 @@ Justificativa:
 - Integrações externas costumam quebrar por falta de payload contract, retry, idempotência, fallback, auth boundaries e logs seguros antes do código.
 - Esses assuntos são classes recorrentes de trabalho operacional, mas não devem virar áreas obrigatórias no setup inicial.
 - Mantê-los como packs opcionais preserva a ativação progressiva e dá ao modelo uma rota clara antes de Engineering implementar comportamento que depende de dados ou terceiros.
+
+## 2026-07-01 - Comando Read-Only `lean-os validate`
+
+Decisão:
+
+- O pacote `lean-os` passa a expor o comando `lean-os validate` para diagnosticar a estrutura local do workspace sem alterar arquivos.
+- O comando deve ser iniciado na raiz de um workspace LeanOS, onde existe `leanos.yaml`.
+- O comando valida:
+  - presença e parse de `leanos.yaml`;
+  - paths centrais do LeanOS;
+  - áreas ativas declaradas;
+  - referências dos índices runtime;
+  - gatilhos semânticos de skills e playbooks;
+  - artefatos legados de editor/comandos;
+  - scripts temporários fora de `.leanos/runtime/scratch/`.
+- Findings `blocker` e `high` fazem o comando sair com erro.
+- Findings `medium` e `low` geram aviso, mas não bloqueiam.
+- Pedidos como "validar LeanOS", "auditar estrutura", "ver se o agente está se perdendo" ou "tem algo quebrado?" devem rodar esse comando antes de propor correções quando ferramentas locais estiverem disponíveis.
+
+Justificativa:
+
+- O founder precisa de um check-up objetivo antes de pedir alterações ou atualizar um workspace existente.
+- O comando transforma regras importantes do framework em diagnóstico executável, reduzindo dependência da memória do modelo.
+- A validação deve ser read-only para separar diagnóstico de migração; correções continuam em `lean-os update`, edição guiada ou workflow apropriado.

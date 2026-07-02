@@ -3,6 +3,7 @@
 import { runAiCommand } from "./commands/ai.js";
 import { runActivateCommand } from "./commands/activate.js";
 import { runUpdateCommand } from "./commands/update.js";
+import { runValidateCommand } from "./commands/validate.js";
 import { ui } from "./ui/theme.js";
 
 const [command, ...args] = process.argv.slice(2);
@@ -28,6 +29,11 @@ async function main(): Promise<void> {
     return;
   }
 
+  if (command === "validate") {
+    await runValidateCommand();
+    return;
+  }
+
   console.log(ui.error(`Unknown command: ${command}`));
   showHelp();
   process.exitCode = 1;
@@ -43,11 +49,13 @@ Usage:
   ${ui.command("lean-os ai")}
   ${ui.command("lean-os activate <area>")}
   ${ui.command("lean-os update [--dry-run]")}
+  ${ui.command("lean-os validate")}
 
 Commands:
   ${ui.command("ai")}          Create an agent-native LeanOS startup workspace (compatibility path)
   ${ui.command("activate")}    Activate a progressive LeanOS workspace area
   ${ui.command("update")}      Migrate an existing LeanOS workspace to the current layout
+  ${ui.command("validate")}    Validate the current LeanOS workspace without changing files
 `);
 }
 

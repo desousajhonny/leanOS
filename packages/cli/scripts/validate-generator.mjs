@@ -25,6 +25,7 @@ import { validateSemanticTriggerQuality } from "./validation/semantic-triggers.m
 import { validateSkillQualityPass } from "./validation/skill-quality.mjs";
 import { validateSpendBudgetSourceOfTruthContract } from "./validation/spend-budget-source-of-truth.mjs";
 import { validateWorkspaceUpdateCommand } from "./validation/update.mjs";
+import { validateValidateCommand } from "./validation/validate-command.mjs";
 import {
   validateWorkspaceFiles,
   validatePartialAreaSelection,
@@ -69,6 +70,7 @@ await validateFounderJourneyReviewPr();
 await validateFounderJourneyReadyForLaunch();
 await validateFounderJourneySecurityHardeningCycle();
 await validateWorkspaceUpdateCommand();
+await validateValidateCommand();
 await validateWriterSkipsExistingFiles();
 await validateWriterOverwritesWhenAllowed();
 

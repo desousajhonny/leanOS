@@ -146,7 +146,18 @@ Na v1, os packs opcionais de Operations são:
 
 Se o pack estiver inativo, retorne `activation_required` para a menor área necessária. Não deixe Engineering, Growth ou DevOps improvisarem source of truth paralelo.
 
-## 15. Use O Registro De Decisões Para Escolhas Duráveis
+## 15. Use `lean-os validate` Como Diagnóstico Read-Only
+
+Quando o founder pedir para validar, auditar, conferir ou diagnosticar se o LeanOS local está correto, rode `lean-os validate` na raiz do workspace antes de propor correções, quando ferramentas locais estiverem disponíveis.
+
+Use o resultado como triagem:
+
+- `blocker` e `high` exigem correção antes de confiar no roteamento;
+- `medium` e `low` são avisos que podem virar backlog ou limpeza;
+- validação não deve alterar arquivos;
+- correção estrutural deve acontecer por `lean-os update`, edição guiada ou workflow apropriado.
+
+## 16. Use O Registro De Decisões Para Escolhas Duráveis
 
 Registre decisões duráveis quando elas afetarem:
 

@@ -77,6 +77,12 @@ Ainda não há app ou código de produto para rodar localmente. Depois que uma F
 
 LeanOS organiza o negócio como um produto: Strategy define direção, Operations transforma escopo em entrega, e Growth apoia lançamento, aprendizado e escala quando essas áreas estiverem ativas.
 
+Para validar se a estrutura local do LeanOS continua coerente, rode na raiz do repositório:
+
+```bash
+npx lean-os validate
+```
+
 Este repositório usa a Navigation Chain do LeanOS. O root `AGENT.md` escolhe o departamento dono; a área dona escolhe role, skill e playbook. Para melhorar este README depois que houver mais contexto de produto, use:
 
 ```text

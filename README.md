@@ -57,6 +57,14 @@ npm create lean-os
 
 The CLI asks a short set of questions and creates the LeanOS workspace in the current directory.
 
+Validate an existing LeanOS workspace from its root:
+
+```bash
+npx lean-os validate
+```
+
+The validator is read-only. It reports structural drift, weak skill/playbook triggers, broken runtime index paths, obsolete generated editor artifacts, and temporary scripts outside `.leanos/runtime/scratch/`.
+
 For compatibility, the same wizard remains available through:
 
 ```bash

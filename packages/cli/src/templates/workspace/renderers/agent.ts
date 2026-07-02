@@ -123,6 +123,18 @@ Regras:
 4. Não mova código de produto, \`src/\`, \`tests/\`, \`package.json\` ou arquivos existentes do app.
 5. Se o comando reportar conflito, pare e explique quais paths precisam de decisão humana.
 
+## Validação do LeanOS
+
+Quando o founder pedir "validar LeanOS", "ver se o LeanOS está certo", "auditar estrutura", "o agente está se perdendo", "tem algo quebrado?" ou algo equivalente, trate como check-up read-only do workspace.
+
+Regras:
+
+1. Rode \`npx lean-os validate\` na raiz do workspace quando houver acesso a ferramentas locais; use \`lean-os validate\` se o binário já estiver disponível no ambiente.
+2. Não altere arquivos durante a validação.
+3. Leia o relatório por severidade: \`blocker\`, \`high\`, \`medium\`, \`low\`.
+4. Para \`blocker\` ou \`high\`, explique o impacto em linguagem de founder e recomende a menor correção segura.
+5. Para \`medium\` ou \`low\`, liste como aviso ou melhoria, sem bloquear trabalho automaticamente.
+
 ## Perguntas de Status e Readiness
 
 Quando o founder perguntar onde o produto está, o que existe até agora, o que falta, qual deve ser o próximo passo ou se o desenvolvimento pode começar, não responda de memória e não pule direto para implementação.
